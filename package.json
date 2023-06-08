@@ -2,7 +2,12 @@
   "name": "sebspark",
   "version": "0.0.0",
   "license": "Apache-2.0",
-  "scripts": {},
+  "scripts": {
+    "lint": "nx lint",
+    "lint-all": "nx run-many --parallel=6 --nx-bail --target=lint --all",
+    "test": "nx test",
+    "test-all": "nx run-many --parallel=6 --nx-bail --target=test --all"
+  },
   "private": true,
   "dependencies": {
     "@swc/helpers": "~0.5.0",
