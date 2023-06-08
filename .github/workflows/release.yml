@@ -48,3 +48,13 @@ jobs:
 
       - name: Run linting
         run: npm run lint-all
+
+  changeset:
+    name: Create Release Pull Request
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    steps:
+      - name: Create Changeset PR
+        uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
