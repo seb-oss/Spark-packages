@@ -18,6 +18,6 @@ Packages are added in two steps; running the appropriate nx generator and runnin
 
 ```shell
 # This example created a package @sebspark/meow
-yarn nx generate @nx/node:library meow --publishable --importPath=@sebspark/meow --no-interactive --dry-run
+yarn nx generate @nx/node:library meow --publishable --importPath=@sebspark/meow --no-interactive
 yarn nx run ensure -- --package=meow
 ```
