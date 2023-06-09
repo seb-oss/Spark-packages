@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.0.2
+
+### Patch Changes
+
+- 92e36c3: Update publish directory to built output
+
 ## 0.0.1
 
 ### Patch Changes
