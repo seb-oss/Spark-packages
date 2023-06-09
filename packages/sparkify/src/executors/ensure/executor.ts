@@ -1,16 +1,16 @@
 import type { ExecutorContext } from '@nx/devkit'
 import * as fs from 'fs'
 
-export interface ConfigureExecutorOptions {
+export interface EnsureExecutorOptions {
   package: string
 }
 
-export default async function configureExecutor(
-  options: ConfigureExecutorOptions,
+export default async function ensureExecutor(
+  options: EnsureExecutorOptions,
   context: ExecutorContext
 ): Promise<{ success: boolean }> {
   let success = false
-  console.info(`Executing "configure"...`)
+  console.info(`Executing "ensure"...`)
   console.info(`Options: ${JSON.stringify(options, null, 2)}`)
 
   const packageJsonPath = `packages/${options.package}/package.json`
@@ -21,9 +21,9 @@ export default async function configureExecutor(
       name: `@sebspark/${options.package}`,
       version: '0.0.1',
     }
+  } else {
+    packageJson = await import(packageJsonPath)
   }
-
-  packageJson = await import(packageJsonPath)
 
   if (!packageJson.publishConfig) {
     packageJson.publishConfig = {
