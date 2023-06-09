@@ -11,7 +11,10 @@
       }
     },
     "ensure": {
-      "executor": "@sebspark/sparkify:ensure"
+      "executor": "@sebspark/sparkify:ensure",
+      "options": {
+        "organisation": "sebspark"
+      }
     }
   }
 }

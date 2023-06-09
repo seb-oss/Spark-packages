@@ -1,24 +1,25 @@
-import type { ExecutorContext } from '@nx/devkit'
 import * as fs from 'fs'
 
 export interface EnsureExecutorOptions {
+  organisation: string
   package: string
 }
 
 export default async function ensureExecutor(
-  options: EnsureExecutorOptions,
-  context: ExecutorContext
+  options: EnsureExecutorOptions
 ): Promise<{ success: boolean }> {
-  let success = false
-  console.info(`Executing "ensure"...`)
-  console.info(`Options: ${JSON.stringify(options, null, 2)}`)
+  process.stdout.write(
+    `Ensuring @${options.organisation}/${options.package} package...`
+  )
 
+  let success = false
+  let packageJson = {} as any
   const packageJsonPath = `packages/${options.package}/package.json`
 
-  let packageJson = {} as any
   if (!fs.existsSync(packageJsonPath)) {
+    // Initiate a new package.json
     packageJson = {
-      name: `@sebspark/${options.package}`,
+      name: `@${options.organisation}/${options.package}`,
       version: '0.0.1',
     }
   } else {
@@ -38,7 +39,7 @@ export default async function ensureExecutor(
     )
     success = true
   } catch (error) {
-    console.error(error)
+    process.stderr.write(error)
   }
 
   return { success }
