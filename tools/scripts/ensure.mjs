@@ -6,39 +6,41 @@ const configuration = {
   path: 'packages',
 }
 
-export default async function ensure(options) {
-  console.log(`Ensuring @${options.organisation}/${options.package} package...`)
+console.log(
+  `Ensuring @${configuration.organisation}/${configuration.package} package...`
+)
 
-  let packageJson = {}
-  const currentDir = process.cwd()
-  const packageJsonPath = `${currentDir}/${options.path}/${options.package}/package.json`
+let packageJson = {}
+const currentDir = process.cwd()
+const packageName = `@${configuration.organisation}/${configuration.package}`
+const packagePath = `${currentDir}/${configuration.path}/${configuration.package}`
+const packageJsonPath = `${packagePath}/package.json`
 
-  if (!fs.existsSync(packageJsonPath)) {
-    // Initiate a new package.json
-    packageJson = {
-      name: `@${options.organisation}/${options.package}`,
-      version: '0.0.1',
-    }
-  } else {
-    packageJson = JSON.parse(fs.readFileSync(packageJsonPath))
+if (!fs.existsSync(packagePath)) {
+  console.error(`ERROR: ${packageName} package does not exist.`)
+  process.exit(0)
+}
+
+if (!fs.existsSync(packageJsonPath)) {
+  // Initiate a new package.json
+  packageJson = {
+    name: `@${configuration.organisation}/${configuration.package}`,
+    version: '0.0.1',
   }
+} else {
+  packageJson = JSON.parse(fs.readFileSync(packageJsonPath))
+}
 
-  if (!packageJson.publishConfig) {
-    packageJson.publishConfig = {
-      directory: `../../dist/packages/${options.package}`,
-    }
-  }
-
-  try {
-    fs.writeFileSync(
-      packageJsonPath,
-      `${JSON.stringify(packageJson, null, 2)}\n`
-    )
-
-    console.log('Done!', JSON.stringify(packageJson, null, 2))
-  } catch (error) {
-    console.error('ERROR', error)
+if (!packageJson.publishConfig) {
+  packageJson.publishConfig = {
+    directory: `../../dist/packages/${configuration.package}`,
   }
 }
 
-ensure(configuration)
+try {
+  fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`)
+
+  console.log('Done!', JSON.stringify(packageJson, null, 2))
+} catch (error) {
+  console.error('ERROR', error)
+}
