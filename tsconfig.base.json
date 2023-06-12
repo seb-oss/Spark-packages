@@ -15,8 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@sebspark/pubsub": ["packages/pubsub/src/index.ts"],
-      "@sebspark/sparkify": ["packages/sparkify/src/index.ts"]
+      "@sebspark/pubsub": ["packages/pubsub/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

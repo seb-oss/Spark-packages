@@ -1,9 +1,0 @@
-{
-  "executors": {
-    "ensure": {
-      "implementation": "./src/executors/ensure/executor",
-      "schema": "./src/executors/ensure/schema.json",
-      "description": "ensure executor"
-    }
-  }
-}

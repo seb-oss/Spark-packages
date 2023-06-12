@@ -5,6 +5,7 @@
   "scripts": {
     "build": "nx build",
     "build-all": "nx run-many --parallel=6 --nx-bail --target=build --all",
+    "ensure": "node tools/scripts/ensure.mjs",
     "lint": "nx lint",
     "lint-all": "nx run-many --parallel=6 --nx-bail --target=lint --all",
     "release": "npm run build-all && npx changeset publish",
