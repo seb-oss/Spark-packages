@@ -20,7 +20,7 @@ export default async function ensure(options) {
       version: '0.0.1',
     }
   } else {
-    packageJson = JSON.parse(await fs.readFileSync(packageJsonPath))
+    packageJson = JSON.parse(fs.readFileSync(packageJsonPath))
   }
 
   if (!packageJson.publishConfig) {
