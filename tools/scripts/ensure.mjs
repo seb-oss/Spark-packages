@@ -1,7 +1,5 @@
 import * as fs from 'fs'
 
-console.log(process.argv)
-
 const configuration = {
   organisation: 'sebspark',
   package: process.argv[2],
