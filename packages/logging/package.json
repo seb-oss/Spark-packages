@@ -1,0 +1,7 @@
+{
+  "name": "@sebspark/logging",
+  "version": "0.0.1",
+  "publishConfig": {
+    "directory": "../../dist/packages/logging"
+  }
+}
