@@ -15,6 +15,15 @@
       "options": {
         "organisation": "sebspark"
       }
+    },
+    "lint": {},
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "jest.preset.js",
+        "passWithNoTests": true,
+        "path": "packages"
+      }
     }
   }
 }
