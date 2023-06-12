@@ -1,7 +1,6 @@
 import { AsyncLocalStorage } from 'async_hooks'
 import { randomUUID } from 'crypto'
-
-import { Request, Response, NextFunction } from 'express'
+import type { Request, Response, NextFunction } from 'express'
 
 const asyncLocalStorage = new AsyncLocalStorage<{ corrId: string }>()
 
@@ -26,7 +25,7 @@ export const getCorrId = () => {
 
 export const correlationIdMiddleware = (
   req: Request,
-  res: Response,
+  _res: Response,
   next: NextFunction
 ) => {
   runWithCorrelationId(async () => {
