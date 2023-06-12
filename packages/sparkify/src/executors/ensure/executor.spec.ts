@@ -1,7 +1,11 @@
 import { EnsureExecutorSchema } from './schema'
 import executor from './executor'
 
-const options: EnsureExecutorSchema = {}
+const options: EnsureExecutorSchema = {
+  organisation: 'sparkify',
+  package: 'sparkify',
+  path: 'packages',
+}
 
 describe('Ensure Executor', () => {
   it('can run', async () => {

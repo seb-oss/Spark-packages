@@ -1,12 +1,8 @@
 import * as fs from 'fs'
-
-export interface EnsureExecutorOptions {
-  organisation: string
-  package: string
-}
+import { EnsureExecutorSchema } from './schema'
 
 export default async function ensureExecutor(
-  options: EnsureExecutorOptions
+  options: EnsureExecutorSchema
 ): Promise<{ success: boolean }> {
   process.stdout.write(
     `Ensuring @${options.organisation}/${options.package} package...`
@@ -14,9 +10,12 @@ export default async function ensureExecutor(
 
   let success = false
   let packageJson = {} as any
-  const packageJsonPath = `packages/${options.package}/package.json`
+  const currentDir = process.cwd()
+  const packageJsonPath = `${currentDir}/${options.path}/${options.package}/package.json`
 
+  console.log('MEOW', packageJsonPath, currentDir)
   if (!fs.existsSync(packageJsonPath)) {
+    console.log('NOPE')
     // Initiate a new package.json
     packageJson = {
       name: `@${options.organisation}/${options.package}`,
@@ -39,7 +38,8 @@ export default async function ensureExecutor(
     )
     success = true
   } catch (error) {
-    process.stderr.write(error)
+    console.log('ERROR', error)
+    process.stderr.write(error.message)
   }
 
   return { success }
