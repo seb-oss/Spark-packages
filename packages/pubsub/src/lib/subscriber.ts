@@ -1,14 +1,16 @@
-/* eslint-disable max-lines */
 import {
   CreateSubscriptionOptions,
   Message,
   Subscription,
   Topic,
 } from '@google-cloud/pubsub'
-import { AuthenticatedUser, verifyJWT } from '@sebneo/server/auth'
 import { getOrCreateTopic } from './client'
 
 const ALREADY_EXISTS_ERROR = '6 ALREADY_EXISTS'
+
+export type AuthenticatedUser = {
+  token: string
+}
 
 export type PubSubHeaders = {
   authenticatedUser?: AuthenticatedUser
@@ -72,7 +74,6 @@ const subscriptionPullConfig = (): Promise<CreateSubscriptionOptions> => {
   return subscriptionDefaultConfig()
 }
 
-// eslint-disable-next-line max-statements
 const subscriptionPushConfig = async (): Promise<CreateSubscriptionOptions> => {
   if (!process.env.PUBSUB_PUSH_HOST) {
     throw new Error(
@@ -81,6 +82,7 @@ const subscriptionPushConfig = async (): Promise<CreateSubscriptionOptions> => {
   }
 
   if (!process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL) {
+    // eslint-disable-next-line no-console
     console.warn(
       'Environment variable PUBSUB_SERVICE_ACCOUNT_EMAIL should be set if running in GCP'
     )
@@ -144,21 +146,18 @@ export const subscriber =
   <Msg, TopicName extends string | number | symbol>(
     topicName: TopicName
   ): Subscriber<Msg> =>
-  // eslint-disable-next-line max-statements
   async ({ subscriberName, onSuccess, onError }) => {
     const topic = await getOrCreateTopic(topicName.toString())
     const subscriptionName = `${topicName.toString()}.${subscriberName}`
     const subscription = await createOrGetSubscription(subscriptionName, topic)
     const messageHandler = async (message: Message) => {
       const data: PubsubMessage<Msg> = JSON.parse(message.data.toString())
-      const identity =
-        data.identity && verifyJWT ? await verifyJWT(data.identity) : undefined
+
       const typed: Partial<TypedMessage<Msg>> = {
         ...message,
         body: data.message,
         headers: {
           authenticatedUser: {
-            identity: identity?.involvedPartyId,
             token: data.identity,
           },
         },
@@ -168,6 +167,7 @@ export const subscriber =
         message.ack()
       } catch (err) {
         message.nack()
+        // eslint-disable-next-line no-console
         console.error(err)
       }
     }
