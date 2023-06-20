@@ -17,7 +17,6 @@ export const publisher =
   >(
     topicName: TopicName
   ): Publisher<Msg, Headers> =>
-  // eslint-disable-next-line max-statements
   async (message, headers?) => {
     const topic = await getOrCreateTopic(topicName.toString())
     const msg: PubsubMessage<Msg, Headers> = {
@@ -25,7 +24,6 @@ export const publisher =
       headers,
     }
     const data = Buffer.from(JSON.stringify(msg))
-    const result = await topic.publishMessage({ data })
 
-    return result
+    return topic.publishMessage({ data })
   }
