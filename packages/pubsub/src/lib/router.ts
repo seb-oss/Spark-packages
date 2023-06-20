@@ -1,5 +1,6 @@
 import { Request, Router } from 'express'
 import { subscriptions } from './subscriber'
+import { htmlEscape } from 'escape-goat'
 
 type PushMessage = {
   subscription: string
@@ -28,7 +29,7 @@ export const pushRouter = () => {
       .toString()
       .trim()
 
-    const subscriptionName = req.body.subscription
+    const subscriptionName = htmlEscape(req.body.subscription)
 
     if (subscriptions[subscriptionName]) {
       const message = {
@@ -37,9 +38,10 @@ export const pushRouter = () => {
         ack: () => res.status(204).send(),
         nack: () => res.status(500).send(),
       }
+
       subscriptions[subscriptionName].emit('push-message', message)
     } else {
-      res.status(404).send(`No listener for: ${req.body.subscription}`)
+      res.status(404).send(`No listener for: ${subscriptionName}`)
     }
   })
 
