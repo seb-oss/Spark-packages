@@ -1,11 +1,11 @@
-# pubsub
+# Typed Router
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Building
 
-Run `nx build pubsub` to build the library.
+Run `nx build typed-router` to build the library.
 
 ## Running unit tests
 
-Run `nx test pubsub` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test typed-router` to execute the unit tests via [Jest](https://jestjs.io).
