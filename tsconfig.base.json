@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@sebspark/pubsub": ["packages/pubsub/src/index.ts"],
-      "@sebspark/logging": ["packages/logging/src/index.ts"]
+      "@sebspark/logging": ["packages/logging/src/index.ts"],
+      "@sebspark/typed-router": ["packages/typed-router/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,7 @@
+{
+  "name": "@sebspark/typed-router",
+  "version": "0.0.1",
+  "publishConfig": {
+    "directory": "../../dist/packages/typed-router"
+  }
+}
