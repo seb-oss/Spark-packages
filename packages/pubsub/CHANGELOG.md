@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.1.0
+
+### Minor Changes
+
+- 1472464: Add pubsub functionality
+
 ## 0.0.2
 
 ### Patch Changes
