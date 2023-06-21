@@ -15,7 +15,9 @@
   "private": true,
   "dependencies": {
     "@changesets/cli": "2.26.1",
+    "@google-cloud/pubsub": "3.6.0",
     "@swc/helpers": "0.5.1",
+    "escape-goat": "4.0.0",
     "tslib": "2.5.3"
   },
   "devDependencies": {
