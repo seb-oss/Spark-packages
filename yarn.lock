@@ -1309,10 +1309,10 @@
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-2.0.4.tgz#9d8705ecb2baa41b6b2673f3a8e9b7b7e1abc52a"
   integrity sha512-j8yRSSqswWi1QqUGKVEKOG03Q7qOoZP6/h2zN2YO+F5h2+DHU0bSrHCK9Y7lo2DI9fBd8qGAw795sf+3Jva4yA==
 
-"@google-cloud/pubsub@3.6.0":
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/pubsub/-/pubsub-3.6.0.tgz#dbfb4034b14980f138fe1ed602ed7b179dc267b2"
-  integrity sha512-txGVVrQLUZZHh88BTwo2fUodCozbqC9F4YAMm7zZikQ1vlaLKrZtAK5U5QYikQcOtMwrNejFGx2rHegEKEHUuQ==
+"@google-cloud/pubsub@3.7.1":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/pubsub/-/pubsub-3.7.1.tgz#286f355768265e6814a87d9929af7640f5222bf7"
+  integrity sha512-J6jzgIubq1sAMafnSF2wGnOn1qkNd0l0Y5ChG33rU27/iDXmxKabaiY/dvFndX3v57TE/QcB9uQt5A6Pek+WrA==
   dependencies:
     "@google-cloud/paginator" "^4.0.0"
     "@google-cloud/precise-date" "^3.0.0"
