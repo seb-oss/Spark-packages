@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.2
+
+### Patch Changes
+
+- d95a24f: Revert ES6 output
+
 ## 0.1.1
 
 ### Patch Changes
