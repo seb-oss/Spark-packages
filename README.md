@@ -10,6 +10,10 @@ A pubsub subscriber helper.
 
 A wrapper around Google PubSub adding support for typing, serialization/deserialization, naming of subscriptions for specific topics, push routes and some more.
 
+### [@sebspark/typed-router](./packages/typed-router/)
+
+An Express router wrapped with additional TypeScript typings and defintions for our purposes.
+
 ## Contributing
 
 ### Adding a new package
