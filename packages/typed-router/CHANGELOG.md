@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.1
+
+### Patch Changes
+
+- 96ae0ee: Output ES6 module instead of CommonJS
+
 ## 0.1.0
 
 ### Minor Changes
