@@ -1,14 +1,19 @@
-/* eslint-disable complexity */
-/* eslint-disable max-lines */
 import { NextFunction, Request, Response, Router } from 'express'
 
-// TODO: Figure out how to break apart
-// import { AuthenticatedRequest } from './server'
-// import { AuthenticatedUser } from '@sebneo/server/auth'
-type AuthenticatedUser = unknown
-type AuthenticatedRequest = Request & {
-  user: AuthenticatedUser,
+export type AuthenticatedUser = {
+  identity: string
+  token: string
 }
+
+export type AuthenticatedRequest<
+  A = unknown,
+  B = unknown,
+  C = unknown,
+  D = unknown
+> = {
+  user: AuthenticatedUser
+  token: string
+} & Request<A, B, C, D>
 
 export type ResponseType = [number, unknown]
 
