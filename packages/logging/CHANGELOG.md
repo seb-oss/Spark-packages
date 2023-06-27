@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.0.4
+
+### Patch Changes
+
+- 3650622: Update build to output CommonJS and ES Module
+
 ## 0.0.3
 
 ### Patch Changes
