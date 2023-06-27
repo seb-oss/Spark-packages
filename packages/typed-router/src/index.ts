@@ -35,13 +35,13 @@ type MethodDefinition = {
   >
 }
 
-export type RouteDefinitions = {
+export type RouteDefinitions = Partial<{
   get: MethodDefinition
   post: MethodDefinition
   put: MethodDefinition
   patch: MethodDefinition
   delete: MethodDefinition
-}
+}>
 
 const abstractedHandler = <R extends MethodDefinition>(
   router: Router,
@@ -97,11 +97,14 @@ export const TypedRouter = <R extends RouteDefinitions>() => {
 
   return {
     expressRouter,
-    get: abstractedHandler<R['get']>(expressRouter, 'GET'),
-    post: abstractedHandler<R['post']>(expressRouter, 'POST'),
-    put: abstractedHandler<R['put']>(expressRouter, 'PUT'),
-    patch: abstractedHandler<R['patch']>(expressRouter, 'PATCH'),
-    delete: abstractedHandler<R['delete']>(expressRouter, 'DELETE'),
+    get: abstractedHandler<NonNullable<R['get']>>(expressRouter, 'GET'),
+    post: abstractedHandler<NonNullable<R['post']>>(expressRouter, 'POST'),
+    put: abstractedHandler<NonNullable<R['put']>>(expressRouter, 'PUT'),
+    patch: abstractedHandler<NonNullable<R['patch']>>(expressRouter, 'PATCH'),
+    delete: abstractedHandler<NonNullable<R['delete']>>(
+      expressRouter,
+      'DELETE'
+    ),
   }
 }
 
