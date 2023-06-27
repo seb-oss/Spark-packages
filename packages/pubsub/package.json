@@ -6,7 +6,7 @@
     "directory": "../../dist/packages/pubsub"
   },
   "scripts": {
-    "lint": "eslint --ext .ts src",
+    "lint": "eslint \"**/*.ts*\"",
     "test": "vitest run"
   },
   "devDependencies": {
