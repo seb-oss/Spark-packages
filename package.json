@@ -6,7 +6,8 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "release": "npm run build && npx changeset publish",
-    "test": "turbo test"
+    "test": "turbo test",
+    "changeset": "changeset"
   },
   "private": true,
   "dependencies": {
