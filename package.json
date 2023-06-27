@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "Apache-2.0",
   "scripts": {
+    "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
     "release": "npm run build && npx changeset publish",
