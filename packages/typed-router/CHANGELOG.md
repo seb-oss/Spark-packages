@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.5
+
+### Patch Changes
+
+- 10b0ffd: Make route definitions type a partial since the definitions might not implement all methods.
+
 ## 0.1.4
 
 ### Patch Changes
