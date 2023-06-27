@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.3
+
+### Patch Changes
+
+- 2ee5700: Include @swc/helpers in bundled package
+
 ## 0.1.2
 
 ### Patch Changes
