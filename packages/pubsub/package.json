@@ -1,7 +1,11 @@
 {
   "name": "@sebspark/pubsub",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "publishConfig": {
     "directory": "../../dist/packages/pubsub"
+  },
+  "scripts": {
+    "lint": "eslint --ext .ts src"
   }
 }

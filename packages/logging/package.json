@@ -1,7 +1,11 @@
 {
   "name": "@sebspark/logging",
   "version": "0.0.3",
+  "license": "UNLICENSED",
   "publishConfig": {
     "directory": "../../dist/packages/logging"
+  },
+  "scripts": {
+    "lint": "eslint --ext .ts src"
   }
 }
