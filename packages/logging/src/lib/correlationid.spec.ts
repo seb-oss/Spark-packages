@@ -1,4 +1,5 @@
-import { getCorrId, runWithCorrelationId } from '../src/lib/correlationid'
+import { getCorrId, runWithCorrelationId } from './correlationid'
+import { test, expect } from 'vitest'
 
 test('corrId created when not supplied', () => {
   runWithCorrelationId(async () => {

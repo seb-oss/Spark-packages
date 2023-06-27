@@ -4,9 +4,9 @@ interface Publisher<T, Headers> {
   (message: T, headers?: Headers): Promise<string>
 }
 
-interface PubsubMessage<T, H extends Record<string, unknown>> {
-  message: T
-  headers: H
+interface PubsubMessage<Message, Headers extends Record<string, unknown>> {
+  message: Message
+  headers?: Headers
 }
 
 export const publisher =

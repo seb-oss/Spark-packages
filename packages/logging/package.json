@@ -1,7 +1,19 @@
 {
   "name": "@sebspark/logging",
   "version": "0.0.3",
-  "publishConfig": {
-    "directory": "../../dist/packages/logging"
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
   }
 }

@@ -1,6 +1,18 @@
-import { PubSub, Subscription, Topic } from '@google-cloud/pubsub'
-import { createPubsub } from './pubsub'
+import { PubSub } from '@google-cloud/pubsub'
 import { randomUUID } from 'crypto'
+import {
+  Mock,
+  MockedObject,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from 'vitest'
+import { createPubsub } from './pubsub'
 
 type Topics<T> = {
   'accounts.newtransaction': T
@@ -24,48 +36,41 @@ const createTestMessage = () => {
   }
 }
 
-jest.mock('@google-cloud/pubsub', () => {
+vi.mock('@google-cloud/pubsub', () => {
   const pubsub: Partial<PubSub> = {
-    topic: jest.fn(),
+    topic: vi.fn(),
   }
 
   return {
-    PubSub: jest.fn().mockReturnValue(pubsub),
+    PubSub: vi.fn().mockReturnValue(pubsub),
   }
 })
 
-let subscriberFn: (args: {
-  ack: jest.Mock
-  nack: jest.Mock
-  data: string
-}) => void
+let subscriberFn: (args: { ack: Mock; nack: Mock; data: string }) => void
 
 const setup = () => {
-  jest.spyOn(console, 'error').mockImplementation(() => undefined)
+  vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
   const testMessage = createTestMessage()
-  const partialTopic: Partial<Topic> = {
+  const mockTopic = {
     name: 'mocked-topic',
-    get: jest.fn(),
-    publishMessage: jest.fn(),
-    subscription: jest.fn(),
-    createSubscription: jest.fn(),
+    get: vi.fn(),
+    publishMessage: vi.fn(),
+    subscription: vi.fn(),
+    createSubscription: vi.fn(),
   }
-  const partialSubscription: Partial<Subscription> = {
-    get: jest.fn(),
-    on: jest.fn(),
-    off: jest.fn(),
+  const subscription = {
+    get: vi.fn(),
+    on: vi.fn(),
+    off: vi.fn(),
   }
 
-  const mockTopic = partialTopic as jest.MockedObject<Topic>
   mockTopic.get.mockImplementation(async () => [mockTopic])
   mockTopic.publishMessage.mockImplementation(async () => 'ok')
-
-  const subscription = partialSubscription as jest.MockedObject<Subscription>
-  subscription.get.mockImplementation(async () => [subscription])
   mockTopic.createSubscription.mockImplementation(async () => [subscription])
   mockTopic.subscription.mockImplementation(() => subscription)
 
+  subscription.get.mockImplementation(async () => [subscription])
   subscription.on.mockImplementation(
     (name: string, cb: (...args: unknown[]) => void) => {
       if (name === 'push-message') subscriberFn = cb
@@ -74,17 +79,17 @@ const setup = () => {
     }
   )
 
-  const pubsub = new PubSub() as jest.MockedObject<PubSub>
+  const pubsub = new PubSub() as MockedObject<PubSub>
   const createdPubsub = createPubsub<
     Topics<typeof testMessage.topicData>,
     'test'
   >()
 
-  pubsub.topic.mockReturnValue(mockTopic)
+  ;(pubsub.topic as Mock).mockReturnValue(mockTopic)
 
   return {
-    ack: jest.fn(),
-    nack: jest.fn(),
+    ack: vi.fn(),
+    nack: vi.fn(),
     createdPubsub,
     mockTopic,
     subscription,
@@ -130,7 +135,7 @@ describe('#topic', () => {
 
     it('serialises the message', async () => {
       const { createdPubsub, mockTopic, topicData, topicName } = setup()
-      const headers = 'identity'
+      const headers = { identity: 'test' }
       const data = Buffer.from(JSON.stringify({ message: topicData, headers }))
 
       await createdPubsub.topic(topicName).publish(topicData, headers)

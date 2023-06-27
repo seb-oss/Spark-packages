@@ -33,7 +33,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Run linting
-        run: npm run lint-all
+        run: npm run lint
 
   test:
     name: Run tests
@@ -47,4 +47,4 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Run tests
-        run: npm run test-all
+        run: npm run test

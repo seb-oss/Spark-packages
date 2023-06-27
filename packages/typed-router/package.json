@@ -1,7 +1,19 @@
 {
   "name": "@sebspark/typed-router",
   "version": "0.1.3",
-  "publishConfig": {
-    "directory": "../../dist/packages/typed-router"
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "vitest run --passWithNoTests"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
   }
 }
