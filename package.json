@@ -18,7 +18,7 @@
     "@google-cloud/pubsub": "3.7.1",
     "@swc/helpers": "0.5.1",
     "escape-goat": "4.0.0",
-    "tslib": "2.5.3"
+    "tslib": "2.6.0"
   },
   "devDependencies": {
     "@nx/eslint-plugin": "16.4.0",
