@@ -8,5 +8,8 @@
   "scripts": {
     "lint": "eslint --ext .ts src",
     "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
   }
 }

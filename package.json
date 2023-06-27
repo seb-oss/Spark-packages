@@ -4,13 +4,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "nx build",
-    "build-all": "nx run-many --parallel=6 --nx-bail --target=build --all",
     "ensure": "node tools/scripts/ensure.mjs",
     "lint": "turbo lint",
-    "lint-all": "nx run-many --parallel=6 --nx-bail --target=lint --all",
-    "release": "npm run build-all && npx changeset publish",
-    "test": "turbo test",
-    "test-all": "nx run-many --parallel=6 --nx-bail --target=test --all"
+    "release": "npm run build && npx changeset publish",
+    "test": "turbo test"
   },
   "private": true,
   "dependencies": {

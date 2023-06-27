@@ -33,7 +33,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Run tests
-        run: npm run test-all
+        run: npm run test
 
   lint:
     name: Lint
@@ -47,7 +47,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Run linting
-        run: npm run lint-all
+        run: npm run lint
 
   changeset:
     name: Create Release Pull Request or Publish to NPM

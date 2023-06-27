@@ -6,6 +6,10 @@
     "directory": "../../dist/packages/logging"
   },
   "scripts": {
-    "lint": "eslint --ext .ts src"
+    "lint": "eslint --ext .ts src",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
   }
 }
