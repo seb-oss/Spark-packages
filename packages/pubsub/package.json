@@ -2,10 +2,14 @@
   "name": "@sebspark/pubsub",
   "version": "0.1.0",
   "license": "UNLICENSED",
-  "publishConfig": {
-    "directory": "../../dist/packages/pubsub"
-  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "lint": "eslint \"**/*.ts*\"",
     "test": "vitest run"
   },

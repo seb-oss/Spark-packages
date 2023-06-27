@@ -135,7 +135,7 @@ describe('#topic', () => {
 
     it('serialises the message', async () => {
       const { createdPubsub, mockTopic, topicData, topicName } = setup()
-      const headers = 'identity'
+      const headers = { identity: 'test' }
       const data = Buffer.from(JSON.stringify({ message: topicData, headers }))
 
       await createdPubsub.topic(topicName).publish(topicData, headers)

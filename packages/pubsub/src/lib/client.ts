@@ -9,8 +9,9 @@ export const getOrCreateTopic = async (
   try {
     const [t] = await pubsub.topic(topicName).get({ autoCreate: true })
     return t
-  } catch (err) {
-    if (err.code && err.code === 6 && tries < 3) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
+    if (err.code && err?.code === 6 && tries < 3) {
       return getOrCreateTopic(topicName, tries + 1)
     } else {
       throw err

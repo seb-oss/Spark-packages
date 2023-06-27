@@ -11,7 +11,7 @@ export interface TypeMap {
 }
 
 export interface PubSubTopic<Msg, Topics extends TypeMap> {
-  publish: (message: Msg, identity?: string) => Promise<string>
+  publish: (message: Msg, headers?: Record<string, unknown>) => Promise<string>
   subscribe: Subscriber<Msg>
   name: keyof Topics
 }
@@ -24,7 +24,9 @@ export const createPubsub = <
 
   const topic = (name: TopicName): PubSubTopic<Topics[TopicName], Topics> => {
     return {
-      publish: publisher<Topics[TopicName], TopicName, null>(name),
+      publish: publisher<Topics[TopicName], TopicName, Record<string, unknown>>(
+        name
+      ),
       subscribe: subscriber<Topics[TopicName], TopicName>(name),
       name: name,
     }
@@ -36,7 +38,7 @@ export const createPubsub = <
       wait: async () => await Promise.all(promises),
       subscribe: <T extends TopicName>(
         topicName: T,
-        { onSuccess, onError }: SubscriberHandler<Topics[T]>
+        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>
       ) => {
         promises.push(
           topic(topicName.toString()).subscribe({

@@ -9,7 +9,7 @@ import { getOrCreateTopic } from './client'
 const ALREADY_EXISTS_ERROR = '6 ALREADY_EXISTS'
 
 export type AuthenticatedUser = {
-  token: string
+  token?: string
 }
 
 export type PubSubHeaders = {
@@ -132,7 +132,7 @@ const createOrGetSubscription = async (
       await getCreateSubscriptionOptions()
     )
   } catch (ex) {
-    if (!ex.message.startsWith(ALREADY_EXISTS_ERROR)) {
+    if (ex instanceof Error && !ex.message.startsWith(ALREADY_EXISTS_ERROR)) {
       throw ex
     }
     ;[subscription] = await topic.subscription(subscriptionName).get()
@@ -153,7 +153,7 @@ export const subscriber =
     const messageHandler = async (message: Message) => {
       const data: PubsubMessage<Msg> = JSON.parse(message.data.toString())
 
-      const typed: Partial<TypedMessage<Msg>> = {
+      const typed = {
         ...message,
         body: data.message,
         headers: {
@@ -162,6 +162,7 @@ export const subscriber =
           },
         },
       }
+
       try {
         await onSuccess(typed.body, typed.headers)
         message.ack()
