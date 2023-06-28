@@ -14,14 +14,14 @@ A wrapper around Google PubSub adding support for typing, serialization/deserial
 
 An Express router wrapped with additional TypeScript typings and defintions for our purposes.
 
+<!--NEW_PACKAGE-->
+
 ## Contributing
 
 ### Adding a new package
 
-Packages are added in two steps; running the appropriate nx generator and running the `sparkify` plugin to ensure the newly added package has a valid `package.json`.
+We use [Turborepo's code generation](https://turbo.build/repo/docs/core-concepts/monorepos/code-generation) to create new packages. Run the following command, provide it with information, and it will create a package with some default scripts and TypeScript configured.
 
 ```shell
-# This example created a package @sebspark/meow
-yarn nx generate @nx/node:library meow --publishable --importPath=@sebspark/meow --no-interactive
-yarn ensure meow
+npm run generate:package
 ```

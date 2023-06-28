@@ -8,13 +8,15 @@
     "lint": "turbo lint",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "generate:package": "turbo gen package"
   },
   "private": true,
   "dependencies": {
     "@changesets/cli": "2.26.2"
   },
   "devDependencies": {
+    "@turbo/gen": "1.10.6",
     "@types/express": "4.17.17",
     "@types/node": "18.16.18",
     "@typescript-eslint/eslint-plugin": "5.60.1",
