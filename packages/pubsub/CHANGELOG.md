@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.2.0
+
+### Minor Changes
+
+- 2b29777: Shipping dependencies from now on.
+
 ## 0.1.1
 
 ### Patch Changes
