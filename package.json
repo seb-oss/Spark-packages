@@ -13,9 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@changesets/cli": "2.26.2",
-    "@google-cloud/pubsub": "3.7.1",
-    "escape-goat": "4.0.0"
+    "@changesets/cli": "2.26.2"
   },
   "devDependencies": {
     "@turbo/gen": "1.10.6",
