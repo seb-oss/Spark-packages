@@ -16,5 +16,9 @@
   },
   "devDependencies": {
     "tsconfig": "*"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "3.7.1",
+    "escape-goat": "4.0.0"
   }
 }
