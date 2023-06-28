@@ -14,6 +14,8 @@ A wrapper around Google PubSub adding support for typing, serialization/deserial
 
 An Express router wrapped with additional TypeScript typings and defintions for our purposes.
 
+<!--NEW_PACKAGE-->
+
 ## Contributing
 
 ### Adding a new package
