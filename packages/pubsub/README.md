@@ -1,11 +1,3 @@
-# pubsub
+# `@sebspark/pubsub`
 
-This library was generated with [Nx](https://nx.dev).
-
-## Building
-
-Run `nx build pubsub` to build the library.
-
-## Running unit tests
-
-Run `nx test pubsub` to execute the unit tests via [Jest](https://jestjs.io).
+A wrapper around Google PubSub adding support for typing, serialization/deserialization, naming of subscriptions for specific topics, push routes and some more.
