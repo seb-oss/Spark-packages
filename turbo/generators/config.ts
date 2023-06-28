@@ -1,6 +1,11 @@
 import { PlopTypes } from '@turbo/gen'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
+  plop.setPartial(
+    'new-package-folder',
+    '{{ turbo.paths.root }}/packages/{{name}}'
+  )
+
   plop.setGenerator('package', {
     description: 'A new package in the monorepo',
     prompts: [
@@ -25,22 +30,22 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       {
         type: 'add',
-        path: '{{ turbo.paths.root }}/packages/{{name}}/package.json',
+        path: '{{> new-package-folder}}/package.json',
         templateFile: 'templates/package.json.hbs',
       },
       {
         type: 'add',
-        path: '{{ turbo.paths.root }}/packages/{{name}}/README.md',
+        path: '{{> new-package-folder}}/README.md',
         templateFile: 'templates/readme.md.hbs',
       },
       {
         type: 'add',
-        path: '{{ turbo.paths.root }}/packages/{{name}}/tsconfig.json',
+        path: '{{> new-package-folder}}/tsconfig.json',
         templateFile: 'templates/tsconfig.json.hbs',
       },
       {
         type: 'add',
-        path: '{{ turbo.paths.root }}/packages/{{name}}/src/index.ts',
+        path: '{{> new-package-folder}}/src/index.ts',
         template: '',
       },
       {
