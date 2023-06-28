@@ -1,7 +1,3 @@
-# logging
+# `@sebspark/logging`
 
-This library was generated with [Nx](https://nx.dev).
-
-## Running unit tests
-
-Run `nx test logging` to execute the unit tests via [Jest](https://jestjs.io).
+A pubsub subscriber helper.
