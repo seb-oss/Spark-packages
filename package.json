@@ -7,7 +7,7 @@
     "build": "turbo build",
     "lint": "turbo lint",
     "release": "npm run build && npx changeset publish",
-    "test": "turbo test",
+    "test": "FORCE_COLOR=1 turbo test",
     "changeset": "changeset"
   },
   "private": true,

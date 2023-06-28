@@ -76,6 +76,7 @@ const abstractedHandler = <R extends MethodDefinition>(
     }
 
     const strPath = path as string
+
     switch (method) {
       case 'GET':
         return router.get(strPath, handler)
@@ -89,6 +90,7 @@ const abstractedHandler = <R extends MethodDefinition>(
         return router.delete(strPath, handler)
     }
   }
+
   return customHandler
 }
 
