@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.2.2
+
+### Patch Changes
+
+- d60c58f: Replace escape-goat
+
 ## 0.2.1
 
 ### Patch Changes
