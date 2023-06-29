@@ -14,6 +14,10 @@ A wrapper around Google PubSub adding support for typing, serialization/deserial
 
 An Express router wrapped with additional TypeScript typings and defintions for our purposes.
 
+### [@sebspark/tsconfig](./packages/tsconfig)
+
+Default TypeScript configuration
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

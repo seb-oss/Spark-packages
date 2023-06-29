@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "express": "*",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   }
 }

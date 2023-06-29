@@ -16,6 +16,6 @@
     "typecheck": "vitest typecheck --passWithNoTests"
   },
   "devDependencies": {
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   }
 }
