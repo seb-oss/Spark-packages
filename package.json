@@ -9,7 +9,8 @@
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
     "changeset": "changeset",
-    "generate:package": "turbo gen package"
+    "generate:package": "turbo gen package",
+    "typecheck": "FORCE_COLOR=1 turbo typecheck"
   },
   "private": true,
   "dependencies": {
