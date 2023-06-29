@@ -18,6 +18,10 @@ An Express router wrapped with additional TypeScript typings and defintions for 
 
 Default TypeScript configuration
 
+### [@sebspark/eslint-config-spark](./packages/eslint-config-spark)
+
+Default ESLint configuration
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
