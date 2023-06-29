@@ -12,7 +12,8 @@
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "eslint \"src/**/*.ts*\"",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "vitest typecheck --passWithNoTests"
   },
   "devDependencies": {
     "tsconfig": "*"
