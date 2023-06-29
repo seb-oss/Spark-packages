@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/tsconfig",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "format": "prettier --check --ignore-path ../../.prettierignore ."

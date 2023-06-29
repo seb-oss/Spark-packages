@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.2.3
+
+### Patch Changes
+
+- 13148cc: Publish TypeScript configuration
+
 ## 0.2.2
 
 ### Patch Changes
