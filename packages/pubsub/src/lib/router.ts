@@ -1,5 +1,6 @@
 import { Request, Router } from 'express'
 import { subscriptions } from './subscriber'
+import { escape } from 'html-escaper'
 
 type PushMessage = {
   subscription: string
@@ -28,7 +29,7 @@ export const pushRouter = () => {
       .toString()
       .trim()
 
-    const subscriptionName = req.body.subscription // TODO: htmlEscape(req.body.subscription)
+    const subscriptionName = escape(req.body.subscription)
 
     if (subscriptions[subscriptionName]) {
       const message = {
