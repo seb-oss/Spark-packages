@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.0.5
+
+### Patch Changes
+
+- 13148cc: Publish TypeScript configuration
+
 ## 0.0.4
 
 ### Patch Changes

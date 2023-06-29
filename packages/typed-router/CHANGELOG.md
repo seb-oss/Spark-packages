@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.6
+
+### Patch Changes
+
+- 13148cc: Publish TypeScript configuration
+
 ## 0.1.5
 
 ### Patch Changes
