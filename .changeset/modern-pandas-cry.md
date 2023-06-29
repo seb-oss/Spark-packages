@@ -1,6 +1,6 @@
 ---
 '@sebspark/typed-router': patch
-'@sebspark/tsconfig': patch
+'@sebspark/tsconfig': minor
 '@sebspark/logging': patch
 '@sebspark/pubsub': patch
 ---
