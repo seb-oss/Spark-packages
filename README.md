@@ -18,10 +18,24 @@ An Express router wrapped with additional TypeScript typings and defintions for 
 
 ## Contributing
 
+### Get started
+
+Install dependencies with `yarn`.
+
+```
+yarn
+```
+
+Run TypeScript for all packages in watch mode using `yarn dev` or a specific package using the [filter flag](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), e.g., `yarn dev --filter logging`. Additional scripts for testing, linting, and building can be found in `package.json`.
+
 ### Adding a new package
 
 We use [Turborepo's code generation](https://turbo.build/repo/docs/core-concepts/monorepos/code-generation) to create new packages. Run the following command, provide it with information, and it will create a package with some default scripts and TypeScript configured.
 
 ```shell
-npm run generate:package
+yarn generate:package
 ```
+
+### Install dependencies to package
+
+We use Yarn [workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). To install a dependency to a specific workspace (package) use, for instance, `yarn workspace @sebspark/logging add @types/jest`. Note that the workspace name is the `name` defined in `package.json`, not the folder name.
