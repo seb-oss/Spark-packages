@@ -10,7 +10,8 @@
     "test": "FORCE_COLOR=1 turbo test",
     "changeset": "changeset",
     "generate:package": "turbo gen package",
-    "typecheck": "FORCE_COLOR=1 turbo typecheck"
+    "typecheck": "FORCE_COLOR=1 turbo typecheck",
+    "format": "turbo format"
   },
   "private": true,
   "dependencies": {

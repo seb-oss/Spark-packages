@@ -9,6 +9,7 @@
     },
     "lint": {},
     "test": {},
-    "typecheck": {}
+    "typecheck": {},
+    "format": {}
   }
 }
