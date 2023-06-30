@@ -13,8 +13,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "eslint \"src/**/*.ts*\"",
     "test": "vitest",
-    "typecheck": "vitest typecheck --passWithNoTests",
-    "format": "prettier --check --ignore-path ../../.prettierignore ."
+    "typecheck": "vitest typecheck --passWithNoTests"
   },
   "devDependencies": {
     "express": "*",
