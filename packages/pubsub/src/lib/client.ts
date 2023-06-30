@@ -1,4 +1,5 @@
-import { PubSub, Topic } from '@google-cloud/pubsub'
+import type { Topic } from '@google-cloud/pubsub'
+import { PubSub } from '@google-cloud/pubsub'
 
 export const pubsub = new PubSub()
 

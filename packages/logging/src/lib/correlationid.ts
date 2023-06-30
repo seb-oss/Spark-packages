@@ -1,6 +1,6 @@
 import { AsyncLocalStorage } from 'async_hooks'
 import { randomUUID } from 'crypto'
-import type { Request, Response, NextFunction } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 
 const asyncLocalStorage = new AsyncLocalStorage<{ corrId: string }>()
 

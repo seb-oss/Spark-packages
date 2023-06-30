@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "turbo dev",
     "build": "turbo build",
+    "changeset": "changeset",
+    "dev": "turbo dev",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "generate:package": "turbo gen package",
     "lint": "turbo lint",
     "lint:format": "prettier --cache --check --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
-    "changeset": "changeset",
-    "generate:package": "turbo gen package",
-    "typecheck": "FORCE_COLOR=1 turbo typecheck",
-    "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "typecheck": "FORCE_COLOR=1 turbo typecheck"
   },
   "private": true,
   "dependencies": {

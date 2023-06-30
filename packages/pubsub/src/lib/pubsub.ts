@@ -1,10 +1,6 @@
 import { publisher } from './publisher'
-import {
-  Subscriber,
-  subscriber,
-  SubscriberHandler,
-  Unsubscriber,
-} from './subscriber'
+import type { Subscriber, SubscriberHandler, Unsubscriber } from './subscriber'
+import { subscriber } from './subscriber'
 
 export interface TypeMap {
   [event: string]: unknown

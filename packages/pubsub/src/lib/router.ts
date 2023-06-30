@@ -1,6 +1,7 @@
-import { Request, Router } from 'express'
-import { subscriptions } from './subscriber'
+import type { Request } from 'express'
+import { Router } from 'express'
 import { escape } from 'html-escaper'
+import { subscriptions } from './subscriber'
 
 type PushMessage = {
   subscription: string
