@@ -1,11 +1,6 @@
 import type { NextFunction, Request, Response } from 'express'
 import { Router } from 'express'
 
-export type AuthenticatedUser = {
-  identity: string
-  token: string
-}
-
 export type ResponseType = [number, unknown]
 
 export type TypedRoute<
