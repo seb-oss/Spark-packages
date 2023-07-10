@@ -21,8 +21,8 @@ jobs:
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
 
-  get-csv:
-    name: Type check
+  update-csv:
+    name: Update CSV
     runs-on: ubuntu-latest
     needs:
       - install
@@ -30,15 +30,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      # - name: Download dependencies
+      #   uses: bahmutov/npm-install@v1
 
       - name: Download CSV
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
         run: |
-          curl -o packages/iso-10383/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+          curl -o packages/iso-10383/src/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
           git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
