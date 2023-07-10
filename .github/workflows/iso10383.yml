@@ -40,23 +40,27 @@ jobs:
           cd packages/iso-10383
           curl -o src/lib/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           yarn generate
-          yarn format -- --cache
 
-      - name: Create changeset
-        run: |
+          - name: Create changeset
+          run: |
           cat <<EOF > .changeset/update-iso10383-specifications.md
           ---
-          '@sebspark/iso-10383': minor
-          ---
+            '@sebspark/iso-10383': minor
+            ---
+              
+              Update ISO10383 specifications.
+              EOF
 
-          Update ISO10383 specifications.
-          EOF
+      - name: Format generated code
+        run: |
+          yarn format -- --cache
 
       - name: Download CSV
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
         run: |
+          yarn format -- --cache
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
           git add .
