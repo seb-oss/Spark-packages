@@ -16,7 +16,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING SCREEN FOR FORWARD FREIGHT AGREEMENTS (FFA).'
+    comments: 'TRADING SCREEN FOR FORWARD FREIGHT AGREEMENTS (FFA).',
   },
   DRSP: {
     mic: 'DRSP',
@@ -35,7 +35,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   XCNQ: {
     mic: 'XCNQ',
@@ -54,7 +54,8 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'FORMERLY KNOWN AS PURE (CSE OTHER LISTED) FORMERLY KNOWN AS THE CANADIAN NATIONAL STOCK EXCHANGE (CNSX).'
+    comments:
+      'FORMERLY KNOWN AS PURE (CSE OTHER LISTED) FORMERLY KNOWN AS THE CANADIAN NATIONAL STOCK EXCHANGE (CNSX).',
   },
   PURE: {
     mic: 'PURE',
@@ -73,7 +74,8 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'FORMERLY KNOWN AS PURE (CSE OTHER LISTED) FORMERLY KNOWN AS THE CANADIAN NATIONAL STOCK EXCHANGE (CNSX).'
+    comments:
+      'FORMERLY KNOWN AS PURE (CSE OTHER LISTED) FORMERLY KNOWN AS THE CANADIAN NATIONAL STOCK EXCHANGE (CNSX).',
   },
   ZODM: {
     mic: 'ZODM',
@@ -92,7 +94,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'CRYPTOASSET BROKERAGE AND EXCHANGE.'
+    comments: 'CRYPTOASSET BROKERAGE AND EXCHANGE.',
   },
   FNFX: {
     mic: 'FNFX',
@@ -111,7 +113,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'ELECTRONIC COMMUNICATIONS NETWORK.'
+    comments: 'ELECTRONIC COMMUNICATIONS NETWORK.',
   },
   NORX: {
     mic: 'NORX',
@@ -130,7 +132,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   POSE: {
     mic: 'POSE',
@@ -149,7 +151,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   PUND: {
     mic: 'PUND',
@@ -168,7 +170,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'EQUITY PRODUCTS.'
+    comments: 'EQUITY PRODUCTS.',
   },
   UCBG: {
     mic: 'UCBG',
@@ -187,7 +189,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NZFX: {
     mic: 'NZFX',
@@ -206,7 +208,7 @@ export const mics = {
     lastUpdateDate: '20210927',
     lastValidationDate: '20210927',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOCH: {
     mic: 'XOCH',
@@ -225,7 +227,7 @@ export const mics = {
     lastUpdateDate: '20210823',
     lastValidationDate: '20210823',
     expiryDate: '20210823',
-    comments: ''
+    comments: '',
   },
   BBLX: {
     mic: 'BBLX',
@@ -244,13 +246,14 @@ export const mics = {
     lastUpdateDate: '20210823',
     lastValidationDate: '20210823',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BACR: {
     mic: 'BACR',
     operatingMic: 'BAIP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA SECURITIES - CENTRAL RISK',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA SECURITIES - CENTRAL RISK',
     legalEntityName: '',
     lei: 'GGDZP1UYGU9STUHRDP48',
     marketCategoryCode: 'NSPD',
@@ -263,7 +266,7 @@ export const mics = {
     lastUpdateDate: '20210726',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SPBE: {
     mic: 'SPBE',
@@ -282,7 +285,8 @@ export const mics = {
     lastUpdateDate: '20210726',
     lastValidationDate: '20210726',
     expiryDate: '',
-    comments: 'SHARES, DEPOSITARY RECEIPTS, GOVERNMENT BONDS, STRUCTURED FINANCE PRODUCTS, SPOT COMMODITIES.'
+    comments:
+      'SHARES, DEPOSITARY RECEIPTS, GOVERNMENT BONDS, STRUCTURED FINANCE PRODUCTS, SPOT COMMODITIES.',
   },
   OTCM: {
     mic: 'OTCM',
@@ -301,13 +305,14 @@ export const mics = {
     lastUpdateDate: '20210726',
     lastValidationDate: '20210726',
     expiryDate: '',
-    comments: 'OPERATIONAL MIC FOR OTC MARKETS.'
+    comments: 'OPERATIONAL MIC FOR OTC MARKETS.',
   },
   STUF: {
     mic: 'STUF',
     operatingMic: 'XSTU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE STUTTGART - FREIVERKEHR - TECHNICAL PLATFORM 3',
+    marketNameInstitutionDescription:
+      'BOERSE STUTTGART - FREIVERKEHR - TECHNICAL PLATFORM 3',
     legalEntityName: 'BADEN-WURTTEMBERGISCHE WERTPAPIERBOERSE GMBH',
     lei: '529900A0WHA0NVXY0G45',
     marketCategoryCode: 'MLTF',
@@ -320,7 +325,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTP: {
     mic: 'XSTP',
@@ -339,13 +344,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   STUE: {
     mic: 'STUE',
     operatingMic: 'XSTU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE STUTTGART - REGULIERTER MARKT - TECHNICAL PLATFORM 3',
+    marketNameInstitutionDescription:
+      'BOERSE STUTTGART - REGULIERTER MARKT - TECHNICAL PLATFORM 3',
     legalEntityName: 'BADEN-WURTTEMBERGISCHE WERTPAPIERBOERSE GMBH',
     lei: '529900A0WHA0NVXY0G45',
     marketCategoryCode: 'RMKT',
@@ -358,7 +364,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FREX: {
     mic: 'FREX',
@@ -377,7 +383,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HCER: {
     mic: 'HCER',
@@ -396,7 +402,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'MTF FOR CERTIFICATES AND COVERED WARRANT.'
+    comments: 'MTF FOR CERTIFICATES AND COVERED WARRANT.',
   },
   IDXM: {
     mic: 'IDXM',
@@ -415,7 +421,8 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ALTERNATIVE TRADING SYSTEM (ATS) FOR FIXED INCOME STRUCTURED PRODUCTS.'
+    comments:
+      'REGISTERED ALTERNATIVE TRADING SYSTEM (ATS) FOR FIXED INCOME STRUCTURED PRODUCTS.',
   },
   MBCP: {
     mic: 'MBCP',
@@ -434,7 +441,8 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES AND STRUCTURED PRODUCTS.'
+    comments:
+      'SYSTEMATIC INTERNALISER IN FX DERIVATIVES AND STRUCTURED PRODUCTS.',
   },
   GMBG: {
     mic: 'GMBG',
@@ -453,7 +461,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OCEA: {
     mic: 'OCEA',
@@ -472,7 +480,8 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BLUE OCEAN ATS, LLC IS A US REGISTERED BROKER DEALER (CRD #306512) AND OPERATOR OF AN ALTERNATIVE TRADING SYSTEM (ATS).'
+    comments:
+      'BLUE OCEAN ATS, LLC IS A US REGISTERED BROKER DEALER (CRD #306512) AND OPERATOR OF AN ALTERNATIVE TRADING SYSTEM (ATS).',
   },
   OSDS: {
     mic: 'OSDS',
@@ -491,7 +500,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "OSL DIGITAL SECURITIES - ASIA'S LEADING DIGITAL ASSET PLATFORM."
+    comments: "OSL DIGITAL SECURITIES - ASIA'S LEADING DIGITAL ASSET PLATFORM.",
   },
   OSSG: {
     mic: 'OSSG',
@@ -510,7 +519,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ASIA LEADING DIGITAL ASSET PLATFORM - OSL SG EXCHANGES.'
+    comments: 'ASIA LEADING DIGITAL ASSET PLATFORM - OSL SG EXCHANGES.',
   },
   RR4G: {
     mic: 'RR4G',
@@ -529,7 +538,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRUK: {
     mic: 'TRUK',
@@ -548,7 +557,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UGEN: {
     mic: 'UGEN',
@@ -567,13 +576,14 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XGLO: {
     mic: 'XGLO',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/ EQUITIES/GLOBAL CONNECT - MTF',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/ EQUITIES/GLOBAL CONNECT - MTF',
     legalEntityName: 'WARSAW STOCK EXCHANGE',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'MLTF',
@@ -586,7 +596,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '20210628',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   WIND: {
     mic: 'WIND',
@@ -605,7 +615,7 @@ export const mics = {
     lastUpdateDate: '20210628',
     lastValidationDate: '20210628',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CNOD: {
     mic: 'CNOD',
@@ -624,7 +634,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTI-ASSET ECN.'
+    comments: 'MULTI-ASSET ECN.',
   },
   BGLU: {
     mic: 'BGLU',
@@ -643,7 +653,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FNIX: {
     mic: 'FNIX',
@@ -662,7 +672,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '20210524',
     expiryDate: '',
-    comments: 'U.S. CORPORATE BOND TRADING.'
+    comments: 'U.S. CORPORATE BOND TRADING.',
   },
   LATG: {
     mic: 'LATG',
@@ -681,7 +691,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GFAM: {
     mic: 'GFAM',
@@ -700,7 +710,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TMCY: {
     mic: 'TMCY',
@@ -719,7 +729,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   UBEC: {
     mic: 'UBEC',
@@ -738,7 +748,7 @@ export const mics = {
     lastUpdateDate: '20210524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ENSL: {
     mic: 'ENSL',
@@ -757,7 +767,8 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: 'REGISTERED ORGANIZED MARKET PLACE (OMP) IN THE CAPACITY OF AN ENERGY BROKER PLATFORM.'
+    comments:
+      'REGISTERED ORGANIZED MARKET PLACE (OMP) IN THE CAPACITY OF AN ENERGY BROKER PLATFORM.',
   },
   ESLO: {
     mic: 'ESLO',
@@ -776,7 +787,7 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IOTF: {
     mic: 'IOTF',
@@ -795,7 +806,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SEBA: {
     mic: 'SEBA',
@@ -814,7 +825,7 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   UBIM: {
     mic: 'UBIM',
@@ -833,13 +844,14 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '20210426',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XUBS: {
     mic: 'XUBS',
     operatingMic: 'XUBS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE PLC - AMP - DARK ORDER BOOK',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE PLC - AMP - DARK ORDER BOOK',
     legalEntityName: 'AQUIS EXCHANGE PLC',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'NSPD',
@@ -852,13 +864,14 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   XUMP: {
     mic: 'XUMP',
     operatingMic: 'XUBS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'UBS MTF LIMITED - PERIODIC AUCTION ORDER BOOK',
+    marketNameInstitutionDescription:
+      'UBS MTF LIMITED - PERIODIC AUCTION ORDER BOOK',
     legalEntityName: 'UBS MTF LIMITED',
     lei: '54930036444TZ5UWTY74',
     marketCategoryCode: 'NSPD',
@@ -871,7 +884,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '20220425',
-    comments: 'PERIODIC AUCTION ORDER BOOK.'
+    comments: 'PERIODIC AUCTION ORDER BOOK.',
   },
   AMLG: {
     mic: 'AMLG',
@@ -890,7 +903,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20220731',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   BRED: {
     mic: 'BRED',
@@ -909,7 +922,7 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBMO: {
     mic: 'DBMO',
@@ -928,7 +941,8 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR MANUAL OTC FILLS AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)"
+    comments:
+      "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR MANUAL OTC FILLS AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)",
   },
   DBLN: {
     mic: 'DBLN',
@@ -947,7 +961,7 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBIX: {
     mic: 'DBIX',
@@ -966,14 +980,16 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '20210426',
-    comments: ''
+    comments: '',
   },
   RUSX: {
     mic: 'RUSX',
     operatingMic: 'RUSX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NON-PROFIT PARTNERSHIP FOR THE DEVELOPMENT OF FINANCIAL MARKET RTS',
-    legalEntityName: 'NON-PROFIT PARTNERSHIP FOR THE DEVELOPMENT OF FINANCIAL MARKET RTS',
+    marketNameInstitutionDescription:
+      'NON-PROFIT PARTNERSHIP FOR THE DEVELOPMENT OF FINANCIAL MARKET RTS',
+    legalEntityName:
+      'NON-PROFIT PARTNERSHIP FOR THE DEVELOPMENT OF FINANCIAL MARKET RTS',
     lei: '253400S9DKA7JG1JWC41',
     marketCategoryCode: 'NSPD',
     acronym: 'NP RTS',
@@ -985,7 +1001,7 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UNGB: {
     mic: 'UNGB',
@@ -1004,7 +1020,8 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. MIC CODE FOR UNICREDIT ACTING AS AN SYSTEMATIC INTERNALISER UNDER UK MIFIR/MIFID.'
+    comments:
+      'SYSTEMATIC INTERNALISER. MIC CODE FOR UNICREDIT ACTING AS AN SYSTEMATIC INTERNALISER UNDER UK MIFIR/MIFID.',
   },
   XLQC: {
     mic: 'XLQC',
@@ -1023,14 +1040,16 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOS: {
     mic: 'XMOS',
     operatingMic: 'XMOS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CENTRAL COUNTERPARTY CLEARING CENTER MFB - JOINT-STOCK COMPANY',
-    legalEntityName: 'CENTRAL COUNTERPARTY CLEARING CENTER MFB - JOINT-STOCK COMPANY',
+    marketNameInstitutionDescription:
+      'CENTRAL COUNTERPARTY CLEARING CENTER MFB - JOINT-STOCK COMPANY',
+    legalEntityName:
+      'CENTRAL COUNTERPARTY CLEARING CENTER MFB - JOINT-STOCK COMPANY',
     lei: '253400RX2CP80AMV8V57',
     marketCategoryCode: 'NSPD',
     acronym: 'MFB',
@@ -1042,7 +1061,8 @@ export const mics = {
     lastUpdateDate: '20210426',
     lastValidationDate: '20210426',
     expiryDate: '',
-    comments: 'CENTRAL COUNTERPARTY OF PUBLIC JOINT-STOCK COMPANY SAINT PETERSBURG EXCHANGE COVERING A WIDE RANGE OF ASSETS CLASSES.'
+    comments:
+      'CENTRAL COUNTERPARTY OF PUBLIC JOINT-STOCK COMPANY SAINT PETERSBURG EXCHANGE COVERING A WIDE RANGE OF ASSETS CLASSES.',
   },
   ABXX: {
     mic: 'ABXX',
@@ -1061,7 +1081,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CFIC: {
     mic: 'CFIC',
@@ -1080,7 +1100,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HBFR: {
     mic: 'HBFR',
@@ -1099,7 +1119,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '20210322',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   KLSH: {
     mic: 'KLSH',
@@ -1118,7 +1138,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DESIGNATED CONTRACT MARKET.'
+    comments: 'DESIGNATED CONTRACT MARKET.',
   },
   MUDX: {
     mic: 'MUDX',
@@ -1137,7 +1157,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MITSUBISHI DARK.'
+    comments: 'MITSUBISHI DARK.',
   },
   TRAX: {
     mic: 'TRAX',
@@ -1156,7 +1176,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '20210322',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   TRNL: {
     mic: 'TRNL',
@@ -1175,7 +1195,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '20210322',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   XPET: {
     mic: 'XPET',
@@ -1194,7 +1214,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '20210322',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LEVL: {
     mic: 'LEVL',
@@ -1213,7 +1233,7 @@ export const mics = {
     lastUpdateDate: '20070226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBXV: {
     mic: 'EBXV',
@@ -1232,13 +1252,14 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FXRS: {
     mic: 'FXRS',
     operatingMic: 'RMTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FXALL RFS MTF',
+    marketNameInstitutionDescription:
+      'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FXALL RFS MTF',
     legalEntityName: 'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED',
     lei: '635400MQZIPRVPDDZK76',
     marketCategoryCode: 'MLTF',
@@ -1251,7 +1272,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FXALL REQUEST FOR STREAM MULTILATERAL TRADING FACILITY.'
+    comments: 'FXALL REQUEST FOR STREAM MULTILATERAL TRADING FACILITY.',
   },
   FXPS: {
     mic: 'FXPS',
@@ -1270,13 +1291,14 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REFINITIV SWAP EXECUTION FACILITY RFS SEGMENT.'
+    comments: 'REFINITIV SWAP EXECUTION FACILITY RFS SEGMENT.',
   },
   XBIS: {
     mic: 'XBIS',
     operatingMic: 'XBAB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BARBADOS STOCK EXCHANGE - INTERNATIONAL SECURITIES MARKET',
+    marketNameInstitutionDescription:
+      'BARBADOS STOCK EXCHANGE - INTERNATIONAL SECURITIES MARKET',
     legalEntityName: 'BARBADOS STOCK EXCHANGE',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -1289,7 +1311,7 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   STRM: {
     mic: 'STRM',
@@ -1308,7 +1330,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ABNC: {
     mic: 'ABNC',
@@ -1327,7 +1349,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BNPC: {
     mic: 'BNPC',
@@ -1346,7 +1368,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   PBGR: {
     mic: 'PBGR',
@@ -1365,13 +1387,14 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR BONDS EXCLUDED ETC AND ETN.'
+    comments: 'SYSTEMATIC INTERNALISER FOR BONDS EXCLUDED ETC AND ETN.',
   },
   SIDX: {
     mic: 'SIDX',
     operatingMic: 'SIDX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SCOTIABANK (IRELAND) DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'SCOTIABANK (IRELAND) DESIGNATED ACTIVITY COMPANY',
     legalEntityName: 'SCOTIABANK (IRELAND) DESIGNATED ACTIVITY COMPANY',
     lei: '747DLM6L5TO7LXZY5T60',
     marketCategoryCode: 'SINT',
@@ -1384,7 +1407,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SIFX: {
     mic: 'SIFX',
@@ -1403,14 +1426,15 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20220221',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TEUR: {
     mic: 'TEUR',
     operatingMic: 'TEUR',
     oprtSgmt: 'OPRT',
     marketNameInstitutionDescription: 'TRADITION ESPANA OTF',
-    legalEntityName: 'TRADITION FINANCIAL SERVICES ESPANA SOCIEDAD DE VALORES SA',
+    legalEntityName:
+      'TRADITION FINANCIAL SERVICES ESPANA SOCIEDAD DE VALORES SA',
     lei: '5493006UOQCUGJ33L287',
     marketCategoryCode: 'OTFS',
     acronym: '',
@@ -1422,7 +1446,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   TPEE: {
     mic: 'TPEE',
@@ -1441,7 +1465,7 @@ export const mics = {
     lastUpdateDate: '20210222',
     lastValidationDate: '20210222',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AILT: {
     mic: 'AILT',
@@ -1460,7 +1484,8 @@ export const mics = {
     lastUpdateDate: '20210125',
     lastValidationDate: '20210125',
     expiryDate: '',
-    comments: 'BROKER OF REMIT PHYSICAL WHOLESALE ENERGY PRODUCTS AND PRE-ARRANGEMENT OF BLOCK FUTURES.'
+    comments:
+      'BROKER OF REMIT PHYSICAL WHOLESALE ENERGY PRODUCTS AND PRE-ARRANGEMENT OF BLOCK FUTURES.',
   },
   ARAX: {
     mic: 'ARAX',
@@ -1479,7 +1504,8 @@ export const mics = {
     lastUpdateDate: '20210125',
     lastValidationDate: '20210125',
     expiryDate: '',
-    comments: 'REGISTERED FOR BROKING OF EUROPEAN POWER AND GAS WHOLESALE PRODUCTS.'
+    comments:
+      'REGISTERED FOR BROKING OF EUROPEAN POWER AND GAS WHOLESALE PRODUCTS.',
   },
   CGXS: {
     mic: 'CGXS',
@@ -1498,7 +1524,7 @@ export const mics = {
     lastUpdateDate: '20210125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQOC: {
     mic: 'EQOC',
@@ -1517,7 +1543,7 @@ export const mics = {
     lastUpdateDate: '20210125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQOD: {
     mic: 'EQOD',
@@ -1536,13 +1562,14 @@ export const mics = {
     lastUpdateDate: '20210125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQED: {
     mic: 'AQED',
     operatingMic: 'AQEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE EUROPE NON DISPLAY ORDER BOOK (NDOB)',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE EUROPE NON DISPLAY ORDER BOOK (NDOB)',
     legalEntityName: 'AQUIS EXCHANGE EUROPE',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'NSPD',
@@ -1555,13 +1582,14 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EIXE: {
     mic: 'EIXE',
     operatingMic: 'AQXE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE PLC AQUIS - EIX INFRASTRUCTURE BOND MARKET',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE PLC AQUIS - EIX INFRASTRUCTURE BOND MARKET',
     legalEntityName: 'AQUIS EXCHANGE PLC',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'MLTF',
@@ -1574,7 +1602,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: 'AQUIS-EIX INFRASTRUCTURE BOND MARKET'
+    comments: 'AQUIS-EIX INFRASTRUCTURE BOND MARKET',
   },
   HPCS: {
     mic: 'HPCS',
@@ -1593,7 +1621,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADE NAME: TRAYPORT'
+    comments: 'TRADE NAME: TRAYPORT',
   },
   MIDC: {
     mic: 'MIDC',
@@ -1612,7 +1640,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RABL: {
     mic: 'RABL',
@@ -1631,7 +1659,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RMMS: {
     mic: 'RMMS',
@@ -1650,7 +1678,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RMMX: {
     mic: 'RMMX',
@@ -1669,7 +1697,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOCO: {
     mic: 'NOCO',
@@ -1688,14 +1716,15 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '20201228',
-    comments: ''
+    comments: '',
   },
   MABX: {
     mic: 'MABX',
     operatingMic: 'BMEX',
     oprtSgmt: 'SGMT',
     marketNameInstitutionDescription: 'BME MTF EQUITY (IIC AND ECR SEGMENTS)',
-    legalEntityName: 'BOLSAS Y MERCADOS ESPANOLES SISTEMAS DE NEGOCIACION SOCIEDAD ANONIMA',
+    legalEntityName:
+      'BOLSAS Y MERCADOS ESPANOLES SISTEMAS DE NEGOCIACION SOCIEDAD ANONIMA',
     lei: '95980079EEM99NR57242',
     marketCategoryCode: 'NSPD',
     acronym: 'MAB',
@@ -1707,7 +1736,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CECA: {
     mic: 'CECA',
@@ -1726,7 +1755,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBDC: {
     mic: 'DBDC',
@@ -1745,7 +1774,8 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '20201228',
-    comments: "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR DCA AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)"
+    comments:
+      "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR DCA AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)",
   },
   DBSE: {
     mic: 'DBSE',
@@ -1764,7 +1794,8 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '20201228',
-    comments: "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR SUPERX EU AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)"
+    comments:
+      "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR SUPERX EU AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)",
   },
   DBCX: {
     mic: 'DBCX',
@@ -1783,7 +1814,8 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '20201228',
-    comments: "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR CLOSE CROSS AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)"
+    comments:
+      "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR CLOSE CROSS AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)",
   },
   DBCR: {
     mic: 'DBCR',
@@ -1802,7 +1834,8 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '20201228',
-    comments: "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR THE CENTRAL RISK BOOK AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)"
+    comments:
+      "DEUTSCHE BANK AG MARKET SEGMENT MARKET CODE FOR THE CENTRAL RISK BOOK AS PER MMT2 STANDARD DEFINITION PROPOSED BY FIXPROTOCOL.ORG AND SUPPORTED BY EUROPEAN TDM'S(HTTP://WWW.BATSTRADING.CO.UK/BXTR/)",
   },
   HPCO: {
     mic: 'HPCO',
@@ -1821,7 +1854,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   ICOR: {
     mic: 'ICOR',
@@ -1840,7 +1873,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JNSI: {
     mic: 'JNSI',
@@ -1859,7 +1892,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TPER: {
     mic: 'TPER',
@@ -1878,7 +1911,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSDX: {
     mic: 'XSDX',
@@ -1897,7 +1930,8 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED PLATFORM TO ISSUE AND TRADE DIGITAL ASSETS. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'REGULATED PLATFORM TO ISSUE AND TRADE DIGITAL ASSETS. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XSWX: {
     mic: 'XSWX',
@@ -1916,13 +1950,15 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MID/SMALL CAP EQUITY, FUNDS, ETFS, BOND SEGMENT. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'MID/SMALL CAP EQUITY, FUNDS, ETFS, BOND SEGMENT. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XDLP: {
     mic: 'XDLP',
     operatingMic: 'XSWX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SIX SWISS EXCHANGE - DEAL POOL - BOOK BUILDING AND ANNOUNCEMENT PLATFORM',
+    marketNameInstitutionDescription:
+      'SIX SWISS EXCHANGE - DEAL POOL - BOOK BUILDING AND ANNOUNCEMENT PLATFORM',
     legalEntityName: 'SIX SWISS EXCHANGE AG',
     lei: '529900HQ12A6FGDMWA17',
     marketCategoryCode: 'NSPD',
@@ -1935,13 +1971,15 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XSWM: {
     mic: 'XSWM',
     operatingMic: 'XSWX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SIX SWISS EXCHANGE - SIX SWISS EXCHANGE AT MIDPOINT',
+    marketNameInstitutionDescription:
+      'SIX SWISS EXCHANGE - SIX SWISS EXCHANGE AT MIDPOINT',
     legalEntityName: 'SIX SWISS EXCHANGE AG',
     lei: '529900HQ12A6FGDMWA17',
     marketCategoryCode: 'RMKT',
@@ -1954,7 +1992,7 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSLS: {
     mic: 'XSLS',
@@ -1973,7 +2011,8 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XSEB: {
     mic: 'XSEB',
@@ -1992,13 +2031,15 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EBBO EQUITY ORDER BOOK. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'EBBO EQUITY ORDER BOOK. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XBTR: {
     mic: 'XBTR',
     operatingMic: 'XSWX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SIX SWISS BILATERAL TRADING PLATFORM FOR STRUCTURED OTC PRODUCTS',
+    marketNameInstitutionDescription:
+      'SIX SWISS BILATERAL TRADING PLATFORM FOR STRUCTURED OTC PRODUCTS',
     legalEntityName: 'SIX SWISS EXCHANGE AG',
     lei: '529900HQ12A6FGDMWA17',
     marketCategoryCode: 'NSPD',
@@ -2011,7 +2052,8 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XVTX: {
     mic: 'XVTX',
@@ -2030,7 +2072,8 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '20201207',
-    comments: 'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XQOD: {
     mic: 'XQOD',
@@ -2049,13 +2092,15 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   XQMH: {
     mic: 'XQMH',
     operatingMic: 'XSWX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SIX SWISS EXCHANGE - STRUCTURED PRODUCTS',
+    marketNameInstitutionDescription:
+      'SIX SWISS EXCHANGE - STRUCTURED PRODUCTS',
     legalEntityName: 'SIX SWISS EXCHANGE AG',
     lei: '529900HQ12A6FGDMWA17',
     marketCategoryCode: 'RMKT',
@@ -2068,7 +2113,8 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WARRANTS AND STRUCTURED PRODUCTS SEGMENT. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML'
+    comments:
+      'WARRANTS AND STRUCTURED PRODUCTS SEGMENT. WWW.SIX-GROUP.COM/EN/PRODUCTS-SERVICES/THE-SWISS-STOCK-EXCHANGE.HTML',
   },
   BNPX: {
     mic: 'BNPX',
@@ -2087,7 +2133,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTRL: {
     mic: 'BTRL',
@@ -2106,7 +2152,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NTUK: {
     mic: 'NTUK',
@@ -2125,7 +2171,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQOS: {
     mic: 'EQOS',
@@ -2144,7 +2190,7 @@ export const mics = {
     lastUpdateDate: '20201228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LMNR: {
     mic: 'LMNR',
@@ -2163,7 +2209,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CEDX: {
     mic: 'CEDX',
@@ -2182,7 +2228,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUROPEAN FUTURES AND OPTIONS VENUE.'
+    comments: 'EUROPEAN FUTURES AND OPTIONS VENUE.',
   },
   EQCA: {
     mic: 'EQCA',
@@ -2201,7 +2247,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQUS: {
     mic: 'EQUS',
@@ -2220,7 +2266,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EVOL: {
     mic: 'EVOL',
@@ -2239,7 +2285,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES.'
+    comments: 'COMMODITIES.',
   },
   STEE: {
     mic: 'STEE',
@@ -2258,7 +2304,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '20170424',
     expiryDate: '20170424',
-    comments: ''
+    comments: '',
   },
   BULK: {
     mic: 'BULK',
@@ -2277,7 +2323,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '20170424',
     expiryDate: '20170424',
-    comments: ''
+    comments: '',
   },
   RBCC: {
     mic: 'RBCC',
@@ -2296,7 +2342,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BEBG: {
     mic: 'BEBG',
@@ -2315,7 +2361,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CBKS: {
     mic: 'CBKS',
@@ -2334,7 +2380,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XTXD: {
     mic: 'XTXD',
@@ -2353,7 +2399,7 @@ export const mics = {
     lastUpdateDate: '20201123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SSWM: {
     mic: 'SSWM',
@@ -2372,7 +2418,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XOAS: {
     mic: 'XOAS',
@@ -2391,7 +2437,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOSL: {
     mic: 'XOSL',
@@ -2410,13 +2456,14 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGA2: {
     mic: 'SGA2',
     operatingMic: 'SGAS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SG AMERICAS SECURITIES, LLC - SECOND VENUE',
+    marketNameInstitutionDescription:
+      'SG AMERICAS SECURITIES, LLC - SECOND VENUE',
     legalEntityName: 'SG AMERICAS SECURITIES, LLC',
     lei: '549300F35UE0BOM1WJ55',
     marketCategoryCode: 'NSPD',
@@ -2429,13 +2476,14 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US BROKER DEALER.'
+    comments: 'US BROKER DEALER.',
   },
   EWRM: {
     mic: 'EWRM',
     operatingMic: 'TMEX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TURKISH MERCANTILE EXCHANGE - ELECTRONIC WAREHOUSE RECEIPT MARKET',
+    marketNameInstitutionDescription:
+      'TURKISH MERCANTILE EXCHANGE - ELECTRONIC WAREHOUSE RECEIPT MARKET',
     legalEntityName: 'TURKISH MERCANTILE EXCHANGE',
     lei: '789000WD6N4YYP0DBA94',
     marketCategoryCode: 'NSPD',
@@ -2448,7 +2496,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'ELECTRONIC WAREHOUSE RECEIPT 5EWR).'
+    comments: 'ELECTRONIC WAREHOUSE RECEIPT 5EWR).',
   },
   MERK: {
     mic: 'MERK',
@@ -2467,7 +2515,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS',
   },
   XOBD: {
     mic: 'XOBD',
@@ -2486,7 +2534,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BSAB: {
     mic: 'BSAB',
@@ -2505,13 +2553,14 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BSPL: {
     mic: 'BSPL',
     operatingMic: 'BSPL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BNP PARIBAS SECURITIES SERVICES LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'BNP PARIBAS SECURITIES SERVICES LONDON BRANCH',
     legalEntityName: 'BNP PARIBAS SECURITIES SERVICES',
     lei: '549300WCGB70D06XZS54',
     marketCategoryCode: 'SINT',
@@ -2524,7 +2573,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER - FOR UK MIFID II.'
+    comments: 'SYSTEMATIC INTERNALISER - FOR UK MIFID II.',
   },
   BSTX: {
     mic: 'BSTX',
@@ -2543,7 +2592,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNOM: {
     mic: 'XNOM',
@@ -2562,7 +2611,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BLOCKCHAIN BASED MULTILATERAL TRADING FACILITY (MTF).'
+    comments: 'BLOCKCHAIN BASED MULTILATERAL TRADING FACILITY (MTF).',
   },
   BBOK: {
     mic: 'BBOK',
@@ -2575,13 +2624,14 @@ export const mics = {
     acronym: 'BBOK',
     isoCountryCodeIso_3166: 'US',
     city: 'NEW YORK',
-    website: 'WWW.INVESTMENTBANK.BARCLAYS.COM/MARKETS/EQUITIES-LIQUID-MARKETS.HTML',
+    website:
+      'WWW.INVESTMENTBANK.BARCLAYS.COM/MARKETS/EQUITIES-LIQUID-MARKETS.HTML',
     status: 'ACTIVE',
     creationDate: '20201026',
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'U.S. EQUITIES SINGLE DEALER PLATFORM/POOL.'
+    comments: 'U.S. EQUITIES SINGLE DEALER PLATFORM/POOL.',
   },
   BLFX: {
     mic: 'BLFX',
@@ -2600,7 +2650,7 @@ export const mics = {
     lastUpdateDate: '20201026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OLBB: {
     mic: 'OLBB',
@@ -2619,7 +2669,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SGMU: {
     mic: 'SGMU',
@@ -2638,7 +2688,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AFEX: {
     mic: 'AFEX',
@@ -2657,7 +2707,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BNPL: {
     mic: 'BNPL',
@@ -2676,7 +2726,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. FOR UK MIFID II.'
+    comments: 'SYSTEMATIC INTERNALISER. FOR UK MIFID II.',
   },
   CAPL: {
     mic: 'CAPL',
@@ -2695,7 +2745,8 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. CREDIT AGRICOLE BANK POLSKA S.A. IS GOING TO GET THE STATUS OF SI BY 15 SEPTEMBER 2020.'
+    comments:
+      'SYSTEMATIC INTERNALISER. CREDIT AGRICOLE BANK POLSKA S.A. IS GOING TO GET THE STATUS OF SI BY 15 SEPTEMBER 2020.',
   },
   CCMX: {
     mic: 'CCMX',
@@ -2714,7 +2765,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ONEC: {
     mic: 'ONEC',
@@ -2733,13 +2784,14 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MBSI: {
     mic: 'MBSI',
     operatingMic: 'MSBI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY BANK INTERNATIONAL LIMITED - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY BANK INTERNATIONAL LIMITED - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'Z06S12H6N9QRJ8HHN626',
     marketCategoryCode: 'SINT',
@@ -2752,13 +2804,14 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MSBI: {
     mic: 'MSBI',
     operatingMic: 'MSBI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY BANK INTERNATIONAL LIMITED',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY BANK INTERNATIONAL LIMITED',
     legalEntityName: '',
     lei: 'Z06S12H6N9QRJ8HHN626',
     marketCategoryCode: 'NSPD',
@@ -2771,7 +2824,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGMV: {
     mic: 'SGMV',
@@ -2790,7 +2843,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGMW: {
     mic: 'SGMW',
@@ -2809,7 +2862,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   T212: {
     mic: 'T212',
@@ -2828,7 +2881,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TMEX: {
     mic: 'TMEX',
@@ -2847,7 +2900,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCBO: {
     mic: 'XCBO',
@@ -2866,7 +2919,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'USED FOR CBOE OPTIONS EXCHANGE (C1).'
+    comments: 'USED FOR CBOE OPTIONS EXCHANGE (C1).',
   },
   CONE: {
     mic: 'CONE',
@@ -2885,7 +2938,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '20200928',
-    comments: 'CBOE OPTIONS EXCHANGE (C1).'
+    comments: 'CBOE OPTIONS EXCHANGE (C1).',
   },
   CTWO: {
     mic: 'CTWO',
@@ -2904,7 +2957,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '20200928',
-    comments: ''
+    comments: '',
   },
   C2OX: {
     mic: 'C2OX',
@@ -2923,7 +2976,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'C2 OPTIONS EXCHANGE.'
+    comments: 'C2 OPTIONS EXCHANGE.',
   },
   PEPQ: {
     mic: 'PEPQ',
@@ -2942,7 +2995,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY - QUARTERLY TRADING SCHEDULE.'
+    comments: 'MULTILATERAL TRADING FACILITY - QUARTERLY TRADING SCHEDULE.',
   },
   PEPY: {
     mic: 'PEPY',
@@ -2961,7 +3014,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY - YEARLY TRADING SCHEDULE.'
+    comments: 'MULTILATERAL TRADING FACILITY - YEARLY TRADING SCHEDULE.',
   },
   PEPH: {
     mic: 'PEPH',
@@ -2980,7 +3033,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY - HALF-YEAR TRADING SCHEDULE.'
+    comments: 'MULTILATERAL TRADING FACILITY - HALF-YEAR TRADING SCHEDULE.',
   },
   PEPM: {
     mic: 'PEPM',
@@ -2999,7 +3052,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY - MONTHLY TRADING SCHEDULE.'
+    comments: 'MULTILATERAL TRADING FACILITY - MONTHLY TRADING SCHEDULE.',
   },
   XPOM: {
     mic: 'XPOM',
@@ -3018,7 +3071,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GROW: {
     mic: 'GROW',
@@ -3037,7 +3090,7 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CLST: {
     mic: 'CLST',
@@ -3056,13 +3109,14 @@ export const mics = {
     lastUpdateDate: '20200824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LLAT: {
     mic: 'LLAT',
     operatingMic: 'LLAT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'LIECHTENSTEINISCHE LANDESBANK (OSTERREICH) AG',
+    marketNameInstitutionDescription:
+      'LIECHTENSTEINISCHE LANDESBANK (OSTERREICH) AG',
     legalEntityName: '',
     lei: '529900MZNQDC3A3WSZ72',
     marketCategoryCode: 'SINT',
@@ -3075,7 +3129,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EPRD: {
     mic: 'EPRD',
@@ -3094,7 +3148,8 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'MIAX PEARL: ELECTRONIC TRADING FOR EQUITIES NON-DISPLAYED (DARK) EXECUTIONS.'
+    comments:
+      'MIAX PEARL: ELECTRONIC TRADING FOR EQUITIES NON-DISPLAYED (DARK) EXECUTIONS.',
   },
   GSPL: {
     mic: 'GSPL',
@@ -3113,7 +3168,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IMMH: {
     mic: 'IMMH',
@@ -3132,7 +3187,8 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. EFFECTIVE MERGER DATE IS ON 20 JULY 2020.'
+    comments:
+      'SYSTEMATIC INTERNALISER. EFFECTIVE MERGER DATE IS ON 20 JULY 2020.',
   },
   AQSE: {
     mic: 'AQSE',
@@ -3151,7 +3207,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ENMS: {
     mic: 'ENMS',
@@ -3170,7 +3226,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FAST: {
     mic: 'FAST',
@@ -3189,7 +3245,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC FOREIGN EXCHANGE PRODUCTS.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC FOREIGN EXCHANGE PRODUCTS.',
   },
   TLCM: {
     mic: 'TLCM',
@@ -3208,7 +3264,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ILCM: {
     mic: 'ILCM',
@@ -3227,7 +3283,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LELE: {
     mic: 'LELE',
@@ -3246,13 +3302,14 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MCXX: {
     mic: 'MCXX',
     operatingMic: 'MCXX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'METROPOLITAN STOCK EXCHANGE OF INDIA LIMITED',
+    marketNameInstitutionDescription:
+      'METROPOLITAN STOCK EXCHANGE OF INDIA LIMITED',
     legalEntityName: '',
     lei: '3358002YCEYDX7UK4352',
     marketCategoryCode: 'NSPD',
@@ -3265,7 +3322,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MEMD: {
     mic: 'MEMD',
@@ -3284,7 +3341,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBSO: {
     mic: 'EBSO',
@@ -3303,7 +3360,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '20230626',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY.'
+    comments: 'SWAP EXECUTION FACILITY.',
   },
   PEPW: {
     mic: 'PEPW',
@@ -3322,7 +3379,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   WFLB: {
     mic: 'WFLB',
@@ -3341,7 +3398,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. FX AND RATES DERIVATIVES.'
+    comments: 'SYSTEMATIC INTERNALISER. FX AND RATES DERIVATIVES.',
   },
   WFSE: {
     mic: 'WFSE',
@@ -3360,7 +3417,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   VNDM: {
     mic: 'VNDM',
@@ -3379,7 +3436,8 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER SPECIALIZING IN INSTITUTIONAL EXECUTION AND MARKET-MAKING IN US EQUITIES, FIXED INCOME AND OPTIONS.'
+    comments:
+      'BROKER DEALER SPECIALIZING IN INSTITUTIONAL EXECUTION AND MARKET-MAKING IN US EQUITIES, FIXED INCOME AND OPTIONS.',
   },
   WABR: {
     mic: 'WABR',
@@ -3398,7 +3456,8 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER SPECIALIZING IN INSTITUTIONAL EXECUTION AND MARKET-MAKING IN US EQUITIES, FIXED INCOME AND OPTIONS.'
+    comments:
+      'BROKER DEALER SPECIALIZING IN INSTITUTIONAL EXECUTION AND MARKET-MAKING IN US EQUITIES, FIXED INCOME AND OPTIONS.',
   },
   XSCA: {
     mic: 'XSCA',
@@ -3417,7 +3476,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SPONSOR-SUPERVISED MARKET MODEL.'
+    comments: 'SPONSOR-SUPERVISED MARKET MODEL.',
   },
   TMCC: {
     mic: 'TMCC',
@@ -3436,7 +3495,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ICE TMC ATS IS OPERATED BY ICE BONDS SECURITIES CORPORATION.'
+    comments: 'ICE TMC ATS IS OPERATED BY ICE BONDS SECURITIES CORPORATION.',
   },
   EDBT: {
     mic: 'EDBT',
@@ -3455,7 +3514,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EDGL: {
     mic: 'EDGL',
@@ -3474,7 +3533,7 @@ export const mics = {
     lastUpdateDate: '20200727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ETLX: {
     mic: 'ETLX',
@@ -3493,13 +3552,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BASP: {
     mic: 'BASP',
     operatingMic: 'BAIP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA SECURITIES EQUITY SWAP - SYNTHETIC PRICE SOURCE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA SECURITIES EQUITY SWAP - SYNTHETIC PRICE SOURCE',
     legalEntityName: '',
     lei: 'GGDZP1UYGU9STUHRDP48',
     marketCategoryCode: 'NSPD',
@@ -3512,7 +3572,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTEQ: {
     mic: 'BTEQ',
@@ -3531,7 +3591,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQSE: {
     mic: 'EQSE',
@@ -3550,7 +3610,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '20200622',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VABD: {
     mic: 'VABD',
@@ -3569,7 +3629,8 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ICE BONDPOINT ATS IS OPERATED BY ICE BONDS SECURITIES CORPORATION.'
+    comments:
+      'ICE BONDPOINT ATS IS OPERATED BY ICE BONDS SECURITIES CORPORATION.',
   },
   IMCC: {
     mic: 'IMCC',
@@ -3588,7 +3649,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET FOR FIXED INCOME PRODUCTS.'
+    comments: 'ELECTRONIC MARKET FOR FIXED INCOME PRODUCTS.',
   },
   NBFL: {
     mic: 'NBFL',
@@ -3607,7 +3668,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NEXT: {
     mic: 'NEXT',
@@ -3626,7 +3687,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXN: {
     mic: 'NEXN',
@@ -3645,7 +3706,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXF: {
     mic: 'NEXF',
@@ -3664,7 +3725,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXX: {
     mic: 'NEXX',
@@ -3683,7 +3744,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXG: {
     mic: 'NEXG',
@@ -3702,7 +3763,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXL: {
     mic: 'NEXL',
@@ -3721,7 +3782,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   NEXD: {
     mic: 'NEXD',
@@ -3740,7 +3801,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220930',
-    comments: ''
+    comments: '',
   },
   XNDX: {
     mic: 'XNDX',
@@ -3759,7 +3820,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '20200622',
-    comments: ''
+    comments: '',
   },
   XNMR: {
     mic: 'XNMR',
@@ -3778,7 +3839,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '20200622',
-    comments: 'OFF EXCHANGE TRADE REPORTING'
+    comments: 'OFF EXCHANGE TRADE REPORTING',
   },
   MAXD: {
     mic: 'MAXD',
@@ -3797,7 +3858,7 @@ export const mics = {
     lastUpdateDate: '20200622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTBS: {
     mic: 'BTBS',
@@ -3816,7 +3877,7 @@ export const mics = {
     lastUpdateDate: '20200525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AXSI: {
     mic: 'AXSI',
@@ -3835,7 +3896,7 @@ export const mics = {
     lastUpdateDate: '20200525',
     lastValidationDate: '',
     expiryDate: '20200525',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SKBB: {
     mic: 'SKBB',
@@ -3854,7 +3915,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BDSK: {
     mic: 'BDSK',
@@ -3873,7 +3934,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DEXE: {
     mic: 'DEXE',
@@ -3892,7 +3953,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTPR: {
     mic: 'OTPR',
@@ -3911,7 +3972,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC MARKETS FOR OTP BANK ROMANIA.'
+    comments: 'OTC MARKETS FOR OTP BANK ROMANIA.',
   },
   SBIU: {
     mic: 'SBIU',
@@ -3930,7 +3991,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'JAPANNEXT - UNIFORM SPREAD MARKET.'
+    comments: 'JAPANNEXT - UNIFORM SPREAD MARKET.',
   },
   XSBI: {
     mic: 'XSBI',
@@ -3949,7 +4010,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SBIV: {
     mic: 'SBIV',
@@ -3968,7 +4029,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'VWAP CROSSING PLATFORM.'
+    comments: 'VWAP CROSSING PLATFORM.',
   },
   SBIJ: {
     mic: 'SBIJ',
@@ -3987,7 +4048,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOTP: {
     mic: 'XOTP',
@@ -4006,7 +4067,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQSL: {
     mic: 'EQSL',
@@ -4025,7 +4086,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JSER: {
     mic: 'JSER',
@@ -4044,7 +4105,7 @@ export const mics = {
     lastUpdateDate: '20200427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBVM: {
     mic: 'XBVM',
@@ -4063,7 +4124,8 @@ export const mics = {
     lastUpdateDate: '20141027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES, BONDS, COMMERCIAL PAPER AND OTHER FINANCIAL INSTRUMENTS.'
+    comments:
+      'REGISTERED MARKET FOR EQUITIES, BONDS, COMMERCIAL PAPER AND OTHER FINANCIAL INSTRUMENTS.',
   },
   HESP: {
     mic: 'HESP',
@@ -4082,13 +4144,14 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HEDE: {
     mic: 'HEDE',
     operatingMic: 'HEMO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'HENEX FINANCIAL ENERGY MARKET - DERIVATIVES MARKET',
+    marketNameInstitutionDescription:
+      'HENEX FINANCIAL ENERGY MARKET - DERIVATIVES MARKET',
     legalEntityName: 'HELLENIC ENERGY EXCHANGE S.A.',
     lei: '2138003ETH4FUSCHL785',
     marketCategoryCode: 'RMKT',
@@ -4101,13 +4164,14 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MAQE: {
     mic: 'MAQE',
     operatingMic: 'MAQE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MACQUARIE BANK EUROPE DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'MACQUARIE BANK EUROPE DESIGNATED ACTIVITY COMPANY',
     legalEntityName: 'MACQUARIE BANK EUROPE DESIGNATED ACTIVITY COMPANY',
     lei: '549300E5ENQVY2IBLF67',
     marketCategoryCode: 'SINT',
@@ -4120,7 +4184,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MEMX: {
     mic: 'MEMX',
@@ -4139,7 +4203,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PARK: {
     mic: 'PARK',
@@ -4158,7 +4222,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PJCX: {
     mic: 'PJCX',
@@ -4177,7 +4241,7 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   PIPR: {
     mic: 'PIPR',
@@ -4196,7 +4260,7 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   SKYX: {
     mic: 'SKYX',
@@ -4215,13 +4279,14 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CIMA: {
     mic: 'CIMA',
     operatingMic: 'CIMD',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CIMD S.V. S.A. - APPROVED PUBLICATION ARRANGEMENT',
+    marketNameInstitutionDescription:
+      'CIMD S.V. S.A. - APPROVED PUBLICATION ARRANGEMENT',
     legalEntityName: '',
     lei: '529900MLKOEV3XDRCP63',
     marketCategoryCode: 'APPA',
@@ -4234,7 +4299,7 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   GLOM: {
     mic: 'GLOM',
@@ -4253,7 +4318,7 @@ export const mics = {
     lastUpdateDate: '20200224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR CRYPTOCURRENCIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR CRYPTOCURRENCIES.',
   },
   TRAI: {
     mic: 'TRAI',
@@ -4272,7 +4337,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XZAM: {
     mic: 'XZAM',
@@ -4291,7 +4356,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '20180122',
-    comments: 'MULTILATERAL TRADING FACILITY OF THE ZAGREB STOCK EXCHANGE.'
+    comments: 'MULTILATERAL TRADING FACILITY OF THE ZAGREB STOCK EXCHANGE.',
   },
   CBOE: {
     mic: 'CBOE',
@@ -4310,7 +4375,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CGEE: {
     mic: 'CGEE',
@@ -4329,13 +4394,14 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CITI MATCH EMEA EQUITIES.'
+    comments: 'CITI MATCH EMEA EQUITIES.',
   },
   CGEC: {
     mic: 'CGEC',
     operatingMic: 'CGMD',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CITIGROUP GLOBAL MARKETS  EUROPE AG - EMEA LIQUIDITY HUB',
+    marketNameInstitutionDescription:
+      'CITIGROUP GLOBAL MARKETS  EUROPE AG - EMEA LIQUIDITY HUB',
     legalEntityName: '',
     lei: '6TJCK1B7E7UTXP528Y04',
     marketCategoryCode: 'NSPD',
@@ -4348,7 +4414,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   CGME: {
     mic: 'CGME',
@@ -4367,13 +4433,14 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'CITI MATCH EMEA.'
+    comments: 'CITI MATCH EMEA.',
   },
   CGMC: {
     mic: 'CGMC',
     operatingMic: 'CGML',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CITIGROUP GLOBAL MARKETS  LIMITED - EMEA LIQUIDITY HUB',
+    marketNameInstitutionDescription:
+      'CITIGROUP GLOBAL MARKETS  LIMITED - EMEA LIQUIDITY HUB',
     legalEntityName: '',
     lei: 'XKZZ2JZF41MRHTR1V493',
     marketCategoryCode: 'RMKT',
@@ -4386,7 +4453,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   COHR: {
     mic: 'COHR',
@@ -4405,13 +4472,14 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NEXY: {
     mic: 'NEXY',
     operatingMic: 'EBSN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MTF - RFQ - FOR CORPORATES TRADING FX PRODUCTS',
+    marketNameInstitutionDescription:
+      'EBS MTF - RFQ - FOR CORPORATES TRADING FX PRODUCTS',
     legalEntityName: '',
     lei: '2138004TYNQCB7MLTG76',
     marketCategoryCode: 'MLTF',
@@ -4424,13 +4492,14 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'CEASED OPERATIONS ON 13 DECEMBER 2019.'
+    comments: 'CEASED OPERATIONS ON 13 DECEMBER 2019.',
   },
   STFU: {
     mic: 'STFU',
     operatingMic: 'STFU',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'STIFEL, NICOLAUS AND COMPANY, INCORPORATED',
+    marketNameInstitutionDescription:
+      'STIFEL, NICOLAUS AND COMPANY, INCORPORATED',
     legalEntityName: '',
     lei: '5WUVMA08EYG4KEUPW589',
     marketCategoryCode: 'SINT',
@@ -4443,13 +4512,14 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   STFX: {
     mic: 'STFX',
     operatingMic: 'STFX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'STIFEL, NICOLAUS AND COMPANY, INCORPORATED',
+    marketNameInstitutionDescription:
+      'STIFEL, NICOLAUS AND COMPANY, INCORPORATED',
     legalEntityName: '',
     lei: '5WUVMA08EYG4KEUPW589',
     marketCategoryCode: 'ATSS',
@@ -4462,7 +4532,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   TRQS: {
     mic: 'TRQS',
@@ -4481,7 +4551,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'PLATFORM FOR BLOCK INTERESTS IN OTC EQUITY TOTAL RETURN SWAPS.'
+    comments: 'PLATFORM FOR BLOCK INTERESTS IN OTC EQUITY TOTAL RETURN SWAPS.',
   },
   XICB: {
     mic: 'XICB',
@@ -4500,7 +4570,7 @@ export const mics = {
     lastUpdateDate: '20200127',
     lastValidationDate: '',
     expiryDate: '20200127',
-    comments: 'MTF PLATFORM FOR CORPORATE BONDS TRADING.'
+    comments: 'MTF PLATFORM FOR CORPORATE BONDS TRADING.',
   },
   XLCH: {
     mic: 'XLCH',
@@ -4519,7 +4589,8 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LCH GROUP IS A LEADING MULTI-ASSET CLASS AND MULTI-NATIONAL CLEARING HOUSE, SERVING MAJOR EXCHANGES AND PLATFORMS AS WELL AS A RANGE OF OTC MARKETS.'
+    comments:
+      'LCH GROUP IS A LEADING MULTI-ASSET CLASS AND MULTI-NATIONAL CLEARING HOUSE, SERVING MAJOR EXCHANGES AND PLATFORMS AS WELL AS A RANGE OF OTC MARKETS.',
   },
   CLCH: {
     mic: 'CLCH',
@@ -4538,7 +4609,7 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BUYN: {
     mic: 'BUYN',
@@ -4557,13 +4628,14 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ATDF: {
     mic: 'ATDF',
     operatingMic: 'ATDF',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'AUTOMATED TRADING DESK FINANCIAL SERVICES, LLC',
+    marketNameInstitutionDescription:
+      'AUTOMATED TRADING DESK FINANCIAL SERVICES, LLC',
     legalEntityName: '',
     lei: '549300MTPTPKGFSLJX85',
     marketCategoryCode: 'NSPD',
@@ -4576,7 +4648,7 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '20191223',
-    comments: 'US BROKER-DEALER EQUITY MARKET MAKER.'
+    comments: 'US BROKER-DEALER EQUITY MARKET MAKER.',
   },
   BGHX: {
     mic: 'BGHX',
@@ -4595,13 +4667,14 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES AND DERIVATIVES OTC AND EXCHANGE MARKET OPERATOR.'
+    comments: 'COMMODITIES AND DERIVATIVES OTC AND EXCHANGE MARKET OPERATOR.',
   },
   CORE: {
     mic: 'CORE',
     operatingMic: 'CGMI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CITIGROUP AGENCY OPTION AND EQUITIES ROUTING ENGINE',
+    marketNameInstitutionDescription:
+      'CITIGROUP AGENCY OPTION AND EQUITIES ROUTING ENGINE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -4614,7 +4687,8 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '20220124',
-    comments: 'US BROKER DEALER PROVIDING AGENCY ROUTING FOR EQUITIES AND OPTIONS.'
+    comments:
+      'US BROKER DEALER PROVIDING AGENCY ROUTING FOR EQUITIES AND OPTIONS.',
   },
   CICX: {
     mic: 'CICX',
@@ -4633,7 +4707,8 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '20191223',
-    comments: 'REGISTERED ATS DARK POOL FOR EQUITIES. CITICROSS ATS CEASED OPERATIONS ON APRIL 30, 2019.'
+    comments:
+      'REGISTERED ATS DARK POOL FOR EQUITIES. CITICROSS ATS CEASED OPERATIONS ON APRIL 30, 2019.',
   },
   CSAS: {
     mic: 'CSAS',
@@ -4652,7 +4727,7 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   LTSE: {
     mic: 'LTSE',
@@ -4671,13 +4746,14 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'A NATIONALLY-REGISTERED STOCK EXCHANGE.'
+    comments: 'A NATIONALLY-REGISTERED STOCK EXCHANGE.',
   },
   MALM: {
     mic: 'MALM',
     operatingMic: 'MASG',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MARKETAXESS SINGAPORE PTE LIMITED - LIVE MARKETS',
+    marketNameInstitutionDescription:
+      'MARKETAXESS SINGAPORE PTE LIMITED - LIVE MARKETS',
     legalEntityName: '',
     lei: '529900GFVFMKAFCMT075',
     marketCategoryCode: 'RMOS',
@@ -4690,13 +4766,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '',
     expiryDate: '20230424',
-    comments: ''
+    comments: '',
   },
   XPSF: {
     mic: 'XPSF',
     operatingMic: 'XEEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EUROPEAN ENERGY EXCHANGE - REGULATED GAS MARKET',
+    marketNameInstitutionDescription:
+      'EUROPEAN ENERGY EXCHANGE - REGULATED GAS MARKET',
     legalEntityName: '',
     lei: '529900J0JGLSFDWNFC20',
     marketCategoryCode: 'RMKT',
@@ -4709,13 +4786,15 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET SEGMENT FOR SPOT AND FUTURES GAS MARKETS OF EEX.'
+    comments:
+      'REGULATED MARKET SEGMENT FOR SPOT AND FUTURES GAS MARKETS OF EEX.',
   },
   XPOT: {
     mic: 'XPOT',
     operatingMic: 'XEEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EUROPEAN ENERGY EXCHANGE - OTF GAS MARKET',
+    marketNameInstitutionDescription:
+      'EUROPEAN ENERGY EXCHANGE - OTF GAS MARKET',
     legalEntityName: 'EUROPEAN ENERGY EXCHANGE AG',
     lei: '529900J0JGLSFDWNFC20',
     marketCategoryCode: 'OTFS',
@@ -4728,7 +4807,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'OTF SEGMENT OF THE EEX GAS MARKETS.'
+    comments: 'OTF SEGMENT OF THE EEX GAS MARKETS.',
   },
   XFEX: {
     mic: 'XFEX',
@@ -4747,7 +4826,8 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM. REGISTERED MARKET FOR ENERGY, COMMODITY AND ENVIRONMENTAL DERIVATIVES.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM. REGISTERED MARKET FOR ENERGY, COMMODITY AND ENVIRONMENTAL DERIVATIVES.',
   },
   CALH: {
     mic: 'CALH',
@@ -4766,13 +4846,14 @@ export const mics = {
     lastUpdateDate: '20191223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ADR LIQUIDITY HUB.'
+    comments: 'ADR LIQUIDITY HUB.',
   },
   OMIP: {
     mic: 'OMIP',
     operatingMic: 'OMIP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OMIP - POLO PORTUGUES, S.G.M.R., S.A. / OMIP DERIVATIVES MARKET',
+    marketNameInstitutionDescription:
+      'OMIP - POLO PORTUGUES, S.G.M.R., S.A. / OMIP DERIVATIVES MARKET',
     legalEntityName: 'OMIP - POLO PORTUGUES, S.G.M.R., S.A.',
     lei: '529900NIA9TL7Q1I4639',
     marketCategoryCode: 'RMKT',
@@ -4785,14 +4866,15 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLIS: {
     mic: 'XLIS',
     operatingMic: 'XLIS',
     oprtSgmt: 'OPRT',
     marketNameInstitutionDescription: 'EURONEXT - EURONEXT LISBON',
-    legalEntityName: 'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
+    legalEntityName:
+      'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
     lei: '529900K0OK4J5I7A5V66',
     marketCategoryCode: 'RMKT',
     acronym: '',
@@ -4804,7 +4886,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSLP: {
     mic: 'CSLP',
@@ -4823,7 +4905,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '20191125',
-    comments: 'EQUITIES ELECTRONIC TRADING PLATFORM'
+    comments: 'EQUITIES ELECTRONIC TRADING PLATFORM',
   },
   DAUK: {
     mic: 'DAUK',
@@ -4842,7 +4924,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BSLB: {
     mic: 'BSLB',
@@ -4861,7 +4943,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CFIL: {
     mic: 'CFIL',
@@ -4880,7 +4962,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CGMU: {
     mic: 'CGMU',
@@ -4899,7 +4981,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSCL: {
     mic: 'CSCL',
@@ -4918,7 +5000,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSVW: {
     mic: 'CSVW',
@@ -4937,7 +5019,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RBCM: {
     mic: 'RBCM',
@@ -4956,7 +5038,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIXED INCOME, CURRENCIES AND COMMODITIES.'
+    comments: 'FIXED INCOME, CURRENCIES AND COMMODITIES.',
   },
   THRE: {
     mic: 'THRE',
@@ -4975,7 +5057,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY (SEF).'
+    comments: 'SWAP EXECUTION FACILITY (SEF).',
   },
   WEED: {
     mic: 'WEED',
@@ -4994,7 +5076,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '20191125',
-    comments: ''
+    comments: '',
   },
   XWEE: {
     mic: 'XWEE',
@@ -5013,7 +5095,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '20191125',
-    comments: 'REGISTERED ELECTRONIC ATS FOR US EQUITIES.'
+    comments: 'REGISTERED ELECTRONIC ATS FOR US EQUITIES.',
   },
   BKKT: {
     mic: 'BKKT',
@@ -5032,7 +5114,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SPOT MARKET FOR CRYPTO CURRENCY AND DERIVATIVES.'
+    comments: 'SPOT MARKET FOR CRYPTO CURRENCY AND DERIVATIVES.',
   },
   UKRE: {
     mic: 'UKRE',
@@ -5051,7 +5133,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UKOR: {
     mic: 'UKOR',
@@ -5070,7 +5152,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IUOB: {
     mic: 'IUOB',
@@ -5089,7 +5171,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TUOB: {
     mic: 'TUOB',
@@ -5108,7 +5190,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY ORDERBOOK.'
+    comments: 'ORGANISED TRADING FACILITY ORDERBOOK.',
   },
   XPUS: {
     mic: 'XPUS',
@@ -5127,13 +5209,14 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BMLS: {
     mic: 'BMLS',
     operatingMic: 'BMLI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'EQYXK86SF381Q21S3020',
     marketCategoryCode: 'SINT',
@@ -5146,13 +5229,14 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BMLI: {
     mic: 'BMLI',
     operatingMic: 'BMLI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
     legalEntityName: '',
     lei: 'EQYXK86SF381Q21S3020',
     marketCategoryCode: 'NSPD',
@@ -5165,13 +5249,14 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BMSI: {
     mic: 'BMSI',
     operatingMic: 'BMLX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
     legalEntityName: '',
     lei: 'EYKN6V0ZCB8VD9IULB80',
     marketCategoryCode: 'SINT',
@@ -5184,13 +5269,14 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '20191125',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BMLX: {
     mic: 'BMLX',
     operatingMic: 'BMLX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
     legalEntityName: '',
     lei: 'EYKN6V0ZCB8VD9IULB80',
     marketCategoryCode: 'NSPD',
@@ -5203,7 +5289,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '20191125',
-    comments: ''
+    comments: '',
   },
   SGMZ: {
     mic: 'SGMZ',
@@ -5222,7 +5308,7 @@ export const mics = {
     lastUpdateDate: '20191125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PFXD: {
     mic: 'PFXD',
@@ -5241,7 +5327,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR NDF AND DERIVATIVE PRODUCTS.'
+    comments: 'TRADING PLATFORM FOR NDF AND DERIVATIVE PRODUCTS.',
   },
   TRQC: {
     mic: 'TRQC',
@@ -5260,7 +5346,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR CLEARED EQUITY CONTRACTS-FOR-DIFFERENCE.'
+    comments: 'TRADING PLATFORM FOR CLEARED EQUITY CONTRACTS-FOR-DIFFERENCE.',
   },
   GSBX: {
     mic: 'GSBX',
@@ -5279,7 +5365,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '20191028',
-    comments: 'GSI BROKER CROSSING NETWORK'
+    comments: 'GSI BROKER CROSSING NETWORK',
   },
   ITGL: {
     mic: 'ITGL',
@@ -5298,7 +5384,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XAMM: {
     mic: 'XAMM',
@@ -5317,13 +5403,14 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AMNL: {
     mic: 'AMNL',
     operatingMic: 'XAMM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AMMAN STOCK EXCHANGE - NON-LISTED SECURITIES MARKET',
+    marketNameInstitutionDescription:
+      'AMMAN STOCK EXCHANGE - NON-LISTED SECURITIES MARKET',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -5336,7 +5423,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BETA: {
     mic: 'BETA',
@@ -5355,13 +5442,14 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LAUNCHED IN NOVEMBER 2011,  MULTILATERAL TRADING FACILITY.'
+    comments: 'LAUNCHED IN NOVEMBER 2011,  MULTILATERAL TRADING FACILITY.',
   },
   VFGB: {
     mic: 'VFGB',
     operatingMic: 'VFGB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'VIRTU FINANCIAL IRELAND LIMITED (LONDON BRANCH)',
+    marketNameInstitutionDescription:
+      'VIRTU FINANCIAL IRELAND LIMITED (LONDON BRANCH)',
     legalEntityName: '',
     lei: '549300XG5LFGN1IGYC71',
     marketCategoryCode: 'SINT',
@@ -5374,13 +5462,14 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VFUK: {
     mic: 'VFUK',
     operatingMic: 'VFUK',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'VIRTU FINANCIAL IRELAND LIMITED (LONDON BRANCH)',
+    marketNameInstitutionDescription:
+      'VIRTU FINANCIAL IRELAND LIMITED (LONDON BRANCH)',
     legalEntityName: '',
     lei: '549300XG5LFGN1IGYC71',
     marketCategoryCode: 'SINT',
@@ -5393,7 +5482,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '20191028',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SEBL: {
     mic: 'SEBL',
@@ -5412,7 +5501,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XPOL: {
     mic: 'XPOL',
@@ -5431,7 +5520,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPAL: {
     mic: 'XPAL',
@@ -5450,7 +5539,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VIUK: {
     mic: 'VIUK',
@@ -5469,7 +5558,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ASPI: {
     mic: 'ASPI',
@@ -5488,7 +5577,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ASMT: {
     mic: 'ASMT',
@@ -5507,13 +5596,14 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ASPN: {
     mic: 'ASPN',
     operatingMic: 'INCR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTELLIGENTCROSS ASPEN INTELLIGENT BID/OFFER',
+    marketNameInstitutionDescription:
+      'INTELLIGENTCROSS ASPEN INTELLIGENT BID/OFFER',
     legalEntityName: '',
     lei: '254900TX2BTPJWW4A154',
     marketCategoryCode: 'NSPD',
@@ -5526,7 +5616,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CISD: {
     mic: 'CISD',
@@ -5545,7 +5635,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK MIC FOR NYSE NATIONAL.'
+    comments: 'DARK MIC FOR NYSE NATIONAL.',
   },
   CDSI: {
     mic: 'CDSI',
@@ -5564,7 +5654,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RESF: {
     mic: 'RESF',
@@ -5583,7 +5673,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBSF: {
     mic: 'EBSF',
@@ -5602,7 +5692,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   '24EX': {
     mic: '24EX',
@@ -5621,7 +5711,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOREIGN EXCHANGE AND EQUITIES.'
+    comments: 'FOREIGN EXCHANGE AND EQUITIES.',
   },
   BBSX: {
     mic: 'BBSX',
@@ -5640,7 +5730,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JLSI: {
     mic: 'JLSI',
@@ -5659,7 +5749,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '20190923',
-    comments: 'SYSTEMATIC INTERNALISER FOR EU EQUITIES.'
+    comments: 'SYSTEMATIC INTERNALISER FOR EU EQUITIES.',
   },
   SCOT: {
     mic: 'SCOT',
@@ -5678,7 +5768,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDEX: {
     mic: 'XDEX',
@@ -5697,7 +5787,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DOWE: {
     mic: 'DOWE',
@@ -5716,7 +5806,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SPEX: {
     mic: 'SPEX',
@@ -5735,7 +5825,8 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MULTILATERAL TRADING FACILITY FOR TURBO WARRANT-TRADING.'
+    comments:
+      'REGULATED MULTILATERAL TRADING FACILITY FOR TURBO WARRANT-TRADING.',
   },
   IFAD: {
     mic: 'IFAD',
@@ -5754,7 +5845,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   JLQD: {
     mic: 'JLQD',
@@ -5773,7 +5864,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: 'MULTI-ASSET PLATFORM FOR SECURITIES, FUTURES, AND FX.'
+    comments: 'MULTI-ASSET PLATFORM FOR SECURITIES, FUTURES, AND FX.',
   },
   LAMP: {
     mic: 'LAMP',
@@ -5792,7 +5883,7 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US BROKER-DEALER.'
+    comments: 'US BROKER-DEALER.',
   },
   RCMA: {
     mic: 'RCMA',
@@ -5811,13 +5902,14 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WOPO: {
     mic: 'WOPO',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE - SPO BOOK BUILDING',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE - SPO BOOK BUILDING',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -5830,13 +5922,14 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '20190923',
-    comments: ''
+    comments: '',
   },
   IEBS: {
     mic: 'IEBS',
     operatingMic: 'EBSN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MTF - RFQ - FX PRODUCTS FOR ASSET MANAGERS',
+    marketNameInstitutionDescription:
+      'EBS MTF - RFQ - FX PRODUCTS FOR ASSET MANAGERS',
     legalEntityName: '',
     lei: '2138004TYNQCB7MLTG76',
     marketCategoryCode: 'MLTF',
@@ -5849,7 +5942,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ERIS: {
     mic: 'ERIS',
@@ -5868,7 +5961,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20221226',
     expiryDate: '20230424',
-    comments: ''
+    comments: '',
   },
   MKTF: {
     mic: 'MKTF',
@@ -5887,7 +5980,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MKAA: {
     mic: 'MKAA',
@@ -5906,7 +5999,8 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ALTERNATIVE TRADING SYSTEM (ATS) FOR FIXED INCOME SECURITIES.'
+    comments:
+      'REGISTERED ALTERNATIVE TRADING SYSTEM (ATS) FOR FIXED INCOME SECURITIES.',
   },
   XSGB: {
     mic: 'XSGB',
@@ -5925,13 +6019,14 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   YKNA: {
     mic: 'YKNA',
     operatingMic: 'YKNA',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'COMHAR CAPITAL MARKETS, LLC - US EQUITIES',
+    marketNameInstitutionDescription:
+      'COMHAR CAPITAL MARKETS, LLC - US EQUITIES',
     legalEntityName: '',
     lei: '54930046NSEINIAD0O74',
     marketCategoryCode: 'NSPD',
@@ -5944,13 +6039,14 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PROPRIETARY TRADING SYSTEM.'
+    comments: 'PROPRIETARY TRADING SYSTEM.',
   },
   CGET: {
     mic: 'CGET',
     operatingMic: 'CGMD',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CITIGROUP GLOBAL MARKETS  EUROPE AG - EMEA TRADING',
+    marketNameInstitutionDescription:
+      'CITIGROUP GLOBAL MARKETS  EUROPE AG - EMEA TRADING',
     legalEntityName: '',
     lei: '6TJCK1B7E7UTXP528Y04',
     marketCategoryCode: 'NSPD',
@@ -5963,7 +6059,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   CSDA: {
     mic: 'CSDA',
@@ -5982,7 +6078,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DOWM: {
     mic: 'DOWM',
@@ -6001,7 +6097,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   GSXC: {
     mic: 'GSXC',
@@ -6020,7 +6116,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.',
   },
   GSXK: {
     mic: 'GSXK',
@@ -6039,7 +6135,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.',
   },
   GSXT: {
     mic: 'GSXT',
@@ -6058,7 +6154,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.',
   },
   VAGM: {
     mic: 'VAGM',
@@ -6077,7 +6173,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   XEUB: {
     mic: 'XEUB',
@@ -6096,7 +6192,7 @@ export const mics = {
     lastUpdateDate: '20190826',
     lastValidationDate: '',
     expiryDate: '20190826',
-    comments: ''
+    comments: '',
   },
   BMCM: {
     mic: 'BMCM',
@@ -6115,7 +6211,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EWSM: {
     mic: 'EWSM',
@@ -6134,7 +6230,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: ''
+    comments: '',
   },
   GXGR: {
     mic: 'GXGR',
@@ -6153,7 +6249,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: ''
+    comments: '',
   },
   GXGM: {
     mic: 'GXGM',
@@ -6172,7 +6268,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES AND BONDS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES AND BONDS.',
   },
   GXGF: {
     mic: 'GXGF',
@@ -6191,7 +6287,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: ''
+    comments: '',
   },
   NSME: {
     mic: 'NSME',
@@ -6210,7 +6306,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ABFI: {
     mic: 'ABFI',
@@ -6229,7 +6325,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR NON EQUITIES.'
+    comments: 'SYSTEMATIC INTERNALISER FOR NON EQUITIES.',
   },
   BEUP: {
     mic: 'BEUP',
@@ -6248,7 +6344,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EU DXE AUCTIONS BOOK.'
+    comments:
+      'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EU DXE AUCTIONS BOOK.',
   },
   BEUF: {
     mic: 'BEUF',
@@ -6267,7 +6364,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: 'CBOE EUROPE (BXE) OFF-BOOK TRADE REPORTS.'
+    comments: 'CBOE EUROPE (BXE) OFF-BOOK TRADE REPORTS.',
   },
   CEUD: {
     mic: 'CEUD',
@@ -6286,7 +6383,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.'
+    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.',
   },
   BEUD: {
     mic: 'BEUD',
@@ -6305,7 +6402,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.'
+    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.',
   },
   CEUX: {
     mic: 'CEUX',
@@ -6324,7 +6421,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.'
+    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.',
   },
   CEUO: {
     mic: 'CEUO',
@@ -6343,7 +6440,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: 'CBOE EUROPE (DXE) OFF-BOOK TRADE REPORTS.'
+    comments: 'CBOE EUROPE (DXE) OFF-BOOK TRADE REPORTS.',
   },
   BEUE: {
     mic: 'BEUE',
@@ -6362,7 +6459,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '20190722',
-    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.'
+    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.',
   },
   DASH: {
     mic: 'DASH',
@@ -6381,7 +6478,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   MISX: {
     mic: 'MISX',
@@ -6400,7 +6497,8 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES, BONDS, CURRENCIES, MONEY MARKET INSTRUMENTS, COMMODITIES AND MOEX BOARD.'
+    comments:
+      'EQUITIES, BONDS, CURRENCIES, MONEY MARKET INSTRUMENTS, COMMODITIES AND MOEX BOARD.',
   },
   XBND: {
     mic: 'XBND',
@@ -6419,7 +6517,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DEDICATED MARKET FOR BONDS.'
+    comments: 'DEDICATED MARKET FOR BONDS.',
   },
   BLKX: {
     mic: 'BLKX',
@@ -6438,13 +6536,14 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   PLPD: {
     mic: 'PLPD',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/POLISH POWER EXCHANGE/REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/POLISH POWER EXCHANGE/REGULATED MARKET',
     legalEntityName: '',
     lei: '2594001J9XAPI7Z2IB24',
     marketCategoryCode: 'RMKT',
@@ -6457,13 +6556,14 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BAJD: {
     mic: 'BAJD',
     operatingMic: 'BAJD',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH - JAPAN INSTINCT X',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH - JAPAN INSTINCT X',
     legalEntityName: '',
     lei: 'I7E80LI4NVVT41W1WB02',
     marketCategoryCode: 'ATSS',
@@ -6476,7 +6576,7 @@ export const mics = {
     lastUpdateDate: '20190722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NMSX: {
     mic: 'NMSX',
@@ -6495,13 +6595,14 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'EXTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'EXTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   XLOD: {
     mic: 'XLOD',
     operatingMic: 'XLON',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'LONDON STOCK EXCHANGE - CURVEGLOBAL MARKETS',
+    marketNameInstitutionDescription:
+      'LONDON STOCK EXCHANGE - CURVEGLOBAL MARKETS',
     legalEntityName: 'LONDON STOCK EXCHANGE PLC',
     lei: '213800D1EI4B9WTWWD28',
     marketCategoryCode: 'NSPD',
@@ -6514,7 +6615,8 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '20221024',
-    comments: 'LONDON STOCK EXCHANGE DERIVATIVES MARKET (PART OF LONDON STOCK EXCHANGE REGULATED MARKET).'
+    comments:
+      'LONDON STOCK EXCHANGE DERIVATIVES MARKET (PART OF LONDON STOCK EXCHANGE REGULATED MARKET).',
   },
   LAFX: {
     mic: 'LAFX',
@@ -6533,7 +6635,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '20141124',
-    comments: ''
+    comments: '',
   },
   NEOE: {
     mic: 'NEOE',
@@ -6552,7 +6654,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NEOD: {
     mic: 'NEOD',
@@ -6571,7 +6673,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NEON: {
     mic: 'NEON',
@@ -6590,7 +6692,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NEOC: {
     mic: 'NEOC',
@@ -6609,7 +6711,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRPX: {
     mic: 'TRPX',
@@ -6628,7 +6730,8 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SECURITIES EXCHANGE OFFERING A MULTI-ASSET, MULTI-CURRENCY TRADING PLATFORM. OFFER ISSUERS LISTING SERVICES ON THREE BOARDS-MAIN BOARD, SMALL AND MEDIUM ENTERPRISE (SME) BOARD AND VENTURE CAPITAL (VCAP) BOARD.'
+    comments:
+      'SECURITIES EXCHANGE OFFERING A MULTI-ASSET, MULTI-CURRENCY TRADING PLATFORM. OFFER ISSUERS LISTING SERVICES ON THREE BOARDS-MAIN BOARD, SMALL AND MEDIUM ENTERPRISE (SME) BOARD AND VENTURE CAPITAL (VCAP) BOARD.',
   },
   KOME: {
     mic: 'KOME',
@@ -6647,7 +6750,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRCX: {
     mic: 'TRCX',
@@ -6666,7 +6769,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ERBX: {
     mic: 'ERBX',
@@ -6685,7 +6788,8 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR BONDS ISSUED BY THE HELLENIC REPUBLIC.'
+    comments:
+      'SYSTEMATIC INTERNALISER FOR BONDS ISSUED BY THE HELLENIC REPUBLIC.',
   },
   FLTR: {
     mic: 'FLTR',
@@ -6704,7 +6808,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IBER: {
     mic: 'IBER',
@@ -6723,7 +6827,7 @@ export const mics = {
     lastUpdateDate: '20190624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTER MARKET FOR BONDS.'
+    comments: 'REGISTER MARKET FOR BONDS.',
   },
   ALLT: {
     mic: 'ALLT',
@@ -6742,7 +6846,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY. REGISTERED MARKET FOR BONDS.'
+    comments: 'ORGANISED TRADING FACILITY. REGISTERED MARKET FOR BONDS.',
   },
   BATE: {
     mic: 'BATE',
@@ -6761,7 +6865,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITIES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITIES.',
   },
   BATF: {
     mic: 'BATF',
@@ -6780,7 +6884,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'CBOE EUROPE (BXE) OFF-BOOK TRADE REPORTS.'
+    comments: 'CBOE EUROPE (BXE) OFF-BOOK TRADE REPORTS.',
   },
   BATD: {
     mic: 'BATD',
@@ -6799,7 +6903,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.'
+    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.',
   },
   BILU: {
     mic: 'BILU',
@@ -6818,13 +6922,14 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BTQE: {
     mic: 'BTQE',
     operatingMic: 'BTAM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CME AMSTERDAM B.V. - RFQ TRADING PROTOCOL',
+    marketNameInstitutionDescription:
+      'CME AMSTERDAM B.V. - RFQ TRADING PROTOCOL',
     legalEntityName: '',
     lei: '2138004TYNQCB7MLTG76',
     marketCategoryCode: 'NSPD',
@@ -6837,13 +6942,14 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTQG: {
     mic: 'BTQG',
     operatingMic: 'BTEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BROKERTEC EUROPE LIMITED - RFQ TRADING PROTOCOL',
+    marketNameInstitutionDescription:
+      'BROKERTEC EUROPE LIMITED - RFQ TRADING PROTOCOL',
     legalEntityName: '',
     lei: '2138002GI1GKI3V4UG48',
     marketCategoryCode: 'NSPD',
@@ -6856,7 +6962,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CBSK: {
     mic: 'CBSK',
@@ -6875,7 +6981,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CODA: {
     mic: 'CODA',
@@ -6894,7 +7000,8 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ON-DEMAND AUCTION BASED ALTERNATIVE TRADING SYSTEM (DARK) OFFERING TWO AUCTION TYPES.'
+    comments:
+      'ON-DEMAND AUCTION BASED ALTERNATIVE TRADING SYSTEM (DARK) OFFERING TWO AUCTION TYPES.',
   },
   PDQX: {
     mic: 'PDQX',
@@ -6913,13 +7020,14 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '20190527',
-    comments: 'PREVISOULY PDQ ATS. REPLACED BY CODA MIC.'
+    comments: 'PREVISOULY PDQ ATS. REPLACED BY CODA MIC.',
   },
   SMBD: {
     mic: 'SMBD',
     operatingMic: 'SMBD',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUMITOMO MITSUI BANKING CORPORATION - DUESSELDORF BRANCH',
+    marketNameInstitutionDescription:
+      'SUMITOMO MITSUI BANKING CORPORATION - DUESSELDORF BRANCH',
     legalEntityName: '',
     lei: '5U0XI89JRFVHWIBS4F54',
     marketCategoryCode: 'SINT',
@@ -6932,7 +7040,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   STFL: {
     mic: 'STFL',
@@ -6951,7 +7059,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   XALT: {
     mic: 'XALT',
@@ -6970,7 +7078,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBRA: {
     mic: 'EBRA',
@@ -6989,7 +7097,7 @@ export const mics = {
     lastUpdateDate: '20161226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCAN: {
     mic: 'XCAN',
@@ -7008,7 +7116,8 @@ export const mics = {
     lastUpdateDate: '20101025',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE ALTERNATIVE TRADING SYSTEM - "CAN-ATS" ( NEW COMPANIES & EQUITIES) OFFER ACCESS TO TRADING FOR NEWLY SET-UP BUSINESSES AS WELL AS FOR OTHER COMPANIES THAT CANNOT BE TRADED ON THE REGULATED MARKET OF BUCHAREST STOCK EXCHANGE.'
+    comments:
+      'THE ALTERNATIVE TRADING SYSTEM - "CAN-ATS" ( NEW COMPANIES & EQUITIES) OFFER ACCESS TO TRADING FOR NEWLY SET-UP BUSINESSES AS WELL AS FOR OTHER COMPANIES THAT CANNOT BE TRADED ON THE REGULATED MARKET OF BUCHAREST STOCK EXCHANGE.',
   },
   XRMO: {
     mic: 'XRMO',
@@ -7027,13 +7136,15 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES AND BONDS LEGALLY DEFINED AS A MULTI-SIDED TRADING SYSTEM (MOS) WITH MORE OPEN CONDITIONS FOR ACCEPTING SECURITIES.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR EQUITIES AND BONDS LEGALLY DEFINED AS A MULTI-SIDED TRADING SYSTEM (MOS) WITH MORE OPEN CONDITIONS FOR ACCEPTING SECURITIES.',
   },
   XNCO: {
     mic: 'XNCO',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/ EQUITIES/NEW CONNECT - MTF',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/ EQUITIES/NEW CONNECT - MTF',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'MLTF',
@@ -7046,7 +7157,8 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FINANCING THE GROWTH OF YOUNG COMPANIES WITH A LARGE GROWTH POTENTIAL, ORGANISED AND OPERATED BY THE WSE'
+    comments:
+      'MARKET FINANCING THE GROWTH OF YOUNG COMPANIES WITH A LARGE GROWTH POTENTIAL, ORGANISED AND OPERATED BY THE WSE',
   },
   KNMX: {
     mic: 'KNMX',
@@ -7065,7 +7177,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '20190527',
-    comments: 'CROSSING ENGINE FOR EQUITIES.'
+    comments: 'CROSSING ENGINE FOR EQUITIES.',
   },
   SAGE: {
     mic: 'SAGE',
@@ -7084,7 +7196,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER.'
+    comments: 'BROKER DEALER.',
   },
   ARCH: {
     mic: 'ARCH',
@@ -7103,7 +7215,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR DIGITAL ASSETS.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR DIGITAL ASSETS.',
   },
   EXPM: {
     mic: 'EXPM',
@@ -7122,7 +7234,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TNLK: {
     mic: 'TNLK',
@@ -7141,7 +7253,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR BLOCKS.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR BLOCKS.',
   },
   XDRK: {
     mic: 'XDRK',
@@ -7160,7 +7272,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOR TSX DARK ORDER BOOK TRADES.'
+    comments: 'FOR TSX DARK ORDER BOOK TRADES.',
   },
   VDRK: {
     mic: 'VDRK',
@@ -7179,7 +7291,7 @@ export const mics = {
     lastUpdateDate: '20190527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOR TSXV DARK ORDER BOOK TRADES.'
+    comments: 'FOR TSXV DARK ORDER BOOK TRADES.',
   },
   GFPO: {
     mic: 'GFPO',
@@ -7198,7 +7310,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   JPMS: {
     mic: 'JPMS',
@@ -7211,13 +7323,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'US',
     city: 'NEW YORK',
-    website: 'WWW.JPMORGAN.COM/COUNTRY/US/EN/CIB/MARKETS-INVESTOR-SERVICES/AQUA',
+    website:
+      'WWW.JPMORGAN.COM/COUNTRY/US/EN/CIB/MARKETS-INVESTOR-SERVICES/AQUA',
     status: 'ACTIVE',
     creationDate: '20190422',
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SNUK: {
     mic: 'SNUK',
@@ -7236,7 +7349,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ARKX: {
     mic: 'ARKX',
@@ -7255,7 +7368,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PUMX: {
     mic: 'PUMX',
@@ -7274,13 +7387,14 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US BROKER-DEALER.'
+    comments: 'US BROKER-DEALER.',
   },
   SVXI: {
     mic: 'SVXI',
     operatingMic: 'SVXI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SAINT VINCENT AND THE GRENADINES SECURITIES EXCHANGE',
+    marketNameInstitutionDescription:
+      'SAINT VINCENT AND THE GRENADINES SECURITIES EXCHANGE',
     legalEntityName: '',
     lei: '8945001R4JGZRMTLRM44',
     marketCategoryCode: 'RMKT',
@@ -7293,7 +7407,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.'
+    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.',
   },
   VWDA: {
     mic: 'VWDA',
@@ -7312,7 +7426,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   XALS: {
     mic: 'XALS',
@@ -7331,7 +7445,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALL CLASSES OF SECURITIES.'
+    comments: 'ALL CLASSES OF SECURITIES.',
   },
   BGFU: {
     mic: 'BGFU',
@@ -7350,13 +7464,14 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR FIXED INCOME UK.'
+    comments: 'SYSTEMATIC INTERNALISER FOR FIXED INCOME UK.',
   },
   CGMG: {
     mic: 'CGMG',
     operatingMic: 'CGMG',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CITIGROUP GLOBAL MARKETS EUROPE AG - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'CITIGROUP GLOBAL MARKETS EUROPE AG - LONDON BRANCH',
     legalEntityName: '',
     lei: '5493004FUULDQTMX0W20',
     marketCategoryCode: 'SINT',
@@ -7369,7 +7484,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   PUMA: {
     mic: 'PUMA',
@@ -7388,7 +7503,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US BROKER-DEALER.'
+    comments: 'US BROKER-DEALER.',
   },
   '4AXE': {
     mic: '4AXE',
@@ -7407,7 +7522,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MCZK: {
     mic: 'MCZK',
@@ -7426,7 +7541,8 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'MTS CZECH REPUBLIC IS A DOMESTIC MARKET WHERE IT WILL BE POSSIBLE TO TRADE GOVIES BONDS IN LOCAL CURRENCY.'
+    comments:
+      'MTS CZECH REPUBLIC IS A DOMESTIC MARKET WHERE IT WILL BE POSSIBLE TO TRADE GOVIES BONDS IN LOCAL CURRENCY.',
   },
   HUNG: {
     mic: 'HUNG',
@@ -7445,7 +7561,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'MTS HUNGARY IS A DIVISION OF EUROMTS AND TRADES GOVIES BONDS.'
+    comments: 'MTS HUNGARY IS A DIVISION OF EUROMTS AND TRADES GOVIES BONDS.',
   },
   EMTS: {
     mic: 'EMTS',
@@ -7464,7 +7580,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   MTSA: {
     mic: 'MTSA',
@@ -7483,7 +7599,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   GMTS: {
     mic: 'GMTS',
@@ -7502,7 +7618,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   MTSG: {
     mic: 'MTSG',
@@ -7521,7 +7637,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   IMTS: {
     mic: 'IMTS',
@@ -7540,7 +7656,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   RMTS: {
     mic: 'RMTS',
@@ -7559,7 +7675,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   AMTS: {
     mic: 'AMTS',
@@ -7578,7 +7694,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   PORT: {
     mic: 'PORT',
@@ -7597,7 +7713,8 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'MTSD PORTUGAL IS OPERATING AS A DIVISION OF EUROMTS SINCE 30 JUNE 2014'
+    comments:
+      'MTSD PORTUGAL IS OPERATING AS A DIVISION OF EUROMTS SINCE 30 JUNE 2014',
   },
   SLKK: {
     mic: 'SLKK',
@@ -7616,7 +7733,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   VMTS: {
     mic: 'VMTS',
@@ -7635,7 +7752,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   SMTS: {
     mic: 'SMTS',
@@ -7654,7 +7771,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   EBHU: {
     mic: 'EBHU',
@@ -7673,13 +7790,14 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EBSI: {
     mic: 'EBSI',
     operatingMic: 'EBSN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MTF - RFQ - FOR ASSET MANAGERS TRADING FX PRODUCTS',
+    marketNameInstitutionDescription:
+      'EBS MTF - RFQ - FOR ASSET MANAGERS TRADING FX PRODUCTS',
     legalEntityName: '',
     lei: '2138004TYNQCB7MLTG76',
     marketCategoryCode: 'MLTF',
@@ -7692,7 +7810,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: 'REPLACED BY IEBS.'
+    comments: 'REPLACED BY IEBS.',
   },
   RESE: {
     mic: 'RESE',
@@ -7711,13 +7829,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: 'RISK MITIGATION SERVICES.REPLACED BY RESF.'
+    comments: 'RISK MITIGATION SERVICES.REPLACED BY RESF.',
   },
   EBSD: {
     mic: 'EBSD',
     operatingMic: 'EBSN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MTF - RFQ - FOR THE TRADING OF FX PRODUCTS',
+    marketNameInstitutionDescription:
+      'EBS MTF - RFQ - FOR THE TRADING OF FX PRODUCTS',
     legalEntityName: '',
     lei: '2138004TYNQCB7MLTG76',
     marketCategoryCode: 'MLTF',
@@ -7730,7 +7849,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: 'REPLACED BY EBSF.'
+    comments: 'REPLACED BY EBSF.',
   },
   EUSP: {
     mic: 'EUSP',
@@ -7749,7 +7868,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'EUREX SWISS OTC/SPOT MARKET.'
+    comments: 'EUREX SWISS OTC/SPOT MARKET.',
   },
   EUCH: {
     mic: 'EUCH',
@@ -7768,7 +7887,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: ''
+    comments: '',
   },
   EURM: {
     mic: 'EURM',
@@ -7787,7 +7906,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'EUREX SWISS REPO MARKET.'
+    comments: 'EUREX SWISS REPO MARKET.',
   },
   EUSC: {
     mic: 'EUSC',
@@ -7806,7 +7925,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'EUREX SWISS SECURITIES LENDING MARKET.'
+    comments: 'EUREX SWISS SECURITIES LENDING MARKET.',
   },
   FNUK: {
     mic: 'FNUK',
@@ -7825,7 +7944,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XMFX: {
     mic: 'XMFX',
@@ -7844,13 +7963,14 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DERIVATIVES IN CURRENCIES.'
+    comments: 'DERIVATIVES IN CURRENCIES.',
   },
   TRFW: {
     mic: 'TRFW',
     operatingMic: 'RTSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'REFINITIV TRANSACTION SERVICES LIMITED - FORWARDS MATCHING',
+    marketNameInstitutionDescription:
+      'REFINITIV TRANSACTION SERVICES LIMITED - FORWARDS MATCHING',
     legalEntityName: 'TRANSACTIONS SERVICES LIMITED',
     lei: '549300SDDJE84DDJNB30',
     marketCategoryCode: 'NSPD',
@@ -7863,7 +7983,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR OTC FX DERIVATIVES.'
+    comments: 'REGISTERED MARKET FOR OTC FX DERIVATIVES.',
   },
   UCHU: {
     mic: 'UCHU',
@@ -7882,7 +8002,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CBNL: {
     mic: 'CBNL',
@@ -7901,7 +8021,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FTUS: {
     mic: 'FTUS',
@@ -7920,13 +8040,15 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FLOW TRADERS� DISCLOSED LIQUIDITY PROVISION  THROUGH LEVEL ALTERNATIVE TRADING SYSTEM (ATS).'
+    comments:
+      'FLOW TRADERS� DISCLOSED LIQUIDITY PROVISION  THROUGH LEVEL ALTERNATIVE TRADING SYSTEM (ATS).',
   },
   TEEG: {
     mic: 'TEEG',
     operatingMic: 'TPSO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - OTF - EUROPEAN GOVERNMENT BONDS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - OTF - EUROPEAN GOVERNMENT BONDS',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -7939,7 +8061,8 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '20190422',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF EUROPEAN GOVERNMENT BONDS.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF EUROPEAN GOVERNMENT BONDS.',
   },
   BGUK: {
     mic: 'BGUK',
@@ -7958,7 +8081,7 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CLVE: {
     mic: 'CLVE',
@@ -7977,13 +8100,14 @@ export const mics = {
     lastUpdateDate: '20190422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   NLAX: {
     mic: 'NLAX',
     operatingMic: 'CPGX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CLEARPOOL EXECUTION SERVICES, LLC - NATURAL LIQUIDITY ALLIANCE',
+    marketNameInstitutionDescription:
+      'CLEARPOOL EXECUTION SERVICES, LLC - NATURAL LIQUIDITY ALLIANCE',
     legalEntityName: '',
     lei: '549300U614BWU622VY96',
     marketCategoryCode: 'NSPD',
@@ -7996,7 +8120,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM.'
+    comments: 'ELECTRONIC TRADING PLATFORM.',
   },
   CPGX: {
     mic: 'CPGX',
@@ -8015,7 +8139,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM.'
+    comments: 'ELECTRONIC TRADING PLATFORM.',
   },
   CEPL: {
     mic: 'CEPL',
@@ -8034,7 +8158,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CEPU: {
     mic: 'CEPU',
@@ -8053,7 +8177,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBAB: {
     mic: 'DBAB',
@@ -8072,7 +8196,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTCN: {
     mic: 'OTCN',
@@ -8091,7 +8215,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC COMMUNICATIONS NETWORK.'
+    comments: 'ELECTRONIC COMMUNICATIONS NETWORK.',
   },
   RTSL: {
     mic: 'RTSL',
@@ -8110,13 +8234,14 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRAL: {
     mic: 'TRAL',
     operatingMic: 'RTSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'REFINITIV TRANSACTIONS SERVICES LIMITED - FXALL RFQ',
+    marketNameInstitutionDescription:
+      'REFINITIV TRANSACTIONS SERVICES LIMITED - FXALL RFQ',
     legalEntityName: 'TRANSACTIONS SERVICES LIMITED',
     lei: '549300SDDJE84DDJNB30',
     marketCategoryCode: 'NSPD',
@@ -8129,7 +8254,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING REQUEST FOR QUOTE PLATFORM FOR FX OTC DERIVATIVES.'
+    comments: 'TRADING REQUEST FOR QUOTE PLATFORM FOR FX OTC DERIVATIVES.',
   },
   TDGF: {
     mic: 'TDGF',
@@ -8148,7 +8273,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UBSB: {
     mic: 'UBSB',
@@ -8167,7 +8292,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS AG LONDON BRANCH TRADING PLATFORM.'
+    comments: 'UBS AG LONDON BRANCH TRADING PLATFORM.',
   },
   UBSD: {
     mic: 'UBSD',
@@ -8186,7 +8311,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '20190325',
-    comments: 'FX/PM DERIVATIVES (FX/PM FORWARDS, FX/PM SWAPS, FX/PM OPTIONS).'
+    comments: 'FX/PM DERIVATIVES (FX/PM FORWARDS, FX/PM SWAPS, FX/PM OPTIONS).',
   },
   UBSE: {
     mic: 'UBSE',
@@ -8205,7 +8330,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '20190325',
-    comments: 'UBS PRICE IMPROVEMENT NETWORK IN EMEA (EQUITIES).'
+    comments: 'UBS PRICE IMPROVEMENT NETWORK IN EMEA (EQUITIES).',
   },
   UBSI: {
     mic: 'UBSI',
@@ -8224,7 +8349,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS EUROPE SE SYSTEMATIC INTERNALISER.'
+    comments: 'UBS EUROPE SE SYSTEMATIC INTERNALISER.',
   },
   UBSL: {
     mic: 'UBSL',
@@ -8243,13 +8368,14 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS EUROPE SE TRADING PLATFORM.'
+    comments: 'UBS EUROPE SE TRADING PLATFORM.',
   },
   WBGF: {
     mic: 'WBGF',
     operatingMic: 'XWBO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WIENER BOERSE AG GEREGELTER FREIVERKEHR (SECOND REGULATED MARKET)',
+    marketNameInstitutionDescription:
+      'WIENER BOERSE AG GEREGELTER FREIVERKEHR (SECOND REGULATED MARKET)',
     legalEntityName: 'WIENER BOERSE AG',
     lei: '315700ENWH1A81RCVZ91',
     marketCategoryCode: 'NSPD',
@@ -8262,7 +8388,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '20190325',
-    comments: ''
+    comments: '',
   },
   XETV: {
     mic: 'XETV',
@@ -8281,7 +8407,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETW: {
     mic: 'XETW',
@@ -8300,7 +8426,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETU: {
     mic: 'XETU',
@@ -8319,13 +8445,14 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRAV: {
     mic: 'FRAV',
     operatingMic: 'XFRA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE FRANKFURT - FREIVERKEHR - OFF-BOOK',
+    marketNameInstitutionDescription:
+      'BOERSE FRANKFURT - FREIVERKEHR - OFF-BOOK',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -8338,7 +8465,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRAW: {
     mic: 'FRAW',
@@ -8357,13 +8484,14 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRAU: {
     mic: 'FRAU',
     operatingMic: 'XFRA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE FRANKFURT - REGULIERTERMARKT - OFF-BOOK',
+    marketNameInstitutionDescription:
+      'BOERSE FRANKFURT - REGULIERTERMARKT - OFF-BOOK',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -8376,7 +8504,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BFPT: {
     mic: 'BFPT',
@@ -8395,7 +8523,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CONC: {
     mic: 'CONC',
@@ -8414,7 +8542,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IFBX: {
     mic: 'IFBX',
@@ -8433,7 +8561,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IPXW: {
     mic: 'IPXW',
@@ -8452,7 +8580,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES IN COMMERCIAL PROPERTY.'
+    comments: 'REGISTERED MARKET FOR EQUITIES IN COMMERCIAL PROPERTY.',
   },
   ZERO: {
     mic: 'ZERO',
@@ -8471,7 +8599,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CALCULATION AGENT AND SETTLEMENT PLATFORM.'
+    comments: 'CALCULATION AGENT AND SETTLEMENT PLATFORM.',
   },
   SCXS: {
     mic: 'SCXS',
@@ -8490,7 +8618,8 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SWAPS, SWAP EXECUTION FACILITY (SEF).'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR SWAPS, SWAP EXECUTION FACILITY (SEF).',
   },
   SCXO: {
     mic: 'SCXO',
@@ -8509,7 +8638,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SCXM: {
     mic: 'SCXM',
@@ -8528,7 +8657,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR COMMODITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR COMMODITIES.',
   },
   SYFX: {
     mic: 'SYFX',
@@ -8547,13 +8676,14 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FX DERIVATIVE TRADING PLATFORM.'
+    comments: 'FX DERIVATIVE TRADING PLATFORM.',
   },
   SSIL: {
     mic: 'SSIL',
     operatingMic: 'SSIL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'STATE STREET BANK INTERNATIONAL FX - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'STATE STREET BANK INTERNATIONAL FX - LONDON BRANCH',
     legalEntityName: '',
     lei: 'ZMHGNT7ZPKZ3UFZ8EO46',
     marketCategoryCode: 'SINT',
@@ -8566,7 +8696,7 @@ export const mics = {
     lastUpdateDate: '20190325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.'
+    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.',
   },
   TPIR: {
     mic: 'TPIR',
@@ -8585,7 +8715,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   XCHI: {
     mic: 'XCHI',
@@ -8604,7 +8734,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCIS: {
     mic: 'XCIS',
@@ -8623,7 +8753,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MANL: {
     mic: 'MANL',
@@ -8642,13 +8772,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   CELP: {
     mic: 'CELP',
     operatingMic: 'CSOB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CESKOSLOVENSK� OBCHODN� BANKA, A.S. - OTHER LIQUIDITY PROVIDER (OLP)',
+    marketNameInstitutionDescription:
+      'CESKOSLOVENSK� OBCHODN� BANKA, A.S. - OTHER LIQUIDITY PROVIDER (OLP)',
     legalEntityName: '',
     lei: 'Q5BP2UEQ48R75BOTCB92',
     marketCategoryCode: 'NSPD',
@@ -8661,7 +8792,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTHER LIQUIDITY PROVIDER SEGMENT.'
+    comments: 'OTHER LIQUIDITY PROVIDER SEGMENT.',
   },
   BETX: {
     mic: 'BETX',
@@ -8680,7 +8811,8 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC COMMODITY DERIVATIVES DONE BILATERALLY WITH CLIENTS OF THE FIRM. NO ELECTRONIC PLATFORM.'
+    comments:
+      'OTC COMMODITY DERIVATIVES DONE BILATERALLY WITH CLIENTS OF THE FIRM. NO ELECTRONIC PLATFORM.',
   },
   BTLX: {
     mic: 'BTLX',
@@ -8699,7 +8831,8 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC COMMODITY DERIVATIVES DONE BILATERALLY WITH CLIENTS OF THE FIRM. NO ELECTRONIC PLATFORM.'
+    comments:
+      'OTC COMMODITY DERIVATIVES DONE BILATERALLY WITH CLIENTS OF THE FIRM. NO ELECTRONIC PLATFORM.',
   },
   CCEX: {
     mic: 'CCEX',
@@ -8718,7 +8851,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ZBUL: {
     mic: 'ZBUL',
@@ -8737,13 +8870,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BULGARIAN STOCK EXCHANGE MAIN MARKET.'
+    comments: 'BULGARIAN STOCK EXCHANGE MAIN MARKET.',
   },
   IMSB: {
     mic: 'IMSB',
     operatingMic: 'ICPM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP UK MTF - CORPORATE BONDS AND SECURITIES DEBT',
+    marketNameInstitutionDescription:
+      'TP ICAP UK MTF - CORPORATE BONDS AND SECURITIES DEBT',
     legalEntityName: '',
     lei: '21380063ZX54EUEMBR73',
     marketCategoryCode: 'MLTF',
@@ -8756,7 +8890,8 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR CORPORATE BONDS AND SECURITISED DEBT.',
   },
   AQEU: {
     mic: 'AQEU',
@@ -8775,13 +8910,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQEA: {
     mic: 'AQEA',
     operatingMic: 'AQEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE EUROPE AUCTION ON DEMAND (AOD)',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE EUROPE AUCTION ON DEMAND (AOD)',
     legalEntityName: '',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'NSPD',
@@ -8794,13 +8930,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQXA: {
     mic: 'AQXA',
     operatingMic: 'AQXE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE PLC AUCTION ON DEMAND (AOD)',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE PLC AUCTION ON DEMAND (AOD)',
     legalEntityName: 'AQUIS EXCHANGE PLC',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'MLTF',
@@ -8813,7 +8950,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQXE: {
     mic: 'AQXE',
@@ -8832,7 +8969,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: 'PAN-EUROPEAN EQUITIES TRADING EXCHANGE (MTF).'
+    comments: 'PAN-EUROPEAN EQUITIES TRADING EXCHANGE (MTF).',
   },
   BKDM: {
     mic: 'BKDM',
@@ -8851,7 +8988,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ELECTRONIC MARKET FOR REPO.'
+    comments: 'REGISTERED ELECTRONIC MARKET FOR REPO.',
   },
   BNLD: {
     mic: 'BNLD',
@@ -8870,7 +9007,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CAVD: {
     mic: 'CAVD',
@@ -8889,13 +9026,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GIPB: {
     mic: 'GIPB',
     operatingMic: 'GIPB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'GOLDMAN SACHS INTERNATIONAL PARIS BRANCH',
+    marketNameInstitutionDescription:
+      'GOLDMAN SACHS INTERNATIONAL PARIS BRANCH',
     legalEntityName: '',
     lei: 'W22LROWP2IHZNBB6K528',
     marketCategoryCode: 'NSPD',
@@ -8908,13 +9046,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSPX: {
     mic: 'GSPX',
     operatingMic: 'GIPB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'GOLDMAN SACHS INTERNATIONAL PARIS BRANCH - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'GOLDMAN SACHS INTERNATIONAL PARIS BRANCH - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'W22LROWP2IHZNBB6K528',
     marketCategoryCode: 'SINT',
@@ -8927,7 +9066,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ICPM: {
     mic: 'ICPM',
@@ -8946,7 +9085,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   IMGI: {
     mic: 'IMGI',
@@ -8965,13 +9104,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR GILTS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR GILTS.',
   },
   IMRD: {
     mic: 'IMRD',
     operatingMic: 'ICPM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP UK MTF - INTEREST RATE DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TP ICAP UK MTF - INTEREST RATE DERIVATIVES',
     legalEntityName: '',
     lei: '21380063ZX54EUEMBR73',
     marketCategoryCode: 'MLTF',
@@ -8984,13 +9124,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR INTEREST RATE DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR INTEREST RATE DERIVATIVES.',
   },
   IMET: {
     mic: 'IMET',
     operatingMic: 'ICPM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP UK MTF - EXCHANGE TRADED PRODUCTS',
+    marketNameInstitutionDescription:
+      'TP ICAP UK MTF - EXCHANGE TRADED PRODUCTS',
     legalEntityName: '',
     lei: '21380063ZX54EUEMBR73',
     marketCategoryCode: 'MLTF',
@@ -9003,13 +9144,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EXCHANGE-TRADED FUNDS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR EXCHANGE-TRADED FUNDS.',
   },
   IMGB: {
     mic: 'IMGB',
     operatingMic: 'ICPM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP UK MTF - GOVERNMENT BONDS EXCLUDING GILTS',
+    marketNameInstitutionDescription:
+      'TP ICAP UK MTF - GOVERNMENT BONDS EXCLUDING GILTS',
     legalEntityName: '',
     lei: '21380063ZX54EUEMBR73',
     marketCategoryCode: 'MLTF',
@@ -9022,13 +9164,15 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR GOVERNMENT BONDS EXCLUDING GILTS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR GOVERNMENT BONDS EXCLUDING GILTS.',
   },
   IMMM: {
     mic: 'IMMM',
     operatingMic: 'ICPM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP UK MTF - MONEY MARKET INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'TP ICAP UK MTF - MONEY MARKET INSTRUMENTS',
     legalEntityName: '',
     lei: '21380063ZX54EUEMBR73',
     marketCategoryCode: 'MLTF',
@@ -9041,7 +9185,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR MONEY MARKET INSTRUMENTS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR MONEY MARKET INSTRUMENTS.',
   },
   IMFD: {
     mic: 'IMFD',
@@ -9060,7 +9204,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX DERIVATIVES.',
   },
   IMCE: {
     mic: 'IMCE',
@@ -9079,7 +9223,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITY.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITY.',
   },
   IMED: {
     mic: 'IMED',
@@ -9098,7 +9242,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITY DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITY DERIVATIVES.',
   },
   JLEU: {
     mic: 'JLEU',
@@ -9117,7 +9261,8 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR EU EQUITIES OPERATED BY JUMP TRADING EUROPE B.V.'
+    comments:
+      'SYSTEMATIC INTERNALISER FOR EU EQUITIES OPERATED BY JUMP TRADING EUROPE B.V.',
   },
   SMFF: {
     mic: 'SMFF',
@@ -9136,7 +9281,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SPTR: {
     mic: 'SPTR',
@@ -9155,7 +9300,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ELXE: {
     mic: 'ELXE',
@@ -9174,7 +9319,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.'
+    comments: 'PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.',
   },
   SCAG: {
     mic: 'SCAG',
@@ -9193,7 +9338,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SGAS: {
     mic: 'SGAS',
@@ -9212,13 +9357,14 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US BROKER DEALER.'
+    comments: 'US BROKER DEALER.',
   },
   SMFE: {
     mic: 'SMFE',
     operatingMic: 'SMFE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SMALL EXCHANGE, INC - DESIGNATED CONTRACT MARKET',
+    marketNameInstitutionDescription:
+      'SMALL EXCHANGE, INC - DESIGNATED CONTRACT MARKET',
     legalEntityName: '',
     lei: '549300PHNISXLW3TXM87',
     marketCategoryCode: 'NSPD',
@@ -9231,7 +9377,7 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DESIGNATED CONTRACT MARKET.'
+    comments: 'DESIGNATED CONTRACT MARKET.',
   },
   TRXE: {
     mic: 'TRXE',
@@ -9250,13 +9396,15 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "TRADITION'S HYBRID TRADING PLATFORM FOR OTC DERIVATIVES AND OTHER FINANCIAL INSTRUMENTS."
+    comments:
+      "TRADITION'S HYBRID TRADING PLATFORM FOR OTC DERIVATIVES AND OTHER FINANCIAL INSTRUMENTS.",
   },
   JBUL: {
     mic: 'JBUL',
     operatingMic: 'XBUL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BULGARIAN STOCK EXCHANGE - INTERNATIONAL MTF',
+    marketNameInstitutionDescription:
+      'BULGARIAN STOCK EXCHANGE - INTERNATIONAL MTF',
     legalEntityName: '',
     lei: '747800W0XA9OV4MSRW74',
     marketCategoryCode: 'MLTF',
@@ -9269,7 +9417,8 @@ export const mics = {
     lastUpdateDate: '20190225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNATIONAL INSTRUMENTS OF MULTILATERAL TRADING FACILITY, ORGANIZED BY BULGARIAN STOCK EXCHANGE.'
+    comments:
+      'INTERNATIONAL INSTRUMENTS OF MULTILATERAL TRADING FACILITY, ORGANIZED BY BULGARIAN STOCK EXCHANGE.',
   },
   MHBE: {
     mic: 'MHBE',
@@ -9288,7 +9437,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.'
+    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.',
   },
   CSGI: {
     mic: 'CSGI',
@@ -9307,7 +9456,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EUCC: {
     mic: 'EUCC',
@@ -9326,7 +9475,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BLEQ: {
     mic: 'BLEQ',
@@ -9345,7 +9494,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BREA: {
     mic: 'BREA',
@@ -9364,7 +9513,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MCAD: {
     mic: 'MCAD',
@@ -9383,7 +9532,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   EBMX: {
     mic: 'EBMX',
@@ -9402,7 +9551,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   ENXB: {
     mic: 'ENXB',
@@ -9421,7 +9570,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '20190128',
-    comments: 'MULTILATERAL TRADING FACILITY FOR WARRANTS AND CERTIFICATES'
+    comments: 'MULTILATERAL TRADING FACILITY FOR WARRANTS AND CERTIFICATES',
   },
   XMSM: {
     mic: 'XMSM',
@@ -9440,7 +9589,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XESM: {
     mic: 'XESM',
@@ -9459,7 +9608,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UKGD: {
     mic: 'UKGD',
@@ -9478,7 +9627,8 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE MTS UK GOVERNMENT BOND MARKET OPERATES AS AN MTF AND WILL BE OPEN EXCLUSIVELY TO THE COMMUNITY OF GEMMS.'
+    comments:
+      'THE MTS UK GOVERNMENT BOND MARKET OPERATES AS AN MTF AND WILL BE OPEN EXCLUSIVELY TO THE COMMUNITY OF GEMMS.',
   },
   XTXE: {
     mic: 'XTXE',
@@ -9497,7 +9647,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITY, FX, FIXED INCOME AND COMMODITY PRODUCTS.'
+    comments: 'EQUITY, FX, FIXED INCOME AND COMMODITY PRODUCTS.',
   },
   BLUE: {
     mic: 'BLUE',
@@ -9516,7 +9666,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   BTAM: {
     mic: 'BTAM',
@@ -9535,7 +9685,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET.'
+    comments: 'REGULATED MARKET.',
   },
   CABV: {
     mic: 'CABV',
@@ -9554,7 +9704,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   RFBK: {
     mic: 'RFBK',
@@ -9573,7 +9723,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TOWR: {
     mic: 'TOWR',
@@ -9592,13 +9742,14 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GBUL: {
     mic: 'GBUL',
     operatingMic: 'XBUL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BULGARIAN STOCK EXCHANGE - SME GROWTH MARKET BEAM',
+    marketNameInstitutionDescription:
+      'BULGARIAN STOCK EXCHANGE - SME GROWTH MARKET BEAM',
     legalEntityName: '',
     lei: '747800W0XA9OV4MSRW74',
     marketCategoryCode: 'NSPD',
@@ -9611,7 +9762,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BULGARIAN STOCK EXCHANGE SME GROWTH MARKET.'
+    comments: 'BULGARIAN STOCK EXCHANGE SME GROWTH MARKET.',
   },
   BPAS: {
     mic: 'BPAS',
@@ -9630,7 +9781,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '20190128',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FLWX: {
     mic: 'FLWX',
@@ -9649,7 +9800,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'RESERVED FOR FUTURE USE.'
+    comments: 'RESERVED FOR FUTURE USE.',
   },
   TNLL: {
     mic: 'TNLL',
@@ -9668,7 +9819,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: 'MULTILATERAL  TRADING FACILITY (MTF).'
+    comments: 'MULTILATERAL  TRADING FACILITY (MTF).',
   },
   BLUX: {
     mic: 'BLUX',
@@ -9687,7 +9838,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBLX: {
     mic: 'DBLX',
@@ -9706,7 +9857,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DHLX: {
     mic: 'DHLX',
@@ -9725,7 +9876,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KHHU: {
     mic: 'KHHU',
@@ -9744,7 +9895,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MCID: {
     mic: 'MCID',
@@ -9763,7 +9914,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   NCME: {
     mic: 'NCME',
@@ -9782,7 +9933,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRQM: {
     mic: 'TRQM',
@@ -9801,7 +9952,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBLK: {
     mic: 'XBLK',
@@ -9820,7 +9971,7 @@ export const mics = {
     lastUpdateDate: '20190128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IPNL: {
     mic: 'IPNL',
@@ -9839,7 +9990,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '20181224',
-    comments: 'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   ISWO: {
     mic: 'ISWO',
@@ -9858,7 +10010,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   ISWP: {
     mic: 'ISWP',
@@ -9877,7 +10030,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   ISWN: {
     mic: 'ISWN',
@@ -9896,13 +10050,15 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   ISWT: {
     mic: 'ISWT',
     operatingMic: 'ISWP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ISWAP EURO MTF - TARGETED STREAMING / RFQ',
+    marketNameInstitutionDescription:
+      'ISWAP EURO MTF - TARGETED STREAMING / RFQ',
     legalEntityName: '',
     lei: '5493009UWRK48KKUD358',
     marketCategoryCode: 'MLTF',
@@ -9915,7 +10071,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ISWAP EURO MULTILATERAL TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   MSEL: {
     mic: 'MSEL',
@@ -9934,7 +10091,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR COMMODITY DERIVATIVES, EMISSION ALLOWANCES AND EMISSION ALLOWANCE DERIVATIVES.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR COMMODITY DERIVATIVES, EMISSION ALLOWANCES AND EMISSION ALLOWANCE DERIVATIVES.',
   },
   NCML: {
     mic: 'NCML',
@@ -9953,13 +10111,14 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FXRQ: {
     mic: 'FXRQ',
     operatingMic: 'RMTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FXALL RFQ MTF',
+    marketNameInstitutionDescription:
+      'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FXALL RFQ MTF',
     legalEntityName: '',
     lei: '635400MQZIPRVPDDZK76',
     marketCategoryCode: 'MLTF',
@@ -9972,13 +10131,15 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FXALL REQUEST FOR QUOTE (RFQ) MULTILATERAL TRADING FACILITY (MTF).'
+    comments:
+      'FXALL REQUEST FOR QUOTE (RFQ) MULTILATERAL TRADING FACILITY (MTF).',
   },
   FXFM: {
     mic: 'FXFM',
     operatingMic: 'RMTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FORWARDS MATCHING',
+    marketNameInstitutionDescription:
+      'FINANCIAL AND RISK TRANSACTIONS SERVICES IRELAND LIMITED - FORWARDS MATCHING',
     legalEntityName: '',
     lei: '635400MQZIPRVPDDZK76',
     marketCategoryCode: 'NSPD',
@@ -9991,7 +10152,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FORWARDS MATCHING.'
+    comments: 'FORWARDS MATCHING.',
   },
   PBUL: {
     mic: 'PBUL',
@@ -10010,7 +10171,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA) SERVICE OF THE BULGARIAN STOCK EXCHANGE (BSE).'
+    comments:
+      'APPROVED PUBLICATION ARRANGEMENT (APA) SERVICE OF THE BULGARIAN STOCK EXCHANGE (BSE).',
   },
   XPUK: {
     mic: 'XPUK',
@@ -10029,7 +10191,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSAG: {
     mic: 'CSAG',
@@ -10048,7 +10210,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETF: {
     mic: 'XETF',
@@ -10067,13 +10229,14 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSEI: {
     mic: 'GSEI',
     operatingMic: 'GSBE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'GOLDMAN SACHS BANK EUROPE SE - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'GOLDMAN SACHS BANK EUROPE SE - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '8IBZUGJ7JPLH368JE346',
     marketCategoryCode: 'SINT',
@@ -10086,7 +10249,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GSBE: {
     mic: 'GSBE',
@@ -10105,7 +10268,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HREU: {
     mic: 'HREU',
@@ -10124,7 +10287,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   STSI: {
     mic: 'STSI',
@@ -10143,7 +10306,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '20181224',
-    comments: 'SYSTEMATIC INTERNALISER. AFTER ITS ACQUISITION BY HUDSON RIVER TRADING, SUN TRADING INTERNATIONAL HAS CEASED DEALING AND HAS BEEN DE-AUTHORISED.'
+    comments:
+      'SYSTEMATIC INTERNALISER. AFTER ITS ACQUISITION BY HUDSON RIVER TRADING, SUN TRADING INTERNATIONAL HAS CEASED DEALING AND HAS BEEN DE-AUTHORISED.',
   },
   CREM: {
     mic: 'CREM',
@@ -10162,7 +10326,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.'
+    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.',
   },
   DWFI: {
     mic: 'DWFI',
@@ -10181,7 +10345,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BNPP: {
     mic: 'BNPP',
@@ -10200,7 +10364,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CBKC: {
     mic: 'CBKC',
@@ -10219,7 +10383,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. THIS MIC WILL BE USED FOR TRANSACTIONS IN COMMODITY DERIVATIVES EXECUTED AS SI UNDER MIFID 2 REGIME.'
+    comments:
+      'SYSTEMATIC INTERNALISER. THIS MIC WILL BE USED FOR TRANSACTIONS IN COMMODITY DERIVATIVES EXECUTED AS SI UNDER MIFID 2 REGIME.',
   },
   CIBH: {
     mic: 'CIBH',
@@ -10238,7 +10403,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR HUNGARIAN GMT BONDS.'
+    comments: 'SYSTEMATIC INTERNALISER FOR HUNGARIAN GMT BONDS.',
   },
   CSMD: {
     mic: 'CSMD',
@@ -10257,13 +10422,14 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SIMD: {
     mic: 'SIMD',
     operatingMic: 'CSMD',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE BANK (EUROPE), S.A. - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE BANK (EUROPE), S.A. - SYSTEMATIC INTERNALISER',
     legalEntityName: 'CREDIT SUISSE BANK (EUROPE), S.A.',
     lei: '959800TMGPWX7NYM4R72',
     marketCategoryCode: 'SINT',
@@ -10276,7 +10442,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GMES: {
     mic: 'GMES',
@@ -10295,7 +10461,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GMEO: {
     mic: 'GMEO',
@@ -10314,13 +10480,14 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   KBLC: {
     mic: 'KBLC',
     operatingMic: 'KBLL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'QUINTET PRIVATE BANK (EUROPE) S.A. - EURO COMMERCIAL PAPERS',
+    marketNameInstitutionDescription:
+      'QUINTET PRIVATE BANK (EUROPE) S.A. - EURO COMMERCIAL PAPERS',
     legalEntityName: 'QUINTET PRIVATE BANK (EUROPE) S.A.',
     lei: 'KHCL65TP05J1HUW2D560',
     marketCategoryCode: 'NSPD',
@@ -10333,13 +10500,14 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KBLS: {
     mic: 'KBLS',
     operatingMic: 'KBLL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'QUINTET PRIVATE BANK (EUROPE) S.A. - STRUCTURED PRODUCTS',
+    marketNameInstitutionDescription:
+      'QUINTET PRIVATE BANK (EUROPE) S.A. - STRUCTURED PRODUCTS',
     legalEntityName: 'QUINTET PRIVATE BANK (EUROPE) S.A.',
     lei: 'KHCL65TP05J1HUW2D560',
     marketCategoryCode: 'NSPD',
@@ -10352,13 +10520,14 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KBLT: {
     mic: 'KBLT',
     operatingMic: 'KBLL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'QUINTET PRIVATE BANK (EUROPE) S.A. - FX TREASURY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'QUINTET PRIVATE BANK (EUROPE) S.A. - FX TREASURY DERIVATIVES',
     legalEntityName: 'QUINTET PRIVATE BANK (EUROPE) S.A.',
     lei: 'KHCL65TP05J1HUW2D560',
     marketCategoryCode: 'SINT',
@@ -10371,7 +10540,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KBLL: {
     mic: 'KBLL',
@@ -10390,7 +10559,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MHBP: {
     mic: 'MHBP',
@@ -10409,7 +10578,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.'
+    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.',
   },
   MHEU: {
     mic: 'MHEU',
@@ -10428,13 +10597,15 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER . LICENCE APPLIED FOR TO PROVIDE POST-BREXIT INVESTMENT SERVICES TO EU CLIENTS. ANTICIPATED SYSTEMATIC INTERNALISER IN BONDS.'
+    comments:
+      'SYSTEMATIC INTERNALISER . LICENCE APPLIED FOR TO PROVIDE POST-BREXIT INVESTMENT SERVICES TO EU CLIENTS. ANTICIPATED SYSTEMATIC INTERNALISER IN BONDS.',
   },
   UBCZ: {
     mic: 'UBCZ',
     operatingMic: 'UBCZ',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'UNICREDIT BANK CZECH REPUBLIC AND SLOVAKIA, A.S.',
+    marketNameInstitutionDescription:
+      'UNICREDIT BANK CZECH REPUBLIC AND SLOVAKIA, A.S.',
     legalEntityName: '',
     lei: 'KR6LSKV3BTSJRD41IF75',
     marketCategoryCode: 'NSPD',
@@ -10447,7 +10618,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETS: {
     mic: 'XETS',
@@ -10466,7 +10637,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'XETRA SME GROWTH MARKET.'
+    comments: 'XETRA SME GROWTH MARKET.',
   },
   FRAS: {
     mic: 'FRAS',
@@ -10485,7 +10656,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BOERSE FRANKFURT SME GROWTH MARKET.'
+    comments: 'BOERSE FRANKFURT SME GROWTH MARKET.',
   },
   ATLN: {
     mic: 'ATLN',
@@ -10504,7 +10675,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CEUE: {
     mic: 'CEUE',
@@ -10523,13 +10694,15 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '20181224',
-    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE. CHANGE OF CODE TO CEUX.'
+    comments:
+      'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE. CHANGE OF CODE TO CEUX.',
   },
   LBCW: {
     mic: 'LBCW',
     operatingMic: 'LBCW',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'LLOYDS BANK CORPORATE MARKETS WERTPAPIERHANDELSBANK GMBH',
+    marketNameInstitutionDescription:
+      'LLOYDS BANK CORPORATE MARKETS WERTPAPIERHANDELSBANK GMBH',
     legalEntityName: '',
     lei: '2138008P9NOMBRMROI73',
     marketCategoryCode: 'SINT',
@@ -10542,7 +10715,7 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VALX: {
     mic: 'VALX',
@@ -10561,7 +10734,8 @@ export const mics = {
     lastUpdateDate: '20181224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'VIRTU CLIENT MARKET MAKING IS A WHOLESALE MARKET MAKER AND BLOCK POSITIONER IN OTC AND NMS US EQUITIES.'
+    comments:
+      'VIRTU CLIENT MARKET MAKING IS A WHOLESALE MARKET MAKER AND BLOCK POSITIONER IN OTC AND NMS US EQUITIES.',
   },
   AGBP: {
     mic: 'AGBP',
@@ -10580,13 +10754,14 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CESI: {
     mic: 'CESI',
     operatingMic: 'CSOB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CESKOSLOVENSK� OBCHODN� BANKA, A.S. - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'CESKOSLOVENSK� OBCHODN� BANKA, A.S. - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'Q5BP2UEQ48R75BOTCB92',
     marketCategoryCode: 'SINT',
@@ -10599,7 +10774,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EBSN: {
     mic: 'EBSN',
@@ -10618,7 +10793,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FX DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FX DERIVATIVES.',
   },
   ECEU: {
     mic: 'ECEU',
@@ -10637,7 +10812,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   TPIO: {
     mic: 'TPIO',
@@ -10656,7 +10831,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   TPIC: {
     mic: 'TPIC',
@@ -10675,7 +10850,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   XTRD: {
     mic: 'XTRD',
@@ -10694,7 +10869,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORDERS ROUTING SYSTEM FOR CRYPTOCURRENCIES EXCHANGES.'
+    comments: 'ORDERS ROUTING SYSTEM FOR CRYPTOCURRENCIES EXCHANGES.',
   },
   MLEX: {
     mic: 'MLEX',
@@ -10713,7 +10888,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MLER: {
     mic: 'MLER',
@@ -10732,13 +10907,14 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MLES: {
     mic: 'MLES',
     operatingMic: 'MLEX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOFA SECURITIES EUROPE - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BOFA SECURITIES EUROPE - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '5493005ZUS38P483U064',
     marketCategoryCode: 'SINT',
@@ -10751,13 +10927,14 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MLIB: {
     mic: 'MLIB',
     operatingMic: 'MLIB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
+    marketNameInstitutionDescription:
+      'MERRILL LYNCH INTERNATIONAL BANK DESIGNATED ACTIVITY COMPANY',
     legalEntityName: '',
     lei: 'EQYXK86SF381Q21S3020',
     marketCategoryCode: 'NSPD',
@@ -10770,7 +10947,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '20181126',
-    comments: ''
+    comments: '',
   },
   DSME: {
     mic: 'DSME',
@@ -10789,7 +10966,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FSME: {
     mic: 'FSME',
@@ -10808,7 +10985,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNFI: {
     mic: 'XNFI',
@@ -10827,7 +11004,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ESPD: {
     mic: 'ESPD',
@@ -10846,7 +11023,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '20181126',
-    comments: 'ELECTRONIC FIXED INCOME TRADING PLATFORM.'
+    comments: 'ELECTRONIC FIXED INCOME TRADING PLATFORM.',
   },
   SSME: {
     mic: 'SSME',
@@ -10865,7 +11042,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ATHL: {
     mic: 'ATHL',
@@ -10884,7 +11061,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BCSC: {
     mic: 'BCSC',
@@ -10903,7 +11080,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CFIF: {
     mic: 'CFIF',
@@ -10922,13 +11099,14 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JESI: {
     mic: 'JESI',
     operatingMic: 'JEFE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'JEFFERIES EUROPE - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'JEFFERIES EUROPE - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '5493004I3LZM39BWHQ75',
     marketCategoryCode: 'SINT',
@@ -10941,7 +11119,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JEFE: {
     mic: 'JEFE',
@@ -10960,7 +11138,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MHBL: {
     mic: 'MHBL',
@@ -10979,7 +11157,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.'
+    comments: 'SYSTEMATIC INTERNALISER IN FX DERIVATIVES.',
   },
   NOWX: {
     mic: 'NOWX',
@@ -10998,7 +11176,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PLATFORM FOR NEGOTIABLE EUROPEAN COMMERCIAL PAPERS (NEU CP).'
+    comments: 'PLATFORM FOR NEGOTIABLE EUROPEAN COMMERCIAL PAPERS (NEU CP).',
   },
   PKOP: {
     mic: 'PKOP',
@@ -11017,7 +11195,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VCRS: {
     mic: 'VCRS',
@@ -11036,7 +11214,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VUSA: {
     mic: 'VUSA',
@@ -11055,7 +11233,8 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER OPERATING OTC AND ON EXCHANGE MARKET MAKING BUSINESSES AND EXECUTION SERVICES DIVISION IN US EQUITIES.'
+    comments:
+      'BROKER DEALER OPERATING OTC AND ON EXCHANGE MARKET MAKING BUSINESSES AND EXECUTION SERVICES DIVISION IN US EQUITIES.',
   },
   VFMI: {
     mic: 'VFMI',
@@ -11074,7 +11253,8 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "ALTERNATIVE TRADING SYSTEM FOR US EQUITIES EXECUTING VIRTU'S WHOLESALE, INSTITUTIONAL, CLIENT AND PROP FLOW."
+    comments:
+      "ALTERNATIVE TRADING SYSTEM FOR US EQUITIES EXECUTING VIRTU'S WHOLESALE, INSTITUTIONAL, CLIENT AND PROP FLOW.",
   },
   ABAN: {
     mic: 'ABAN',
@@ -11093,13 +11273,14 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BRDS: {
     mic: 'BRDS',
     operatingMic: 'BRDE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BRD - GROUPE SOCIETE GENERALE S.A. - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BRD - GROUPE SOCIETE GENERALE S.A. - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '5493008QRHH0XCLJ4238',
     marketCategoryCode: 'SINT',
@@ -11112,7 +11293,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EQIE: {
     mic: 'EQIE',
@@ -11131,7 +11312,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR SECURITIES FINANCING.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR SECURITIES FINANCING.',
   },
   EQLD: {
     mic: 'EQLD',
@@ -11150,7 +11331,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY'
+    comments: 'MULTILATERAL TRADING FACILITY',
   },
   GPBC: {
     mic: 'GPBC',
@@ -11169,7 +11350,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RTSX: {
     mic: 'RTSX',
@@ -11188,7 +11369,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DERIVATIVES MARKET OF MOSCOW EXCHANGE.'
+    comments: 'DERIVATIVES MARKET OF MOSCOW EXCHANGE.',
   },
   OHVO: {
     mic: 'OHVO',
@@ -11207,7 +11388,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR BONDS AND OTC DERIVATIVES.'
+    comments: 'ORGANISED TRADING FACILITY FOR BONDS AND OTC DERIVATIVES.',
   },
   RBCG: {
     mic: 'RBCG',
@@ -11226,7 +11407,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RMTF: {
     mic: 'RMTF',
@@ -11245,7 +11426,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   UCBA: {
     mic: 'UCBA',
@@ -11264,7 +11445,8 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. REGISTERED FOR SYSTEMATIC INTERNALISER BUT NON-ACTIVE.'
+    comments:
+      'SYSTEMATIC INTERNALISER. REGISTERED FOR SYSTEMATIC INTERNALISER BUT NON-ACTIVE.',
   },
   UCDE: {
     mic: 'UCDE',
@@ -11283,7 +11465,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   UCIT: {
     mic: 'UCIT',
@@ -11302,7 +11484,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BRGA: {
     mic: 'BRGA',
@@ -11321,7 +11503,7 @@ export const mics = {
     lastUpdateDate: '20181126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES AND BONDS, EQUITY DERIVATIVES.'
+    comments: 'EQUITIES AND BONDS, EQUITY DERIVATIVES.',
   },
   XNOR: {
     mic: 'XNOR',
@@ -11340,7 +11522,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XNXD: {
     mic: 'XNXD',
@@ -11359,7 +11541,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   BCMA: {
     mic: 'BCMA',
@@ -11378,7 +11560,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CSOB: {
     mic: 'CSOB',
@@ -11397,7 +11579,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ICXR: {
     mic: 'ICXR',
@@ -11416,7 +11598,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX.',
   },
   ICUR: {
     mic: 'ICUR',
@@ -11435,7 +11617,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX.',
   },
   IFXC: {
     mic: 'IFXC',
@@ -11454,7 +11636,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX.',
   },
   IFXA: {
     mic: 'IFXA',
@@ -11473,7 +11655,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX.',
   },
   IFXR: {
     mic: 'IFXR',
@@ -11492,7 +11674,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX.',
   },
   MUSN: {
     mic: 'MUSN',
@@ -11511,7 +11693,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SPDX: {
     mic: 'SPDX',
@@ -11530,13 +11712,14 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.',
   },
   MESI: {
     mic: 'MESI',
     operatingMic: 'MSEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY EUROPE S.E. - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY EUROPE S.E. - SYSTEMATIC INTERNALISER',
     legalEntityName: 'MORGAN STANLEY EUROPE SE',
     lei: '54930056FHWP7GIWYY08',
     marketCategoryCode: 'SINT',
@@ -11549,7 +11732,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NIBC: {
     mic: 'NIBC',
@@ -11568,7 +11751,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   UICE: {
     mic: 'UICE',
@@ -11587,7 +11770,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES, BONDS AND DERIVATIVES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES, BONDS AND DERIVATIVES.',
   },
   XNDU: {
     mic: 'XNDU',
@@ -11606,13 +11789,14 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GBWB: {
     mic: 'GBWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - GBP WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - GBP WB EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -11625,7 +11809,7 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ECSL: {
     mic: 'ECSL',
@@ -11644,13 +11828,14 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSCX: {
     mic: 'MSCX',
     operatingMic: 'MSAX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY MTF - CONTINUOUS CROSS DARK',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY MTF - CONTINUOUS CROSS DARK',
     legalEntityName: '',
     lei: 'PK168Q24DU7QQ2T4QF97',
     marketCategoryCode: 'MLTF',
@@ -11663,7 +11848,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: ''
+    comments: '',
   },
   MSAX: {
     mic: 'MSAX',
@@ -11682,7 +11867,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: ''
+    comments: '',
   },
   MSNT: {
     mic: 'MSNT',
@@ -11701,7 +11886,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: ''
+    comments: '',
   },
   MSEU: {
     mic: 'MSEU',
@@ -11720,13 +11905,14 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPIS: {
     mic: 'TPIS',
     operatingMic: 'TPIS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TULLETT PREBON - INSTITUTIONAL SERVICES - OTF',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON - INSTITUTIONAL SERVICES - OTF',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -11739,13 +11925,14 @@ export const mics = {
     lastUpdateDate: '20181022',
     lastValidationDate: '',
     expiryDate: '20181022',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   BRDL: {
     mic: 'BRDL',
     operatingMic: 'BRDE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BRD - GROUPE SOCIETE GENERALE S.A. - LIQUIDITY PROVIDER',
+    marketNameInstitutionDescription:
+      'BRD - GROUPE SOCIETE GENERALE S.A. - LIQUIDITY PROVIDER',
     legalEntityName: '',
     lei: '5493008QRHH0XCLJ4238',
     marketCategoryCode: 'NSPD',
@@ -11758,7 +11945,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LIQUIDITY PROVIDER.'
+    comments: 'LIQUIDITY PROVIDER.',
   },
   BRDE: {
     mic: 'BRDE',
@@ -11777,7 +11964,8 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OPERATING MIC COVERING OTC MARKETS FOR BRD - GROUPE SOCIETE GENERALE S.A.'
+    comments:
+      'OPERATING MIC COVERING OTC MARKETS FOR BRD - GROUPE SOCIETE GENERALE S.A.',
   },
   CIBC: {
     mic: 'CIBC',
@@ -11796,7 +11984,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CIBP: {
     mic: 'CIBP',
@@ -11815,7 +12003,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FTFM: {
     mic: 'FTFM',
@@ -11834,7 +12022,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY REGULATED MARKET.'
+    comments: 'MULTILATERAL TRADING FACILITY REGULATED MARKET.',
   },
   FTFS: {
     mic: 'FTFS',
@@ -11853,7 +12041,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CABK: {
     mic: 'CABK',
@@ -11872,13 +12060,14 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BARU: {
     mic: 'BARU',
     operatingMic: 'CCRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE EUROPE - REGULATED MARKET DARK BOOK (NL)',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE - REGULATED MARKET DARK BOOK (NL)',
     legalEntityName: 'CBOE EUROPE B.V.',
     lei: '2549007JY1TP7I1IMY80',
     marketCategoryCode: 'RMKT',
@@ -11891,13 +12080,14 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EUROPE - REGULATED MARKET DARK BOOK.'
+    comments: 'CBOE EUROPE - REGULATED MARKET DARK BOOK.',
   },
   BEUO: {
     mic: 'BEUO',
     operatingMic: 'CCRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE EUROPE - REGULATED MARKET OFF BOOK (NL)',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE - REGULATED MARKET OFF BOOK (NL)',
     legalEntityName: 'CBOE EUROPE B.V.',
     lei: '2549007JY1TP7I1IMY80',
     marketCategoryCode: 'RMKT',
@@ -11910,13 +12100,15 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EU - REGULATED MARKET SECURITIES MIC CODE FOR OFF-BOOK TRADES.'
+    comments:
+      'CBOE EU - REGULATED MARKET SECURITIES MIC CODE FOR OFF-BOOK TRADES.',
   },
   BEUT: {
     mic: 'BEUT',
     operatingMic: 'CCRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE EUROPE - REGULATED MARKET INTEGRATED BOOK (NL)',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE - REGULATED MARKET INTEGRATED BOOK (NL)',
     legalEntityName: 'CBOE EUROPE B.V.',
     lei: '2549007JY1TP7I1IMY80',
     marketCategoryCode: 'RMKT',
@@ -11929,7 +12121,8 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EU - REGULATED MARKET SECURITIES MIC CODE FOR INTEGRATED BOOK TRADES.'
+    comments:
+      'CBOE EU - REGULATED MARKET SECURITIES MIC CODE FOR INTEGRATED BOOK TRADES.',
   },
   CCRM: {
     mic: 'CCRM',
@@ -11948,7 +12141,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CAPA: {
     mic: 'CAPA',
@@ -11967,7 +12160,8 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT. OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EU.'
+    comments:
+      'APPROVED PUBLICATION ARRANGEMENT. OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EU.',
   },
   LISZ: {
     mic: 'LISZ',
@@ -11986,13 +12180,14 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EU LIS SERVICE.'
+    comments: 'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EU LIS SERVICE.',
   },
   CCXE: {
     mic: 'CCXE',
     operatingMic: 'CCXE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CBOE EUROPE EQUITIES - EUROPEAN EQUITIES (NL)',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE EQUITIES - EUROPEAN EQUITIES (NL)',
     legalEntityName: 'CBOE EUROPE B.V.',
     lei: '2549007JY1TP7I1IMY80',
     marketCategoryCode: 'MLTF',
@@ -12005,7 +12200,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.'
+    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.',
   },
   DEKA: {
     mic: 'DEKA',
@@ -12024,7 +12219,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IATS: {
     mic: 'IATS',
@@ -12043,7 +12238,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'IATS IS AN ALTERNATIVE TRADING SYSTEM OPERATED PURSUANT TO REGULATION ATS BY INTERACTIVE BROKERS LLC.'
+    comments:
+      'IATS IS AN ALTERNATIVE TRADING SYSTEM OPERATED PURSUANT TO REGULATION ATS BY INTERACTIVE BROKERS LLC.',
   },
   ICOT: {
     mic: 'ICOT',
@@ -12062,7 +12258,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   IPXP: {
     mic: 'IPXP',
@@ -12081,7 +12277,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR COMMERCIAL PROPERTY EQUITY.'
+    comments: 'REGISTERED MARKET FOR COMMERCIAL PROPERTY EQUITY.',
   },
   ISSI: {
     mic: 'ISSI',
@@ -12100,7 +12296,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JYSI: {
     mic: 'JYSI',
@@ -12119,7 +12315,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NWNV: {
     mic: 'NWNV',
@@ -12138,7 +12334,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTPB: {
     mic: 'OTPB',
@@ -12157,7 +12353,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RBHU: {
     mic: 'RBHU',
@@ -12176,7 +12372,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RENC: {
     mic: 'RENC',
@@ -12195,7 +12391,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPEU: {
     mic: 'TPEU',
@@ -12214,7 +12410,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WSIL: {
     mic: 'WSIL',
@@ -12233,7 +12429,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   INGW: {
     mic: 'INGW',
@@ -12252,7 +12448,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MAKX: {
     mic: 'MAKX',
@@ -12271,7 +12467,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WSIN: {
     mic: 'WSIN',
@@ -12290,7 +12486,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BGFX: {
     mic: 'BGFX',
@@ -12309,7 +12505,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR FX.'
+    comments: 'SYSTEMATIC INTERNALISER FOR FX.',
   },
   BGFI: {
     mic: 'BGFI',
@@ -12328,7 +12524,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR FIXED INCOME.'
+    comments: 'SYSTEMATIC INTERNALISER FOR FIXED INCOME.',
   },
   SLHB: {
     mic: 'SLHB',
@@ -12347,7 +12543,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SIBC: {
     mic: 'SIBC',
@@ -12366,7 +12562,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   WELN: {
     mic: 'WELN',
@@ -12385,7 +12581,7 @@ export const mics = {
     lastUpdateDate: '20180924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BMLB: {
     mic: 'BMLB',
@@ -12404,7 +12600,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   WELX: {
     mic: 'WELX',
@@ -12423,7 +12619,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   XSAT: {
     mic: 'XSAT',
@@ -12442,13 +12638,14 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BAIP: {
     mic: 'BAIP',
     operatingMic: 'BAIP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH EQUITY SWAP - INTERNAL PRICE SOURCE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH EQUITY SWAP - INTERNAL PRICE SOURCE',
     legalEntityName: '',
     lei: 'GGDZP1UYGU9STUHRDP48',
     marketCategoryCode: 'NSPD',
@@ -12461,13 +12658,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BAEP: {
     mic: 'BAEP',
     operatingMic: 'BAIP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH EQUITY SWAP - EXTERNAL PRICE SOURCE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH EQUITY SWAP - EXTERNAL PRICE SOURCE',
     legalEntityName: '',
     lei: 'GGDZP1UYGU9STUHRDP48',
     marketCategoryCode: 'NSPD',
@@ -12480,7 +12678,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DAVY: {
     mic: 'DAVY',
@@ -12499,13 +12697,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IECE: {
     mic: 'IECE',
     operatingMic: 'ICEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP ENERGY LTD OTF - EUROPEAN COMMODITIES AND ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'ICAP ENERGY LTD OTF - EUROPEAN COMMODITIES AND ENERGY DERIVATIVES',
     legalEntityName: '',
     lei: '213800CZM9YMSN4AL882',
     marketCategoryCode: 'OTFS',
@@ -12518,7 +12717,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR TRADING OF EUROPEAN COMMODITIES AND ENERGY DERIVATIVES.'
+    comments: 'OTF FOR TRADING OF EUROPEAN COMMODITIES AND ENERGY DERIVATIVES.',
   },
   IMCM: {
     mic: 'IMCM',
@@ -12537,7 +12736,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR COMMODITIES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR COMMODITIES.',
   },
   IMCD: {
     mic: 'IMCD',
@@ -12556,7 +12755,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR CREDIT DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR CREDIT DERIVATIVES.',
   },
   LIGA: {
     mic: 'LIGA',
@@ -12575,7 +12774,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   MBPL: {
     mic: 'MBPL',
@@ -12594,13 +12793,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TEMG: {
     mic: 'TEMG',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - GOVERNMENT BONDS - UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - GOVERNMENT BONDS - UK GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -12613,13 +12813,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.'
+    comments: 'MTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.',
   },
   TEOF: {
     mic: 'TEOF',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PREBON FX DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PREBON FX DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12632,13 +12833,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF PREBON FX DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF PREBON FX DERIVATIVES.',
   },
   TOMF: {
     mic: 'TOMF',
     operatingMic: 'TPES',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - MADRID - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - MADRID - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12651,13 +12853,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF  CORPORATE BONDS AND SECURITISED DEBT.'
+    comments: 'OTF FOR THE TRADING OF  CORPORATE BONDS AND SECURITISED DEBT.',
   },
   TEPG: {
     mic: 'TEPG',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - GOVERNMENT BONDS - EXCLUDING GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - GOVERNMENT BONDS - EXCLUDING GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12670,13 +12873,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TEPX: {
     mic: 'TEPX',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - FX DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - FX DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12689,13 +12893,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.',
   },
   TEPR: {
     mic: 'TEPR',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - REPOS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - REPOS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12708,13 +12913,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF REPOS.'
+    comments: 'OTF FOR THE TRADING OF REPOS.',
   },
   TEPM: {
     mic: 'TEPM',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - MONEY MARKET INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - MONEY MARKET INSTRUMENTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12727,7 +12933,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   TPFR: {
     mic: 'TPFR',
@@ -12746,13 +12952,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   TEPI: {
     mic: 'TEPI',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - INTEREST RATE DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - INTEREST RATE DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -12765,13 +12972,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES INTEREST RATE DERIVATIVES.'
+    comments:
+      'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES INTEREST RATE DERIVATIVES.',
   },
   TPMF: {
     mic: 'TPMF',
     operatingMic: 'TPIS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON - INSTITUTIONAL SERVICES - MIREXA - OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON - INSTITUTIONAL SERVICES - MIREXA - OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -12784,13 +12993,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   TPSY: {
     mic: 'TPSY',
     operatingMic: 'TPIS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON - INSTITUTIONAL SERVICES - TPSYNREX - OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON - INSTITUTIONAL SERVICES - TPSYNREX - OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -12803,13 +13014,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   TSUK: {
     mic: 'TSUK',
     operatingMic: 'TPSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - MTF - GOVERNMENT BONDS - UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - MTF - GOVERNMENT BONDS - UK GILTS',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'MLTF',
@@ -12822,13 +13035,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.',
   },
   TSMC: {
     mic: 'TSMC',
     operatingMic: 'TPSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - MTF - CREDIT DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - MTF - CREDIT DERIVATIVES',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'MLTF',
@@ -12841,13 +13056,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF CREDIT DERIVATIVES.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF CREDIT DERIVATIVES.',
   },
   TSMG: {
     mic: 'TSMG',
     operatingMic: 'TPSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - MTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - MTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'MLTF',
@@ -12860,13 +13077,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TSMI: {
     mic: 'TSMI',
     operatingMic: 'TPSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - MTF - MONEY MARKET INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - MTF - MONEY MARKET INSTRUMENTS',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'MLTF',
@@ -12879,13 +13098,15 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   TSMB: {
     mic: 'TSMB',
     operatingMic: 'TPSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - MTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - MTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'MLTF',
@@ -12898,7 +13119,8 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   WELS: {
     mic: 'WELS',
@@ -12911,32 +13133,35 @@ export const mics = {
     acronym: 'WCHV',
     isoCountryCodeIso_3166: 'US',
     city: 'NEW YORK',
-    website: 'WWW.WELLSFARGO.COM/CIB/INSTITUTIONAL-INVESTING/WATS-ELECTRONIC-TRADING/',
+    website:
+      'WWW.WELLSFARGO.COM/CIB/INSTITUTIONAL-INVESTING/WATS-ELECTRONIC-TRADING/',
     status: 'ACTIVE',
     creationDate: '20180827',
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: 'WELLS FARGO SECURITIES LIQUIDITY PARTITION AT LEVEL ATS.'
+    comments: 'WELLS FARGO SECURITIES LIQUIDITY PARTITION AT LEVEL ATS.',
   },
   CBAL: {
     mic: 'CBAL',
     operatingMic: 'CBAL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'COMMONWEALTH BANK OF AUSTRALIA - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'COMMONWEALTH BANK OF AUSTRALIA - LONDON BRANCH',
     legalEntityName: '',
     lei: 'MSFSBD3QN1GSN7Q6C537',
     marketCategoryCode: 'SINT',
     acronym: '',
     isoCountryCodeIso_3166: 'GB',
     city: 'LONDON',
-    website: 'WWW.COMMBANK.COM.AU/ABOUT-US/OUR-COMPANY/INTERNATIONAL-BRANCHES/EUROPE.HTML',
+    website:
+      'WWW.COMMBANK.COM.AU/ABOUT-US/OUR-COMPANY/INTERNATIONAL-BRANCHES/EUROPE.HTML',
     status: 'ACTIVE',
     creationDate: '20180827',
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.'
+    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.',
   },
   ICEN: {
     mic: 'ICEN',
@@ -12955,7 +13180,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   SCXA: {
     mic: 'SCXA',
@@ -12974,7 +13199,8 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SECURITIES, ALTERNATIVE TRADING SYSTEM (ATS).'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR SECURITIES, ALTERNATIVE TRADING SYSTEM (ATS).',
   },
   SIAB: {
     mic: 'SIAB',
@@ -12993,7 +13219,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BKSK: {
     mic: 'BKSK',
@@ -13012,7 +13238,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CMCI: {
     mic: 'CMCI',
@@ -13031,7 +13257,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MHBD: {
     mic: 'MHBD',
@@ -13050,7 +13276,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   CSOT: {
     mic: 'CSOT',
@@ -13069,7 +13295,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BILATERAL ORGANISED TRADING SYSTEM.'
+    comments: 'BILATERAL ORGANISED TRADING SYSTEM.',
   },
   MUSE: {
     mic: 'MUSE',
@@ -13088,13 +13314,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NABU: {
     mic: 'NABU',
     operatingMic: 'NABE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NAB EUROPE LIMITED  - FIXED INCOME SECURITIES',
+    marketNameInstitutionDescription:
+      'NAB EUROPE LIMITED  - FIXED INCOME SECURITIES',
     legalEntityName: '',
     lei: 'ABV0IUZB6XO4Z8ZOLN77',
     marketCategoryCode: 'SINT',
@@ -13107,7 +13334,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '20220425',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NABE: {
     mic: 'NABE',
@@ -13126,13 +13353,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '20220425',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NABA: {
     mic: 'NABA',
     operatingMic: 'NABL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NATIONAL AUSTRALIA BANK - FX DERIVATIVES AND FIXED INCOME SECURITIES',
+    marketNameInstitutionDescription:
+      'NATIONAL AUSTRALIA BANK - FX DERIVATIVES AND FIXED INCOME SECURITIES',
     legalEntityName: '',
     lei: 'F8SB4JFBSYQFRQEH3Z21',
     marketCategoryCode: 'SINT',
@@ -13145,7 +13373,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ABNA: {
     mic: 'ABNA',
@@ -13164,13 +13392,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BBIS: {
     mic: 'BBIS',
     operatingMic: 'BBIE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BARCLAYS BANK IRELAND PLC - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BARCLAYS BANK IRELAND PLC - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '2G5BKIC2CB69PRJH1W31',
     marketCategoryCode: 'SINT',
@@ -13183,7 +13412,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BBIE: {
     mic: 'BBIE',
@@ -13202,7 +13431,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ERST: {
     mic: 'ERST',
@@ -13221,7 +13450,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IKBS: {
     mic: 'IKBS',
@@ -13240,7 +13469,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TQEX: {
     mic: 'TQEX',
@@ -13259,13 +13488,14 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TQEB: {
     mic: 'TQEB',
     operatingMic: 'TQEX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TURQUOISE EUROPE - NYLON CASH ORDER BOOK',
+    marketNameInstitutionDescription:
+      'TURQUOISE EUROPE - NYLON CASH ORDER BOOK',
     legalEntityName: '',
     lei: '213800ZA8TWTNVG43376',
     marketCategoryCode: 'NSPD',
@@ -13278,7 +13508,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TQEM: {
     mic: 'TQEM',
@@ -13297,7 +13527,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TQEA: {
     mic: 'TQEA',
@@ -13316,7 +13546,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   APAW: {
     mic: 'APAW',
@@ -13335,7 +13565,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   NABL: {
     mic: 'NABL',
@@ -13354,7 +13584,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   OBKL: {
     mic: 'OBKL',
@@ -13373,7 +13603,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TWJP: {
     mic: 'TWJP',
@@ -13392,7 +13622,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PROPRIETARY TRADING SYSTEM.'
+    comments: 'PROPRIETARY TRADING SYSTEM.',
   },
   HRTF: {
     mic: 'HRTF',
@@ -13411,13 +13641,14 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SINGLE DEALER PLATFORM.'
+    comments: 'SINGLE DEALER PLATFORM.',
   },
   SMBB: {
     mic: 'SMBB',
     operatingMic: 'SMBB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUMITOMO MITSUI BANKING CORPORATION - BRUSSELS BRANCH',
+    marketNameInstitutionDescription:
+      'SUMITOMO MITSUI BANKING CORPORATION - BRUSSELS BRANCH',
     legalEntityName: '',
     lei: '5U0XI89JRFVHWIBS4F54',
     marketCategoryCode: 'SINT',
@@ -13430,7 +13661,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CGMD: {
     mic: 'CGMD',
@@ -13449,7 +13680,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXYY: {
     mic: 'EXYY',
@@ -13468,7 +13699,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSF: {
     mic: 'EXSF',
@@ -13487,7 +13718,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSP: {
     mic: 'EXSP',
@@ -13506,7 +13737,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSD: {
     mic: 'EXSD',
@@ -13525,7 +13756,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSB: {
     mic: 'EXSB',
@@ -13544,7 +13775,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSH: {
     mic: 'EXSH',
@@ -13563,7 +13794,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   HEMO: {
     mic: 'HEMO',
@@ -13582,7 +13813,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'HELLENIC ENERGY EXCHANGE.'
+    comments: 'HELLENIC ENERGY EXCHANGE.',
   },
   IMCT: {
     mic: 'IMCT',
@@ -13601,7 +13832,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   METZ: {
     mic: 'METZ',
@@ -13620,13 +13851,14 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MIBL: {
     mic: 'MIBL',
     operatingMic: 'MIBL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MITSUBISHI UFJ INVESTOR SERVICES AND BANKING',
+    marketNameInstitutionDescription:
+      'MITSUBISHI UFJ INVESTOR SERVICES AND BANKING',
     legalEntityName: '',
     lei: '2138002PVBMEHILJ1340',
     marketCategoryCode: 'SINT',
@@ -13639,7 +13871,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '20180723',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MUBL: {
     mic: 'MUBL',
@@ -13658,7 +13890,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MUBM: {
     mic: 'MUBM',
@@ -13677,7 +13909,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MUBP: {
     mic: 'MUBP',
@@ -13696,7 +13928,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RBIV: {
     mic: 'RBIV',
@@ -13715,13 +13947,14 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SMBG: {
     mic: 'SMBG',
     operatingMic: 'SMBG',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUMITOMO MITSUI BANKING CORPORATION - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'SUMITOMO MITSUI BANKING CORPORATION - LONDON BRANCH',
     legalEntityName: '',
     lei: '5U0XI89JRFVHWIBS4F54',
     marketCategoryCode: 'SINT',
@@ -13734,7 +13967,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TRQB: {
     mic: 'TRQB',
@@ -13753,7 +13986,8 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NON-DISPLAYED LARGE IN SCALE SERIES OF SCHEDULED BLOCK UNCROSSINGS.'
+    comments:
+      'NON-DISPLAYED LARGE IN SCALE SERIES OF SCHEDULED BLOCK UNCROSSINGS.',
   },
   MUBE: {
     mic: 'MUBE',
@@ -13772,7 +14006,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JPEU: {
     mic: 'JPEU',
@@ -13791,13 +14025,14 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SMBE: {
     mic: 'SMBE',
     operatingMic: 'SMBE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUMITOMO MITSUI BANKING CORPORATION EUROPE LIMITED',
+    marketNameInstitutionDescription:
+      'SUMITOMO MITSUI BANKING CORPORATION EUROPE LIMITED',
     legalEntityName: '',
     lei: 'NT7C58H5HPZYKZDPOO64',
     marketCategoryCode: 'NSPD',
@@ -13810,13 +14045,14 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INCLUDING EEA BRANCHES.'
+    comments: 'INCLUDING EEA BRANCHES.',
   },
   SMBP: {
     mic: 'SMBP',
     operatingMic: 'SMBP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUMITOMO MITSUI BANKING CORPORATION EUROPE LIMITED - PARIS BRANCH',
+    marketNameInstitutionDescription:
+      'SUMITOMO MITSUI BANKING CORPORATION EUROPE LIMITED - PARIS BRANCH',
     legalEntityName: '',
     lei: 'NT7C58H5HPZYKZDPOO64',
     marketCategoryCode: 'NSPD',
@@ -13829,7 +14065,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LEUE: {
     mic: 'LEUE',
@@ -13848,7 +14084,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: 'EQUITY MULTILATERAL TRADING.'
+    comments: 'EQUITY MULTILATERAL TRADING.',
   },
   LEUF: {
     mic: 'LEUF',
@@ -13867,7 +14103,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: 'FIXED INCOME MULTILATERAL TRADING.'
+    comments: 'FIXED INCOME MULTILATERAL TRADING.',
   },
   HELA: {
     mic: 'HELA',
@@ -13886,7 +14122,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NESI: {
     mic: 'NESI',
@@ -13905,7 +14141,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BHWA: {
     mic: 'BHWA',
@@ -13924,13 +14160,14 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FINN: {
     mic: 'FINN',
     operatingMic: 'FINR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINRA/NASDAQ TRF CARTERET (TRADE REPORTING FACILITY)',
+    marketNameInstitutionDescription:
+      'FINRA/NASDAQ TRF CARTERET (TRADE REPORTING FACILITY)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'TRFS',
@@ -13943,14 +14180,15 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FINRA HAS TWO TRF PARTICIPANTS, NYSE AND NASDAQ.'
+    comments: 'FINRA HAS TWO TRF PARTICIPANTS, NYSE AND NASDAQ.',
   },
   ISBA: {
     mic: 'ISBA',
     operatingMic: 'ISBA',
     oprtSgmt: 'OPRT',
     marketNameInstitutionDescription: 'BANCA DI ASTI',
-    legalEntityName: 'CASSA DI RISPARMIO DI ASTI S.P.A. SIGLABILE: BANCA C.R.ASTI S.P.A., OPPURE BANCA DI ASTI',
+    legalEntityName:
+      'CASSA DI RISPARMIO DI ASTI S.P.A. SIGLABILE: BANCA C.R.ASTI S.P.A., OPPURE BANCA DI ASTI',
     lei: '81560027D07F9BDB8436',
     marketCategoryCode: 'SINT',
     acronym: '',
@@ -13962,7 +14200,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ISBV: {
     mic: 'ISBV',
@@ -13981,7 +14219,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '20221128',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   KBCB: {
     mic: 'KBCB',
@@ -14000,7 +14238,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MAQI: {
     mic: 'MAQI',
@@ -14019,7 +14257,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MAQU: {
     mic: 'MAQU',
@@ -14038,7 +14276,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XFCI: {
     mic: 'XFCI',
@@ -14057,13 +14295,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM FOR INDEX CALCULATION.'
+    comments: 'ELECTRONIC PLATFORM FOR INDEX CALCULATION.',
   },
   XFDA: {
     mic: 'XFDA',
     operatingMic: 'FICO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINANCIALCONTENT - DIGITAL ASSET TRADE REPORTING FACILITY',
+    marketNameInstitutionDescription:
+      'FINANCIALCONTENT - DIGITAL ASSET TRADE REPORTING FACILITY',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -14076,7 +14315,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FICO: {
     mic: 'FICO',
@@ -14095,7 +14334,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LBBW: {
     mic: 'LBBW',
@@ -14114,13 +14353,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GENERAL MIC FOR LANDESBANK BADEN-WUERTTEMBERG (LBBW).'
+    comments: 'GENERAL MIC FOR LANDESBANK BADEN-WUERTTEMBERG (LBBW).',
   },
   LBWL: {
     mic: 'LBWL',
     operatingMic: 'LBBW',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'LBBW - LANDESBANK BADEN-WUERTTEMBERG - LIQUIDITY PROVIDER',
+    marketNameInstitutionDescription:
+      'LBBW - LANDESBANK BADEN-WUERTTEMBERG - LIQUIDITY PROVIDER',
     legalEntityName: '',
     lei: 'B81CK4ESI35472RHJ606',
     marketCategoryCode: 'NSPD',
@@ -14133,13 +14373,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LIQUIDITY PROVIDER.'
+    comments: 'LIQUIDITY PROVIDER.',
   },
   LBWS: {
     mic: 'LBWS',
     operatingMic: 'LBBW',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'LBBW - LANDESBANK BADEN-WUERTTEMBERG - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'LBBW - LANDESBANK BADEN-WUERTTEMBERG - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'B81CK4ESI35472RHJ606',
     marketCategoryCode: 'SINT',
@@ -14152,7 +14393,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NURO: {
     mic: 'NURO',
@@ -14171,7 +14412,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'MULTILATERAL TRADING FACILITY - NASDAQ OMX  EUROPE - NEW MIC'
+    comments: 'MULTILATERAL TRADING FACILITY - NASDAQ OMX  EUROPE - NEW MIC',
   },
   XNLX: {
     mic: 'XNLX',
@@ -14190,7 +14431,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'MULTILATERAL TRADING FACILITY FOR LISTED DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR LISTED DERIVATIVES.',
   },
   MTSM: {
     mic: 'MTSM',
@@ -14209,7 +14450,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'NON-GOVERNMENT BONDS.'
+    comments: 'NON-GOVERNMENT BONDS.',
   },
   NURD: {
     mic: 'NURD',
@@ -14228,13 +14469,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   TEMC: {
     mic: 'TEMC',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - COMMODITIES AND ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - COMMODITIES AND ENERGY DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -14247,13 +14489,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'MTF FOR THE TRADING OF COMMODITIES & ENERGY DERIVATIVES.'
+    comments: 'MTF FOR THE TRADING OF COMMODITIES & ENERGY DERIVATIVES.',
   },
   TPMG: {
     mic: 'TPMG',
     operatingMic: 'TPIS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON - INSTITUTIONAL SERVICES - MIREXA - OTF - GOVERNMENT BONDS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON - INSTITUTIONAL SERVICES - MIREXA - OTF - GOVERNMENT BONDS',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -14266,7 +14509,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS.'
+    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS.',
   },
   EDGA: {
     mic: 'EDGA',
@@ -14285,7 +14528,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EDGD: {
     mic: 'EDGD',
@@ -14304,7 +14547,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EDGA U.S. EQUITIES EXCHANGE NON-DISPLAYED.'
+    comments: 'CBOE EDGA U.S. EQUITIES EXCHANGE NON-DISPLAYED.',
   },
   EDGO: {
     mic: 'EDGO',
@@ -14323,7 +14566,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EDGX OPTIONS EXCHANGE.'
+    comments: 'CBOE EDGX OPTIONS EXCHANGE.',
   },
   EDGX: {
     mic: 'EDGX',
@@ -14342,7 +14585,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BATS: {
     mic: 'BATS',
@@ -14361,7 +14604,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BATY: {
     mic: 'BATY',
@@ -14380,7 +14623,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE BYX U.S. EQUITIES EXCHANGE.'
+    comments: 'CBOE BYX U.S. EQUITIES EXCHANGE.',
   },
   BYXD: {
     mic: 'BYXD',
@@ -14399,7 +14642,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE BYX U.S. EQUITIES EXCHANGE NON-DISPLAYED.'
+    comments: 'CBOE BYX U.S. EQUITIES EXCHANGE NON-DISPLAYED.',
   },
   BZXD: {
     mic: 'BZXD',
@@ -14418,7 +14661,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE BZX U.S. EQUITIES EXCHANGE NON-DISPLAYED.'
+    comments: 'CBOE BZX U.S. EQUITIES EXCHANGE NON-DISPLAYED.',
   },
   EDDP: {
     mic: 'EDDP',
@@ -14437,7 +14680,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EDGX U.S. EQUITIES EXCHANGE NON-DISPLAYED.'
+    comments: 'CBOE EDGX U.S. EQUITIES EXCHANGE NON-DISPLAYED.',
   },
   BATO: {
     mic: 'BATO',
@@ -14456,7 +14699,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ZFXM: {
     mic: 'ZFXM',
@@ -14475,13 +14718,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BAPE: {
     mic: 'BAPE',
     operatingMic: 'BAPE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BLOOMBERG DATA REPORTING SERVICES B.V. - APA',
+    marketNameInstitutionDescription:
+      'BLOOMBERG DATA REPORTING SERVICES B.V. - APA',
     legalEntityName: '',
     lei: '2549009C0EQ5M7H6ZY67',
     marketCategoryCode: 'APPA',
@@ -14494,13 +14738,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   BASE: {
     mic: 'BASE',
     operatingMic: 'BASE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH - SWAP EXECUTIONS',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH - SWAP EXECUTIONS',
     legalEntityName: '',
     lei: '549300VDY6P7FVMD4W57',
     marketCategoryCode: 'NSPD',
@@ -14513,13 +14758,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BCEE: {
     mic: 'BCEE',
     operatingMic: 'BCEE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: "BANQUE ET CAISSE D'EPARGNE DE L'ETAT, LUXEMBOURG - BCEE",
+    marketNameInstitutionDescription:
+      "BANQUE ET CAISSE D'EPARGNE DE L'ETAT, LUXEMBOURG - BCEE",
     legalEntityName: '',
     lei: 'R7CQUF1DQM73HUTV1078',
     marketCategoryCode: 'SINT',
@@ -14532,7 +14778,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. MIC FOR SI ACTIVITY.'
+    comments: 'SYSTEMATIC INTERNALISER. MIC FOR SI ACTIVITY.',
   },
   BLIQ: {
     mic: 'BLIQ',
@@ -14551,7 +14797,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BSFX: {
     mic: 'BSFX',
@@ -14570,7 +14816,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BDEA: {
     mic: 'BDEA',
@@ -14589,7 +14835,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BLBS: {
     mic: 'BLBS',
@@ -14608,7 +14854,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BPKO: {
     mic: 'BPKO',
@@ -14627,7 +14873,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BTFE: {
     mic: 'BTFE',
@@ -14646,13 +14892,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HRSI: {
     mic: 'HRSI',
     operatingMic: 'HRSI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'HUDSON RIVER TRADING - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'HUDSON RIVER TRADING - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '213800QDJQNB4546YV16',
     marketCategoryCode: 'SINT',
@@ -14665,7 +14912,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   R5FX: {
     mic: 'R5FX',
@@ -14684,13 +14931,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR FX SPOT TRADING.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR FX SPOT TRADING.',
   },
   SISI: {
     mic: 'SISI',
     operatingMic: 'SISI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUSQUEHANNA INTERNATIONAL SECURITIES LIMITED',
+    marketNameInstitutionDescription:
+      'SUSQUEHANNA INTERNATIONAL SECURITIES LIMITED',
     legalEntityName: '',
     lei: '635400IAV22ZOU1NFS89',
     marketCategoryCode: 'SINT',
@@ -14703,7 +14951,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BEIS: {
     mic: 'BEIS',
@@ -14722,7 +14970,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BLBB: {
     mic: 'BLBB',
@@ -14741,13 +14989,14 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BASX: {
     mic: 'BASX',
     operatingMic: 'BASX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA MERRILL LYNCH - SIMPLEX BLAST X',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA MERRILL LYNCH - SIMPLEX BLAST X',
     legalEntityName: '',
     lei: 'I7E80LI4NVVT41W1WB02',
     marketCategoryCode: 'NSPD',
@@ -14760,7 +15009,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   HRTX: {
     mic: 'HRTX',
@@ -14779,7 +15028,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SINGLE DEALER PLATFORM.'
+    comments: 'SINGLE DEALER PLATFORM.',
   },
   ICAS: {
     mic: 'ICAS',
@@ -14798,7 +15047,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '20180528',
-    comments: 'MTF - ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES'
+    comments: 'MTF - ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES',
   },
   INCR: {
     mic: 'INCR',
@@ -14817,13 +15066,14 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTELLIGENTCROSS MIDPOINT.'
+    comments: 'INTELLIGENTCROSS MIDPOINT.',
   },
   IOFB: {
     mic: 'IOFB',
     operatingMic: 'IOTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP SECURITIES OTF - BUTLER FX DERIVATIVES',
+    marketNameInstitutionDescription:
+      'ICAP SECURITIES OTF - BUTLER FX DERIVATIVES',
     legalEntityName: '',
     lei: '213800NMEZS3MD2IUP33',
     marketCategoryCode: 'OTFS',
@@ -14836,7 +15086,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '20180528',
-    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.',
   },
   MSRP: {
     mic: 'MSRP',
@@ -14855,7 +15105,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING SYSTEM FOR EQUITIES.'
+    comments: 'INTERNAL CROSSING SYSTEM FOR EQUITIES.',
   },
   OCSI: {
     mic: 'OCSI',
@@ -14874,7 +15124,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EDRF: {
     mic: 'EDRF',
@@ -14893,7 +15143,7 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BNSX: {
     mic: 'BNSX',
@@ -14912,13 +15162,14 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSE: {
     mic: 'EXSE',
     operatingMic: 'EXSE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'EXANE BNP PARIBAS - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'EXANE BNP PARIBAS - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '969500UP76J52A9OXU27',
     marketCategoryCode: 'SINT',
@@ -14931,13 +15182,14 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MSSI: {
     mic: 'MSSI',
     operatingMic: 'MSIP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY AND CO. INTERNATIONAL PLC - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY AND CO. INTERNATIONAL PLC - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '4PQUHN3JPFGFNF3BB653',
     marketCategoryCode: 'SINT',
@@ -14950,13 +15202,14 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TPLF: {
     mic: 'TPLF',
     operatingMic: 'TPIS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON - INSTITUTIONAL SERVICES - LIQUIDITY CHAIN - OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON - INSTITUTIONAL SERVICES - LIQUIDITY CHAIN - OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -14969,7 +15222,8 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '20180423',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   MELO: {
     mic: 'MELO',
@@ -14988,7 +15242,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MIDPOINT EXTENDED POINT ORDER (M-ELO).'
+    comments: 'MIDPOINT EXTENDED POINT ORDER (M-ELO).',
   },
   AIXK: {
     mic: 'AIXK',
@@ -15007,7 +15261,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CBLC: {
     mic: 'CBLC',
@@ -15026,7 +15280,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '20220425',
-    comments: 'CITIBLOC IS AN ATS UNDER THE OPERATING MIC CGMI'
+    comments: 'CITIBLOC IS AN ATS UNDER THE OPERATING MIC CGMI',
   },
   CIOI: {
     mic: 'CIOI',
@@ -15045,7 +15299,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20180930',
-    comments: ''
+    comments: '',
   },
   LBCM: {
     mic: 'LBCM',
@@ -15064,7 +15318,8 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. REGISTERED MARKET FOR LLOYDS BANK CORPORATE MARKET.'
+    comments:
+      'SYSTEMATIC INTERNALISER. REGISTERED MARKET FOR LLOYDS BANK CORPORATE MARKET.',
   },
   RLBO: {
     mic: 'RLBO',
@@ -15083,7 +15338,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SBEX: {
     mic: 'SBEX',
@@ -15102,7 +15357,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VTBC: {
     mic: 'VTBC',
@@ -15121,7 +15376,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XEHQ: {
     mic: 'XEHQ',
@@ -15140,7 +15395,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUREX REPO ELECTRONIC TRADING PLATFORM FOR HQLA BLOCKCHAIN.'
+    comments: 'EUREX REPO ELECTRONIC TRADING PLATFORM FOR HQLA BLOCKCHAIN.',
   },
   ZARX: {
     mic: 'ZARX',
@@ -15159,7 +15414,7 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IPSX: {
     mic: 'IPSX',
@@ -15178,13 +15433,14 @@ export const mics = {
     lastUpdateDate: '20180423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR COMMERCIAL PROPERTY EQUITY.'
+    comments: 'REGISTERED MARKET FOR COMMERCIAL PROPERTY EQUITY.',
   },
   TPDE: {
     mic: 'TPDE',
     operatingMic: 'TPDE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - FRANKFURT - OTF',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - FRANKFURT - OTF',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -15197,13 +15453,14 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   TSFG: {
     mic: 'TSFG',
     operatingMic: 'TPDE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - FRANKFURT - OTF - GOVERNMENT BONDS - EX GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - FRANKFURT - OTF - GOVERNMENT BONDS - EX GILTS',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -15216,13 +15473,15 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TSFF: {
     mic: 'TSFF',
     operatingMic: 'TPDE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON SECURITIES - FRANKFURT - OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON SECURITIES - FRANKFURT - OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -15235,7 +15494,8 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   COMM: {
     mic: 'COMM',
@@ -15254,13 +15514,14 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MOSE: {
     mic: 'MOSE',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FIRST NORTH SWEDEN - NORWAY AUCTION ON DEMAND',
+    marketNameInstitutionDescription:
+      'FIRST NORTH SWEDEN - NORWAY AUCTION ON DEMAND',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'NSPD',
@@ -15273,7 +15534,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DOSE: {
     mic: 'DOSE',
@@ -15292,7 +15553,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ATLB: {
     mic: 'ATLB',
@@ -15311,7 +15572,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: 'REGISTERED FOR BROKING WHOLESALE GAS PRODUCTS.'
+    comments: 'REGISTERED FOR BROKING WHOLESALE GAS PRODUCTS.',
   },
   CCMS: {
     mic: 'CCMS',
@@ -15330,7 +15591,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DAIW: {
     mic: 'DAIW',
@@ -15349,7 +15610,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IBEQ: {
     mic: 'IBEQ',
@@ -15368,13 +15629,14 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IINX: {
     mic: 'IINX',
     operatingMic: 'IINX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'INDIA INTERNATIONAL EXCHANGE (IFSC) LIMITED',
+    marketNameInstitutionDescription:
+      'INDIA INTERNATIONAL EXCHANGE (IFSC) LIMITED',
     legalEntityName: '',
     lei: '335800YBAB9E2H7QUW21',
     marketCategoryCode: 'NSPD',
@@ -15387,7 +15649,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "INDIA'S FIRST INTERNATIONAL EXCHANGE."
+    comments: "INDIA'S FIRST INTERNATIONAL EXCHANGE.",
   },
   EMLD: {
     mic: 'EMLD',
@@ -15406,7 +15668,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'MIAX EMERALD: ELECTRONIC TRADING FOR DERIVATIVES.'
+    comments: 'MIAX EMERALD: ELECTRONIC TRADING FOR DERIVATIVES.',
   },
   OPCO: {
     mic: 'OPCO',
@@ -15425,7 +15687,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TSBX: {
     mic: 'TSBX',
@@ -15444,7 +15706,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20220331',
-    comments: 'ATS FOR UNLISTED OTC EQUITIES.'
+    comments: 'ATS FOR UNLISTED OTC EQUITIES.',
   },
   TMXS: {
     mic: 'TMXS',
@@ -15463,7 +15725,8 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'TMX SELECT IS AN EQUITIES ATS IN CANADA. OWNED BY TMX GROUP, IT LEVERAGES THE SAME TECHNOLOGY AS THE TORONTO STOCK EXCHANGE TO TRADE SECURITIES THAT ARE LISTED BY EXCHANGES THAT ARE RECOGNIZED IN A CANADIAN JURISDICTION.'
+    comments:
+      'TMX SELECT IS AN EQUITIES ATS IN CANADA. OWNED BY TMX GROUP, IT LEVERAGES THE SAME TECHNOLOGY AS THE TORONTO STOCK EXCHANGE TO TRADE SECURITIES THAT ARE LISTED BY EXCHANGES THAT ARE RECOGNIZED IN A CANADIAN JURISDICTION.',
   },
   BELF: {
     mic: 'BELF',
@@ -15482,7 +15745,8 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR CORPORATE, COVERED AND OTHER PUBLIC BONDS ISSUED BY BELGIAN ISSUERS.'
+    comments:
+      'SYSTEMATIC INTERNALISER FOR CORPORATE, COVERED AND OTHER PUBLIC BONDS ISSUED BY BELGIAN ISSUERS.',
   },
   BELB: {
     mic: 'BELB',
@@ -15501,7 +15765,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IMTF: {
     mic: 'IMTF',
@@ -15520,7 +15784,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   MAGM: {
     mic: 'MAGM',
@@ -15539,7 +15803,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20190904',
-    comments: 'REGISTERED ALTERNATIVE TRADING SYSTEM FOR EQUITIES.'
+    comments: 'REGISTERED ALTERNATIVE TRADING SYSTEM FOR EQUITIES.',
   },
   ASXC: {
     mic: 'ASXC',
@@ -15558,13 +15822,15 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRE POINT ARE ORDER TYPES IN ASX TRADE ENABLING EXECUTION AT THE PREVAILING MIDPOINT OF THE BEST BID AND OFFER OF THE ASX CENTRAL LIMIT ORDER BOOK.'
+    comments:
+      'CENTRE POINT ARE ORDER TYPES IN ASX TRADE ENABLING EXECUTION AT THE PREVAILING MIDPOINT OF THE BEST BID AND OFFER OF THE ASX CENTRAL LIMIT ORDER BOOK.',
   },
   CFBC: {
     mic: 'CFBC',
     operatingMic: 'XCFE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CHINA FOREIGN EXCHANGE TRADE SYSTEM - SHANGHAI - HONG KONG BOND CONNECT',
+    marketNameInstitutionDescription:
+      'CHINA FOREIGN EXCHANGE TRADE SYSTEM - SHANGHAI - HONG KONG BOND CONNECT',
     legalEntityName: '',
     lei: '3003009BLGRRBA4K8M15',
     marketCategoryCode: 'NSPD',
@@ -15577,7 +15843,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BLXA: {
     mic: 'BLXA',
@@ -15596,7 +15862,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BLOCK FOCUSED LIQUIDITY POOL FOR AUSTRALIAN EQUITIES.'
+    comments: 'BLOCK FOCUSED LIQUIDITY POOL FOR AUSTRALIAN EQUITIES.',
   },
   GFKS: {
     mic: 'GFKS',
@@ -15615,7 +15881,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SGOE: {
     mic: 'SGOE',
@@ -15634,7 +15900,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SG OPTION EUROPE - SYSTEMATIC INTERNALISER BUSINESSES.'
+    comments: 'SG OPTION EUROPE - SYSTEMATIC INTERNALISER BUSINESSES.',
   },
   UBSA: {
     mic: 'UBSA',
@@ -15653,7 +15919,8 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ALTERNATIVE TRADING SYSTEM FOR CROSSING ORDERS IN US EQUITIES'
+    comments:
+      'REGISTERED ALTERNATIVE TRADING SYSTEM FOR CROSSING ORDERS IN US EQUITIES',
   },
   UBSS: {
     mic: 'UBSS',
@@ -15672,7 +15939,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES.',
   },
   IBIS: {
     mic: 'IBIS',
@@ -15691,7 +15958,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   PDQD: {
     mic: 'PDQD',
@@ -15710,7 +15977,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   TFSD: {
     mic: 'TFSD',
@@ -15729,7 +15996,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRAS: {
     mic: 'TRAS',
@@ -15748,7 +16015,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TSIG: {
     mic: 'TSIG',
@@ -15767,7 +16034,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UTSL: {
     mic: 'UTSL',
@@ -15786,7 +16053,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SBMF: {
     mic: 'SBMF',
@@ -15805,7 +16072,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   BMFM: {
     mic: 'BMFM',
@@ -15824,7 +16091,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   BMFA: {
     mic: 'BMFA',
@@ -15843,13 +16110,14 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'ALTERNATIVE TRADING SYSTEM FOR EQUITIES.'
+    comments: 'ALTERNATIVE TRADING SYSTEM FOR EQUITIES.',
   },
   BMFX: {
     mic: 'BMFX',
     operatingMic: 'BMFX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SIBIU MONETARY- FINANCIAL AND COMMODITIES EXCHANGE',
+    marketNameInstitutionDescription:
+      'SIBIU MONETARY- FINANCIAL AND COMMODITIES EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -15862,7 +16130,8 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: "THE SIBIU MONETARY FINANCIAL AND COMMODITIES EXCHANGE (BURSA MONETAR FINANCIAR� SI DE M�RFURI SIBIU OR BMFMS IN ROMANIAN) IS ROMANIA'S SECOND LARGEST FINANCIAL MARKET."
+    comments:
+      "THE SIBIU MONETARY FINANCIAL AND COMMODITIES EXCHANGE (BURSA MONETAR FINANCIAR� SI DE M�RFURI SIBIU OR BMFMS IN ROMANIAN) IS ROMANIA'S SECOND LARGEST FINANCIAL MARKET.",
   },
   CSZH: {
     mic: 'CSZH',
@@ -15881,7 +16150,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BILATERAL ORGANISED TRADING FACILITY.'
+    comments: 'BILATERAL ORGANISED TRADING FACILITY.',
   },
   STAL: {
     mic: 'STAL',
@@ -15900,7 +16169,8 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'ELECTRONIC/VOICE HYBRID TRADING PLATFORM FOR BONDS AND OTC DERIVATIVES.'
+    comments:
+      'ELECTRONIC/VOICE HYBRID TRADING PLATFORM FOR BONDS AND OTC DERIVATIVES.',
   },
   JASR: {
     mic: 'JASR',
@@ -15919,7 +16189,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   XIJP: {
     mic: 'XIJP',
@@ -15938,13 +16208,14 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   XMCE: {
     mic: 'XMCE',
     operatingMic: 'BMEX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MERCADO CONTINUO ESPANOL - CONTINUOUS MARKET',
+    marketNameInstitutionDescription:
+      'MERCADO CONTINUO ESPANOL - CONTINUOUS MARKET',
     legalEntityName: '',
     lei: '95980028KS1LJ8HY2T43',
     marketCategoryCode: 'NSPD',
@@ -15957,7 +16228,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   EUWA: {
     mic: 'EUWA',
@@ -15976,7 +16247,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EXSY: {
     mic: 'EXSY',
@@ -15995,7 +16266,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   A2XX: {
     mic: 'A2XX',
@@ -16014,7 +16285,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   FXOP: {
     mic: 'FXOP',
@@ -16033,7 +16304,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FX OPTIONS TRADING FACILITY.'
+    comments: 'FX OPTIONS TRADING FACILITY.',
   },
   BOND: {
     mic: 'BOND',
@@ -16052,7 +16323,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'REGULATED MARKET FOR GOVERNMENT DEBT SECURITIES.'
+    comments: 'REGULATED MARKET FOR GOVERNMENT DEBT SECURITIES.',
   },
   TFSG: {
     mic: 'TFSG',
@@ -16071,7 +16342,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'TRADE NAME: TRAYPORT'
+    comments: 'TRADE NAME: TRAYPORT',
   },
   TCDS: {
     mic: 'TCDS',
@@ -16090,7 +16361,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRDE: {
     mic: 'TRDE',
@@ -16109,7 +16380,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SECURITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR SECURITIES.',
   },
   NAVE: {
     mic: 'NAVE',
@@ -16128,7 +16399,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: 'TRADE NAME: NAVESIS ETF.'
+    comments: 'TRADE NAME: NAVESIS ETF.',
   },
   ZAPA: {
     mic: 'ZAPA',
@@ -16147,7 +16418,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   AKIS: {
     mic: 'AKIS',
@@ -16166,7 +16437,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'BANCA AKROS SYSTEMATIC INTERNALISER.'
+    comments: 'BANCA AKROS SYSTEMATIC INTERNALISER.',
   },
   BPSX: {
     mic: 'BPSX',
@@ -16185,13 +16456,15 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. EXECUTING VENUE FOR OTC DERIVATIVES FX.'
+    comments:
+      'SYSTEMATIC INTERNALISER. EXECUTING VENUE FOR OTC DERIVATIVES FX.',
   },
   ISWE: {
     mic: 'ISWE',
     operatingMic: 'IGDL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP GLOBAL DERIVATIVES LIMITED - ELECTRONIC',
+    marketNameInstitutionDescription:
+      'ICAP GLOBAL DERIVATIVES LIMITED - ELECTRONIC',
     legalEntityName: '',
     lei: '213800C2MCT5QBE5VW36',
     marketCategoryCode: 'MLTF',
@@ -16204,7 +16477,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES � CLOB.'
+    comments: 'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES � CLOB.',
   },
   ISWV: {
     mic: 'ISWV',
@@ -16217,13 +16490,15 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'GB',
     city: 'LONDON',
-    website: 'WWW.ICAP.COM/WHAT-WE-DO/OUR-MARKETS-AND-PRODUCTS/PRODUCTS/MEDIUM-LONG-TERM-INTEREST-RATE-SWAPS.ASPX',
+    website:
+      'WWW.ICAP.COM/WHAT-WE-DO/OUR-MARKETS-AND-PRODUCTS/PRODUCTS/MEDIUM-LONG-TERM-INTEREST-RATE-SWAPS.ASPX',
     status: 'ACTIVE',
     creationDate: '20171225',
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES � VOICE / RFQ.'
+    comments:
+      'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES � VOICE / RFQ.',
   },
   IGDL: {
     mic: 'IGDL',
@@ -16236,13 +16511,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'GB',
     city: 'LONDON',
-    website: 'WWW.ICAP.COM/WHAT-WE-DO/OUR-MIFID-II-VENUES/ICAP-GLOBAL-DERIVATIVES-MTF.ASPX',
+    website:
+      'WWW.ICAP.COM/WHAT-WE-DO/OUR-MIFID-II-VENUES/ICAP-GLOBAL-DERIVATIVES-MTF.ASPX',
     status: 'ACTIVE',
     creationDate: '20161128',
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments: 'MTF/SEF FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   HPCV: {
     mic: 'HPCV',
@@ -16261,7 +16537,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   JSSI: {
     mic: 'JSSI',
@@ -16280,7 +16556,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SEBX: {
     mic: 'SEBX',
@@ -16299,13 +16575,14 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '20180122',
-    comments: 'SKANDINAVISKA ENSKILDA BANKEN AB LIQUIDITY POOL.'
+    comments: 'SKANDINAVISKA ENSKILDA BANKEN AB LIQUIDITY POOL.',
   },
   TWGP: {
     mic: 'TWGP',
     operatingMic: 'TWGP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TRADEWEB EUROPE LIMITED - GLOBAL TRADING PLATFORM',
+    marketNameInstitutionDescription:
+      'TRADEWEB EUROPE LIMITED - GLOBAL TRADING PLATFORM',
     legalEntityName: '',
     lei: '2138001WXZQOPMPA3D50',
     marketCategoryCode: 'NSPD',
@@ -16318,7 +16595,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GMGD: {
     mic: 'GMGD',
@@ -16337,7 +16614,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GMGL: {
     mic: 'GMGL',
@@ -16356,7 +16633,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NPEX: {
     mic: 'NPEX',
@@ -16375,7 +16652,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES AND BONDS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES AND BONDS.',
   },
   OAPA: {
     mic: 'OAPA',
@@ -16394,7 +16671,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT OPERATED BY OSLO BORS.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT OPERATED BY OSLO BORS.',
   },
   DDTX: {
     mic: 'DDTX',
@@ -16413,7 +16690,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   HPCX: {
     mic: 'HPCX',
@@ -16432,7 +16709,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SB1M: {
     mic: 'SB1M',
@@ -16451,7 +16728,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SEDR: {
     mic: 'SEDR',
@@ -16470,7 +16747,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: 'EQUITY CROWDFUNDING PLATFORM.'
+    comments: 'EQUITY CROWDFUNDING PLATFORM.',
   },
   ANTS: {
     mic: 'ANTS',
@@ -16489,7 +16766,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IENG: {
     mic: 'IENG',
@@ -16508,7 +16785,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: 'PLATFORM FOR OTC TRADE IN NATURAL GAS AND ELECTRICITY.'
+    comments: 'PLATFORM FOR OTC TRADE IN NATURAL GAS AND ELECTRICITY.',
   },
   SGMY: {
     mic: 'SGMY',
@@ -16527,7 +16804,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'AUCTION BOOK.'
+    comments: 'AUCTION BOOK.',
   },
   SGMX: {
     mic: 'SGMX',
@@ -16546,7 +16823,7 @@ export const mics = {
     lastUpdateDate: '20100222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EUROPEAN EQUITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR EUROPEAN EQUITIES.',
   },
   SSBM: {
     mic: 'SSBM',
@@ -16565,7 +16842,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.'
+    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.',
   },
   SSBI: {
     mic: 'SSBI',
@@ -16584,13 +16861,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DBES: {
     mic: 'DBES',
     operatingMic: 'DBAG',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'DEUTSCHE BANK AG - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'DEUTSCHE BANK AG - SYSTEMATIC INTERNALISER',
     legalEntityName: 'DEUTSCHE BANK AG',
     lei: '7LTWFZYICNSX8D621K86',
     marketCategoryCode: 'SINT',
@@ -16603,7 +16881,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBAG: {
     mic: 'DBAG',
@@ -16622,7 +16900,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MKAP: {
     mic: 'MKAP',
@@ -16641,7 +16919,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GSAL: {
     mic: 'GSAL',
@@ -16660,7 +16938,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSXH: {
     mic: 'GSXH',
@@ -16679,7 +16957,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL CROSSING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL CROSSING FACILITY.',
   },
   SIGH: {
     mic: 'SIGH',
@@ -16698,7 +16976,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SWEE: {
     mic: 'SWEE',
@@ -16717,7 +16995,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SWLT: {
     mic: 'SWLT',
@@ -16736,7 +17014,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SWLV: {
     mic: 'SWLV',
@@ -16755,13 +17033,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TECO: {
     mic: 'TECO',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - COMMODITY AND ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - COMMODITY AND ENERGY DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -16774,7 +17053,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF COMMODITY AND ENERGY DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF COMMODITY AND ENERGY DERIVATIVES.',
   },
   XZAP: {
     mic: 'XZAP',
@@ -16793,7 +17072,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR SMALL AND MEDIUM-SIZED ENTERPRISES.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR SMALL AND MEDIUM-SIZED ENTERPRISES.',
   },
   ODDO: {
     mic: 'ODDO',
@@ -16812,7 +17092,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ODOC: {
     mic: 'ODOC',
@@ -16831,7 +17111,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PULX: {
     mic: 'PULX',
@@ -16850,7 +17130,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: ''
+    comments: '',
   },
   SANT: {
     mic: 'SANT',
@@ -16869,7 +17149,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   UBIN: {
     mic: 'UBIN',
@@ -16888,7 +17168,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSLB: {
     mic: 'CSLB',
@@ -16907,7 +17187,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JISI: {
     mic: 'JISI',
@@ -16926,13 +17206,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JEFS: {
     mic: 'JEFS',
     operatingMic: 'JISI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'JEFFERIES INTERNATIONAL - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'JEFFERIES INTERNATIONAL - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'S5THZMDUJCTQZBTRVI98',
     marketCategoryCode: 'SINT',
@@ -16945,7 +17226,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VTPS: {
     mic: 'VTPS',
@@ -16964,7 +17245,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY (OTF) FOR STRUCTURED PRODUCTS AND BONDS. LIVE IN JANUARY 2018.'
+    comments:
+      'ORGANISED TRADING FACILITY (OTF) FOR STRUCTURED PRODUCTS AND BONDS. LIVE IN JANUARY 2018.',
   },
   VWDX: {
     mic: 'VWDX',
@@ -16983,7 +17265,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VTLS: {
     mic: 'VTLS',
@@ -17002,7 +17284,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OVER-THE-COUNTER (OTC) TRADING PLATFORM FOR STRUCTURED PRODUCTS, EQUITIES AND BONDS.'
+    comments:
+      'OVER-THE-COUNTER (OTC) TRADING PLATFORM FOR STRUCTURED PRODUCTS, EQUITIES AND BONDS.',
   },
   BAMX: {
     mic: 'BAMX',
@@ -17021,7 +17304,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CROSSING ENGINE FOR EQUITIES.'
+    comments: 'CROSSING ENGINE FOR EQUITIES.',
   },
   IMCO: {
     mic: 'IMCO',
@@ -17040,7 +17323,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC ORGANISED TRADING PLATFORM.'
+    comments: 'ELECTRONIC ORGANISED TRADING PLATFORM.',
   },
   ENSX: {
     mic: 'ENSX',
@@ -17059,7 +17342,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: 'SEB ENSKILADA LIQUIDITY POOL.'
+    comments: 'SEB ENSKILADA LIQUIDITY POOL.',
   },
   SEBS: {
     mic: 'SEBS',
@@ -17078,7 +17361,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SEB SYSTEMATIC INTERNALISER.'
+    comments: 'SEB SYSTEMATIC INTERNALISER.',
   },
   INCA: {
     mic: 'INCA',
@@ -17097,7 +17380,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SSOB: {
     mic: 'SSOB',
@@ -17116,7 +17399,8 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CORPORATE BONDS, COVERED BONDS, ETFS, SUPRANATIONAL, SOVEREIGN AND AGENCY (SSA).'
+    comments:
+      'CORPORATE BONDS, COVERED BONDS, ETFS, SUPRANATIONAL, SOVEREIGN AND AGENCY (SSA).',
   },
   XABC: {
     mic: 'XABC',
@@ -17135,7 +17419,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GFIC: {
     mic: 'GFIC',
@@ -17154,7 +17438,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KELR: {
     mic: 'KELR',
@@ -17173,13 +17457,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRAL SECURITIES DEPOSITORY.'
+    comments: 'CENTRAL SECURITIES DEPOSITORY.',
   },
   MLXN: {
     mic: 'MLXN',
     operatingMic: 'MLXN',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH INSTINCT X - EUROPE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH INSTINCT X - EUROPE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'ATSS',
@@ -17192,13 +17477,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: ''
+    comments: '',
   },
   MLAX: {
     mic: 'MLAX',
     operatingMic: 'MLXN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH AUCTION CROSS',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH AUCTION CROSS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -17211,7 +17497,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: 'INSTINCT-X AUCTION CROSS FACILITY'
+    comments: 'INSTINCT-X AUCTION CROSS FACILITY',
   },
   XBOX: {
     mic: 'XBOX',
@@ -17230,7 +17516,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NORD: {
     mic: 'NORD',
@@ -17249,7 +17535,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   OTXB: {
     mic: 'OTXB',
@@ -17268,7 +17554,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SEMX: {
     mic: 'SEMX',
@@ -17287,7 +17573,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XAPA: {
     mic: 'XAPA',
@@ -17306,7 +17592,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   AACA: {
     mic: 'AACA',
@@ -17325,7 +17611,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ABSI: {
     mic: 'ABSI',
@@ -17344,7 +17630,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BINV: {
     mic: 'BINV',
@@ -17363,7 +17649,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   GLMX: {
     mic: 'GLMX',
@@ -17382,7 +17668,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.',
   },
   GTXE: {
     mic: 'GTXE',
@@ -17401,7 +17688,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GTX ELECTRONIC COMMUNICATIONS NETWORK.'
+    comments: 'GTX ELECTRONIC COMMUNICATIONS NETWORK.',
   },
   JPCB: {
     mic: 'JPCB',
@@ -17420,13 +17707,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   REST: {
     mic: 'REST',
     operatingMic: 'NEXS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NEX SEF MTF - RESET - RISK MITIGATION SERVICES',
+    marketNameInstitutionDescription:
+      'NEX SEF MTF - RESET - RISK MITIGATION SERVICES',
     legalEntityName: '',
     lei: '213800H2XQKVMB58W490',
     marketCategoryCode: 'SEFS',
@@ -17439,7 +17727,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY'
+    comments: 'SWAP EXECUTION FACILITY',
   },
   NLBX: {
     mic: 'NLBX',
@@ -17458,7 +17746,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XREP: {
     mic: 'XREP',
@@ -17477,7 +17765,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CH REPO MARKET OPERATED BY SIX REPO AG.'
+    comments: 'CH REPO MARKET OPERATED BY SIX REPO AG.',
   },
   ROSR: {
     mic: 'ROSR',
@@ -17496,7 +17784,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWISS INTERBANK REPO MARKET OPERATED BY SIX REPO AG.'
+    comments: 'SWISS INTERBANK REPO MARKET OPERATED BY SIX REPO AG.',
   },
   XROT: {
     mic: 'XROT',
@@ -17515,7 +17803,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC SPOT MARKET.'
+    comments: 'OTC SPOT MARKET.',
   },
   XLLB: {
     mic: 'XLLB',
@@ -17534,7 +17822,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XVPB: {
     mic: 'XVPB',
@@ -17553,7 +17841,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. REGISTERED MARKET FOR FX OTC DERIVATIVES.'
+    comments:
+      'SYSTEMATIC INTERNALISER. REGISTERED MARKET FOR FX OTC DERIVATIVES.',
   },
   HBPL: {
     mic: 'HBPL',
@@ -17572,7 +17861,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   LMAO: {
     mic: 'LMAO',
@@ -17591,7 +17880,8 @@ export const mics = {
     lastUpdateDate: '20100125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS UNDERLYINGS IN MULTIPLE ASSETS CLASSES INCLUDING INDICES/RATES/COMMODITIES.'
+    comments:
+      'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS UNDERLYINGS IN MULTIPLE ASSETS CLASSES INCLUDING INDICES/RATES/COMMODITIES.',
   },
   LMAE: {
     mic: 'LMAE',
@@ -17610,7 +17900,8 @@ export const mics = {
     lastUpdateDate: '20100125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS UNDERLYINGS IN MULTIPLE ASSETS CLASSES INCLUDING EQUITIES.'
+    comments:
+      'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS UNDERLYINGS IN MULTIPLE ASSETS CLASSES INCLUDING EQUITIES.',
   },
   LMAF: {
     mic: 'LMAF',
@@ -17629,7 +17920,8 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'REGULATED MTF FOR CFDS IN MULTIPLE ASSETS CLASSES INCLUDING FX AND CASH-SETTLED DERIVATIVES.'
+    comments:
+      'REGULATED MTF FOR CFDS IN MULTIPLE ASSETS CLASSES INCLUDING FX AND CASH-SETTLED DERIVATIVES.',
   },
   XABG: {
     mic: 'XABG',
@@ -17648,7 +17940,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   ALSI: {
     mic: 'ALSI',
@@ -17667,7 +17959,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   APCL: {
     mic: 'APCL',
@@ -17686,7 +17978,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "APEX'S CLEARING HOUSE."
+    comments: "APEX'S CLEARING HOUSE.",
   },
   SBSI: {
     mic: 'SBSI',
@@ -17705,7 +17997,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TDBL: {
     mic: 'TDBL',
@@ -17724,7 +18016,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BNPA: {
     mic: 'BNPA',
@@ -17743,7 +18035,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BNPF: {
     mic: 'BNPF',
@@ -17762,7 +18054,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BNPS: {
     mic: 'BNPS',
@@ -17781,7 +18073,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SEDX: {
     mic: 'SEDX',
@@ -17800,7 +18092,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   CMED: {
     mic: 'CMED',
@@ -17819,7 +18111,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'CME EUROPE TRADING PLATFORM'
+    comments: 'CME EUROPE TRADING PLATFORM',
   },
   ICEO: {
     mic: 'ICEO',
@@ -17838,13 +18130,14 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '',
     expiryDate: '20230724',
-    comments: ''
+    comments: '',
   },
   IECL: {
     mic: 'IECL',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP E. AND C. OTF � ICAP COMMODITIES AND ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TP ICAP E. AND C. OTF � ICAP COMMODITIES AND ENERGY DERIVATIVES',
     legalEntityName: 'TP ICAP E. AND C. LIMITED',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -17857,13 +18150,14 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF COMMODITIES AND ENERGY DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF COMMODITIES AND ENERGY DERIVATIVES.',
   },
   IOFI: {
     mic: 'IOFI',
     operatingMic: 'IOTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP UK OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'ICAP UK OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -17876,7 +18170,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF CORPORATE BONDS & SECURITISED DEBT.'
+    comments: 'OTF FOR THE TRADING OF CORPORATE BONDS & SECURITISED DEBT.',
   },
   IOFX: {
     mic: 'IOFX',
@@ -17895,13 +18189,14 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.',
   },
   IOGB: {
     mic: 'IOGB',
     operatingMic: 'IOTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP UK OTF - GOVERNMENT BONDS EXCLUDING  UK GILTS',
+    marketNameInstitutionDescription:
+      'ICAP UK OTF - GOVERNMENT BONDS EXCLUDING  UK GILTS',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -17914,7 +18209,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING  UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING  UK GILTS.',
   },
   IOCD: {
     mic: 'IOCD',
@@ -17933,7 +18228,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF CREDIT DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF CREDIT DERIVATIVES.',
   },
   IOED: {
     mic: 'IOED',
@@ -17952,13 +18247,14 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF EQUITY DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF EQUITY DERIVATIVES.',
   },
   IOGI: {
     mic: 'IOGI',
     operatingMic: 'IOTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP UK OTF - GOVERNMENT BONDS - UK GILTS',
+    marketNameInstitutionDescription:
+      'ICAP UK OTF - GOVERNMENT BONDS - UK GILTS',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -17971,7 +18267,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.',
   },
   IOIR: {
     mic: 'IOIR',
@@ -17990,7 +18286,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   IOMM: {
     mic: 'IOMM',
@@ -18009,7 +18305,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   ISWA: {
     mic: 'ISWA',
@@ -18028,7 +18324,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '',
-    comments: 'AUTHORISED MTF FOR OF EURO INTEREST RATE SWAPS.'
+    comments: 'AUTHORISED MTF FOR OF EURO INTEREST RATE SWAPS.',
   },
   MDRV: {
     mic: 'MDRV',
@@ -18047,7 +18343,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ENERGY EXCHANGE (IBERIAN GAS MARKET).'
+    comments: 'ENERGY EXCHANGE (IBERIAN GAS MARKET).',
   },
   NWMS: {
     mic: 'NWMS',
@@ -18066,7 +18362,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RBCE: {
     mic: 'RBCE',
@@ -18085,7 +18381,7 @@ export const mics = {
     lastUpdateDate: '20130624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES BROKER FILL.'
+    comments: 'EQUITIES BROKER FILL.',
   },
   IIDX: {
     mic: 'IIDX',
@@ -18104,7 +18400,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'POINT-IN-TIME DARK ATS FOR US EQUITIES.'
+    comments: 'POINT-IN-TIME DARK ATS FOR US EQUITIES.',
   },
   IBLX: {
     mic: 'IBLX',
@@ -18123,7 +18419,8 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'VOLUME-TRIGGERED, MULTI-PARTY DARK CONTINUOUS BLOCK CROSSING ATS FOR US EQUITIES.'
+    comments:
+      'VOLUME-TRIGGERED, MULTI-PARTY DARK CONTINUOUS BLOCK CROSSING ATS FOR US EQUITIES.',
   },
   RCBX: {
     mic: 'RCBX',
@@ -18142,13 +18439,15 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'CONTINUOUS DARK LIMIT ORDER BOOK THAT ALLOWS PARTICIPANTS TO INTERACT ONLY WITH SPECIFIED COUNTERPARTIES.'
+    comments:
+      'CONTINUOUS DARK LIMIT ORDER BOOK THAT ALLOWS PARTICIPANTS TO INTERACT ONLY WITH SPECIFIED COUNTERPARTIES.',
   },
   IFSM: {
     mic: 'IFSM',
     operatingMic: 'XMAL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INSTITUTIONAL FINANCIAL SECURITIES MARKET',
+    marketNameInstitutionDescription:
+      'INSTITUTIONAL FINANCIAL SECURITIES MARKET',
     legalEntityName: '',
     lei: '5299009CKES2S5E3YG94',
     marketCategoryCode: 'RMKT',
@@ -18161,7 +18460,8 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PROFESSIONAL INVESTOR MARKET FOR ASSET BACKED SECURITIES, BONDS, DERIVATIVES AND SECURITISED PRODUCTS'
+    comments:
+      'PROFESSIONAL INVESTOR MARKET FOR ASSET BACKED SECURITIES, BONDS, DERIVATIVES AND SECURITISED PRODUCTS',
   },
   MTSS: {
     mic: 'MTSS',
@@ -18180,7 +18480,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'B2B SEGMENT'
+    comments: 'B2B SEGMENT',
   },
   MTSW: {
     mic: 'MTSW',
@@ -18199,7 +18499,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '20171127',
-    comments: 'B2C SEGMENT OF EUROMTS LTD.'
+    comments: 'B2C SEGMENT OF EUROMTS LTD.',
   },
   XSGA: {
     mic: 'XSGA',
@@ -18218,13 +18518,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SOCIETE GENERALE - SYSTEMATIC INTERNALISER BUSINESSES.'
+    comments: 'SOCIETE GENERALE - SYSTEMATIC INTERNALISER BUSINESSES.',
   },
   ANLP: {
     mic: 'ANLP',
     operatingMic: 'ANZL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED',
+    marketNameInstitutionDescription:
+      'AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED',
     legalEntityName: '',
     lei: 'JHE42UYNWWTJB8YTTU19',
     marketCategoryCode: 'NSPD',
@@ -18237,7 +18538,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LIQUIDITY PROVIDER.'
+    comments: 'LIQUIDITY PROVIDER.',
   },
   KBLM: {
     mic: 'KBLM',
@@ -18256,7 +18557,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   KOTF: {
     mic: 'KOTF',
@@ -18275,7 +18576,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR BONDS AND DERIVATIVES.'
+    comments: 'OTF FOR BONDS AND DERIVATIVES.',
   },
   LASP: {
     mic: 'LASP',
@@ -18294,7 +18595,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MACB: {
     mic: 'MACB',
@@ -18313,7 +18614,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TDON: {
     mic: 'TDON',
@@ -18332,7 +18633,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TSAF OTF FOR DELTA ONE PRODUCTS.'
+    comments: 'TSAF OTF FOR DELTA ONE PRODUCTS.',
   },
   TSAF: {
     mic: 'TSAF',
@@ -18351,7 +18652,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   UBIS: {
     mic: 'UBIS',
@@ -18370,7 +18671,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR UNIPOL BANCA BRANDED BONDS.'
+    comments: 'SYSTEMATIC INTERNALISER FOR UNIPOL BANCA BRANDED BONDS.',
   },
   BRFQ: {
     mic: 'BRFQ',
@@ -18389,7 +18690,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: 'REQUEST FOR QUOTE SYSTEM.'
+    comments: 'REQUEST FOR QUOTE SYSTEM.',
   },
   BNTW: {
     mic: 'BNTW',
@@ -18408,7 +18709,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: 'NEGOTIATED TRADE WAIVER SYSTEM.'
+    comments: 'NEGOTIATED TRADE WAIVER SYSTEM.',
   },
   BLOX: {
     mic: 'BLOX',
@@ -18427,7 +18728,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: 'PRICE REFERENCE WAIVER SYSTEM.'
+    comments: 'PRICE REFERENCE WAIVER SYSTEM.',
   },
   IOTC: {
     mic: 'IOTC',
@@ -18446,7 +18747,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIEL: {
     mic: 'XIEL',
@@ -18465,13 +18766,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOAA: {
     mic: 'XOAA',
     operatingMic: 'XOSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'OSLO BORS ASA - OSLO AXESS LIT X AUCTIONS',
+    marketNameInstitutionDescription:
+      'OSLO BORS ASA - OSLO AXESS LIT X AUCTIONS',
     legalEntityName: '',
     lei: '5967007LIEEXZXHDL433',
     marketCategoryCode: 'NSPD',
@@ -18484,13 +18786,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LISTED INSTRUMENTS.'
+    comments: 'LISTED INSTRUMENTS.',
   },
   BASI: {
     mic: 'BASI',
     operatingMic: 'BANA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA, NATIONAL ASSOCIATION - LONDON BRANCH OFFICE - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA, NATIONAL ASSOCIATION - LONDON BRANCH OFFICE - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'B4TYDEB6GKMZO031MB27',
     marketCategoryCode: 'SINT',
@@ -18503,7 +18806,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BANA: {
     mic: 'BANA',
@@ -18522,13 +18825,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOAL: {
     mic: 'BOAL',
     operatingMic: 'BANA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA, NATIONAL ASSOCIATION - LONDON BRANCH OFFICE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA, NATIONAL ASSOCIATION - LONDON BRANCH OFFICE',
     legalEntityName: '',
     lei: 'B4TYDEB6GKMZO031MB27',
     marketCategoryCode: 'NSPD',
@@ -18541,7 +18845,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSEC: {
     mic: 'CSEC',
@@ -18560,13 +18864,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MLSI: {
     mic: 'MLSI',
     operatingMic: 'MLIX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MERRILL LYNCH INTERNATIONAL - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'MERRILL LYNCH INTERNATIONAL - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'GGDZP1UYGU9STUHRDP48',
     marketCategoryCode: 'SINT',
@@ -18579,7 +18884,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MLIX: {
     mic: 'MLIX',
@@ -18598,7 +18903,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MLRQ: {
     mic: 'MLRQ',
@@ -18617,7 +18922,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SVEX: {
     mic: 'SVEX',
@@ -18636,7 +18941,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SVES: {
     mic: 'SVES',
@@ -18655,7 +18960,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   AAPA: {
     mic: 'AAPA',
@@ -18674,7 +18979,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   CIMV: {
     mic: 'CIMV',
@@ -18693,7 +18998,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR DERIVATIVES INSTRUMENTS.'
+    comments: 'ORGANISED TRADING FACILITY FOR DERIVATIVES INSTRUMENTS.',
   },
   CIMB: {
     mic: 'CIMB',
@@ -18712,13 +19017,14 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR BONDS INSTRUMENTS.'
+    comments: 'ORGANISED TRADING FACILITY FOR BONDS INSTRUMENTS.',
   },
   CIME: {
     mic: 'CIME',
     operatingMic: 'CIMD',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CIMD S.V. S.A. - OTF FOR ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'CIMD S.V. S.A. - OTF FOR ENERGY DERIVATIVES',
     legalEntityName: '',
     lei: '529900MLKOEV3XDRCP63',
     marketCategoryCode: 'OTFS',
@@ -18731,7 +19037,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR ENERGY DERIVATIVES INSTRUMENTS.'
+    comments: 'ORGANISED TRADING FACILITY FOR ENERGY DERIVATIVES INSTRUMENTS.',
   },
   CIMD: {
     mic: 'CIMD',
@@ -18750,7 +19056,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   CURX: {
     mic: 'CURX',
@@ -18769,7 +19075,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOREIGN EXCHANGE ELECTRONIC COMMUNICATION NETWORK (ECN).'
+    comments: 'FOREIGN EXCHANGE ELECTRONIC COMMUNICATION NETWORK (ECN).',
   },
   INGE: {
     mic: 'INGE',
@@ -18788,7 +19094,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR SPRINTERS AND EQUITY.'
+    comments: 'SYSTEMATIC INTERNALISER FOR SPRINTERS AND EQUITY.',
   },
   INGF: {
     mic: 'INGF',
@@ -18807,7 +19113,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR FX.'
+    comments: 'SYSTEMATIC INTERNALISER FOR FX.',
   },
   SKSI: {
     mic: 'SKSI',
@@ -18826,7 +19132,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SQUA: {
     mic: 'SQUA',
@@ -18845,7 +19151,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR OTC EQUITY DERIVATIVES.'
+    comments: 'ORGANISED TRADING FACILITY FOR OTC EQUITY DERIVATIVES.',
   },
   SSBT: {
     mic: 'SSBT',
@@ -18864,7 +19170,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SSFX: {
     mic: 'SSFX',
@@ -18883,7 +19189,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.'
+    comments: 'STATE STREET FOREIGN EXCHANGE SYSTEMATIC INTERNALISER.',
   },
   AFSO: {
     mic: 'AFSO',
@@ -18902,7 +19208,8 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR BONDS (CORPORATE, GOVERNMENT, T-BILL, CP, CD, MTN).'
+    comments:
+      'ORGANISED TRADING FACILITY FOR BONDS (CORPORATE, GOVERNMENT, T-BILL, CP, CD, MTN).',
   },
   AFSX: {
     mic: 'AFSX',
@@ -18921,7 +19228,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR FX FORWARDS.'
+    comments: 'ORGANISED TRADING FACILITY FOR FX FORWARDS.',
   },
   AFSL: {
     mic: 'AFSL',
@@ -18940,7 +19247,7 @@ export const mics = {
     lastUpdateDate: '20180122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR STRUCTURED PRODUCTS.'
+    comments: 'ORGANISED TRADING FACILITY FOR STRUCTURED PRODUCTS.',
   },
   AFSA: {
     mic: 'AFSA',
@@ -18959,7 +19266,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   AFSI: {
     mic: 'AFSI',
@@ -18978,7 +19285,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR INTEREST RATE DERIVATIVES.'
+    comments: 'ORGANISED TRADING FACILITY FOR INTEREST RATE DERIVATIVES.',
   },
   ARIA: {
     mic: 'ARIA',
@@ -18997,7 +19304,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DVFX: {
     mic: 'DVFX',
@@ -19016,7 +19323,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED FOR FOREIGN EXCHANGE OPTIONS AND OTC FX DERIVATIVES.'
+    comments: 'REGISTERED FOR FOREIGN EXCHANGE OPTIONS AND OTC FX DERIVATIVES.',
   },
   ETPA: {
     mic: 'ETPA',
@@ -19035,7 +19342,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE SPOT ENERGY CONTRACTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE SPOT ENERGY CONTRACTS.',
   },
   LOUI: {
     mic: 'LOUI',
@@ -19054,7 +19361,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RABO: {
     mic: 'RABO',
@@ -19073,7 +19380,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BBVA: {
     mic: 'BBVA',
@@ -19092,7 +19399,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BTNL: {
     mic: 'BTNL',
@@ -19111,7 +19418,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM, DESIGNATED CONTRACT MARKET (DCM).'
+    comments: 'ELECTRONIC TRADING PLATFORM, DESIGNATED CONTRACT MARKET (DCM).',
   },
   CAPI: {
     mic: 'CAPI',
@@ -19130,7 +19437,8 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ORGANISED TRADING FACILITY FOR BONDS AND DERIVATIVES (INTEREST RATES AND FX).'
+    comments:
+      'REGISTERED ORGANISED TRADING FACILITY FOR BONDS AND DERIVATIVES (INTEREST RATES AND FX).',
   },
   XRCB: {
     mic: 'XRCB',
@@ -19149,7 +19457,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   APEX: {
     mic: 'APEX',
@@ -19168,7 +19476,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR DERIVATIVES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR DERIVATIVES.',
   },
   XGAT: {
     mic: 'XGAT',
@@ -19187,7 +19495,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TGSI: {
     mic: 'TGSI',
@@ -19206,7 +19514,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TGAT: {
     mic: 'TGAT',
@@ -19225,7 +19533,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XGRM: {
     mic: 'XGRM',
@@ -19244,13 +19552,15 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TRADEGATE EXCHANGE IS AN OFFICIAL REGULATED STOCK EXCHANGE IN BERLIN/GERMANY FOR SHARES, BONDS, ETFS AND FONDS.'
+    comments:
+      'TRADEGATE EXCHANGE IS AN OFFICIAL REGULATED STOCK EXCHANGE IN BERLIN/GERMANY FOR SHARES, BONDS, ETFS AND FONDS.',
   },
   CGMT: {
     mic: 'CGMT',
     operatingMic: 'CGML',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CITIGROUP GLOBAL MARKETS  LIMITED - EMEA TRADING',
+    marketNameInstitutionDescription:
+      'CITIGROUP GLOBAL MARKETS  LIMITED - EMEA TRADING',
     legalEntityName: '',
     lei: 'XKZZ2JZF41MRHTR1V493',
     marketCategoryCode: 'RMKT',
@@ -19263,7 +19573,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   NYSI: {
     mic: 'NYSI',
@@ -19282,7 +19592,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XMAL: {
     mic: 'XMAL',
@@ -19301,7 +19611,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CASI: {
     mic: 'CASI',
@@ -19320,7 +19630,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CNSI: {
     mic: 'CNSI',
@@ -19339,7 +19649,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   TRQA: {
     mic: 'TRQA',
@@ -19358,7 +19668,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORDER BOOK FOR TURQUOISE FREQUENT TRANSPARENT AUCTION TRADING.'
+    comments: 'ORDER BOOK FOR TURQUOISE FREQUENT TRANSPARENT AUCTION TRADING.',
   },
   XOSA: {
     mic: 'XOSA',
@@ -19377,7 +19687,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CCEU: {
     mic: 'CCEU',
@@ -19396,7 +19706,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XTXM: {
     mic: 'XTXM',
@@ -19415,7 +19725,7 @@ export const mics = {
     lastUpdateDate: '20171127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITY, FX, FIXED INCOME AND COMMODITY PRODUCTS.'
+    comments: 'EQUITY, FX, FIXED INCOME AND COMMODITY PRODUCTS.',
   },
   GFSM: {
     mic: 'GFSM',
@@ -19434,7 +19744,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   GFSO: {
     mic: 'GFSO',
@@ -19453,7 +19763,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   AURO: {
     mic: 'AURO',
@@ -19472,7 +19782,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   AURB: {
     mic: 'AURB',
@@ -19491,7 +19801,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BGCM: {
     mic: 'BGCM',
@@ -19510,7 +19820,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   EXSI: {
     mic: 'EXSI',
@@ -19529,7 +19839,8 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXSI IS THE IDENTIFIER TO BE USED FOR CLIENT EXECUTIONS EXECUTED UNDER THE SYSTEMATIC INTERNALISER REGIME BY EXANE BNP PARIBAS.'
+    comments:
+      'EXSI IS THE IDENTIFIER TO BE USED FOR CLIENT EXECUTIONS EXECUTED UNDER THE SYSTEMATIC INTERNALISER REGIME BY EXANE BNP PARIBAS.',
   },
   ISWR: {
     mic: 'ISWR',
@@ -19548,7 +19859,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ISWC: {
     mic: 'ISWC',
@@ -19567,7 +19878,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ISWB: {
     mic: 'ISWB',
@@ -19586,7 +19897,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '',
-    comments: 'REPORTING OF LIS AND OFF VENUE TRADES.'
+    comments: 'REPORTING OF LIS AND OFF VENUE TRADES.',
   },
   SUNM: {
     mic: 'SUNM',
@@ -19605,7 +19916,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '20180326',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   TSCB: {
     mic: 'TSCB',
@@ -19624,7 +19935,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS.'
+    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS.',
   },
   VAGL: {
     mic: 'VAGL',
@@ -19643,7 +19954,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NOT LIVE YET.'
+    comments: 'NOT LIVE YET.',
   },
   BCSL: {
     mic: 'BCSL',
@@ -19662,13 +19973,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BCSI: {
     mic: 'BCSI',
     operatingMic: 'BCSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BARCLAYS CAPITAL SECURITIES LIMITED - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BARCLAYS CAPITAL SECURITIES LIMITED - SYSTEMATIC INTERNALISER',
     legalEntityName: 'BARCLAYS CAPITAL SECURITIES LIMITED',
     lei: 'K9WDOH4D2PYBSLSOB484',
     marketCategoryCode: 'SINT',
@@ -19681,7 +19993,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BGCO: {
     mic: 'BGCO',
@@ -19700,7 +20012,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   GFBM: {
     mic: 'GFBM',
@@ -19719,7 +20031,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   GFBO: {
     mic: 'GFBO',
@@ -19738,7 +20050,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   GFIB: {
     mic: 'GFIB',
@@ -19757,7 +20069,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GFIF: {
     mic: 'GFIF',
@@ -19776,7 +20088,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GFIN: {
     mic: 'GFIN',
@@ -19795,7 +20107,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ADDITIONAL PRODUCTS: DRY FREIGHT DERIVATIVES AND UK GAS TRADING'
+    comments: 'ADDITIONAL PRODUCTS: DRY FREIGHT DERIVATIVES AND UK GAS TRADING',
   },
   GFIR: {
     mic: 'GFIR',
@@ -19814,7 +20126,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM FOR TRADING INTEREST RATE DERIVATIVES.'
+    comments: 'ELECTRONIC PLATFORM FOR TRADING INTEREST RATE DERIVATIVES.',
   },
   INGB: {
     mic: 'INGB',
@@ -19833,7 +20145,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SFCL: {
     mic: 'SFCL',
@@ -19852,7 +20164,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PRIMARY MARKET FOR FUNDS.'
+    comments: 'PRIMARY MARKET FOR FUNDS.',
   },
   SUNO: {
     mic: 'SUNO',
@@ -19871,7 +20183,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '20220124',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   SUNB: {
     mic: 'SUNB',
@@ -19890,7 +20202,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '20220124',
     expiryDate: '20220124',
-    comments: ''
+    comments: '',
   },
   TPSL: {
     mic: 'TPSL',
@@ -19909,7 +20221,8 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE BROKING OF SECURITIES, DERIVATIVES AND REPURCHASE AGREEMENTS.'
+    comments:
+      'MTF FOR THE BROKING OF SECURITIES, DERIVATIVES AND REPURCHASE AGREEMENTS.',
   },
   TSMR: {
     mic: 'TSMR',
@@ -19928,7 +20241,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF REPOS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF REPOS.',
   },
   VONT: {
     mic: 'VONT',
@@ -19947,7 +20260,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BKBR: {
     mic: 'BKBR',
@@ -19966,13 +20279,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BKBF: {
     mic: 'BKBF',
     operatingMic: 'BKBR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BNY MELLON S.A./N.V. - BRUSSELS BRANCH - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BNY MELLON S.A./N.V. - BRUSSELS BRANCH - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'MMYX0N4ZEZ13Z4XCG897',
     marketCategoryCode: 'SINT',
@@ -19985,7 +20299,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CBKA: {
     mic: 'CBKA',
@@ -20004,7 +20318,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPES: {
     mic: 'TPES',
@@ -20023,7 +20337,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '20211122',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   TSRE: {
     mic: 'TSRE',
@@ -20042,7 +20356,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF REPOS.'
+    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF REPOS.',
   },
   TSCD: {
     mic: 'TSCD',
@@ -20061,13 +20375,15 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CREDIT DERIVATIVES.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CREDIT DERIVATIVES.',
   },
   TSGB: {
     mic: 'TSGB',
     operatingMic: 'TPSO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP UK OTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
+    marketNameInstitutionDescription:
+      'TP UK OTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -20080,13 +20396,15 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TSFI: {
     mic: 'TSFI',
     operatingMic: 'TPSO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP UK OTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TP UK OTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: 'TP ICAP BROKING LIMITED',
     lei: '549300BMVW85YF9FGN67',
     marketCategoryCode: 'OTFS',
@@ -20099,7 +20417,8 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   TSED: {
     mic: 'TSED',
@@ -20118,7 +20437,8 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF EQUITY DERIVATIVES.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF EQUITY DERIVATIVES.',
   },
   TSGI: {
     mic: 'TSGI',
@@ -20137,7 +20457,8 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.',
   },
   TSMM: {
     mic: 'TSMM',
@@ -20156,7 +20477,8 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   TPSO: {
     mic: 'TPSO',
@@ -20175,7 +20497,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   CBKD: {
     mic: 'CBKD',
@@ -20194,7 +20516,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CBKF: {
     mic: 'CBKF',
@@ -20213,7 +20535,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER - TRANSACTIONS EXECUTED ON THE COMMANDER PLATFORM OF COMMERZBANK.'
+    comments:
+      'SYSTEMATIC INTERNALISER - TRANSACTIONS EXECUTED ON THE COMMANDER PLATFORM OF COMMERZBANK.',
   },
   CBKE: {
     mic: 'CBKE',
@@ -20232,7 +20555,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CBKG: {
     mic: 'CBKG',
@@ -20251,7 +20574,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CGML: {
     mic: 'CGML',
@@ -20270,7 +20593,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   CPTX: {
     mic: 'CPTX',
@@ -20289,7 +20612,8 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR TRADING IN UNLISTED COMPANIES AND EMPLOYEE OWNERSHIP SERVICES.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR TRADING IN UNLISTED COMPANIES AND EMPLOYEE OWNERSHIP SERVICES.',
   },
   MAQL: {
     mic: 'MAQL',
@@ -20308,7 +20632,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DZBK: {
     mic: 'DZBK',
@@ -20327,7 +20651,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XPOS: {
     mic: 'XPOS',
@@ -20346,7 +20670,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPEL: {
     mic: 'TPEL',
@@ -20365,13 +20689,15 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE BROKING OF FOREIGN EXCHANGE, ENERGY, COMMODITY AND INTEREST RATE DERIVATIVES.'
+    comments:
+      'MTF FOR THE BROKING OF FOREIGN EXCHANGE, ENERGY, COMMODITY AND INTEREST RATE DERIVATIVES.',
   },
   TEFD: {
     mic: 'TEFD',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - FX DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - FX DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -20384,13 +20710,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'MTF FOR THE TRADING OF FX DERIVATIVES.',
   },
   TEMF: {
     mic: 'TEMF',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -20403,13 +20730,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF CORPORATE BONDS & SECURITISED DEBT.'
+    comments: 'MTF FOR THE TRADING OF CORPORATE BONDS & SECURITISED DEBT.',
   },
   TEMI: {
     mic: 'TEMI',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - MONEY MARKETS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - MONEY MARKETS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -20422,13 +20750,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments: 'MTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   TIRD: {
     mic: 'TIRD',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - MTF - INTEREST RATE DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - MTF - INTEREST RATE DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -20441,13 +20770,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments: 'MTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   TEMB: {
     mic: 'TEMB',
     operatingMic: 'TPEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE -  MTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE -  MTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'MLTF',
@@ -20460,7 +20790,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments: 'MTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TEMR: {
     mic: 'TEMR',
@@ -20479,7 +20809,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR THE TRADING OF REPOS.'
+    comments: 'MTF FOR THE TRADING OF REPOS.',
   },
   TERE: {
     mic: 'TERE',
@@ -20498,13 +20828,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF REPOS.'
+    comments: 'OTF FOR THE TRADING OF REPOS.',
   },
   TEFX: {
     mic: 'TEFX',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - FX DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - FX DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20517,13 +20848,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF FX DERIVATIVES.',
   },
   TEMM: {
     mic: 'TEMM',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - MONEY MARKET INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - MONEY MARKET INSTRUMENTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20536,13 +20868,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.'
+    comments: 'OTF FOR THE TRADING OF MONEY MARKET INSTRUMENTS.',
   },
   TEGI: {
     mic: 'TEGI',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - GOVERNMENT BONDS - UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - GOVERNMENT BONDS - UK GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20555,13 +20888,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS - UK GILTS.',
   },
   TEIR: {
     mic: 'TEIR',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - INTEREST RATE DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - INTEREST RATE DERIVATIVES',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20574,7 +20908,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments: 'OTF FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   TPEO: {
     mic: 'TPEO',
@@ -20593,13 +20927,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   TEGB: {
     mic: 'TEGB',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - GOVERNMENT BONDS EXCLUDING UK GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20612,13 +20947,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TOMG: {
     mic: 'TOMG',
     operatingMic: 'TPES',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - MADRID - GOVERNMENT BONDS - EXCLUDING GILTS',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - MADRID - GOVERNMENT BONDS - EXCLUDING GILTS',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20631,13 +20967,14 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '20211122',
-    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.'
+    comments: 'OTF FOR THE TRADING OF GOVERNMENT BONDS EXCLUDING UK GILTS.',
   },
   TEPF: {
     mic: 'TEPF',
     operatingMic: 'TPFR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TULLETT PREBON EUROPE - OTF - PARIS - CORPORATE BONDS AND SECURITISED DEBT',
+    marketNameInstitutionDescription:
+      'TULLETT PREBON EUROPE - OTF - PARIS - CORPORATE BONDS AND SECURITISED DEBT',
     legalEntityName: '',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -20650,7 +20987,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTF FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.'
+    comments: 'OTF FOR THE TRADING OF CORPORATE BONDS AND SECURITISED DEBT.',
   },
   TWHK: {
     mic: 'TWHK',
@@ -20669,7 +21006,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TWJT: {
     mic: 'TWJT',
@@ -20688,7 +21025,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TWSG: {
     mic: 'TWSG',
@@ -20707,7 +21044,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WOOD: {
     mic: 'WOOD',
@@ -20726,7 +21063,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   XRFQ: {
     mic: 'XRFQ',
@@ -20745,7 +21082,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REQUEST-FOR-QUOTE (RFQ) MARKET.'
+    comments: 'REQUEST-FOR-QUOTE (RFQ) MARKET.',
   },
   XPAC: {
     mic: 'XPAC',
@@ -20764,7 +21101,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LOYD: {
     mic: 'LOYD',
@@ -20783,7 +21120,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SCXF: {
     mic: 'SCXF',
@@ -20802,7 +21139,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM, DESIGNATED CONTRACTS MARKET (DCM).'
+    comments: 'ELECTRONIC TRADING PLATFORM, DESIGNATED CONTRACTS MARKET (DCM).',
   },
   BOFS: {
     mic: 'BOFS',
@@ -20821,7 +21158,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SUNT: {
     mic: 'SUNT',
@@ -20840,7 +21177,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SINGLE DEALER PLATFORM FOR US EQUITIES.'
+    comments: 'SINGLE DEALER PLATFORM FOR US EQUITIES.',
   },
   SWBI: {
     mic: 'SWBI',
@@ -20859,7 +21196,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   WBKP: {
     mic: 'WBKP',
@@ -20878,7 +21215,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BGSI: {
     mic: 'BGSI',
@@ -20897,7 +21234,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR EQUITIES.'
+    comments: 'SYSTEMATIC INTERNALISER FOR EQUITIES.',
   },
   BPLC: {
     mic: 'BPLC',
@@ -20916,13 +21253,14 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BBSI: {
     mic: 'BBSI',
     operatingMic: 'BPLC',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BARCLAYS BANK PLC - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'BARCLAYS BANK PLC - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'G5GSEF7VJP5I7OUK5573',
     marketCategoryCode: 'SINT',
@@ -20935,7 +21273,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   LSSI: {
     mic: 'LSSI',
@@ -20954,7 +21292,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JSEB: {
     mic: 'JSEB',
@@ -20973,7 +21311,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BIVA: {
     mic: 'BIVA',
@@ -20992,13 +21330,14 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'STOCK EXCHANGE.LIVE IN Q1 2018.'
+    comments: 'STOCK EXCHANGE.LIVE IN Q1 2018.',
   },
   BKLN: {
     mic: 'BKLN',
     operatingMic: 'BKLN',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BNY MELLON INTERNATIONAL - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'BNY MELLON INTERNATIONAL - LONDON BRANCH',
     legalEntityName: '',
     lei: 'WFLLPEPC7FZXENRZV188',
     marketCategoryCode: 'NSPD',
@@ -21011,7 +21350,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BKLF: {
     mic: 'BKLF',
@@ -21030,7 +21369,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FISU: {
     mic: 'FISU',
@@ -21049,7 +21388,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTRODUCING BROKER FOR EXCHANGE TRADED DERIVATIVES CONTRACTS.'
+    comments: 'INTRODUCING BROKER FOR EXCHANGE TRADED DERIVATIVES CONTRACTS.',
   },
   JBSI: {
     mic: 'JBSI',
@@ -21068,7 +21407,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NAPA: {
     mic: 'NAPA',
@@ -21087,7 +21426,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).',
   },
   POTC: {
     mic: 'POTC',
@@ -21106,7 +21445,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR OTC EQUITIES AND DEBT.'
+    comments: 'TRADING PLATFORM FOR OTC EQUITIES AND DEBT.',
   },
   PPEX: {
     mic: 'PPEX',
@@ -21125,7 +21464,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ESTO: {
     mic: 'ESTO',
@@ -21144,7 +21483,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING FACILITY (ETF).'
+    comments: 'ELECTRONIC TRADING FACILITY (ETF).',
   },
   ONSE: {
     mic: 'ONSE',
@@ -21163,7 +21502,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BAAD: {
     mic: 'BAAD',
@@ -21182,7 +21521,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   INVE: {
     mic: 'INVE',
@@ -21201,7 +21540,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER - LIVE IN JANUARY 2018.'
+    comments: 'SYSTEMATIC INTERNALISER - LIVE IN JANUARY 2018.',
   },
   EMCH: {
     mic: 'EMCH',
@@ -21220,7 +21559,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '20170925',
-    comments: 'PLATFORM FOR EMERGING MARKETS SECURITIES'
+    comments: 'PLATFORM FOR EMERGING MARKETS SECURITIES',
   },
   VOLA: {
     mic: 'VOLA',
@@ -21239,7 +21578,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '20170925',
-    comments: ''
+    comments: '',
   },
   XDNB: {
     mic: 'XDNB',
@@ -21258,7 +21597,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   IFLS: {
     mic: 'IFLS',
@@ -21277,7 +21616,8 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY (OTF) FOR OTC DERIVATIVES. NOT LIVE YET.'
+    comments:
+      'ORGANISED TRADING FACILITY (OTF) FOR OTC DERIVATIVES. NOT LIVE YET.',
   },
   XSMP: {
     mic: 'XSMP',
@@ -21296,7 +21636,7 @@ export const mics = {
     lastUpdateDate: '20170925',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: 'MULTILATERAL  TRADING FACILITY (MTF).'
+    comments: 'MULTILATERAL  TRADING FACILITY (MTF).',
   },
   EBSX: {
     mic: 'EBSX',
@@ -21315,7 +21655,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '20170828',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FX DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FX DERIVATIVES.',
   },
   EXOT: {
     mic: 'EXOT',
@@ -21334,7 +21674,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY (OTF).'
+    comments: 'ORGANISED TRADING FACILITY (OTF).',
   },
   HSXE: {
     mic: 'HSXE',
@@ -21353,13 +21693,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '20170828',
-    comments: ''
+    comments: '',
   },
   ANZL: {
     mic: 'ANZL',
     operatingMic: 'ANZL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'AUSTRALIA AND NEW ZEALAND BANKING GROUP LIMITED - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'JHE42UYNWWTJB8YTTU19',
     marketCategoryCode: 'SINT',
@@ -21372,7 +21713,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   BMEA: {
     mic: 'BMEA',
@@ -21391,13 +21732,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).',
   },
   EBSC: {
     mic: 'EBSC',
     operatingMic: 'EBSS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MARKET- CLOB - FOR THE TRADING OF SPOT FX, PRECIOUS METALS AND OTHER FX PRODUCTS',
+    marketNameInstitutionDescription:
+      'EBS MARKET- CLOB - FOR THE TRADING OF SPOT FX, PRECIOUS METALS AND OTHER FX PRODUCTS',
     legalEntityName: '',
     lei: '213800Y1KZLBMHGMTJ05',
     marketCategoryCode: 'NSPD',
@@ -21410,7 +21752,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRAL LIMIT ORDER BOOK.'
+    comments: 'CENTRAL LIMIT ORDER BOOK.',
   },
   ECHO: {
     mic: 'ECHO',
@@ -21429,7 +21771,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).',
   },
   FBSI: {
     mic: 'FBSI',
@@ -21448,7 +21790,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   HSBC: {
     mic: 'HSBC',
@@ -21467,7 +21809,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   HSBT: {
     mic: 'HSBT',
@@ -21486,7 +21828,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   NATX: {
     mic: 'NATX',
@@ -21505,7 +21847,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   STAN: {
     mic: 'STAN',
@@ -21524,7 +21866,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   VCMO: {
     mic: 'VCMO',
@@ -21543,7 +21885,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY (OTF).'
+    comments: 'ORGANISED TRADING FACILITY (OTF).',
   },
   AIMX: {
     mic: 'AIMX',
@@ -21562,7 +21904,8 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DEACTIVATED JAN 2017 UNTIL MARKET LAUNCH. AIMX WAS INACTIVE FROM DECEMBER 2007 UNTIL DECEMBER 2016. REACTIVATED AUGUST 2017.'
+    comments:
+      'DEACTIVATED JAN 2017 UNTIL MARKET LAUNCH. AIMX WAS INACTIVE FROM DECEMBER 2007 UNTIL DECEMBER 2016. REACTIVATED AUGUST 2017.',
   },
   XLOM: {
     mic: 'XLOM',
@@ -21581,13 +21924,15 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DEACTIVATED JAN 2017 UNTIL MARKET LAUNCH. REACTIVATED AUGUST 2017.'
+    comments:
+      'DEACTIVATED JAN 2017 UNTIL MARKET LAUNCH. REACTIVATED AUGUST 2017.',
   },
   ADVT: {
     mic: 'ADVT',
     operatingMic: 'ADVT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ADVISE TECHNOLOGIES - APA TRANSPARENCY REPORTING',
+    marketNameInstitutionDescription:
+      'ADVISE TECHNOLOGIES - APA TRANSPARENCY REPORTING',
     legalEntityName: '',
     lei: '549300A1NXV20ZS25T07',
     marketCategoryCode: 'APPA',
@@ -21600,13 +21945,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT (APA).',
   },
   SICS: {
     mic: 'SICS',
     operatingMic: 'CSEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE SECURITIES (EUROPE) LIMITED',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE SECURITIES (EUROPE) LIMITED',
     legalEntityName: '',
     lei: 'DL6FFRRLF74S01HE2M14',
     marketCategoryCode: 'SINT',
@@ -21619,7 +21965,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   CSIN: {
     mic: 'CSIN',
@@ -21638,13 +21984,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSSI: {
     mic: 'CSSI',
     operatingMic: 'CSIN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE INTERNATIONAL - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE INTERNATIONAL - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'E58DKGMJYYYJLN8C3868',
     marketCategoryCode: 'SINT',
@@ -21657,7 +22004,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DOWG: {
     mic: 'DOWG',
@@ -21676,7 +22023,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR BONDS AND DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR BONDS AND DERIVATIVES.',
   },
   AMPX: {
     mic: 'AMPX',
@@ -21695,7 +22042,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR EQUITIES.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR EQUITIES.',
   },
   FXGB: {
     mic: 'FXGB',
@@ -21714,7 +22061,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR OTC DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR OTC DERIVATIVES.',
   },
   TOMD: {
     mic: 'TOMD',
@@ -21733,7 +22080,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '20170828',
-    comments: 'MTF FOR DERIVATIVES. DISCONTINUATION OF COMPANY AND SERVICES.'
+    comments: 'MTF FOR DERIVATIVES. DISCONTINUATION OF COMPANY AND SERVICES.',
   },
   TOMX: {
     mic: 'TOMX',
@@ -21752,7 +22099,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '20170828',
-    comments: 'MTF FOR EQUITIES. DISCONTINUATION OF COMPANY AND SERVICES.'
+    comments: 'MTF FOR EQUITIES. DISCONTINUATION OF COMPANY AND SERVICES.',
   },
   TRSI: {
     mic: 'TRSI',
@@ -21771,13 +22118,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RBSI: {
     mic: 'RBSI',
     operatingMic: 'RBCB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'RBC INVESTOR SERVICES BANK S.A. - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'RBC INVESTOR SERVICES BANK S.A. - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '549300IVXKQHV6O7PY61',
     marketCategoryCode: 'SINT',
@@ -21790,13 +22138,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RTSI: {
     mic: 'RTSI',
     operatingMic: 'RBCT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'RBC INVESTOR SERVICES TRUST - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'RBC INVESTOR SERVICES TRUST - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '5493002MUOV04NSPT571',
     marketCategoryCode: 'SINT',
@@ -21809,7 +22158,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   MUND: {
     mic: 'MUND',
@@ -21828,13 +22177,14 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MUNC: {
     mic: 'MUNC',
     operatingMic: 'XMUN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE MUENCHEN - GETTEX - REGULIERTER MARKT',
+    marketNameInstitutionDescription:
+      'BOERSE MUENCHEN - GETTEX - REGULIERTER MARKT',
     legalEntityName: '',
     lei: '391200Z7ZWISADXEGZ47',
     marketCategoryCode: 'RMKT',
@@ -21847,7 +22197,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTEE: {
     mic: 'BTEE',
@@ -21866,13 +22216,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBSM: {
     mic: 'EBSM',
     operatingMic: 'BTEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EBS MTF - CLOB - FOR THE TRADING OF FX PRODUCTS',
+    marketNameInstitutionDescription:
+      'EBS MTF - CLOB - FOR THE TRADING OF FX PRODUCTS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'MLTF',
@@ -21885,13 +22236,14 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '20211122',
-    comments: 'CENTRAL LIMIT ORDER BOOK.'
+    comments: 'CENTRAL LIMIT ORDER BOOK.',
   },
   EBSS: {
     mic: 'EBSS',
     operatingMic: 'EBSS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'EBS SERVICE COMPANY LIMITED - ALL MARKETS',
+    marketNameInstitutionDescription:
+      'EBS SERVICE COMPANY LIMITED - ALL MARKETS',
     legalEntityName: '',
     lei: '213800Y1KZLBMHGMTJ05',
     marketCategoryCode: 'NSPD',
@@ -21904,7 +22256,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RBCB: {
     mic: 'RBCB',
@@ -21923,7 +22275,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RBCT: {
     mic: 'RBCT',
@@ -21942,13 +22294,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WIPO: {
     mic: 'WIPO',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE - OTHER THAN XOFF OR XXXX',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE - OTHER THAN XOFF OR XXXX',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -21961,7 +22314,8 @@ export const mics = {
     lastUpdateDate: '20190923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ONLY FOR IPO/SPO PURPOSES. TRANSACTIONS ARE NOT SUBJECTED TO BE REPORTED TO ARM.'
+    comments:
+      'ONLY FOR IPO/SPO PURPOSES. TRANSACTIONS ARE NOT SUBJECTED TO BE REPORTED TO ARM.',
   },
   GSIB: {
     mic: 'GSIB',
@@ -21980,13 +22334,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BISI: {
     mic: 'BISI',
     operatingMic: 'GSIB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'GOLDMAN SACHS INTERNATIONAL BANK - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'GOLDMAN SACHS INTERNATIONAL BANK - SYSTEMATIC INTERNALISER',
     legalEntityName: 'GOLDMAN SACHS INTERNATIONAL BANK',
     lei: '549300OYYE9P450H6O40',
     marketCategoryCode: 'SINT',
@@ -21999,7 +22354,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GSIB SYSTEMATIC INTERNALISER'
+    comments: 'GSIB SYSTEMATIC INTERNALISER',
   },
   HUDX: {
     mic: 'HUDX',
@@ -22018,7 +22373,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET FOR ELECTRICITY.'
+    comments: 'REGULATED MARKET FOR ELECTRICITY.',
   },
   IEXD: {
     mic: 'IEXD',
@@ -22037,7 +22392,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IMCS: {
     mic: 'IMCS',
@@ -22056,7 +22411,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM.'
+    comments: 'ELECTRONIC TRADING PLATFORM.',
   },
   UBSY: {
     mic: 'UBSY',
@@ -22075,13 +22430,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS AG LONDON BRANCH TRADING PLATFORM SYSTEMATIC INTERNALISER.'
+    comments: 'UBS AG LONDON BRANCH TRADING PLATFORM SYSTEMATIC INTERNALISER.',
   },
   XEYE: {
     mic: 'XEYE',
     operatingMic: 'XDUB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'IRISH STOCK EXCHANGE  - GLOBAL EXCHANGE MARKET',
+    marketNameInstitutionDescription:
+      'IRISH STOCK EXCHANGE  - GLOBAL EXCHANGE MARKET',
     legalEntityName: '',
     lei: '635400DZBUIMTBCXGA12',
     marketCategoryCode: 'NSPD',
@@ -22094,7 +22450,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDUB: {
     mic: 'XDUB',
@@ -22113,7 +22469,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XATL: {
     mic: 'XATL',
@@ -22132,13 +22488,15 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ATLANTIC SECURITIES MARKET (ASM). THE ASM IS AUTHORISED BY THE CENTRAL BANK OF IRELAND AS A MTF AND IS REGULATED BY THE IRISH STOCK EXCHANGE PLC.'
+    comments:
+      'ATLANTIC SECURITIES MARKET (ASM). THE ASM IS AUTHORISED BY THE CENTRAL BANK OF IRELAND AS A MTF AND IS REGULATED BY THE IRISH STOCK EXCHANGE PLC.',
   },
   BILT: {
     mic: 'BILT',
     operatingMic: 'BILT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OFF-EXCHANGE TRANSACTIONS - LISTED AND UNLISTED INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'OFF-EXCHANGE TRANSACTIONS - LISTED AND UNLISTED INSTRUMENTS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -22151,7 +22509,8 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BILATERAL (OFF-EXCHANGE) TRANSACTIONS - LISTED OR UNLISTED INSTRUMENTS.'
+    comments:
+      'BILATERAL (OFF-EXCHANGE) TRANSACTIONS - LISTED OR UNLISTED INSTRUMENTS.',
   },
   XHNF: {
     mic: 'XHNF',
@@ -22170,7 +22529,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DERIVATIVES MARKET.'
+    comments: 'DERIVATIVES MARKET.',
   },
   MUFP: {
     mic: 'MUFP',
@@ -22189,7 +22548,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR BONDS & OTC DERIVATIVES.'
+    comments: 'MARKET FOR BONDS & OTC DERIVATIVES.',
   },
   VFIL: {
     mic: 'VFIL',
@@ -22208,13 +22567,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'VIRTU FINANCIAL IRELAND LIMITED ELECTRONIC PLATFORMS.'
+    comments: 'VIRTU FINANCIAL IRELAND LIMITED ELECTRONIC PLATFORMS.',
   },
   VFSI: {
     mic: 'VFSI',
     operatingMic: 'VFIL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'VIRTU FINANCIAL IRELAND LIMITED - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'VIRTU FINANCIAL IRELAND LIMITED - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: '549300XG5LFGN1IGYC71',
     marketCategoryCode: 'SINT',
@@ -22227,7 +22587,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'VIRTU FINANCIAL IRELAND LIMITED SYSTEMATIC INTERNALISER.'
+    comments: 'VIRTU FINANCIAL IRELAND LIMITED SYSTEMATIC INTERNALISER.',
   },
   VFXO: {
     mic: 'VFXO',
@@ -22246,13 +22606,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'VIRTU FINANCIAL IRELAND LIMITED SYSTEMATIC OTC PLATFORM.'
+    comments: 'VIRTU FINANCIAL IRELAND LIMITED SYSTEMATIC OTC PLATFORM.',
   },
   CCML: {
     mic: 'CCML',
     operatingMic: 'CCML',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CONTINENTAL CAPITAL MARKETS LIMITED - OTF',
+    marketNameInstitutionDescription:
+      'CONTINENTAL CAPITAL MARKETS LIMITED - OTF',
     legalEntityName: '',
     lei: '213800M3I5GUTKCDBU47',
     marketCategoryCode: 'NSPD',
@@ -22265,7 +22626,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   CFTW: {
     mic: 'CFTW',
@@ -22284,7 +22645,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL TAIWAN.'
+    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL TAIWAN.',
   },
   DAPA: {
     mic: 'DAPA',
@@ -22303,7 +22664,7 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   VLEX: {
     mic: 'VLEX',
@@ -22322,13 +22683,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNAL MARKET.'
+    comments: 'INTERNAL MARKET.',
   },
   XSBT: {
     mic: 'XSBT',
     operatingMic: 'XSES',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SINGAPORE EXCHANGE BOND TRADING PTE. LTD',
+    marketNameInstitutionDescription:
+      'SINGAPORE EXCHANGE BOND TRADING PTE. LTD',
     legalEntityName: '',
     lei: '549300IQ650PPXM76X03',
     marketCategoryCode: 'NSPD',
@@ -22341,7 +22703,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR FIXED INCOME SECURITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR FIXED INCOME SECURITIES.',
   },
   ENSY: {
     mic: 'ENSY',
@@ -22360,7 +22722,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: 'FIXED INCOME MTF'
+    comments: 'FIXED INCOME MTF',
   },
   MHIP: {
     mic: 'MHIP',
@@ -22379,13 +22741,14 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ANTICIPATED SYSTEMATIC INTERNALISER FOR BONDS.'
+    comments: 'ANTICIPATED SYSTEMATIC INTERNALISER FOR BONDS.',
   },
   WINS: {
     mic: 'WINS',
     operatingMic: 'WINS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'WINTERFLOOD SECURITIES LIMITED - ELECTRONIC PLATFORM',
+    marketNameInstitutionDescription:
+      'WINTERFLOOD SECURITIES LIMITED - ELECTRONIC PLATFORM',
     legalEntityName: '',
     lei: '8BRUP6V1DX3PIG2R0745',
     marketCategoryCode: 'NSPD',
@@ -22398,13 +22761,14 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET MAKER � ELECTRONIC PLATFORM'
+    comments: 'REGISTERED MARKET MAKER � ELECTRONIC PLATFORM',
   },
   WINX: {
     mic: 'WINX',
     operatingMic: 'WINS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WINTERFLOOD SECURITIES LIMITED - MANUAL TRADING',
+    marketNameInstitutionDescription:
+      'WINTERFLOOD SECURITIES LIMITED - MANUAL TRADING',
     legalEntityName: '',
     lei: '8BRUP6V1DX3PIG2R0745',
     marketCategoryCode: 'NSPD',
@@ -22417,7 +22781,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET MAKER - MANUAL TRADING'
+    comments: 'REGISTERED MARKET MAKER - MANUAL TRADING',
   },
   ALXB: {
     mic: 'ALXB',
@@ -22436,7 +22800,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MLXB: {
     mic: 'MLXB',
@@ -22455,14 +22819,15 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ENXL: {
     mic: 'ENXL',
     operatingMic: 'XLIS',
     oprtSgmt: 'SGMT',
     marketNameInstitutionDescription: 'EURONEXT ACCESS LISBON',
-    legalEntityName: 'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
+    legalEntityName:
+      'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
     lei: '529900K0OK4J5I7A5V66',
     marketCategoryCode: 'NSPD',
     acronym: '',
@@ -22474,7 +22839,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ALXL: {
     mic: 'ALXL',
@@ -22493,7 +22858,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMLI: {
     mic: 'XMLI',
@@ -22512,7 +22877,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ALXP: {
     mic: 'ALXP',
@@ -22531,7 +22896,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGMT: {
     mic: 'SGMT',
@@ -22550,7 +22915,8 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SIGMA X2 (SGMT) IS THE ATS OF REGISTERED BROKER-DEALER GOLDMAN SACHS & CO (GSCO).'
+    comments:
+      'SIGMA X2 (SGMT) IS THE ATS OF REGISTERED BROKER-DEALER GOLDMAN SACHS & CO (GSCO).',
   },
   MASG: {
     mic: 'MASG',
@@ -22569,7 +22935,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TCML: {
     mic: 'TCML',
@@ -22588,7 +22954,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRTE: {
     mic: 'FRTE',
@@ -22607,7 +22973,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   THEM: {
     mic: 'THEM',
@@ -22626,7 +22992,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER - US EQUITIES.'
+    comments: 'BROKER DEALER - US EQUITIES.',
   },
   LEDG: {
     mic: 'LEDG',
@@ -22645,7 +23011,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING AND CLEARING PLATFORM FOR DIGITAL CURRENCY DERIVATIVES.'
+    comments: 'TRADING AND CLEARING PLATFORM FOR DIGITAL CURRENCY DERIVATIVES.',
   },
   MTSD: {
     mic: 'MTSD',
@@ -22664,7 +23030,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MTSF: {
     mic: 'MTSF',
@@ -22683,13 +23049,14 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ISDX: {
     mic: 'ISDX',
     operatingMic: 'ICAP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICAP SECURITIES & DERIVATIVES EXCHANGE LIMITED',
+    marketNameInstitutionDescription:
+      'ICAP SECURITIES & DERIVATIVES EXCHANGE LIMITED',
     legalEntityName: '',
     lei: '213800NMEZS3MD2IUP33',
     marketCategoryCode: 'NSPD',
@@ -22702,13 +23069,14 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '20170626',
-    comments: 'MIC TO USE IS NEXX AND RELATED SEGMENT MICS.'
+    comments: 'MIC TO USE IS NEXX AND RELATED SEGMENT MICS.',
   },
   MUTI: {
     mic: 'MUTI',
     operatingMic: 'MUTI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MITSUBISHI UFJ TRUST INTERNATIONAL LIMITED',
+    marketNameInstitutionDescription:
+      'MITSUBISHI UFJ TRUST INTERNATIONAL LIMITED',
     legalEntityName: '',
     lei: '213800ZXJI3S6VKHTX31',
     marketCategoryCode: 'NSPD',
@@ -22721,7 +23089,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NDCM: {
     mic: 'NDCM',
@@ -22740,7 +23108,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE UK OCM GAS SPOT MARKET.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE UK OCM GAS SPOT MARKET.',
   },
   IMEQ: {
     mic: 'IMEQ',
@@ -22759,7 +23127,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE EQUITY PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE EQUITY PRODUCTS.',
   },
   NDXS: {
     mic: 'NDXS',
@@ -22778,7 +23146,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE EUROPEAN GAS SPOT.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE EUROPEAN GAS SPOT.',
   },
   NDEX: {
     mic: 'NDEX',
@@ -22797,13 +23165,14 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES.',
   },
   SPEC: {
     mic: 'SPEC',
     operatingMic: 'SPEC',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MAREX SPECTRON INTERNATIONAL LIMITED OTF',
+    marketNameInstitutionDescription:
+      'MAREX SPECTRON INTERNATIONAL LIMITED OTF',
     legalEntityName: '',
     lei: '549300FR3U1PB1Y6LV13',
     marketCategoryCode: 'NSPD',
@@ -22816,7 +23185,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR OTC DERIVATIVES.'
+    comments: 'ORGANISED TRADING FACILITY FOR OTC DERIVATIVES.',
   },
   ALXA: {
     mic: 'ALXA',
@@ -22835,13 +23204,14 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '20170626',
-    comments: ''
+    comments: '',
   },
   ETFP: {
     mic: 'ETFP',
     operatingMic: 'XMIL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ELECTRONIC ETF, ETC/ETN AND OPEN-END FUNDS MARKET',
+    marketNameInstitutionDescription:
+      'ELECTRONIC ETF, ETC/ETN AND OPEN-END FUNDS MARKET',
     legalEntityName: 'BORSA ITALIANA S.P.A.',
     lei: '8156005391EE905D3124',
     marketCategoryCode: 'RMKT',
@@ -22854,13 +23224,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BART: {
     mic: 'BART',
     operatingMic: 'BCRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE EUROPE - REGULATED MARKET INTEGRATED BOOK',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE - REGULATED MARKET INTEGRATED BOOK',
     legalEntityName: '',
     lei: '254900ERRPSKE7UZH711',
     marketCategoryCode: 'RMKT',
@@ -22873,7 +23244,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR INTEGRATED BOOK TRADES'
+    comments:
+      'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR INTEGRATED BOOK TRADES',
   },
   BARO: {
     mic: 'BARO',
@@ -22892,7 +23264,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR OFF-BOOK TRADES'
+    comments:
+      'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR OFF-BOOK TRADES',
   },
   BCRM: {
     mic: 'BCRM',
@@ -22911,13 +23284,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE REGULATED MARKETS.'
+    comments: 'CBOE REGULATED MARKETS.',
   },
   BARK: {
     mic: 'BARK',
     operatingMic: 'BCRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE EUROPE - REGULATED MARKET DARK BOOK',
+    marketNameInstitutionDescription:
+      'CBOE EUROPE - REGULATED MARKET DARK BOOK',
     legalEntityName: '',
     lei: '254900ERRPSKE7UZH711',
     marketCategoryCode: 'RMKT',
@@ -22930,7 +23304,8 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR DARK ORDER BOOK TRADES'
+    comments:
+      'CBOE EUROPE - REGULATED MARKET SECURITIES MIC CODE FOR DARK ORDER BOOK TRADES',
   },
   BMTS: {
     mic: 'BMTS',
@@ -22949,7 +23324,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MTUS: {
     mic: 'MTUS',
@@ -22968,7 +23343,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: 'MTS MARKETS US'
+    comments: 'MTS MARKETS US',
   },
   GOTC: {
     mic: 'GOTC',
@@ -22987,7 +23362,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC EQUITY SECURITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC EQUITY SECURITIES.',
   },
   MFXC: {
     mic: 'MFXC',
@@ -23006,7 +23381,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MFXR: {
     mic: 'MFXR',
@@ -23025,7 +23400,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MFXA: {
     mic: 'MFXA',
@@ -23044,7 +23419,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SNSI: {
     mic: 'SNSI',
@@ -23063,7 +23438,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   VERT: {
     mic: 'VERT',
@@ -23082,13 +23457,14 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET MAKERS OF NASDAQ AND PINK SHEET SECURITIES.'
+    comments: 'MARKET MAKERS OF NASDAQ AND PINK SHEET SECURITIES.',
   },
   IBUL: {
     mic: 'IBUL',
     operatingMic: 'XBUL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BULGARIAN STOCK EXCHANGE - INTERNATIONAL INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'BULGARIAN STOCK EXCHANGE - INTERNATIONAL INSTRUMENTS',
     legalEntityName: '',
     lei: '747800W0XA9OV4MSRW74',
     marketCategoryCode: 'RMKT',
@@ -23101,7 +23477,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   APXL: {
     mic: 'APXL',
@@ -23120,7 +23496,8 @@ export const mics = {
     lastUpdateDate: '20160222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'AS A SECURITIES EXCHANGE,SSX PROVIDES �LISTING� FACILITIES TO COMPANIES AND SECURITIES ISSUERS AS WELL AS �TRADING� FACILITIES FOR STOCK BROKERS, TRADERS AND INVESTORS TO BUY AND SELL SHARES/SECURITIES.'
+    comments:
+      'AS A SECURITIES EXCHANGE,SSX PROVIDES �LISTING� FACILITIES TO COMPANIES AND SECURITIES ISSUERS AS WELL AS �TRADING� FACILITIES FOR STOCK BROKERS, TRADERS AND INVESTORS TO BUY AND SELL SHARES/SECURITIES.',
   },
   CLTD: {
     mic: 'CLTD',
@@ -23139,7 +23516,8 @@ export const mics = {
     lastUpdateDate: '20141027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FULLY INTEGRATED FUTURES EXECUTION PLATFORM REGULATED BY THE MONETARY AUTHORITY OF SINGAPORE AS A RMO). IT ALSO  OFFERS AN ELECTRONIC TRADING PLATFORM FOR OTC CLEARED COMMODITY SWAPS WHICH IS FULLY INTEGRATED TO PARTNER CLEARING HOUSES'
+    comments:
+      'FULLY INTEGRATED FUTURES EXECUTION PLATFORM REGULATED BY THE MONETARY AUTHORITY OF SINGAPORE AS A RMO). IT ALSO  OFFERS AN ELECTRONIC TRADING PLATFORM FOR OTC CLEARED COMMODITY SWAPS WHICH IS FULLY INTEGRATED TO PARTNER CLEARING HOUSES',
   },
   DRCT: {
     mic: 'DRCT',
@@ -23158,7 +23536,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DAIWA EQUITIES ELECTRONIC CROSSING PLATFORM'
+    comments: 'DAIWA EQUITIES ELECTRONIC CROSSING PLATFORM',
   },
   MTXX: {
     mic: 'MTXX',
@@ -23177,7 +23555,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   CAVE: {
     mic: 'CAVE',
@@ -23196,7 +23574,7 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CORPORATE ACTIONS � CAVEAT EMPTOR.'
+    comments: 'CORPORATE ACTIONS � CAVEAT EMPTOR.',
   },
   OTCB: {
     mic: 'OTCB',
@@ -23215,7 +23593,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTCQB MARKET TIER HELPS INVESTORS EASILY IDENTIFY COMPANIES THAT ARE REGISTERED AND CURRENT IN THEIR REPORTING OBLIGATIONS WITH THE SEC OR REPORT TO A U.S. BANKING OR INSURANCE REGULATOR.'
+    comments:
+      'OTCQB MARKET TIER HELPS INVESTORS EASILY IDENTIFY COMPANIES THAT ARE REGISTERED AND CURRENT IN THEIR REPORTING OBLIGATIONS WITH THE SEC OR REPORT TO A U.S. BANKING OR INSURANCE REGULATOR.',
   },
   PINL: {
     mic: 'PINL',
@@ -23234,7 +23613,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PINI: {
     mic: 'PINI',
@@ -23253,7 +23632,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PINX: {
     mic: 'PINX',
@@ -23272,7 +23651,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTCQ: {
     mic: 'OTCQ',
@@ -23291,7 +23670,8 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC QUOTATION SYSTEM FOR PREMIUM MARKET TIER (OPERATED BY PINK SHEETS)'
+    comments:
+      'ELECTRONIC QUOTATION SYSTEM FOR PREMIUM MARKET TIER (OPERATED BY PINK SHEETS)',
   },
   PSGM: {
     mic: 'PSGM',
@@ -23310,7 +23690,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PINC: {
     mic: 'PINC',
@@ -23329,13 +23709,14 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEER: {
     mic: 'XEER',
     operatingMic: 'XEEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EUROPEAN ENERGY EXCHANGE - REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'EUROPEAN ENERGY EXCHANGE - REGULATED MARKET',
     legalEntityName: 'EUROPEAN ENERGY EXCHANGE AG',
     lei: '529900J0JGLSFDWNFC20',
     marketCategoryCode: 'RMKT',
@@ -23348,13 +23729,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET'
+    comments: 'REGULATED MARKET',
   },
   XEEO: {
     mic: 'XEEO',
     operatingMic: 'XEEE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EUROPEAN ENERGY EXCHANGE - NON-MTF MARKET',
+    marketNameInstitutionDescription:
+      'EUROPEAN ENERGY EXCHANGE - NON-MTF MARKET',
     legalEntityName: 'EUROPEAN ENERGY EXCHANGE AG',
     lei: '529900J0JGLSFDWNFC20',
     marketCategoryCode: 'NSPD',
@@ -23367,7 +23749,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NON-MTF MARKET'
+    comments: 'NON-MTF MARKET',
   },
   XEEE: {
     mic: 'XEEE',
@@ -23386,7 +23768,7 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MTSO: {
     mic: 'MTSO',
@@ -23405,7 +23787,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'LEGAL ENTITY OPERATING ALL RELATED MARKET SEGMENT MICS.'
+    comments: 'LEGAL ENTITY OPERATING ALL RELATED MARKET SEGMENT MICS.',
   },
   MTSC: {
     mic: 'MTSC',
@@ -23424,7 +23806,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ELUK: {
     mic: 'ELUK',
@@ -23443,13 +23825,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ELNO: {
     mic: 'ELNO',
     operatingMic: 'NORX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ OSLO ASA - NORDIC POWER DERIVATIVES AND EUROPEAN UNION ALLOWANCES',
+    marketNameInstitutionDescription:
+      'NASDAQ OSLO ASA - NORDIC POWER DERIVATIVES AND EUROPEAN UNION ALLOWANCES',
     legalEntityName: 'NASDAQ OSLO ASA',
     lei: '5493003IZZWOHHJY1L88',
     marketCategoryCode: 'RMKT',
@@ -23462,13 +23845,14 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ELSE: {
     mic: 'ELSE',
     operatingMic: 'NORX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ OSLO ASA - SWEDISH ELECTRICITY CERTIFICATE',
+    marketNameInstitutionDescription:
+      'NASDAQ OSLO ASA - SWEDISH ELECTRICITY CERTIFICATE',
     legalEntityName: 'NASDAQ OSLO ASA',
     lei: '5493003IZZWOHHJY1L88',
     marketCategoryCode: 'RMKT',
@@ -23481,13 +23865,14 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ELEU: {
     mic: 'ELEU',
     operatingMic: 'NORX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ OSLO ASA - EUROPEAN POWER AND GAS DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ OSLO ASA - EUROPEAN POWER AND GAS DERIVATIVES',
     legalEntityName: 'NASDAQ OSLO ASA',
     lei: '5493003IZZWOHHJY1L88',
     marketCategoryCode: 'RMKT',
@@ -23500,7 +23885,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FREI: {
     mic: 'FREI',
@@ -23519,7 +23904,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOSI: {
     mic: 'NOSI',
@@ -23538,7 +23923,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   PRME: {
     mic: 'PRME',
@@ -23557,13 +23942,15 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '20170424',
-    comments: 'MTS PRIME IS A MARKET WHERE PARTICIPANTS CAN TRADE CORPORATE, COVERED AND FINANCIAL BONDS. IT IS A MARKET UNDER EUROMTS� UMBRELLA.'
+    comments:
+      'MTS PRIME IS A MARKET WHERE PARTICIPANTS CAN TRADE CORPORATE, COVERED AND FINANCIAL BONDS. IT IS A MARKET UNDER EUROMTS� UMBRELLA.',
   },
   CSBX: {
     mic: 'CSBX',
     operatingMic: 'CSEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE AES EUROPE BENCHMARK CROSS',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE AES EUROPE BENCHMARK CROSS',
     legalEntityName: '',
     lei: 'DL6FFRRLF74S01HE2M14',
     marketCategoryCode: 'NSPD',
@@ -23576,7 +23963,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CXOT: {
     mic: 'CXOT',
@@ -23595,14 +23982,16 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET FOR FIXED INCOME PRODUCTS.'
+    comments: 'ELECTRONIC MARKET FOR FIXED INCOME PRODUCTS.',
   },
   XBDV: {
     mic: 'XBDV',
     operatingMic: 'XBDV',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA DE DIVIDA E VALORES DE ANGOLA (BODIVA) - ANGOLA SECURITIES EXCHANGE',
-    legalEntityName: 'BOLSA DE DIVIDA E VALORES DE ANGOLA � SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS, S.A.',
+    marketNameInstitutionDescription:
+      'BOLSA DE DIVIDA E VALORES DE ANGOLA (BODIVA) - ANGOLA SECURITIES EXCHANGE',
+    legalEntityName:
+      'BOLSA DE DIVIDA E VALORES DE ANGOLA � SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS, S.A.',
     lei: '2138003VQHOK8RANP296',
     marketCategoryCode: 'NSPD',
     acronym: 'BODIVA',
@@ -23614,13 +24003,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKETS FOR SECURITIES TRADING.'
+    comments: 'REGULATED MARKETS FOR SECURITIES TRADING.',
   },
   DKED: {
     mic: 'DKED',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - DANISH EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - DANISH EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23633,13 +24023,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DKFI: {
     mic: 'DKFI',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - DANISH FI DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - DANISH FI DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23652,13 +24043,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOED: {
     mic: 'NOED',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - NORWEGIAN EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - NORWEGIAN EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23671,13 +24063,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SEED: {
     mic: 'SEED',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - SWEDISH EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - SWEDISH EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23690,13 +24083,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PNED: {
     mic: 'PNED',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - PAN-NORDIC EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - PAN-NORDIC EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23709,13 +24103,14 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   USWB: {
     mic: 'USWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - USD WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - USD WB EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23728,13 +24123,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOFI: {
     mic: 'NOFI',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - NORWEGIAN FI DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - NORWEGIAN FI DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23747,13 +24143,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FIED: {
     mic: 'FIED',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - FINNISH EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - FINNISH EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23766,13 +24163,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBON: {
     mic: 'EBON',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - EUR FI DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - EUR FI DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23785,13 +24183,14 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EUWB: {
     mic: 'EUWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - EUR WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - EUR WB EQ DERIVATIVES',
     legalEntityName: '',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -23804,7 +24203,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DIFX: {
     mic: 'DIFX',
@@ -23823,7 +24222,8 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ON TUESDAY 18TH NOVEMBER, 2008, THE DUBAI INTERNATIONAL FINANCIAL MARKET WAS REBRANDED AS NASDAQ DUBAI.'
+    comments:
+      'ON TUESDAY 18TH NOVEMBER, 2008, THE DUBAI INTERNATIONAL FINANCIAL MARKET WAS REBRANDED AS NASDAQ DUBAI.',
   },
   TREA: {
     mic: 'TREA',
@@ -23842,7 +24242,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT SEGMENT'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT SEGMENT',
   },
   TREO: {
     mic: 'TREO',
@@ -23861,7 +24261,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY'
+    comments: 'ORGANISED TRADING FACILITY',
   },
   AUTB: {
     mic: 'AUTB',
@@ -23880,7 +24280,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AUTX: {
     mic: 'AUTX',
@@ -23899,7 +24299,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM FOR COMMODITIES AND FX.'
+    comments: 'ELECTRONIC PLATFORM FOR COMMODITIES AND FX.',
   },
   AUTP: {
     mic: 'AUTP',
@@ -23918,7 +24318,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CXRT: {
     mic: 'CXRT',
@@ -23937,7 +24337,8 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET FOR CREDIT PRODUCTS. CXRT HAS BEEN DEACTIVATED FROM MAY 2014 TO 26 JANUARY 2015(IMPLEMENTATION DATE).'
+    comments:
+      'ELECTRONIC MARKET FOR CREDIT PRODUCTS. CXRT HAS BEEN DEACTIVATED FROM MAY 2014 TO 26 JANUARY 2015(IMPLEMENTATION DATE).',
   },
   ACKF: {
     mic: 'ACKF',
@@ -23956,7 +24357,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BI-LATERAL FIXED INCOME LIQUIDITY.'
+    comments: 'BI-LATERAL FIXED INCOME LIQUIDITY.',
   },
   NEXS: {
     mic: 'NEXS',
@@ -23975,7 +24376,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY'
+    comments: 'SWAP EXECUTION FACILITY',
   },
   VIRT: {
     mic: 'VIRT',
@@ -23994,7 +24395,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CHX REGISTERED BROKER-DEALER.'
+    comments: 'CHX REGISTERED BROKER-DEALER.',
   },
   BALT: {
     mic: 'BALT',
@@ -24013,7 +24414,7 @@ export const mics = {
     lastUpdateDate: '20081124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BLTX: {
     mic: 'BLTX',
@@ -24032,7 +24433,7 @@ export const mics = {
     lastUpdateDate: '20130722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR ELECTRONIC TRADING OF FREIGHT DERIVATIVES'
+    comments: 'MTF FOR ELECTRONIC TRADING OF FREIGHT DERIVATIVES',
   },
   CGMA: {
     mic: 'CGMA',
@@ -24045,13 +24446,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'AU',
     city: 'SYDNEY',
-    website: 'HTTP://ICG.CITI.COM/ICG/GLOBAL_MARKETS/PRODUCT_SOLUTIONS/GLOBAL_EQUITIES/CITI_MATCH.JSP',
+    website:
+      'HTTP://ICG.CITI.COM/ICG/GLOBAL_MARKETS/PRODUCT_SOLUTIONS/GLOBAL_EQUITIES/CITI_MATCH.JSP',
     status: 'ACTIVE',
     creationDate: '20120723',
     lastUpdateDate: '20120723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CGMH: {
     mic: 'CGMH',
@@ -24070,7 +24472,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CGMI: {
     mic: 'CGMI',
@@ -24089,7 +24491,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LQFI: {
     mic: 'LQFI',
@@ -24108,13 +24510,14 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20161107',
-    comments: 'LIQUIFI IS AN ATS UNDER THE OPERATING MIC CGMI'
+    comments: 'LIQUIFI IS AN ATS UNDER THE OPERATING MIC CGMI',
   },
   CGMX: {
     mic: 'CGMX',
     operatingMic: 'CGMX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CITI MEXICO RPI (RETAIL PRICE IMPROVEMENT)',
+    marketNameInstitutionDescription:
+      'CITI MEXICO RPI (RETAIL PRICE IMPROVEMENT)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -24127,7 +24530,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CITX: {
     mic: 'CITX',
@@ -24146,7 +24549,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '20220725',
     expiryDate: '',
-    comments: 'CITI DARKPOOL (JAPAN).'
+    comments: 'CITI DARKPOOL (JAPAN).',
   },
   CITD: {
     mic: 'CITD',
@@ -24165,7 +24568,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   GRIO: {
     mic: 'GRIO',
@@ -24184,7 +24587,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GRIFFIN ORGANISED TRADING FACILITY.'
+    comments: 'GRIFFIN ORGANISED TRADING FACILITY.',
   },
   LQED: {
     mic: 'LQED',
@@ -24203,7 +24606,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR U.S. TREASURY SECURITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR U.S. TREASURY SECURITIES.',
   },
   MTXA: {
     mic: 'MTXA',
@@ -24222,7 +24625,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   PTPG: {
     mic: 'PTPG',
@@ -24241,7 +24644,7 @@ export const mics = {
     lastUpdateDate: '20160328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC ENERGY PRODUCTS'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC ENERGY PRODUCTS',
   },
   UFEX: {
     mic: 'UFEX',
@@ -24260,13 +24663,14 @@ export const mics = {
     lastUpdateDate: '20160328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'URUGUAY FUTURES EXCHANGE'
+    comments: 'URUGUAY FUTURES EXCHANGE',
   },
   TSAD: {
     mic: 'TSAD',
     operatingMic: 'TSAD',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TRADITION SECURITIES AND DERIVATIVES INC.',
+    marketNameInstitutionDescription:
+      'TRADITION SECURITIES AND DERIVATIVES INC.',
     legalEntityName: '',
     lei: 'WRYEFMSVQCH0EMD08461',
     marketCategoryCode: 'NSPD',
@@ -24279,7 +24683,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XISL: {
     mic: 'XISL',
@@ -24298,7 +24702,8 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '20170227',
-    comments: 'ISLAMABAD STOCK EXCHANGE HAS BEEN INTEGRATED TO THE PAKISTAN STOCK EXCHANGE IN JANUARY 2017.'
+    comments:
+      'ISLAMABAD STOCK EXCHANGE HAS BEEN INTEGRATED TO THE PAKISTAN STOCK EXCHANGE IN JANUARY 2017.',
   },
   XKAR: {
     mic: 'XKAR',
@@ -24317,7 +24722,8 @@ export const mics = {
     lastUpdateDate: '20160425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MERGER OF THE THREE STOCK EXCHANGES IN PAKISTAN. PSX SUCCESSFULLY STARTED TO OPERATE FROM JANUARY 11, 2016, ONWARDS.'
+    comments:
+      'MERGER OF THE THREE STOCK EXCHANGES IN PAKISTAN. PSX SUCCESSFULLY STARTED TO OPERATE FROM JANUARY 11, 2016, ONWARDS.',
   },
   XLAH: {
     mic: 'XLAH',
@@ -24336,7 +24742,8 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '20170227',
-    comments: 'LAHORE STOCK EXCHANGE HAS BEEN INTEGRATED TO THE PAKISTAN STOCK EXCHANGE IN JANUARY 2017.'
+    comments:
+      'LAHORE STOCK EXCHANGE HAS BEEN INTEGRATED TO THE PAKISTAN STOCK EXCHANGE IN JANUARY 2017.',
   },
   XLGT: {
     mic: 'XLGT',
@@ -24355,7 +24762,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   XSTF: {
     mic: 'XSTF',
@@ -24374,13 +24781,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'FOR REPORTING PURPOSE.'
+    comments: 'FOR REPORTING PURPOSE.',
   },
   STUC: {
     mic: 'STUC',
     operatingMic: 'XSTU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE STUTTGART - REGULIERTER MARKT - TECHNICAL PLATFORM 2',
+    marketNameInstitutionDescription:
+      'BOERSE STUTTGART - REGULIERTER MARKT - TECHNICAL PLATFORM 2',
     legalEntityName: 'BADEN-WURTTEMBERGISCHE WERTPAPIERBOERSE GMBH',
     lei: '529900A0WHA0NVXY0G45',
     marketCategoryCode: 'RMKT',
@@ -24393,13 +24801,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'FOR REPORTING PURPOSE.'
+    comments: 'FOR REPORTING PURPOSE.',
   },
   STUD: {
     mic: 'STUD',
     operatingMic: 'XSTU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE STUTTGART - FREIVERKEHR - TECHNICAL PLATFORM 2',
+    marketNameInstitutionDescription:
+      'BOERSE STUTTGART - FREIVERKEHR - TECHNICAL PLATFORM 2',
     legalEntityName: 'BOERSE STUTTGART GMBH',
     lei: '529900A0WHA0NVXY0G45',
     marketCategoryCode: 'MLTF',
@@ -24412,7 +24821,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'FOR REPORTING PURPOSE.'
+    comments: 'FOR REPORTING PURPOSE.',
   },
   XCEG: {
     mic: 'XCEG',
@@ -24431,7 +24840,8 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '20170227',
-    comments: 'CENTRAL EUROPEAN GAS HUB (CEGH) IS ONE OF THE MOST IMPORTANT TRADING HUBS FOR NATURAL GAS IN CENTRAL EUROPE AND PROVIDES EXCHANGE SERVICES TOGETHER WITH VIENNA STOCK EXCHANGE.'
+    comments:
+      'CENTRAL EUROPEAN GAS HUB (CEGH) IS ONE OF THE MOST IMPORTANT TRADING HUBS FOR NATURAL GAS IN CENTRAL EUROPE AND PROVIDES EXCHANGE SERVICES TOGETHER WITH VIENNA STOCK EXCHANGE.',
   },
   XRSP: {
     mic: 'XRSP',
@@ -24450,7 +24860,7 @@ export const mics = {
     lastUpdateDate: '20140224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES',
   },
   PEEL: {
     mic: 'PEEL',
@@ -24469,7 +24879,7 @@ export const mics = {
     lastUpdateDate: '20140224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPHX: {
     mic: 'XPHX',
@@ -24488,7 +24898,7 @@ export const mics = {
     lastUpdateDate: '20140224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC CROSSING PLATFORM FOR EQUITIES'
+    comments: 'ELECTRONIC CROSSING PLATFORM FOR EQUITIES',
   },
   CAZE: {
     mic: 'CAZE',
@@ -24507,7 +24917,7 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '20170123',
-    comments: ''
+    comments: '',
   },
   JPBX: {
     mic: 'JPBX',
@@ -24526,7 +24936,7 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'J.P. MORGAN ATS'
+    comments: 'J.P. MORGAN ATS',
   },
   JPSI: {
     mic: 'JPSI',
@@ -24545,7 +24955,7 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   JSEF: {
     mic: 'JSEF',
@@ -24564,7 +24974,8 @@ export const mics = {
     lastUpdateDate: '20161226',
     lastValidationDate: '',
     expiryDate: '20161226',
-    comments: 'REGISTERED SEF FOR INTEREST RATE DERIVATIVES. BOUGHT BY BATS HOTSPOT FX (MIC: BHSF).'
+    comments:
+      'REGISTERED SEF FOR INTEREST RATE DERIVATIVES. BOUGHT BY BATS HOTSPOT FX (MIC: BHSF).',
   },
   AREX: {
     mic: 'AREX',
@@ -24583,7 +24994,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR ETR (EXCHANGE TRADED RECEIVABLES) ORDER EXECUTION.'
+    comments: 'MARKET FOR ETR (EXCHANGE TRADED RECEIVABLES) ORDER EXECUTION.',
   },
   HOTC: {
     mic: 'HOTC',
@@ -24602,7 +25013,8 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE HELLENIC EXCHANGE OTC MARKET IS THE OVER-THE-COUNTER ELECTRONIC TRADING MARKET FOR ATHENS EXCHANGE.'
+    comments:
+      'THE HELLENIC EXCHANGE OTC MARKET IS THE OVER-THE-COUNTER ELECTRONIC TRADING MARKET FOR ATHENS EXCHANGE.',
   },
   XADE: {
     mic: 'XADE',
@@ -24621,7 +25033,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ENAX: {
     mic: 'ENAX',
@@ -24640,7 +25052,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XATH: {
     mic: 'XATH',
@@ -24659,13 +25071,14 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSAU: {
     mic: 'CSAU',
     operatingMic: 'CSAU',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE EQUITIES (AUSTRALIA) LIMITED',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE EQUITIES (AUSTRALIA) LIMITED',
     legalEntityName: 'CREDIT SUISSE EQUITIES (AUSTRALIA) LIMITED',
     lei: '549300PFVFUWK2NI0V37',
     marketCategoryCode: 'NSPD',
@@ -24678,7 +25091,7 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED BROKER DEALER IN AUSTRALIA'
+    comments: 'REGISTERED BROKER DEALER IN AUSTRALIA',
   },
   CFAU: {
     mic: 'CFAU',
@@ -24691,13 +25104,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'AU',
     city: 'SYDNEY',
-    website: 'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
+    website:
+      'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
     status: 'ACTIVE',
     creationDate: '20151026',
     lastUpdateDate: '20151026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL AUSTRALIA'
+    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL AUSTRALIA',
   },
   CSEU: {
     mic: 'CSEU',
@@ -24716,7 +25130,7 @@ export const mics = {
     lastUpdateDate: '20120924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSCF: {
     mic: 'CSCF',
@@ -24735,13 +25149,14 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSHK: {
     mic: 'CSHK',
     operatingMic: 'CSHK',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CREDIT SUISSE SECURITIES (HONG KONG) LIMITED',
+    marketNameInstitutionDescription:
+      'CREDIT SUISSE SECURITIES (HONG KONG) LIMITED',
     legalEntityName: '',
     lei: '549300I5DSQBF6DPYJ85',
     marketCategoryCode: 'NSPD',
@@ -24754,7 +25169,7 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED BROKER DEALER IN HONG KONG'
+    comments: 'REGISTERED BROKER DEALER IN HONG KONG',
   },
   CFHK: {
     mic: 'CFHK',
@@ -24767,13 +25182,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'HK',
     city: 'HONG KONG',
-    website: 'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
+    website:
+      'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
     status: 'ACTIVE',
     creationDate: '20151026',
     lastUpdateDate: '20151026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL HONG KONG'
+    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL HONG KONG',
   },
   CSJP: {
     mic: 'CSJP',
@@ -24792,7 +25208,7 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED BROKER DEALER IN JAPAN'
+    comments: 'REGISTERED BROKER DEALER IN JAPAN',
   },
   CFJP: {
     mic: 'CFJP',
@@ -24805,13 +25221,14 @@ export const mics = {
     acronym: '',
     isoCountryCodeIso_3166: 'JP',
     city: 'TOKYO',
-    website: 'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
+    website:
+      'WWW.CREDIT-SUISSE.COM/HK/EN/INVESTMENT-BANKING/CLIENT-OFFERING/AES/CROSSFINDER.HTML',
     status: 'ACTIVE',
     creationDate: '20151026',
     lastUpdateDate: '20151026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL JAPAN'
+    comments: 'EQUITIES ALTERNATIVE LIQUIDITY POOL JAPAN',
   },
   EDGE: {
     mic: 'EDGE',
@@ -24830,13 +25247,14 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '20180625',
-    comments: ''
+    comments: '',
   },
   FICX: {
     mic: 'FICX',
     operatingMic: 'FICX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'FINANCIAL INFORMATION CONTRIBUTORS EXCHANGE',
+    marketNameInstitutionDescription:
+      'FINANCIAL INFORMATION CONTRIBUTORS EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -24849,7 +25267,8 @@ export const mics = {
     lastUpdateDate: '20160822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GLOBAL, CLOUD BASED PLATFORM FOR CONTRIBUTORS INFORMATION EXCHANGE IN REAL-TIME.'
+    comments:
+      'GLOBAL, CLOUD BASED PLATFORM FOR CONTRIBUTORS INFORMATION EXCHANGE IN REAL-TIME.',
   },
   GBOT: {
     mic: 'GBOT',
@@ -24868,7 +25287,8 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTI-ASSET CLASS EXCHANGE PROVIDING AN ELECTRONIC PLATFORM FOR TRADING ON COMMODITY DERIVATIVES, CURRENCY DERIVATIVES, EQUITY,  EQUITY DERIVATIVES AND BONDS.'
+    comments:
+      'MULTI-ASSET CLASS EXCHANGE PROVIDING AN ELECTRONIC PLATFORM FOR TRADING ON COMMODITY DERIVATIVES, CURRENCY DERIVATIVES, EQUITY,  EQUITY DERIVATIVES AND BONDS.',
   },
   GRIF: {
     mic: 'GRIF',
@@ -24887,7 +25307,7 @@ export const mics = {
     lastUpdateDate: '20121022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING VENUE FOR EUROPEAN ENERGY MARKETS.'
+    comments: 'TRADING VENUE FOR EUROPEAN ENERGY MARKETS.',
   },
   IBGH: {
     mic: 'IBGH',
@@ -24906,7 +25326,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR THE IBERIAN GAS MARKET.'
+    comments: 'TRADING PLATFORM FOR THE IBERIAN GAS MARKET.',
   },
   IEXG: {
     mic: 'IEXG',
@@ -24925,7 +25345,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LMEC: {
     mic: 'LMEC',
@@ -24944,7 +25364,7 @@ export const mics = {
     lastUpdateDate: '20140224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LONDON METAL EXCHANGE CLEARING PLATFORM'
+    comments: 'LONDON METAL EXCHANGE CLEARING PLATFORM',
   },
   NEXO: {
     mic: 'NEXO',
@@ -24963,7 +25383,8 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FINANCIAL DERIVATIVES, CASH SETTLED FUTURES CONTRACTS. ELECTRONIC TRADING QND CLEARING'
+    comments:
+      'FINANCIAL DERIVATIVES, CASH SETTLED FUTURES CONTRACTS. ELECTRONIC TRADING QND CLEARING',
   },
   NMRJ: {
     mic: 'NMRJ',
@@ -24982,7 +25403,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'NOMURA JAPAN EQUITY TRADING.'
+    comments: 'NOMURA JAPAN EQUITY TRADING.',
   },
   NXJP: {
     mic: 'NXJP',
@@ -25001,7 +25422,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   NXVW: {
     mic: 'NXVW',
@@ -25020,7 +25441,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL VWAP CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL VWAP CROSSING PLATFORM FOR NOMURA.',
   },
   PARX: {
     mic: 'PARX',
@@ -25039,7 +25460,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SPOT FX'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR SPOT FX',
   },
   ELIX: {
     mic: 'ELIX',
@@ -25058,7 +25479,7 @@ export const mics = {
     lastUpdateDate: '20160425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.'
+    comments: 'PLATFORM FOR SECURITIES FINANCING TRANSACTIONS.',
   },
   TRDX: {
     mic: 'TRDX',
@@ -25077,7 +25498,8 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "TRADITION'S HYBRID TRADING PLATFORM FOR OTC DERIVATIVES AND OTHER FINANCIAL INSTRUMENTS."
+    comments:
+      "TRADITION'S HYBRID TRADING PLATFORM FOR OTC DERIVATIVES AND OTHER FINANCIAL INSTRUMENTS.",
   },
   XBEL: {
     mic: 'XBEL',
@@ -25096,7 +25518,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BLBF: {
     mic: 'BLBF',
@@ -25115,7 +25537,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBLB: {
     mic: 'XBLB',
@@ -25134,7 +25556,7 @@ export const mics = {
     lastUpdateDate: '20051024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOT: {
     mic: 'XMOT',
@@ -25153,7 +25575,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'MTF OF BONDS MANAGED AND ORGANISED BY BORSA ITALIANA.'
+    comments: 'MTF OF BONDS MANAGED AND ORGANISED BY BORSA ITALIANA.',
   },
   MOTX: {
     mic: 'MOTX',
@@ -25172,7 +25594,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MUNB: {
     mic: 'MUNB',
@@ -25191,7 +25613,7 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MUNA: {
     mic: 'MUNA',
@@ -25210,7 +25632,7 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMUN: {
     mic: 'XMUN',
@@ -25229,7 +25651,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNXC: {
     mic: 'XNXC',
@@ -25248,7 +25670,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET, TRADING PLATFORM NXCHANGE.'
+    comments: 'REGULATED MARKET, TRADING PLATFORM NXCHANGE.',
   },
   XOPV: {
     mic: 'XOPV',
@@ -25267,7 +25689,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XVES: {
     mic: 'XVES',
@@ -25286,13 +25708,14 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XVIA: {
     mic: 'XVIA',
     operatingMic: 'XLIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ALTERNATIVE MARKET-FIRST NORTH LITHUANIA',
+    marketNameInstitutionDescription:
+      'ALTERNATIVE MARKET-FIRST NORTH LITHUANIA',
     legalEntityName: '',
     lei: '549300JGFH6L45DLE408',
     marketCategoryCode: 'NSPD',
@@ -25305,7 +25728,8 @@ export const mics = {
     lastUpdateDate: '20091026',
     lastValidationDate: '',
     expiryDate: '20091026',
-    comments: 'MIC IS NOW FNLT. MARKET NOT USED YET, SO IMPACT OF MIC CHANGE IS LIMITED.'
+    comments:
+      'MIC IS NOW FNLT. MARKET NOT USED YET, SO IMPACT OF MIC CHANGE IS LIMITED.',
   },
   XHON: {
     mic: 'XHON',
@@ -25324,7 +25748,7 @@ export const mics = {
     lastUpdateDate: '20081222',
     lastValidationDate: '',
     expiryDate: '20081222',
-    comments: 'MIC TO USE IS XBCV'
+    comments: 'MIC TO USE IS XBCV',
   },
   ICUS: {
     mic: 'ICUS',
@@ -25343,13 +25767,15 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '20111024',
-    comments: 'NEW YORK BOARD OF TRADE (NYBOT) IS RENAMED IN ICE FUTURES US. XNYF IS CHANGED INTO ICUS (ALREADY CREATED IN MAY 08 - V48) AS PER EXCHANGE REQUEST'
+    comments:
+      'NEW YORK BOARD OF TRADE (NYBOT) IS RENAMED IN ICE FUTURES US. XNYF IS CHANGED INTO ICUS (ALREADY CREATED IN MAY 08 - V48) AS PER EXCHANGE REQUEST',
   },
   ITSM: {
     mic: 'ITSM',
     operatingMic: 'ITSM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'AIM ITALIA - MERCATO ALTERNATIVO DEL CAPITALE',
+    marketNameInstitutionDescription:
+      'AIM ITALIA - MERCATO ALTERNATIVO DEL CAPITALE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -25362,7 +25788,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '20120423',
-    comments: 'COMBINATION OF SME MARKETS OF AIM ITALIA AND MAC IN ITALY.'
+    comments: 'COMBINATION OF SME MARKETS OF AIM ITALIA AND MAC IN ITALY.',
   },
   JATA: {
     mic: 'JATA',
@@ -25381,7 +25807,7 @@ export const mics = {
     lastUpdateDate: '20100927',
     lastValidationDate: '',
     expiryDate: '20100927',
-    comments: 'DELETED DUE TO ORGANIZATIONAL MERGER OF OSE AND JASDAQ.'
+    comments: 'DELETED DUE TO ORGANIZATIONAL MERGER OF OSE AND JASDAQ.',
   },
   KMTS: {
     mic: 'KMTS',
@@ -25400,7 +25826,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '20110228',
-    comments: 'DELETED AT THE REQUEST OF MTS GROUP'
+    comments: 'DELETED AT THE REQUEST OF MTS GROUP',
   },
   XSUR: {
     mic: 'XSUR',
@@ -25419,13 +25845,15 @@ export const mics = {
     lastUpdateDate: '20080428',
     lastValidationDate: '',
     expiryDate: '20080428',
-    comments: 'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX). MIC TO USE IS XIDX'
+    comments:
+      'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX). MIC TO USE IS XIDX',
   },
   XWCE: {
     mic: 'XWCE',
     operatingMic: 'IFCA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTERCONTINENTAL EXCHANGE - ICE FUTURES CANADA',
+    marketNameInstitutionDescription:
+      'INTERCONTINENTAL EXCHANGE - ICE FUTURES CANADA',
     legalEntityName: '',
     lei: '549300QVU6WVGZWEYS03',
     marketCategoryCode: 'NSPD',
@@ -25438,7 +25866,8 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '20111024',
-    comments: 'WINNIPEG COMMODITY EXCHANGE BECAME ICE FUTURES CANADA SINCE JANUARY 1ST, 2008'
+    comments:
+      'WINNIPEG COMMODITY EXCHANGE BECAME ICE FUTURES CANADA SINCE JANUARY 1ST, 2008',
   },
   NASN: {
     mic: 'NASN',
@@ -25457,7 +25886,8 @@ export const mics = {
     lastUpdateDate: '20101025',
     lastValidationDate: '',
     expiryDate: '20101025',
-    comments: 'NASDAQ OMX NORDIC HAVE A MIC (XSTO) THAT SHOULD BE USED FOR REPORTING PURPOSES (INCLUDING THE DERIVATIVES MARKET)'
+    comments:
+      'NASDAQ OMX NORDIC HAVE A MIC (XSTO) THAT SHOULD BE USED FOR REPORTING PURPOSES (INCLUDING THE DERIVATIVES MARKET)',
   },
   MTSP: {
     mic: 'MTSP',
@@ -25476,13 +25906,14 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '20120528',
-    comments: 'WAS REPLACED BY TBS POLAND MARKET'
+    comments: 'WAS REPLACED BY TBS POLAND MARKET',
   },
   XASM: {
     mic: 'XASM',
     operatingMic: 'XDUB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'IRISH STOCK EXCHANGE - GLOBAL EXCHANGE MARKET',
+    marketNameInstitutionDescription:
+      'IRISH STOCK EXCHANGE - GLOBAL EXCHANGE MARKET',
     legalEntityName: '',
     lei: '635400DZBUIMTBCXGA12',
     marketCategoryCode: 'NSPD',
@@ -25495,13 +25926,15 @@ export const mics = {
     lastUpdateDate: '20100823',
     lastValidationDate: '20100823',
     expiryDate: '20100823',
-    comments: 'THE IRISH STOCK EXCHANGE IS MOVING TO A SINGLE MIC CODE REGIME AND THEREFORE XDUB WILL BE THE MIC CODE FOR ALL IRISH STOCK EXCHANGE MARKETS.'
+    comments:
+      'THE IRISH STOCK EXCHANGE IS MOVING TO A SINGLE MIC CODE REGIME AND THEREFORE XDUB WILL BE THE MIC CODE FOR ALL IRISH STOCK EXCHANGE MARKETS.',
   },
   XIEX: {
     mic: 'XIEX',
     operatingMic: 'XDUB',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'IRISH STOCK EXCHANGE - ENTERPRISE SECURITIES MARKET',
+    marketNameInstitutionDescription:
+      'IRISH STOCK EXCHANGE - ENTERPRISE SECURITIES MARKET',
     legalEntityName: '',
     lei: '635400DZBUIMTBCXGA12',
     marketCategoryCode: 'NSPD',
@@ -25514,7 +25947,8 @@ export const mics = {
     lastUpdateDate: '20100823',
     lastValidationDate: '',
     expiryDate: '20100823',
-    comments: 'THE IRISH STOCK EXCHANGE IS MOVING TO A SINGLE MIC CODE REGIME AND THEREFORE XDUB WILL BE THE MIC CODE FOR ALL IRISH STOCK EXCHANGE MARKETS.'
+    comments:
+      'THE IRISH STOCK EXCHANGE IS MOVING TO A SINGLE MIC CODE REGIME AND THEREFORE XDUB WILL BE THE MIC CODE FOR ALL IRISH STOCK EXCHANGE MARKETS.',
   },
   XJKT: {
     mic: 'XJKT',
@@ -25533,7 +25967,8 @@ export const mics = {
     lastUpdateDate: '20080428',
     lastValidationDate: '',
     expiryDate: '20080428',
-    comments: 'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX). MIC TO USE IS XIDX'
+    comments:
+      'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX). MIC TO USE IS XIDX',
   },
   MTAX: {
     mic: 'MTAX',
@@ -25552,7 +25987,8 @@ export const mics = {
     lastUpdateDate: '20080428',
     lastValidationDate: '',
     expiryDate: '20080428',
-    comments: 'UNIFICATION OF MTA AND MTAX ON MARCH 3RD 2008. MTAA IS THE MIC TO USE.'
+    comments:
+      'UNIFICATION OF MTA AND MTAX ON MARCH 3RD 2008. MTAA IS THE MIC TO USE.',
   },
   XEAS: {
     mic: 'XEAS',
@@ -25571,7 +26007,7 @@ export const mics = {
     lastUpdateDate: '20081124',
     lastValidationDate: '',
     expiryDate: '20081124',
-    comments: 'MIC TO USE IS XEQT'
+    comments: 'MIC TO USE IS XEQT',
   },
   XBMK: {
     mic: 'XBMK',
@@ -25590,7 +26026,7 @@ export const mics = {
     lastUpdateDate: '20090622',
     lastValidationDate: '',
     expiryDate: '20090622',
-    comments: 'REGISTRATION FOR BONDMART WITHDRAWN.'
+    comments: 'REGISTRATION FOR BONDMART WITHDRAWN.',
   },
   XBMF: {
     mic: 'XBMF',
@@ -25609,13 +26045,15 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '20100524',
-    comments: 'MERGER BETWEEN THE BRAZILIAN MERCANTILE & FUTURES EXCHANGE (BM&F) AND THE SAO PAULO STOCK EXCHANGE (BOVESPA) => BM&FBOVESPA S.A.'
+    comments:
+      'MERGER BETWEEN THE BRAZILIAN MERCANTILE & FUTURES EXCHANGE (BM&F) AND THE SAO PAULO STOCK EXCHANGE (BOVESPA) => BM&FBOVESPA S.A.',
   },
   ICEU: {
     mic: 'ICEU',
     operatingMic: 'ICEU',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'INTERCONTINENTAL EXCHANGE - ICE FUTURES EUROPE',
+    marketNameInstitutionDescription:
+      'INTERCONTINENTAL EXCHANGE - ICE FUTURES EUROPE',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -25628,7 +26066,7 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '20111024',
-    comments: ''
+    comments: '',
   },
   CETO: {
     mic: 'CETO',
@@ -25647,7 +26085,8 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '20110328',
-    comments: 'CETO WAS ONLY FOR BONDSPOT AS JOINT-STOCK COMPANY, NOT AS MARKET.'
+    comments:
+      'CETO WAS ONLY FOR BONDSPOT AS JOINT-STOCK COMPANY, NOT AS MARKET.',
   },
   XA1X: {
     mic: 'XA1X',
@@ -25666,7 +26105,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '20110124',
-    comments: ''
+    comments: '',
   },
   ICAT: {
     mic: 'ICAT',
@@ -25685,7 +26124,7 @@ export const mics = {
     lastUpdateDate: '20080922',
     lastValidationDate: '',
     expiryDate: '20080922',
-    comments: 'MIC TO USE IS ICAH'
+    comments: 'MIC TO USE IS ICAH',
   },
   NOME: {
     mic: 'NOME',
@@ -25704,7 +26143,7 @@ export const mics = {
     lastUpdateDate: '20080922',
     lastValidationDate: '',
     expiryDate: '20080922',
-    comments: 'MIC TO USE IS NURO'
+    comments: 'MIC TO USE IS NURO',
   },
   EXPA: {
     mic: 'EXPA',
@@ -25723,7 +26162,8 @@ export const mics = {
     lastUpdateDate: '20090622',
     lastValidationDate: '',
     expiryDate: '20090622',
-    comments: 'STARTING FROM 22ND JUNE 2009 EXPANDI WILL MERGE IN MTA MARKETS (MTAA)'
+    comments:
+      'STARTING FROM 22ND JUNE 2009 EXPANDI WILL MERGE IN MTA MARKETS (MTAA)',
   },
   XBSP: {
     mic: 'XBSP',
@@ -25742,7 +26182,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '20100524',
-    comments: 'MERGER BETWEEN THE BRAZILIAN MERCANTILE & FUTURES EXCHANGE (BM&F) AND THE SAO PAULO STOCK EXCHANGE (BOVESPA) => BM&FBOVESPA S.A.'
+    comments:
+      'MERGER BETWEEN THE BRAZILIAN MERCANTILE & FUTURES EXCHANGE (BM&F) AND THE SAO PAULO STOCK EXCHANGE (BOVESPA) => BM&FBOVESPA S.A.',
   },
   NECD: {
     mic: 'NECD',
@@ -25761,7 +26202,7 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '20110822',
-    comments: 'DARK POOL REQUESTED BY MISTAKE.'
+    comments: 'DARK POOL REQUESTED BY MISTAKE.',
   },
   NBXO: {
     mic: 'NBXO',
@@ -25780,7 +26221,7 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '20120827',
-    comments: 'DUPLICATE. MIC TO USE IS XBXO.'
+    comments: 'DUPLICATE. MIC TO USE IS XBXO.',
   },
   FXMT: {
     mic: 'FXMT',
@@ -25799,7 +26240,7 @@ export const mics = {
     lastUpdateDate: '20090126',
     lastValidationDate: '',
     expiryDate: '20090126',
-    comments: 'FXMARKETSPACE SUSPENDED TRADING OPERATIONS ON OCTOBER 17, 2008'
+    comments: 'FXMARKETSPACE SUSPENDED TRADING OPERATIONS ON OCTOBER 17, 2008',
   },
   THRD: {
     mic: 'THRD',
@@ -25818,7 +26259,8 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '20120326',
-    comments: 'EXCHANGE NAME "THIRD MARKET" WILL BE CHANGED TO "NASDAQ INTERMARKET", AS A RESULT OF WHICH THE MIC  CHANGES FROM THRD TO XNIM.'
+    comments:
+      'EXCHANGE NAME "THIRD MARKET" WILL BE CHANGED TO "NASDAQ INTERMARKET", AS A RESULT OF WHICH THE MIC  CHANGES FROM THRD TO XNIM.',
   },
   ATSA: {
     mic: 'ATSA',
@@ -25837,7 +26279,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '20120528',
-    comments: 'MIC TO USE IS XATS (ALPHA EXCHANGE)'
+    comments: 'MIC TO USE IS XATS (ALPHA EXCHANGE)',
   },
   XSIC: {
     mic: 'XSIC',
@@ -25856,7 +26298,8 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '20110328',
-    comments: 'NO MORE AN EXCHANGE BECAUSE ITS LICENCE OF EXCHANGE ACTIVITY WAS CEASED IN 2010 DUE TO THE REORGANIZATION.'
+    comments:
+      'NO MORE AN EXCHANGE BECAUSE ITS LICENCE OF EXCHANGE ACTIVITY WAS CEASED IN 2010 DUE TO THE REORGANIZATION.',
   },
   XTAA: {
     mic: 'XTAA',
@@ -25875,7 +26318,7 @@ export const mics = {
     lastUpdateDate: '20091123',
     lastValidationDate: '',
     expiryDate: '20091123',
-    comments: 'XTAA REPLACED BY FNEE.'
+    comments: 'XTAA REPLACED BY FNEE.',
   },
   XTLX: {
     mic: 'XTLX',
@@ -25894,7 +26337,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '20110124',
-    comments: ''
+    comments: '',
   },
   XLOF: {
     mic: 'XLOF',
@@ -25913,7 +26356,8 @@ export const mics = {
     lastUpdateDate: '20080728',
     lastValidationDate: '',
     expiryDate: '20080728',
-    comments: 'MERGER BETWEEN THE MALAYSIA DERIVATIVES EXCHANGE AND THE BURSA MALAYSIA. XKLS IS THE VALID CODE TO USE'
+    comments:
+      'MERGER BETWEEN THE MALAYSIA DERIVATIVES EXCHANGE AND THE BURSA MALAYSIA. XKLS IS THE VALID CODE TO USE',
   },
   XMIC: {
     mic: 'XMIC',
@@ -25932,7 +26376,8 @@ export const mics = {
     lastUpdateDate: '20111226',
     lastValidationDate: '',
     expiryDate: '20111226',
-    comments: 'MIC TO USE AS FROM 19 DEC 2011 IS MISX. MERGER BETWEEN RTS AND MICEX GROUPS.'
+    comments:
+      'MIC TO USE AS FROM 19 DEC 2011 IS MISX. MERGER BETWEEN RTS AND MICEX GROUPS.',
   },
   QMTS: {
     mic: 'QMTS',
@@ -25951,7 +26396,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '20110228',
-    comments: 'DELETED AT THE REQUEST OF MTS GROUP'
+    comments: 'DELETED AT THE REQUEST OF MTS GROUP',
   },
   PCDS: {
     mic: 'PCDS',
@@ -25970,7 +26415,8 @@ export const mics = {
     lastUpdateDate: '20081222',
     lastValidationDate: '',
     expiryDate: '20081222',
-    comments: 'MIC TO USE IS TPCD.  TULLETT PREBON HAS MIGRATED BUSINESS TO ITS NEW TPCREDITDEAL PLATFORM.'
+    comments:
+      'MIC TO USE IS TPCD.  TULLETT PREBON HAS MIGRATED BUSINESS TO ITS NEW TPCREDITDEAL PLATFORM.',
   },
   XEUS: {
     mic: 'XEUS',
@@ -25989,7 +26435,8 @@ export const mics = {
     lastUpdateDate: '20090727',
     lastValidationDate: '',
     expiryDate: '20090727',
-    comments: 'HAS TERMINATED ALL EXCHANGE OPERATIONS EFFECTIVE DECEMBER 31, 2008'
+    comments:
+      'HAS TERMINATED ALL EXCHANGE OPERATIONS EFFECTIVE DECEMBER 31, 2008',
   },
   XNYF: {
     mic: 'XNYF',
@@ -26008,7 +26455,8 @@ export const mics = {
     lastUpdateDate: '20080623',
     lastValidationDate: '',
     expiryDate: '20080623',
-    comments: 'NEW YORK BOARD OF TRADE (NYBOT) IS RENAMED IN ICE FUTURES US. XNYF IS CHANGED INTO ICUS AS PER EXCHANGE REQUEST'
+    comments:
+      'NEW YORK BOARD OF TRADE (NYBOT) IS RENAMED IN ICE FUTURES US. XNYF IS CHANGED INTO ICUS AS PER EXCHANGE REQUEST',
   },
   BAMP: {
     mic: 'BAMP',
@@ -26027,7 +26475,7 @@ export const mics = {
     lastUpdateDate: '20110725',
     lastValidationDate: '',
     expiryDate: '20110725',
-    comments: 'DARK POOL REQUESTED BY MISTAKE. BAML AND BAMP ARE THE SAME.'
+    comments: 'DARK POOL REQUESTED BY MISTAKE. BAML AND BAMP ARE THE SAME.',
   },
   XEDX: {
     mic: 'XEDX',
@@ -26046,13 +26494,15 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '20110523',
-    comments: "FROM 01/05/2011 EDX'S EXISTED PRODUCTS WILL USE NEW TURQUOISE DERIVATIVES MIC CODE."
+    comments:
+      "FROM 01/05/2011 EDX'S EXISTED PRODUCTS WILL USE NEW TURQUOISE DERIVATIVES MIC CODE.",
   },
   XTAR: {
     mic: 'XTAR',
     operatingMic: 'XTAR',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TALLINN STOCK EXCHANGE - REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'TALLINN STOCK EXCHANGE - REGULATED MARKET',
     legalEntityName: '',
     lei: '549300WZWPKNRJ4PQD76',
     marketCategoryCode: 'NSPD',
@@ -26065,7 +26515,8 @@ export const mics = {
     lastUpdateDate: '20091123',
     lastValidationDate: '',
     expiryDate: '20091123',
-    comments: 'XTAR DELETED, XTAL SHOULD BE USED. NO REAL DIFFERNCES BEWEEN BOTH SEGMENTS.'
+    comments:
+      'XTAR DELETED, XTAL SHOULD BE USED. NO REAL DIFFERNCES BEWEEN BOTH SEGMENTS.',
   },
   URCE: {
     mic: 'URCE',
@@ -26084,13 +26535,15 @@ export const mics = {
     lastUpdateDate: '20100628',
     lastValidationDate: '',
     expiryDate: '20100628',
-    comments: 'THE MICEX REGIONAL EXCHANGE CENTRES ONLY INITIATE TRADE BUSINESS, I.E. THERE IS NO TRADE THERE.'
+    comments:
+      'THE MICEX REGIONAL EXCHANGE CENTRES ONLY INITIATE TRADE BUSINESS, I.E. THERE IS NO TRADE THERE.',
   },
   VRXP: {
     mic: 'VRXP',
     operatingMic: 'XMLI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NYSE EURONEXT - COMPARTIMENT DES VALEURS RADIEES PARIS',
+    marketNameInstitutionDescription:
+      'NYSE EURONEXT - COMPARTIMENT DES VALEURS RADIEES PARIS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -26103,7 +26556,8 @@ export const mics = {
     lastUpdateDate: '20080324',
     lastValidationDate: '',
     expiryDate: '20080324',
-    comments: 'THIS MTF HAS MERGED WITH NYSE EURONEXT MARCHE LIBRE PARIS (XMLI) IN JANUARY 2008'
+    comments:
+      'THIS MTF HAS MERGED WITH NYSE EURONEXT MARCHE LIBRE PARIS (XMLI) IN JANUARY 2008',
   },
   XFNX: {
     mic: 'XFNX',
@@ -26122,7 +26576,8 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '20110124',
-    comments: 'FINEX, THEY NO LONGER OPERATE IN DUBLIN AND THEREFORE THE MIC CODE DELETED. FINEX (NOW ICE) CONTINUE TO OPERATE AS ICE IN NEW YORK.'
+    comments:
+      'FINEX, THEY NO LONGER OPERATE IN DUBLIN AND THEREFORE THE MIC CODE DELETED. FINEX (NOW ICE) CONTINUE TO OPERATE AS ICE IN NEW YORK.',
   },
   CSFB: {
     mic: 'CSFB',
@@ -26141,7 +26596,7 @@ export const mics = {
     lastUpdateDate: '20120924',
     lastValidationDate: '',
     expiryDate: '20120924',
-    comments: ''
+    comments: '',
   },
   XHCE: {
     mic: 'XHCE',
@@ -26160,7 +26615,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '20110124',
-    comments: ''
+    comments: '',
   },
   XHER: {
     mic: 'XHER',
@@ -26179,7 +26634,7 @@ export const mics = {
     lastUpdateDate: '20100927',
     lastValidationDate: '',
     expiryDate: '20100927',
-    comments: 'DELETED DUE TO ORGANIZATIONAL MERGER OF OSE AND JASDAQ.'
+    comments: 'DELETED DUE TO ORGANIZATIONAL MERGER OF OSE AND JASDAQ.',
   },
   CRDL: {
     mic: 'CRDL',
@@ -26198,7 +26653,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '20110228',
-    comments: 'DELETED AT THE REQUEST OF MTS GROUP.'
+    comments: 'DELETED AT THE REQUEST OF MTS GROUP.',
   },
   BAIK: {
     mic: 'BAIK',
@@ -26217,7 +26672,8 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '20111024',
-    comments: 'LSEG HAS COMPLETED ITS ACQUISITION OF TURQUOISE TRADING LIMITED (TURQUOISE) THROUGH A MERGER OF THE BUSINESSES OF TURQUOISE AND BAIKAL GLOBAL LIMITED (BAIKAL).THE NEW VENTURE WILL CONTINUE TO TRADE UNDER THE TURQUOISE NAME.'
+    comments:
+      'LSEG HAS COMPLETED ITS ACQUISITION OF TURQUOISE TRADING LIMITED (TURQUOISE) THROUGH A MERGER OF THE BUSINESSES OF TURQUOISE AND BAIKAL GLOBAL LIMITED (BAIKAL).THE NEW VENTURE WILL CONTINUE TO TRADE UNDER THE TURQUOISE NAME.',
   },
   UMTS: {
     mic: 'UMTS',
@@ -26236,7 +26692,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '20110228',
-    comments: 'DELETED AT THE REQUEST OF MTS GROUP.'
+    comments: 'DELETED AT THE REQUEST OF MTS GROUP.',
   },
   XPIN: {
     mic: 'XPIN',
@@ -26255,7 +26711,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '20120326',
-    comments: 'INTERNATIONAL, SIGNAL-FREE, INTERNAL CROSSING NETWORK'
+    comments: 'INTERNATIONAL, SIGNAL-FREE, INTERNAL CROSSING NETWORK',
   },
   XRTR: {
     mic: 'XRTR',
@@ -26274,7 +26730,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '20110228',
-    comments: ''
+    comments: '',
   },
   XPLU: {
     mic: 'XPLU',
@@ -26293,7 +26749,8 @@ export const mics = {
     lastUpdateDate: '20121126',
     lastValidationDate: '',
     expiryDate: '20121126',
-    comments: 'THE MARKET OPERATOR PLUS STOCK EXCHANGE PLC CHANGED ITS NAME TO ICAP SECURITIES & DERIVATIVES EXCHANGE LIMITED, ISDX WITH EFFECT FROM 31 OCTOBER 2012.'
+    comments:
+      'THE MARKET OPERATOR PLUS STOCK EXCHANGE PLC CHANGED ITS NAME TO ICAP SECURITIES & DERIVATIVES EXCHANGE LIMITED, ISDX WITH EFFECT FROM 31 OCTOBER 2012.',
   },
   XROV: {
     mic: 'XROV',
@@ -26312,7 +26769,8 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '20110425',
-    comments: 'XROV ONLY ORGANIZES THE ACCESS TO THE MOSCOW TRADING SYSTEM AND SIGNS AGREEMENTS FOR THIS ACCESS WITH REGIONAL PARTICIPANTS OF THE MOSCOW TRADING SYSTEM. XROV IS NOT A PLATFORM WHERE TRADES ARE EXECUTED SEPARATELY FROM THE MOSCOW OFFICE.'
+    comments:
+      'XROV ONLY ORGANIZES THE ACCESS TO THE MOSCOW TRADING SYSTEM AND SIGNS AGREEMENTS FOR THIS ACCESS WITH REGIONAL PARTICIPANTS OF THE MOSCOW TRADING SYSTEM. XROV IS NOT A PLATFORM WHERE TRADES ARE EXECUTED SEPARATELY FROM THE MOSCOW OFFICE.',
   },
   DAMP: {
     mic: 'DAMP',
@@ -26331,13 +26789,14 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '20120528',
-    comments: 'MIC TO USE IS GXGR.'
+    comments: 'MIC TO USE IS GXGR.',
   },
   XLJS: {
     mic: 'XLJS',
     operatingMic: 'XLJS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'LJUBLJANA STOCK EXCHANGE (SEMI-OFFICIAL MARKET)',
+    marketNameInstitutionDescription:
+      'LJUBLJANA STOCK EXCHANGE (SEMI-OFFICIAL MARKET)',
     legalEntityName: '',
     lei: '74780000M03HFUUXFU21',
     marketCategoryCode: 'NSPD',
@@ -26350,7 +26809,7 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '20090223',
-    comments: 'LJSE SEMI-OFFICIAL MARKET DOES NOT EXIST SINCE 30 JUNE 2008'
+    comments: 'LJSE SEMI-OFFICIAL MARKET DOES NOT EXIST SINCE 30 JUNE 2008',
   },
   XRMS: {
     mic: 'XRMS',
@@ -26369,7 +26828,7 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '20080128',
-    comments: 'XRMS IS NOT ANYMORE EXISTING MARKET IN SLOVAK REPUBLIC.'
+    comments: 'XRMS IS NOT ANYMORE EXISTING MARKET IN SLOVAK REPUBLIC.',
   },
   '360T': {
     mic: '360T',
@@ -26388,7 +26847,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AATS: {
     mic: 'AATS',
@@ -26407,13 +26866,15 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ASSENT ATS IS A US EQUITY DARK POOL OPERATED BY ASSENT, LLC - A SUBSIDIARY OF SUNGARD.'
+    comments:
+      'ASSENT ATS IS A US EQUITY DARK POOL OPERATED BY ASSENT, LLC - A SUBSIDIARY OF SUNGARD.',
   },
   ACEX: {
     mic: 'ACEX',
     operatingMic: 'ACEX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ACE DERIVATIVES & COMMODITY EXCHANGE LTD',
+    marketNameInstitutionDescription:
+      'ACE DERIVATIVES & COMMODITY EXCHANGE LTD',
     legalEntityName: '',
     lei: '33580057DULMQ3ANKR63',
     marketCategoryCode: 'NSPD',
@@ -26426,7 +26887,7 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DERIVATIVES EXCHANGE FOR COMMODITIES TRADING IN INDIA.'
+    comments: 'DERIVATIVES EXCHANGE FOR COMMODITIES TRADING IN INDIA.',
   },
   AFDL: {
     mic: 'AFDL',
@@ -26445,13 +26906,14 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AFET: {
     mic: 'AFET',
     operatingMic: 'AFET',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'AGRICULTURAL FUTURES EXCHANGE OF THAILAND',
+    marketNameInstitutionDescription:
+      'AGRICULTURAL FUTURES EXCHANGE OF THAILAND',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -26464,7 +26926,7 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AFSE: {
     mic: 'AFSE',
@@ -26483,7 +26945,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AIXE: {
     mic: 'AIXE',
@@ -26502,7 +26964,7 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: 'REPLACED BY OTXB.'
+    comments: 'REPLACED BY OTXB.',
   },
   AQST: {
     mic: 'AQST',
@@ -26521,7 +26983,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQSL: {
     mic: 'AQSL',
@@ -26540,7 +27002,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQSN: {
     mic: 'AQSN',
@@ -26559,7 +27021,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQSG: {
     mic: 'AQSG',
@@ -26578,7 +27040,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQSF: {
     mic: 'AQSF',
@@ -26597,7 +27059,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQSD: {
     mic: 'AQSD',
@@ -26616,7 +27078,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQUA: {
     mic: 'AQUA',
@@ -26635,7 +27097,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20220916',
-    comments: 'REGISTERED MARKET FOR BLOCK EQUITIES'
+    comments: 'REGISTERED MARKET FOR BLOCK EQUITIES',
   },
   ASEX: {
     mic: 'ASEX',
@@ -26654,7 +27116,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIPO: {
     mic: 'XIPO',
@@ -26673,7 +27135,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EBB IS A PRIMARY MARKET (IPO MARKET).'
+    comments: 'EBB IS A PRIMARY MARKET (IPO MARKET).',
   },
   EUAX: {
     mic: 'EUAX',
@@ -26692,7 +27154,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '20160523',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EMISSION ALLOWANCES (EUAS).'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR EMISSION ALLOWANCES (EUAS).',
   },
   AWBX: {
     mic: 'AWBX',
@@ -26711,7 +27173,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AWEX: {
     mic: 'AWEX',
@@ -26730,7 +27192,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BACE: {
     mic: 'BACE',
@@ -26749,7 +27211,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITY EXCHANGE.'
+    comments: 'COMMODITY EXCHANGE.',
   },
   MLCO: {
     mic: 'MLCO',
@@ -26768,13 +27230,14 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "USED FOR HIGH TOUCH AND 'DIRECT TO CAPITAL' EXECUTIONS"
+    comments: "USED FOR HIGH TOUCH AND 'DIRECT TO CAPITAL' EXECUTIONS",
   },
   MLVX: {
     mic: 'MLVX',
     operatingMic: 'BAML',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH VWAP CROSS',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH VWAP CROSS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'ATSS',
@@ -26787,13 +27250,14 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS (ATS 1)'
+    comments: 'REGISTERED ATS (ATS 1)',
   },
   BAML: {
     mic: 'BAML',
     operatingMic: 'BAML',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH INSTINCT X ATS',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH INSTINCT X ATS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'ATSS',
@@ -26806,7 +27270,7 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS (ATS 2)'
+    comments: 'REGISTERED ATS (ATS 2)',
   },
   BAPA: {
     mic: 'BAPA',
@@ -26825,7 +27289,7 @@ export const mics = {
     lastUpdateDate: '20170724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BLOOMBERG APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'BLOOMBERG APPROVED PUBLICATION ARRANGEMENT.',
   },
   BAPX: {
     mic: 'BAPX',
@@ -26844,7 +27308,7 @@ export const mics = {
     lastUpdateDate: '20100322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BALTPOOL UAB IS THE ELECTRICITY MARKET OPERATOR OF LITHUANIA.'
+    comments: 'BALTPOOL UAB IS THE ELECTRICITY MARKET OPERATOR OF LITHUANIA.',
   },
   BCDX: {
     mic: 'BCDX',
@@ -26863,7 +27327,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20181031',
-    comments: 'REGISTERED ATS.'
+    comments: 'REGISTERED ATS.',
   },
   BARL: {
     mic: 'BARL',
@@ -26882,7 +27346,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BARX: {
     mic: 'BARX',
@@ -26901,7 +27365,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS.'
+    comments: 'REGISTERED ATS.',
   },
   BARD: {
     mic: 'BARD',
@@ -26920,7 +27384,7 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BBSF: {
     mic: 'BBSF',
@@ -26939,7 +27403,8 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR REGULATED OTC DERIVATIVES TRANSACTIONS'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR REGULATED OTC DERIVATIVES TRANSACTIONS',
   },
   BCFS: {
     mic: 'BCFS',
@@ -26958,7 +27423,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMVL: {
     mic: 'XMVL',
@@ -26977,13 +27442,14 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BCMM: {
     mic: 'BCMM',
     operatingMic: 'BCMM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA DE CEREAIS E MERCADORIAS DE MARING�',
+    marketNameInstitutionDescription:
+      'BOLSA DE CEREAIS E MERCADORIAS DE MARING�',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -26996,7 +27462,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES MARKET.'
+    comments: 'COMMODITIES MARKET.',
   },
   BCSE: {
     mic: 'BCSE',
@@ -27015,7 +27481,7 @@ export const mics = {
     lastUpdateDate: '20060828',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CHIY: {
     mic: 'CHIY',
@@ -27034,7 +27500,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '20141124',
-    comments: 'OFF BOOK, ON-EXCHANGE SYSTEM FOR CFDS AND EQUITIES.'
+    comments: 'OFF BOOK, ON-EXCHANGE SYSTEM FOR CFDS AND EQUITIES.',
   },
   CHIO: {
     mic: 'CHIO',
@@ -27053,7 +27519,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'CBOE EUROPE - CXE - OFF-BOOK TRADE REPORTS.'
+    comments: 'CBOE EUROPE - CXE - OFF-BOOK TRADE REPORTS.',
   },
   BATP: {
     mic: 'BATP',
@@ -27072,7 +27538,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE BXE AUCTIONS BOOK.'
+    comments:
+      'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE BXE AUCTIONS BOOK.',
   },
   CHID: {
     mic: 'CHID',
@@ -27091,13 +27558,14 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.'
+    comments: 'TO BE USED FOR REPORTING DARK BOOK EXECUTIONS.',
   },
   BOTC: {
     mic: 'BOTC',
     operatingMic: 'BCXE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EUROPE',
+    marketNameInstitutionDescription:
+      'OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EUROPE',
     legalEntityName: 'CBOE EUROPE LIMITED',
     lei: '254900ERRPSKE7UZH711',
     marketCategoryCode: 'APPA',
@@ -27110,7 +27578,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EUROPE.'
+    comments: 'OFF EXCHANGE IDENTIFIER FOR OTC TRADES REPORTED TO CBOE EUROPE.',
   },
   BCXE: {
     mic: 'BCXE',
@@ -27129,7 +27597,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.'
+    comments: 'PAN-EUROPEAN RECOGNISED INVESTMENT EXCHANGE.',
   },
   LISX: {
     mic: 'LISX',
@@ -27148,7 +27616,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EUROPE LIS SERVICE.'
+    comments:
+      'TO BE USED FOR EXECUTIONS RESULTING FROM CBOE EUROPE LIS SERVICE.',
   },
   CHIX: {
     mic: 'CHIX',
@@ -27167,7 +27636,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITIES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR CASH EQUITIES.',
   },
   BEAM: {
     mic: 'BEAM',
@@ -27186,7 +27655,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BEEX: {
     mic: 'BEEX',
@@ -27205,7 +27674,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BETP: {
     mic: 'BETP',
@@ -27224,7 +27693,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "BLOOMBERG'S ETP"
+    comments: "BLOOMBERG'S ETP",
   },
   BFEX: {
     mic: 'BFEX',
@@ -27243,7 +27712,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '20221128',
-    comments: 'THE BFX IS THE FIRST MULTI-ASSET CLASS EXCHANGE IN THE MIDDLE EAST REGION AND WILL BE INTERNATIONALLY ACCESSIBLE TO TRADE CASH INSTRUMENTS, STRUCTURED PRODUCTS AND SHARIA-COMPLIANT FINANCIAL INSTRUMENTS AS WELL AS DERIVATIVES.'
+    comments:
+      'THE BFX IS THE FIRST MULTI-ASSET CLASS EXCHANGE IN THE MIDDLE EAST REGION AND WILL BE INTERNATIONALLY ACCESSIBLE TO TRADE CASH INSTRUMENTS, STRUCTURED PRODUCTS AND SHARIA-COMPLIANT FINANCIAL INSTRUMENTS AS WELL AS DERIVATIVES.',
   },
   BGCF: {
     mic: 'BGCF',
@@ -27262,7 +27732,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BGCD: {
     mic: 'BGCD',
@@ -27281,7 +27751,7 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BGC SWAP EXECUTION FACILITY.'
+    comments: 'BGC SWAP EXECUTION FACILITY.',
   },
   FNCS: {
     mic: 'FNCS',
@@ -27300,7 +27770,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FENICS IS BGC FINANCIAL, L.P. SEGMENT.'
+    comments: 'FENICS IS BGC FINANCIAL, L.P. SEGMENT.',
   },
   BGCB: {
     mic: 'BGCB',
@@ -27319,7 +27789,7 @@ export const mics = {
     lastUpdateDate: '20140224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BGCI: {
     mic: 'BGCI',
@@ -27338,7 +27808,7 @@ export const mics = {
     lastUpdateDate: '20071022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BHSF: {
     mic: 'BHSF',
@@ -27357,7 +27827,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BIDS: {
     mic: 'BIDS',
@@ -27376,7 +27846,7 @@ export const mics = {
     lastUpdateDate: '20070226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BLEV: {
     mic: 'BLEV',
@@ -27395,7 +27865,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC BLOCK TRADING PLATFORM FOR EQUITIES.'
+    comments: 'ELECTRONIC BLOCK TRADING PLATFORM FOR EQUITIES.',
   },
   BLPX: {
     mic: 'BLPX',
@@ -27414,7 +27884,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BPOL: {
     mic: 'BPOL',
@@ -27433,7 +27903,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   BLTD: {
     mic: 'BLTD',
@@ -27452,13 +27922,14 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20160901',
-    comments: ''
+    comments: '',
   },
   SEND: {
     mic: 'SEND',
     operatingMic: 'BMEX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SEND - SISTEMA ELECTRONICO DE NEGOCIACION DE DEUDA',
+    marketNameInstitutionDescription:
+      'SEND - SISTEMA ELECTRONICO DE NEGOCIACION DE DEUDA',
     legalEntityName: '',
     lei: '95980096HCV0D0TYCR12',
     marketCategoryCode: 'RMKT',
@@ -27471,7 +27942,8 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SEND IS AN ELECTRONIC TRADING PLATFORM, DEVELOPED BY AIAF MERCADO DE RENTA FIJA, DESIGNED FOR THE TRADING OF RETAIL DISTRIBUTED FIXED INCOME SECURITIES LISTED IN THIS MARKET.'
+    comments:
+      'SEND IS AN ELECTRONIC TRADING PLATFORM, DEVELOPED BY AIAF MERCADO DE RENTA FIJA, DESIGNED FOR THE TRADING OF RETAIL DISTRIBUTED FIXED INCOME SECURITIES LISTED IN THIS MARKET.',
   },
   XDRF: {
     mic: 'XDRF',
@@ -27490,7 +27962,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MARF: {
     mic: 'MARF',
@@ -27509,7 +27981,8 @@ export const mics = {
     lastUpdateDate: '20130722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE FIXED INCOME MARKET FOR SMALL AND MEDIUM ENTERPRISES ISSUES'
+    comments:
+      'ALTERNATIVE FIXED INCOME MARKET FOR SMALL AND MEDIUM ENTERPRISES ISSUES',
   },
   BMCL: {
     mic: 'BMCL',
@@ -27528,7 +28001,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MERF: {
     mic: 'MERF',
@@ -27547,7 +28020,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR BONDS ELECTRONIC TRADING PLATFORM.'
+    comments: 'REGISTERED MARKET FOR BONDS ELECTRONIC TRADING PLATFORM.',
   },
   XBIL: {
     mic: 'XBIL',
@@ -27566,7 +28039,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMAD: {
     mic: 'XMAD',
@@ -27585,7 +28058,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BMEX: {
     mic: 'BMEX',
@@ -27604,7 +28077,7 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SBIL: {
     mic: 'SBIL',
@@ -27623,7 +28096,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FIXED INCOME BOLSA DE BILBAO.'
+    comments: 'ELECTRONIC TRADING PLATFORM FIXED INCOME BOLSA DE BILBAO.',
   },
   SBAR: {
     mic: 'SBAR',
@@ -27642,7 +28115,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FIXED INCOME BOLSA DE BARCELONA'
+    comments: 'ELECTRONIC TRADING PLATFORM FIXED INCOME BOLSA DE BARCELONA',
   },
   XVAL: {
     mic: 'XVAL',
@@ -27661,7 +28134,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBAR: {
     mic: 'XBAR',
@@ -27680,7 +28153,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLAT: {
     mic: 'XLAT',
@@ -27699,7 +28172,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMEF: {
     mic: 'XMEF',
@@ -27718,7 +28191,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: ''
+    comments: '',
   },
   XMPW: {
     mic: 'XMPW',
@@ -27737,7 +28210,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MEFF SEGMENT FOR THE TRADING OF POWER DERIVATIVES'
+    comments: 'MEFF SEGMENT FOR THE TRADING OF POWER DERIVATIVES',
   },
   XMRV: {
     mic: 'XMRV',
@@ -27756,7 +28229,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BMTF: {
     mic: 'BMTF',
@@ -27775,7 +28248,7 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "BLOOMBERG'S MULTI-LATERAL TRADING FACILITY"
+    comments: "BLOOMBERG'S MULTI-LATERAL TRADING FACILITY",
   },
   VTEX: {
     mic: 'VTEX',
@@ -27794,7 +28267,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20151001',
-    comments: 'DARK LIQUIDITY POOL'
+    comments: 'DARK LIQUIDITY POOL',
   },
   NYFX: {
     mic: 'NYFX',
@@ -27813,7 +28286,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20170623',
-    comments: 'AT THE END OF DEC 2009, THE NYSE SHUT DOWN EURO-MILLENNIUM, THE EUROPEAN EQUITIES ATS. IN DEC 2009, THE CONVERGEX GROUP BOUGHT MILLENNIUM, THE US EQUITIES ATS.'
+    comments:
+      'AT THE END OF DEC 2009, THE NYSE SHUT DOWN EURO-MILLENNIUM, THE EUROPEAN EQUITIES ATS. IN DEC 2009, THE CONVERGEX GROUP BOUGHT MILLENNIUM, THE US EQUITIES ATS.',
   },
   BNYC: {
     mic: 'BNYC',
@@ -27832,7 +28306,7 @@ export const mics = {
     lastUpdateDate: '20121224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOAT: {
     mic: 'BOAT',
@@ -27851,7 +28325,7 @@ export const mics = {
     lastUpdateDate: '20140922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC EQUITIES TRADE REPORTING PLATFORM'
+    comments: 'OTC EQUITIES TRADE REPORTING PLATFORM',
   },
   BOSC: {
     mic: 'BOSC',
@@ -27870,7 +28344,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOVA: {
     mic: 'BOVA',
@@ -27889,13 +28363,14 @@ export const mics = {
     lastUpdateDate: '20101227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITY AND BOND MARKET.'
+    comments: 'EQUITY AND BOND MARKET.',
   },
   BOVM: {
     mic: 'BOVM',
     operatingMic: 'BOVM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA DE VALORES MINAS-ESP�RITO SANTO-BRAS�LIA',
+    marketNameInstitutionDescription:
+      'BOLSA DE VALORES MINAS-ESP�RITO SANTO-BRAS�LIA',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -27908,7 +28383,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES MARKET.'
+    comments: 'COMMODITIES MARKET.',
   },
   BRIX: {
     mic: 'BRIX',
@@ -27927,7 +28402,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES',
   },
   BRNX: {
     mic: 'BRNX',
@@ -27946,7 +28421,7 @@ export const mics = {
     lastUpdateDate: '20140526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING FOR BERNSTEIN'
+    comments: 'INTERNAL CROSSING FOR BERNSTEIN',
   },
   BSEX: {
     mic: 'BSEX',
@@ -27965,7 +28440,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ICSU: {
     mic: 'ICSU',
@@ -27984,7 +28459,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SEF FOR TRADING CFTC REGULATED SWAPS'
+    comments: 'SEF FOR TRADING CFTC REGULATED SWAPS',
   },
   BTEC: {
     mic: 'BTEC',
@@ -28003,7 +28478,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BVCA: {
     mic: 'BVCA',
@@ -28022,7 +28497,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR EQUITIES AND BONDS'
+    comments: 'MARKET FOR EQUITIES AND BONDS',
   },
   XCAR: {
     mic: 'XCAR',
@@ -28041,7 +28516,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '20140428',
-    comments: ''
+    comments: '',
   },
   BVMF: {
     mic: 'BVMF',
@@ -28060,13 +28535,15 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES, SECURITIES, FINANCIAL ASSETS, INDICES, INTEREST RATES, AGRICULTURAL COMMODITIES, AND FOREIGN EXCHANGE FUTURES AND SPOT CONTRACTS.'
+    comments:
+      'EQUITIES, SECURITIES, FINANCIAL ASSETS, INDICES, INTEREST RATES, AGRICULTURAL COMMODITIES, AND FOREIGN EXCHANGE FUTURES AND SPOT CONTRACTS.',
   },
   BVUR: {
     mic: 'BVUR',
     operatingMic: 'BVUR',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA ELECTRONICA DE VALORES DEL URUGUAY',
+    marketNameInstitutionDescription:
+      'BOLSA ELECTRONICA DE VALORES DEL URUGUAY',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -28079,7 +28556,7 @@ export const mics = {
     lastUpdateDate: '20091228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ELECTRONIC STOCK EXCHANGE.'
+    comments: 'REGISTERED ELECTRONIC STOCK EXCHANGE.',
   },
   CAND: {
     mic: 'CAND',
@@ -28098,7 +28575,8 @@ export const mics = {
     lastUpdateDate: '20161226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR FIXED INCOME SECURITIES AND DERIVATIVES.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR FIXED INCOME SECURITIES AND DERIVATIVES.',
   },
   CANX: {
     mic: 'CANX',
@@ -28117,7 +28595,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CMAP: {
     mic: 'CMAP',
@@ -28136,7 +28614,8 @@ export const mics = {
     lastUpdateDate: '20200525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CM CAPITAL MARKETS BROKERAGE, SOCIEDAD DE VALORES, S.A. APPROVED PUBLICATION ARRANGEMENT (APA).'
+    comments:
+      'CM CAPITAL MARKETS BROKERAGE, SOCIEDAD DE VALORES, S.A. APPROVED PUBLICATION ARRANGEMENT (APA).',
   },
   CATS: {
     mic: 'CATS',
@@ -28155,7 +28634,8 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR STRUCTURED PRODUCTS. THE OWNER OF CATS HAS CHANGED FROM CITIGROUP TO BOERSE STUTTGART.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR STRUCTURED PRODUCTS. THE OWNER OF CATS HAS CHANGED FROM CITIGROUP TO BOERSE STUTTGART.',
   },
   CCFE: {
     mic: 'CCFE',
@@ -28174,7 +28654,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '20131223',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   CCFX: {
     mic: 'CCFX',
@@ -28193,7 +28673,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CCLX: {
     mic: 'CCLX',
@@ -28212,7 +28692,8 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRALE DE COMMUNICATIONS LUXEMBOURG S.A. (CCLUX) CHANGED ITS NAME TO FINESTI S.A.'
+    comments:
+      'CENTRALE DE COMMUNICATIONS LUXEMBOURG S.A. (CCLUX) CHANGED ITS NAME TO FINESTI S.A.',
   },
   CCO2: {
     mic: 'CCO2',
@@ -28231,7 +28712,7 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CDED: {
     mic: 'CDED',
@@ -28250,7 +28731,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET MAKER.'
+    comments: 'ELECTRONIC MARKET MAKER.',
   },
   CDEL: {
     mic: 'CDEL',
@@ -28269,13 +28750,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '20151123',
-    comments: 'ATS FOR EQUITIES.'
+    comments: 'ATS FOR EQUITIES.',
   },
   ASTR: {
     mic: 'ASTR',
     operatingMic: 'CDSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CLEARCORP DEALING SYSTEMS INDIA LIMITED - ASTROID',
+    marketNameInstitutionDescription:
+      'CLEARCORP DEALING SYSTEMS INDIA LIMITED - ASTROID',
     legalEntityName: '',
     lei: '335800ID4A597NSPJK84',
     marketCategoryCode: 'NSPD',
@@ -28288,13 +28770,15 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ANONYMOUS SYSTEM FOR TRADING IN RUPEE OTC INTEREST RATE DERIVATIVES.'
+    comments:
+      'ANONYMOUS SYSTEM FOR TRADING IN RUPEE OTC INTEREST RATE DERIVATIVES.',
   },
   FXCL: {
     mic: 'FXCL',
     operatingMic: 'CDSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CLEARCORP DEALING SYSTEMS INDIA LIMITED - FX-CLEAR',
+    marketNameInstitutionDescription:
+      'CLEARCORP DEALING SYSTEMS INDIA LIMITED - FX-CLEAR',
     legalEntityName: '',
     lei: '335800ID4A597NSPJK84',
     marketCategoryCode: 'NSPD',
@@ -28307,7 +28791,8 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FX-CLEAR, A FOREX DEALING SYSTEM, OFFERS BOTH ORDER MATCHING AND NEGOTIATION MODES FOR DEALING COVERS INTER-BANK USD-INR SPOT AND SWAP TRANSACTIONS AND TRANSACTIONS IN MAJOR CROSS CURRENCIES.'
+    comments:
+      'FX-CLEAR, A FOREX DEALING SYSTEM, OFFERS BOTH ORDER MATCHING AND NEGOTIATION MODES FOR DEALING COVERS INTER-BANK USD-INR SPOT AND SWAP TRANSACTIONS AND TRANSACTIONS IN MAJOR CROSS CURRENCIES.',
   },
   CDSL: {
     mic: 'CDSL',
@@ -28326,13 +28811,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMS/PLATFORM FOR REPOS, MONEY INSTRUMENTS AND FX MARKET.'
+    comments: 'SYSTEMS/PLATFORM FOR REPOS, MONEY INSTRUMENTS AND FX MARKET.',
   },
   FXSW: {
     mic: 'FXSW',
     operatingMic: 'CDSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CLEARCORP DEALING SYSTEMS INDIA LIMITED - FX-SWAP',
+    marketNameInstitutionDescription:
+      'CLEARCORP DEALING SYSTEMS INDIA LIMITED - FX-SWAP',
     legalEntityName: '',
     lei: '335800ID4A597NSPJK84',
     marketCategoryCode: 'NSPD',
@@ -28345,7 +28831,8 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FX-SWAP, A FOREX SWAP DEALING SYSTEM, OFFERS AN ORDER MATCHING SYSTEM FOR FOREX SWAPS. THE PLATFORM OFFERS SWAP INSTRUMENTS EXTENDING UP TO 12 MONTHS.'
+    comments:
+      'FX-SWAP, A FOREX SWAP DEALING SYSTEM, OFFERS AN ORDER MATCHING SYSTEM FOR FOREX SWAPS. THE PLATFORM OFFERS SWAP INSTRUMENTS EXTENDING UP TO 12 MONTHS.',
   },
   CETI: {
     mic: 'CETI',
@@ -28364,13 +28851,15 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING, TRADE REGISTRATION AND FINANCIAL SETTLEMENT FOR TRANSACTIONS INVOLVING FIXED INCOME SECURITIES AND OTC DERIVATIVES.'
+    comments:
+      'ELECTRONIC TRADING, TRADE REGISTRATION AND FINANCIAL SETTLEMENT FOR TRANSACTIONS INVOLVING FIXED INCOME SECURITIES AND OTC DERIVATIVES.',
   },
   CGQD: {
     mic: 'CGQD',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP EQUITY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP EQUITY DERIVATIVES',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28383,13 +28872,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE ON EQUITY DERIVATIVES.'
+    comments: 'CCP SERVICE ON EQUITY DERIVATIVES.',
   },
   CGDB: {
     mic: 'CGDB',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - BONDS CCP SERVICE',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - BONDS CCP SERVICE',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28402,13 +28892,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE FOR GOVERNMENT BONDS, CORPORATE BONDS AND REPOS.'
+    comments: 'CCP SERVICE FOR GOVERNMENT BONDS, CORPORATE BONDS AND REPOS.',
   },
   CGTR: {
     mic: 'CGTR',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - TRIPARTY REPO CCP SERVICE',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - TRIPARTY REPO CCP SERVICE',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28421,7 +28912,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE FOR TRIPARTY REPOS.'
+    comments: 'CCP SERVICE FOR TRIPARTY REPOS.',
   },
   CGIT: {
     mic: 'CGIT',
@@ -28440,13 +28931,15 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CENTRAL COUNTERPARTY ACROSS MULTIPLE TRADING VENUES COVERING A WIDE RANGE OF ASSET CLASSES.'
+    comments:
+      'CENTRAL COUNTERPARTY ACROSS MULTIPLE TRADING VENUES COVERING A WIDE RANGE OF ASSET CLASSES.',
   },
   CGND: {
     mic: 'CGND',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP ENERGY DERIVATIVES',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28459,13 +28952,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE ON ENERGY DERIVATIVES.'
+    comments: 'CCP SERVICE ON ENERGY DERIVATIVES.',
   },
   CGEB: {
     mic: 'CGEB',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - EURO BONDS CCP SERVICE',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - EURO BONDS CCP SERVICE',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28478,13 +28972,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE FOR EURO GOVERNMENT BONDS, EURO CORPORATE BONDS.'
+    comments: 'CCP SERVICE FOR EURO GOVERNMENT BONDS, EURO CORPORATE BONDS.',
   },
   CGQT: {
     mic: 'CGQT',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - EQUITY CCP SERVICE',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - EQUITY CCP SERVICE',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28497,13 +28992,15 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE FOR EQUITIES AND COMPARABLE PRODUCTS SUCH WARRANTS, CONVERTIBLE BONDS, CLOSED-END FUNDS, INVESTMENT COMPANIES, REAL ESTATE INVESTMENT COMPANIES, ETF AND ETC.'
+    comments:
+      'CCP SERVICE FOR EQUITIES AND COMPARABLE PRODUCTS SUCH WARRANTS, CONVERTIBLE BONDS, CLOSED-END FUNDS, INVESTMENT COMPANIES, REAL ESTATE INVESTMENT COMPANIES, ETF AND ETC.',
   },
   CGCM: {
     mic: 'CGCM',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - COLLATERALIZED MONEY MARKET GUARANTEE SERVICE',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - COLLATERALIZED MONEY MARKET GUARANTEE SERVICE',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28516,13 +29013,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'COLLATERALIZED MONEY MARKET GUARANTEE SERVICE.'
+    comments: 'COLLATERALIZED MONEY MARKET GUARANTEE SERVICE.',
   },
   CGGD: {
     mic: 'CGGD',
     operatingMic: 'CGIT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP AGRICULTURAL COMMODITY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'CASSA DI COMPENSAZIONE E GARANZIA SPA - CCP AGRICULTURAL COMMODITY DERIVATIVES',
     legalEntityName: 'CASSA DI COMPENSAZIONE E GARANZIA S.P.A.',
     lei: '8156006407E264D2C725',
     marketCategoryCode: 'NSPD',
@@ -28535,7 +29033,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'CCP SERVICE ON AGRICULTURAL COMMODITIES DERIVATIVES.'
+    comments: 'CCP SERVICE ON AGRICULTURAL COMMODITIES DERIVATIVES.',
   },
   CHEV: {
     mic: 'CHEV',
@@ -28554,7 +29052,7 @@ export const mics = {
     lastUpdateDate: '20120625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BLNK: {
     mic: 'BLNK',
@@ -28573,13 +29071,14 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES CROSSING, EQUITIES DARK POOL, PAN-EUROPEAN EQUITIES.'
+    comments: 'EQUITIES CROSSING, EQUITIES DARK POOL, PAN-EUROPEAN EQUITIES.',
   },
   CXAR: {
     mic: 'CXAR',
     operatingMic: 'CHIA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE AUSTRALIA - TRANSFERABLE CUSTODY RECEIPT MARKET',
+    marketNameInstitutionDescription:
+      'CBOE AUSTRALIA - TRANSFERABLE CUSTODY RECEIPT MARKET',
     legalEntityName: 'CBOE GLOBAL MARKETS, INC.',
     lei: '529900RLNSGA90UPEH54',
     marketCategoryCode: 'NSPD',
@@ -28592,7 +29091,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA TCR MARKET.'
+    comments: 'CBOE AUSTRALIA TCR MARKET.',
   },
   CXAC: {
     mic: 'CXAC',
@@ -28611,7 +29110,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA LIMIT VENUE.'
+    comments: 'CBOE AUSTRALIA LIMIT VENUE.',
   },
   CXAP: {
     mic: 'CXAP',
@@ -28630,7 +29129,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA MID-POINT VENUE.'
+    comments: 'CBOE AUSTRALIA MID-POINT VENUE.',
   },
   CXAM: {
     mic: 'CXAM',
@@ -28649,7 +29148,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA MARKET ON CLOSE VENUE.'
+    comments: 'CBOE AUSTRALIA MARKET ON CLOSE VENUE.',
   },
   CXAQ: {
     mic: 'CXAQ',
@@ -28668,7 +29167,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA QUOTED MANAGED FUNDS.'
+    comments: 'CBOE AUSTRALIA QUOTED MANAGED FUNDS.',
   },
   CXAV: {
     mic: 'CXAV',
@@ -28687,13 +29186,14 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA VWAP VENUE.'
+    comments: 'CBOE AUSTRALIA VWAP VENUE.',
   },
   CXAF: {
     mic: 'CXAF',
     operatingMic: 'CHIA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE AUSTRALIA MARKET PEG (FARPOINT) VENUE',
+    marketNameInstitutionDescription:
+      'CBOE AUSTRALIA MARKET PEG (FARPOINT) VENUE',
     legalEntityName: 'CBOE GLOBAL MARKETS, INC.',
     lei: '529900RLNSGA90UPEH54',
     marketCategoryCode: 'NSPD',
@@ -28706,13 +29206,14 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA MARKET PEG (FARPOINT) VENUE.'
+    comments: 'CBOE AUSTRALIA MARKET PEG (FARPOINT) VENUE.',
   },
   CXAN: {
     mic: 'CXAN',
     operatingMic: 'CHIA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE AUSTRALIA PRIMARY PEG (NEARPOINT) VENUE',
+    marketNameInstitutionDescription:
+      'CBOE AUSTRALIA PRIMARY PEG (NEARPOINT) VENUE',
     legalEntityName: 'CBOE GLOBAL MARKETS, INC.',
     lei: '529900RLNSGA90UPEH54',
     marketCategoryCode: 'NSPD',
@@ -28725,7 +29226,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA PRIMARY PEG (NEARPOINT) VENUE.'
+    comments: 'CBOE AUSTRALIA PRIMARY PEG (NEARPOINT) VENUE.',
   },
   CXAW: {
     mic: 'CXAW',
@@ -28744,7 +29245,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA WARRANTS.'
+    comments: 'CBOE AUSTRALIA WARRANTS.',
   },
   CHIA: {
     mic: 'CHIA',
@@ -28763,7 +29264,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCX2: {
     mic: 'XCX2',
@@ -28782,7 +29283,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES'
+    comments: 'REGISTERED MARKET FOR EQUITIES',
   },
   CHIC: {
     mic: 'CHIC',
@@ -28801,7 +29302,8 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET MODEL FOCUSED ON EQUAL OPPORTUNITY TRADING AND MARKET-LEVEL INNOVATION TO DRIVE GROWTH IN THE CANADIAN EQUITY MARKET'
+    comments:
+      'MARKET MODEL FOCUSED ON EQUAL OPPORTUNITY TRADING AND MARKET-LEVEL INNOVATION TO DRIVE GROWTH IN THE CANADIAN EQUITY MARKET',
   },
   CHIE: {
     mic: 'CHIE',
@@ -28820,7 +29322,8 @@ export const mics = {
     lastUpdateDate: '20120625',
     lastValidationDate: '',
     expiryDate: '20120625',
-    comments: 'EXCHANGE-BACKED NON DISPLAY VENUE IN ASIA, FOR SECURITIES LISTED IN AUSTRALIA, HONG KONG, JAPAN AND SINGAPORE.'
+    comments:
+      'EXCHANGE-BACKED NON DISPLAY VENUE IN ASIA, FOR SECURITIES LISTED IN AUSTRALIA, HONG KONG, JAPAN AND SINGAPORE.',
   },
   CHIJ: {
     mic: 'CHIJ',
@@ -28839,7 +29342,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'MARKET FOR JAPANESE EQUITIES AND ETF, ELECTRONIC TRADING PLATFORM.'
+    comments:
+      'MARKET FOR JAPANESE EQUITIES AND ETF, ELECTRONIC TRADING PLATFORM.',
   },
   KAIX: {
     mic: 'KAIX',
@@ -28858,7 +29362,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'PURELY BROKER NEUTRAL CROSSING POOL FOR JAPANESE EQUITIES.'
+    comments: 'PURELY BROKER NEUTRAL CROSSING POOL FOR JAPANESE EQUITIES.',
   },
   CHIS: {
     mic: 'CHIS',
@@ -28877,7 +29381,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES'
+    comments: 'REGISTERED MARKET FOR EQUITIES',
   },
   CHIV: {
     mic: 'CHIV',
@@ -28896,7 +29400,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'ORDER MATCHING SERVICE AT PRE-DEFINED PRICE LEVELS'
+    comments: 'ORDER MATCHING SERVICE AT PRE-DEFINED PRICE LEVELS',
   },
   CLAU: {
     mic: 'CLAU',
@@ -28915,7 +29419,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   CLHK: {
     mic: 'CLHK',
@@ -28934,7 +29438,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   CLJP: {
     mic: 'CLJP',
@@ -28953,7 +29457,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   CLMX: {
     mic: 'CLMX',
@@ -28972,7 +29476,8 @@ export const mics = {
     lastUpdateDate: '20090727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR TRADING AND AUCTIONING ENVIRONMENTAL COMMODITIES AND ENERGY CONTRACTS'
+    comments:
+      'MARKET FOR TRADING AND AUCTIONING ENVIRONMENTAL COMMODITIES AND ENERGY CONTRACTS',
   },
   CLPH: {
     mic: 'CLPH',
@@ -28991,7 +29496,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   CMEC: {
     mic: 'CMEC',
@@ -29010,7 +29515,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: 'EUROPEAN CLEARING HOUSE'
+    comments: 'EUROPEAN CLEARING HOUSE',
   },
   CMEE: {
     mic: 'CMEE',
@@ -29029,7 +29534,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   CMET: {
     mic: 'CMET',
@@ -29048,7 +29553,8 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CLEAR MARKETS JAPAN, INC. OFFERS ELECTRONIC TRADING SERVICES FOR BOTH CLEARED AND NON-CLEARED SWAPS IN JAPAN.'
+    comments:
+      'CLEAR MARKETS JAPAN, INC. OFFERS ELECTRONIC TRADING SERVICES FOR BOTH CLEARED AND NON-CLEARED SWAPS IN JAPAN.',
   },
   CMMT: {
     mic: 'CMMT',
@@ -29067,7 +29573,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF REGISTERED SWAP EXECUTION FACILITY'
+    comments: 'MTF REGISTERED SWAP EXECUTION FACILITY',
   },
   CMSF: {
     mic: 'CMSF',
@@ -29086,7 +29592,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CFTC REGISTERED SWAP EXECUTION FACILITY'
+    comments: 'CFTC REGISTERED SWAP EXECUTION FACILITY',
   },
   COAL: {
     mic: 'COAL',
@@ -29105,7 +29611,7 @@ export const mics = {
     lastUpdateDate: '20110926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SOURCE OF PRICES FOR INVESTMENT FUNDS.'
+    comments: 'SOURCE OF PRICES FOR INVESTMENT FUNDS.',
   },
   COMG: {
     mic: 'COMG',
@@ -29124,7 +29630,7 @@ export const mics = {
     lastUpdateDate: '20180326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY TRACKING CERTIFICATES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY TRACKING CERTIFICATES.',
   },
   COTC: {
     mic: 'COTC',
@@ -29143,7 +29649,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OVER THE COUNTER TRADING OF CAD EQUITY.'
+    comments: 'OVER THE COUNTER TRADING OF CAD EQUITY.',
   },
   CRED: {
     mic: 'CRED',
@@ -29162,7 +29668,7 @@ export const mics = {
     lastUpdateDate: '20120827',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CAES: {
     mic: 'CAES',
@@ -29181,7 +29687,7 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS'
+    comments: 'REGISTERED ATS',
   },
   CRYD: {
     mic: 'CRYD',
@@ -29200,7 +29706,7 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CRYP: {
     mic: 'CRYP',
@@ -29219,7 +29725,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DIGITAL ASSETS TRADING PLATFORM.'
+    comments: 'DIGITAL ASSETS TRADING PLATFORM.',
   },
   CRYX: {
     mic: 'CRYX',
@@ -29238,7 +29744,7 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSSX: {
     mic: 'CSSX',
@@ -29257,7 +29763,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DASI: {
     mic: 'DASI',
@@ -29276,7 +29782,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   DBHK: {
     mic: 'DBHK',
@@ -29295,7 +29801,8 @@ export const mics = {
     lastUpdateDate: '20100927',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM FOR TRADING ASIAN EXCHANGE TRADED EQUITY PRODUCTS.'
+    comments:
+      'ALTERNATIVE TRADING SYSTEM FOR TRADING ASIAN EXCHANGE TRADED EQUITY PRODUCTS.',
   },
   AUTO: {
     mic: 'AUTO',
@@ -29314,7 +29821,8 @@ export const mics = {
     lastUpdateDate: '20121022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "DEUTSCHE BANK'S ELECTRONIC PLATFORM FOR TRADING FOREIGN EXCHANGE AND PRECIOUS METALS."
+    comments:
+      "DEUTSCHE BANK'S ELECTRONIC PLATFORM FOR TRADING FOREIGN EXCHANGE AND PRECIOUS METALS.",
   },
   DBOX: {
     mic: 'DBOX',
@@ -29333,7 +29841,7 @@ export const mics = {
     lastUpdateDate: '20100222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DEUTSCHE BANK AG ELECTRONIC OFF EXCHANGE TRADING PLATFORM.'
+    comments: 'DEUTSCHE BANK AG ELECTRONIC OFF EXCHANGE TRADING PLATFORM.',
   },
   DBSX: {
     mic: 'DBSX',
@@ -29352,7 +29860,8 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: 'REGISTERED ATS FOR EQUITIES. THIS MIC CODE  IS A GLOBAL PRODUCT WITH HAVING A PRESENCE IN US (NEW YORK), UK (LONDON) AND APAC (HONG KONG).'
+    comments:
+      'REGISTERED ATS FOR EQUITIES. THIS MIC CODE  IS A GLOBAL PRODUCT WITH HAVING A PRESENCE IN US (NEW YORK), UK (LONDON) AND APAC (HONG KONG).',
   },
   DCSX: {
     mic: 'DCSX',
@@ -29371,7 +29880,8 @@ export const mics = {
     lastUpdateDate: '20120123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNATIONAL EXCHANGE FOR THE LISTING AND TRADING IN DOMESTIC- AND INTERNATIONAL SECURITIES.'
+    comments:
+      'INTERNATIONAL EXCHANGE FOR THE LISTING AND TRADING IN DOMESTIC- AND INTERNATIONAL SECURITIES.',
   },
   DEAL: {
     mic: 'DEAL',
@@ -29390,7 +29900,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTI-BANK ELECTRONIC TRADING PLATFORM FOR FX OPTIONS'
+    comments: 'MULTI-BANK ELECTRONIC TRADING PLATFORM FOR FX OPTIONS',
   },
   DGCX: {
     mic: 'DGCX',
@@ -29409,7 +29919,7 @@ export const mics = {
     lastUpdateDate: '20051226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DKTC: {
     mic: 'DKTC',
@@ -29428,7 +29938,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DOTS: {
     mic: 'DOTS',
@@ -29447,7 +29957,8 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC DERIVATIVES AVAILABLE TO THE SWISS MARKET USING THE CATS PLATFORM IN ASSOCIATION WITH SWISSQUOTE BANK. THE OWNER OF CATS HAS CHANGED FROM CITIGROUP TO BOERSE STUTTGART.'
+    comments:
+      'OTC DERIVATIVES AVAILABLE TO THE SWISS MARKET USING THE CATS PLATFORM IN ASSOCIATION WITH SWISSQUOTE BANK. THE OWNER OF CATS HAS CHANGED FROM CITIGROUP TO BOERSE STUTTGART.',
   },
   DSMD: {
     mic: 'DSMD',
@@ -29466,7 +29977,7 @@ export const mics = {
     lastUpdateDate: '20091123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DOHA SECURITIES MARKET CHANGED TO QATAR EXCHANGE.'
+    comments: 'DOHA SECURITIES MARKET CHANGED TO QATAR EXCHANGE.',
   },
   DUMX: {
     mic: 'DUMX',
@@ -29485,7 +29996,7 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ECAG: {
     mic: 'ECAG',
@@ -29504,7 +30015,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ECGS: {
     mic: 'ECGS',
@@ -29523,7 +30034,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ECAL: {
     mic: 'ECAL',
@@ -29542,7 +30053,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED CLEARING HOUSE UNDER MONETARY AUTHORITY OF SINGAPORE (MAS) REGULATION.'
+    comments:
+      'APPROVED CLEARING HOUSE UNDER MONETARY AUTHORITY OF SINGAPORE (MAS) REGULATION.',
   },
   ECXE: {
     mic: 'ECXE',
@@ -29561,7 +30073,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '20131223',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   EEAL: {
     mic: 'EEAL',
@@ -29580,7 +30092,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR FUTURES AND OPTIONS.'
+    comments: 'REGISTERED MARKET FOR FUTURES AND OPTIONS.',
   },
   EESE: {
     mic: 'EESE',
@@ -29599,7 +30111,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EFTP: {
     mic: 'EFTP',
@@ -29618,7 +30130,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '20140428',
-    comments: 'THIS MARKET IS CLOSED'
+    comments: 'THIS MARKET IS CLOSED',
   },
   EGMT: {
     mic: 'EGMT',
@@ -29637,7 +30149,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET MAKER FOR EQUITIES.'
+    comments: 'REGISTERED MARKET MAKER FOR EQUITIES.',
   },
   EGSI: {
     mic: 'EGSI',
@@ -29656,7 +30168,7 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   EMBX: {
     mic: 'EMBX',
@@ -29675,13 +30187,15 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EMERGING MARKET FIXED INCOME BOND.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR EMERGING MARKET FIXED INCOME BOND.',
   },
   EMIB: {
     mic: 'EMIB',
     operatingMic: 'EMID',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: "E-MID - BANCA D'ITALIA SHARES TRADING MARKET",
+    marketNameInstitutionDescription:
+      "E-MID - BANCA D'ITALIA SHARES TRADING MARKET",
     legalEntityName: 'E-MID SOCIETA DI INTERMEDIAZIONE MOBILIARE S.P.A',
     lei: '8156005A730609F68C89',
     marketCategoryCode: 'NSPD',
@@ -29694,7 +30208,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '20230626',
-    comments: "MARKET FOR THE NATIONAL CENTRAL BANK (BANCA D'ITALIA) SHARES."
+    comments: "MARKET FOR THE NATIONAL CENTRAL BANK (BANCA D'ITALIA) SHARES.",
   },
   EMID: {
     mic: 'EMID',
@@ -29713,7 +30227,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '20230626',
-    comments: 'MARKET FOR INTERBANK DEPOSITS IN EUROPE.'
+    comments: 'MARKET FOR INTERBANK DEPOSITS IN EUROPE.',
   },
   EMIR: {
     mic: 'EMIR',
@@ -29732,7 +30246,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '20230626',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR REPO TRADES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR REPO TRADES.',
   },
   EMDR: {
     mic: 'EMDR',
@@ -29751,7 +30265,8 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '20230626',
-    comments: 'MARKET FOR THE TRADING OF MULTI-CURRENCY DERIVATIVE FINANCIAL INSTRUMENTS'
+    comments:
+      'MARKET FOR THE TRADING OF MULTI-CURRENCY DERIVATIVE FINANCIAL INSTRUMENTS',
   },
   ENCL: {
     mic: 'ENCL',
@@ -29770,7 +30285,8 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LCH.CLEARNET ENCLEAR PROVIDES AN OTC CLEARING SERVICE FOR VARIOUS COMMODITY PRODUCTS INCLUDING FREIGHT, CONTAINERS, EMISSIONS, IRON ORE, FERTILISER & COAL.'
+    comments:
+      'LCH.CLEARNET ENCLEAR PROVIDES AN OTC CLEARING SERVICE FOR VARIOUS COMMODITY PRODUCTS INCLUDING FREIGHT, CONTAINERS, EMISSIONS, IRON ORE, FERTILISER & COAL.',
   },
   EOTC: {
     mic: 'EOTC',
@@ -29789,7 +30305,8 @@ export const mics = {
     lastUpdateDate: '20100222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNET-BASED BULLETIN BOARD FOR POSTING INDICATIONS OF INTEREST IN BUYING AND SELLING OTC DERIVATIVES, PRIMARILY FOCUSED ON CREDIT DEFAULT SWAPS.'
+    comments:
+      'INTERNET-BASED BULLETIN BOARD FOR POSTING INDICATIONS OF INTEREST IN BUYING AND SELLING OTC DERIVATIVES, PRIMARILY FOCUSED ON CREDIT DEFAULT SWAPS.',
   },
   EPEX: {
     mic: 'EPEX',
@@ -29808,13 +30325,15 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUROPEAN POWER EXCHANGE (DAY AHEAD AND INTRADAY MARKETS FOR ELECTRICITY IN CENTRAL EUROPE).'
+    comments:
+      'EUROPEAN POWER EXCHANGE (DAY AHEAD AND INTRADAY MARKETS FOR ELECTRICITY IN CENTRAL EUROPE).',
   },
   ETSC: {
     mic: 'ETSC',
     operatingMic: 'ETSC',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ETS EURASIAN TRADING SYSTEM COMMODITY EXCHANGE',
+    marketNameInstitutionDescription:
+      'ETS EURASIAN TRADING SYSTEM COMMODITY EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -29827,13 +30346,15 @@ export const mics = {
     lastUpdateDate: '20100726',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE REGIONAL FINANCIAL CENTRE OF ALMATY CITY (RFCA) AND OJSC "RUSSIAN TRADING SYSTEM" STOCK EXCHANGE HAVE SET UP A COMMODITY EXCHANGE, JSC "EURASIAN TRADING SYSTEM" HEADQUARTERED IN ALMATY, KAZAKHSTAN.'
+    comments:
+      'THE REGIONAL FINANCIAL CENTRE OF ALMATY CITY (RFCA) AND OJSC "RUSSIAN TRADING SYSTEM" STOCK EXCHANGE HAVE SET UP A COMMODITY EXCHANGE, JSC "EURASIAN TRADING SYSTEM" HEADQUARTERED IN ALMATY, KAZAKHSTAN.',
   },
   EXOR: {
     mic: 'EXOR',
     operatingMic: 'EXEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EXANE BNP PARIBAS - CHILD ORDER CROSSING',
+    marketNameInstitutionDescription:
+      'EXANE BNP PARIBAS - CHILD ORDER CROSSING',
     legalEntityName: 'EXANE',
     lei: '969500UP76J52A9OXU27',
     marketCategoryCode: 'NSPD',
@@ -29846,13 +30367,15 @@ export const mics = {
     lastUpdateDate: '20150824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SMART ORDER ROUTING CROSSING MECHANISM OPERATED BY EXANE BNP PARIBAS.'
+    comments:
+      'SMART ORDER ROUTING CROSSING MECHANISM OPERATED BY EXANE BNP PARIBAS.',
   },
   EXVP: {
     mic: 'EXVP',
     operatingMic: 'EXEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EXANE BNP PARIBAS - VOLUME PROFILE CROSSING',
+    marketNameInstitutionDescription:
+      'EXANE BNP PARIBAS - VOLUME PROFILE CROSSING',
     legalEntityName: 'EXANE',
     lei: '969500UP76J52A9OXU27',
     marketCategoryCode: 'NSPD',
@@ -29865,7 +30388,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CROSSING MECHANISM OPERATED BY EXANE BNP PARIBAS WHERE A BUY AND A SELL ORDER HAVE OPPOSITE VOLUME PROFILES FOR AN INTERVAL OF TIME.'
+    comments:
+      'CROSSING MECHANISM OPERATED BY EXANE BNP PARIBAS WHERE A BUY AND A SELL ORDER HAVE OPPOSITE VOLUME PROFILES FOR AN INTERVAL OF TIME.',
   },
   EXMP: {
     mic: 'EXMP',
@@ -29884,7 +30408,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUROPEAN MID-POINT CROSSING NETWORK OPERATED BY EXANE BNP PARIBAS.'
+    comments:
+      'EUROPEAN MID-POINT CROSSING NETWORK OPERATED BY EXANE BNP PARIBAS.',
   },
   EXLP: {
     mic: 'EXLP',
@@ -29903,7 +30428,7 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EXEU: {
     mic: 'EXEU',
@@ -29922,7 +30447,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OPERATING MIC COVERING THE CROSSING MECHANISMS OPERATED BY EXANE BNP PARIBAS.'
+    comments:
+      'OPERATING MIC COVERING THE CROSSING MECHANISMS OPERATED BY EXANE BNP PARIBAS.',
   },
   EXCP: {
     mic: 'EXCP',
@@ -29941,7 +30467,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "EXCP IS THE IDENTIFIER TO BE USED FOR CLIENT EXECUTIONS EXECUTED UNDER EXANE'S CLOSING PRICE MECHANISM."
+    comments:
+      "EXCP IS THE IDENTIFIER TO BE USED FOR CLIENT EXECUTIONS EXECUTED UNDER EXANE'S CLOSING PRICE MECHANISM.",
   },
   EXBO: {
     mic: 'EXBO',
@@ -29960,13 +30487,14 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BID-OFFER CROSSING NETWORK TO BE OPERATED BY EXANE BNP PARIBAS.'
+    comments: 'BID-OFFER CROSSING NETWORK TO BE OPERATED BY EXANE BNP PARIBAS.',
   },
   EXDC: {
     mic: 'EXDC',
     operatingMic: 'EXEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EXANE BNP PARIBAS - DIRECT CAPITAL ACCESS',
+    marketNameInstitutionDescription:
+      'EXANE BNP PARIBAS - DIRECT CAPITAL ACCESS',
     legalEntityName: '',
     lei: '213800SH9MTNZQJKP526',
     marketCategoryCode: 'NSPD',
@@ -29979,7 +30507,7 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EXGM: {
     mic: 'EXGM',
@@ -29998,7 +30526,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY DEDICATED TO DYNAMIC AND COMPETITIVE SMES, WHICH ARE LOOKING FOR CAPITAL TO FINANCE THEIR GROWTH.'
+    comments:
+      'MULTILATERAL TRADING FACILITY DEDICATED TO DYNAMIC AND COMPETITIVE SMES, WHICH ARE LOOKING FOR CAPITAL TO FINANCE THEIR GROWTH.',
   },
   XEDA: {
     mic: 'XEDA',
@@ -30017,7 +30546,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'ELECTRICITY DAY-AHEAD MARKET'
+    comments: 'ELECTRICITY DAY-AHEAD MARKET',
   },
   XEID: {
     mic: 'XEID',
@@ -30036,7 +30565,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'ELECTRICITY INTRA-DAY MARKET'
+    comments: 'ELECTRICITY INTRA-DAY MARKET',
   },
   EXTR: {
     mic: 'EXTR',
@@ -30055,7 +30584,8 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'LICENSED ENERGY MARKET OPERATOR FOR DAY AHEAD/INTRADAY ELECTRICITY MARKETS AND ESTABLISHMENT OF NATURAL GAS MARKET.'
+    comments:
+      'LICENSED ENERGY MARKET OPERATOR FOR DAY AHEAD/INTRADAY ELECTRICITY MARKETS AND ESTABLISHMENT OF NATURAL GAS MARKET.',
   },
   FAIR: {
     mic: 'FAIR',
@@ -30074,7 +30604,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FGEX: {
     mic: 'FGEX',
@@ -30093,13 +30623,14 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE FINNISH GAS EXCHANGE'
+    comments: 'THE FINNISH GAS EXCHANGE',
   },
   XADF: {
     mic: 'XADF',
     operatingMic: 'FINR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINRA ALTERNATIVE DISPLAY FACILITY (ADF)',
+    marketNameInstitutionDescription:
+      'FINRA ALTERNATIVE DISPLAY FACILITY (ADF)',
     legalEntityName: '',
     lei: '254900F5GTSJJHGE9287',
     marketCategoryCode: 'NSPD',
@@ -30112,13 +30643,15 @@ export const mics = {
     lastUpdateDate: '20130422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE ALTERNATIVE DISPLAY FACILITY (ADF) IS AN SRO DISPLAY ONLY FACILITY THAT IS OPERATED BY FINRA.'
+    comments:
+      'THE ALTERNATIVE DISPLAY FACILITY (ADF) IS AN SRO DISPLAY ONLY FACILITY THAT IS OPERATED BY FINRA.',
   },
   FINC: {
     mic: 'FINC',
     operatingMic: 'FINR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINRA/NASDAQ TRF CHICAGO (TRADE REPORTING FACILITY)',
+    marketNameInstitutionDescription:
+      'FINRA/NASDAQ TRF CHICAGO (TRADE REPORTING FACILITY)',
     legalEntityName: '',
     lei: '254900F5GTSJJHGE9287',
     marketCategoryCode: 'TRFS',
@@ -30131,7 +30664,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FINO: {
     mic: 'FINO',
@@ -30150,7 +30683,7 @@ export const mics = {
     lastUpdateDate: '20100726',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC REPORTING FACILITY.'
+    comments: 'OTC REPORTING FACILITY.',
   },
   FINR: {
     mic: 'FINR',
@@ -30169,26 +30702,28 @@ export const mics = {
     lastUpdateDate: '20130128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FINY: {
     mic: 'FINY',
     operatingMic: 'FINR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'FINRA/NYSE TRF (TRADE REPORTING FACILITY)',
+    marketNameInstitutionDescription:
+      'FINRA/NYSE TRF (TRADE REPORTING FACILITY)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'TRFS',
     acronym: '',
     isoCountryCodeIso_3166: 'US',
     city: 'WASHINGTON',
-    website: 'WWW.FINRA.ORG/INDUSTRY/COMPLIANCE/MARKETTRANSPARENCY/TRF/PARTICIPANTS/',
+    website:
+      'WWW.FINRA.ORG/INDUSTRY/COMPLIANCE/MARKETTRANSPARENCY/TRF/PARTICIPANTS/',
     status: 'ACTIVE',
     creationDate: '20100726',
     lastUpdateDate: '20100726',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FINRA HAS TWO TRF PARTICIPANTS, NYSE AND NASDAQ.'
+    comments: 'FINRA HAS TWO TRF PARTICIPANTS, NYSE AND NASDAQ.',
   },
   OOTC: {
     mic: 'OOTC',
@@ -30207,7 +30742,8 @@ export const mics = {
     lastUpdateDate: '20130422',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC SECURITY THAT IS NOT QUOTED ON THE NNQS (PREVIOUSLY OTCBB) BUT IS ELIGIBLE FOR TRADE REPORTING TO THE TRADE REPORTING FACILITY, IS CATEGORIZED AS "OTHER-OTC".'
+    comments:
+      'OTC SECURITY THAT IS NOT QUOTED ON THE NNQS (PREVIOUSLY OTCBB) BUT IS ELIGIBLE FOR TRADE REPORTING TO THE TRADE REPORTING FACILITY, IS CATEGORIZED AS "OTHER-OTC".',
   },
   FISH: {
     mic: 'FISH',
@@ -30226,7 +30762,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FLTB: {
     mic: 'FLTB',
@@ -30245,7 +30781,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.RESERVED FOR FUTURE USE.'
+    comments: 'SYSTEMATIC INTERNALISER.RESERVED FOR FUTURE USE.',
   },
   FMTS: {
     mic: 'FMTS',
@@ -30264,7 +30800,7 @@ export const mics = {
     lastUpdateDate: '20051128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRRF: {
     mic: 'FRRF',
@@ -30283,7 +30819,7 @@ export const mics = {
     lastUpdateDate: '20120625',
     lastValidationDate: '',
     expiryDate: '20120625',
-    comments: ''
+    comments: '',
   },
   FSEF: {
     mic: 'FSEF',
@@ -30302,7 +30838,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY (SEF).'
+    comments: 'SWAP EXECUTION FACILITY (SEF).',
   },
   FSHX: {
     mic: 'FSHX',
@@ -30321,7 +30857,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FXAL: {
     mic: 'FXAL',
@@ -30340,7 +30876,7 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FXCM: {
     mic: 'FXCM',
@@ -30359,7 +30895,8 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED & REGULATED MARKET FOR OTC FOREIGN EXCHANGE OPTIONS TRADING. MARKET FOR SPOT FX AND OPTIONS.'
+    comments:
+      'REGISTERED & REGULATED MARKET FOR OTC FOREIGN EXCHANGE OPTIONS TRADING. MARKET FOR SPOT FX AND OPTIONS.',
   },
   G1XX: {
     mic: 'G1XX',
@@ -30378,13 +30915,14 @@ export const mics = {
     lastUpdateDate: '20140922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WHOLESALE MARKET MAKER IN NMS AND OTC EQUITY SECURITIES'
+    comments: 'WHOLESALE MARKET MAKER IN NMS AND OTC EQUITY SECURITIES',
   },
   GEMX: {
     mic: 'GEMX',
     operatingMic: 'GEMX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'GEMMA (GILT EDGED MARKET MAKERS�ASSOCIATION)',
+    marketNameInstitutionDescription:
+      'GEMMA (GILT EDGED MARKET MAKERS�ASSOCIATION)',
     legalEntityName: '',
     lei: '2138005EBVB91BX92G08',
     marketCategoryCode: 'NSPD',
@@ -30397,7 +30935,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GETB: {
     mic: 'GETB',
@@ -30416,7 +30954,8 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LITHUANIAN NATURAL GAS EXCHANGE FOR PHYSICAL DELIVERY PRODUCTS TRADING.'
+    comments:
+      'LITHUANIAN NATURAL GAS EXCHANGE FOR PHYSICAL DELIVERY PRODUCTS TRADING.',
   },
   GFIA: {
     mic: 'GFIA',
@@ -30435,7 +30974,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '20140428',
-    comments: 'MTF NO LONGER IN USE'
+    comments: 'MTF NO LONGER IN USE',
   },
   XGFI: {
     mic: 'XGFI',
@@ -30454,7 +30993,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '20140428',
-    comments: 'MTF NO LONGER IN USE'
+    comments: 'MTF NO LONGER IN USE',
   },
   GFIM: {
     mic: 'GFIM',
@@ -30473,7 +31012,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '20140428',
-    comments: 'MTF NO LONGER IN USE'
+    comments: 'MTF NO LONGER IN USE',
   },
   GLLC: {
     mic: 'GLLC',
@@ -30492,7 +31031,7 @@ export const mics = {
     lastUpdateDate: '20100726',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM.'
+    comments: 'ALTERNATIVE TRADING SYSTEM.',
   },
   GLPS: {
     mic: 'GLPS',
@@ -30511,7 +31050,7 @@ export const mics = {
     lastUpdateDate: '20140922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM'
+    comments: 'ELECTRONIC TRADING SYSTEM',
   },
   GLPX: {
     mic: 'GLPX',
@@ -30530,7 +31069,7 @@ export const mics = {
     lastUpdateDate: '20160328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXECUTION SERVICES'
+    comments: 'EXECUTION SERVICES',
   },
   XGDX: {
     mic: 'XGDX',
@@ -30549,7 +31088,7 @@ export const mics = {
     lastUpdateDate: '20130624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXCHANGE FOR DERIVATIVES'
+    comments: 'EXCHANGE FOR DERIVATIVES',
   },
   XLDX: {
     mic: 'XLDX',
@@ -30568,7 +31107,7 @@ export const mics = {
     lastUpdateDate: '20130624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR DERIVATIVES'
+    comments: 'MTF FOR DERIVATIVES',
   },
   XGCX: {
     mic: 'XGCX',
@@ -30587,7 +31126,7 @@ export const mics = {
     lastUpdateDate: '20130624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXCHANGE FOR CASH SETTLED COMMODITIES'
+    comments: 'EXCHANGE FOR CASH SETTLED COMMODITIES',
   },
   GMEG: {
     mic: 'GMEG',
@@ -30606,7 +31145,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR DERIVATIVES AND SECURITIES'
+    comments: 'MTF FOR DERIVATIVES AND SECURITIES',
   },
   XGSX: {
     mic: 'XGSX',
@@ -30625,7 +31164,7 @@ export const mics = {
     lastUpdateDate: '20130624',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXCHANGE FOR SECURITIES'
+    comments: 'EXCHANGE FOR SECURITIES',
   },
   GMEX: {
     mic: 'GMEX',
@@ -30644,7 +31183,8 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '20150622',
-    comments: 'TRADING CEASED AS OF 29TH JUNE 2012. MARKET WILL NOT BE REACTIVATED.'
+    comments:
+      'TRADING CEASED AS OF 29TH JUNE 2012. MARKET WILL NOT BE REACTIVATED.',
   },
   GMTF: {
     mic: 'GMTF',
@@ -30663,7 +31203,8 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EURO DENOMINATED GOVERNMENT AND CORPORATE BONDS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR EURO DENOMINATED GOVERNMENT AND CORPORATE BONDS.',
   },
   GOVX: {
     mic: 'GOVX',
@@ -30682,7 +31223,8 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR US TREASURY SECURITIES - OPERATED BY STATE STREET'
+    comments:
+      'TRADING PLATFORM FOR US TREASURY SECURITIES - OPERATED BY STATE STREET',
   },
   GREE: {
     mic: 'GREE',
@@ -30701,13 +31243,15 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR VARIOUS ENVIRONMENTAL CONTRACTS.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR VARIOUS ENVIRONMENTAL CONTRACTS.',
   },
   GRSE: {
     mic: 'GRSE',
     operatingMic: 'GRSE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'THE GREEN STOCK EXCHANGE - ACB IMPACT MARKETS',
+    marketNameInstitutionDescription:
+      'THE GREEN STOCK EXCHANGE - ACB IMPACT MARKETS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -30720,13 +31264,15 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKETPLACE FOR SUSTAINABLE SECURITIES (SECURITIES, BONDS, COMMODITIES)'
+    comments:
+      'MARKETPLACE FOR SUSTAINABLE SECURITIES (SECURITIES, BONDS, COMMODITIES)',
   },
   GSCI: {
     mic: 'GSCI',
     operatingMic: 'GSCI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'THE GUYANA ASSOCIATION OF SECURITIES COMPANIES AND INTERMEDIARIES INC.',
+    marketNameInstitutionDescription:
+      'THE GUYANA ASSOCIATION OF SECURITIES COMPANIES AND INTERMEDIARIES INC.',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -30739,7 +31285,8 @@ export const mics = {
     lastUpdateDate: '20101227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THIS COMPANY IS THE LOCAL STOCK EXCHANGE THAT ORGANISES AND SUPERVISES THE STOCK MARKET IN GUYANA.'
+    comments:
+      'THIS COMPANY IS THE LOCAL STOCK EXCHANGE THAT ORGANISES AND SUPERVISES THE STOCK MARKET IN GUYANA.',
   },
   GSCO: {
     mic: 'GSCO',
@@ -30758,7 +31305,7 @@ export const mics = {
     lastUpdateDate: '20170626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSEF: {
     mic: 'GSEF',
@@ -30777,7 +31324,7 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAPS EXECUTION FACILITY'
+    comments: 'SWAPS EXECUTION FACILITY',
   },
   GSIL: {
     mic: 'GSIL',
@@ -30796,13 +31343,14 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSSI: {
     mic: 'GSSI',
     operatingMic: 'GSIL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'GOLDMAN SACHS INTERNATIONAL - SYSTEMATIC INTERNALISER',
+    marketNameInstitutionDescription:
+      'GOLDMAN SACHS INTERNATIONAL - SYSTEMATIC INTERNALISER',
     legalEntityName: '',
     lei: 'W22LROWP2IHZNBB6K528',
     marketCategoryCode: 'SINT',
@@ -30815,7 +31363,7 @@ export const mics = {
     lastUpdateDate: '20161024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GSI SYSTEMATIC INTERNALISER'
+    comments: 'GSI SYSTEMATIC INTERNALISER',
   },
   GSXL: {
     mic: 'GSXL',
@@ -30834,7 +31382,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EU REGULATED MARKET FOR TECHNICAL LISTINGS IN COLLECTIVE INVESTMENT SCHEMES.'
+    comments:
+      'EU REGULATED MARKET FOR TECHNICAL LISTINGS IN COLLECTIVE INVESTMENT SCHEMES.',
   },
   GTCO: {
     mic: 'GTCO',
@@ -30853,7 +31402,8 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS FOR TRADING US CASH EQUITIES.  FINRA MEMBER AND REG ATS ON FILE WITH THE SEC'
+    comments:
+      'REGISTERED ATS FOR TRADING US CASH EQUITIES.  FINRA MEMBER AND REG ATS ON FILE WITH THE SEC',
   },
   GTSX: {
     mic: 'GTSX',
@@ -30872,7 +31422,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GTXS: {
     mic: 'GTXS',
@@ -30891,7 +31441,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.',
   },
   GXMA: {
     mic: 'GXMA',
@@ -30910,7 +31460,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HCHC: {
     mic: 'HCHC',
@@ -30929,13 +31479,14 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRAL COUNTER PARTY FOR EXCHANGE TRADED DERIVATIVES'
+    comments: 'CENTRAL COUNTER PARTY FOR EXCHANGE TRADED DERIVATIVES',
   },
   HDAT: {
     mic: 'HDAT',
     operatingMic: 'HDAT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ELECTRONIC SECONDARY SECURITIES MARKET (HDAT)',
+    marketNameInstitutionDescription:
+      'ELECTRONIC SECONDARY SECURITIES MARKET (HDAT)',
     legalEntityName: '',
     lei: '529900SL3K21WAN6X611',
     marketCategoryCode: 'RMKT',
@@ -30948,7 +31499,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HEGX: {
     mic: 'HEGX',
@@ -30967,7 +31518,7 @@ export const mics = {
     lastUpdateDate: '20100426',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HKME: {
     mic: 'HKME',
@@ -30986,13 +31537,14 @@ export const mics = {
     lastUpdateDate: '20150525',
     lastValidationDate: '',
     expiryDate: '20150525',
-    comments: 'HKMEX HAS CEASED ITS ACTIVITIES IN MAY 2013.'
+    comments: 'HKMEX HAS CEASED ITS ACTIVITIES IN MAY 2013.',
   },
   HMOD: {
     mic: 'HMOD',
     operatingMic: 'HMTF',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'VORVEL BONDS ORDER DRIVEN/VORVEL EQUITY AUCTION',
+    marketNameInstitutionDescription:
+      'VORVEL BONDS ORDER DRIVEN/VORVEL EQUITY AUCTION',
     legalEntityName: 'VORVEL SIM S.P.A.',
     lei: '815600F681369854E440',
     marketCategoryCode: 'NSPD',
@@ -31005,7 +31557,8 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY ORDER DRIVEN FOR EQUITIES AND BONDS'
+    comments:
+      'MULTILATERAL TRADING FACILITY ORDER DRIVEN FOR EQUITIES AND BONDS',
   },
   HMTF: {
     mic: 'HMTF',
@@ -31024,7 +31577,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HRFQ: {
     mic: 'HRFQ',
@@ -31043,7 +31596,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'MTF FOR BONDS BASED ON RFQ NEGOTIATION MODEL'
+    comments: 'MTF FOR BONDS BASED ON RFQ NEGOTIATION MODEL',
   },
   HPPO: {
     mic: 'HPPO',
@@ -31062,7 +31615,8 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WHOLESALE MARKET MAKER FOR NMS EQUITIES.  ELECTRONIC TRADING SERVICES FOR OTHER BROKER-DEALER CLIENTS.'
+    comments:
+      'WHOLESALE MARKET MAKER FOR NMS EQUITIES.  ELECTRONIC TRADING SERVICES FOR OTHER BROKER-DEALER CLIENTS.',
   },
   HSFX: {
     mic: 'HSFX',
@@ -31081,7 +31635,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HSTC: {
     mic: 'HSTC',
@@ -31100,13 +31654,15 @@ export const mics = {
     lastUpdateDate: '20090727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'HANOI SECURITIES TRADING CENTRE HAS BECOME THE HANOI STOCK EXCHANGE IN JANUARY 2009.'
+    comments:
+      'HANOI SECURITIES TRADING CENTRE HAS BECOME THE HANOI STOCK EXCHANGE IN JANUARY 2009.',
   },
   XHNX: {
     mic: 'XHNX',
     operatingMic: 'HSTC',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'HANOI STOCK EXCHANGE (UNLISTED PUBLIC COMPANY TRADING PLATFORM)',
+    marketNameInstitutionDescription:
+      'HANOI STOCK EXCHANGE (UNLISTED PUBLIC COMPANY TRADING PLATFORM)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -31119,7 +31675,8 @@ export const mics = {
     lastUpdateDate: '20090727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "TRADING PLATFORM FOR UNLISTED PUBLIC COMPANIES WHICH DON'T MEET THE LISTING CRITERIA BUT TRADED IN THE OTC MARKET."
+    comments:
+      "TRADING PLATFORM FOR UNLISTED PUBLIC COMPANIES WHICH DON'T MEET THE LISTING CRITERIA BUT TRADED IN THE OTC MARKET.",
   },
   HSXA: {
     mic: 'HSXA',
@@ -31138,7 +31695,8 @@ export const mics = {
     lastUpdateDate: '20101025',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM WHICH IS SPECIFICALLY TRADING ASIA PACIFIC CASH EQUITIES WITH THE FOCUS OF HONG KONG CASH EQUITIES.'
+    comments:
+      'TRADING PLATFORM WHICH IS SPECIFICALLY TRADING ASIA PACIFIC CASH EQUITIES WITH THE FOCUS OF HONG KONG CASH EQUITIES.',
   },
   HUPX: {
     mic: 'HUPX',
@@ -31157,7 +31715,7 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IBAL: {
     mic: 'IBAL',
@@ -31176,7 +31734,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INDEPENDENT SUBSIDIARY OF THE ICE, RESPONSIBLE FOR THE END-TO-END ADMINISTRATION OF BENCHMARKS.'
+    comments:
+      'INDEPENDENT SUBSIDIARY OF THE ICE, RESPONSIBLE FOR THE END-TO-END ADMINISTRATION OF BENCHMARKS.',
   },
   IBEX: {
     mic: 'IBEX',
@@ -31195,7 +31754,8 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'IBEX WAS ESTABLISHED JANUARY 2014, AS A FULLY-OWNED SUBSIDIARY OF THE BULGARIAN ENERGY HOLDING EAD. IBEX HOLDS A 10-YEAR LICENSE BY THE STATE ENERGY AND WATER REGULATORY COMMISSION TO ORGANIZING A POWER EXCHANGE FOR ELECTRICITY IN BULGARIA.'
+    comments:
+      'IBEX WAS ESTABLISHED JANUARY 2014, AS A FULLY-OWNED SUBSIDIARY OF THE BULGARIAN ENERGY HOLDING EAD. IBEX HOLDS A 10-YEAR LICENSE BY THE STATE ENERGY AND WATER REGULATORY COMMISSION TO ORGANIZING A POWER EXCHANGE FOR ELECTRICITY IN BULGARIA.',
   },
   WCLK: {
     mic: 'WCLK',
@@ -31214,7 +31774,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   ICAH: {
     mic: 'ICAH',
@@ -31233,7 +31793,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ICAP ELECTRONIC BROKING LIMITED'
+    comments: 'ICAP ELECTRONIC BROKING LIMITED',
   },
   ICSE: {
     mic: 'ICSE',
@@ -31252,7 +31812,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   ICTQ: {
     mic: 'ICTQ',
@@ -31271,7 +31831,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC OIL SWAPS.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC OIL SWAPS.',
   },
   ICAP: {
     mic: 'ICAP',
@@ -31290,7 +31850,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   PLSX: {
     mic: 'PLSX',
@@ -31309,13 +31869,14 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MIC TO USE IS ISDX'
+    comments: 'MIC TO USE IS ISDX',
   },
   ICDX: {
     mic: 'ICDX',
     operatingMic: 'ICDX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'INDONESIA COMMODITY AND DERIVATIVES EXCHANGE',
+    marketNameInstitutionDescription:
+      'INDONESIA COMMODITY AND DERIVATIVES EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -31328,7 +31889,8 @@ export const mics = {
     lastUpdateDate: '20100222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITY DERIVATIVES, INCLUDING THREE MAJOR GROUPS OF COMMODITIES: METALS, SOFT AGRICULTURAL PRODUCTS, AND ENERGY.'
+    comments:
+      'COMMODITY DERIVATIVES, INCLUDING THREE MAJOR GROUPS OF COMMODITIES: METALS, SOFT AGRICULTURAL PRODUCTS, AND ENERGY.',
   },
   ICEL: {
     mic: 'ICEL',
@@ -31347,7 +31909,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ICXL: {
     mic: 'ICXL',
@@ -31366,7 +31928,8 @@ export const mics = {
     lastUpdateDate: '20100426',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INDIAN COMMODITY EXCHANGE LTD IS A SCREEN BASED ON-LINE DERIVATIVES EXCHANGE FOR COMMODITIES.'
+    comments:
+      'INDIAN COMMODITY EXCHANGE LTD IS A SCREEN BASED ON-LINE DERIVATIVES EXCHANGE FOR COMMODITIES.',
   },
   IFCA: {
     mic: 'IFCA',
@@ -31385,13 +31948,15 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '20220627',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS. IFCA REPLACES MIC XWCE.'
+    comments:
+      'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS. IFCA REPLACES MIC XWCE.',
   },
   IFLX: {
     mic: 'IFLX',
     operatingMic: 'IFEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICE FUTURES EUROPE - AGRICULTURAL PRODUCTS DIVISION',
+    marketNameInstitutionDescription:
+      'ICE FUTURES EUROPE - AGRICULTURAL PRODUCTS DIVISION',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -31404,13 +31969,14 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFLL: {
     mic: 'IFLL',
     operatingMic: 'IFEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICE FUTURES EUROPE - FINANCIAL PRODUCTS DIVISION',
+    marketNameInstitutionDescription:
+      'ICE FUTURES EUROPE - FINANCIAL PRODUCTS DIVISION',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -31423,13 +31989,14 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFEN: {
     mic: 'IFEN',
     operatingMic: 'IFEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICE FUTURES EUROPE - OIL AND REFINED PRODUCTS DIVISION',
+    marketNameInstitutionDescription:
+      'ICE FUTURES EUROPE - OIL AND REFINED PRODUCTS DIVISION',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -31442,13 +32009,14 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFLO: {
     mic: 'IFLO',
     operatingMic: 'IFEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICE FUTURES EUROPE - EQUITY PRODUCTS DIVISION',
+    marketNameInstitutionDescription:
+      'ICE FUTURES EUROPE - EQUITY PRODUCTS DIVISION',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -31461,7 +32029,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFEU: {
     mic: 'IFEU',
@@ -31480,13 +32048,14 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFUT: {
     mic: 'IFUT',
     operatingMic: 'IFEU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ICE FUTURES EUROPE - EUROPEAN UTILITIES DIVISION',
+    marketNameInstitutionDescription:
+      'ICE FUTURES EUROPE - EUROPEAN UTILITIES DIVISION',
     legalEntityName: '',
     lei: '549300UF4R84F48NCH34',
     marketCategoryCode: 'NSPD',
@@ -31499,7 +32068,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IFSG: {
     mic: 'IFSG',
@@ -31518,7 +32087,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IMFX: {
     mic: 'IMFX',
@@ -31537,7 +32106,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES.',
   },
   IFED: {
     mic: 'IFED',
@@ -31556,7 +32125,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IFUS: {
     mic: 'IFUS',
@@ -31575,7 +32144,8 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS. IFUS REPLACES MIC ICUS.'
+    comments:
+      'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS. IFUS REPLACES MIC ICUS.',
   },
   IEPA: {
     mic: 'IEPA',
@@ -31594,7 +32164,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IMCG: {
     mic: 'IMCG',
@@ -31613,7 +32183,7 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC MARKET FOR CREDIT DERIVATIVES'
+    comments: 'OTC MARKET FOR CREDIT DERIVATIVES',
   },
   IMIR: {
     mic: 'IMIR',
@@ -31632,7 +32202,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE CURRENCY PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE CURRENCY PRODUCTS.',
   },
   IMCR: {
     mic: 'IMCR',
@@ -31651,7 +32221,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE CREDIT PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE CREDIT PRODUCTS.',
   },
   IMEN: {
     mic: 'IMEN',
@@ -31670,7 +32240,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE ENERGY PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE ENERGY PRODUCTS.',
   },
   ICES: {
     mic: 'ICES',
@@ -31689,7 +32259,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY'
+    comments: 'SWAP EXECUTION FACILITY',
   },
   IMAG: {
     mic: 'IMAG',
@@ -31708,7 +32278,8 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES, OPTIONS AND OTC AGRICULTURAL PRODUCTS.'
+    comments:
+      'ELECTRONIC PLATFORM TO TRADE FUTURES, OPTIONS AND OTC AGRICULTURAL PRODUCTS.',
   },
   IMBD: {
     mic: 'IMBD',
@@ -31727,7 +32298,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.'
+    comments: 'ELECTRONIC PLATFORM TO TRADE FUTURES AND OPTIONS PRODUCTS.',
   },
   IMEX: {
     mic: 'IMEX',
@@ -31746,7 +32317,7 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES EXCHANGE.'
+    comments: 'COMMODITIES EXCHANGE.',
   },
   ISDA: {
     mic: 'ISDA',
@@ -31765,13 +32336,14 @@ export const mics = {
     lastUpdateDate: '20121126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SCREEN SERVICE FOR SWAP RATES FOR SWAP TRANSACTIONS WORLDWIDE.'
+    comments: 'SCREEN SERVICE FOR SWAP RATES FOR SWAP TRANSACTIONS WORLDWIDE.',
   },
   ISEX: {
     mic: 'ISEX',
     operatingMic: 'ISEX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'INTER-CONNECTED STOCK EXCHANGE OF INDIA LTD',
+    marketNameInstitutionDescription:
+      'INTER-CONNECTED STOCK EXCHANGE OF INDIA LTD',
     legalEntityName: '',
     lei: '335800NLY5HYW9I7YE03',
     marketCategoryCode: 'NSPD',
@@ -31784,7 +32356,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ITGI: {
     mic: 'ITGI',
@@ -31803,7 +32375,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: 'ATS'
+    comments: 'ATS',
   },
   IVZX: {
     mic: 'IVZX',
@@ -31822,13 +32394,14 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR MUTUAL FUNDS'
+    comments: 'TRADING PLATFORM FOR MUTUAL FUNDS',
   },
   IXSP: {
     mic: 'IXSP',
     operatingMic: 'IXSP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'INTERNATIONAL STOCK EXCHANGE SAINT-PETERSBOURG',
+    marketNameInstitutionDescription:
+      'INTERNATIONAL STOCK EXCHANGE SAINT-PETERSBOURG',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -31841,7 +32414,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '20130325',
-    comments: 'SECURITIES MARKETS, IPO. REGISTRED IN APRIL 2007'
+    comments: 'SECURITIES MARKETS, IPO. REGISTRED IN APRIL 2007',
   },
   JADX: {
     mic: 'JADX',
@@ -31860,7 +32433,7 @@ export const mics = {
     lastUpdateDate: '20070528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JEFX: {
     mic: 'JEFX',
@@ -31879,7 +32452,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '20220627',
-    comments: 'DARK POOL FOR NMS EQUITIES'
+    comments: 'DARK POOL FOR NMS EQUITIES',
   },
   JNST: {
     mic: 'JNST',
@@ -31898,7 +32471,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'WHOLESALING PLATFORM.'
+    comments: 'WHOLESALING PLATFORM.',
   },
   JPMI: {
     mic: 'JPMI',
@@ -31917,7 +32490,7 @@ export const mics = {
     lastUpdateDate: '20160725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   JPMX: {
     mic: 'JPMX',
@@ -31936,7 +32509,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'J.P. MORGAN ATS'
+    comments: 'J.P. MORGAN ATS',
   },
   JSES: {
     mic: 'JSES',
@@ -31955,7 +32528,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   JSJX: {
     mic: 'JSJX',
@@ -31974,7 +32547,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM (JANE STREET CAPITAL LLC)'
+    comments: 'ELECTRONIC TRADING PLATFORM (JANE STREET CAPITAL LLC)',
   },
   VKAB: {
     mic: 'VKAB',
@@ -31993,7 +32566,7 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '20130527',
-    comments: 'MARKET HAS CLOSED IN SEPTEMBER 2011'
+    comments: 'MARKET HAS CLOSED IN SEPTEMBER 2011',
   },
   KABU: {
     mic: 'KABU',
@@ -32012,7 +32585,7 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '20130527',
-    comments: 'MARKET HAS CLOSED IN SEPTEMBER 2011'
+    comments: 'MARKET HAS CLOSED IN SEPTEMBER 2011',
   },
   KCCP: {
     mic: 'KCCP',
@@ -32031,7 +32604,8 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRAL COUNTERPARTY OF THE BUDAPEST STOCK EXCHANGE, MTS HUNGARY PLATFORM, CENTRAL EASTERN EUROPEAN GAS EXCHANGE.'
+    comments:
+      'CENTRAL COUNTERPARTY OF THE BUDAPEST STOCK EXCHANGE, MTS HUNGARY PLATFORM, CENTRAL EASTERN EUROPEAN GAS EXCHANGE.',
   },
   KDPW: {
     mic: 'KDPW',
@@ -32050,7 +32624,7 @@ export const mics = {
     lastUpdateDate: '20170828',
     lastValidationDate: '',
     expiryDate: '20170828',
-    comments: 'KDPW_CCP CLEARED OVER THE COUNTER (OTC) TRADES'
+    comments: 'KDPW_CCP CLEARED OVER THE COUNTER (OTC) TRADES',
   },
   KLEU: {
     mic: 'KLEU',
@@ -32069,7 +32643,7 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER'
+    comments: 'SYSTEMATIC INTERNALISER',
   },
   KNIG: {
     mic: 'KNIG',
@@ -32088,7 +32662,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   KNEM: {
     mic: 'KNEM',
@@ -32107,7 +32681,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'KEM OPERATES AS A MARKET-MAKER IN OVER-THE-COUNTER EQUITY SECURITIES, PRIMARILY THOSE TRADED IN THE NASDAQ STOCK MARKET AND ON THE OTC BULLETIN BOARD.'
+    comments:
+      'KEM OPERATES AS A MARKET-MAKER IN OVER-THE-COUNTER EQUITY SECURITIES, PRIMARILY THOSE TRADED IN THE NASDAQ STOCK MARKET AND ON THE OTC BULLETIN BOARD.',
   },
   KNLI: {
     mic: 'KNLI',
@@ -32126,7 +32701,8 @@ export const mics = {
     lastUpdateDate: '20081222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET MAKER, ALTERNATIVE LIQUIDITY PROVIDER FOR US AND EUROPEAN STOCKS'
+    comments:
+      'ELECTRONIC MARKET MAKER, ALTERNATIVE LIQUIDITY PROVIDER FOR US AND EUROPEAN STOCKS',
   },
   KNCM: {
     mic: 'KNCM',
@@ -32145,7 +32721,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'KCM PRIMARILY OPERATES AS A MARKET-MAKER IN THE OVER-THE-COUNTER MARKET FOR NEW YORK STOCK EXCHANGE AND AMERICAN STOCK EXCHANGE LISTED SECURITIES.'
+    comments:
+      'KCM PRIMARILY OPERATES AS A MARKET-MAKER IN THE OVER-THE-COUNTER MARKET FOR NEW YORK STOCK EXCHANGE AND AMERICAN STOCK EXCHANGE LISTED SECURITIES.',
   },
   KOCN: {
     mic: 'KOCN',
@@ -32164,7 +32741,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   KRME: {
     mic: 'KRME',
@@ -32183,7 +32760,8 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED DIGITAL ASSET EXCHANGE MARKET, REGULATED BY ADGM FINANCIAL SERVICES REGULATORY AUTHORITY (FSRA).'
+    comments:
+      'REGISTERED DIGITAL ASSET EXCHANGE MARKET, REGULATED BY ADGM FINANCIAL SERVICES REGULATORY AUTHORITY (FSRA).',
   },
   LASF: {
     mic: 'LASF',
@@ -32202,7 +32780,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY FOR LATIN AMERICA OTC DERIVATIVES'
+    comments: 'SWAP EXECUTION FACILITY FOR LATIN AMERICA OTC DERIVATIVES',
   },
   LAFL: {
     mic: 'LAFL',
@@ -32221,7 +32799,7 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '20150323',
-    comments: 'US ELECTRONIC COMMUNICATION NETWORK (ECN) FOR EQUITIES TRADING.'
+    comments: 'US ELECTRONIC COMMUNICATION NETWORK (ECN) FOR EQUITIES TRADING.',
   },
   LAVA: {
     mic: 'LAVA',
@@ -32240,7 +32818,7 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '20150323',
-    comments: ''
+    comments: '',
   },
   LAFD: {
     mic: 'LAFD',
@@ -32259,7 +32837,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '20141124',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   LCHC: {
     mic: 'LCHC',
@@ -32278,7 +32856,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CLEARING HOUSE'
+    comments: 'CLEARING HOUSE',
   },
   LCUR: {
     mic: 'LCUR',
@@ -32297,7 +32875,8 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOREIGN EXCHANGE TRADING PLATFORM/SYSTEM THAT INCLUDES MATCHING ENGINES OPERATING DIFFERENT MARKETS: LDFX IS ITS LONDON MATCHING ENGINE.'
+    comments:
+      'FOREIGN EXCHANGE TRADING PLATFORM/SYSTEM THAT INCLUDES MATCHING ENGINES OPERATING DIFFERENT MARKETS: LDFX IS ITS LONDON MATCHING ENGINE.',
   },
   LICA: {
     mic: 'LICA',
@@ -32316,7 +32895,7 @@ export const mics = {
     lastUpdateDate: '20100927',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES, ELECTRONIC TRADING.'
+    comments: 'REGISTERED MARKET FOR EQUITIES, ELECTRONIC TRADING.',
   },
   LIQH: {
     mic: 'LIQH',
@@ -32335,7 +32914,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   LIQU: {
     mic: 'LIQU',
@@ -32354,7 +32933,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LIQF: {
     mic: 'LIQF',
@@ -32373,7 +32952,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MIC FOR FIXED INCOME BOND TRADING REPORTING'
+    comments: 'MIC FOR FIXED INCOME BOND TRADING REPORTING',
   },
   LIUS: {
     mic: 'LIUS',
@@ -32392,7 +32971,8 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US REGISTERED BROKER DEALER OPERATING TWO ATS AND OFFERING TRADING AND ALGORITHMIC TRADING SERVICES'
+    comments:
+      'US REGISTERED BROKER DEALER OPERATING TWO ATS AND OFFERING TRADING AND ALGORITHMIC TRADING SERVICES',
   },
   LIUH: {
     mic: 'LIUH',
@@ -32411,7 +32991,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE H2O ATS FOR LIQUIDNET, INC.'
+    comments: 'THE H2O ATS FOR LIQUIDNET, INC.',
   },
   LIFI: {
     mic: 'LIFI',
@@ -32430,7 +33010,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE FIXED INCOME ATS FOR LIQUIDNET, INC'
+    comments: 'THE FIXED INCOME ATS FOR LIQUIDNET, INC',
   },
   LMAD: {
     mic: 'LMAD',
@@ -32449,7 +33029,8 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LMAX ALLOWS THE BENEFIT OF DIRECT ACCESS TO FINANCIAL MARKETS AND ALSO FACILITATES MTF WHERE TRADES ARE ENTERED DIRECTLY INTO THE MARKET AS ORDERS AND ALSO ACCESS FIVE LEVELS OF MARKET DEPTH WHERE THE BOOK IS WEIGHTED BETWEEN BUYERS AND SELLERS.'
+    comments:
+      'LMAX ALLOWS THE BENEFIT OF DIRECT ACCESS TO FINANCIAL MARKETS AND ALSO FACILITATES MTF WHERE TRADES ARE ENTERED DIRECTLY INTO THE MARKET AS ORDERS AND ALSO ACCESS FIVE LEVELS OF MARKET DEPTH WHERE THE BOOK IS WEIGHTED BETWEEN BUYERS AND SELLERS.',
   },
   LMAX: {
     mic: 'LMAX',
@@ -32468,7 +33049,7 @@ export const mics = {
     lastUpdateDate: '20101227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS.'
+    comments: 'FSA REGULATED MTF FOR RETAIL CLIENTS TO TRADE CFDS.',
   },
   LOTC: {
     mic: 'LOTC',
@@ -32487,7 +33068,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SERVICE COMPANY PROVIDING TRADEABLE OTC DERIVATIVE PRODUCTS'
+    comments: 'SERVICE COMPANY PROVIDING TRADEABLE OTC DERIVATIVE PRODUCTS',
   },
   PLDX: {
     mic: 'PLDX',
@@ -32506,7 +33087,8 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SERVICE COMPANY PROVIDING EXECUTION SERVICES FOR OTC DERIVATIVES.'
+    comments:
+      'SERVICE COMPANY PROVIDING EXECUTION SERVICES FOR OTC DERIVATIVES.',
   },
   LPPM: {
     mic: 'LPPM',
@@ -32525,7 +33107,7 @@ export const mics = {
     lastUpdateDate: '20070423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LMNX: {
     mic: 'LMNX',
@@ -32544,7 +33126,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ATS'
+    comments: 'ATS',
   },
   LTAA: {
     mic: 'LTAA',
@@ -32563,7 +33145,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BROKER DEALER.'
+    comments: 'BROKER DEALER.',
   },
   LXJP: {
     mic: 'LXJP',
@@ -32582,7 +33164,8 @@ export const mics = {
     lastUpdateDate: '20150525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM (ATS) OPERATED BY BARCLAYS SECURITIES JAPAN LIMITED.'
+    comments:
+      'ALTERNATIVE TRADING SYSTEM (ATS) OPERATED BY BARCLAYS SECURITIES JAPAN LIMITED.',
   },
   MAEL: {
     mic: 'MAEL',
@@ -32601,13 +33184,14 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MXLM: {
     mic: 'MXLM',
     operatingMic: 'MAEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MARKETAXESS EUROPE LIMITED - LIVE MARKETS',
+    marketNameInstitutionDescription:
+      'MARKETAXESS EUROPE LIMITED - LIVE MARKETS',
     legalEntityName: '',
     lei: '549300TTHIODYMGND828',
     marketCategoryCode: 'NSPD',
@@ -32620,7 +33204,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MALX: {
     mic: 'MALX',
@@ -32639,7 +33223,7 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES.'
+    comments: 'REGISTERED MARKET FOR EQUITIES.',
   },
   MXNL: {
     mic: 'MXNL',
@@ -32658,7 +33242,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MAQH: {
     mic: 'MAQH',
@@ -32677,7 +33261,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MACQUARIE DARK POOL (HONG KONG)'
+    comments: 'MACQUARIE DARK POOL (HONG KONG)',
   },
   MAQJ: {
     mic: 'MAQJ',
@@ -32696,7 +33280,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MACQUARIE DARK POOL (JAPAN)'
+    comments: 'MACQUARIE DARK POOL (JAPAN)',
   },
   MAQX: {
     mic: 'MAQX',
@@ -32715,7 +33299,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MACQUARIE DARK POOL (AUSTRALIA)'
+    comments: 'MACQUARIE DARK POOL (AUSTRALIA)',
   },
   MATN: {
     mic: 'MATN',
@@ -32734,7 +33318,8 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKETPLACE FOR REGISTERED CANADIAN INVESTMENT DEALERS AND THEIR CLIENTS TO TRADE CANADIAN LISTED EQUITIES.'
+    comments:
+      'MARKETPLACE FOR REGISTERED CANADIAN INVESTMENT DEALERS AND THEIR CLIENTS TO TRADE CANADIAN LISTED EQUITIES.',
   },
   MATX: {
     mic: 'MATX',
@@ -32753,7 +33338,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MBUL: {
     mic: 'MBUL',
@@ -32772,7 +33357,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES, BONDS, DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR EQUITIES, BONDS, DERIVATIVES.',
   },
   MCXR: {
     mic: 'MCXR',
@@ -32791,7 +33376,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   MCXS: {
     mic: 'MCXS',
@@ -32810,7 +33395,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   MCUR: {
     mic: 'MCUR',
@@ -32829,7 +33414,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '20220926',
-    comments: ''
+    comments: '',
   },
   MDIP: {
     mic: 'MDIP',
@@ -32848,7 +33433,8 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '20140728',
-    comments: 'MTS PORTUGAL IS OPERATING AS A DIVISION OF EUROMTS SINCE 30 JUNE 2014'
+    comments:
+      'MTS PORTUGAL IS OPERATING AS A DIVISION OF EUROMTS SINCE 30 JUNE 2014',
   },
   MEAU: {
     mic: 'MEAU',
@@ -32867,7 +33453,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '20131028',
-    comments: 'MACQUARIE SECURITIES DARK POOL FOR TRADING AUSTRALIAN EQUITIES.'
+    comments: 'MACQUARIE SECURITIES DARK POOL FOR TRADING AUSTRALIAN EQUITIES.',
   },
   MEHK: {
     mic: 'MEHK',
@@ -32886,7 +33472,7 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '20150323',
-    comments: 'MACQUARIE CAPITAL SECURITIES DARK POOL FOR TRADING HK EQUITIES.'
+    comments: 'MACQUARIE CAPITAL SECURITIES DARK POOL FOR TRADING HK EQUITIES.',
   },
   MFGL: {
     mic: 'MFGL',
@@ -32905,7 +33491,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MIBG: {
     mic: 'MIBG',
@@ -32924,7 +33510,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET OPERATOR FOR THE ORGANISED GAS MARKET IN SPAIN.'
+    comments:
+      'REGULATED MARKET OPERATOR FOR THE ORGANISED GAS MARKET IN SPAIN.',
   },
   EPRL: {
     mic: 'EPRL',
@@ -32943,7 +33530,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'MIAX PEARL: ELECTRONIC TRADING FOR EQUITIES.'
+    comments: 'MIAX PEARL: ELECTRONIC TRADING FOR EQUITIES.',
   },
   MPRL: {
     mic: 'MPRL',
@@ -32962,7 +33549,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'MIAX PEARL: ELECTRONIC TRADING FOR DERIVATIVES.'
+    comments: 'MIAX PEARL: ELECTRONIC TRADING FOR DERIVATIVES.',
   },
   MIHI: {
     mic: 'MIHI',
@@ -32981,7 +33568,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'HOLDINGS COMPANY FOR MIAX EXCHANGES AND OTHER ENTITIES.'
+    comments: 'HOLDINGS COMPANY FOR MIAX EXCHANGES AND OTHER ENTITIES.',
   },
   XMIO: {
     mic: 'XMIO',
@@ -33000,7 +33587,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'MIAX OPTIONS EXCHANGE: ELECTRONIC TRADING FOR DERIVATIVES.'
+    comments: 'MIAX OPTIONS EXCHANGE: ELECTRONIC TRADING FOR DERIVATIVES.',
   },
   MIZX: {
     mic: 'MIZX',
@@ -33019,13 +33606,14 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MIZUHO DARK'
+    comments: 'MIZUHO DARK',
   },
   MLVE: {
     mic: 'MLVE',
     operatingMic: 'MLXN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH VWAP CROSS - EUROPE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH VWAP CROSS - EUROPE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -33038,13 +33626,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: ''
+    comments: '',
   },
   MLEU: {
     mic: 'MLEU',
     operatingMic: 'MLXN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANK OF AMERICA - MERRILL LYNCH OTC - EUROPE',
+    marketNameInstitutionDescription:
+      'BANK OF AMERICA - MERRILL LYNCH OTC - EUROPE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -33057,13 +33646,14 @@ export const mics = {
     lastUpdateDate: '20171225',
     lastValidationDate: '',
     expiryDate: '20171225',
-    comments: ''
+    comments: '',
   },
   MSAL: {
     mic: 'MSAL',
     operatingMic: 'MSAL',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY AUSTRALIA SECURITIES LIMITED',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY AUSTRALIA SECURITIES LIMITED',
     legalEntityName: 'MORGAN STANLEY AUSTRALIA SECURITIES LIMITED',
     lei: '6NYZXKE9GUP7XNI56S88',
     marketCategoryCode: 'NSPD',
@@ -33076,7 +33666,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSPL: {
     mic: 'MSPL',
@@ -33095,7 +33685,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'REGISTERED ATS FOR EQUITIES IN THE U.S.'
+    comments: 'REGISTERED ATS FOR EQUITIES IN THE U.S.',
   },
   MSTC: {
     mic: 'MSTC',
@@ -33114,7 +33704,7 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '20150323',
-    comments: 'REGISTERED ATS FOR EQUITIES IN THE U.S. MIC TO USE: MSTX.'
+    comments: 'REGISTERED ATS FOR EQUITIES IN THE U.S. MIC TO USE: MSTX.',
   },
   MSCO: {
     mic: 'MSCO',
@@ -33133,7 +33723,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '20230626',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSTX: {
     mic: 'MSTX',
@@ -33152,13 +33742,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING SYSTEM FOR EQUITIES.'
+    comments: 'INTERNAL CROSSING SYSTEM FOR EQUITIES.',
   },
   MSLP: {
     mic: 'MSLP',
     operatingMic: 'MSCO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY AUTOMATED LIQUIDITY PROVISION',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY AUTOMATED LIQUIDITY PROVISION',
     legalEntityName: 'MORGAN STANLEY AND CO. LLC',
     lei: '9R7GPTSO7KV3UQJZQ078',
     marketCategoryCode: 'OTHR',
@@ -33171,13 +33762,14 @@ export const mics = {
     lastUpdateDate: '20180528',
     lastValidationDate: '',
     expiryDate: '20180528',
-    comments: 'INTERNAL AUTOMATED LIQUIDITY PROVISION.'
+    comments: 'INTERNAL AUTOMATED LIQUIDITY PROVISION.',
   },
   MSIP: {
     mic: 'MSIP',
     operatingMic: 'MSIP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MORGAN STANLEY AND CO. INTERNATIONAL PLC',
+    marketNameInstitutionDescription:
+      'MORGAN STANLEY AND CO. INTERNATIONAL PLC',
     legalEntityName: '',
     lei: '4PQUHN3JPFGFNF3BB653',
     marketCategoryCode: 'NSPD',
@@ -33190,7 +33782,7 @@ export const mics = {
     lastUpdateDate: '20150525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSMS: {
     mic: 'MSMS',
@@ -33209,7 +33801,8 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MORGAN STANLEY�S SECURITIES JOINT VENTURE WITH MITSUBISHI UFJ FINANCIAL GROUP IN JAPAN.'
+    comments:
+      'MORGAN STANLEY�S SECURITIES JOINT VENTURE WITH MITSUBISHI UFJ FINANCIAL GROUP IN JAPAN.',
   },
   BVUS: {
     mic: 'BVUS',
@@ -33228,7 +33821,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR GOVIES AND NON GOVIES'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR GOVIES AND NON GOVIES',
   },
   MTSB: {
     mic: 'MTSB',
@@ -33247,7 +33840,8 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: 'REGISTERED MARKET FOR BONDS AND ELECTRONIC TRADING PLATFORM FOR FIXED INCOME PRODUCTS'
+    comments:
+      'REGISTERED MARKET FOR BONDS AND ELECTRONIC TRADING PLATFORM FOR FIXED INCOME PRODUCTS',
   },
   MTXS: {
     mic: 'MTXS',
@@ -33266,13 +33860,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   MTXC: {
     mic: 'MTXC',
     operatingMic: 'MTXX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MARKETAXESS CORPORATION SINGLE-NAME CDS CENTRAL LIMIT ORDER',
+    marketNameInstitutionDescription:
+      'MARKETAXESS CORPORATION SINGLE-NAME CDS CENTRAL LIMIT ORDER',
     legalEntityName: '',
     lei: '5493002U1CA1XJOVID83',
     marketCategoryCode: 'NSPD',
@@ -33285,13 +33880,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   MTXM: {
     mic: 'MTXM',
     operatingMic: 'MTXX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MARKETAXESS CORPORATION MID-X TRADING SYSTEM',
+    marketNameInstitutionDescription:
+      'MARKETAXESS CORPORATION MID-X TRADING SYSTEM',
     legalEntityName: '',
     lei: '5493002U1CA1XJOVID83',
     marketCategoryCode: 'NSPD',
@@ -33304,7 +33900,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   MYTR: {
     mic: 'MYTR',
@@ -33323,7 +33919,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   N2EX: {
     mic: 'N2EX',
@@ -33342,7 +33938,8 @@ export const mics = {
     lastUpdateDate: '20091123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'N2EX, THE UK MARKET OPERATED BY NASDAQ OMX COMMODITIES AND NORD POOL SPOT, IS A MARKETPLACE FOR PHYSICAL UK POWER CONTRACTS AND LAUNCH A PLATFORM FOR FINANCIAL FUTURES CONTRACTS.'
+    comments:
+      'N2EX, THE UK MARKET OPERATED BY NASDAQ OMX COMMODITIES AND NORD POOL SPOT, IS A MARKETPLACE FOR PHYSICAL UK POWER CONTRACTS AND LAUNCH A PLATFORM FOR FINANCIAL FUTURES CONTRACTS.',
   },
   NAMX: {
     mic: 'NAMX',
@@ -33361,7 +33958,8 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANIZING AND CONDUCTING TRADING OF THE FUTURES CONTRACTS ON THE COMMODITY SESSION.'
+    comments:
+      'ORGANIZING AND CONDUCTING TRADING OF THE FUTURES CONTRACTS ON THE COMMODITY SESSION.',
   },
   NASB: {
     mic: 'NASB',
@@ -33380,7 +33978,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '20151123',
-    comments: 'MULTILATERAL TRADING FACILITY (MTF) FOR TRADING IN SECURITIES OF BALTIC COUNTRIES.'
+    comments:
+      'MULTILATERAL TRADING FACILITY (MTF) FOR TRADING IN SECURITIES OF BALTIC COUNTRIES.',
   },
   NASX: {
     mic: 'NASX',
@@ -33399,7 +33998,8 @@ export const mics = {
     lastUpdateDate: '20150824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR ELECTRONIC TRADING OF UNLISTED SECURITIES.'
+    comments:
+      'REGISTERED MARKET FOR ELECTRONIC TRADING OF UNLISTED SECURITIES.',
   },
   NBLX: {
     mic: 'NBLX',
@@ -33418,7 +34018,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE NOBLE MARKETS VENUE FOR CRYPTOGRAPHIC AND DIGITAL ASSETS.'
+    comments: 'THE NOBLE MARKETS VENUE FOR CRYPTOGRAPHIC AND DIGITAL ASSETS.',
   },
   NBOT: {
     mic: 'NBOT',
@@ -33437,7 +34037,7 @@ export const mics = {
     lastUpdateDate: '20090126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITY FUTURES EXCHANGE'
+    comments: 'COMMODITY FUTURES EXCHANGE',
   },
   NCEL: {
     mic: 'NCEL',
@@ -33456,7 +34056,8 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED FOR LISTED DERIVATIVES (OPTIONS AND FUTURES) TRADING - FORMERLY NATIONAL COMMODITY EXCHANGE LIMITED.'
+    comments:
+      'REGISTERED FOR LISTED DERIVATIVES (OPTIONS AND FUTURES) TRADING - FORMERLY NATIONAL COMMODITY EXCHANGE LIMITED.',
   },
   NFSD: {
     mic: 'NFSD',
@@ -33475,7 +34076,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   XSTM: {
     mic: 'XSTM',
@@ -33494,7 +34095,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS FOR TRADING US EQUITIES'
+    comments: 'REGISTERED ATS FOR TRADING US EQUITIES',
   },
   NFSA: {
     mic: 'NFSA',
@@ -33513,7 +34114,7 @@ export const mics = {
     lastUpdateDate: '20140922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NFSC: {
     mic: 'NFSC',
@@ -33532,7 +34133,8 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING PLATFORM FOR THE EXECUTION OF EQUITY, OPTION, FIXED INCOME, AND OTC SECURITIES.'
+    comments:
+      'TRADING PLATFORM FOR THE EXECUTION OF EQUITY, OPTION, FIXED INCOME, AND OTC SECURITIES.',
   },
   NGXC: {
     mic: 'NGXC',
@@ -33551,7 +34153,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NGX PROVIDES ELECTRONIC TRADING, CENTRAL COUNTERPARTY CLEARING AND DATA SERVICES TO THE NORTH AMERICAN NATURAL GAS AND ELECTRICITY MARKETS.'
+    comments:
+      'NGX PROVIDES ELECTRONIC TRADING, CENTRAL COUNTERPARTY CLEARING AND DATA SERVICES TO THE NORTH AMERICAN NATURAL GAS AND ELECTRICITY MARKETS.',
   },
   NILX: {
     mic: 'NILX',
@@ -33570,7 +34173,8 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE EGYPTIAN EXCHANGE (EGX) LAUNCHED ON THURSDAY 3 JUNE 2010 THE FIRST TRADING SESSION IN THE NILE STOCK EXCHANGE (NILEX).'
+    comments:
+      'THE EGYPTIAN EXCHANGE (EGX) LAUNCHED ON THURSDAY 3 JUNE 2010 THE FIRST TRADING SESSION IN THE NILE STOCK EXCHANGE (NILEX).',
   },
   NLPX: {
     mic: 'NLPX',
@@ -33589,13 +34193,14 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NMCE: {
     mic: 'NMCE',
     operatingMic: 'NMCE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NATIONAL MULTI-COMMODITY EXCHANGE OF INDIA',
+    marketNameInstitutionDescription:
+      'NATIONAL MULTI-COMMODITY EXCHANGE OF INDIA',
     legalEntityName: '',
     lei: '335800NLY5HYW9I7YE03',
     marketCategoryCode: 'NSPD',
@@ -33608,7 +34213,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NMRA: {
     mic: 'NMRA',
@@ -33627,7 +34232,7 @@ export const mics = {
     lastUpdateDate: '20120924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NOMURA PRINCIPAL TRADING.'
+    comments: 'NOMURA PRINCIPAL TRADING.',
   },
   ICSH: {
     mic: 'ICSH',
@@ -33646,7 +34251,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   ICSZ: {
     mic: 'ICSZ',
@@ -33665,7 +34270,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   ICKR: {
     mic: 'ICKR',
@@ -33684,7 +34289,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   ICHK: {
     mic: 'ICHK',
@@ -33703,7 +34308,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   NXSE: {
     mic: 'NXSE',
@@ -33722,7 +34327,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA NX SELECT.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA NX SELECT.',
   },
   ICTW: {
     mic: 'ICTW',
@@ -33741,13 +34346,14 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.'
+    comments: 'INTERNAL CROSSING PLATFORM FOR NOMURA.',
   },
   NNCS: {
     mic: 'NNCS',
     operatingMic: 'NNCS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'REGIONAL EXCHANGE CENTRE - MICEX VOLGA REGION',
+    marketNameInstitutionDescription:
+      'REGIONAL EXCHANGE CENTRE - MICEX VOLGA REGION',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -33760,7 +34366,8 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '20130325',
-    comments: 'NNCS ORGANIZES THE TRADING (AND REPORTING) ON THE COMMODITY SESSION WHERE TRADES ARE EXECUTED SEPARATELY FROM THE MOSCOW OFFICE.'
+    comments:
+      'NNCS ORGANIZES THE TRADING (AND REPORTING) ON THE COMMODITY SESSION WHERE TRADES ARE EXECUTED SEPARATELY FROM THE MOSCOW OFFICE.',
   },
   NODX: {
     mic: 'NODX',
@@ -33779,7 +34386,7 @@ export const mics = {
     lastUpdateDate: '20091228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC POWER EXCHANGE.'
+    comments: 'ELECTRONIC POWER EXCHANGE.',
   },
   NOFF: {
     mic: 'NOFF',
@@ -33798,7 +34405,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOPS: {
     mic: 'NOPS',
@@ -33817,7 +34424,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORD POOL SPOT AS ENERGY EXCHANGE FOR NORDIC PHYSICAL MARKETS.'
+    comments: 'NORD POOL SPOT AS ENERGY EXCHANGE FOR NORDIC PHYSICAL MARKETS.',
   },
   NOSC: {
     mic: 'NOSC',
@@ -33836,7 +34443,8 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CENTRAL COUNTER PARTY CLEARING HOUSE (CCP) FOR COMMODITY DERIVATIVES'
+    comments:
+      'CENTRAL COUNTER PARTY CLEARING HOUSE (CCP) FOR COMMODITY DERIVATIVES',
   },
   NOTC: {
     mic: 'NOTC',
@@ -33855,7 +34463,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NPGA: {
     mic: 'NPGA',
@@ -33874,7 +34482,8 @@ export const mics = {
     lastUpdateDate: '20150323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GASPOINT NORDIC IS OPERATING A PLATFORM FOR CONTINUOUS ELECTRONIC TRADING OF GAS, DELIVERABLE TO THE ETF VIRTUAL TRADING POINT.'
+    comments:
+      'GASPOINT NORDIC IS OPERATING A PLATFORM FOR CONTINUOUS ELECTRONIC TRADING OF GAS, DELIVERABLE TO THE ETF VIRTUAL TRADING POINT.',
   },
   NSXB: {
     mic: 'NSXB',
@@ -33893,7 +34502,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NXEU: {
     mic: 'NXEU',
@@ -33912,7 +34521,7 @@ export const mics = {
     lastUpdateDate: '20090622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NX IS THE INTERNAL EQUITIES ONLY CROSSING PLATFORM FOR NOMURA.'
+    comments: 'NX IS THE INTERNAL EQUITIES ONLY CROSSING PLATFORM FOR NOMURA.',
   },
   NXUS: {
     mic: 'NXUS',
@@ -33931,7 +34540,8 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NX IS A REGISTERED ATS IN THE US MARKETS - CURRENTLY PROVIDING CROSSING FACILITIES FOR REG NMS LISTED STOCKS.'
+    comments:
+      'NX IS A REGISTERED ATS IN THE US MARKETS - CURRENTLY PROVIDING CROSSING FACILITIES FOR REG NMS LISTED STOCKS.',
   },
   NYMX: {
     mic: 'NYMX',
@@ -33950,7 +34560,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '20071126',
-    comments: ''
+    comments: '',
   },
   NYPC: {
     mic: 'NYPC',
@@ -33969,7 +34579,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OFEX: {
     mic: 'OFEX',
@@ -33988,7 +34598,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   OLLC: {
     mic: 'OLLC',
@@ -34007,7 +34617,8 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED BROKER FOR EQUITIES DERIVATIVES AND RATES DERIVATIVES IN NYC'
+    comments:
+      'REGISTERED BROKER FOR EQUITIES DERIVATIVES AND RATES DERIVATIVES IN NYC',
   },
   OMEL: {
     mic: 'OMEL',
@@ -34026,7 +34637,8 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OMIE IS LEGAL SUCCESSOR OF OMEL AS MARKET OPERATOR BY WAY OF UNIVERSAL LEGAL SUCCESSION'
+    comments:
+      'OMIE IS LEGAL SUCCESSOR OF OMEL AS MARKET OPERATOR BY WAY OF UNIVERSAL LEGAL SUCCESSION',
   },
   OMGA: {
     mic: 'OMGA',
@@ -34045,7 +34657,7 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LYNX: {
     mic: 'LYNX',
@@ -34064,7 +34676,8 @@ export const mics = {
     lastUpdateDate: '20121126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LYNX ATS IS A REGISTERED MARKET FOR THE FULLY ELECTRONIC TRADING OF EQUITIES AND FIXED INCOME.'
+    comments:
+      'LYNX ATS IS A REGISTERED MARKET FOR THE FULLY ELECTRONIC TRADING OF EQUITIES AND FIXED INCOME.',
   },
   OMIC: {
     mic: 'OMIC',
@@ -34083,7 +34696,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'REGISTERED CLEARING HOUSE ACTING AS CENTRAL COUNTERPARTY FOR EXCHANGE AND OTC DERIVATIVES'
+    comments:
+      'REGISTERED CLEARING HOUSE ACTING AS CENTRAL COUNTERPARTY FOR EXCHANGE AND OTC DERIVATIVES',
   },
   OPEX: {
     mic: 'OPEX',
@@ -34102,7 +34716,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: ''
+    comments: '',
   },
   OPRA: {
     mic: 'OPRA',
@@ -34121,7 +34735,7 @@ export const mics = {
     lastUpdateDate: '20111226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING CONSOLIDATOR.'
+    comments: 'TRADING CONSOLIDATOR.',
   },
   OSLC: {
     mic: 'OSLC',
@@ -34140,7 +34754,8 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SECURITIES LENDING, TRADE REGISTRATIONS AND FINANCIAL SETTLEMENT FOR DERIVATIVES. AS OF 1 MAY 2015 OSLO CLEARING ASA IS LEGALLY INTEGRATED INTO SIX X-CLEAR LTD.'
+    comments:
+      'SECURITIES LENDING, TRADE REGISTRATIONS AND FINANCIAL SETTLEMENT FOR DERIVATIVES. AS OF 1 MAY 2015 OSLO CLEARING ASA IS LEGALLY INTEGRATED INTO SIX X-CLEAR LTD.',
   },
   OTCE: {
     mic: 'OTCE',
@@ -34159,7 +34774,7 @@ export const mics = {
     lastUpdateDate: '20160425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADE NAME: TRAYPORT.'
+    comments: 'TRADE NAME: TRAYPORT.',
   },
   OTCX: {
     mic: 'OTCX',
@@ -34178,13 +34793,14 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PAVE: {
     mic: 'PAVE',
     operatingMic: 'PAVE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ALTERNATIVE PLATFORM FOR SPANISH SECURITIES',
+    marketNameInstitutionDescription:
+      'ALTERNATIVE PLATFORM FOR SPANISH SECURITIES',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -34197,7 +34813,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PDEX: {
     mic: 'PDEX',
@@ -34216,7 +34832,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PDEX PROVIDES A CENTRALIZED INFRASTRUCTURE FOR TRADING SECURITIES.'
+    comments:
+      'PDEX PROVIDES A CENTRALIZED INFRASTRUCTURE FOR TRADING SECURITIES.',
   },
   PFTS: {
     mic: 'PFTS',
@@ -34235,7 +34852,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PFTQ: {
     mic: 'PFTQ',
@@ -34254,7 +34871,8 @@ export const mics = {
     lastUpdateDate: '20101025',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'QUOTE DRIVEN MARKET IS A TRADING SEGMENT UNDER PFTS STOCK EXCHANGE.'
+    comments:
+      'QUOTE DRIVEN MARKET IS A TRADING SEGMENT UNDER PFTS STOCK EXCHANGE.',
   },
   PIEU: {
     mic: 'PIEU',
@@ -34273,7 +34891,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF FOR LARGE BLOCK PAN-EUROPEAN EQUITIES.'
+    comments: 'MTF FOR LARGE BLOCK PAN-EUROPEAN EQUITIES.',
   },
   PIPE: {
     mic: 'PIPE',
@@ -34292,7 +34910,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PIRM: {
     mic: 'PIRM',
@@ -34311,7 +34929,7 @@ export const mics = {
     lastUpdateDate: '20110725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SECURITIES LENDING CCP FLOW PROVIDER.'
+    comments: 'SECURITIES LENDING CCP FLOW PROVIDER.',
   },
   PMTS: {
     mic: 'PMTS',
@@ -34330,7 +34948,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '20070625',
-    comments: ''
+    comments: '',
   },
   PRSE: {
     mic: 'PRSE',
@@ -34349,13 +34967,14 @@ export const mics = {
     lastUpdateDate: '20101227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS FOR US EQUITIES'
+    comments: 'REGISTERED ATS FOR US EQUITIES',
   },
   PVMF: {
     mic: 'PVMF',
     operatingMic: 'TPEO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP E. AND C. OTF � �PVM COMMODITIES AND ENERGY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'TP ICAP E. AND C. OTF � �PVM COMMODITIES AND ENERGY DERIVATIVES',
     legalEntityName: 'TP ICAP E. AND C. LIMITED',
     lei: '549300MU2MYJLOY6IJ51',
     marketCategoryCode: 'OTFS',
@@ -34368,7 +34987,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PXIL: {
     mic: 'PXIL',
@@ -34387,7 +35006,7 @@ export const mics = {
     lastUpdateDate: '20090727',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC NATION-WIDE EXCHANGE FOR TRADING OF ELECTRICITY'
+    comments: 'ELECTRONIC NATION-WIDE EXCHANGE FOR TRADING OF ELECTRICITY',
   },
   XQLX: {
     mic: 'XQLX',
@@ -34406,7 +35025,7 @@ export const mics = {
     lastUpdateDate: '20140922',
     lastValidationDate: '',
     expiryDate: '20140922',
-    comments: 'HYBRID MODEL MTF FOR PAN-EUROPEAN EQUITIES.'
+    comments: 'HYBRID MODEL MTF FOR PAN-EUROPEAN EQUITIES.',
   },
   QMTF: {
     mic: 'QMTF',
@@ -34425,7 +35044,8 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '20140127',
-    comments: 'MULTILATERAL TRADING FACILITY FOR EEA STOCKS - MARKET CEASED ITS ACTIVITIES ON NOVEMBER 15, 2013'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR EEA STOCKS - MARKET CEASED ITS ACTIVITIES ON NOVEMBER 15, 2013',
   },
   QWIX: {
     mic: 'QWIX',
@@ -34444,7 +35064,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RBSX: {
     mic: 'RBSX',
@@ -34463,7 +35083,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'RBS CROSS IS THE BROKER CROSSING SYSTEM (BCS) OPERATED BY RBS.'
+    comments: 'RBS CROSS IS THE BROKER CROSSING SYSTEM (BCS) OPERATED BY RBS.',
   },
   RICX: {
     mic: 'RICX',
@@ -34482,7 +35102,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '20170201',
-    comments: 'RIVERCROSS� IS AN ALTERNATIVE TRADING SYSTEM (ATS) OPERATED PURSUANT TO REGULATION ATS BY RIVERCROSS SECURITIES, LLLP, PROVIDING A SECURE AND CONFIDENTIAL LIQUIDITY SOURCE FOR U.S.-REGISTERED BROKER-DEALERS AND THEIR CLIENTS.'
+    comments:
+      'RIVERCROSS� IS AN ALTERNATIVE TRADING SYSTEM (ATS) OPERATED PURSUANT TO REGULATION ATS BY RIVERCROSS SECURITIES, LLLP, PROVIDING A SECURE AND CONFIDENTIAL LIQUIDITY SOURCE FOR U.S.-REGISTERED BROKER-DEALERS AND THEIR CLIENTS.',
   },
   RICD: {
     mic: 'RICD',
@@ -34501,7 +35122,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '',
     expiryDate: '20221226',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   ROCO: {
     mic: 'ROCO',
@@ -34520,7 +35141,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ROFX: {
     mic: 'ROFX',
@@ -34539,7 +35160,7 @@ export const mics = {
     lastUpdateDate: '20091026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR FUTURES AND OPTIONS.'
+    comments: 'REGISTERED MARKET FOR FUTURES AND OPTIONS.',
   },
   ROTC: {
     mic: 'ROTC',
@@ -34558,7 +35179,7 @@ export const mics = {
     lastUpdateDate: '20080623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RPDX: {
     mic: 'RPDX',
@@ -34577,7 +35198,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'RUSSIAN POWER DERIVATIVES EXCHANGE.'
+    comments: 'RUSSIAN POWER DERIVATIVES EXCHANGE.',
   },
   RSEX: {
     mic: 'RSEX',
@@ -34596,7 +35217,7 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PRINCIPAL STOCK MARKET FOR EQUITY AND BONDS.'
+    comments: 'PRINCIPAL STOCK MARKET FOR EQUITY AND BONDS.',
   },
   RTSP: {
     mic: 'RTSP',
@@ -34615,7 +35236,7 @@ export const mics = {
     lastUpdateDate: '20200525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   S3FM: {
     mic: 'S3FM',
@@ -34634,7 +35255,8 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NON REGULATED, US SEC AND SWISS FINMA COMPLIANT AND BANKING LICENSE EXEMPT EQUITY FUNDRAISING AND TRADING PLATFORM.'
+    comments:
+      'NON REGULATED, US SEC AND SWISS FINMA COMPLIANT AND BANKING LICENSE EXEMPT EQUITY FUNDRAISING AND TRADING PLATFORM.',
   },
   SECC: {
     mic: 'SECC',
@@ -34653,7 +35275,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SECD: {
     mic: 'SECD',
@@ -34672,7 +35294,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SECE: {
     mic: 'SECE',
@@ -34691,7 +35313,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SECF: {
     mic: 'SECF',
@@ -34710,7 +35332,8 @@ export const mics = {
     lastUpdateDate: '20090126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY - ELECTRONIC EXCHANGE FOR STOCK BORROWING AND LENDING TRANSACTIONS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY - ELECTRONIC EXCHANGE FOR STOCK BORROWING AND LENDING TRANSACTIONS.',
   },
   SEDC: {
     mic: 'SEDC',
@@ -34729,13 +35352,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SELC: {
     mic: 'SELC',
     operatingMic: 'SELC',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SISTEMA ESPECIAL DE LIQUIDACAO E CUSTODIA DE TITULOS PUBLICOS',
+    marketNameInstitutionDescription:
+      'SISTEMA ESPECIAL DE LIQUIDACAO E CUSTODIA DE TITULOS PUBLICOS',
     legalEntityName: '',
     lei: 'AALGVYK6RWPEUC46UZ70',
     marketCategoryCode: 'NSPD',
@@ -34748,7 +35372,8 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SELIC (SISTEMA ESPECIAL DE LIQUIDACAO E CUSTODIA DE TITULOS PUBLICOS - IN ENGLISH: SPECIAL SYSTEM FOR CUSTODY AND SETTLEMENT OF PUBLIC SECURITIES) IS THE CENTRAL CUSTODIAN FOR ALL SECURITIES EMITTED BY THE BRAZILIAN NATIONAL TREASURY.'
+    comments:
+      'SELIC (SISTEMA ESPECIAL DE LIQUIDACAO E CUSTODIA DE TITULOS PUBLICOS - IN ENGLISH: SPECIAL SYSTEM FOR CUSTODY AND SETTLEMENT OF PUBLIC SECURITIES) IS THE CENTRAL CUSTODIAN FOR ALL SECURITIES EMITTED BY THE BRAZILIAN NATIONAL TREASURY.',
   },
   SEPE: {
     mic: 'SEPE',
@@ -34767,7 +35392,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGEX: {
     mic: 'SGEX',
@@ -34786,7 +35411,7 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SGMA: {
     mic: 'SGMA',
@@ -34805,7 +35430,7 @@ export const mics = {
     lastUpdateDate: '20080324',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "GS'S MTF. IMPLEMENTATION DATE: FEBRUARY 1ST 2008"
+    comments: "GS'S MTF. IMPLEMENTATION DATE: FEBRUARY 1ST 2008",
   },
   SHAR: {
     mic: 'SHAR',
@@ -34824,7 +35449,7 @@ export const mics = {
     lastUpdateDate: '20121224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SHAW: {
     mic: 'SHAW',
@@ -34843,7 +35468,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SHAD: {
     mic: 'SHAD',
@@ -34862,7 +35487,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   SIGA: {
     mic: 'SIGA',
@@ -34881,7 +35506,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM (ATS)OPERATED BY GOLDMAN SACHS'
+    comments: 'ALTERNATIVE TRADING SYSTEM (ATS)OPERATED BY GOLDMAN SACHS',
   },
   SIGJ: {
     mic: 'SIGJ',
@@ -34900,7 +35525,7 @@ export const mics = {
     lastUpdateDate: '20120227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM (ATS)OPERATED BY GOLDMAN SACHS'
+    comments: 'ALTERNATIVE TRADING SYSTEM (ATS)OPERATED BY GOLDMAN SACHS',
   },
   SIGX: {
     mic: 'SIGX',
@@ -34919,7 +35544,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '20140623',
-    comments: "SIGMA X CANADA IS GOLDMAN SACHS CANADA INC'S NON-DISPLAYED ATS."
+    comments: "SIGMA X CANADA IS GOLDMAN SACHS CANADA INC'S NON-DISPLAYED ATS.",
   },
   SIMV: {
     mic: 'SIMV',
@@ -34938,7 +35563,7 @@ export const mics = {
     lastUpdateDate: '20111226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SLXT: {
     mic: 'SLXT',
@@ -34957,7 +35582,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '20150727',
-    comments: 'SECURITIES LENDING MTF'
+    comments: 'SECURITIES LENDING MTF',
   },
   SMEX: {
     mic: 'SMEX',
@@ -34976,7 +35601,8 @@ export const mics = {
     lastUpdateDate: '20091228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "SMX IS ASIA'S FIRST MULTI-PRODUCT GLOBAL COMMODITY DERIVATIVES EXCHANGE."
+    comments:
+      "SMX IS ASIA'S FIRST MULTI-PRODUCT GLOBAL COMMODITY DERIVATIVES EXCHANGE.",
   },
   SOHO: {
     mic: 'SOHO',
@@ -34995,13 +35621,14 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET MAKER FOR US EXCHANGE LISTED EQUITIES'
+    comments: 'MARKET MAKER FOR US EXCHANGE LISTED EQUITIES',
   },
   SPIM: {
     mic: 'SPIM',
     operatingMic: 'SPIM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ST. PETERSBURG INTERNATIONAL MERCANTILE EXCHANGE',
+    marketNameInstitutionDescription:
+      'ST. PETERSBURG INTERNATIONAL MERCANTILE EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -35014,7 +35641,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERD COMMODITIES MARKET - OIL.'
+    comments: 'REGISTERD COMMODITIES MARKET - OIL.',
   },
   SPRZ: {
     mic: 'SPRZ',
@@ -35033,7 +35660,7 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC CROSSING PLATFORM'
+    comments: 'ELECTRONIC CROSSING PLATFORM',
   },
   SPXE: {
     mic: 'SPXE',
@@ -35052,7 +35679,8 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES - SLOVAK AND CZECH POWER AND GAS.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR OTC DERIVATIVES - SLOVAK AND CZECH POWER AND GAS.',
   },
   SSEX: {
     mic: 'SSEX',
@@ -35071,7 +35699,8 @@ export const mics = {
     lastUpdateDate: '20130722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE SSE GIVES INVESTORS ACCESS TO INFORMATION ON PUBLICLY LISTED BUSINESSES WITH STRONG SOCIAL AND ENVIRONMENTAL PURPOSE.'
+    comments:
+      'THE SSE GIVES INVESTORS ACCESS TO INFORMATION ON PUBLICLY LISTED BUSINESSES WITH STRONG SOCIAL AND ENVIRONMENTAL PURPOSE.',
   },
   SSTX: {
     mic: 'SSTX',
@@ -35090,7 +35719,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTV: {
     mic: 'XSTV',
@@ -35109,7 +35738,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   STOX: {
     mic: 'STOX',
@@ -35128,7 +35757,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSCU: {
     mic: 'XSCU',
@@ -35147,7 +35776,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTX: {
     mic: 'XSTX',
@@ -35166,7 +35795,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SWAP: {
     mic: 'SWAP',
@@ -35185,7 +35814,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SXSI: {
     mic: 'SXSI',
@@ -35204,7 +35833,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.'
+    comments: 'SYSTEMATIC INTERNALISER FOR BONDS.',
   },
   TERA: {
     mic: 'TERA',
@@ -35223,7 +35852,7 @@ export const mics = {
     lastUpdateDate: '20121224',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY (OTC CLEARED INSTRUMENTS)'
+    comments: 'SWAP EXECUTION FACILITY (OTC CLEARED INSTRUMENTS)',
   },
   TFEX: {
     mic: 'TFEX',
@@ -35242,7 +35871,7 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TFSA: {
     mic: 'TFSA',
@@ -35261,7 +35890,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TFSU: {
     mic: 'TFSU',
@@ -35280,7 +35909,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TFSV: {
     mic: 'TFSV',
@@ -35299,7 +35928,7 @@ export const mics = {
     lastUpdateDate: '20180226',
     lastValidationDate: '',
     expiryDate: '20180226',
-    comments: ''
+    comments: '',
   },
   TLAB: {
     mic: 'TLAB',
@@ -35318,7 +35947,7 @@ export const mics = {
     lastUpdateDate: '20070827',
     lastValidationDate: '',
     expiryDate: '20070827',
-    comments: ''
+    comments: '',
   },
   TMID: {
     mic: 'TMID',
@@ -35337,7 +35966,7 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED ATS FOR CORPORATE BONDS AND CREDIT DEFAULT SWAPS.'
+    comments: 'REGISTERED ATS FOR CORPORATE BONDS AND CREDIT DEFAULT SWAPS.',
   },
   TOCP: {
     mic: 'TOCP',
@@ -35356,7 +35985,7 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'HK REGISTERED ATS FOR EQUITIES.'
+    comments: 'HK REGISTERED ATS FOR EQUITIES.',
   },
   TPIE: {
     mic: 'TPIE',
@@ -35375,7 +36004,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPIM: {
     mic: 'TPIM',
@@ -35394,7 +36023,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '20130325',
-    comments: ''
+    comments: '',
   },
   TPSE: {
     mic: 'TPSE',
@@ -35413,7 +36042,7 @@ export const mics = {
     lastUpdateDate: '20161226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY.'
+    comments: 'SWAP EXECUTION FACILITY.',
   },
   TPSV: {
     mic: 'TPSV',
@@ -35432,7 +36061,7 @@ export const mics = {
     lastUpdateDate: '20200928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRCK: {
     mic: 'TRCK',
@@ -35451,7 +36080,7 @@ export const mics = {
     lastUpdateDate: '20101227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US ELECTRONIC COMMUNICATION NETWORK (ECN) FOR US EQUITIES.'
+    comments: 'US ELECTRONIC COMMUNICATION NETWORK (ECN) FOR US EQUITIES.',
   },
   TFSS: {
     mic: 'TFSS',
@@ -35470,7 +36099,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '20141124',
-    comments: ''
+    comments: '',
   },
   DBVX: {
     mic: 'DBVX',
@@ -35489,7 +36118,8 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '20160627',
-    comments: 'MTF FOR MONEY MARKET PRODUCTS - PLATFORM NOT LAUNCHED BY MARKET ORGANISATION'
+    comments:
+      'MTF FOR MONEY MARKET PRODUCTS - PLATFORM NOT LAUNCHED BY MARKET ORGANISATION',
   },
   TFSC: {
     mic: 'TFSC',
@@ -35508,7 +36138,7 @@ export const mics = {
     lastUpdateDate: '20150126',
     lastValidationDate: '',
     expiryDate: '20150126',
-    comments: ''
+    comments: '',
   },
   OILX: {
     mic: 'OILX',
@@ -35527,7 +36157,7 @@ export const mics = {
     lastUpdateDate: '20150126',
     lastValidationDate: '',
     expiryDate: '20150126',
-    comments: 'ARRANGING PLATFORM FOR OIL SWAP TRANSACTIONS.'
+    comments: 'ARRANGING PLATFORM FOR OIL SWAP TRANSACTIONS.',
   },
   TCME: {
     mic: 'TCME',
@@ -35546,7 +36176,7 @@ export const mics = {
     lastUpdateDate: '20150928',
     lastValidationDate: '',
     expiryDate: '20150928',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY DERIVATIVES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY DERIVATIVES.',
   },
   TFSE: {
     mic: 'TFSE',
@@ -35565,7 +36195,7 @@ export const mics = {
     lastUpdateDate: '20150126',
     lastValidationDate: '',
     expiryDate: '20150126',
-    comments: ''
+    comments: '',
   },
   TREU: {
     mic: 'TREU',
@@ -35584,7 +36214,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRQX: {
     mic: 'TRQX',
@@ -35603,7 +36233,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRQD: {
     mic: 'TRQD',
@@ -35622,13 +36252,15 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '20131028',
-    comments: 'MIC TO USE IS XLOD - LONDON STOCK EXCHANGE PLC HAD ENTERED INTO AN AGREEMENT WITH TURQUOISE TO ACQUIRE ITS DERIVATIVES BUSINESS.'
+    comments:
+      'MIC TO USE IS XLOD - LONDON STOCK EXCHANGE PLC HAD ENTERED INTO AN AGREEMENT WITH TURQUOISE TO ACQUIRE ITS DERIVATIVES BUSINESS.',
   },
   TRU2: {
     mic: 'TRU2',
     operatingMic: 'TRUX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TRUEEX LLC - SEF (SWAP EXECUTION FACILITY)',
+    marketNameInstitutionDescription:
+      'TRUEEX LLC - SEF (SWAP EXECUTION FACILITY)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -35641,13 +36273,14 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY -ELECTRONIC MARKET FOR TRADING SWAPS'
+    comments: 'SWAP EXECUTION FACILITY -ELECTRONIC MARKET FOR TRADING SWAPS',
   },
   TRU1: {
     mic: 'TRU1',
     operatingMic: 'TRUX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TRUEEX LLC - DESIGNATED CONTRACT MARKET (DMC)',
+    marketNameInstitutionDescription:
+      'TRUEEX LLC - DESIGNATED CONTRACT MARKET (DMC)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -35660,7 +36293,8 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DESIGNATED CONTRACT MARKET-ELECTRONIC MARKET FOR TRADING FUTURES, OPTIONS ON FUTURES, SWAPS AND OTHER DERIVATIVES'
+    comments:
+      'DESIGNATED CONTRACT MARKET-ELECTRONIC MARKET FOR TRADING FUTURES, OPTIONS ON FUTURES, SWAPS AND OTHER DERIVATIVES',
   },
   TRUX: {
     mic: 'TRUX',
@@ -35679,7 +36313,8 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET FOR TRADING FUTURES, OPTIONS ON FUTURES, SWAPS AND OTHER DERIVATIVES'
+    comments:
+      'ELECTRONIC MARKET FOR TRADING FUTURES, OPTIONS ON FUTURES, SWAPS AND OTHER DERIVATIVES',
   },
   BNDD: {
     mic: 'BNDD',
@@ -35698,7 +36333,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRWB: {
     mic: 'TRWB',
@@ -35717,7 +36352,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TWSF: {
     mic: 'TWSF',
@@ -35736,7 +36371,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM FOR TRADING IN SWAPS AND DERIVATIVES'
+    comments: 'ELECTRONIC PLATFORM FOR TRADING IN SWAPS AND DERIVATIVES',
   },
   DWSF: {
     mic: 'DWSF',
@@ -35755,7 +36390,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC PLATFORM FOR TRADING IN SWAPS AND DERIVATIVES'
+    comments: 'ELECTRONIC PLATFORM FOR TRADING IN SWAPS AND DERIVATIVES',
   },
   TRFX: {
     mic: 'TRFX',
@@ -35774,7 +36409,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '20141222',
-    comments: 'MULTIDEALER- TO-CUSTOMER TRADING PLATFORM FOR FX OPTIONS.'
+    comments: 'MULTIDEALER- TO-CUSTOMER TRADING PLATFORM FOR FX OPTIONS.',
   },
   TSEF: {
     mic: 'TSEF',
@@ -35793,7 +36428,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTI-ASSET CLASS SWAP EXECUTION FACILITY (SEF)'
+    comments: 'MULTI-ASSET CLASS SWAP EXECUTION FACILITY (SEF)',
   },
   TWEU: {
     mic: 'TWEU',
@@ -35812,7 +36447,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TWEM: {
     mic: 'TWEM',
@@ -35831,7 +36466,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   TWEA: {
     mic: 'TWEA',
@@ -35850,7 +36485,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED PUBLICATION ARRANGEMENT.'
+    comments: 'APPROVED PUBLICATION ARRANGEMENT.',
   },
   TWEO: {
     mic: 'TWEO',
@@ -35869,7 +36504,7 @@ export const mics = {
     lastUpdateDate: '20180723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY.'
+    comments: 'ORGANISED TRADING FACILITY.',
   },
   UBSP: {
     mic: 'UBSP',
@@ -35888,7 +36523,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS PRICE IMPROVEMENT NETWORK IN THE US (EQUITIES).'
+    comments: 'UBS PRICE IMPROVEMENT NETWORK IN THE US (EQUITIES).',
   },
   UBSC: {
     mic: 'UBSC',
@@ -35907,7 +36542,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS FX PRICE IMPROVEMENT NETWORK'
+    comments: 'UBS FX PRICE IMPROVEMENT NETWORK',
   },
   UBSG: {
     mic: 'UBSG',
@@ -35926,7 +36561,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS TRADING PLATFORMS'
+    comments: 'UBS TRADING PLATFORMS',
   },
   UBSF: {
     mic: 'UBSF',
@@ -35945,7 +36580,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'UBS E-FX EXECUTION VENUE'
+    comments: 'UBS E-FX EXECUTION VENUE',
   },
   UBST: {
     mic: 'UBST',
@@ -35964,7 +36599,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '20130826',
-    comments: 'UBS TRADING PLATFORMS - MIC TO USE IS UBSG.'
+    comments: 'UBS TRADING PLATFORMS - MIC TO USE IS UBSG.',
   },
   UBSX: {
     mic: 'UBSX',
@@ -35983,7 +36618,7 @@ export const mics = {
     lastUpdateDate: '20120326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'HK, JAPAN AND AUSTRALIA.'
+    comments: 'HK, JAPAN AND AUSTRALIA.',
   },
   UKEX: {
     mic: 'UKEX',
@@ -36002,7 +36637,7 @@ export const mics = {
     lastUpdateDate: '20111226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.'
+    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.',
   },
   UKPX: {
     mic: 'UKPX',
@@ -36021,7 +36656,7 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ULTX: {
     mic: 'ULTX',
@@ -36040,7 +36675,7 @@ export const mics = {
     lastUpdateDate: '20140428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'APPROVED MARKET FOR EQUITIES, BONDS AND DERIVATIVES'
+    comments: 'APPROVED MARKET FOR EQUITIES, BONDS AND DERIVATIVES',
   },
   VEGA: {
     mic: 'VEGA',
@@ -36059,7 +36694,8 @@ export const mics = {
     lastUpdateDate: '20090928',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC SECURITIES. FSA APPROVAL RECEIVED ON JANUARY 2010.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR OTC SECURITIES. FSA APPROVAL RECEIVED ON JANUARY 2010.',
   },
   VFCM: {
     mic: 'VFCM',
@@ -36078,7 +36714,7 @@ export const mics = {
     lastUpdateDate: '20160425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR US EQUITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR US EQUITIES.',
   },
   VMFX: {
     mic: 'VMFX',
@@ -36097,7 +36733,8 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE FAROESE SECURITIES MARKET (VMF) IS THE STOCK EXCHANGE OF THE FAROE ISLANDS.'
+    comments:
+      'THE FAROESE SECURITIES MARKET (VMF) IS THE STOCK EXCHANGE OF THE FAROE ISLANDS.',
   },
   WSAG: {
     mic: 'WSAG',
@@ -36116,7 +36753,7 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR US EQUITIES.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR US EQUITIES.',
   },
   XABJ: {
     mic: 'XABJ',
@@ -36135,7 +36772,7 @@ export const mics = {
     lastUpdateDate: '20040126',
     lastValidationDate: '',
     expiryDate: '20040126',
-    comments: ''
+    comments: '',
   },
   XACE: {
     mic: 'XACE',
@@ -36154,7 +36791,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XADS: {
     mic: 'XADS',
@@ -36173,7 +36810,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XAEX: {
     mic: 'XAEX',
@@ -36192,7 +36829,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XAFR: {
     mic: 'XAFR',
@@ -36211,7 +36848,7 @@ export const mics = {
     lastUpdateDate: '20080623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR UNQUOTED STOCKS AND FUNDS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR UNQUOTED STOCKS AND FUNDS.',
   },
   XAFX: {
     mic: 'XAFX',
@@ -36230,7 +36867,7 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES AND BONDS MARKET'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR EQUITIES AND BONDS MARKET',
   },
   XALB: {
     mic: 'XALB',
@@ -36249,7 +36886,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XALG: {
     mic: 'XALG',
@@ -36268,13 +36905,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEUC: {
     mic: 'XEUC',
     operatingMic: 'XAMS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT COM, COMMODITIES FUTURES AND OPTIONS',
+    marketNameInstitutionDescription:
+      'EURONEXT COM, COMMODITIES FUTURES AND OPTIONS',
     legalEntityName: '',
     lei: '724500V6UOK62XEZ2L78',
     marketCategoryCode: 'RMKT',
@@ -36287,7 +36925,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XAMS: {
     mic: 'XAMS',
@@ -36306,13 +36944,14 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEUI: {
     mic: 'XEUI',
     operatingMic: 'XAMS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT IRF, INTEREST RATE FUTURE AND OPTIONS',
+    marketNameInstitutionDescription:
+      'EURONEXT IRF, INTEREST RATE FUTURE AND OPTIONS',
     legalEntityName: '',
     lei: '724500QJ4QSZ3H9QU415',
     marketCategoryCode: 'NSPD',
@@ -36325,13 +36964,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TNLA: {
     mic: 'TNLA',
     operatingMic: 'XAMS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT - TRADED BUT NOT LISTED AMSTERDAM',
+    marketNameInstitutionDescription:
+      'EURONEXT - TRADED BUT NOT LISTED AMSTERDAM',
     legalEntityName: '',
     lei: '724500V6UOK62XEZ2L78',
     marketCategoryCode: 'NSPD',
@@ -36344,7 +36984,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XHFT: {
     mic: 'XHFT',
@@ -36363,13 +37003,14 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '20150427',
-    comments: 'EURONEXT PAN-EUROPEAN MTF FOR HIGH FREQUENCY TRADING (HFT)'
+    comments: 'EURONEXT PAN-EUROPEAN MTF FOR HIGH FREQUENCY TRADING (HFT)',
   },
   XEUE: {
     mic: 'XEUE',
     operatingMic: 'XAMS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT EQF, EQUITIES AND INDICES DERIVATIVES',
+    marketNameInstitutionDescription:
+      'EURONEXT EQF, EQUITIES AND INDICES DERIVATIVES',
     legalEntityName: '',
     lei: '724500V6UOK62XEZ2L78',
     marketCategoryCode: 'RMKT',
@@ -36382,13 +37023,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XANT: {
     mic: 'XANT',
     operatingMic: 'XANT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BEURS VAN ANTWERPEN (ANTWERP STOCK EXCHANGE)',
+    marketNameInstitutionDescription:
+      'BEURS VAN ANTWERPEN (ANTWERP STOCK EXCHANGE)',
     legalEntityName: '',
     lei: '549300WXTG44IWPZQF60',
     marketCategoryCode: 'NSPD',
@@ -36401,7 +37043,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XAOM: {
     mic: 'XAOM',
@@ -36420,13 +37062,14 @@ export const mics = {
     lastUpdateDate: '20040628',
     lastValidationDate: '',
     expiryDate: '20040628',
-    comments: ''
+    comments: '',
   },
   XAPI: {
     mic: 'XAPI',
     operatingMic: 'XAPI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'REGIONAL EXCHANGE CENTRE - MICEX FAR EAST',
+    marketNameInstitutionDescription:
+      'REGIONAL EXCHANGE CENTRE - MICEX FAR EAST',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -36439,7 +37082,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '20130325',
-    comments: ''
+    comments: '',
   },
   XAQS: {
     mic: 'XAQS',
@@ -36458,7 +37101,7 @@ export const mics = {
     lastUpdateDate: '20081027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ATS FOR STOCK LENDING AND BORROWING'
+    comments: 'ATS FOR STOCK LENDING AND BORROWING',
   },
   XARC: {
     mic: 'XARC',
@@ -36477,7 +37120,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XARM: {
     mic: 'XARM',
@@ -36496,7 +37139,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XASX: {
     mic: 'XASX',
@@ -36515,7 +37158,7 @@ export const mics = {
     lastUpdateDate: '20120625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ASXT: {
     mic: 'ASXT',
@@ -36534,7 +37177,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MERGER BETWEEN XASX AND XSFE.'
+    comments: 'MERGER BETWEEN XASX AND XSFE.',
   },
   ASXB: {
     mic: 'ASXB',
@@ -36553,7 +37196,8 @@ export const mics = {
     lastUpdateDate: '20121022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ON-MARKET AUTOMATED BOOKBUILD MECHANISM CALLED ASX BOOKBUILD TO ALLOW ASX LISTED COMPANIES TO PRICE AND ALLOCATE NEW SECURITIES.'
+    comments:
+      'ON-MARKET AUTOMATED BOOKBUILD MECHANISM CALLED ASX BOOKBUILD TO ALLOW ASX LISTED COMPANIES TO PRICE AND ALLOCATE NEW SECURITIES.',
   },
   ASXV: {
     mic: 'ASXV',
@@ -36572,7 +37216,8 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ASX LAUNCHED VOLUMEMATCH IN JUNE 2011, AN ASX TRADE EXECUTION FACILITY THAT ENABLES END USERS TO SEARCH FOR LIQUIDITY AND EXECUTE LARGE ORDERS ANONYMOUSLY.'
+    comments:
+      'ASX LAUNCHED VOLUMEMATCH IN JUNE 2011, AN ASX TRADE EXECUTION FACILITY THAT ENABLES END USERS TO SEARCH FOR LIQUIDITY AND EXECUTE LARGE ORDERS ANONYMOUSLY.',
   },
   ASXP: {
     mic: 'ASXP',
@@ -36591,7 +37236,8 @@ export const mics = {
     lastUpdateDate: '20110822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ASX PUREMATCH IS AN ADDITIONAL ORDER BOOK LAUNCHING IN MID 2011 AIMED AT MEETING THE NEEDS OF LATENCY SENSITIVE TRADERS, PROVIDING TRADING IN A SUBSET OF ASX LISTED SECURITIES.'
+    comments:
+      'ASX PUREMATCH IS AN ADDITIONAL ORDER BOOK LAUNCHING IN MID 2011 AIMED AT MEETING THE NEEDS OF LATENCY SENSITIVE TRADERS, PROVIDING TRADING IN A SUBSET OF ASX LISTED SECURITIES.',
   },
   XSFE: {
     mic: 'XSFE',
@@ -36610,7 +37256,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XATS: {
     mic: 'XATS',
@@ -36629,7 +37275,8 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'REGULATED MARKETPLACE FOR TRADING EQUITY AND EQUITY RELATED SECURITIES.'
+    comments:
+      'REGULATED MARKETPLACE FOR TRADING EQUITY AND EQUITY RELATED SECURITIES.',
   },
   XAUK: {
     mic: 'XAUK',
@@ -36648,7 +37295,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XAZX: {
     mic: 'XAZX',
@@ -36667,13 +37314,14 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XBAA: {
     mic: 'XBAA',
     operatingMic: 'XBAA',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BAHAMAS INTERNATIONAL SECURITIES EXCHANGE',
+    marketNameInstitutionDescription:
+      'BAHAMAS INTERNATIONAL SECURITIES EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -36686,7 +37334,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBAB: {
     mic: 'XBAB',
@@ -36705,7 +37353,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MAIN MARKET'
+    comments: 'MAIN MARKET',
   },
   BAJM: {
     mic: 'BAJM',
@@ -36724,7 +37372,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR SMALL COMPANIES'
+    comments: 'MARKET FOR SMALL COMPANIES',
   },
   XBAH: {
     mic: 'XBAH',
@@ -36743,7 +37391,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBAN: {
     mic: 'XBAN',
@@ -36762,7 +37410,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBAV: {
     mic: 'XBAV',
@@ -36781,7 +37429,7 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '20070723',
-    comments: ''
+    comments: '',
   },
   XBBF: {
     mic: 'XBBF',
@@ -36800,13 +37448,14 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XBBJ: {
     mic: 'XBBJ',
     operatingMic: 'XBBJ',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'JAKARTA FUTURES EXCHANGE (BURSA BERJANGKA JAKARTA)',
+    marketNameInstitutionDescription:
+      'JAKARTA FUTURES EXCHANGE (BURSA BERJANGKA JAKARTA)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -36819,13 +37468,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBBK: {
     mic: 'XBBK',
     operatingMic: 'XBBK',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'PERIMETER FINANCIAL CORP. - BLOCKBOOK ATS',
+    marketNameInstitutionDescription:
+      'PERIMETER FINANCIAL CORP. - BLOCKBOOK ATS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'ATSS',
@@ -36838,7 +37488,8 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING SYSTEM FOR BLOCK TRADING OF CANADIAN LISTED EQUITIES'
+    comments:
+      'ALTERNATIVE TRADING SYSTEM FOR BLOCK TRADING OF CANADIAN LISTED EQUITIES',
   },
   XBCC: {
     mic: 'XBCC',
@@ -36857,7 +37508,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MVCX: {
     mic: 'MVCX',
@@ -36876,7 +37527,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBCE: {
     mic: 'XBCE',
@@ -36895,7 +37546,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XBCL: {
     mic: 'XBCL',
@@ -36914,7 +37565,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBCM: {
     mic: 'XBCM',
@@ -36933,7 +37584,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBCX: {
     mic: 'XBCX',
@@ -36952,7 +37603,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBCV: {
     mic: 'XBCV',
@@ -36971,7 +37622,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBDA: {
     mic: 'XBDA',
@@ -36990,7 +37641,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BERA: {
     mic: 'BERA',
@@ -37009,7 +37660,7 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BERB: {
     mic: 'BERB',
@@ -37028,13 +37679,14 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BERC: {
     mic: 'BERC',
     operatingMic: 'XBER',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE BERLIN - BERLIN SECOND REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'BOERSE BERLIN - BERLIN SECOND REGULATED MARKET',
     legalEntityName: '',
     lei: '391200I7OS301UELZA68',
     marketCategoryCode: 'RMKT',
@@ -37047,7 +37699,7 @@ export const mics = {
     lastUpdateDate: '20100823',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBER: {
     mic: 'XBER',
@@ -37066,7 +37718,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ZOBX: {
     mic: 'ZOBX',
@@ -37085,13 +37737,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQTA: {
     mic: 'EQTA',
     operatingMic: 'XBER',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE BERLIN EQUIDUCT TRADING - REGULIERTER MARKT',
+    marketNameInstitutionDescription:
+      'BOERSE BERLIN EQUIDUCT TRADING - REGULIERTER MARKT',
     legalEntityName: '',
     lei: '391200I7OS301UELZA68',
     marketCategoryCode: 'RMKT',
@@ -37104,13 +37757,14 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM.'
+    comments: 'ELECTRONIC TRADING SYSTEM.',
   },
   EQTB: {
     mic: 'EQTB',
     operatingMic: 'XBER',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE BERLIN EQUIDUCT TRADING - BERLIN SECOND REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'BOERSE BERLIN EQUIDUCT TRADING - BERLIN SECOND REGULATED MARKET',
     legalEntityName: '',
     lei: '391200I7OS301UELZA68',
     marketCategoryCode: 'RMKT',
@@ -37123,13 +37777,14 @@ export const mics = {
     lastUpdateDate: '20100322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM.'
+    comments: 'ELECTRONIC TRADING SYSTEM.',
   },
   EQTC: {
     mic: 'EQTC',
     operatingMic: 'XBER',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE BERLIN EQUIDUCT TRADING - FREIVERKEHR',
+    marketNameInstitutionDescription:
+      'BOERSE BERLIN EQUIDUCT TRADING - FREIVERKEHR',
     legalEntityName: '',
     lei: '391200I7OS301UELZA68',
     marketCategoryCode: 'MLTF',
@@ -37142,7 +37797,7 @@ export const mics = {
     lastUpdateDate: '20100823',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM.'
+    comments: 'ELECTRONIC TRADING SYSTEM.',
   },
   EQTD: {
     mic: 'EQTD',
@@ -37161,7 +37816,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM.'
+    comments: 'ELECTRONIC TRADING SYSTEM.',
   },
   XEQT: {
     mic: 'XEQT',
@@ -37180,13 +37835,14 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM.'
+    comments: 'ELECTRONIC TRADING SYSTEM.',
   },
   XBEY: {
     mic: 'XBEY',
     operatingMic: 'XBEY',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOURSE DE BEYROUTH - BEIRUT STOCK EXCHANGE',
+    marketNameInstitutionDescription:
+      'BOURSE DE BEYROUTH - BEIRUT STOCK EXCHANGE',
     legalEntityName: '',
     lei: '549300D71YXF9YLC8J12',
     marketCategoryCode: 'NSPD',
@@ -37199,7 +37855,7 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBFO: {
     mic: 'XBFO',
@@ -37218,7 +37874,7 @@ export const mics = {
     lastUpdateDate: '20030623',
     lastValidationDate: '',
     expiryDate: '20030623',
-    comments: ''
+    comments: '',
   },
   XMAI: {
     mic: 'XMAI',
@@ -37237,7 +37893,8 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE MAI�S PURPOSE IS TO CREATE NEW FUND-RAISING OPPORTUNITIES FOR INNOVATIVE BUSINESS WITH HIGH POTENTIAL GROWTH AS WELL AS PROVIDE A GREATER RANGE OF INVESTMENT ALTERNATIVES.'
+    comments:
+      'THE MAI�S PURPOSE IS TO CREATE NEW FUND-RAISING OPPORTUNITIES FOR INNOVATIVE BUSINESS WITH HIGH POTENTIAL GROWTH AS WELL AS PROVIDE A GREATER RANGE OF INVESTMENT ALTERNATIVES.',
   },
   XBKK: {
     mic: 'XBKK',
@@ -37256,13 +37913,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBKF: {
     mic: 'XBKF',
     operatingMic: 'XBKK',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'STOCK EXCHANGE OF THAILAND - FOREIGN BOARD',
+    marketNameInstitutionDescription:
+      'STOCK EXCHANGE OF THAILAND - FOREIGN BOARD',
     legalEntityName: '',
     lei: '254900R211PTUP8K9M82',
     marketCategoryCode: 'NSPD',
@@ -37275,7 +37933,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBLN: {
     mic: 'XBLN',
@@ -37294,7 +37952,7 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BLUENEXT MTF HAS BECOME A REGULATED MARKET.'
+    comments: 'BLUENEXT MTF HAS BECOME A REGULATED MARKET.',
   },
   XBNV: {
     mic: 'XBNV',
@@ -37313,7 +37971,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBOG: {
     mic: 'XBOG',
@@ -37332,7 +37990,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBOL: {
     mic: 'XBOL',
@@ -37351,7 +38009,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBOM: {
     mic: 'XBOM',
@@ -37370,7 +38028,7 @@ export const mics = {
     lastUpdateDate: '20110926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BSME: {
     mic: 'BSME',
@@ -37389,13 +38047,14 @@ export const mics = {
     lastUpdateDate: '20111226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BSE SME PLATFORM.'
+    comments: 'BSE SME PLATFORM.',
   },
   BOTE: {
     mic: 'BOTE',
     operatingMic: 'XBOT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOTSWANA STOCK EXCHANGE - EXCHANGE TRADED FUNDS (ETF)',
+    marketNameInstitutionDescription:
+      'BOTSWANA STOCK EXCHANGE - EXCHANGE TRADED FUNDS (ETF)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -37408,7 +38067,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBOT: {
     mic: 'XBOT',
@@ -37427,13 +38086,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOTV: {
     mic: 'BOTV',
     operatingMic: 'XBOT',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOTSWANA STOCK EXCHANGE - VENTURE CAPITAL',
+    marketNameInstitutionDescription:
+      'BOTSWANA STOCK EXCHANGE - VENTURE CAPITAL',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -37446,7 +38106,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRA: {
     mic: 'XBRA',
@@ -37465,7 +38125,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRE: {
     mic: 'XBRE',
@@ -37484,7 +38144,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XBRM: {
     mic: 'XBRM',
@@ -37503,7 +38163,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EQWB: {
     mic: 'EQWB',
@@ -37522,7 +38182,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '20140728',
-    comments: 'NOT IN USE ANYMORE - MARKET FOR EQUITIES WORLDWIDE'
+    comments: 'NOT IN USE ANYMORE - MARKET FOR EQUITIES WORLDWIDE',
   },
   XBRN: {
     mic: 'XBRN',
@@ -37541,7 +38201,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'BX WORLDCAPS, BX LOCAL SHARES.'
+    comments: 'BX WORLDCAPS, BX LOCAL SHARES.',
   },
   VPXB: {
     mic: 'VPXB',
@@ -37560,7 +38220,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TNLB: {
     mic: 'TNLB',
@@ -37579,7 +38239,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRU: {
     mic: 'XBRU',
@@ -37598,13 +38258,14 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRD: {
     mic: 'XBRD',
     operatingMic: 'XBRU',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT - EURONEXT BRUSSELS - DERIVATIVES',
+    marketNameInstitutionDescription:
+      'EURONEXT - EURONEXT BRUSSELS - DERIVATIVES',
     legalEntityName: '',
     lei: '5493007YLUF2KAS0TM17',
     marketCategoryCode: 'RMKT',
@@ -37617,7 +38278,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRV: {
     mic: 'XBRV',
@@ -37636,7 +38297,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XRAS: {
     mic: 'XRAS',
@@ -37655,7 +38316,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBSE: {
     mic: 'XBSE',
@@ -37674,7 +38335,7 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBSD: {
     mic: 'XBSD',
@@ -37693,7 +38354,7 @@ export const mics = {
     lastUpdateDate: '20080128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBTF: {
     mic: 'XBTF',
@@ -37712,7 +38373,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XBUD: {
     mic: 'XBUD',
@@ -37731,7 +38392,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTND: {
     mic: 'XTND',
@@ -37750,7 +38411,7 @@ export const mics = {
     lastUpdateDate: '20171023',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BUDAPEST STOCK EXCHANGE MULTILATERAL TRADING FACILITY (MTF)'
+    comments: 'BUDAPEST STOCK EXCHANGE MULTILATERAL TRADING FACILITY (MTF)',
   },
   XBUE: {
     mic: 'XBUE',
@@ -37769,7 +38430,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMEV: {
     mic: 'XMEV',
@@ -37788,7 +38449,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBUL: {
     mic: 'XBUL',
@@ -37807,13 +38468,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ABUL: {
     mic: 'ABUL',
     operatingMic: 'XBUL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BULGARIAN STOCK EXCHANGE - ALTERNATIVE MARKET',
+    marketNameInstitutionDescription:
+      'BULGARIAN STOCK EXCHANGE - ALTERNATIVE MARKET',
     legalEntityName: '',
     lei: '747800W0XA9OV4MSRW74',
     marketCategoryCode: 'RMKT',
@@ -37826,7 +38488,7 @@ export const mics = {
     lastUpdateDate: '20160822',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE REGULATED MARKET.'
+    comments: 'ALTERNATIVE REGULATED MARKET.',
   },
   XBVC: {
     mic: 'XBVC',
@@ -37845,7 +38507,7 @@ export const mics = {
     lastUpdateDate: '20051128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBVP: {
     mic: 'XBVP',
@@ -37864,13 +38526,14 @@ export const mics = {
     lastUpdateDate: '20060724',
     lastValidationDate: '',
     expiryDate: '20060724',
-    comments: ''
+    comments: '',
   },
   XBVR: {
     mic: 'XBVR',
     operatingMic: 'XBVR',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA DE VALORES DE LA REPUBLICA DOMINICANA SA.',
+    marketNameInstitutionDescription:
+      'BOLSA DE VALORES DE LA REPUBLICA DOMINICANA SA.',
     legalEntityName: '',
     lei: '549300L770PQT649FP60',
     marketCategoryCode: 'NSPD',
@@ -37883,7 +38546,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCAI: {
     mic: 'XCAI',
@@ -37902,7 +38565,8 @@ export const mics = {
     lastUpdateDate: '20080825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CAIRO AND ALEXANDRIA STOCK EXCHANGES (CASE) HAVE BEEN RENAMED TO THE EGYPTIAN EXCHANGE.'
+    comments:
+      'CAIRO AND ALEXANDRIA STOCK EXCHANGES (CASE) HAVE BEEN RENAMED TO THE EGYPTIAN EXCHANGE.',
   },
   XCAL: {
     mic: 'XCAL',
@@ -37921,7 +38585,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCAS: {
     mic: 'XCAS',
@@ -37940,7 +38604,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCAY: {
     mic: 'XCAY',
@@ -37959,7 +38623,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CBSX: {
     mic: 'CBSX',
@@ -37978,7 +38642,7 @@ export const mics = {
     lastUpdateDate: '20080728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOR EQUITIES'
+    comments: 'FOR EQUITIES',
   },
   XCBF: {
     mic: 'XCBF',
@@ -37997,7 +38661,7 @@ export const mics = {
     lastUpdateDate: '20080728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOR FUTURES'
+    comments: 'FOR FUTURES',
   },
   XCBT: {
     mic: 'XCBT',
@@ -38016,7 +38680,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FCBT: {
     mic: 'FCBT',
@@ -38035,7 +38699,7 @@ export const mics = {
     lastUpdateDate: '20070226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKBT: {
     mic: 'XKBT',
@@ -38054,7 +38718,7 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCCE: {
     mic: 'XCCE',
@@ -38073,7 +38737,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XCCX: {
     mic: 'XCCX',
@@ -38092,7 +38756,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '20131223',
-    comments: 'NOT IN USE ANYMORE.'
+    comments: 'NOT IN USE ANYMORE.',
   },
   XCDE: {
     mic: 'XCDE',
@@ -38111,7 +38775,8 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "ELECTRONIC TRADING PLATFORM FOR CURRENCY FUTURES EFP'S AND OTC CURRENCY TRADING"
+    comments:
+      "ELECTRONIC TRADING PLATFORM FOR CURRENCY FUTURES EFP'S AND OTC CURRENCY TRADING",
   },
   XCET: {
     mic: 'XCET',
@@ -38130,7 +38795,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCFE: {
     mic: 'XCFE',
@@ -38149,7 +38814,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCFF: {
     mic: 'XCFF',
@@ -38168,7 +38833,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCGS: {
     mic: 'XCGS',
@@ -38187,7 +38852,7 @@ export const mics = {
     lastUpdateDate: '20060424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCHG: {
     mic: 'XCHG',
@@ -38206,7 +38871,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCIE: {
     mic: 'XCIE',
@@ -38225,7 +38890,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGULATED MARKET.'
+    comments: 'REGULATED MARKET.',
   },
   FCME: {
     mic: 'FCME',
@@ -38244,7 +38909,7 @@ export const mics = {
     lastUpdateDate: '20070226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIMM: {
     mic: 'XIMM',
@@ -38263,7 +38928,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCME: {
     mic: 'XCME',
@@ -38282,7 +38947,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GLBX: {
     mic: 'GLBX',
@@ -38301,7 +38966,7 @@ export const mics = {
     lastUpdateDate: '20080922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIOM: {
     mic: 'XIOM',
@@ -38320,7 +38985,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CMES: {
     mic: 'CMES',
@@ -38339,7 +39004,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR SWAP EXECUTION IN THE US'
+    comments: 'REGISTERED MARKET FOR SWAP EXECUTION IN THE US',
   },
   CBTS: {
     mic: 'CBTS',
@@ -38358,7 +39023,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR SWAP EXECUTION IN THE US'
+    comments: 'REGISTERED MARKET FOR SWAP EXECUTION IN THE US',
   },
   NYMS: {
     mic: 'NYMS',
@@ -38377,7 +39042,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR SWAP EXECUTION  OF ENERGY IN THE US'
+    comments: 'REGISTERED MARKET FOR SWAP EXECUTION  OF ENERGY IN THE US',
   },
   CECS: {
     mic: 'CECS',
@@ -38396,7 +39061,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR SWAP EXECUTION  OF METALS IN THE US'
+    comments: 'REGISTERED MARKET FOR SWAP EXECUTION  OF METALS IN THE US',
   },
   XCNF: {
     mic: 'XCNF',
@@ -38415,7 +39080,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCOL: {
     mic: 'XCOL',
@@ -38434,7 +39099,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCOR: {
     mic: 'XCOR',
@@ -38453,7 +39118,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCRC: {
     mic: 'XCRC',
@@ -38472,7 +39137,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XCRO: {
     mic: 'XCRO',
@@ -38491,13 +39156,14 @@ export const mics = {
     lastUpdateDate: '20151026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ORGANISED MARKET PLACE FOR ELECTRICITY TRADING.'
+    comments: 'ORGANISED MARKET PLACE FOR ELECTRICITY TRADING.',
   },
   XCSC: {
     mic: 'XCSC',
     operatingMic: 'XCSC',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NEW YORK COCOA, COFFEE AND SUGAR EXCHANGE',
+    marketNameInstitutionDescription:
+      'NEW YORK COCOA, COFFEE AND SUGAR EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -38510,7 +39176,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   DCSE: {
     mic: 'DCSE',
@@ -38529,7 +39195,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR XCSE'
+    comments: 'NORDIC@MID DARK POOL FOR XCSE',
   },
   XCSE: {
     mic: 'XCSE',
@@ -38548,7 +39214,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MNDK: {
     mic: 'MNDK',
@@ -38567,7 +39233,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNDK: {
     mic: 'FNDK',
@@ -38586,7 +39252,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   DNDK: {
     mic: 'DNDK',
@@ -38605,13 +39272,14 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH DENMARK'
+    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH DENMARK',
   },
   MCSE: {
     mic: 'MCSE',
     operatingMic: 'XCSE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ COPENHAGEN A/S - AUCTION ON DEMAND',
+    marketNameInstitutionDescription:
+      'NASDAQ COPENHAGEN A/S - AUCTION ON DEMAND',
     legalEntityName: '',
     lei: '549300JNYZUL5PLI8E17',
     marketCategoryCode: 'RMKT',
@@ -38624,7 +39292,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XFND: {
     mic: 'XFND',
@@ -38643,7 +39311,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '20151123',
-    comments: ''
+    comments: '',
   },
   XCSX: {
     mic: 'XCSX',
@@ -38662,7 +39330,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCUE: {
     mic: 'XCUE',
@@ -38681,7 +39349,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCUR: {
     mic: 'XCUR',
@@ -38700,7 +39368,7 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCXD: {
     mic: 'XCXD',
@@ -38719,7 +39387,7 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NON-DISPLAYED MARKET FOR EQUITIES.'
+    comments: 'NON-DISPLAYED MARKET FOR EQUITIES.',
   },
   XCYO: {
     mic: 'XCYO',
@@ -38738,7 +39406,7 @@ export const mics = {
     lastUpdateDate: '20091026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC.'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR OTC.',
   },
   XCYS: {
     mic: 'XCYS',
@@ -38757,7 +39425,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XECM: {
     mic: 'XECM',
@@ -38776,7 +39444,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDAR: {
     mic: 'XDAR',
@@ -38795,7 +39463,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDCE: {
     mic: 'XDCE',
@@ -38814,7 +39482,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDES: {
     mic: 'XDES',
@@ -38833,13 +39501,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDFB: {
     mic: 'XDFB',
     operatingMic: 'XDFB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'JOINT-STOCK COMPANY �STOCK EXCHANGE INNEX�',
+    marketNameInstitutionDescription:
+      'JOINT-STOCK COMPANY �STOCK EXCHANGE INNEX�',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -38852,7 +39521,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDFM: {
     mic: 'XDFM',
@@ -38871,7 +39540,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDHA: {
     mic: 'XDHA',
@@ -38890,7 +39559,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDPA: {
     mic: 'XDPA',
@@ -38909,7 +39578,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDSE: {
     mic: 'XDSE',
@@ -38928,7 +39597,7 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS'
+    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS',
   },
   XDSX: {
     mic: 'XDSX',
@@ -38947,7 +39616,7 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES'
+    comments: 'REGISTERED MARKET FOR EQUITIES',
   },
   XDTB: {
     mic: 'XDTB',
@@ -38966,7 +39635,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   DUSA: {
     mic: 'DUSA',
@@ -38985,7 +39654,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DUSB: {
     mic: 'DUSB',
@@ -39004,13 +39673,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DUSC: {
     mic: 'DUSC',
     operatingMic: 'XDUS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE DUESSELDORF - QUOTRIX - REGULIERTER MARKT',
+    marketNameInstitutionDescription:
+      'BOERSE DUESSELDORF - QUOTRIX - REGULIERTER MARKT',
     legalEntityName: 'BOEAG BOERSEN AKTIENGESELLSCHAFT',
     lei: '529900HTWYRE4BD0GQ69',
     marketCategoryCode: 'RMKT',
@@ -39023,7 +39693,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DUSD: {
     mic: 'DUSD',
@@ -39042,7 +39712,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDUS: {
     mic: 'XDUS',
@@ -39061,7 +39731,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XQTX: {
     mic: 'XQTX',
@@ -39080,7 +39750,8 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING SYSTEM FOR SHARES, BONDS, ETFs, INVESTMENT FUNDS'
+    comments:
+      'ELECTRONIC TRADING SYSTEM FOR SHARES, BONDS, ETFs, INVESTMENT FUNDS',
   },
   XDWZ: {
     mic: 'XDWZ',
@@ -39099,13 +39770,14 @@ export const mics = {
     lastUpdateDate: '20040126',
     lastValidationDate: '',
     expiryDate: '20040126',
-    comments: ''
+    comments: '',
   },
   XEBI: {
     mic: 'XEBI',
     operatingMic: 'XEBI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ENERGY BROKING IRELAND GAS TRADING PLATFORM',
+    marketNameInstitutionDescription:
+      'ENERGY BROKING IRELAND GAS TRADING PLATFORM',
     legalEntityName: '',
     lei: '635400GLZJST58UNHL91',
     marketCategoryCode: 'NSPD',
@@ -39118,7 +39790,8 @@ export const mics = {
     lastUpdateDate: '20151026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING AND BROKING PLATFORM FOR OTC NATURAL GAS PHYSICAL SPOT TRANSACTIONS.'
+    comments:
+      'ELECTRONIC TRADING AND BROKING PLATFORM FOR OTC NATURAL GAS PHYSICAL SPOT TRANSACTIONS.',
   },
   XECB: {
     mic: 'XECB',
@@ -39137,7 +39810,7 @@ export const mics = {
     lastUpdateDate: '20121126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EURO FOREIGN EXCHANGE REFERENCE RATES.'
+    comments: 'EURO FOREIGN EXCHANGE REFERENCE RATES.',
   },
   XECC: {
     mic: 'XECC',
@@ -39156,7 +39829,7 @@ export const mics = {
     lastUpdateDate: '20120528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XECS: {
     mic: 'XECS',
@@ -39175,7 +39848,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XELX: {
     mic: 'XELX',
@@ -39194,7 +39867,7 @@ export const mics = {
     lastUpdateDate: '20090622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEMD: {
     mic: 'XEMD',
@@ -39213,7 +39886,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEMS: {
     mic: 'XEMS',
@@ -39232,13 +39905,14 @@ export const mics = {
     lastUpdateDate: '20120924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR SECURITIES, ELECTRONIC TRADING PLATFORM.'
+    comments: 'REGISTERED MARKET FOR SECURITIES, ELECTRONIC TRADING PLATFORM.',
   },
   XETD: {
     mic: 'XETD',
     operatingMic: 'XETI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'XETRA INTERNATIONAL MARKET - OPEN MARKET',
+    marketNameInstitutionDescription:
+      'XETRA INTERNATIONAL MARKET - OPEN MARKET',
     legalEntityName: '',
     lei: '529900G3SW56SHYNPR95',
     marketCategoryCode: 'NSPD',
@@ -39251,7 +39925,7 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '20140127',
-    comments: 'XETRA INTERNATIONAL, MARKET SEGMENT OPEN.'
+    comments: 'XETRA INTERNATIONAL, MARKET SEGMENT OPEN.',
   },
   XETI: {
     mic: 'XETI',
@@ -39270,13 +39944,15 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '20140127',
-    comments: 'XETRA INTERNATIONAL, OPERATING LEVEL. TO BE  GLOBALLY USED FOR ORDERROUTING AND OTHER PURPOSES LIKE "SCHLU�NOTEN" (EXECUTIONS).'
+    comments:
+      'XETRA INTERNATIONAL, OPERATING LEVEL. TO BE  GLOBALLY USED FOR ORDERROUTING AND OTHER PURPOSES LIKE "SCHLU�NOTEN" (EXECUTIONS).',
   },
   XETC: {
     mic: 'XETC',
     operatingMic: 'XETI',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'XETRA INTERNATIONAL MARKET - REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'XETRA INTERNATIONAL MARKET - REGULATED MARKET',
     legalEntityName: '',
     lei: '529900G3SW56SHYNPR95',
     marketCategoryCode: 'NSPD',
@@ -39289,7 +39965,7 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '20140127',
-    comments: 'XETRA INTERNATIONAL, MARKET SEGMENT REGULATED.'
+    comments: 'XETRA INTERNATIONAL, MARKET SEGMENT REGULATED.',
   },
   XETR: {
     mic: 'XETR',
@@ -39308,7 +39984,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETB: {
     mic: 'XETB',
@@ -39327,7 +40003,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETA: {
     mic: 'XETA',
@@ -39346,7 +40022,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XERT: {
     mic: 'XERT',
@@ -39365,13 +40041,14 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUREX REPO ELECTRONIC TRADING SEGMENT FOR TRIPARTY REPO.'
+    comments: 'EUREX REPO ELECTRONIC TRADING SEGMENT FOR TRIPARTY REPO.',
   },
   XERE: {
     mic: 'XERE',
     operatingMic: 'XEUP',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EUREX REPO - FUNDING AND FINANCING PRODUCTS',
+    marketNameInstitutionDescription:
+      'EUREX REPO - FUNDING AND FINANCING PRODUCTS',
     legalEntityName: '',
     lei: '529900QA7T9JLRFVNN10',
     marketCategoryCode: 'NSPD',
@@ -39384,7 +40061,8 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EUREX REPO ELECTRONIC TRADING PLATFORM FOR FUNDING AND FINANCING PRODUCTS.'
+    comments:
+      'EUREX REPO ELECTRONIC TRADING PLATFORM FOR FUNDING AND FINANCING PRODUCTS.',
   },
   XEUM: {
     mic: 'XEUM',
@@ -39403,7 +40081,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ET IS NOW OPERATED FROM FRANKFURT (GERMANY)'
+    comments: 'ET IS NOW OPERATED FROM FRANKFURT (GERMANY)',
   },
   XEUP: {
     mic: 'XEUP',
@@ -39422,7 +40100,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XEUR: {
     mic: 'XEUR',
@@ -39441,13 +40119,14 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XFCM: {
     mic: 'XFCM',
     operatingMic: 'XFCM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MERCADO DE FUTUROS Y OPCIONES SOBRE CITRICOS',
+    marketNameInstitutionDescription:
+      'MERCADO DE FUTUROS Y OPCIONES SOBRE CITRICOS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -39460,7 +40139,7 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '20070723',
-    comments: ''
+    comments: '',
   },
   XFFE: {
     mic: 'XFFE',
@@ -39479,7 +40158,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XFKA: {
     mic: 'XFKA',
@@ -39498,7 +40177,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XFMN: {
     mic: 'XFMN',
@@ -39517,7 +40196,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '20070625',
-    comments: ''
+    comments: '',
   },
   XFOM: {
     mic: 'XFOM',
@@ -39536,7 +40215,7 @@ export const mics = {
     lastUpdateDate: '20071224',
     lastValidationDate: '',
     expiryDate: '20071224',
-    comments: ''
+    comments: '',
   },
   XDBC: {
     mic: 'XDBC',
@@ -39555,7 +40234,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: ''
+    comments: '',
   },
   XFRA: {
     mic: 'XFRA',
@@ -39574,7 +40253,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDBV: {
     mic: 'XDBV',
@@ -39593,7 +40272,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: ''
+    comments: '',
   },
   FRAA: {
     mic: 'FRAA',
@@ -39612,7 +40291,7 @@ export const mics = {
     lastUpdateDate: '20080324',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FRAD: {
     mic: 'FRAD',
@@ -39631,7 +40310,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '20161128',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   FRAB: {
     mic: 'FRAB',
@@ -39650,7 +40329,7 @@ export const mics = {
     lastUpdateDate: '20080324',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XDBX: {
     mic: 'XDBX',
@@ -39669,7 +40348,7 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: ''
+    comments: '',
   },
   XNEW: {
     mic: 'XNEW',
@@ -39688,7 +40367,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '20161128',
-    comments: ''
+    comments: '',
   },
   XFTA: {
     mic: 'XFTA',
@@ -39707,13 +40386,14 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XGAS: {
     mic: 'XGAS',
     operatingMic: 'XGAS',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'CENTRAL EASTERN EUROPEAN GAS EXCHANGE LTD',
+    marketNameInstitutionDescription:
+      'CENTRAL EASTERN EUROPEAN GAS EXCHANGE LTD',
     legalEntityName: '',
     lei: '529900NQOLXKWXQ1JV67',
     marketCategoryCode: 'NSPD',
@@ -39726,7 +40406,8 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CEEGEX IS A ORGANISED NATURAL GAS MARKET PROVIDING SERVICES FOR THE GAS MARKET PLAYERS WITHIN THE EUROPEAN ECONOMIC AREA (EEA).'
+    comments:
+      'CEEGEX IS A ORGANISED NATURAL GAS MARKET PROVIDING SERVICES FOR THE GAS MARKET PLAYERS WITHIN THE EUROPEAN ECONOMIC AREA (EEA).',
   },
   XGCL: {
     mic: 'XGCL',
@@ -39745,7 +40426,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF PLATFORM FOR OTC DERIVATIVES'
+    comments: 'MTF PLATFORM FOR OTC DERIVATIVES',
   },
   XGHA: {
     mic: 'XGHA',
@@ -39764,13 +40445,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XGME: {
     mic: 'XGME',
     operatingMic: 'XGME',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'GESTORE MERCATO ELETTRICO - ITALIAN POWER EXCHANGE',
+    marketNameInstitutionDescription:
+      'GESTORE MERCATO ELETTRICO - ITALIAN POWER EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -39783,7 +40465,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'ITALIAN POWER EXCHANGE'
+    comments: 'ITALIAN POWER EXCHANGE',
   },
   XGMX: {
     mic: 'XGMX',
@@ -39802,7 +40484,8 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR COMMODITIES, CFDS, CREDIT, FUTURES, METALS, AND NEW MARKETS.'
+    comments:
+      'ELECTRONIC TRADING PLATFORM FOR COMMODITIES, CFDS, CREDIT, FUTURES, METALS, AND NEW MARKETS.',
   },
   XGSE: {
     mic: 'XGSE',
@@ -39821,7 +40504,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XGTG: {
     mic: 'XGTG',
@@ -39840,7 +40523,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XGUA: {
     mic: 'XGUA',
@@ -39859,7 +40542,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HAMA: {
     mic: 'HAMA',
@@ -39878,7 +40561,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HAMB: {
     mic: 'HAMB',
@@ -39897,7 +40580,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XHAM: {
     mic: 'XHAM',
@@ -39916,13 +40599,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HAMM: {
     mic: 'HAMM',
     operatingMic: 'XHAM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE - REGULIERTER MARKT',
+    marketNameInstitutionDescription:
+      'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE - REGULIERTER MARKT',
     legalEntityName: 'BOEAG BOERSEN AKTIENGESELLSCHAFT',
     lei: '529900HTWYRE4BD0GQ69',
     marketCategoryCode: 'RMKT',
@@ -39935,13 +40619,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HAML: {
     mic: 'HAML',
     operatingMic: 'XHAM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE',
+    marketNameInstitutionDescription:
+      'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE',
     legalEntityName: 'BOEAG BOERSEN AKTIENGESELLSCHAFT',
     lei: '529900HTWYRE4BD0GQ69',
     marketCategoryCode: 'NSPD',
@@ -39954,13 +40639,14 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '',
     expiryDate: '20230522',
-    comments: ''
+    comments: '',
   },
   HAMN: {
     mic: 'HAMN',
     operatingMic: 'XHAM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE - FREIVERKEHR',
+    marketNameInstitutionDescription:
+      'BOERSE HAMBURG - LANG AND SCHWARZ EXCHANGE - FREIVERKEHR',
     legalEntityName: 'BOEAG BOERSEN AKTIENGESELLSCHAFT',
     lei: '529900HTWYRE4BD0GQ69',
     marketCategoryCode: 'NSPD',
@@ -39973,7 +40659,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HANB: {
     mic: 'HANB',
@@ -39992,7 +40678,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HANA: {
     mic: 'HANA',
@@ -40011,7 +40697,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XHAN: {
     mic: 'XHAN',
@@ -40030,7 +40716,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MNFI: {
     mic: 'MNFI',
@@ -40049,7 +40735,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNFI: {
     mic: 'FNFI',
@@ -40068,7 +40754,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   DNFI: {
     mic: 'DNFI',
@@ -40087,7 +40774,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH FINLAND'
+    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH FINLAND',
   },
   XHEL: {
     mic: 'XHEL',
@@ -40106,7 +40793,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DHEL: {
     mic: 'DHEL',
@@ -40125,13 +40812,14 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR XHEL'
+    comments: 'NORDIC@MID DARK POOL FOR XHEL',
   },
   MHEL: {
     mic: 'MHEL',
     operatingMic: 'XHEL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ HELSINKI LTD -  AUCTION ON DEMAND',
+    marketNameInstitutionDescription:
+      'NASDAQ HELSINKI LTD -  AUCTION ON DEMAND',
     legalEntityName: '',
     lei: '743700NAXLL4Q86IEX32',
     marketCategoryCode: 'RMKT',
@@ -40144,7 +40832,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XHIR: {
     mic: 'XHIR',
@@ -40163,7 +40851,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XHKF: {
     mic: 'XHKF',
@@ -40182,7 +40870,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XHKG: {
     mic: 'XHKG',
@@ -40201,13 +40889,15 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'HONG KONG EXCHANGES AND CLEARING LIMITED, OR HKEX, OPERATES A SECURITIES MARKET AND A DERIVATIVES MARKET IN HONG KONG AND THE CLEARING HOUSES FOR THOSE MARKETS.'
+    comments:
+      'HONG KONG EXCHANGES AND CLEARING LIMITED, OR HKEX, OPERATES A SECURITIES MARKET AND A DERIVATIVES MARKET IN HONG KONG AND THE CLEARING HOUSES FOR THOSE MARKETS.',
   },
   SHSC: {
     mic: 'SHSC',
     operatingMic: 'XHKG',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'STOCK EXCHANGE OF HONG KONG LIMITED - SHANGHAI - HONG KONG STOCK CONNECT',
+    marketNameInstitutionDescription:
+      'STOCK EXCHANGE OF HONG KONG LIMITED - SHANGHAI - HONG KONG STOCK CONNECT',
     legalEntityName: '',
     lei: '213800YTVSXYQN17BW16',
     marketCategoryCode: 'NSPD',
@@ -40220,13 +40910,15 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MAINLAND INVESTORS TRADING IN SEHK SECURITIES UNDER SHANGHAI-HONG KONG STOCK CONNECT'
+    comments:
+      'MAINLAND INVESTORS TRADING IN SEHK SECURITIES UNDER SHANGHAI-HONG KONG STOCK CONNECT',
   },
   SZSC: {
     mic: 'SZSC',
     operatingMic: 'XHKG',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'STOCK EXCHANGE OF HONG KONG LIMITED - SHENZHEN - HONG KONG STOCK CONNECT',
+    marketNameInstitutionDescription:
+      'STOCK EXCHANGE OF HONG KONG LIMITED - SHENZHEN - HONG KONG STOCK CONNECT',
     legalEntityName: '',
     lei: '213800YTVSXYQN17BW16',
     marketCategoryCode: 'NSPD',
@@ -40239,7 +40931,8 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MAINLAND INVESTORS TRADING IN SEHK SECURITIES UNDER SHENZHEN-HONG KONG STOCK CONNECT.'
+    comments:
+      'MAINLAND INVESTORS TRADING IN SEHK SECURITIES UNDER SHENZHEN-HONG KONG STOCK CONNECT.',
   },
   XGEM: {
     mic: 'XGEM',
@@ -40258,7 +40951,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIAB: {
     mic: 'XIAB',
@@ -40277,7 +40970,7 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '20130527',
-    comments: 'MARKET HAS CLOSED IN APRIL 2013'
+    comments: 'MARKET HAS CLOSED IN APRIL 2013',
   },
   XIBE: {
     mic: 'XIBE',
@@ -40296,7 +40989,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNIS: {
     mic: 'FNIS',
@@ -40315,7 +41008,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   MICE: {
     mic: 'MICE',
@@ -40334,7 +41028,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XICE: {
     mic: 'XICE',
@@ -40353,7 +41047,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DNIS: {
     mic: 'DNIS',
@@ -40372,7 +41066,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH ICELAND'
+    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH ICELAND',
   },
   ISEC: {
     mic: 'ISEC',
@@ -40391,7 +41085,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '20151123',
-    comments: ''
+    comments: '',
   },
   DICE: {
     mic: 'DICE',
@@ -40410,7 +41104,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR XICE'
+    comments: 'NORDIC@MID DARK POOL FOR XICE',
   },
   MNIS: {
     mic: 'MNIS',
@@ -40429,7 +41123,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XICX: {
     mic: 'XICX',
@@ -40448,7 +41142,8 @@ export const mics = {
     lastUpdateDate: '20101122',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ALTERNATIVE CANADIAN MARKETPLACE TO REGISTERED INVESTMENT DEALERS AND THEIR CLIENTS TO TRADE CANADIAN LISTED EQUITIES.'
+    comments:
+      'ALTERNATIVE CANADIAN MARKETPLACE TO REGISTERED INVESTMENT DEALERS AND THEIR CLIENTS TO TRADE CANADIAN LISTED EQUITIES.',
   },
   XIDX: {
     mic: 'XIDX',
@@ -40467,7 +41162,8 @@ export const mics = {
     lastUpdateDate: '20080428',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX).'
+    comments:
+      'THE JAKARTA (JSX) AND SURABAYA (SSX) STOCK EXCHANGES HAVE MERGED TO BECOME THE INDONESIA STOCK EXCHANGE (IDX).',
   },
   XIHK: {
     mic: 'XIHK',
@@ -40486,7 +41182,7 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIMA: {
     mic: 'XIMA',
@@ -40505,7 +41201,7 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIMC: {
     mic: 'XIMC',
@@ -40524,13 +41220,14 @@ export const mics = {
     lastUpdateDate: '20060424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIME: {
     mic: 'XIME',
     operatingMic: 'XIME',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TAIWAN INTERNATIONAL MERCANTILE EXCHANGE',
+    marketNameInstitutionDescription:
+      'TAIWAN INTERNATIONAL MERCANTILE EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40543,7 +41240,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '20071126',
-    comments: ''
+    comments: '',
   },
   ICRO: {
     mic: 'ICRO',
@@ -40562,7 +41259,7 @@ export const mics = {
     lastUpdateDate: '20090622',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "CALL MARKET CROSS PRICED AT THE DAY'S VWAP FOR US EQUITIES."
+    comments: "CALL MARKET CROSS PRICED AT THE DAY'S VWAP FOR US EQUITIES.",
   },
   XINS: {
     mic: 'XINS',
@@ -40581,7 +41278,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ICBX: {
     mic: 'ICBX',
@@ -40600,7 +41297,7 @@ export const mics = {
     lastUpdateDate: '20081124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CONTINUOUS BLOCK CROSSING DESTINATION FOR US EQUITIES.'
+    comments: 'CONTINUOUS BLOCK CROSSING DESTINATION FOR US EQUITIES.',
   },
   MOCX: {
     mic: 'MOCX',
@@ -40619,7 +41316,8 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'POINT IN TIME CROSSES THAT ALLOWS PARTICIPANTS TO CROSS MOC ORDERS FOR US EQUITIES.'
+    comments:
+      'POINT IN TIME CROSSES THAT ALLOWS PARTICIPANTS TO CROSS MOC ORDERS FOR US EQUITIES.',
   },
   XINV: {
     mic: 'XINV',
@@ -40638,7 +41336,7 @@ export const mics = {
     lastUpdateDate: '20081027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SETTLEMENT PLATFORM FOR CSD AND NON CSD FUNDS.'
+    comments: 'SETTLEMENT PLATFORM FOR CSD AND NON CSD FUNDS.',
   },
   XIPE: {
     mic: 'XIPE',
@@ -40657,7 +41355,7 @@ export const mics = {
     lastUpdateDate: '20060424',
     lastValidationDate: '',
     expiryDate: '20060424',
-    comments: ''
+    comments: '',
   },
   XIQS: {
     mic: 'XIQS',
@@ -40676,13 +41374,14 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPMS: {
     mic: 'XPMS',
     operatingMic: 'XIST',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BORSA ISTANBUL - PRECIOUS METALS AND DIAMONDS MARKETS',
+    marketNameInstitutionDescription:
+      'BORSA ISTANBUL - PRECIOUS METALS AND DIAMONDS MARKETS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40695,13 +41394,14 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'PRECIOUS METALS AND DIAMONDS MARKETS'
+    comments: 'PRECIOUS METALS AND DIAMONDS MARKETS',
   },
   XFNO: {
     mic: 'XFNO',
     operatingMic: 'XIST',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BORSA ISTANBUL - FUTURES AND OPTIONS MARKET',
+    marketNameInstitutionDescription:
+      'BORSA ISTANBUL - FUTURES AND OPTIONS MARKET',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40714,7 +41414,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'FUTURES AND OPTIONS MARKET'
+    comments: 'FUTURES AND OPTIONS MARKET',
   },
   XDSM: {
     mic: 'XDSM',
@@ -40733,7 +41433,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'DEBT SECURITIES MARKET'
+    comments: 'DEBT SECURITIES MARKET',
   },
   XIST: {
     mic: 'XIST',
@@ -40752,7 +41452,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'CHANGE OF MARKET NAME AND MARKET WEBSITE'
+    comments: 'CHANGE OF MARKET NAME AND MARKET WEBSITE',
   },
   XEQY: {
     mic: 'XEQY',
@@ -40771,13 +41471,14 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'EQUITY MARKET'
+    comments: 'EQUITY MARKET',
   },
   XISE: {
     mic: 'XISE',
     operatingMic: 'XISX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTERNATIONAL SECURITIES EXCHANGE, LLC - EQUITIES',
+    marketNameInstitutionDescription:
+      'INTERNATIONAL SECURITIES EXCHANGE, LLC - EQUITIES',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40790,7 +41491,7 @@ export const mics = {
     lastUpdateDate: '20080623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITIES. ELECTRONIC MARKETPLACE.'
+    comments: 'EQUITIES. ELECTRONIC MARKETPLACE.',
   },
   GMNI: {
     mic: 'GMNI',
@@ -40809,13 +41510,15 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISE GEMINI EXCHANGE IS A NATIONAL SECURITIES EXCHANGE REGISTERED WITH THE UNITED STATES SECURITIES & EXCHANGE COMMISSION. ISE GEMINI EXCHANGE WILL FACILITATE THE ELECTRONIC TRADING OF EQUITY & INDEX OPTIONS.'
+    comments:
+      'ISE GEMINI EXCHANGE IS A NATIONAL SECURITIES EXCHANGE REGISTERED WITH THE UNITED STATES SECURITIES & EXCHANGE COMMISSION. ISE GEMINI EXCHANGE WILL FACILITATE THE ELECTRONIC TRADING OF EQUITY & INDEX OPTIONS.',
   },
   XTPZ: {
     mic: 'XTPZ',
     operatingMic: 'XISX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTERNATIONAL  SECURITIES EXCHANGE, LLC - TOPAZ',
+    marketNameInstitutionDescription:
+      'INTERNATIONAL  SECURITIES EXCHANGE, LLC - TOPAZ',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40828,7 +41531,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MIC TO USE IS GMNI'
+    comments: 'MIC TO USE IS GMNI',
   },
   MCRY: {
     mic: 'MCRY',
@@ -40847,13 +41550,15 @@ export const mics = {
     lastUpdateDate: '20141027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ISE MERCURY WILL BE A NATIONAL SECURITIES EXCHANGE REGISTERED WITH THE US SEC.  ISE MERCURY WILL FACILITATE THE ELECTRONIC TRADING OF EQUITY AND INDEX OPTIONS. TARGETED LAUNCH: FIRST HALF OF 2015.'
+    comments:
+      'ISE MERCURY WILL BE A NATIONAL SECURITIES EXCHANGE REGISTERED WITH THE US SEC.  ISE MERCURY WILL FACILITATE THE ELECTRONIC TRADING OF EQUITY AND INDEX OPTIONS. TARGETED LAUNCH: FIRST HALF OF 2015.',
   },
   XISA: {
     mic: 'XISA',
     operatingMic: 'XISX',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTERNATIONAL SECURITIES EXCHANGE, LLC -  ALTERNATIVE MARKETS',
+    marketNameInstitutionDescription:
+      'INTERNATIONAL SECURITIES EXCHANGE, LLC -  ALTERNATIVE MARKETS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -40866,7 +41571,7 @@ export const mics = {
     lastUpdateDate: '20080623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PARIMUTUEL, ELETRONIC TRADING PLATFORM FOR DERIVATIVES.'
+    comments: 'PARIMUTUEL, ELETRONIC TRADING PLATFORM FOR DERIVATIVES.',
   },
   XISX: {
     mic: 'XISX',
@@ -40885,7 +41590,7 @@ export const mics = {
     lastUpdateDate: '20141027',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XJAM: {
     mic: 'XJAM',
@@ -40904,7 +41609,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XJNB: {
     mic: 'XJNB',
@@ -40923,7 +41628,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTK1: {
     mic: 'XTK1',
@@ -40942,7 +41647,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XJAS: {
     mic: 'XJAS',
@@ -40961,7 +41666,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '20220404',
-    comments: 'CLOSURE OF THIS MARKET ON 4 APRIL 2022.'
+    comments: 'CLOSURE OF THIS MARKET ON 4 APRIL 2022.',
   },
   XTKS: {
     mic: 'XTKS',
@@ -40980,7 +41685,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOSE: {
     mic: 'XOSE',
@@ -40999,7 +41704,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTAM: {
     mic: 'XTAM',
@@ -41018,7 +41723,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES IN JAPAN.'
+    comments: 'REGISTERED MARKET FOR EQUITIES IN JAPAN.',
   },
   XTK3: {
     mic: 'XTK3',
@@ -41037,7 +41742,8 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "TOKYO STOCK EXCHANGE'S TOSTNET-3 MARKET IS AN OFF-AUCTION MARKET DESIGNED FOR ISSUER'S SHARE BUYBACK."
+    comments:
+      "TOKYO STOCK EXCHANGE'S TOSTNET-3 MARKET IS AN OFF-AUCTION MARKET DESIGNED FOR ISSUER'S SHARE BUYBACK.",
   },
   XTK2: {
     mic: 'XTK2',
@@ -41056,7 +41762,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XJPX: {
     mic: 'XJPX',
@@ -41075,7 +41781,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOSJ: {
     mic: 'XOSJ',
@@ -41094,7 +41800,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBES: {
     mic: 'XBES',
@@ -41113,7 +41819,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'JSE � FORMER BOND EXCHANGE OF SOUTH AFRICA.'
+    comments: 'JSE � FORMER BOND EXCHANGE OF SOUTH AFRICA.',
   },
   XJSE: {
     mic: 'XJSE',
@@ -41132,7 +41838,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ALTX: {
     mic: 'ALTX',
@@ -41151,7 +41857,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSAF: {
     mic: 'XSAF',
@@ -41170,7 +41876,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSFA: {
     mic: 'XSFA',
@@ -41189,7 +41895,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   YLDX: {
     mic: 'YLDX',
@@ -41208,7 +41914,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XJWY: {
     mic: 'XJWY',
@@ -41227,7 +41933,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XKAC: {
     mic: 'XKAC',
@@ -41246,7 +41952,8 @@ export const mics = {
     lastUpdateDate: '20170327',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FUTURES EXCHANGE. PREVIOUSLY KNOWN AS THE KANSAI COMMODITIES EXCHANGE.'
+    comments:
+      'FUTURES EXCHANGE. PREVIOUSLY KNOWN AS THE KANSAI COMMODITIES EXCHANGE.',
   },
   XKAZ: {
     mic: 'XKAZ',
@@ -41265,7 +41972,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKCE: {
     mic: 'XKCE',
@@ -41284,7 +41991,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKFB: {
     mic: 'XKFB',
@@ -41303,7 +42010,8 @@ export const mics = {
     lastUpdateDate: '20100823',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FREEBOARD IS A NEW MARKET FOR COMPANIES LISTED, NEITHER ON THE STOCK MARKET DIVISION NOR ON THE KOSDAQ MARKET DIVISION OF KRX.'
+    comments:
+      'FREEBOARD IS A NEW MARKET FOR COMPANIES LISTED, NEITHER ON THE STOCK MARKET DIVISION NOR ON THE KOSDAQ MARKET DIVISION OF KRX.',
   },
   XKGT: {
     mic: 'XKGT',
@@ -41322,7 +42030,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XKHA: {
     mic: 'XKHA',
@@ -41341,7 +42049,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKHR: {
     mic: 'XKHR',
@@ -41360,7 +42068,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKIE: {
     mic: 'XKIE',
@@ -41379,7 +42087,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKIS: {
     mic: 'XKIS',
@@ -41398,13 +42106,14 @@ export const mics = {
     lastUpdateDate: '20060626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKKT: {
     mic: 'XKKT',
     operatingMic: 'XKKT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'KOBE KIITO TORIHIKIJO (RAW SILK EXCHANGE)',
+    marketNameInstitutionDescription:
+      'KOBE KIITO TORIHIKIJO (RAW SILK EXCHANGE)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -41417,7 +42126,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XKLS: {
     mic: 'XKLS',
@@ -41436,7 +42145,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MESQ: {
     mic: 'MESQ',
@@ -41455,7 +42164,8 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE MESDAQ IS DESIGNED FOR HIGH-GROWTH COMPANIES AND TECHNOLOGY INTENSIVE INDUSTRIES.'
+    comments:
+      'THE MESDAQ IS DESIGNED FOR HIGH-GROWTH COMPANIES AND TECHNOLOGY INTENSIVE INDUSTRIES.',
   },
   XKOR: {
     mic: 'XKOR',
@@ -41474,7 +42184,7 @@ export const mics = {
     lastUpdateDate: '20060227',
     lastValidationDate: '',
     expiryDate: '20060227',
-    comments: ''
+    comments: '',
   },
   XKON: {
     mic: 'XKON',
@@ -41493,7 +42203,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'KOREA THIRD OFFICIAL EXCHANGE - LAUNCH DATE: JULY 1ST 2013'
+    comments: 'KOREA THIRD OFFICIAL EXCHANGE - LAUNCH DATE: JULY 1ST 2013',
   },
   XKRX: {
     mic: 'XKRX',
@@ -41512,7 +42222,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKFE: {
     mic: 'XKFE',
@@ -41531,7 +42241,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKOS: {
     mic: 'XKOS',
@@ -41550,7 +42260,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKCM: {
     mic: 'XKCM',
@@ -41569,7 +42279,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR COMMODITY SUCH AS GOLD, PETRO, ETC'
+    comments: 'REGISTERED MARKET FOR COMMODITY SUCH AS GOLD, PETRO, ETC',
   },
   XKEM: {
     mic: 'XKEM',
@@ -41588,7 +42298,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EMISSIONS.'
+    comments: 'REGISTERED MARKET FOR EMISSIONS.',
   },
   XKSE: {
     mic: 'XKSE',
@@ -41607,13 +42317,14 @@ export const mics = {
     lastUpdateDate: '20070326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKST: {
     mic: 'XKST',
     operatingMic: 'XKST',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'KANMON SHOHIN TORIHIKIJO (COMMODITY EXCHANGE)',
+    marketNameInstitutionDescription:
+      'KANMON SHOHIN TORIHIKIJO (COMMODITY EXCHANGE)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -41626,7 +42337,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XKUW: {
     mic: 'XKUW',
@@ -41645,7 +42356,7 @@ export const mics = {
     lastUpdateDate: '20070326',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XKYO: {
     mic: 'XKYO',
@@ -41664,7 +42375,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XLAO: {
     mic: 'XLAO',
@@ -41683,7 +42394,7 @@ export const mics = {
     lastUpdateDate: '20110228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLBM: {
     mic: 'XLBM',
@@ -41702,7 +42413,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLCE: {
     mic: 'XLCE',
@@ -41721,7 +42432,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XLDN: {
     mic: 'XLDN',
@@ -41740,7 +42451,7 @@ export const mics = {
     lastUpdateDate: '20150525',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: ''
+    comments: '',
   },
   XLIF: {
     mic: 'XLIF',
@@ -41759,7 +42470,7 @@ export const mics = {
     lastUpdateDate: '20150727',
     lastValidationDate: '',
     expiryDate: '20150727',
-    comments: 'MARKET DOES NOT EXIST ANYMORE.'
+    comments: 'MARKET DOES NOT EXIST ANYMORE.',
   },
   XLFX: {
     mic: 'XLFX',
@@ -41778,7 +42489,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLIM: {
     mic: 'XLIM',
@@ -41797,14 +42508,15 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MFOX: {
     mic: 'MFOX',
     operatingMic: 'XLIS',
     oprtSgmt: 'SGMT',
     marketNameInstitutionDescription: 'EURONEXT - MERCADO DE FUTUROS E OP��ES',
-    legalEntityName: 'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
+    legalEntityName:
+      'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
     lei: '529900K0OK4J5I7A5V66',
     marketCategoryCode: 'RMKT',
     acronym: '',
@@ -41816,14 +42528,16 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WQXL: {
     mic: 'WQXL',
     operatingMic: 'XLIS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'EURONEXT - MARKET WITHOUT QUOTATIONS LISBON',
-    legalEntityName: 'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
+    marketNameInstitutionDescription:
+      'EURONEXT - MARKET WITHOUT QUOTATIONS LISBON',
+    legalEntityName:
+      'EURONEXT LISBON - SOCIEDADE GESTORA DE MERCADOS REGULAMENTADOS S.A.',
     lei: '529900K0OK4J5I7A5V66',
     marketCategoryCode: 'NSPD',
     acronym: '',
@@ -41835,7 +42549,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNLT: {
     mic: 'FNLT',
@@ -41854,7 +42568,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   XLIT: {
     mic: 'XLIT',
@@ -41873,7 +42588,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLJM: {
     mic: 'XLJM',
@@ -41892,13 +42607,15 @@ export const mics = {
     lastUpdateDate: '20161226',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY OF THE LJUBLJANA STOCK EXCHANGE. NOT LIVE YET.'
+    comments:
+      'MULTILATERAL TRADING FACILITY OF THE LJUBLJANA STOCK EXCHANGE. NOT LIVE YET.',
   },
   XLJU: {
     mic: 'XLJU',
     operatingMic: 'XLJU',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'LJUBLJANA STOCK EXCHANGE (OFFICIAL MARKET)',
+    marketNameInstitutionDescription:
+      'LJUBLJANA STOCK EXCHANGE (OFFICIAL MARKET)',
     legalEntityName: '',
     lei: '74780000M03HFUUXFU21',
     marketCategoryCode: 'RMKT',
@@ -41911,7 +42628,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLME: {
     mic: 'XLME',
@@ -41930,7 +42647,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLON: {
     mic: 'XLON',
@@ -41949,7 +42666,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLSM: {
     mic: 'XLSM',
@@ -41968,7 +42685,7 @@ export const mics = {
     lastUpdateDate: '20090525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR 7 EQUITIES'
+    comments: 'REGISTERED MARKET FOR 7 EQUITIES',
   },
   XLTO: {
     mic: 'XLTO',
@@ -41987,7 +42704,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XLUS: {
     mic: 'XLUS',
@@ -42006,7 +42723,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XLUX: {
     mic: 'XLUX',
@@ -42025,7 +42742,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EMTF: {
     mic: 'EMTF',
@@ -42044,7 +42761,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMAB: {
     mic: 'XMAB',
@@ -42063,7 +42780,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMAC: {
     mic: 'XMAC',
@@ -42082,7 +42799,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XMAE: {
     mic: 'XMAE',
@@ -42101,7 +42818,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PROS: {
     mic: 'PROS',
@@ -42120,7 +42837,7 @@ export const mics = {
     lastUpdateDate: '20161128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF'
+    comments: 'MTF',
   },
   XMAN: {
     mic: 'XMAN',
@@ -42139,7 +42856,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMAP: {
     mic: 'XMAP',
@@ -42158,7 +42875,7 @@ export const mics = {
     lastUpdateDate: '20141027',
     lastValidationDate: '',
     expiryDate: '20141027',
-    comments: ''
+    comments: '',
   },
   XMAU: {
     mic: 'XMAU',
@@ -42177,7 +42894,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMDG: {
     mic: 'XMDG',
@@ -42196,7 +42913,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMDS: {
     mic: 'XMDS',
@@ -42215,7 +42932,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMER: {
     mic: 'XMER',
@@ -42234,13 +42951,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMEX: {
     mic: 'XMEX',
     operatingMic: 'XMEX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA MEXICANA DE VALORES (MEXICAN STOCK EXCHANGE)',
+    marketNameInstitutionDescription:
+      'BOLSA MEXICANA DE VALORES (MEXICAN STOCK EXCHANGE)',
     legalEntityName: '',
     lei: '894500CS2D6RLGW61A19',
     marketCategoryCode: 'NSPD',
@@ -42253,7 +42971,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMGE: {
     mic: 'XMGE',
@@ -42272,7 +42990,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMID: {
     mic: 'XMID',
@@ -42291,7 +43009,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XMIF: {
     mic: 'XMIF',
@@ -42310,7 +43028,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   MTAH: {
     mic: 'MTAH',
@@ -42329,7 +43047,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR TRADING DURING EXTENDED HOURS (FOR ITALIAN AND INTL. SHARES, FROM 6PM TO 8:30PM MILAN TIME).'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR TRADING DURING EXTENDED HOURS (FOR ITALIAN AND INTL. SHARES, FROM 6PM TO 8:30PM MILAN TIME).',
   },
   ATFX: {
     mic: 'ATFX',
@@ -42348,7 +43067,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR OPEN END FUNDS.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR OPEN END FUNDS.',
   },
   XMIL: {
     mic: 'XMIL',
@@ -42367,7 +43086,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MIVX: {
     mic: 'MIVX',
@@ -42386,13 +43105,15 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'THE MIV, DEDICATED TO INVESTMENT VEHICLES, IS DIVIDED INTO THREE SEGMENTS: UNITS OF CLOSED-END FUNDS SEGMENT, INVESTMENT COMPANIES SEGMENT, REAL ESTATE INVESTMENT COMPANIES SEGMENT (REICS FROM THE EXPANDI MARKET). Renamed into EURONEXT MIV MILAN'
+    comments:
+      'THE MIV, DEDICATED TO INVESTMENT VEHICLES, IS DIVIDED INTO THREE SEGMENTS: UNITS OF CLOSED-END FUNDS SEGMENT, INVESTMENT COMPANIES SEGMENT, REAL ESTATE INVESTMENT COMPANIES SEGMENT (REICS FROM THE EXPANDI MARKET). Renamed into EURONEXT MIV MILAN',
   },
   XAIM: {
     mic: 'XAIM',
     operatingMic: 'XMIL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AIM ITALIA - MERCATO ALTERNATIVO DEL CAPITALE',
+    marketNameInstitutionDescription:
+      'AIM ITALIA - MERCATO ALTERNATIVO DEL CAPITALE',
     legalEntityName: 'BORSA ITALIANA S.P.A.',
     lei: '8156005391EE905D3124',
     marketCategoryCode: 'NSPD',
@@ -42405,7 +43126,8 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '20211025',
-    comments: 'MULTILATERAL TRADING FACILITY - MERGE OF AIM ITALIA AND MAC, MAC WILL BE OPENED TILL END 2012.'
+    comments:
+      'MULTILATERAL TRADING FACILITY - MERGE OF AIM ITALIA AND MAC, MAC WILL BE OPENED TILL END 2012.',
   },
   XDMI: {
     mic: 'XDMI',
@@ -42424,7 +43146,7 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MACX: {
     mic: 'MACX',
@@ -42443,7 +43165,8 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '20131028',
-    comments: 'MERGE OF AIM ITALIA AND MAC, MAC WILL BE OPENED TILL END 2012. AFTER, XAIM WILL BE THE MIC TO USE.'
+    comments:
+      'MERGE OF AIM ITALIA AND MAC, MAC WILL BE OPENED TILL END 2012. AFTER, XAIM WILL BE THE MIC TO USE.',
   },
   MTAA: {
     mic: 'MTAA',
@@ -42462,13 +43185,14 @@ export const mics = {
     lastUpdateDate: '20170522',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'Renamed from "ELECTRONIC SHARE MARKET" to "EURONEXT MILAN"'
+    comments: 'Renamed from "ELECTRONIC SHARE MARKET" to "EURONEXT MILAN"',
   },
   XMLX: {
     mic: 'XMLX',
     operatingMic: 'XMLX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OMLX, THE LONDON SECURITIES AND DERIVATIVES EXCHANGE LIMITED',
+    marketNameInstitutionDescription:
+      'OMLX, THE LONDON SECURITIES AND DERIVATIVES EXCHANGE LIMITED',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -42481,7 +43205,7 @@ export const mics = {
     lastUpdateDate: '20060724',
     lastValidationDate: '',
     expiryDate: '20060724',
-    comments: ''
+    comments: '',
   },
   XMNT: {
     mic: 'XMNT',
@@ -42500,7 +43224,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMNX: {
     mic: 'XMNX',
@@ -42519,7 +43243,7 @@ export const mics = {
     lastUpdateDate: '20061225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOC: {
     mic: 'XMOC',
@@ -42538,13 +43262,14 @@ export const mics = {
     lastUpdateDate: '20080728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOD: {
     mic: 'XMOD',
     operatingMic: 'XMOD',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'THE MONTREAL EXCHANGE / BOURSE DE MONTREAL',
+    marketNameInstitutionDescription:
+      'THE MONTREAL EXCHANGE / BOURSE DE MONTREAL',
     legalEntityName: '',
     lei: '549300DKBYNOI0B1NP44',
     marketCategoryCode: 'NSPD',
@@ -42557,7 +43282,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOL: {
     mic: 'XMOL',
@@ -42576,13 +43301,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMOO: {
     mic: 'XMOO',
     operatingMic: 'XMOO',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MONTREAL EXCHANGE THE / BOURSE DE MONTREAL',
+    marketNameInstitutionDescription:
+      'MONTREAL EXCHANGE THE / BOURSE DE MONTREAL',
     legalEntityName: '',
     lei: '549300DKBYNOI0B1NP44',
     marketCategoryCode: 'NSPD',
@@ -42595,7 +43321,7 @@ export const mics = {
     lastUpdateDate: '20050124',
     lastValidationDate: '',
     expiryDate: '20050124',
-    comments: ''
+    comments: '',
   },
   XMSW: {
     mic: 'XMSW',
@@ -42614,7 +43340,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMTB: {
     mic: 'XMTB',
@@ -42633,7 +43359,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CMTS: {
     mic: 'CMTS',
@@ -42652,7 +43378,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   TMTS: {
     mic: 'TMTS',
@@ -42671,7 +43397,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   LMTS: {
     mic: 'LMTS',
@@ -42690,7 +43416,7 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   EACM: {
     mic: 'EACM',
@@ -42709,7 +43435,8 @@ export const mics = {
     lastUpdateDate: '20160425',
     lastValidationDate: '',
     expiryDate: '20160425',
-    comments: 'ELECTRONIC AUCTION TRADING PLATFORM FOR CASH-RICH INVESTORS TO ENTER SECURED MONEY MARKETS INVESTMENTS VIA TRI-PARTY REPO MECHANISM'
+    comments:
+      'ELECTRONIC AUCTION TRADING PLATFORM FOR CASH-RICH INVESTORS TO ENTER SECURED MONEY MARKETS INVESTMENTS VIA TRI-PARTY REPO MECHANISM',
   },
   BVUK: {
     mic: 'BVUK',
@@ -42728,7 +43455,7 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR GOVIES AND NON GOVIES'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR GOVIES AND NON GOVIES',
   },
   XMTS: {
     mic: 'XMTS',
@@ -42747,7 +43474,7 @@ export const mics = {
     lastUpdateDate: '20170424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'LEGAL ENTITY OPERATING ALL RELATED MARKET SEGMENT MICS.'
+    comments: 'LEGAL ENTITY OPERATING ALL RELATED MARKET SEGMENT MICS.',
   },
   NMTS: {
     mic: 'NMTS',
@@ -42766,13 +43493,14 @@ export const mics = {
     lastUpdateDate: '20130923',
     lastValidationDate: '',
     expiryDate: '20130923',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   PLUS: {
     mic: 'PLUS',
     operatingMic: 'XMUN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BOERSE MUENCHEN - FREIVERKHER - PLUS - EUROPE',
+    marketNameInstitutionDescription:
+      'BOERSE MUENCHEN - FREIVERKHER - PLUS - EUROPE',
     legalEntityName: '',
     lei: '391200Z7ZWISADXEGZ47',
     marketCategoryCode: 'NSPD',
@@ -42785,7 +43513,8 @@ export const mics = {
     lastUpdateDate: '20150622',
     lastValidationDate: '',
     expiryDate: '20150622',
-    comments: 'PAN-EUROPEAN EQUITY MARKET FOR SMALL AND MID-CAP COMPANIES. TRADING WAS INTERRUPTED AS OF AUGUST 20, 2010 AND MARKET WILL NOT BE REACTIVATED.'
+    comments:
+      'PAN-EUROPEAN EQUITY MARKET FOR SMALL AND MID-CAP COMPANIES. TRADING WAS INTERRUPTED AS OF AUGUST 20, 2010 AND MARKET WILL NOT BE REACTIVATED.',
   },
   XMUS: {
     mic: 'XMUS',
@@ -42804,13 +43533,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNAF: {
     mic: 'XNAF',
     operatingMic: 'XNAF',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SISTEMA ESPANOL DE NEGOCIACION DE ACTIVOS FINANCIEROS',
+    marketNameInstitutionDescription:
+      'SISTEMA ESPANOL DE NEGOCIACION DE ACTIVOS FINANCIEROS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -42823,7 +43553,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNAI: {
     mic: 'XNAI',
@@ -42842,7 +43572,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNAM: {
     mic: 'XNAM',
@@ -42861,7 +43591,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NASD: {
     mic: 'NASD',
@@ -42880,7 +43610,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL'
+    comments: 'DARK POOL',
   },
   XNMS: {
     mic: 'XNMS',
@@ -42899,7 +43629,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNAS: {
     mic: 'XNAS',
@@ -42918,7 +43648,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNDQ: {
     mic: 'XNDQ',
@@ -42937,7 +43667,7 @@ export const mics = {
     lastUpdateDate: '20070528',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNGS: {
     mic: 'XNGS',
@@ -42956,7 +43686,7 @@ export const mics = {
     lastUpdateDate: '20060724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNCM: {
     mic: 'XNCM',
@@ -42975,7 +43705,8 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'PREVIOUSLY (2005) NAMED NASDAQ SMALLCAP MARKET.NASDAQ CAPITAL MARKET SECURITY SATISFIES ALL APPLICABLE QUALIFICATION REQUIREMENTS FOR NASDAQ SECURITIES IN RULE 4300 OTHER THAN THOSE APPLICABLE TO NASDAQ NATIONAL MARKET SECURITIES.'
+    comments:
+      'PREVIOUSLY (2005) NAMED NASDAQ SMALLCAP MARKET.NASDAQ CAPITAL MARKET SECURITY SATISFIES ALL APPLICABLE QUALIFICATION REQUIREMENTS FOR NASDAQ SECURITIES IN RULE 4300 OTHER THAN THOSE APPLICABLE TO NASDAQ NATIONAL MARKET SECURITIES.',
   },
   XNIM: {
     mic: 'XNIM',
@@ -42994,7 +43725,8 @@ export const mics = {
     lastUpdateDate: '20080225',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKETPLACE COMPRISED OF MULTIPLE BROKER-DEALERS THAT QUOTE AND TRADE SECURITIES LISTED ON NYSE AND AMEX'
+    comments:
+      'ELECTRONIC MARKETPLACE COMPRISED OF MULTIPLE BROKER-DEALERS THAT QUOTE AND TRADE SECURITIES LISTED ON NYSE AND AMEX',
   },
   XBOS: {
     mic: 'XBOS',
@@ -43013,7 +43745,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NASDAQ OMX HAS ACQUIRED THE BOSTON STOCK EXCHANGE (BSE).'
+    comments: 'NASDAQ OMX HAS ACQUIRED THE BOSTON STOCK EXCHANGE (BSE).',
   },
   BOSD: {
     mic: 'BOSD',
@@ -43032,7 +43764,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL'
+    comments: 'DARK POOL',
   },
   XBXO: {
     mic: 'XBXO',
@@ -43051,7 +43783,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC MARKET FOR TRADING US LISTED DERIVATIVES.'
+    comments: 'ELECTRONIC MARKET FOR TRADING US LISTED DERIVATIVES.',
   },
   XPOR: {
     mic: 'XPOR',
@@ -43070,7 +43802,7 @@ export const mics = {
     lastUpdateDate: '20071022',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPSX: {
     mic: 'XPSX',
@@ -43089,7 +43821,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'US EQUITIES EXCHANGE'
+    comments: 'US EQUITIES EXCHANGE',
   },
   XBRT: {
     mic: 'XBRT',
@@ -43108,7 +43840,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PSXD: {
     mic: 'PSXD',
@@ -43127,7 +43859,7 @@ export const mics = {
     lastUpdateDate: '20191028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NON-DISPLAYED (DARK) EXECUTIONS.'
+    comments: 'NON-DISPLAYED (DARK) EXECUTIONS.',
   },
   XPBT: {
     mic: 'XPBT',
@@ -43146,7 +43878,7 @@ export const mics = {
     lastUpdateDate: '20090323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NASDAQ ACQUIRED THE PHILADELPHIA STOCK EXCHANGE (PHLX)'
+    comments: 'NASDAQ ACQUIRED THE PHILADELPHIA STOCK EXCHANGE (PHLX)',
   },
   XPHO: {
     mic: 'XPHO',
@@ -43165,7 +43897,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPHL: {
     mic: 'XPHL',
@@ -43184,13 +43916,14 @@ export const mics = {
     lastUpdateDate: '20090223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NASDAQ ACQUIRED THE PHILADELPHIA STOCK EXCHANGE (PHLX)'
+    comments: 'NASDAQ ACQUIRED THE PHILADELPHIA STOCK EXCHANGE (PHLX)',
   },
   XNCD: {
     mic: 'XNCD',
     operatingMic: 'XNCD',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NATIONAL COMMODITY & DERIVATIVES EXCHANGE LTD',
+    marketNameInstitutionDescription:
+      'NATIONAL COMMODITY & DERIVATIVES EXCHANGE LTD',
     legalEntityName: '',
     lei: '33580057DULMQ3ANKR63',
     marketCategoryCode: 'NSPD',
@@ -43203,13 +43936,14 @@ export const mics = {
     lastUpdateDate: '20060424',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNEC: {
     mic: 'XNEC',
     operatingMic: 'XNEC',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NATIONAL STOCK EXCHANGE OF AUSTRALIA LIMITED',
+    marketNameInstitutionDescription:
+      'NATIONAL STOCK EXCHANGE OF AUSTRALIA LIMITED',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43222,13 +43956,14 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNEE: {
     mic: 'XNEE',
     operatingMic: 'XNEE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NEW ZEALAND FUTURES AND OPTIONS EXCHANGE',
+    marketNameInstitutionDescription:
+      'NEW ZEALAND FUTURES AND OPTIONS EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43241,7 +43976,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XNEP: {
     mic: 'XNEP',
@@ -43260,7 +43995,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNGM: {
     mic: 'XNGM',
@@ -43279,7 +44014,7 @@ export const mics = {
     lastUpdateDate: '20120423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REINSTATED. CONFIRMED BY EXCHANGE.'
+    comments: 'REINSTATED. CONFIRMED BY EXCHANGE.',
   },
   NMTF: {
     mic: 'NMTF',
@@ -43298,7 +44033,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNGO: {
     mic: 'XNGO',
@@ -43317,7 +44052,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNII: {
     mic: 'XNII',
@@ -43336,7 +44071,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XNKS: {
     mic: 'XNKS',
@@ -43355,7 +44090,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNQL: {
     mic: 'XNQL',
@@ -43374,7 +44109,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XNSA: {
     mic: 'XNSA',
@@ -43393,7 +44128,7 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM'
+    comments: 'ELECTRONIC TRADING PLATFORM',
   },
   INSE: {
     mic: 'INSE',
@@ -43412,7 +44147,8 @@ export const mics = {
     lastUpdateDate: '20180625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FULLY OWNED SUBSIDIARY COMPANY OF NATIONAL STOCK EXCHANGE OF INDIA LIMITED (NSE).'
+    comments:
+      'FULLY OWNED SUBSIDIARY COMPANY OF NATIONAL STOCK EXCHANGE OF INDIA LIMITED (NSE).',
   },
   XNSE: {
     mic: 'XNSE',
@@ -43431,13 +44167,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNST: {
     mic: 'XNST',
     operatingMic: 'XNST',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NAGOYA SENI TORIHIKIJO (TEXTILE EXCHANGE) - CHUBU COMMODITY EXCHANGE',
+    marketNameInstitutionDescription:
+      'NAGOYA SENI TORIHIKIJO (TEXTILE EXCHANGE) - CHUBU COMMODITY EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43450,7 +44187,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XNYC: {
     mic: 'XNYC',
@@ -43469,7 +44206,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XNYM: {
     mic: 'XNYM',
@@ -43488,7 +44225,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCEC: {
     mic: 'XCEC',
@@ -43507,13 +44244,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNYE: {
     mic: 'XNYE',
     operatingMic: 'XNYM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NEW YORK MERCANTILE EXCHANGE - OTC MARKETS',
+    marketNameInstitutionDescription:
+      'NEW YORK MERCANTILE EXCHANGE - OTC MARKETS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43526,13 +44264,15 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DIVISION OF THE NEW YORK MERCANTILE EXCHANGE - OTC MARKETS (ECM)'
+    comments:
+      'DIVISION OF THE NEW YORK MERCANTILE EXCHANGE - OTC MARKETS (ECM)',
   },
   XNYL: {
     mic: 'XNYL',
     operatingMic: 'XNYM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NEW YORK MERCANTILE EXCHANGE - ENERGY MARKETS',
+    marketNameInstitutionDescription:
+      'NEW YORK MERCANTILE EXCHANGE - ENERGY MARKETS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43545,7 +44285,7 @@ export const mics = {
     lastUpdateDate: '20080526',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY MARKETS'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR ENERGY MARKETS',
   },
   ALDP: {
     mic: 'ALDP',
@@ -43564,7 +44304,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   ARCX: {
     mic: 'ARCX',
@@ -43583,7 +44323,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XNYS: {
     mic: 'XNYS',
@@ -43602,7 +44342,7 @@ export const mics = {
     lastUpdateDate: '20050523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XASE: {
     mic: 'XASE',
@@ -43621,7 +44361,7 @@ export const mics = {
     lastUpdateDate: '20120625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NYSE ALTERNEXT HAS CHANGED THEIR NAME TO NYSE AMEX EQUITIES'
+    comments: 'NYSE ALTERNEXT HAS CHANGED THEIR NAME TO NYSE AMEX EQUITIES',
   },
   XNLI: {
     mic: 'XNLI',
@@ -43640,7 +44380,7 @@ export const mics = {
     lastUpdateDate: '20080922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NYSD: {
     mic: 'NYSD',
@@ -43659,7 +44399,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   AMXO: {
     mic: 'AMXO',
@@ -43678,7 +44418,7 @@ export const mics = {
     lastUpdateDate: '20081124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ARCD: {
     mic: 'ARCD',
@@ -43697,7 +44437,7 @@ export const mics = {
     lastUpdateDate: '20110523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   ARCO: {
     mic: 'ARCO',
@@ -43716,7 +44456,7 @@ export const mics = {
     lastUpdateDate: '20091026',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NYSE ARCA OPTIONS TRADING PLATFORM FROM NYSE EURONEXT.'
+    comments: 'NYSE ARCA OPTIONS TRADING PLATFORM FROM NYSE EURONEXT.',
   },
   XNZE: {
     mic: 'XNZE',
@@ -43735,7 +44475,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XODE: {
     mic: 'XODE',
@@ -43754,13 +44494,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XOFF: {
     mic: 'XOFF',
     operatingMic: 'XOFF',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OFF-EXCHANGE TRANSACTIONS - LISTED INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'OFF-EXCHANGE TRANSACTIONS - LISTED INSTRUMENTS',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43773,7 +44514,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MIC TO USE FOR OFF-EXCHANGE TRANSACTIONS IN LISTED INSTRUMENTS.'
+    comments: 'MIC TO USE FOR OFF-EXCHANGE TRANSACTIONS IN LISTED INSTRUMENTS.',
   },
   XOME: {
     mic: 'XOME',
@@ -43792,7 +44533,7 @@ export const mics = {
     lastUpdateDate: '20071224',
     lastValidationDate: '',
     expiryDate: '20071224',
-    comments: ''
+    comments: '',
   },
   BURG: {
     mic: 'BURG',
@@ -43811,7 +44552,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '20160125',
-    comments: 'MULTILATERAL TRADING PLATFORM, NORDIC SECURITIES'
+    comments: 'MULTILATERAL TRADING PLATFORM, NORDIC SECURITIES',
   },
   MERD: {
     mic: 'MERD',
@@ -43830,7 +44571,8 @@ export const mics = {
     lastUpdateDate: '20150824',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS - DARK POOL'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS - DARK POOL',
   },
   XOAM: {
     mic: 'XOAM',
@@ -43849,7 +44591,7 @@ export const mics = {
     lastUpdateDate: '20141222',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC MARKETPLACE FOR LISTING OF BONDS'
+    comments: 'NORDIC MARKETPLACE FOR LISTING OF BONDS',
   },
   BURM: {
     mic: 'BURM',
@@ -43868,7 +44610,8 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '20160125',
-    comments: 'REGULATED MARKET FOR WARRANTS, CERTIFICATES, STRUCTURED PRODUCTS AND ETFS.'
+    comments:
+      'REGULATED MARKET FOR WARRANTS, CERTIFICATES, STRUCTURED PRODUCTS AND ETFS.',
   },
   XOSC: {
     mic: 'XOSC',
@@ -43887,7 +44630,7 @@ export const mics = {
     lastUpdateDate: '20130527',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS'
+    comments: 'MULTILATERAL TRADING FACILITY FOR FINANCIAL INSTRUMENTS',
   },
   XOAD: {
     mic: 'XOAD',
@@ -43906,7 +44649,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   XOSD: {
     mic: 'XOSD',
@@ -43925,7 +44668,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'DARK POOL.'
+    comments: 'DARK POOL.',
   },
   NIBR: {
     mic: 'NIBR',
@@ -43944,7 +44687,8 @@ export const mics = {
     lastUpdateDate: '20130722',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OFFICIAL PLATFORM FOR SUBMISSION OF NIBOR BASIS RATES AND DISTRIBUTION OF NIBOR FIXING RATES'
+    comments:
+      'OFFICIAL PLATFORM FOR SUBMISSION OF NIBOR BASIS RATES AND DISTRIBUTION OF NIBOR FIXING RATES',
   },
   XOSM: {
     mic: 'XOSM',
@@ -43963,13 +44707,14 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XOST: {
     mic: 'XOST',
     operatingMic: 'XOST',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OSAKA SENI TORIHIKIJO (TEXTILE EXCHANGE)',
+    marketNameInstitutionDescription:
+      'OSAKA SENI TORIHIKIJO (TEXTILE EXCHANGE)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -43982,13 +44727,14 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XOTB: {
     mic: 'XOTB',
     operatingMic: 'XOTB',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OESTERREICHISCHE TERMIN- UND OPTIONENBOERSE, CLEARING BANK AG',
+    marketNameInstitutionDescription:
+      'OESTERREICHISCHE TERMIN- UND OPTIONENBOERSE, CLEARING BANK AG',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -44001,7 +44747,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '20070625',
-    comments: ''
+    comments: '',
   },
   XOTC: {
     mic: 'XOTC',
@@ -44020,7 +44766,7 @@ export const mics = {
     lastUpdateDate: '20211227',
     lastValidationDate: '20211227',
     expiryDate: '20211227',
-    comments: ''
+    comments: '',
   },
   XPAE: {
     mic: 'XPAE',
@@ -44039,7 +44785,7 @@ export const mics = {
     lastUpdateDate: '20131125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSPM: {
     mic: 'XSPM',
@@ -44058,7 +44804,8 @@ export const mics = {
     lastUpdateDate: '20160926',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR THE TRADING OF STRUCTURED PRODUCTS.'
+    comments:
+      'MULTILATERAL TRADING FACILITY FOR THE TRADING OF STRUCTURED PRODUCTS.',
   },
   MTCH: {
     mic: 'MTCH',
@@ -44077,7 +44824,8 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FINANCIAL, CORPORATE AND COVERED BONDS TRADING PLATFORM FOR PROFESSIONAL INVESTORS.'
+    comments:
+      'FINANCIAL, CORPORATE AND COVERED BONDS TRADING PLATFORM FOR PROFESSIONAL INVESTORS.',
   },
   XPAR: {
     mic: 'XPAR',
@@ -44096,7 +44844,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMAT: {
     mic: 'XMAT',
@@ -44115,7 +44863,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMON: {
     mic: 'XMON',
@@ -44134,7 +44882,7 @@ export const mics = {
     lastUpdateDate: '20150427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPHS: {
     mic: 'XPHS',
@@ -44153,7 +44901,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPIC: {
     mic: 'XPIC',
@@ -44172,7 +44920,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPOW: {
     mic: 'XPOW',
@@ -44191,7 +44939,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPRA: {
     mic: 'XPRA',
@@ -44210,7 +44958,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPRM: {
     mic: 'XPRM',
@@ -44229,7 +44977,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MTF MARKET OF THE PRAGUE STOCK EXCHANGE.'
+    comments: 'MTF MARKET OF THE PRAGUE STOCK EXCHANGE.',
   },
   STRT: {
     mic: 'STRT',
@@ -44248,7 +44996,7 @@ export const mics = {
     lastUpdateDate: '20160125',
     lastValidationDate: '',
     expiryDate: '20160125',
-    comments: 'UNREGULATED MARKET OF THE PRAGUE STOCK EXCHANGE.'
+    comments: 'UNREGULATED MARKET OF THE PRAGUE STOCK EXCHANGE.',
   },
   SPAD: {
     mic: 'SPAD',
@@ -44267,7 +45015,7 @@ export const mics = {
     lastUpdateDate: '20130325',
     lastValidationDate: '',
     expiryDate: '20130325',
-    comments: 'SYSTEM FOR SUPPORT OF THE SHARE AND BOND MARKETS.'
+    comments: 'SYSTEM FOR SUPPORT OF THE SHARE AND BOND MARKETS.',
   },
   XPRI: {
     mic: 'XPRI',
@@ -44286,7 +45034,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XPSE: {
     mic: 'XPSE',
@@ -44305,7 +45053,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XPST: {
     mic: 'XPST',
@@ -44324,7 +45072,7 @@ export const mics = {
     lastUpdateDate: '20110328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EQUITY CROSSING NETWORK.'
+    comments: 'EQUITY CROSSING NETWORK.',
   },
   XPTY: {
     mic: 'XPTY',
@@ -44343,7 +45091,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'SPANISH: BOLSA LATINOAMERICANA DE VALORES, S.A.'
+    comments: 'SPANISH: BOLSA LATINOAMERICANA DE VALORES, S.A.',
   },
   XPXE: {
     mic: 'XPXE',
@@ -44362,7 +45110,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XQUI: {
     mic: 'XQUI',
@@ -44381,7 +45129,7 @@ export const mics = {
     lastUpdateDate: '20110627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XRBM: {
     mic: 'XRBM',
@@ -44400,7 +45148,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XRIO: {
     mic: 'XRIO',
@@ -44419,7 +45167,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XRIS: {
     mic: 'XRIS',
@@ -44438,7 +45186,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNLV: {
     mic: 'FNLV',
@@ -44457,7 +45205,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   XRMZ: {
     mic: 'XRMZ',
@@ -44476,7 +45225,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XROS: {
     mic: 'XROS',
@@ -44495,7 +45244,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XROX: {
     mic: 'XROX',
@@ -44514,7 +45263,7 @@ export const mics = {
     lastUpdateDate: '20110124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTUC: {
     mic: 'XTUC',
@@ -44533,7 +45282,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XRPM: {
     mic: 'XRPM',
@@ -44552,7 +45301,7 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ROMANIAN POWER MARKET OPERATOR (OPCOM).'
+    comments: 'ROMANIAN POWER MARKET OPERATOR (OPCOM).',
   },
   XRUS: {
     mic: 'XRUS',
@@ -44571,7 +45320,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSAM: {
     mic: 'XSAM',
@@ -44590,7 +45339,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSAP: {
     mic: 'XSAP',
@@ -44609,7 +45358,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSAU: {
     mic: 'XSAU',
@@ -44628,7 +45377,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSC2: {
     mic: 'XSC2',
@@ -44647,7 +45396,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR STRUCTURED PRODUCTS - COUNTRY SEGMENT 2.'
+    comments: 'MARKET FOR STRUCTURED PRODUCTS - COUNTRY SEGMENT 2.',
   },
   XSC3: {
     mic: 'XSC3',
@@ -44666,7 +45415,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR STRUKTURED PRODUCTS - COUNTRY SEGMENT 3.'
+    comments: 'MARKET FOR STRUKTURED PRODUCTS - COUNTRY SEGMENT 3.',
   },
   XSC1: {
     mic: 'XSC1',
@@ -44685,7 +45434,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET FOR STRUCTURED PRODUCTS - COUNTRY SEGMENT 1.'
+    comments: 'MARKET FOR STRUCTURED PRODUCTS - COUNTRY SEGMENT 1.',
   },
   XSCO: {
     mic: 'XSCO',
@@ -44704,7 +45453,7 @@ export const mics = {
     lastUpdateDate: '20131223',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSEF: {
     mic: 'XSEF',
@@ -44723,13 +45472,14 @@ export const mics = {
     lastUpdateDate: '20140728',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY.'
+    comments: 'SWAP EXECUTION FACILITY.',
   },
   XSCL: {
     mic: 'XSCL',
     operatingMic: 'XSES',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SINGAPORE CENTRAL LIMIT ORDER BOOK INTERNATIONAL',
+    marketNameInstitutionDescription:
+      'SINGAPORE CENTRAL LIMIT ORDER BOOK INTERNATIONAL',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -44742,7 +45492,7 @@ export const mics = {
     lastUpdateDate: '20141124',
     lastValidationDate: '',
     expiryDate: '20141124',
-    comments: 'CENTRAL LIMIT ORDER BOOK (CLOB) MARKET. NO LONGER ACTIVE'
+    comments: 'CENTRAL LIMIT ORDER BOOK (CLOB) MARKET. NO LONGER ACTIVE',
   },
   XSES: {
     mic: 'XSES',
@@ -44761,13 +45511,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSIM: {
     mic: 'XSIM',
     operatingMic: 'XSES',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SINGAPORE EXCHANGE DERIVATIVES CLEARING LIMITED',
+    marketNameInstitutionDescription:
+      'SINGAPORE EXCHANGE DERIVATIVES CLEARING LIMITED',
     legalEntityName: '',
     lei: '549300ZLWT3FK3F0FW61',
     marketCategoryCode: 'NSPD',
@@ -44780,7 +45531,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSCE: {
     mic: 'XSCE',
@@ -44799,7 +45550,7 @@ export const mics = {
     lastUpdateDate: '20131028',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MERGED WITH SGX IN 2008'
+    comments: 'MERGED WITH SGX IN 2008',
   },
   XINE: {
     mic: 'XINE',
@@ -44818,7 +45569,7 @@ export const mics = {
     lastUpdateDate: '20140623',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'EXCHANGE FOR TRADING ELECTRONICALLY ENERGY DERIVATIVES'
+    comments: 'EXCHANGE FOR TRADING ELECTRONICALLY ENERGY DERIVATIVES',
   },
   XSGE: {
     mic: 'XSGE',
@@ -44837,7 +45588,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSGO: {
     mic: 'XSGO',
@@ -44856,13 +45607,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSEC: {
     mic: 'XSEC',
     operatingMic: 'XSHE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SHENZHEN STOCK EXCHANGE - SHENZHEN - HONG KONG STOCK CONNECT',
+    marketNameInstitutionDescription:
+      'SHENZHEN STOCK EXCHANGE - SHENZHEN - HONG KONG STOCK CONNECT',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -44875,7 +45627,7 @@ export const mics = {
     lastUpdateDate: '20150525',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSHE: {
     mic: 'XSHE',
@@ -44894,13 +45646,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSSC: {
     mic: 'XSSC',
     operatingMic: 'XSHG',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'SHANGHAI STOCK EXCHANGE - SHANGHAI - HONG KONG STOCK CONNECT',
+    marketNameInstitutionDescription:
+      'SHANGHAI STOCK EXCHANGE - SHANGHAI - HONG KONG STOCK CONNECT',
     legalEntityName: '',
     lei: '300300LRJ5FEZ23N8725',
     marketCategoryCode: 'NSPD',
@@ -44913,7 +45666,8 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FOREIGN INVESTORS TRADING IN A-SHARE STOCK LISTED IN SHANGHAI STOCK EXCHANGE UNDER SHANGHAI-HONG KONG STOCK CONNECT'
+    comments:
+      'FOREIGN INVESTORS TRADING IN A-SHARE STOCK LISTED IN SHANGHAI STOCK EXCHANGE UNDER SHANGHAI-HONG KONG STOCK CONNECT',
   },
   XSHG: {
     mic: 'XSHG',
@@ -44932,7 +45686,7 @@ export const mics = {
     lastUpdateDate: '20140825',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSIB: {
     mic: 'XSIB',
@@ -44951,7 +45705,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSME: {
     mic: 'XSME',
@@ -44970,7 +45724,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XSOM: {
     mic: 'XSOM',
@@ -44989,13 +45743,14 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '20071126',
-    comments: ''
+    comments: '',
   },
   XSOP: {
     mic: 'XSOP',
     operatingMic: 'XSOP',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BSP REGIONAL ENERGY EXCHANGE - SOUTH POOL',
+    marketNameInstitutionDescription:
+      'BSP REGIONAL ENERGY EXCHANGE - SOUTH POOL',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -45008,7 +45763,7 @@ export const mics = {
     lastUpdateDate: '20090427',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSPS: {
     mic: 'XSPS',
@@ -45027,13 +45782,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSRM: {
     mic: 'XSRM',
     operatingMic: 'XSRM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MERCADO DE FUTUROS DE ACEITE DE OLIVA, S.A.',
+    marketNameInstitutionDescription:
+      'MERCADO DE FUTUROS DE ACEITE DE OLIVA, S.A.',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -45046,7 +45802,7 @@ export const mics = {
     lastUpdateDate: '20170123',
     lastValidationDate: '',
     expiryDate: '20170123',
-    comments: 'MARKET IS CLOSED.'
+    comments: 'MARKET IS CLOSED.',
   },
   XSSE: {
     mic: 'XSSE',
@@ -45065,7 +45821,7 @@ export const mics = {
     lastUpdateDate: '20070625',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTC: {
     mic: 'XSTC',
@@ -45084,7 +45840,7 @@ export const mics = {
     lastUpdateDate: '20091228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTE: {
     mic: 'XSTE',
@@ -45103,7 +45859,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DNSE: {
     mic: 'DNSE',
@@ -45122,7 +45878,7 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH SWEDEN'
+    comments: 'NORDIC@MID DARK POOL FOR FIRST NORTH SWEDEN',
   },
   FNSE: {
     mic: 'FNSE',
@@ -45141,7 +45897,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   CSTO: {
     mic: 'CSTO',
@@ -45160,7 +45917,8 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CLEARING HOUSE FOR EQUITY, FIXED INCOME AND COMMODITIES DERIVATIVES'
+    comments:
+      'CLEARING HOUSE FOR EQUITY, FIXED INCOME AND COMMODITIES DERIVATIVES',
   },
   MNSE: {
     mic: 'MNSE',
@@ -45179,7 +45937,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSTO: {
     mic: 'MSTO',
@@ -45198,7 +45956,7 @@ export const mics = {
     lastUpdateDate: '20160627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTO: {
     mic: 'XSTO',
@@ -45217,7 +45975,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DSTO: {
     mic: 'DSTO',
@@ -45236,7 +45994,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'NORDIC@MID DARK POOL FOR XSTO'
+    comments: 'NORDIC@MID DARK POOL FOR XSTO',
   },
   STUB: {
     mic: 'STUB',
@@ -45255,7 +46013,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   STUA: {
     mic: 'STUA',
@@ -45274,7 +46032,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSTU: {
     mic: 'XSTU',
@@ -45293,7 +46051,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EUWX: {
     mic: 'EUWX',
@@ -45312,7 +46070,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSVA: {
     mic: 'XSVA',
@@ -45331,7 +46089,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSWA: {
     mic: 'XSWA',
@@ -45350,7 +46108,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XSWB: {
     mic: 'XSWB',
@@ -45369,13 +46127,14 @@ export const mics = {
     lastUpdateDate: '20080922',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'TRADING VENUE FOR SWISS BLUE-CHIP EQUITIES.'
+    comments: 'TRADING VENUE FOR SWISS BLUE-CHIP EQUITIES.',
   },
   XSWO: {
     mic: 'XSWO',
     operatingMic: 'XSWO',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SWISS OPTIONS AND FINANIAL FUTURES EXCHANGE',
+    marketNameInstitutionDescription:
+      'SWISS OPTIONS AND FINANIAL FUTURES EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -45388,7 +46147,7 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   XTAD: {
     mic: 'XTAD',
@@ -45407,7 +46166,7 @@ export const mics = {
     lastUpdateDate: '20050926',
     lastValidationDate: '',
     expiryDate: '20050926',
-    comments: ''
+    comments: '',
   },
   XTAE: {
     mic: 'XTAE',
@@ -45426,7 +46185,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTAF: {
     mic: 'XTAF',
@@ -45445,7 +46204,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTAI: {
     mic: 'XTAI',
@@ -45464,7 +46223,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTAL: {
     mic: 'XTAL',
@@ -45483,7 +46242,7 @@ export const mics = {
     lastUpdateDate: '20151228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNEE: {
     mic: 'FNEE',
@@ -45502,7 +46261,8 @@ export const mics = {
     lastUpdateDate: '20151123',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.'
+    comments:
+      'FIRST NORTH IS OPERATED BY NASDAQ. FIRST NORTH IS A NORDIC ALTERNATIVE MTF MARKETPLACE FOR TRADING SHARES AND OTHER TYPES OF FINANCIAL INSTRUMENTS.',
   },
   XTEH: {
     mic: 'XTEH',
@@ -45521,7 +46281,7 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTFE: {
     mic: 'XTFE',
@@ -45540,7 +46300,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XTFF: {
     mic: 'XTFF',
@@ -45559,7 +46319,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTFN: {
     mic: 'XTFN',
@@ -45578,7 +46338,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XTIR: {
     mic: 'XTIR',
@@ -45597,13 +46357,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTKA: {
     mic: 'XTKA',
     operatingMic: 'XTKA',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'TOYOHASHI KANKEN TORIHIKIJO (DRIED COCOON EXCHANGE) - CHUBU COMMODITY EXCHANGE',
+    marketNameInstitutionDescription:
+      'TOYOHASHI KANKEN TORIHIKIJO (DRIED COCOON EXCHANGE) - CHUBU COMMODITY EXCHANGE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -45616,7 +46377,7 @@ export const mics = {
     lastUpdateDate: '20040823',
     lastValidationDate: '',
     expiryDate: '20040823',
-    comments: ''
+    comments: '',
   },
   XTKO: {
     mic: 'XTKO',
@@ -45635,7 +46396,7 @@ export const mics = {
     lastUpdateDate: '20140127',
     lastValidationDate: '',
     expiryDate: '20140127',
-    comments: 'THE MARKET HAS CLOSED'
+    comments: 'THE MARKET HAS CLOSED',
   },
   XTKT: {
     mic: 'XTKT',
@@ -45654,7 +46415,7 @@ export const mics = {
     lastUpdateDate: '20100524',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTOE: {
     mic: 'XTOE',
@@ -45673,7 +46434,7 @@ export const mics = {
     lastUpdateDate: '20060925',
     lastValidationDate: '',
     expiryDate: '20060925',
-    comments: ''
+    comments: '',
   },
   XTRA: {
     mic: 'XTRA',
@@ -45692,7 +46453,7 @@ export const mics = {
     lastUpdateDate: '20071224',
     lastValidationDate: '',
     expiryDate: '20071224',
-    comments: ''
+    comments: '',
   },
   XTRN: {
     mic: 'XTRN',
@@ -45711,13 +46472,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTRZ: {
     mic: 'XTRZ',
     operatingMic: 'XTRZ',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ZAGREB MONEY AND SHORT TERM SECURITIES MARKET INC',
+    marketNameInstitutionDescription:
+      'ZAGREB MONEY AND SHORT TERM SECURITIES MARKET INC',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -45730,7 +46492,7 @@ export const mics = {
     lastUpdateDate: '20070423',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTSE: {
     mic: 'XTSE',
@@ -45749,7 +46511,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTSX: {
     mic: 'XTSX',
@@ -45768,7 +46530,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTNX: {
     mic: 'XTNX',
@@ -45787,7 +46549,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XTUN: {
     mic: 'XTUN',
@@ -45806,7 +46568,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPCD: {
     mic: 'TPCD',
@@ -45825,7 +46587,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR CREDIT PRODUCTS'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR CREDIT PRODUCTS',
   },
   TBLA: {
     mic: 'TBLA',
@@ -45844,7 +46606,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   TPFD: {
     mic: 'TPFD',
@@ -45863,7 +46625,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   TPSP: {
     mic: 'TPSP',
@@ -45882,7 +46644,7 @@ export const mics = {
     lastUpdateDate: '20160328',
     lastValidationDate: '',
     expiryDate: '20160328',
-    comments: ''
+    comments: '',
   },
   XTUP: {
     mic: 'XTUP',
@@ -45901,7 +46663,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   TPSD: {
     mic: 'TPSD',
@@ -45920,7 +46682,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR INTEREST RATE DERIVATIVES.'
+    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR INTEREST RATE DERIVATIVES.',
   },
   TPRE: {
     mic: 'TPRE',
@@ -45939,7 +46701,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR REPURCHASE AGREEMENTS'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR REPURCHASE AGREEMENTS',
   },
   TPEQ: {
     mic: 'TPEQ',
@@ -45958,7 +46720,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'MULTILATERAL TRADING PLATFORM FOR EQUITY DERIVATIVES.'
+    comments: 'MULTILATERAL TRADING PLATFORM FOR EQUITY DERIVATIVES.',
   },
   XTPE: {
     mic: 'XTPE',
@@ -45977,7 +46739,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR ENERGY PRODUCTS.'
+    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR ENERGY PRODUCTS.',
   },
   TBEN: {
     mic: 'TBEN',
@@ -45996,7 +46758,7 @@ export const mics = {
     lastUpdateDate: '20180827',
     lastValidationDate: '',
     expiryDate: '20180827',
-    comments: ''
+    comments: '',
   },
   XTUR: {
     mic: 'XTUR',
@@ -46015,7 +46777,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '20130826',
-    comments: 'MIC TO USE IS XIST'
+    comments: 'MIC TO USE IS XIST',
   },
   XUAX: {
     mic: 'XUAX',
@@ -46034,7 +46796,7 @@ export const mics = {
     lastUpdateDate: '20060227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XUGA: {
     mic: 'XUGA',
@@ -46053,7 +46815,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XUKR: {
     mic: 'XUKR',
@@ -46072,7 +46834,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XULA: {
     mic: 'XULA',
@@ -46091,7 +46853,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XUNI: {
     mic: 'XUNI',
@@ -46110,7 +46872,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XUSE: {
     mic: 'XUSE',
@@ -46129,7 +46891,8 @@ export const mics = {
     lastUpdateDate: '20101025',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED STOCK EXCHANGE WITH SECURITIES AND EXCHANGE BOARD OF INDIA FOR OFFERRING CURRENCY DERIVATIVES.'
+    comments:
+      'REGISTERED STOCK EXCHANGE WITH SECURITIES AND EXCHANGE BOARD OF INDIA FOR OFFERRING CURRENCY DERIVATIVES.',
   },
   XVAR: {
     mic: 'XVAR',
@@ -46148,7 +46911,7 @@ export const mics = {
     lastUpdateDate: '20070924',
     lastValidationDate: '',
     expiryDate: '20070924',
-    comments: ''
+    comments: '',
   },
   XVLA: {
     mic: 'XVLA',
@@ -46167,13 +46930,14 @@ export const mics = {
     lastUpdateDate: '20071126',
     lastValidationDate: '',
     expiryDate: '20071126',
-    comments: ''
+    comments: '',
   },
   XVPA: {
     mic: 'XVPA',
     operatingMic: 'XVPA',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BOLSA DE VALORES Y PRODUCTOS DE ASUNCION SA',
+    marketNameInstitutionDescription:
+      'BOLSA DE VALORES Y PRODUCTOS DE ASUNCION SA',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -46186,7 +46950,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XVSE: {
     mic: 'XVSE',
@@ -46205,13 +46969,14 @@ export const mics = {
     lastUpdateDate: '20030428',
     lastValidationDate: '',
     expiryDate: '20030428',
-    comments: ''
+    comments: '',
   },
   RPWC: {
     mic: 'RPWC',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/CATALYST/BONDSPOT/REGULATED MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/CATALYST/BONDSPOT/REGULATED MARKET',
     legalEntityName: 'BONDSPOT S.A.',
     lei: '259400N28EKSTIFFCL55',
     marketCategoryCode: 'RMKT',
@@ -46224,13 +46989,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TBSP: {
     mic: 'TBSP',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/BONDSPOT/TREASURY BOND MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/BONDSPOT/TREASURY BOND MARKET',
     legalEntityName: 'BONDSPOT S.A.',
     lei: '259400N28EKSTIFFCL55',
     marketCategoryCode: 'NSPD',
@@ -46243,13 +47009,15 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'CHANGES IN BONDSPOT OWNERSHIP STRUCTURE. THEY ARE NO LONGER IN MTS GROUP.'
+    comments:
+      'CHANGES IN BONDSPOT OWNERSHIP STRUCTURE. THEY ARE NO LONGER IN MTS GROUP.',
   },
   TBSA: {
     mic: 'TBSA',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/TREASURY BOND/BONDSPOT/B2C MARKET/MTF',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/TREASURY BOND/BONDSPOT/B2C MARKET/MTF',
     legalEntityName: 'BONDSPOT S.A.',
     lei: '259400N28EKSTIFFCL55',
     marketCategoryCode: 'MLTF',
@@ -46262,13 +47030,14 @@ export const mics = {
     lastUpdateDate: '20210322',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOSP: {
     mic: 'BOSP',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/CATALYST/BONDSPOT/MTF',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/CATALYST/BONDSPOT/MTF',
     legalEntityName: 'BONDSPOT S.A.',
     lei: '259400N28EKSTIFFCL55',
     marketCategoryCode: 'MLTF',
@@ -46281,7 +47050,7 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITIES FOR DEBT INSTRUMENTS.'
+    comments: 'MULTILATERAL TRADING FACILITIES FOR DEBT INSTRUMENTS.',
   },
   WETP: {
     mic: 'WETP',
@@ -46300,13 +47069,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XWAR: {
     mic: 'XWAR',
     operatingMic: 'XWAR',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/EQUITIES/MAIN MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/EQUITIES/MAIN MARKET',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -46319,13 +47089,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PLPO: {
     mic: 'PLPO',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER - EXCHANGE/ORGANIZED TRADING FACILITIES',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER - EXCHANGE/ORGANIZED TRADING FACILITIES',
     legalEntityName: '',
     lei: '2594001J9XAPI7Z2IB24',
     marketCategoryCode: 'NSPD',
@@ -46338,13 +47109,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PLPS: {
     mic: 'PLPS',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/SPOT',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/SPOT',
     legalEntityName: '',
     lei: '2594001J9XAPI7Z2IB24',
     marketCategoryCode: 'NSPD',
@@ -46357,13 +47129,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WBLC: {
     mic: 'WBLC',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/CATALYST/LISTING',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/CATALYST/LISTING',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -46376,13 +47149,14 @@ export const mics = {
     lastUpdateDate: '20130422',
     lastValidationDate: '',
     expiryDate: '20130422',
-    comments: ''
+    comments: '',
   },
   WBCL: {
     mic: 'WBCL',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/CATALYST/LISTING',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/CATALYST/LISTING',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -46395,13 +47169,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WBON: {
     mic: 'WBON',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/ BONDS/CATALYST/MAIN MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/ BONDS/CATALYST/MAIN MARKET',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -46414,13 +47189,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WMTF: {
     mic: 'WMTF',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/BONDS/CATALYST/MTF',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/BONDS/CATALYST/MTF',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'MLTF',
@@ -46433,13 +47209,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WDER: {
     mic: 'WDER',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/FINANCIAL DERIVATIVES',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/FINANCIAL DERIVATIVES',
     legalEntityName: '',
     lei: '25940039ZHD3Z37GKR71',
     marketCategoryCode: 'RMKT',
@@ -46452,13 +47229,14 @@ export const mics = {
     lastUpdateDate: '20130826',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WCDE: {
     mic: 'WCDE',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/COMMODITY DERIVATIVES',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/COMMODITY DERIVATIVES',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -46471,13 +47249,14 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '20150223',
-    comments: 'MARKET HAS CEASED ITS ACTIVITY'
+    comments: 'MARKET HAS CEASED ITS ACTIVITY',
   },
   POEE: {
     mic: 'POEE',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/ENERGY MARKET/POEE',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/ENERGY MARKET/POEE',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -46490,13 +47269,15 @@ export const mics = {
     lastUpdateDate: '20150223',
     lastValidationDate: '',
     expiryDate: '20150223',
-    comments: 'ENERGY MARKT OF THE WARSAW STOCK EXCHANGE - MARKET HAS CEASED ITS ACTIVITY'
+    comments:
+      'ENERGY MARKT OF THE WARSAW STOCK EXCHANGE - MARKET HAS CEASED ITS ACTIVITY',
   },
   WGAS: {
     mic: 'WGAS',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/GAS',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/GAS',
     legalEntityName: '',
     lei: '2594001J9XAPI7Z2IB24',
     marketCategoryCode: 'NSPD',
@@ -46509,13 +47290,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: 'ADAPTATION TO OTF.'
+    comments: 'ADAPTATION TO OTF.',
   },
   PLPX: {
     mic: 'PLPX',
     operatingMic: 'XWAR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/ENERGY MARKET',
+    marketNameInstitutionDescription:
+      'WARSAW STOCK EXCHANGE/COMMODITIES/POLISH POWER EXCHANGE/ENERGY MARKET',
     legalEntityName: '',
     lei: '2594001J9XAPI7Z2IB24',
     marketCategoryCode: 'NSPD',
@@ -46528,13 +47310,14 @@ export const mics = {
     lastUpdateDate: '20200323',
     lastValidationDate: '',
     expiryDate: '20200323',
-    comments: 'ADAPTATION TO OTF.'
+    comments: 'ADAPTATION TO OTF.',
   },
   EXAA: {
     mic: 'EXAA',
     operatingMic: 'XWBO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WIENER BOERSE AG, AUSTRIAN ENERGY EXCHANGE',
+    marketNameInstitutionDescription:
+      'WIENER BOERSE AG, AUSTRIAN ENERGY EXCHANGE',
     legalEntityName: 'WIENER BOERSE AG',
     lei: '315700ENWH1A81RCVZ91',
     marketCategoryCode: 'NSPD',
@@ -46547,7 +47330,7 @@ export const mics = {
     lastUpdateDate: '20160523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XWBO: {
     mic: 'XWBO',
@@ -46566,13 +47349,14 @@ export const mics = {
     lastUpdateDate: '20081124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WBAH: {
     mic: 'WBAH',
     operatingMic: 'XWBO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WIENER BOERSE AG AMTLICHER HANDEL (OFFICIAL MARKET)',
+    marketNameInstitutionDescription:
+      'WIENER BOERSE AG AMTLICHER HANDEL (OFFICIAL MARKET)',
     legalEntityName: 'WIENER BOERSE AG',
     lei: '315700ENWH1A81RCVZ91',
     marketCategoryCode: 'RMKT',
@@ -46585,13 +47369,14 @@ export const mics = {
     lastUpdateDate: '20070723',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   WBDM: {
     mic: 'WBDM',
     operatingMic: 'XWBO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WIENER BOERSE AG VIENNA MTF (VIENNA MTF)',
+    marketNameInstitutionDescription:
+      'WIENER BOERSE AG VIENNA MTF (VIENNA MTF)',
     legalEntityName: 'WIENER BOERSE AG',
     lei: '315700ENWH1A81RCVZ91',
     marketCategoryCode: 'MLTF',
@@ -46604,13 +47389,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XVIE: {
     mic: 'XVIE',
     operatingMic: 'XWBO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'WIENER BOERSE AG, WERTPAPIERBOERSE (SECURITIES EXCHANGE)',
+    marketNameInstitutionDescription:
+      'WIENER BOERSE AG, WERTPAPIERBOERSE (SECURITIES EXCHANGE)',
     legalEntityName: 'WIENER BOERSE AG',
     lei: '315700ENWH1A81RCVZ91',
     marketCategoryCode: 'NSPD',
@@ -46623,7 +47409,7 @@ export const mics = {
     lastUpdateDate: '20110425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XXSC: {
     mic: 'XXSC',
@@ -46642,7 +47428,8 @@ export const mics = {
     lastUpdateDate: '20111024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'XXSC WILL COMPRISE THE INFORMATION FOR "FRAA" AND "FRAB". QUOTE AND TRADE INFORMATION IS DISTRIBUTED VIA CEF (CONSOLIDATED EXCHANGE FEED), THEREFORE THE SHORT NAME "FRANKFURT CEF SC" REFERS TO CEF AND SC TO SCOACH.'
+    comments:
+      'XXSC WILL COMPRISE THE INFORMATION FOR "FRAA" AND "FRAB". QUOTE AND TRADE INFORMATION IS DISTRIBUTED VIA CEF (CONSOLIDATED EXCHANGE FEED), THEREFORE THE SHORT NAME "FRANKFURT CEF SC" REFERS TO CEF AND SC TO SCOACH.',
   },
   XXXX: {
     mic: 'XXXX',
@@ -46661,7 +47448,7 @@ export const mics = {
     lastUpdateDate: '20051024',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XYIE: {
     mic: 'XYIE',
@@ -46680,13 +47467,14 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XYKT: {
     mic: 'XYKT',
     operatingMic: 'XYKT',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'YOKOHAMA COMMODITY EXCHANGE (WRONGLY RENAMED TOKYO GRAIN EXCHANGE SEPT 2006)',
+    marketNameInstitutionDescription:
+      'YOKOHAMA COMMODITY EXCHANGE (WRONGLY RENAMED TOKYO GRAIN EXCHANGE SEPT 2006)',
     legalEntityName: '',
     lei: '',
     marketCategoryCode: 'NSPD',
@@ -46699,7 +47487,7 @@ export const mics = {
     lastUpdateDate: '20061127',
     lastValidationDate: '',
     expiryDate: '20061127',
-    comments: ''
+    comments: '',
   },
   XZAG: {
     mic: 'XZAG',
@@ -46718,7 +47506,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XZCE: {
     mic: 'XZCE',
@@ -46737,7 +47525,7 @@ export const mics = {
     lastUpdateDate: '20050627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XZIM: {
     mic: 'XZIM',
@@ -46756,13 +47544,14 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ZKBX: {
     mic: 'ZKBX',
     operatingMic: 'ZKBX',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'ZURCHER KANTONALBANK SECURITIES EXCHANGE',
+    marketNameInstitutionDescription:
+      'ZURCHER KANTONALBANK SECURITIES EXCHANGE',
     legalEntityName: '',
     lei: '165GRDQ39W63PHVONY02',
     marketCategoryCode: 'NSPD',
@@ -46775,7 +47564,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.'
+    comments: 'REGISTERED MARKET FOR EQUITIES AND BONDS.',
   },
   KMUX: {
     mic: 'KMUX',
@@ -46794,7 +47583,7 @@ export const mics = {
     lastUpdateDate: '20170227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'ELECTRONIC TRADING PLATFORM FOR SWISS EQUITIES (OTC).'
+    comments: 'ELECTRONIC TRADING PLATFORM FOR SWISS EQUITIES (OTC).',
   },
   UKCA: {
     mic: 'UKCA',
@@ -46813,7 +47602,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER. FOR UK MIFID II.'
+    comments: 'SYSTEMATIC INTERNALISER. FOR UK MIFID II.',
   },
   ASEF: {
     mic: 'ASEF',
@@ -46832,7 +47621,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '20211025',
     expiryDate: '',
-    comments: 'SWAP EXECUTION FACILITY.'
+    comments: 'SWAP EXECUTION FACILITY.',
   },
   MEMM: {
     mic: 'MEMM',
@@ -46851,7 +47640,7 @@ export const mics = {
     lastUpdateDate: '20211025',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'RETAIL MIDPOINT.'
+    comments: 'RETAIL MIDPOINT.',
   },
   XEBS: {
     mic: 'XEBS',
@@ -46870,7 +47659,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY.'
+    comments: 'MULTILATERAL TRADING FACILITY.',
   },
   NSPO: {
     mic: 'NSPO',
@@ -46889,13 +47678,14 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTCI: {
     mic: 'OTCI',
     operatingMic: 'OTCI',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'OTC LINK NQB IDQS (INTER-DEALER QUOTATION SYSTEM)',
+    marketNameInstitutionDescription:
+      'OTC LINK NQB IDQS (INTER-DEALER QUOTATION SYSTEM)',
     legalEntityName: 'OTC MARKETS GROUP INC.',
     lei: '254900LQDMW14QIVAH45',
     marketCategoryCode: 'IDQS',
@@ -46908,7 +47698,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GFOX: {
     mic: 'GFOX',
@@ -46927,7 +47717,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNFT: {
     mic: 'FNFT',
@@ -46946,7 +47736,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HGSP: {
     mic: 'HGSP',
@@ -46965,7 +47755,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TERM: {
     mic: 'TERM',
@@ -46984,7 +47774,7 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   PATF: {
     mic: 'PATF',
@@ -47003,13 +47793,14 @@ export const mics = {
     lastUpdateDate: '20211122',
     lastValidationDate: '20211122',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BBVX: {
     mic: 'BBVX',
     operatingMic: 'BBVA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'BANCO BILBAO VIZCAYA ARGENTARIA S.A. - UK',
+    marketNameInstitutionDescription:
+      'BANCO BILBAO VIZCAYA ARGENTARIA S.A. - UK',
     legalEntityName: 'BANCO BILBAO VIZCAYA ARGENTARIA SOCIEDAD ANONIMA',
     lei: 'K8MS7FD7N5Z2WQ51AZ71',
     marketCategoryCode: 'SINT',
@@ -47022,7 +47813,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ODXE: {
     mic: 'ODXE',
@@ -47041,7 +47832,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HPSX: {
     mic: 'HPSX',
@@ -47060,7 +47851,7 @@ export const mics = {
     lastUpdateDate: '20220124',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DBDX: {
     mic: 'DBDX',
@@ -47079,7 +47870,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EMCE: {
     mic: 'EMCE',
@@ -47098,7 +47889,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   HPSO: {
     mic: 'HPSO',
@@ -47117,7 +47908,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ARTX: {
     mic: 'ARTX',
@@ -47136,7 +47927,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SPTX: {
     mic: 'SPTX',
@@ -47155,7 +47946,8 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: 'SPOTEX IS AN INSTITUTIONAL FOREIGN EXCHANGE ECN. OUR CLIENTS ARE PRIME BROKERS, HEDGE FUNDS, AND AUTOMATED TRADING SYSTEMS.'
+    comments:
+      'SPOTEX IS AN INSTITUTIONAL FOREIGN EXCHANGE ECN. OUR CLIENTS ARE PRIME BROKERS, HEDGE FUNDS, AND AUTOMATED TRADING SYSTEMS.',
   },
   TSIR: {
     mic: 'TSIR',
@@ -47174,7 +47966,8 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.'
+    comments:
+      'ORGANISED TRADING FACILITY FOR THE TRADING OF INTEREST RATE DERIVATIVES.',
   },
   STXS: {
     mic: 'STXS',
@@ -47193,7 +47986,7 @@ export const mics = {
     lastUpdateDate: '20211227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EUFN: {
     mic: 'EUFN',
@@ -47212,7 +48005,7 @@ export const mics = {
     lastUpdateDate: '20211227',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TSFX: {
     mic: 'TSFX',
@@ -47231,7 +48024,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '20220523',
     expiryDate: '',
-    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF FX DERIVATIVES.'
+    comments: 'ORGANISED TRADING FACILITY FOR THE TRADING OF FX DERIVATIVES.',
   },
   GFAU: {
     mic: 'GFAU',
@@ -47250,7 +48043,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CSE2: {
     mic: 'CSE2',
@@ -47269,7 +48062,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XIGG: {
     mic: 'XIGG',
@@ -47288,7 +48081,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SMBC: {
     mic: 'SMBC',
@@ -47307,7 +48100,7 @@ export const mics = {
     lastUpdateDate: '20220228',
     lastValidationDate: '20220228',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   FNXB: {
     mic: 'FNXB',
@@ -47326,7 +48119,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BGCA: {
     mic: 'BGCA',
@@ -47345,13 +48138,14 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   AQXD: {
     mic: 'AQXD',
     operatingMic: 'AQXE',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'AQUIS EXCHANGE PLC AMP NON DISPLAY ORDER BOOK',
+    marketNameInstitutionDescription:
+      'AQUIS EXCHANGE PLC AMP NON DISPLAY ORDER BOOK',
     legalEntityName: 'AQUIS EXCHANGE PLC',
     lei: '213800IXJSF5E1SIW150',
     marketCategoryCode: 'MLTF',
@@ -47364,7 +48158,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XFTX: {
     mic: 'XFTX',
@@ -47383,7 +48177,7 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NABP: {
     mic: 'NABP',
@@ -47402,13 +48196,14 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   USOB: {
     mic: 'USOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC USD WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC USD WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -47421,13 +48216,14 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BTUN: {
     mic: 'BTUN',
     operatingMic: 'XTUN',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TUNIS STOCK EXCHANGE (BOURSE DE TUNIS) - BONDS MARKET',
+    marketNameInstitutionDescription:
+      'TUNIS STOCK EXCHANGE (BOURSE DE TUNIS) - BONDS MARKET',
     legalEntityName: 'BOURSE DES VALEURS MOBILI�RES DE TUNIS',
     lei: '4117W6IV0WI0EKWA2P81',
     marketCategoryCode: 'RMKT',
@@ -47440,13 +48236,14 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ECNL: {
     mic: 'ECNL',
     operatingMic: 'RTSL',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'REFINITIV TRANSACTION SERVICES LIMITED - FX SPOT ECN',
+    marketNameInstitutionDescription:
+      'REFINITIV TRANSACTION SERVICES LIMITED - FX SPOT ECN',
     legalEntityName: 'REFINITIV TRANSACTION SERVICES LIMITED',
     lei: '549300SDDJE84DDJNB30',
     marketCategoryCode: 'OTHR',
@@ -47459,7 +48256,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RITS: {
     mic: 'RITS',
@@ -47478,7 +48275,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FXSM: {
     mic: 'FXSM',
@@ -47497,7 +48294,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FXNM: {
     mic: 'FXNM',
@@ -47516,7 +48313,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSWP: {
     mic: 'MSWP',
@@ -47535,7 +48332,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CAST: {
     mic: 'CAST',
@@ -47554,7 +48351,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XABX: {
     mic: 'XABX',
@@ -47573,7 +48370,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'COMMODITIES AND DERIVATIVES TRADING EXCHANGE'
+    comments: 'COMMODITIES AND DERIVATIVES TRADING EXCHANGE',
   },
   CILH: {
     mic: 'CILH',
@@ -47592,7 +48389,7 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: 'LIQUIDITY HUB (JAPAN).'
+    comments: 'LIQUIDITY HUB (JAPAN).',
   },
   USWP: {
     mic: 'USWP',
@@ -47611,13 +48408,14 @@ export const mics = {
     lastUpdateDate: '20220822',
     lastValidationDate: '20220822',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CBAE: {
     mic: 'CBAE',
     operatingMic: 'CBAE',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'COMMONWEALTH BANK OF AUSTRALIA (EUROPE) N.V.',
+    marketNameInstitutionDescription:
+      'COMMONWEALTH BANK OF AUSTRALIA (EUROPE) N.V.',
     legalEntityName: 'COMMONWEALTH BANK OF AUSTRALIA (EUROPE) N.V.',
     lei: '724500AAT1DK36059L16',
     marketCategoryCode: 'NSPD',
@@ -47630,7 +48428,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TRDC: {
     mic: 'TRDC',
@@ -47649,7 +48447,7 @@ export const mics = {
     lastUpdateDate: '20220926',
     lastValidationDate: '20220926',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   USEF: {
     mic: 'USEF',
@@ -47668,7 +48466,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '20221128',
-    comments: ''
+    comments: '',
   },
   NSSA: {
     mic: 'NSSA',
@@ -47687,7 +48485,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CMCM: {
     mic: 'CMCM',
@@ -47706,7 +48504,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EBLX: {
     mic: 'EBLX',
@@ -47725,7 +48523,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ERFQ: {
     mic: 'ERFQ',
@@ -47744,7 +48542,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ENTW: {
     mic: 'ENTW',
@@ -47763,7 +48561,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FUSD: {
     mic: 'FUSD',
@@ -47782,7 +48580,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETE: {
     mic: 'XETE',
@@ -47801,13 +48599,14 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XETX: {
     mic: 'XETX',
     operatingMic: 'XETR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'XETRA - NON-FINANCIAL INSTRUMENTS - OFF-BOOK',
+    marketNameInstitutionDescription:
+      'XETRA - NON-FINANCIAL INSTRUMENTS - OFF-BOOK',
     legalEntityName: 'DEUTSCHE BOERSE AG',
     lei: '529900G3SW56SHYNPR95',
     marketCategoryCode: 'MLTF',
@@ -47820,7 +48619,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SFOX: {
     mic: 'SFOX',
@@ -47839,7 +48638,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'BITCOIN AND CRYPTOASSET PRIME DEALER.'
+    comments: 'BITCOIN AND CRYPTOASSET PRIME DEALER.',
   },
   BJSE: {
     mic: 'BJSE',
@@ -47858,13 +48657,14 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NEEQ: {
     mic: 'NEEQ',
     operatingMic: 'NEEQ',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'NATIONAL EQUITIES EXCHANGE AND QUOTATIONS',
+    marketNameInstitutionDescription:
+      'NATIONAL EQUITIES EXCHANGE AND QUOTATIONS',
     legalEntityName: 'NATIONAL EQUITIES EXCHANGE AND QUOTATIONS',
     lei: '836800XHVVMXE28Y7A65',
     marketCategoryCode: 'RMKT',
@@ -47877,7 +48677,7 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '20220328',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VFEX: {
     mic: 'VFEX',
@@ -47896,13 +48696,14 @@ export const mics = {
     lastUpdateDate: '20220523',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSDM: {
     mic: 'MSDM',
     operatingMic: 'MSDM',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'MICHAEL/STROM DOM MAKLERSKI SPOLKA AKCYJNA',
+    marketNameInstitutionDescription:
+      'MICHAEL/STROM DOM MAKLERSKI SPOLKA AKCYJNA',
     legalEntityName: 'MICHAEL/STROM DOM MAKLERSKI SPOLKA AKCYJNA',
     lei: '259400CKHRZPKRS5IK67',
     marketCategoryCode: 'SINT',
@@ -47915,7 +48716,7 @@ export const mics = {
     lastUpdateDate: '20220725',
     lastValidationDate: '20220725',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LNEQ: {
     mic: 'LNEQ',
@@ -47934,13 +48735,14 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LNFI: {
     mic: 'LNFI',
     operatingMic: 'TPIC',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'TP ICAP EU - MTF - LIQUIDNET EU FIXED INCOME',
+    marketNameInstitutionDescription:
+      'TP ICAP EU - MTF - LIQUIDNET EU FIXED INCOME',
     legalEntityName: 'TP ICAP (EUROPE) SA',
     lei: '213800R54EFFINMY1P02',
     marketCategoryCode: 'MLTF',
@@ -47953,7 +48755,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IBSI: {
     mic: 'IBSI',
@@ -47972,7 +48774,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   RAJA: {
     mic: 'RAJA',
@@ -47991,7 +48793,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LPSF: {
     mic: 'LPSF',
@@ -48010,7 +48812,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GBSI: {
     mic: 'GBSI',
@@ -48029,7 +48831,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   TPID: {
     mic: 'TPID',
@@ -48048,7 +48850,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   INGU: {
     mic: 'INGU',
@@ -48067,13 +48869,14 @@ export const mics = {
     lastUpdateDate: '20220328',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SYSTEMATIC INTERNALISER.'
+    comments: 'SYSTEMATIC INTERNALISER.',
   },
   SISU: {
     mic: 'SISU',
     operatingMic: 'SISU',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'SUSQUEHANNA INTERNATIONAL SECURITIES LIMITED - LONDON BRANCH',
+    marketNameInstitutionDescription:
+      'SUSQUEHANNA INTERNATIONAL SECURITIES LIMITED - LONDON BRANCH',
     legalEntityName: 'SUSQUEHANNA INTERNATIONAL SECURITIES LIMITED',
     lei: '635400IAV22ZOU1NFS89',
     marketCategoryCode: 'SINT',
@@ -48086,13 +48889,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SEWB: {
     mic: 'SEWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - SEK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - SEK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48105,13 +48909,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DKWB: {
     mic: 'DKWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - DKK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - DKK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48124,13 +48929,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOWB: {
     mic: 'NOWB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - NOK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - NOK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48143,13 +48949,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SEOB: {
     mic: 'SEOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC SEK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC SEK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48162,13 +48969,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   DKOB: {
     mic: 'DKOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC DKK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC DKK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48181,13 +48989,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EUOB: {
     mic: 'EUOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC EUR WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC EUR WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48200,13 +49009,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GBOB: {
     mic: 'GBOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC GBP WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC GBP WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48219,13 +49029,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NOOB: {
     mic: 'NOOB',
     operatingMic: 'XSTO',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'NASDAQ STOCKHOLM AB - OTC NOK WB EQ DERIVATIVES',
+    marketNameInstitutionDescription:
+      'NASDAQ STOCKHOLM AB - OTC NOK WB EQ DERIVATIVES',
     legalEntityName: 'NASDAQ STOCKHOLM AB',
     lei: '549300KBQIVNEJEZVL96',
     marketCategoryCode: 'RMKT',
@@ -48238,7 +49049,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   OTXT: {
     mic: 'OTXT',
@@ -48257,7 +49068,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MXOP: {
     mic: 'MXOP',
@@ -48276,13 +49087,14 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BOCF: {
     mic: 'BOCF',
     operatingMic: 'BOCF',
     oprtSgmt: 'OPRT',
-    marketNameInstitutionDescription: 'BANK OF CHINA LIMITED - FRANKFURT BRANCH',
+    marketNameInstitutionDescription:
+      'BANK OF CHINA LIMITED - FRANKFURT BRANCH',
     legalEntityName: 'BANK OF CHINA LIMITED',
     lei: '54930053HGCFWVHYZX42',
     marketCategoryCode: 'SINT',
@@ -48295,7 +49107,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FPWB: {
     mic: 'FPWB',
@@ -48314,7 +49126,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SPAX: {
     mic: 'SPAX',
@@ -48333,7 +49145,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LEBV: {
     mic: 'LEBV',
@@ -48352,7 +49164,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   LESI: {
     mic: 'LESI',
@@ -48371,7 +49183,7 @@ export const mics = {
     lastUpdateDate: '20220425',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BGEM: {
     mic: 'BGEM',
@@ -48390,7 +49202,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'MULTILATERAL TRADING FACILITY FOR INTERNATIONAL EQUITIES.'
+    comments: 'MULTILATERAL TRADING FACILITY FOR INTERNATIONAL EQUITIES.',
   },
   JLEQ: {
     mic: 'JLEQ',
@@ -48409,7 +49221,8 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'MARKET MAKING PLATFORM FOR US EQUITIES OPERATED BY JUMP EXECUTION, LLC.'
+    comments:
+      'MARKET MAKING PLATFORM FOR US EQUITIES OPERATED BY JUMP EXECUTION, LLC.',
   },
   GMGE: {
     mic: 'GMGE',
@@ -48428,7 +49241,7 @@ export const mics = {
     lastUpdateDate: '20220627',
     lastValidationDate: '20220627',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IEXC: {
     mic: 'IEXC',
@@ -48447,7 +49260,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   INTL: {
     mic: 'INTL',
@@ -48466,13 +49279,14 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BRMF: {
     mic: 'BRMF',
     operatingMic: 'XBRM',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'ROMANIAN  COMMODITIES EXCHANGE - BRM-SMT',
+    marketNameInstitutionDescription:
+      'ROMANIAN  COMMODITIES EXCHANGE - BRM-SMT',
     legalEntityName: 'ROMANIAN  COMMODITIES EXCHANGE S.A.',
     lei: '2594004XQ58NIEX1Y444',
     marketCategoryCode: 'MLTF',
@@ -48485,7 +49299,7 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CXAB: {
     mic: 'CXAB',
@@ -48504,13 +49318,15 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA - LARGE IN SCALE BIDS TRADING VENUE - BLOCK TRADES.'
+    comments:
+      'CBOE AUSTRALIA - LARGE IN SCALE BIDS TRADING VENUE - BLOCK TRADES.',
   },
   CXAI: {
     mic: 'CXAI',
     operatingMic: 'CHIA',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'CBOE AUSTRALIA - BIDS PRICE IMPROVEMENT VENUE',
+    marketNameInstitutionDescription:
+      'CBOE AUSTRALIA - BIDS PRICE IMPROVEMENT VENUE',
     legalEntityName: 'CBOE GLOBAL MARKETS, INC.',
     lei: '529900RLNSGA90UPEH54',
     marketCategoryCode: 'RMKT',
@@ -48523,7 +49339,8 @@ export const mics = {
     lastUpdateDate: '20221024',
     lastValidationDate: '20221024',
     expiryDate: '',
-    comments: 'CBOE AUSTRALIA LARGE IN SCALE BIDS VENUE - TRADES WITH PRICE IMPROVEMENT.'
+    comments:
+      'CBOE AUSTRALIA LARGE IN SCALE BIDS VENUE - TRADES WITH PRICE IMPROVEMENT.',
   },
   TMUK: {
     mic: 'TMUK',
@@ -48542,7 +49359,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '20230626',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCBD: {
     mic: 'XCBD',
@@ -48561,7 +49378,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   U360: {
     mic: 'U360',
@@ -48580,7 +49397,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BDPL: {
     mic: 'BDPL',
@@ -48599,7 +49416,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   VMEX: {
     mic: 'VMEX',
@@ -48618,7 +49435,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IEOS: {
     mic: 'IEOS',
@@ -48637,7 +49454,8 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'IEOS IS AN ALTERNATIVE TRADING SYSTEM OPERATED PURSUANT TO REGULATION ATS BY INTERACTIVE BROKERS LLC.'
+    comments:
+      'IEOS IS AN ALTERNATIVE TRADING SYSTEM OPERATED PURSUANT TO REGULATION ATS BY INTERACTIVE BROKERS LLC.',
   },
   INFT: {
     mic: 'INFT',
@@ -48656,7 +49474,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   EDXM: {
     mic: 'EDXM',
@@ -48675,7 +49493,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IBKR: {
     mic: 'IBKR',
@@ -48694,7 +49512,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ALGO: {
     mic: 'ALGO',
@@ -48713,7 +49531,7 @@ export const mics = {
     lastUpdateDate: '20221128',
     lastValidationDate: '20221128',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XAND: {
     mic: 'XAND',
@@ -48732,7 +49550,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   FNDS: {
     mic: 'FNDS',
@@ -48751,7 +49569,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   IFFX: {
     mic: 'IFFX',
@@ -48770,7 +49588,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   QUNT: {
     mic: 'QUNT',
@@ -48789,7 +49607,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   GSLO: {
     mic: 'GSLO',
@@ -48808,7 +49626,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RTXF: {
     mic: 'RTXF',
@@ -48827,7 +49645,7 @@ export const mics = {
     lastUpdateDate: '20221226',
     lastValidationDate: '20221226',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ARDA: {
     mic: 'ARDA',
@@ -48846,7 +49664,7 @@ export const mics = {
     lastUpdateDate: '20230123',
     lastValidationDate: '20230123',
     expiryDate: '',
-    comments: 'ALTERNATIVE TRADING FACILITY FOR DIGITAL ASSETS.'
+    comments: 'ALTERNATIVE TRADING FACILITY FOR DIGITAL ASSETS.',
   },
   VUBA: {
     mic: 'VUBA',
@@ -48865,7 +49683,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   G360: {
     mic: 'G360',
@@ -48884,7 +49702,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ACXL: {
     mic: 'ACXL',
@@ -48903,7 +49721,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ACXC: {
     mic: 'ACXC',
@@ -48922,7 +49740,7 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ATAD: {
     mic: 'ATAD',
@@ -48941,7 +49759,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'ASSET MANAGEMENT COMPANY FOR QUALIFIED INVESTORS.'
+    comments: 'ASSET MANAGEMENT COMPANY FOR QUALIFIED INVESTORS.',
   },
   GSXN: {
     mic: 'GSXN',
@@ -48960,7 +49778,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.',
   },
   RULE: {
     mic: 'RULE',
@@ -48979,7 +49797,7 @@ export const mics = {
     lastUpdateDate: '20230227',
     lastValidationDate: '20230227',
     expiryDate: '',
-    comments: 'RULE'
+    comments: 'RULE',
   },
   MSXB: {
     mic: 'MSXB',
@@ -48998,7 +49816,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XCVD: {
     mic: 'XCVD',
@@ -49017,7 +49835,8 @@ export const mics = {
     lastUpdateDate: '20230327',
     lastValidationDate: '20230327',
     expiryDate: '',
-    comments: 'ADMINISTRATOR OF AN OVER THE COUNTER MARKET OPERATIONS REGISTRATION SYSTEM (OTC).'
+    comments:
+      'ADMINISTRATOR OF AN OVER THE COUNTER MARKET OPERATIONS REGISTRATION SYSTEM (OTC).',
   },
   MSLC: {
     mic: 'MSLC',
@@ -49036,7 +49855,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XANM: {
     mic: 'XANM',
@@ -49055,7 +49874,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   CFIM: {
     mic: 'CFIM',
@@ -49074,13 +49893,14 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   MSXO: {
     mic: 'MSXO',
     operatingMic: 'XMUS',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'MUSCAT STOCK EXCHANGE � NON-LISTED INSTRUMENTS',
+    marketNameInstitutionDescription:
+      'MUSCAT STOCK EXCHANGE � NON-LISTED INSTRUMENTS',
     legalEntityName: 'UNITED SECURITIES',
     lei: '549300Z0H15P7ZLU2G11',
     marketCategoryCode: 'OTFS',
@@ -49093,7 +49913,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XATX: {
     mic: 'XATX',
@@ -49112,7 +49932,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   ADRK: {
     mic: 'ADRK',
@@ -49131,7 +49951,7 @@ export const mics = {
     lastUpdateDate: '20230424',
     lastValidationDate: '20230424',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   RFIM: {
     mic: 'RFIM',
@@ -49150,7 +49970,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   BNDS: {
     mic: 'BNDS',
@@ -49169,7 +49989,7 @@ export const mics = {
     lastUpdateDate: '20230522',
     lastValidationDate: '20230522',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SPHR: {
     mic: 'SPHR',
@@ -49188,7 +50008,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: 'ELECTRONIC & FLOOR TRADING FOR DERIVATIVES.'
+    comments: 'ELECTRONIC & FLOOR TRADING FOR DERIVATIVES.',
   },
   AFTS: {
     mic: 'AFTS',
@@ -49207,7 +50027,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: "REPORTING MATCHED TRADES TO CCP'S FOR CLEARING."
+    comments: "REPORTING MATCHED TRADES TO CCP'S FOR CLEARING.",
   },
   TMEU: {
     mic: 'TMEU',
@@ -49226,7 +50046,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '20230626',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NXFO: {
     mic: 'NXFO',
@@ -49245,7 +50065,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNAL FUTURES DARK POOL PLATFORM FOR NOMURA JAPAN.'
+    comments: 'INTERNAL FUTURES DARK POOL PLATFORM FOR NOMURA JAPAN.',
   },
   TPDA: {
     mic: 'TPDA',
@@ -49264,7 +50084,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR SPOT CRYPTOASSETS.'
+    comments: 'OTC ELECTRONIC TRADING PLATFORM FOR SPOT CRYPTOASSETS.',
   },
   TICT: {
     mic: 'TICT',
@@ -49283,7 +50103,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XBRY: {
     mic: 'XBRY',
@@ -49302,7 +50122,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   XMME: {
     mic: 'XMME',
@@ -49321,7 +50141,7 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'SMALL AND MEDIUM-SIZED ENTERPRISES (SMES).'
+    comments: 'SMALL AND MEDIUM-SIZED ENTERPRISES (SMES).',
   },
   GSXM: {
     mic: 'GSXM',
@@ -49340,13 +50160,14 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.'
+    comments: 'GOLDMAN SACHS INTERNAL NETTING FACILITY.',
   },
   NTRL: {
     mic: 'NTRL',
     operatingMic: 'INCR',
     oprtSgmt: 'SGMT',
-    marketNameInstitutionDescription: 'INTELLIGENTCROSS - NATURAL LIQUIDITY CROSS',
+    marketNameInstitutionDescription:
+      'INTELLIGENTCROSS - NATURAL LIQUIDITY CROSS',
     legalEntityName: 'INTELLIGENT CROSS LLC',
     lei: '254900TX2BTPJWW4A154',
     marketCategoryCode: 'OTHR',
@@ -49359,14 +50180,15 @@ export const mics = {
     lastUpdateDate: '20230626',
     lastValidationDate: '',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   SCLE: {
     mic: 'SCLE',
     operatingMic: 'BMEX',
     oprtSgmt: 'SGMT',
     marketNameInstitutionDescription: 'BME SCALE',
-    legalEntityName: 'BOLSAS Y MERCADOS ESPANOLES SISTEMAS DE NEGOCIACION SOCIEDAD ANONIMA',
+    legalEntityName:
+      'BOLSAS Y MERCADOS ESPANOLES SISTEMAS DE NEGOCIACION SOCIEDAD ANONIMA',
     lei: '95980079EEM99NR57242',
     marketCategoryCode: 'MLTF',
     acronym: '',
@@ -49378,7 +50200,7 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '20230724',
     expiryDate: '',
-    comments: ''
+    comments: '',
   },
   NXBX: {
     mic: 'NXBX',
@@ -49397,8 +50219,8 @@ export const mics = {
     lastUpdateDate: '20230724',
     lastValidationDate: '',
     expiryDate: '',
-    comments: 'INTERNAL CONDITIONAL CROSSING PLATFORM FOR NOMURA JAPAN.'
-  }
+    comments: 'INTERNAL CONDITIONAL CROSSING PLATFORM FOR NOMURA JAPAN.',
+  },
 }
 
 export type Mics = typeof mics
