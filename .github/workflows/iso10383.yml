@@ -39,7 +39,7 @@ jobs:
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
-          CSV_PATH: packages/iso-10383/src/specifications/iso10383.csv
+          CSV_PATH: packages/iso-10383/src/lib/specifications/iso10383.csv
         run: |
           curl -o "${{ env.CSV_PATH }}" https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
