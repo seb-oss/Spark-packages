@@ -1,0 +1,63 @@
+name: ISO10383
+
+# TODO: Setup a schedule to update when ISO20022 updates the csv.
+on:
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '*/5 * * * *' # For testing.
+    - cron: '0 10 15 AUG *' # 2023
+    - cron: '0 10 12 SEP *' # 2023
+    - cron: '0 10 10 OCT *' # 2023
+    - cron: '0 10 15 NOV *' # 2023
+    - cron: '0 10 12 DEC *' # 2023
+    - cron: '0 10 09 JAN *' # 2024
+    - cron: '0 10 13 FEB *' # 2024
+    - cron: '0 10 12 MAR *' # 2024
+
+concurrency:
+  group: iso10383
+  cancel-in-progress: true
+
+jobs:
+  update-csv:
+    name: Update CSV
+    runs-on: ubuntu-latest
+    # needs:
+    #   - install
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Download dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Download CSV
+        run: |
+          cd packages/iso-10383
+          curl -o src/lib/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+          yarn generate
+
+      - name: Create changeset
+        run: |
+          cat <<EOF > .changeset/update-iso10383-specifications.md
+          ---
+          '@sebspark/iso-10383': minor
+          ---
+
+          Update ISO10383 specifications.
+          EOF
+
+      - name: Download CSV
+        env:
+          CI_COMMIT_MESSAGE: Update ISO10383 specifications
+          CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add .
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
