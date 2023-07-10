@@ -13,7 +13,8 @@
     "dev": "tsc --watch --noEmit",
     "lint": "eslint \"src/**/*.ts*\"",
     "test": "vitest --passWithNoTests",
-    "typecheck": "vitest typecheck --passWithNoTests"
+    "typecheck": "vitest typecheck --passWithNoTests",
+    "generate": "node scripts/parseMicCsv.mjs src/lib/specifications/iso10383.csv src/lib/generated/iso10383.ts"
   },
   "devDependencies": {
     "tsconfig": "*"
