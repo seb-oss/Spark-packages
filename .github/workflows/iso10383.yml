@@ -49,5 +49,4 @@ jobs:
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
-# TODO: Export specifications
 # TODO: Create a changeset
