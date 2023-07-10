@@ -52,15 +52,13 @@ jobs:
           EOF
 
       - name: Format generated code
-        run: |
-          yarn format -- --cache
+        run: yarn format -- --cache
 
-      - name: Download CSV
+      - name: Push changes
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
         run: |
-          yarn format -- --cache
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
           git add .
