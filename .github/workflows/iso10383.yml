@@ -47,11 +47,14 @@ jobs:
           ---
           '@sebspark/iso-10383': minor
           ---
-
+            
           Update ISO10383 specifications.
           EOF
 
-      - name: Download CSV
+      - name: Format generated code
+        run: yarn format -- --cache
+
+      - name: Push changes
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
