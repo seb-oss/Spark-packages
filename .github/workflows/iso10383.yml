@@ -41,8 +41,8 @@ jobs:
           curl -o src/lib/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           yarn generate
 
-          - name: Create changeset
-          run: |
+      - name: Create changeset
+        run: |
           cat <<EOF > .changeset/update-iso10383-specifications.md
           ---
           '@sebspark/iso-10383': minor
