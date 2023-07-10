@@ -21,16 +21,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # install:
-  #   name: Install dependencies
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
-
-  #     - name: Download dependencies
-  #       uses: bahmutov/npm-install@v1
-
   update-csv:
     name: Update CSV
     runs-on: ubuntu-latest
