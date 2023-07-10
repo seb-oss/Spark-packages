@@ -2,10 +2,6 @@
 
 ## Packages
 
-### [@sebspark/eslint-config-spark](./packages/eslint-config-spark)
-
-Default ESLint configuration
-
 ### [@sebspark/logging](./packages/logging/)
 
 A pubsub subscriber helper.
@@ -14,13 +10,21 @@ A pubsub subscriber helper.
 
 A wrapper around Google PubSub adding support for typing, serialization/deserialization, naming of subscriptions for specific topics, push routes and some more.
 
+### [@sebspark/typed-router](./packages/typed-router/)
+
+An Express router wrapped with additional TypeScript typings and defintions for our purposes.
+
 ### [@sebspark/tsconfig](./packages/tsconfig)
 
 Default TypeScript configuration
 
-### [@sebspark/typed-router](./packages/typed-router/)
+### [@sebspark/eslint-config-spark](./packages/eslint-config-spark)
 
-An Express router wrapped with additional TypeScript typings and defintions for our purposes.
+Default ESLint configuration
+
+### [@sebspark/iso-10383](./packages/iso-10383)
+
+ISO-10383 Market Identification Codes (MIC).
 
 <!--NEW_PACKAGE-->
 
