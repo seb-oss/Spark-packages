@@ -43,7 +43,7 @@ jobs:
 
       - name: Create changeset
         run: |
-          cat <<EOF > .changeset/$(date +%Y%m%d%H%M%S)-update-iso10383-specifications.md
+          cat <<EOF > .changeset/update-iso10383-specifications.md
           ---
           '@sebspark/iso-10383': minor
           ---
