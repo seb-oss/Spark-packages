@@ -45,11 +45,11 @@ jobs:
           run: |
           cat <<EOF > .changeset/update-iso10383-specifications.md
           ---
-            '@sebspark/iso-10383': minor
-            ---
-              
-              Update ISO10383 specifications.
-              EOF
+          '@sebspark/iso-10383': minor
+          ---
+            
+          Update ISO10383 specifications.
+          EOF
 
       - name: Format generated code
         run: |
