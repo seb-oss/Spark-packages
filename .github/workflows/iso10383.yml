@@ -40,6 +40,7 @@ jobs:
           cd packages/iso-10383
           curl -o src/lib/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           yarn generate
+          yarn format
 
       - name: Create changeset
         run: |
