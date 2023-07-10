@@ -37,11 +37,13 @@ jobs:
         env:
           CI_COMMIT_MESSAGE: Update ISO10383 specifications
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
+          CSV_PATH: packages/iso-10383/src/specifications/iso10383.csv
         run: |
-          curl -o packages/iso-10383/src/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+          curl -o "${{ env.CSV_PATH }}" https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
-          git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git add "${{ env.CSV_PATH }}"
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
 # TODO: Add generator
