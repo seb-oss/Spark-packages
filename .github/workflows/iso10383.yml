@@ -1,12 +1,10 @@
 name: ISO10383
 
-# TODO: Setup a schedule to update when ISO20022 updates the csv.
 on:
   pull_request:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *' # For testing.
     - cron: '0 10 15 AUG *' # 2023
     - cron: '0 10 12 SEP *' # 2023
     - cron: '0 10 10 OCT *' # 2023
