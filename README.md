@@ -26,6 +26,10 @@ Default ESLint configuration
 
 ISO-10383 Market Identification Codes (MIC).
 
+### [@sebspark/iso-4217](./packages/iso-4217)
+
+ISO-4217 currency codes.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
