@@ -1,9 +1,6 @@
 name: ISO10383
 
 on:
-  pull_request:
-    branches:
-      - main
   schedule:
     - cron: '0 10 15 AUG *' # 2023
     - cron: '0 10 12 SEP *' # 2023
