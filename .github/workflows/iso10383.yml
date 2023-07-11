@@ -1,9 +1,6 @@
 name: ISO10383
 
 on:
-  pull_request:
-    branches:
-      - main
   schedule:
     - cron: '0 10 15 AUG *' # 2023
     - cron: '0 10 12 SEP *' # 2023
@@ -22,13 +19,11 @@ jobs:
   update-csv:
     name: Update CSV
     runs-on: ubuntu-latest
-    # needs:
-    #   - install
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
