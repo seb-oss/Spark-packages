@@ -19,13 +19,11 @@ jobs:
   update-csv:
     name: Update CSV
     runs-on: ubuntu-latest
-    # needs:
-    #   - install
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.repository.default_branch }}
 
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
