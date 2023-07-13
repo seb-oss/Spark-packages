@@ -34,13 +34,14 @@ export const createPubsub = <
       wait: async () => await Promise.all(promises),
       subscribe: <T extends TopicName>(
         topicName: T,
-        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>
+        { onSuccess, onError, options }: SubscriberHandler<Topics[TopicName]>
       ) => {
         promises.push(
           topic(topicName.toString()).subscribe({
             subscriberName: name,
             onSuccess,
             onError,
+            options,
           })
         )
         return obj

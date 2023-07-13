@@ -30,6 +30,7 @@ type SubscriberArgs<T> = {
 export type SubscriberHandler<T> = {
   onError?: (err: Error) => void | Promise<void>
   onSuccess: (msg: T, headers: PubSubHeaders) => void | Promise<void>
+  options?: CreateSubscriptionOptions
 }
 
 export interface Unsubscriber {
