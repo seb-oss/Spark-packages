@@ -9,7 +9,7 @@ export type TypedRoute<
   RequestHeaders,
   RequestBody,
   Response extends ResponseType,
-  ErrorResponse extends ResponseType
+  ErrorResponse extends ResponseType,
 > = {
   requestParams: RequestParams
   requestBody: RequestBody
@@ -40,7 +40,7 @@ export type RouteDefinitions = Partial<{
 
 const abstractedHandler = <R extends MethodDefinition>(
   router: Router,
-  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
 ) => {
   const customHandler = <T extends keyof R>(
     path: T,
@@ -51,8 +51,8 @@ const abstractedHandler = <R extends MethodDefinition>(
         R[T]['requestHeaders'],
         R[T]['requestBody'],
         R[T]['response'][1]
-      >
-    ) => Promise<R[T]['response'] | R[T]['error']>
+      >,
+    ) => Promise<R[T]['response'] | R[T]['error']>,
   ) => {
     const handler = async (req: Request, res: Response, next: NextFunction) => {
       try {
@@ -100,7 +100,7 @@ export const TypedRouter = <R extends RouteDefinitions>() => {
     patch: abstractedHandler<NonNullable<R['patch']>>(expressRouter, 'PATCH'),
     delete: abstractedHandler<NonNullable<R['delete']>>(
       expressRouter,
-      'DELETE'
+      'DELETE',
     ),
   }
 }

@@ -13,9 +13,9 @@ export const publisher =
   <
     Msg,
     TopicName extends string | number | symbol,
-    Headers extends Record<string, unknown>
+    Headers extends Record<string, unknown>,
   >(
-    topicName: TopicName
+    topicName: TopicName,
   ): Publisher<Msg, Headers> =>
   async (message, headers?) => {
     const topic = await getOrCreateTopic(topicName.toString())

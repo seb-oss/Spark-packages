@@ -14,14 +14,14 @@ export interface PubSubTopic<Msg, Topics extends TypeMap> {
 
 export const createPubsub = <
   Topics extends TypeMap,
-  SubscriberName extends string
+  SubscriberName extends string,
 >() => {
   type TopicName = keyof Topics
 
   const topic = (name: TopicName): PubSubTopic<Topics[TopicName], Topics> => {
     return {
       publish: publisher<Topics[TopicName], TopicName, Record<string, unknown>>(
-        name
+        name,
       ),
       subscribe: subscriber<Topics[TopicName], TopicName>(name),
       name: name,
@@ -34,14 +34,14 @@ export const createPubsub = <
       wait: async () => await Promise.all(promises),
       subscribe: <T extends TopicName>(
         topicName: T,
-        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>
+        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>,
       ) => {
         promises.push(
           topic(topicName.toString()).subscribe({
             subscriberName: name,
             onSuccess,
             onError,
-          })
+          }),
         )
         return obj
       },
