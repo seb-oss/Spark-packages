@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.2.4
+
+### Patch Changes
+
+- c01e35d: Updated vulnerable dependencies
+
 ## 0.2.3
 
 ### Patch Changes
