@@ -30,6 +30,10 @@ ISO-10383 Market Identification Codes (MIC).
 
 ISO-4217 currency codes.
 
+### [@sebspark/react-native-snowplow-provider](./packages/react-native-snowplow-provider)
+
+Context and Provider for using Snowplow in RN
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
