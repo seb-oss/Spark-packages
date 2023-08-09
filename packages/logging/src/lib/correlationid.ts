@@ -8,7 +8,7 @@ export const CorrIdHeaderName = 'X-Correlation-Id'
 
 export const runWithCorrelationId = async (
   callback: () => Promise<void>,
-  existingCorrId?: string
+  existingCorrId?: string,
 ) => {
   return new Promise<void>((res) => {
     const corrId = existingCorrId ?? randomUUID().substring(0, 8)
@@ -26,7 +26,7 @@ export const getCorrId = () => {
 export const correlationIdMiddleware = (
   req: Request,
   _res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   runWithCorrelationId(async () => {
     next()

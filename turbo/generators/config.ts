@@ -3,7 +3,7 @@ import { PlopTypes } from '@turbo/gen'
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setPartial(
     'new-package-folder',
-    '{{ turbo.paths.root }}/packages/{{name}}'
+    '{{ turbo.paths.root }}/packages/{{name}}',
   )
 
   plop.setGenerator('package', {
