@@ -76,7 +76,7 @@ const setup = () => {
       if (name === 'push-message') subscriberFn = cb
       if (name === 'message') subscriberFn = cb
       return subscription
-    },
+    }
   )
 
   const pubsub = new PubSub() as MockedObject<PubSub>
@@ -143,6 +143,16 @@ describe('#topic', () => {
       expect(mockTopic.publishMessage).toHaveBeenCalledWith({ data })
     })
 
+    it('serialises the message unwrapped when passed raw', async () => {
+      const { createdPubsub, mockTopic, topicData, topicName } = setup()
+      const headers = { identity: 'test' }
+      const data = Buffer.from(JSON.stringify(topicData))
+
+      await createdPubsub.topic(topicName).publish(topicData, headers, true)
+
+      expect(mockTopic.publishMessage).toHaveBeenCalledWith({ data })
+    })
+
     it('returns the result', async () => {
       const { createdPubsub, topicData, topicName } = setup()
       const result = await createdPubsub.topic(topicName).publish(topicData)
@@ -176,14 +186,14 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
     it('retrieves the existing subscription if it already exists', async () => {
       const { createdPubsub, mockTopic, topicName, subscription } = setup()
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -192,7 +202,7 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.subscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
+        topicName + '.gateway'
       )
       expect(subscription.get).toHaveBeenCalledWith()
     })
@@ -206,11 +216,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -224,11 +234,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -342,7 +352,7 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
@@ -350,7 +360,7 @@ describe('#topic', () => {
       const { createdPubsub, mockTopic, topicName, subscription } = setup()
 
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -359,7 +369,7 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.subscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
+        topicName + '.gateway'
       )
       expect(subscription.get).toHaveBeenCalledWith()
     })
@@ -374,11 +384,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -393,11 +403,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
