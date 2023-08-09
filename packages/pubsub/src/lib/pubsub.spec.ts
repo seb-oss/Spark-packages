@@ -143,6 +143,16 @@ describe('#topic', () => {
       expect(mockTopic.publishMessage).toHaveBeenCalledWith({ data })
     })
 
+    it('serialises the message unwrapped when passed raw', async () => {
+      const { createdPubsub, mockTopic, topicData, topicName } = setup()
+      const headers = { identity: 'test' }
+      const data = Buffer.from(JSON.stringify(topicData))
+
+      await createdPubsub.topic(topicName).publish(topicData, headers, true)
+
+      expect(mockTopic.publishMessage).toHaveBeenCalledWith({ data })
+    })
+
     it('returns the result', async () => {
       const { createdPubsub, topicData, topicName } = setup()
       const result = await createdPubsub.topic(topicName).publish(topicData)

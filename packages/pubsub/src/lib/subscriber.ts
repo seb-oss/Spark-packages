@@ -163,6 +163,11 @@ export const subscriber =
         },
       }
 
+      // If data has no message property, treat it as a raw message, unwrapped.
+      if (!typed.body) {
+        typed.body = data as Msg
+      }
+
       try {
         await onSuccess(typed.body, typed.headers)
         message.ack()

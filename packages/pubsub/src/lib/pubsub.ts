@@ -7,7 +7,11 @@ export interface TypeMap {
 }
 
 export interface PubSubTopic<Msg, Topics extends TypeMap> {
-  publish: (message: Msg, headers?: Record<string, unknown>) => Promise<string>
+  publish: (
+    message: Msg,
+    headers?: Record<string, unknown>,
+    raw?: boolean,
+  ) => Promise<string>
   subscribe: Subscriber<Msg>
   name: keyof Topics
 }
