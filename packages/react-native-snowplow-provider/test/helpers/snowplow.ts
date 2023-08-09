@@ -1,10 +1,6 @@
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { ForwardedRef, forwardRef, useImperativeHandle } from 'react'
 import { vi } from 'vitest'
-import { SnowplowTracker, useSnowplow } from './SnowplowProvider'
-
-export const wait = (ms: number) => new Promise<void>((res) => setTimeout(res, ms))
 
 export const createSnowplowServer = (host: string) => {
   const tracker = vi.fn()
@@ -22,9 +18,3 @@ export const createSnowplowServer = (host: string) => {
     stop: () => server.close(),
   }
 }
-
-export const TrackingComponent = forwardRef((_, ref: ForwardedRef<SnowplowTracker>) => {
-  const tracker = useSnowplow()
-  useImperativeHandle(ref, () => tracker, [])
-  return (<></>)
-})
