@@ -5,7 +5,7 @@ export const pubsub = new PubSub()
 
 export const getOrCreateTopic = async (
   topicName: string,
-  tries = 0,
+  tries = 0
 ): Promise<Topic> => {
   try {
     const [t] = await pubsub.topic(topicName).get({ autoCreate: true })
