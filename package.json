@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "1.10.12",
-    "@types/node": "18.17.3",
+    "@types/node": "18.17.4",
     "csv-parse": "5.4.0",
     "fast-xml-parser": "4.2.7",
     "prettier": "3.0.1",
