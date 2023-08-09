@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.3.0
+
+### Minor Changes
+
+- 60f1482: Support unwrapped messages for legacy integrations.
+
 ## 0.2.4
 
 ### Patch Changes
