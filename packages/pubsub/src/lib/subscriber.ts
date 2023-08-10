@@ -182,9 +182,12 @@ export const subscriber =
     switch (process.env.PUBSUB_DELIVERY_MODE) {
       case 'push':
         messageHandlerEvent = 'push-message'
+        // TODO: Re-enable support for push messages according to 4.0.0
+        // https://www.npmjs.com/package/@sebspark/pubsub
+        // https://github.com/googleapis/nodejs-pubsub/blob/main/samples/createPushSubscription.js
         break
       case 'pull':
-        messageHandlerEvent = 'message'
+        subscription.on('message', messageHandler)
         break
       default:
         throw new Error(
@@ -192,7 +195,6 @@ export const subscriber =
         )
     }
 
-    subscription.on(messageHandlerEvent, messageHandler)
     subscription.on('error', errorHandler)
 
     const unsubscriber: Unsubscriber = () => {
