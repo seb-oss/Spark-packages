@@ -183,7 +183,7 @@ export const subscriber =
       case 'push':
         messageHandlerEvent = 'push-message'
         // TODO: Re-enable support for push messages according to 4.0.0
-        // https://www.npmjs.com/package/@sebspark/pubsub
+        // https://www.npmjs.com/package/@google-cloud/pubsub
         // https://github.com/googleapis/nodejs-pubsub/blob/main/samples/createPushSubscription.js
         break
       case 'pull':
