@@ -4,7 +4,7 @@ import type {
   Subscription,
   Topic,
 } from '@google-cloud/pubsub'
-import { getOrCreateTopic } from './client'
+import { ClientConfig, getOrCreateTopic } from './client'
 
 const ALREADY_EXISTS_ERROR = '6 ALREADY_EXISTS'
 
@@ -145,9 +145,10 @@ const createOrGetSubscription = async (
 export const subscriber =
   <Msg, TopicName extends string | number | symbol>(
     topicName: TopicName,
+    config?: ClientConfig,
   ): Subscriber<Msg> =>
   async ({ subscriberName, onSuccess, onError }) => {
-    const topic = await getOrCreateTopic(topicName.toString())
+    const topic = await getOrCreateTopic(topicName.toString(), config)
     const subscriptionName = `${topicName.toString()}.${subscriberName}`
     const subscription = await createOrGetSubscription(subscriptionName, topic)
     const messageHandler = async (message: Message) => {

@@ -1,3 +1,4 @@
+import { ClientConfig } from './client'
 import { publisher } from './publisher'
 import type { Subscriber, SubscriberHandler, Unsubscriber } from './subscriber'
 import { subscriber } from './subscriber'
@@ -22,17 +23,24 @@ export const createPubsub = <
 >() => {
   type TopicName = keyof Topics
 
-  const topic = (name: TopicName): PubSubTopic<Topics[TopicName], Topics> => {
+  const topic = (
+    name: TopicName,
+    config?: ClientConfig,
+  ): PubSubTopic<Topics[TopicName], Topics> => {
     return {
       publish: publisher<Topics[TopicName], TopicName, Record<string, unknown>>(
         name,
+        config,
       ),
-      subscribe: subscriber<Topics[TopicName], TopicName>(name),
+      subscribe: subscriber<Topics[TopicName], TopicName>(name, config),
       name: name,
     }
   }
 
-  const subscribeToMultipleAs = (name: SubscriberName) => {
+  const subscribeToMultipleAs = (
+    name: SubscriberName,
+    config: ClientConfig,
+  ) => {
     const promises: Promise<Unsubscriber>[] = []
     const obj = {
       wait: async () => await Promise.all(promises),
@@ -41,7 +49,7 @@ export const createPubsub = <
         { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>,
       ) => {
         promises.push(
-          topic(topicName.toString()).subscribe({
+          topic(topicName.toString(), config).subscribe({
             subscriberName: name,
             onSuccess,
             onError,
