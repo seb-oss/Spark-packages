@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.8
+
+### Patch Changes
+
+- 41af766: Adding NPM keywords
+
 ## 0.1.7
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # @sebspark/pubsub
 
+## 0.5.0
+
+### Minor Changes
+
+- 1112b62: - Added support for credentials
+  - Bugfixes
+
+### Patch Changes
+
+- 41af766: Adding NPM keywords
+
 ## 0.4.0
 
 ### Minor Changes

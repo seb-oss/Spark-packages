@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.2.1
+
+### Patch Changes
+
+- 41af766: Adding NPM keywords
+
 ## 0.2.0
 
 ### Minor Changes
