@@ -3,12 +3,19 @@ import { PubSub } from '@google-cloud/pubsub'
 
 export type ClientConfig = {
   projectId: string
+
+  credentials?: {
+    client_email: string
+    private_key: string
+  }
 }
 
 const localProjectId = 'local'
 const clients: Record<string, PubSub> = {}
 
-const init = ({ projectId }: ClientConfig = { projectId: localProjectId }) => {
+const init = (
+  { projectId, credentials }: ClientConfig = { projectId: localProjectId },
+) => {
   if (!clients[projectId]) {
     if (projectId === localProjectId) {
       // Create a default client when there is no config.
@@ -16,6 +23,7 @@ const init = ({ projectId }: ClientConfig = { projectId: localProjectId }) => {
     } else {
       clients[projectId] = new PubSub({
         projectId,
+        credentials,
       })
     }
   }

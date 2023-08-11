@@ -39,7 +39,7 @@ export const createPubsub = <
 
   const subscribeToMultipleAs = (
     name: SubscriberName,
-    config: ClientConfig,
+    config?: ClientConfig,
   ) => {
     const promises: Promise<Unsubscriber>[] = []
     const obj = {
