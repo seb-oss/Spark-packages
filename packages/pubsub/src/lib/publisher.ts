@@ -1,4 +1,4 @@
-import { getOrCreateTopic } from './client'
+import { ClientConfig, getOrCreateTopic } from './client'
 
 interface Publisher<T, Headers, raw> {
   (message: T, headers?: Headers, raw?: raw): Promise<string>
@@ -16,9 +16,10 @@ export const publisher =
     Headers extends Record<string, unknown>,
   >(
     topicName: TopicName,
+    config?: ClientConfig,
   ): Publisher<Msg, Headers, boolean> =>
   async (message, headers?, raw?) => {
-    const topic = await getOrCreateTopic(topicName.toString())
+    const topic = await getOrCreateTopic(topicName.toString(), config)
     const msg: PubsubMessage<Msg, Headers> = {
       message,
       headers,
