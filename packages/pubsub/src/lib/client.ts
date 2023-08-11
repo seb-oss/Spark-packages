@@ -5,15 +5,10 @@ export type ClientConfig = {
   projectId: string
 }
 
-const localProjectId: string = 'local'
+const localProjectId = 'local'
 const clients: Record<string, PubSub> = {}
 
-const init = (config?: ClientConfig) => {
-  let projectId: string = localProjectId
-  if (config && config.projectId) {
-    projectId = config.projectId
-  }
-
+const init = ({ projectId }: ClientConfig = { projectId: localProjectId }) => {
   if (!clients[projectId]) {
     if (projectId === localProjectId) {
       // Create a default client when there is no config.
