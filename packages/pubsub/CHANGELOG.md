@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.4.0
+
+### Minor Changes
+
+- b868ede: Support initiating PubSub with projectId
+
 ## 0.3.0
 
 ### Minor Changes
