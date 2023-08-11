@@ -18,5 +18,14 @@
   },
   "devDependencies": {
     "tsconfig": "*"
-  }
+  },
+  "keywords": [
+    "Financial",
+    "Financial Instruments",
+    "ISO",
+    "ISO 10383",
+    "Market Identifier Codes",
+    "MIC",
+    "Securities"
+  ]
 }
