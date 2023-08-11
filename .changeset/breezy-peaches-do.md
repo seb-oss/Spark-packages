@@ -1,5 +1,6 @@
 ---
-'@sebspark/pubsub': patch
+'@sebspark/pubsub': minor
 ---
 
-Fixing bugs
+- Added support for credentials
+- Bugfixes
