@@ -67,6 +67,10 @@ const setup = () => {
 
   const mockConfig = {
     projectId: 'test-project-id',
+    credentials: {
+      client_email: 'test-client-email',
+      private_key: '----- BEGIN ------\ntest-private-key\n----- END ------\n',
+    },
   }
 
   mockTopic.get.mockImplementation(async () => [mockTopic])
@@ -145,6 +149,10 @@ describe('creates an instance of PubSub', () => {
 
       expect(PubSub).toHaveBeenCalledWith({
         projectId: mockConfig.projectId,
+        credentials: {
+          client_email: mockConfig.credentials.client_email,
+          private_key: mockConfig.credentials.private_key,
+        },
       })
     })
 
@@ -158,6 +166,10 @@ describe('creates an instance of PubSub', () => {
 
       expect(PubSub).toHaveBeenCalledWith({
         projectId: mockConfig.projectId,
+        credentials: {
+          client_email: mockConfig.credentials.client_email,
+          private_key: mockConfig.credentials.private_key,
+        },
       })
     })
   })
