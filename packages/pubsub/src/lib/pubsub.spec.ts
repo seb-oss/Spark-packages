@@ -143,7 +143,9 @@ describe('creates an instance of PubSub', () => {
 
       await createdPubsub.topic(topicName, mockConfig).publish(topicData)
 
-      expect(PubSub).toHaveBeenCalledWith(mockConfig)
+      expect(PubSub).toHaveBeenCalledWith({
+        projectId: mockConfig.projectId,
+      })
     })
 
     it('when subscribing', async () => {
@@ -154,7 +156,9 @@ describe('creates an instance of PubSub', () => {
         onSuccess: () => undefined,
       })
 
-      expect(PubSub).toHaveBeenCalledWith(mockConfig)
+      expect(PubSub).toHaveBeenCalledWith({
+        projectId: mockConfig.projectId,
+      })
     })
   })
 })
