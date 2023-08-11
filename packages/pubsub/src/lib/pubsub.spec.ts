@@ -65,6 +65,10 @@ const setup = () => {
     off: vi.fn(),
   }
 
+  const mockConfig = {
+    projectId: 'test-project-id',
+  }
+
   mockTopic.get.mockImplementation(async () => [mockTopic])
   mockTopic.publishMessage.mockImplementation(async () => 'ok')
   mockTopic.createSubscription.mockImplementation(async () => [subscription])
@@ -94,6 +98,7 @@ const setup = () => {
     mockTopic,
     subscription,
     pubsub,
+    mockConfig,
     ...testMessage,
   }
 }
@@ -110,8 +115,52 @@ afterAll(() => {
   delete process.env.PUBSUB_PUSH_HOST
 })
 
-it('creates an instance of PubSub', () => {
-  expect(PubSub).toHaveBeenCalled()
+describe('creates an instance of PubSub', () => {
+  describe('without configuration', () => {
+    it('when publishing', async () => {
+      const { createdPubsub, topicData, topicName } = setup()
+
+      await createdPubsub.topic(topicName).publish(topicData)
+
+      expect(PubSub).toHaveBeenCalled()
+    })
+
+    it('when subscribing', async () => {
+      const { createdPubsub, topicName } = setup()
+
+      await createdPubsub.topic(topicName).subscribe({
+        subscriberName: 'gateway',
+        onSuccess: () => undefined,
+      })
+
+      expect(PubSub).toHaveBeenCalled()
+    })
+  })
+
+  describe('with projectId when passed config', () => {
+    it('when publishing', async () => {
+      const { createdPubsub, mockConfig, topicData, topicName } = setup()
+
+      await createdPubsub.topic(topicName, mockConfig).publish(topicData)
+
+      expect(PubSub).toHaveBeenCalledWith({
+        projectId: mockConfig.projectId,
+      })
+    })
+
+    it('when subscribing', async () => {
+      const { createdPubsub, mockConfig, topicName } = setup()
+
+      await createdPubsub.topic(topicName, mockConfig).subscribe({
+        subscriberName: 'gateway',
+        onSuccess: () => undefined,
+      })
+
+      expect(PubSub).toHaveBeenCalledWith({
+        projectId: mockConfig.projectId,
+      })
+    })
+  })
 })
 
 describe('#topic', () => {
