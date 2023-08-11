@@ -18,5 +18,14 @@
   },
   "devDependencies": {
     "tsconfig": "*"
-  }
+  },
+  "keywords": [
+    "Financial",
+    "International",
+    "ISO",
+    "ISO 4217",
+    "Currencies",
+    "Currency Codes",
+    "Money"
+  ]
 }
