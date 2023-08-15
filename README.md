@@ -1,5 +1,7 @@
 # SEB Spark
 
+Public packages published under the [@sebspark](https://www.npmjs.com/org/sebspark) organisation on NPM.
+
 ## Packages
 
 ### [@sebspark/logging](./packages/logging/)
