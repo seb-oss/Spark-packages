@@ -32,6 +32,10 @@ ISO-10383 Market Identification Codes (MIC).
 
 ISO-4217 currency codes.
 
+### [@sebspark/log](./packages/log)
+
+Enhanced console logs.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
