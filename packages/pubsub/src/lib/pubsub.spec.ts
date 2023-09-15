@@ -137,7 +137,7 @@ describe('creates an instance of PubSub', () => {
       const { createdPubsub, topicName } = setup()
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
@@ -162,7 +162,7 @@ describe('creates an instance of PubSub', () => {
 
       await createdPubsub.topic(topicName, mockConfig).publish(topicData)
 
-      expect(PubSub).toHaveBeenCalledWith({
+      expect(PubSub).toHaveBeenLastCalledWith({
         projectId: mockConfig.projectId,
         credentials: {
           client_email: mockConfig.credentials.client_email,
@@ -175,7 +175,7 @@ describe('creates an instance of PubSub', () => {
       const { createdPubsub, mockConfig, topicName } = setup()
 
       await createdPubsub.topic(topicName, mockConfig).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
@@ -242,12 +242,12 @@ describe('#topic', () => {
       const { createdPubsub, mockTopic, topicName } = setup()
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
+        topicName + '.test',
         {
           pushConfig: expect.any(Object),
           retryPolicy: {
@@ -273,20 +273,18 @@ describe('#topic', () => {
       )
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
-      )
+      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
       expect(subscription.get).toHaveBeenCalledWith()
     })
 
     it('subscribes', async () => {
       const { createdPubsub, topicName, subscription } = setup()
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
@@ -303,7 +301,7 @@ describe('#topic', () => {
     it('unsubscribes', async () => {
       const { createdPubsub, topicName, subscription } = setup()
       const unsubscribe = await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
       unsubscribe()
@@ -323,7 +321,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: () => undefined,
         })
 
@@ -341,7 +339,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: async () => undefined,
         })
 
@@ -359,7 +357,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: () => {
             throw new Error('Did not work')
           },
@@ -379,7 +377,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: async () => {
             throw new Error('Did not work')
           },
@@ -409,12 +407,12 @@ describe('#topic', () => {
       const { createdPubsub, mockTopic, topicName } = setup()
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
+        topicName + '.test',
         {
           retryPolicy: {
             minimumBackoff: {
@@ -440,13 +438,11 @@ describe('#topic', () => {
       )
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(
-        topicName + '.gateway',
-      )
+      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
       expect(subscription.get).toHaveBeenCalledWith()
     })
 
@@ -454,7 +450,7 @@ describe('#topic', () => {
       const { createdPubsub, topicName, subscription } = setup()
 
       await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
@@ -472,7 +468,7 @@ describe('#topic', () => {
       const { createdPubsub, topicName, subscription } = setup()
 
       const unsubscribe = await createdPubsub.topic(topicName).subscribe({
-        subscriberName: 'gateway',
+        subscriberName: 'test',
         onSuccess: () => undefined,
       })
       unsubscribe()
@@ -492,7 +488,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: () => undefined,
         })
 
@@ -510,7 +506,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: async () => undefined,
         })
 
@@ -528,7 +524,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: () => {
             throw new Error('Did not work')
           },
@@ -548,7 +544,7 @@ describe('#topic', () => {
         const { createdPubsub, topicName, ack, nack } = setup()
 
         await createdPubsub.topic(topicName).subscribe({
-          subscriberName: 'gateway',
+          subscriberName: 'test',
           onSuccess: async () => {
             throw new Error('Did not work')
           },
