@@ -120,13 +120,17 @@ afterAll(() => {
 })
 
 describe('creates an instance of PubSub', () => {
+  afterEach(() => {
+    vi.clearAllMocks()
+  })
+
   describe('without configuration', () => {
     it('when publishing', async () => {
       const { createdPubsub, topicData, topicName } = setup()
 
       await createdPubsub.topic(topicName).publish(topicData)
 
-      expect(PubSub).toHaveBeenCalled()
+      expect(PubSub).toHaveBeenCalledTimes(2)
     })
 
     it('when subscribing', async () => {
@@ -137,7 +141,18 @@ describe('creates an instance of PubSub', () => {
         onSuccess: () => undefined,
       })
 
-      expect(PubSub).toHaveBeenCalled()
+      expect(PubSub).toHaveBeenCalledTimes(1)
+    })
+
+    it('when subscribing to multiple', async () => {
+      const { createdPubsub, topicName } = setup()
+
+      await createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
+        onSuccess: () => undefined,
+        onError: () => undefined,
+      })
+
+      expect(PubSub).toHaveBeenCalledTimes(1)
     })
   })
 
