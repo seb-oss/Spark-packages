@@ -23,16 +23,13 @@ export const createPubsub = <
 >() => {
   type TopicName = keyof Topics
 
-  const topic = (
-    name: TopicName,
+  const topic = <T extends TopicName>(
+    name: T,
     config?: ClientConfig,
-  ): PubSubTopic<Topics[TopicName], Topics> => {
+  ): PubSubTopic<Topics[T], Topics> => {
     return {
-      publish: publisher<Topics[TopicName], TopicName, Record<string, unknown>>(
-        name,
-        config,
-      ),
-      subscribe: subscriber<Topics[TopicName], TopicName>(name, config),
+      publish: publisher<Topics[T], T, Record<string, unknown>>(name, config),
+      subscribe: subscriber<Topics[T], T>(name, config),
       name: name,
     }
   }
