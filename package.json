@@ -27,7 +27,7 @@
     "tsup": "7.2.0",
     "turbo": "1.10.13",
     "typescript": "5.2.2",
-    "vitest": "0.34.3"
+    "vitest": "0.34.4"
   },
   "resolutions": {
     "semver": ">=7.5.4",
