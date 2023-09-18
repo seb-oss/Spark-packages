@@ -12,7 +12,6 @@ import {
   it,
   vi,
 } from 'vitest'
-import { createPubsub } from './pubsub'
 
 type Topics<T> = {
   'accounts.newtransaction': T
@@ -48,7 +47,7 @@ vi.mock('@google-cloud/pubsub', () => {
 
 let subscriberFn: (args: { ack: Mock; nack: Mock; data: string }) => void
 
-const setup = () => {
+const setup = async () => {
   vi.spyOn(console, 'error').mockImplementation(() => undefined)
 
   const testMessage = createTestMessage()
@@ -88,6 +87,7 @@ const setup = () => {
   )
 
   const pubsub = new PubSub() as MockedObject<PubSub>
+  const { createPubsub } = await import('./pubsub')
   const createdPubsub = createPubsub<
     Topics<typeof testMessage.topicData>,
     'test'
@@ -122,11 +122,12 @@ afterAll(() => {
 describe('creates an instance of PubSub', () => {
   afterEach(() => {
     vi.clearAllMocks()
+    vi.resetModules()
   })
 
   describe('without configuration', () => {
     it('when publishing', async () => {
-      const { createdPubsub, topicData, topicName } = setup()
+      const { createdPubsub, topicData, topicName } = await setup()
 
       await createdPubsub.topic(topicName).publish(topicData)
 
@@ -134,31 +135,32 @@ describe('creates an instance of PubSub', () => {
     })
 
     it('when subscribing', async () => {
-      const { createdPubsub, topicName } = setup()
+      const { createdPubsub, topicName } = await setup()
 
       await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
         onSuccess: () => undefined,
       })
 
-      expect(PubSub).toHaveBeenCalledTimes(1)
+      expect(PubSub).toHaveBeenCalledTimes(2)
     })
 
     it('when subscribing to multiple', async () => {
-      const { createdPubsub, topicName } = setup()
+      const { createdPubsub, topicName } = await setup()
 
       await createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
         onSuccess: () => undefined,
         onError: () => undefined,
       })
 
-      expect(PubSub).toHaveBeenCalledTimes(1)
+      expect(PubSub).toHaveBeenCalledTimes(2)
+      expect(PubSub).toHaveBeenCalledWith()
     })
   })
 
   describe('with projectId when passed config', () => {
     it('when publishing', async () => {
-      const { createdPubsub, mockConfig, topicData, topicName } = setup()
+      const { createdPubsub, mockConfig, topicData, topicName } = await setup()
 
       await createdPubsub.topic(topicName, mockConfig).publish(topicData)
 
@@ -172,7 +174,7 @@ describe('creates an instance of PubSub', () => {
     })
 
     it('when subscribing', async () => {
-      const { createdPubsub, mockConfig, topicName } = setup()
+      const { createdPubsub, mockConfig, topicName } = await setup()
 
       await createdPubsub.topic(topicName, mockConfig).subscribe({
         subscriberName: 'test',
@@ -192,7 +194,8 @@ describe('creates an instance of PubSub', () => {
 
 describe('#topic', () => {
   it('calls topic.get on pubsub', async () => {
-    const { createdPubsub, pubsub, mockTopic, topicData, topicName } = setup()
+    const { createdPubsub, pubsub, mockTopic, topicData, topicName } =
+      await setup()
 
     await createdPubsub.topic(topicName).publish(topicData)
 
@@ -202,7 +205,7 @@ describe('#topic', () => {
 
   describe('publish', () => {
     it('calls publishMessage', async () => {
-      const { createdPubsub, mockTopic, topicData, topicName } = setup()
+      const { createdPubsub, mockTopic, topicData, topicName } = await setup()
 
       await createdPubsub.topic(topicName).publish(topicData)
 
@@ -210,7 +213,7 @@ describe('#topic', () => {
     })
 
     it('serialises the message', async () => {
-      const { createdPubsub, mockTopic, topicData, topicName } = setup()
+      const { createdPubsub, mockTopic, topicData, topicName } = await setup()
       const headers = { identity: 'test' }
       const data = Buffer.from(JSON.stringify({ message: topicData, headers }))
 
@@ -220,7 +223,7 @@ describe('#topic', () => {
     })
 
     it('serialises the message unwrapped when passed raw', async () => {
-      const { createdPubsub, mockTopic, topicData, topicName } = setup()
+      const { createdPubsub, mockTopic, topicData, topicName } = await setup()
       const headers = { identity: 'test' }
       const data = Buffer.from(JSON.stringify(topicData))
 
@@ -230,7 +233,7 @@ describe('#topic', () => {
     })
 
     it('returns the result', async () => {
-      const { createdPubsub, topicData, topicName } = setup()
+      const { createdPubsub, topicData, topicName } = await setup()
       const result = await createdPubsub.topic(topicName).publish(topicData)
 
       expect(result).toEqual('ok')
@@ -239,7 +242,7 @@ describe('#topic', () => {
 
   describe('subscribe', () => {
     it('creates a subscription using topic.createSubscription', async () => {
-      const { createdPubsub, mockTopic, topicName } = setup()
+      const { createdPubsub, mockTopic, topicName } = await setup()
 
       await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
@@ -267,7 +270,8 @@ describe('#topic', () => {
     })
 
     it('retrieves the existing subscription if it already exists', async () => {
-      const { createdPubsub, mockTopic, topicName, subscription } = setup()
+      const { createdPubsub, mockTopic, topicName, subscription } =
+        await setup()
       mockTopic.createSubscription.mockRejectedValue(
         new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
       )
@@ -282,7 +286,7 @@ describe('#topic', () => {
     })
 
     it('subscribes', async () => {
-      const { createdPubsub, topicName, subscription } = setup()
+      const { createdPubsub, topicName, subscription } = await setup()
       await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
         onSuccess: () => undefined,
@@ -299,7 +303,7 @@ describe('#topic', () => {
     })
 
     it('unsubscribes', async () => {
-      const { createdPubsub, topicName, subscription } = setup()
+      const { createdPubsub, topicName, subscription } = await setup()
       const unsubscribe = await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
         onSuccess: () => undefined,
@@ -318,7 +322,7 @@ describe('#topic', () => {
 
     describe('ack and nacking', () => {
       it('acks after completed', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -336,7 +340,7 @@ describe('#topic', () => {
       })
 
       it('acks after completed (promise)', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -354,7 +358,7 @@ describe('#topic', () => {
       })
 
       it('nacks when throw', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -374,7 +378,7 @@ describe('#topic', () => {
       })
 
       it('nacks when throw (promise)', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -404,7 +408,7 @@ describe('#topic', () => {
     })
 
     it('creates a subscription using topic.createSubscription', async () => {
-      const { createdPubsub, mockTopic, topicName } = setup()
+      const { createdPubsub, mockTopic, topicName } = await setup()
 
       await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
@@ -431,7 +435,8 @@ describe('#topic', () => {
     })
 
     it('retrieves the existing subscription if it already exists', async () => {
-      const { createdPubsub, mockTopic, topicName, subscription } = setup()
+      const { createdPubsub, mockTopic, topicName, subscription } =
+        await setup()
 
       mockTopic.createSubscription.mockRejectedValue(
         new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
@@ -447,7 +452,7 @@ describe('#topic', () => {
     })
 
     it('subscribes', async () => {
-      const { createdPubsub, topicName, subscription } = setup()
+      const { createdPubsub, topicName, subscription } = await setup()
 
       await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
@@ -465,7 +470,7 @@ describe('#topic', () => {
     })
 
     it('unsubscribes', async () => {
-      const { createdPubsub, topicName, subscription } = setup()
+      const { createdPubsub, topicName, subscription } = await setup()
 
       const unsubscribe = await createdPubsub.topic(topicName).subscribe({
         subscriberName: 'test',
@@ -485,7 +490,7 @@ describe('#topic', () => {
 
     describe('ack and nacking', () => {
       it('acks after completed', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -503,7 +508,7 @@ describe('#topic', () => {
       })
 
       it('acks after completed (promise)', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -521,7 +526,7 @@ describe('#topic', () => {
       })
 
       it('nacks when throw', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
@@ -541,7 +546,7 @@ describe('#topic', () => {
       })
 
       it('nacks when throw (promise)', async () => {
-        const { createdPubsub, topicName, ack, nack } = setup()
+        const { createdPubsub, topicName, ack, nack } = await setup()
 
         await createdPubsub.topic(topicName).subscribe({
           subscriberName: 'test',
