@@ -17,6 +17,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.5
 
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
@@ -28,6 +31,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.5
 
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
@@ -46,6 +53,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.5
+
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
 
@@ -59,6 +70,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.5
 
       - name: Download dependencies
         uses: bahmutov/npm-install@v1

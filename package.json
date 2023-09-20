@@ -19,8 +19,8 @@
     "@changesets/cli": "2.26.2"
   },
   "devDependencies": {
+    "@types/node": "20.5.4",
     "@turbo/gen": "1.10.14",
-    "@types/node": "18.17.4",
     "csv-parse": "5.5.0",
     "fast-xml-parser": "4.2.7",
     "prettier": "3.0.3",
