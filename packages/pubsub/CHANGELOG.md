@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.5.1
+
+### Patch Changes
+
+- ec60d2a: Improved type safety
+
 ## 0.5.0
 
 ### Minor Changes
