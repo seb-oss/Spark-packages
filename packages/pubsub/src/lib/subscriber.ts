@@ -183,14 +183,13 @@ export const subscriber =
       if (onError) await onError(err)
     }
 
-    let messageHandlerEvent: string
-
     switch (process.env.PUBSUB_DELIVERY_MODE) {
       case 'push':
-        messageHandlerEvent = 'push-message'
+        // NOTE: PubSub no longer supports the 'push-message' event for push subscriptions.
+        //       Instead, we should test the push route directly.
         break
       case 'pull':
-        messageHandlerEvent = 'message'
+        subscription.on('message', messageHandler)
         break
       default:
         throw new Error(
@@ -198,11 +197,10 @@ export const subscriber =
         )
     }
 
-    subscription.on(messageHandlerEvent, messageHandler)
     subscription.on('error', errorHandler)
 
     const unsubscriber: Unsubscriber = () => {
-      subscription.off(messageHandlerEvent, messageHandler)
+      subscription.off('message', messageHandler)
       subscription.off('error', errorHandler)
     }
 
