@@ -186,7 +186,6 @@ export const subscriber =
     switch (process.env.PUBSUB_DELIVERY_MODE) {
       case 'push':
         // NOTE: PubSub no longer supports the 'push-message' event for push subscriptions.
-        //       Instead, we should test the push route directly.
         break
       case 'pull':
         subscription.on('message', messageHandler)
