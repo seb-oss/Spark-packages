@@ -300,7 +300,6 @@ describe('#topic', () => {
         'push-message',
         expect.any(Function),
       )
-
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
         expect.any(Function),
@@ -319,7 +318,6 @@ describe('#topic', () => {
         'push-message',
         expect.any(Function),
       )
-
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
         expect.any(Function),
