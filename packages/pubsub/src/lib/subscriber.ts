@@ -183,7 +183,7 @@ export const subscriber =
       if (onError) await onError(err)
     }
 
-    let messageHandlerEvent: string
+    let messageHandlerEvent: 'message' | 'push-message'
 
     switch (process.env.PUBSUB_DELIVERY_MODE) {
       case 'push':
