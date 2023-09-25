@@ -80,6 +80,7 @@ const setup = async () => {
   subscription.get.mockImplementation(async () => [subscription])
   subscription.on.mockImplementation(
     (name: string, cb: (...args: unknown[]) => void) => {
+      if (name === 'push-message') subscriberFn = cb
       if (name === 'message') subscriberFn = cb
       return subscription
     },
@@ -296,6 +297,11 @@ describe('#topic', () => {
       })
 
       expect(subscription.on).toHaveBeenCalledWith(
+        'push-message',
+        expect.any(Function),
+      )
+
+      expect(subscription.on).toHaveBeenCalledWith(
         'error',
         expect.any(Function),
       )
@@ -310,20 +316,17 @@ describe('#topic', () => {
       unsubscribe()
 
       expect(subscription.off).toHaveBeenCalledWith(
+        'push-message',
+        expect.any(Function),
+      )
+
+      expect(subscription.off).toHaveBeenCalledWith(
         'error',
         expect.any(Function),
       )
     })
 
     describe('ack and nacking', () => {
-      afterAll(() => {
-        process.env.PUBSUB_DELIVERY_MODE = 'push'
-      })
-
-      beforeAll(() => {
-        process.env.PUBSUB_DELIVERY_MODE = 'pull'
-      })
-
       it('acks after completed', async () => {
         const { createdPubsub, topicName, ack, nack } = await setup()
 
