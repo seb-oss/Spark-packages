@@ -198,7 +198,8 @@ export const subscriber =
         )
     }
 
-    subscription.on(messageHandlerEvent, messageHandler)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    subscription.on(messageHandlerEvent as any, messageHandler)
     subscription.on('error', errorHandler)
 
     const unsubscriber: Unsubscriber = () => {
