@@ -32,6 +32,10 @@ ISO-10383 Market Identification Codes (MIC).
 
 ISO-4217 currency codes.
 
+### [@sebspark/avro](./packages/avro)
+
+Generates Typescript from avro files
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

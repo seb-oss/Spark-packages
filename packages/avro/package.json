@@ -1,0 +1,26 @@
+{
+  "name": "@sebspark/avro",
+  "version": "0.0.0",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "vitest --passWithNoTests",
+    "typecheck": "vitest typecheck --passWithNoTests"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
+  },
+  "dependencies": {
+    "@ovotech/avro-ts": "6.1.0",
+    "avsc": "5.7.7",
+    "react-native-avsc": "0.1.2"
+  }
+}
