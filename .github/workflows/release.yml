@@ -40,10 +40,18 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
 
+  licenses:
+    name: Check licenses
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - run: node tools/check-licenses.mjs
+
   test:
     name: Tests
     runs-on: ubuntu-latest
-    needs: [install]
+    needs: [install, licenses]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -57,7 +65,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-    needs: [install]
+    needs: [install, licenses]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -74,7 +82,7 @@ jobs:
   typecheck:
     name: Type check
     runs-on: ubuntu-latest
-    needs: [install]
+    needs: [install, licenses]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
