@@ -44,6 +44,8 @@ jobs:
     name: Check licenses
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - run: node tools/check-licenses.mjs
 
   test:
