@@ -183,7 +183,7 @@ export const subscriber =
       if (onError) await onError(err)
     }
 
-    let messageHandlerEvent: string
+    let messageHandlerEvent: 'message' | 'push-message'
 
     switch (process.env.PUBSUB_DELIVERY_MODE) {
       case 'push':
@@ -198,7 +198,8 @@ export const subscriber =
         )
     }
 
-    subscription.on(messageHandlerEvent, messageHandler)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    subscription.on(messageHandlerEvent as any, messageHandler)
     subscription.on('error', errorHandler)
 
     const unsubscriber: Unsubscriber = () => {

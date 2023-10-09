@@ -252,7 +252,11 @@ describe('#topic', () => {
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
         topicName + '.test',
         {
-          pushConfig: expect.any(Object),
+          pushConfig: expect.objectContaining({
+            pushEndpoint: expect.stringMatching(
+              'http://localhost:8080/pubsub/push',
+            ),
+          }),
           retryPolicy: {
             minimumBackoff: {
               seconds: expect.any(Number),
