@@ -5,10 +5,7 @@ import fs from 'fs/promises'
 import path from 'path'
 
 const packages = await fs.readdir(path.resolve(process.cwd(), './packages'))
-
-// TODO: Update this list with allowed licenses.
-// It currently uses the ones we have to not break the build.
-const allowedLicenses = ['MIT', 'UNLICENSED']
+const allowedLicenses = ['Apache-2.0']
 let hasInvalidLicenses = false
 
 for (const pkg of packages) {
