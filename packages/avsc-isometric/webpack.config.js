@@ -2,9 +2,10 @@ module.exports = {
   entry: "./src/index.js",
   output: {
     path: __dirname + '/dist',
-    filename: "avsc-js.min.js",
+    filename: "index.js",
     library: "avsc",
     libraryTarget: "umd",
+    globalObject: 'this',
   },
   module: {
     rules: [{
