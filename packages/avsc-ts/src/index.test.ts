@@ -1,8 +1,10 @@
 import { test } from 'vitest'
-import { mkdirSync } from 'fs'
+import fs from 'node:fs'
 import { parseSchemas } from '.'
 
 test('parseSchemas reads folder, parses schemas and saves the ts', () => {
-  mkdirSync('./testschemas')
+  fs.rmSync('./testschemas', { recursive: true, force: true })
+  fs.mkdirSync('./testschemas')
+
   parseSchemas({ inputpath: './examples', outputpath: './testschemas' })
 })
