@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import { readSchemas, saveTypescript } from './files'
 import { parse } from './parse'
 import yargs from 'yargs'
@@ -17,12 +18,28 @@ export const parseSchemas = ({ inputpath, outputpath, schemaname }: Opts) => {
 }
 
 const usage = chalk.magenta(
-  '\nUsage: avsc-ts -i ./schemas -o ./dist \n' +
-    boxen(
-      chalk.green('\n' + 'Translates a sentence to specific language' + '\n'),
-      { padding: 1, borderColor: 'green', dimBorder: true },
-    ) +
+  '\nUsage: avsc-ts --input ./schemas --output ./dist \n' +
+    boxen(chalk.green('\n' + 'Generates Typescript from avro files' + '\n'), {
+      padding: 1,
+      borderColor: 'green',
+      dimBorder: true,
+    }) +
     '\n',
 )
 
-yargs.usage(usage)
+const argv = yargs(process.argv.slice(2))
+  .usage(usage)
+  .options({
+    input: { alias: 'i', type: 'string', demandOption: true },
+    output: { alias: 'o', type: 'string', demandOption: true },
+  })
+  .help()
+  .parseSync()
+
+const inputpath = argv.input
+const outputpath = argv.output
+
+parseSchemas({
+  inputpath,
+  outputpath,
+})
