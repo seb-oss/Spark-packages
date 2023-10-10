@@ -32,9 +32,13 @@ ISO-10383 Market Identification Codes (MIC).
 
 ISO-4217 currency codes.
 
-### [@sebspark/avro](./packages/avro)
+### [@sebspark/avsc-ts](./packages/avsc-ts)
 
 Generates Typescript from avro files
+
+### [@sebspark/avsc-isometric](./packages/avsc-isometric)
+
+A stripped down version of avsc which works in node, browser and react-native
 
 <!--NEW_PACKAGE-->
 
