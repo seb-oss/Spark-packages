@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable */
 if (typeof __dirname === 'undefined') global.__dirname = '/'
 if (typeof __filename === 'undefined') global.__filename = ''
 const bProcess = require('process')
@@ -8,10 +7,10 @@ if (typeof process === 'undefined') {
 } else {
   for (const p in bProcess) {
     if (!(p in process)) {
-      (process as any)[p] = bProcess[p]
+      process[p] = bProcess[p]
     }
   }
 }
 
-(process as any).browser = false
+process.browser = false
 if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer
