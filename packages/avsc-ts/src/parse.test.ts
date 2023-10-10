@@ -16,7 +16,7 @@ test('it parses simple schema', () => {
   const ts = parse(simple)
 
   expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from 'avsc'
+import { Type } from '@sebspark/avsc-isometric'
 
 export interface Simple {
   stringField: string
@@ -55,7 +55,7 @@ test('it parses multiple schemas', () => {
   const ts = parse(simpleString, simpleInt)
 
   expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from 'avsc'
+import { Type } from '@sebspark/avsc-isometric'
 
 export interface SimpleString {
   stringField: string
