@@ -6,10 +6,10 @@
     "build": "turbo build",
     "changeset": "changeset",
     "dev": "turbo dev",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "generate:package": "turbo gen package",
     "lint": "turbo lint",
-    "lint:format": "prettier --cache --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "lint:format": "prettier --cache --check --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
     "typecheck": "FORCE_COLOR=1 turbo typecheck"
