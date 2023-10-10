@@ -8,7 +8,11 @@
       "cache": false
     },
     "lint": {},
-    "test": {},
-    "typecheck": {}
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    }
   }
 }
