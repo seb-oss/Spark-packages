@@ -5,8 +5,8 @@ const parseSchema = (schema: Schema): string => {
   const type = Type.forSchema(schema)
   const name = type.name
   const ts = toTypeScript(schema)
-    .replace(/"/mg, `'`)    // single quote
-    .replace(/;/mg, '')     // no semicolons
+    .replace(/"/gm, `'`) // single quote
+    .replace(/;/gm, '') // no semicolons
     .replace(/ {4}/g, '  ') // two spaces
     .replace(`export type AvroType = ${name}\n\n`, '')
 

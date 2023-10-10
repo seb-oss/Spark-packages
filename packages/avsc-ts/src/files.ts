@@ -11,6 +11,10 @@ export const readSchemas = (path: string) => {
     .map((txt) => JSON.parse(txt) as Schema)
 }
 
-export const saveTypescript = (ts: string, path: string, name = 'schema'): void => {
+export const saveTypescript = (
+  ts: string,
+  path: string,
+  name = 'schema',
+): void => {
   writeFileSync(resolve(path, `${name}.ts`), ts)
 }

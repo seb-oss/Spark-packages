@@ -1,4 +1,3 @@
-
 // Get original avsc
 var avscWrapper = require('avsc')
 

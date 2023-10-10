@@ -9,7 +9,7 @@ test('it parses simple schema', () => {
     fields: [
       {
         name: 'stringField',
-        type: 'string'
+        type: 'string',
       },
     ],
   }
@@ -38,7 +38,7 @@ test('it parses multiple schemas', () => {
     fields: [
       {
         name: 'stringField',
-        type: 'string'
+        type: 'string',
       },
     ],
   }
@@ -48,7 +48,7 @@ test('it parses multiple schemas', () => {
     fields: [
       {
         name: 'intField',
-        type: 'int'
+        type: 'int',
       },
     ],
   }
