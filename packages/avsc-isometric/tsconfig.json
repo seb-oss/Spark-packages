@@ -4,6 +4,7 @@
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./dist/"
+    "declarationDir": "./dist/",
+    "emitDeclarationOnly": true
   }
 }

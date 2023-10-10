@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "webpack"
+    "build": "webpack && tsc"
   },
   "devDependencies": {
     "assert-browserify": "2.0.0",
