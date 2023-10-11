@@ -4,8 +4,8 @@ import { Schema } from 'avsc'
 
 test('it parses simple schema', () => {
   const simple: Schema = {
-    type: 'record',
     name: 'Simple',
+    type: 'record',
     fields: [
       {
         name: 'stringField',
@@ -33,8 +33,8 @@ export const Simple = {
 
 test('it parses multiple schemas', () => {
   const simpleString: Schema = {
-    type: 'record',
     name: 'SimpleString',
+    type: 'record',
     fields: [
       {
         name: 'stringField',
@@ -43,8 +43,8 @@ test('it parses multiple schemas', () => {
     ],
   }
   const simpleInt: Schema = {
-    type: 'record',
     name: 'SimpleInt',
+    type: 'record',
     fields: [
       {
         name: 'intField',

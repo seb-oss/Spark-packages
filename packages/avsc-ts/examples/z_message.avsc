@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "Message",
+  "fields": [
+    {"name": "recipient", "type": ["null", "string"]},
+    {"name": "data", "type": [
+      "PriceHistory",
+      "AllTypes",
+      "AnotherRecord"
+    ]}
+  ]
+}
