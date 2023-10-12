@@ -1,5 +1,12 @@
 # @sebspark/iso-4217
 
+## 0.1.2
+
+### Patch Changes
+
+- a0d6642: Reduce the amount of generated types. From 1086 lines to 11.
+- a0d6642: Fix typo for currencyNumber
+
 ## 0.1.1
 
 ### Patch Changes
