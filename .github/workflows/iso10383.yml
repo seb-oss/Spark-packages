@@ -49,7 +49,7 @@ jobs:
 
       - name: Push changes
         env:
-          CI_COMMIT_MESSAGE: chore: update ISO-10383 specifications
+          CI_COMMIT_MESSAGE: 'chore: update ISO-10383 specifications'
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
