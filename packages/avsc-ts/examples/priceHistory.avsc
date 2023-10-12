@@ -1,0 +1,16 @@
+{
+  "type": "record",
+  "name": "PriceHistory",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "currency", "type": "string"},
+    {"name": "data", "type": {"type": "array", "items": {
+      "type": "record",
+      "name": "DatePrice",
+      "fields": [
+        {"name": "shortDate", "type": "int"},
+        {"name": "price", "type": "float"}
+      ]
+    }}}
+  ]
+}
