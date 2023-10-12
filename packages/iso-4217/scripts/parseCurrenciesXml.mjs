@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { inspect } from 'util'
 import { XMLParser } from 'fast-xml-parser'
+import prettier from 'prettier'
 
 const [, , inputFile, outputFile] = process.argv
 
@@ -18,12 +19,20 @@ const map = currencies
           currencyMinorUnits: c.CcyMnrUnts,
         },
       }),
-    {}
+    {},
   )
+
 const content = `export const currencies = ${inspect(map)}
 
 export type Currencies = typeof currencies
 export type ISO_4217 = keyof Currencies
 `
 
-writeFileSync(outputFile, content, 'utf-8')
+const formattedContent = await prettier.format(content, {
+  parser: 'babel-ts',
+  singleQuote: true,
+  trailingComma: 'es5',
+  semi: false,
+})
+
+writeFileSync(outputFile, formattedContent, 'utf-8')
