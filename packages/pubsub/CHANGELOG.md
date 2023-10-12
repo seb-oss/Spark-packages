@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.6.0
+
+### Minor Changes
+
+- 78c0f60: Bump @google-cloud/pubsub dependency to 4.\*
+
 ## 0.5.1
 
 ### Patch Changes
