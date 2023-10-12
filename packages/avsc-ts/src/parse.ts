@@ -6,11 +6,12 @@ type TypeRecord = Record<string, Type>
 const record: TypeRecord = {}
 
 const parseSchema = (schema: Schema): string => {
-
   // get custom type definitions from record
-  const type = Type.forSchema(schema, { typeHook: (typeSchema) => {
-    if (typeof typeSchema === 'string') return record[typeSchema]
-  }})
+  const type = Type.forSchema(schema, {
+    typeHook: (typeSchema) => {
+      if (typeof typeSchema === 'string') return record[typeSchema]
+    },
+  })
   const name = type.name!
 
   record[name] = type
