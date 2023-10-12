@@ -15,7 +15,7 @@ const map = currencies
         [c.Ccy]: {
           currencyName: c.CcyNm,
           currencyCode: c.Ccy,
-          curencyNumber: c.CcyNbr,
+          currencyNumber: c.CcyNbr,
           currencyMinorUnits: c.CcyMnrUnts,
         },
       }),
