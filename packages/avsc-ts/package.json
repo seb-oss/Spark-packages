@@ -25,7 +25,7 @@
     "@ovotech/avro-ts": "6.1.0",
     "@sebspark/avsc-isometric": "*",
     "boxen": "5.1.2",
-    "chalk": "4.1.2",
+    "chalk": "5.3.0",
     "react-native-avsc": "0.1.2",
     "stream-browserify": "3.0.0",
     "yargs": "17.7.2"
