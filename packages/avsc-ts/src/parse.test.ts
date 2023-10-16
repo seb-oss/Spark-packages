@@ -80,3 +80,53 @@ export const SimpleInt = {
 }
 `)
 })
+
+test('it parses dependent schemas', () => {
+  const independentSchema: Schema = {
+    name: 'Independent',
+    type: 'record',
+    fields: [
+      {
+        name: 'stringField',
+        type: 'string',
+      },
+    ],
+  }
+  const dependentSchema: Schema = {
+    name: 'Dependent',
+    type: 'record',
+    fields: [
+      {
+        name: 'childField',
+        type: 'Independent',
+      },
+    ],
+  }
+
+  expect(() => parse(dependentSchema, independentSchema)).not.toThrow()
+})
+
+test('it handles circular dependencies', () => {
+  const schema1: Schema = {
+    name: 'Circular1',
+    type: 'record',
+    fields: [
+      {
+        name: 'childField',
+        type: 'Circular2',
+      },
+    ],
+  }
+  const schema2: Schema = {
+    name: 'Circular2',
+    type: 'record',
+    fields: [
+      {
+        name: 'childField',
+        type: 'Circular1',
+      },
+    ],
+  }
+
+  expect(() => parse(schema1, schema2)).toThrow('circular dependency')
+})

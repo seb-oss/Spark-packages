@@ -33,7 +33,28 @@ export const ${name} = {
 }
 
 export const parse = (...schemas: Schema[]): string => {
-  const parsed = schemas.map((schema) => parseSchema(schema))
+  const parsed = []
+  let counter = 0
+  const limit = schemas.length * schemas.length / 2
+  while(schemas.length > 0) {
+    const currentSchema = schemas.shift()!
+    try {
+      const parsedSchema = parseSchema(currentSchema)
+      parsed.push(parsedSchema)
+    } catch(err) {
+      const error = err as Error
+      if (error.message.startsWith('undefined type name')) {
+        schemas.push(currentSchema)
+      } else {
+        throw error
+      }
+    }
+
+    if (counter++ > limit) {
+      throw new Error('circular dependency')
+    }
+  }
+
   return `// Auto generated. Do not edit!
 import { Type } from '@sebspark/avsc-isometric'
 
