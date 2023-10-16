@@ -51,6 +51,12 @@ export const parse = (...schemas: Schema[]): string => {
     }
 
     if (counter++ > limit) {
+      console.log()
+      console.error('ERROR: Inconsistent schemas.')
+      console.error(
+        'Check for circular dependencies or missing types, then try again.',
+      )
+
       throw new Error('circular dependency')
     }
   }
