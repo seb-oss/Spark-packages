@@ -1,6 +1,7 @@
 {
   "extends": "@sebspark/tsconfig/base.json",
   "include": ["."],
+  "exclude": ["node_modules", "dist", "build"],
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./dist/",
