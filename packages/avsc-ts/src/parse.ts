@@ -25,7 +25,7 @@ const parseSchema = (schema: Schema): string => {
   return `${ts}
 const avro${name} = Type.forSchema(${JSON.stringify(type.schema())})
 
-export const ${name} = {
+export const ${name}Converter = {
   toBuffer: (data: ${name}) => avro${name}.toBuffer(data),
   fromBuffer: (buffer: Buffer) => avro${name}.fromBuffer(buffer) as ${name}
 }
