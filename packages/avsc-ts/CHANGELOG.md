@@ -1,5 +1,18 @@
 # @sebspark/avsc-ts
 
+## 0.3.0
+
+### Minor Changes
+
+- 216dae7: More dependency fixes!
+
+### Patch Changes
+
+- d50a3b0: Dependency fix
+- Updated dependencies [216dae7]
+- Updated dependencies [d50a3b0]
+  - @sebspark/avsc-isometric@0.2.0
+
 ## 0.2.0
 
 ### Minor Changes
