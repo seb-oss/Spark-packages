@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.2.0
+
+### Minor Changes
+
+- 76d70a0: Make from/to buffer methods accessible.
+
 ## 0.1.0
 
 ### Minor Changes
