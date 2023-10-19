@@ -804,10 +804,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/html-escaper@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/html-escaper/-/html-escaper-3.0.0.tgz#97d7df443c0fc86e3abdd0971f4814a58e3ca762"
-  integrity sha512-OcJcvP3Yk8mjYwf/IdXZtTE1tb/u0WF0qa29ER07ZHCYUBZXSN29Z1mBS+/96+kNMGTFUAbSz9X+pHmHpZrTCw==
+"@types/html-escaper@3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/html-escaper/-/html-escaper-3.0.1.tgz#566262445270fc602586cb9ab5684329531e591e"
+  integrity sha512-lVnoTUR09iECkTInzCzFEasZKs11VuCTIdo8hnLXwCU40UUbSl8boPsy6MNJ9+HbJQ/jxju8nSZxSHPVIbmCbg==
 
 "@types/http-errors@*":
   version "2.0.2"
