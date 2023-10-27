@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.0
+
+### Minor Changes
+
+- 3b113bc: Generator now supports root level arrays
+
 ## 0.3.0
 
 ### Minor Changes
