@@ -12,7 +12,18 @@ const parseSchema = (schema: Schema): string => {
       if (typeof typeSchema === 'string') return record[typeSchema]
     },
   })
-  const name = type.name!
+  let name = type.name
+  let itemName: string | undefined
+  if (!name) {
+    //handle array root type
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const dynamic = type as any
+
+    if (!dynamic.itemsType?.name) throw new Error('Schema must have a name')
+
+    name = dynamic.itemsType?.name + 'sArray'
+    itemName = dynamic.itemsType?.name + '[]'
+  }
 
   record[name] = type
 
@@ -20,14 +31,16 @@ const parseSchema = (schema: Schema): string => {
     .replace(/"/gm, `'`) // single quote
     .replace(/;/gm, '') // no semicolons
     .replace(/ {4}/g, '  ') // two spaces
-    .replace(`export type AvroType = ${name}\n\n`, '')
+    .replace(/^export type AvroType = .+(\[\]|(\n\n))/gm, '')
 
   return `${ts}
 const avro${name} = Type.forSchema(${JSON.stringify(type.schema())})
 
 export const ${name}Converter = {
-  toBuffer: (data: ${name}) => avro${name}.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avro${name}.fromBuffer(buffer) as ${name}
+  toBuffer: (data: ${itemName || name}) => avro${name}.toBuffer(data),
+  fromBuffer: (buffer: Buffer) => avro${name}.fromBuffer(buffer) as ${
+    itemName || name
+  }
 }
 `
 }
