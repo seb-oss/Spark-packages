@@ -40,6 +40,26 @@ Generates Typescript from avro files
 
 A stripped down version of avsc which works in node, browser and react-native
 
+### [@sebspark/openapi-typegen](./packages/openapi-typegen)
+
+Generates types and a routerdefinition from OpenAPI specs
+
+### [@sebspark/openapi-express](./packages/openapi-express)
+
+A typed router for express based on type definitions from openapi-typegen
+
+### [@sebspark/openapi-core](./packages/openapi-core)
+
+Base types for OpenAPI/Typescript
+
+### [@sebspark/openapi-client](./packages/openapi-client)
+
+A typed REST client for the definitions from openapi-typegen
+
+### [@sebspark/openapi-e2e](./packages/openapi-e2e)
+
+End to end tests for openapi generator, express and client
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

@@ -1,0 +1,24 @@
+{
+  "name": "@sebspark/openapi-e2e",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "private": false,
+  "scripts": {
+    "generate": "yarn openapi-typegen -i ./src/schemas/marketdata.json -o ./src/schemas/",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "vitest --passWithNoTests",
+    "pretest": "yarn generate",
+    "typecheck": "vitest typecheck --passWithNoTests"
+  },
+  "dependencies": {
+    "@sebspark/openapi-client": "*",
+    "@sebspark/openapi-core": "*",
+    "@sebspark/openapi-express": "*",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "@sebspark/openapi-typegen": "*",
+    "@types/express": "4.17.21",
+    "tsconfig": "*"
+  }
+}

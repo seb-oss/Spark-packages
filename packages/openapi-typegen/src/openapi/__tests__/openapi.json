@@ -1,0 +1,220 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cards API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/cards",
+      "description": "localhost"
+    },
+    {
+      "url": "https://core.run.app/cards",
+      "description": "sandbox"
+    }
+  ],
+  "paths": {
+    "/{cardId}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "cardNickname",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "boolean" }
+          },
+          {
+            "name": "X-User-Id",
+            "in": "header",
+            "description": "X-User-Id",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "X-Distributor-Id",
+            "in": "header",
+            "description": "X-Distributor-Id",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HttpError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "cardNickname",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "boolean" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{cardId}/settings": {
+      "put": {
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-forwarded-authorization",
+            "schema": {
+              "type": "string",
+              "format": "base64"
+            },
+            "required": true
+          },
+          {
+            "name": "cardId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardSettings"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Card": {
+        "title": "Card",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "name-on-card": {
+            "type": "string"
+          },
+          "settings/foo": {
+            "$ref": "#/components/schemas/CardSettings"
+          }
+        },
+        "required": ["id", "ownerId", "name-on-card"]
+      },
+      "CardSettings": {
+        "title": "CardSettings",
+        "type": "object",
+        "properties": {
+          "cardId": {
+            "type": "string"
+          },
+          "frozen": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "boolean"
+              },
+              "editableByChild": {
+                "type": "boolean"
+              }
+            },
+            "required": ["value", "editableByChild"]
+          }
+        },
+        "required": ["cardId", "frozen"]
+      },
+      "CardList": {
+        "title": "AccountBalance",
+        "required": ["cards"],
+        "type": "object",
+        "properties": {
+          "cards": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Card" }
+          }
+        }
+      },
+      "Documented": {
+        "description": "A documented type",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the documented type"
+          },
+          "settings": {
+            "$ref": "#/components/schemas/CardSettings",
+            "description": "Settings"
+          }
+        },
+        "required": ["id"]
+      },
+      "HttpError": {
+        "title": "HttpError",
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "stack": {
+            "type": "string"
+          }
+        },
+        "required": ["message"]
+      }
+    }
+  }
+}
