@@ -52,11 +52,11 @@ export const generate = async ({
 
   const schemas = await getSchemas(input)
 
-  const generatedOpenApi = await Promise.all(Object.entries(schemas.openApi).map(
-    async ([name, schema]) => ({
+  const generatedOpenApi = await Promise.all(
+    Object.entries(schemas.openApi).map(async ([name, schema]) => ({
       name,
       schema: await generateOpenApi(schema),
-    }))
+    })),
   )
 
   /*
@@ -68,26 +68,28 @@ export const generate = async ({
   )
   */
 
-  const generatedSharedTypes = await Promise.all(Object.entries(schemas.sharedTypes).map(
-    async ([name, schema]) => ({
+  const generatedSharedTypes = await Promise.all(
+    Object.entries(schemas.sharedTypes).map(async ([name, schema]) => ({
       name,
       schema: await generateSchemas(schema),
-    }))
+    })),
   )
 
   // print result
   if (!output)
-    return generatedOpenApi
-      // .concat(generatedAsyncApi)
-      .concat(generatedSharedTypes)
-      .map(
-        ({ name, schema }) => `/**
+    return (
+      generatedOpenApi
+        // .concat(generatedAsyncApi)
+        .concat(generatedSharedTypes)
+        .map(
+          ({ name, schema }) => `/**
  * ${name}
  */
 ${schema}
-`
-      )
-      .join('\n')
+`,
+        )
+        .join('\n')
+    )
 
   // save files
   await mkdir(output, { recursive: true })

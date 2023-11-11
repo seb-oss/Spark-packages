@@ -14,21 +14,24 @@ describe('openapi e2e tests', () => {
       client = TypedClient<MarketdataAPIClient>(`http://localhost:${PORT}`)
     })
   })
-  afterAll(() => (
-    new Promise<void>((resolve, reject) => {
-      server.close((err) => {
-        if (err) reject(err)
-        else resolve()
-      })
-    })
-  ))
+  afterAll(
+    () =>
+      new Promise<void>((resolve, reject) => {
+        server.close((err) => {
+          if (err) reject(err)
+          else resolve()
+        })
+      }),
+  )
   it('returns markets', async () => {
     const result = await client.get('/markets')
     expect(result).toEqual(markets)
   })
   it('works for multiple parameter urls', async () => {
-    const result = await client.get('/markets/:mic/instruments/:isin/:currency',
-      { params: { mic: 'XSTO', isin: 'SE1234567', currency: 'SEK' }})
+    const result = await client.get(
+      '/markets/:mic/instruments/:isin/:currency',
+      { params: { mic: 'XSTO', isin: 'SE1234567', currency: 'SEK' } },
+    )
     expect(result).toEqual({
       data: {
         id: 'xsto_se1234567_sek',

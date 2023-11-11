@@ -2,7 +2,7 @@ import { ReferenceObject } from '../shared/schema'
 
 export const parseReferencableObjects = <T extends object>(
   name: string,
-  record: Record<string, ReferenceObject | T>
+  record: Record<string, ReferenceObject | T>,
 ): Record<string, T> => {
   const objects: Record<string, T> = {}
 

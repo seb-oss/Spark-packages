@@ -7,11 +7,14 @@ import boxen from 'boxen'
 
 const usage = chalk.magenta(
   '\nUsage: @sebspark/typegen --input ./schemas --output ./dist \n' +
-    boxen(chalk.green('\n' + 'Generates Typescript from OpenAPI schemas' + '\n'), {
-      padding: 1,
-      borderColor: 'green',
-      dimBorder: true,
-    }) +
+    boxen(
+      chalk.green('\n' + 'Generates Typescript from OpenAPI schemas' + '\n'),
+      {
+        padding: 1,
+        borderColor: 'green',
+        dimBorder: true,
+      },
+    ) +
     '\n',
 )
 

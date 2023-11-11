@@ -1,7 +1,7 @@
 import { ReferenceObject, SchemaObject } from '../schema'
 
 export const generateImports = (
-  schemas: (SchemaObject | ReferenceObject)[]
+  schemas: (SchemaObject | ReferenceObject)[],
 ) => {
   const imports = schemas
     .filter((it) => '$ref' in it)

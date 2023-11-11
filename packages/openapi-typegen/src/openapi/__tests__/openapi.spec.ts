@@ -14,10 +14,7 @@ const format = (str: string) => {
   })
 }
 
-const schemaTxt = readFileSync(
-  __dirname + '/openapi.json',
-  'utf-8'
-)
+const schemaTxt = readFileSync(__dirname + '/openapi.json', 'utf-8')
 
 const findType = (types: ParsedType[], find: string) => {
   return types.find((it) => it.name === find)
@@ -43,25 +40,29 @@ describe('schema', () => {
         const generated = generateData(schema)
 
         expect(getType(generated.types, 'Card')).toEqual(
-          `{'id': string; 'ownerId': string; 'name-on-card': string; 'settings/foo'?: CardSettings}`
+          `{'id': string; 'ownerId': string; 'name-on-card': string; 'settings/foo'?: CardSettings}`,
         )
       })
       it('generates deep properties', () => {
         const generated = generateData(schema)
 
         expect(getType(generated.types, 'CardSettings')).toEqual(
-          `{'cardId': string; 'frozen': {'value': boolean; 'editableByChild': boolean}}`
+          `{'cardId': string; 'frozen': {'value': boolean; 'editableByChild': boolean}}`,
         )
       })
       it('generates array properties', () => {
         const generated = generateData(schema)
 
-        expect(getType(generated.types, 'CardList')).toEqual(`{'cards': (Card)[]}`)
+        expect(getType(generated.types, 'CardList')).toEqual(
+          `{'cards': (Card)[]}`,
+        )
       })
       it('generates docs', () => {
         const generated = generateData(schema)
 
-        expect(findType(generated.types, 'Documented')?.description).toBeTruthy()
+        expect(
+          findType(generated.types, 'Documented')?.description,
+        ).toBeTruthy()
       })
     })
     describe('paths', () => {
@@ -100,7 +101,7 @@ describe('schema', () => {
         const getCard = generated.paths[0]
 
         expect(getCard.requestHeaders).toEqual(
-          "{'X-User-Id': string, 'X-Distributor-Id'?: string}"
+          "{'X-User-Id': string, 'X-Distributor-Id'?: string}",
         )
       })
       it('generates body', () => {
@@ -119,7 +120,9 @@ describe('schema', () => {
         const generated = generateData(schema)
         const getCard = generated.paths[0]
 
-        expect(getCard.errorResponses).toEqual([{code: 401, type: 'HttpError'}])
+        expect(getCard.errorResponses).toEqual([
+          { code: 401, type: 'HttpError' },
+        ])
       })
     })
   })
@@ -133,7 +136,7 @@ describe('schema', () => {
       expect(routes.length).toBeGreaterThan(0)
     })
     it('sets response', () => {
-      expect(routes[0].response).toEqual({code: 200, type: 'Card'})
+      expect(routes[0].response).toEqual({ code: 200, type: 'Card' })
     })
     it('sets args', () => {
       expect(routes[0].args).toEqual({
@@ -146,7 +149,9 @@ describe('schema', () => {
   describe('generate', () => {
     it('generates a correct document', async () => {
       const generated = await generateOpenApi(schema)
-      const expected = await format(readFileSync(`${__dirname}/openapi.generated.ts`, 'utf8'))
+      const expected = await format(
+        readFileSync(`${__dirname}/openapi.generated.ts`, 'utf8'),
+      )
       expect(generated).toEqual(expected)
     })
   })
