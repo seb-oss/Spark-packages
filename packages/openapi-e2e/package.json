@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/marketdata.json -o ./src/schemas/",
     "lint": "eslint \"src/**/*.ts*\"",
-    "test": "vitest --passWithNoTests",
+    "test": "vitest --passWithNoTests --coverage",
     "pretest": "yarn generate",
     "typecheck": "vitest typecheck --passWithNoTests"
   },

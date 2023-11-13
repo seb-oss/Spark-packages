@@ -12,7 +12,7 @@
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "eslint \"src/**/*.ts*\"",
-    "test": "vitest --passWithNoTests",
+    "test": "vitest --passWithNoTests --coverage",
     "typecheck": "vitest typecheck --passWithNoTests",
     "generate": "node scripts/parseMicCsv.mjs src/lib/specifications/iso10383.csv src/lib/generated/iso10383.ts"
   },
