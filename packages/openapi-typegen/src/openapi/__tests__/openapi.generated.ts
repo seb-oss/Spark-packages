@@ -101,7 +101,7 @@ type CardsAPIClientPut = {
   ): Promise<void>
 }
 
-export type CardsAPIClient = BaseClient & {
+export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
   get: CardsAPIClientGet
   delete: CardsAPIClientDelete
   put: CardsAPIClientPut

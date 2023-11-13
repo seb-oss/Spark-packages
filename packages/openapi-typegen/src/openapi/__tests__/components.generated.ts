@@ -50,7 +50,7 @@ type ExampleAPIClientPost = {
   (url: '/users'): Promise<User>
 }
 
-export type ExampleAPIClient = BaseClient & {
+export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
   get: ExampleAPIClientGet
   post: ExampleAPIClientPost
 }
