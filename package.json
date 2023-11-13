@@ -12,7 +12,8 @@
     "lint:format": "prettier --cache --check --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
-    "typecheck": "FORCE_COLOR=1 turbo typecheck"
+    "typecheck": "FORCE_COLOR=1 turbo typecheck",
+    "clean": "rm -rf ./packages/**/dist"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@turbo/gen": "1.10.16",
     "@types/node": "20.9.0",
+    "@vitest/coverage-v8": "0.34.6",
     "csv-parse": "5.5.2",
     "fast-xml-parser": "4.3.2",
     "prettier": "3.1.0",

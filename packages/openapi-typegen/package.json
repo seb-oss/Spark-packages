@@ -1,12 +1,15 @@
 {
-  "name": "@sebspark/avsc-ts",
-  "version": "0.4.0",
+  "name": "@sebspark/openapi-typegen",
+  "version": "0.0.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": "dist/cli.js",
+  "bin": {
+    "openapi-typegen": "./cli.mjs"
+  },
   "files": [
-    "dist"
+    "dist",
+    "cli.mjs"
   ],
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
@@ -16,15 +19,16 @@
     "typecheck": "vitest typecheck --passWithNoTests"
   },
   "devDependencies": {
-    "@types/yargs": "17.0.31",
+    "@types/yargs": "17.0.30",
     "tsconfig": "*"
   },
   "dependencies": {
-    "@ovotech/avro-ts": "6.1.0",
-    "@sebspark/avsc-isometric": "0.2.0",
-    "boxen": "5.1.2",
-    "chalk": "4.1.2",
-    "stream-browserify": "3.0.0",
-    "yargs": "17.7.2"
+    "@sebspark/openapi-core": "*",
+    "boxen": "<6",
+    "chalk": "<5",
+    "change-case": "4.1.2",
+    "prettier": "3.0.3",
+    "yargs": "17.7.2",
+    "yarn": "1.22.19"
   }
 }
