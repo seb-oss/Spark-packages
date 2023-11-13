@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { generate } from './'
+import { generate } from '@sebspark/openapi-typegen'
 import yargs from 'yargs'
 import chalk from 'chalk'
 import boxen from 'boxen'

@@ -4,9 +4,12 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": "dist/cli.js",
+  "bin": {
+    "openapi-typegen": "./cli.mjs"
+  },
   "files": [
-    "dist"
+    "dist",
+    "cli.mjs"
   ],
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
