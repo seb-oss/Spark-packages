@@ -152,6 +152,6 @@ type MarketdataAPIClientGet = {
   ): Promise<InstrumentListResponse>
 }
 
-export type MarketdataAPIClient = BaseClient & {
+export type MarketdataAPIClient = Pick<BaseClient, 'get'> & {
   get: MarketdataAPIClientGet
 }

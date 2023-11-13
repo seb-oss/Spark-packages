@@ -59,7 +59,11 @@ const generateClientAPI = (name: string, routes: RouteDefinition[]) => {
     })
     code.push('}')
   })
-  code.push(`export type ${name}Client = BaseClient & {`)
+  code.push(
+    `export type ${name}Client = Pick<BaseClient, ${Object.keys(verbMap)
+      .map((v) => `'${v}'`)
+      .join(' | ')}> & {`,
+  )
   code.push(clientHandlers.join('\n'))
   code.push('}')
   return code
