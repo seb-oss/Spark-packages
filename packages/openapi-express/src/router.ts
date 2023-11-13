@@ -24,8 +24,8 @@ export const TypedRouter = (
     options.pre instanceof Array
       ? options.pre
       : options.pre
-      ? [options.pre]
-      : []
+        ? [options.pre]
+        : []
   preUsings.forEach((pre) => router.use(pre))
   Object.entries(api).forEach(([url, methods]) => {
     Object.entries(methods).forEach(([method, route]) => {
@@ -60,8 +60,8 @@ const errorHandler: ErrorRequestHandler = (err, req, res, _next) => {
       err instanceof Error
         ? err
         : typeof err === 'string'
-        ? new Error(err)
-        : undefined
+          ? new Error(err)
+          : undefined
     error = createHttpError(500, undefined, internal)
   }
   res.status(error.statusCode).send(error.toJSON())
