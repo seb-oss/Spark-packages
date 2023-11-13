@@ -12,7 +12,8 @@
     "lint:format": "prettier --cache --check --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
-    "typecheck": "FORCE_COLOR=1 turbo typecheck"
+    "typecheck": "FORCE_COLOR=1 turbo typecheck",
+    "clean": "rm -rf ./packages/**/dist"
   },
   "private": true,
   "dependencies": {
