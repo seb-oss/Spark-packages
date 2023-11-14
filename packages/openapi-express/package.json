@@ -16,7 +16,7 @@
     "typecheck": "vitest typecheck --passWithNoTests"
   },
   "devDependencies": {
-    "@types/supertest": "2.0.15",
+    "@types/supertest": "2.0.16",
     "express": "4.18.2",
     "supertest": "6.3.3",
     "tsconfig": "*"
