@@ -69,36 +69,36 @@ describe('schema', () => {
       it('rewrites urls', () => {
         const generated = generateData(schema)
 
-        expect(generated.paths[0].url).toEqual('/:cardId')
+        expect(generated.paths[1].url).toEqual('/:cardId')
       })
       it('sets the correct method', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.method).toEqual('get')
       })
       it('finds all methods', () => {
         const generated = generateData(schema)
-        const deleteCard = generated.paths[1]
+        const deleteCard = generated.paths[2]
 
         expect(deleteCard.url).toEqual('/:cardId')
         expect(deleteCard.method).toEqual('delete')
       })
       it('generates parameters', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.requestParams).toEqual('{cardId: string}')
       })
       it('generates query', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.requestQuery).toEqual('{cardNickname: boolean}')
       })
       it('generates headers', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.requestHeaders).toEqual(
           "{'X-User-Id': string, 'X-Distributor-Id'?: string}",
@@ -106,19 +106,19 @@ describe('schema', () => {
       })
       it('generates body', () => {
         const generated = generateData(schema)
-        const putCardSettings = generated.paths[2]
+        const putCardSettings = generated.paths[3]
 
         expect(putCardSettings.requestBody).toEqual('CardSettings')
       })
       it('generates response', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.response).toEqual({ code: 200, type: 'Card' })
       })
       it('generates errorResponse', () => {
         const generated = generateData(schema)
-        const getCard = generated.paths[0]
+        const getCard = generated.paths[1]
 
         expect(getCard.errorResponses).toEqual([
           { code: 401, type: 'HttpError' },
@@ -136,10 +136,10 @@ describe('schema', () => {
       expect(routes.length).toBeGreaterThan(0)
     })
     it('sets response', () => {
-      expect(routes[0].response).toEqual({ code: 200, type: 'Card' })
+      expect(routes[1].response).toEqual({ code: 200, type: 'Card' })
     })
     it('sets args', () => {
-      expect(routes[0].args).toEqual({
+      expect(routes[1].args).toEqual({
         params: '{cardId: string}',
         query: '{cardNickname: boolean}',
         headers: `{'X-User-Id': string, 'X-Distributor-Id'?: string}`,

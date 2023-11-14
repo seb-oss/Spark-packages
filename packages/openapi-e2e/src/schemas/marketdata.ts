@@ -81,8 +81,8 @@ export type Error = { code: number; message: string }
 export type MarketdataAPIServer = APIServerDefinition & {
   '/markets': {
     get: {
-      handler: (args: {
-        query: { page?: number; limit?: number }
+      handler: (args?: {
+        query?: { page?: number; limit?: number }
       }) => Promise<[200, MarketListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -99,7 +99,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
     get: {
       handler: (args: {
         params: { mic: string }
-        query: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
+        query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
       }) => Promise<[200, InstrumentListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -125,7 +125,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
 type MarketdataAPIClientGet = {
   (
     url: '/markets',
-    args: { query: { page?: number; limit?: number } },
+    args?: { query?: { page?: number; limit?: number } },
   ): Promise<MarketListResponse>
 
   (
@@ -137,7 +137,7 @@ type MarketdataAPIClientGet = {
     url: '/markets/:mic/instruments',
     args: {
       params: { mic: string }
-      query: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
+      query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
     },
   ): Promise<InstrumentListResponse>
 

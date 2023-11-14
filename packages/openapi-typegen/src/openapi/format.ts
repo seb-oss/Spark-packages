@@ -120,10 +120,18 @@ const parseArgs = (route: Route): RouteArgs | undefined => {
   if (args.headers || args.params || args.query || args.body) return args
 }
 
+const optional = (params: string) => {
+  const rxRequiredParams = /(?<!\?\s*)\b['"]?\w+['"]?\s*:\s*\w+/gim
+  const anyRequired = rxRequiredParams.test(params) || !params.includes(':')
+  return anyRequired ? '' : '?'
+}
+
 const serializeArgs = (args?: RouteArgs): string => {
   if (!args) return ''
   const argsString = Object.entries(args)
-    .map(([key, value]) => `${key}: ${value}`)
+    .map(([key, value]) => {
+      return `${key}${optional(value)}: ${value}`
+    })
     .join(',')
-  return `args: {${argsString}}`
+  return `args${optional(argsString)}: {${argsString}}`
 }

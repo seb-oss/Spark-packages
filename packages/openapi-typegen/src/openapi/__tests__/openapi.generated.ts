@@ -43,6 +43,14 @@ export type Documented = {
 export type HttpError = { message: string; stack?: string }
 
 export type CardsAPIServer = APIServerDefinition & {
+  '/': {
+    get: {
+      handler: (args?: {
+        query?: { page?: number; limit?: number }
+      }) => Promise<[200, CardList]>
+      pre?: GenericRouteHandler | GenericRouteHandler[]
+    }
+  }
   '/:cardId': {
     get: {
       handler: (args: {
@@ -73,6 +81,11 @@ export type CardsAPIServer = APIServerDefinition & {
 }
 
 type CardsAPIClientGet = {
+  (
+    url: '/',
+    args?: { query?: { page?: number; limit?: number } },
+  ): Promise<CardList>
+
   (
     url: '/:cardId',
     args: {
