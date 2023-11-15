@@ -19,6 +19,6 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "axios": "1.6.1"
+    "axios": "1.6.2"
   }
 }
