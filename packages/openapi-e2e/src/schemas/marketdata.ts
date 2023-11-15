@@ -3,11 +3,14 @@
  * Do not make direct changes to the file.
  */
 
-import {
+import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
 } from '@sebspark/openapi-core'
+import type { Request } from 'express'
+
+type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
 /* tslint:disable */
 /* eslint-disable */
@@ -81,42 +84,44 @@ export type Error = { code: number; message: string }
 export type MarketdataAPIServer = APIServerDefinition & {
   '/markets': {
     get: {
-      handler: (args?: {
-        query?: { page?: number; limit?: number }
-      }) => Promise<[200, MarketListResponse]>
+      handler: (
+        args?: Req & { query?: { page?: number; limit?: number } },
+      ) => Promise<[200, MarketListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/markets/:mic': {
     get: {
-      handler: (args: {
-        params: { mic: string }
-      }) => Promise<[200, MarketEntityResponse]>
+      handler: (
+        args: Req & { params: { mic: string } },
+      ) => Promise<[200, MarketEntityResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/markets/:mic/instruments': {
     get: {
-      handler: (args: {
-        params: { mic: string }
-        query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
-      }) => Promise<[200, InstrumentListResponse]>
+      handler: (
+        args: Req & {
+          params: { mic: string }
+          query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
+        },
+      ) => Promise<[200, InstrumentListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/markets/:mic/instruments/:isin/:currency': {
     get: {
-      handler: (args: {
-        params: { mic: string; isin: string; currency: string }
-      }) => Promise<[200, InstrumentEntityResponse]>
+      handler: (
+        args: Req & { params: { mic: string; isin: string; currency: string } },
+      ) => Promise<[200, InstrumentEntityResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/instruments/:isin': {
     get: {
-      handler: (args: {
-        params: { isin: string }
-      }) => Promise<[200, InstrumentListResponse]>
+      handler: (
+        args: Req & { params: { isin: string } },
+      ) => Promise<[200, InstrumentListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }

@@ -16,6 +16,7 @@ const schemaTxt = readFileSync(__dirname + '/components.json', 'utf8')
 const schema: OpenAPI3 = JSON.parse(schemaTxt)
 const typescript = readFileSync(__dirname + '/components.generated.ts', 'utf8')
 
+// TODO: Add support for requestBody
 describe.skip('components', () => {
   describe('generate', () => {
     it('generates a correct document', async () => {

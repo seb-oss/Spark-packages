@@ -25,7 +25,7 @@ ${Object.entries(map)
 ${Object.entries(methods)
   .map(
     ([method, definition]) => `    '${method}': {
-    handler: (${serializeArgs(definition.args)}) => Promise<[${
+    handler: (${serializeArgs(definition.args, true)}) => Promise<[${
       definition.response.code
     }, ${definition.response.type}]>
     pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -126,12 +126,17 @@ const optional = (params: string) => {
   return anyRequired ? '' : '?'
 }
 
-const serializeArgs = (args?: RouteArgs): string => {
+const serializeArgs = (
+  args?: RouteArgs,
+  includeRequest: boolean = false,
+): string => {
   if (!args) return ''
   const argsString = Object.entries(args)
     .map(([key, value]) => {
       return `${key}${optional(value)}: ${value}`
     })
     .join(',')
-  return `args${optional(argsString)}: {${argsString}}`
+  return `args${optional(argsString)}: ${
+    includeRequest ? 'Req & ' : ''
+  }{${argsString}}`
 }

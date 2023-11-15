@@ -3,11 +3,14 @@
  * Do not make direct changes to the file.
  */
 
-import {
+import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
 } from '@sebspark/openapi-core'
+import type { Request } from 'express'
+
+type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
 /* tslint:disable */
 /* eslint-disable */
@@ -45,36 +48,42 @@ export type HttpError = { message: string; stack?: string }
 export type CardsAPIServer = APIServerDefinition & {
   '/': {
     get: {
-      handler: (args?: {
-        query?: { page?: number; limit?: number }
-      }) => Promise<[200, CardList]>
+      handler: (
+        args?: Req & { query?: { page?: number; limit?: number } },
+      ) => Promise<[200, CardList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/:cardId': {
     get: {
-      handler: (args: {
-        params: { cardId: string }
-        query: { cardNickname: boolean }
-        headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
-      }) => Promise<[200, Card]>
+      handler: (
+        args: Req & {
+          params: { cardId: string }
+          query: { cardNickname: boolean }
+          headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
+        },
+      ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
     delete: {
-      handler: (args: {
-        params: { cardId: string }
-        query: { cardNickname: boolean }
-      }) => Promise<[200, Card]>
+      handler: (
+        args: Req & {
+          params: { cardId: string }
+          query: { cardNickname: boolean }
+        },
+      ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/:cardId/settings': {
     put: {
-      handler: (args: {
-        params: { cardId: string }
-        headers: { 'x-forwarded-authorization': string }
-        body: CardSettings
-      }) => Promise<[204, void]>
+      handler: (
+        args: Req & {
+          params: { cardId: string }
+          headers: { 'x-forwarded-authorization': string }
+          body: CardSettings
+        },
+      ) => Promise<[204, void]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }

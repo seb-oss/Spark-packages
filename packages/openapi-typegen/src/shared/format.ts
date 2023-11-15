@@ -5,11 +5,14 @@ const header = `/**
  * Do not make direct changes to the file.
  */
 
-import {
+import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
 } from '@sebspark/openapi-core'
+import type { Request } from 'express'
+
+type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
  
 /* tslint:disable */
 /* eslint-disable */`
