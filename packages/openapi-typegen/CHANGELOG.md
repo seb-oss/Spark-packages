@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 0.2.0
+
+### Minor Changes
+
+- 9dec71a: Adds stripped Request to server handlers
+
 ## 0.1.1
 
 ### Patch Changes
