@@ -24,7 +24,7 @@ const usage = chalk.magenta(
       borderColor: 'green',
       dimBorder: true,
     }) +
-    '\n',
+    '\n'
 )
 
 const argv = yargs(process.argv.slice(2))

@@ -14,7 +14,7 @@ export const readSchemas = (path: string) => {
 export const saveTypescript = (
   ts: string,
   path: string,
-  name = 'schema',
+  name = 'schema'
 ): void => {
   writeFileSync(resolve(path, `${name}.ts`), ts)
 }

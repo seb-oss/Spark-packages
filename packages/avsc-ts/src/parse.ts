@@ -67,7 +67,7 @@ export const parse = (...schemas: Schema[]): string => {
       console.log()
       console.error('ERROR: Inconsistent schemas.')
       console.error(
-        'Check for circular dependencies or missing types, then try again.',
+        'Check for circular dependencies or missing types, then try again.'
       )
 
       throw new Error('circular dependency')

@@ -83,7 +83,7 @@ const setup = async () => {
       if (name === 'push-message') subscriberFn = cb
       if (name === 'message') subscriberFn = cb
       return subscription
-    },
+    }
   )
 
   const pubsub = new PubSub() as MockedObject<PubSub>
@@ -92,7 +92,6 @@ const setup = async () => {
     Topics<typeof testMessage.topicData>,
     'test'
   >()
-
   ;(pubsub.topic as Mock).mockReturnValue(mockTopic)
 
   return {
@@ -254,7 +253,7 @@ describe('#topic', () => {
         {
           pushConfig: expect.objectContaining({
             pushEndpoint: expect.stringMatching(
-              'http://localhost:8080/pubsub/push',
+              'http://localhost:8080/pubsub/push'
             ),
           }),
           retryPolicy: {
@@ -269,7 +268,7 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
@@ -277,7 +276,7 @@ describe('#topic', () => {
       const { createdPubsub, mockTopic, topicName, subscription } =
         await setup()
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -298,11 +297,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -316,11 +315,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -434,7 +433,7 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
@@ -443,7 +442,7 @@ describe('#topic', () => {
         await setup()
 
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -465,11 +464,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -484,11 +483,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 

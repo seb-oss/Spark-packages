@@ -14,7 +14,7 @@ const localProjectId = 'local'
 const clients: Record<string, PubSub> = {}
 
 const init = (
-  { projectId, credentials }: ClientConfig = { projectId: localProjectId },
+  { projectId, credentials }: ClientConfig = { projectId: localProjectId }
 ) => {
   if (!clients[projectId]) {
     if (projectId === localProjectId) {
@@ -32,7 +32,7 @@ const init = (
 export const getOrCreateTopic = async (
   topicName: string,
   config?: ClientConfig,
-  tries = 0,
+  tries = 0
 ): Promise<Topic> => {
   // Ensure there is always a client for desired project, as specified in config.
   init(config)
