@@ -1,8 +1,8 @@
-import { beforeAll, afterAll, describe, expect, it } from 'vitest'
-import { MarketdataAPIClient } from './schemas/marketdata'
-import { TypedClient } from '@sebspark/openapi-client'
-import { app, markets } from './server'
 import type { Server } from 'http'
+import { TypedClient } from '@sebspark/openapi-client'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { MarketdataAPIClient } from './schemas/marketdata'
+import { app, markets } from './server'
 
 describe('openapi e2e tests', () => {
   const PORT = 12345
@@ -21,7 +21,7 @@ describe('openapi e2e tests', () => {
           if (err) reject(err)
           else resolve()
         })
-      }),
+      })
   )
   it('returns markets', async () => {
     const result = await client.get('/markets')
@@ -30,7 +30,7 @@ describe('openapi e2e tests', () => {
   it('works for multiple parameter urls', async () => {
     const result = await client.get(
       '/markets/:mic/instruments/:isin/:currency',
-      { params: { mic: 'XSTO', isin: 'SE1234567', currency: 'SEK' } },
+      { params: { mic: 'XSTO', isin: 'SE1234567', currency: 'SEK' } }
     )
     expect(result).toEqual({
       data: {

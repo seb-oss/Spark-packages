@@ -1,10 +1,10 @@
 import { readFileSync } from 'fs'
-import { generateData, generateOpenApi } from '../generator'
 import prettier from 'prettier'
-import { OpenAPI3 } from '../specification'
-import { RouteDefinition, generateRouteDefinitions } from '../format'
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 import { ParsedType } from '../../shared/schema'
-import { describe, beforeAll, beforeEach, it, expect } from 'vitest'
+import { RouteDefinition, generateRouteDefinitions } from '../format'
+import { generateData, generateOpenApi } from '../generator'
+import { OpenAPI3 } from '../specification'
 
 const format = (str: string) => {
   return prettier.format(str, {
@@ -14,7 +14,7 @@ const format = (str: string) => {
   })
 }
 
-const schemaTxt = readFileSync(__dirname + '/openapi.json', 'utf-8')
+const schemaTxt = readFileSync(`${__dirname}/openapi.json`, 'utf-8')
 
 const findType = (types: ParsedType[], find: string) => {
   return types.find((it) => it.name === find)
@@ -40,28 +40,28 @@ describe('schema', () => {
         const generated = generateData(schema)
 
         expect(getType(generated.types, 'Card')).toEqual(
-          `{'id': string; 'ownerId': string; 'name-on-card': string; 'settings/foo'?: CardSettings}`,
+          `{'id': string; 'ownerId': string; 'name-on-card': string; 'settings/foo'?: CardSettings}`
         )
       })
       it('generates deep properties', () => {
         const generated = generateData(schema)
 
         expect(getType(generated.types, 'CardSettings')).toEqual(
-          `{'cardId': string; 'frozen': {'value': boolean; 'editableByChild': boolean}}`,
+          `{'cardId': string; 'frozen': {'value': boolean; 'editableByChild': boolean}}`
         )
       })
       it('generates array properties', () => {
         const generated = generateData(schema)
 
         expect(getType(generated.types, 'CardList')).toEqual(
-          `{'cards': (Card)[]}`,
+          `{'cards': (Card)[]}`
         )
       })
       it('generates docs', () => {
         const generated = generateData(schema)
 
         expect(
-          findType(generated.types, 'Documented')?.description,
+          findType(generated.types, 'Documented')?.description
         ).toBeTruthy()
       })
     })
@@ -101,7 +101,7 @@ describe('schema', () => {
         const getCard = generated.paths[1]
 
         expect(getCard.requestHeaders).toEqual(
-          "{'X-User-Id': string, 'X-Distributor-Id'?: string}",
+          "{'X-User-Id': string, 'X-Distributor-Id'?: string}"
         )
       })
       it('generates body', () => {
@@ -150,7 +150,7 @@ describe('schema', () => {
     it('generates a correct document', async () => {
       const generated = await generateOpenApi(schema)
       const expected = await format(
-        readFileSync(`${__dirname}/openapi.generated.ts`, 'utf8'),
+        readFileSync(`${__dirname}/openapi.generated.ts`, 'utf8')
       )
       expect(generated).toEqual(expected)
     })

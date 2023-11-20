@@ -4,7 +4,13 @@
     "enabled": true
   },
   "files": {
-    "ignore": ["generated/**", "dist/**", "testschemas/**"]
+    "ignore": [
+      "generated/**",
+      "dist/**",
+      "testschemas/**",
+      "coverage/**",
+      "*.generated.ts"
+    ]
   },
   "formatter": {
     "indentStyle": "space"

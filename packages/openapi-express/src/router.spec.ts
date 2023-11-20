@@ -1,12 +1,12 @@
-import { test, expect, beforeEach, vi, Mock } from 'vitest'
-import { agent, SuperAgentTest } from 'supertest'
-import express, { Express } from 'express'
 import {
   APIServerDefinition,
   APIServerOptions,
   GenericRouteHandler,
   UnauthorizedError,
 } from '@sebspark/openapi-core'
+import express, { Express } from 'express'
+import { SuperAgentTest, agent } from 'supertest'
+import { Mock, beforeEach, expect, test, vi } from 'vitest'
 import { TypedRouter } from './router'
 
 type User = {
@@ -68,7 +68,7 @@ test('/users is called correctly', async () => {
 
 test('/users/:id is called correctly', async () => {
   ;(server['/users/:id'].get.handler as Mock).mockImplementation(
-    async ({ params: { id } }) => [200, { id }],
+    async ({ params: { id } }) => [200, { id }]
   )
   const response = await client.get('/users/foobar')
   expect(response.statusCode).toEqual(200)
@@ -76,11 +76,9 @@ test('/users/:id is called correctly', async () => {
 })
 
 test('it runs pre handlers', async () => {
-  ;(server['/users'].get.pre! as Mock).mockImplementation(
-    (_req, _res, next) => {
-      next(new UnauthorizedError())
-    },
-  )
+  ;(server['/users'].get.pre as Mock).mockImplementation((_req, _res, next) => {
+    next(new UnauthorizedError())
+  })
 
   const response = await client.get('/users')
   expect(response.unauthorized).toBe(true)

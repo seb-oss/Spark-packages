@@ -49,7 +49,7 @@ export type CardsAPIServer = APIServerDefinition & {
   '/': {
     get: {
       handler: (
-        args?: Req & { query?: { page?: number; limit?: number } },
+        args?: Req & { query?: { page?: number; limit?: number } }
       ) => Promise<[200, CardList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -61,7 +61,7 @@ export type CardsAPIServer = APIServerDefinition & {
           params: { cardId: string }
           query: { cardNickname: boolean }
           headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
-        },
+        }
       ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -70,7 +70,7 @@ export type CardsAPIServer = APIServerDefinition & {
         args: Req & {
           params: { cardId: string }
           query: { cardNickname: boolean }
-        },
+        }
       ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -82,7 +82,7 @@ export type CardsAPIServer = APIServerDefinition & {
           params: { cardId: string }
           headers: { 'x-forwarded-authorization': string }
           body: CardSettings
-        },
+        }
       ) => Promise<[204, void]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -92,7 +92,7 @@ export type CardsAPIServer = APIServerDefinition & {
 type CardsAPIClientGet = {
   (
     url: '/',
-    args?: { query?: { page?: number; limit?: number } },
+    args?: { query?: { page?: number; limit?: number } }
   ): Promise<CardList>
 
   (
@@ -101,14 +101,14 @@ type CardsAPIClientGet = {
       params: { cardId: string }
       query: { cardNickname: boolean }
       headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
-    },
+    }
   ): Promise<Card>
 }
 
 type CardsAPIClientDelete = {
   (
     url: '/:cardId',
-    args: { params: { cardId: string }; query: { cardNickname: boolean } },
+    args: { params: { cardId: string }; query: { cardNickname: boolean } }
   ): Promise<Card>
 }
 
@@ -119,7 +119,7 @@ type CardsAPIClientPut = {
       params: { cardId: string }
       headers: { 'x-forwarded-authorization': string }
       body: CardSettings
-    },
+    }
   ): Promise<void>
 }
 

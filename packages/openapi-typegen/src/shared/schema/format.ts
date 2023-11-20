@@ -25,7 +25,9 @@ const formatParsedType = (parsedType: ParsedType) => {
 export const formatParsedTypes = (types: ParsedType[]): string[] => {
   const rows: string[] = []
 
-  Object.values(types).forEach((values) => rows.push(formatParsedType(values)))
+  for (const type of Object.values(types)) {
+    rows.push(formatParsedType(type))
+  }
 
   return rows
 }
@@ -33,10 +35,10 @@ export const formatParsedTypes = (types: ParsedType[]): string[] => {
 export const formatProperties = (properties: ParsedProperty[]) => {
   const allProps = properties
     .map(({ name, required, value, description }) => {
-      return `${formatDocs(description)}'${name}'${
-        required ? '' : '?'
-      }: ${value}`
+      return `${formatDocs(
+        description
+      )}'${name}'${required ? '' : '?'}: ${value}`
     })
-    .join(`; `)
+    .join('; ')
   return `{${allProps}}`
 }

@@ -1,27 +1,27 @@
-import { Route, Response } from './types'
+import { Verb } from '@sebspark/openapi-core'
+import { AddImportFn, Import } from '../shared/imports'
+import {
+  ReferenceObject,
+  generateFromSchemaObject,
+  parseRefString,
+} from '../shared/schema'
 import {
   ParameterObject,
   PathItemObject,
   RequestBody,
   ResponseObject,
 } from './specification'
-import { AddImportFn, Import } from '../shared/imports'
-import {
-  generateFromSchemaObject,
-  ReferenceObject,
-  parseRefString,
-} from '../shared/schema'
-import { Verb } from '@sebspark/openapi-core'
+import { Response, Route } from './types'
 
 export const pathGenerator = (
-  globalParameters: Record<string, ParameterObject>,
+  globalParameters: Record<string, ParameterObject>
 ) => {
   const expressifyPath = (path: string): string =>
     path.replace(/{/g, ':').replace(/}/g, '')
 
   const parseResponse = (
     response: ResponseObject,
-    addImports: AddImportFn,
+    addImports: AddImportFn
   ): string => {
     const schema = response.content?.['application/json']?.schema
 
@@ -38,7 +38,8 @@ export const pathGenerator = (
     return 'any'
   }
 
-  const propName = (name: string): string => {
+  const propName = (name?: string): string => {
+    if (!name) return ''
     if (name.indexOf('-') === -1) return name
     return `'${name}'`
   }
@@ -52,7 +53,7 @@ export const pathGenerator = (
       | /* V3 */ 'cookie'
       | /* V2 */ 'formData'
       | /* V2 */ 'body',
-    addImport: AddImportFn,
+    addImport: AddImportFn
   ): string => {
     const props = params
       .map((it) => {
@@ -65,10 +66,10 @@ export const pathGenerator = (
       .filter((p) => p.in === filter)
       .map(
         (p) =>
-          `${propName(p.name!)}${p.required ? '' : '?'}: ${getType(
+          `${propName(p.name)}${p.required ? '' : '?'}: ${getType(
             p,
-            addImport,
-          )}`,
+            addImport
+          )}`
       )
 
     if (props.length) return `{${props.join(', ')}}`
@@ -87,10 +88,15 @@ export const pathGenerator = (
   }
 
   const generateResponses = (
-    responses: Record<string, ReferenceObject | ResponseObject>,
+    responses: Record<string, ReferenceObject | ResponseObject> | undefined,
     addImport: AddImportFn,
-    errors = false,
+    errors = false
   ): Response[] => {
+    if (!responses) {
+      console.warn('No responses found')
+      return []
+    }
+
     const responseTypes = Object.entries(responses)
       .map(([strCode, response]) => {
         const code = parseInt(strCode, 10)
@@ -118,7 +124,7 @@ export const pathGenerator = (
   const generateRoutes = (
     path: string,
     item: PathItemObject,
-    addImport: AddImportFn,
+    addImport: AddImportFn
   ): Route[] => {
     const verbs: Verb[] = ['get', 'post', 'put', 'patch', 'delete']
 
@@ -132,28 +138,28 @@ export const pathGenerator = (
           method: verb,
           requestBody: generateBody(
             operation.requestBody as RequestBody,
-            addImport,
+            addImport
           ),
           requestParams: generateProps(
             operation.parameters || [],
             'path',
-            addImport,
+            addImport
           ),
           requestQuery: generateProps(
             operation.parameters || [],
             'query',
-            addImport,
+            addImport
           ),
           requestHeaders: generateProps(
             operation.parameters || [],
             'header',
-            addImport,
+            addImport
           ),
-          response: generateResponses(operation.responses!, addImport)[0],
+          response: generateResponses(operation.responses, addImport)[0],
           errorResponses: generateResponses(
-            operation.responses!,
+            operation.responses,
             addImport,
-            true,
+            true
           ),
         }
         return route
@@ -164,11 +170,11 @@ export const pathGenerator = (
   }
 
   const generatePaths = (
-    paths: Record<string, PathItemObject>,
+    paths: Record<string, PathItemObject>
   ): [Route[], Import[]] => {
     const imports = [] as Import[]
     const routes = Object.entries(paths).flatMap(([path, item]) =>
-      generateRoutes(path, item, (imp) => imports.push(imp)),
+      generateRoutes(path, item, (imp) => imports.push(imp))
     )
 
     return [routes, imports]

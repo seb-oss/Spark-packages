@@ -12,7 +12,7 @@ type ClientGet = {
   (
     url: '/users/:id',
     args: { params: { id: string } },
-    opts?: RequestOptions,
+    opts?: RequestOptions
   ): Promise<User>
 }
 type ClientPost = {
@@ -22,21 +22,21 @@ type ClientPut = {
   (
     url: '/users/:id',
     args: { params: { id: string }; body: User },
-    opts?: RequestOptions,
+    opts?: RequestOptions
   ): Promise<User>
 }
 type ClientPatch = {
   (
     url: '/users/:id',
     args: { params: { id: string }; body: Partial<User> },
-    opts?: RequestOptions,
+    opts?: RequestOptions
   ): Promise<User>
 }
 type ClientDelete = {
   (
     url: '/users/:id',
     args: { params: { id: string } },
-    opts?: RequestOptions,
+    opts?: RequestOptions
   ): Promise<void>
 }
 export type Client = BaseClient & {

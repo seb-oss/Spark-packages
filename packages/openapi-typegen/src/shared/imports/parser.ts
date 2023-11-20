@@ -1,7 +1,7 @@
 import { ReferenceObject, SchemaObject } from '../schema'
 
 export const generateImports = (
-  schemas: (SchemaObject | ReferenceObject)[],
+  schemas: (SchemaObject | ReferenceObject)[]
 ) => {
   const imports = schemas
     .filter((it) => '$ref' in it)
@@ -10,10 +10,12 @@ export const generateImports = (
     .map((it) => getImport(it.$ref))
 
   const importMap = new Map<string, string[]>()
-  imports.forEach(([file, objectName]) => {
+
+  for (const [file, objectName] of imports) {
     const objects = importMap.get(file) || []
     importMap.set(file, [...objects, objectName])
-  })
+  }
+
   return importMap
 }
 

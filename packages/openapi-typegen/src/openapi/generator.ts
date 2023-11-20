@@ -1,6 +1,6 @@
 import { formatFile } from '../shared/format'
-import { formatImports, Import } from '../shared/imports'
-import { formatParsedTypes, ParsedType, parseTypes } from '../shared/schema'
+import { Import, formatImports } from '../shared/imports'
+import { ParsedType, formatParsedTypes, parseTypes } from '../shared/schema'
 import { formatRoutes } from './format'
 import { parseReferencableObjects } from './parser'
 import { pathGenerator } from './paths'
@@ -21,11 +21,11 @@ export const generateData = (schema: OpenAPI3): Data => {
 
   const parameters = parseReferencableObjects(
     'parameters',
-    schema.components?.parameters || {},
+    schema.components?.parameters || {}
   )
 
   const [paths, importsFromPaths] = pathGenerator(parameters).generate(
-    schema.paths || {},
+    schema.paths || {}
   )
 
   return {
