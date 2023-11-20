@@ -12,9 +12,6 @@ import type { Request } from 'express'
 
 type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
-/* tslint:disable */
-/* eslint-disable */
-
 export type Card = {
   id: string
   ownerId: string
@@ -49,7 +46,7 @@ export type CardsAPIServer = APIServerDefinition & {
   '/': {
     get: {
       handler: (
-        args?: Req & { query?: { page?: number; limit?: number } }
+        args?: Req & { query?: { page?: number; limit?: number } },
       ) => Promise<[200, CardList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -92,7 +89,7 @@ export type CardsAPIServer = APIServerDefinition & {
 type CardsAPIClientGet = {
   (
     url: '/',
-    args?: { query?: { page?: number; limit?: number } }
+    args?: { query?: { page?: number; limit?: number } },
   ): Promise<CardList>
 
   (
@@ -108,7 +105,7 @@ type CardsAPIClientGet = {
 type CardsAPIClientDelete = {
   (
     url: '/:cardId',
-    args: { params: { cardId: string }; query: { cardNickname: boolean } }
+    args: { params: { cardId: string }; query: { cardNickname: boolean } },
   ): Promise<Card>
 }
 
@@ -119,7 +116,7 @@ type CardsAPIClientPut = {
       params: { cardId: string }
       headers: { 'x-forwarded-authorization': string }
       body: CardSettings
-    }
+    },
   ): Promise<void>
 }
 

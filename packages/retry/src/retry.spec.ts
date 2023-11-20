@@ -35,6 +35,7 @@ describe('interval', () => {
   describe('interval.fixed', () => {
     it('returns the same value all the time', () => {
       const func = interval.fixed(1000)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(1000)
       expect(func(3)).toEqual(1000)
@@ -44,6 +45,7 @@ describe('interval', () => {
   describe('interval.linear', () => {
     it('returns a multiplier of the value', () => {
       const func = interval.linear(1000)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(2000)
       expect(func(3)).toEqual(3000)
@@ -53,6 +55,7 @@ describe('interval', () => {
   describe('interval.exponential', () => {
     it('returns an exponentially increasing value', () => {
       const func = interval.exponential(1000, 2)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(2000)
       expect(func(3)).toEqual(4000)

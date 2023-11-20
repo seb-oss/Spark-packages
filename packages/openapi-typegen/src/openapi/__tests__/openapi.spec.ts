@@ -11,6 +11,7 @@ const format = (str: string) => {
     semi: false,
     parser: 'typescript',
     singleQuote: true,
+    trailingComma: 'es5',
   })
 }
 
