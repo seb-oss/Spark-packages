@@ -73,11 +73,8 @@ jobs:
       - name: Download dependencies
         uses: bahmutov/npm-install@v1
 
-      - name: Run linting
-        run: npm run lint
-
-      - name: Check formatting
-        run: npm run lint:format
+      - name: Check linting, formatting, and imports
+        run: npx @biomejs/biome ci .
 
   typecheck:
     name: Type check
