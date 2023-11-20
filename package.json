@@ -6,7 +6,7 @@
     "build": "turbo build",
     "changeset": "changeset",
     "dev": "turbo dev",
-    "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format": "biome format --write .",
     "generate:package": "turbo gen package",
     "lint": "turbo lint",
     "lint:check": "biome check .",
