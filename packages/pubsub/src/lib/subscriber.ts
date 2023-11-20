@@ -82,7 +82,6 @@ const subscriptionPushConfig = async (): Promise<CreateSubscriptionOptions> => {
   }
 
   if (!process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL) {
-    // eslint-disable-next-line no-console
     console.warn(
       'Environment variable PUBSUB_SERVICE_ACCOUNT_EMAIL should be set if running in GCP'
     )
@@ -119,7 +118,6 @@ const getCreateSubscriptionOptions =
     }
   }
 
-// eslint-disable-next-line max-statements
 const createOrGetSubscription = async (
   subscriptionName: string,
   topic: Topic
@@ -174,7 +172,6 @@ export const subscriber =
         message.ack()
       } catch (err) {
         message.nack()
-        // eslint-disable-next-line no-console
         console.error(err)
       }
     }

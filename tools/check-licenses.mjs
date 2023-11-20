@@ -1,5 +1,4 @@
 #!/bin/node
-/* eslint-disable */
 
 import path from 'path'
 import fs from 'fs/promises'
