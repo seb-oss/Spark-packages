@@ -1,5 +1,5 @@
-import { PubSub } from '@google-cloud/pubsub'
 import { randomUUID } from 'crypto'
+import { PubSub } from '@google-cloud/pubsub'
 import {
   Mock,
   MockedObject,
@@ -113,9 +113,9 @@ beforeAll(() => {
 })
 
 afterAll(() => {
-  delete process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL
-  delete process.env.PUBSUB_DELIVERY_MODE
-  delete process.env.PUBSUB_PUSH_HOST
+  process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL = undefined
+  process.env.PUBSUB_DELIVERY_MODE = undefined
+  process.env.PUBSUB_PUSH_HOST = undefined
 })
 
 describe('creates an instance of PubSub', () => {
@@ -147,7 +147,7 @@ describe('creates an instance of PubSub', () => {
     it('when subscribing to multiple', async () => {
       const { createdPubsub, topicName } = await setup()
 
-      await createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
+      createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
         onSuccess: () => undefined,
         onError: () => undefined,
       })
@@ -249,7 +249,7 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.test',
+        `${topicName}.test`,
         {
           pushConfig: expect.objectContaining({
             pushEndpoint: expect.stringMatching(
@@ -284,7 +284,7 @@ describe('#topic', () => {
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
+      expect(mockTopic.subscription).toHaveBeenCalledWith(`${topicName}.test`)
       expect(subscription.get).toHaveBeenCalledWith()
     })
 
@@ -407,7 +407,7 @@ describe('#topic', () => {
     })
 
     afterEach(() => {
-      delete process.env.PUBSUB_DELIVERY_MODE
+      process.env.PUBSUB_DELIVERY_MODE = undefined
     })
 
     it('creates a subscription using topic.createSubscription', async () => {
@@ -419,7 +419,7 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.test',
+        `${topicName}.test`,
         {
           retryPolicy: {
             minimumBackoff: {
@@ -450,7 +450,7 @@ describe('#topic', () => {
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
+      expect(mockTopic.subscription).toHaveBeenCalledWith(`${topicName}.test`)
       expect(subscription.get).toHaveBeenCalledWith()
     })
 

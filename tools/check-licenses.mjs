@@ -1,8 +1,8 @@
 #!/bin/node
 /* eslint-disable */
 
-import fs from 'fs/promises'
 import path from 'path'
+import fs from 'fs/promises'
 
 const packages = await fs.readdir(path.resolve(process.cwd(), './packages'))
 const allowedLicenses = ['Apache-2.0']

@@ -42,7 +42,7 @@ export const getOrCreateTopic = async (
       .topic(topicName)
       .get({ autoCreate: true })
     return t
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Any for error code.
   } catch (err: any) {
     if (err.code && err?.code === 6 && tries < 3) {
       return getOrCreateTopic(topicName, config, tries + 1)

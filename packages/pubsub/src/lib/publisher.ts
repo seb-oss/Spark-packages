@@ -1,7 +1,7 @@
 import { ClientConfig, getOrCreateTopic } from './client'
 
 interface Publisher<T, Headers, raw> {
-  (message: T, headers?: Headers, raw?: raw): Promise<string>
+  (message: T, headers?: Headers, rawMessage?: raw): Promise<string>
 }
 
 interface PubsubMessage<Message, Headers extends Record<string, unknown>> {

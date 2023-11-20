@@ -9,6 +9,7 @@
     "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "generate:package": "turbo gen package",
     "lint": "turbo lint",
+    "lint:check": "biome check .",
     "lint:format": "biome format .",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",

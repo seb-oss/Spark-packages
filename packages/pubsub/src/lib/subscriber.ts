@@ -198,7 +198,7 @@ export const subscriber =
         )
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Any for event
     subscription.on(messageHandlerEvent as any, messageHandler)
     subscription.on('error', errorHandler)
 

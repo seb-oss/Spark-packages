@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { inspect } from 'util'
-import { parse } from 'csv-parse/sync'
 import { camelCase } from 'change-case'
+import { parse } from 'csv-parse/sync'
 import prettier from 'prettier'
 
 const [, , inputFile, outputFile] = process.argv

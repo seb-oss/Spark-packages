@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+import boxen from 'boxen'
+import chalk from 'chalk'
+import yargs from 'yargs'
 import { readSchemas, saveTypescript } from './files'
 import { parse } from './parse'
-import yargs from 'yargs'
-import chalk from 'chalk'
-import boxen from 'boxen'
 
 export type Opts = {
   inputpath: string
@@ -17,15 +17,15 @@ export const parseSchemas = ({ inputpath, outputpath, schemaname }: Opts) => {
   saveTypescript(ts, outputpath || inputpath, schemaname)
 }
 
-const usage = chalk.magenta(
-  '\nUsage: avsc-ts --input ./schemas --output ./dist \n' +
-    boxen(chalk.green('\n' + 'Generates Typescript from avro files' + '\n'), {
-      padding: 1,
-      borderColor: 'green',
-      dimBorder: true,
-    }) +
-    '\n'
-)
+const usage = chalk.magenta(`
+Usage: avsc-ts --input ./schemas --output ./dist \n' +
+
+${boxen(chalk.green('\n' + 'Generates Typescript from avro files' + '\n'), {
+  padding: 1,
+  borderColor: 'green',
+  dimBorder: true,
+})}
+`)
 
 const argv = yargs(process.argv.slice(2))
   .usage(usage)
