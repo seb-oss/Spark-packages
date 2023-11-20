@@ -606,10 +606,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.18.1.tgz#8e47caf57a84b1dcc1722b2025693348cdf443b4"
   integrity sha512-+NLGHr6VZwcgE/2lw8zDIufOCGnzsA5CbQIMleXZTrgkBd0TanCX+MiDYJ1TOS4KL/Tqk0nFRxawnaYr6pkZkA==
 
-"@ovotech/avro-ts@6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@ovotech/avro-ts/-/avro-ts-6.1.0.tgz#e6cbaa302bb74ddb9a17c8e6a0ca3bc3044a097f"
-  integrity sha512-k4+mcy5Y2dIkEp1RF6d8cUjNpluKZHIAghXtmQAH95cQYMdZFltuoneHPK0T9JFgjlM48lJAV3sXif+QZoKQfw==
+"@ovotech/avro-ts@6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@ovotech/avro-ts/-/avro-ts-6.2.0.tgz#a84dd1fc1053adb623a2a02ddb90b7d1bfc1c098"
+  integrity sha512-2gXuSvRwUTb0tE85asHgWKA/dtIb7UHIog3XquHaAnK0+awqvY0zTpXvPTLWwzuaa4GdXWzJPXJAVD5sKp020A==
   dependencies:
     "@ovotech/ts-compose" "^0.16.0"
     typescript "^4.1.2"
