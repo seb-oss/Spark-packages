@@ -20,7 +20,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "@ovotech/avro-ts": "6.1.0",
+    "@ovotech/avro-ts": "6.2.0",
     "@sebspark/avsc-isometric": "0.2.0",
     "boxen": "5.1.2",
     "chalk": "4.1.2",
