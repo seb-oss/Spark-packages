@@ -1,7 +1,7 @@
 import { Verb } from '@sebspark/openapi-core'
+import { pascalCase } from 'change-case'
 import { formatTitle } from '../format'
 import { Response, Route } from './types'
-import { pascalCase } from 'change-case'
 
 export const formatRoutes = (title: string, routes: Route[]): string[] => {
   const formattedTitle = formatTitle(title)
@@ -29,14 +29,14 @@ ${Object.entries(methods)
       definition.response.code
     }, ${definition.response.type}]>
     pre?: GenericRouteHandler | GenericRouteHandler[]
-  }`,
+  }`
   )
   .join('\n')}
-  },`,
+  },`
   )
   .join('\n')}
 }
-`,
+`
   )
   return rows
 }
@@ -45,24 +45,29 @@ const generateClientAPI = (name: string, routes: RouteDefinition[]) => {
   const code: string[] = []
   const clientHandlers: string[] = []
   const verbMap = generateClientType(routes)
-  Object.entries(verbMap).forEach(([verb, definitions]) => {
+
+  for (const [verb, definitions] of Object.entries(verbMap)) {
     const type = `${name}Client${pascalCase(verb)}`
     clientHandlers.push(`${verb}: ${type}`)
 
     code.push(`type ${type} = {`)
-    definitions.forEach((def) => {
+
+    for (const def of definitions) {
       const args = serializeArgs(def.args)
       const argsString = args ? `, ${args}` : ''
+
       code.push(
-        `(url: '${def.url}'${argsString}): Promise<${def.response.type}>`,
+        `(url: '${def.url}'${argsString}): Promise<${def.response.type}>`
       )
-    })
+    }
+
     code.push('}')
-  })
+  }
+
   code.push(
     `export type ${name}Client = Pick<BaseClient, ${Object.keys(verbMap)
       .map((v) => `'${v}'`)
-      .join(' | ')}> & {`,
+      .join(' | ')}> & {`
   )
   code.push(clientHandlers.join('\n'))
   code.push('}')
@@ -97,7 +102,7 @@ export type ClientRouter = Partial<Record<Verb, RouteDefinition[]>>
 const generateClientType = (routes: RouteDefinition[]) =>
   routes.reduce<ClientRouter>((router, routeDefinition) => {
     if (!router[routeDefinition.method]) router[routeDefinition.method] = []
-    router[routeDefinition.method]!.push(routeDefinition)
+    router[routeDefinition.method]?.push(routeDefinition)
     return router
   }, {})
 
@@ -126,10 +131,7 @@ const optional = (params: string) => {
   return anyRequired ? '' : '?'
 }
 
-const serializeArgs = (
-  args?: RouteArgs,
-  includeRequest: boolean = false,
-): string => {
+const serializeArgs = (args?: RouteArgs, includeRequest = false): string => {
   if (!args) return ''
   const argsString = Object.entries(args)
     .map(([key, value]) => {

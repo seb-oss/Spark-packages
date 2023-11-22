@@ -1,6 +1,6 @@
-import { Schema } from 'avsc'
 import { readFileSync, readdirSync, writeFileSync } from 'fs'
 import { resolve } from 'path'
+import { Schema } from 'avsc'
 
 export const readSchemas = (path: string) => {
   const absolutePath = resolve(path)
@@ -14,7 +14,7 @@ export const readSchemas = (path: string) => {
 export const saveTypescript = (
   ts: string,
   path: string,
-  name = 'schema',
+  name = 'schema'
 ): void => {
   writeFileSync(resolve(path, `${name}.ts`), ts)
 }

@@ -23,7 +23,7 @@ export type ExampleAPIServer = APIServerDefinition & {
   '/users': {
     get: {
       handler: (
-        args?: Req & { query?: { page?: number; limit?: number } },
+        args?: Req & { query?: { page?: number; limit?: number } }
       ) => Promise<[200, UserList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -35,7 +35,7 @@ export type ExampleAPIServer = APIServerDefinition & {
   '/users/:userId': {
     get: {
       handler: (
-        args: Req & { params: { userId: string } },
+        args: Req & { params: { userId: string } }
       ) => Promise<[200, User]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -45,7 +45,7 @@ export type ExampleAPIServer = APIServerDefinition & {
 type ExampleAPIClientGet = {
   (
     url: '/users',
-    args?: { query?: { page?: number; limit?: number } },
+    args?: { query?: { page?: number; limit?: number } }
   ): Promise<UserList>
 
   (url: '/users/:userId', args: { params: { userId: string } }): Promise<User>

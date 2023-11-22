@@ -15,7 +15,7 @@ export const parseRefString = (refString: string, addImport: AddImportFn) => {
 }
 
 export const parseTypes = (
-  schemas: Record<string, ReferenceObject | SchemaObject>,
+  schemas: Record<string, ReferenceObject | SchemaObject>
 ): [ParsedType[], Import[]] => {
   const imports = [] as Import[]
   const types = Object.entries(schemas).map(([name, schema]) => {
@@ -44,9 +44,13 @@ const guessType = (schema: SchemaObject) => {
 }
 
 export const generateFromSchemaObject = (
-  schema: ReferenceObject | SchemaObject,
-  addImport: AddImportFn,
+  schema: ReferenceObject | SchemaObject | undefined,
+  addImport: AddImportFn
 ): string => {
+  if (!schema) {
+    throw new Error('No schema provided')
+  }
+
   if ('$ref' in schema) {
     const { $ref } = schema as ReferenceObject
     return parseRefString($ref, addImport)
@@ -58,8 +62,9 @@ export const generateFromSchemaObject = (
     if (type === 'object') {
       schemaString = generateObject(schema, addImport)
     } else if (type === 'array') {
-      const arrayType = generateFromSchemaObject(schema.items!, addImport)
-      if (arrayType && arrayType.length) {
+      const arrayType = generateFromSchemaObject(schema.items, addImport)
+
+      if (arrayType?.length) {
         schemaString = `(${arrayType})[]`
       } else {
         schemaString = '[]'
@@ -89,7 +94,7 @@ export const generateFromSchemaObject = (
       .map((it) => generateFromSchemaObject(it, addImport))
       .join(' & ')
     if (allOfString.length > 0) {
-      schemaString = schemaString + ' & ' + allOfString
+      schemaString = `${schemaString} & ${allOfString}`
     }
   }
   if (schema.anyOf) {
@@ -98,7 +103,7 @@ export const generateFromSchemaObject = (
       .map((it) => `Partial<${it}>`)
       .join(' & ')
     if (anyOfString.length > 0) {
-      schemaString = schemaString + ' & ' + anyOfString
+      schemaString = `${schemaString} & ${anyOfString}`
     }
   }
 
@@ -107,7 +112,7 @@ export const generateFromSchemaObject = (
       .map((it) => generateFromSchemaObject(it, addImport))
       .join(' | ')
     if (oneOfString.length > 0) {
-      schemaString = schemaString + ' & (' + oneOfString + ')'
+      schemaString = `${schemaString} & (${oneOfString})`
     }
   }
 
@@ -121,14 +126,13 @@ export const generateFromSchemaObject = (
 const generateObject = (schema: SchemaObject, addImport: AddImportFn) => {
   const requiredFields = schema.required ?? []
   const properties: Record<string, ParsedProperty> = Object.entries(
-    schema.properties ?? [],
+    schema.properties ?? []
   )
     .map(([name, schema]) => ({
       [name]: {
         name,
         value: generateFromSchemaObject(schema, addImport),
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        description: (schema as any)['description'],
+        description: (schema as SchemaObject).description,
         required: requiredFields.includes(name),
       },
     }))

@@ -1,9 +1,9 @@
+import { join, parse } from 'path'
 import * as fastGlob from 'fast-glob'
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { join, parse } from 'path'
 import { parse as yamlParse } from 'yaml'
 // import { AsyncApi, generate as asyncApiGenerate } from './asyncapi'
-import { generateOpenApi, OpenAPI3 } from './openapi'
+import { OpenAPI3, generateOpenApi } from './openapi'
 import { Components, generateSchemas } from './shared/schema'
 
 type ParsedSchemas = {
@@ -28,11 +28,11 @@ const getSchemas = async (input: string): Promise<ParsedSchemas> => {
         ? yamlParse(content)
         : JSON.parse(content)
 
-    if (parsed['asyncapi']) {
+    if (parsed.asyncapi) {
       // schemas.asyncApi[name] = parsed
-    } else if (parsed['openapi']) {
+    } else if (parsed.openapi) {
       schemas.openApi[name] = parsed
-    } else if (parsed['components']) {
+    } else if (parsed.components) {
       schemas.sharedTypes[name] = parsed
     }
   }
@@ -47,7 +47,7 @@ export type Options = {
 export const generate = async ({
   input,
   output,
-}: Options): Promise<string | string[] | void> => {
+}: Options): Promise<string | string[] | undefined> => {
   if (!input) throw new Error('You need to supply at least one schema')
 
   const schemas = await getSchemas(input)
@@ -56,7 +56,7 @@ export const generate = async ({
     Object.entries(schemas.openApi).map(async ([name, schema]) => ({
       name,
       schema: await generateOpenApi(schema),
-    })),
+    }))
   )
 
   /*
@@ -72,7 +72,7 @@ export const generate = async ({
     Object.entries(schemas.sharedTypes).map(async ([name, schema]) => ({
       name,
       schema: await generateSchemas(schema),
-    })),
+    }))
   )
 
   // print result
@@ -86,7 +86,7 @@ export const generate = async ({
  * ${name}
  */
 ${schema}
-`,
+`
         )
         .join('\n')
     )

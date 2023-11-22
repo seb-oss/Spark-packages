@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
-import { generateOpenApi } from '../generator'
 import prettier from 'prettier'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
+import { generateOpenApi } from '../generator'
 import { OpenAPI3 } from '../specification'
 
 const format = (str: string) => {
@@ -12,9 +12,9 @@ const format = (str: string) => {
   })
 }
 
-const schemaTxt = readFileSync(__dirname + '/components.json', 'utf8')
+const schemaTxt = readFileSync(`${__dirname}/components.json`, 'utf8')
 const schema: OpenAPI3 = JSON.parse(schemaTxt)
-const typescript = readFileSync(__dirname + '/components.generated.ts', 'utf8')
+const typescript = readFileSync(`${__dirname}/components.generated.ts`, 'utf8')
 
 // TODO: Add support for requestBody
 describe.skip('components', () => {

@@ -5,12 +5,12 @@ import {
   Verb,
   fromAxiosError,
 } from '@sebspark/openapi-core'
+import { RetrySettings, retry } from '@sebspark/retry'
 import axios, { AxiosError } from 'axios'
-import { retry, RetrySettings } from '@sebspark/retry'
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
-  globalOptions?: ClientOptions,
+  globalOptions?: ClientOptions
 ): C => {
   const client: BaseClient = {
     get: (url, args, opts) =>
@@ -26,7 +26,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         'patch',
         args,
         globalOptions?.retry,
-        opts?.retry,
+        opts?.retry
       ),
     delete: (url, args, opts) =>
       callServer(
@@ -35,7 +35,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         'delete',
         args,
         globalOptions?.retry,
-        opts?.retry,
+        opts?.retry
       ),
   }
   return client as C
@@ -60,7 +60,7 @@ const callServer = async (
           params: args?.query,
           data: args?.body,
         }),
-      ...retrySettings,
+      ...retrySettings
     )
     return response.data
   } catch (error) {
@@ -72,5 +72,5 @@ const setParams = (url: string, params: Record<string, string> = {}): string =>
   Object.entries(params).reduce(
     (url, [key, val]) =>
       url.replace(new RegExp(`/:${key}(?!\\w|\\d)`, 'g'), `/${val}`),
-    url,
+    url
   )

@@ -53,7 +53,7 @@ const subscriptionDefaultConfig =
       process.env.PUBSUB_DEAD_LETTER_TOPIC || 'dead.letter.topic'
     const maxDeliveryAttempts = parseInt(
       process.env.PUBSUB_MAX_DELIVERY_ATTEMPTS || '20',
-      10,
+      10
     )
     const deadLetterTopic = (await getOrCreateTopic(deadLetterTopicName)).name
 
@@ -77,14 +77,13 @@ const subscriptionPullConfig = (): Promise<CreateSubscriptionOptions> => {
 const subscriptionPushConfig = async (): Promise<CreateSubscriptionOptions> => {
   if (!process.env.PUBSUB_PUSH_HOST) {
     throw new Error(
-      'Environment variable PUBSUB_PUSH_HOST is missing and cannot set a push endpoint',
+      'Environment variable PUBSUB_PUSH_HOST is missing and cannot set a push endpoint'
     )
   }
 
   if (!process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL) {
-    // eslint-disable-next-line no-console
     console.warn(
-      'Environment variable PUBSUB_SERVICE_ACCOUNT_EMAIL should be set if running in GCP',
+      'Environment variable PUBSUB_SERVICE_ACCOUNT_EMAIL should be set if running in GCP'
     )
   }
 
@@ -114,22 +113,21 @@ const getCreateSubscriptionOptions =
         return subscriptionPullConfig()
       default:
         throw new Error(
-          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull',
+          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull'
         )
     }
   }
 
-// eslint-disable-next-line max-statements
 const createOrGetSubscription = async (
   subscriptionName: string,
-  topic: Topic,
+  topic: Topic
 ): Promise<Subscription> => {
   let subscription: Subscription
 
   try {
     ;[subscription] = await topic.createSubscription(
       subscriptionName,
-      await getCreateSubscriptionOptions(),
+      await getCreateSubscriptionOptions()
     )
   } catch (ex) {
     if (ex instanceof Error && !ex.message.startsWith(ALREADY_EXISTS_ERROR)) {
@@ -145,7 +143,7 @@ const createOrGetSubscription = async (
 export const subscriber =
   <Msg, TopicName extends string | number | symbol>(
     topicName: TopicName,
-    config?: ClientConfig,
+    config?: ClientConfig
   ): Subscriber<Msg> =>
   async ({ subscriberName, onSuccess, onError }) => {
     const topic = await getOrCreateTopic(topicName.toString(), config)
@@ -174,7 +172,6 @@ export const subscriber =
         message.ack()
       } catch (err) {
         message.nack()
-        // eslint-disable-next-line no-console
         console.error(err)
       }
     }
@@ -194,11 +191,11 @@ export const subscriber =
         break
       default:
         throw new Error(
-          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull',
+          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull'
         )
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Any for event
     subscription.on(messageHandlerEvent as any, messageHandler)
     subscription.on('error', errorHandler)
 

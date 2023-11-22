@@ -1,6 +1,6 @@
-import { test, expect } from 'vitest'
-import { parse } from './parse'
 import { Schema } from 'avsc'
+import { expect, test } from 'vitest'
+import { parse } from './parse'
 
 test('it parses simple schema', () => {
   const simple: Schema = {

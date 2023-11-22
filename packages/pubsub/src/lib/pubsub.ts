@@ -11,7 +11,7 @@ export interface PubSubTopic<Msg, Topics extends TypeMap> {
   publish: (
     message: Msg,
     headers?: Record<string, unknown>,
-    raw?: boolean,
+    raw?: boolean
   ) => Promise<string>
   subscribe: Subscriber<Msg>
   name: keyof Topics
@@ -19,13 +19,13 @@ export interface PubSubTopic<Msg, Topics extends TypeMap> {
 
 export const createPubsub = <
   Topics extends TypeMap,
-  SubscriberName extends string,
+  SubscriberName extends string
 >() => {
   type TopicName = keyof Topics
 
   const topic = <T extends TopicName>(
     name: T,
-    config?: ClientConfig,
+    config?: ClientConfig
   ): PubSubTopic<Topics[T], Topics> => {
     return {
       publish: publisher<Topics[T], T, Record<string, unknown>>(name, config),
@@ -36,21 +36,21 @@ export const createPubsub = <
 
   const subscribeToMultipleAs = (
     name: SubscriberName,
-    config?: ClientConfig,
+    config?: ClientConfig
   ) => {
     const promises: Promise<Unsubscriber>[] = []
     const obj = {
       wait: async () => await Promise.all(promises),
       subscribe: <T extends TopicName>(
         topicName: T,
-        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>,
+        { onSuccess, onError }: SubscriberHandler<Topics[TopicName]>
       ) => {
         promises.push(
           topic(topicName.toString(), config).subscribe({
             subscriberName: name,
             onSuccess,
             onError,
-          }),
+          })
         )
         return obj
       },

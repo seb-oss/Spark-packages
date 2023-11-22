@@ -13,9 +13,7 @@ import type {
 import type { Request } from 'express'
 
 type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
- 
-/* tslint:disable */
-/* eslint-disable */`
+`
 
 export const formatFile = async (rows: string[]): Promise<string> => {
   const withHeader = [header, ...rows]
@@ -24,6 +22,7 @@ export const formatFile = async (rows: string[]): Promise<string> => {
     parser: 'typescript',
     singleQuote: true,
     semi: false,
+    trailingComma: 'es5',
   })
   return formatted
 }

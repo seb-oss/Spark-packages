@@ -1,6 +1,6 @@
-import { test, expect, afterEach, beforeEach } from 'vitest'
 import type { Server } from 'http'
 import express from 'express'
+import { afterEach, beforeEach, expect, test } from 'vitest'
 import { TypedClient } from './client'
 import { Client, User, router } from './test/client.helper'
 
@@ -32,7 +32,7 @@ test('it works', async () => {
   await expect(client.post('/users', { body: user1 })).resolves.toEqual(user1)
   await expect(client.get('/users')).resolves.toEqual([user1])
   await expect(
-    client.get('/users/:id', { params: { id: '1' } }),
+    client.get('/users/:id', { params: { id: '1' } })
   ).resolves.toEqual(user1)
 
   // Add another user
@@ -43,19 +43,19 @@ test('it works', async () => {
   // Change user name
   user1.name = 'Carol'
   await expect(
-    client.put('/users/:id', { body: user1, params: { id: '1' } }),
+    client.put('/users/:id', { body: user1, params: { id: '1' } })
   ).resolves.toEqual(user1)
 
   // Change user age
   user1.age = 25
   await expect(
-    client.patch('/users/:id', { body: { age: 25 }, params: { id: '1' } }),
+    client.patch('/users/:id', { body: { age: 25 }, params: { id: '1' } })
   ).resolves.toEqual(user1)
   await expect(client.get('/users')).resolves.toEqual([user1, user2])
 
   // Delete a user
   await expect(
-    client.delete('/users/:id', { params: { id: '1' } }),
+    client.delete('/users/:id', { params: { id: '1' } })
   ).resolves.toEqual('')
   await expect(client.get('/users')).resolves.toEqual([user2])
 })

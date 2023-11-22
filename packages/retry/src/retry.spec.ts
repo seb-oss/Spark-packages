@@ -1,7 +1,6 @@
-import { describe, it, expect, vi } from 'vitest'
-import { retry, interval, retryCondition } from './retry'
-import { RetrySettings } from '@sebspark/openapi-core'
 import { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import { describe, expect, it, vi } from 'vitest'
+import { RetrySettings, interval, retry, retryCondition } from './retry'
 
 describe('retry', () => {
   it('it calls through', async () => {
@@ -35,22 +34,27 @@ describe('interval', () => {
   describe('interval.fixed', () => {
     it('returns the same value all the time', () => {
       const func = interval.fixed(1000)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(1000)
       expect(func(3)).toEqual(1000)
     })
   })
+
   describe('interval.linear', () => {
     it('returns a multiplier of the value', () => {
       const func = interval.linear(1000)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(2000)
       expect(func(3)).toEqual(3000)
     })
   })
+
   describe('interval.exponential', () => {
     it('returns an exponentially increasing value', () => {
       const func = interval.exponential(1000, 2)
+
       expect(func(1)).toEqual(1000)
       expect(func(2)).toEqual(2000)
       expect(func(3)).toEqual(4000)
@@ -67,6 +71,7 @@ describe('retryCondition', () => {
       expect(retryCondition.always(new Error())).toBe(true)
     })
   })
+
   describe('custom', () => {
     it('returns the result of the evaluator', () => {
       expect(retryCondition.custom(() => true)(true)).toBe(true)
@@ -94,15 +99,16 @@ describe('retryCondition', () => {
       status.toString(),
       {} as InternalAxiosRequestConfig, // Mock Axios config
       {}, // Mock request object
-      mockResponse as AxiosResponse, // Cast the partial response to AxiosResponse
+      mockResponse as AxiosResponse // Cast the partial response to AxiosResponse
     )
   }
+
   describe('serverErrors', () => {
     it('returns true if error is in the 500 range', () => {
       expect(
         retryCondition.serverErrors(
-          createAxiosError('Internal Server Error', 500),
-        ),
+          createAxiosError('Internal Server Error', 500)
+        )
       ).toBe(true)
     })
   })

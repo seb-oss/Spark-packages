@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
     "dev": "tsc --watch --noEmit",
-    "lint": "eslint \"src/**/*.ts*\"",
+    "lint": "biome check .",
     "test": "vitest --passWithNoTests --coverage",
     "typecheck": "vitest typecheck --passWithNoTests"
   },

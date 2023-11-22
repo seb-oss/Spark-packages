@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { NotImplementedError } from '@sebspark/openapi-core'
+import { TypedRouter } from '@sebspark/openapi-express'
+import express from 'express'
 import {
   InstrumentEntityResponse,
   MarketListResponse,
   MarketdataAPIServer,
 } from './schemas/marketdata'
-import { TypedRouter } from '@sebspark/openapi-express'
-import { NotImplementedError } from '@sebspark/openapi-core'
-import express from 'express'
 
 export const markets: MarketListResponse = {
   data: [

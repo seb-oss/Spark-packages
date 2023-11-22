@@ -15,14 +15,14 @@ const parseSchema = (schema: Schema): string => {
   let name = type.name
   let itemName: string | undefined
   if (!name) {
-    //handle array root type
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // handle array root type
+    // biome-ignore lint/suspicious/noExplicitAny: any is required for dynamic type
     const dynamic = type as any
 
     if (!dynamic.itemsType?.name) throw new Error('Schema must have a name')
 
-    name = dynamic.itemsType?.name + 'sArray'
-    itemName = dynamic.itemsType?.name + '[]'
+    name = `${dynamic.itemsType?.name}sArray`
+    itemName = `${dynamic.itemsType?.name}[]`
   }
 
   record[name] = type
@@ -50,7 +50,12 @@ export const parse = (...schemas: Schema[]): string => {
   let counter = 0
   const limit = (schemas.length * schemas.length) / 2
   while (schemas.length > 0) {
-    const currentSchema = schemas.shift()!
+    const currentSchema = schemas.shift()
+
+    if (!currentSchema) {
+      throw new Error('Undefined schema')
+    }
+
     try {
       const parsedSchema = parseSchema(currentSchema)
       parsed.push(parsedSchema)
@@ -67,7 +72,7 @@ export const parse = (...schemas: Schema[]): string => {
       console.log()
       console.error('ERROR: Inconsistent schemas.')
       console.error(
-        'Check for circular dependencies or missing types, then try again.',
+        'Check for circular dependencies or missing types, then try again.'
       )
 
       throw new Error('circular dependency')

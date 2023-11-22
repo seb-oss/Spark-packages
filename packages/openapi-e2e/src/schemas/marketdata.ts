@@ -12,9 +12,6 @@ import type { Request } from 'express'
 
 type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
-/* tslint:disable */
-/* eslint-disable */
-
 export type MarketListItem = { id: string; name: string }
 
 export type Market = MarketListItem & {
@@ -85,7 +82,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
   '/markets': {
     get: {
       handler: (
-        args?: Req & { query?: { page?: number; limit?: number } },
+        args?: Req & { query?: { page?: number; limit?: number } }
       ) => Promise<[200, MarketListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -93,7 +90,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
   '/markets/:mic': {
     get: {
       handler: (
-        args: Req & { params: { mic: string } },
+        args: Req & { params: { mic: string } }
       ) => Promise<[200, MarketEntityResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -104,7 +101,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
         args: Req & {
           params: { mic: string }
           query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
-        },
+        }
       ) => Promise<[200, InstrumentListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -112,7 +109,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
   '/markets/:mic/instruments/:isin/:currency': {
     get: {
       handler: (
-        args: Req & { params: { mic: string; isin: string; currency: string } },
+        args: Req & { params: { mic: string; isin: string; currency: string } }
       ) => Promise<[200, InstrumentEntityResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -120,7 +117,7 @@ export type MarketdataAPIServer = APIServerDefinition & {
   '/instruments/:isin': {
     get: {
       handler: (
-        args: Req & { params: { isin: string } },
+        args: Req & { params: { isin: string } }
       ) => Promise<[200, InstrumentListResponse]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -130,12 +127,12 @@ export type MarketdataAPIServer = APIServerDefinition & {
 type MarketdataAPIClientGet = {
   (
     url: '/markets',
-    args?: { query?: { page?: number; limit?: number } },
+    args?: { query?: { page?: number; limit?: number } }
   ): Promise<MarketListResponse>
 
   (
     url: '/markets/:mic',
-    args: { params: { mic: string } },
+    args: { params: { mic: string } }
   ): Promise<MarketEntityResponse>
 
   (
@@ -143,17 +140,17 @@ type MarketdataAPIClientGet = {
     args: {
       params: { mic: string }
       query?: { data_types?: ('INDICIES' | 'STOCKS' | 'FUNDS')[] }
-    },
+    }
   ): Promise<InstrumentListResponse>
 
   (
     url: '/markets/:mic/instruments/:isin/:currency',
-    args: { params: { mic: string; isin: string; currency: string } },
+    args: { params: { mic: string; isin: string; currency: string } }
   ): Promise<InstrumentEntityResponse>
 
   (
     url: '/instruments/:isin',
-    args: { params: { isin: string } },
+    args: { params: { isin: string } }
   ): Promise<InstrumentListResponse>
 }
 

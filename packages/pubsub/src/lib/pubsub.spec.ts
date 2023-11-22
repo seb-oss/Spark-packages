@@ -1,5 +1,5 @@
-import { PubSub } from '@google-cloud/pubsub'
 import { randomUUID } from 'crypto'
+import { PubSub } from '@google-cloud/pubsub'
 import {
   Mock,
   MockedObject,
@@ -83,7 +83,7 @@ const setup = async () => {
       if (name === 'push-message') subscriberFn = cb
       if (name === 'message') subscriberFn = cb
       return subscription
-    },
+    }
   )
 
   const pubsub = new PubSub() as MockedObject<PubSub>
@@ -92,7 +92,6 @@ const setup = async () => {
     Topics<typeof testMessage.topicData>,
     'test'
   >()
-
   ;(pubsub.topic as Mock).mockReturnValue(mockTopic)
 
   return {
@@ -114,9 +113,9 @@ beforeAll(() => {
 })
 
 afterAll(() => {
-  delete process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL
-  delete process.env.PUBSUB_DELIVERY_MODE
-  delete process.env.PUBSUB_PUSH_HOST
+  process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL = undefined
+  process.env.PUBSUB_DELIVERY_MODE = undefined
+  process.env.PUBSUB_PUSH_HOST = undefined
 })
 
 describe('creates an instance of PubSub', () => {
@@ -148,7 +147,7 @@ describe('creates an instance of PubSub', () => {
     it('when subscribing to multiple', async () => {
       const { createdPubsub, topicName } = await setup()
 
-      await createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
+      createdPubsub.subscribeToMultipleAs('test').subscribe(topicName, {
         onSuccess: () => undefined,
         onError: () => undefined,
       })
@@ -250,11 +249,11 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.test',
+        `${topicName}.test`,
         {
           pushConfig: expect.objectContaining({
             pushEndpoint: expect.stringMatching(
-              'http://localhost:8080/pubsub/push',
+              'http://localhost:8080/pubsub/push'
             ),
           }),
           retryPolicy: {
@@ -269,7 +268,7 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
@@ -277,7 +276,7 @@ describe('#topic', () => {
       const { createdPubsub, mockTopic, topicName, subscription } =
         await setup()
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -285,7 +284,7 @@ describe('#topic', () => {
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
+      expect(mockTopic.subscription).toHaveBeenCalledWith(`${topicName}.test`)
       expect(subscription.get).toHaveBeenCalledWith()
     })
 
@@ -298,11 +297,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -316,11 +315,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'push-message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -408,7 +407,7 @@ describe('#topic', () => {
     })
 
     afterEach(() => {
-      delete process.env.PUBSUB_DELIVERY_MODE
+      process.env.PUBSUB_DELIVERY_MODE = undefined
     })
 
     it('creates a subscription using topic.createSubscription', async () => {
@@ -420,7 +419,7 @@ describe('#topic', () => {
       })
 
       expect(mockTopic.createSubscription).toHaveBeenCalledWith(
-        topicName + '.test',
+        `${topicName}.test`,
         {
           retryPolicy: {
             minimumBackoff: {
@@ -434,7 +433,7 @@ describe('#topic', () => {
             deadLetterTopic: 'mocked-topic',
             maxDeliveryAttempts: expect.any(Number),
           },
-        },
+        }
       )
     })
 
@@ -443,7 +442,7 @@ describe('#topic', () => {
         await setup()
 
       mockTopic.createSubscription.mockRejectedValue(
-        new Error('6 ALREADY_EXISTS: Subscription already exists') as never,
+        new Error('6 ALREADY_EXISTS: Subscription already exists') as never
       )
 
       await createdPubsub.topic(topicName).subscribe({
@@ -451,7 +450,7 @@ describe('#topic', () => {
         onSuccess: () => undefined,
       })
 
-      expect(mockTopic.subscription).toHaveBeenCalledWith(topicName + '.test')
+      expect(mockTopic.subscription).toHaveBeenCalledWith(`${topicName}.test`)
       expect(subscription.get).toHaveBeenCalledWith()
     })
 
@@ -465,11 +464,11 @@ describe('#topic', () => {
 
       expect(subscription.on).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.on).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 
@@ -484,11 +483,11 @@ describe('#topic', () => {
 
       expect(subscription.off).toHaveBeenCalledWith(
         'message',
-        expect.any(Function),
+        expect.any(Function)
       )
       expect(subscription.off).toHaveBeenCalledWith(
         'error',
-        expect.any(Function),
+        expect.any(Function)
       )
     })
 

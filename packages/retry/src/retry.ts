@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
+// biome-ignore lint/suspicious/noExplicitAny: Errors can be anything
 export type RetryConditionFunction = (error: any) => boolean
 
 export interface RetrySettings {
@@ -42,12 +40,12 @@ export const retry = async <T>(
     } catch (error) {
       if (
         mergedSettings &&
+        // biome-ignore lint/style/noNonNullAssertion: Will be set by defaultSettings
         mergedSettings.retryCondition!(error) &&
         retries < mergedSettings.maxRetries
       ) {
-        retries++
-        await wait(mergedSettings.interval(retries))
-        return makeCall(retries)
+        await wait(mergedSettings.interval(retries + 1))
+        return makeCall(retries + 1)
       } else {
         throw error
       }
@@ -59,22 +57,20 @@ export const retry = async <T>(
 export const interval = {
   fixed: (delay: number) => (_retries: number) => delay,
   linear: (delay: number) => (retries: number) => retries * delay,
-  exponential:
-    (delay: number, base = 2) =>
-    (retries: number) =>
-      Math.pow(base, retries - 1) * delay,
+  exponential: (delay: number, base = 2) => (retries: number) =>
+    base ** (retries - 1) * delay,
 }
 
 const clientErrorCodes = [
   400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414,
   415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431, 451,
 ] as const
-type ClientErrorCode = (typeof clientErrorCodes)[number]
+type ClientErrorCode = typeof clientErrorCodes[number]
 
 const serverErrorCodes = [
   500, 501, 502, 503, 504, 505, 506, 507, 508, 510, 511,
 ] as const
-type ServerErrorCode = (typeof serverErrorCodes)[number]
+type ServerErrorCode = typeof serverErrorCodes[number]
 
 type ErrorType = 'server' | 'client' | ServerErrorCode | ClientErrorCode
 
@@ -88,7 +84,7 @@ type HttpError = {
 }
 
 export const retryCondition = {
-  always: (_error: any) => true,
+  always: (_error: unknown) => true,
   httpErrors:
     (...codes: ErrorType[]) =>
     (error: HttpError) => {
@@ -104,9 +100,12 @@ export const retryCondition = {
         error.status ||
         error.statusCode ||
         error.response?.status ||
-        error.response?.statusCode
-      return captureCodes.includes(status!)
+        error.response?.statusCode ||
+        0
+      return captureCodes.includes(status)
     },
-  serverErrors: (error: any) => retryCondition.httpErrors('server')(error),
+  serverErrors: (error: HttpError) =>
+    retryCondition.httpErrors('server')(error),
+  // biome-ignore lint/suspicious/noExplicitAny: Errors can be anything
   custom: (func: (error: any) => boolean) => func,
 }

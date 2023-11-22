@@ -20,10 +20,6 @@ An Express router wrapped with additional TypeScript typings and defintions for 
 
 Default TypeScript configuration
 
-### [@sebspark/eslint-config-spark](./packages/eslint-config-spark)
-
-Default ESLint configuration
-
 ### [@sebspark/iso-10383](./packages/iso-10383)
 
 ISO-10383 Market Identification Codes (MIC).

@@ -2,7 +2,7 @@ import { ReferenceObject } from '../shared/schema'
 
 export const parseReferencableObjects = <T extends object>(
   name: string,
-  record: Record<string, ReferenceObject | T>,
+  record: Record<string, ReferenceObject | T>
 ): Record<string, T> => {
   const objects: Record<string, T> = {}
 
@@ -15,13 +15,13 @@ export const parseReferencableObjects = <T extends object>(
       .filter((it) => !('$ref' in it[1]))
       .map((it) => [it[0], it[1]] as [string, T])
 
-    normalParameters.forEach((it) => {
+    for (const it of normalParameters) {
       objects[`#/components/${name}/${it[0]}`] = it[1]
-    })
+    }
 
-    referenceParameters.forEach((it) => {
+    for (const it of referenceParameters) {
       objects[`#/components/${name}/${it[0]}`] = objects[it[1].$ref]
-    })
+    }
   }
 
   return objects

@@ -1,7 +1,7 @@
 import { ClientConfig, getOrCreateTopic } from './client'
 
 interface Publisher<T, Headers, raw> {
-  (message: T, headers?: Headers, raw?: raw): Promise<string>
+  (message: T, headers?: Headers, rawMessage?: raw): Promise<string>
 }
 
 interface PubsubMessage<Message, Headers extends Record<string, unknown>> {
@@ -13,10 +13,10 @@ export const publisher =
   <
     Msg,
     TopicName extends string | number | symbol,
-    Headers extends Record<string, unknown>,
+    Headers extends Record<string, unknown>
   >(
     topicName: TopicName,
-    config?: ClientConfig,
+    config?: ClientConfig
   ): Publisher<Msg, Headers, boolean> =>
   async (message, headers?, raw?) => {
     const topic = await getOrCreateTopic(topicName.toString(), config)
