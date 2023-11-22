@@ -8,7 +8,7 @@
     "dev": "turbo dev",
     "format": "biome format --write .",
     "generate:package": "turbo gen package",
-    "lint": "biome check .",
+    "lint": "biome check --apply .",
     "release": "npm run build && npx changeset publish",
     "test": "FORCE_COLOR=1 turbo test",
     "typecheck": "FORCE_COLOR=1 turbo typecheck",
