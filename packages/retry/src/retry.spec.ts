@@ -1,7 +1,6 @@
-import { RetrySettings } from '@sebspark/openapi-core'
 import { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import { describe, expect, it, vi } from 'vitest'
-import { interval, retry, retryCondition } from './retry'
+import { RetrySettings, interval, retry, retryCondition } from './retry'
 
 describe('retry', () => {
   it('it calls through', async () => {
