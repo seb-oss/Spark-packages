@@ -1,6 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { RetrySettings } from '@sebspark/openapi-core'
+
+export type RetryConditionFunction = (error: any) => boolean
+
+export interface RetrySettings {
+  maxRetries: number
+  interval: (retryCount: number) => number
+  retryCondition?: RetryConditionFunction
+  maxDelay?: number
+}
 
 const defaultSettings: Partial<RetrySettings> = {
   retryCondition: () => true,

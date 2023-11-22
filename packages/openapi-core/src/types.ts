@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
@@ -24,16 +25,6 @@ export type RequestArgs = Request & {
 }
 export type PayloadRequestArgs = RequestArgs & {
   body?: Record<string, string>
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RetryConditionFunction = (error: any) => boolean
-
-export interface RetrySettings {
-  maxRetries: number
-  interval: (retryCount: number) => number
-  retryCondition?: RetryConditionFunction
-  maxDelay?: number
 }
 
 export type RequestOptions = {

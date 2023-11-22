@@ -19,6 +19,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
+    "@sebspark/retry": "*",
     "axios": "1.6.2"
   }
 }
