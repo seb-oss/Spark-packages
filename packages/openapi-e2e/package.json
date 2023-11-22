@@ -5,7 +5,7 @@
   "private": false,
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/marketdata.json -o ./src/schemas/",
-    "lint": "biome lint .",
+    "lint": "biome check .",
     "test": "vitest --passWithNoTests --coverage",
     "pretest": "yarn generate",
     "typecheck": "vitest typecheck --passWithNoTests"
