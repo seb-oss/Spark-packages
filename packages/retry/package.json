@@ -1,6 +1,6 @@
 {
-  "name": "@sebspark/openapi-client",
-  "version": "0.1.0",
+  "name": "@sebspark/retry",
+  "version": "0.0.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,10 +17,5 @@
   },
   "devDependencies": {
     "tsconfig": "*"
-  },
-  "dependencies": {
-    "@sebspark/openapi-core": "*",
-    "@sebspark/retry": "*",
-    "axios": "1.6.2"
   }
 }

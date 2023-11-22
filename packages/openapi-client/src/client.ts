@@ -7,7 +7,7 @@ import {
   fromAxiosError,
 } from '@sebspark/openapi-core'
 import axios, { AxiosError } from 'axios'
-import { retry } from './retry'
+import { retry } from '@sebspark/retry'
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,

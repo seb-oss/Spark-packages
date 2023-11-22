@@ -60,6 +60,10 @@ A typed REST client for the definitions from openapi-typegen
 
 End to end tests for openapi generator, express and client
 
+### [@sebspark/retry](./packages/retry)
+
+A helper for retrying any promise call (ex an http request) with error rules and backoff
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

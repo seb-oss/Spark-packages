@@ -1,4 +1,4 @@
 {
   "extends": "@sebspark/tsconfig/base.json",
-  "include": ["."]
+  "include": [".", "../retry/src/retry.spec copy.ts"]
 }
