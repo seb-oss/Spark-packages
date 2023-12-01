@@ -13,7 +13,7 @@ export const publisher =
   <
     Msg,
     TopicName extends string | number | symbol,
-    Headers extends Record<string, unknown>
+    Headers extends Record<string, unknown>,
   >(
     topicName: TopicName,
     config?: ClientConfig

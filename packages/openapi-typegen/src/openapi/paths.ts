@@ -59,9 +59,9 @@ export const pathGenerator = (
       .map((it) => {
         if ('$ref' in it) {
           return globalParameters[it.$ref]
-        } else {
-          return it
         }
+
+        return it
       })
       .filter((p) => p.in === filter)
       .map(

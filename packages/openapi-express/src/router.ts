@@ -25,8 +25,8 @@ export const TypedRouter = (
   const preUsings = Array.isArray(options.pre)
     ? options.pre
     : options.pre
-    ? [options.pre]
-    : []
+      ? [options.pre]
+      : []
 
   for (const pre of preUsings) {
     router.use(pre)
@@ -50,8 +50,8 @@ export const TypedRouter = (
       const pre = Array.isArray(route.pre)
         ? route.pre
         : route.pre
-        ? [route.pre]
-        : []
+          ? [route.pre]
+          : []
       const handlers = pre.concat(handler)
 
       router[method as Verb](url, ...handlers)
@@ -73,8 +73,8 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
       err instanceof Error
         ? err
         : typeof err === 'string'
-        ? new Error(err)
-        : undefined
+          ? new Error(err)
+          : undefined
     error = createHttpError(500, undefined, internal)
   }
 

@@ -19,7 +19,7 @@ export interface PubSubTopic<Msg, Topics extends TypeMap> {
 
 export const createPubsub = <
   Topics extends TypeMap,
-  SubscriberName extends string
+  SubscriberName extends string,
 >() => {
   type TopicName = keyof Topics
 

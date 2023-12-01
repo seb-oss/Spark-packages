@@ -46,8 +46,8 @@ export const getOrCreateTopic = async (
   } catch (err: any) {
     if (err.code && err?.code === 6 && tries < 3) {
       return getOrCreateTopic(topicName, config, tries + 1)
-    } else {
-      throw err
     }
+
+    throw err
   }
 }

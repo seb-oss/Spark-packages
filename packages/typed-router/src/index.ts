@@ -9,7 +9,7 @@ export type TypedRoute<
   RequestHeaders,
   RequestBody,
   Response extends ResponseType,
-  ErrorResponse extends ResponseType
+  ErrorResponse extends ResponseType,
 > = {
   requestParams: RequestParams
   requestBody: RequestBody

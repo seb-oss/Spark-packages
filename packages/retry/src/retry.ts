@@ -46,9 +46,9 @@ export const retry = async <T>(
       ) {
         await wait(mergedSettings.interval(retries + 1))
         return makeCall(retries + 1)
-      } else {
-        throw error
       }
+
+      throw error
     }
   }
   return makeCall(0)
@@ -65,12 +65,12 @@ const clientErrorCodes = [
   400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414,
   415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431, 451,
 ] as const
-type ClientErrorCode = typeof clientErrorCodes[number]
+type ClientErrorCode = (typeof clientErrorCodes)[number]
 
 const serverErrorCodes = [
   500, 501, 502, 503, 504, 505, 506, 507, 508, 510, 511,
 ] as const
-type ServerErrorCode = typeof serverErrorCodes[number]
+type ServerErrorCode = (typeof serverErrorCodes)[number]
 
 type ErrorType = 'server' | 'client' | ServerErrorCode | ClientErrorCode
 
