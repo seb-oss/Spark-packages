@@ -924,12 +924,12 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
-"@turbo/gen@1.10.16":
-  version "1.10.16"
-  resolved "https://registry.yarnpkg.com/@turbo/gen/-/gen-1.10.16.tgz#ac4a80921f5ec5ce5f597c86115fd4713c5bd2eb"
-  integrity sha512-PzyluADjVuy5OcIi+/aRcD70OElQpRVRDdfZ9fH8G5Fv75lQcNrjd1bBGKmhjSw+g+eTEkXMGnY7s6gsCYjYTQ==
+"@turbo/gen@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@turbo/gen/-/gen-1.11.0.tgz#f62b83cbd5d5286a803bc52267a178a20e6fec31"
+  integrity sha512-A1lCsfH73afPcr2PN4cWR4ziHKwF9fM78Z5Sw/SSfoQip22C3S4iohRdnSdPtjCObItWHp839qKJECwRBtod+A==
   dependencies:
-    "@turbo/workspaces" "1.10.16"
+    "@turbo/workspaces" "1.11.0"
     chalk "2.4.2"
     commander "^10.0.0"
     fs-extra "^10.1.0"
@@ -941,10 +941,10 @@
     update-check "^1.5.4"
     validate-npm-package-name "^5.0.0"
 
-"@turbo/workspaces@1.10.16":
-  version "1.10.16"
-  resolved "https://registry.yarnpkg.com/@turbo/workspaces/-/workspaces-1.10.16.tgz#d742f2e60702bb102a31169276c77fb858b727b3"
-  integrity sha512-WKpMyWC4fKCji9DFSaL6uUnTakOmL769LfiNOGk2v5jONMKpjvOB1o1nXkWNbU/PTPqxwV4Cf5qzNSWIgnanYg==
+"@turbo/workspaces@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@turbo/workspaces/-/workspaces-1.11.0.tgz#0209be155525ada4ccbeb689b02456c188410ff7"
+  integrity sha512-tYbgPJhpgQ90l2/2lckC7VEAVgf8kS7fsIw28uefYOFgxOSx3Wv3gH2eLAG9yJBBZlZH0qgX4E3IsTkWCpOESg==
   dependencies:
     chalk "2.4.2"
     commander "^10.0.0"
