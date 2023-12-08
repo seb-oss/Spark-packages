@@ -20,22 +20,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
-    "@turbo/gen": "1.10.16",
-    "@types/node": "20.10.3",
-    "@vitest/coverage-v8": "0.34.6",
-    "csv-parse": "5.5.2",
+    "@turbo/gen": "1.11.1",
+    "@types/node": "20.10.4",
+    "@vitest/coverage-v8": "1.0.2",
+    "csv-parse": "5.5.3",
     "fast-xml-parser": "4.3.2",
     "tsup": "8.0.1",
-    "turbo": "1.10.16",
-    "typescript": "5.3.2",
-    "vitest": "0.34.6"
+    "turbo": "1.11.1",
+    "typescript": "5.3.3",
+    "vitest": "1.0.2"
   },
   "resolutions": {
     "semver": ">=7.5.4",
     "word-wrap": ">=1.2.5"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "packageManager": "yarn@1.22.19"
 }

@@ -5,15 +5,13 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
     "test": "vitest --passWithNoTests --coverage",
-    "typecheck": "vitest typecheck --passWithNoTests",
+    "typecheck": "vitest --typecheck.only --passWithNoTests",
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {

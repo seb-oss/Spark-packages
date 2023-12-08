@@ -7,16 +7,13 @@
   "bin": {
     "openapi-typegen": "./cli.mjs"
   },
-  "files": [
-    "dist",
-    "cli.mjs"
-  ],
+  "files": ["dist", "cli.mjs"],
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest --passWithNoTests --coverage",
-    "typecheck": "vitest typecheck --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
     "@types/yargs": "17.0.32",
