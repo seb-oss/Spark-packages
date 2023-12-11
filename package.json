@@ -22,7 +22,7 @@
     "@biomejs/biome": "1.4.1",
     "@turbo/gen": "1.11.1",
     "@types/node": "20.10.4",
-    "@vitest/coverage-v8": "1.0.2",
+    "@vitest/coverage-v8": "1.0.4",
     "csv-parse": "5.5.3",
     "fast-xml-parser": "4.3.2",
     "tsup": "8.0.1",
