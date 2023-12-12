@@ -1,5 +1,9 @@
-import { describe, it, expect, beforeEach, vi, Mocked, Mock } from 'vitest'
-import type { ApiResponse, Client, opensearchtypes } from '@opensearch-project/opensearch'
+import type {
+  ApiResponse,
+  Client,
+  opensearchtypes,
+} from '@opensearch-project/opensearch'
+import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { helper } from './openSearchHelper'
 import { DeepPartial, ExcludeId } from './typescriptExtensions'
 
@@ -14,15 +18,17 @@ type Data = {
 
 describe('OpenSearchHelper', () => {
   let client: DeepPartial<Mocked<Client>>
-  let searchResponse: DeepPartial<ApiResponse<opensearchtypes.SearchResponse<ExcludeId<Data>>, unknown>>
+  let searchResponse: DeepPartial<
+    ApiResponse<opensearchtypes.SearchResponse<ExcludeId<Data>>, unknown>
+  >
 
   beforeEach(() => {
     searchResponse = {
       body: {
         hits: {
-          hits: []
-        }
-      }
+          hits: [],
+        },
+      },
     }
     client = {
       index: vi.fn().mockResolvedValue({}),
@@ -45,14 +51,14 @@ describe('OpenSearchHelper', () => {
           properties: {
             user: {
               age: {
-                type: 'integer'
+                type: 'integer',
               },
             },
             isTrue: {
-              type: 'boolean'
-            }
-          }
-        }
+              type: 'boolean',
+            },
+          },
+        },
       })
 
       expect(create).toHaveBeenCalledWith({
@@ -61,10 +67,10 @@ describe('OpenSearchHelper', () => {
           mappings: {
             properties: {
               isTrue: { type: 'boolean' },
-              'user.age': { type: 'integer' }
+              'user.age': { type: 'integer' },
             },
-          }
-        }
+          },
+        },
       })
     })
   })
@@ -76,7 +82,7 @@ describe('OpenSearchHelper', () => {
         user: {
           age: 42,
           name: 'Arthur Dent',
-        }
+        },
       })
       expect(client.index).toHaveBeenCalledWith({
         index: 'data',
@@ -98,7 +104,7 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            fields: ['isTrue', 'user.name^4', { field: 'user.age' }]
+            fields: ['isTrue', 'user.name^4', { field: 'user.age' }],
           },
         },
       })
@@ -107,7 +113,10 @@ describe('OpenSearchHelper', () => {
     it('returns raw response', async () => {
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       searchResponse.body!.hits!.hits = [
-        { _id: 'foo', _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } } }
+        {
+          _id: 'foo',
+          _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
+        },
       ]
       const { response } = await helper(client as Client).typedSearch<Data>({
         index: 'data',
@@ -118,16 +127,19 @@ describe('OpenSearchHelper', () => {
     it('transforms search results', async () => {
       // biome-ignore lint/style/noNonNullAssertion: <explanation>
       searchResponse.body!.hits!.hits = [
-        { _id: 'foo', _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } } }
+        {
+          _id: 'foo',
+          _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
+        },
       ]
       const { results } = await helper(client as Client).typedSearch<Data>({
         index: 'data',
         body: {
-          query: {}
-        }
+          query: {},
+        },
       })
       expect(results).toEqual([
-        { id: 'foo', isTrue: true, user: { age: 42, name: 'Arthur Dent' } }
+        { id: 'foo', isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
       ])
     })
     it('handles fields', async () => {
@@ -135,7 +147,7 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            fields: ['isTrue', 'user.name^4', { field: 'user.age' }]
+            fields: ['isTrue', 'user.name^4', { field: 'user.age' }],
           },
         },
       })
@@ -143,13 +155,9 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            fields: [
-              'isTrue',
-              'user.name^4',
-              { field: 'user.age' },
-            ],
+            fields: ['isTrue', 'user.name^4', { field: 'user.age' }],
           },
-        }
+        },
       })
     })
     it('handles exists', async () => {
@@ -157,17 +165,17 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            exists: { field: 'isTrue' }
-          }
+            exists: { field: 'isTrue' },
+          },
         },
       })
       expect(client.search).toHaveBeenCalledWith({
         index: 'data',
         body: {
           query: {
-            exists: { field: 'isTrue' }
+            exists: { field: 'isTrue' },
           },
-        }
+        },
       })
     })
     it('handles bool', async () => {
@@ -176,10 +184,8 @@ describe('OpenSearchHelper', () => {
         body: {
           query: {
             bool: {
-              must: [
-                { exists: { field: 'isTrue' } }
-              ]
-            }
+              must: [{ exists: { field: 'isTrue' } }],
+            },
           },
         },
       })
@@ -188,12 +194,10 @@ describe('OpenSearchHelper', () => {
         body: {
           query: {
             bool: {
-              must: [
-                { exists: { field: 'isTrue' } }
-              ]
-            }
+              must: [{ exists: { field: 'isTrue' } }],
+            },
           },
-        }
+        },
       })
     })
     it('handles term', async () => {
@@ -203,7 +207,7 @@ describe('OpenSearchHelper', () => {
           query: {
             term: {
               'user.name': {
-                value: 'Arthur Dent'
+                value: 'Arthur Dent',
               },
             },
           },
@@ -215,11 +219,11 @@ describe('OpenSearchHelper', () => {
           query: {
             term: {
               'user.name': {
-                value: 'Arthur Dent'
-              }
-            }
+                value: 'Arthur Dent',
+              },
+            },
           },
-        }
+        },
       })
     })
   })
