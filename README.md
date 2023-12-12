@@ -60,6 +60,10 @@ End to end tests for openapi generator, express and client
 
 A helper for retrying any promise call (ex an http request) with error rules and backoff
 
+### [@sebspark/opensearch](./packages/opensearch)
+
+A wrapper for OpenSearch Client to assist with typed queries, indices etc
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
