@@ -91,7 +91,6 @@ describe('OpenSearchHelper', () => {
           interests: ['Hiking'],
           name: 'Arthur Dent',
         },
-
       })
       expect(client.index).toHaveBeenCalledWith({
         index: 'data',
@@ -125,7 +124,10 @@ describe('OpenSearchHelper', () => {
       searchResponse.body!.hits!.hits = [
         {
           _id: 'foo',
-          _source: { isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
+          _source: {
+            isTrue: true,
+            user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+          },
         },
       ]
       const { response } = await helper(client as Client).typedSearch<Data>({
@@ -139,7 +141,10 @@ describe('OpenSearchHelper', () => {
       searchResponse.body!.hits!.hits = [
         {
           _id: 'foo',
-          _source: { isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
+          _source: {
+            isTrue: true,
+            user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+          },
         },
       ]
       const { results } = await helper(client as Client).typedSearch<Data>({
@@ -149,7 +154,11 @@ describe('OpenSearchHelper', () => {
         },
       })
       expect(results).toEqual([
-        { id: 'foo', isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
+        {
+          id: 'foo',
+          isTrue: true,
+          user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+        },
       ])
     })
     it('handles fields', async () => {
