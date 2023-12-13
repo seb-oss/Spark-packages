@@ -358,14 +358,16 @@ export type BasicOpenSearchFieldTypes =
   | 'boolean'
   | 'binary'
 
+type ElementType<T> = T extends Array<infer U> ? U : T
+
 // Utility type to suggest Elasticsearch field type based on TypeScript type
-export type OpenSearchFieldType<T> = T extends string
+export type OpenSearchFieldType<T> = ElementType<T> extends string
   ? 'text' | 'keyword'
-  : T extends number
+  : ElementType<T> extends number
     ? 'long' | 'integer' | 'short' | 'byte' | 'double' | 'float'
-    : T extends boolean
+    : ElementType<T> extends boolean
       ? 'boolean'
-      : T extends Date
+      : ElementType<T> extends Date
         ? 'date'
         : BasicOpenSearchFieldTypes
 
@@ -398,7 +400,7 @@ export type IndexOptions<T extends WithId> = {
 export type IndexProperties<T> = {
   [K in keyof Partial<T>]: T[K] extends object
     ? T[K] extends Array<infer U>
-      ? Array<IndexProperties<U>>
+      ? FieldOptions<T[K]>
       : IndexProperties<T[K]>
     : FieldOptions<T[K]>
 }
