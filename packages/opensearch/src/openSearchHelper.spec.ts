@@ -57,7 +57,7 @@ describe('OpenSearchHelper', () => {
                 type: 'integer',
               },
               interests: {
-                type: 'keyword',
+                type: 'keyword'
               },
             },
             isTrue: {
