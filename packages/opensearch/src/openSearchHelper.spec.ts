@@ -7,13 +7,16 @@ import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { helper } from './openSearchHelper'
 import { DeepPartial, ExcludeId } from './typescriptExtensions'
 
+type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
+
 type Data = {
   id: string
-  user: {
-    name: string
-    age: number
-  }
   isTrue: boolean
+  user: {
+    age: number
+    interests: Interest[]
+    name: string
+  }
 }
 
 describe('OpenSearchHelper', () => {
@@ -53,6 +56,9 @@ describe('OpenSearchHelper', () => {
               age: {
                 type: 'integer',
               },
+              interests: {
+                type: 'keyword',
+              },
             },
             isTrue: {
               type: 'boolean',
@@ -68,6 +74,7 @@ describe('OpenSearchHelper', () => {
             properties: {
               isTrue: { type: 'boolean' },
               'user.age': { type: 'integer' },
+              'user.interests': { type: 'keyword' },
             },
           },
         },
@@ -81,8 +88,10 @@ describe('OpenSearchHelper', () => {
         isTrue: true,
         user: {
           age: 42,
+          interests: ['Hiking'],
           name: 'Arthur Dent',
         },
+
       })
       expect(client.index).toHaveBeenCalledWith({
         index: 'data',
@@ -91,6 +100,7 @@ describe('OpenSearchHelper', () => {
           isTrue: true,
           user: {
             age: 42,
+            interests: ['Hiking'],
             name: 'Arthur Dent',
           },
         },
@@ -115,7 +125,7 @@ describe('OpenSearchHelper', () => {
       searchResponse.body!.hits!.hits = [
         {
           _id: 'foo',
-          _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
+          _source: { isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
         },
       ]
       const { response } = await helper(client as Client).typedSearch<Data>({
@@ -129,7 +139,7 @@ describe('OpenSearchHelper', () => {
       searchResponse.body!.hits!.hits = [
         {
           _id: 'foo',
-          _source: { isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
+          _source: { isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
         },
       ]
       const { results } = await helper(client as Client).typedSearch<Data>({
@@ -139,7 +149,7 @@ describe('OpenSearchHelper', () => {
         },
       })
       expect(results).toEqual([
-        { id: 'foo', isTrue: true, user: { age: 42, name: 'Arthur Dent' } },
+        { id: 'foo', isTrue: true, user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' } },
       ])
     })
     it('handles fields', async () => {
