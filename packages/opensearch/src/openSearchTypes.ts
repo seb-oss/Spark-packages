@@ -361,16 +361,15 @@ export type BasicOpenSearchFieldTypes =
 type ElementType<T> = T extends Array<infer U> ? U : T
 
 // Utility type to suggest Elasticsearch field type based on TypeScript type
-export type OpenSearchFieldType<T> =
-  ElementType<T> extends string
+export type OpenSearchFieldType<T> = ElementType<T> extends string
   ? 'text' | 'keyword'
   : ElementType<T> extends number
-  ? 'long' | 'integer' | 'short' | 'byte' | 'double' | 'float'
-  : ElementType<T> extends boolean
-  ? 'boolean'
-  : ElementType<T> extends Date
-  ? 'date'
-  : BasicOpenSearchFieldTypes
+    ? 'long' | 'integer' | 'short' | 'byte' | 'double' | 'float'
+    : ElementType<T> extends boolean
+      ? 'boolean'
+      : ElementType<T> extends Date
+        ? 'date'
+        : BasicOpenSearchFieldTypes
 
 // Define options for each field
 export type FieldOptions<T> = {
