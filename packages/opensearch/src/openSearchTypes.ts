@@ -398,9 +398,11 @@ export type IndexOptions<T extends WithId> = {
   aliases?: Record<string, Record<string, never>>
 }
 export type IndexProperties<T> = {
-  [K in keyof Partial<T>]: T[K] extends object
-    ? T[K] extends Array<infer U>
-      ? FieldOptions<T[K]>
-      : IndexProperties<T[K]>
-    : FieldOptions<T[K]>
+  [K in keyof Partial<T>]: T[K] extends Date
+    ? FieldOptions<T[K]>
+    : T[K] extends object
+      ? T[K] extends Array<infer U>
+        ? FieldOptions<T[K]>
+        : IndexProperties<T[K]>
+      : FieldOptions<T[K]>
 }
