@@ -12,6 +12,7 @@ type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
 type Data = {
   id: string
   isTrue: boolean
+  created: Date
   user: {
     age: number
     interests: Interest[]
@@ -20,6 +21,8 @@ type Data = {
 }
 
 describe('OpenSearchHelper', () => {
+  const created = new Date()
+
   let client: DeepPartial<Mocked<Client>>
   let searchResponse: DeepPartial<
     ApiResponse<opensearchtypes.SearchResponse<ExcludeId<Data>>, unknown>
@@ -52,6 +55,9 @@ describe('OpenSearchHelper', () => {
       await helper(client as Client).typedIndexCreate<Data>('data', {
         mappings: {
           properties: {
+            created: {
+              type: 'date',
+            },
             user: {
               age: {
                 type: 'integer',
@@ -72,6 +78,7 @@ describe('OpenSearchHelper', () => {
         body: {
           mappings: {
             properties: {
+              created: { type: 'date' },
               isTrue: { type: 'boolean' },
               'user.age': { type: 'integer' },
               'user.interests': { type: 'keyword' },
@@ -86,6 +93,7 @@ describe('OpenSearchHelper', () => {
       await helper(client as Client).typedIndex<Data>('data', {
         id: 'foo',
         isTrue: true,
+        created,
         user: {
           age: 42,
           interests: ['Hiking'],
@@ -97,6 +105,7 @@ describe('OpenSearchHelper', () => {
         id: 'foo',
         body: {
           isTrue: true,
+          created,
           user: {
             age: 42,
             interests: ['Hiking'],
@@ -125,6 +134,7 @@ describe('OpenSearchHelper', () => {
         {
           _id: 'foo',
           _source: {
+            created,
             isTrue: true,
             user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
           },
@@ -142,6 +152,7 @@ describe('OpenSearchHelper', () => {
         {
           _id: 'foo',
           _source: {
+            created,
             isTrue: true,
             user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
           },
@@ -157,6 +168,7 @@ describe('OpenSearchHelper', () => {
         {
           id: 'foo',
           isTrue: true,
+          created,
           user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
         },
       ])
