@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 0.1.2
+
+### Patch Changes
+
+- 574d8b4: Fixed IndexProperties<Date>
+
 ## 0.1.1
 
 ### Patch Changes
