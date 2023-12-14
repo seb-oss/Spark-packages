@@ -8,6 +8,24 @@ import { helper } from './openSearchHelper'
 import { DeepPartial, ExcludeId } from './typescriptExtensions'
 
 type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
+type Pet = {
+  name: string
+  type: 'Cat' | 'Dog'
+}
+
+type Data = {
+  id: string
+  isTrue: boolean
+  created: Date
+  user: {
+    age: number
+    interests: Interest[]
+    name: string
+    pets?: Pet[]
+  }
+}
+
+type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
 
 type Data = {
   id: string
@@ -65,6 +83,18 @@ describe('OpenSearchHelper', () => {
               interests: {
                 type: 'keyword',
               },
+              pets: {
+                type: 'nested',
+                properties: {
+                  name: {
+                    type: 'text',
+                  },
+                  type: {
+                    type: 'keyword',
+                  },
+                },
+                }
+              }
             },
             isTrue: {
               type: 'boolean',

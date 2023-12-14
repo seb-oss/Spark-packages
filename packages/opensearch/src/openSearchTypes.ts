@@ -357,6 +357,7 @@ export type BasicOpenSearchFieldTypes =
   | 'date'
   | 'boolean'
   | 'binary'
+  | 'nested'
 
 type ElementType<T> = T extends Array<infer U> ? U : T
 
