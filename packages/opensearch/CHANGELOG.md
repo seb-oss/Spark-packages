@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 0.2.0
+
+### Minor Changes
+
+- 79104c9: Support nested types
+
 ## 0.1.2
 
 ### Patch Changes
