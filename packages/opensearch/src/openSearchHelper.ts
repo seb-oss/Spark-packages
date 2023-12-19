@@ -1,10 +1,10 @@
+import assert from 'assert'
 import type {
   ApiResponse,
   Client,
   RequestParams,
   opensearchtypes,
 } from '@opensearch-project/opensearch'
-import assert from 'assert'
 import {
   IndexOptions,
   IndexProperties,
