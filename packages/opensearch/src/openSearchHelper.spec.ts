@@ -74,13 +74,13 @@ describe('OpenSearchHelper', () => {
                 type: 'nested',
                 properties: {
                   name: {
-                    type: 'keyword'
+                    type: 'keyword',
                   },
                   type: {
-                    type: 'keyword'
-                  }
-                }
-              }
+                    type: 'keyword',
+                  },
+                },
+              },
             },
             isTrue: {
               type: 'boolean',
