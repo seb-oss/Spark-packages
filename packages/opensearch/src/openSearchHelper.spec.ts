@@ -10,7 +10,7 @@ import { DeepPartial, ExcludeId } from './typescriptExtensions'
 type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
 type Pet = {
   name: string
-  type: 'Cat' | 'Dog'
+  species: 'Cat' | 'Dog'
 }
 
 type Data = {
@@ -76,7 +76,7 @@ describe('OpenSearchHelper', () => {
                   name: {
                     type: 'keyword',
                   },
-                  type: {
+                  species: {
                     type: 'keyword',
                   },
                 },
@@ -98,12 +98,20 @@ describe('OpenSearchHelper', () => {
               isTrue: { type: 'boolean' },
               'user.age': { type: 'integer' },
               'user.interests': { type: 'keyword' },
+              'user.pets': {
+                type: 'nested',
+                properties: {
+                  name: { type: 'keyword' },
+                  species: { type: 'keyword' },
+                },
+              },
             },
           },
         },
       })
     })
   })
+
   describe('typedIndex', () => {
     it('indexes a document', async () => {
       await helper(client as Client).typedIndex<Data>('data', {
@@ -114,6 +122,10 @@ describe('OpenSearchHelper', () => {
           age: 42,
           interests: ['Hiking'],
           name: 'Arthur Dent',
+          pets: [
+            { name: 'Fido', species: 'Dog' },
+            { name: 'Kitty', species: 'Cat' },
+          ],
         },
       })
       expect(client.index).toHaveBeenCalledWith({
@@ -126,6 +138,10 @@ describe('OpenSearchHelper', () => {
             age: 42,
             interests: ['Hiking'],
             name: 'Arthur Dent',
+            pets: [
+              { name: 'Fido', species: 'Dog' },
+              { name: 'Kitty', species: 'Cat' },
+            ],
           },
         },
         refresh: true,
