@@ -6,6 +6,7 @@ import {
   NestedNumberPaths,
   NestedPaths,
   NestedStringPaths,
+  NotUndefined,
   SubstringOf,
   WithId,
 } from './typescriptExtensions'
@@ -374,15 +375,27 @@ export type OpenSearchFieldType<T> = ElementType<T> extends string
 
 // Define options for each field
 export type FieldOptions<T> = {
-  type: OpenSearchFieldType<T>
+  type: OpenSearchFieldType<NotUndefined<T>>
   // Add other Elasticsearch field mapping properties as needed
 }
 
+// Options for a nested object
 export type NestedFieldOptions<T> = {
-  [P in keyof T]?: T[P] extends object
-    ? NestedFieldOptions<T[P]>
-    : // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      FieldOptions<any>
+  type: 'nested'
+  properties: IndexProperties<T>
+}
+
+// Properties settings for an object in the index
+export type IndexProperties<T> = {
+  [K in keyof Partial<T>]: T[K] extends Date
+    ? FieldOptions<T[K]>
+    : NotUndefined<T[K]> extends object
+      ? NotUndefined<T[K]> extends Array<infer U>
+        ? U extends object
+          ? NestedFieldOptions<U>
+          : FieldOptions<T[K]>
+        : IndexProperties<T[K]>
+      : FieldOptions<T[K]>
 }
 
 // Map each property of T to its Elasticsearch field options
@@ -397,13 +410,4 @@ export type IndexOptions<T extends WithId> = {
     properties?: IndexProperties<ExcludeId<T>>
   }
   aliases?: Record<string, Record<string, never>>
-}
-export type IndexProperties<T> = {
-  [K in keyof Partial<T>]: T[K] extends Date
-    ? FieldOptions<T[K]>
-    : T[K] extends object
-      ? T[K] extends Array<infer U>
-        ? FieldOptions<T[K]>
-        : IndexProperties<T[K]>
-      : FieldOptions<T[K]>
 }

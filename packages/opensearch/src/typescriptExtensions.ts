@@ -73,3 +73,5 @@ export type SubstringOf<T extends string> =
   T extends `${infer Prefix}${infer _Rest}`
     ? Prefix | SubstringOf<Exclude<T, Prefix>>
     : never
+
+export type NotUndefined<T> = T extends undefined ? never : T

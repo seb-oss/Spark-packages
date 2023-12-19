@@ -19,22 +19,9 @@ type Data = {
   created: Date
   user: {
     age: number
-    interests: Interest[]
+    interests?: Interest[]
     name: string
     pets?: Pet[]
-  }
-}
-
-type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
-
-type Data = {
-  id: string
-  isTrue: boolean
-  created: Date
-  user: {
-    age: number
-    interests: Interest[]
-    name: string
   }
 }
 
@@ -87,12 +74,11 @@ describe('OpenSearchHelper', () => {
                 type: 'nested',
                 properties: {
                   name: {
-                    type: 'text',
+                    type: 'keyword'
                   },
                   type: {
-                    type: 'keyword',
-                  },
-                },
+                    type: 'keyword'
+                  }
                 }
               }
             },
