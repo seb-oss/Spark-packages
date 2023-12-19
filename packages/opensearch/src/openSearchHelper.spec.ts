@@ -8,6 +8,10 @@ import { helper } from './openSearchHelper'
 import { DeepPartial, ExcludeId } from './typescriptExtensions'
 
 type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
+type Pet = {
+  name: string
+  species: 'Cat' | 'Dog'
+}
 
 type Data = {
   id: string
@@ -15,8 +19,9 @@ type Data = {
   created: Date
   user: {
     age: number
-    interests: Interest[]
+    interests?: Interest[]
     name: string
+    pets?: Pet[]
   }
 }
 
@@ -65,6 +70,17 @@ describe('OpenSearchHelper', () => {
               interests: {
                 type: 'keyword',
               },
+              pets: {
+                type: 'nested',
+                properties: {
+                  name: {
+                    type: 'keyword',
+                  },
+                  species: {
+                    type: 'keyword',
+                  },
+                },
+              },
             },
             isTrue: {
               type: 'boolean',
@@ -82,12 +98,20 @@ describe('OpenSearchHelper', () => {
               isTrue: { type: 'boolean' },
               'user.age': { type: 'integer' },
               'user.interests': { type: 'keyword' },
+              'user.pets': {
+                type: 'nested',
+                properties: {
+                  name: { type: 'keyword' },
+                  species: { type: 'keyword' },
+                },
+              },
             },
           },
         },
       })
     })
   })
+
   describe('typedIndex', () => {
     it('indexes a document', async () => {
       await helper(client as Client).typedIndex<Data>('data', {
@@ -98,6 +122,10 @@ describe('OpenSearchHelper', () => {
           age: 42,
           interests: ['Hiking'],
           name: 'Arthur Dent',
+          pets: [
+            { name: 'Fido', species: 'Dog' },
+            { name: 'Kitty', species: 'Cat' },
+          ],
         },
       })
       expect(client.index).toHaveBeenCalledWith({
@@ -110,6 +138,10 @@ describe('OpenSearchHelper', () => {
             age: 42,
             interests: ['Hiking'],
             name: 'Arthur Dent',
+            pets: [
+              { name: 'Fido', species: 'Dog' },
+              { name: 'Kitty', species: 'Cat' },
+            ],
           },
         },
         refresh: true,

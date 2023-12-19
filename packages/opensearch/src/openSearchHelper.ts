@@ -1,3 +1,4 @@
+import assert from 'assert'
 import type {
   ApiResponse,
   Client,
@@ -118,11 +119,20 @@ const typedBulkUpsert = async <T extends { id: string }>(
 }
 
 const isLeafNode = <T extends object>(obj: T): boolean => {
+  if (Object.values(obj).some((value) => value === 'nested')) return true
+
   return !Object.values(obj).some(
     (value) =>
       typeof value === 'object' && value !== null && !Array.isArray(value)
   )
 }
+
+assert(
+  isLeafNode({
+    type: 'nested',
+    properties: { name: { type: 'keyword' }, type: { type: 'keyword' } },
+  })
+)
 
 const flattenObject = <T>(
   obj: IndexProperties<T>,
