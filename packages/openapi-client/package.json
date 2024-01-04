@@ -19,6 +19,6 @@
   "dependencies": {
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
-    "axios": "1.6.2"
+    "axios": "1.6.4"
   }
 }
