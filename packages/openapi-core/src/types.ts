@@ -3,6 +3,12 @@ import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
+
+export type APIResponse<R = never, H extends Record<string, string> = never> = {
+  data: R,
+  headers: H
+}
+
 export type GenericRouteHandler = (
   req: Request,
   res: Response,

@@ -15,7 +15,7 @@ type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 /* tslint:disable */
 /* eslint-disable */
 
-export type User = { id?: string; name?: string }
+export type User = { id: string; name?: string }
 
 export type UserList = User[]
 

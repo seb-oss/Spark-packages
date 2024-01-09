@@ -4,13 +4,18 @@
  */
 
 import type {
+  APIResponse,
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  RequestOptions,
 } from '@sebspark/openapi-core'
 import type { Request } from 'express'
 
 type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
+
+/* tslint:disable */
+/* eslint-disable */
 
 export type Card = {
   id: string
@@ -21,10 +26,15 @@ export type Card = {
 
 export type CardSettings = {
   cardId: string
-  frozen: { value: boolean; editableByChild: boolean }
+  frozen: {
+    value: boolean
+    editableByChild: boolean
+  }
 }
 
-export type CardList = { cards: Card[] }
+export type CardList = {
+  cards: Card[]
+}
 
 /**
  * A documented type
