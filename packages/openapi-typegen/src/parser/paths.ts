@@ -8,8 +8,8 @@ import {
   ResponsesObject,
   Verb,
 } from '@sebspark/openapi-core'
-import { Path, TypeDefinition } from '../types'
-import { parseRef } from './common'
+import { EmptyType, Path, TypeDefinition } from '../types'
+import { parseRef, parseDocumentation } from './common'
 import { parseSchema } from './schema'
 import { parseArgs } from './args'
 
@@ -48,6 +48,7 @@ const parseMethod = (
     url: parseUrl(url),
     responses: parseResponses(operation.responses),
     args: parseArgs(operation, components),
+    ...parseDocumentation(operation),
   }
 }
 
@@ -68,10 +69,10 @@ const parseResponses = (
 
 const parseResponse = (
   response: ResponseObject | ReferenceObject
-): TypeDefinition | undefined => {
+): TypeDefinition | EmptyType => {
   const ref = (response as ReferenceObject).$ref
   if (ref) return { type: parseRef(ref) }
   const schema = (response as ResponseObject).content?.['application/json']
     ?.schema
-  return schema ? parseSchema(undefined, schema) : undefined
+  return schema ? parseSchema(undefined, schema) : {type: undefined, ...parseDocumentation(response as ResponseObject)}
 }

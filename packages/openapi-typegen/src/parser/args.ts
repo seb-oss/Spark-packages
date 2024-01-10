@@ -9,7 +9,7 @@ import {
 } from '@sebspark/openapi-core'
 import { Args, ObjectType, RequestArgs } from '../types'
 import { parseSchema } from './schema'
-import { findRef, parseRef } from './common'
+import { findRef, parseRef, parseDocumentation } from './common'
 
 export const parseArgs = (
   path: OperationObject,
@@ -47,7 +47,7 @@ const parseParameters = (
       switch (part) {
         case 'parameters': {
           const param = findRef<ParameterObject>(components, ref)
-          const arg = args[param.in] || createArgs()
+          const arg = args[param.in] || createArgs({...parseDocumentation(param)})
           arg.optional = arg.optional && !param.required
           arg.extends.push({ type: parseRef(ref) })
           args[param.in] = arg
@@ -63,6 +63,7 @@ const parseParameters = (
               optional: !header.required,
               // biome-ignore lint/style/noNonNullAssertion: <explanation>
               type: [{ type: parseSchema(undefined, header.schema!).type }],
+              ...parseDocumentation((header.schema || {}) as SchemaObject),
             }
           )
           args.header = arg
@@ -71,7 +72,7 @@ const parseParameters = (
       }
     } else {
       const param = p as ParameterObject
-      const arg = args[param.in] || createArgs()
+      const arg = args[param.in] || createArgs({...parseDocumentation(param)})
 
       arg.properties.push({
         name: param.name,
@@ -105,7 +106,7 @@ const parseRequestBody = (
   } else {
     // Inline request body properties
     const body = requestBody as RequestBodyObject
-    const bodyArgs: Args = args.body || createArgs({ optional: !body.required })
+    const bodyArgs: Args = args.body || createArgs({ optional: !body.required, ...parseDocumentation(body) })
 
     if (body.content['application/json']) {
       const schema = body.content['application/json'].schema
@@ -120,6 +121,7 @@ const parseRequestBody = (
           args.body = createArgs({
             optional: !body.required,
             extends: [parsed],
+            ...parseDocumentation(body),
           })
         }
       }

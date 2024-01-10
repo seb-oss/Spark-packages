@@ -1,5 +1,5 @@
 import { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
-import { parseEnumType, parseRef } from './common'
+import { parseEnumType, parseRef, parseDocumentation } from './common'
 import { ArrayType, ObjectType, Property, TypeDefinition } from '../types'
 
 export const parseSchemas = (
@@ -38,7 +38,13 @@ const parseObjectSchema = (
   name: string | undefined,
   schema: SchemaObject
 ): ObjectType => {
-  const type: ObjectType = { name, type: 'object', properties: [], extends: [] }
+  const type: ObjectType = {
+    name,
+    type: 'object',
+    properties: [],
+    extends: [],
+    ...parseDocumentation(schema),
+  }
   if (schema.properties) {
     type.properties = Object.entries(schema.properties).map(
       ([name, property]) => parseProperty(name, property, schema.required || [])
@@ -55,7 +61,12 @@ const parseArraySchema = (
   schema: SchemaObject
 ): ArrayType => {
   if (schema.type !== 'array' || !schema.items) throw new Error('Not an array')
-  return { name, type: 'array', items: parsePropertyType(schema.items)[0] }
+  return {
+    name,
+    type: 'array',
+    items: parsePropertyType(schema.items)[0],
+    ...parseDocumentation(schema),
+  }
 }
 
 export const parseProperty = (
@@ -67,6 +78,7 @@ export const parseProperty = (
     name,
     optional: !required.includes(name),
     type: parsePropertyType(schema),
+    ...parseDocumentation(schema as SchemaObject),
   }
 
   return property
@@ -93,10 +105,10 @@ const parsePropertyType = (
           return parseObjectSchema(undefined, schemaObject)
         }
         case 'integer': {
-          return { type: 'number' }
+          return { type: 'number', ...parseDocumentation(schemaObject), }
         }
         default: {
-          return { type }
+          return { type, ...parseDocumentation(schemaObject), }
         }
       }
     })

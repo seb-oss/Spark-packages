@@ -29,6 +29,9 @@ import { findRef } from '../parser/common'
 import { parseRequestBodies } from '../parser/requestBodies'
 import { inspect } from 'util'
 import { parseResponseBodies } from '../parser/responseBodies'
+import { format } from '../generator'
+import { generateType } from '../generator/common'
+import { generateClient } from '../generator/client'
 
 const document: OpenApiDocument = JSON.parse(
   readFileSync(`${__dirname}/openapi.json`, 'utf8')
@@ -66,7 +69,10 @@ describe('openapi parser', () => {
           url: '/users/:userId',
           method: 'get',
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
         },
       ]
@@ -95,14 +101,20 @@ describe('openapi parser', () => {
           url: '/users/:userId',
           method: 'get',
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
         },
         {
           url: '/users/:userId',
           method: 'post',
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
         },
       ]
@@ -236,7 +248,10 @@ describe('openapi parser', () => {
           url: '/users/:userId',
           method: 'get',
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
           args: {
             path: {
@@ -315,7 +330,10 @@ describe('openapi parser', () => {
           url: '/users/:userId',
           method: 'post',
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
           args: {
             body: {
@@ -462,7 +480,10 @@ describe('openapi parser', () => {
             },
           },
           responses: {
-            204: undefined,
+            204: {
+              description: 'No Content',
+              type: undefined
+            },
           },
         },
       ]
@@ -925,6 +946,88 @@ describe('openapi parser', () => {
       }
       const parsed = parseResponseBodies({UserResponse: responseBody})[0]
       expect(parsed).toEqual(expected)
+    })
+  })
+})
+
+describe('generator', () => {
+  describe('documentation', () => {
+    it('renders title and description for a component schema', async () => {
+      const schema: SchemaObject = {
+        title: 'User',
+        description: 'Description',
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string'
+          }
+        }
+      }
+      const generated = await format(generateType(parseSchema('User', schema)))
+      const expected = await format(`
+        /**
+         * User
+         * Description
+         */
+        export type User = {
+          name?: string
+        }
+      `)
+
+      expect(generated).toEqual(expected)
+    })
+    it('renders title and description for a properties of a component schema', async () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          name: {
+            title: 'User name',
+            description: 'What you call someone',
+            type: 'string'
+          }
+        }
+      }
+      const generated = await format(generateType(parseSchema('User', schema)))
+      const expected = await format(`
+        export type User = {
+          /**
+           * User name
+           * What you call someone
+           */
+          name?: string
+        }
+      `)
+
+      expect(generated).toEqual(expected)
+    })
+    it('renders title and description for client routes', async () => {
+      const path: Path = {
+        url: '/foo',
+        method: 'get',
+        title: 'Foo',
+        description: 'Get foo',
+        responses: {
+          204: {type: undefined}
+        }
+      }
+      const generated = await format(generateClient('Foo', [path]))
+      const expected = await format(`
+      export type FooClient = Pick<BaseClient, 'get'> & {
+        get: {
+          /**
+           * Foo
+           * Get foo
+           * 
+           * @param {string} url
+           * @param {RequestOptions} [options] - Optional.
+           * @returns {Promise<undefined>}
+           */
+          (url: '/foo', opts?: RequestOptions): Promise<undefined>
+        }
+      }
+      `)
+
+      expect(generated).toEqual(expected)
     })
   })
 })

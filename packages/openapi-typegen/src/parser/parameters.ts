@@ -1,6 +1,7 @@
 import { ParameterObject } from '@sebspark/openapi-core'
 import { Parameter } from '../types'
 import { parseSchema } from './schema'
+import { parseDocumentation } from './common'
 
 export const parseParameters = (
   schemas: Record<string, ParameterObject> = {}
@@ -20,6 +21,7 @@ export const parseParameter = (
     optional: !schema.required,
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     type: parseSchema(undefined, schema.schema!),
+    ...parseDocumentation(schema),
   }
 
   return param

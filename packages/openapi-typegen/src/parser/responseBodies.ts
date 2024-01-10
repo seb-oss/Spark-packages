@@ -1,7 +1,7 @@
 import { HeaderObject, ReferenceObject, ResponseObject } from '@sebspark/openapi-core'
 import { ResponseBody } from '../types'
 import { parseSchema } from './schema'
-import { parseRef } from './common'
+import { parseRef, parseDocumentation } from './common'
 import { parseHeader } from './headers'
 
 export const parseResponseBodies = (responses: Record<string, ResponseObject | ReferenceObject> = {}): ResponseBody[] => {
@@ -17,7 +17,12 @@ export const parseResponseBodies = (responses: Record<string, ResponseObject | R
     if (responseObject.headers) {
       for (const [headerName, header] of Object.entries(responseObject.headers)) {
         const ref = (header as ReferenceObject).$ref
-        if (ref) body.headers.push({ name: headerName, optional: false, type: {type: parseRef(ref)}})
+        if (ref) body.headers.push({
+          name: headerName,
+          optional: false,
+          type: {type: parseRef(ref)},
+          ...parseDocumentation(header as HeaderObject),
+        })
         else body.headers.push(parseHeader(headerName, header as HeaderObject))
       }
     }

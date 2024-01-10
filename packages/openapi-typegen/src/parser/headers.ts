@@ -1,6 +1,7 @@
 import { HeaderObject } from '@sebspark/openapi-core'
 import { Header } from '../types'
 import { parseSchema } from './schema'
+import { parseDocumentation } from './common'
 
 export const parseHeaders = (
   schemas: Record<string, HeaderObject> = {}
@@ -15,6 +16,7 @@ export const parseHeader = (name: string, schema: HeaderObject): Header => {
     optional: !schema.required,
     // biome-ignore lint/style/noNonNullAssertion: <explanation>
     type: parseSchema(undefined, schema.schema!),
+    ...parseDocumentation(schema),
   }
 
   return header

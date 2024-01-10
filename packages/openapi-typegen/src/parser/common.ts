@@ -38,3 +38,15 @@ export const findRef = <T extends SchemaType>(
     throw new Error(`Cannot find ref ${ref}`)
   return schemaPath[name] as T
 }
+
+type Documented = {
+  title?: string
+  description?: string
+}
+export const parseDocumentation = (source: Partial<Documented>): Partial<Documented> => {
+  const documented: Documented = {}
+  if (source.title) documented.title = source.title
+  if (source.description) documented.description = source.description
+  return documented
+}
+

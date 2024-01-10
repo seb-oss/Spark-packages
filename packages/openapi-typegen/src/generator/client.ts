@@ -3,6 +3,7 @@ import { Path } from '../types'
 import { pascalCase } from 'change-case'
 import { OR, generateType, serializeValue } from './common'
 import { generateClientArgs } from './args'
+import { documentPath } from './document'
 
 export const generateClient = (
   name: string,
@@ -35,14 +36,15 @@ export const generateClient = (
 }
 
 const generateCall = (path: Path): string => {
-  return `
+  const responses = generateResponses(path)
+  return `${documentPath(path, responses)}
   (
     url: '${path.url}', ${generateClientArgs(path.args)}opts?: RequestOptions,
-  ): Promise<${generateResponses(path)}>`
+  ): Promise<${responses}>`
 }
 
 const generateResponses = (path: Path): string =>
   Object.entries(path.responses)
     .filter(([code]) => parseInt(code, 10) < 400)
-    .map(([,type]) => (type ? generateType(type) : 'void'))
+    .map(([,type]) => (generateType(type)))
     .join(OR)

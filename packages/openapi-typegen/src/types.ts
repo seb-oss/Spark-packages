@@ -31,6 +31,8 @@ type BaseType = {
   description?: string
 }
 
+export type EmptyType = BaseType & { type: undefined }
+
 export type PrimitiveType = BaseType & {
   type: Primitive
 }
@@ -71,8 +73,10 @@ export type ParsedComponents = {
 export type Path = {
   url: string
   method: Verb
-  responses: Record<number, TypeDefinition | undefined>
+  responses: Record<number, TypeDefinition | EmptyType>
   args?: RequestArgs
+  title?: string
+  description?: string
 }
 
 export type Args = ObjectType & { optional: boolean }
@@ -86,6 +90,8 @@ export type Parameter = {
   parameterName: string
   type: TypeDefinition
   optional: boolean
+  title?: string
+  description?: string
 }
 
 export type Header = {
@@ -96,6 +102,12 @@ export type Header = {
 
 export type ResponseBody = {
   name: string
-  data?: TypeDefinition,
+  data: TypeDefinition | EmptyType,
   headers: Header[],
 }
+
+export type DocumentableType = Partial<{
+  name?: string
+  title?: string
+  description?: string
+}>

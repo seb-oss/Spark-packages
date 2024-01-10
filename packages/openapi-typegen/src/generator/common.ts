@@ -2,6 +2,7 @@ import { pascalCase } from 'change-case'
 import {
   ArrayType,
   CustomType,
+  EmptyType,
   EnumType,
   Header,
   ObjectType,
@@ -9,14 +10,20 @@ import {
   Property,
   ResponseBody,
   TypeDefinition,
+  DocumentableType,
 } from '../types'
+import { document } from './document'
 
 export const OR = ' | '
 export const AND = ' & '
 
-export const generateType = (parsed: TypeDefinition): string => {
+export const generateType = (parsed: TypeDefinition | EmptyType): string => {
   let type: string
   switch (parsed.type) {
+    case undefined: {
+      type = 'undefined'
+      break
+    }
     case 'enum': {
       type = generateEnum(parsed as EnumType)
       break
@@ -48,11 +55,11 @@ export const generateType = (parsed: TypeDefinition): string => {
 
 export const generateProperty = (property: Property): string => {
   const types = property.type.map(generateType)
-  return `${propertyName(property.name)}${property.optional ? '?' : ''}: ${types.join(OR)}`
+  return `${document(property)}${propertyName(property.name)}${property.optional ? '?' : ''}: ${types.join(OR)}`
 }
 
-export const preamble = (type: {name?: string}): string =>
-  type.name ? `export type ${typeName(type.name)} = ` : ''
+export const preamble = (type: DocumentableType): string =>
+  type.name ? `${document(type)}export type ${typeName(type.name)} = ` : ''
 
 export const typeName = (name: string): string => {
   if (/^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name)) return name
@@ -95,7 +102,7 @@ export const generateHeader = (header: Header): string => {
 }
 
 export const generateBody = (body: ResponseBody): string => {
-  return `${preamble(body)}APIResponse<${body.data ? generateType(body.data) : 'never'}, ${body.headers.length ? generateHeaders(body.headers) : 'never'}>`
+  return `${preamble(body)}APIResponse<${generateType(body.data)}, ${body.headers.length ? generateHeaders(body.headers) : 'never'}>`
 }
 
 export const generateHeaders = (headers: Header[]): string => {
