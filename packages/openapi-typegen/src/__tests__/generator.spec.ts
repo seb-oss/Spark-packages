@@ -5,8 +5,10 @@ import {
   ObjectType,
   Path,
 } from '../types'
-import { format } from './formatter'
-import { generateClient, generateServer, generateType } from './generator'
+import { format } from '../generator/formatter'
+import { generateClient, generateServer, generateType } from '../generator/generator'
+import { parseSchema } from '../parser/schema'
+import { SchemaObject } from '@sebspark/openapi-core'
 
 describe('typescript generator', () => {
   describe('generateType', () => {
@@ -335,7 +337,7 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
-    it.skip('generates a simple post', async () => {
+    it('generates a simple post', async () => {
       const paths: Path[] = [
         {
           method: 'post',
@@ -349,6 +351,12 @@ describe('typescript generator', () => {
       const expected = await format(`
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
+          /**
+           * 
+           * @param {string} url
+           * @param {RequestOptions} [opts] - Optional.
+           * @returns {Promise<User[]>}
+           */
           (
             url: '/users',
             opts?: RequestOptions
@@ -361,7 +369,7 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
-    it.skip('generates a post with parameters', async () => {
+    it('generates a post with parameters', async () => {
       const paths: Path[] = [
         {
           method: 'post',
@@ -382,6 +390,14 @@ describe('typescript generator', () => {
       const expected = await format(`
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
+          /**
+           * 
+           * @param {string} url
+           * @param {Object} args - The arguments for the request.
+           * @param {User} args.body - Request body for the request.
+           * @param {RequestOptions} [opts] - Optional.
+           * @returns {Promise<User[]>}
+           */
           (
             url: '/users',
             args: { body: User },
@@ -405,6 +421,8 @@ describe('typescript generator', () => {
           responses: {
             200: {type: 'array', items: {type: 'User'}}
           },
+          title: 'Users',
+          description: 'Lists users',
         },
         {
           url: '/users/:id',
@@ -429,12 +447,25 @@ describe('typescript generator', () => {
       export type UserServer = APIServerDefinition & {
         '/users': {
           get: {
+            /**
+             * Users
+             * Lists users
+             * 
+             * @returns {Promise<[200, User[]]>}
+             */
             handler: (args: Req) => Promise<[200, User[]]>
             pre?: GenericRouteHandler | GenericRouteHandler[]
           }
         }
         '/users/:id': {
           get: {
+            /**
+             * 
+             * @param {Object} args - The arguments for the request.
+             * @param {Object} args.params - Path parameters for the request.
+             * @param {string} args.params.id
+             * @returns {Promise<[200, User]>}
+             */
             handler: (args: Req & {
               params: {
                 id: string
@@ -447,6 +478,85 @@ describe('typescript generator', () => {
       `)
       const generated = await format(generateServer('User', paths))
       
+      expect(generated).toEqual(expected)
+    })
+  })
+  describe('documentation', () => {
+    it('renders title and description for a component schema', async () => {
+      const schema: SchemaObject = {
+        title: 'User',
+        description: 'Description',
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string'
+          }
+        }
+      }
+      const generated = await format(generateType(parseSchema('User', schema)))
+      const expected = await format(`
+        /**
+         * User
+         * Description
+         */
+        export type User = {
+          name?: string
+        }
+      `)
+
+      expect(generated).toEqual(expected)
+    })
+    it('renders title and description for a properties of a component schema', async () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          name: {
+            title: 'User name',
+            description: 'What you call someone',
+            type: 'string'
+          }
+        }
+      }
+      const generated = await format(generateType(parseSchema('User', schema)))
+      const expected = await format(`
+        export type User = {
+          /**
+           * User name
+           * What you call someone
+           */
+          name?: string
+        }
+      `)
+
+      expect(generated).toEqual(expected)
+    })
+    it('renders title and description for client routes', async () => {
+      const path: Path = {
+        url: '/foo',
+        method: 'get',
+        title: 'Foo',
+        description: 'Get foo',
+        responses: {
+          204: {type: undefined}
+        }
+      }
+      const generated = await format(generateClient('Foo', [path]))
+      const expected = await format(`
+      export type FooClient = Pick<BaseClient, 'get'> & {
+        get: {
+          /**
+           * Foo
+           * Get foo
+           * 
+           * @param {string} url
+           * @param {RequestOptions} [opts] - Optional.
+           * @returns {Promise<undefined>}
+           */
+          (url: '/foo', opts?: RequestOptions): Promise<undefined>
+        }
+      }
+      `)
+
       expect(generated).toEqual(expected)
     })
   })

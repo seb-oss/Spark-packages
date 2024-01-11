@@ -9,7 +9,7 @@ export const parseResponseBodies = (responses: Record<string, ResponseObject | R
 
   for(const [name, b] of Object.entries(responses)) {
     const responseObject = b as ResponseObject
-    const body: ResponseBody = {name, headers: []}
+    const body: ResponseBody = {name, headers: [], data: {type: undefined}}
     if (responseObject.content?.['application/json']?.schema) {
       const schema = responseObject.content['application/json'].schema
       body.data = parseSchema(undefined, schema)

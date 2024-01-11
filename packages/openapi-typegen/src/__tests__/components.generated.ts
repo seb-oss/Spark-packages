@@ -24,6 +24,9 @@ export type User = {
 
 export type UserList = User[]
 
+/**
+ * The number of allowed requests in the current period
+ */
 export type XRateLimit = { 'X-Rate-Limit'?: number }
 
 export type PageParam = {
@@ -37,7 +40,7 @@ export type LimitParam = {
 export type UserCreate = User
 
 export type UnauthorizedError = APIResponse<
-  never,
+  undefined,
   {
     'WWW-Authenticate'?: string
   }
@@ -46,18 +49,37 @@ export type UnauthorizedError = APIResponse<
 export type ExampleAPIServer = APIServerDefinition & {
   '/users': {
     get: {
+      /**
+       *
+       * @param {Object} [args] - Optional. The arguments for the request.
+       * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
+       * @returns {Promise<[200, UserList]>}
+       */
       handler: (
         args?: Req & { query?: PageParam & LimitParam },
       ) => Promise<[200, UserList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
     post: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {UserCreate} args.body - Request body for the request.
+       * @returns {Promise<[201, User]>}
+       */
       handler: (args: Req & { body: UserCreate }) => Promise<[201, User]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/users/:userId': {
     get: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {Object} args.params - Path parameters for the request.
+       * @param {string} args.params.userId
+       * @returns {Promise<[200, User]>}
+       */
       handler: (
         args: Req & {
           params: {
@@ -72,12 +94,28 @@ export type ExampleAPIServer = APIServerDefinition & {
 
 export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
   get: {
+    /**
+     *
+     * @param {string} url
+     * @param {Object} [args] - Optional. The arguments for the request.
+     * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<UserList>}
+     */
     (
       url: '/users',
       args?: { query?: PageParam & LimitParam },
       opts?: RequestOptions,
     ): Promise<UserList>
-  
+    /**
+     *
+     * @param {string} url
+     * @param {Object} args - The arguments for the request.
+     * @param {Object} args.params - Path parameters for the request.
+     * @param {string} args.params.userId
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<User>}
+     */
     (
       url: '/users/:userId',
       args: {
@@ -89,6 +127,14 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
     ): Promise<User>
   }
   post: {
+    /**
+     *
+     * @param {string} url
+     * @param {Object} args - The arguments for the request.
+     * @param {UserCreate} args.body - Request body for the request.
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<User>}
+     */
     (
       url: '/users',
       args: { body: UserCreate },

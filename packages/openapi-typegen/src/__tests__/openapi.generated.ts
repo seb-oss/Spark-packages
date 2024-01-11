@@ -17,6 +17,9 @@ type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * Card
+ */
 export type Card = {
   id: string
   ownerId: string
@@ -24,6 +27,9 @@ export type Card = {
   'settings/foo'?: CardSettings
 }
 
+/**
+ * CardSettings
+ */
 export type CardSettings = {
   cardId: string
   frozen: {
@@ -32,6 +38,9 @@ export type CardSettings = {
   }
 }
 
+/**
+ * AccountBalance
+ */
 export type CardList = {
   cards: Card[]
 }
@@ -50,33 +59,84 @@ export type Documented = {
   settings?: CardSettings
 }
 
-export type HttpError = { message: string; stack?: string }
+/**
+ * HttpError
+ */
+export type HttpError = {
+  message: string
+  stack?: string
+}
 
 export type CardsAPIServer = APIServerDefinition & {
   '/': {
     get: {
+      /**
+       *
+       * @param {Object} [args] - Optional. The arguments for the request.
+       * @param {Object} [args.query] - Optional. Query parameters for the request.
+       * @param {number} [args.query.page] - Optional.
+       * @param {number} [args.query.limit] - Optional.
+       * @returns {Promise<[200, CardList]>}
+       */
       handler: (
-        args?: Req & { query?: { page?: number; limit?: number } },
+        args?: Req & {
+          query?: {
+            page?: number
+            limit?: number
+          }
+        },
       ) => Promise<[200, CardList]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/:cardId': {
-    get: {
+    delete: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {Object} args.params - Path parameters for the request.
+       * @param {string} args.params.cardId
+       * @param {Object} args.query - Query parameters for the request.
+       * @param {boolean} args.query.cardNickname
+       * @returns {Promise<[200, Card]>}
+       */
       handler: (
         args: Req & {
-          params: { cardId: string }
-          query: { cardNickname: boolean }
-          headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
+          params: {
+            cardId: string
+          }
+          query: {
+            cardNickname: boolean
+          }
         }
       ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
-    delete: {
+    get: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {Object} args.params - Path parameters for the request.
+       * @param {string} args.params.cardId
+       * @param {Object} args.query - Query parameters for the request.
+       * @param {boolean} args.query.cardNickname
+       * @param {Object} args.headers - Headers for the request.
+       * @param {string} args.headers["X-User-Id"]
+       * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
+       * @returns {Promise<[200, Card]>}
+       */
       handler: (
         args: Req & {
-          params: { cardId: string }
-          query: { cardNickname: boolean }
+          headers: {
+            'X-User-Id': string
+            'X-Distributor-Id'?: string
+          }
+          params: {
+            cardId: string
+          }
+          query: {
+            cardNickname: boolean
+          }
         }
       ) => Promise<[200, Card]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -84,54 +144,135 @@ export type CardsAPIServer = APIServerDefinition & {
   }
   '/:cardId/settings': {
     put: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {Object} args.params - Path parameters for the request.
+       * @param {string} args.params.cardId
+       * @param {Object} args.headers - Headers for the request.
+       * @param {string} args.headers["x-forwarded-authorization"]
+       * @param {CardSettings} [args.body] - Optional. Request body for the request.
+       * @returns {Promise<[204, undefined]>}
+       */
       handler: (
         args: Req & {
-          params: { cardId: string }
-          headers: { 'x-forwarded-authorization': string }
-          body: CardSettings
+          body?: CardSettings
+          headers: {
+            'x-forwarded-authorization': string
+          }
+          params: {
+            cardId: string
+          }
         }
-      ) => Promise<[204, void]>
+      ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
 }
 
-type CardsAPIClientGet = {
-  (
-    url: '/',
-    args?: { query?: { page?: number; limit?: number } },
-  ): Promise<CardList>
-
-  (
-    url: '/:cardId',
-    args: {
-      params: { cardId: string }
-      query: { cardNickname: boolean }
-      headers: { 'X-User-Id': string; 'X-Distributor-Id'?: string }
-    }
-  ): Promise<Card>
-}
-
-type CardsAPIClientDelete = {
-  (
-    url: '/:cardId',
-    args: { params: { cardId: string }; query: { cardNickname: boolean } },
-  ): Promise<Card>
-}
-
-type CardsAPIClientPut = {
-  (
-    url: '/:cardId/settings',
-    args: {
-      params: { cardId: string }
-      headers: { 'x-forwarded-authorization': string }
-      body: CardSettings
-    },
-  ): Promise<void>
-}
-
 export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
-  get: CardsAPIClientGet
-  delete: CardsAPIClientDelete
-  put: CardsAPIClientPut
+  get: {
+    /**
+     *
+     * @param {string} url
+     * @param {Object} [args] - Optional. The arguments for the request.
+     * @param {Object} [args.query] - Optional. Query parameters for the request.
+     * @param {number} [args.query.page] - Optional.
+     * @param {number} [args.query.limit] - Optional.
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<CardList>}
+     */
+    (
+      url: '/',
+      args?: {
+        query?: {
+          page?: number
+          limit?: number
+        }
+      },
+      opts?: RequestOptions
+    ): Promise<CardList>
+    /**
+     *
+     * @param {string} url
+     * @param {Object} args - The arguments for the request.
+     * @param {Object} args.params - Path parameters for the request.
+     * @param {string} args.params.cardId
+     * @param {Object} args.query - Query parameters for the request.
+     * @param {boolean} args.query.cardNickname
+     * @param {Object} args.headers - Headers for the request.
+     * @param {string} args.headers["X-User-Id"]
+     * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<Card>}
+     */
+    (
+      url: '/:cardId',
+      args: {
+        headers: {
+          'X-User-Id': string
+          'X-Distributor-Id'?: string
+        }
+        params: {
+          cardId: string
+        }
+        query: {
+          cardNickname: boolean
+        }
+      },
+      opts?: RequestOptions,
+    ): Promise<Card>
+  }
+  delete: {
+    /**
+     *
+     * @param {string} url
+     * @param {Object} args - The arguments for the request.
+     * @param {Object} args.params - Path parameters for the request.
+     * @param {string} args.params.cardId
+     * @param {Object} args.query - Query parameters for the request.
+     * @param {boolean} args.query.cardNickname
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<Card>}
+     */
+    (
+      url: '/:cardId',
+      args: {
+        params: {
+          cardId: string
+        }
+        query: {
+          cardNickname: boolean
+        }
+      },
+      opts?: RequestOptions,
+    ): Promise<Card>
+  }
+  put: {
+    /**
+     *
+     * @param {string} url
+     * @param {Object} args - The arguments for the request.
+     * @param {Object} args.params - Path parameters for the request.
+     * @param {string} args.params.cardId
+     * @param {Object} args.headers - Headers for the request.
+     * @param {string} args.headers["x-forwarded-authorization"]
+     * @param {CardSettings} [args.body] - Optional. Request body for the request.
+     * @param {RequestOptions} [opts] - Optional.
+     * @returns {Promise<undefined>}
+     */
+    (
+      url: '/:cardId/settings',
+      args: {
+        body?: CardSettings
+        headers: {
+          'x-forwarded-authorization': string
+        }
+        params: {
+          cardId: string
+        }
+      },
+      opts?: RequestOptions,
+    ): Promise<undefined>
+  }
 }

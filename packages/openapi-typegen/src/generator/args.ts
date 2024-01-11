@@ -17,7 +17,7 @@ const generateArgs = (args: RequestArgs | undefined, extendsReq: boolean): strin
     for (const part of parts) {
       const arg = args[part]
       if (arg) {
-        const partName = part === 'path' ? 'params' : part
+        const partName = (part === 'path') ? 'params' : (part === 'header') ? 'headers' : part
         tokens.push(`${partName}${arg.optional ? '?' : ''}: ${generateType(arg)}`)
       }
     }

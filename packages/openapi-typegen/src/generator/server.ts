@@ -1,6 +1,7 @@
-import { Path, TypeDefinition } from '../types'
+import { EmptyType, Path, TypeDefinition } from '../types'
 import { generateServerArgs } from './args'
 import { OR, generateType } from './common'
+import { documentServerPath } from './document'
 
 export const generateServer = (name: string, paths: Path[]): string => {
   const tokens: string[] = []
@@ -30,20 +31,24 @@ const generatePath = (url: string, methods: Path[]): string => (
   }`
 )
 
-const generateMethod = (path: Path): string => (
-  `${path.method}: {
-    handler: (${generateServerArgs(path.args)}) => Promise<${generateResponses(path.responses)}>
-    pre?: GenericRouteHandler | GenericRouteHandler[]
-  }`
-)
+const generateMethod = (path: Path): string => {
+  const responses = generateResponses(path.responses)
+  return (
+    `${path.method}: {
+      ${documentServerPath(path, responses)}
+      handler: (${generateServerArgs(path.args)}) => Promise<${responses}>
+      pre?: GenericRouteHandler | GenericRouteHandler[]
+    }`
+  )
+}
 
-const generateResponses = (responses: Record<number, TypeDefinition | undefined>): string => (
+const generateResponses = (responses: Record<number, TypeDefinition | EmptyType>): string => (
   Object
     .entries(responses)
     .filter(([code]) => parseInt(code, 10) < 400)
     .map(([code, response]) => generateResponse(parseInt(code, 10), response)).join(OR)
 )
 
-const generateResponse = (code: number, response: TypeDefinition | undefined): string => (
-  `[${code}, ${response ? generateType(response) : 'void'}]`
+const generateResponse = (code: number, response: TypeDefinition | EmptyType): string => (
+  `[${code}, ${generateType(response)}]`
 )

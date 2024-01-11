@@ -1,9 +1,8 @@
 import { Verb } from '@sebspark/openapi-core'
 import { Path } from '../types'
-import { pascalCase } from 'change-case'
 import { OR, generateType, serializeValue } from './common'
 import { generateClientArgs } from './args'
-import { documentPath } from './document'
+import { documentClientPath } from './document'
 
 export const generateClient = (
   name: string,
@@ -37,7 +36,7 @@ export const generateClient = (
 
 const generateCall = (path: Path): string => {
   const responses = generateResponses(path)
-  return `${documentPath(path, responses)}
+  return `${documentClientPath(path, responses)}
   (
     url: '${path.url}', ${generateClientArgs(path.args)}opts?: RequestOptions,
   ): Promise<${responses}>`

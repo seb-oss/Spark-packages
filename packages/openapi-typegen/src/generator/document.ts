@@ -1,6 +1,6 @@
 import { Args, DocumentableType, Path, Property, RequestArgs } from '../types'
 import { argsOptional } from './args'
-import { OR } from './common'
+import { AND, OR, rxProperVariable } from './common'
 
 export const document = ({title, description}: DocumentableType): string => {
   if (title || description) {
@@ -14,16 +14,24 @@ export const document = ({title, description}: DocumentableType): string => {
   return ''
 }
 
-export const documentPath = (path: Path, responses: string): string => {
+export const documentClientPath = (path: Path, responses: string): string => (
+  documentPath(path, responses, [param('url', 'string')], [param('opts', 'RequestOptions', true)])
+)
+
+export const documentServerPath = (path: Path, responses: string): string => (
+  documentPath(path, responses)
+)
+
+const documentPath = (path: Path, responses: string, argsBefore: string[] = [], argsAfter: string[] = []): string => {
   const tokens: string[] = []
 
   tokens.push('/**')
   if (path.title) tokens.push(` * ${path.title}`)
   if (path.description) tokens.push(` * ${path.description}`)
   tokens.push(' *')
-  tokens.push(param('url', 'string'))
+  tokens.push(...argsBefore)
   if (path.args) tokens.push(...documentArgs(path.args))
-  tokens.push(param('opts', 'RequestOptions', true))
+  tokens.push(...argsAfter)
   tokens.push(` * @returns {Promise<${responses}>}`)
   tokens.push(' */')
 
@@ -40,19 +48,24 @@ const documentArgs = (args: RequestArgs): string[] => {
   // Query params
   tokens.push(...requestArgs(args.query, 'query', 'Query parameters'))
   // Headers
-  tokens.push(...requestArgs(args.header, 'header', 'Headers'))
+  tokens.push(...requestArgs(args.header, 'headers', 'Headers'))
   // Request body
   tokens.push(...requestArgs(args.body, 'body', 'Request body'))
 
   return tokens
 }
 
+const buildPath = (path: string, property: string): string => (
+  (rxProperVariable.test(property)) ? `${path}.${property}` : `${path}["${property}"]`
+)
+
 const requestArgs = (args: Args | undefined, name: string, title: string): string[] => {
   if (!args) return []
 
   const tokens: string[] = []
-  tokens.push(param(`args.${name}`, 'Object', args.optional, `${title} for the request.`))
-  const properties = args.properties.flatMap((prop) => requestProperty(`args.${name}`, prop))
+  const type = args.extends.map(e => e.type).join(AND) || 'Object'
+  tokens.push(param(buildPath('args', name), type, args.optional, `${title} for the request.`))
+  const properties = args.properties.flatMap((prop) => requestProperty(buildPath('args', name), prop))
   tokens.push(...properties)
   return tokens
 }
@@ -61,7 +74,7 @@ const requestProperty = (path: string, property: Property): string[] => {
   const tokens: string[] = []
 
   const type = property.type.map(t => t.type).join(OR)
-  tokens.push(param(`${path}.${property.name}`, type, property.optional, property.title, property.description))
+  tokens.push(param(buildPath(path, property.name), type, property.optional, property.title, property.description))
 
   return tokens
 }
