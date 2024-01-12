@@ -43,10 +43,11 @@ type Documented = {
   title?: string
   description?: string
 }
-export const parseDocumentation = (source: Partial<Documented>): Partial<Documented> => {
+export const parseDocumentation = (
+  source: Partial<Documented>
+): Partial<Documented> => {
   const documented: Documented = {}
   if (source.title) documented.title = source.title
   if (source.description) documented.description = source.description
   return documented
 }
-

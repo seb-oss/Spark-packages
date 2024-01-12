@@ -1,13 +1,10 @@
 import { Verb } from '@sebspark/openapi-core'
 import { Path } from '../types'
-import { OR, generateType, serializeValue } from './common'
+import { OR, generateResponseBody, serializeValue } from './common'
 import { generateClientArgs } from './args'
 import { documentClientPath } from './document'
 
-export const generateClient = (
-  name: string,
-  paths: Path[],
-): string => {
+export const generateClient = (name: string, paths: Path[]): string => {
   const groupedCalls: Partial<Record<Verb, string[]>> = {}
   for (const path of paths) {
     if (!groupedCalls[path.method]) {
@@ -18,9 +15,7 @@ export const generateClient = (
   const client: string[] = []
 
   const methods = Object.keys(groupedCalls).map(serializeValue).join(OR)
-  client.push(
-    `export type ${name}Client = Pick<BaseClient, ${methods}> & {`
-  )
+  client.push(`export type ${name}Client = Pick<BaseClient, ${methods}> & {`)
 
   // biome-ignore lint/complexity/noForEach: <explanation>
   Object.entries(groupedCalls).forEach(([method, calls]) => {
@@ -45,5 +40,5 @@ const generateCall = (path: Path): string => {
 const generateResponses = (path: Path): string =>
   Object.entries(path.responses)
     .filter(([code]) => parseInt(code, 10) < 400)
-    .map(([,type]) => (generateType(type)))
+    .map(([, type]) => generateResponseBody(type))
     .join(OR)

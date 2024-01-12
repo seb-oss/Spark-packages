@@ -58,10 +58,10 @@ describe('openapi parser', () => {
         {
           url: '/users/:userId',
           method: 'get',
+          args: undefined,
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
         },
@@ -90,20 +90,20 @@ describe('openapi parser', () => {
         {
           url: '/users/:userId',
           method: 'get',
+          args: undefined,
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
         },
         {
           url: '/users/:userId',
           method: 'post',
+          args: undefined,
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
         },
@@ -120,7 +120,7 @@ describe('openapi parser', () => {
               content: {
                 'application/json': {
                   schema: {
-                    $ref: '#/components/schemas/User',
+                    $ref: '#/components/responseBodies/UserResponse',
                   },
                 },
               },
@@ -132,8 +132,12 @@ describe('openapi parser', () => {
         {
           url: '/users/:userId',
           method: 'get',
+          args: undefined,
           responses: {
-            200: { type: 'User' },
+            200: {
+              data: { type: 'UserResponse' },
+              description: 'OK',
+            },
           },
         },
       ]
@@ -166,14 +170,19 @@ describe('openapi parser', () => {
         {
           url: '/users/:userId',
           method: 'get',
+          args: undefined,
           responses: {
             200: {
-              type: 'object',
-              extends: [],
-              properties: [
-                { name: 'name', type: [{ type: 'string' }], optional: false },
-                { name: 'age', type: [{ type: 'number' }], optional: true },
-              ],
+              data: {
+                type: 'object',
+                extends: [],
+                name: undefined,
+                properties: [
+                  { name: 'name', type: [{ type: 'string' }], optional: false },
+                  { name: 'age', type: [{ type: 'number' }], optional: true },
+                ],
+              },
+              description: 'OK',
             },
           },
         },
@@ -240,7 +249,6 @@ describe('openapi parser', () => {
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
           args: {
@@ -322,7 +330,6 @@ describe('openapi parser', () => {
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
           args: {
@@ -472,7 +479,6 @@ describe('openapi parser', () => {
           responses: {
             204: {
               description: 'No Content',
-              type: undefined
             },
           },
         },
@@ -858,7 +864,7 @@ describe('openapi parser', () => {
     })
   })
   describe('parseRequestBodies', () => {
-    it ('parses a requestBody with inline definition', () => {
+    it('parses a requestBody with inline definition', () => {
       const body: RequestBodyObject = {
         content: {
           'application/json': {
@@ -866,13 +872,13 @@ describe('openapi parser', () => {
               type: 'object',
               properties: {
                 name: {
-                  type: 'string'
-                }
+                  type: 'string',
+                },
               },
-              required: ['name']
-            }
-          }
-        }
+              required: ['name'],
+            },
+          },
+        },
       }
 
       const expected: ObjectType = {
@@ -880,22 +886,22 @@ describe('openapi parser', () => {
         name: 'UserRequest',
         extends: [],
         properties: [
-          { name: 'name', optional: false, type: [{type: 'string'}] }
-        ]
+          { name: 'name', optional: false, type: [{ type: 'string' }] },
+        ],
       }
 
-      const parsed = parseRequestBodies({UserRequest: body})[0]
+      const parsed = parseRequestBodies({ UserRequest: body })[0]
       expect(parsed).toEqual(expected)
     })
-    it ('parses a requestBody with a ref', () => {
+    it('parses a requestBody with a ref', () => {
       const body: RequestBodyObject = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/User'
-            }
-          }
-        }
+              $ref: '#/components/schemas/User',
+            },
+          },
+        },
       }
 
       const expected: CustomType = {
@@ -903,12 +909,53 @@ describe('openapi parser', () => {
         type: 'User',
       }
 
-      const parsed = parseRequestBodies({UserRequest: body})[0]
+      const parsed = parseRequestBodies({ UserRequest: body })[0]
       expect(parsed).toEqual(expected)
     })
   })
   describe('parseResponseBodies', () => {
-    it('parses a responseObject', () => {
+    it('parses a responseObject with only headers', () => {
+      const responseBody: ResponseObject = {
+        description: 'UserResponse',
+        headers: {
+          'x-api-key': {
+            schema: {
+              type: 'string',
+            },
+            required: true,
+          },
+        },
+      }
+      const expected: ResponseBody = {
+        name: 'UserResponse',
+        description: 'UserResponse',
+        headers: [
+          { name: 'x-api-key', optional: false, type: { type: 'string' } },
+        ]
+      }
+      const parsed = parseResponseBodies({ UserResponse: responseBody })[0]
+      expect(parsed).toEqual(expected)
+    })
+    it('parses a responseObject with only data', () => {
+      const responseBody: ResponseObject = {
+        description: 'UserResponse',
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/User',
+            },
+          },
+        },
+      }
+      const expected: ResponseBody = {
+        name: 'UserResponse',
+        description: 'UserResponse',
+        data: { type: 'User', name: undefined },
+      }
+      const parsed = parseResponseBodies({ UserResponse: responseBody })[0]
+      expect(parsed).toEqual(expected)
+    })
+    it('parses a responseObject with headers and data', () => {
       const responseBody: ResponseObject = {
         description: 'UserResponse',
         headers: {
@@ -922,19 +969,20 @@ describe('openapi parser', () => {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/User'
-            }
-          }
-        }
+              $ref: '#/components/schemas/User',
+            },
+          },
+        },
       }
       const expected: ResponseBody = {
         name: 'UserResponse',
+        description: 'UserResponse',
         headers: [
-          { name: 'x-api-key', optional: false, type: {type: 'string'}},
+          { name: 'x-api-key', optional: false, type: { type: 'string' } },
         ],
-        data: {type: 'User', name: undefined}
+        data: { type: 'User', name: undefined },
       }
-      const parsed = parseResponseBodies({UserResponse: responseBody})[0]
+      const parsed = parseResponseBodies({ UserResponse: responseBody })[0]
       expect(parsed).toEqual(expected)
     })
   })

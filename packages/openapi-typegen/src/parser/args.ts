@@ -47,7 +47,8 @@ const parseParameters = (
       switch (part) {
         case 'parameters': {
           const param = findRef<ParameterObject>(components, ref)
-          const arg = args[param.in] || createArgs({...parseDocumentation(param)})
+          const arg =
+            args[param.in] || createArgs({ ...parseDocumentation(param) })
           arg.optional = arg.optional && !param.required
           arg.extends.push({ type: parseRef(ref) })
           args[param.in] = arg
@@ -57,22 +58,20 @@ const parseParameters = (
           const header = findRef<HeaderObject>(components, ref)
           const arg = args.header || createArgs()
           const name = parseRef(ref)
-          arg.properties.push(
-            {
-              name,
-              optional: !header.required,
-              // biome-ignore lint/style/noNonNullAssertion: <explanation>
-              type: [{ type: parseSchema(undefined, header.schema!).type }],
-              ...parseDocumentation((header.schema || {}) as SchemaObject),
-            }
-          )
+          arg.properties.push({
+            name,
+            optional: !header.required,
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            type: [{ type: parseSchema(undefined, header.schema!).type }],
+            ...parseDocumentation((header.schema || {}) as SchemaObject),
+          })
           args.header = arg
           break
         }
       }
     } else {
       const param = p as ParameterObject
-      const arg = args[param.in] || createArgs({...parseDocumentation(param)})
+      const arg = args[param.in] || createArgs({ ...parseDocumentation(param) })
 
       arg.properties.push({
         name: param.name,
@@ -106,7 +105,9 @@ const parseRequestBody = (
   } else {
     // Inline request body properties
     const body = requestBody as RequestBodyObject
-    const bodyArgs: Args = args.body || createArgs({ optional: !body.required, ...parseDocumentation(body) })
+    const bodyArgs: Args =
+      args.body ||
+      createArgs({ optional: !body.required, ...parseDocumentation(body) })
 
     if (body.content['application/json']) {
       const schema = body.content['application/json'].schema
@@ -114,7 +115,7 @@ const parseRequestBody = (
         const parsed = parseSchema(undefined, schema)
         if (parsed.type === 'object') {
           args.body = {
-            ...parsed as ObjectType,
+            ...(parsed as ObjectType),
             optional: !body.required,
           }
         } else if (parsed.type) {

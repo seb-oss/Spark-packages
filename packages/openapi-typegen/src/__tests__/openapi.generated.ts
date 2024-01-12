@@ -76,7 +76,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} [args.query] - Optional. Query parameters for the request.
        * @param {number} [args.query.page] - Optional.
        * @param {number} [args.query.limit] - Optional.
-       * @returns {Promise<[200, CardList]>}
+       * @returns {Promise<[200, APIResponse<CardList>]>}
        */
       handler: (
         args?: Req & {
@@ -85,7 +85,7 @@ export type CardsAPIServer = APIServerDefinition & {
             limit?: number
           }
         },
-      ) => Promise<[200, CardList]>
+      ) => Promise<[200, APIResponse<CardList>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -98,7 +98,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {string} args.params.cardId
        * @param {Object} args.query - Query parameters for the request.
        * @param {boolean} args.query.cardNickname
-       * @returns {Promise<[200, Card]>}
+       * @returns {Promise<[200, APIResponse<Card>]>}
        */
       handler: (
         args: Req & {
@@ -109,7 +109,7 @@ export type CardsAPIServer = APIServerDefinition & {
             cardNickname: boolean
           }
         }
-      ) => Promise<[200, Card]>
+      ) => Promise<[200, APIResponse<Card>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
     get: {
@@ -123,7 +123,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} args.headers - Headers for the request.
        * @param {string} args.headers["X-User-Id"]
        * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
-       * @returns {Promise<[200, Card]>}
+       * @returns {Promise<[200, APIResponse<Card>]>}
        */
       handler: (
         args: Req & {
@@ -138,7 +138,7 @@ export type CardsAPIServer = APIServerDefinition & {
             cardNickname: boolean
           }
         }
-      ) => Promise<[200, Card]>
+      ) => Promise<[200, APIResponse<Card>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -180,7 +180,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {number} [args.query.page] - Optional.
      * @param {number} [args.query.limit] - Optional.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<CardList>}
+     * @returns {Promise<APIResponse<CardList>>}
      */
     (
       url: '/',
@@ -191,7 +191,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions
-    ): Promise<CardList>
+    ): Promise<APIResponse<CardList>>
     /**
      *
      * @param {string} url
@@ -204,7 +204,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {string} args.headers["X-User-Id"]
      * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<Card>}
+     * @returns {Promise<APIResponse<Card>>}
      */
     (
       url: '/:cardId',
@@ -221,7 +221,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<Card>
+    ): Promise<APIResponse<Card>>
   }
   delete: {
     /**
@@ -233,7 +233,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {Object} args.query - Query parameters for the request.
      * @param {boolean} args.query.cardNickname
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<Card>}
+     * @returns {Promise<APIResponse<Card>>}
      */
     (
       url: '/:cardId',
@@ -246,7 +246,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<Card>
+    ): Promise<APIResponse<Card>>
   }
   put: {
     /**

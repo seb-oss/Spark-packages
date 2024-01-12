@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import {
-  ArrayType,
-  EnumType,
-  ObjectType,
-  Path,
-} from '../types'
+import { ArrayType, CustomType, EnumType, ObjectType, Path, ResponseBody } from '../types'
 import { format } from '../generator/formatter'
-import { generateClient, generateServer, generateType } from '../generator/generator'
+import {
+  generateClient,
+  generateServer,
+  generateType,
+} from '../generator/generator'
 import { parseSchema } from '../parser/schema'
 import { SchemaObject } from '@sebspark/openapi-core'
+import { generateResponseBody } from '../generator/common'
 
 describe('typescript generator', () => {
   describe('generateType', () => {
@@ -221,6 +221,32 @@ describe('typescript generator', () => {
       expect(formatted).toEqual(expected)
     })
   })
+  describe('generateResponseBody', () => {
+    it('generates a response body with funky header ref', async () => {
+      const response: ResponseBody = {
+        description: 'Wierd header',
+        headers: [
+          { name: 'x-foo-bar', optional: false, type: { type: 'X-Foo-Bar' } }
+        ]
+      }
+      const generated = await format(generateResponseBody(response))
+      const expected = await format(`
+        APIResponse<undefined, { 'x-foo-bar': XFooBar }>
+      `)
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates a funky response ref', async () => {
+      const response: CustomType = {
+        description: 'Wierd header',
+        type: 'X-Foo-Bar'
+      }
+      const generated = generateResponseBody(response)
+      const expected = 'XFooBar'
+
+      expect(generated).toEqual(expected)
+    })
+  })
   describe('generateClientPaths', () => {
     it('generates a simple get', async () => {
       const paths: Path[] = [
@@ -228,7 +254,9 @@ describe('typescript generator', () => {
           method: 'get',
           url: '/users',
           responses: {
-            200: { type: 'array', items: { type: 'User' } },
+            200: {
+              data: { type: 'array', items: { type: 'User' } }
+            },
           },
         },
       ]
@@ -239,17 +267,15 @@ describe('typescript generator', () => {
            * 
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<User[]>}
+           * @returns {Promise<APIResponse<User[]>>}
            */
           (
             url: '/users',
             opts?: RequestOptions
-          ): Promise<User[]>
+          ): Promise<APIResponse<User[]>>
         }
       }`)
-      const generated = await format(
-        generateClient('User', paths)
-      )
+      const generated = await format(generateClient('User', paths))
 
       expect(generated).toEqual(expected)
     })
@@ -266,8 +292,18 @@ describe('typescript generator', () => {
               extends: [],
               optional: false,
               properties: [
-                {name: 'userId', optional: false, type: [{type: 'number'}], description: 'The user ID.'},
-                {name: 'intent', optional: true, type: [{type: 'string'}], description: 'The intent for the request.'},
+                {
+                  name: 'userId',
+                  optional: false,
+                  type: [{ type: 'number' }],
+                  description: 'The user ID.',
+                },
+                {
+                  name: 'intent',
+                  optional: true,
+                  type: [{ type: 'string' }],
+                  description: 'The intent for the request.',
+                },
               ],
             },
             query: {
@@ -275,13 +311,23 @@ describe('typescript generator', () => {
               extends: [],
               optional: true,
               properties: [
-                {name: 'page', optional: true, type: [{type: 'number'}], description: 'The page number for pagination.'},
-                {name: 'size', optional: true, type: [{type: 'number'}], description: 'The number of items per page.'},
+                {
+                  name: 'page',
+                  optional: true,
+                  type: [{ type: 'number' }],
+                  description: 'The page number for pagination.',
+                },
+                {
+                  name: 'size',
+                  optional: true,
+                  type: [{ type: 'number' }],
+                  description: 'The number of items per page.',
+                },
               ],
             },
           },
           responses: {
-            200: { type: 'User' },
+            200: { data: { type: 'User' } },
           },
         },
       ]
@@ -301,7 +347,7 @@ describe('typescript generator', () => {
            * @param {number} [args.query.page] - Optional. The page number for pagination.
            * @param {number} [args.query.size] - Optional. The number of items per page.
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<User>}
+           * @returns {Promise<APIResponse<User>>}
            */
           (
             url: '/users/:userId/:intent',
@@ -328,12 +374,10 @@ describe('typescript generator', () => {
               }
             },
             opts?: RequestOptions
-          ): Promise<User>
+          ): Promise<APIResponse<User>>
         }
       }`)
-      const generated = await format(
-        generateClient('User', paths)
-      )
+      const generated = await format(generateClient('User', paths))
 
       expect(generated).toEqual(expected)
     })
@@ -344,7 +388,7 @@ describe('typescript generator', () => {
           url: '/users',
           parameters: [],
           responses: {
-            200: { type: 'array', items: { type: 'User' } },
+            200: { data: { type: 'array', items: { type: 'User' } } },
           },
         } as Path,
       ]
@@ -355,17 +399,15 @@ describe('typescript generator', () => {
            * 
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<User[]>}
+           * @returns {Promise<APIResponse<User[]>>}
            */
           (
             url: '/users',
             opts?: RequestOptions
-          ): Promise<User[]>
+          ): Promise<APIResponse<User[]>>
         }
       }`)
-      const generated = await format(
-        generateClient('User', paths)
-      )
+      const generated = await format(generateClient('User', paths))
 
       expect(generated).toEqual(expected)
     })
@@ -377,13 +419,13 @@ describe('typescript generator', () => {
           args: {
             body: {
               type: 'object',
-              extends: [{type: 'User'}],
+              extends: [{ type: 'User' }],
               optional: false,
               properties: [],
             },
           },
           responses: {
-            200: { type: 'array', items: { type: 'User' } },
+            200: { data: { type: 'array', items: { type: 'User' } } },
           },
         } as Path,
       ]
@@ -396,18 +438,16 @@ describe('typescript generator', () => {
            * @param {Object} args - The arguments for the request.
            * @param {User} args.body - Request body for the request.
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<User[]>}
+           * @returns {Promise<APIResponse<User[]>>}
            */
           (
             url: '/users',
             args: { body: User },
             opts?: RequestOptions
-          ): Promise<User[]>
+          ): Promise<APIResponse<User[]>>
         }
       }`)
-      const generated = await format(
-        generateClient('User', paths)
-      )
+      const generated = await format(generateClient('User', paths))
 
       expect(generated).toEqual(expected)
     })
@@ -419,7 +459,9 @@ describe('typescript generator', () => {
           url: '/users',
           method: 'get',
           responses: {
-            200: {type: 'array', items: {type: 'User'}}
+            200: {
+              data: { type: 'array', items: { type: 'User' } }
+            },
           },
           title: 'Users',
           description: 'Lists users',
@@ -434,12 +476,12 @@ describe('typescript generator', () => {
               type: 'object',
               extends: [],
               properties: [
-                { name: 'id', optional: false, type: [{type: 'string'}]},
+                { name: 'id', optional: false, type: [{ type: 'string' }] },
               ],
-            }
+            },
           },
           responses: {
-            200: {type: 'User'}
+            200: { type: 'UserResponse' },
           },
         },
       ]
@@ -451,9 +493,9 @@ describe('typescript generator', () => {
              * Users
              * Lists users
              * 
-             * @returns {Promise<[200, User[]]>}
+             * @returns {Promise<[200, APIResponse<User[]>]>}
              */
-            handler: (args: Req) => Promise<[200, User[]]>
+            handler: (args: Req) => Promise<[200, APIResponse<User[]>]>
             pre?: GenericRouteHandler | GenericRouteHandler[]
           }
         }
@@ -464,20 +506,20 @@ describe('typescript generator', () => {
              * @param {Object} args - The arguments for the request.
              * @param {Object} args.params - Path parameters for the request.
              * @param {string} args.params.id
-             * @returns {Promise<[200, User]>}
+             * @returns {Promise<[200, UserResponse]>}
              */
             handler: (args: Req & {
               params: {
                 id: string
               }
-            }) => Promise<[200, User]>
+            }) => Promise<[200, UserResponse]>
             pre?: GenericRouteHandler | GenericRouteHandler[]
           }
         }
       }
       `)
       const generated = await format(generateServer('User', paths))
-      
+
       expect(generated).toEqual(expected)
     })
   })
@@ -489,9 +531,9 @@ describe('typescript generator', () => {
         type: 'object',
         properties: {
           name: {
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       }
       const generated = await format(generateType(parseSchema('User', schema)))
       const expected = await format(`
@@ -513,9 +555,9 @@ describe('typescript generator', () => {
           name: {
             title: 'User name',
             description: 'What you call someone',
-            type: 'string'
-          }
-        }
+            type: 'string',
+          },
+        },
       }
       const generated = await format(generateType(parseSchema('User', schema)))
       const expected = await format(`
@@ -537,8 +579,8 @@ describe('typescript generator', () => {
         title: 'Foo',
         description: 'Get foo',
         responses: {
-          204: {type: undefined}
-        }
+          204: { },
+        },
       }
       const generated = await format(generateClient('Foo', [path]))
       const expected = await format(`

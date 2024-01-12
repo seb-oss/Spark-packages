@@ -105,10 +105,10 @@ const parsePropertyType = (
           return parseObjectSchema(undefined, schemaObject)
         }
         case 'integer': {
-          return { type: 'number', ...parseDocumentation(schemaObject), }
+          return { type: 'number', ...parseDocumentation(schemaObject) }
         }
         default: {
-          return { type, ...parseDocumentation(schemaObject), }
+          return { type, ...parseDocumentation(schemaObject) }
         }
       }
     })

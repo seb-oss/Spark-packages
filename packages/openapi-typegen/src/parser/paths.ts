@@ -8,10 +8,11 @@ import {
   ResponsesObject,
   Verb,
 } from '@sebspark/openapi-core'
-import { EmptyType, Path, TypeDefinition } from '../types'
+import { CustomType, Path, ResponseBody, TypeDefinition } from '../types'
 import { parseRef, parseDocumentation } from './common'
 import { parseSchema } from './schema'
 import { parseArgs } from './args'
+import { parseResponseBody } from './responseBodies'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>
   Object.entries(doc.paths || {}).flatMap(([name, path]) =>
@@ -61,18 +62,8 @@ const parseResponses = (
     {},
     ...Object.entries(responses).map(([code, response]) => {
       return {
-        [parseInt(code, 10)]: parseResponse(response),
+        [parseInt(code, 10)]: parseResponseBody(undefined, response),
       } as Record<number, TypeDefinition>
     })
   )
-}
-
-const parseResponse = (
-  response: ResponseObject | ReferenceObject
-): TypeDefinition | EmptyType => {
-  const ref = (response as ReferenceObject).$ref
-  if (ref) return { type: parseRef(ref) }
-  const schema = (response as ResponseObject).content?.['application/json']
-    ?.schema
-  return schema ? parseSchema(undefined, schema) : {type: undefined, ...parseDocumentation(response as ResponseObject)}
 }

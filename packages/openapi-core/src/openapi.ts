@@ -58,7 +58,7 @@ export type OperationObject = {
 
 export type RequestBodyObject = {
   description?: string
-  content: Record<'application/json' | string & {}, MediaTypeObject>
+  content: Record<'application/json' | (string & {}), MediaTypeObject>
   required?: boolean
 }
 

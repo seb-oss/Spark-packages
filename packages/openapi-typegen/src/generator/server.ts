@@ -1,6 +1,6 @@
-import { EmptyType, Path, TypeDefinition } from '../types'
+import { CustomType, Path, ResponseBody, TypeDefinition } from '../types'
 import { generateServerArgs } from './args'
-import { OR, generateType } from './common'
+import { OR, generateResponseBody } from './common'
 import { documentServerPath } from './document'
 
 export const generateServer = (name: string, paths: Path[]): string => {
@@ -17,38 +17,39 @@ export const generateServer = (name: string, paths: Path[]): string => {
   return tokens.join('\n')
 }
 
-const groupPathsByUrl = (paths: Path[]): Record<string, Path[]> => (
-  paths.reduce((group, path) => {
-    if (!group[path.url]) group[path.url] = []
-    group[path.url].push(path)
-    return group
-  }, {} as Record<string, Path[]>)
-)
+const groupPathsByUrl = (paths: Path[]): Record<string, Path[]> =>
+  paths.reduce(
+    (group, path) => {
+      if (!group[path.url]) group[path.url] = []
+      group[path.url].push(path)
+      return group
+    },
+    {} as Record<string, Path[]>
+  )
 
-const generatePath = (url: string, methods: Path[]): string => (
-  `'${url}': {
+const generatePath = (url: string, methods: Path[]): string => `'${url}': {
     ${methods.map(generateMethod).join('\n')}
   }`
-)
 
 const generateMethod = (path: Path): string => {
   const responses = generateResponses(path.responses)
-  return (
-    `${path.method}: {
+  return `${path.method}: {
       ${documentServerPath(path, responses)}
       handler: (${generateServerArgs(path.args)}) => Promise<${responses}>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }`
-  )
 }
 
-const generateResponses = (responses: Record<number, TypeDefinition | EmptyType>): string => (
-  Object
-    .entries(responses)
+const generateResponses = (
+  responses: Record<number, ResponseBody | CustomType>
+): string =>
+  Object.entries(responses)
     .filter(([code]) => parseInt(code, 10) < 400)
-    .map(([code, response]) => generateResponse(parseInt(code, 10), response)).join(OR)
-)
+    .map(([code, response]) => generateResponse(parseInt(code, 10), response))
+    .join(OR)
 
-const generateResponse = (code: number, response: TypeDefinition | EmptyType): string => (
-  `[${code}, ${generateType(response)}]`
-)
+const generateResponse = (
+  code: number,
+  response: ResponseBody
+): string => `[${code}, ${generateResponseBody(response)}]`
+

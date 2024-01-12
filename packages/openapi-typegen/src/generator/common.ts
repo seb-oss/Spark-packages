@@ -2,7 +2,6 @@ import { pascalCase } from 'change-case'
 import {
   ArrayType,
   CustomType,
-  EmptyType,
   EnumType,
   Header,
   ObjectType,
@@ -17,13 +16,9 @@ import { document } from './document'
 export const OR = ' | '
 export const AND = ' & '
 
-export const generateType = (parsed: TypeDefinition | EmptyType): string => {
+export const generateType = (parsed: TypeDefinition): string => {
   let type: string
   switch (parsed.type) {
-    case undefined: {
-      type = 'undefined'
-      break
-    }
     case 'enum': {
       type = generateEnum(parsed as EnumType)
       break
@@ -55,7 +50,9 @@ export const generateType = (parsed: TypeDefinition | EmptyType): string => {
 
 export const generateProperty = (property: Property): string => {
   const types = property.type.map(generateType)
-  return `${document(property)}${propertyName(property.name)}${property.optional ? '?' : ''}: ${types.join(OR)}`
+  return `${document(property)}${propertyName(property.name)}${
+    property.optional ? '?' : ''
+  }: ${types.join(OR)}`
 }
 
 export const preamble = (type: DocumentableType): string =>
@@ -79,7 +76,7 @@ export const generatePrimitive = (parsed: PrimitiveType): string =>
   `${preamble(parsed)}${parsed.type}`
 
 export const generateCustom = (parsed: CustomType): string =>
-  `${preamble(parsed)}${parsed.type}`
+  `${preamble(parsed)}${typeName(parsed.type)}`
 
 export const generateObject = (parsed: ObjectType): string => {
   const lines: string[] = []
@@ -100,23 +97,42 @@ export const generateEnum = (parsed: EnumType): string => {
 }
 
 export const generateHeader = (header: Header): string => {
-  return `${preamble(header)}{ ${propertyName(header.name)}${header.optional ? '?' : ''}: ${generateType(header.type)} }`
+  return `${preamble(header)}{ ${propertyName(header.name)}${
+    header.optional ? '?' : ''
+  }: ${generateType(header.type)} }`
 }
 
-export const generateBody = (body: ResponseBody): string => {
-  return `${preamble(body)}APIResponse<${generateType(body.data)}, ${body.headers.length ? generateHeaders(body.headers) : 'never'}>`
+export const generateResponseBody = (type: ResponseBody | CustomType): string => {
+  const customType = (type as CustomType).type
+  if (customType) return typeName(customType)
+
+  const body = type as ResponseBody
+  if (!body.data && !body.headers) return 'undefined'
+
+  const tokens: string[] = []
+  tokens.push(preamble(body))
+  tokens.push('APIResponse<')
+  tokens.push(body.data ? generateType(body.data) : 'undefined')
+  if (body.headers) {
+    tokens.push(', ')
+    tokens.push(body.headers ? generateHeaders(body.headers) : 'undefined')
+  }
+  tokens.push('>')
+  return tokens.join('')
 }
 
 export const generateHeaders = (headers: Header[]): string => {
   const tokens: string[] = []
 
-  tokens.push('{')
   for (const header of headers) {
-    tokens.push(`${propertyName(header.name)}${header.optional ? '?' : ''}: ${generateType(header.type)}`)
+    tokens.push(
+      `${propertyName(header.name)}${
+        header.optional ? '?' : ''
+      }: ${generateType(header.type)}`
+    )
   }
-  tokens.push('}')
 
-  return tokens.join('\n')
+  return `{${tokens.join(', ')}}`
 }
 
 export const serializeValue = (value: unknown): unknown => {

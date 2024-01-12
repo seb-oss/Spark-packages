@@ -4,10 +4,16 @@ import type { NextFunction, Request, Response } from 'express'
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
-export type APIResponse<R = never, H extends Record<string, string> = never> = {
-  data: R,
-  headers: H
-}
+type Empty = Record<never, never>
+
+export type APIResponse<Data = undefined, Headers = undefined> = 
+Data extends undefined
+  ? Headers extends undefined
+    ? Empty
+    : { headers: Headers }
+  : Headers extends undefined
+    ? { data: Data }
+    : { data: Data; headers: Headers }
 
 export type GenericRouteHandler = (
   req: Request,

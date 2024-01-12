@@ -111,6 +111,14 @@
                 }
               }
             },
+            "headers": {
+              "x-api-key": {
+                "schema": {
+                  "type": "string"
+                },
+                "required": true
+              }
+            },
             "links": {
               "UserLink": {
                 "$ref": "#/components/links/UserLink"

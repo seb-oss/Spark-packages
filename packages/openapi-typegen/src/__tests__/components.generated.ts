@@ -39,11 +39,12 @@ export type LimitParam = {
 
 export type UserCreate = User
 
+/**
+ * Authentication information is missing or invalid
+ */
 export type UnauthorizedError = APIResponse<
   undefined,
-  {
-    'WWW-Authenticate'?: string
-  }
+  { 'WWW-Authenticate'?: string }
 >
 
 export type ExampleAPIServer = APIServerDefinition & {
@@ -53,11 +54,16 @@ export type ExampleAPIServer = APIServerDefinition & {
        *
        * @param {Object} [args] - Optional. The arguments for the request.
        * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
-       * @returns {Promise<[200, UserList]>}
+       * @returns {Promise<[200, APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>]>}
        */
       handler: (
         args?: Req & { query?: PageParam & LimitParam },
-      ) => Promise<[200, UserList]>
+      ) => Promise<
+        [
+          200,
+          APIResponse<UserList, { 'X-Rate-Limit': XRateLimit; apiKey: string }>,
+        ]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
     post: {
@@ -65,9 +71,11 @@ export type ExampleAPIServer = APIServerDefinition & {
        *
        * @param {Object} args - The arguments for the request.
        * @param {UserCreate} args.body - Request body for the request.
-       * @returns {Promise<[201, User]>}
+       * @returns {Promise<[201, APIResponse<User>]>}
        */
-      handler: (args: Req & { body: UserCreate }) => Promise<[201, User]>
+      handler: (
+        args: Req & { body: UserCreate }
+      ) => Promise<[201, APIResponse<User>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -78,7 +86,7 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args - The arguments for the request.
        * @param {Object} args.params - Path parameters for the request.
        * @param {string} args.params.userId
-       * @returns {Promise<[200, User]>}
+       * @returns {Promise<[200, APIResponse<User, {'x-api-key': string}>]>}
        */
       handler: (
         args: Req & {
@@ -86,7 +94,7 @@ export type ExampleAPIServer = APIServerDefinition & {
             userId: string
           }
         }
-      ) => Promise<[200, User]>
+      ) => Promise<[200, APIResponse<User, {'x-api-key': string}>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -100,13 +108,15 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} [args] - Optional. The arguments for the request.
      * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<UserList>}
+     * @returns {Promise<APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>>}
      */
     (
       url: '/users',
       args?: { query?: PageParam & LimitParam },
       opts?: RequestOptions,
-    ): Promise<UserList>
+    ): Promise<
+      APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>
+    >
     /**
      *
      * @param {string} url
@@ -114,7 +124,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} args.params - Path parameters for the request.
      * @param {string} args.params.userId
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<User>}
+     * @returns {Promise<APIResponse<User, {'x-api-key': string}>>}
      */
     (
       url: '/users/:userId',
@@ -124,7 +134,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<User>
+    ): Promise<APIResponse<User, {'x-api-key': string}>>
   }
   post: {
     /**
@@ -133,12 +143,12 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} args - The arguments for the request.
      * @param {UserCreate} args.body - Request body for the request.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<User>}
+     * @returns {Promise<APIResponse<User>>}
      */
     (
       url: '/users',
       args: { body: UserCreate },
       opts?: RequestOptions,
-    ): Promise<User>
+    ): Promise<APIResponse<User>>
   }
 }
