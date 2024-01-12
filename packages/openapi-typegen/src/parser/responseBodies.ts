@@ -21,10 +21,13 @@ export const parseResponseBodies = (
   return bodies
 }
 
-export const parseResponseBody = (name: string | undefined, response: ResponseObject | ReferenceObject): ResponseBody | CustomType => {
+export const parseResponseBody = (
+  name: string | undefined,
+  response: ResponseObject | ReferenceObject
+): ResponseBody | CustomType => {
   const ref = (response as ReferenceObject).$ref
   if (ref) return { type: parseRef(ref) }
-  
+
   const responseObject = response as ResponseObject
   const body: ResponseBody = {}
   if (name) body.name = name
@@ -36,9 +39,7 @@ export const parseResponseBody = (name: string | undefined, response: ResponseOb
   }
   if (responseObject.headers) {
     body.headers = []
-    for (const [headerName, header] of Object.entries(
-      responseObject.headers
-    )) {
+    for (const [headerName, header] of Object.entries(responseObject.headers)) {
       const ref = (header as ReferenceObject).$ref
       if (ref)
         body.headers.push({

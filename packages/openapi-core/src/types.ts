@@ -6,8 +6,10 @@ export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
 type Empty = Record<never, never>
 
-export type APIResponse<Data = undefined, Headers = undefined> = 
-Data extends undefined
+export type APIResponse<
+  Data = undefined,
+  Headers = undefined,
+> = Data extends undefined
   ? Headers extends undefined
     ? Empty
     : { headers: Headers }

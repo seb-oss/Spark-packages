@@ -931,7 +931,7 @@ describe('openapi parser', () => {
         description: 'UserResponse',
         headers: [
           { name: 'x-api-key', optional: false, type: { type: 'string' } },
-        ]
+        ],
       }
       const parsed = parseResponseBodies({ UserResponse: responseBody })[0]
       expect(parsed).toEqual(expected)

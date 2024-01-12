@@ -102,7 +102,9 @@ export const generateHeader = (header: Header): string => {
   }: ${generateType(header.type)} }`
 }
 
-export const generateResponseBody = (type: ResponseBody | CustomType): string => {
+export const generateResponseBody = (
+  type: ResponseBody | CustomType
+): string => {
   const customType = (type as CustomType).type
   if (customType) return typeName(customType)
 

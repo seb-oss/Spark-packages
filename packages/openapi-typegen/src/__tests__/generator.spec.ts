@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { ArrayType, CustomType, EnumType, ObjectType, Path, ResponseBody } from '../types'
+import {
+  ArrayType,
+  CustomType,
+  EnumType,
+  ObjectType,
+  Path,
+  ResponseBody,
+} from '../types'
 import { format } from '../generator/formatter'
 import {
   generateClient,
@@ -226,8 +233,8 @@ describe('typescript generator', () => {
       const response: ResponseBody = {
         description: 'Wierd header',
         headers: [
-          { name: 'x-foo-bar', optional: false, type: { type: 'X-Foo-Bar' } }
-        ]
+          { name: 'x-foo-bar', optional: false, type: { type: 'X-Foo-Bar' } },
+        ],
       }
       const generated = await format(generateResponseBody(response))
       const expected = await format(`
@@ -239,7 +246,7 @@ describe('typescript generator', () => {
     it('generates a funky response ref', async () => {
       const response: CustomType = {
         description: 'Wierd header',
-        type: 'X-Foo-Bar'
+        type: 'X-Foo-Bar',
       }
       const generated = generateResponseBody(response)
       const expected = 'XFooBar'
@@ -255,7 +262,7 @@ describe('typescript generator', () => {
           url: '/users',
           responses: {
             200: {
-              data: { type: 'array', items: { type: 'User' } }
+              data: { type: 'array', items: { type: 'User' } },
             },
           },
         },
@@ -460,7 +467,7 @@ describe('typescript generator', () => {
           method: 'get',
           responses: {
             200: {
-              data: { type: 'array', items: { type: 'User' } }
+              data: { type: 'array', items: { type: 'User' } },
             },
           },
           title: 'Users',
@@ -579,7 +586,7 @@ describe('typescript generator', () => {
         title: 'Foo',
         description: 'Get foo',
         responses: {
-          204: { },
+          204: {},
         },
       }
       const generated = await format(generateClient('Foo', [path]))

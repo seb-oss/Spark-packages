@@ -48,8 +48,5 @@ const generateResponses = (
     .map(([code, response]) => generateResponse(parseInt(code, 10), response))
     .join(OR)
 
-const generateResponse = (
-  code: number,
-  response: ResponseBody
-): string => `[${code}, ${generateResponseBody(response)}]`
-
+const generateResponse = (code: number, response: ResponseBody): string =>
+  `[${code}, ${generateResponseBody(response)}]`
