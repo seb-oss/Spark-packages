@@ -1,4 +1,5 @@
 import {
+  APIResponse,
   BaseClient,
   ClientOptions,
   RequestArgs,
@@ -20,37 +21,23 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     put: (url, args, opts) =>
       callServer(baseURL, url, 'put', args, globalOptions?.retry, opts?.retry),
     patch: (url, args, opts) =>
-      callServer(
-        baseURL,
-        url,
-        'patch',
-        args,
-        globalOptions?.retry,
-        opts?.retry
-      ),
+      callServer(baseURL, url, 'patch', args, globalOptions?.retry, opts?.retry),
     delete: (url, args, opts) =>
-      callServer(
-        baseURL,
-        url,
-        'delete',
-        args,
-        globalOptions?.retry,
-        opts?.retry
-      ),
+      callServer(baseURL, url, 'delete', args, globalOptions?.retry, opts?.retry),
   }
   return client as C
 }
 
-const callServer = async (
+const callServer = async <R extends APIResponse<unknown, unknown>>(
   baseURL: string,
   _url: string,
   method: Verb,
   args: RequestArgs | undefined,
   ...retrySettings: Array<RetrySettings | undefined>
-) => {
+): Promise<R> =>  {
   try {
     const url = setParams(_url, args?.params)
-    const response = await retry(
+    const { headers, data } = await retry(
       () =>
         axios.request({
           baseURL,
@@ -62,7 +49,7 @@ const callServer = async (
         }),
       ...retrySettings
     )
-    return response.data
+    return {headers, data} as R
   } catch (error) {
     throw fromAxiosError(error as AxiosError)
   }

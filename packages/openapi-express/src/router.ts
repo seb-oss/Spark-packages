@@ -1,4 +1,5 @@
 import {
+  APIResponse,
   APIServerDefinition,
   APIServerOptions,
   HttpError,
@@ -22,26 +23,38 @@ export const TypedRouter = (
 
   router.use(json())
 
+  // Add global pre to router
   const preUsings = Array.isArray(options.pre)
     ? options.pre
     : options.pre
       ? [options.pre]
       : []
-
   for (const pre of preUsings) {
     router.use(pre)
   }
 
+  // loop through urls on server definition
   for (const [url, methods] of Object.entries(api)) {
+    // loop through methods on url
     for (const [method, route] of Object.entries(methods)) {
+      // Build handler for url/method
       const handler = async (
         req: Request,
         res: Response,
         next: NextFunction
       ) => {
         try {
-          const [code, body] = await route.handler(req)
-          res.status(code).send(body)
+          const [status, response] = await route.handler(req)
+          const {headers, data} = response as APIResponse<unknown, Record<string, string>>
+
+          res.status(status)
+          if (headers) {
+            for (const [name, value] of Object.entries(headers)) {
+              res.setHeader(name, value)
+            }
+          }
+          if (data) res.send(data)
+          else res.end()
         } catch (error) {
           next(error)
         }
