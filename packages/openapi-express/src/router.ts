@@ -45,7 +45,10 @@ export const TypedRouter = (
       ) => {
         try {
           const [status, response] = await route.handler(req)
-          const {headers, data} = response as APIResponse<unknown, Record<string, string>>
+          const { headers, data } = response as APIResponse<
+            unknown,
+            Record<string, string>
+          >
 
           res.status(status)
           if (headers) {

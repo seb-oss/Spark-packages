@@ -23,19 +23,21 @@ type Server = APIServerDefinition & {
   }
   '/users/:id': {
     get: {
-      handler: (args: { params: { id: string } }) => Promise<[200, APIResponse<User>]>
+      handler: (args: { params: { id: string } }) => Promise<
+        [200, APIResponse<User>]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/headeronly': {
     get: {
-      handler: () => Promise<[204, APIResponse<undefined, {'x-foo': 'bar'}>]>
+      handler: () => Promise<[204, APIResponse<undefined, { 'x-foo': 'bar' }>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/headerandbody': {
     get: {
-      handler: () => Promise<[204, APIResponse<User, {'x-foo': 'bar'}>]>
+      handler: () => Promise<[204, APIResponse<User, { 'x-foo': 'bar' }>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -53,7 +55,7 @@ beforeEach(() => {
     '/users': {
       get: {
         pre: vi.fn().mockImplementation((_req, _res, next) => next()),
-        handler: vi.fn().mockResolvedValue([200, {data: []}]),
+        handler: vi.fn().mockResolvedValue([200, { data: [] }]),
       },
     },
     '/users/:id': {
@@ -63,17 +65,22 @@ beforeEach(() => {
     },
     '/headeronly': {
       get: {
-        handler: vi.fn().mockResolvedValue([204, {headers: {'x-foo': 'bar'}}]),
+        handler: vi
+          .fn()
+          .mockResolvedValue([204, { headers: { 'x-foo': 'bar' } }]),
       },
     },
     '/headerandbody': {
       get: {
-        handler: vi.fn().mockResolvedValue([200, {
-          headers: {'x-foo': 'bar'},
-          data: { id: 'foo' }
-        }]),
+        handler: vi.fn().mockResolvedValue([
+          200,
+          {
+            headers: { 'x-foo': 'bar' },
+            data: { id: 'foo' },
+          },
+        ]),
       },
-    }
+    },
   } as Server
   options = {
     pre: vi.fn().mockImplementation((_req, _res, next) => next()),
@@ -86,7 +93,10 @@ beforeEach(() => {
 
 test('/users is called correctly', async () => {
   const users: User[] = [{ id: 'foo' }, { id: 'bar' }]
-  ;(server['/users'].get.handler as Mock).mockResolvedValue([200, {data: users}])
+  ;(server['/users'].get.handler as Mock).mockResolvedValue([
+    200,
+    { data: users },
+  ])
   const response = await client.get('/users')
   expect(response.statusCode).toEqual(200)
   expect(response.body).toEqual(users)
@@ -94,7 +104,7 @@ test('/users is called correctly', async () => {
 
 test('/users/:id is called correctly', async () => {
   ;(server['/users/:id'].get.handler as Mock).mockImplementation(
-    async ({ params: { id } }) => [200, {data: { id }}]
+    async ({ params: { id } }) => [200, { data: { id } }]
   )
   const response = await client.get('/users/foobar')
   expect(response.statusCode).toEqual(200)
@@ -111,7 +121,7 @@ test('/headerandbody sends headers and body', async () => {
   const response = await client.get('/headerandbody')
   expect(response.statusCode).toEqual(200)
   expect(response.header['x-foo']).toEqual('bar')
-  expect(response.body).toEqual({id: 'foo'})
+  expect(response.body).toEqual({ id: 'foo' })
 })
 
 test('it runs pre handlers', async () => {
@@ -130,4 +140,3 @@ test('it runs pre usings', async () => {
   const response = await client.get('/users')
   expect(response.unauthorized).toBe(true)
 })
-
