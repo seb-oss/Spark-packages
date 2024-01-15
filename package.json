@@ -22,13 +22,13 @@
     "@biomejs/biome": "1.4.1",
     "@turbo/gen": "1.11.2",
     "@types/node": "20.10.5",
-    "@vitest/coverage-v8": "1.1.0",
+    "@vitest/coverage-v8": "1.2.0",
     "csv-parse": "5.5.3",
     "fast-xml-parser": "4.3.2",
     "tsup": "8.0.1",
     "turbo": "1.11.2",
     "typescript": "5.3.3",
-    "vitest": "1.1.0"
+    "vitest": "1.2.0"
   },
   "resolutions": {
     "semver": ">=7.5.4",
