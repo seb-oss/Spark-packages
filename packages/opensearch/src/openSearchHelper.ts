@@ -5,6 +5,7 @@ import type {
   RequestParams,
   opensearchtypes,
 } from '@opensearch-project/opensearch'
+import { fixIds } from './fixIds'
 import {
   Exists,
   FilterBool,
@@ -16,7 +17,6 @@ import {
   OpenSearchQueryBody,
 } from './openSearchTypes'
 import { ExcludeId, WithId } from './typescriptExtensions'
-import { fixIds } from './fixIds'
 
 export interface OpenSearchHelper extends Client {
   typedSearch: <DataType extends WithId, ReturnType = DataType>(

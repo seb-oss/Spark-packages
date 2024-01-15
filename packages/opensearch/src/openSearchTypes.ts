@@ -415,7 +415,9 @@ export type IndexOptions<T extends WithId> = {
   aliases?: Record<string, Record<string, never>>
 }
 
-export type NativeOpenSearchType<T extends WithId> = ExcludeId<T> & { _id: string }
+export type NativeOpenSearchType<T extends WithId> = ExcludeId<T> & {
+  _id: string
+}
 
 export type NativeOpenSearchQueryBody<
   T extends { _id: string },

@@ -297,9 +297,9 @@ describe('OpenSearchHelper', () => {
           query: {
             match: {
               id,
-            }
-          }
-        }
+            },
+          },
+        },
       })
       expect(client.search).toHaveBeenCalledWith({
         index: 'data',
@@ -307,9 +307,9 @@ describe('OpenSearchHelper', () => {
           query: {
             match: {
               _id: 'foo',
-            }
-          }
-        }
+            },
+          },
+        },
       })
     })
     it('handles match_all', async () => {
@@ -318,17 +318,17 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            match_all: {}
-          }
-        }
+            match_all: {},
+          },
+        },
       })
       expect(client.search).toHaveBeenCalledWith({
         index: 'data',
         body: {
           query: {
-            match_all: {}
-          }
-        }
+            match_all: {},
+          },
+        },
       })
     })
   })
