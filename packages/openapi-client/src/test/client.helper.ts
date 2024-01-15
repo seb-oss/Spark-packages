@@ -13,7 +13,7 @@ type ClientGet = {
     url: '/users/:id',
     args: { params: { id: string } },
     opts?: RequestOptions
-  ): Promise<User>
+  ): Promise<APIResponse<User>>
 }
 type ClientPost = {
   (url: '/users', args: { body: User }, opts?: RequestOptions): Promise<
