@@ -313,7 +313,6 @@ describe('OpenSearchHelper', () => {
       })
     })
     it('handles match_all', async () => {
-      const id = 'foo'
       await helper(client as Client).typedSearch<Data>({
         index: 'data',
         body: {
