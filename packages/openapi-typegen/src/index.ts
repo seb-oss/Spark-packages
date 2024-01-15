@@ -17,7 +17,10 @@ export const generateTypescript = async (
   return formatted
 }
 
-export const generate = async (input: string, output?: string): Promise<string |undefined> => {
+export const generate = async (
+  input: string,
+  output?: string
+): Promise<string | undefined> => {
   const docs = await readDocs(input)
   const generated = await generateDocs(docs)
 
@@ -67,7 +70,7 @@ const readDocs = async (input: string): Promise<Doc[]> => {
     }
     readFiles.push({
       doc,
-      name: formatName(name)
+      name: formatName(name),
     })
   }
   return readFiles
@@ -81,15 +84,18 @@ const generateDocs = async (files: Doc[]): Promise<GeneratedDoc[]> => {
     generated.push({
       ...doc,
       ts,
-    }) 
+    })
   }
   return generated
 }
 
-const saveDocs = async (output: string, docs: GeneratedDoc[]): Promise<void> => {
+const saveDocs = async (
+  output: string,
+  docs: GeneratedDoc[]
+): Promise<void> => {
   const stats = await stat(output)
-  const dir = (stats.isDirectory()) ? output : parse(output).dir
-  await mkdir(dir, {recursive: true})
+  const dir = stats.isDirectory() ? output : parse(output).dir
+  await mkdir(dir, { recursive: true })
   for (const doc of docs) {
     const path = resolve(dir, `${doc.name}.ts`)
     console.log(`Writing ${path}`)

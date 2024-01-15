@@ -137,7 +137,7 @@ export type MarketdataServer = APIServerDefinition & {
             page?: number
             limit?: number
           }
-        },
+        }
       ) => Promise<[200, APIResponse<MarketListResponse>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -156,7 +156,7 @@ export type MarketdataServer = APIServerDefinition & {
           params: {
             mic: string
           }
-        },
+        }
       ) => Promise<[200, APIResponse<MarketEntityResponse>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -180,7 +180,7 @@ export type MarketdataServer = APIServerDefinition & {
           query?: {
             data_types?: string[]
           }
-        },
+        }
       ) => Promise<[200, APIResponse<InstrumentListResponse>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -203,7 +203,7 @@ export type MarketdataServer = APIServerDefinition & {
             isin: string
             currency: string
           }
-        },
+        }
       ) => Promise<[200, APIResponse<InstrumentEntityResponse>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -222,7 +222,7 @@ export type MarketdataServer = APIServerDefinition & {
           params: {
             isin: string
           }
-        },
+        }
       ) => Promise<[200, APIResponse<InstrumentListResponse>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -249,7 +249,7 @@ export type MarketdataClient = Pick<BaseClient, 'get'> & {
           limit?: number
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<MarketListResponse>>
     /**
      *
@@ -267,7 +267,7 @@ export type MarketdataClient = Pick<BaseClient, 'get'> & {
           mic: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<MarketEntityResponse>>
     /**
      *
@@ -290,7 +290,7 @@ export type MarketdataClient = Pick<BaseClient, 'get'> & {
           data_types?: string[]
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<InstrumentListResponse>>
     /**
      *
@@ -312,7 +312,7 @@ export type MarketdataClient = Pick<BaseClient, 'get'> & {
           currency: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<InstrumentEntityResponse>>
     /**
      *
@@ -330,7 +330,7 @@ export type MarketdataClient = Pick<BaseClient, 'get'> & {
           isin: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<InstrumentListResponse>>
   }
 }

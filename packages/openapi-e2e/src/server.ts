@@ -30,7 +30,7 @@ const api: MarketdataServer = {
   '/markets': {
     get: {
       handler: async () => {
-        return [200, {data: markets}]
+        return [200, { data: markets }]
       },
     },
   },
@@ -62,7 +62,7 @@ const api: MarketdataServer = {
             self: `/markets/${mic}/instruments/${isin}/${currency}`.toLowerCase(),
           },
         }
-        return [200, {data: instrument}]
+        return [200, { data: instrument }]
       },
     },
   },
