@@ -4,8 +4,8 @@ import express from 'express'
 import {
   InstrumentEntityResponse,
   MarketListResponse,
-  MarketdataAPIServer,
-} from './schemas/marketdata'
+  MarketdataServer,
+} from './schemas/Marketdata'
 
 export const markets: MarketListResponse = {
   data: [
@@ -19,7 +19,7 @@ export const markets: MarketListResponse = {
   },
 }
 
-const api: MarketdataAPIServer = {
+const api: MarketdataServer = {
   '/instruments/:isin': {
     get: {
       handler: async (args) => {
@@ -30,7 +30,7 @@ const api: MarketdataAPIServer = {
   '/markets': {
     get: {
       handler: async () => {
-        return [200, markets]
+        return [200, {data: markets}]
       },
     },
   },
@@ -62,11 +62,11 @@ const api: MarketdataAPIServer = {
             self: `/markets/${mic}/instruments/${isin}/${currency}`.toLowerCase(),
           },
         }
-        return [200, instrument]
+        return [200, {data: instrument}]
       },
     },
   },
-} as MarketdataAPIServer
+} as MarketdataServer
 
 const router = TypedRouter(api)
 
