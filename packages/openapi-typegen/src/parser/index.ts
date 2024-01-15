@@ -1,11 +1,11 @@
 import { ComponentsObject, OpenApiDocument } from '@sebspark/openapi-core'
 import { ParsedComponents, ParsedOpenApiDocument } from '../types'
-import { parseSchemas } from './schema'
-import { parsePaths } from './paths'
-import { parseParameters } from './parameters'
 import { parseHeaders } from './headers'
+import { parseParameters } from './parameters'
+import { parsePaths } from './paths'
 import { parseRequestBodies } from './requestBodies'
 import { parseResponseBodies } from './responseBodies'
+import { parseSchemas } from './schema'
 
 export const parseDocument = (
   schema: OpenApiDocument

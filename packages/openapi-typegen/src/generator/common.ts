@@ -2,6 +2,7 @@ import { pascalCase } from 'change-case'
 import {
   ArrayType,
   CustomType,
+  DocumentableType,
   EnumType,
   Header,
   ObjectType,
@@ -9,7 +10,6 @@ import {
   Property,
   ResponseBody,
   TypeDefinition,
-  DocumentableType,
 } from '../types'
 import { document } from './document'
 

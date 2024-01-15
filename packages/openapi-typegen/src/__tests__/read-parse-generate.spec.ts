@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs'
-import { test, expect } from 'vitest'
 import { OpenApiDocument } from '@sebspark/openapi-core'
+import { expect, test } from 'vitest'
 import { generateTypescript } from '..'
 import { format } from '../generator'
 

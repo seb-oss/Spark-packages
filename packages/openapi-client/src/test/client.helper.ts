@@ -1,4 +1,4 @@
-import { BaseClient, RequestOptions, APIResponse } from '@sebspark/openapi-core'
+import { APIResponse, BaseClient, RequestOptions } from '@sebspark/openapi-core'
 import { Router, json } from 'express'
 
 export type User = {

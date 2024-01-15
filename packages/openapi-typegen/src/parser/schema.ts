@@ -1,6 +1,6 @@
 import { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
-import { parseEnumType, parseRef, parseDocumentation } from './common'
 import { ArrayType, ObjectType, Property, TypeDefinition } from '../types'
+import { parseDocumentation, parseEnumType, parseRef } from './common'
 
 export const parseSchemas = (
   schemas: Record<string, SchemaObject> = {}

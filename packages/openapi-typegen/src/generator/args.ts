@@ -37,6 +37,6 @@ const generateArgs = (
   return ''
 }
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
 export const argsOptional = (args: RequestArgs) =>
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   parts.reduce((o, p) => o && (!args[p] || args[p]!.optional), true)

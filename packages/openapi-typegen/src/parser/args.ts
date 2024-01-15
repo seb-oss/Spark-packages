@@ -8,8 +8,8 @@ import {
   SchemaObject,
 } from '@sebspark/openapi-core'
 import { Args, ObjectType, RequestArgs } from '../types'
+import { findRef, parseDocumentation, parseRef } from './common'
 import { parseSchema } from './schema'
-import { findRef, parseRef, parseDocumentation } from './common'
 
 export const parseArgs = (
   path: OperationObject,

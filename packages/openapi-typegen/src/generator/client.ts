@@ -1,7 +1,7 @@
 import { Verb } from '@sebspark/openapi-core'
 import { Path } from '../types'
-import { OR, generateResponseBody, serializeValue } from './common'
 import { generateClientArgs } from './args'
+import { OR, generateResponseBody, serializeValue } from './common'
 import { documentClientPath } from './document'
 
 export const generateClient = (name: string, paths: Path[]): string => {

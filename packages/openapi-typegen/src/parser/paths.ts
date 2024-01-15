@@ -9,10 +9,10 @@ import {
   Verb,
 } from '@sebspark/openapi-core'
 import { CustomType, Path, ResponseBody, TypeDefinition } from '../types'
-import { parseRef, parseDocumentation } from './common'
-import { parseSchema } from './schema'
 import { parseArgs } from './args'
+import { parseDocumentation, parseRef } from './common'
 import { parseResponseBody } from './responseBodies'
+import { parseSchema } from './schema'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>
   Object.entries(doc.paths || {}).flatMap(([name, path]) =>

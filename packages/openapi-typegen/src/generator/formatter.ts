@@ -1,4 +1,4 @@
-import { format as pFormat, Options } from 'prettier'
+import { Options, format as pFormat } from 'prettier'
 
 const options: Options = {
   parser: 'typescript',

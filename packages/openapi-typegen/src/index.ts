@@ -1,10 +1,10 @@
-import { OpenApiDocument } from '@sebspark/openapi-core'
-import { parseDocument } from './parser'
-import { generate as _generate, format } from './generator'
-import { readFile, writeFile, mkdir, stat, readdir } from 'fs/promises'
 import { parse, resolve } from 'path'
+import { OpenApiDocument } from '@sebspark/openapi-core'
 import { pascalCase } from 'change-case'
+import { mkdir, readFile, readdir, stat, writeFile } from 'fs/promises'
 import * as YAML from 'yaml'
+import { format, generate as _generate } from './generator'
+import { parseDocument } from './parser'
 
 export const generateTypescript = async (
   name: string,

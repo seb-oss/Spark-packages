@@ -1,13 +1,20 @@
 import {
-  SchemaObject,
-  PathItemObject,
-  ParameterObject,
-  HeaderObject,
   ComponentsObject,
+  HeaderObject,
+  ParameterObject,
+  PathItemObject,
   RequestBodyObject,
   ResponseObject,
+  SchemaObject,
 } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
+import { findRef } from '../parser/common'
+import { parseHeader } from '../parser/headers'
+import { parseParameter } from '../parser/parameters'
+import { parsePath } from '../parser/paths'
+import { parseRequestBodies } from '../parser/requestBodies'
+import { parseResponseBodies } from '../parser/responseBodies'
+import { parseSchema } from '../parser/schema'
 import {
   ArrayType,
   CustomType,
@@ -19,13 +26,6 @@ import {
   PrimitiveType,
   ResponseBody,
 } from '../types'
-import { parseHeader } from '../parser/headers'
-import { parsePath } from '../parser/paths'
-import { parseSchema } from '../parser/schema'
-import { parseParameter } from '../parser/parameters'
-import { findRef } from '../parser/common'
-import { parseRequestBodies } from '../parser/requestBodies'
-import { parseResponseBodies } from '../parser/responseBodies'
 
 describe('findRef', () => {
   it('finds headers', () => {
