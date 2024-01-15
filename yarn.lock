@@ -600,10 +600,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@opensearch-project/opensearch@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@opensearch-project/opensearch/-/opensearch-2.4.0.tgz#c8aeeb043745350f990d85ef2e4e8775ce00f04d"
-  integrity sha512-r0ZNIlDxAua1ZecOBJ8qOXshf2ZQhNKmfly7o0aNuACf0pDa6Et/8mWMZuaFOu7xlNEeRNB7IjDQUYFy2SPElw==
+"@opensearch-project/opensearch@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@opensearch-project/opensearch/-/opensearch-2.5.0.tgz#0fff1fc5c6aa94b0cf87d132573a14eeb5e1df7f"
+  integrity sha512-RY5J6Jt/Jbbr2F9XByGY9LJr0VNmXJjgVvvntpKE4NtZa/r9ak3o8YtGK1iey1yHgzMzze25598qq7ZYFk42DA==
   dependencies:
     aws4 "^1.11.0"
     debug "^4.3.1"
@@ -974,6 +974,11 @@
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.4.tgz#56e2cc26c397c038fab0e3a917a12d5c5909e901"
   integrity sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==
+
+"@types/omit@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/omit/-/omit-1.0.3.tgz#cf7b1d4c0fa7b97520f7821cb0f6ea36cb5ce6e7"
+  integrity sha512-DGS1gT1Vx+dUmBOE38C0w1iOb5Mkiey6NhAPuAL/VFTwOxgaMB5ssVc5GRraPVl32Dvsvx0jl0aoEFgrlJA+xw==
 
 "@types/qs@*":
   version "6.9.10"
@@ -4189,6 +4194,11 @@ object.assign@^4.1.4:
     define-properties "^1.2.1"
     has-symbols "^1.0.3"
     object-keys "^1.1.1"
+
+omit@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/omit/-/omit-1.0.1.tgz#058a01b4b6db1287b36ecb58dfa8e18778958017"
+  integrity sha512-WHNzQdTq2gO0iJgbPySheMN79fL3FtriIOGam8Ei4kRpdtTSdq9LX3BxSZlvKKz4vtiSUqASCFD3adel0zP/iA==
 
 on-finished@2.4.1:
   version "2.4.1"
