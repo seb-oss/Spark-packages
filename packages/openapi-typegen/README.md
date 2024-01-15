@@ -10,7 +10,7 @@ of this file will be used to generate Server and Client names.
 This example can be found in [@sebspark/openapi-e2e](../packages/openapi-e2e)
 
 ```zsh
-yarn openapi-typegen -i ./src/schemas/marketdata.json -o ./src/schemas/
+yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/
 ```
 
 The schema will export all types defined in the OpenAPI spec as well as:

@@ -24,10 +24,10 @@ Use [@sebspark/openapi-typegen](../packages/openapi-typegen)
 
 ```typescript
 import { TypedClient } from '@sebspark/openapi-client'
-import { MarketdataAPIClient } from './schemas/marketdata'
+import { MarketdataClient } from './schemas/marketdata'
 
-const client = TypedClient<MarketdataAPIClient>(`https://example.com/api`)
-const markets = await client.get('/markets)
+const client = TypedClient<MarketdataClient>(`https://example.com/api`)
+const {data} = await client.get('/markets)
 ```
 
 ## Example
