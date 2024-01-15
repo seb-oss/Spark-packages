@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 0.2.1
+
+### Patch Changes
+
+- e43eb8b: Fix id querying and match_all
+
 ## 0.2.0
 
 ### Minor Changes
