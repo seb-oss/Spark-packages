@@ -5,9 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
@@ -16,9 +14,11 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@types/omit": "1.0.3",
     "tsconfig": "*"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "2.4.0"
+    "@opensearch-project/opensearch": "2.5.0",
+    "omit": "1.0.1"
   }
 }

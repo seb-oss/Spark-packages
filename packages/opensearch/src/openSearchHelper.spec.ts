@@ -289,5 +289,47 @@ describe('OpenSearchHelper', () => {
         },
       })
     })
+    it('handles id', async () => {
+      const id = 'foo'
+      await helper(client as Client).typedSearch<Data>({
+        index: 'data',
+        body: {
+          query: {
+            match: {
+              id,
+            }
+          }
+        }
+      })
+      expect(client.search).toHaveBeenCalledWith({
+        index: 'data',
+        body: {
+          query: {
+            match: {
+              _id: 'foo',
+            }
+          }
+        }
+      })
+    })
+    it('handles match_all', async () => {
+      const id = 'foo'
+      await helper(client as Client).typedSearch<Data>({
+        index: 'data',
+        body: {
+          query: {
+            match_all: {}
+          }
+        }
+      })
+      expect(client.search).toHaveBeenCalledWith({
+        index: 'data',
+        body: {
+          query: {
+            match_all: {}
+          }
+        }
+      })
+    })
   })
 })

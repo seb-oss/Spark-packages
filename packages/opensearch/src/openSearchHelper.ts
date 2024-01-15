@@ -6,13 +6,17 @@ import type {
   opensearchtypes,
 } from '@opensearch-project/opensearch'
 import {
+  Exists,
+  FilterBool,
   IndexOptions,
   IndexProperties,
   NestedFieldOptions,
+  OpenSearchFilter,
   OpenSearchQuery,
   OpenSearchQueryBody,
 } from './openSearchTypes'
 import { ExcludeId, WithId } from './typescriptExtensions'
+import { fixIds } from './fixIds'
 
 export interface OpenSearchHelper extends Client {
   typedSearch: <DataType extends WithId, ReturnType = DataType>(
@@ -52,7 +56,7 @@ const typedSearch = async <T extends WithId, K = T>(
 ) => {
   // Perform the query using the OpenSearch client
   const response = await client.search(
-    searchQuery as RequestParams.Search<OpenSearchQueryBody<T, K>>
+    fixIds(searchQuery) as RequestParams.Search<OpenSearchQueryBody<T, K>>
   )
 
   // Transform the results, mapping _id to id and casting to type K
