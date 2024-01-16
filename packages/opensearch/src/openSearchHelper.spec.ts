@@ -12,6 +12,7 @@ type Pet = {
   name: string
   species: 'Cat' | 'Dog'
 }
+type CityEnum = 'London' | 'New York' | 'Amsterdam'
 
 type Data = {
   id: string
@@ -19,6 +20,7 @@ type Data = {
   created: Date
   user: {
     age: number
+    city: CityEnum
     interests?: Interest[]
     name: string
     pets?: Pet[]
@@ -328,6 +330,98 @@ describe('OpenSearchHelper', () => {
             match_all: {},
           },
         },
+      })
+    })
+
+    describe('handles filters', async () => {
+      const europeanCities: CityEnum[] = ['Amsterdam', 'London']
+
+      it('alone', async () => {
+        await helper(client as Client).typedSearch<Data>({
+          index: 'data',
+          body: {
+            query: {
+              bool: {
+                filter: [
+                  {
+                    term: {
+                      'user.city': {
+                        value: europeanCities,
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        })
+        expect(client.search).toHaveBeenCalledWith({
+          index: 'data',
+          body: {
+            query: {
+              bool: {
+                filter: [
+                  {
+                    term: {
+                      'user.city': {
+                        value: ['Amsterdam', 'London'],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        })
+      })
+
+      it.only('in conjunction with must+wildcard', async () => {
+        await helper(client as Client).typedSearch<Data>({
+          index: 'data',
+          body: {
+            query: {
+              bool: {
+                must: {
+                  wildcard: {
+                    'user.name': 'A*',
+                  },
+                },
+                filter: [
+                  {
+                    term: {
+                      'user.city': {
+                        value: europeanCities,
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        })
+        expect(client.search).toHaveBeenCalledWith({
+          index: 'data',
+          body: {
+            query: {
+              bool: {
+                must: {
+                  wildcard: {
+                    'user.name': 'A*',
+                  },
+                },
+                filter: [
+                  {
+                    term: {
+                      'user.city': {
+                        value: ['Amsterdam', 'London'],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        })
       })
     })
   })
