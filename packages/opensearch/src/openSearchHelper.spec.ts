@@ -7,12 +7,12 @@ import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { helper } from './openSearchHelper'
 import { DeepPartial, ExcludeId } from './typescriptExtensions'
 
-type Interest = 'Hiking' | 'Poledancing' | 'Yoga'
+type Interest = 'Cricket' | 'Hitchhiking' | 'Tea'
 type Pet = {
   name: string
   species: 'Cat' | 'Dog'
 }
-type CityEnum = 'London' | 'New York' | 'Amsterdam'
+type CountryEnum = 'England' | 'Estonia' | 'Sweden'
 
 type Data = {
   id: string
@@ -20,7 +20,7 @@ type Data = {
   created: Date
   user: {
     age: number
-    city: CityEnum
+    country: CountryEnum
     interests?: Interest[]
     name: string
     pets?: Pet[]
@@ -122,7 +122,8 @@ describe('OpenSearchHelper', () => {
         created,
         user: {
           age: 42,
-          interests: ['Hiking'],
+          country: 'England',
+          interests: ['Hitchhiking'],
           name: 'Arthur Dent',
           pets: [
             { name: 'Fido', species: 'Dog' },
@@ -138,7 +139,8 @@ describe('OpenSearchHelper', () => {
           created,
           user: {
             age: 42,
-            interests: ['Hiking'],
+            country: 'England',
+            interests: ['Hitchhiking'],
             name: 'Arthur Dent',
             pets: [
               { name: 'Fido', species: 'Dog' },
@@ -170,7 +172,12 @@ describe('OpenSearchHelper', () => {
           _source: {
             created,
             isTrue: true,
-            user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+            user: {
+              age: 42,
+              country: 'England',
+              interests: ['Hitchhiking'],
+              name: 'Arthur Dent',
+            },
           },
         },
       ]
@@ -188,7 +195,12 @@ describe('OpenSearchHelper', () => {
           _source: {
             created,
             isTrue: true,
-            user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+            user: {
+              age: 42,
+              country: 'England',
+              interests: ['Hitchhiking'],
+              name: 'Arthur Dent',
+            },
           },
         },
       ]
@@ -203,7 +215,12 @@ describe('OpenSearchHelper', () => {
           id: 'foo',
           isTrue: true,
           created,
-          user: { age: 42, interests: ['Hiking'], name: 'Arthur Dent' },
+          user: {
+            age: 42,
+            country: 'England',
+            interests: ['Hitchhiking'],
+            name: 'Arthur Dent',
+          },
         },
       ])
     })
@@ -334,7 +351,10 @@ describe('OpenSearchHelper', () => {
     })
 
     describe('handles filters', async () => {
-      const europeanCities: CityEnum[] = ['Amsterdam', 'London']
+      const countriesStartingWithTheLetterE: CountryEnum[] = [
+        'England',
+        'Estonia',
+      ]
 
       it('alone', async () => {
         await helper(client as Client).typedSearch<Data>({
@@ -345,8 +365,8 @@ describe('OpenSearchHelper', () => {
                 filter: [
                   {
                     term: {
-                      'user.city': {
-                        value: europeanCities,
+                      'user.country': {
+                        value: countriesStartingWithTheLetterE,
                       },
                     },
                   },
@@ -363,8 +383,8 @@ describe('OpenSearchHelper', () => {
                 filter: [
                   {
                     term: {
-                      'user.city': {
-                        value: ['Amsterdam', 'London'],
+                      'user.country': {
+                        value: ['England', 'Estonia'],
                       },
                     },
                   },
@@ -389,8 +409,8 @@ describe('OpenSearchHelper', () => {
                 filter: [
                   {
                     term: {
-                      'user.city': {
-                        value: europeanCities,
+                      'user.country': {
+                        value: countriesStartingWithTheLetterE,
                       },
                     },
                   },
@@ -412,8 +432,8 @@ describe('OpenSearchHelper', () => {
                 filter: [
                   {
                     term: {
-                      'user.city': {
-                        value: ['Amsterdam', 'London'],
+                      'user.country': {
+                        value: ['England', 'Estonia'],
                       },
                     },
                   },
