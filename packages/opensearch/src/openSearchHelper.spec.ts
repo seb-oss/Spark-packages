@@ -375,7 +375,7 @@ describe('OpenSearchHelper', () => {
         })
       })
 
-      it.only('in conjunction with must+wildcard', async () => {
+      it('in conjunction with must+wildcard', async () => {
         await helper(client as Client).typedSearch<Data>({
           index: 'data',
           body: {
