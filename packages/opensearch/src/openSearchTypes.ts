@@ -172,7 +172,7 @@ export type OpenSearchFilter<T> = {
   exists?: Exists<T>
   fuzzy?: Fuzzy<T>
   prefix?: Partial<NestedFields<T>>
-  wildcard?: Partial<NestedFields<T>>
+  wildcard?: Wildcard<T>
   regexp?: Regexp<T>
   match?: Match<T>
   match_phrase?: Partial<NestedFields<T>>
@@ -199,9 +199,9 @@ export type Prefix<T> = {
     | { value: NestedFields<T>[P]; boost?: number }
 }
 export type Wildcard<T> = {
-  [P in keyof NestedFields<T>]?:
-    | NestedFields<T>[P]
-    | { value: NestedFields<T>[P]; boost?: number }
+  [P in NestedPaths<T>]?:
+    | string
+    | { value: string; boost?: number }
 }
 export type MatchPhrase<T> = {
   [P in keyof NestedFields<T>]?:
