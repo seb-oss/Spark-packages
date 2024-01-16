@@ -199,9 +199,7 @@ export type Prefix<T> = {
     | { value: NestedFields<T>[P]; boost?: number }
 }
 export type Wildcard<T> = {
-  [P in NestedPaths<T>]?:
-    | string
-    | { value: string; boost?: number }
+  [P in NestedPaths<T>]?: string | { value: string; boost?: number }
 }
 export type MatchPhrase<T> = {
   [P in keyof NestedFields<T>]?:
