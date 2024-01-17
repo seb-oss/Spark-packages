@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-    "generate": "yarn openapi-typegen -i ./src/schemas/marketdata.json -o ./src/schemas/",
+    "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
     "test": "vitest --passWithNoTests --coverage",
     "pretest": "yarn generate",

@@ -3,6 +3,20 @@ import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
+
+type Empty = Record<never, never>
+
+export type APIResponse<
+  Data = undefined,
+  Headers = undefined,
+> = Data extends undefined
+  ? Headers extends undefined
+    ? Empty
+    : { headers: Headers }
+  : Headers extends undefined
+    ? { data: Data }
+    : { data: Data; headers: Headers }
+
 export type GenericRouteHandler = (
   req: Request,
   res: Response,
@@ -10,10 +24,20 @@ export type GenericRouteHandler = (
 ) => void | Promise<void>
 export type RouteHandler = {
   pre?: GenericRouteHandler | GenericRouteHandler[]
-  // biome-ignore lint/suspicious/noExplicitAny: Allow any
-  handler: <A = any, R = any>(arg?: A) => Promise<R>
+  handler: <
+    RequestArgs,
+    Response extends [
+      number,
+      APIResponse<unknown | undefined, Record<string, string> | undefined>,
+    ],
+  >(
+    args?: RequestArgs
+  ) => Promise<Response>
 }
-export type Route<R extends RouteHandler = RouteHandler> = Record<Verb, R>
+export type Route<Handler extends RouteHandler = RouteHandler> = Record<
+  Verb,
+  Handler
+>
 export type APIServerDefinition = Record<string, Partial<Route>>
 export type APIServerOptions = {
   pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -37,27 +61,59 @@ export type ClientOptions = RequestOptions & {
 }
 
 export type BaseClient = {
-  get: <U extends string, A extends RequestArgs | never, R>(
+  get: <
+    U extends string,
+    A extends RequestArgs | never,
+    R extends APIResponse<
+      unknown | undefined,
+      Record<string, string> | undefined
+    >,
+  >(
     url: U,
     args?: A,
     opts?: RequestOptions
   ) => Promise<R>
-  post: <U extends string, A extends PayloadRequestArgs | never, R>(
+  post: <
+    U extends string,
+    A extends PayloadRequestArgs | never,
+    R extends APIResponse<
+      unknown | undefined,
+      Record<string, string> | undefined
+    >,
+  >(
     url: U,
     args?: A,
     opts?: RequestOptions
   ) => Promise<R>
-  put: <U extends string, A extends PayloadRequestArgs | never, R>(
+  put: <
+    U extends string,
+    A extends PayloadRequestArgs | never,
+    R extends APIResponse<
+      unknown | undefined,
+      Record<string, string> | undefined
+    >,
+  >(
     url: U,
     args?: A,
     opts?: RequestOptions
   ) => Promise<R>
-  patch: <U extends string, A extends PayloadRequestArgs | never, R>(
+  patch: <
+    U extends string,
+    A extends PayloadRequestArgs | never,
+    R extends APIResponse<
+      unknown | undefined,
+      Record<string, string> | undefined
+    >,
+  >(
     url: U,
     args?: A,
     opts?: RequestOptions
   ) => Promise<R>
-  delete: <U extends string, A extends RequestArgs | never, R>(
+  delete: <
+    U extends string,
+    A extends RequestArgs | never,
+    R extends APIResponse<unknown, unknown>,
+  >(
     url: U,
     args?: A,
     opts?: RequestOptions

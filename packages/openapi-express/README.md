@@ -25,15 +25,15 @@ Use [@sebspark/openapi-typegen](../packages/openapi-typegen)
 ```typescript
 import express from 'express'
 import { TypedRouter } from '@sebspark/openapi-express'
-import { MarketdataAPIServer } from './schemas/marketdata'
+import { MarketdataServer } from './schemas/marketdata'
 import { getMarkets, getMarket } from './markets'
 
-const api: MarketdataAPIServer = {
+const api: MarketdataServer = {
   '/markets': {
     get: {
       handler: async () => {
         const markets = await getMarkets()
-        return [200, markets]
+        return [200, {data: markets}]
       },
     },
   },
@@ -41,7 +41,7 @@ const api: MarketdataAPIServer = {
     get: {
       handler: async ({ params }) => {
         const market = await getMarket(params.id)
-        return [200, market]
+        return [200, {data: market}]
       },
     },
   },

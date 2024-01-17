@@ -27,4 +27,4 @@ const argv = yargs(process.argv.slice(2))
   .help()
   .parseSync()
 
-generate({ input: argv.input, output: argv.output })
+generate(argv.input, argv.output)
