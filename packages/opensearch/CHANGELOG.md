@@ -1,5 +1,17 @@
 # @sebspark/opensearch
 
+## 0.2.2
+
+### Patch Changes
+
+- 10c4d93: Fix wildcard things
+
+## 0.2.1
+
+### Patch Changes
+
+- e43eb8b: Fix id querying and match_all
+
 ## 0.2.0
 
 ### Minor Changes

@@ -121,7 +121,7 @@ export type LanguageAnalyzer =
   | 'thai'
 export type Analyzer = StandardAnalyzer | LanguageAnalyzer
 
-export type Match<T> = {
+export type Match<T> = Partial<{
   [P in NestedStringPaths<T>]:
     | string
     | {
@@ -130,7 +130,7 @@ export type Match<T> = {
         minimum_should_match?: number
         analyzer?: Analyzer
       }
-}
+}>
 
 type MultiMatchParam<T extends string> =
   | T
@@ -172,7 +172,7 @@ export type OpenSearchFilter<T> = {
   exists?: Exists<T>
   fuzzy?: Fuzzy<T>
   prefix?: Partial<NestedFields<T>>
-  wildcard?: Partial<NestedFields<T>>
+  wildcard?: Wildcard<T>
   regexp?: Regexp<T>
   match?: Match<T>
   match_phrase?: Partial<NestedFields<T>>
@@ -199,9 +199,7 @@ export type Prefix<T> = {
     | { value: NestedFields<T>[P]; boost?: number }
 }
 export type Wildcard<T> = {
-  [P in keyof NestedFields<T>]?:
-    | NestedFields<T>[P]
-    | { value: NestedFields<T>[P]; boost?: number }
+  [P in NestedPaths<T>]?: string | { value: string; boost?: number }
 }
 export type MatchPhrase<T> = {
   [P in keyof NestedFields<T>]?:
@@ -256,6 +254,9 @@ export type OpenSearchQueryBody<
 
         // Criteria to match the results
         match?: Match<T>
+
+        // Criteria to match all documents
+        match_all?: { boost?: number }
 
         // Criteria to match the results
         multi_match?: MultiMatch<T>
@@ -411,3 +412,82 @@ export type IndexOptions<T extends WithId> = {
   }
   aliases?: Record<string, Record<string, never>>
 }
+
+export type NativeOpenSearchType<T extends WithId> = ExcludeId<T> & {
+  _id: string
+}
+
+export type NativeOpenSearchQueryBody<
+  T extends { _id: string },
+  K = T,
+> = K extends DeepPartial<T>
+  ? {
+      query: {
+        // Fields to return in the result
+        fields?: OpenSearchFields<K>
+
+        // Criteria to filter the results
+        filter?: OpenSearchFilter<T>
+
+        // Criteria to match the results
+        match?: Match<T>
+
+        // Criteria to match all documents
+        match_all?: { boost?: number }
+
+        // Criteria to match the results
+        multi_match?: MultiMatch<T>
+
+        // Number of results to skip (for pagination)
+        from?: number
+
+        // Number of results to return (for pagination)
+        size?: number
+
+        // Collapse results based on field values
+        collapse?: Collapse<K>
+
+        // Custom score calculation
+        script_score?: ScriptScore
+
+        // Highlight matching text snippets
+        highlight?: Highlight<K>
+
+        // A boolean query allows you to build complex query using logical operators
+        bool?: FilterBool<T>
+
+        // Range query to find documents where the field falls within a specified range
+        range?: Range<T>
+
+        // Exists query to find documents where a field exists or not
+        exists?: Exists<T>
+
+        // Terms query to find documents containing one or more exact terms
+        terms?: Terms<T>
+
+        // Term query to find documents containing a specific term
+        term?: Term<T>
+
+        // Fuzzy query to find documents containing terms similar to the search term
+        fuzzy?: Fuzzy<T>
+
+        // Prefix query to find documents having a field starting with a specific prefix
+        prefix?: Prefix<T>
+
+        // Wildcard query to find documents matching a wildcard pattern
+        wildcard?: Wildcard<T>
+
+        // Regexp query to find documents matching a regular expression
+        regexp?: Regexp<T>
+
+        // Match phrase query to find documents with exact phrases or proximity matches
+        match_phrase?: MatchPhrase<T>
+
+        // Match phrase prefix query to find documents with exact prefix phrases
+        match_phrase_prefix?: MatchPhrasePrefix<T>
+
+        // More_like_this query to find documents similar to specified documents
+        more_like_this?: MoreLikeThis<T>
+      }
+    }
+  : never

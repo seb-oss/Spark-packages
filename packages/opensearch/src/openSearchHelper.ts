@@ -5,10 +5,14 @@ import type {
   RequestParams,
   opensearchtypes,
 } from '@opensearch-project/opensearch'
+import { fixIds } from './fixIds'
 import {
+  Exists,
+  FilterBool,
   IndexOptions,
   IndexProperties,
   NestedFieldOptions,
+  OpenSearchFilter,
   OpenSearchQuery,
   OpenSearchQueryBody,
 } from './openSearchTypes'
@@ -52,7 +56,7 @@ const typedSearch = async <T extends WithId, K = T>(
 ) => {
   // Perform the query using the OpenSearch client
   const response = await client.search(
-    searchQuery as RequestParams.Search<OpenSearchQueryBody<T, K>>
+    fixIds(searchQuery) as RequestParams.Search<OpenSearchQueryBody<T, K>>
   )
 
   // Transform the results, mapping _id to id and casting to type K
