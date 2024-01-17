@@ -1,5 +1,16 @@
 # @sebspark/openapi-client
 
+## 1.0.0
+
+### Major Changes
+
+- ae03155: First major version. Typegen now accepts json and yaml. It also accepts either a file or a dir as input. Server and Client now return objects containing data and headers.
+
+### Patch Changes
+
+- Updated dependencies [ae03155]
+  - @sebspark/openapi-core@1.0.0
+
 ## 0.2.0
 
 ### Minor Changes
