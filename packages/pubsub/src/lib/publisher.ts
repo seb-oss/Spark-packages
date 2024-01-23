@@ -25,7 +25,7 @@ export const publisher =
       headers,
     }
 
-    let data
+    let data: Buffer
     if (raw) {
       // Only send the message as the message.
       data = Buffer.from(JSON.stringify(message))

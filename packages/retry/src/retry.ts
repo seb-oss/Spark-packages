@@ -57,8 +57,10 @@ export const retry = async <T>(
 export const interval = {
   fixed: (delay: number) => (_retries: number) => delay,
   linear: (delay: number) => (retries: number) => retries * delay,
-  exponential: (delay: number, base = 2) => (retries: number) =>
-    base ** (retries - 1) * delay,
+  exponential:
+    (delay: number, base = 2) =>
+    (retries: number) =>
+      base ** (retries - 1) * delay,
 }
 
 const clientErrorCodes = [

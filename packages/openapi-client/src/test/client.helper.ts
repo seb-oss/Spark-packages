@@ -16,9 +16,11 @@ type ClientGet = {
   ): Promise<APIResponse<User>>
 }
 type ClientPost = {
-  (url: '/users', args: { body: User }, opts?: RequestOptions): Promise<
-    APIResponse<User>
-  >
+  (
+    url: '/users',
+    args: { body: User },
+    opts?: RequestOptions
+  ): Promise<APIResponse<User>>
 }
 type ClientPut = {
   (
