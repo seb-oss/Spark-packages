@@ -809,12 +809,12 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.4.tgz#0b92dcc0cc1c81f6f306a381f28e31b1a56536e9"
   integrity sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==
 
-"@turbo/gen@1.11.3":
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/@turbo/gen/-/gen-1.11.3.tgz#bb407ae1d9ccfb14f1407cd79fa2c7b8b35c920b"
-  integrity sha512-cHGRj7Jn7Hw1cA7NuwWYfYdhEliQX4LuSfEB9L1m8ifGkHalU3bbYXcehzLThmckpGpUQGnXYx0UtVudbQ42HA==
+"@turbo/gen@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@turbo/gen/-/gen-1.12.0.tgz#3eb9d11cc982276c0a3bc3b673fa94fbe7b3b813"
+  integrity sha512-qMmaHKDiYhHSoYvArvf2Vwk36UqL2LuHmGIOXVNjvWqhAASSFd8ALEnIH3TQeddr/KlaIjy8NZxFN+hbpHsX8Q==
   dependencies:
-    "@turbo/workspaces" "1.11.3"
+    "@turbo/workspaces" "1.12.0"
     chalk "2.4.2"
     commander "^10.0.0"
     fs-extra "^10.1.0"
@@ -826,10 +826,10 @@
     update-check "^1.5.4"
     validate-npm-package-name "^5.0.0"
 
-"@turbo/workspaces@1.11.3":
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/@turbo/workspaces/-/workspaces-1.11.3.tgz#b77443e480618651047aeb4511b2e53c953b89f9"
-  integrity sha512-a420NGGyi9pFYeUASO/H1Atv7LbFPtyf/3GaMC6/gMzae7h5k+hjitrFYZYiEs1tU6El7H78MQK/h41OXY/jFw==
+"@turbo/workspaces@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@turbo/workspaces/-/workspaces-1.12.0.tgz#9bd6765c9366f4f973f3b05b65e8be365377cb8a"
+  integrity sha512-/ZepJkd/ckQwsxYG9KHItlnOgfWppfqtz1VahMZHiR/Fbj851T/USqhk0e9h9csHe+dG5eRTxpVnVnf7J5TKfA==
   dependencies:
     chalk "2.4.2"
     commander "^10.0.0"
