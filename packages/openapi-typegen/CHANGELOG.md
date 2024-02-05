@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.1.0
+
+### Minor Changes
+
+- 7611bda: Added support for empty type definitions and allOf in properties
+
 ## 1.0.0
 
 ### Major Changes
