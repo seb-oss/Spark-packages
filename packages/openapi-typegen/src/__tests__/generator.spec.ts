@@ -68,10 +68,10 @@ describe('typescript generator', () => {
         name: 'SuccessResponse',
         extends: [],
         properties: [
-          { name: 'status', type: [{type: 'string'}], optional: false},
-          { name: 'message', type: [{type: 'string'}], optional: false},
-          { name: 'data', type: [], optional: true},
-        ]
+          { name: 'status', type: [{ type: 'string' }], optional: false },
+          { name: 'message', type: [{ type: 'string' }], optional: false },
+          { name: 'data', type: [], optional: true },
+        ],
       }
 
       const expected = await format(
@@ -255,8 +255,8 @@ describe('typescript generator', () => {
         type: 'object',
         name: 'User',
         properties: [
-          { name: 'id', type: [{type: 'string'}], optional: false },
-          { name: 'props', type: [{type: 'UserProps'}], optional: false },
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          { name: 'props', type: [{ type: 'UserProps' }], optional: false },
         ],
         extends: [],
       }

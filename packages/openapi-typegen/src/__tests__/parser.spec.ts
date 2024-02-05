@@ -811,10 +811,10 @@ describe('openapi parser', () => {
         name: 'SuccessResponse',
         extends: [],
         properties: [
-          { name: 'status', type: [{type: 'string'}], optional: false},
-          { name: 'message', type: [{type: 'string'}], optional: false},
-          { name: 'data', type: [], optional: true},
-        ]
+          { name: 'status', type: [{ type: 'string' }], optional: false },
+          { name: 'message', type: [{ type: 'string' }], optional: false },
+          { name: 'data', type: [], optional: true },
+        ],
       }
 
       expect(parsed).toEqual(expected)
@@ -826,9 +826,9 @@ describe('openapi parser', () => {
           eventType: {
             allOf: [{ $ref: '#/components/schemas/EventTypeResponse' }],
             nullable: true,
-          }
+          },
         },
-        required: ['eventId', 'eventType']
+        required: ['eventId', 'eventType'],
       }
 
       const parsed = parseSchema('EventResponse', schema)
@@ -837,9 +837,13 @@ describe('openapi parser', () => {
         name: 'EventResponse',
         extends: [],
         properties: [
-          { name: 'eventId', type: [{type: 'number'}], optional: false },
-          { name: 'eventType', type: [{type: 'EventTypeResponse'}], optional: false },
-        ]
+          { name: 'eventId', type: [{ type: 'number' }], optional: false },
+          {
+            name: 'eventType',
+            type: [{ type: 'EventTypeResponse' }],
+            optional: false,
+          },
+        ],
       }
 
       expect(parsed).toEqual(expected)
