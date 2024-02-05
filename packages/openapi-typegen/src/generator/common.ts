@@ -52,7 +52,7 @@ export const generateProperty = (property: Property): string => {
   const types = property.type.map(generateType)
   return `${document(property)}${propertyName(property.name)}${
     property.optional ? '?' : ''
-  }: ${types.join(OR)}`
+  }: ${types.join(OR) || 'unknown'}`
 }
 
 export const preamble = (type: DocumentableType): string =>

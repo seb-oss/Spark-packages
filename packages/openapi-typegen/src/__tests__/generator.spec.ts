@@ -62,6 +62,29 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates an object type with empty definition', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'SuccessResponse',
+        extends: [],
+        properties: [
+          { name: 'status', type: [{type: 'string'}], optional: false},
+          { name: 'message', type: [{type: 'string'}], optional: false},
+          { name: 'data', type: [], optional: true},
+        ]
+      }
+
+      const expected = await format(
+        `export type SuccessResponse = {
+          status: string
+          message: string
+          data?: unknown
+        }`
+      )
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
     it('generates an array type', async () => {
       const type: ArrayType = {
         type: 'array',
@@ -220,6 +243,28 @@ describe('typescript generator', () => {
       const expected = await format(
         `export type User = Person & {
           name?: string
+        }`
+      )
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
+    it('generates a complex object type with allOf properties', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [
+          { name: 'id', type: [{type: 'string'}], optional: false },
+          { name: 'props', type: [{type: 'UserProps'}], optional: false },
+        ],
+        extends: [],
+      }
+
+      const expected = await format(
+        `export type User = {
+          id: string
+          props: UserProps
         }`
       )
       const generated = generateType(type)

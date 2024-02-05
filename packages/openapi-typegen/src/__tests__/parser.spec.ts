@@ -792,6 +792,58 @@ describe('openapi parser', () => {
       }
       expect(parsed).toEqual(expected)
     })
+    it('parses empty data types', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          status: { type: 'string' },
+          message: { type: 'string' },
+          data: {},
+        },
+        required: ['status', 'message'],
+        additionalProperties: false,
+      }
+
+      const parsed = parseSchema('SuccessResponse', schema)
+
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'SuccessResponse',
+        extends: [],
+        properties: [
+          { name: 'status', type: [{type: 'string'}], optional: false},
+          { name: 'message', type: [{type: 'string'}], optional: false},
+          { name: 'data', type: [], optional: true},
+        ]
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses allOf as property', () => {
+      const schema: SchemaObject = {
+        properties: {
+          eventId: { type: 'number' },
+          eventType: {
+            allOf: [{ $ref: '#/components/schemas/EventTypeResponse' }],
+            nullable: true,
+          }
+        },
+        required: ['eventId', 'eventType']
+      }
+
+      const parsed = parseSchema('EventResponse', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'EventResponse',
+        extends: [],
+        properties: [
+          { name: 'eventId', type: [{type: 'number'}], optional: false },
+          { name: 'eventType', type: [{type: 'EventTypeResponse'}], optional: false },
+        ]
+      }
+
+      expect(parsed).toEqual(expected)
+    })
   })
   describe('parseParameters', () => {
     it('parses a simple schema', () => {
