@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 1.2.0
+
+### Minor Changes
+
+- a71af0c: Dates are now typed as Date, except for after serialization
+
+### Patch Changes
+
+- Updated dependencies [a71af0c]
+  - @sebspark/openapi-core@1.1.0
+
 ## 1.1.0
 
 ### Minor Changes
