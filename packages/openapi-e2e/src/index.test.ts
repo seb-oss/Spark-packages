@@ -1,7 +1,11 @@
 import type { Server } from 'http'
 import { TypedClient } from '@sebspark/openapi-client'
+import { Serialized } from '@sebspark/openapi-core'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { MarketdataClient } from './schemas/Marketdata'
+import {
+  InstrumentEntityResponse,
+  MarketdataClient,
+} from './schemas/Marketdata'
 import { app, markets } from './server'
 
 describe('openapi e2e tests', () => {
@@ -32,12 +36,14 @@ describe('openapi e2e tests', () => {
       '/markets/:mic/instruments/:isin/:currency',
       { params: { mic: 'XSTO', isin: 'SE1234567', currency: 'SEK' } }
     )
-    expect(result.data).toEqual({
+    expect(result.data).toEqual<Serialized<InstrumentEntityResponse>>({
       data: {
         id: 'xsto_se1234567_sek',
         mic: 'XSTO',
         isin: 'SE1234567',
         currency: 'SEK',
+        lastValidDate: '2024-02-05',
+        lastValidDateTime: '2024-02-05T13:05:02.000Z',
       },
       links: {
         self: '/markets/xsto/instruments/se1234567/sek',

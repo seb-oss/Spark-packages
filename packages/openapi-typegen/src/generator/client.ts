@@ -40,5 +40,5 @@ const generateCall = (path: Path): string => {
 const generateResponses = (path: Path): string =>
   Object.entries(path.responses)
     .filter(([code]) => parseInt(code, 10) < 400)
-    .map(([, type]) => generateResponseBody(type))
+    .map(([, type]) => generateResponseBody(type, false))
     .join(OR)

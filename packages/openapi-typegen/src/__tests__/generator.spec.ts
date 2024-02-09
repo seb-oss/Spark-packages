@@ -319,12 +319,12 @@ describe('typescript generator', () => {
            * 
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<APIResponse<User[]>>}
+           * @returns {Promise<APIResponse<Serialized<User>[]>>}
            */
           (
             url: '/users',
             opts?: RequestOptions
-          ): Promise<APIResponse<User[]>>
+          ): Promise<APIResponse<Serialized<User>[]>>
         }
       }`)
       const generated = await format(generateClient('User', paths))
@@ -399,7 +399,7 @@ describe('typescript generator', () => {
            * @param {number} [args.query.page] - Optional. The page number for pagination.
            * @param {number} [args.query.size] - Optional. The number of items per page.
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<APIResponse<User>>}
+           * @returns {Promise<APIResponse<Serialized<User>>>}
            */
           (
             url: '/users/:userId/:intent',
@@ -426,7 +426,7 @@ describe('typescript generator', () => {
               }
             },
             opts?: RequestOptions
-          ): Promise<APIResponse<User>>
+          ): Promise<APIResponse<Serialized<User>>>
         }
       }`)
       const generated = await format(generateClient('User', paths))
@@ -451,12 +451,12 @@ describe('typescript generator', () => {
            * 
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<APIResponse<User[]>>}
+           * @returns {Promise<APIResponse<Serialized<User>[]>>}
            */
           (
             url: '/users',
             opts?: RequestOptions
-          ): Promise<APIResponse<User[]>>
+          ): Promise<APIResponse<Serialized<User>[]>>
         }
       }`)
       const generated = await format(generateClient('User', paths))
@@ -490,13 +490,13 @@ describe('typescript generator', () => {
            * @param {Object} args - The arguments for the request.
            * @param {User} args.body - Request body for the request.
            * @param {RequestOptions} [opts] - Optional.
-           * @returns {Promise<APIResponse<User[]>>}
+           * @returns {Promise<APIResponse<Serialized<User>[]>>}
            */
           (
             url: '/users',
             args: { body: User },
             opts?: RequestOptions
-          ): Promise<APIResponse<User[]>>
+          ): Promise<APIResponse<Serialized<User>[]>>
         }
       }`)
       const generated = await format(generateClient('User', paths))
@@ -545,9 +545,9 @@ describe('typescript generator', () => {
              * Users
              * Lists users
              * 
-             * @returns {Promise<[200, APIResponse<User[]>]>}
+             * @returns {Promise<[200, APIResponse<PartiallySerialized<User>[]>]>}
              */
-            handler: (args: Req) => Promise<[200, APIResponse<User[]>]>
+            handler: (args: Req) => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
             pre?: GenericRouteHandler | GenericRouteHandler[]
           }
         }

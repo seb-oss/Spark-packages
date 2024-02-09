@@ -58,6 +58,8 @@ export const generateProperty = (property: Property): string => {
 export const preamble = (type: DocumentableType): string =>
   type.name ? `${document(type)}export type ${typeName(type.name)} = ` : ''
 
+export const rxProperVariable = /^[a-zA-Z_<>$][a-zA-Z0-9_<>$]*$/
+
 export const typeName = (name: string): string => {
   if (rxProperVariable.test(name)) return name
   return pascalCase(name)
@@ -66,8 +68,6 @@ export const propertyName = (name: string): string => {
   if (rxProperVariable.test(name)) return name
   return `'${name}'`
 }
-
-export const rxProperVariable = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/
 
 export const extensions = (type: ObjectType): string =>
   type.extends.map(generateType).concat('').join(AND)
@@ -103,7 +103,8 @@ export const generateHeader = (header: Header): string => {
 }
 
 export const generateResponseBody = (
-  type: ResponseBody | CustomType
+  type: ResponseBody | CustomType,
+  optional = true
 ): string => {
   const customType = (type as CustomType).type
   if (customType) return typeName(customType)
@@ -114,13 +115,46 @@ export const generateResponseBody = (
   const tokens: string[] = []
   tokens.push(preamble(body))
   tokens.push('APIResponse<')
-  tokens.push(body.data ? generateType(body.data) : 'undefined')
+  tokens.push(
+    body.data ? generateType(serialized(body.data, optional)) : 'undefined'
+  )
   if (body.headers) {
     tokens.push(', ')
     tokens.push(body.headers ? generateHeaders(body.headers) : 'undefined')
   }
   tokens.push('>')
   return tokens.join('')
+}
+
+const serialized = (orig: TypeDefinition, optional = true): TypeDefinition => {
+  switch (orig.type) {
+    case 'bigint':
+    case 'boolean':
+    case 'enum':
+    case 'null':
+    case 'number':
+    case 'string':
+    case 'symbol':
+    case 'undefined': {
+      return orig
+    }
+    case 'Date': {
+      return { ...orig, type: 'string' }
+    }
+    case 'array': {
+      return {
+        ...orig,
+        items: serialized((orig as ArrayType).items, optional),
+      } as ArrayType
+    }
+    case 'object': {
+      return orig
+    }
+    default: {
+      const wrapper = optional ? 'PartiallySerialized' : 'Serialized'
+      return { ...orig, type: `${wrapper}<${typeName(orig.type)}>` }
+    }
+  }
 }
 
 export const generateHeaders = (headers: Header[]): string => {

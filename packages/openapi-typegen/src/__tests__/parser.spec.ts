@@ -744,6 +744,26 @@ describe('openapi parser', () => {
       }
       expect(parsed).toEqual(expected)
     })
+    it('parses Date strings', () => {
+      const schema: SchemaObject = {
+        properties: {
+          lastValidDate: {
+            type: 'string',
+            format: 'date',
+          },
+        },
+      }
+      const parsed = parseSchema('ContainsDate', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'ContainsDate',
+        extends: [],
+        properties: [
+          { name: 'lastValidDate', optional: true, type: [{ type: 'Date' }] },
+        ],
+      }
+      expect(parsed).toEqual(expected)
+    })
     it('parses allOf', () => {
       const schema: SchemaObject = {
         allOf: [

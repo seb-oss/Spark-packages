@@ -18,7 +18,9 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
    APIServerDefinition,
    BaseClient,
    GenericRouteHandler,
+   PartiallySerialized,
    RequestOptions,
+   Serialized,
  } from '@sebspark/openapi-core'
  import type { Request } from 'express'
  

@@ -381,7 +381,23 @@
         }
       },
       "Instrument": {
-        "allOf": [{ "$ref": "#/components/schemas/InstrumentListItem" }]
+        "allOf": [
+          { "$ref": "#/components/schemas/InstrumentListItem" },
+          {
+            "type": "object",
+            "properties": {
+              "lastValidDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "lastValidDateTime": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": ["lastValidDate", "lastValidDateTime"]
+          }
+        ]
       },
       "InstrumentListResponse": {
         "type": "object",
