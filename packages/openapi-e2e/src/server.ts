@@ -62,7 +62,7 @@ const api: MarketdataServer = {
             mic,
             isin,
             lastValidDate: '2024-02-05',
-            lastValidDateTime: new Date('2024-02-05 14:05:02').toISOString(),
+            lastValidDateTime: '2024-02-05T13:05:02.000Z',
           },
           links: {
             self: `/markets/${mic}/instruments/${isin}/${currency}`.toLowerCase(),
