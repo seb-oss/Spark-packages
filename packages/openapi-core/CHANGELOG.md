@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.1.0
+
+### Minor Changes
+
+- a71af0c: Dates are now typed as Date, except for after serialization
+
 ## 1.0.0
 
 ### Major Changes
