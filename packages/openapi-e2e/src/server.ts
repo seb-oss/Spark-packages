@@ -1,7 +1,11 @@
-import { NotImplementedError } from '@sebspark/openapi-core'
+import {
+  NotImplementedError,
+  PartiallySerialized,
+} from '@sebspark/openapi-core'
 import { TypedRouter } from '@sebspark/openapi-express'
 import express from 'express'
 import {
+  Instrument,
   InstrumentEntityResponse,
   MarketListResponse,
   MarketdataServer,
@@ -51,12 +55,14 @@ const api: MarketdataServer = {
   '/markets/:mic/instruments/:isin/:currency': {
     get: {
       handler: async ({ params: { currency, isin, mic } }) => {
-        const instrument: InstrumentEntityResponse = {
+        const instrument: PartiallySerialized<InstrumentEntityResponse> = {
           data: {
             id: `${mic.toLowerCase()}_${isin.toLowerCase()}_${currency.toLowerCase()}`,
             currency,
             mic,
             isin,
+            lastValidDate: '2024-02-05',
+            lastValidDateTime: new Date('2024-02-05 14:05:02').toISOString(),
           },
           links: {
             self: `/markets/${mic}/instruments/${isin}/${currency}`.toLowerCase(),

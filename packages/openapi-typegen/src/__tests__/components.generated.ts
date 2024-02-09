@@ -8,7 +8,9 @@ import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  PartiallySerialized,
   RequestOptions,
+  Serialized,
 } from '@sebspark/openapi-core'
 import type { Request } from 'express'
 
@@ -54,14 +56,14 @@ export type ExampleAPIServer = APIServerDefinition & {
        *
        * @param {Object} [args] - Optional. The arguments for the request.
        * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
-       * @returns {Promise<[200, APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>]>}
        */
       handler: (
         args?: Req & { query?: PageParam & LimitParam },
       ) => Promise<
         [
           200,
-          APIResponse<UserList, { 'X-Rate-Limit': XRateLimit; apiKey: string }>,
+          APIResponse<PartiallySerialized<UserList>, { 'X-Rate-Limit': XRateLimit; apiKey: string }>,
         ]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -71,11 +73,11 @@ export type ExampleAPIServer = APIServerDefinition & {
        *
        * @param {Object} args - The arguments for the request.
        * @param {UserCreate} args.body - Request body for the request.
-       * @returns {Promise<[201, APIResponse<User>]>}
+       * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>]>}
        */
       handler: (
         args: Req & { body: UserCreate }
-      ) => Promise<[201, APIResponse<User>]>
+      ) => Promise<[201, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -86,7 +88,7 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args - The arguments for the request.
        * @param {Object} args.params - Path parameters for the request.
        * @param {string} args.params.userId
-       * @returns {Promise<[200, APIResponse<User, {'x-api-key': string}>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>]>}
        */
       handler: (
         args: Req & {
@@ -94,7 +96,7 @@ export type ExampleAPIServer = APIServerDefinition & {
             userId: string
           }
         }
-      ) => Promise<[200, APIResponse<User, {'x-api-key': string}>]>
+      ) => Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -108,14 +110,14 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} [args] - Optional. The arguments for the request.
      * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>>}
+     * @returns {Promise<APIResponse<Serialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>>}
      */
     (
       url: '/users',
       args?: { query?: PageParam & LimitParam },
       opts?: RequestOptions,
     ): Promise<
-      APIResponse<UserList, {'X-Rate-Limit': XRateLimit, apiKey: string}>
+      APIResponse<Serialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>
     >
     /**
      *
@@ -124,7 +126,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} args.params - Path parameters for the request.
      * @param {string} args.params.userId
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<User, {'x-api-key': string}>>}
+     * @returns {Promise<APIResponse<Serialized<User>, {'x-api-key': string}>>}
      */
     (
       url: '/users/:userId',
@@ -134,7 +136,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<APIResponse<User, {'x-api-key': string}>>
+    ): Promise<APIResponse<Serialized<User>, {'x-api-key': string}>>
   }
   post: {
     /**
@@ -143,12 +145,12 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} args - The arguments for the request.
      * @param {UserCreate} args.body - Request body for the request.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<User>>}
+     * @returns {Promise<APIResponse<Serialized<User>>>}
      */
     (
       url: '/users',
       args: { body: UserCreate },
       opts?: RequestOptions,
-    ): Promise<APIResponse<User>>
+    ): Promise<APIResponse<Serialized<User>>>
   }
 }

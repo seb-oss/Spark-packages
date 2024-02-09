@@ -8,7 +8,9 @@ import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  PartiallySerialized,
   RequestOptions,
+  Serialized,
 } from '@sebspark/openapi-core'
 import type { Request } from 'express'
 
@@ -76,7 +78,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} [args.query] - Optional. Query parameters for the request.
        * @param {number} [args.query.page] - Optional.
        * @param {number} [args.query.limit] - Optional.
-       * @returns {Promise<[200, APIResponse<CardList>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<CardList>>]>}
        */
       handler: (
         args?: Req & {
@@ -85,7 +87,7 @@ export type CardsAPIServer = APIServerDefinition & {
             limit?: number
           }
         },
-      ) => Promise<[200, APIResponse<CardList>]>
+      ) => Promise<[200, APIResponse<PartiallySerialized<CardList>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -98,7 +100,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {string} args.params.cardId
        * @param {Object} args.query - Query parameters for the request.
        * @param {boolean} args.query.cardNickname
-       * @returns {Promise<[200, APIResponse<Card>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<Card>>]>}
        */
       handler: (
         args: Req & {
@@ -109,7 +111,7 @@ export type CardsAPIServer = APIServerDefinition & {
             cardNickname: boolean
           }
         }
-      ) => Promise<[200, APIResponse<Card>]>
+      ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
     get: {
@@ -123,7 +125,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} args.headers - Headers for the request.
        * @param {string} args.headers["X-User-Id"]
        * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
-       * @returns {Promise<[200, APIResponse<Card>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<Card>>]>}
        */
       handler: (
         args: Req & {
@@ -138,7 +140,7 @@ export type CardsAPIServer = APIServerDefinition & {
             cardNickname: boolean
           }
         }
-      ) => Promise<[200, APIResponse<Card>]>
+      ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -180,7 +182,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {number} [args.query.page] - Optional.
      * @param {number} [args.query.limit] - Optional.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<CardList>>}
+     * @returns {Promise<APIResponse<Serialized<CardList>>>}
      */
     (
       url: '/',
@@ -191,7 +193,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions
-    ): Promise<APIResponse<CardList>>
+    ): Promise<APIResponse<Serialized<CardList>>>
     /**
      *
      * @param {string} url
@@ -204,7 +206,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {string} args.headers["X-User-Id"]
      * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<Card>>}
+     * @returns {Promise<APIResponse<Serialized<Card>>>}
      */
     (
       url: '/:cardId',
@@ -221,7 +223,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<APIResponse<Card>>
+    ): Promise<APIResponse<Serialized<Card>>>
   }
   delete: {
     /**
@@ -233,7 +235,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      * @param {Object} args.query - Query parameters for the request.
      * @param {boolean} args.query.cardNickname
      * @param {RequestOptions} [opts] - Optional.
-     * @returns {Promise<APIResponse<Card>>}
+     * @returns {Promise<APIResponse<Serialized<Card>>>}
      */
     (
       url: '/:cardId',
@@ -246,7 +248,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         }
       },
       opts?: RequestOptions,
-    ): Promise<APIResponse<Card>>
+    ): Promise<APIResponse<Serialized<Card>>>
   }
   put: {
     /**

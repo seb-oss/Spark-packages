@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
+import type { Empty, PartiallySerialized, Serialized } from './ts-extensions'
+
+export type { PartiallySerialized, Serialized }
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
-
-type Empty = Record<never, never>
 
 export type APIResponse<
   Data = undefined,

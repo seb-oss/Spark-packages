@@ -1,4 +1,9 @@
-import { APIResponse, BaseClient, RequestOptions } from '@sebspark/openapi-core'
+import {
+  APIResponse,
+  BaseClient,
+  RequestOptions,
+  Serialized,
+} from '@sebspark/openapi-core'
 import { Router, json } from 'express'
 
 export type User = {
@@ -8,33 +13,36 @@ export type User = {
 }
 
 type ClientGet = {
-  (url: '/users', opts?: RequestOptions): Promise<APIResponse<User[]>>
+  (
+    url: '/users',
+    opts?: RequestOptions
+  ): Promise<APIResponse<Serialized<User>[]>>
   (
     url: '/users/:id',
     args: { params: { id: string } },
     opts?: RequestOptions
-  ): Promise<APIResponse<User>>
+  ): Promise<APIResponse<Serialized<User>>>
 }
 type ClientPost = {
   (
     url: '/users',
     args: { body: User },
     opts?: RequestOptions
-  ): Promise<APIResponse<User>>
+  ): Promise<APIResponse<Serialized<User>>>
 }
 type ClientPut = {
   (
     url: '/users/:id',
     args: { params: { id: string }; body: User },
     opts?: RequestOptions
-  ): Promise<APIResponse<User>>
+  ): Promise<APIResponse<Serialized<User>>>
 }
 type ClientPatch = {
   (
     url: '/users/:id',
     args: { params: { id: string }; body: Partial<User> },
     opts?: RequestOptions
-  ): Promise<APIResponse<User>>
+  ): Promise<APIResponse<Serialized<User>>>
 }
 type ClientDelete = {
   (

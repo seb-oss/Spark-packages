@@ -3,10 +3,11 @@ import {
   APIServerDefinition,
   APIServerOptions,
   GenericRouteHandler,
+  PartiallySerialized,
   UnauthorizedError,
 } from '@sebspark/openapi-core'
 import express, { Express } from 'express'
-import { SuperAgentTest, agent } from 'supertest'
+import { Agent, agent } from 'supertest'
 import { Mock, beforeEach, expect, test, vi } from 'vitest'
 import { TypedRouter } from './router'
 
@@ -17,14 +18,14 @@ type User = {
 type Server = APIServerDefinition & {
   '/users': {
     get: {
-      handler: () => Promise<[200, APIResponse<User[]>]>
+      handler: () => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/users/:id': {
     get: {
       handler: (args: { params: { id: string } }) => Promise<
-        [200, APIResponse<User>]
+        [200, APIResponse<PartiallySerialized<User>>]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -37,7 +38,9 @@ type Server = APIServerDefinition & {
   }
   '/headerandbody': {
     get: {
-      handler: () => Promise<[204, APIResponse<User, { 'x-foo': 'bar' }>]>
+      handler: () => Promise<
+        [204, APIResponse<PartiallySerialized<User>, { 'x-foo': 'bar' }>]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -46,7 +49,7 @@ type Server = APIServerDefinition & {
 let app: Express
 let server: Server
 let options: APIServerOptions
-let client: SuperAgentTest
+let client: Agent
 
 beforeEach(() => {
   app = express()
