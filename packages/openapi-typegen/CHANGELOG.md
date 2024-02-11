@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.2.1
+
+### Patch Changes
+
+- be1c2e5: Fixed generation of arrays with inline definition
+
 ## 1.2.0
 
 ### Minor Changes
