@@ -88,7 +88,8 @@ export const generateObject = (parsed: ObjectType): string => {
 
 export const generateArray = (parsed: ArrayType): string => {
   const lines: string[] = []
-  lines.push(`${preamble(parsed)}${parsed.items.type}[]`)
+  const items = generateType(parsed.items)
+  lines.push(`${preamble(parsed)}${items}[]`)
   return lines.join('\n')
 }
 

@@ -718,6 +718,43 @@ describe('openapi parser', () => {
       }
       expect(parsed).toEqual(expected)
     })
+    it('parses named arrays with inline definition', () => {
+      const schema: SchemaObject = {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            bondHoldings: {
+              type: 'array',
+              items: { $ref: '#/components/schemas/BondHolding' },
+            },
+            statementDateTime: {
+              type: 'string',
+            },
+          },
+          required: ['bondHoldings'],
+        }
+      }
+      const parsed = parseSchema('Accounts', schema)
+
+      const expected: ArrayType = {
+        type: 'array',
+        name: 'Accounts',
+        items: {
+          type: 'object',
+          extends: [],
+          properties: [
+            { name: 'bondHoldings', optional: false, type: [{
+              type: 'array',
+              items: { type: 'BondHolding' } as CustomType,
+            } as ArrayType] },
+            { name: 'statementDateTime', optional: true, type: [{type: 'string'}] }
+          ],
+        } as ObjectType
+      }
+
+      expect(parsed).toEqual(expected)
+    })
     it('parses string enums', () => {
       const schema: SchemaObject = {
         type: 'string',

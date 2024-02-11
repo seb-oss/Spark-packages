@@ -97,6 +97,33 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates an array type with inline definition', async () => {
+      const type: ArrayType = {
+        type: 'array',
+        name: 'Accounts',
+        items: {
+          type: 'object',
+          extends: [],
+          properties: [
+            { name: 'bondHoldings', optional: false, type: [{
+              type: 'array',
+              items: { type: 'BondHolding' } as CustomType,
+            } as ArrayType] },
+            { name: 'statementDateTime', optional: true, type: [{type: 'string'}] }
+          ],
+        } as ObjectType
+      }
+
+      const expected = await format(`
+      export type Accounts = {
+        bondHoldings: BondHolding[]
+        statementDateTime?: string
+      }[]
+      `)
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
     it('generates a complex object type', async () => {
       const type: ObjectType = {
         type: 'object',
