@@ -44,7 +44,6 @@ describe('typescript generator', () => {
     it('generates a simple object type', async () => {
       const type: ObjectType = {
         type: 'object',
-        extends: [],
         name: 'User',
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -66,7 +65,6 @@ describe('typescript generator', () => {
       const type: ObjectType = {
         type: 'object',
         name: 'SuccessResponse',
-        extends: [],
         properties: [
           { name: 'status', type: [{ type: 'string' }], optional: false },
           { name: 'message', type: [{ type: 'string' }], optional: false },
@@ -103,7 +101,6 @@ describe('typescript generator', () => {
         name: 'Accounts',
         items: {
           type: 'object',
-          extends: [],
           properties: [
             {
               name: 'bondHoldings',
@@ -137,7 +134,6 @@ describe('typescript generator', () => {
     it('generates a complex object type', async () => {
       const type: ObjectType = {
         type: 'object',
-        extends: [],
         name: 'User',
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -162,7 +158,6 @@ describe('typescript generator', () => {
     it('generates a complex object type with inlined definition', async () => {
       const type: ObjectType = {
         type: 'object',
-        extends: [],
         name: 'User',
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -179,7 +174,6 @@ describe('typescript generator', () => {
                 properties: [
                   { name: 'age', type: [{ type: 'number' }], optional: false },
                 ],
-                extends: [],
               },
             ],
             optional: true,
@@ -203,7 +197,7 @@ describe('typescript generator', () => {
     it('generates extended objects', async () => {
       const type: ObjectType = {
         type: 'object',
-        extends: [{ type: 'BaseUser' }],
+        allOf: [{ type: 'BaseUser' }],
         name: 'User',
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -222,7 +216,6 @@ describe('typescript generator', () => {
     it('generates a complex object type with inlined and extended definition', async () => {
       const type: ObjectType = {
         type: 'object',
-        extends: [],
         name: 'User',
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -239,7 +232,7 @@ describe('typescript generator', () => {
                 properties: [
                   { name: 'age', type: [{ type: 'number' }], optional: false },
                 ],
-                extends: [{ type: 'BaseProperties' }],
+                allOf: [{ type: 'BaseProperties' }],
               },
             ],
             optional: true,
@@ -265,11 +258,10 @@ describe('typescript generator', () => {
         type: 'object',
         name: 'User',
         properties: [],
-        extends: [
+        allOf: [
           { type: 'Person' },
           {
             type: 'object',
-            extends: [],
             properties: [
               { name: 'name', type: [{ type: 'string' }], optional: true },
             ],
@@ -295,7 +287,6 @@ describe('typescript generator', () => {
           { name: 'id', type: [{ type: 'string' }], optional: false },
           { name: 'props', type: [{ type: 'UserProps' }], optional: false },
         ],
-        extends: [],
       }
 
       const expected = await format(
@@ -304,6 +295,47 @@ describe('typescript generator', () => {
           props: UserProps
         }`
       )
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
+    it('generates a oneOf object', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        properties: [],
+        name: 'Details',
+        oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+      }
+
+      const expected = await format(
+        'export type Details = StockDetails | FundDetails'
+      )
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
+    it('generates a oneOf object with discriminator', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        properties: [],
+        name: 'Details',
+        oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+        discriminator: {
+          propertyName: 'instrumentType',
+          mapping: {
+            STOCK: { type: 'StockDetails' },
+            FUND: { type: 'FundDetails' },
+          },
+        },
+      }
+
+      const expected = await format(`
+        export type Details =
+          | StockDetails & { instrumentType: 'STOCK' }
+          | FundDetails & { instrumentType: 'FUND' }
+        `)
       const generated = generateType(type)
       const formatted = await format(generated)
 
@@ -378,7 +410,6 @@ describe('typescript generator', () => {
           args: {
             path: {
               type: 'object',
-              extends: [],
               optional: false,
               properties: [
                 {
@@ -397,7 +428,6 @@ describe('typescript generator', () => {
             },
             query: {
               type: 'object',
-              extends: [],
               optional: true,
               properties: [
                 {
@@ -508,7 +538,7 @@ describe('typescript generator', () => {
           args: {
             body: {
               type: 'object',
-              extends: [{ type: 'User' }],
+              allOf: [{ type: 'User' }],
               optional: false,
               properties: [],
             },
@@ -563,7 +593,6 @@ describe('typescript generator', () => {
               name: undefined,
               optional: false,
               type: 'object',
-              extends: [],
               properties: [
                 { name: 'id', optional: false, type: [{ type: 'string' }] },
               ],

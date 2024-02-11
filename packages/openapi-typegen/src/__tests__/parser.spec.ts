@@ -175,7 +175,6 @@ describe('openapi parser', () => {
             200: {
               data: {
                 type: 'object',
-                extends: [],
                 name: undefined,
                 properties: [
                   { name: 'name', type: [{ type: 'string' }], optional: false },
@@ -254,7 +253,6 @@ describe('openapi parser', () => {
           args: {
             path: {
               type: 'object',
-              extends: [],
               optional: false,
               properties: [
                 { name: 'userId', optional: false, type: [{ type: 'number' }] },
@@ -262,7 +260,6 @@ describe('openapi parser', () => {
             },
             query: {
               type: 'object',
-              extends: [],
               optional: true,
               properties: [
                 { name: 'page', optional: true, type: [{ type: 'number' }] },
@@ -271,7 +268,6 @@ describe('openapi parser', () => {
             },
             header: {
               type: 'object',
-              extends: [],
               optional: false,
               properties: [
                 {
@@ -283,7 +279,6 @@ describe('openapi parser', () => {
             },
             cookie: {
               type: 'object',
-              extends: [],
               optional: false,
               properties: [
                 {
@@ -336,7 +331,6 @@ describe('openapi parser', () => {
             body: {
               type: 'object',
               name: undefined,
-              extends: [],
               optional: true,
               properties: [
                 {
@@ -447,25 +441,25 @@ describe('openapi parser', () => {
           args: {
             body: {
               type: 'object',
-              extends: [{ type: 'User' }],
+              allOf: [{ type: 'User' }],
               optional: true,
               properties: [],
             },
             path: {
               type: 'object',
-              extends: [{ type: 'UserIdParam' }],
+              allOf: [{ type: 'UserIdParam' }],
               optional: false,
               properties: [],
             },
             query: {
               type: 'object',
-              extends: [{ type: 'PageParam' }],
+              allOf: [{ type: 'PageParam' }],
               optional: true,
               properties: [],
             },
             header: {
               type: 'object',
-              extends: [{ type: 'ApiSecretHeader' }],
+              allOf: [{ type: 'ApiSecretHeader' }],
               optional: false,
               properties: [
                 {
@@ -504,7 +498,6 @@ describe('openapi parser', () => {
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: true },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -525,7 +518,6 @@ describe('openapi parser', () => {
         properties: [
           { name: 'name', type: [{ type: 'string' }], optional: false },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -550,7 +542,6 @@ describe('openapi parser', () => {
           { name: 'name', type: [{ type: 'string' }], optional: true },
           { name: 'friend', type: [{ type: 'User' }], optional: false },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -575,7 +566,6 @@ describe('openapi parser', () => {
           { name: 'name', type: [{ type: 'string' }], optional: true },
           { name: 'age', type: [{ type: 'number' }], optional: false },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -607,7 +597,6 @@ describe('openapi parser', () => {
             type: [
               {
                 type: 'object',
-                extends: [],
                 properties: [
                   { name: 'nick', type: [{ type: 'string' }], optional: false },
                 ],
@@ -616,7 +605,6 @@ describe('openapi parser', () => {
             optional: false,
           },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -648,7 +636,6 @@ describe('openapi parser', () => {
             optional: false,
           },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -692,14 +679,12 @@ describe('openapi parser', () => {
                       optional: false,
                     },
                   ],
-                  extends: [],
                 },
               },
             ],
             optional: false,
           },
         ],
-        extends: [],
       }
       expect(parsed).toEqual(expected)
     })
@@ -742,7 +727,6 @@ describe('openapi parser', () => {
         name: 'Accounts',
         items: {
           type: 'object',
-          extends: [],
           properties: [
             {
               name: 'bondHoldings',
@@ -804,7 +788,6 @@ describe('openapi parser', () => {
       const expected: ObjectType = {
         type: 'object',
         name: 'ContainsDate',
-        extends: [],
         properties: [
           { name: 'lastValidDate', optional: true, type: [{ type: 'Date' }] },
         ],
@@ -823,8 +806,58 @@ describe('openapi parser', () => {
         type: 'object',
         name: 'User',
         properties: [],
-        extends: [{ type: 'Role' }, { type: 'Person' }],
+        allOf: [{ type: 'Role' }, { type: 'Person' }],
       }
+      expect(parsed).toEqual(expected)
+    })
+    it('parses oneOf', () => {
+      const schema: SchemaObject = {
+        oneOf: [
+          { $ref: '#/components/schemas/StockDetails' },
+          { $ref: '#/components/schemas/FundDetails' },
+        ],
+      }
+      const parsed = parseSchema('Details', schema)
+
+      const expected: ObjectType = {
+        type: 'object',
+        properties: [],
+        name: 'Details',
+        oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses oneOf with discriminator', () => {
+      const schema: SchemaObject = {
+        oneOf: [
+          { $ref: '#/components/schemas/StockDetails' },
+          { $ref: '#/components/schemas/FundDetails' },
+        ],
+        discriminator: {
+          propertyName: 'instrumentType',
+          mapping: {
+            STOCK: '#/components/schemas/StockDetails',
+            FUND: '#/components/schemas/FundDetails',
+          },
+        },
+      }
+      const parsed = parseSchema('Details', schema)
+
+      const expected: ObjectType = {
+        type: 'object',
+        properties: [],
+        name: 'Details',
+        oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+        discriminator: {
+          propertyName: 'instrumentType',
+          mapping: {
+            STOCK: { type: 'StockDetails' },
+            FUND: { type: 'FundDetails' },
+          },
+        },
+      }
+
       expect(parsed).toEqual(expected)
     })
     it('parses combined properties and allOf', () => {
@@ -846,11 +879,10 @@ describe('openapi parser', () => {
         type: 'object',
         name: 'User',
         properties: [],
-        extends: [
+        allOf: [
           { type: 'Person' },
           {
             type: 'object',
-            extends: [],
             properties: [
               { name: 'name', type: [{ type: 'string' }], optional: true },
             ],
@@ -876,7 +908,6 @@ describe('openapi parser', () => {
       const expected: ObjectType = {
         type: 'object',
         name: 'SuccessResponse',
-        extends: [],
         properties: [
           { name: 'status', type: [{ type: 'string' }], optional: false },
           { name: 'message', type: [{ type: 'string' }], optional: false },
@@ -902,7 +933,6 @@ describe('openapi parser', () => {
       const expected: ObjectType = {
         type: 'object',
         name: 'EventResponse',
-        extends: [],
         properties: [
           { name: 'eventId', type: [{ type: 'number' }], optional: false },
           {
@@ -1007,7 +1037,6 @@ describe('openapi parser', () => {
       const expected: ObjectType = {
         type: 'object',
         name: 'UserRequest',
-        extends: [],
         properties: [
           { name: 'name', optional: false, type: [{ type: 'string' }] },
         ],

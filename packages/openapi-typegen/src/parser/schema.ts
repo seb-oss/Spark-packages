@@ -1,5 +1,11 @@
 import { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
-import { ArrayType, ObjectType, Property, TypeDefinition } from '../types'
+import {
+  ArrayType,
+  CustomType,
+  ObjectType,
+  Property,
+  TypeDefinition,
+} from '../types'
 import { parseDocumentation, parseEnumType, parseRef } from './common'
 
 export const parseSchemas = (
@@ -42,7 +48,6 @@ const parseObjectSchema = (
     name,
     type: 'object',
     properties: [],
-    extends: [],
     ...parseDocumentation(schema),
   }
   if (schema.properties) {
@@ -51,7 +56,23 @@ const parseObjectSchema = (
     )
   }
   if (schema.allOf) {
-    type.extends = schema.allOf.flatMap(parsePropertyType)
+    type.allOf = schema.allOf.flatMap(parsePropertyType)
+  }
+  if (schema.oneOf) {
+    type.oneOf = schema.oneOf.flatMap(parsePropertyType)
+  }
+  if (schema.anyOf) {
+    type.oneOf = schema.anyOf.flatMap(parsePropertyType)
+  }
+  if (schema.discriminator?.mapping) {
+    const mapping: Record<string, CustomType> = {}
+    for (const [prop, ref] of Object.entries(schema.discriminator.mapping)) {
+      mapping[prop] = { type: parseRef(ref) }
+    }
+    type.discriminator = {
+      propertyName: schema.discriminator.propertyName,
+      mapping,
+    }
   }
   return type
 }

@@ -1,4 +1,4 @@
-import { ParameterIn, Verb } from '@sebspark/openapi-core'
+import { DiscriminatorObject, ParameterIn, Verb } from '@sebspark/openapi-core'
 
 export type Primitive =
   | 'string'
@@ -40,10 +40,18 @@ export type ArrayType = BaseType & {
   items: CustomType | ObjectType | ArrayType
 }
 
+export type Discriminator = {
+  propertyName: string
+  mapping: Record<string, CustomType>
+}
+
 export type ObjectType = BaseType & {
   type: 'object'
   properties: Property[]
-  extends: (CustomType | ObjectType)[]
+  allOf?: (CustomType | ObjectType)[]
+  anyOf?: (CustomType | ObjectType)[]
+  oneOf?: (CustomType | ObjectType)[]
+  discriminator?: Discriminator
 }
 
 export type CustomType = BaseType & {

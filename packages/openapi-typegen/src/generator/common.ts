@@ -2,6 +2,7 @@ import { pascalCase } from 'change-case'
 import {
   ArrayType,
   CustomType,
+  Discriminator,
   DocumentableType,
   EnumType,
   Header,
@@ -45,7 +46,7 @@ export const generateType = (parsed: TypeDefinition): string => {
       type = generateCustom(parsed as CustomType)
     }
   }
-  return type.replace(/ & \{\s*\}/g, '')
+  return type.replace(/ [&|] \{\s*\}/g, '')
 }
 
 export const generateProperty = (property: Property): string => {
@@ -70,7 +71,43 @@ export const propertyName = (name: string): string => {
 }
 
 export const extensions = (type: ObjectType): string =>
-  type.extends.map(generateType).concat('').join(AND)
+  (type.allOf || []).map(generateType).concat('').join(AND) +
+  parseOptional(type.oneOf, type.discriminator)
+
+const parseOptional = (
+  optional?: (ObjectType | CustomType)[],
+  discriminator?: Discriminator
+): string => {
+  const tokens: string[] = []
+  const map = reverseDiscriminator(discriminator)
+  for (const type of optional || []) {
+    if (type.type === 'object') tokens.push(generateType(type))
+    else {
+      const custom = type as CustomType
+      if (!map[custom.type]) tokens.push(generateType(custom))
+      else {
+        tokens.push(
+          `(${generateType(custom)} & { ${discriminator?.propertyName}: '${
+            map[custom.type]
+          }' })`
+        )
+      }
+    }
+  }
+  if (tokens.length) tokens.push('')
+  return tokens.join(OR)
+}
+
+const reverseDiscriminator = (
+  discriminator?: Discriminator
+): Record<string, string> => {
+  const reverse: Record<string, string> = {}
+  if (!discriminator) return reverse
+  for (const [val, { type }] of Object.entries(discriminator.mapping)) {
+    reverse[type] = val
+  }
+  return reverse
+}
 
 export const generatePrimitive = (parsed: PrimitiveType): string =>
   `${preamble(parsed)}${parsed.type}`

@@ -28,7 +28,6 @@ export const parseArgs = (
 
 const createArgs = (initializer: Partial<Args> = {}): Args => ({
   type: 'object',
-  extends: [],
   properties: [],
   optional: true,
   ...initializer,
@@ -50,7 +49,10 @@ const parseParameters = (
           const arg =
             args[param.in] || createArgs({ ...parseDocumentation(param) })
           arg.optional = arg.optional && !param.required
-          arg.extends.push({ type: parseRef(ref) })
+
+          if (!arg.allOf) arg.allOf = []
+          arg.allOf.push({ type: parseRef(ref) })
+
           args[param.in] = arg
           break
         }
@@ -100,7 +102,7 @@ const parseRequestBody = (
     const refBody = findRef<RequestBodyObject>(components, ref)
     args.body = createArgs({
       optional: !refBody.required,
-      extends: [{ type: parseRef(ref) }],
+      allOf: [{ type: parseRef(ref) }],
     })
   } else {
     // Inline request body properties
@@ -121,13 +123,17 @@ const parseRequestBody = (
         } else if (parsed.type) {
           args.body = createArgs({
             optional: !body.required,
-            extends: [parsed],
+            allOf: [parsed],
             ...parseDocumentation(body),
           })
         }
       }
     }
-    if (bodyArgs.extends.length || bodyArgs.properties.length) {
+    if (
+      bodyArgs.allOf?.length ||
+      bodyArgs.oneOf?.length ||
+      bodyArgs.properties.length
+    ) {
       args.body = bodyArgs
     }
   }

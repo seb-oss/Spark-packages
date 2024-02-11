@@ -52,7 +52,6 @@ const generateComponents = (components: ParsedComponents): string => {
     tokens.push(
       generateType({
         type: 'object',
-        extends: [],
         name: param.name,
         properties: [
           {

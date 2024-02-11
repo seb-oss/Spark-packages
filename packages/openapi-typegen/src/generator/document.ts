@@ -83,7 +83,7 @@ const requestArgs = (
   if (!args) return []
 
   const tokens: string[] = []
-  const type = args.extends.map((e) => e.type).join(AND) || 'Object'
+  const type = (args.allOf || []).map((e) => e.type).join(AND) || 'Object'
   tokens.push(
     param(
       buildPath('args', name),
