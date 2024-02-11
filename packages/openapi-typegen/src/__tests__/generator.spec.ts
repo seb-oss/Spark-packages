@@ -105,13 +105,23 @@ describe('typescript generator', () => {
           type: 'object',
           extends: [],
           properties: [
-            { name: 'bondHoldings', optional: false, type: [{
-              type: 'array',
-              items: { type: 'BondHolding' } as CustomType,
-            } as ArrayType] },
-            { name: 'statementDateTime', optional: true, type: [{type: 'string'}] }
+            {
+              name: 'bondHoldings',
+              optional: false,
+              type: [
+                {
+                  type: 'array',
+                  items: { type: 'BondHolding' } as CustomType,
+                } as ArrayType,
+              ],
+            },
+            {
+              name: 'statementDateTime',
+              optional: true,
+              type: [{ type: 'string' }],
+            },
           ],
-        } as ObjectType
+        } as ObjectType,
       }
 
       const expected = await format(`
