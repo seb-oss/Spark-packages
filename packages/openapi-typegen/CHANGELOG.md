@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.3.0
+
+### Minor Changes
+
+- 9303c31: Added parsing of oneOf with discriminator
+
 ## 1.2.1
 
 ### Patch Changes
