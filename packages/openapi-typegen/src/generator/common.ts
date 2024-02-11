@@ -72,42 +72,7 @@ export const propertyName = (name: string): string => {
 
 export const extensions = (type: ObjectType): string =>
   (type.allOf || []).map(generateType).concat('').join(AND) +
-  parseOptional(type.oneOf, type.discriminator)
-
-const parseOptional = (
-  optional?: (ObjectType | CustomType)[],
-  discriminator?: Discriminator
-): string => {
-  const tokens: string[] = []
-  const map = reverseDiscriminator(discriminator)
-  for (const type of optional || []) {
-    if (type.type === 'object') tokens.push(generateType(type))
-    else {
-      const custom = type as CustomType
-      if (!map[custom.type]) tokens.push(generateType(custom))
-      else {
-        tokens.push(
-          `(${generateType(custom)} & { ${discriminator?.propertyName}: '${
-            map[custom.type]
-          }' })`
-        )
-      }
-    }
-  }
-  if (tokens.length) tokens.push('')
-  return tokens.join(OR)
-}
-
-const reverseDiscriminator = (
-  discriminator?: Discriminator
-): Record<string, string> => {
-  const reverse: Record<string, string> = {}
-  if (!discriminator) return reverse
-  for (const [val, { type }] of Object.entries(discriminator.mapping)) {
-    reverse[type] = val
-  }
-  return reverse
-}
+  (type.oneOf || []).map(generateType).concat('').join(OR)
 
 export const generatePrimitive = (parsed: PrimitiveType): string =>
   `${preamble(parsed)}${parsed.type}`
@@ -119,6 +84,24 @@ export const generateObject = (parsed: ObjectType): string => {
   const lines: string[] = []
   lines.push(`${preamble(parsed)}${extensions(parsed)}{`)
   lines.push(...parsed.properties.map(generateProperty))
+  lines.push('}')
+
+  if (parsed.discriminator && parsed.name) {
+    lines.push(generateDiscriminator(parsed.discriminator, parsed.name))
+  }
+
+  return lines.join('\n')
+}
+
+const generateDiscriminator = (
+  discriminator: Discriminator,
+  name: string
+): string => {
+  const lines: string[] = ['']
+  lines.push(`export type ${name}Discriminator = {`)
+  for (const [key, type] of Object.entries(discriminator.mapping)) {
+    lines.push(`${key}: ${type.type}`)
+  }
   lines.push('}')
   return lines.join('\n')
 }

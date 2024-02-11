@@ -332,9 +332,12 @@ describe('typescript generator', () => {
       }
 
       const expected = await format(`
-        export type Details =
-          | StockDetails & { instrumentType: 'STOCK' }
-          | FundDetails & { instrumentType: 'FUND' }
+        export type Details = StockDetails | FundDetails
+        
+        export type DetailsDiscriminator = {
+          STOCK: StockDetails
+          FUND: FundDetails
+        }
         `)
       const generated = generateType(type)
       const formatted = await format(generated)

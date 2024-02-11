@@ -151,6 +151,12 @@
           },
           "name": {
             "type": "string"
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          },
+          "userDetails": {
+            "$ref": "#/components/schemas/UserDetails"
           }
         },
         "required": ["id"],
@@ -163,6 +169,33 @@
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/User"
+        }
+      },
+      "UserType": {
+        "type": "string",
+        "enum": ["HUMAN", "SYSTEM"]
+      },
+      "HumanDetails": {
+        "properties": {
+          "name": { "type": "string" }
+        }
+      },
+      "SystemDetails": {
+        "properties": {
+          "version": { "type": "string" }
+        }
+      },
+      "UserDetails": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/HumanDetails" },
+          { "$ref": "#/components/schemas/SystemDetails" }
+        ],
+        "discriminator": {
+          "propertyName": "userType",
+          "mapping": {
+            "HUMAN": "#/components/schemas/HumanDetails",
+            "SYSTEM": "#/components/schemas/SystemDetails"
+          }
         }
       }
     },

@@ -22,9 +22,28 @@ type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 export type User = {
   id: string
   name?: string
+  userType?: UserType
+  userDetails?: UserDetails
 }
 
 export type UserList = User[]
+
+export type UserType = 'HUMAN' | 'SYSTEM'
+
+export type HumanDetails = {
+  name?: string
+}
+
+export type SystemDetails = {
+  version?: string
+}
+
+export type UserDetails = HumanDetails | SystemDetails
+
+export type UserDetailsDiscriminator = {
+  HUMAN: HumanDetails
+  SYSTEM: SystemDetails
+}
 
 /**
  * The number of allowed requests in the current period
