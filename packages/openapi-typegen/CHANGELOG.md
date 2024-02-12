@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.4.1
+
+### Patch Changes
+
+- 85cf047: Fixed domain type names
+
 ## 1.4.0
 
 ### Minor Changes
