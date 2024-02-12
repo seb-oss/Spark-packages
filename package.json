@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@turbo/gen": "1.12.2",
-    "@types/node": "20.11.16",
+    "@turbo/gen": "1.12.3",
+    "@types/node": "20.11.17",
     "@vitest/coverage-v8": "1.2.2",
     "csv-parse": "5.5.3",
     "fast-xml-parser": "4.3.4",
-    "tsup": "8.0.1",
-    "turbo": "1.12.2",
+    "tsup": "8.0.2",
+    "turbo": "1.12.3",
     "typescript": "5.3.3",
     "vitest": "1.2.2"
   },
