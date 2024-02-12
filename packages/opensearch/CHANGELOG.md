@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 0.2.3
+
+### Patch Changes
+
+- 24d2add: Moved query.fields to \_source
+
 ## 0.2.2
 
 ### Patch Changes
