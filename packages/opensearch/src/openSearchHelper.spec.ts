@@ -158,9 +158,9 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            match_all: {}
+            match_all: {},
           },
-          _source: ['isTrue', 'user.name^4', { field: 'user.age' }]
+          _source: ['isTrue', 'user.name^4', { field: 'user.age' }],
         },
       })
       expect(client.search).toHaveBeenCalledOnce()
