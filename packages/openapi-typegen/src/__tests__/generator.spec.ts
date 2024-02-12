@@ -344,11 +344,25 @@ describe('typescript generator', () => {
 
       expect(formatted).toEqual(expected)
     })
+    it('generates type with domain style name', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'com.domain.MyType',
+        properties: [],
+      }
+      const expected = await format(`
+        export type com_domain_MyType = {}
+        `)
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
   })
   describe('generateResponseBody', () => {
     it('generates a response body with funky header ref', async () => {
       const response: ResponseBody = {
-        description: 'Wierd header',
+        description: 'Weird header',
         headers: [
           { name: 'x-foo-bar', optional: false, type: { type: 'X-Foo-Bar' } },
         ],
@@ -362,7 +376,7 @@ describe('typescript generator', () => {
     })
     it('generates a funky response ref', async () => {
       const response: CustomType = {
-        description: 'Wierd header',
+        description: 'Weird header',
         type: 'X-Foo-Bar',
       }
       const generated = generateResponseBody(response)

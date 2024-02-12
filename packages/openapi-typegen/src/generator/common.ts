@@ -62,12 +62,14 @@ export const preamble = (type: DocumentableType): string =>
 export const rxProperVariable = /^[a-zA-Z_<>$][a-zA-Z0-9_<>$]*$/
 
 export const typeName = (name: string): string => {
-  if (rxProperVariable.test(name)) return name
+  if (rxProperVariable.test(name.replace(/\./g, '_')))
+    return name.replace(/\./g, '_')
   return pascalCase(name)
 }
 export const propertyName = (name: string): string => {
-  if (rxProperVariable.test(name)) return name
-  return `'${name}'`
+  if (rxProperVariable.test(name.replace(/\./g, '_')))
+    return name.replace(/\./g, '_')
+  return `'${name.replace(/\./g, '_')}'`
 }
 
 export const extensions = (type: ObjectType): string =>

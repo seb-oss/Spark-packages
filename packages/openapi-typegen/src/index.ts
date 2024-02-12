@@ -70,7 +70,7 @@ const readDocs = async (input: string): Promise<Doc[]> => {
     }
     readFiles.push({
       doc,
-      name: formatName(name),
+      name,
     })
   }
   return readFiles
