@@ -246,9 +246,6 @@ export type OpenSearchQueryBody<
 > = K extends DeepPartial<T>
   ? {
       query: {
-        // Fields to return in the result
-        fields?: OpenSearchFields<K>
-
         // Criteria to filter the results
         filter?: OpenSearchFilter<T>
 
@@ -312,6 +309,8 @@ export type OpenSearchQueryBody<
         // More_like_this query to find documents similar to specified documents
         more_like_this?: MoreLikeThis<T>
       }
+      // Fields to return in the result
+      _source?: OpenSearchFields<K>
     }
   : never
 
