@@ -27,7 +27,7 @@ import { TypedClient } from '@sebspark/openapi-client'
 import { MarketdataClient } from './schemas/marketdata'
 
 const client = TypedClient<MarketdataClient>(`https://example.com/api`)
-const {data} = await client.get('/markets)
+const {data} = await client.get('/markets')
 ```
 
 ## Example
