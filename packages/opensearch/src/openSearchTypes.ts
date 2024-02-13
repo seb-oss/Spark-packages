@@ -488,5 +488,6 @@ export type NativeOpenSearchQueryBody<
         // More_like_this query to find documents similar to specified documents
         more_like_this?: MoreLikeThis<T>
       }
+      _source?: string[]
     }
   : never

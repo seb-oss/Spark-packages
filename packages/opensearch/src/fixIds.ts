@@ -23,7 +23,6 @@ export const fixIds = <T extends WithId, K = T>(
       match: q.match ? fixId(q.match) : undefined,
       collapse: q.collapse,
       exists: q.exists ? fixExists(q.exists) : undefined,
-      fields: q.fields,
       filter: q.filter ? fixFilter(q.filter) : undefined,
       from: q.from,
       fuzzy: q.fuzzy ? fixId(q.fuzzy) : undefined,
@@ -46,6 +45,7 @@ export const fixIds = <T extends WithId, K = T>(
       terms: q.terms ? fixId(q.terms) : undefined,
       wildcard: q.wildcard ? fixId(q.wildcard) : undefined,
     },
+    _source: searchQuery.body._source,
   } as NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
 
   return {
