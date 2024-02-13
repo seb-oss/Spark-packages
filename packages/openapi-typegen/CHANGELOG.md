@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.5.1
+
+### Patch Changes
+
+- a07db16: Fix naming error
+
 ## 1.5.0
 
 ### Minor Changes
