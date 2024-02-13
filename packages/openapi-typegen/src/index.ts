@@ -80,7 +80,7 @@ const generateDocs = async (files: Doc[]): Promise<GeneratedDoc[]> => {
   const generated: GeneratedDoc[] = []
   for (const doc of files) {
     console.log(`Generating ${doc.name}`)
-    const ts = await generateTypescript(doc.name, doc.doc)
+    const ts = await generateTypescript(classname(doc.name), doc.doc)
     generated.push({
       ...doc,
       ts,
@@ -97,13 +97,16 @@ const saveDocs = async (
   const dir = stats.isDirectory() ? output : parse(output).dir
   await mkdir(dir, { recursive: true })
   for (const doc of docs) {
-    const path = resolve(dir, `${doc.name}.ts`)
+    const path = resolve(dir, `${filename(doc.name)}.ts`)
     console.log(`Writing ${path}`)
     await writeFile(path, doc.ts, 'utf8')
   }
 }
 
-const formatName = (name: string): string => {
-  if (name[0].toUpperCase() === name[0]) return name
-  return pascalCase(name)
+export const classname = (name: string): string => {
+  return pascalCase(name.replace(/\d+/g, ''))
+}
+
+export const filename = (name: string): string => {
+  return name.replace(/\./g, '_')
 }

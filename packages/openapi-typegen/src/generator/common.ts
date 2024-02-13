@@ -62,10 +62,66 @@ export const preamble = (type: DocumentableType): string =>
 export const rxProperVariable = /^[a-zA-Z_<>$][a-zA-Z0-9_<>$]*$/
 
 export const typeName = (name: string): string => {
-  if (rxProperVariable.test(name.replace(/\./g, '_')))
-    return name.replace(/\./g, '_')
-  return pascalCase(name)
+  // Define a regex pattern that matches the described naming conventions
+  const namingConventionRegex = /^([a-z_]\w*)(<([a-z_]\w*(,\s*)?)+>)?$/
+  const hasCapitalLetterRegex = /[A-Z]/
+
+  // Check if the name already conforms to the naming rules
+  if (namingConventionRegex.test(name) && hasCapitalLetterRegex.test(name)) {
+    return name // Return the name untouched if it conforms
+  }
+  // Handle generics separately by processing the content within <>
+  if (name.includes('<')) {
+    return name.replace(
+      /<([^>]+)>/,
+      (_match, genericContent) => `<${typeName(genericContent)}>`
+    )
+  }
+
+  // Directly transform domain-style names, preserving underscores for segments
+  const domainStyleTransformed = name
+    .split('.')
+    .map((part, index, array) => {
+      // Apply pascal case only to the last segment
+      if (index === array.length - 1) {
+        return pascalCase(part) // Using external pascalCase
+      }
+      return part
+    })
+    .join('_')
+
+  // Handle names starting with numbers
+  const prefixedIfNumberStart = domainStyleTransformed.match(/^\d/)
+    ? `_${domainStyleTransformed}`
+    : domainStyleTransformed
+
+  // For other transformations, apply pascalCase if not already handled by domain style transformation
+  const finalName = prefixedIfNumberStart.includes('_')
+    ? prefixedIfNumberStart
+    : pascalCase(prefixedIfNumberStart)
+
+  // Ensure capitalization of the first character, in case pascalCase did not apply (e.g., underscores present)
+  // Modification: Check if the finalName includes '_', indicating a domain-style name or a number prefix,
+  // and avoid changing the case of the entire string
+  if (finalName.includes('_')) {
+    // Only capitalize the segment after the last underscore if it's a domain-style name
+    const lastUnderscoreIndex = finalName.lastIndexOf('_')
+    if (
+      lastUnderscoreIndex !== -1 &&
+      lastUnderscoreIndex < finalName.length - 1
+    ) {
+      return (
+        finalName.substring(0, lastUnderscoreIndex + 1) +
+        finalName.charAt(lastUnderscoreIndex + 1).toUpperCase() +
+        finalName.slice(lastUnderscoreIndex + 2)
+      )
+    }
+    return finalName
+  }
+  // Apply capitalization for non-domain style names
+  return finalName.charAt(0).toUpperCase() + finalName.slice(1)
 }
+
 export const propertyName = (name: string): string => {
   if (rxProperVariable.test(name.replace(/\./g, '_')))
     return name.replace(/\./g, '_')

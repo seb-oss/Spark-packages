@@ -1,6 +1,7 @@
 import { SchemaObject } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
-import { generateResponseBody } from '../generator/common'
+import { classname } from '..'
+import { generateResponseBody, typeName } from '../generator/common'
 import { format } from '../generator/formatter'
 import {
   generateClient,
@@ -735,6 +736,35 @@ describe('typescript generator', () => {
       `)
 
       expect(generated).toEqual(expected)
+    })
+  })
+  describe('typeName', () => {
+    it('capitalizes the first character', () => {
+      expect(typeName('foobar')).toEqual('Foobar')
+    })
+    it('capitalizes domain style names correctly', () => {
+      expect(typeName('com.foo.bar.hello')).toEqual('com_foo_bar_Hello')
+    })
+    it('pascal styles non usable characters', () => {
+      expect(typeName('com-foo')).toEqual('ComFoo')
+    })
+    it('only accepts numbers not at start', () => {
+      expect(typeName('3com5')).toEqual('_3com5')
+    })
+    it('preserves generics', () => {
+      expect(typeName('Serialized<com.foo.bar.hello>')).toEqual(
+        'Serialized<com_foo_bar_Hello>'
+      )
+    })
+  })
+  describe('classname', () => {
+    it('returns a capitalized name', () => {
+      expect(classname('card')).toEqual('Card')
+    })
+    it('returns a reasonable name', () => {
+      expect(classname('cdapi-service.openapi-3.0')).toEqual(
+        'CdapiServiceOpenapi'
+      )
     })
   })
 })

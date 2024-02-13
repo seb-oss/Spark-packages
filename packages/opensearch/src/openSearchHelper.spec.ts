@@ -229,9 +229,8 @@ describe('OpenSearchHelper', () => {
       await helper(client as Client).typedSearch<Data>({
         index: 'data',
         body: {
-          query: {
-            fields: ['isTrue', 'user.name^4', { field: 'user.age' }],
-          },
+          query: {},
+          _source: ['isTrue', 'user.name^4', { field: 'user.age' }],
         },
       })
       expect(client.search).toHaveBeenCalledWith({
