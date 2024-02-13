@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.5.0
+
+### Minor Changes
+
+- 58c96a0: Support for domain style names (com.domain.card => com_domain_Card)
+
 ## 1.4.1
 
 ### Patch Changes
