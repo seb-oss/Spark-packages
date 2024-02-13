@@ -756,6 +756,9 @@ describe('typescript generator', () => {
         'Serialized<com_foo_bar_Hello>'
       )
     })
+    it('leaves a working name untouched', () => {
+      expect(typeName('CFDDetails')).toEqual('CFDDetails')
+    })
   })
   describe('classname', () => {
     it('returns a capitalized name', () => {

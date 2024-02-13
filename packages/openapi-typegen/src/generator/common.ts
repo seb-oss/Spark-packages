@@ -61,13 +61,29 @@ export const preamble = (type: DocumentableType): string =>
 
 export const rxProperVariable = /^[a-zA-Z_<>$][a-zA-Z0-9_<>$]*$/
 
-export const typeName = (name: string): string => {
-  // Define a regex pattern that matches the described naming conventions
-  const namingConventionRegex = /^([a-z_]\w*)(<([a-z_]\w*(,\s*)?)+>)?$/
+const isValidName = (name: string): boolean => {
+  const namingConventionRegex =
+    /^([A-Z_]\w*)([a-z_]\w*)(<([a-z_]\w*(,\s*)?)+>)?$/
   const hasCapitalLetterRegex = /[A-Z]/
 
+  // Check if the name follows the basic structural rules
+  if (!namingConventionRegex.test(name)) return false
+
+  if (!hasCapitalLetterRegex.test(name)) {
+    return false
+  }
+
+  // Further check for starting lowercase without underscore in the rest of the name
+  if (name[0] !== name[0].toUpperCase() && !name.includes('_')) {
+    return false
+  }
+
+  return true
+}
+
+export const typeName = (name: string): string => {
   // Check if the name already conforms to the naming rules
-  if (namingConventionRegex.test(name) && hasCapitalLetterRegex.test(name)) {
+  if (isValidName(name)) {
     return name // Return the name untouched if it conforms
   }
   // Handle generics separately by processing the content within <>
