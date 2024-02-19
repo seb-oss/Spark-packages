@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
-import type { Empty, PartiallySerialized, Serialized } from './ts-extensions'
+import type {
+  Empty,
+  LowerCaseHeaders,
+  PartiallySerialized,
+  Serialized,
+} from './ts-extensions'
 
-export type { PartiallySerialized, Serialized }
+export type { PartiallySerialized, Serialized, LowerCaseHeaders }
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
 

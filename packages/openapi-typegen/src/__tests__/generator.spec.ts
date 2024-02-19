@@ -518,6 +518,60 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('lowercases headers', async () => {
+      const paths: Path[] = [
+        {
+          method: 'get',
+          url: '/users/',
+          title: 'User',
+          description: 'Gets user',
+          args: {
+            header: {
+              type: 'object',
+              optional: false,
+              properties: [
+                {
+                  name: 'X-Api-Key',
+                  optional: false,
+                  type: [{ type: 'string' }],
+                },
+              ],
+            },
+          },
+          responses: {
+            200: { data: { type: 'User' } },
+          },
+        },
+      ]
+      const expected = await format(`
+      export type UserClient = Pick<BaseClient, 'get'> & {
+        get: {
+          /**
+           * User
+           * Gets user
+           * 
+           * @param {string} url
+           * @param {Object} args - The arguments for the request.
+           * @param {Object} args.headers - Headers for the request.
+           * @param {string} args.headers["X-Api-Key"]
+           * @param {RequestOptions} [opts] - Optional.
+           * @returns {Promise<APIResponse<Serialized<User>>>}
+           */
+          (
+            url: '/users/',
+            args: {
+              headers: {
+                'X-Api-Key': string
+              }
+            },
+            opts?: RequestOptions
+          ): Promise<APIResponse<Serialized<User>>>
+        }
+      }`)
+      const generated = await format(generateClient('User', paths))
+
+      expect(generated).toEqual(expected)
+    })
     it('generates a simple post', async () => {
       const paths: Path[] = [
         {

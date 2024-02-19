@@ -1,11 +1,12 @@
 import {
+  ForbiddenError,
   NotImplementedError,
   PartiallySerialized,
+  UnauthorizedError,
 } from '@sebspark/openapi-core'
 import { TypedRouter } from '@sebspark/openapi-express'
 import express from 'express'
 import {
-  Instrument,
   InstrumentEntityResponse,
   MarketListResponse,
   MarketdataServer,
@@ -24,6 +25,16 @@ export const markets: MarketListResponse = {
 }
 
 const api: MarketdataServer = {
+  '/secured': {
+    get: {
+      handler: async ({ headers }) => {
+        console.log(headers)
+        if (!headers['x-client-key']) throw new UnauthorizedError()
+        if (!headers['x-api-key']) throw new ForbiddenError()
+        return [200, { data: 'ok' }]
+      },
+    },
+  },
   '/instruments/:isin': {
     get: {
       handler: async (args) => {

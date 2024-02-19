@@ -74,6 +74,7 @@ export type ParsedComponents = {
   headers: Header[]
   requestBodies: TypeDefinition[]
   responseBodies: ResponseBody[]
+  securitySchemes: Parameter[]
 }
 
 export type Path = {

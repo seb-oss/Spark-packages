@@ -8,6 +8,7 @@ import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  LowerCaseHeaders,
   PartiallySerialized,
   RequestOptions,
   Serialized,
@@ -68,21 +69,32 @@ export type UnauthorizedError = APIResponse<
   { 'WWW-Authenticate'?: string }
 >
 
+export type ApiKeyAuth = {
+  'X-API-KEY': string
+}
+
 export type ExampleAPIServer = APIServerDefinition & {
   '/users': {
     get: {
       /**
        *
-       * @param {Object} [args] - Optional. The arguments for the request.
+       * @param {Object} args - The arguments for the request.
        * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
+       * @param {ApiKeyAuth} args.headers - Headers for the request.
        * @returns {Promise<[200, APIResponse<PartiallySerialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>]>}
        */
       handler: (
-        args?: Req & { query?: PageParam & LimitParam },
+        args: Req & {
+          headers: LowerCaseHeaders<ApiKeyAuth>
+          query?: PageParam & LimitParam
+        },
       ) => Promise<
         [
           200,
-          APIResponse<PartiallySerialized<UserList>, { 'X-Rate-Limit': XRateLimit; apiKey: string }>,
+          APIResponse<
+            PartiallySerialized<UserList>,
+            { 'X-Rate-Limit': XRateLimit; apiKey: string }
+          >,
         ]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -91,11 +103,12 @@ export type ExampleAPIServer = APIServerDefinition & {
       /**
        *
        * @param {Object} args - The arguments for the request.
+       * @param {ApiKeyAuth} args.headers - Headers for the request.
        * @param {UserCreate} args.body - Request body for the request.
        * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>]>}
        */
       handler: (
-        args: Req & { body: UserCreate }
+        args: Req & { body: UserCreate; headers: LowerCaseHeaders<ApiKeyAuth> },
       ) => Promise<[201, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -107,15 +120,19 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args - The arguments for the request.
        * @param {Object} args.params - Path parameters for the request.
        * @param {string} args.params.userId
+       * @param {ApiKeyAuth} args.headers - Headers for the request.
        * @returns {Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>]>}
        */
       handler: (
         args: Req & {
+          headers: LowerCaseHeaders<ApiKeyAuth>
           params: {
             userId: string
           }
-        }
-      ) => Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>]>
+        },
+      ) => Promise<
+        [200, APIResponse<PartiallySerialized<User>, { 'x-api-key': string }>]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -126,17 +143,21 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
     /**
      *
      * @param {string} url
-     * @param {Object} [args] - Optional. The arguments for the request.
+     * @param {Object} args - The arguments for the request.
      * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
+     * @param {ApiKeyAuth} args.headers - Headers for the request.
      * @param {RequestOptions} [opts] - Optional.
      * @returns {Promise<APIResponse<Serialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>>}
      */
     (
       url: '/users',
-      args?: { query?: PageParam & LimitParam },
+      args: { headers: ApiKeyAuth; query?: PageParam & LimitParam },
       opts?: RequestOptions,
     ): Promise<
-      APIResponse<Serialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>
+      APIResponse<
+        Serialized<UserList>,
+        { 'X-Rate-Limit': XRateLimit; apiKey: string }
+      >
     >
     /**
      *
@@ -144,31 +165,34 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      * @param {Object} args - The arguments for the request.
      * @param {Object} args.params - Path parameters for the request.
      * @param {string} args.params.userId
+     * @param {ApiKeyAuth} args.headers - Headers for the request.
      * @param {RequestOptions} [opts] - Optional.
      * @returns {Promise<APIResponse<Serialized<User>, {'x-api-key': string}>>}
      */
     (
       url: '/users/:userId',
       args: {
+        headers: ApiKeyAuth
         params: {
           userId: string
         }
       },
       opts?: RequestOptions,
-    ): Promise<APIResponse<Serialized<User>, {'x-api-key': string}>>
+    ): Promise<APIResponse<Serialized<User>, { 'x-api-key': string }>>
   }
   post: {
     /**
      *
      * @param {string} url
      * @param {Object} args - The arguments for the request.
+     * @param {ApiKeyAuth} args.headers - Headers for the request.
      * @param {UserCreate} args.body - Request body for the request.
      * @param {RequestOptions} [opts] - Optional.
      * @returns {Promise<APIResponse<Serialized<User>>>}
      */
     (
       url: '/users',
-      args: { body: UserCreate },
+      args: { body: UserCreate; headers: ApiKeyAuth },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<User>>>
   }

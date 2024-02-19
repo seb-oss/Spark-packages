@@ -8,6 +8,7 @@ import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  LowerCaseHeaders,
   PartiallySerialized,
   RequestOptions,
   Serialized,
@@ -6194,6 +6195,10 @@ export type google_rpc_Status = {
    * A list of messages that carry the error details.  There is a common set of message types for APIs to use.
    */
   details?: google_protobuf_Any[]
+}
+
+export type OAuth = {
+  Authorization: string
 }
 
 export type CdapiServiceOpenapiServer = APIServerDefinition & {
