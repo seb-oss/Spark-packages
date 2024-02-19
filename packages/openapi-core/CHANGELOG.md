@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.2.0
+
+### Minor Changes
+
+- e1ddbab: Added support for securitySchemes. Headers are now in lowercase on server
+
 ## 1.1.0
 
 ### Minor Changes

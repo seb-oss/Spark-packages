@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 1.6.0
+
+### Minor Changes
+
+- e1ddbab: Added support for securitySchemes. Headers are now in lowercase on server
+
+### Patch Changes
+
+- Updated dependencies [e1ddbab]
+  - @sebspark/openapi-core@1.2.0
+
 ## 1.5.1
 
 ### Patch Changes
