@@ -6,6 +6,8 @@ import {
   ReferenceObject,
   RequestBodyObject,
   SchemaObject,
+  SecurityRequirementObject,
+  SecuritySchemeObject,
 } from '@sebspark/openapi-core'
 import { Args, ObjectType, RequestArgs } from '../types'
 import { findRef, parseDocumentation, parseRef } from './common'
@@ -16,12 +18,14 @@ export const parseArgs = (
   components?: ComponentsObject
 ): RequestArgs | undefined => {
   // No parameters and no requestBody - no args
-  if (!path.parameters?.length && !path.requestBody) return undefined
+  if (!path.parameters?.length && !path.security?.length && !path.requestBody)
+    return undefined
 
-  const args: RequestArgs = {
-    ...parseParameters(path.parameters, components),
-    ...parseRequestBody(path.requestBody, components),
-  }
+  const args: RequestArgs = joinArgs([
+    parseParameters(path.parameters, components),
+    parseSecurity(path.security, components),
+    parseRequestBody(path.requestBody, components),
+  ])
 
   return args
 }
@@ -32,6 +36,62 @@ const createArgs = (initializer: Partial<Args> = {}): Args => ({
   optional: true,
   ...initializer,
 })
+
+const joinArgs = (args: RequestArgs[]): RequestArgs => {
+  const reqArg: RequestArgs = {}
+  for (const arg of args) {
+    for (const [prop, val] of Object.entries(arg)) {
+      const key = prop as keyof RequestArgs
+      if (reqArg[key]) {
+        reqArg[key] = joinArg(reqArg[key] as Args, val)
+      } else {
+        reqArg[key] = val
+      }
+    }
+  }
+  return reqArg
+}
+
+const joinArg = (arg1: Args, arg2: Args): Args => {
+  const arg: Args = {
+    type: 'object',
+    optional: arg1.optional && arg2.optional,
+    properties: arg1.properties.concat(arg2.properties),
+  }
+  if (arg1.allOf || arg2.allOf)
+    arg.allOf = (arg1.allOf || []).concat(arg2.allOf || [])
+  if (arg1.anyOf || arg2.anyOf)
+    arg.anyOf = (arg1.anyOf || []).concat(arg2.anyOf || [])
+  if (arg1.oneOf || arg2.oneOf)
+    arg.oneOf = (arg1.oneOf || []).concat(arg2.oneOf || [])
+
+  if (arg1.description || arg2.description)
+    arg.description = arg1.description || arg2.description
+  if (arg1.title || arg2.title) arg.title = arg1.title || arg2.title
+
+  return arg
+}
+
+const parseSecurity = (
+  security: SecurityRequirementObject[] = [],
+  components: ComponentsObject = {}
+): RequestArgs => {
+  const args: RequestArgs = {}
+  for (const secReq of security) {
+    for (const [name, claims] of Object.entries(secReq)) {
+      const param = findRef<SecuritySchemeObject>(
+        components,
+        `#/components/securitySchemes/${name}`
+      )
+      const arg = args.header || createArgs({ ...parseDocumentation(param) })
+      arg.optional = false
+      if (!arg.allOf) arg.allOf = []
+      arg.allOf.push({ type: parseRef(name) })
+      args.header = arg
+    }
+  }
+  return args
+}
 
 const parseParameters = (
   parameters: (ParameterObject | ReferenceObject)[] = [],

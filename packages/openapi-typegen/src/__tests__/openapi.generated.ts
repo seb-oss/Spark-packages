@@ -8,6 +8,7 @@ import type {
   APIServerDefinition,
   BaseClient,
   GenericRouteHandler,
+  LowerCaseHeaders,
   PartiallySerialized,
   RequestOptions,
   Serialized,
@@ -110,7 +111,7 @@ export type CardsAPIServer = APIServerDefinition & {
           query: {
             cardNickname: boolean
           }
-        }
+        },
       ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -129,17 +130,17 @@ export type CardsAPIServer = APIServerDefinition & {
        */
       handler: (
         args: Req & {
-          headers: {
+          headers: LowerCaseHeaders<{
             'X-User-Id': string
             'X-Distributor-Id'?: string
-          }
+          }>
           params: {
             cardId: string
           }
           query: {
             cardNickname: boolean
           }
-        }
+        },
       ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -159,13 +160,13 @@ export type CardsAPIServer = APIServerDefinition & {
       handler: (
         args: Req & {
           body?: CardSettings
-          headers: {
+          headers: LowerCaseHeaders<{
             'x-forwarded-authorization': string
-          }
+          }>
           params: {
             cardId: string
           }
-        }
+        },
       ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -192,7 +193,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
           limit?: number
         }
       },
-      opts?: RequestOptions
+      opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<CardList>>>
     /**
      *

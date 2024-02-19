@@ -14,3 +14,16 @@ export type Serialized<T> = {
 }
 
 export type PartiallySerialized<T> = T | Serialized<T>
+
+export type LowerCaseHeaders<T> = {
+  [P in keyof T as Lowercase<P & string>]: T[P]
+}
+
+export type ClientArgs<T> = {
+  [P in keyof T as Exclude<P, 'headers'>]: T[P]
+} & (T extends { headers?: infer H }
+  ? { headers?: LowerCaseHeaders<H> }
+  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
+    {}) &
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  (T extends { headers: infer H } ? { headers: LowerCaseHeaders<H> } : {})

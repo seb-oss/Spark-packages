@@ -22423,8 +22423,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.PurgeCacheReque\
-                st"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -23130,8 +23129,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.PurgeCacheReque\
-                st"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -23210,8 +23208,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.entitlement.PurgeCacheRequ\
-                est"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.entitlement.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -38782,8 +38779,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.PurgeCacheRequ\
-                est"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -38830,8 +38826,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.PurgeCacheReques\
-                t"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -38853,8 +38848,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.ListSnapquotesRe\
-                quest"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.ListSnapquotesRequest"
         required: true
       responses:
         "200":
@@ -39043,8 +39037,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.PurgeCa\
-                cheRequest"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -39255,8 +39248,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.PurgeCa\
-                cheRequest"
+              $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.PurgeCacheRequest"
         required: true
       responses:
         "200":
@@ -39451,11 +39443,9 @@ components:
         id:
           type: string
         bond_category:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondCa\
-            tegory"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondCategory"
         bond_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondTy\
-            pe"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondType"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
       description: "available for sources: edi, xid"
@@ -39463,16 +39453,14 @@ components:
       type: object
       properties:
         bond_category:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondCa\
-            tegory"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondCategory"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.ClassificationBondTypesData:
       type: object
       properties:
         bond_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondTy\
-            pe"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification_BondType"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.ClassificationResponse:
@@ -39489,8 +39477,7 @@ components:
         bond_xid:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.Classification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.bond.Classification_BondCategory:
       type: object
       properties:
@@ -39560,8 +39547,7 @@ components:
         coupon_type:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.CouponType"
         interest_rate_calculation_method:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculati\
-            onMethod"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculationMethod"
         interest_rate_month:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateMonth"
         interest_rate_pa:
@@ -39575,14 +39561,11 @@ components:
         reference_interest_rate:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate"
         reference_interest_rate_maturity:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-            Maturity"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRateMaturity"
         reference_interest_rate_period:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-            Period"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRatePeriod"
         special_debitor_redemption:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedempt\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedemption"
         special_redemption:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialRedemption"
         issuing_currency_code:
@@ -39760,20 +39743,16 @@ components:
         bond_xid:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBond"
         common_additional:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         common_additional_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
     dev.infrontfinance.cdapi.bond.InstrumentsData:
       type: object
       properties:
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBondRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBondResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
     dev.infrontfinance.cdapi.bond.InterestRateCalculationMethod:
       type: object
       properties:
@@ -39806,8 +39785,7 @@ components:
       type: object
       properties:
         interest_rate_calculation_method:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculati\
-            onMethod"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculationMethod"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.InterestRateMonth:
@@ -39982,8 +39960,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ListBusinessDayConven\
-              tionsData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ListBusinessDayConventionsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -39994,8 +39971,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationBondCat\
-              egoriesData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationBondCategoriesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40006,8 +39982,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationBondTyp\
-              esData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationBondTypesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40043,8 +40018,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ListDevelopmentGoalsD\
-              ata"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ListDevelopmentGoalsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40066,8 +40040,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculati\
-              onMethodsData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateCalculationMethodsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40078,8 +40051,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateMonthsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRateMonthsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40101,8 +40073,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRatePeriodsDa\
-              ta"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InterestRatePeriodsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40146,8 +40117,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-              MaturitiesData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRateMaturitiesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40158,8 +40128,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-              PeriodsData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRatePeriodsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40170,8 +40139,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-              sData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRatesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40182,8 +40150,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedempt\
-              ionsData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedemptionsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40194,8 +40161,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialRedemptionsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialRedemptionsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -40211,11 +40177,9 @@ components:
         listing:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ListingBondResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBondRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBondResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -40237,8 +40201,7 @@ components:
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ClassificationResponse"
         keyfigure:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.KeyfigureResponse"
     dev.infrontfinance.cdapi.bond.PurgeCacheRequest:
@@ -40313,8 +40276,7 @@ components:
       type: object
       properties:
         reference_interest_rate_maturity:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-            Maturity"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRateMaturity"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.ReferenceInterestRateMaturity:
@@ -40373,8 +40335,7 @@ components:
       type: object
       properties:
         reference_interest_rate_period:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRate\
-            Period"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.ReferenceInterestRatePeriod"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.ReferenceInterestRatesData:
@@ -40414,8 +40375,7 @@ components:
       type: object
       properties:
         special_debitor_redemption:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedempt\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.SpecialDebitorRedemption"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.bond.SpecialRedemption:
@@ -40561,8 +40521,7 @@ components:
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
       description: classification holds all criterias to classify a listing
     dev.infrontfinance.cdapi.common.ClassificationsData:
       type: object
@@ -40599,8 +40558,7 @@ components:
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
         sub_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.CorporateActionSubT\
-            ype"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.CorporateActionSubType"
         record_date:
           type: string
           description: date when shareholders are informed they have the right to vote &
@@ -40803,13 +40761,11 @@ components:
           type: string
           format: enum
         supplementary:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetAdditional_Suppl\
-            ementary"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetAdditional_Supplementary"
         spai:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetAdditional_Spai"
         supplementary_taxonomy:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetAdditional_Suppl\
-            ementaryTaxonomy"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetAdditional_SupplementaryTaxonomy"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
     dev.infrontfinance.cdapi.common.EetAdditional_Spai:
@@ -41082,30 +41038,24 @@ components:
           type: boolean
           description: 20100_Financial_Instrument_Does_This_Product_Consider_Principle_Adverse_Impact_In_Their_Investment
         product_disclosures:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_ProductDis\
-            closures"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_ProductDisclosures"
         alignment_with_sustainable_development_goals:
           type: array
           items:
             $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Dictionary"
           description: 20300_Financial_Instrument_Alignment_With_Sustainable_Development_Goals
         esg_engagement_coverage:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_EsgEngagem\
-            entCoverage"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_EsgEngagementCoverage"
         esg_benchmark:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_EsgBenchma\
-            rk"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_EsgBenchmark"
         minimum_or_planned_sustainable_investment_and_taxonomy_assets_allocation_breakdown:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_MinimumOrP\
-            lannedSustainableInvestmentAndTaxonomyAssetsAllocationBreakdown"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_MinimumOrPlannedSustainableInvestmentAndTaxonomyAssetsAllocationBreakdown"
         investments_methodology_calculation:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Dictionary"
         last_reported_sustainable_investment_and_taxonomy_assets_allocation_breakdown:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_LastReport\
-            edSustainableInvestmentAndTaxonomyAssetsAllocationBreakdown"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_LastReportedSustainableInvestmentAndTaxonomyAssetsAllocationBreakdown"
         negative_screening_exclusions:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_NegativeSc\
-            reeningExclusions"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther_NegativeScreeningExclusions"
         french_amf_doctrine_approach:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Dictionary"
         environmental_topic_or_considered_indicators_for_french_mifid_market:
@@ -41261,68 +41211,47 @@ components:
           description: the source of the data
           format: enum
         adult_entertainment:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         alcohol:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         animal_testing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         cannabis:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         conventional_weapons:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         coal:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_FossilExclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_FossilExclusion"
         factory_farming:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         fur:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         gambling:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         gas:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_FossilExclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_FossilExclusion"
         genetic_engineering:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         gmo:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         nuclear_energy:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         nuclear_weapons:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         oil:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_FossilExclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_FossilExclusion"
         other_fossil_fuel:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_FossilExclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_FossilExclusion"
         palm_oil:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         pesticides:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         research_on_human_embryos:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         tobacco:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         unconventional_weapons:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion_Exclusion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion_Exclusion"
         has_ungc_exclusion:
           type: boolean
           description: 52200_Financial_Instrument_UNGC_Exclusion
@@ -41652,8 +41581,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Dictionary"
-          description: "60440_Financial_Instrument_Sustainable_Indicators_For_German_MiFI\
-            D_Market (source: WM=GD350W, INFRONT)"
+          description: "60440_Financial_Instrument_Sustainable_Indicators_For_German_MiFID_Market (source: WM=GD350W, INFRONT)"
         sustainability_label:
           type: array
           items:
@@ -41669,31 +41597,23 @@ components:
           description: minimum_asset_allocation_date
             (WM=GV728D,GV729D,GV727D,GV726D,GV722D,GV723B, INFRONT)
         environmental_investments:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         share_social_investments:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         total_sustainable_investments:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         taxonomy_aligned_investments:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         enabling_activities:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         transition_activities:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_Data"
         taxonomy_objectives:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_TaxonomyObjectives"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_TaxonomyObjectives"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
         sustainable_investments:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_SustainableInvestments"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_SustainableInvestments"
         has_esg_existing_thematic_characteristics:
           type: boolean
           description: 20260_Financial_Instrument_ESG_Existing_Thematic_Characteristics
@@ -41722,8 +41642,7 @@ components:
           type: string
           description: 20590_Does_This_Financial_Instrument_Consider_End_Client_Sustainability_Preferences
         percentage_taxonomy_aligned:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation_PercentageTaxonomyAligned"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation_PercentageTaxonomyAligned"
         minimum_pct_invs_aligned_eu_taxonomy_including_sovereign_bonds:
           type: number
           description: 20600_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_Incl_Sovereign_Bonds
@@ -42122,23 +42041,17 @@ components:
           type: string
           format: enum
         distribution_strategy:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Dis\
-            tributionStrategy"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_DistributionStrategy"
         knowledge_and_experience:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Kno\
-            wledgeAndExperience"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_KnowledgeAndExperience"
         investor_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Inv\
-            estorType"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_InvestorType"
         loss_bearing_ability:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Los\
-            sBearingAbility"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_LossBearingAbility"
         risk_tolerance:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Ris\
-            kTolerance"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_RiskTolerance"
         client_objectives_and_needs:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_Cli\
-            entObjectivesAndNeeds"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EmtTargetMarket_ClientObjectivesAndNeeds"
         target_market_reference_date:
           type: string
           description: 01000_Target_Market_Reference_Date
@@ -42289,8 +42202,7 @@ components:
         uk:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EptAdditional_Uk"
         germany:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EptAdditional_Germa\
-            ny"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EptAdditional_Germany"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
     dev.infrontfinance.cdapi.common.EptAdditional_Costs:
@@ -42927,20 +42839,15 @@ components:
         id:
           type: string
         routing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on_Routing"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification_Routing"
         asset_class_superordinate:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on_AssetClass"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification_AssetClass"
         asset_class_category:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on_AssetClass"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification_AssetClass"
         asset_class_group:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on_AssetClass"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification_AssetClass"
         asset_class_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on_AssetClass"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification_AssetClass"
     dev.infrontfinance.cdapi.common.InfrontClassification_AssetClass:
       type: object
       properties:
@@ -43007,11 +42914,9 @@ components:
         common:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Instrument"
         common_additional:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         common_additional_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         equity:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquity"
         equity_edi:
@@ -43025,14 +42930,11 @@ components:
         bond_xid:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.bond.InstrumentBond"
         structured_product:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entStructuredProduct"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentStructuredProduct"
         factor_certificate:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entFactorCertificate"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentFactorCertificate"
         knockout:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entKnockout"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentKnockout"
     dev.infrontfinance.cdapi.common.Instrument_NSIN:
       type: object
       properties:
@@ -43049,11 +42951,9 @@ components:
       type: object
       properties:
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         mifid_costs:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.MifidCost"
         mifid_costs_wm:
@@ -43063,11 +42963,9 @@ components:
         mifid_target_market_profile_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile"
         eet_spi:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_spi_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_sfdr_pai:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSfdrPai"
         eet_sfdr_pai_wm:
@@ -43075,8 +42973,7 @@ components:
         eet_sfdr_pai_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSfdrPai"
         eet_spi_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_manufacturer:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetManufacturer"
         eet_manufacturer_infront:
@@ -43138,11 +43035,9 @@ components:
         eet_other_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther"
         eet_sector_base_exclusion:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion"
         eet_sector_base_exclusion_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion"
     dev.infrontfinance.cdapi.common.Issuer:
       type: object
       properties:
@@ -43212,17 +43107,13 @@ components:
           type: string
           format: enum
         total:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data"
         environmental:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data"
         social:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data"
         governance:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y_Data"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
       description: IssuerEsgRiskClarity is a subset of EsgRiskClarity only covering
@@ -43248,8 +43139,7 @@ components:
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
         issuer_sector_esg_risk:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity"
     dev.infrontfinance.cdapi.common.IssuerSubSectorData:
       type: object
       properties:
@@ -43258,8 +43148,7 @@ components:
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
         issuer_sub_sector_esg_risk:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarit\
-            y"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity"
     dev.infrontfinance.cdapi.common.Issuer_Sector:
       type: object
       properties:
@@ -43280,8 +43169,7 @@ components:
       type: object
       properties:
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
     dev.infrontfinance.cdapi.common.Keyfigure:
       type: object
       properties:
@@ -43433,8 +43321,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.AttributeConfigsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.AttributeConfigsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43463,8 +43350,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateAction\
-              SubTypesData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateActionSubTypesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43486,8 +43372,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateAction\
-              TypesData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateActionTypesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43509,8 +43394,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateAction\
-              sData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListCorporateActionsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43620,8 +43504,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TechnicalAnalysisDa\
-              ta"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TechnicalAnalysisData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43632,8 +43515,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingCalendarsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingCalendarsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -43743,14 +43625,11 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -43772,8 +43651,7 @@ components:
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.KeyfigureCommonResp\
-            onse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.KeyfigureCommonResponse"
         classification:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Classification"
         mifid_costs:
@@ -43785,11 +43663,9 @@ components:
         mifid_target_market_profile_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile"
         eet_spi:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_spi_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_sfdr_pai:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSfdrPai"
         eet_sfdr_pai_wm:
@@ -43797,8 +43673,7 @@ components:
         eet_sfdr_pai_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSfdrPai"
         eet_spi_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityPr\
-            oductInformation"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSustainabilityProductInformation"
         eet_manufacturer:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetManufacturer"
         eet_manufacturer_infront:
@@ -43844,8 +43719,7 @@ components:
         preferred_trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         structured_product_underlying_instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.UnderlyingInstrumen\
-            t"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.UnderlyingInstrument"
         structured_product_underlying_listing:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.UnderlyingListing"
         eet_additional:
@@ -43857,11 +43731,9 @@ components:
         eet_other_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetOther"
         eet_sector_base_exclusion:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion"
         eet_sector_base_exclusion_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclus\
-            ion"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSectorBaseExclusion"
     dev.infrontfinance.cdapi.common.Mic_Detail:
       type: object
       properties:
@@ -44142,62 +44014,43 @@ components:
           type: string
           format: enum
         risk_indicator_calculation_method:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         client_category:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         client_category_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         knowledge_experience:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         knowledge_experience_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         loss_bearing_ability:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         loss_bearing_ability_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         sri:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         sri_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         risk_yield_profile:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         risk_yield_profile_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         investment_horizon:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         investment_horizon_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         clients_objective:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         clients_objective_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         distribution_strategy:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         distribution_strategy_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         special_needs:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         special_needs_negative:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile\
-            _TargetMarketDictionaryEntry"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
     dev.infrontfinance.cdapi.common.TargetMarketProfile_TargetMarketDictionaryEntry:
@@ -44432,8 +44285,7 @@ components:
         technical_analysis_fta:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TechnicalAnalysis"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
     dev.infrontfinance.cdapi.common.TradingCalendar:
       type: object
       properties:
@@ -44556,26 +44408,19 @@ components:
         id:
           type: string
         product_type_segment:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         product_group_segment:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         instrument_type_addon_1:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         instrument_type_addon_2:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         instrument_type_addon_3:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         instrument_type_addon_4:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
         security_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Da\
-            ta"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification_Data"
     dev.infrontfinance.cdapi.common.WmClassification_Data:
       type: object
       properties:
@@ -44591,8 +44436,7 @@ components:
         common_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.derivative.InstrumentFutureResponse:
       type: object
       properties:
@@ -44642,8 +44486,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingsFutureD\
-              ata"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingsFutureData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -44654,8 +44497,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingsOptionD\
-              ata"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingsOptionData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -44808,14 +44650,11 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingFutureRe\
-            sponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingFutureResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.InstrumentFutur\
-            eResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.InstrumentFutureResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -44823,28 +44662,22 @@ components:
         currency:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Currency"
         underlying_listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonResponse"
         underlying_instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ClassificationR\
-            esponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ClassificationResponse"
     dev.infrontfinance.cdapi.derivative.ListingsOptionData:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingOptionRe\
-            sponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ListingOptionResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.InstrumentOptio\
-            nResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.InstrumentOptionResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -44852,19 +44685,15 @@ components:
         currency:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Currency"
         underlying_listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonResponse"
         underlying_instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.KeyfigureOption\
-            Response"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.KeyfigureOptionResponse"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ClassificationR\
-            esponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.derivative.ClassificationResponse"
     dev.infrontfinance.cdapi.derivative.PurgeCacheRequest:
       type: object
       properties:
@@ -44897,8 +44726,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.entitlement.EntitlementDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.entitlement.EntitlementData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -44970,8 +44798,7 @@ components:
         common_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.equity.CompaniesData:
       type: object
       properties:
@@ -44997,8 +44824,7 @@ components:
           type: string
           format: enum
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
     dev.infrontfinance.cdapi.equity.CompanyBasic:
       type: object
       properties:
@@ -45080,22 +44906,17 @@ components:
           type: string
           format: enum
         isins:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Isi\
-            ns"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Isins"
         analysts:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Ana\
-              lysts"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Analysts"
         outlook:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Out\
-            look"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Outlook"
         target_price:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Tar\
-            getPrice"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_TargetPrice"
         taxonomies:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Tax\
-            onomies"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate_Taxonomies"
         currency_code:
           type: string
           description: the currency of the provided figures
@@ -45182,20 +45003,16 @@ components:
         estimate_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimate"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
     dev.infrontfinance.cdapi.equity.CompanyFundamental:
       type: object
       properties:
         taxonomies:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_\
-            Taxonomies"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_Taxonomies"
         id:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_\
-            Id"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_Id"
         isins:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_\
-            Isins"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental_Isins"
         source:
           enum:
             - SOURCE_UNSPECIFIED
@@ -45252,8 +45069,7 @@ components:
         fundamental_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamental"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
     dev.infrontfinance.cdapi.equity.CompanyPosition:
       type: object
       properties:
@@ -45269,11 +45085,9 @@ components:
           description: source for company data
           format: enum
         management:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyPosition_Man\
-            agement"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyPosition_Management"
         board:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyPosition_Boa\
-            rd"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyPosition_Board"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
     dev.infrontfinance.cdapi.equity.CompanyPosition_Board:
@@ -45320,8 +45134,7 @@ components:
         owners:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyShareholder_\
-              Owners"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyShareholder_Owners"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
     dev.infrontfinance.cdapi.equity.CompanyShareholder_Owners:
@@ -45420,20 +45233,16 @@ components:
         equity_edi:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquity"
         common_additional:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         common_additional_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
     dev.infrontfinance.cdapi.equity.InstrumentsData:
       type: object
       properties:
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquityRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquityResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         esg_risk:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EsgRiskClarity"
         esg_risk_clarity:
@@ -45465,8 +45274,7 @@ components:
         company_shareholder_euronext_vps:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyShareholder"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ClassificationRespo\
-            nse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ClassificationResponse"
     dev.infrontfinance.cdapi.equity.IssuerEquityResponse:
       type: object
       properties:
@@ -45523,8 +45331,7 @@ components:
       type: object
       properties:
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.IssuerEquityRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.IssuerEquityResponse"
     dev.infrontfinance.cdapi.equity.Keyfigure:
       type: object
       properties:
@@ -45643,8 +45450,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimatesDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyEstimatesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -45655,8 +45461,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamentals\
-              Data"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyFundamentalsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -45718,14 +45523,11 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ListingEquityRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ListingEquityResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquityRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.InstrumentEquityResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -45765,15 +45567,13 @@ components:
         company_shareholder_euronext_vps:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.CompanyShareholder"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ClassificationRespo\
-            nse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.ClassificationResponse"
         keyfigure:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.KeyfigureResponse"
         preferred_trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         issuer_keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.IssuerKeyfigureResp\
-            onse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.equity.IssuerKeyfigureResponse"
     dev.infrontfinance.cdapi.equity.Management_Members:
       type: object
       properties:
@@ -45901,11 +45701,9 @@ components:
           type: string
           description: the identifer
         efc:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundCl\
-            assification"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundClassification"
         fund_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundCl\
-            assification"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundClassification"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
       description: classification holds all criterias to classify a fund
@@ -45913,16 +45711,14 @@ components:
       type: object
       properties:
         efc:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundCl\
-            assification"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundClassification"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.fund.ClassificationFundTypesData:
       type: object
       properties:
         fund_type:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundCl\
-            assification"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification_FundClassification"
         count:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Count"
     dev.infrontfinance.cdapi.fund.ClassificationResponse:
@@ -45937,8 +45733,7 @@ components:
         fund_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Classification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.fund.Classification_FundClassification:
       type: object
       properties:
@@ -46275,20 +46070,16 @@ components:
         fund_infront:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.Instrument"
         common_additional:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         common_additional_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
     dev.infrontfinance.cdapi.fund.InstrumentsData:
       type: object
       properties:
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InstrumentFundRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InstrumentFundResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -46447,8 +46238,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationEfcsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationEfcsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -46459,8 +46249,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationFundTyp\
-              esData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationFundTypesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -46493,8 +46282,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.DividendFrequenciesDa\
-              ta"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.DividendFrequenciesData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -46527,8 +46315,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InvestmentHorizonsDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InvestmentHorizonsData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -46550,8 +46337,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.LegalTypesNationalDat\
-              a"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.LegalTypesNationalData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -46611,11 +46397,9 @@ components:
         listing:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ListingFundResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InstrumentFundRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.InstrumentFundResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -46645,8 +46429,7 @@ components:
         keyfigure:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.KeyfigureResponse"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fund.ClassificationResponse"
     dev.infrontfinance.cdapi.fund.PurgeCacheRequest:
       type: object
       properties:
@@ -46779,8 +46562,7 @@ components:
         common_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.fxrate.Crossrate:
       type: object
       properties:
@@ -46823,11 +46605,9 @@ components:
         common:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Instrument"
         common_additional:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         common_additional_wm:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditiona\
-            l"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentAdditional"
         fxrate:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.InstrumentFxrate"
     dev.infrontfinance.cdapi.fxrate.KeyfigureResponse:
@@ -46866,14 +46646,11 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.ListingFxrateRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.ListingFxrateResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.InstrumentFxrateRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.InstrumentFxrateResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -46883,8 +46660,7 @@ components:
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.ClassificationRespo\
-            nse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.ClassificationResponse"
         keyfigure:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.fxrate.KeyfigureResponse"
     dev.infrontfinance.cdapi.fxrate.PurgeCacheRequest:
@@ -46972,8 +46748,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.quote.TickQuotesAggregated\
-              Data"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.quote.TickQuotesAggregatedData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -47063,8 +46838,7 @@ components:
         common_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.referential.Index:
       type: object
       properties:
@@ -47087,8 +46861,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.ListingsIndexD\
-              ata"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.ListingsIndexData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -47104,8 +46877,7 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.ListingIndexRe\
-            sponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.ListingIndexResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -47115,11 +46887,9 @@ components:
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.Classification\
-            Response"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.ClassificationResponse"
         keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.KeyfigureRespo\
-            nse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.referential.KeyfigureResponse"
     dev.infrontfinance.cdapi.referential.PurgeCacheRequest:
       type: object
       properties:
@@ -47133,8 +46903,7 @@ components:
         id:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote_IdsIde\
-              ntifier"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote_IdsIdentifier"
         fields:
           type: string
           format: field-mask
@@ -47160,8 +46929,7 @@ components:
       type: object
       properties:
         id:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote_IdsIde\
-            ntifier"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote_IdsIdentifier"
         last_price:
           type: number
           description: IDS_REALTIME_LAST => ADF_Bezahlt
@@ -47371,16 +47139,14 @@ components:
         common_wm:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.WmClassification"
         common_infront:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassificati\
-            on"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InfrontClassification"
     dev.infrontfinance.cdapi.structured_product.InstrumentCertificateResponse:
       type: object
       properties:
         common:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Instrument"
         structured_product:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entStructuredProduct"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentStructuredProduct"
     dev.infrontfinance.cdapi.structured_product.InstrumentFactorCertificate:
       type: object
       properties:
@@ -47424,14 +47190,11 @@ components:
         common:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Instrument"
         structured_product:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entStructuredProduct"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentStructuredProduct"
         factor_certificate:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entFactorCertificate"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentFactorCertificate"
         knockout:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entKnockout"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentKnockout"
     dev.infrontfinance.cdapi.structured_product.InstrumentStructuredProduct:
       type: object
       properties:
@@ -47486,8 +47249,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Listing\
-              sCertificateData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ListingsCertificateData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -47498,8 +47260,7 @@ components:
         _data:
           type: array
           items:
-            $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Listing\
-              sLeverageProductData"
+            $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ListingsLeverageProductData"
         _pagination:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.Pagination"
         _meta:
@@ -47518,14 +47279,11 @@ components:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Listing\
-            CertificateResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ListingCertificateResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entCertificateResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentCertificateResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -47533,31 +47291,24 @@ components:
         currency:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Currency"
         underlying_listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonResponse"
         underlying_instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Keyfigu\
-            reCertificateResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.KeyfigureCertificateResponse"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Classif\
-            icationResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ClassificationResponse"
     dev.infrontfinance.cdapi.structured_product.ListingsLeverageProductData:
       type: object
       properties:
         listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Listing\
-            LeverageProductResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ListingLeverageProductResponse"
         instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Instrum\
-            entLeverageProductResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.InstrumentLeverageProductResponse"
         issuer:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonRespons\
-            e"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerCommonResponse"
         trading_venue:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.TradingVenue"
         country:
@@ -47565,19 +47316,15 @@ components:
         currency:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Currency"
         underlying_listing:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonRespon\
-            se"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.ListingCommonResponse"
         underlying_instrument:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonRes\
-            ponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.InstrumentCommonResponse"
         snapquote:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.snapquote.Snapquote"
         keyfigure:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Keyfigu\
-            reLeverageProductResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.KeyfigureLeverageProductResponse"
         classification:
-          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.Classif\
-            icationResponse"
+          $ref: "#/components/schemas/dev.infrontfinance.cdapi.structured_product.ClassificationResponse"
     dev.infrontfinance.cdapi.structured_product.PurgeCacheRequest:
       type: object
       properties:

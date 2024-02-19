@@ -50,4 +50,10 @@ describe('openapi e2e tests', () => {
       },
     })
   })
+  it('sends headers', async () => {
+    const result = await client.get('/secured', {
+      headers: { 'X-Api-Key': 'yo!', 'X-Client-Key': 'Hello' },
+    })
+    expect(result.data).toEqual('ok')
+  })
 })

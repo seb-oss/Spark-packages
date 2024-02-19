@@ -11,7 +11,7 @@ const parts: (keyof RequestArgs)[] = ['body', 'header', 'path', 'query']
 
 const generateArgs = (
   args: RequestArgs | undefined,
-  extendsReq: boolean
+  isServer: boolean
 ): string => {
   if (args) {
     const tokens: string[] = []
@@ -20,8 +20,12 @@ const generateArgs = (
       if (arg) {
         const partName =
           part === 'path' ? 'params' : part === 'header' ? 'headers' : part
+
         tokens.push(
-          `${partName}${arg.optional ? '?' : ''}: ${generateType(arg)}`
+          `${partName}${arg.optional ? '?' : ''}: ${wrapArgs(
+            generateType(arg),
+            isServer && part === 'header'
+          )}`
         )
       }
     }
@@ -30,11 +34,16 @@ const generateArgs = (
 
     const optional = argsOptional(args)
     return `args${optional ? '?' : ''}: ${
-      extendsReq ? 'Req & ' : ''
+      isServer ? 'Req & ' : ''
     }{ ${tokens.join(', ')} }, `
   }
   // No params - no args
   return ''
+}
+
+const wrapArgs = (args: string, wrap: boolean): string => {
+  if (!wrap) return args
+  return `LowerCaseHeaders<${args}>`
 }
 
 export const argsOptional = (args: RequestArgs) =>

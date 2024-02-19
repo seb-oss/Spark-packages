@@ -18,6 +18,7 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
    APIServerDefinition,
    BaseClient,
    GenericRouteHandler,
+   LowerCaseHeaders,
    PartiallySerialized,
    RequestOptions,
    Serialized,
@@ -70,6 +71,22 @@ const generateComponents = (components: ParsedComponents): string => {
 
   for (const res of components.responseBodies) {
     tokens.push(generateResponseBody(res))
+  }
+
+  for (const param of components.securitySchemes) {
+    tokens.push(
+      generateType({
+        type: 'object',
+        name: param.name,
+        properties: [
+          {
+            name: param.parameterName,
+            type: [param.type],
+            optional: param.optional,
+          },
+        ],
+      })
+    )
   }
 
   return tokens.join('\n\n')

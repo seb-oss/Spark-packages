@@ -6,6 +6,7 @@ import {
   RequestBodyObject,
   ResponseObject,
   SchemaObject,
+  SecuritySchemeObject,
 } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
 import { findRef } from '../parser/common'
@@ -15,6 +16,7 @@ import { parsePath } from '../parser/paths'
 import { parseRequestBodies } from '../parser/requestBodies'
 import { parseResponseBodies } from '../parser/responseBodies'
 import { parseSchema } from '../parser/schema'
+import { parseSecurityScheme } from '../parser/securitySchemes'
 import {
   ArrayType,
   CustomType,
@@ -219,7 +221,7 @@ describe('openapi parser', () => {
             },
             {
               in: 'header',
-              name: 'x-api-key',
+              name: 'X-Api-Key',
               schema: {
                 type: 'string',
               },
@@ -271,7 +273,7 @@ describe('openapi parser', () => {
               optional: false,
               properties: [
                 {
-                  name: 'x-api-key',
+                  name: 'X-Api-Key',
                   optional: false,
                   type: [{ type: 'string' }],
                 },
@@ -360,7 +362,7 @@ describe('openapi parser', () => {
               $ref: '#/components/parameters/ApiSecretHeader',
             },
             {
-              $ref: '#/components/headers/x-api-key',
+              $ref: '#/components/headers/X-Client-Key',
             },
           ],
           requestBody: {
@@ -371,6 +373,7 @@ describe('openapi parser', () => {
               description: 'No Content',
             },
           },
+          security: [{ ApiKey: [] }],
         },
       }
       const components: ComponentsObject = {
@@ -393,7 +396,7 @@ describe('openapi parser', () => {
           },
           ApiSecretHeader: {
             in: 'header',
-            name: 'x-api-secret',
+            name: 'X-Api-Secret',
             schema: {
               type: 'string',
             },
@@ -409,7 +412,7 @@ describe('openapi parser', () => {
           },
         },
         headers: {
-          'x-api-key': {
+          'X-Client-Key': {
             schema: {
               type: 'string',
             },
@@ -430,6 +433,13 @@ describe('openapi parser', () => {
         schemas: {
           Personality: {
             type: 'string',
+          },
+        },
+        securitySchemes: {
+          ApiKey: {
+            type: 'apiKey',
+            in: 'header',
+            name: 'X-Api-Key',
           },
         },
       }
@@ -459,11 +469,11 @@ describe('openapi parser', () => {
             },
             header: {
               type: 'object',
-              allOf: [{ type: 'ApiSecretHeader' }],
+              allOf: [{ type: 'ApiSecretHeader' }, { type: 'ApiKey' }],
               optional: false,
               properties: [
                 {
-                  name: 'x-api-key',
+                  name: 'X-Client-Key',
                   optional: false,
                   type: [{ type: 'string' }],
                 },
@@ -1135,6 +1145,56 @@ describe('openapi parser', () => {
         data: { type: 'User', name: undefined },
       }
       const parsed = parseResponseBodies({ UserResponse: responseBody })[0]
+      expect(parsed).toEqual(expected)
+    })
+  })
+  describe('parseSecuritySchemes', () => {
+    it('parses an apiKey scheme', () => {
+      const scheme: SecuritySchemeObject = {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-Api-Key',
+      }
+      const parsed = parseSecurityScheme('X-Api-Key', scheme)
+      const expected: Parameter = {
+        name: 'X-Api-Key',
+        in: 'header',
+        parameterName: 'X-Api-Key',
+        optional: false,
+        type: { type: 'string' },
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses an http scheme', () => {
+      const scheme: SecuritySchemeObject = {
+        type: 'http',
+        scheme: 'basic',
+      }
+      const parsed = parseSecurityScheme('basicAuth', scheme)
+      const expected: Parameter = {
+        name: 'basicAuth',
+        in: 'header',
+        parameterName: 'Authorization',
+        optional: false,
+        type: { type: 'string' },
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses an oauth scheme', () => {
+      const scheme: SecuritySchemeObject = {
+        type: 'oauth2',
+      }
+      const parsed = parseSecurityScheme('OAuth', scheme)
+      const expected: Parameter = {
+        name: 'OAuth',
+        in: 'header',
+        parameterName: 'Authorization',
+        optional: false,
+        type: { type: 'string' },
+      }
+
       expect(parsed).toEqual(expected)
     })
   })
