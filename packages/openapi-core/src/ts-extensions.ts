@@ -22,7 +22,8 @@ export type LowerCaseHeaders<T> = {
 export type ClientArgs<T> = {
   [P in keyof T as Exclude<P, 'headers'>]: T[P]
 } & (T extends { headers?: infer H }
-  ? // biome-ignore lint/complexity/noBannedTypes: <explanation>
-    { headers?: LowerCaseHeaders<H> }
-  : {}) &
+  ? { headers?: LowerCaseHeaders<H> }
+  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
+    {}) &
+  // biome-ignore lint/complexity/noBannedTypes: <explanation>
   (T extends { headers: infer H } ? { headers: LowerCaseHeaders<H> } : {})
