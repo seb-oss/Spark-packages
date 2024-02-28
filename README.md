@@ -64,6 +64,10 @@ A helper for retrying any promise call (ex an http request) with error rules and
 
 A wrapper for OpenSearch Client to assist with typed queries, indices etc
 
+### [@sebspark/promise-cache](./packages/promise-cache)
+
+A caching wrapper for promises.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
