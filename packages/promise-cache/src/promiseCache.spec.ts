@@ -33,4 +33,14 @@ describe('PromiseCache', () => {
     await cache.wrap('testKey', mockDelegate)
     expect(mockDelegate).toHaveBeenCalledTimes(2)
   })
+
+  it('should throw an exception if the delegate throws an error', async () => {
+    const errorMessage = 'Error in delegate function'
+    mockDelegate.mockRejectedValue(new Error(errorMessage))
+
+    // Expect the cache wrapper to throw the same error
+    await expect(cache.wrap('testKey', mockDelegate)).rejects.toThrow(
+      errorMessage
+    )
+  })
 })
