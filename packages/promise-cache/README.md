@@ -6,6 +6,7 @@ A simple caching wrapper for promises.
 /*
  * Pseudocode example.
  */
+import { PromiseCache } from '@sebspark/promise-cache'
 
 // Instantiate the cache with a TTL.
 const cache = new PromiseCache<string, number>(60) // 1 minute cache TTL.
