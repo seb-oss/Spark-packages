@@ -2,8 +2,6 @@
 
 A simple caching wrapper for promises.
 
-## Example
-
 ```typescript
 /*
  * Pseudocode example.
