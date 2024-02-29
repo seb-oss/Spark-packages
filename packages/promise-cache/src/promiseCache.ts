@@ -11,15 +11,11 @@ export class PromiseCache<T, U> {
     const now = Date.now()
     const cached = this.cache.get(key)
 
-    console.log('cached', cached && now - cached.timestamp < this.ttl)
-
     if (cached && now - cached.timestamp < this.ttl) {
       // Return the cached response if it's not expired
-      console.log('used cache')
       return cached.value
     }
 
-    console.log('cache this...')
     // Execute the delegate, cache the response with the current timestamp, and return it
     const response = await delegate()
     this.cache.set(key, { value: response, timestamp: now })
