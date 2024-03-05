@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.7.0
+
+### Minor Changes
+
+- f794941: Now handles inline enums and unspecified arrays
+
 ## 1.6.0
 
 ### Minor Changes
