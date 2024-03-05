@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.7.1
+
+### Patch Changes
+
+- e693b62: Fixed type generation for array of unknown
+
 ## 1.7.0
 
 ### Minor Changes
