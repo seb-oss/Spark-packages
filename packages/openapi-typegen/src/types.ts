@@ -1,4 +1,4 @@
-import { DiscriminatorObject, ParameterIn, Verb } from '@sebspark/openapi-core'
+import { ParameterIn, Verb } from '@sebspark/openapi-core'
 
 export type Primitive =
   | 'string'
@@ -33,6 +33,10 @@ type BaseType = {
 
 export type PrimitiveType = BaseType & {
   type: Primitive
+}
+
+export type UnknownType = BaseType & {
+  type: 'unknown'
 }
 
 export type ArrayType = BaseType & {

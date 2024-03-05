@@ -11,6 +11,7 @@ import {
   Property,
   ResponseBody,
   TypeDefinition,
+  UnknownType,
 } from '../types'
 import { document } from './document'
 
@@ -30,6 +31,10 @@ export const generateType = (parsed: TypeDefinition): string => {
     }
     case 'object': {
       type = generateObject(parsed as ObjectType)
+      break
+    }
+    case 'unknown': {
+      type = generateUnknown(parsed as UnknownType)
       break
     }
     case 'Date':
@@ -153,6 +158,9 @@ export const generatePrimitive = (parsed: PrimitiveType): string =>
 
 export const generateCustom = (parsed: CustomType): string =>
   `${preamble(parsed)}${typeName(parsed.type)}`
+
+export const generateUnknown = (parsed: UnknownType): string =>
+  `${preamble(parsed)}unknown`
 
 export const generateObject = (parsed: ObjectType): string => {
   const lines: string[] = []
