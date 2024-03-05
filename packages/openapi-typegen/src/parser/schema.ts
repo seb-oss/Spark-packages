@@ -86,7 +86,9 @@ const parseArraySchema = (
   return {
     name,
     type: 'array',
-    items: schema.items ? parsePropertyType(schema.items)[0] : { type: 'unknown' },
+    items: schema.items
+      ? parsePropertyType(schema.items)[0]
+      : { type: 'unknown' },
     ...parseDocumentation(schema),
   }
 }

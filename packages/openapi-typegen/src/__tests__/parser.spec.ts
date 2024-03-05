@@ -724,7 +724,7 @@ describe('openapi parser', () => {
                 type: 'array',
                 items: {
                   type: 'unknown',
-                }
+                },
               },
             ],
             optional: false,
@@ -744,8 +744,8 @@ describe('openapi parser', () => {
             type: 'array',
             items: {
               type: 'string',
-              enum: ['FOO', 'BAR']
-            }
+              enum: ['FOO', 'BAR'],
+            },
           },
         },
         required: ['interests'],

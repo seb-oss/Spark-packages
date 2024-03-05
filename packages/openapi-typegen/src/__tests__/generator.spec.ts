@@ -80,7 +80,7 @@ describe('typescript generator', () => {
               },
             ],
           },
-        ]
+        ],
       }
       const expected = await format(`
         export type Values = {
