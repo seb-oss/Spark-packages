@@ -182,7 +182,10 @@ const generateDiscriminator = (
 
 export const generateArray = (parsed: ArrayType): string => {
   const lines: string[] = []
-  const items = generateType(parsed.items)
+  let items = generateType(parsed.items)
+  if (parsed.items.type === 'enum') {
+    items = `(${items})`
+  }
   lines.push(`${preamble(parsed)}${items}[]`)
   return lines.join('\n')
 }

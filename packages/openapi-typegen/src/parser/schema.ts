@@ -2,6 +2,7 @@ import { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
 import {
   ArrayType,
   CustomType,
+  EnumType,
   ObjectType,
   Property,
   TypeDefinition,
@@ -81,11 +82,11 @@ const parseArraySchema = (
   name: string | undefined,
   schema: SchemaObject
 ): ArrayType => {
-  if (schema.type !== 'array' || !schema.items) throw new Error('Not an array')
+  if (schema.type !== 'array') throw new Error('Not an array')
   return {
     name,
     type: 'array',
-    items: parsePropertyType(schema.items)[0],
+    items: schema.items ? parsePropertyType(schema.items)[0] : { type: 'unknown' },
     ...parseDocumentation(schema),
   }
 }
@@ -114,6 +115,14 @@ const parsePropertyType = (
     return [{ type: parseRef(ref) }]
   }
   const schemaObject = property as SchemaObject
+  if (schemaObject.enum) {
+    const enumType: EnumType = {
+      type: 'enum',
+      values: schemaObject.enum,
+      ...parseDocumentation(schemaObject),
+    }
+    return [enumType]
+  }
   if (schemaObject.type) {
     return (
       Array.isArray(schemaObject.type) ? schemaObject.type : [schemaObject.type]

@@ -62,6 +62,35 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates an object with array string enum type', async () => {
+      const type: ObjectType = {
+        name: 'Values',
+        type: 'object',
+        properties: [
+          {
+            name: 'interests',
+            optional: false,
+            type: [
+              {
+                type: 'array',
+                items: {
+                  type: 'enum',
+                  values: ['FOO', 'BAR'],
+                },
+              },
+            ],
+          },
+        ]
+      }
+      const expected = await format(`
+        export type Values = {
+          interests: ('FOO' | 'BAR')[]
+        }
+      `)
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
     it('generates an object type with empty definition', async () => {
       const type: ObjectType = {
         type: 'object',

@@ -35,7 +35,7 @@ export type dev_infrontfinance_basedef_EntityMeta = {
   /**
    * the source for the cache
    */
-  cache_source?: string
+  cache_source?: 'UNSPECIFIED' | 'DB' | 'LC' | 'NC'
   /**
    * cached flag
    */
@@ -243,7 +243,7 @@ export type dev_infrontfinance_cdapi_bond_InstrumentBond = {
   /**
    * source
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'WM' | 'EDI' | 'XID'
   benchmark?: dev_infrontfinance_cdapi_bond_Benchmark
   coupon_type?: dev_infrontfinance_cdapi_bond_CouponType
   interest_rate_calculation_method?: dev_infrontfinance_cdapi_bond_InterestRateCalculationMethod
@@ -408,7 +408,7 @@ export type dev_infrontfinance_cdapi_bond_InstrumentBond = {
   /**
    * EDI-only
    */
-  status?: string
+  status?: 'STATUS_UNSPECIFIED' | 'DEFAULT' | 'ACTIVE' | 'INACTIVE'
   /**
    * EDI, XID: The overall amount of full bonds total currency amount outstanding based on denomination
    */
@@ -865,7 +865,16 @@ export type dev_infrontfinance_cdapi_common_AttributeConfig = {
   /**
    * type of the attribute
    */
-  type?: string
+  type?:
+    | 'UNSPECIFIED_ATTRIBUTE_CONFIG_TYPE'
+    | 'STRING'
+    | 'NUMBER'
+    | 'BOOLEAN'
+    | 'DATE'
+    | 'TIME'
+    | 'DATETIME'
+    | 'OBJECT'
+    | 'ARRAY'
   /**
    * label for the attribute
    */
@@ -890,7 +899,17 @@ export type dev_infrontfinance_cdapi_common_AttributeConfig = {
   /**
    * service used to get this fields
    */
-  service?: string
+  service?:
+    | 'UNSPECIFIED_ATTRIBUTE_CONFIG_SERVICE'
+    | 'COMMON'
+    | 'BOND'
+    | 'EQUITY'
+    | 'FUTURE'
+    | 'OPTION'
+    | 'FUND'
+    | 'QUOTE'
+    | 'INDEX'
+    | 'SNAPQUOTE'
   /**
    * source
    */
@@ -902,7 +921,10 @@ export type dev_infrontfinance_cdapi_common_AttributeConfig = {
   /**
    * relation 1:1, 1:N
    */
-  relation?: string
+  relation?:
+    | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+    | 'ONE_TO_ONE'
+    | 'ONE_TO_MANY'
 }
 
 export type dev_infrontfinance_cdapi_common_AttributeConfigsData = {
@@ -946,7 +968,7 @@ export type dev_infrontfinance_cdapi_common_CorporateAction = {
   /**
    * the source for the corporate action
    */
-  source?: string
+  source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
   /**
    * date of the ca (source = WM,EDI).
    */
@@ -981,7 +1003,7 @@ export type dev_infrontfinance_cdapi_common_CorporateActionSubType = {
   /**
    * the source for the corporate action
    */
-  source?: string
+  source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
   /**
    * the name of the ca
    */
@@ -996,7 +1018,7 @@ export type dev_infrontfinance_cdapi_common_CorporateActionType = {
   /**
    * the source for the corporate action
    */
-  source?: string
+  source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
   /**
    * the name of the ca
    */
@@ -1156,7 +1178,7 @@ export type dev_infrontfinance_cdapi_common_Dictionary = {
 
 export type dev_infrontfinance_cdapi_common_EetAdditional = {
   id?: string
-  source?: string
+  source?: 'EET_ADDITIONAL_SOURCE_UNSPECIFIED' | 'INFRONT'
   supplementary?: dev_infrontfinance_cdapi_common_EetAdditionalSupplementary
   spai?: dev_infrontfinance_cdapi_common_EetAdditionalSpai
   supplementary_taxonomy?: dev_infrontfinance_cdapi_common_EetAdditionalSupplementaryTaxonomy
@@ -1314,7 +1336,7 @@ export type dev_infrontfinance_cdapi_common_EetAdditionalSupplementaryTaxonomy =
  */
 export type dev_infrontfinance_cdapi_common_EetManufacturer = {
   id?: string
-  source?: string
+  source?: 'EET_MANUFACTURER_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * infront EET 10000_Name (source: INFRONT)
    */
@@ -1421,7 +1443,7 @@ export type dev_infrontfinance_cdapi_common_EetOther = {
   /**
    * the source of the data
    */
-  source?: string
+  source?: 'EET_OTHER_SOURCE_UNSPECIFIED' | 'INFRONT'
   general?: dev_infrontfinance_cdapi_common_EetOtherGeneral
   /**
    * 20070_Financial_Instrument_Percentage_Of_Minimum_SFDR_Art_8_Funds
@@ -1606,7 +1628,7 @@ export type dev_infrontfinance_cdapi_common_EetSectorBaseExclusion = {
   /**
    * the source of the data
    */
-  source?: string
+  source?: 'EET_SECTOR_BASE_EXCLUSION_SOURCE_UNSPECIFIED' | 'INFRONT'
   adult_entertainment?: dev_infrontfinance_cdapi_common_EetSectorBaseExclusionExclusion
   alcohol?: dev_infrontfinance_cdapi_common_EetSectorBaseExclusionExclusion
   animal_testing?: dev_infrontfinance_cdapi_common_EetSectorBaseExclusionExclusion
@@ -1729,7 +1751,7 @@ export type dev_infrontfinance_cdapi_common_EetSfdrPai = {
   /**
    * the source of the data
    */
-  source?: string
+  source?: 'EET_SFDR_PAI_SOURCE_UNSPECIFIED' | 'WM' | 'INFRONT'
   ghg_emissions_scope_1?: dev_infrontfinance_cdapi_common_EetSfdrPaiData
   ghg_emissions_scope_2?: dev_infrontfinance_cdapi_common_EetSfdrPaiData
   ghg_emissions_scope_3?: dev_infrontfinance_cdapi_common_EetSfdrPaiData
@@ -1846,7 +1868,7 @@ export type dev_infrontfinance_cdapi_common_EetSustainabilityProductInformation 
     /**
      * the source of the data
      */
-    source?: string
+    source?: 'EET_SPI_SOURCE_UNSPECIFIED' | 'WM' | 'INFRONT'
     sfdr_product_type?: dev_infrontfinance_cdapi_common_Dictionary
     esg_main_focus?: dev_infrontfinance_cdapi_common_Dictionary
     /**
@@ -2044,7 +2066,7 @@ export type dev_infrontfinance_cdapi_common_EetSustainabilityProductInformationT
 
 export type dev_infrontfinance_cdapi_common_EmtBasic = {
   id?: number
-  source?: string
+  source?: 'EMT_BASIC_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * 00100_Leveraged_Financial_Instrument_Or_Contingent_Liability_Instrument
    */
@@ -2161,7 +2183,7 @@ export type dev_infrontfinance_cdapi_common_EmtBasic = {
 
 export type dev_infrontfinance_cdapi_common_EmtCosts = {
   id?: number
-  source?: string
+  source?: 'EMT_COSTS_SOURCE_UNSPECIFIED' | 'INFRONT'
   ex_ante?: dev_infrontfinance_cdapi_common_EmtCostsExAnte
   ex_post?: dev_infrontfinance_cdapi_common_EmtCostsExPost
   _meta?: dev_infrontfinance_basedef_EntityMeta
@@ -2307,7 +2329,7 @@ export type dev_infrontfinance_cdapi_common_EmtCostsExPost = {
 
 export type dev_infrontfinance_cdapi_common_EmtTargetMarket = {
   id?: number
-  source?: string
+  source?: 'EMT_TARGET_MARKET_SOURCE_UNSPECIFIED' | 'INFRONT'
   distribution_strategy?: dev_infrontfinance_cdapi_common_EmtTargetMarketDistributionStrategy
   knowledge_and_experience?: dev_infrontfinance_cdapi_common_EmtTargetMarketKnowledgeAndExperience
   investor_type?: dev_infrontfinance_cdapi_common_EmtTargetMarketInvestorType
@@ -2425,11 +2447,19 @@ export type dev_infrontfinance_cdapi_common_EmtTargetMarketLossBearingAbility =
     /**
      * 03040_Compatible_With_Clients_Who_Do_Not_Need_Capital_Guarantee
      */
-    compatible_with_clients_who_do_not_need_capital_guarantee?: string
+    compatible_with_clients_who_do_not_need_capital_guarantee?:
+      | 'YNN_UNSPECIFIED'
+      | 'YES'
+      | 'NO'
+      | 'NEUTRAL'
     /**
      * 03010_Compatible_With_Clients_Who_Can_Not_Bear_Capital_Loss
      */
-    compatible_with_clients_who_can_not_bear_capital_loss?: string
+    compatible_with_clients_who_can_not_bear_capital_loss?:
+      | 'YNN_UNSPECIFIED'
+      | 'YES'
+      | 'NO'
+      | 'NEUTRAL'
   }
 
 export type dev_infrontfinance_cdapi_common_EmtTargetMarketRiskTolerance = {
@@ -2452,12 +2482,16 @@ export type dev_infrontfinance_cdapi_common_EmtTargetMarketRiskTolerance = {
   /**
    * 04050_Not_For_Investors_With_The_Lowest_Risk_Tolerance_Germany
    */
-  not_for_investors_with_the_lowest_risk_tolerance_germany?: string
+  not_for_investors_with_the_lowest_risk_tolerance_germany?:
+    | 'YNN_UNSPECIFIED'
+    | 'YES'
+    | 'NO'
+    | 'NEUTRAL'
 }
 
 export type dev_infrontfinance_cdapi_common_EptAdditional = {
   id?: string
-  source?: string
+  source?: 'EPT_ADDITIONAL_SOURCE_UNSPECIFIED' | 'INFRONT'
   costs?: dev_infrontfinance_cdapi_common_EptAdditionalCosts
   uk?: dev_infrontfinance_cdapi_common_EptAdditionalUk
   germany?: dev_infrontfinance_cdapi_common_EptAdditionalGermany
@@ -2633,7 +2667,7 @@ export type dev_infrontfinance_cdapi_common_EptAdditionalUk = {
 
 export type dev_infrontfinance_cdapi_common_EptBasic = {
   id?: string
-  source?: string
+  source?: 'EPT_BASIC_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * 00002_EPT_Producer_Name
    */
@@ -2723,7 +2757,7 @@ export type dev_infrontfinance_cdapi_common_EptBasic = {
 
 export type dev_infrontfinance_cdapi_common_EptCosts = {
   id?: string
-  source?: string
+  source?: 'EPT_COSTS_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * 03010_One_Off_Cost_Portfolio_Entry_Cost
    */
@@ -2768,7 +2802,7 @@ export type dev_infrontfinance_cdapi_common_EptCosts = {
 
 export type dev_infrontfinance_cdapi_common_EptNarrative = {
   id?: string
-  source?: string
+  source?: 'EPT_NARRATIVE_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * 04020_Comprehension_Alert_Portfolio
    */
@@ -2861,7 +2895,7 @@ export type dev_infrontfinance_cdapi_common_EptNarrative = {
 
 export type dev_infrontfinance_cdapi_common_EptRisk = {
   id?: string
-  source?: string
+  source?: 'EPT_RISK_SOURCE_UNSPECIFIED' | 'INFRONT'
   valuation_frequency?: dev_infrontfinance_cdapi_common_Dictionary
   /**
    * 01020_Portfolio_VEV_Reference
@@ -2924,7 +2958,7 @@ export type dev_infrontfinance_cdapi_common_EptRisk = {
 
 export type dev_infrontfinance_cdapi_common_EptScenario = {
   id?: string
-  source?: string
+  source?: 'EPT_SCENARIO_SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * 02010_Portfolio_Return_Unfavourable_Scenario_1_Year
    */
@@ -3056,7 +3090,7 @@ export type dev_infrontfinance_cdapi_common_EptScenario = {
  */
 export type dev_infrontfinance_cdapi_common_EsgRiskClarity = {
   id?: string
-  source?: string
+  source?: 'ESG_RISK_SOURCE_UNSPECIFIED' | 'CLARITY'
   total?: dev_infrontfinance_cdapi_common_EsgRiskClarityData
   environmental?: dev_infrontfinance_cdapi_common_EsgRiskClarityData
   resource_use?: dev_infrontfinance_cdapi_common_EsgRiskClarityData
@@ -3154,7 +3188,7 @@ export type dev_infrontfinance_cdapi_common_InstrumentAdditional = {
    * Internal unique identifier for this instrument
    */
   id?: string
-  source?: string
+  source?: 'INSTRUMENT_ADDITIONAL_SOURCE_UNSPECIFIED' | 'WM'
   quotation_type?: dev_infrontfinance_cdapi_common_Dictionary
   _meta?: dev_infrontfinance_basedef_EntityMeta
 }
@@ -3291,7 +3325,7 @@ export type dev_infrontfinance_cdapi_common_IssuerCountriesData = {
  */
 export type dev_infrontfinance_cdapi_common_IssuerEsgRiskClarity = {
   id?: string
-  source?: string
+  source?: 'ESG_RISK_SOURCE_UNSPECIFIED' | 'CLARITY'
   total?: dev_infrontfinance_cdapi_common_IssuerEsgRiskClarityData
   environmental?: dev_infrontfinance_cdapi_common_IssuerEsgRiskClarityData
   social?: dev_infrontfinance_cdapi_common_IssuerEsgRiskClarityData
@@ -3574,7 +3608,7 @@ export type dev_infrontfinance_cdapi_common_ListingAdditional = {
    * Internal unique identifier for this listing
    */
   id?: string
-  source?: string
+  source?: 'LISTING_ADDITIONAL_SOURCE_UNSPECIFIED' | 'EDI' | 'WM'
   /**
    * delisting_date of the listing from source edi
    */
@@ -3704,7 +3738,7 @@ export type dev_infrontfinance_cdapi_common_MifidCost = {
   ongoing_incremental_costs_currency_code?: string
   ongoing_incremental_costs_percent_sign?: string
   ongoing_incremental_costs_date?: string
-  source?: string
+  source?: 'MIFID_SOURCE_UNSPECIFIED' | 'WM'
   _meta?: dev_infrontfinance_basedef_EntityMeta
 }
 
@@ -3714,7 +3748,11 @@ export type dev_infrontfinance_cdapi_common_PurgeCacheRequest = {
 
 export type dev_infrontfinance_cdapi_common_Rating = {
   id?: string
-  source?: string
+  source?:
+    | 'RATING_SOURCE_UNSPECIFIED'
+    | 'MOODYS'
+    | 'FITCH'
+    | 'STANDARD_AND_POORS'
   /**
    * Foreign Currency Short term rating: current evaluation of creditworthiness by rating agency
    */
@@ -3854,7 +3892,7 @@ export type dev_infrontfinance_cdapi_common_Region = {
 
 export type dev_infrontfinance_cdapi_common_TargetMarketProfile = {
   id?: string
-  source?: string
+  source?: 'MIFID_SOURCE_UNSPECIFIED' | 'WM'
   risk_indicator_calculation_method?: dev_infrontfinance_cdapi_common_TargetMarketProfileTargetMarketDictionaryEntry
   client_category?: dev_infrontfinance_cdapi_common_TargetMarketProfileTargetMarketDictionaryEntry
   client_category_negative?: dev_infrontfinance_cdapi_common_TargetMarketProfileTargetMarketDictionaryEntry
@@ -3893,12 +3931,12 @@ export type dev_infrontfinance_cdapi_common_TechnicalAnalysis = {
   /**
    * source of the data
    */
-  source?: string
+  source?: 'TECHNICAL_ANALYSIS_SOURCE_UNSPECIFIED' | 'FTA'
   isin?: string
   /**
    * type of the signal (BUY, SELL, HOLD)
    */
-  signal_type_code?: string
+  signal_type_code?: 'SIGNAL_TYPE_UNSPECIFIED' | 'BUY' | 'SELL' | 'HOLD'
   /**
    * price of the signal
    */
@@ -3950,7 +3988,7 @@ export type dev_infrontfinance_cdapi_common_TechnicalAnalysis = {
   /**
    * The "Short term Trend" columns describe the state of the stock's trend over the past few weeks. Usually short term is till 3/5 days.
    */
-  short_term_trend?: string
+  short_term_trend?: 'TREND_UNSPECIFIED' | 'UP' | 'DOWN' | 'NEUTRAL'
   /**
    * day since the short term trend is in place
    */
@@ -3958,7 +3996,7 @@ export type dev_infrontfinance_cdapi_common_TechnicalAnalysis = {
   /**
    * The "Medium term Trend" columns describe the state of the stock's trend over the past few weeks. Usually medium term from 3/5 day to 3/4 weeks.
    */
-  medium_term_trend?: string
+  medium_term_trend?: 'TREND_UNSPECIFIED' | 'UP' | 'DOWN' | 'NEUTRAL'
   /**
    * day since the medium term trend is in place
    */
@@ -3966,7 +4004,7 @@ export type dev_infrontfinance_cdapi_common_TechnicalAnalysis = {
   /**
    * The "Long term Trend" columns describe the state of the stock's trend over the past few weeks. Usually long term from 3/4 weeks to about 3 months.
    */
-  long_term_trend?: string
+  long_term_trend?: 'TREND_UNSPECIFIED' | 'UP' | 'DOWN' | 'NEUTRAL'
   /**
    * day since the long term trend is in place
    */
@@ -4108,7 +4146,12 @@ export type dev_infrontfinance_cdapi_common_UnderlyingListing = {
 
 export type dev_infrontfinance_cdapi_common_VerifyListingsData = {
   identifier?: string
-  status?: string
+  status?:
+    | 'STATUS_UNSPECIFIED'
+    | 'OK'
+    | 'NOT_ENTITLED'
+    | 'NOT_FOUND'
+    | 'SNAPQUOTE_NOT_ENTITLED'
   data?: dev_infrontfinance_cdapi_common_ListingsData
 }
 
@@ -4253,15 +4296,21 @@ export type dev_infrontfinance_cdapi_derivative_ListingOption = {
   /**
    * Option type
    */
-  type_code?: string
+  type_code?: 'TYPE_CODE_UNAVAILABLE' | 'RISE' | 'FALL'
   /**
    * Maturity of the option
    */
-  maturity_category_code?: string
+  maturity_category_code?: 'DAIYLY' | 'WEEKLY' | 'STANDARD'
   /**
    * Type of exercise right
    */
-  exercise_type_code?: string
+  exercise_type_code?:
+    | 'EXERCISE_TYPE_CODE_UNAVAILABLE'
+    | 'AMERICAN'
+    | 'EUROPEAN'
+    | 'ASIAN'
+    | 'BERMUDAN'
+    | 'OTHER'
   /**
    * Maturity of the option
    */
@@ -4367,12 +4416,18 @@ export type dev_infrontfinance_cdapi_entitlement_PurgeCacheRequest = {
  */
 export type dev_infrontfinance_cdapi_entitlement_Selector = {
   selector_id?: number
-  quality?: string
+  quality?:
+    | 'NO'
+    | 'YES'
+    | 'END_PULL'
+    | 'DELAYED_PULL'
+    | 'REALTIME_PULL'
+    | 'REALTIME_PUSH'
 }
 
 export type dev_infrontfinance_cdapi_equity_Advisor = {
   id?: string
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'MORNINGSTAR'
   members?: dev_infrontfinance_cdapi_equity_AdvisorMembers[]
   _meta?: dev_infrontfinance_basedef_EntityMeta
 }
@@ -4403,7 +4458,7 @@ export type dev_infrontfinance_cdapi_equity_CompaniesData = {
   company_shareholder?: dev_infrontfinance_cdapi_equity_CompanyShareholder
   company_shareholder_infront?: dev_infrontfinance_cdapi_equity_CompanyShareholder
   company_shareholder_euronext_vps?: dev_infrontfinance_cdapi_equity_CompanyShareholder
-  company_source?: string
+  company_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EURONEXT_VPS'
   issuer?: dev_infrontfinance_cdapi_common_IssuerCommonResponse
 }
 
@@ -4415,7 +4470,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyBasic = {
   /**
    * source for company data
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EURONEXT_VPS'
   /**
    * optional string isin = 3;
    */
@@ -4482,7 +4537,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyBasic = {
 
 export type dev_infrontfinance_cdapi_equity_CompanyEstimate = {
   id?: dev_infrontfinance_cdapi_equity_CompanyEstimateId
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
   isins?: dev_infrontfinance_cdapi_equity_CompanyEstimateIsins
   analysts?: dev_infrontfinance_cdapi_equity_CompanyEstimateAnalysts[]
   outlook?: dev_infrontfinance_cdapi_equity_CompanyEstimateOutlook
@@ -4501,7 +4556,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyEstimateAnalysts = {
 
 export type dev_infrontfinance_cdapi_equity_CompanyEstimateId = {
   issuer_id?: string
-  report_type?: string[]
+  report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
   year?: number
   date?: dev_infrontfinance_basedef_FilterParamString
 }
@@ -4541,7 +4596,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyFundamental = {
   taxonomies?: dev_infrontfinance_cdapi_equity_CompanyFundamentalTaxonomies
   id?: dev_infrontfinance_cdapi_equity_CompanyFundamentalId
   isins?: dev_infrontfinance_cdapi_equity_CompanyFundamentalIsins
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
   /**
    * the currency of the provided figures
    */
@@ -4550,7 +4605,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyFundamental = {
 
 export type dev_infrontfinance_cdapi_equity_CompanyFundamentalId = {
   issuer_id?: string
-  report_type?: string[]
+  report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
   year?: number
   date?: dev_infrontfinance_basedef_FilterParamString
 }
@@ -4581,7 +4636,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyPosition = {
   /**
    * source for company data
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EURONEXT_VPS'
   management?: dev_infrontfinance_cdapi_equity_CompanyPositionManagement
   board?: dev_infrontfinance_cdapi_equity_CompanyPositionBoard
   _meta?: dev_infrontfinance_basedef_EntityMeta
@@ -4608,7 +4663,7 @@ export type dev_infrontfinance_cdapi_equity_CompanyShareholder = {
   /**
    * source for company data
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EURONEXT_VPS'
   /**
    * date when data was generated
    */
@@ -4660,7 +4715,7 @@ export type dev_infrontfinance_cdapi_equity_FigureYears = {
   median?: number
   high?: number
   low?: number
-  report_type?: string
+  report_type?: 'REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM'
 }
 
 export type dev_infrontfinance_cdapi_equity_InstrumentEquity = {
@@ -4671,7 +4726,7 @@ export type dev_infrontfinance_cdapi_equity_InstrumentEquity = {
   /**
    * source for equity data
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'EDI'
   outstanding_shares?: number
   outstanding_shares_date?: string
   voting?: string
@@ -4723,7 +4778,7 @@ export type dev_infrontfinance_cdapi_equity_IssuerKeyfigure = {
   /**
    * source for equity specific issuer-keyfigures
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
   _meta?: dev_infrontfinance_basedef_EntityMeta
   historical_net_sales_growth?: number
   historical_net_sales_growth_year?: number
@@ -4755,7 +4810,7 @@ export type dev_infrontfinance_cdapi_equity_Keyfigure = {
   /**
    * source for equity specific keyfigures
    */
-  source?: string
+  source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EDI'
   _meta?: dev_infrontfinance_basedef_EntityMeta
   /**
    * outstanding shares per share_class (source: EDI, INNFRONT)
@@ -5947,7 +6002,7 @@ export type dev_infrontfinance_cdapi_snapquote_Snapquote = {
   /**
    * quality of the quote data
    */
-  quality?: string
+  quality?: 'UNSPECIFIED_QUALITY' | 'END_OF_DAY' | 'DELAYED' | 'REALTIME'
   /**
    * IDS_REALTIME_OFFICIAL_CLOSE_DATE => ADF_Schluss_Datum
    */
@@ -6094,11 +6149,16 @@ export type dev_infrontfinance_cdapi_structured_product_InstrumentStructuredProd
     /**
      * Structured_Product type
      */
-    type_code?: string
+    type_code?: 'TYPE_CODE_UNAVAILABLE' | 'RISE' | 'FALL'
     /**
      * Type of exercise right
      */
-    exercise_type_code?: string
+    exercise_type_code?:
+      | 'EXERCISE_TYPE_CODE_UNAVAILABLE'
+      | 'AMERICAN'
+      | 'EUROPEAN'
+      | 'BERMUDAN'
+      | 'OTHER'
   }
 
 export type dev_infrontfinance_cdapi_structured_product_KeyfigureCertificateResponse =
@@ -12015,7 +12075,11 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
             entity?: string[]
             service?: string[]
             grouped_by?: string
-            relation?: string[]
+            relation?: (
+              | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+              | 'ONE_TO_ONE'
+              | 'ONE_TO_MANY'
+            )[]
             sort?: string[]
             offset?: number
             limit?: number
@@ -12062,7 +12126,11 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
             entity?: string[]
             service?: string[]
             grouped_by?: string
-            relation?: string[]
+            relation?: (
+              | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+              | 'ONE_TO_ONE'
+              | 'ONE_TO_MANY'
+            )[]
             sort?: string[]
             offset?: number
             limit?: number
@@ -12129,7 +12197,11 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
             entity?: string[]
             service?: string[]
             grouped_by?: string
-            relation?: string[]
+            relation?: (
+              | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+              | 'ONE_TO_ONE'
+              | 'ONE_TO_MANY'
+            )[]
             sort?: string[]
             offset?: number
             limit?: number
@@ -15248,8 +15320,15 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
             total_score_esg_risk_ge?: number
             total_score_esg_risk_eq?: number
             total_score_esg_risk_ne?: number
-            exercise_type_code?: string[]
-            type_code?: string[]
+            exercise_type_code?: (
+              | 'EXERCISE_TYPE_CODE_UNAVAILABLE'
+              | 'AMERICAN'
+              | 'EUROPEAN'
+              | 'ASIAN'
+              | 'BERMUDAN'
+              | 'OTHER'
+            )[]
+            type_code?: ('TYPE_CODE_UNAVAILABLE' | 'RISE' | 'FALL')[]
             instrument_id_underlying?: string[]
             maturity_date_lt?: string
             maturity_date_le?: string
@@ -15546,7 +15625,7 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
           query?: {
             isin?: string
             fields?: string
-            report_type?: string[]
+            report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
             estimate_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
           }
         },
@@ -15602,7 +15681,7 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
             date_ge?: string
             date_eq?: string
             date_ne?: string
-            report_type?: string[]
+            report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
             fundamental_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
             has_fundamentals?: boolean
             limit?: number
@@ -27814,7 +27893,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           entity?: string[]
           service?: string[]
           grouped_by?: string
-          relation?: string[]
+          relation?: (
+            | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+            | 'ONE_TO_ONE'
+            | 'ONE_TO_MANY'
+          )[]
           sort?: string[]
           offset?: number
           limit?: number
@@ -27857,7 +27940,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           entity?: string[]
           service?: string[]
           grouped_by?: string
-          relation?: string[]
+          relation?: (
+            | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+            | 'ONE_TO_ONE'
+            | 'ONE_TO_MANY'
+          )[]
           sort?: string[]
           offset?: number
           limit?: number
@@ -27915,7 +28002,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           entity?: string[]
           service?: string[]
           grouped_by?: string
-          relation?: string[]
+          relation?: (
+            | 'UNSPECIFIED_ATTRIBUTE_CONFIG_RELATION'
+            | 'ONE_TO_ONE'
+            | 'ONE_TO_MANY'
+          )[]
           sort?: string[]
           offset?: number
           limit?: number
@@ -30910,8 +31001,15 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           total_score_esg_risk_ge?: number
           total_score_esg_risk_eq?: number
           total_score_esg_risk_ne?: number
-          exercise_type_code?: string[]
-          type_code?: string[]
+          exercise_type_code?: (
+            | 'EXERCISE_TYPE_CODE_UNAVAILABLE'
+            | 'AMERICAN'
+            | 'EUROPEAN'
+            | 'ASIAN'
+            | 'BERMUDAN'
+            | 'OTHER'
+          )[]
+          type_code?: ('TYPE_CODE_UNAVAILABLE' | 'RISE' | 'FALL')[]
           instrument_id_underlying?: string[]
           maturity_date_lt?: string
           maturity_date_le?: string
@@ -31152,7 +31250,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
         query?: {
           isin?: string
           fields?: string
-          report_type?: string[]
+          report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
           estimate_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
         }
       },
@@ -31204,7 +31302,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           date_ge?: string
           date_eq?: string
           date_ne?: string
-          report_type?: string[]
+          report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
           fundamental_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
           has_fundamentals?: boolean
           limit?: number

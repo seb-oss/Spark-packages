@@ -698,6 +698,81 @@ describe('openapi parser', () => {
       }
       expect(parsed).toEqual(expected)
     })
+    it('parses inline undefined arrays', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+          },
+          interests: {
+            type: 'array',
+          },
+        },
+        required: ['interests'],
+      }
+      const parsed = parseSchema('User', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [
+          { name: 'name', type: [{ type: 'string' }], optional: true },
+          {
+            name: 'interests',
+            type: [
+              {
+                type: 'array',
+                items: {
+                  type: 'unknown',
+                }
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+      expect(parsed).toEqual(expected)
+    })
+    it('parses inline enum arrays', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          name: {
+            type: 'string',
+          },
+          interests: {
+            type: 'array',
+            items: {
+              type: 'string',
+              enum: ['FOO', 'BAR']
+            }
+          },
+        },
+        required: ['interests'],
+      }
+      const parsed = parseSchema('User', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [
+          { name: 'name', type: [{ type: 'string' }], optional: true },
+          {
+            name: 'interests',
+            type: [
+              {
+                type: 'array',
+                items: {
+                  type: 'enum',
+                  values: ['FOO', 'BAR'],
+                },
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+      expect(parsed).toEqual(expected)
+    })
     it('parses named arrays', () => {
       const schema: SchemaObject = {
         type: 'array',

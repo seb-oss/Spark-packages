@@ -37,7 +37,7 @@ export type PrimitiveType = BaseType & {
 
 export type ArrayType = BaseType & {
   type: 'array'
-  items: CustomType | ObjectType | ArrayType
+  items: CustomType | ObjectType | ArrayType | EnumType
 }
 
 export type Discriminator = {
