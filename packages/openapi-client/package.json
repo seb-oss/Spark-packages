@@ -18,6 +18,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@sebspark/openapi-typegen": "*",
     "tsconfig": "*"
   },
   "dependencies": {
