@@ -7,7 +7,7 @@ import {
   fromAxiosError,
 } from '@sebspark/openapi-core'
 import { RetrySettings, retry } from '@sebspark/retry'
-import axios, { AxiosError } from 'axios'
+import axios, { AxiosError, AxiosHeaders } from 'axios'
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
@@ -15,29 +15,15 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 ): C => {
   const client: BaseClient = {
     get: (url, args, opts) =>
-      callServer(baseURL, url, 'get', args, globalOptions?.retry, opts?.retry),
+      callServer(mergeArgs(baseURL, url, 'get', args, opts, globalOptions)),
     post: (url, args, opts) =>
-      callServer(baseURL, url, 'post', args, globalOptions?.retry, opts?.retry),
+      callServer(mergeArgs(baseURL, url, 'post', args, opts, globalOptions)),
     put: (url, args, opts) =>
-      callServer(baseURL, url, 'put', args, globalOptions?.retry, opts?.retry),
+      callServer(mergeArgs(baseURL, url, 'put', args, opts, globalOptions)),
     patch: (url, args, opts) =>
-      callServer(
-        baseURL,
-        url,
-        'patch',
-        args,
-        globalOptions?.retry,
-        opts?.retry
-      ),
+      callServer(mergeArgs(baseURL, url, 'patch', args, opts, globalOptions)),
     delete: (url, args, opts) =>
-      callServer(
-        baseURL,
-        url,
-        'delete',
-        args,
-        globalOptions?.retry,
-        opts?.retry
-      ),
+      callServer(mergeArgs(baseURL, url, 'delete', args, opts, globalOptions)),
   }
   return client as C
 }
@@ -48,31 +34,60 @@ const callServer = async <
     Record<string, string> | undefined
   >,
 >(
-  baseURL: string,
-  _url: string,
-  method: Verb,
-  args: RequestArgs | undefined,
-  ...retrySettings: Array<RetrySettings | undefined>
+  args: Partial<ClientOptions & RequestArgs>
 ): Promise<R> => {
   try {
-    const url = setParams(_url, args?.params)
     const { headers, data } = await retry(
       () =>
         axios.request({
-          baseURL,
-          url,
-          method,
-          headers: args?.headers,
-          params: args?.query,
-          data: args?.body,
+          baseURL: args.baseUrl,
+          url: args.url,
+          method: args.method,
+          headers: args.headers as AxiosHeaders,
+          params: args.params,
+          data: args.body,
         }),
-      ...retrySettings
+      args.retry
     )
     return { headers, data } as R
   } catch (error) {
     throw fromAxiosError(error as AxiosError)
   }
 }
+
+type Args = ClientOptions | RequestArgs | undefined
+const mergeArgs = (
+  baseUrl: string,
+  url: string,
+  method: string,
+  requestArgs: Args,
+  extras: Args,
+  global: Args
+): Partial<ClientOptions & RequestArgs> => {
+  const params = merge('params', global, requestArgs, extras)
+  const query = merge('query', global, requestArgs, extras)
+  const headers = merge('headers', global, requestArgs, extras)
+  const body = merge('body', global, requestArgs, extras)
+  const retry = merge('retry', global, requestArgs, extras)
+  const merged: Partial<ClientOptions & RequestArgs> = {
+    url: setParams(url, params),
+    baseUrl,
+    method,
+    params: query,
+    headers,
+    body,
+    retry,
+  }
+
+  return merged
+}
+
+const merge = (
+  prop: keyof (ClientOptions & RequestArgs),
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  ...args: (any | undefined)[]
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+): any => Object.assign({}, ...args.map((a) => a?.[prop] || {}))
 
 const setParams = (url: string, params: Record<string, string> = {}): string =>
   Object.entries(params).reduce(

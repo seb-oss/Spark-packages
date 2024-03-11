@@ -1,113 +1,68 @@
-import {
-  APIResponse,
-  BaseClient,
-  RequestOptions,
-  Serialized,
-} from '@sebspark/openapi-core'
 import { Router, json } from 'express'
+import { RequestHandler } from 'express'
+import { AccessToken, HttpError, User, UserList } from './openapi'
 
-export type User = {
-  id: string
-  name: string
-  age: number
-}
+export const accessToken = 'Bearer access token'
 
-type ClientGet = {
-  (
-    url: '/users',
-    opts?: RequestOptions
-  ): Promise<APIResponse<Serialized<User>[]>>
-  (
-    url: '/users/:id',
-    args: { params: { id: string } },
-    opts?: RequestOptions
-  ): Promise<APIResponse<Serialized<User>>>
-}
-type ClientPost = {
-  (
-    url: '/users',
-    args: { body: User },
-    opts?: RequestOptions
-  ): Promise<APIResponse<Serialized<User>>>
-}
-type ClientPut = {
-  (
-    url: '/users/:id',
-    args: { params: { id: string }; body: User },
-    opts?: RequestOptions
-  ): Promise<APIResponse<Serialized<User>>>
-}
-type ClientPatch = {
-  (
-    url: '/users/:id',
-    args: { params: { id: string }; body: Partial<User> },
-    opts?: RequestOptions
-  ): Promise<APIResponse<Serialized<User>>>
-}
-type ClientDelete = {
-  (
-    url: '/users/:id',
-    args: { params: { id: string } },
-    opts?: RequestOptions
-  ): Promise<APIResponse<undefined>>
-}
-export type Client = BaseClient & {
-  get: ClientGet
-  post: ClientPost
-  put: ClientPut
-  patch: ClientPatch
-  delete: ClientDelete
+const authorize: RequestHandler = (req, res, next) => {
+  const { authorization } = req.headers
+  if (!authorization) {
+    res.status(401).send({ message: 'Unauthorized' } as HttpError)
+    return
+  }
+  if (authorization !== accessToken) {
+    res.status(403).send({ message: 'Forbidden' } as HttpError)
+    return
+  }
+  next()
 }
 
 const users = new Map<string, User>()
 
 const router = Router()
 router.use(json())
-router.get('/users', (_req, res) => {
-  res.status(200).send(Array.from(users.values()))
+router.get('/users', authorize, (req, res) => {
+  res.status(200).send(Array.from(users.values()) as UserList)
 })
-router.get('/users/:id', (req, res) => {
-  const user = users.get(req.params.id)
+router.get('/users/:userId', authorize, (req, res) => {
+  const user = users.get(req.params.userId)
 
   if (user) {
-    res.status(200).send(user)
+    res.status(200).send(user as User)
   } else {
     res.status(404).send({ message: 'Not found' })
   }
 })
-router.post('/users', (req, res) => {
-  users.set(req.body.id, req.body)
-  res.status(201).send(req.body)
+router.post('/users', authorize, (req, res) => {
+  const user = req.body as User
+  users.set(user.id, user)
+  res.status(201).send(user as User)
 })
-router.put('/users/:id', (req, res) => {
-  const user = users.get(req.params.id)
+router.put('/users/:userId', authorize, (req, res) => {
+  const oldUser = users.get(req.params.userId)
+  const newUser = req.body
 
-  if (user) {
-    users.set(req.params.id, req.body)
-    res.status(200).send(req.body)
+  if (oldUser) {
+    users.set(req.params.userId, newUser)
+    res.status(200).send(newUser as User)
   } else {
     res.status(404).send({ message: 'Not found' })
   }
 })
-router.patch('/users/:id', (req, res) => {
-  const user = users.get(req.params.id)
+router.delete('/users/:userId', authorize, (req, res) => {
+  const user = users.get(req.params.userId)
 
   if (user) {
-    const updated = { ...user, ...req.body }
-    users.set(req.params.id, updated)
-    res.status(200).send(updated)
-  } else {
-    res.status(404).send({ message: 'Not found' })
-  }
-})
-router.delete('/users/:id', (req, res) => {
-  const user = users.get(req.params.id)
-
-  if (user) {
-    users.delete(req.params.id)
+    users.delete(req.params.userId)
     res.status(204).end()
   } else {
     res.status(404).send({ message: 'Not found' })
   }
+})
+router.get('/undocumented-security', authorize, (_req, res) => {
+  res.status(204).end()
+})
+router.get('/undocumented-security/:id', authorize, (_req, res) => {
+  res.status(204).end()
 })
 export { router }
