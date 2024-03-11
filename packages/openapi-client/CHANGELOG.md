@@ -1,5 +1,16 @@
 # @sebspark/openapi-client
 
+## 1.2.0
+
+### Minor Changes
+
+- 06176d0: Updated Client to support undocumented headers
+
+### Patch Changes
+
+- Updated dependencies [06176d0]
+  - @sebspark/openapi-core@1.3.0
+
 ## 1.1.0
 
 ### Minor Changes
