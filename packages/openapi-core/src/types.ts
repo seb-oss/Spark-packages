@@ -1,3 +1,4 @@
+import type { OutgoingHttpHeaders } from 'http'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
@@ -7,7 +8,6 @@ import type {
   PartiallySerialized,
   Serialized,
 } from './ts-extensions'
-import type { OutgoingHttpHeaders } from 'http'
 
 export type { PartiallySerialized, Serialized, LowerCaseHeaders }
 
@@ -60,8 +60,8 @@ export type PayloadRequestArgs = RequestArgs & {
 }
 
 export type RequestOptions = {
-  retry: RetrySettings
-  headers: OutgoingHttpHeaders & Record<string, string>
+  retry?: RetrySettings
+  headers?: OutgoingHttpHeaders & Record<string, string>
 }
 
 export type ClientOptions = RequestOptions & {
