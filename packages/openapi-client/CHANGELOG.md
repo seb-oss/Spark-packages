@@ -1,5 +1,16 @@
 # @sebspark/openapi-client
 
+## 1.3.0
+
+### Minor Changes
+
+- 008c27a: Added params serializer options for arrays
+
+### Patch Changes
+
+- Updated dependencies [008c27a]
+  - @sebspark/openapi-core@1.4.0
+
 ## 1.2.0
 
 ### Minor Changes
