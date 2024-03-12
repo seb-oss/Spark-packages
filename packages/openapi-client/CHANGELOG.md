@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.3.1
+
+### Patch Changes
+
+- 772d39b: Fixed a bug in array serialization
+
 ## 1.3.0
 
 ### Minor Changes
