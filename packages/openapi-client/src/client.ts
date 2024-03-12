@@ -8,6 +8,7 @@ import {
 } from '@sebspark/openapi-core'
 import { RetrySettings, retry } from '@sebspark/retry'
 import axios, { AxiosError, AxiosHeaders } from 'axios'
+import { paramsSerializer } from './paramsSerializer'
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
@@ -37,6 +38,7 @@ const callServer = async <
   args: Partial<ClientOptions & RequestArgs>
 ): Promise<R> => {
   try {
+    const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
     const { headers, data } = await retry(
       () =>
         axios.request({
@@ -45,6 +47,7 @@ const callServer = async <
           method: args.method,
           headers: args.headers as AxiosHeaders,
           params: args.params,
+          paramsSerializer: serializer,
           data: args.body,
         }),
       args.retry

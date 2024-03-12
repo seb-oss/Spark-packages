@@ -64,8 +64,10 @@ export type RequestOptions = {
   headers?: OutgoingHttpHeaders & Record<string, string>
 }
 
+export type ArrayFormat = 'indices' | 'brackets' | 'repeat' | 'comma'
+
 export type ClientOptions = RequestOptions & {
-  //
+  arrayFormat?: ArrayFormat
 }
 
 export type BaseClient = {
