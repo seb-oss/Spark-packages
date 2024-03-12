@@ -3,10 +3,11 @@ import {
   BaseClient,
   ClientOptions,
   RequestArgs,
+  RequestOptions,
   Verb,
   fromAxiosError,
 } from '@sebspark/openapi-core'
-import { RetrySettings, retry } from '@sebspark/retry'
+import { retry } from '@sebspark/retry'
 import axios, { AxiosError, AxiosHeaders } from 'axios'
 import { paramsSerializer } from './paramsSerializer'
 
@@ -58,14 +59,13 @@ const callServer = async <
   }
 }
 
-type Args = ClientOptions | RequestArgs | undefined
 const mergeArgs = (
   baseUrl: string,
   url: string,
   method: string,
-  requestArgs: Args,
-  extras: Args,
-  global: Args
+  requestArgs: RequestArgs | RequestOptions | undefined,
+  extras: RequestOptions | undefined,
+  global: ClientOptions | undefined
 ): Partial<ClientOptions & RequestArgs> => {
   const params = merge('params', global, requestArgs, extras)
   const query = merge('query', global, requestArgs, extras)
@@ -80,6 +80,7 @@ const mergeArgs = (
     headers,
     body,
     retry,
+    arrayFormat: global?.arrayFormat,
   }
 
   return merged
