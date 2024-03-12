@@ -1,8 +1,8 @@
 import { ArrayFormat } from '@sebspark/openapi-core'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const paramsSerializer =
   (format?: ArrayFormat | undefined) =>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   (params?: Record<string, any>): string => {
     if (!params) {
       return ''
