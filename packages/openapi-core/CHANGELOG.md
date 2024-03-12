@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.4.0
+
+### Minor Changes
+
+- 008c27a: Added params serializer options for arrays
+
 ## 1.3.0
 
 ### Minor Changes
