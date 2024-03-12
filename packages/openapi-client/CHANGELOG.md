@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.3.2
+
+### Patch Changes
+
+- 950590a: Serializer preserves commas in strings
+
 ## 1.3.1
 
 ### Patch Changes
