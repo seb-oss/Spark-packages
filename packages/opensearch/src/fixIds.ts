@@ -2,7 +2,6 @@ import omit from 'omit'
 import {
   Exists,
   FilterBool,
-  Match,
   NativeOpenSearchQueryBody,
   NativeOpenSearchType,
   OpenSearchFilter,
@@ -15,16 +14,15 @@ const omitId = omit('id')
 export const fixIds = <T extends WithId, K = T>(
   searchQuery: OpenSearchQuery<T, K>
 ) => {
-  const { query, ...bodyRest } = searchQuery.body
+  const { query, _source, from, size, sort } = searchQuery.body
   const q = query
-  const body = {
+  const body: NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K> = {
     query: {
       bool: q.bool ? fixBool(q.bool) : undefined,
       match: q.match ? fixId(q.match) : undefined,
       collapse: q.collapse,
       exists: q.exists ? fixExists(q.exists) : undefined,
       filter: q.filter ? fixFilter(q.filter) : undefined,
-      from: q.from,
       fuzzy: q.fuzzy ? fixId(q.fuzzy) : undefined,
       highlight: q.highlight,
       match_all: q.match_all,
@@ -40,13 +38,15 @@ export const fixIds = <T extends WithId, K = T>(
       range: q.range ? fixId(q.range) : undefined,
       regexp: q.regexp ? fixId(q.regexp) : undefined,
       script_score: q.script_score,
-      size: q.size,
       term: q.term ? fixId(q.term) : undefined,
       terms: q.terms ? fixId(q.terms) : undefined,
       wildcard: q.wildcard ? fixId(q.wildcard) : undefined,
     },
-    ...bodyRest,
-  } as unknown as NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
+    _source,
+    from,
+    size,
+    sort: sort ? fixId(sort) : undefined,
+  }
 
   return {
     ...searchQuery,
