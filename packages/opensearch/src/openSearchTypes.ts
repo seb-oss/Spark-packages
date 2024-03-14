@@ -327,14 +327,16 @@ type Order = 'asc' | 'desc'
 type Mode = 'min' | 'max' | 'sum' | 'avg' | 'median'
 type Missing = '_first' | '_last' | 'custom_value'
 export type Sort<T> = {
-  [P in NestedPaths<T>]?: Order | {
-    order?: Order
-    mode?: Mode
-    missing?: Missing
-    unmapped_type?: BasicOpenSearchFieldTypes
-    numeric_type?: NumberTypes
-    format?: string
-  }
+  [P in NestedPaths<T>]?:
+    | Order
+    | {
+        order?: Order
+        mode?: Mode
+        missing?: Missing
+        unmapped_type?: BasicOpenSearchFieldTypes
+        numeric_type?: NumberTypes
+        format?: string
+      }
 }
 
 export type OpenSearchQuery<
@@ -356,10 +358,8 @@ export type OpenSearchQueryResult<K> = {
 }
 
 // Define a type for basic Elasticsearch field types
-export type StringTypes = 
-  | 'text'
-  | 'keyword'
-export type NumberTypes = 
+export type StringTypes = 'text' | 'keyword'
+export type NumberTypes =
   | 'long'
   | 'integer'
   | 'short'

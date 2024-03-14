@@ -46,7 +46,7 @@ export const fixIds = <T extends WithId, K = T>(
       wildcard: q.wildcard ? fixId(q.wildcard) : undefined,
     },
     ...bodyRest,
-  } as unknown as  NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
+  } as unknown as NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
 
   return {
     ...searchQuery,
@@ -139,10 +139,13 @@ const clean = <T extends JSObj>(obj: T): T =>
   Object.entries(obj)
     .map(([prop, val]) => {
       if (Array.isArray(val)) {
-        return [prop, val.map((item) => {
-          if (isObject(item)) return clean(item)
-          return item
-        })]
+        return [
+          prop,
+          val.map((item) => {
+            if (isObject(item)) return clean(item)
+            return item
+          }),
+        ]
       }
       if (isObject(val)) return [prop, clean(val as JSObj)]
       return [prop, val]
@@ -154,7 +157,7 @@ const clean = <T extends JSObj>(obj: T): T =>
 const isObject = (value: unknown): boolean => {
   // Check if the value is null or not an object type (this excludes functions and arrays as well)
   if (value === null || typeof value !== 'object') {
-      return false
+    return false
   }
 
   // Check if the value is a plain object by comparing its prototype to Object.prototype
