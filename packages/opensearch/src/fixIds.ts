@@ -132,7 +132,7 @@ const fixIdValue = (val: string) => (val === 'id' ? '_id' : val)
 
 // Remove unnecessary undefined properties
 export const clean = (obj: Record<string, unknown>) => {
-  const cleaned = structuredClone(obj)
+  const cleaned = JSON.parse(JSON.stringify(obj))
 
   for (const [key, value] of Object.entries(obj)) {
     // Remove undefined values from arrays
