@@ -1,5 +1,5 @@
 import omit from 'omit'
-import {
+import type {
   Exists,
   FilterBool,
   NativeOpenSearchQueryBody,
@@ -7,15 +7,14 @@ import {
   OpenSearchFilter,
   OpenSearchQuery,
 } from './openSearchTypes'
-import { WithId } from './typescriptExtensions'
+import type { WithId } from './typescriptExtensions'
 
 const omitId = omit('id')
 
 export const fixIds = <T extends WithId, K = T>(
   searchQuery: OpenSearchQuery<T, K>
 ) => {
-  const { query, _source, from, size, sort } = searchQuery.body
-  const q = query
+  const { query: q, _source, from, size, sort } = searchQuery.body
   const body: NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K> = {
     query: {
       bool: q.bool ? fixBool(q.bool) : undefined,
@@ -50,9 +49,7 @@ export const fixIds = <T extends WithId, K = T>(
 
   return {
     ...searchQuery,
-    body: {
-      ...clean(body),
-    },
+    body: clean(body),
   }
 }
 
@@ -134,32 +131,15 @@ const fixId = (old: any) => {
 const fixIdValue = (val: string) => (val === 'id' ? '_id' : val)
 
 // Remove unnecessary undefined properties
-type JSObj = Record<string, unknown>
-const clean = <T extends JSObj>(obj: T): T =>
-  Object.entries(obj)
-    .map(([prop, val]) => {
-      if (Array.isArray(val)) {
-        return [
-          prop,
-          val.map((item) => {
-            if (isObject(item)) return clean(item)
-            return item
-          }),
-        ]
-      }
-      if (isObject(val)) return [prop, clean(val as JSObj)]
-      return [prop, val]
-    })
-    .filter(([, val]) => val !== undefined)
-    // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-    .reduce((m, [prop, val]) => ({ ...m, [prop as string]: val }), {}) as T
+export const clean = (obj: Record<string, unknown>) => {
+  const cleaned = structuredClone(obj)
 
-const isObject = (value: unknown): boolean => {
-  // Check if the value is null or not an object type (this excludes functions and arrays as well)
-  if (value === null || typeof value !== 'object') {
-    return false
+  for (const [key, value] of Object.entries(obj)) {
+    // Remove undefined values from arrays
+    if (Array.isArray(value)) {
+      cleaned[key] = value.filter(Boolean)
+    }
   }
 
-  // Check if the value is a plain object by comparing its prototype to Object.prototype
-  return Object.prototype.toString.call(value) === '[object Object]'
+  return cleaned
 }
