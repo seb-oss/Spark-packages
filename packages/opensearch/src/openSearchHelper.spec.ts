@@ -455,7 +455,10 @@ describe('OpenSearchHelper', () => {
               },
             },
           },
-          sort: [{ created: 'desc' }],
+          sort: [
+            { 'user.age': 'desc' },
+            { created: 'asc' }
+          ],
         },
       })
       expect(client.search).toHaveBeenCalledWith({
@@ -468,7 +471,10 @@ describe('OpenSearchHelper', () => {
               },
             },
           },
-          sort: [{ created: 'desc' }],
+          sort: [
+            { 'user.age': 'desc' },
+            { created: 'asc' },
+          ],
         },
       })
     })

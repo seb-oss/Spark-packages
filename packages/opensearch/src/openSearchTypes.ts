@@ -309,14 +309,33 @@ export type OpenSearchQueryBody<
         // More_like_this query to find documents similar to specified documents
         more_like_this?: MoreLikeThis<T>
       }
+
+      // Aggregate results based on fields
+      aggregations?: Aggregations<K>
+
+      // Sort order for the results
+      sort?: Sort<T>[]
+
+      from?: number
+      size?: number
       // Fields to return in the result
       _source?: OpenSearchFields<K>
     }
   : never
 
+type Order = 'asc' | 'desc'
+type Mode = 'min' | 'max' | 'sum' | 'avg' | 'median'
+type Missing = '_first' | '_last' | 'custom_value'
 export type Sort<T> = {
-  [P in keyof NestedFields<T>]?: { order: 'asc' | 'desc' }
-}[]
+  [P in NestedPaths<T>]?: Order | {
+    order?: Order
+    mode?: Mode
+    missing?: Missing
+    unmapped_type?: BasicOpenSearchFieldTypes
+    numeric_type?: NumberTypes
+    format?: string
+  }
+}
 
 export type OpenSearchQuery<
   T extends { id: string },
@@ -326,15 +345,6 @@ export type OpenSearchQuery<
       index: string
 
       body: OpenSearchQueryBody<T, K>
-
-      // Aggregate results based on fields
-      aggregations?: Aggregations<K>
-
-      // Sort order for the results
-      sort?: Sort<K>
-
-      from?: number
-      size?: number
     }
   : never
 
@@ -346,15 +356,19 @@ export type OpenSearchQueryResult<K> = {
 }
 
 // Define a type for basic Elasticsearch field types
-export type BasicOpenSearchFieldTypes =
+export type StringTypes = 
   | 'text'
   | 'keyword'
+export type NumberTypes = 
   | 'long'
   | 'integer'
   | 'short'
   | 'byte'
   | 'double'
   | 'float'
+export type BasicOpenSearchFieldTypes =
+  | StringTypes
+  | NumberTypes
   | 'date'
   | 'boolean'
   | 'binary'
@@ -364,9 +378,9 @@ type ElementType<T> = T extends Array<infer U> ? U : T
 
 // Utility type to suggest Elasticsearch field type based on TypeScript type
 export type OpenSearchFieldType<T> = ElementType<T> extends string
-  ? 'text' | 'keyword'
+  ? StringTypes
   : ElementType<T> extends number
-    ? 'long' | 'integer' | 'short' | 'byte' | 'double' | 'float'
+    ? NumberTypes
     : ElementType<T> extends boolean
       ? 'boolean'
       : ElementType<T> extends Date
@@ -437,12 +451,6 @@ export type NativeOpenSearchQueryBody<
         // Criteria to match the results
         multi_match?: MultiMatch<T>
 
-        // Number of results to skip (for pagination)
-        from?: number
-
-        // Number of results to return (for pagination)
-        size?: number
-
         // Collapse results based on field values
         collapse?: Collapse<K>
 
@@ -489,5 +497,13 @@ export type NativeOpenSearchQueryBody<
         more_like_this?: MoreLikeThis<T>
       }
       _source?: string[]
+
+      // Number of results to skip (for pagination)
+      from?: number
+
+      // Number of results to return (for pagination)
+      size?: number
+
+      sort?: Sort<T>[]
     }
   : never

@@ -7,7 +7,6 @@ import {
   NativeOpenSearchType,
   OpenSearchFilter,
   OpenSearchQuery,
-  SimpleFilterQueryString,
 } from './openSearchTypes'
 import { WithId } from './typescriptExtensions'
 
@@ -16,7 +15,8 @@ const omitId = omit('id')
 export const fixIds = <T extends WithId, K = T>(
   searchQuery: OpenSearchQuery<T, K>
 ) => {
-  const q = searchQuery.body.query
+  const { query, ...bodyRest } = searchQuery.body
+  const q = query
   const body = {
     query: {
       bool: q.bool ? fixBool(q.bool) : undefined,
@@ -45,8 +45,8 @@ export const fixIds = <T extends WithId, K = T>(
       terms: q.terms ? fixId(q.terms) : undefined,
       wildcard: q.wildcard ? fixId(q.wildcard) : undefined,
     },
-    _source: searchQuery.body._source,
-  } as NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
+    ...bodyRest,
+  } as unknown as  NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K>
 
   return {
     ...searchQuery,
@@ -133,9 +133,30 @@ const fixId = (old: any) => {
 
 const fixIdValue = (val: string) => (val === 'id' ? '_id' : val)
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-const clean = (obj: any) =>
+// Remove unnecessary undefined properties
+type JSObj = Record<string, unknown>
+const clean = <T extends JSObj>(obj: T): T =>
   Object.entries(obj)
+    .map(([prop, val]) => {
+      if (Array.isArray(val)) {
+        return [prop, val.map((item) => {
+          if (isObject(item)) return clean(item)
+          return item
+        })]
+      }
+      if (isObject(val)) return [prop, clean(val as JSObj)]
+      return [prop, val]
+    })
     .filter(([, val]) => val !== undefined)
     // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
-    .reduce((m, [prop, val]) => ({ ...m, [prop]: val }), {})
+    .reduce((m, [prop, val]) => ({ ...m, [prop as string]: val }), {}) as T
+
+const isObject = (value: unknown): boolean => {
+  // Check if the value is null or not an object type (this excludes functions and arrays as well)
+  if (value === null || typeof value !== 'object') {
+      return false
+  }
+
+  // Check if the value is a plain object by comparing its prototype to Object.prototype
+  return Object.prototype.toString.call(value) === '[object Object]'
+}
