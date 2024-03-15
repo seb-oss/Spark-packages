@@ -443,5 +443,34 @@ describe('OpenSearchHelper', () => {
         })
       })
     })
+
+    it('handles sort', async () => {
+      await helper(client as Client).typedSearch<Data>({
+        index: 'data',
+        body: {
+          query: {
+            term: {
+              'user.name': {
+                value: 'Arthur Dent',
+              },
+            },
+          },
+          sort: [{ 'user.age': 'desc' }, { created: 'asc' }],
+        },
+      })
+      expect(client.search).toHaveBeenCalledWith({
+        index: 'data',
+        body: {
+          query: {
+            term: {
+              'user.name': {
+                value: 'Arthur Dent',
+              },
+            },
+          },
+          sort: [{ 'user.age': 'desc' }, { created: 'asc' }],
+        },
+      })
+    })
   })
 })

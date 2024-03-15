@@ -309,14 +309,35 @@ export type OpenSearchQueryBody<
         // More_like_this query to find documents similar to specified documents
         more_like_this?: MoreLikeThis<T>
       }
+
+      // Aggregate results based on fields
+      // aggregations?: Aggregations<K>
+
+      // Sort order for the results
+      sort?: Sort<T>[]
+
+      from?: number
+      size?: number
       // Fields to return in the result
       _source?: OpenSearchFields<K>
     }
   : never
 
+type Order = 'asc' | 'desc'
+type Mode = 'min' | 'max' | 'sum' | 'avg' | 'median'
+type Missing = '_first' | '_last' | 'custom_value'
 export type Sort<T> = {
-  [P in keyof NestedFields<T>]?: { order: 'asc' | 'desc' }
-}[]
+  [P in NestedPaths<T>]?:
+    | Order
+    | {
+        order?: Order
+        mode?: Mode
+        missing?: Missing
+        unmapped_type?: BasicOpenSearchFieldTypes
+        numeric_type?: NumberTypes
+        format?: string
+      }
+}
 
 export type OpenSearchQuery<
   T extends { id: string },
@@ -326,15 +347,6 @@ export type OpenSearchQuery<
       index: string
 
       body: OpenSearchQueryBody<T, K>
-
-      // Aggregate results based on fields
-      aggregations?: Aggregations<K>
-
-      // Sort order for the results
-      sort?: Sort<K>
-
-      from?: number
-      size?: number
     }
   : never
 
@@ -346,15 +358,17 @@ export type OpenSearchQueryResult<K> = {
 }
 
 // Define a type for basic Elasticsearch field types
-export type BasicOpenSearchFieldTypes =
-  | 'text'
-  | 'keyword'
+export type StringTypes = 'text' | 'keyword'
+export type NumberTypes =
   | 'long'
   | 'integer'
   | 'short'
   | 'byte'
   | 'double'
   | 'float'
+export type BasicOpenSearchFieldTypes =
+  | StringTypes
+  | NumberTypes
   | 'date'
   | 'boolean'
   | 'binary'
@@ -364,9 +378,9 @@ type ElementType<T> = T extends Array<infer U> ? U : T
 
 // Utility type to suggest Elasticsearch field type based on TypeScript type
 export type OpenSearchFieldType<T> = ElementType<T> extends string
-  ? 'text' | 'keyword'
+  ? StringTypes
   : ElementType<T> extends number
-    ? 'long' | 'integer' | 'short' | 'byte' | 'double' | 'float'
+    ? NumberTypes
     : ElementType<T> extends boolean
       ? 'boolean'
       : ElementType<T> extends Date
@@ -416,78 +430,72 @@ export type NativeOpenSearchType<T extends WithId> = ExcludeId<T> & {
   _id: string
 }
 
-export type NativeOpenSearchQueryBody<
-  T extends { _id: string },
-  K = T,
-> = K extends DeepPartial<T>
-  ? {
-      query: {
-        // Fields to return in the result
-        fields?: OpenSearchFields<K>
+export type NativeOpenSearchQueryBody<T extends { _id: string }, K = T> = {
+  query: {
+    // Criteria to filter the results
+    filter?: OpenSearchFilter<T>
 
-        // Criteria to filter the results
-        filter?: OpenSearchFilter<T>
+    // Criteria to match the results
+    match?: Match<T>
 
-        // Criteria to match the results
-        match?: Match<T>
+    // Criteria to match all documents
+    match_all?: { boost?: number }
 
-        // Criteria to match all documents
-        match_all?: { boost?: number }
+    // Criteria to match the results
+    multi_match?: MultiMatch<T>
 
-        // Criteria to match the results
-        multi_match?: MultiMatch<T>
+    // Collapse results based on field values
+    collapse?: Collapse<K>
 
-        // Number of results to skip (for pagination)
-        from?: number
+    // Custom score calculation
+    script_score?: ScriptScore
 
-        // Number of results to return (for pagination)
-        size?: number
+    // Highlight matching text snippets
+    highlight?: Highlight<K>
 
-        // Collapse results based on field values
-        collapse?: Collapse<K>
+    // A boolean query allows you to build complex query using logical operators
+    bool?: FilterBool<T>
 
-        // Custom score calculation
-        script_score?: ScriptScore
+    // Range query to find documents where the field falls within a specified range
+    range?: Range<T>
 
-        // Highlight matching text snippets
-        highlight?: Highlight<K>
+    // Exists query to find documents where a field exists or not
+    exists?: Exists<T>
 
-        // A boolean query allows you to build complex query using logical operators
-        bool?: FilterBool<T>
+    // Terms query to find documents containing one or more exact terms
+    terms?: Terms<T>
 
-        // Range query to find documents where the field falls within a specified range
-        range?: Range<T>
+    // Term query to find documents containing a specific term
+    term?: Term<T>
 
-        // Exists query to find documents where a field exists or not
-        exists?: Exists<T>
+    // Fuzzy query to find documents containing terms similar to the search term
+    fuzzy?: Fuzzy<T>
 
-        // Terms query to find documents containing one or more exact terms
-        terms?: Terms<T>
+    // Prefix query to find documents having a field starting with a specific prefix
+    prefix?: Prefix<T>
 
-        // Term query to find documents containing a specific term
-        term?: Term<T>
+    // Wildcard query to find documents matching a wildcard pattern
+    wildcard?: Wildcard<T>
 
-        // Fuzzy query to find documents containing terms similar to the search term
-        fuzzy?: Fuzzy<T>
+    // Regexp query to find documents matching a regular expression
+    regexp?: Regexp<T>
 
-        // Prefix query to find documents having a field starting with a specific prefix
-        prefix?: Prefix<T>
+    // Match phrase query to find documents with exact phrases or proximity matches
+    match_phrase?: MatchPhrase<T>
 
-        // Wildcard query to find documents matching a wildcard pattern
-        wildcard?: Wildcard<T>
+    // Match phrase prefix query to find documents with exact prefix phrases
+    match_phrase_prefix?: MatchPhrasePrefix<T>
 
-        // Regexp query to find documents matching a regular expression
-        regexp?: Regexp<T>
+    // More_like_this query to find documents similar to specified documents
+    more_like_this?: MoreLikeThis<T>
+  }
+  _source?: OpenSearchFields<K>
 
-        // Match phrase query to find documents with exact phrases or proximity matches
-        match_phrase?: MatchPhrase<T>
+  // Number of results to skip (for pagination)
+  from?: number
 
-        // Match phrase prefix query to find documents with exact prefix phrases
-        match_phrase_prefix?: MatchPhrasePrefix<T>
+  // Number of results to return (for pagination)
+  size?: number
 
-        // More_like_this query to find documents similar to specified documents
-        more_like_this?: MoreLikeThis<T>
-      }
-      _source?: string[]
-    }
-  : never
+  sort?: Sort<T>[]
+}
