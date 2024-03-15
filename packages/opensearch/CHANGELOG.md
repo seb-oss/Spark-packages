@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 0.3.0
+
+### Minor Changes
+
+- dc8ad68: Support sort
+
 ## 0.2.3
 
 ### Patch Changes
