@@ -14,7 +14,7 @@
     "@sebspark/openapi-client": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/openapi-express": "*",
-    "express": "4.18.3"
+    "express": "4.19.1"
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
