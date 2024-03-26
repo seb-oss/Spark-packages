@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@types/supertest": "6.0.2",
-    "express": "4.19.1",
+    "express": "4.19.2",
     "supertest": "6.3.4",
     "tsconfig": "*"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
-    "express": "4.19.1"
+    "express": "4.19.2"
   }
 }
