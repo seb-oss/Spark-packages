@@ -4,7 +4,7 @@ import type {
   Subscription,
   Topic,
 } from '@google-cloud/pubsub'
-import { ClientConfig, getOrCreateTopic } from './client'
+import { type ClientConfig, getOrCreateTopic } from './client'
 
 const ALREADY_EXISTS_ERROR = '6 ALREADY_EXISTS'
 
@@ -32,13 +32,9 @@ export type SubscriberHandler<T> = {
   onSuccess: (msg: T, headers: PubSubHeaders) => void | Promise<void>
 }
 
-export interface Unsubscriber {
-  (): void
-}
+export type Unsubscriber = () => void
 
-export interface Subscriber<T> {
-  (args: SubscriberArgs<T>): Promise<Unsubscriber>
-}
+export type Subscriber<T> = (args: SubscriberArgs<T>) => Promise<Unsubscriber>
 
 interface PubsubMessage<T> {
   message: T
@@ -51,7 +47,7 @@ const subscriptionDefaultConfig =
   async (): Promise<CreateSubscriptionOptions> => {
     const deadLetterTopicName =
       process.env.PUBSUB_DEAD_LETTER_TOPIC || 'dead.letter.topic'
-    const maxDeliveryAttempts = parseInt(
+    const maxDeliveryAttempts = Number.parseInt(
       process.env.PUBSUB_MAX_DELIVERY_ATTEMPTS || '20',
       10
     )

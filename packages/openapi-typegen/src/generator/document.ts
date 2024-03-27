@@ -1,4 +1,10 @@
-import { Args, DocumentableType, Path, Property, RequestArgs } from '../types'
+import type {
+  Args,
+  DocumentableType,
+  Path,
+  Property,
+  RequestArgs,
+} from '../types'
 import { argsOptional } from './args'
 import { AND, OR, rxProperVariable } from './common'
 

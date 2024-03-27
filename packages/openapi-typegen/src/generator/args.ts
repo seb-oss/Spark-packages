@@ -1,4 +1,4 @@
-import { RequestArgs } from '../types'
+import type { RequestArgs } from '../types'
 import { generateType } from './common'
 
 export const generateClientArgs = (args: RequestArgs | undefined): string =>

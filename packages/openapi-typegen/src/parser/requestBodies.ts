@@ -1,5 +1,5 @@
-import { RequestBodyObject } from '@sebspark/openapi-core'
-import { TypeDefinition } from '../types'
+import type { RequestBodyObject } from '@sebspark/openapi-core'
+import type { TypeDefinition } from '../types'
 import { parseSchema } from './schema'
 
 export const parseRequestBodies = (

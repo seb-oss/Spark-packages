@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest'
-import { TypedRoute, TypedRouter } from './index'
+import { type TypedRoute, TypedRouter } from './index'
 
 const { request, response, next } = vi.hoisted(() => {
   const request = {

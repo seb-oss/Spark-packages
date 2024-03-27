@@ -1,4 +1,4 @@
-import { Schema } from 'avsc'
+import type { Schema } from 'avsc'
 import { expect, test } from 'vitest'
 import { parse } from './parse'
 

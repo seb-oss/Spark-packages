@@ -1,5 +1,6 @@
 if (typeof __dirname === 'undefined') global.__dirname = '/'
 if (typeof __filename === 'undefined') global.__filename = ''
+// biome-ignore lint/style/useNodejsImportProtocol: shim
 const bProcess = require('process')
 if (typeof process === 'undefined') {
   global.process = bProcess
@@ -12,4 +13,7 @@ if (typeof process === 'undefined') {
 }
 
 process.browser = false
-if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer
+if (typeof Buffer === 'undefined') {
+  // biome-ignore lint/style/useNodejsImportProtocol: shim
+  global.Buffer = require('buffer').Buffer
+}

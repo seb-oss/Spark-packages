@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { inspect } from 'util'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { inspect } from 'node:util'
 import { XMLParser } from 'fast-xml-parser'
 
 const [, , inputFile, outputFile] = process.argv

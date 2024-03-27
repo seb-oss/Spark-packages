@@ -1,16 +1,16 @@
 import {
-  APIResponse,
-  APIServerDefinition,
-  APIServerOptions,
-  HttpError,
-  Verb,
+  type APIResponse,
+  type APIServerDefinition,
+  type APIServerOptions,
+  type HttpError,
+  type Verb,
   createHttpError,
 } from '@sebspark/openapi-core'
 import {
-  ErrorRequestHandler,
-  NextFunction,
-  Request,
-  Response,
+  type ErrorRequestHandler,
+  type NextFunction,
+  type Request,
+  type Response,
   Router,
   json,
 } from 'express'

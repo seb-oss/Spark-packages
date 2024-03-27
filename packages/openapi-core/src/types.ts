@@ -1,6 +1,6 @@
-import type { OutgoingHttpHeaders } from 'http'
+import type { OutgoingHttpHeaders } from 'node:http'
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RetrySettings } from '@sebspark/retry'
+import type { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
 import type {
   Empty,

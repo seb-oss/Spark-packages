@@ -1,5 +1,5 @@
-import { HeaderObject } from '@sebspark/openapi-core'
-import { Header } from '../types'
+import type { HeaderObject } from '@sebspark/openapi-core'
+import type { Header } from '../types'
 import { parseDocumentation } from './common'
 import { parseSchema } from './schema'
 

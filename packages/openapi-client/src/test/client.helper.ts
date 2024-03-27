@@ -1,6 +1,11 @@
 import { Router, json } from 'express'
-import { RequestHandler } from 'express'
-import { AccessToken, HttpError, User, UserList } from './openapi'
+import type { RequestHandler } from 'express'
+import {
+  AccessToken,
+  type HttpError,
+  type User,
+  type UserList,
+} from './openapi'
 
 export const accessToken = 'Bearer access token'
 

@@ -1,14 +1,14 @@
 import {
-  APIResponse,
-  APIServerDefinition,
-  APIServerOptions,
-  GenericRouteHandler,
-  PartiallySerialized,
+  type APIResponse,
+  type APIServerDefinition,
+  type APIServerOptions,
+  type GenericRouteHandler,
+  type PartiallySerialized,
   UnauthorizedError,
 } from '@sebspark/openapi-core'
-import express, { Express } from 'express'
-import { Agent, agent } from 'supertest'
-import { Mock, beforeEach, expect, test, vi } from 'vitest'
+import express, { type Express } from 'express'
+import { type Agent, agent } from 'supertest'
+import { type Mock, beforeEach, expect, test, vi } from 'vitest'
 import { TypedRouter } from './router'
 
 type User = {

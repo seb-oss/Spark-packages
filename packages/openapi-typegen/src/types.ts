@@ -1,4 +1,4 @@
-import { ParameterIn, Verb } from '@sebspark/openapi-core'
+import type { ParameterIn, Verb } from '@sebspark/openapi-core'
 
 export type Primitive =
   | 'string'

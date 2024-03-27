@@ -1,4 +1,4 @@
-import { SchemaObject } from '@sebspark/openapi-core'
+import type { SchemaObject } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
 import { classname } from '..'
 import { generateResponseBody, typeName } from '../generator/common'
@@ -9,7 +9,7 @@ import {
   generateType,
 } from '../generator/generator'
 import { parseSchema } from '../parser/schema'
-import {
+import type {
   ArrayType,
   CustomType,
   EnumType,

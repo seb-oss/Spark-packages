@@ -1,10 +1,9 @@
-import type { Server } from 'http'
+import type { Server } from 'node:http'
 import express from 'express'
 import { afterEach, beforeEach, expect, test } from 'vitest'
-import { a } from 'vitest/dist/suite-ghspeorC'
 import { TypedClient } from './client'
 import { accessToken, router } from './test/client.helper'
-import { OpenapiClient, User } from './test/openapi'
+import type { OpenapiClient, User } from './test/openapi'
 
 let client: OpenapiClient
 let server: Server

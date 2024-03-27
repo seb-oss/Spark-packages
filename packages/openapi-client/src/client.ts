@@ -1,14 +1,14 @@
 import {
-  APIResponse,
-  BaseClient,
-  ClientOptions,
-  RequestArgs,
-  RequestOptions,
+  type APIResponse,
+  type BaseClient,
+  type ClientOptions,
+  type RequestArgs,
+  type RequestOptions,
   Verb,
   fromAxiosError,
 } from '@sebspark/openapi-core'
 import { retry } from '@sebspark/retry'
-import axios, { AxiosError, AxiosHeaders } from 'axios'
+import axios, { type AxiosError, type AxiosHeaders } from 'axios'
 import { paramsSerializer } from './paramsSerializer'
 
 export const TypedClient = <C extends Partial<BaseClient>>(

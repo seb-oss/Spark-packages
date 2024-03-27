@@ -1,5 +1,5 @@
-import { randomUUID } from 'crypto'
-import { AsyncLocalStorage } from 'async_hooks'
+import { AsyncLocalStorage } from 'node:async_hooks'
+import { randomUUID } from 'node:crypto'
 import type { NextFunction, Request, Response } from 'express'
 
 const asyncLocalStorage = new AsyncLocalStorage<{ corrId: string }>()

@@ -3,9 +3,9 @@ import type {
   Client,
   opensearchtypes,
 } from '@opensearch-project/opensearch'
-import { Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
+import { type Mocked, beforeEach, describe, expect, it, vi } from 'vitest'
 import { helper } from './openSearchHelper'
-import { DeepPartial, ExcludeId } from './typescriptExtensions'
+import type { DeepPartial, ExcludeId } from './typescriptExtensions'
 
 type Interest = 'Cricket' | 'Hitchhiking' | 'Tea'
 type Pet = {

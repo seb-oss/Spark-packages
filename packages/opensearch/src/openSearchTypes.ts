@@ -1,5 +1,5 @@
 import type { RequestParams } from '@opensearch-project/opensearch'
-import {
+import type {
   DeepPartial,
   ExcludeId,
   NestedFields,

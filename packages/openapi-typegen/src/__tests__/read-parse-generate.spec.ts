@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { OpenApiDocument } from '@sebspark/openapi-core'
+import { readFileSync, writeFileSync } from 'node:fs'
+import type { OpenApiDocument } from '@sebspark/openapi-core'
 import { expect, test } from 'vitest'
 import * as YAML from 'yaml'
 import { classname, generateTypescript } from '..'

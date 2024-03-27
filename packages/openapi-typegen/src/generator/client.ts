@@ -1,5 +1,5 @@
-import { Verb } from '@sebspark/openapi-core'
-import { Path } from '../types'
+import type { Verb } from '@sebspark/openapi-core'
+import type { Path } from '../types'
 import { generateClientArgs } from './args'
 import { OR, generateResponseBody, serializeValue } from './common'
 import { documentClientPath } from './document'
@@ -39,6 +39,6 @@ const generateCall = (path: Path): string => {
 
 const generateResponses = (path: Path): string =>
   Object.entries(path.responses)
-    .filter(([code]) => parseInt(code, 10) < 400)
+    .filter(([code]) => Number.parseInt(code, 10) < 400)
     .map(([, type]) => generateResponseBody(type, false))
     .join(OR)

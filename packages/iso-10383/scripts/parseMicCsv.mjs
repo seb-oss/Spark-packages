@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { inspect } from 'util'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { inspect } from 'node:util'
 import { camelCase } from 'change-case'
 import { parse } from 'csv-parse/sync'
 

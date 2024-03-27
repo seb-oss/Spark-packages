@@ -1,5 +1,5 @@
-import { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
-import {
+import type { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
+import type {
   ArrayType,
   CustomType,
   EnumType,

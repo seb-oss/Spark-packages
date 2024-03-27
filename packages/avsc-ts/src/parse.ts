@@ -1,5 +1,5 @@
 import { toTypeScript } from '@ovotech/avro-ts'
-import { Schema, Type } from '@sebspark/avsc-isometric'
+import { type Schema, Type } from '@sebspark/avsc-isometric'
 
 // Caches types for reference types in combined schemas
 type TypeRecord = Record<string, Type>

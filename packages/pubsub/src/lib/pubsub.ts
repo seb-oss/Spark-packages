@@ -1,4 +1,4 @@
-import { ClientConfig } from './client'
+import type { ClientConfig } from './client'
 import { publisher } from './publisher'
 import type { Subscriber, SubscriberHandler, Unsubscriber } from './subscriber'
 import { subscriber } from './subscriber'

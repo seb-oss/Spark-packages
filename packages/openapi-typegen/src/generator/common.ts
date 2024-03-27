@@ -1,5 +1,5 @@
 import { pascalCase } from 'change-case'
-import {
+import type {
   ArrayType,
   CustomType,
   Discriminator,

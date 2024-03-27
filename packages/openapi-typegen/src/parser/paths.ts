@@ -1,4 +1,4 @@
-import {
+import type {
   ComponentsObject,
   OpenApiDocument,
   OperationObject,
@@ -6,7 +6,7 @@ import {
   ResponsesObject,
   Verb,
 } from '@sebspark/openapi-core'
-import { Path, TypeDefinition } from '../types'
+import type { Path, TypeDefinition } from '../types'
 import { parseArgs } from './args'
 import { parseDocumentation, parseRef } from './common'
 import { parseResponseBody } from './responseBodies'
@@ -59,7 +59,7 @@ const parseResponses = (
     {},
     ...Object.entries(responses).map(([code, response]) => {
       return {
-        [parseInt(code, 10)]: parseResponseBody(undefined, response),
+        [Number.parseInt(code, 10)]: parseResponseBody(undefined, response),
       } as Record<number, TypeDefinition>
     })
   )

@@ -1,8 +1,8 @@
-import { randomUUID } from 'crypto'
+import { randomUUID } from 'node:crypto'
 import { PubSub } from '@google-cloud/pubsub'
 import {
-  Mock,
-  MockedObject,
+  type Mock,
+  type MockedObject,
   afterAll,
   afterEach,
   beforeAll,

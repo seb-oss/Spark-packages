@@ -1,7 +1,7 @@
 #!/bin/node
 
-import path from 'path'
-import fs from 'fs/promises'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 const packages = await fs.readdir(path.resolve(process.cwd(), './packages'))
 const allowedLicenses = ['Apache-2.0']

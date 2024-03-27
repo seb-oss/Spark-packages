@@ -1,8 +1,8 @@
-import type { Server } from 'http'
+import type { Server } from 'node:http'
 import { TypedClient } from '@sebspark/openapi-client'
-import { Serialized } from '@sebspark/openapi-core'
+import type { Serialized } from '@sebspark/openapi-core'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import {
+import type {
   InstrumentEntityResponse,
   MarketdataClient,
 } from './schemas/Marketdata'

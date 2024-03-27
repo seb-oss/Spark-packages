@@ -1,4 +1,4 @@
-import assert from 'assert'
+import assert from 'node:assert'
 import type {
   ApiResponse,
   Client,
@@ -9,14 +9,14 @@ import { fixIds } from './fixIds'
 import {
   Exists,
   FilterBool,
-  IndexOptions,
-  IndexProperties,
-  NestedFieldOptions,
+  type IndexOptions,
+  type IndexProperties,
+  type NestedFieldOptions,
   OpenSearchFilter,
-  OpenSearchQuery,
-  OpenSearchQueryBody,
+  type OpenSearchQuery,
+  type OpenSearchQueryBody,
 } from './openSearchTypes'
-import { ExcludeId, WithId } from './typescriptExtensions'
+import type { ExcludeId, WithId } from './typescriptExtensions'
 
 export interface OpenSearchHelper extends Client {
   typedSearch: <DataType extends WithId, ReturnType = DataType>(

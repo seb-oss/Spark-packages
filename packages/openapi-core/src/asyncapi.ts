@@ -1,10 +1,10 @@
-import {
+import type {
   ChannelBindingsObject,
   MessageBindingsObject,
   OperationBindingsObject,
   ServerBindingsObject,
 } from './bindings'
-import {
+import type {
   Example,
   ExternalDocumentationObject,
   InfoObject,

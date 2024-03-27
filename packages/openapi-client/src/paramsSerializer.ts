@@ -1,4 +1,4 @@
-import { ArrayFormat } from '@sebspark/openapi-core'
+import type { ArrayFormat } from '@sebspark/openapi-core'
 
 const encodeParam = (param: string) => encodeURIComponent(param)
 const encodeValue = (param: string, encodeCommas = false) => {

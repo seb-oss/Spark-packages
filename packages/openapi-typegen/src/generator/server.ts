@@ -1,4 +1,9 @@
-import { CustomType, Path, ResponseBody, TypeDefinition } from '../types'
+import {
+  type CustomType,
+  type Path,
+  type ResponseBody,
+  TypeDefinition,
+} from '../types'
 import { generateServerArgs } from './args'
 import { OR, generateResponseBody } from './common'
 import { documentServerPath } from './document'
@@ -44,8 +49,10 @@ const generateResponses = (
   responses: Record<number, ResponseBody | CustomType>
 ): string =>
   Object.entries(responses)
-    .filter(([code]) => parseInt(code, 10) < 400)
-    .map(([code, response]) => generateResponse(parseInt(code, 10), response))
+    .filter(([code]) => Number.parseInt(code, 10) < 400)
+    .map(([code, response]) =>
+      generateResponse(Number.parseInt(code, 10), response)
+    )
     .join(OR)
 
 const generateResponse = (code: number, response: ResponseBody): string =>

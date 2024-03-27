@@ -1,9 +1,9 @@
-import {
+import type {
   HeaderObject,
   ReferenceObject,
   ResponseObject,
 } from '@sebspark/openapi-core'
-import { CustomType, ResponseBody } from '../types'
+import type { CustomType, ResponseBody } from '../types'
 import { parseDocumentation, parseRef } from './common'
 import { parseHeader } from './headers'
 import { parseSchema } from './schema'

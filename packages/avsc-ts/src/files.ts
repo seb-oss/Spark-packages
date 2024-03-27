@@ -1,6 +1,6 @@
-import { readFileSync, readdirSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
-import { Schema } from 'avsc'
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import type { Schema } from 'avsc'
 
 export const readSchemas = (path: string) => {
   const absolutePath = resolve(path)

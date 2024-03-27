@@ -1,5 +1,5 @@
-import { ParameterObject } from '@sebspark/openapi-core'
-import { Parameter } from '../types'
+import type { ParameterObject } from '@sebspark/openapi-core'
+import type { Parameter } from '../types'
 import { parseDocumentation } from './common'
 import { parseSchema } from './schema'
 

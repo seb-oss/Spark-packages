@@ -1,4 +1,4 @@
-import {
+import type {
   ComponentsObject,
   HeaderObject,
   ParameterObject,
@@ -17,7 +17,7 @@ import { parseRequestBodies } from '../parser/requestBodies'
 import { parseResponseBodies } from '../parser/responseBodies'
 import { parseSchema } from '../parser/schema'
 import { parseSecurityScheme } from '../parser/securitySchemes'
-import {
+import type {
   ArrayType,
   CustomType,
   EnumType,

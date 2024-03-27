@@ -1,4 +1,4 @@
-import {
+import type {
   ComponentsObject,
   HeaderObject,
   OperationObject,
@@ -9,7 +9,7 @@ import {
   SecurityRequirementObject,
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
-import { Args, ObjectType, RequestArgs } from '../types'
+import type { Args, ObjectType, RequestArgs } from '../types'
 import { findRef, parseDocumentation, parseRef } from './common'
 import { parseSchema } from './schema'
 

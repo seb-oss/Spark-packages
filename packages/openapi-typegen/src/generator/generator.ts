@@ -1,4 +1,4 @@
-import { ParsedComponents, ParsedOpenApiDocument } from '../types'
+import type { ParsedComponents, ParsedOpenApiDocument } from '../types'
 import { generateClient } from './client'
 import { generateHeader, generateResponseBody, generateType } from './common'
 import { generateServer } from './server'

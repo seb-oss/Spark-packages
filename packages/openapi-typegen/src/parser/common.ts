@@ -1,4 +1,4 @@
-import {
+import type {
   ComponentsObject,
   HeaderObject,
   ParameterObject,
@@ -6,7 +6,7 @@ import {
   SchemaObject,
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
-import { EnumType } from '../types'
+import type { EnumType } from '../types'
 
 export const parseRef = (ref: string): string =>
   ref.substring(ref.lastIndexOf('/') + 1)

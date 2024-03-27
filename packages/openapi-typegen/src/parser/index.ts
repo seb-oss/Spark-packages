@@ -1,5 +1,5 @@
-import { ComponentsObject, OpenApiDocument } from '@sebspark/openapi-core'
-import { ParsedComponents, ParsedOpenApiDocument } from '../types'
+import type { ComponentsObject, OpenApiDocument } from '@sebspark/openapi-core'
+import type { ParsedComponents, ParsedOpenApiDocument } from '../types'
 import { parseHeaders } from './headers'
 import { parseParameters } from './parameters'
 import { parsePaths } from './paths'

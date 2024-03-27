@@ -1,12 +1,12 @@
 import {
   ForbiddenError,
   NotImplementedError,
-  PartiallySerialized,
+  type PartiallySerialized,
   UnauthorizedError,
 } from '@sebspark/openapi-core'
 import { TypedRouter } from '@sebspark/openapi-express'
 import express from 'express'
-import {
+import type {
   InstrumentEntityResponse,
   MarketListResponse,
   MarketdataServer,
