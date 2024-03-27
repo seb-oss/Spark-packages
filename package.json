@@ -27,7 +27,7 @@
     "fast-xml-parser": "4.3.6",
     "tsup": "8.0.2",
     "turbo": "1.13.0",
-    "typescript": "5.4.2",
+    "typescript": "5.4.3",
     "vitest": "1.4.0"
   },
   "resolutions": {
