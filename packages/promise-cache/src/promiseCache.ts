@@ -7,12 +7,17 @@ export class PromiseCache<T, U> {
     this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds
   }
 
-  async wrap(key: T, delegate: () => Promise<U>, ttlInSeconds?: number): Promise<U> {
+  async wrap(
+    key: T,
+    delegate: () => Promise<U>,
+    ttlInSeconds?: number
+  ): Promise<U> {
     const now = Date.now()
     const cached = this.cache.get(key)
 
     // Determine the TTL for this specific call
-    const effectiveTTL = ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl;
+    const effectiveTTL =
+      ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
 
     if (cached && now - cached.timestamp < effectiveTTL) {
       // Return the cached response if it's not expired

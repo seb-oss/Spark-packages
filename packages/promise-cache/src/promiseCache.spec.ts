@@ -39,7 +39,9 @@ describe('PromiseCache', () => {
     mockDelegate.mockRejectedValue(new Error(errorMessage))
 
     // Expect the cache wrapper to throw the same error
-    await expect(cache.wrap('testKey', mockDelegate)).rejects.toThrow(errorMessage)
+    await expect(cache.wrap('testKey', mockDelegate)).rejects.toThrow(
+      errorMessage
+    )
   })
 
   it('should respect custom ttl if provided', async () => {
