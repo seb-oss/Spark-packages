@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.6.1
+
+### Patch Changes
+
+- 938d7b5: Updated express to fix CVE-2024-29041
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @sebspark/openapi-e2e
 
+## 1.1.1
+
+### Patch Changes
+
+- 938d7b5: Updated express to fix CVE-2024-29041
+- Updated dependencies [938d7b5]
+  - @sebspark/openapi-express@1.1.1
+
 ## 1.1.0
 
 ### Minor Changes

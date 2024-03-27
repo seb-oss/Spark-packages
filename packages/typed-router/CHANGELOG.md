@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.9
+
+### Patch Changes
+
+- 938d7b5: Updated express to fix CVE-2024-29041
+
 ## 0.1.8
 
 ### Patch Changes
