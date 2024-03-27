@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 1.1.1
+
+### Patch Changes
+
+- 938d7b5: Updated express to fix CVE-2024-29041
+
 ## 1.1.0
 
 ### Minor Changes
