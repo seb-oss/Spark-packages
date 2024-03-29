@@ -35,8 +35,7 @@ export class PromiseCache<T, U> {
     const cacheKey = `key:${key}|ttl:${effectiveTTL}`
 
     const cached = this.cache.get(cacheKey)
-    if (cached && now - cached.timestamp < effectiveTTL) {
-      // Return the cached response if it's not expired.
+    if (cached) {
       return cached.value
     }
 
