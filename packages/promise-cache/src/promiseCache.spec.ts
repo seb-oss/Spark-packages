@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { PromiseCache } from './promiseCache'
 
+console.error = vi.fn()
+
 describe('PromiseCache', () => {
   let cache: PromiseCache<string, number>
   let mockDelegate: vi.Mock<Promise<number>, []>
@@ -81,6 +83,13 @@ describe('PromiseCache', () => {
 
     // Update the TTL to 2 seconds
     await cache.wrap('testKey', mockDelegate, 2)
+
+    // Expect a warning message.
+    expect(console.error).toHaveBeenCalledTimes(1)
+    expect(console.error).toHaveBeenCalledWith(
+      'WARNING: TTL mismatch for key: testKey. It is recommended to use the same TTL for the same key.'
+    )
+
     expect(cache.size()).toBe(1)
 
     // Wait for the first cache to expire
