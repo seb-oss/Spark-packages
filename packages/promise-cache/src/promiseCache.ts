@@ -32,20 +32,19 @@ export class PromiseCache<T, U> {
     // Determine the TTL and unique cache key for this specific call.
     const effectiveTTL =
       ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
-    const cacheKey = `key:${key}|ttl:${effectiveTTL}`
 
-    const cached = this.cache.get(cacheKey)
+    const cached = this.cache.get(key)
     if (cached) {
       return cached.value
     }
 
     // Execute the delegate, cache the response with the current timestamp, and return it.
     const response = await delegate()
-    this.cache.set(cacheKey, { value: response, timestamp: now })
+    this.cache.set(key, { value: response, timestamp: now })
 
     // Remove the cache entry after the TTL expires.
     setTimeout(() => {
-      this.cache.delete(cacheKey)
+      this.cache.delete(key)
     }, effectiveTTL)
 
     return response

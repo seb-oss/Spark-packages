@@ -74,21 +74,19 @@ describe('PromiseCache', () => {
     expect(cache.size()).toBe(0)
   })
 
-  it('different ttls yield different cache keys', async () => {
+  it('calling wrap with different ttls yields unexpected behavior', async () => {
     mockDelegate.mockResolvedValue(42)
-    await cache.wrap('testKey', mockDelegate)
+    await cache.wrap('testKey', mockDelegate, 1)
     expect(cache.size()).toBe(1)
 
     // Update the TTL to 2 seconds
     await cache.wrap('testKey', mockDelegate, 2)
-    expect(cache.size()).toBe(2)
+    expect(cache.size()).toBe(1)
 
     // Wait for the first cache to expire
     await new Promise((resolve) => setTimeout(resolve, 1100))
-    expect(cache.size()).toBe(1)
 
-    // Wait for the cache to expire
-    await new Promise((resolve) => setTimeout(resolve, 1100))
+    // Cache is already expired!
     expect(cache.size()).toBe(0)
   })
 })
