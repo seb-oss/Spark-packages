@@ -1,5 +1,5 @@
 export class PromiseCache<T, U> {
-  private cache: Map<T, { value: U; timestamp: number }>
+  private cache: Map<string, { value: U; timestamp: number }>
   private readonly ttl: number // Time to live in milliseconds.
 
   constructor(ttlInSeconds: number) {
@@ -23,17 +23,18 @@ export class PromiseCache<T, U> {
    * @returns The result of the delegate function.
    */
   async wrap(
-    key: T,
+    key: string,
     delegate: () => Promise<U>,
     ttlInSeconds?: number
   ): Promise<U> {
     const now = Date.now()
-    const cached = this.cache.get(key)
 
-    // Determine the TTL for this specific call.
+    // Determine the TTL and unique cache key for this specific call.
     const effectiveTTL =
       ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
+    const cacheKey = `key:${key}|ttl:${effectiveTTL}`
 
+    const cached = this.cache.get(cacheKey)
     if (cached && now - cached.timestamp < effectiveTTL) {
       // Return the cached response if it's not expired.
       return cached.value
@@ -41,11 +42,11 @@ export class PromiseCache<T, U> {
 
     // Execute the delegate, cache the response with the current timestamp, and return it.
     const response = await delegate()
-    this.cache.set(key, { value: response, timestamp: now })
+    this.cache.set(cacheKey, { value: response, timestamp: now })
 
     // Remove the cache entry after the TTL expires.
     setTimeout(() => {
-      this.cache.delete(key)
+      this.cache.delete(cacheKey)
     }, effectiveTTL)
 
     return response
