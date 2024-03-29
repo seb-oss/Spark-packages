@@ -45,14 +45,32 @@ describe('PromiseCache', () => {
   })
 
   it('should respect custom ttl if provided', async () => {
+    const localTTL = 0.5 // 0.5 second TTL
+
     mockDelegate.mockResolvedValue(42)
-    await cache.wrap('testKey', mockDelegate, 0.5) // Custom TTL of 0.5 seconds
+    await cache.wrap('testKey', mockDelegate, localTTL)
 
     // Wait for the custom TTL to expire
     await new Promise((resolve) => setTimeout(resolve, 600))
 
     // Call again with the same key, should call mockDelegate again due to expired custom TTL
-    await cache.wrap('testKey', mockDelegate, 0.5)
+    await cache.wrap('testKey', mockDelegate, localTTL)
     expect(mockDelegate).toHaveBeenCalledTimes(2)
+  })
+
+  it('should should remove the cache entry after the TTL expires', async () => {
+    mockDelegate.mockResolvedValue(42)
+    await cache.wrap('testKey', mockDelegate)
+    expect(cache.size()).toBe(1)
+
+    await cache.wrap('testKey2', mockDelegate, 0.5)
+    expect(cache.size()).toBe(2)
+
+    // Wait for the caches to expire.
+    await new Promise((resolve) => setTimeout(resolve, 600))
+    expect(cache.size()).toBe(1)
+
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    expect(cache.size()).toBe(0)
   })
 })
