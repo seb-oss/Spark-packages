@@ -1,7 +1,13 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  afterAll,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from 'vitest'
 import { PromiseCache } from './promiseCache'
-
-console.error = vi.fn()
 
 describe('PromiseCache', () => {
   const ttl = 1
@@ -9,6 +15,14 @@ describe('PromiseCache', () => {
   let cache: PromiseCache<string, number>
   let caseSensitiveCache: PromiseCache<string, number>
   let mockDelegate: vi.Mock<Promise<number>, []>
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+
+  beforeAll(() => {
+    console.error = vi.fn()
+  })
 
   beforeEach(() => {
     cache = new PromiseCache<string, number>(ttl)
