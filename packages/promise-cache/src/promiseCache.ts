@@ -57,7 +57,11 @@ export class PromiseCache<T, U> {
 
     // Execute the delegate, cache the response with the current timestamp, and return it.
     const response = await delegate()
-    this.cache.set(effectiveKey, { value: response, timestamp: now, ttl: effectiveTTL })
+    this.cache.set(effectiveKey, {
+      value: response,
+      timestamp: now,
+      ttl: effectiveTTL,
+    })
 
     // Remove the cache entry after the TTL expires.
     setTimeout(() => {
