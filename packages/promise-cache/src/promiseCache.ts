@@ -1,5 +1,5 @@
 export class PromiseCache<T, U> {
-  private cache: Map<string, { value: U; timestamp: number, ttl: number }>
+  private cache: Map<string, { value: U; timestamp: number; ttl: number }>
   private readonly ttl: number // Time to live in milliseconds.
 
   constructor(ttlInSeconds: number) {
@@ -36,7 +36,9 @@ export class PromiseCache<T, U> {
     const cached = this.cache.get(key)
     if (cached) {
       if (cached.ttl !== effectiveTTL) {
-        console.error(`WARNING: TTL mismatch for key: ${key}. It is recommended to use the same TTL for the same key.`)
+        console.error(
+          `WARNING: TTL mismatch for key: ${key}. It is recommended to use the same TTL for the same key.`
+        )
       }
 
       return cached.value
