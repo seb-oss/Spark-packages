@@ -1,5 +1,12 @@
 # @sebspark/promise-cache
 
+## 0.2.0
+
+### Minor Changes
+
+- f5d0748: - Support optional TTL in each call to wrap(...)
+  - Support optional case sensitivity
+
 ## 0.1.0
 
 ### Minor Changes
