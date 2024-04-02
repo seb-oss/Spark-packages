@@ -4,11 +4,15 @@ import { PromiseCache } from './promiseCache'
 console.error = vi.fn()
 
 describe('PromiseCache', () => {
+  const ttl = 1
+
   let cache: PromiseCache<string, number>
+  let caseSensitiveCache: PromiseCache<string, number>
   let mockDelegate: vi.Mock<Promise<number>, []>
 
   beforeEach(() => {
-    cache = new PromiseCache<string, number>(1) // 1 second TTL
+    cache = new PromiseCache<string, number>(ttl)
+    caseSensitiveCache = new PromiseCache<string, number>(ttl, true)
     mockDelegate = vi.fn()
   })
 
@@ -87,7 +91,7 @@ describe('PromiseCache', () => {
     // Expect a warning message.
     expect(console.error).toHaveBeenCalledTimes(1)
     expect(console.error).toHaveBeenCalledWith(
-      'WARNING: TTL mismatch for key: testKey. It is recommended to use the same TTL for the same key.'
+      'WARNING: TTL mismatch for key: testkey. It is recommended to use the same TTL for the same key.'
     )
 
     expect(cache.size()).toBe(1)
@@ -97,5 +101,20 @@ describe('PromiseCache', () => {
 
     // Cache is already expired!
     expect(cache.size()).toBe(0)
+  })
+
+  it('should differentiate between keys with different casing', async () => {
+    mockDelegate.mockResolvedValue(42)
+
+    const key1 = 'TeStKeY'
+    const key2 = 'testkey'
+
+    await cache.wrap(key1, mockDelegate)
+    await cache.wrap(key2, mockDelegate)
+    expect(cache.size()).toBe(1)
+
+    await caseSensitiveCache.wrap(key1, mockDelegate)
+    await caseSensitiveCache.wrap(key2, mockDelegate)
+    expect(caseSensitiveCache.size()).toBe(2)
   })
 })
