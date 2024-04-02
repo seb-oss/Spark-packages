@@ -18,10 +18,12 @@ describe('PromiseCache', () => {
 
   afterAll(() => {
     vi.restoreAllMocks()
+    vi.useRealTimers()
   })
 
   beforeAll(() => {
     console.error = vi.fn()
+    vi.useFakeTimers()
   })
 
   beforeEach(() => {
@@ -33,11 +35,16 @@ describe('PromiseCache', () => {
   it('should cache and return the result', async () => {
     mockDelegate.mockResolvedValue(42)
     const result = await cache.wrap('testKey', mockDelegate)
+
+    expect(cache.size()).toBe(1)
     expect(result).toBe(42)
     expect(mockDelegate).toHaveBeenCalledTimes(1)
 
     // Call again with the same key, should not call mockDelegate again
     const cachedResult = await cache.wrap('testKey', mockDelegate)
+
+    vi.runAllTimers()
+    expect(cache.size()).toBe(0)
     expect(cachedResult).toBe(42)
     expect(mockDelegate).toHaveBeenCalledTimes(1)
   })
@@ -47,7 +54,7 @@ describe('PromiseCache', () => {
     await cache.wrap('testKey', mockDelegate)
 
     // Wait for the cache to expire
-    await new Promise((resolve) => setTimeout(resolve, 1100))
+    vi.runAllTimers()
 
     // Call again, should call mockDelegate again
     await cache.wrap('testKey', mockDelegate)
@@ -71,7 +78,7 @@ describe('PromiseCache', () => {
     await cache.wrap('testKey', mockDelegate, localTTL)
 
     // Wait for the custom TTL to expire
-    await new Promise((resolve) => setTimeout(resolve, 600))
+    vi.runAllTimers()
 
     // Call again with the same key, should call mockDelegate again due to expired custom TTL
     await cache.wrap('testKey', mockDelegate, localTTL)
@@ -87,10 +94,10 @@ describe('PromiseCache', () => {
     expect(cache.size()).toBe(2)
 
     // Wait for the caches to expire.
-    await new Promise((resolve) => setTimeout(resolve, 600))
+    vi.advanceTimersToNextTimer()
     expect(cache.size()).toBe(1)
 
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    vi.advanceTimersToNextTimer()
     expect(cache.size()).toBe(0)
   })
 
@@ -111,7 +118,7 @@ describe('PromiseCache', () => {
     expect(cache.size()).toBe(1)
 
     // Wait for the first cache to expire
-    await new Promise((resolve) => setTimeout(resolve, 1100))
+    vi.runAllTimers()
 
     // Cache is already expired!
     expect(cache.size()).toBe(0)
