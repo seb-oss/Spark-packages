@@ -15,5 +15,8 @@
   },
   "devDependencies": {
     "tsconfig": "*"
+  },
+  "dependencies": {
+    "redis": "^4.6.13"
   }
 }

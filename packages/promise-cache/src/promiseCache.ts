@@ -1,6 +1,7 @@
-export class PromiseCache<T, U> {
-  private cache: Map<string, { value: U; timestamp: number; ttl: number }>
+import { Persistor, persistor } from "./persistor";
 
+export class PromiseCache<T, U> {
+  private cache: Persistor
   private readonly caseSensitive: boolean
   private readonly ttl: number // Time to live in milliseconds.
 
@@ -10,7 +11,7 @@ export class PromiseCache<T, U> {
    * @param caseSensitive Set to true if you want to differentiate between keys with different casing.
    */
   constructor(ttlInSeconds: number, caseSensitive = false) {
-    this.cache = new Map()
+    this.cache = persistor
     this.caseSensitive = caseSensitive
     this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds.
   }
@@ -19,8 +20,8 @@ export class PromiseCache<T, U> {
    * Cache size.
    * @returns The number of entries in the cache.
    */
-  size(): number {
-    return this.cache.size
+  async size(): Promise<number> {
+    return this.cache.size()
   }
 
   /**
@@ -44,7 +45,7 @@ export class PromiseCache<T, U> {
     const effectiveTTL =
       ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
 
-    const cached = this.cache.get(effectiveKey)
+    const cached = await this.cache.get<U>(effectiveKey)
     if (cached) {
       if (cached.ttl !== effectiveTTL) {
         console.error(
