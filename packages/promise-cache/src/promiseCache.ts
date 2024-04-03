@@ -1,4 +1,4 @@
-import { Persistor, persistor } from "./persistor";
+import { type Persistor, persistor } from './persistor'
 
 export class PromiseCache<T, U> {
   private cache: Persistor

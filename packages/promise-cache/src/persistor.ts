@@ -52,7 +52,10 @@ export class Persistor {
     }
   }
 
-  public async set<T>(key: string, { value, timestamp, ttl }: SetParams<T>): Promise<void> {
+  public async set<T>(
+    key: string,
+    { value, timestamp, ttl }: SetParams<T>
+  ): Promise<void> {
     if (!this.client) {
       throw new Error('Client not initialized')
     }
