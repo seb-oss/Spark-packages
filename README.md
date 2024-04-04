@@ -68,6 +68,14 @@ A wrapper for OpenSearch Client to assist with typed queries, indices etc
 
 A caching wrapper for promises.
 
+### [@sebspark/@sebspark/portfolio-performance](./packages/@sebspark/portfolio-performance)
+
+Basic calculations for portfolio performance
+
+### [@sebspark/portfolio-performance](./packages/portfolio-performance)
+
+Calculates P/L, TWR, CAGR and AR
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
