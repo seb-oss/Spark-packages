@@ -21,7 +21,10 @@ describe('TWR Calculations', () => {
       new BigNumber(0.2),
       new BigNumber(-0.05),
     ] // Example returns for three periods
-    const expectedCompoundedReturn = new BigNumber(1.1).multipliedBy(1.2).multipliedBy(0.95).minus(1)
+    const expectedCompoundedReturn = new BigNumber(1.1)
+      .multipliedBy(1.2)
+      .multipliedBy(0.95)
+      .minus(1)
     const result = compoundReturns(returns)
     expect(result.toNumber()).toBeCloseTo(expectedCompoundedReturn.toNumber())
   })

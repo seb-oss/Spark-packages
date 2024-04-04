@@ -16,7 +16,10 @@ export const calculateCAGR = (
   if (years.isZero()) return new BigNumber(0) // Prevent division by zero in CAGR formula
 
   // CAGR formula: [(Ending value / Beginning value) ^ (1 / Number of years)] - 1
-  return finalValue.dividedBy(initialValue).pow(years.pow(-1).integerValue()).minus(1)
+  return finalValue
+    .dividedBy(initialValue)
+    .pow(years.pow(-1).integerValue())
+    .minus(1)
 }
 
 export const calculatePortfolioCAGR = (

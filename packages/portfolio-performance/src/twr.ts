@@ -32,7 +32,8 @@ export function getCashFlowForPeriod(
   return cashFlows
     .filter(
       (cf) =>
-        parseISO(cf.date) >= parseISO(startDate) && parseISO(cf.date) < parseISO(endDate)
+        parseISO(cf.date) >= parseISO(startDate) &&
+        parseISO(cf.date) < parseISO(endDate)
     )
     .reduce((acc, cf) => acc.plus(new BigNumber(cf.amount)), new BigNumber(0))
 }
