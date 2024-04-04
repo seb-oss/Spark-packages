@@ -1,16 +1,10 @@
 # @sebspark/promise-cache
 
-## 0.2.2
-
-### Patch Changes
-
-- 5ffc4a5: Bump promise-cache library to 0.2.1
-
 ## 0.2.1
 
 ### Patch Changes
 
-- 37cc9db: Promise-cache fix lint, use redis
+- 5ffc4a5: Bump promise-cache library to 0.2.1
 
 ## 0.2.0
 
