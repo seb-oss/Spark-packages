@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.1
+
+### Patch Changes
+
+- 2026667: Promise-cache fix lint, use redis
+
 ## 0.2.0
 
 ### Minor Changes
