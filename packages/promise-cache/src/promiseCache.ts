@@ -1,6 +1,6 @@
 import { type Persistor, persistor } from './persistor'
 
-export class PromiseCache<T, U> {
+export class PromiseCache<U> {
   private cache: Persistor
   private readonly caseSensitive: boolean
   private readonly ttl: number // Time to live in milliseconds.
@@ -21,7 +21,7 @@ export class PromiseCache<T, U> {
    * @returns The number of entries in the cache.
    */
   async size(): Promise<number> {
-    return this.cache.size()
+    return await this.cache.size()
   }
 
   /**
@@ -46,6 +46,7 @@ export class PromiseCache<T, U> {
       ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
 
     const cached = await this.cache.get<U>(effectiveKey)
+
     if (cached) {
       if (cached.ttl !== effectiveTTL) {
         console.error(
@@ -63,11 +64,6 @@ export class PromiseCache<T, U> {
       timestamp: now,
       ttl: effectiveTTL,
     })
-
-    // Remove the cache entry after the TTL expires.
-    setTimeout(() => {
-      this.cache.delete(effectiveKey)
-    }, effectiveTTL)
 
     return response
   }

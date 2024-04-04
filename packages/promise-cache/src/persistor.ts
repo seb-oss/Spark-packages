@@ -61,7 +61,9 @@ export class Persistor {
     }
     try {
       const serializedData = JSON.stringify({ value, ttl, timestamp })
-      await this.client.set(key, serializedData)
+      await this.client.set(key, serializedData, {
+        EX: ttl / 1000,
+      })
     } catch (error) {
       console.error(`Error setting data in redis: ${error}`)
       throw error
