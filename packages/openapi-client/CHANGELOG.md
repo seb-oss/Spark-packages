@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.4.0
+
+### Minor Changes
+
+- eb6719b: Redis implementation
+
 ## 1.3.2
 
 ### Patch Changes
