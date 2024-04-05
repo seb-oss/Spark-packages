@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.2
+
+### Patch Changes
+
+- ede4a4f: Add override function to promiseCache
+
 ## 0.2.1
 
 ### Patch Changes
