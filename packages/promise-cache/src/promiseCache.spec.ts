@@ -12,14 +12,11 @@ import * as mockedRedis from './mockedRedis'
 import { PromiseCache } from './promiseCache'
 
 vi.mock('redis', () => mockedRedis)
+const ttl = 1
+const cache: PromiseCache<number> = new PromiseCache<number>(ttl)
+const caseSensitiveCache = new PromiseCache<number>(ttl, true)
 
 describe('PromiseCache', () => {
-  const ttl = 1
-
-  let cache: PromiseCache<number>
-  let caseSensitiveCache: PromiseCache<number>
-  let mockDelegate: vi.Mock<Promise<number>, []>
-
   afterAll(() => {
     vi.restoreAllMocks()
     vi.useRealTimers()
@@ -31,13 +28,44 @@ describe('PromiseCache', () => {
   })
 
   beforeEach(() => {
-    cache = new PromiseCache<number>(ttl)
-    caseSensitiveCache = new PromiseCache<number>(ttl, true)
-    mockDelegate = vi.fn()
+    // @ts-ignore
+    cache.persistor.client.clear()
+    // @ts-ignore
+    caseSensitiveCache.persistor.client.clear()
   })
 
   afterEach(() => {
     vi.runAllTimers()
+  })
+
+  it('should cache and return the result', async () => {
+    const mockDelegate = vi.fn()
+    mockDelegate.mockResolvedValue(42)
+    const result = await cache.wrap('testKey0', mockDelegate)
+
+    expect(await cache.size()).toBe(1)
+    expect(result).toBe(42)
+    expect(mockDelegate).toHaveBeenCalledTimes(1)
+
+    // Call again with the same key, should not call mockDelegate again
+    const cachedResult = await cache.wrap('testKey0', mockDelegate)
+
+    vi.runAllTimers()
+    expect(cachedResult).toBe(42)
+    expect(mockDelegate).toHaveBeenCalledTimes(1)
+  })
+
+  it('cache should expire after ttl', async () => {
+    const mockDelegate = vi.fn()
+    mockDelegate.mockResolvedValue(42)
+    await cache.wrap('testKey1', mockDelegate)
+
+    // Wait for the cache to expire
+    vi.runAllTimers()
+
+    // Call again, should call mockDelegate again
+    await cache.wrap('testKey1', mockDelegate)
+    expect(mockDelegate).toHaveBeenCalledTimes(2)
   })
 
   it('should remove the cache entry after the TTL expires', async () => {
@@ -54,6 +82,7 @@ describe('PromiseCache', () => {
   })
 
   it('calling wrap with different ttls yields unexpected behavior', async () => {
+    const mockDelegate = vi.fn()
     mockDelegate.mockResolvedValue(42)
     await cache.wrap('testKey', mockDelegate, 1)
     expect(await cache.size()).toBe(1)
@@ -75,35 +104,8 @@ describe('PromiseCache', () => {
     expect(await cache.size()).toBe(0)
   })
 
-  it('should cache and return the result', async () => {
-    mockDelegate.mockResolvedValue(42)
-    const result = await cache.wrap('testKey0', mockDelegate)
-
-    expect(await cache.size()).toBe(1)
-    expect(result).toBe(42)
-    expect(mockDelegate).toHaveBeenCalledTimes(1)
-
-    // Call again with the same key, should not call mockDelegate again
-    const cachedResult = await cache.wrap('testKey0', mockDelegate)
-
-    vi.runAllTimers()
-    expect(cachedResult).toBe(42)
-    expect(mockDelegate).toHaveBeenCalledTimes(1)
-  })
-
-  it('cache should expire after ttl', async () => {
-    mockDelegate.mockResolvedValue(42)
-    await cache.wrap('testKey1', mockDelegate)
-
-    // Wait for the cache to expire
-    vi.runAllTimers()
-
-    // Call again, should call mockDelegate again
-    await cache.wrap('testKey1', mockDelegate)
-    expect(mockDelegate).toHaveBeenCalledTimes(2)
-  })
-
   it('should throw an exception if the delegate throws an error', async () => {
+    const mockDelegate = vi.fn()
     const cache = new PromiseCache<number>(ttl)
 
     const errorMessage = 'Error in delegate function'
@@ -116,6 +118,7 @@ describe('PromiseCache', () => {
   })
 
   it('should respect custom ttl if provided', async () => {
+    const mockDelegate = vi.fn()
     const localTTL = 0.5 // 0.5 second TTL
 
     mockDelegate.mockResolvedValue(42)
@@ -129,30 +132,27 @@ describe('PromiseCache', () => {
     expect(mockDelegate).toHaveBeenCalledTimes(2)
   })
 
-  it('should differentiate between keys with different casing', async () => {
-    mockDelegate.mockResolvedValue(42)
+  it('should not differentiate between keys with different casing', async () => {
+    const mockDelegate1 = vi.fn()
+    const mockDelegate2 = vi.fn()
+    mockDelegate1.mockResolvedValue(41)
+    mockDelegate2.mockResolvedValue(42)
     const key1 = 'TeStKeYs'
     const key2 = 'testkeys'
+    const value1 = await cache.wrap(key1, mockDelegate1)
+    const value2 = await cache.wrap(key2, mockDelegate2)
+    expect(value1 === value2).toBeTruthy()
+  })
 
-    await cache.wrap(key1, mockDelegate)
-    await cache.wrap(key2, mockDelegate)
-    // @ts-ignore
-    const item1 = await cache.cache.client.client.get(key1)
-    // @ts-ignore
-    const item2 = await cache.cache.client.client.get(key2)
-    const item2parsed = JSON.parse(item2)
-
-    expect(item1).toBe(undefined)
-    expect(item2parsed.value).toBe(42)
-
-    await caseSensitiveCache.wrap(key1, mockDelegate)
-    await caseSensitiveCache.wrap(key2, mockDelegate)
-
-    // @ts-ignore
-    const item3 = await cache.cache.client.client.get(key1)
-    // @ts-ignore
-    const item4 = await cache.cache.client.client.get(key2)
-
-    expect(item3).toBe(item4)
+  it('should not differentiate between keys with different casing', async () => {
+    const mockDelegate1 = vi.fn()
+    const mockDelegate2 = vi.fn()
+    mockDelegate1.mockResolvedValue(30)
+    mockDelegate2.mockResolvedValue(42)
+    const key1 = 'TeStKeYs'
+    const key2 = 'testkeys'
+    const value1 = await caseSensitiveCache.wrap(key1, mockDelegate1)
+    const value2 = await caseSensitiveCache.wrap(key2, mockDelegate2)
+    expect(value1 === value2).toBeFalsy()
   })
 })

@@ -1,6 +1,6 @@
 import { createClient } from 'redis'
 
-const REDIS_HOST = process.env.REDIS_HOST || 'redis'
+const REDIS_HOST = process.env.REDIS_HOST || '127.0.0.1'
 const REDIS_PORT = process.env.REDIS_PORT || 6379
 const REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`
 
@@ -18,15 +18,38 @@ type SetParams<T> = {
 
 export class Persistor {
   private client: ReturnType<typeof createClient> | undefined
+  status: 'connected' | 'disconnected' = 'disconnected'
 
   constructor() {
-    this.client = createClient({ url: REDIS_URL })
-      .on('error', (err) =>
+    this.connect()
+  }
+
+  async connect() {
+    try {
+      this.client = await createClient({ url: REDIS_URL })
+
+      this.client.on('error', (err) => {
         console.error(`❌ REDIS | Client Error | ${REDIS_URL}`, err)
-      )
-      .on('connect', () =>
-        console.info(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
-      )
+        this.status = 'disconnected'
+      })
+
+      this.client.connect()
+
+      await new Promise((resolve, reject) => {
+        if (!this.client) {
+          reject('Client not initialized')
+          return
+        }
+        this.client.on('connect', () => {
+          console.info(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
+          this.status = 'connected'
+          resolve(true)
+        })
+      })
+    } catch (err) {
+      console.error(`❌ REDIS | Connection Error | ${REDIS_URL}`, err)
+      this.status = 'disconnected'
+    }
   }
 
   public async size(): Promise<number> {

@@ -17,6 +17,10 @@ class MockedRedis {
     }
   }
 
+  clear() {
+    this.client.clear()
+  }
+
   async DBSIZE(): Promise<number> {
     return Promise.resolve(this.client.size)
   }
@@ -27,6 +31,10 @@ class MockedRedis {
       callback()
     }
     return this
+  }
+
+  connect(): Promise<this> {
+    return Promise.resolve(this)
   }
 }
 
