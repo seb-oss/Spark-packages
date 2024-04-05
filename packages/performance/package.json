@@ -1,5 +1,5 @@
 {
-  "name": "@sebspark/portfolio-performance",
+  "name": "@sebspark/performance",
   "description": "A comprehensive library for calculating key portfolio performance metrics, including P/L, TWR, CAGR, and AR, designed for investors and financial analysts.",
   "keywords": [
     "portfolio performance",
@@ -17,7 +17,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",

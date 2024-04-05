@@ -1,4 +1,4 @@
-# `@sebspark/portfolio-performance`
+# `@sebspark/performance`
 
 ## Description
 Calculates portfolio performance metrics including P/L, TWR, CAGR, and AR. Each metric provides unique insights:
@@ -14,19 +14,19 @@ Install via npm or yarn:
 
 **npm:**
 ```sh
-npm install @sebspark/portfolio-performance
+npm install @sebspark/performance
 ```
 
 **yarn:**
 ```sh
-yarn add @sebspark/portfolio-performance
+yarn add @sebspark/performance
 ```
 
 ### Example Usage
 Import and use in your project:
 
 ```typescript
-import { calculatePerformance, PerformanceCalculationInput } from '@sebspark/portfolio-performance'
+import { calculatePerformance, PerformanceCalculationInput } from '@sebspark/performance'
 
 // Detailed portfolio data
 const portfolioData: PerformanceCalculationInput = {
