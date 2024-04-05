@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.3",
-    "@turbo/gen": "1.13.1",
+    "@turbo/gen": "1.13.2",
     "@types/node": "20.12.2",
     "@vitest/coverage-v8": "1.4.0",
     "csv-parse": "5.5.5",
