@@ -8,8 +8,8 @@ import {
   it,
   vi,
 } from 'vitest'
-import * as mockedRedis from './mockedRedis'
 import { PromiseCache } from '../promiseCache'
+import * as mockedRedis from './mockedRedis'
 
 vi.mock('redis', () => mockedRedis)
 const ttl = 1
