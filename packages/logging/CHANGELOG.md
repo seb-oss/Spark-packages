@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.0
+
+### Minor Changes
+
+- ef22edc: Logger with express and socket.io instrumentation
+
 ## 0.0.5
 
 ### Patch Changes
