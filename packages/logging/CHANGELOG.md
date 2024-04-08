@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.1
+
+### Patch Changes
+
+- 93f7dfb: Forcing release
+
 ## 0.1.0
 
 ### Minor Changes
