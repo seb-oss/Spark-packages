@@ -1,4 +1,4 @@
-import { LoggingWinston, express } from '@google-cloud/logging-winston'
+import { LoggingWinston } from '@google-cloud/logging-winston'
 import type { ErrorRequestHandler, RequestHandler } from 'express'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
@@ -27,9 +27,9 @@ export type LogOptions = {
 }
 export type LoggerResult = {
   logger: Logger
-  requestMiddleware: () => Promise<RequestHandler>
+  requestMiddleware: () => RequestHandler
   errorRequestMiddleware: () => ErrorRequestHandler
-  instrumentSocket: () => (server: Server) => Server
+  instrumentSocket: (server: Server) => Server
 }
 export const getLogger = ({
   service,
@@ -57,11 +57,34 @@ export const getLogger = ({
   }
   return {
     logger: loggers[service],
-    requestMiddleware: () => express.makeMiddleware(loggers[service]),
+    requestMiddleware: () => makeRequestMiddleware(loggers[service]),
     errorRequestMiddleware: () => makeRequestErrorMiddleware(loggers[service]),
-    instrumentSocket: () => makeSocketInstrumentation(loggers[service]),
+    instrumentSocket: makeSocketInstrumentation(loggers[service]),
   }
 }
+
+const makeRequestMiddleware =
+  (logger: Logger): RequestHandler =>
+  (req, res, next) => {
+    const end = res.end
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    ;(res as any).end = (...args: any[]) => {
+      res.end = end
+      res.end(...args)
+
+      const { url, method, query } = req
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      const { responseTime } = res as any
+
+      logger.info(`${method} ${url}`, {
+        url,
+        method,
+        query,
+        responseTime,
+      })
+    }
+    next()
+  }
 
 const makeRequestErrorMiddleware =
   (logger: Logger): ErrorRequestHandler =>
