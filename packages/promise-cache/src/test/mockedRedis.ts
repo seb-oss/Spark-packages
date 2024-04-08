@@ -36,4 +36,4 @@ class MockedRedis {
   }
 }
 
-export const createClient = new MockedRedis()
+export const createClient = () => new MockedRedis()

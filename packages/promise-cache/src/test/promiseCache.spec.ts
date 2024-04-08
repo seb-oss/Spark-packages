@@ -9,9 +9,9 @@ import {
   vi,
 } from 'vitest'
 import { PromiseCache } from '../promiseCache'
-import * as mockedRedis from './mockedRedis'
 
-vi.mock('redis', () => mockedRedis)
+vi.mock('redis', async () => await vi.importActual('./mockedRedis'))
+
 const ttl = 1
 const cache: PromiseCache<number> = new PromiseCache<number>(ttl)
 const caseSensitiveCache = new PromiseCache<number>(ttl, true)
