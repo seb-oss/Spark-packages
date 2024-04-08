@@ -38,9 +38,8 @@ export const getLogger = ({
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
     const transports: Transport[] =
-      process.env.ENIRONMENT === 'local'
-        ? [new WinstonTransports.Console()]
-        : [
+      process.env.ENVIRONMENT === 'gcp'
+        ? [
             new WinstonTransports.Console(),
             new LoggingWinston({
               level,
@@ -50,6 +49,7 @@ export const getLogger = ({
               },
             }),
           ]
+        : [new WinstonTransports.Console()]
     loggers[service] = createLogger({
       level,
       transports,
