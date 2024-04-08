@@ -9,7 +9,7 @@ import {
   vi,
 } from 'vitest'
 import * as mockedRedis from './mockedRedis'
-import { PromiseCache } from './promiseCache'
+import { PromiseCache } from '../promiseCache'
 
 vi.mock('redis', () => mockedRedis)
 const ttl = 1

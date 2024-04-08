@@ -26,7 +26,7 @@ export class Persistor {
 
   async connect() {
     try {
-      this.client = await createClient({ url: REDIS_URL })
+      this.client = createClient({ url: REDIS_URL })
 
       this.client.on('error', (err) => {
         console.error(`❌ REDIS | Client Error | ${REDIS_URL}`, err)

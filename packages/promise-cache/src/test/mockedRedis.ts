@@ -1,5 +1,3 @@
-import { vi } from 'vitest'
-
 class MockedRedis {
   client = new Map()
 
@@ -38,6 +36,4 @@ class MockedRedis {
   }
 }
 
-export const createClient = vi.fn(() => {
-  return new MockedRedis()
-})
+export const createClient = new MockedRedis()
