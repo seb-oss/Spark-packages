@@ -50,6 +50,15 @@ export class PromiseCache<U> {
   }
 
   /**
+   * Get a value from the cache.
+   * @param key Cache key.
+   */
+  async find<U>(key: string): Promise<U | null> {
+    const result = await this.persistor.get<U>(key)
+    return result?.value ?? null
+  }
+
+  /**
    * A simple promise cache wrapper.
    * @param key Cache key.
    * @param delegate The function to execute if the key is not in the cache.
