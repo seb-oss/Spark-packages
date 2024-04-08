@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.2
+
+### Patch Changes
+
+- 835306d: Fixed middleware
+
 ## 0.1.1
 
 ### Patch Changes
