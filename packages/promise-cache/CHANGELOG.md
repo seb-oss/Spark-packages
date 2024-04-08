@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.3
+
+### Patch Changes
+
+- 9f673e8: Export mocked redis to use externally, add new function to find items in cache
+
 ## 0.2.2
 
 ### Patch Changes
