@@ -34,7 +34,7 @@ export type LoggerResult = {
 export const getLogger = ({
   service,
   version,
-  level = 'info',
+  level = (process.env.LOG_LEVEL as LogLevel) || 'info',
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
     const transports: Transport[] =
