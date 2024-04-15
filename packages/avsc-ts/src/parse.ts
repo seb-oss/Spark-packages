@@ -29,7 +29,7 @@ const parseSchema = (schema: Schema): string => {
 
   const ts = toTypeScript(schema)
     .replace(/"/gm, `'`) // single quote
-    .replace(/;/gm, '') // no semicolons
+    .replace(/(?!\/\*\*)(;)(?![^*]*\*\/)/gm, '') // remove semicolons outside of comment blocks
     .replace(/ {4}/g, '  ') // two spaces
     .replace(/^export type AvroType = .+(\[\]|(\n\n))/gm, '')
 

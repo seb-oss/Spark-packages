@@ -31,6 +31,39 @@ export const SimpleConverter = {
 `)
 })
 
+test('does not tamper with doc', () => {
+  const simple: Schema = {
+    name: 'Simple',
+    type: 'record',
+    doc: 'A sentence that could end here; yet continues for a bit.',
+    fields: [
+      {
+        name: 'stringField',
+        type: 'string',
+      },
+    ],
+  }
+  const ts = parse(simple)
+
+  expect(ts).toEqual(`// Auto generated. Do not edit!
+import { Type } from '@sebspark/avsc-isometric'
+
+/**
+ * A sentence that could end here; yet continues for a bit.
+ */
+export interface Simple {
+  stringField: string
+}
+
+const avroSimple = Type.forSchema({"name":"Simple","type":"record","fields":[{"name":"stringField","type":"string"}]})
+
+export const SimpleConverter = {
+  toBuffer: (data: Simple) => avroSimple.toBuffer(data),
+  fromBuffer: (buffer: Buffer) => avroSimple.fromBuffer(buffer) as Simple
+}
+`)
+})
+
 test('it parses multiple schemas', () => {
   const simpleString: Schema = {
     name: 'SimpleString',
