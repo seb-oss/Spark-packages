@@ -330,6 +330,29 @@ describe('OpenSearchHelper', () => {
         },
       })
     })
+    it('handles ids', async () => {
+      const ids = ['foo', 'bar', 'baz']
+      await helper(client as Client).typedSearch<Data>({
+        index: 'data',
+        body: {
+          query: {
+            ids: {
+              values: ids,
+            },
+          },
+        },
+      })
+      expect(client.search).toHaveBeenCalledWith({
+        index: 'data',
+        body: {
+          query: {
+            ids: {
+              values: ['foo', 'bar', 'baz'],
+            },
+          },
+        },
+      })
+    })
     it('handles match_all', async () => {
       await helper(client as Client).typedSearch<Data>({
         index: 'data',
