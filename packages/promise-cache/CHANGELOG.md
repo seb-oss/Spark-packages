@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.5
+
+### Patch Changes
+
+- 38d00b1: Set redis version to 4.6.12
+
 ## 0.2.4
 
 ### Patch Changes
