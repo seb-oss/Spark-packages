@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.4
+
+### Patch Changes
+
+- d7b4beb: New option to use local memory instead redis
+
 ## 0.2.3
 
 ### Patch Changes
