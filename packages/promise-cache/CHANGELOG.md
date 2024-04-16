@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- 415966e: Set redis version to 4.6.12
+
+## 0.2.4
+
+### Patch Changes
+
 - d7b4beb: New option to use local memory instead redis
 
 ## 0.2.3
