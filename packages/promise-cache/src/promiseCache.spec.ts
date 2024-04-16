@@ -155,4 +155,33 @@ describe('PromiseCache', () => {
     const value2 = await caseSensitiveCache.wrap(key2, mockDelegate2)
     expect(value1 === value2).toBeFalsy()
   })
+
+  it('should share memory between PromiseCache instances', async () => {
+    const localCache1 = new PromiseCache<number>(ttl, false, true)
+    const localCache2 = new PromiseCache<number>(ttl, false, true)
+
+    await localCache1.override('test1', 100)
+    await localCache1.override('test2', 200)
+    await localCache1.override('test3', 300)
+
+    await localCache2.override('test4', 400)
+    await localCache2.override('test5', 500)
+    await localCache2.override('test6', 600)
+
+    const value1 = await localCache2.find('test1')
+    const value2 = await localCache2.find('test2')
+    const value3 = await localCache2.find('test3')
+
+    const value4 = await localCache1.find('test4')
+    const value5 = await localCache1.find('test5')
+    const value6 = await localCache1.find('test6')
+
+    expect(value1).toBe(100)
+    expect(value2).toBe(200)
+    expect(value3).toBe(300)
+
+    expect(value4).toBe(400)
+    expect(value5).toBe(500)
+    expect(value6).toBe(600)
+  })
 })
