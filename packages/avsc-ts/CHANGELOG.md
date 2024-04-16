@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.1
+
+### Patch Changes
+
+- 5a19b2f: Leave semicolons in comments.
+
 ## 0.4.0
 
 ### Minor Changes
