@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/promise-cache",
-  "version": "0.2.4",
+  "version": "0.2.3",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,6 +17,6 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "redis": "^4.6.13"
+    "redis": "4.6.12"
   }
 }
