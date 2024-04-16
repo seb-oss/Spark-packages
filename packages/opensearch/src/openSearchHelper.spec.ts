@@ -336,7 +336,9 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            ids: ids,
+            ids: {
+              values: ids,
+            },
           },
         },
       })
@@ -344,7 +346,9 @@ describe('OpenSearchHelper', () => {
         index: 'data',
         body: {
           query: {
-            ids: ['foo', 'bar', 'baz'],
+            ids: {
+              values: ['foo', 'bar', 'baz'],
+            },
           },
         },
       })

@@ -246,6 +246,9 @@ export type OpenSearchQueryBody<
 > = K extends DeepPartial<T>
   ? {
       query: {
+        ids?: {
+          values: string[]
+        }
         // Criteria to filter the results
         filter?: OpenSearchFilter<T>
 
@@ -432,6 +435,8 @@ export type NativeOpenSearchType<T extends WithId> = ExcludeId<T> & {
 
 export type NativeOpenSearchQueryBody<T extends { _id: string }, K = T> = {
   query: {
+    ids?: { values: string[] }
+
     // Criteria to filter the results
     filter?: OpenSearchFilter<T>
 

@@ -17,6 +17,7 @@ export const fixIds = <T extends WithId, K = T>(
   const { query: q, _source, from, size, sort } = searchQuery.body
   const body: NativeOpenSearchQueryBody<NativeOpenSearchType<T>, K> = {
     query: {
+      ids: q.ids,
       bool: q.bool ? fixBool(q.bool) : undefined,
       match: q.match ? fixId(q.match) : undefined,
       collapse: q.collapse,
