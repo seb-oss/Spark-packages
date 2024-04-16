@@ -41,6 +41,8 @@ export class LocalStorage {
   }
 }
 
+const localStorage = new LocalStorage()
+
 export const createLocalMemoryClient = () => {
-  return new LocalStorage()
+  return localStorage
 }
