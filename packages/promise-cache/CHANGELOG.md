@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.6
+
+### Patch Changes
+
+- 204b80b: Singleton to share memory between instances
+
 ## 0.2.5
 
 ### Patch Changes
