@@ -10,7 +10,11 @@ export class PromiseCache<U> {
    * @param ttlInSeconds Default cache TTL.
    * @param caseSensitive Set to true if you want to differentiate between keys with different casing.
    */
-  constructor(ttlInSeconds?: number, caseSensitive = false, isLocalPersistor = false) {
+  constructor(
+    ttlInSeconds?: number,
+    caseSensitive = false,
+    isLocalPersistor = false
+  ) {
     this.persistor = createPersistor(isLocalPersistor)
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
