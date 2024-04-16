@@ -1,13 +1,11 @@
 {
   "name": "@sebspark/promise-cache",
-  "version": "0.3.0",
+  "version": "0.2.3",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
@@ -16,7 +14,6 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/omit": "1.0.3",
     "tsconfig": "*"
   },
   "dependencies": {

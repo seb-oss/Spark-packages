@@ -1,49 +1,32 @@
-# @sebspark/opensearch
-
-## 0.3.0
-
-### Minor Changes
-
-- dc8ad68: Support sort
+# @sebspark/promise-cache
 
 ## 0.2.3
 
 ### Patch Changes
 
-- 24d2add: Moved query.fields to \_source
+- 9f673e8: Export mocked redis to use externally, add new function to find items in cache
 
 ## 0.2.2
 
 ### Patch Changes
 
-- 10c4d93: Fix wildcard things
+- ede4a4f: Add override function to promiseCache
 
 ## 0.2.1
 
 ### Patch Changes
 
-- e43eb8b: Fix id querying and match_all
+- 5ffc4a5: Bump promise-cache library to 0.2.1
 
 ## 0.2.0
 
 ### Minor Changes
 
-- 79104c9: Support nested types
-
-## 0.1.2
-
-### Patch Changes
-
-- 574d8b4: Fixed IndexProperties<Date>
-
-## 0.1.1
-
-### Patch Changes
-
-- a36f430: Fixed inference of array mappings for index creation
+- f5d0748: - Support optional TTL in each call to wrap(...)
+  - Support optional case sensitivity
 
 ## 0.1.0
 
 ### Minor Changes
 
-- dc4ed6d: First version of OpenSearch helper
+- 547aab6: First version of promise-cache. A simple caching wrapper for promises.
