@@ -9,7 +9,8 @@
       "dist/**",
       "testschemas/**",
       "coverage/**",
-      "*.generated.ts"
+      "*.generated.ts",
+      "package.json"
     ]
   },
   "formatter": {
