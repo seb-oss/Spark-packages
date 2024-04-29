@@ -874,7 +874,7 @@ describe('openapi parser', () => {
         type: 'object',
         name: 'ContainsDate',
         properties: [
-          { name: 'lastValidDate', optional: true, type: [{ type: 'string' }] },
+          { name: 'lastValidDate', optional: true, type: [{ type: 'Date' }] },
         ],
       }
       expect(parsed).toEqual(expected)

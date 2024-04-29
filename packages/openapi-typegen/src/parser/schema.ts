@@ -140,7 +140,15 @@ const parsePropertyType = (
           return { type: 'number', ...parseDocumentation(schemaObject) }
         }
         case 'string': {
-          return { type, ...parseDocumentation(schemaObject) }
+          switch (schemaObject.format) {
+            case 'date':
+            case 'date-time': {
+              return { type: 'Date', ...parseDocumentation(schemaObject) }
+            }
+            default: {
+              return { type, ...parseDocumentation(schemaObject) }
+            }
+          }
         }
         default: {
           return { type, ...parseDocumentation(schemaObject) }
