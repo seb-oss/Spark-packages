@@ -1,16 +1,28 @@
 export type Empty = Record<never, never>
 
-export type Serialized<T> = {
+// For each property P in T
+type Serialized<T> = {
+  // Convert Date to string
   [P in keyof T]: T[P] extends Date
-    ? string // Convert Date to string
-    : T[P] extends Array<infer U>
-      ? Array<Serialized<U>> // Recursively serialize array elements
-      : // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-        T[P] extends (...args: any) => any
-        ? T[P] // Functions are not serialized, so keep them as is
-        : T[P] extends object
-          ? Serialized<T[P]> // Recursively serialize nested objects
-          : T[P] // Leave primitives and serializable types as is
+    ? string
+    : // Convert Date | undefined to string | undefined
+      T[P] extends Date | undefined
+      ? string | undefined
+      : // Recursively serialize array elements
+        T[P] extends Array<infer U>
+        ? Array<Serialized<U>>
+        : // Functions are not serialized, so keep them as is
+          // biome-ignore lint/suspicious/noExplicitAny: Function type
+          T[P] extends (...args: any) => any
+          ? T[P]
+          : // Recursively serialize nested objects
+            T[P] extends object
+            ? Serialized<T[P]>
+            : // Recursively serialize nested objects | undefined
+              T[P] extends object | undefined
+              ? Serialized<NonNullable<T[P]>> | undefined
+              : // Leave primitives and serializable types as is
+                T[P]
 }
 
 export type PartiallySerialized<T> = T | Serialized<T>
