@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.7.3
+
+### Patch Changes
+
+- ad6abf8: Revert date parsing
+
 ## 1.7.2
 
 ### Patch Changes
