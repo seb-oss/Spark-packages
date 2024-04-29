@@ -1,7 +1,7 @@
 export type Empty = Record<never, never>
 
 // For each property P in T
-type Serialized<T> = {
+export type Serialized<T> = {
   // Convert Date to string
   [P in keyof T]: T[P] extends Date
     ? string
