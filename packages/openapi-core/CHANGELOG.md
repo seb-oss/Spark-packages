@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.4.1
+
+### Patch Changes
+
+- ac30800: Update Serialized type to handle Date | undefined
+
 ## 1.4.0
 
 ### Minor Changes
