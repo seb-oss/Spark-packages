@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.7.2
+
+### Patch Changes
+
+- cc78f28: Parse date strings as strings instead of JS Date objects
+
 ## 1.7.1
 
 ### Patch Changes
