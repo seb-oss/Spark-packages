@@ -1,13 +1,16 @@
 {
   "name": "@sebspark/openapi-typegen",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
     "openapi-typegen": "./cli.mjs"
   },
-  "files": ["dist", "cli.mjs"],
+  "files": [
+    "dist",
+    "cli.mjs"
+  ],
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
     "dev": "tsc --watch --noEmit",
