@@ -240,6 +240,11 @@ export function formatOpeningHours(mic: SebMarket) {
   return `${open} – ${close}`
 }
 
+/**
+ * Get the holiday for a specific date.
+ * Returns a TypeScript union value which is useful if you need to support
+ * multiple languages. Then the consumer can determine what to display to the user.
+ */
 export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   if (!isHoliday(mic, date)) {
     return null
@@ -274,4 +279,34 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   }
 
   return holidays[formattedDate] ?? null
+}
+
+export function marketOpeningHours(mic: SebMarket, date: Date) {
+  const market = openingHours[mic]
+
+  if (!market) {
+    return null
+  }
+
+  if (isHalfday(mic, date)) {
+    return {
+      openHour: market.openHour,
+      openMinute: market.openMinute,
+      closeHour: market.irregularCloseHour ?? 0,
+      closeMinute: market.irregularCloseMinute ?? 0,
+    }
+  }
+
+  return {
+    openHour: market.openHour,
+    openMinute: market.openMinute,
+    closeHour: market.closeHour,
+    closeMinute: market.closeMinute,
+  }
+}
+type Hours = {
+  openHour: number
+  openMinute: number
+  closeHour: number
+  closeMinute: number
 }

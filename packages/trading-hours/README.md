@@ -60,6 +60,21 @@ whichHoliday(mic: SebMarket, date: Date): Holiday | null
 
 Checks what holiday, if any, the provided date is. The return types is provided as a TypeScript union instead of the actual name. This way the consumer can choose what to display, which is useful for multilanguage applications.
 
+### marketOpeningHours
+
+```typescript
+type Hours = {
+  openHour: number
+  openMinute: number
+  closeHour: number
+  closeMinute: number
+}
+
+marketOpeningHours(mic: SebMarket, date: Date): Hours | null
+```
+
+Return the open hours of the provided market and date. Handles half trading days.
+
 ## Types
 
 ```typescript

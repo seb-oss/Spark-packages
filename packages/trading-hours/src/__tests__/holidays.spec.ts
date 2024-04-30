@@ -6,6 +6,7 @@ import {
   isHalfday,
   isHoliday,
   isOpen,
+  marketOpeningHours,
   whichHoliday,
 } from '../holidays'
 import type { SebMarket } from '../types'
@@ -207,6 +208,8 @@ describe('#isOpen', () => {
 
 describe('#formatOpeningHours', () => {
   test('handles regular opening hours', () => {
+    vi.setSystemTime(new Date('2024-05-02 12:00:00'))
+
     expect(formatOpeningHours('XSTO')).toBe('09:00 – 17:30')
   })
 
@@ -260,5 +263,31 @@ describe('#whichHoliday', () => {
     expect(whichHoliday('XHEL', new Date('2024-12-06'))).toBe(
       'independenceDayFinland'
     )
+  })
+})
+
+describe('#marketOpeningHours', () => {
+  test('returns null for unknown markets', () => {
+    expect(
+      marketOpeningHours('UNKNOWN' as SebMarket, new Date('2024-05-02'))
+    ).toBe(null)
+  })
+
+  test('handles regular opening hours', () => {
+    expect(marketOpeningHours('XSTO', new Date('2024-05-02'))).toEqual({
+      openHour: 9,
+      openMinute: 0,
+      closeHour: 17,
+      closeMinute: 30,
+    })
+  })
+
+  test('handles halfdays', () => {
+    expect(marketOpeningHours('XSTO', new Date('2024-01-05'))).toEqual({
+      openHour: 9,
+      openMinute: 0,
+      closeHour: 13,
+      closeMinute: 0,
+    })
   })
 })
