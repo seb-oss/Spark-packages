@@ -68,6 +68,10 @@ A wrapper for OpenSearch Client to assist with typed queries, indices etc
 
 A simple caching wrapper for promises.
 
+### [@sebspark/trading-hours](./packages/trading-hours)
+
+Find trading hours of a market, when it&#x27;s closed for holidays, or when it&#x27;s only open for part of the day.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
