@@ -8,6 +8,7 @@ import type {
   CustomType,
   EnumType,
   ObjectType,
+  Primitive,
   Property,
   TypeDefinition,
 } from '../types'
@@ -20,14 +21,14 @@ export const parseSchemas = (
     parseSchema(name, schema)
   )
 
-const marshall = (type: SchemaType, format: string | undefined): Primitive => {
+const marshall = (type: Omit<SchemaType, 'object' | 'array'>, format: string | undefined): Primitive => {
   if (type === 'integer') {
     return 'number'
   }
   if (type === 'string' && (format === 'date' || format === 'date-time')) {
     return 'Date'
   }
-  return type
+  return type as Primitive
 }
 
 export const parseSchema = (
