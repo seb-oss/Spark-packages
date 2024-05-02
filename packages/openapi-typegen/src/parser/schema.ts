@@ -1,4 +1,8 @@
-import type { ReferenceObject, SchemaObject, SchemaType } from '@sebspark/openapi-core'
+import type {
+  ReferenceObject,
+  SchemaObject,
+  SchemaType,
+} from '@sebspark/openapi-core'
 import type {
   ArrayType,
   CustomType,
@@ -149,7 +153,10 @@ const parsePropertyType = (
           return parseObjectSchema(undefined, schemaObject)
         }
         default: {
-          return { type: marshall(type, schemaObject.format), ...parseDocumentation(schemaObject) }
+          return {
+            type: marshall(type, schemaObject.format),
+            ...parseDocumentation(schemaObject),
+          }
         }
       }
     })
