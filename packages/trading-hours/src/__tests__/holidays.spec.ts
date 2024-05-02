@@ -1,0 +1,264 @@
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import {
+  formatOpeningHours,
+  halfdays,
+  holidays,
+  isHalfday,
+  isHoliday,
+  isOpen,
+  whichHoliday,
+} from '../holidays'
+import type { SebMarket } from '../types'
+
+beforeEach(() => {
+  vi.useFakeTimers()
+})
+
+afterEach(() => {
+  vi.useRealTimers()
+})
+
+describe('#holidays', () => {
+  test.each(['XSTO', 'SSME'] as const)('%s', (mic) => {
+    expect(holidays(mic, 2024)).toEqual([
+      '2024-01-01',
+      '2024-01-06',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-05-09',
+      '2024-06-06',
+      '2024-06-21',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
+
+  test('XAMS', () => {
+    expect(holidays('XAMS', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-25',
+      '2024-12-26',
+    ])
+  })
+
+  test('XPAR', () => {
+    expect(holidays('XPAR', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-25',
+      '2024-12-26',
+    ])
+  })
+
+  test('XHEL', () => {
+    expect(holidays('XHEL', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-05-09',
+      '2024-06-21',
+      '2024-12-06',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
+
+  test('XETR', () => {
+    expect(holidays('XETR', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
+
+  test('EQTB', () => {
+    expect(holidays('EQTB', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
+
+  test('handles far into the future', () => {
+    expect(holidays('XSTO', 2090)).toEqual([
+      '2090-01-01',
+      '2090-01-06',
+      '2090-04-14',
+      '2090-04-17',
+      '2090-05-01',
+      '2090-05-25',
+      '2090-06-06',
+      '2090-06-23',
+      '2090-12-24',
+      '2090-12-25',
+      '2090-12-26',
+      '2090-12-31',
+    ])
+  })
+
+  test('returns an empty array for unknown markets', () => {
+    expect(holidays('UNKNOWN' as SebMarket, 2021)).toEqual([])
+  })
+})
+
+describe('#halfdays', () => {
+  test.each(['XSTO', 'SSME'] as const)('%s', (mic) => {
+    expect(halfdays(mic, 2024)).toEqual([
+      '2024-01-05',
+      '2024-03-28',
+      '2024-04-30',
+      '2024-05-08',
+      '2024-11-01',
+    ])
+  })
+
+  test('XAMS', () => {
+    expect(halfdays('XAMS', 2024)).toEqual(['2024-12-24', '2024-12-31'])
+  })
+
+  test('XPAR', () => {
+    expect(halfdays('XPAR', 2024)).toEqual(['2024-12-24', '2024-12-31'])
+  })
+})
+
+describe('#isHoliday', () => {
+  test('weekends are always holidays', () => {
+    expect(isHoliday('XSTO', new Date('2024-05-04'))).toBe(true)
+    expect(isHoliday('XSTO', new Date('2024-05-05'))).toBe(true)
+  })
+
+  test('returns true if today is a holiday', () => {
+    expect(isHoliday('XSTO', new Date('2021-04-02'))).toBe(true)
+  })
+
+  test('returns false if today is not a holiday', () => {
+    expect(isHoliday('XSTO', new Date('2021-04-01'))).toBe(false)
+  })
+})
+
+describe('#isHalfday', () => {
+  test('returns true if today is a halfday', () => {
+    expect(isHalfday('XSTO', new Date('2024-01-05'))).toBe(true)
+  })
+
+  test('returns false if today is not a halfday', () => {
+    expect(isHalfday('XSTO', new Date('2024-01-06'))).toBe(false)
+  })
+})
+
+describe('#isOpen', () => {
+  test('returns false if today is a holiday', () => {
+    vi.setSystemTime(new Date('2024-04-01 09:00:00'))
+
+    expect(isOpen('XSTO')).toBe(false)
+  })
+
+  test('handles halfday open', () => {
+    vi.setSystemTime(new Date('2024-01-05 09:00:00'))
+
+    expect(isOpen('XSTO')).toBe(true)
+  })
+
+  test('handles halfday close', () => {
+    vi.setSystemTime(new Date('2024-01-05 13:00:00'))
+
+    expect(isOpen('XSTO')).toBe(false)
+  })
+
+  test('returns true if regular day and in opening hours', () => {
+    vi.setSystemTime(new Date('2024-05-02 09:00:00'))
+
+    expect(isOpen('XSTO')).toBe(true)
+  })
+
+  test('returns false if regular day and before opening hours', () => {
+    vi.setSystemTime(new Date('2024-05-02 08:59:59'))
+
+    expect(isOpen('XSTO')).toBe(false)
+  })
+
+  test('returns false if regular day and after closing hours', () => {
+    vi.setSystemTime(new Date('2024-05-02 17:30:00'))
+
+    expect(isOpen('XSTO')).toBe(false)
+  })
+})
+
+describe('#formatOpeningHours', () => {
+  test('handles regular opening hours', () => {
+    expect(formatOpeningHours('XSTO')).toBe('09:00 – 17:30')
+  })
+
+  test.each([
+    ['XAMS', '09:00 – 17:30'],
+    ['XPAR', '09:00 – 17:30'],
+    ['XHEL', '10:00 – 18:25'],
+    ['XETR', '09:00 – 17:30'],
+    ['EQTB', '08:00 – 22:00'],
+  ] as const)('%s', (mic, expected) => {
+    vi.setSystemTime(new Date('2024-01-05 12:00:00'))
+
+    expect(formatOpeningHours(mic)).toBe(expected)
+  })
+
+  test.each([
+    ['XSTO', '2024-01-05', '09:00 – 13:00'],
+    ['XAMS', '2024-12-24', '09:00 – 13:55'],
+    ['XPAR', '2024-12-24', '09:00 – 14:05'],
+  ] as const)('handles halfdays for %s', (mic, date, expected) => {
+    vi.setSystemTime(new Date(`${date} 12:00:00`))
+
+    expect(formatOpeningHours(mic)).toBe(expected)
+  })
+})
+
+describe('#whichHoliday', () => {
+  test('returns null if not a holiday', () => {
+    expect(whichHoliday('XSTO', new Date('2021-04-01'))).toBe(null)
+  })
+
+  test.each([
+    ['2024-01-01', 'newYearsDay'],
+    ['2025-01-06', 'epiphany'],
+    ['2024-03-29', 'goodFriday'],
+    ['2024-04-01', 'easterMonday'],
+    ['2024-05-01', 'laborDay'],
+    ['2024-05-09', 'ascensionDay'],
+    ['2024-06-06', 'independenceDaySweden'],
+    ['2024-06-21', 'midsummerEve'],
+    ['2024-06-22', 'midsummerDay'],
+    ['2024-12-24', 'christmasEve'],
+    ['2024-12-25', 'christmasDay'],
+    ['2024-12-26', 'boxingDay'],
+    ['2024-12-31', 'newYearsEve'],
+  ] as const)('handle %s', (date, holiday) => {
+    expect(whichHoliday('XSTO', new Date(date))).toBe(holiday)
+  })
+
+  test('handles XHEL independence day', () => {
+    expect(whichHoliday('XHEL', new Date('2024-12-06'))).toBe(
+      'independenceDayFinland'
+    )
+  })
+})
