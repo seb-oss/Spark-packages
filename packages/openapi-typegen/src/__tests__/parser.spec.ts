@@ -503,6 +503,17 @@ describe('openapi parser', () => {
       const parsed = parseSchema('MIC', schema)
       expect(parsed).toEqual(expected)
     })
+    it('parses a primitive schema with marshalling', () => {
+      const schema: SchemaObject = {
+        type: 'integer',
+      }
+      const expected: PrimitiveType = {
+        type: 'number',
+        name: 'MIC',
+      }
+      const parsed = parseSchema('MIC', schema)
+      expect(parsed).toEqual(expected)
+    })
     it('parses a simple schema', () => {
       const schema: SchemaObject = {
         type: 'object',

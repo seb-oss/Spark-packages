@@ -1,4 +1,4 @@
-import type { ReferenceObject, SchemaObject } from '@sebspark/openapi-core'
+import type { ReferenceObject, SchemaObject, SchemaType } from '@sebspark/openapi-core'
 import type {
   ArrayType,
   CustomType,
@@ -15,6 +15,16 @@ export const parseSchemas = (
   Object.entries(schemas || {}).map(([name, schema]) =>
     parseSchema(name, schema)
   )
+
+const marshall = (type: SchemaType, format: string | undefined): Primitive => {
+  if (type === 'integer') {
+    return 'number'
+  }
+  if (type === 'string' && (format === 'date' || format === 'date-time')) {
+    return 'Date'
+  }
+  return type
+}
 
 export const parseSchema = (
   name: string | undefined,
@@ -36,7 +46,7 @@ export const parseSchema = (
       return schema.enum
         ? parseEnumType(name, schema)
         : name
-          ? { name, type: schema.type }
+          ? { name, type: marshall(schema.type, schema.format) }
           : parsePropertyType(schema)[0]
     default:
       return parseObjectSchema(name, schema)
@@ -138,22 +148,8 @@ const parsePropertyType = (
         case 'object': {
           return parseObjectSchema(undefined, schemaObject)
         }
-        case 'integer': {
-          return { type: 'number', ...parseDocumentation(schemaObject) }
-        }
-        case 'string': {
-          switch (schemaObject.format) {
-            case 'date':
-            case 'date-time': {
-              return { type: 'Date', ...parseDocumentation(schemaObject) }
-            }
-            default: {
-              return { type, ...parseDocumentation(schemaObject) }
-            }
-          }
-        }
         default: {
-          return { type, ...parseDocumentation(schemaObject) }
+          return { type: marshall(type, schemaObject.format), ...parseDocumentation(schemaObject) }
         }
       }
     })
