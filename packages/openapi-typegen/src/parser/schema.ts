@@ -21,7 +21,10 @@ export const parseSchemas = (
     parseSchema(name, schema)
   )
 
-const marshall = (type: Omit<SchemaType, 'object' | 'array'>, format: string | undefined): Primitive => {
+const marshall = (
+  type: Omit<SchemaType, 'object' | 'array'>,
+  format: string | undefined
+): Primitive => {
   if (type === 'integer') {
     return 'number'
   }
