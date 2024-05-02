@@ -492,6 +492,17 @@ describe('openapi parser', () => {
     })
   })
   describe('parseSchema', () => {
+    it('parses a primitive schema', () => {
+      const schema: SchemaObject = {
+        type: 'string',
+      }
+      const expected: PrimitiveType = {
+        type: 'string',
+        name: 'MIC',
+      }
+      const parsed = parseSchema('MIC', schema)
+      expect(parsed).toEqual(expected)
+    })
     it('parses a simple schema', () => {
       const schema: SchemaObject = {
         type: 'object',

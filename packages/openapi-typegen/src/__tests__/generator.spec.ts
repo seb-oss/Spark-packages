@@ -15,11 +15,22 @@ import type {
   EnumType,
   ObjectType,
   Path,
+  PrimitiveType,
   ResponseBody,
 } from '../types'
 
 describe('typescript generator', () => {
-  describe('generateType', () => {
+  describe('generateType', async () => {
+    it('generates a simple string type', () => {
+      const type: PrimitiveType = {
+        type: 'string',
+        name: 'MIC',
+      }
+      const expected = 'export type Mic = string'
+      const generated = generateType(type)
+
+      expect(generated).toEqual(expected)
+    })
     it('generates a string enum type', async () => {
       const type: EnumType = {
         type: 'enum',

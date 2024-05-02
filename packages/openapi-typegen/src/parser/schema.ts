@@ -35,7 +35,9 @@ export const parseSchema = (
     case 'string':
       return schema.enum
         ? parseEnumType(name, schema)
-        : parsePropertyType(schema)[0]
+        : name
+          ? { name, type: schema.type }
+          : parsePropertyType(schema)[0]
     default:
       return parseObjectSchema(name, schema)
   }
