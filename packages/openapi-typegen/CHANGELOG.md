@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.8.0
+
+### Minor Changes
+
+- 23950b4: Now parses alias for primitive type
+
 ## 1.7.3
 
 ### Patch Changes

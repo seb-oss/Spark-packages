@@ -1,9 +1,14 @@
-import type { ReferenceObject, SchemaObject, SchemaType } from '@sebspark/openapi-core'
+import type {
+  ReferenceObject,
+  SchemaObject,
+  SchemaType,
+} from '@sebspark/openapi-core'
 import type {
   ArrayType,
   CustomType,
   EnumType,
   ObjectType,
+  Primitive,
   Property,
   TypeDefinition,
 } from '../types'
@@ -16,14 +21,17 @@ export const parseSchemas = (
     parseSchema(name, schema)
   )
 
-const marshall = (type: SchemaType, format: string | undefined): Primitive => {
+const marshall = (
+  type: Omit<SchemaType, 'object' | 'array'>,
+  format: string | undefined
+): Primitive => {
   if (type === 'integer') {
     return 'number'
   }
   if (type === 'string' && (format === 'date' || format === 'date-time')) {
     return 'Date'
   }
-  return type
+  return type as Primitive
 }
 
 export const parseSchema = (
@@ -149,7 +157,10 @@ const parsePropertyType = (
           return parseObjectSchema(undefined, schemaObject)
         }
         default: {
-          return { type: marshall(type, schemaObject.format), ...parseDocumentation(schemaObject) }
+          return {
+            type: marshall(type, schemaObject.format),
+            ...parseDocumentation(schemaObject),
+          }
         }
       }
     })
