@@ -1,4 +1,5 @@
 import { addDays, subDays } from 'date-fns'
+import type { SebMarket } from './types'
 
 const formatter = new Intl.DateTimeFormat('sv-SE', {
   dateStyle: 'short',
@@ -107,9 +108,24 @@ export function staticHolidays(year: number) {
 
 export function independenceDays(year: number) {
   return {
+    denmark: `${year}-06-05`,
     germany: `${year}-10-03`,
     finland: `${year}-12-06`,
     sweden: `${year}-06-06`,
+  }
+}
+
+export function marketHoliday(mic: SebMarket, year: number) {
+  switch (mic) {
+    case 'XCSE':
+      switch (year) {
+        case 2024:
+          return ['2024-05-10']
+        default:
+          return []
+      }
+    default:
+      return []
   }
 }
 

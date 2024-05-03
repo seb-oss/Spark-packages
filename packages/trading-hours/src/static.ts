@@ -85,4 +85,10 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 14,
     irregularCloseMinute: 0,
   },
+  XCSE: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 16,
+    closeMinute: 55,
+  },
 } as const

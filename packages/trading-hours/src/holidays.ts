@@ -6,6 +6,7 @@ import {
   christianHolidays,
   convertTime,
   independenceDays,
+  marketHoliday,
   shortDate,
   staticHolidays,
 } from './utils'
@@ -30,6 +31,9 @@ export function holidays(mic: SebMarket, year: number) {
   // Midsummer
   const midsummerDay = calculateMidsummerDay(year)
   const midsummerEve = shortDate(subDays(midsummerDay, 1))
+
+  // Market specific holidays
+  const marketSpecificHoliday = marketHoliday(mic, year)
 
   switch (mic) {
     case 'SSME':
@@ -119,6 +123,22 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.christmasDay,
         staticDates.boxingDay,
       ]
+
+    case 'XCSE':
+      return [
+        staticDates.newYearsDay,
+        christian.beforeGoodFriday,
+        christian.goodFriday,
+        christian.easterMonday,
+        christian.ascensionDay,
+        christian.pentecostMonday,
+        independenceDay.denmark,
+        staticDates.christmasEve,
+        staticDates.christmasDay,
+        staticDates.boxingDay,
+        staticDates.newYearsEve,
+        ...marketSpecificHoliday,
+      ].sort((a, b) => a.localeCompare(b))
 
     default:
       return []

@@ -113,6 +113,23 @@ describe('#holidays', () => {
     ])
   })
 
+  test('XCSE', () => {
+    expect(holidays('XCSE', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-28',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-09',
+      '2024-05-10',
+      '2024-05-20',
+      '2024-06-05',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
+
   test('handles far into the future', () => {
     expect(holidays('XSTO', 2090)).toEqual([
       '2090-01-01',
@@ -251,6 +268,7 @@ describe('#formatOpeningHours', () => {
     ['XETR', '09:00 – 17:30'],
     ['EQTB', '08:00 – 22:00'],
     ['XMAD', '09:00 – 17:30'],
+    ['XCSE', '09:00 – 16:55'],
   ] as const)('%s', (mic, expected) => {
     vi.setSystemTime(new Date('2024-01-05 12:00:00'))
 
