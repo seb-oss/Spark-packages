@@ -124,7 +124,11 @@ export function halfdays(mic: SebMarket, year: number) {
     beforeEpiphany,
     beforeAllSaintsDay,
     beforeAscensionDay,
+    ascensionDay,
+    pentecostMonday,
   } = christianHolidays(year)
+  const independenceDay = independenceDays(year)
+  const beforeNewYearsEve = shortDate(subDays(staticDates.newYearsEve, 1))
 
   switch (mic) {
     case 'SSME':
@@ -152,6 +156,16 @@ export function halfdays(mic: SebMarket, year: number) {
 
     case 'XPAR':
       return [staticDates.christmasEve, staticDates.newYearsEve]
+
+    case 'XBER':
+    case 'EQTB':
+      return [
+        ascensionDay,
+        pentecostMonday,
+        independenceDay.germany,
+        // TODO: This has different irregular hours
+        beforeNewYearsEve,
+      ]
 
     default:
       return []

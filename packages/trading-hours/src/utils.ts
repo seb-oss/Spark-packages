@@ -76,6 +76,10 @@ export function christianHolidays(year: number) {
   const allSaintsDay = calculateAllSaintsDay(year)
   const beforeAllSaintsDay = shortDate(subDays(allSaintsDay, 1))
 
+  // Pentecost
+  const pentecost = addDays(easterSunday, 49)
+  const pentecostMonday = addDays(pentecost, 1)
+
   return {
     ascensionDay: shortDate(ascensionDay),
     beforeAllSaintsDay,
@@ -85,6 +89,8 @@ export function christianHolidays(year: number) {
     easterMonday: shortDate(easterMonday),
     epiphany: shortDate(epiphany),
     goodFriday: shortDate(goodFriday),
+    pentecost: shortDate(pentecost),
+    pentecostMonday: shortDate(pentecostMonday),
   }
 }
 

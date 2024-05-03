@@ -141,6 +141,15 @@ describe('#halfdays', () => {
   test('XPAR', () => {
     expect(halfdays('XPAR', 2024)).toEqual(['2024-12-24', '2024-12-31'])
   })
+
+  test('EQTB', () => {
+    expect(halfdays('EQTB', 2024)).toEqual([
+      '2024-05-09',
+      '2024-05-20',
+      '2024-10-03',
+      '2024-12-30',
+    ])
+  })
 })
 
 describe('#isHoliday', () => {
