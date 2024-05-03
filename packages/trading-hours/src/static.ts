@@ -115,4 +115,12 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 17,
     irregularCloseMinute: 30,
   },
+  XBRU: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 30,
+    irregularCloseHour: 13,
+    irregularCloseMinute: 55,
+  },
 } as const

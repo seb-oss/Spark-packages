@@ -4,6 +4,7 @@ export type SebMarket =
   | 'SSME'
   | 'XAMS'
   | 'XBER'
+  | 'XBRU'
   | 'XCSE'
   | 'XETR'
   | 'XHEL'

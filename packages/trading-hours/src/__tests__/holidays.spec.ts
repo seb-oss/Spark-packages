@@ -59,6 +59,17 @@ describe('#holidays', () => {
     ])
   })
 
+  test('XBRU', () => {
+    expect(holidays('XBRU', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-25',
+      '2024-12-26',
+    ])
+  })
+
   test('XHEL', () => {
     expect(holidays('XHEL', 2024)).toEqual([
       '2024-01-01',
@@ -177,12 +188,8 @@ describe('#halfdays', () => {
     ])
   })
 
-  test('XAMS', () => {
-    expect(halfdays('XAMS', 2024)).toEqual(['2024-12-24', '2024-12-31'])
-  })
-
-  test('XPAR', () => {
-    expect(halfdays('XPAR', 2024)).toEqual(['2024-12-24', '2024-12-31'])
+  test.each(['XAMS', 'XPAR', 'XMAD', 'XBRU'] as const)('%s', (mic) => {
+    expect(halfdays(mic, 2024)).toEqual(['2024-12-24', '2024-12-31'])
   })
 
   test('MTAA', () => {
@@ -238,10 +245,6 @@ describe('#halfdays', () => {
       '2024-10-03',
       '2024-12-30',
     ])
-  })
-
-  test('XMAD', () => {
-    expect(halfdays('XMAD', 2024)).toEqual(['2024-12-24', '2024-12-31'])
   })
 })
 
@@ -327,6 +330,7 @@ describe('#formatOpeningHours', () => {
     ['XNGM', '09:00 – 17:25'],
     ['XSAT', '09:00 – 17:25'],
     ['MTAA', '09:00 – 17:30'],
+    ['XBRU', '09:00 – 17:30'],
   ] as const)('%s', (mic, expected) => {
     vi.setSystemTime(new Date('2024-01-04 12:00:00'))
 
@@ -337,6 +341,7 @@ describe('#formatOpeningHours', () => {
     ['XSTO', '2024-01-05', '09:00 – 13:00'],
     ['MTAA', '2024-12-30', '09:00 – 17:30'],
     ['XAMS', '2024-12-24', '09:00 – 13:55'],
+    ['XBRU', '2024-12-24', '09:00 – 13:55'],
     ['XMAD', '2024-12-24', '09:00 – 14:00'],
     ['XPAR', '2024-12-24', '09:00 – 14:05'],
     ['XNGM', '2024-01-05', '09:00 – 12:55'],

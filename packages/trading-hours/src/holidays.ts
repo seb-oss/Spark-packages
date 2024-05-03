@@ -57,16 +57,9 @@ export function holidays(mic: SebMarket, year: number) {
       ]
 
     case 'XAMS':
-      return [
-        staticDates.newYearsDay,
-        christian.goodFriday,
-        christian.easterMonday,
-        staticDates.laborDay,
-        staticDates.christmasDay,
-        staticDates.boxingDay,
-      ]
-
     case 'XPAR':
+    case 'XMAD':
+    case 'XBRU':
       return [
         staticDates.newYearsDay,
         christian.goodFriday,
@@ -115,16 +108,6 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.christmasDay,
         staticDates.boxingDay,
         staticDates.newYearsEve,
-      ]
-
-    case 'XMAD':
-      return [
-        staticDates.newYearsDay,
-        christian.goodFriday,
-        christian.easterMonday,
-        staticDates.laborDay,
-        staticDates.christmasDay,
-        staticDates.boxingDay,
       ]
 
     case 'XCSE':
@@ -204,13 +187,10 @@ export function halfdays(mic: SebMarket, year: number) {
         beforeAllSaintsDay,
       ]
 
-    case 'XAMS':
-      return [staticDates.christmasEve, staticDates.newYearsEve]
-
-    case 'XPAR':
-      return [staticDates.christmasEve, staticDates.newYearsEve]
-
     case 'XMAD':
+    case 'XPAR':
+    case 'XBRU':
+    case 'XAMS':
       return [staticDates.christmasEve, staticDates.newYearsEve]
 
     case 'XBER':
