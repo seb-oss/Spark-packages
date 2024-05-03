@@ -107,4 +107,12 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 12,
     irregularCloseMinute: 55,
   },
+  MTAA: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 30,
+    irregularCloseHour: 17,
+    irregularCloseMinute: 30,
+  },
 } as const

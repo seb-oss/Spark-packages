@@ -83,6 +83,7 @@ export function christianHolidays(year: number) {
 
   return {
     ascensionDay: shortDate(ascensionDay),
+    assumptionDay: `${year}-08-15`,
     beforeAllSaintsDay,
     beforeAscensionDay,
     beforeEpiphany,
@@ -121,6 +122,39 @@ export function marketHoliday(mic: SebMarket, year: number) {
       switch (year) {
         case 2024:
           return ['2024-05-10']
+        default:
+          return []
+      }
+    default:
+      return []
+  }
+}
+
+export function marketHalfdays(mic: SebMarket, year: number) {
+  const industryVacation = Array.from({ length: 31 }, (_, i) => i + 1).map(
+    (d) => `${year}-08-${d.toString().padStart(2, '0')}`
+  )
+
+  const firstWeekOfJanauary = []
+
+  // Skips New Year's Day
+  for (let i = 2; i <= 5; i++) {
+    const day = i.toString().padStart(2, '0')
+    firstWeekOfJanauary.push(`${year}-01-${day}`)
+  }
+
+  switch (mic) {
+    case 'MTAA':
+      switch (year) {
+        case 2024:
+          return [
+            ...firstWeekOfJanauary,
+            '2024-04-25',
+            '2024-04-26',
+            // Don't include Assumption Day as it's a full holiday
+            ...industryVacation.filter((d) => d !== '2024-08-15'),
+            '2024-12-27',
+          ]
         default:
           return []
       }

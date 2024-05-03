@@ -1,5 +1,6 @@
 export type SebMarket =
   | 'EQTB'
+  | 'MTAA'
   | 'SSME'
   | 'XAMS'
   | 'XBER'

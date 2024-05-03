@@ -6,6 +6,7 @@ import {
   christianHolidays,
   convertTime,
   independenceDays,
+  marketHalfdays,
   marketHoliday,
   shortDate,
   staticHolidays,
@@ -142,6 +143,19 @@ export function holidays(mic: SebMarket, year: number) {
         ...marketSpecificHoliday,
       ].sort((a, b) => a.localeCompare(b))
 
+    case 'MTAA':
+      return [
+        staticDates.newYearsDay,
+        christian.goodFriday,
+        christian.easterMonday,
+        staticDates.laborDay,
+        christian.assumptionDay,
+        staticDates.christmasEve,
+        staticDates.christmasDay,
+        staticDates.boxingDay,
+        staticDates.newYearsEve,
+      ]
+
     default:
       return []
   }
@@ -162,7 +176,10 @@ export function halfdays(mic: SebMarket, year: number) {
     pentecostMonday,
   } = christianHolidays(year)
   const independenceDay = independenceDays(year)
+  const beforeChristmasEve = shortDate(subDays(staticDates.christmasEve, 1))
   const beforeNewYearsEve = shortDate(subDays(staticDates.newYearsEve, 1))
+
+  const specialMarketHalfdays = marketHalfdays(mic, year)
 
   switch (mic) {
     case 'XSAT':
@@ -205,6 +222,15 @@ export function halfdays(mic: SebMarket, year: number) {
         // TODO: This has different irregular hours
         beforeNewYearsEve,
       ]
+
+    case 'MTAA':
+      return [
+        beforeGoodFriday,
+        beforeAllSaintsDay,
+        beforeChristmasEve,
+        beforeNewYearsEve,
+        ...specialMarketHalfdays,
+      ].sort((a, b) => a.localeCompare(b))
 
     default:
       return []
