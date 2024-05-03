@@ -265,6 +265,7 @@ describe('#formatOpeningHours', () => {
     ['XMAD', '09:00 – 17:30'],
     ['XCSE', '09:00 – 16:55'],
     ['XNGM', '09:00 – 17:25'],
+    ['XSAT', '09:00 – 17:25'],
   ] as const)('%s', (mic, expected) => {
     vi.setSystemTime(new Date('2024-01-04 12:00:00'))
 
@@ -277,6 +278,7 @@ describe('#formatOpeningHours', () => {
     ['XMAD', '2024-12-24', '09:00 – 14:00'],
     ['XPAR', '2024-12-24', '09:00 – 14:05'],
     ['XNGM', '2024-01-05', '09:00 – 12:55'],
+    ['XSAT', '2024-01-05', '09:00 – 12:55'],
     ['EQTB', '2024-05-09', '08:00 – 20:00'], // Normal irregular close
     ['EQTB', '2024-12-30', '08:00 – 14:00'], // Special irregular close day before New Year's Eve
   ] as const)('handles halfdays for %s', (mic, date, expected) => {

@@ -36,6 +36,7 @@ export function holidays(mic: SebMarket, year: number) {
   const marketSpecificHoliday = marketHoliday(mic, year)
 
   switch (mic) {
+    case 'XSAT':
     case 'XNGM':
     case 'SSME':
     case 'XSTO':
@@ -164,6 +165,7 @@ export function halfdays(mic: SebMarket, year: number) {
   const beforeNewYearsEve = shortDate(subDays(staticDates.newYearsEve, 1))
 
   switch (mic) {
+    case 'XSAT':
     case 'XNGM':
     case 'SSME':
     case 'XSTO':

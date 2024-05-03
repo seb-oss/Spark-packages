@@ -99,4 +99,12 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 12,
     irregularCloseMinute: 55,
   },
+  XSAT: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 25,
+    irregularCloseHour: 12,
+    irregularCloseMinute: 55,
+  },
 } as const

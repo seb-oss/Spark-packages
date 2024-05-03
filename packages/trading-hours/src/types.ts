@@ -9,6 +9,7 @@ export type SebMarket =
   | 'XMAD'
   | 'XNGM'
   | 'XPAR'
+  | 'XSAT'
   | 'XSTO'
 
 export type Holiday =
