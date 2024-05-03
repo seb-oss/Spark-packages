@@ -56,6 +56,7 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.newYearsEve,
       ]
 
+    case 'XLIS':
     case 'XAMS':
     case 'XPAR':
     case 'XMAD':
@@ -187,6 +188,7 @@ export function halfdays(mic: SebMarket, year: number) {
         beforeAllSaintsDay,
       ]
 
+    case 'XLIS':
     case 'XMAD':
     case 'XPAR':
     case 'XBRU':

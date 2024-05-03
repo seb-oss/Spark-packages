@@ -123,4 +123,12 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 13,
     irregularCloseMinute: 55,
   },
+  XLIS: {
+    openHour: 8,
+    openMinute: 0,
+    closeHour: 16,
+    closeMinute: 30,
+    irregularCloseHour: 13,
+    irregularCloseMinute: 5,
+  },
 } as const
