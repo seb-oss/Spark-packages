@@ -1,4 +1,4 @@
-import { subDays } from 'date-fns'
+import { addDays, subDays } from 'date-fns'
 import { openingHours } from './static'
 import type { Holiday, SebMarket } from './types'
 import {
@@ -81,6 +81,7 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.newYearsEve,
       ]
 
+    case 'XBER':
     case 'EQTB':
       return [
         staticDates.newYearsDay,
@@ -204,6 +205,7 @@ export function isOpen(mic: SebMarket) {
     closeMinute,
     irregularCloseHour,
     irregularCloseMinute,
+    special,
   } = openingHours[mic]
 
   if (isHoliday(mic, now)) {
@@ -216,9 +218,19 @@ export function isOpen(mic: SebMarket) {
 
   const timeOfDay = currentHour * 60 + currentMinute + currentSeconds / 60
   const openTime = openHour * 60 + openMinute
-  const closeTime = isHalfday(mic, now)
+  let closeTime = isHalfday(mic, now)
     ? (irregularCloseHour ?? 0) * 60 + (irregularCloseMinute ?? 0)
     : closeHour * 60 + closeMinute
+
+  if (mic === 'EQTB' || mic === 'XBER') {
+    const isDayBeforeNewYearsEve =
+      whichHoliday(mic, addDays(now, 1)) === 'newYearsEve'
+
+    if (isDayBeforeNewYearsEve && special?.newYearsEve) {
+      closeTime =
+        special.newYearsEve.closeHour * 60 + special.newYearsEve.closeMinute
+    }
+  }
 
   const isBeforeOpeningHours = timeOfDay < openTime
   const isAfterClosingHours = closeTime <= timeOfDay
@@ -238,16 +250,29 @@ export function formatOpeningHours(mic: SebMarket) {
     closeMinute,
     irregularCloseMinute,
     irregularCloseHour,
+    special,
   } = openingHours[mic]
 
   const open = convertTime(openHour, openMinute)
   const close = convertTime(closeHour, closeMinute)
 
   if (isHalfday(mic, now)) {
-    const irregularClose = convertTime(
+    let irregularClose = convertTime(
       irregularCloseHour ?? 0,
       irregularCloseMinute ?? 0
     )
+
+    if (mic === 'EQTB' || mic === 'XBER') {
+      const isDayBeforeNewYearsEve =
+        whichHoliday(mic, addDays(now, 1)) === 'newYearsEve'
+
+      if (isDayBeforeNewYearsEve && special?.newYearsEve) {
+        irregularClose = convertTime(
+          special.newYearsEve.closeHour,
+          special.newYearsEve.closeMinute
+        )
+      }
+    }
 
     return `${open} – ${irregularClose}`
   }
@@ -318,10 +343,4 @@ export function marketOpeningHours(mic: SebMarket, date: Date) {
     closeHour: market.closeHour,
     closeMinute: market.closeMinute,
   }
-}
-type Hours = {
-  openHour: number
-  openMinute: number
-  closeHour: number
-  closeMinute: number
 }

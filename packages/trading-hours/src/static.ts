@@ -9,6 +9,22 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 13,
     irregularCloseMinute: 0,
   },
+  XBER: {
+    openHour: 8,
+    openMinute: 0,
+    closeHour: 22,
+    closeMinute: 0,
+    irregularCloseHour: 20,
+    irregularCloseMinute: 0,
+    special: {
+      newYearsEve: {
+        openHour: 8,
+        openMinute: 0,
+        closeHour: 14,
+        closeMinute: 0,
+      },
+    },
+  },
   EQTB: {
     openHour: 8,
     openMinute: 0,
@@ -16,6 +32,14 @@ export const openingHours: OpeningHours = {
     closeMinute: 0,
     irregularCloseHour: 20,
     irregularCloseMinute: 0,
+    special: {
+      newYearsEve: {
+        openHour: 8,
+        openMinute: 0,
+        closeHour: 14,
+        closeMinute: 0,
+      },
+    },
   },
   XHEL: {
     openHour: 10,

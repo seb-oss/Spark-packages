@@ -214,6 +214,12 @@ describe('#isOpen', () => {
 
     expect(isOpen('XSTO')).toBe(false)
   })
+
+  test('handles special close days', () => {
+    vi.setSystemTime(new Date('2024-12-30 14:00:00'))
+
+    expect(isOpen('EQTB')).toBe(false)
+  })
 })
 
 describe('#formatOpeningHours', () => {
@@ -239,6 +245,8 @@ describe('#formatOpeningHours', () => {
     ['XSTO', '2024-01-05', '09:00 – 13:00'],
     ['XAMS', '2024-12-24', '09:00 – 13:55'],
     ['XPAR', '2024-12-24', '09:00 – 14:05'],
+    ['EQTB', '2024-05-09', '08:00 – 20:00'], // Normal irregular close
+    ['EQTB', '2024-12-30', '08:00 – 14:00'], // Special irregular close day before New Year's Eve
   ] as const)('handles halfdays for %s', (mic, date, expected) => {
     vi.setSystemTime(new Date(`${date} 12:00:00`))
 

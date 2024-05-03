@@ -2,6 +2,7 @@ export type SebMarket =
   | 'EQTB'
   | 'SSME'
   | 'XAMS'
+  | 'XBER'
   | 'XETR'
   | 'XHEL'
   | 'XPAR'
@@ -30,6 +31,7 @@ type Hours = {
   closeMinute: number
   irregularCloseHour?: number
   irregularCloseMinute?: number
+  special?: Partial<Record<Holiday, Hours>>
 }
 
 export type OpeningHours = Record<SebMarket, Hours>

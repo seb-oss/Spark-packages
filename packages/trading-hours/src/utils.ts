@@ -107,6 +107,7 @@ export function staticHolidays(year: number) {
 
 export function independenceDays(year: number) {
   return {
+    germany: `${year}-10-03`,
     finland: `${year}-12-06`,
     sweden: `${year}-06-06`,
   }
