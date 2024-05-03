@@ -70,6 +70,16 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.boxingDay,
       ]
 
+    case 'XLON':
+      return [
+        staticDates.newYearsDay,
+        christian.goodFriday,
+        christian.easterMonday,
+        staticDates.christmasDay,
+        staticDates.boxingDay,
+        ...marketSpecificHoliday,
+      ].sort((a, b) => a.localeCompare(b))
+
     case 'XETR':
       return [
         staticDates.newYearsDay,
@@ -193,6 +203,7 @@ export function halfdays(mic: SebMarket, year: number) {
     case 'XPAR':
     case 'XBRU':
     case 'XAMS':
+    case 'XLON':
       return [staticDates.christmasEve, staticDates.newYearsEve]
 
     case 'XBER':
@@ -331,7 +342,7 @@ export function formatOpeningHours(mic: SebMarket) {
  * multiple languages. Then the consumer can determine what to display to the user.
  */
 export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
-  if (!isHoliday(mic, date)) {
+  if (!isHoliday(mic, date) && !isHalfday(mic, date)) {
     return null
   }
 
@@ -342,6 +353,8 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   const independenceDay = independenceDays(year)
   const midsummerDay = calculateMidsummerDay(year)
   const midsummerEve = shortDate(subDays(midsummerDay, 1))
+  const specialMarketHolidays = marketHoliday(mic, year)
+  const specialMarketHalfdays = marketHalfdays(mic, year)
 
   const holidays: Record<string, Holiday> = {
     [midsummerEve]: 'midsummerEve',
@@ -361,6 +374,18 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
       country.charAt(0).toUpperCase() + country.slice(1)
 
     holidays[date] = `independenceDay${capitalizedCountry}` as Holiday
+  }
+
+  if (specialMarketHolidays.includes(formattedDate)) {
+    if (mic === 'XLON') {
+      return 'bankHoliday'
+    }
+  }
+
+  if (specialMarketHalfdays.includes(formattedDate)) {
+    if (mic === 'MTAA') {
+      return 'noTAH'
+    }
   }
 
   return holidays[formattedDate] ?? null

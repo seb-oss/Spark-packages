@@ -131,4 +131,12 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 13,
     irregularCloseMinute: 5,
   },
+  XLON: {
+    openHour: 8,
+    openMinute: 0,
+    closeHour: 16,
+    closeMinute: 30,
+    irregularCloseHour: 12,
+    irregularCloseMinute: 30,
+  },
 } as const

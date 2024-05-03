@@ -125,6 +125,13 @@ export function marketHoliday(mic: SebMarket, year: number) {
         default:
           return []
       }
+    case 'XLON':
+      switch (year) {
+        case 2024:
+          return ['2024-05-06', '2024-05-27', '2024-08-26']
+        default:
+          return []
+      }
     default:
       return []
   }

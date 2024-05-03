@@ -37,30 +37,8 @@ describe('#holidays', () => {
     ])
   })
 
-  test('XAMS', () => {
-    expect(holidays('XAMS', 2024)).toEqual([
-      '2024-01-01',
-      '2024-03-29',
-      '2024-04-01',
-      '2024-05-01',
-      '2024-12-25',
-      '2024-12-26',
-    ])
-  })
-
-  test('XPAR', () => {
-    expect(holidays('XPAR', 2024)).toEqual([
-      '2024-01-01',
-      '2024-03-29',
-      '2024-04-01',
-      '2024-05-01',
-      '2024-12-25',
-      '2024-12-26',
-    ])
-  })
-
-  test('XBRU', () => {
-    expect(holidays('XBRU', 2024)).toEqual([
+  test.each(['XAMS', 'XLIS', 'XPAR', 'XMAD', 'XBRU'] as const)('%s', (mic) => {
+    expect(holidays(mic, 2024)).toEqual([
       '2024-01-01',
       '2024-03-29',
       '2024-04-01',
@@ -113,17 +91,6 @@ describe('#holidays', () => {
     ])
   })
 
-  test('XMAD', () => {
-    expect(holidays('XMAD', 2024)).toEqual([
-      '2024-01-01',
-      '2024-03-29',
-      '2024-04-01',
-      '2024-05-01',
-      '2024-12-25',
-      '2024-12-26',
-    ])
-  })
-
   test('XCSE', () => {
     expect(holidays('XCSE', 2024)).toEqual([
       '2024-01-01',
@@ -152,6 +119,19 @@ describe('#holidays', () => {
       '2024-12-25',
       '2024-12-26',
       '2024-12-31',
+    ])
+  })
+
+  test('XLON', () => {
+    expect(holidays('XLON', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-06',
+      '2024-05-27',
+      '2024-08-26',
+      '2024-12-25',
+      '2024-12-26',
     ])
   })
 
@@ -188,7 +168,7 @@ describe('#halfdays', () => {
     ])
   })
 
-  test.each(['XAMS', 'XPAR', 'XMAD', 'XBRU'] as const)('%s', (mic) => {
+  test.each(['XAMS', 'XPAR', 'XMAD', 'XBRU', 'XLON'] as const)('%s', (mic) => {
     expect(halfdays(mic, 2024)).toEqual(['2024-12-24', '2024-12-31'])
   })
 
@@ -332,6 +312,7 @@ describe('#formatOpeningHours', () => {
     ['MTAA', '09:00 – 17:30'],
     ['XBRU', '09:00 – 17:30'],
     ['XLIS', '08:00 – 16:30'],
+    ['XLON', '08:00 – 16:30'],
   ] as const)('%s', (mic, expected) => {
     vi.setSystemTime(new Date('2024-01-04 12:00:00'))
 
@@ -348,6 +329,7 @@ describe('#formatOpeningHours', () => {
     ['XNGM', '2024-01-05', '09:00 – 12:55'],
     ['XSAT', '2024-01-05', '09:00 – 12:55'],
     ['XLIS', '2024-12-24', '08:00 – 13:05'],
+    ['XLON', '2024-12-24', '08:00 – 12:30'],
     ['EQTB', '2024-05-09', '08:00 – 20:00'], // Normal irregular close
     ['EQTB', '2024-12-30', '08:00 – 14:00'], // Special irregular close day before New Year's Eve
   ] as const)('handles halfdays for %s', (mic, date, expected) => {
@@ -358,8 +340,8 @@ describe('#formatOpeningHours', () => {
 })
 
 describe('#whichHoliday', () => {
-  test('returns null if not a holiday', () => {
-    expect(whichHoliday('XSTO', new Date('2021-04-01'))).toBe(null)
+  test('returns null if not a holiday and not a half day', () => {
+    expect(whichHoliday('XSTO', new Date('2021-04-04'))).toBe(null)
   })
 
   test.each([
@@ -378,6 +360,14 @@ describe('#whichHoliday', () => {
     ['2024-12-31', 'newYearsEve'],
   ] as const)('handle %s', (date, holiday) => {
     expect(whichHoliday('XSTO', new Date(date))).toBe(holiday)
+  })
+
+  test.each([
+    ['XLON', '2024-05-06', 'bankHoliday'],
+    ['MTAA', '2024-08-15', 'assumptionDay'],
+    ['MTAA', '2024-04-25', 'noTAH'],
+  ] as const)('handles special case for %s on %s', (mic, date, expected) => {
+    expect(whichHoliday(mic, new Date(date))).toBe(expected)
   })
 
   test('handles XHEL independence day', () => {
