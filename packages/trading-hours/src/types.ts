@@ -7,6 +7,7 @@ export type SebMarket =
   | 'XETR'
   | 'XHEL'
   | 'XMAD'
+  | 'XNGM'
   | 'XPAR'
   | 'XSTO'
 

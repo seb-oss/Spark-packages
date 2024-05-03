@@ -91,4 +91,12 @@ export const openingHours: OpeningHours = {
     closeHour: 16,
     closeMinute: 55,
   },
+  XNGM: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 25,
+    irregularCloseHour: 12,
+    irregularCloseMinute: 55,
+  },
 } as const

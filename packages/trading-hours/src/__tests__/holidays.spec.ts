@@ -20,7 +20,7 @@ afterEach(() => {
 })
 
 describe('#holidays', () => {
-  test.each(['XSTO', 'SSME'] as const)('%s', (mic) => {
+  test.each(['XSTO', 'SSME', 'XNGM'] as const)('%s', (mic) => {
     expect(holidays(mic, 2024)).toEqual([
       '2024-01-01',
       '2024-01-06',
@@ -153,7 +153,7 @@ describe('#holidays', () => {
 })
 
 describe('#halfdays', () => {
-  test.each(['XSTO', 'SSME'] as const)('%s', (mic) => {
+  test.each(['XSTO', 'SSME', 'XNGM'] as const)('%s', (mic) => {
     expect(halfdays(mic, 2024)).toEqual([
       '2024-01-05',
       '2024-03-28',
@@ -255,13 +255,8 @@ describe('#isOpen', () => {
 })
 
 describe('#formatOpeningHours', () => {
-  test('handles regular opening hours', () => {
-    vi.setSystemTime(new Date('2024-05-02 12:00:00'))
-
-    expect(formatOpeningHours('XSTO')).toBe('09:00 – 17:30')
-  })
-
   test.each([
+    ['XSTO', '09:00 – 17:30'],
     ['XAMS', '09:00 – 17:30'],
     ['XPAR', '09:00 – 17:30'],
     ['XHEL', '10:00 – 18:25'],
@@ -269,8 +264,9 @@ describe('#formatOpeningHours', () => {
     ['EQTB', '08:00 – 22:00'],
     ['XMAD', '09:00 – 17:30'],
     ['XCSE', '09:00 – 16:55'],
+    ['XNGM', '09:00 – 17:25'],
   ] as const)('%s', (mic, expected) => {
-    vi.setSystemTime(new Date('2024-01-05 12:00:00'))
+    vi.setSystemTime(new Date('2024-01-04 12:00:00'))
 
     expect(formatOpeningHours(mic)).toBe(expected)
   })
@@ -280,6 +276,7 @@ describe('#formatOpeningHours', () => {
     ['XAMS', '2024-12-24', '09:00 – 13:55'],
     ['XMAD', '2024-12-24', '09:00 – 14:00'],
     ['XPAR', '2024-12-24', '09:00 – 14:05'],
+    ['XNGM', '2024-01-05', '09:00 – 12:55'],
     ['EQTB', '2024-05-09', '08:00 – 20:00'], // Normal irregular close
     ['EQTB', '2024-12-30', '08:00 – 14:00'], // Special irregular close day before New Year's Eve
   ] as const)('handles halfdays for %s', (mic, date, expected) => {
