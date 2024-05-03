@@ -96,6 +96,7 @@ export function holidays(mic: SebMarket, year: number) {
     case 'XHEL':
       return [
         staticDates.newYearsDay,
+        christian.epiphany,
         christian.goodFriday,
         christian.easterMonday,
         staticDates.laborDay,

@@ -62,6 +62,7 @@ describe('#holidays', () => {
   test('XHEL', () => {
     expect(holidays('XHEL', 2024)).toEqual([
       '2024-01-01',
+      '2024-01-06',
       '2024-03-29',
       '2024-04-01',
       '2024-05-01',
