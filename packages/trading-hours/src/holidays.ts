@@ -110,6 +110,16 @@ export function holidays(mic: SebMarket, year: number) {
         staticDates.newYearsEve,
       ]
 
+    case 'XMAD':
+      return [
+        staticDates.newYearsDay,
+        christian.goodFriday,
+        christian.easterMonday,
+        staticDates.laborDay,
+        staticDates.christmasDay,
+        staticDates.boxingDay,
+      ]
+
     default:
       return []
   }
@@ -157,6 +167,9 @@ export function halfdays(mic: SebMarket, year: number) {
       return [staticDates.christmasEve, staticDates.newYearsEve]
 
     case 'XPAR':
+      return [staticDates.christmasEve, staticDates.newYearsEve]
+
+    case 'XMAD':
       return [staticDates.christmasEve, staticDates.newYearsEve]
 
     case 'XBER':

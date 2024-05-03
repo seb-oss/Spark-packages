@@ -102,6 +102,17 @@ describe('#holidays', () => {
     ])
   })
 
+  test('XMAD', () => {
+    expect(holidays('XMAD', 2024)).toEqual([
+      '2024-01-01',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-12-25',
+      '2024-12-26',
+    ])
+  })
+
   test('handles far into the future', () => {
     expect(holidays('XSTO', 2090)).toEqual([
       '2090-01-01',
@@ -150,6 +161,10 @@ describe('#halfdays', () => {
       '2024-10-03',
       '2024-12-30',
     ])
+  })
+
+  test('XMAD', () => {
+    expect(halfdays('XMAD', 2024)).toEqual(['2024-12-24', '2024-12-31'])
   })
 })
 
@@ -235,6 +250,7 @@ describe('#formatOpeningHours', () => {
     ['XHEL', '10:00 – 18:25'],
     ['XETR', '09:00 – 17:30'],
     ['EQTB', '08:00 – 22:00'],
+    ['XMAD', '09:00 – 17:30'],
   ] as const)('%s', (mic, expected) => {
     vi.setSystemTime(new Date('2024-01-05 12:00:00'))
 
@@ -244,6 +260,7 @@ describe('#formatOpeningHours', () => {
   test.each([
     ['XSTO', '2024-01-05', '09:00 – 13:00'],
     ['XAMS', '2024-12-24', '09:00 – 13:55'],
+    ['XMAD', '2024-12-24', '09:00 – 14:00'],
     ['XPAR', '2024-12-24', '09:00 – 14:05'],
     ['EQTB', '2024-05-09', '08:00 – 20:00'], // Normal irregular close
     ['EQTB', '2024-12-30', '08:00 – 14:00'], // Special irregular close day before New Year's Eve

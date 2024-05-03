@@ -77,4 +77,12 @@ export const openingHours: OpeningHours = {
     closeHour: 17,
     closeMinute: 30,
   },
+  XMAD: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 30,
+    irregularCloseHour: 14,
+    irregularCloseMinute: 0,
+  },
 } as const
