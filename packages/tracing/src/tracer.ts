@@ -8,28 +8,28 @@ import * as opentelemetry from '@opentelemetry/api'
 const { diag, DiagConsoleLogger, DiagLogLevel } = opentelemetry
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO)
 
-import { registerInstrumentations } from '@opentelemetry/instrumentation'
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
 import { TraceExporter } from '@google-cloud/opentelemetry-cloud-trace-exporter'
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
+import { registerInstrumentations } from '@opentelemetry/instrumentation'
 import { SocketIoInstrumentation } from '@opentelemetry/instrumentation-socket.io'
+import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 
 import {
-  Sampler,
   AlwaysOnSampler,
   BatchSpanProcessor,
-  SpanExporter,
+  type Sampler,
   SamplingDecision,
+  type SpanExporter,
 } from '@opentelemetry/sdk-trace-base'
 
 import { Resource } from '@opentelemetry/resources'
 import {
-  SEMRESATTRS_SERVICE_NAME,
   SEMATTRS_HTTP_ROUTE,
   SEMATTRS_HTTP_TARGET,
+  SEMRESATTRS_SERVICE_NAME,
 } from '@opentelemetry/semantic-conventions'
 
-import { Attributes, SpanKind } from '@opentelemetry/api'
+import type { Attributes, SpanKind } from '@opentelemetry/api'
 import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { PgInstrumentation } from '@opentelemetry/instrumentation-pg'
