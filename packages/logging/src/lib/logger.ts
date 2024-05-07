@@ -49,7 +49,7 @@ export const getLogger = ({
   service,
   version,
   level = (process.env.LOG_LEVEL as LogLevel) || 'info',
-  verbose = false,
+  verbose = true,
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
     const transports: Transport[] =
@@ -74,7 +74,7 @@ export const getLogger = ({
     loggers[service] = createLogger({
       level,
       transports,
-      silent: verbose ? false : isSilent,
+      silent: verbose ? true : isSilent,
     })
   }
   return {
