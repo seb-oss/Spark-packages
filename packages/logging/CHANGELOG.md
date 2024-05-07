@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.3
+
+### Patch Changes
+
+- 0d04f5b: Change log format, hide when testing
+
 ## 0.1.2
 
 ### Patch Changes
