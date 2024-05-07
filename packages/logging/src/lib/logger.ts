@@ -6,10 +6,15 @@ import {
   type Logger,
   transports as WinstonTransports,
   createLogger,
+  format,
 } from 'winston'
 import type * as Transport from 'winston-transport'
 
 const loggers: Record<string, Logger> = {}
+
+// hide logs on test environments or when HIDE_LOGS is set
+const isSilent =
+  process.env.NODE_ENV === 'test' || process.env.HIDE_LOGS === 'true'
 
 export type LogLevel =
   | 'error'
@@ -24,6 +29,7 @@ export type LogOptions = {
   service: string
   version?: string
   level?: LogLevel
+  showLogs?: boolean
 }
 export type LoggerResult = {
   logger: Logger
@@ -31,16 +37,28 @@ export type LoggerResult = {
   errorRequestMiddleware: () => ErrorRequestHandler
   instrumentSocket: (server: Server) => Server
 }
+
+const winstonConsoleFormat = format.combine(
+  format.colorize({ all: true }),
+  format.timestamp(),
+  format.align(),
+  format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
+  format.errors({ stack: true })
+)
+
 export const getLogger = ({
   service,
   version,
   level = (process.env.LOG_LEVEL as LogLevel) || 'info',
+  showLogs = false, // force show logs on test environments
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
     const transports: Transport[] =
       process.env.ENVIRONMENT === 'gcp'
         ? [
-            new WinstonTransports.Console(),
+            new WinstonTransports.Console({
+              format: winstonConsoleFormat,
+            }),
             new LoggingWinston({
               level,
               serviceContext: {
@@ -49,10 +67,17 @@ export const getLogger = ({
               },
             }),
           ]
-        : [new WinstonTransports.Console()]
+        : [
+            new WinstonTransports.Console({
+              format: winstonConsoleFormat,
+            }),
+          ]
+
+    const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
       level,
       transports,
+      silent,
     })
   }
   return {
@@ -76,12 +101,14 @@ const makeRequestMiddleware =
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const { responseTime } = res as any
 
-      logger.info(`${method} ${url}`, {
-        url,
-        method,
-        query,
-        responseTime,
-      })
+      if (!isSilent || !url.includes('health')) {
+        logger.info(`${method} ${url}`, {
+          url,
+          method,
+          query,
+          responseTime,
+        })
+      }
     }
     next()
   }
