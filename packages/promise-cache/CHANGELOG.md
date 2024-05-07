@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.7
+
+### Patch Changes
+
+- ddd44a9: Change console.logs with callbacks
+
 ## 0.2.6
 
 ### Patch Changes
