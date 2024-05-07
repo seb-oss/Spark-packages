@@ -8,7 +8,7 @@ const REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`
 let CACHE_CLIENT = createClient
 
 // We use the local persistor for unit tests
-if (process.env.JEST_WORKER_ID) {
+if (process.env.NODE_ENV === 'test') {
   // @ts-ignore
   CACHE_CLIENT = createLocalMemoryClient
 }
@@ -37,12 +37,14 @@ export class Persistor {
     this.connect()
   }
 
-  async connect() {
+  async connect(onError?: (message: string) => void, onConnect?: (message: string) => void) {
     try {
       this.client = CACHE_CLIENT({ url: REDIS_URL })
 
       this.client.on('error', (err) => {
-        console.error(`❌ REDIS | Client Error | ${REDIS_URL}`, err)
+        if (onError) {
+          onError(`❌ REDIS | Client Error | ${REDIS_URL}` + err)
+        }
         this.status = 'disconnected'
       })
 
@@ -54,13 +56,17 @@ export class Persistor {
           return
         }
         this.client.on('connect', () => {
-          console.log(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
+          if (onConnect) {
+            onConnect(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
+          }          
           this.status = 'connected'
           resolve(true)
         })
       })
     } catch (err) {
-      console.error(`❌ REDIS | Connection Error | ${REDIS_URL}`, err)
+      if (onError) {
+        onError(`❌ REDIS | Connection Error | ${REDIS_URL}` + err)
+      }
       this.status = 'disconnected'
     }
   }
@@ -83,8 +89,7 @@ export class Persistor {
       }
       return JSON.parse(result) as GetType<T>
     } catch (error) {
-      console.error(`Error getting data from redis: ${error}`)
-      throw error
+      throw new Error(`Error getting data from redis: ${error}`) 
     }
   }
 
@@ -107,8 +112,7 @@ export class Persistor {
       const options = this.createOptions(ttl)
       await this.client.set(key, serializedData, options)
     } catch (error) {
-      console.error(`Error setting data in redis: ${error}`)
-      throw error
+      throw new Error(`Error setting data in redis: ${error}`) 
     }
   }
 
@@ -119,8 +123,7 @@ export class Persistor {
     try {
       await this.client.del(key)
     } catch (error) {
-      console.error(`Error deleting data from redis: ${error}`)
-      throw error
+      throw new Error(`Error deleting data from redis: ${error}`) 
     }
   }
 }
