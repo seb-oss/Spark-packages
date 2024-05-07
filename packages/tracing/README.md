@@ -7,7 +7,7 @@ Use Opentelemetry for collecting traces and exporting to Cloud Trace
 
 ```javascript
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { setupTracing } from '@sebneo/common/logging'
+import { setupTracing } from '@sebspark/tracing'
 
 const serviceName = 'core'
 
