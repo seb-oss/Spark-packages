@@ -21,7 +21,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.7.3",
     "@turbo/gen": "1.13.3",
-    "@types/node": "20.12.8",
+    "@types/node": "20.12.10",
     "@vitest/coverage-v8": "1.6.0",
     "csv-parse": "5.5.5",
     "fast-xml-parser": "4.3.6",
