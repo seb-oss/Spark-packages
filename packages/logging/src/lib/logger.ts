@@ -12,6 +12,7 @@ import type * as Transport from 'winston-transport'
 
 const loggers: Record<string, Logger> = {}
 
+// hide logs on test environments or when HIDE_LOGS is set
 const isSilent =
   process.env.NODE_ENV === 'test' || process.env.HIDE_LOGS === 'true'
 
@@ -28,7 +29,7 @@ export type LogOptions = {
   service: string
   version?: string
   level?: LogLevel
-  verbose?: boolean
+  showLogs?: boolean
 }
 export type LoggerResult = {
   logger: Logger
@@ -49,7 +50,7 @@ export const getLogger = ({
   service,
   version,
   level = (process.env.LOG_LEVEL as LogLevel) || 'info',
-  verbose = true,
+  showLogs = false, // force show logs on test environments
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
     const transports: Transport[] =
@@ -71,11 +72,14 @@ export const getLogger = ({
               format: winstonConsoleFormat,
             }),
           ]
+
+    const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
       level,
       transports,
-      silent: verbose ? true : isSilent,
+      silent,
     })
+
   }
   return {
     logger: loggers[service],
