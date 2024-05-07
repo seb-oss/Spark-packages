@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.8.1
+
+### Patch Changes
+
+- d3e8dfa: Fixed parsing of inline items in arrays
+
 ## 1.8.0
 
 ### Minor Changes
