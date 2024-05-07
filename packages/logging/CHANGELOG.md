@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.5
+
+### Patch Changes
+
+- f3e8741: Bump version to 0.1.5
+
 ## 0.1.4
 
 ### Patch Changes
