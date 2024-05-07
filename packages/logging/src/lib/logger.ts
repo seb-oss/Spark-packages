@@ -79,7 +79,6 @@ export const getLogger = ({
       transports,
       silent,
     })
-
   }
   return {
     logger: loggers[service],
