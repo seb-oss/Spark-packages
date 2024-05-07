@@ -31,6 +31,16 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates a simple number type', () => {
+      const type: PrimitiveType = {
+        type: 'number',
+        name: 'HttpStatusCode',
+      }
+      const expected = 'export type HttpStatusCode = number'
+      const generated = generateType(type)
+
+      expect(generated).toEqual(expected)
+    })
     it('generates a string enum type', async () => {
       const type: EnumType = {
         type: 'enum',

@@ -720,6 +720,95 @@ describe('openapi parser', () => {
       }
       expect(parsed).toEqual(expected)
     })
+    it.skip('parses another array', () => {
+      const schema: SchemaObject = {
+        items: {
+          properties: {
+            additional_info: {
+              description: 'More information about the error.',
+              type: 'string',
+            },
+            detail: {
+              description: 'Human readable error message.',
+              type: 'string',
+            },
+            instance: {
+              description: 'The error code.',
+              type: 'string',
+            },
+            retrieved_date_time: {
+              $ref: '#/components/schemas/retrievedDateTimeItem',
+            },
+            status: {
+              description: 'HTTP status of the reply.',
+              type: 'integer',
+            },
+            title: {
+              description: 'Describes the context of the error.',
+              type: 'string',
+            },
+            type: {
+              description: 'General description of the error type.',
+              type: 'string',
+            },
+          },
+        },
+        type: 'array',
+      }
+      const parsed = parseSchema('errorItem', schema)
+      const expected: ArrayType = {
+        type: 'array',
+        name: 'errorItem',
+        items: {
+          type: 'object',
+          properties: [
+            {
+              name: 'additional_info',
+              type: [{ type: 'string' }],
+              description: 'More information about the error.',
+              optional: true,
+            },
+            {
+              name: 'detail',
+              type: [{ type: 'string' }],
+              description: 'Human readable error message.',
+              optional: true,
+            },
+            {
+              name: 'instance',
+              type: [{ type: 'string' }],
+              description: 'The error code.',
+              optional: true,
+            },
+            {
+              name: 'retrieved_date_time',
+              type: [{ type: 'retrievedDateTimeItem' }],
+              optional: true,
+            },
+            {
+              name: 'status',
+              type: [{ type: 'number' }],
+              description: 'HTTP status of the reply.',
+              optional: true,
+            },
+            {
+              name: 'title',
+              type: [{ type: 'string' }],
+              description: 'Describes the context of the error.',
+              optional: true,
+            },
+            {
+              name: 'type',
+              type: [{ type: 'string' }],
+              description: 'General description of the error type.',
+              optional: true,
+            },
+          ],
+        },
+      }
+
+      expect(parsed).toEqual(expected)
+    })
     it('parses inline undefined arrays', () => {
       const schema: SchemaObject = {
         type: 'object',

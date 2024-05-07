@@ -36,7 +36,8 @@ const marshall = (
 
 export const parseSchema = (
   name: string | undefined,
-  schemaOrRef: SchemaObject | ReferenceObject
+  schemaOrRef: SchemaObject | ReferenceObject,
+  generateDocs = true
 ): TypeDefinition => {
   const ref = (schemaOrRef as ReferenceObject).$ref
   if (ref) {
@@ -55,7 +56,7 @@ export const parseSchema = (
         ? parseEnumType(name, schema)
         : name
           ? { name, type: marshall(schema.type, schema.format) }
-          : parsePropertyType(schema)[0]
+          : parsePropertyType(schema, generateDocs)[0]
     default:
       return parseObjectSchema(name, schema)
   }
@@ -77,13 +78,13 @@ const parseObjectSchema = (
     )
   }
   if (schema.allOf) {
-    type.allOf = schema.allOf.flatMap(parsePropertyType)
+    type.allOf = schema.allOf.flatMap((s) => parsePropertyType(s))
   }
   if (schema.oneOf) {
-    type.oneOf = schema.oneOf.flatMap(parsePropertyType)
+    type.oneOf = schema.oneOf.flatMap((s) => parsePropertyType(s))
   }
   if (schema.anyOf) {
-    type.oneOf = schema.anyOf.flatMap(parsePropertyType)
+    type.oneOf = schema.anyOf.flatMap((s) => parsePropertyType(s))
   }
   if (schema.discriminator?.mapping) {
     const mapping: Record<string, CustomType> = {}
@@ -107,7 +108,7 @@ const parseArraySchema = (
     name,
     type: 'array',
     items: schema.items
-      ? parsePropertyType(schema.items)[0]
+      ? parseSchema(undefined, schema.items, false)
       : { type: 'unknown' },
     ...parseDocumentation(schema),
   }
@@ -129,7 +130,8 @@ export const parseProperty = (
 }
 
 const parsePropertyType = (
-  property: SchemaObject | ReferenceObject
+  property: SchemaObject | ReferenceObject,
+  generateDocs = true
 ): TypeDefinition[] => {
   const ref = (property as ReferenceObject).$ref
 
@@ -137,11 +139,12 @@ const parsePropertyType = (
     return [{ type: parseRef(ref) }]
   }
   const schemaObject = property as SchemaObject
+  const docs = generateDocs ? parseDocumentation(schemaObject) : {}
   if (schemaObject.enum) {
     const enumType: EnumType = {
       type: 'enum',
       values: schemaObject.enum,
-      ...parseDocumentation(schemaObject),
+      ...docs,
     }
     return [enumType]
   }
@@ -159,7 +162,7 @@ const parsePropertyType = (
         default: {
           return {
             type: marshall(type, schemaObject.format),
-            ...parseDocumentation(schemaObject),
+            ...docs,
           }
         }
       }
