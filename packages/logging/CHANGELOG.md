@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.4
+
+### Patch Changes
+
+- cd86906: Hide health route log
+
 ## 0.1.3
 
 ### Patch Changes
