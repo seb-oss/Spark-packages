@@ -46,7 +46,7 @@ export class Persistor {
 
       this.client.on('error', (err) => {
         if (onError) {
-          onError(`❌ REDIS | Client Error | ${REDIS_URL}` + err)
+          onError(`❌ REDIS | Client Error | ${REDIS_URL} ${err}`)
         }
         this.status = 'disconnected'
       })
@@ -68,7 +68,7 @@ export class Persistor {
       })
     } catch (err) {
       if (onError) {
-        onError(`❌ REDIS | Connection Error | ${REDIS_URL}` + err)
+        onError(`❌ REDIS | Connection Error | ${REDIS_URL} ${err}`)
       }
       this.status = 'disconnected'
     }
