@@ -37,7 +37,10 @@ export class Persistor {
     this.connect()
   }
 
-  async connect(onError?: (message: string) => void, onConnect?: (message: string) => void) {
+  async connect(
+    onError?: (message: string) => void,
+    onConnect?: (message: string) => void
+  ) {
     try {
       this.client = CACHE_CLIENT({ url: REDIS_URL })
 
@@ -58,7 +61,7 @@ export class Persistor {
         this.client.on('connect', () => {
           if (onConnect) {
             onConnect(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
-          }          
+          }
           this.status = 'connected'
           resolve(true)
         })
@@ -89,7 +92,7 @@ export class Persistor {
       }
       return JSON.parse(result) as GetType<T>
     } catch (error) {
-      throw new Error(`Error getting data from redis: ${error}`) 
+      throw new Error(`Error getting data from redis: ${error}`)
     }
   }
 
@@ -112,7 +115,7 @@ export class Persistor {
       const options = this.createOptions(ttl)
       await this.client.set(key, serializedData, options)
     } catch (error) {
-      throw new Error(`Error setting data in redis: ${error}`) 
+      throw new Error(`Error setting data in redis: ${error}`)
     }
   }
 
@@ -123,7 +126,7 @@ export class Persistor {
     try {
       await this.client.del(key)
     } catch (error) {
-      throw new Error(`Error deleting data from redis: ${error}`) 
+      throw new Error(`Error deleting data from redis: ${error}`)
     }
   }
 }
