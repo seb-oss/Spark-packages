@@ -101,7 +101,7 @@ const makeRequestMiddleware =
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const { responseTime } = res as any
 
-      if (!isSilent || !url.includes('health')) {
+      if (!url.includes('health')) {
         logger.info(`${method} ${url}`, {
           url,
           method,
