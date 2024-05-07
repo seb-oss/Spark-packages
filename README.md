@@ -72,6 +72,10 @@ A simple caching wrapper for promises.
 
 Find trading hours of a market, when it&#x27;s closed for holidays, or when it&#x27;s only open for part of the day.
 
+### [@sebspark/tracing](./packages/tracing)
+
+Use Opentelemetry for collecting traces and exporting to Cloud Trace
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
