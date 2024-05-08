@@ -176,3 +176,7 @@ export function convertTime(hour: number, minute: number) {
 
   return `${formattedHour}:${formattedMinute}`
 }
+
+export function normalizeMarket(mic: SebMarket) {
+  return mic.toUpperCase() as SebMarket
+}

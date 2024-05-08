@@ -8,6 +8,7 @@ import {
   independenceDays,
   marketHalfdays,
   marketHoliday,
+  normalizeMarket,
   shortDate,
   staticHolidays,
 } from './utils'
@@ -20,6 +21,8 @@ import {
  * - https://www.nasdaqomxnordic.com/tradinghours
  */
 export function holidays(mic: SebMarket, year: number) {
+  const market = normalizeMarket(mic)
+
   // Holidays that are the same every year
   const staticDates = staticHolidays(year)
 
@@ -34,9 +37,9 @@ export function holidays(mic: SebMarket, year: number) {
   const midsummerEve = shortDate(subDays(midsummerDay, 1))
 
   // Market specific holidays
-  const marketSpecificHoliday = marketHoliday(mic, year)
+  const marketSpecificHoliday = marketHoliday(market, year)
 
-  switch (mic) {
+  switch (market) {
     case 'XSAT':
     case 'XNGM':
     case 'SSME':
@@ -160,6 +163,7 @@ export function holidays(mic: SebMarket, year: number) {
  * common before holidays.
  */
 export function halfdays(mic: SebMarket, year: number) {
+  const market = normalizeMarket(mic)
   const staticDates = staticHolidays(year)
   const {
     beforeGoodFriday,
@@ -173,9 +177,9 @@ export function halfdays(mic: SebMarket, year: number) {
   const beforeChristmasEve = shortDate(subDays(staticDates.christmasEve, 1))
   const beforeNewYearsEve = shortDate(subDays(staticDates.newYearsEve, 1))
 
-  const specialMarketHalfdays = marketHalfdays(mic, year)
+  const specialMarketHalfdays = marketHalfdays(market, year)
 
-  switch (mic) {
+  switch (market) {
     case 'XSAT':
     case 'XNGM':
     case 'SSME':
@@ -253,6 +257,7 @@ export function isHalfday(mic: SebMarket, date: Date) {
  * Takes into account holidays and half days
  */
 export function isOpen(mic: SebMarket) {
+  const market = normalizeMarket(mic)
   const now = new Date()
   const {
     openHour,
@@ -262,9 +267,9 @@ export function isOpen(mic: SebMarket) {
     irregularCloseHour,
     irregularCloseMinute,
     special,
-  } = openingHours[mic]
+  } = openingHours[market]
 
-  if (isHoliday(mic, now)) {
+  if (isHoliday(market, now)) {
     return false
   }
 
@@ -274,13 +279,13 @@ export function isOpen(mic: SebMarket) {
 
   const timeOfDay = currentHour * 60 + currentMinute + currentSeconds / 60
   const openTime = openHour * 60 + openMinute
-  let closeTime = isHalfday(mic, now)
+  let closeTime = isHalfday(market, now)
     ? (irregularCloseHour ?? 0) * 60 + (irregularCloseMinute ?? 0)
     : closeHour * 60 + closeMinute
 
-  if (mic === 'EQTB' || mic === 'XBER') {
+  if (market === 'EQTB' || market === 'XBER') {
     const isDayBeforeNewYearsEve =
-      whichHoliday(mic, addDays(now, 1)) === 'newYearsEve'
+      whichHoliday(market, addDays(now, 1)) === 'newYearsEve'
 
     if (isDayBeforeNewYearsEve && special?.newYearsEve) {
       closeTime =
@@ -298,6 +303,7 @@ export function isOpen(mic: SebMarket) {
  * Format opening hours for a specific market
  */
 export function formatOpeningHours(mic: SebMarket) {
+  const market = normalizeMarket(mic)
   const now = new Date()
   const {
     openHour,
@@ -307,20 +313,20 @@ export function formatOpeningHours(mic: SebMarket) {
     irregularCloseMinute,
     irregularCloseHour,
     special,
-  } = openingHours[mic]
+  } = openingHours[market]
 
   const open = convertTime(openHour, openMinute)
   const close = convertTime(closeHour, closeMinute)
 
-  if (isHalfday(mic, now)) {
+  if (isHalfday(market, now)) {
     let irregularClose = convertTime(
       irregularCloseHour ?? 0,
       irregularCloseMinute ?? 0
     )
 
-    if (mic === 'EQTB' || mic === 'XBER') {
+    if (market === 'EQTB' || market === 'XBER') {
       const isDayBeforeNewYearsEve =
-        whichHoliday(mic, addDays(now, 1)) === 'newYearsEve'
+        whichHoliday(market, addDays(now, 1)) === 'newYearsEve'
 
       if (isDayBeforeNewYearsEve && special?.newYearsEve) {
         irregularClose = convertTime(
@@ -342,7 +348,9 @@ export function formatOpeningHours(mic: SebMarket) {
  * multiple languages. Then the consumer can determine what to display to the user.
  */
 export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
-  if (!isHoliday(mic, date) && !isHalfday(mic, date)) {
+  const market = normalizeMarket(mic)
+
+  if (!isHoliday(market, date) && !isHalfday(market, date)) {
     return null
   }
 
@@ -353,8 +361,8 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   const independenceDay = independenceDays(year)
   const midsummerDay = calculateMidsummerDay(year)
   const midsummerEve = shortDate(subDays(midsummerDay, 1))
-  const specialMarketHolidays = marketHoliday(mic, year)
-  const specialMarketHalfdays = marketHalfdays(mic, year)
+  const specialMarketHolidays = marketHoliday(market, year)
+  const specialMarketHalfdays = marketHalfdays(market, year)
 
   const holidays: Record<string, Holiday> = {
     [midsummerEve]: 'midsummerEve',
@@ -377,13 +385,13 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   }
 
   if (specialMarketHolidays.includes(formattedDate)) {
-    if (mic === 'XLON') {
+    if (market === 'XLON') {
       return 'bankHoliday'
     }
   }
 
   if (specialMarketHalfdays.includes(formattedDate)) {
-    if (mic === 'MTAA') {
+    if (market === 'MTAA') {
       return 'noTAH'
     }
   }
@@ -392,25 +400,26 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
 }
 
 export function marketOpeningHours(mic: SebMarket, date: Date) {
-  const market = openingHours[mic]
+  const market = normalizeMarket(mic)
+  const hours = openingHours[market]
 
-  if (!market) {
+  if (!hours) {
     return null
   }
 
-  if (isHalfday(mic, date)) {
+  if (isHalfday(market, date)) {
     return {
-      openHour: market.openHour,
-      openMinute: market.openMinute,
-      closeHour: market.irregularCloseHour ?? 0,
-      closeMinute: market.irregularCloseMinute ?? 0,
+      openHour: hours.openHour,
+      openMinute: hours.openMinute,
+      closeHour: hours.irregularCloseHour ?? 0,
+      closeMinute: hours.irregularCloseMinute ?? 0,
     }
   }
 
   return {
-    openHour: market.openHour,
-    openMinute: market.openMinute,
-    closeHour: market.closeHour,
-    closeMinute: market.closeMinute,
+    openHour: hours.openHour,
+    openMinute: hours.openMinute,
+    closeHour: hours.closeHour,
+    closeMinute: hours.closeMinute,
   }
 }

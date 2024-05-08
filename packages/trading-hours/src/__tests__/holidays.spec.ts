@@ -155,6 +155,23 @@ describe('#holidays', () => {
   test('returns an empty array for unknown markets', () => {
     expect(holidays('UNKNOWN' as SebMarket, 2021)).toEqual([])
   })
+
+  test('works with lowercase market codes', () => {
+    expect(holidays('xsto' as SebMarket, 2024)).toEqual([
+      '2024-01-01',
+      '2024-01-06',
+      '2024-03-29',
+      '2024-04-01',
+      '2024-05-01',
+      '2024-05-09',
+      '2024-06-06',
+      '2024-06-21',
+      '2024-12-24',
+      '2024-12-25',
+      '2024-12-26',
+      '2024-12-31',
+    ])
+  })
 })
 
 describe('#halfdays', () => {
@@ -226,6 +243,16 @@ describe('#halfdays', () => {
       '2024-12-30',
     ])
   })
+
+  test('works with lowercase market codes', () => {
+    expect(halfdays('xsto' as SebMarket, 2024)).toEqual([
+      '2024-01-05',
+      '2024-03-28',
+      '2024-04-30',
+      '2024-05-08',
+      '2024-11-01',
+    ])
+  })
 })
 
 describe('#isHoliday', () => {
@@ -241,6 +268,10 @@ describe('#isHoliday', () => {
   test('returns false if today is not a holiday', () => {
     expect(isHoliday('XSTO', new Date('2021-04-01'))).toBe(false)
   })
+
+  test('works with lowercase market codes', () => {
+    expect(isHoliday('xsto' as SebMarket, new Date('2021-04-02'))).toBe(true)
+  })
 })
 
 describe('#isHalfday', () => {
@@ -250,6 +281,10 @@ describe('#isHalfday', () => {
 
   test('returns false if today is not a halfday', () => {
     expect(isHalfday('XSTO', new Date('2024-01-06'))).toBe(false)
+  })
+
+  test('works with lowercase market codes', () => {
+    expect(isHalfday('xsto' as SebMarket, new Date('2024-01-05'))).toBe(true)
   })
 })
 
@@ -295,6 +330,12 @@ describe('#isOpen', () => {
 
     expect(isOpen('EQTB')).toBe(false)
   })
+
+  test('works with lowercase market codes', () => {
+    vi.setSystemTime(new Date('2024-05-02 09:00:00'))
+
+    expect(isOpen('xsto' as SebMarket)).toBe(true)
+  })
 })
 
 describe('#formatOpeningHours', () => {
@@ -337,6 +378,12 @@ describe('#formatOpeningHours', () => {
 
     expect(formatOpeningHours(mic)).toBe(expected)
   })
+
+  test('works with lowercase market codes', () => {
+    vi.setSystemTime(new Date('2024-01-04 12:00:00'))
+
+    expect(formatOpeningHours('xsto' as SebMarket)).toBe('09:00 – 17:30')
+  })
 })
 
 describe('#whichHoliday', () => {
@@ -375,6 +422,12 @@ describe('#whichHoliday', () => {
       'independenceDayFinland'
     )
   })
+
+  test('works with lowercase market codes', () => {
+    expect(whichHoliday('xsto' as SebMarket, new Date('2021-04-02'))).toBe(
+      'goodFriday'
+    )
+  })
 })
 
 describe('#marketOpeningHours', () => {
@@ -399,6 +452,17 @@ describe('#marketOpeningHours', () => {
       openMinute: 0,
       closeHour: 13,
       closeMinute: 0,
+    })
+  })
+
+  test('works with lowercase market codes', () => {
+    expect(
+      marketOpeningHours('xsto' as SebMarket, new Date('2024-05-02'))
+    ).toEqual({
+      openHour: 9,
+      openMinute: 0,
+      closeHour: 17,
+      closeMinute: 30,
     })
   })
 })
