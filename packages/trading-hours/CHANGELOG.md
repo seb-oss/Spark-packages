@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 0.3.1
+
+### Patch Changes
+
+- 4ea61b7: Handle lowercase markets
+
 ## 0.3.0
 
 ### Minor Changes
