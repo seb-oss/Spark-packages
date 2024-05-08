@@ -3,7 +3,12 @@ import { createLocalMemoryClient } from './localMemory'
 
 const REDIS_HOST = process.env.REDIS_HOST || '127.0.0.1'
 const REDIS_PORT = process.env.REDIS_PORT || 6379
-const REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`
+const REDIS_PASSWORD = process.env.REDIS_PASSWORD || undefined
+let REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`
+
+if (REDIS_PASSWORD) {
+  REDIS_URL = `redis://${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`
+}
 
 let CACHE_CLIENT = createClient
 
