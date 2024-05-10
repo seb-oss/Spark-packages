@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 0.2.8
+
+### Patch Changes
+
+- 47d6f2e: optional REDIS_PASSWORD as environment variable
+
 ## 0.2.7
 
 ### Patch Changes
