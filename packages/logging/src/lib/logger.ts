@@ -1,5 +1,6 @@
 import { LoggingWinston } from '@google-cloud/logging-winston'
-import type { ErrorRequestHandler, RequestHandler } from 'express'
+import type { ErrorRequestHandler, RequestHandler, Request, Response } from 'express'
+import responseTime from 'response-time'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
 import {
@@ -10,7 +11,12 @@ import {
 } from 'winston'
 import type * as Transport from 'winston-transport'
 
-const loggers: Record<string, Logger> = {}
+let loggers: Record<string, Logger> = {}
+
+// Clear out loggers (for test purposes)
+export const reset = () => {
+  loggers = {}
+}
 
 // hide logs on test environments or when HIDE_LOGS is set
 const isSilent =
@@ -90,52 +96,39 @@ export const getLogger = ({
 
 const makeRequestMiddleware =
   (logger: Logger): RequestHandler =>
-  (req, res, next) => {
-    const end = res.end
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    ;(res as any).end = (...args: any[]) => {
-      res.end = end
-      res.end(...args)
-
-      const { url, method, query } = req
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      const { responseTime } = res as any
-
-      if (!url.includes('health')) {
-        logger.info(`${method} ${url}`, {
-          url,
-          method,
-          query,
-          responseTime,
-        })
-      }
-    }
+  async (req, res, next) => {
+    logHttp(logger, req, res)
     next()
   }
 
 const makeRequestErrorMiddleware =
   (logger: Logger): ErrorRequestHandler =>
   (error, req, res, next) => {
-    const end = res.end
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    ;(res as any).end = (...args: any[]) => {
-      res.end = end
-      res.end(...args)
-
-      const { url, method, query } = req
-      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      const { responseTime } = res as any
-
-      logger.error(error.message, {
-        url,
-        method,
-        query,
-        responseTime,
-        stack: error,
-      })
-    }
+    console.log('error handler')
+    logHttpError(logger, req, res, error)
     next(error)
   }
+
+const logHttp = (logger: Logger, { method, url, query }: Request, _res: Response) => {
+  if (!url.includes('health')) {
+    logger.info(`${method} ${url}`, {
+      url,
+      method,
+      query,
+    })
+  }
+}
+
+const logHttpError = (logger: Logger, { method, url, query }: Request, _res: Response, error: Error) => {
+  logger.error(error.message, {
+    url,
+    method,
+    query,
+    stack: error,
+  })
+}
+
+
 
 const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
   server.use(wildcard())
