@@ -1,5 +1,10 @@
 import { LoggingWinston } from '@google-cloud/logging-winston'
-import type { ErrorRequestHandler, RequestHandler, Request, Response } from 'express'
+import type {
+  ErrorRequestHandler,
+  Request,
+  RequestHandler,
+  Response,
+} from 'express'
 import responseTime from 'response-time'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
@@ -109,7 +114,11 @@ const makeRequestErrorMiddleware =
     next(error)
   }
 
-const logHttp = (logger: Logger, { method, url, query }: Request, _res: Response) => {
+const logHttp = (
+  logger: Logger,
+  { method, url, query }: Request,
+  _res: Response
+) => {
   if (!url.includes('health')) {
     logger.info(`${method} ${url}`, {
       url,
@@ -119,7 +128,12 @@ const logHttp = (logger: Logger, { method, url, query }: Request, _res: Response
   }
 }
 
-const logHttpError = (logger: Logger, { method, url, query }: Request, _res: Response, error: Error) => {
+const logHttpError = (
+  logger: Logger,
+  { method, url, query }: Request,
+  _res: Response,
+  error: Error
+) => {
   logger.error(error.message, {
     url,
     method,
@@ -127,8 +141,6 @@ const logHttpError = (logger: Logger, { method, url, query }: Request, _res: Res
     stack: error,
   })
 }
-
-
 
 const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
   server.use(wildcard())
