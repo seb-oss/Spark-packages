@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.1.6
+
+### Patch Changes
+
+- e0e18c4: Fixed express middleware so it logs handled errors
+
 ## 0.1.5
 
 ### Patch Changes
