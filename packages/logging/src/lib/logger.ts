@@ -109,7 +109,6 @@ const makeRequestMiddleware =
 const makeRequestErrorMiddleware =
   (logger: Logger): ErrorRequestHandler =>
   (error, req, res, next) => {
-    console.log('error handler')
     logHttpError(logger, req, res, error)
     next(error)
   }

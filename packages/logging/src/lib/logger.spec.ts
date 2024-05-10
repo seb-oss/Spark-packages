@@ -24,7 +24,9 @@ vi.mock('winston', async () => {
     ...originalWinston,
     transports: {
       ...originalWinston.transports,
-      Console: () => mockConsole,
+      Console: function cnstr() {
+        return mockConsole
+      },
     },
   }
 })
