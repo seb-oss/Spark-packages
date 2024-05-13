@@ -24,7 +24,7 @@ type SetParams<T> = {
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
   status: 'connected' | 'disconnected' = 'disconnected'
-  redisUrl: string | undefined 
+  redisUrl: string | undefined
 
   constructor(redisUrl?: string) {
     if (redisUrl) {

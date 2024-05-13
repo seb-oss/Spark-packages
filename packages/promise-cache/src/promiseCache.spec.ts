@@ -15,7 +15,7 @@ vi.mock('redis')
 const ttl = 1
 const cache: PromiseCache<number> = new PromiseCache<number>({
   ttlInSeconds: ttl,
-  caseSensitive: false
+  caseSensitive: false,
 })
 const caseSensitiveCache = new PromiseCache<number>({
   ttlInSeconds: ttl,
@@ -77,7 +77,7 @@ describe('PromiseCache', () => {
   it('should remove the cache entry after the TTL expires', async () => {
     const delegate = vi.fn().mockResolvedValue(42)
     const mCache = new PromiseCache<number>({
-      ttlInSeconds: ttl
+      ttlInSeconds: ttl,
     })
     await mCache.wrap('testKey1', delegate)
     expect(await mCache.size()).toBe(1)
@@ -115,7 +115,7 @@ describe('PromiseCache', () => {
   it('should throw an exception if the delegate throws an error', async () => {
     const mockDelegate = vi.fn()
     const cache = new PromiseCache<number>({
-      ttlInSeconds: ttl
+      ttlInSeconds: ttl,
     })
 
     const errorMessage = 'Error in delegate function'

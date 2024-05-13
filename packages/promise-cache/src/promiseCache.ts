@@ -13,12 +13,12 @@ export class PromiseCache<U> {
   constructor({
     ttlInSeconds,
     caseSensitive = false,
-    redisUrl
+    redisUrl,
   }: {
-      ttlInSeconds?: number,
-      caseSensitive?: boolean,
-      redisUrl?: string  
-    }) {
+    ttlInSeconds?: number
+    caseSensitive?: boolean
+    redisUrl?: string
+  }) {
     this.persistor = createPersistor(redisUrl)
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
