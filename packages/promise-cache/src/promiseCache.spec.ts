@@ -13,8 +13,14 @@ import { PromiseCache } from './index'
 vi.mock('redis')
 
 const ttl = 1
-const cache: PromiseCache<number> = new PromiseCache<number>(ttl, false, true)
-const caseSensitiveCache = new PromiseCache<number>(ttl, true, true)
+const cache: PromiseCache<number> = new PromiseCache<number>({
+  ttlInSeconds: ttl,
+  caseSensitive: false
+})
+const caseSensitiveCache = new PromiseCache<number>({
+  ttlInSeconds: ttl,
+  caseSensitive: true,
+})
 
 describe('PromiseCache', () => {
   afterAll(() => {
@@ -70,7 +76,9 @@ describe('PromiseCache', () => {
 
   it('should remove the cache entry after the TTL expires', async () => {
     const delegate = vi.fn().mockResolvedValue(42)
-    const mCache = new PromiseCache<number>(ttl)
+    const mCache = new PromiseCache<number>({
+      ttlInSeconds: ttl
+    })
     await mCache.wrap('testKey1', delegate)
     expect(await mCache.size()).toBe(1)
 
@@ -106,7 +114,9 @@ describe('PromiseCache', () => {
 
   it('should throw an exception if the delegate throws an error', async () => {
     const mockDelegate = vi.fn()
-    const cache = new PromiseCache<number>(ttl)
+    const cache = new PromiseCache<number>({
+      ttlInSeconds: ttl
+    })
 
     const errorMessage = 'Error in delegate function'
     mockDelegate.mockRejectedValue(new Error(errorMessage))
@@ -157,8 +167,14 @@ describe('PromiseCache', () => {
   })
 
   it('should share memory between PromiseCache instances', async () => {
-    const localCache1 = new PromiseCache<number>(ttl, false, true)
-    const localCache2 = new PromiseCache<number>(ttl, false, true)
+    const localCache1 = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
+    const localCache2 = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
 
     await localCache1.override('test1', 100)
     await localCache1.override('test2', 200)

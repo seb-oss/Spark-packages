@@ -1,15 +1,6 @@
 import { createClient } from 'redis'
 import { createLocalMemoryClient } from './localMemory'
 
-const REDIS_HOST = process.env.REDIS_HOST || '127.0.0.1'
-const REDIS_PORT = process.env.REDIS_PORT || 6379
-const REDIS_PASSWORD = process.env.REDIS_PASSWORD || undefined
-let REDIS_URL = `redis://${REDIS_HOST}:${REDIS_PORT}`
-
-if (REDIS_PASSWORD) {
-  REDIS_URL = `redis://${REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}`
-}
-
 let CACHE_CLIENT = createClient
 
 // We use the local persistor for unit tests
@@ -33,25 +24,28 @@ type SetParams<T> = {
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
   status: 'connected' | 'disconnected' = 'disconnected'
+  redisUrl: string | undefined 
 
-  constructor(isLocalPersistor: boolean) {
-    if (isLocalPersistor) {
-      // @ts-ignore
+  constructor(redisUrl?: string) {
+    if (redisUrl) {
+      this.redisUrl = redisUrl
+    } else {
+      //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
     }
     this.connect()
   }
 
-  async connect(
+  public async connect(
     onError?: (message: string) => void,
     onConnect?: (message: string) => void
   ) {
     try {
-      this.client = CACHE_CLIENT({ url: REDIS_URL })
+      this.client = CACHE_CLIENT({ url: this.redisUrl })
 
       this.client.on('error', (err) => {
         if (onError) {
-          onError(`❌ REDIS | Client Error | ${REDIS_URL} ${err}`)
+          onError(`❌ REDIS | Client Error | ${this.redisUrl} ${err}`)
         }
         this.status = 'disconnected'
       })
@@ -65,7 +59,7 @@ export class Persistor {
         }
         this.client.on('connect', () => {
           if (onConnect) {
-            onConnect(`📦 REDIS | Connection Ready | ${REDIS_URL}`)
+            onConnect(`📦 REDIS | Connection Ready | ${this.redisUrl}`)
           }
           this.status = 'connected'
           resolve(true)
@@ -73,7 +67,7 @@ export class Persistor {
       })
     } catch (err) {
       if (onError) {
-        onError(`❌ REDIS | Connection Error | ${REDIS_URL} ${err}`)
+        onError(`❌ REDIS | Connection Error | ${this.redisUrl} ${err}`)
       }
       this.status = 'disconnected'
     }
@@ -136,7 +130,7 @@ export class Persistor {
   }
 }
 
-export const createPersistor = (isLocalPersistor: boolean) => {
-  const persistor = new Persistor(isLocalPersistor)
+export const createPersistor = (redisUrl?: string) => {
+  const persistor = new Persistor(redisUrl)
   return persistor
 }
