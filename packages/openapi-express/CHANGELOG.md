@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 1.1.2
+
+### Patch Changes
+
+- c0b59f2: Errors are serialized with stack for non production env
+- Updated dependencies [c0b59f2]
+  - @sebspark/openapi-core@1.4.2
+
 ## 1.1.1
 
 ### Patch Changes
