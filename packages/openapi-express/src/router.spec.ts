@@ -143,3 +143,17 @@ test('it runs pre usings', async () => {
   const response = await client.get('/users')
   expect(response.unauthorized).toBe(true)
 })
+
+test('it handles errors correctly', async () => {
+  const err = new Error('error')
+  ;(server['/users'].get.handler as Mock).mockImplementation(async () => { throw err })
+  const { body, error } = await client.get('/users')
+  expect(error).toBeInstanceOf(Error)
+  expect(body).toEqual({
+    message: 'Internal Server Error',
+    internalError: {
+      message: err.message,
+      stack: err.stack,
+    }
+  })
+})

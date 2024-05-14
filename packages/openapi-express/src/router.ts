@@ -94,5 +94,6 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
     error = createHttpError(500, undefined, internal)
   }
 
-  res.status(error.statusCode).send(error.toJSON())
+  const showStack = process.env.NODE_ENV !== 'production'
+  res.status(error.statusCode).send(error.toJSON(showStack))
 }

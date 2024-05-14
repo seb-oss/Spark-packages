@@ -64,14 +64,14 @@ export class HttpError extends Error {
     Object.setPrototypeOf(this, HttpError.prototype)
   }
 
-  toJSON(includeInternalError = false) {
+  toJSON(showStack = false) {
     const serialized: SerializedError = {
       message: this.message,
     }
-    if (includeInternalError && this.internalError) {
+    if (showStack && this.internalError) {
       serialized.internalError = {
         message: this.internalError.message,
-        stack: this.internalError?.stack,
+        stack: this.internalError.stack,
       }
     }
     return serialized
@@ -420,7 +420,7 @@ export const createHttpError = (
     case 511:
       return new NetworkAuthenticationRequiredError(message, internalError)
     default:
-      return new HttpError(statusCode, message ?? 'Error')
+      return new HttpError(statusCode, message ?? 'Error', internalError)
   }
 }
 
