@@ -146,7 +146,9 @@ test('it runs pre usings', async () => {
 
 test('it handles errors correctly', async () => {
   const err = new Error('error')
-  ;(server['/users'].get.handler as Mock).mockImplementation(async () => { throw err })
+  ;(server['/users'].get.handler as Mock).mockImplementation(async () => {
+    throw err
+  })
   const { body, error } = await client.get('/users')
   expect(error).toBeInstanceOf(Error)
   expect(body).toEqual({
@@ -154,6 +156,6 @@ test('it handles errors correctly', async () => {
     internalError: {
       message: err.message,
       stack: err.stack,
-    }
+    },
   })
 })
