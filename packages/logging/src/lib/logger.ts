@@ -15,6 +15,7 @@ import {
   format,
 } from 'winston'
 import type * as Transport from 'winston-transport'
+import { getCorrId } from './correlationid'
 
 let loggers: Record<string, Logger> = {}
 
@@ -45,6 +46,7 @@ export type LogOptions = {
     colorize?: boolean
     timestamp?: boolean
     align?: boolean
+    corrId?: boolean
     stack?: boolean
   }
 }
@@ -63,6 +65,7 @@ export const getLogger = ({
   formattingOptions = {
     colorize: true,
     timestamp: true,
+    corrId: false,
     align: true,
     stack: true,
   },
@@ -72,9 +75,14 @@ export const getLogger = ({
       formattingOptions.colorize ? format.colorize() : format.uncolorize(),
       formattingOptions.timestamp ? format.timestamp() : format.simple(),
       formattingOptions.align ? format.align() : format.simple(),
-      format.printf(
-        (info) => `[${info.timestamp}] ${info.level}: ${info.message}`
-      ),
+      format.printf((info) => {
+        let output = `[${info.timestamp}]`;
+        if (formattingOptions.corrId) {
+          output += ` ${getCorrId()}`;
+        }
+        output += ` ${info.level}: ${info.message}`;
+        return output;
+      }),
       formattingOptions.stack ? format.errors({ stack: true }) : format.simple()
     );
 
