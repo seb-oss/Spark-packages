@@ -41,6 +41,12 @@ export type LogOptions = {
   version?: string
   level?: LogLevel
   showLogs?: boolean
+  formattingOptions?: {
+    colorize?: boolean
+    timestamp?: boolean
+    align?: boolean
+    stack?: boolean
+  }
 }
 export type LoggerResult = {
   logger: Logger
@@ -49,21 +55,29 @@ export type LoggerResult = {
   instrumentSocket: (server: Server) => Server
 }
 
-const winstonConsoleFormat = format.combine(
-  format.colorize({ all: true }),
-  format.timestamp(),
-  format.align(),
-  format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
-  format.errors({ stack: true })
-)
-
 export const getLogger = ({
   service,
   version,
   level = (process.env.LOG_LEVEL as LogLevel) || 'info',
   showLogs = false, // force show logs on test environments
+  formattingOptions = {
+    colorize: true,
+    timestamp: true,
+    align: true,
+    stack: true,
+  },
 }: LogOptions): LoggerResult => {
   if (!loggers[service]) {
+    const winstonConsoleFormat = format.combine(
+      formattingOptions.colorize ? format.colorize() : format.uncolorize(),
+      formattingOptions.timestamp ? format.timestamp() : format.simple(),
+      formattingOptions.align ? format.align() : format.simple(),
+      format.printf(
+        (info) => `[${info.timestamp}] ${info.level}: ${info.message}`
+      ),
+      formattingOptions.stack ? format.errors({ stack: true }) : format.simple()
+    );
+
     const transports: Transport[] =
       process.env.ENVIRONMENT === 'gcp'
         ? [
