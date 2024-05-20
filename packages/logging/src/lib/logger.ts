@@ -5,7 +5,6 @@ import type {
   RequestHandler,
   Response,
 } from 'express'
-import responseTime from 'response-time'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
 import {
@@ -70,20 +69,33 @@ export const getLogger = ({
     stack: true,
   },
 }: LogOptions): LoggerResult => {
+  const defaultFormattingOptions = {
+    colorize: true,
+    timestamp: true,
+    corrId: false,
+    align: true,
+    stack: true,
+  };
+  
+  const consoleFormattingOptions = {
+    ...defaultFormattingOptions,
+    ...formattingOptions,
+  };
+
   if (!loggers[service]) {
     const winstonConsoleFormat = format.combine(
-      formattingOptions.colorize ? format.colorize() : format.uncolorize(),
-      formattingOptions.timestamp ? format.timestamp() : format.simple(),
-      formattingOptions.align ? format.align() : format.simple(),
+      consoleFormattingOptions.colorize ? format.colorize({all: true}) : format.uncolorize(),
+      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
+      consoleFormattingOptions.align ? format.align() : format.simple(),
       format.printf((info) => {
         let output = `[${info.timestamp}]`;
-        if (formattingOptions.corrId) {
+        if (consoleFormattingOptions.corrId) {
           output += ` ${getCorrId()}`;
         }
         output += ` ${info.level}: ${info.message}`;
         return output;
       }),
-      formattingOptions.stack ? format.errors({ stack: true }) : format.simple()
+      consoleFormattingOptions.stack ? format.errors({ stack: true }) : format.simple()
     );
 
     const transports: Transport[] =
