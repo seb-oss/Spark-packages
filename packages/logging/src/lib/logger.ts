@@ -5,7 +5,6 @@ import type {
   RequestHandler,
   Response,
 } from 'express'
-import responseTime from 'response-time'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
 import {
@@ -15,6 +14,7 @@ import {
   format,
 } from 'winston'
 import type * as Transport from 'winston-transport'
+import { getCorrId } from './correlationid'
 
 let loggers: Record<string, Logger> = {}
 
@@ -41,6 +41,13 @@ export type LogOptions = {
   version?: string
   level?: LogLevel
   showLogs?: boolean
+  formattingOptions?: {
+    colorize?: boolean
+    timestamp?: boolean
+    align?: boolean
+    corrId?: boolean
+    stack?: boolean
+  }
 }
 export type LoggerResult = {
   logger: Logger
@@ -49,21 +56,52 @@ export type LoggerResult = {
   instrumentSocket: (server: Server) => Server
 }
 
-const winstonConsoleFormat = format.combine(
-  format.colorize({ all: true }),
-  format.timestamp(),
-  format.align(),
-  format.printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`),
-  format.errors({ stack: true })
-)
-
 export const getLogger = ({
   service,
   version,
   level = (process.env.LOG_LEVEL as LogLevel) || 'info',
   showLogs = false, // force show logs on test environments
+  formattingOptions = {
+    colorize: true,
+    timestamp: true,
+    corrId: false,
+    align: true,
+    stack: true,
+  },
 }: LogOptions): LoggerResult => {
+  const defaultFormattingOptions = {
+    colorize: true,
+    timestamp: true,
+    corrId: false,
+    align: true,
+    stack: true,
+  }
+
+  const consoleFormattingOptions = {
+    ...defaultFormattingOptions,
+    ...formattingOptions,
+  }
+
   if (!loggers[service]) {
+    const winstonConsoleFormat = format.combine(
+      consoleFormattingOptions.colorize
+        ? format.colorize({ all: true })
+        : format.uncolorize(),
+      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
+      consoleFormattingOptions.align ? format.align() : format.simple(),
+      format.printf((info) => {
+        let output = `[${info.timestamp}]`
+        if (consoleFormattingOptions.corrId) {
+          output += ` ${getCorrId()}`
+        }
+        output += ` ${info.level}: ${info.message}`
+        return output
+      }),
+      consoleFormattingOptions.stack
+        ? format.errors({ stack: true })
+        : format.simple()
+    )
+
     const transports: Transport[] =
       process.env.ENVIRONMENT === 'gcp'
         ? [
