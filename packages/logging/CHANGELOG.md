@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 0.2.0
+
+### Minor Changes
+
+- 12c39e5: make format of Winston Console transport configurable
+
 ## 0.1.6
 
 ### Patch Changes
