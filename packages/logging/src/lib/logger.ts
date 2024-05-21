@@ -1,4 +1,4 @@
-import { LoggingWinston } from '@google-cloud/logging-winston'
+import { LoggingWinston, Options } from '@google-cloud/logging-winston'
 import type {
   ErrorRequestHandler,
   Request,
@@ -93,7 +93,7 @@ export const getLogger = ({
           const corrId = getCorrId()
           if (corrId) {
             output += ` [${corrId}]`
-          }          
+          }
         }
         output += ` ${info.level}: ${info.message}`
         return output
@@ -103,7 +103,7 @@ export const getLogger = ({
         : format.simple()
     )
 
-    const loggingWinstonSettings: any = {
+    const loggingWinstonSettings: Options = {
       level,
       serviceContext: {
         service,
