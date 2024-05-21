@@ -41,12 +41,15 @@ export type LogOptions = {
   version?: string
   level?: LogLevel
   showLogs?: boolean
+  shouldSendToGcp?: boolean
+  gcpProjectId?: string
   formattingOptions?: {
     colorize?: boolean
     timestamp?: boolean
     align?: boolean
     corrId?: boolean
     stack?: boolean
+    logStatusCodes?: boolean
   }
 }
 export type LoggerResult = {
@@ -59,15 +62,11 @@ export type LoggerResult = {
 export const getLogger = ({
   service,
   version,
-  level = (process.env.LOG_LEVEL as LogLevel) || 'info',
+  level = 'info',
   showLogs = false, // force show logs on test environments
-  formattingOptions = {
-    colorize: true,
-    timestamp: true,
-    corrId: false,
-    align: true,
-    stack: true,
-  },
+  shouldSendToGcp = false,
+  gcpProjectId,
+  formattingOptions = {},
 }: LogOptions): LoggerResult => {
   const defaultFormattingOptions = {
     colorize: true,
@@ -102,25 +101,30 @@ export const getLogger = ({
         : format.simple()
     )
 
-    const transports: Transport[] =
-      process.env.ENVIRONMENT === 'gcp'
-        ? [
-            new WinstonTransports.Console({
-              format: winstonConsoleFormat,
-            }),
-            new LoggingWinston({
-              level,
-              serviceContext: {
-                service,
-                version,
-              },
-            }),
-          ]
-        : [
-            new WinstonTransports.Console({
-              format: winstonConsoleFormat,
-            }),
-          ]
+    const loggingWinstonSettings: any = {
+      level,
+      serviceContext: {
+        service,
+        version,
+      },
+    }
+
+    if (gcpProjectId) {
+      loggingWinstonSettings.projectId = gcpProjectId
+    }
+
+    const transports: Transport[] = shouldSendToGcp
+      ? [
+          new WinstonTransports.Console({
+            format: winstonConsoleFormat,
+          }),
+          new LoggingWinston(loggingWinstonSettings),
+        ]
+      : [
+          new WinstonTransports.Console({
+            format: winstonConsoleFormat,
+          }),
+        ]
 
     const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
