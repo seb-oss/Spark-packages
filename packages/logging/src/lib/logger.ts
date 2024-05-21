@@ -91,7 +91,10 @@ export const getLogger = ({
       format.printf((info) => {
         let output = `[${info.timestamp}]`
         if (consoleFormattingOptions.corrId) {
-          output += ` ${getCorrId()}`
+          const corrId = getCorrId()
+          if (corrId) {
+            output += ` [${corrId}]`
+          }          
         }
         output += ` ${info.level}: ${info.message}`
         return output
