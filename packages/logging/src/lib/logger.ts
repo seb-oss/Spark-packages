@@ -49,7 +49,6 @@ export type LogOptions = {
     align?: boolean
     corrId?: boolean
     stack?: boolean
-    logStatusCodes?: boolean
   }
 }
 export type LoggerResult = {
@@ -145,16 +144,16 @@ export const getLogger = ({
 }
 
 const makeRequestMiddleware =
-  (logger: Logger): RequestHandler =>
+  (logger: Logger, logFunc = logHttp): RequestHandler =>
   async (req, res, next) => {
-    logHttp(logger, req, res)
+    logFunc(logger, req, res)
     next()
   }
 
 const makeRequestErrorMiddleware =
-  (logger: Logger): ErrorRequestHandler =>
+  (logger: Logger, logFunc = logHttpError): ErrorRequestHandler =>
   (error, req, res, next) => {
-    logHttpError(logger, req, res, error)
+    logFunc(logger, req, res, error)
     next(error)
   }
 
