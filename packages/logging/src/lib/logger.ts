@@ -1,4 +1,4 @@
-import { LoggingWinston } from '@google-cloud/logging-winston'
+import { LoggingWinston, type Options } from '@google-cloud/logging-winston'
 import type {
   ErrorRequestHandler,
   Request,
@@ -41,6 +41,8 @@ export type LogOptions = {
   version?: string
   level?: LogLevel
   showLogs?: boolean
+  shouldSendToGcp?: boolean
+  gcpProjectId?: string
   formattingOptions?: {
     colorize?: boolean
     timestamp?: boolean
@@ -59,15 +61,11 @@ export type LoggerResult = {
 export const getLogger = ({
   service,
   version,
-  level = (process.env.LOG_LEVEL as LogLevel) || 'info',
+  level = 'info',
   showLogs = false, // force show logs on test environments
-  formattingOptions = {
-    colorize: true,
-    timestamp: true,
-    corrId: false,
-    align: true,
-    stack: true,
-  },
+  shouldSendToGcp = false,
+  gcpProjectId,
+  formattingOptions = {},
 }: LogOptions): LoggerResult => {
   const defaultFormattingOptions = {
     colorize: true,
@@ -92,7 +90,10 @@ export const getLogger = ({
       format.printf((info) => {
         let output = `[${info.timestamp}]`
         if (consoleFormattingOptions.corrId) {
-          output += ` ${getCorrId()}`
+          const corrId = getCorrId()
+          if (corrId) {
+            output += ` [${corrId}]`
+          }
         }
         output += ` ${info.level}: ${info.message}`
         return output
@@ -102,25 +103,30 @@ export const getLogger = ({
         : format.simple()
     )
 
-    const transports: Transport[] =
-      process.env.ENVIRONMENT === 'gcp'
-        ? [
-            new WinstonTransports.Console({
-              format: winstonConsoleFormat,
-            }),
-            new LoggingWinston({
-              level,
-              serviceContext: {
-                service,
-                version,
-              },
-            }),
-          ]
-        : [
-            new WinstonTransports.Console({
-              format: winstonConsoleFormat,
-            }),
-          ]
+    const loggingWinstonSettings: Options = {
+      level,
+      serviceContext: {
+        service,
+        version,
+      },
+    }
+
+    if (gcpProjectId) {
+      loggingWinstonSettings.projectId = gcpProjectId
+    }
+
+    const transports: Transport[] = shouldSendToGcp
+      ? [
+          new WinstonTransports.Console({
+            format: winstonConsoleFormat,
+          }),
+          new LoggingWinston(loggingWinstonSettings),
+        ]
+      : [
+          new WinstonTransports.Console({
+            format: winstonConsoleFormat,
+          }),
+        ]
 
     const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
@@ -138,16 +144,16 @@ export const getLogger = ({
 }
 
 const makeRequestMiddleware =
-  (logger: Logger): RequestHandler =>
+  (logger: Logger, logFunc = logHttp): RequestHandler =>
   async (req, res, next) => {
-    logHttp(logger, req, res)
+    logFunc(logger, req, res)
     next()
   }
 
 const makeRequestErrorMiddleware =
-  (logger: Logger): ErrorRequestHandler =>
+  (logger: Logger, logFunc = logHttpError): ErrorRequestHandler =>
   (error, req, res, next) => {
-    logHttpError(logger, req, res, error)
+    logFunc(logger, req, res, error)
     next(error)
   }
 
