@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.0.0
+
+### Major Changes
+
+- af5e581: modify the library to pass configuration settings as function parameters instead of relying on environment variables
+
 ## 0.2.0
 
 ### Minor Changes
