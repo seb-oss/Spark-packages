@@ -1,4 +1,4 @@
-import { LoggingWinston, Options } from '@google-cloud/logging-winston'
+import { LoggingWinston, type Options } from '@google-cloud/logging-winston'
 import type {
   ErrorRequestHandler,
   Request,
