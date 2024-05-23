@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.1.0
+
+### Minor Changes
+
+- 1816441: allow custom log functions for HTTP requests and errors
+
 ## 1.0.0
 
 ### Major Changes
