@@ -36,6 +36,15 @@ export type LogLevel =
   | 'debug'
   | 'silly'
 
+export type LogFunc = (logger: Logger, req: Request, res: Response) => void
+
+export type LogErrorFunc = (
+  logger: Logger,
+  req: Request,
+  res: Response,
+  error: Error
+) => void
+
 export type LogOptions = {
   service: string
   version?: string
@@ -50,6 +59,8 @@ export type LogOptions = {
     corrId?: boolean
     stack?: boolean
   }
+  logHttpFunc?: LogFunc
+  logHttpErrorFunc?: LogErrorFunc
 }
 export type LoggerResult = {
   logger: Logger
@@ -66,6 +77,8 @@ export const getLogger = ({
   shouldSendToGcp = false,
   gcpProjectId,
   formattingOptions = {},
+  logHttpFunc = logHttp,
+  logHttpErrorFunc = logHttpError,
 }: LogOptions): LoggerResult => {
   const defaultFormattingOptions = {
     colorize: true,
@@ -137,21 +150,23 @@ export const getLogger = ({
   }
   return {
     logger: loggers[service],
-    requestMiddleware: () => makeRequestMiddleware(loggers[service]),
-    errorRequestMiddleware: () => makeRequestErrorMiddleware(loggers[service]),
+    requestMiddleware: () =>
+      makeRequestMiddleware(loggers[service], logHttpFunc),
+    errorRequestMiddleware: () =>
+      makeRequestErrorMiddleware(loggers[service], logHttpErrorFunc),
     instrumentSocket: makeSocketInstrumentation(loggers[service]),
   }
 }
 
 const makeRequestMiddleware =
-  (logger: Logger, logFunc = logHttp): RequestHandler =>
+  (logger: Logger, logFunc: LogFunc): RequestHandler =>
   async (req, res, next) => {
     logFunc(logger, req, res)
     next()
   }
 
 const makeRequestErrorMiddleware =
-  (logger: Logger, logFunc = logHttpError): ErrorRequestHandler =>
+  (logger: Logger, logFunc: LogErrorFunc): ErrorRequestHandler =>
   (error, req, res, next) => {
     logFunc(logger, req, res, error)
     next(error)
