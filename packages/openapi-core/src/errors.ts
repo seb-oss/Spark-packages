@@ -1,3 +1,4 @@
+import { inspect } from 'node:util'
 import type { AxiosError } from 'axios'
 
 export type ClientErrorCode =
@@ -46,21 +47,20 @@ export type ErrorCode = ClientErrorCode | ServerErrorCode
 
 type SerializedError = {
   message: string
-  internalError?: {
-    message: string
-    stack?: string
-  }
+  stack?: string
 }
 
 // Base HttpError class
 export class HttpError extends Error {
   statusCode: number
-  internalError?: Error
 
-  constructor(statusCode: number, message: string, internalError?: Error) {
+  constructor(statusCode: number, message: string, cause?: Error) {
     super(message)
+    if (cause) {
+      this.stack = undefined
+      this.cause = cause
+    }
     this.statusCode = statusCode
-    this.internalError = internalError
     Object.setPrototypeOf(this, HttpError.prototype)
   }
 
@@ -68,11 +68,8 @@ export class HttpError extends Error {
     const serialized: SerializedError = {
       message: this.message,
     }
-    if (showStack && this.internalError) {
-      serialized.internalError = {
-        message: this.internalError.message,
-        stack: this.internalError.stack,
-      }
+    if (showStack) {
+      serialized.stack = inspect(this)
     }
     return serialized
   }
@@ -80,255 +77,243 @@ export class HttpError extends Error {
 
 // Specific error classes extending HttpError
 export class BadRequestError extends HttpError {
-  constructor(message = 'Bad Request', internalError?: Error) {
-    super(400, message, internalError)
+  constructor(message = 'Bad Request', cause?: Error) {
+    super(400, message, cause)
   }
 }
 
 export class UnauthorizedError extends HttpError {
-  constructor(message = 'Unauthorized', internalError?: Error) {
-    super(401, message, internalError)
+  constructor(message = 'Unauthorized', cause?: Error) {
+    super(401, message, cause)
   }
 }
 
 export class PaymentRequiredError extends HttpError {
-  constructor(message = 'Payment Required', internalError?: Error) {
-    super(402, message, internalError)
+  constructor(message = 'Payment Required', cause?: Error) {
+    super(402, message, cause)
   }
 }
 
 export class ForbiddenError extends HttpError {
-  constructor(message = 'Forbidden', internalError?: Error) {
-    super(403, message, internalError)
+  constructor(message = 'Forbidden', cause?: Error) {
+    super(403, message, cause)
   }
 }
 
 export class NotFoundError extends HttpError {
-  constructor(message = 'Not Found', internalError?: Error) {
-    super(404, message, internalError)
+  constructor(message = 'Not Found', cause?: Error) {
+    super(404, message, cause)
   }
 }
 
 export class MethodNotAllowedError extends HttpError {
-  constructor(message = 'Method Not Allowed', internalError?: Error) {
-    super(405, message, internalError)
+  constructor(message = 'Method Not Allowed', cause?: Error) {
+    super(405, message, cause)
   }
 }
 
 export class NotAcceptableError extends HttpError {
-  constructor(message = 'Not Acceptable', internalError?: Error) {
-    super(406, message, internalError)
+  constructor(message = 'Not Acceptable', cause?: Error) {
+    super(406, message, cause)
   }
 }
 
 export class ProxyAuthenticationRequiredError extends HttpError {
-  constructor(
-    message = 'Proxy Authentication Required',
-    internalError?: Error
-  ) {
-    super(407, message, internalError)
+  constructor(message = 'Proxy Authentication Required', cause?: Error) {
+    super(407, message, cause)
   }
 }
 
 export class RequestTimeoutError extends HttpError {
-  constructor(message = 'Request Timeout', internalError?: Error) {
-    super(408, message, internalError)
+  constructor(message = 'Request Timeout', cause?: Error) {
+    super(408, message, cause)
   }
 }
 
 export class ConflictError extends HttpError {
-  constructor(message = 'Conflict', internalError?: Error) {
-    super(409, message, internalError)
+  constructor(message = 'Conflict', cause?: Error) {
+    super(409, message, cause)
   }
 }
 
 export class GoneError extends HttpError {
-  constructor(message = 'Gone', internalError?: Error) {
-    super(410, message, internalError)
+  constructor(message = 'Gone', cause?: Error) {
+    super(410, message, cause)
   }
 }
 
 export class LengthRequiredError extends HttpError {
-  constructor(message = 'Length Required', internalError?: Error) {
-    super(411, message, internalError)
+  constructor(message = 'Length Required', cause?: Error) {
+    super(411, message, cause)
   }
 }
 
 export class PreconditionFailedError extends HttpError {
-  constructor(message = 'Precondition Failed', internalError?: Error) {
-    super(412, message, internalError)
+  constructor(message = 'Precondition Failed', cause?: Error) {
+    super(412, message, cause)
   }
 }
 
 export class PayloadTooLargeError extends HttpError {
-  constructor(message = 'Payload Too Large', internalError?: Error) {
-    super(413, message, internalError)
+  constructor(message = 'Payload Too Large', cause?: Error) {
+    super(413, message, cause)
   }
 }
 
 export class URITooLongError extends HttpError {
-  constructor(message = 'URI Too Long', internalError?: Error) {
-    super(414, message, internalError)
+  constructor(message = 'URI Too Long', cause?: Error) {
+    super(414, message, cause)
   }
 }
 
 export class UnsupportedMediaTypeError extends HttpError {
-  constructor(message = 'Unsupported Media Type', internalError?: Error) {
-    super(415, message, internalError)
+  constructor(message = 'Unsupported Media Type', cause?: Error) {
+    super(415, message, cause)
   }
 }
 
 export class RangeNotSatisfiableError extends HttpError {
-  constructor(message = 'Range Not Satisfiable', internalError?: Error) {
-    super(416, message, internalError)
+  constructor(message = 'Range Not Satisfiable', cause?: Error) {
+    super(416, message, cause)
   }
 }
 
 export class ExpectationFailedError extends HttpError {
-  constructor(message = 'Expectation Failed', internalError?: Error) {
-    super(417, message, internalError)
+  constructor(message = 'Expectation Failed', cause?: Error) {
+    super(417, message, cause)
   }
 }
 
 export class IMATeapotError extends HttpError {
-  constructor(message = "I'm a teapot", internalError?: Error) {
-    super(418, message, internalError)
+  constructor(message = "I'm a teapot", cause?: Error) {
+    super(418, message, cause)
   }
 }
 
 export class MisdirectedRequestError extends HttpError {
-  constructor(message = 'Misdirected Request', internalError?: Error) {
-    super(421, message, internalError)
+  constructor(message = 'Misdirected Request', cause?: Error) {
+    super(421, message, cause)
   }
 }
 
 export class UnprocessableEntityError extends HttpError {
-  constructor(message = 'Unprocessable Entity', internalError?: Error) {
-    super(422, message, internalError)
+  constructor(message = 'Unprocessable Entity', cause?: Error) {
+    super(422, message, cause)
   }
 }
 
 export class LockedError extends HttpError {
-  constructor(message = 'Locked', internalError?: Error) {
-    super(423, message, internalError)
+  constructor(message = 'Locked', cause?: Error) {
+    super(423, message, cause)
   }
 }
 
 export class FailedDependencyError extends HttpError {
-  constructor(message = 'Failed Dependency', internalError?: Error) {
-    super(424, message, internalError)
+  constructor(message = 'Failed Dependency', cause?: Error) {
+    super(424, message, cause)
   }
 }
 
 export class TooEarlyError extends HttpError {
-  constructor(message = 'Too Early', internalError?: Error) {
-    super(425, message, internalError)
+  constructor(message = 'Too Early', cause?: Error) {
+    super(425, message, cause)
   }
 }
 
 export class UpgradeRequiredError extends HttpError {
-  constructor(message = 'Upgrade Required', internalError?: Error) {
-    super(426, message, internalError)
+  constructor(message = 'Upgrade Required', cause?: Error) {
+    super(426, message, cause)
   }
 }
 
 export class PreconditionRequiredError extends HttpError {
-  constructor(message = 'Precondition Required', internalError?: Error) {
-    super(428, message, internalError)
+  constructor(message = 'Precondition Required', cause?: Error) {
+    super(428, message, cause)
   }
 }
 
 export class TooManyRequestsError extends HttpError {
-  constructor(message = 'Too Many Requests', internalError?: Error) {
-    super(429, message, internalError)
+  constructor(message = 'Too Many Requests', cause?: Error) {
+    super(429, message, cause)
   }
 }
 
 export class RequestHeaderFieldsTooLargeError extends HttpError {
-  constructor(
-    message = 'Request Header Fields Too Large',
-    internalError?: Error
-  ) {
-    super(431, message, internalError)
+  constructor(message = 'Request Header Fields Too Large', cause?: Error) {
+    super(431, message, cause)
   }
 }
 
 export class UnavailableForLegalReasonsError extends HttpError {
-  constructor(
-    message = 'Unavailable For Legal Reasons',
-    internalError?: Error
-  ) {
-    super(451, message, internalError)
+  constructor(message = 'Unavailable For Legal Reasons', cause?: Error) {
+    super(451, message, cause)
   }
 }
 
 // 500 Range Error Classes
 export class InternalServerError extends HttpError {
-  constructor(message = 'Internal Server Error', internalError?: Error) {
-    super(500, message, internalError)
+  constructor(message = 'Internal Server Error', cause?: Error) {
+    super(500, message, cause)
   }
 }
 
 export class NotImplementedError extends HttpError {
-  constructor(message = 'Not Implemented', internalError?: Error) {
-    super(501, message, internalError)
+  constructor(message = 'Not Implemented', cause?: Error) {
+    super(501, message, cause)
   }
 }
 
 export class BadGatewayError extends HttpError {
-  constructor(message = 'Bad Gateway', internalError?: Error) {
-    super(502, message, internalError)
+  constructor(message = 'Bad Gateway', cause?: Error) {
+    super(502, message, cause)
   }
 }
 
 export class ServiceUnavailableError extends HttpError {
-  constructor(message = 'Service Unavailable', internalError?: Error) {
-    super(503, message, internalError)
+  constructor(message = 'Service Unavailable', cause?: Error) {
+    super(503, message, cause)
   }
 }
 
 export class GatewayTimeoutError extends HttpError {
-  constructor(message = 'Gateway Timeout', internalError?: Error) {
-    super(504, message, internalError)
+  constructor(message = 'Gateway Timeout', cause?: Error) {
+    super(504, message, cause)
   }
 }
 
 export class HTTPVersionNotSupportedError extends HttpError {
-  constructor(message = 'HTTP Version Not Supported', internalError?: Error) {
-    super(505, message, internalError)
+  constructor(message = 'HTTP Version Not Supported', cause?: Error) {
+    super(505, message, cause)
   }
 }
 
 export class VariantAlsoNegotiatesError extends HttpError {
-  constructor(message = 'Variant Also Negotiates', internalError?: Error) {
-    super(506, message, internalError)
+  constructor(message = 'Variant Also Negotiates', cause?: Error) {
+    super(506, message, cause)
   }
 }
 
 export class InsufficientStorageError extends HttpError {
-  constructor(message = 'Insufficient Storage', internalError?: Error) {
-    super(507, message, internalError)
+  constructor(message = 'Insufficient Storage', cause?: Error) {
+    super(507, message, cause)
   }
 }
 
 export class LoopDetectedError extends HttpError {
-  constructor(message = 'Loop Detected', internalError?: Error) {
-    super(508, message, internalError)
+  constructor(message = 'Loop Detected', cause?: Error) {
+    super(508, message, cause)
   }
 }
 
 export class NotExtendedError extends HttpError {
-  constructor(message = 'Not Extended', internalError?: Error) {
-    super(510, message, internalError)
+  constructor(message = 'Not Extended', cause?: Error) {
+    super(510, message, cause)
   }
 }
 
 export class NetworkAuthenticationRequiredError extends HttpError {
-  constructor(
-    message = 'Network Authentication Required',
-    internalError?: Error
-  ) {
-    super(511, message, internalError)
+  constructor(message = 'Network Authentication Required', cause?: Error) {
+    super(511, message, cause)
   }
 }
 
@@ -336,91 +321,91 @@ export class NetworkAuthenticationRequiredError extends HttpError {
 export const createHttpError = (
   statusCode: ErrorCode,
   message?: string,
-  internalError?: Error
+  cause?: Error
 ): HttpError => {
   switch (statusCode) {
     case 400:
-      return new BadRequestError(message, internalError)
+      return new BadRequestError(message, cause)
     case 401:
-      return new UnauthorizedError(message, internalError)
+      return new UnauthorizedError(message, cause)
     case 402:
-      return new PaymentRequiredError(message, internalError)
+      return new PaymentRequiredError(message, cause)
     case 403:
-      return new ForbiddenError(message, internalError)
+      return new ForbiddenError(message, cause)
     case 404:
-      return new NotFoundError(message, internalError)
+      return new NotFoundError(message, cause)
     case 405:
-      return new MethodNotAllowedError(message, internalError)
+      return new MethodNotAllowedError(message, cause)
     case 406:
-      return new NotAcceptableError(message, internalError)
+      return new NotAcceptableError(message, cause)
     case 407:
-      return new ProxyAuthenticationRequiredError(message, internalError)
+      return new ProxyAuthenticationRequiredError(message, cause)
     case 408:
-      return new RequestTimeoutError(message, internalError)
+      return new RequestTimeoutError(message, cause)
     case 409:
-      return new ConflictError(message, internalError)
+      return new ConflictError(message, cause)
     case 410:
-      return new GoneError(message, internalError)
+      return new GoneError(message, cause)
     case 411:
-      return new LengthRequiredError(message, internalError)
+      return new LengthRequiredError(message, cause)
     case 412:
-      return new PreconditionFailedError(message, internalError)
+      return new PreconditionFailedError(message, cause)
     case 413:
-      return new PayloadTooLargeError(message, internalError)
+      return new PayloadTooLargeError(message, cause)
     case 414:
-      return new URITooLongError(message, internalError)
+      return new URITooLongError(message, cause)
     case 415:
-      return new UnsupportedMediaTypeError(message, internalError)
+      return new UnsupportedMediaTypeError(message, cause)
     case 416:
-      return new RangeNotSatisfiableError(message, internalError)
+      return new RangeNotSatisfiableError(message, cause)
     case 417:
-      return new ExpectationFailedError(message, internalError)
+      return new ExpectationFailedError(message, cause)
     case 418:
-      return new IMATeapotError(message, internalError)
+      return new IMATeapotError(message, cause)
     case 421:
-      return new MisdirectedRequestError(message, internalError)
+      return new MisdirectedRequestError(message, cause)
     case 422:
-      return new UnprocessableEntityError(message, internalError)
+      return new UnprocessableEntityError(message, cause)
     case 423:
-      return new LockedError(message, internalError)
+      return new LockedError(message, cause)
     case 424:
-      return new FailedDependencyError(message, internalError)
+      return new FailedDependencyError(message, cause)
     case 425:
-      return new TooEarlyError(message, internalError)
+      return new TooEarlyError(message, cause)
     case 426:
-      return new UpgradeRequiredError(message, internalError)
+      return new UpgradeRequiredError(message, cause)
     case 428:
-      return new PreconditionRequiredError(message, internalError)
+      return new PreconditionRequiredError(message, cause)
     case 429:
-      return new TooManyRequestsError(message, internalError)
+      return new TooManyRequestsError(message, cause)
     case 431:
-      return new RequestHeaderFieldsTooLargeError(message, internalError)
+      return new RequestHeaderFieldsTooLargeError(message, cause)
     case 451:
-      return new UnavailableForLegalReasonsError(message, internalError)
+      return new UnavailableForLegalReasonsError(message, cause)
     case 500:
-      return new InternalServerError(message, internalError)
+      return new InternalServerError(message, cause)
     case 501:
-      return new NotImplementedError(message, internalError)
+      return new NotImplementedError(message, cause)
     case 502:
-      return new BadGatewayError(message, internalError)
+      return new BadGatewayError(message, cause)
     case 503:
-      return new ServiceUnavailableError(message, internalError)
+      return new ServiceUnavailableError(message, cause)
     case 504:
-      return new GatewayTimeoutError(message, internalError)
+      return new GatewayTimeoutError(message, cause)
     case 505:
-      return new HTTPVersionNotSupportedError(message, internalError)
+      return new HTTPVersionNotSupportedError(message, cause)
     case 506:
-      return new VariantAlsoNegotiatesError(message, internalError)
+      return new VariantAlsoNegotiatesError(message, cause)
     case 507:
-      return new InsufficientStorageError(message, internalError)
+      return new InsufficientStorageError(message, cause)
     case 508:
-      return new LoopDetectedError(message, internalError)
+      return new LoopDetectedError(message, cause)
     case 510:
-      return new NotExtendedError(message, internalError)
+      return new NotExtendedError(message, cause)
     case 511:
-      return new NetworkAuthenticationRequiredError(message, internalError)
+      return new NetworkAuthenticationRequiredError(message, cause)
     default:
-      return new HttpError(statusCode, message ?? 'Error', internalError)
+      return new HttpError(statusCode, message ?? 'Error', cause)
   }
 }
 
@@ -430,9 +415,9 @@ export const fromAxiosError = (axiosError: AxiosError): HttpError => {
   const message = axiosError.response?.statusText || 'Internal Server Error'
 
   // The internal error can contain more specific details about the Axios error
-  const internalError = new Error(axiosError.message)
-  internalError.name = axiosError.name
-  internalError.stack = axiosError.stack
+  const cause = new Error(axiosError.message)
+  cause.name = axiosError.name
+  cause.stack = axiosError.stack
 
-  return createHttpError(statusCode, message, internalError)
+  return createHttpError(statusCode, message, cause)
 }
