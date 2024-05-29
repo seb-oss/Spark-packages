@@ -22,7 +22,7 @@
     "@google-cloud/opentelemetry-cloud-trace-exporter": "2.1.0",
     "@google-cloud/trace-agent": "8.0.0",
     "@opentelemetry/api": "1.8.0",
-    "@opentelemetry/exporter-trace-otlp-proto": "0.51.0",
+    "@opentelemetry/exporter-trace-otlp-proto": "0.51.1",
     "@opentelemetry/exporter-zipkin": "1.24.1",
     "@opentelemetry/instrumentation-express": "0.38.0",
     "@opentelemetry/instrumentation-http": "0.51.1",
