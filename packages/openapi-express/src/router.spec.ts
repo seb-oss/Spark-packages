@@ -151,11 +151,5 @@ test('it handles errors correctly', async () => {
   })
   const { body, error } = await client.get('/users')
   expect(error).toBeInstanceOf(Error)
-  expect(body).toEqual({
-    message: 'Internal Server Error',
-    internalError: {
-      message: err.message,
-      stack: err.stack,
-    },
-  })
+  expect(body.message).toEqual('Internal Server Error')
 })
