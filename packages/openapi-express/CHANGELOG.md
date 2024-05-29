@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 1.1.3
+
+### Patch Changes
+
+- d587d94: Errors are passed on through middleware
+
 ## 1.1.2
 
 ### Patch Changes
