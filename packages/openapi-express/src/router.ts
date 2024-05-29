@@ -79,21 +79,20 @@ export const TypedRouter = (
   return router
 }
 
-const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
-  let error: HttpError
+const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
+  let error: HttpError = err
 
-  if (err.message && err.statusCode && err.toJSON) {
-    error = err
-  } else {
+  if (!error.message || !error.statusCode) {
     const internal =
       err instanceof Error
         ? err
         : typeof err === 'string'
           ? new Error(err)
-          : undefined
+          : new Error(JSON.stringify(err || ''))
     error = createHttpError(500, undefined, internal)
   }
 
   const showStack = process.env.NODE_ENV !== 'production'
   res.status(error.statusCode).send(error.toJSON(showStack))
+  next(error)
 }
