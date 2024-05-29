@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.5.0
+
+### Minor Changes
+
+- 4d3ca56: Improved Error handling
+
 ## 1.4.2
 
 ### Patch Changes
