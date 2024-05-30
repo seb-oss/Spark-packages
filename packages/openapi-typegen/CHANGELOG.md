@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.8.2
+
+### Patch Changes
+
+- 40391e0: Server and Client are only generated if paths exist
+
 ## 1.8.1
 
 ### Patch Changes
