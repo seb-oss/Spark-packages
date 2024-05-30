@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.1.0
+
+### Minor Changes
+
+- 57b11f4: Exposing the Persistor
+
 ## 1.0.0
 
 ### Major Changes
