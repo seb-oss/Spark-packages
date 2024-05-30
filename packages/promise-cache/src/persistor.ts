@@ -3,12 +3,6 @@ import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
 
-// We use the local persistor for unit tests
-if (process.env.NODE_ENV === 'test') {
-  // @ts-ignore
-  CACHE_CLIENT = createLocalMemoryClient
-}
-
 type GetType<T> = {
   value: T
   ttl?: number
@@ -24,11 +18,16 @@ type SetParams<T> = {
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
   status: 'connected' | 'disconnected' = 'disconnected'
-  redisUrl: string | undefined
+  redis:
+    | {
+        url: string
+        password?: string
+      }
+    | undefined
 
-  constructor(redisUrl?: string) {
-    if (redisUrl) {
-      this.redisUrl = redisUrl
+  constructor(redis?: { url: string; password?: string }) {
+    if (redis) {
+      this.redis = redis
     } else {
       //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
@@ -41,11 +40,11 @@ export class Persistor {
     onConnect?: (message: string) => void
   ) {
     try {
-      this.client = CACHE_CLIENT({ url: this.redisUrl })
+      this.client = CACHE_CLIENT(this.redis)
 
       this.client.on('error', (err) => {
         if (onError) {
-          onError(`❌ REDIS | Client Error | ${this.redisUrl} ${err}`)
+          onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
         }
         this.status = 'disconnected'
       })
@@ -59,7 +58,7 @@ export class Persistor {
         }
         this.client.on('connect', () => {
           if (onConnect) {
-            onConnect(`📦 REDIS | Connection Ready | ${this.redisUrl}`)
+            onConnect(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
           }
           this.status = 'connected'
           resolve(true)
@@ -67,7 +66,7 @@ export class Persistor {
       })
     } catch (err) {
       if (onError) {
-        onError(`❌ REDIS | Connection Error | ${this.redisUrl} ${err}`)
+        onError(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
       }
       this.status = 'disconnected'
     }
@@ -130,7 +129,7 @@ export class Persistor {
   }
 }
 
-export const createPersistor = (redisUrl?: string) => {
-  const persistor = new Persistor(redisUrl)
+export const createPersistor = (redis?: { url: string; password?: string }) => {
+  const persistor = new Persistor(redis)
   return persistor
 }

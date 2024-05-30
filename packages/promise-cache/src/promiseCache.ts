@@ -13,13 +13,16 @@ export class PromiseCache<U> {
   constructor({
     ttlInSeconds,
     caseSensitive = false,
-    redisUrl,
+    redis,
   }: {
     ttlInSeconds?: number
     caseSensitive?: boolean
-    redisUrl?: string
+    redis?: {
+      url: string
+      password?: string
+    }
   }) {
-    this.persistor = createPersistor(redisUrl)
+    this.persistor = createPersistor(redis)
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
       this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds.
