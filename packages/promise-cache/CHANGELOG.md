@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.0.0
+
+### Major Changes
+
+- 687a412: Allow connecting to Redis that is setup with either AUTH enabled or disabled by changing to a redis object as an optional argument
+
 ## 0.2.9
 
 ### Patch Changes
