@@ -32,9 +32,9 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
  
  ${generateComponents(doc.components)}
 
- ${generateServer(name, doc.paths)}
+ ${doc.paths.length ? generateServer(name, doc.paths) : ''}
 
- ${generateClient(name, doc.paths)}
+ ${doc.paths.length ? generateClient(name, doc.paths) : ''}
 
 `
 
