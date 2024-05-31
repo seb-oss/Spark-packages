@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.2.0
+
+### Minor Changes
+
+- 4437b67: redis config is now RedisClientOptions
+
 ## 1.1.0
 
 ### Minor Changes
