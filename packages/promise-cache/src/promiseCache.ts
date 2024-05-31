@@ -1,4 +1,6 @@
-import { type Persistor, createPersistor } from './persistor'
+import type { RedisClientOptions } from 'redis'
+import type { Persistor } from './persistor'
+import { createPersistor } from './persistor'
 
 export class PromiseCache<U> {
   public persistor: Persistor
@@ -17,10 +19,7 @@ export class PromiseCache<U> {
   }: {
     ttlInSeconds?: number
     caseSensitive?: boolean
-    redis?: {
-      url: string
-      password?: string
-    }
+    redis?: RedisClientOptions
   }) {
     this.persistor = createPersistor(redis)
     this.caseSensitive = caseSensitive

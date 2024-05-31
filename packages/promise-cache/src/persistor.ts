@@ -1,3 +1,4 @@
+import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
 import { createLocalMemoryClient } from './localMemory'
 
@@ -17,15 +18,10 @@ type SetParams<T> = {
 
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
-  status: 'connected' | 'disconnected' = 'disconnected'
-  redis:
-    | {
-        url: string
-        password?: string
-      }
-    | undefined
+  private status: 'connected' | 'disconnected' = 'disconnected'
+  private readonly redis?: RedisClientOptions
 
-  constructor(redis?: { url: string; password?: string }) {
+  constructor(redis?: RedisClientOptions) {
     if (redis) {
       this.redis = redis
     } else {
@@ -129,7 +125,7 @@ export class Persistor {
   }
 }
 
-export const createPersistor = (redis?: { url: string; password?: string }) => {
+export const createPersistor = (redis?: RedisClientOptions) => {
   const persistor = new Persistor(redis)
   return persistor
 }
