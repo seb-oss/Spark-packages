@@ -19,6 +19,6 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "redis": "4.6.13"
+    "redis": "4.6.14"
   }
 }
