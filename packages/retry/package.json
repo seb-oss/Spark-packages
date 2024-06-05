@@ -5,12 +5,14 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
-    "test": "vitest --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {

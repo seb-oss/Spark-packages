@@ -6,7 +6,7 @@
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
-    "test": "vitest --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage",
     "pretest": "yarn generate",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },

@@ -8,11 +8,14 @@
     "dev": "turbo dev",
     "format": "biome format --write",
     "generate:package": "turbo gen package",
-    "lint": "biome check --write",
+    "lint": "turbo lint",
+    "lint:watch": "turbo watch lint",
     "release": "npm run build && npx changeset publish",
-    "test": "FORCE_COLOR=1 turbo test",
-    "typecheck": "FORCE_COLOR=1 turbo typecheck",
-    "clean": "rm -rf ./packages/**/dist"
+    "test": "turbo test",
+    "test:watch": "turbo watch test",
+    "typecheck": "turbo typecheck",
+    "clean": "rm -rf ./packages/**/dist",
+    "start": "turbo watch lint test typecheck"
   },
   "private": true,
   "dependencies": {

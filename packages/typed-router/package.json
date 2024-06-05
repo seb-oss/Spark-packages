@@ -5,17 +5,24 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup-node src/index.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest --coverage",
+    "test": "vitest run --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "express": "4.19.2"
   },
-  "keywords": ["express", "middleware", "router", "typescript"]
+  "keywords": [
+    "express",
+    "middleware",
+    "router",
+    "typescript"
+  ]
 }
