@@ -70,11 +70,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
 
       - name: Check linting, formatting, and imports
-        run: npx @biomejs/biome ci .
+        run: biome ci
 
   typecheck:
     name: Type check

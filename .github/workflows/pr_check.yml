@@ -32,15 +32,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
 
       - name: Check linting, formatting, and imports
-        run: npx @biomejs/biome ci .
+        run: biome ci
 
   typecheck:
     name: Type check
