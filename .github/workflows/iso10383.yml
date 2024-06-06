@@ -2,14 +2,13 @@ name: ISO10383
 
 on:
   schedule:
-    - cron: '0 10 15 AUG *' # 2023
-    - cron: '0 10 12 SEP *' # 2023
-    - cron: '0 10 10 OCT *' # 2023
-    - cron: '0 10 15 NOV *' # 2023
-    - cron: '0 10 12 DEC *' # 2023
-    - cron: '0 10 09 JAN *' # 2024
-    - cron: '0 10 13 FEB *' # 2024
-    - cron: '0 10 12 MAR *' # 2024
+    - cron: '0 10 11 JUN *' # 2024-06-11
+    - cron: '0 10 09 JUL *' # 2024-07-09
+    - cron: '0 10 13 AUG *' # 2024-08-13
+    - cron: '0 10 10 SEP *' # 2024-09-10
+    - cron: '0 10 15 OCT *' # 2024-10-15
+    - cron: '0 10 13 NOV *' # 2024-11-13
+    - cron: '0 10 10 DEC *' # 2024-12-10
 
 concurrency:
   group: iso10383
