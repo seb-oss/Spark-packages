@@ -44,7 +44,7 @@ jobs:
           EOF
 
       - name: Format generated code
-        run: yarn format -- --cache
+        run: yarn format
 
       - name: Push changes
         env:
