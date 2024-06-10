@@ -40,6 +40,11 @@ const callServer = async <
 ): Promise<R> => {
   try {
     const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
+    const body =
+      args.method?.toLowerCase() === 'get' ||
+      args.method?.toLowerCase() === 'delete'
+        ? undefined
+        : args.body
     const { headers, data } = await retry(
       () =>
         axios.request({
@@ -49,7 +54,7 @@ const callServer = async <
           headers: args.headers as AxiosHeaders,
           params: args.params,
           paramsSerializer: serializer,
-          data: args.body,
+          data: body,
         }),
       args.retry
     )
