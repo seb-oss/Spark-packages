@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.4.1
+
+### Patch Changes
+
+- 59d6089: Fixes a bug where a GET request gets sent with the Content-Length header set to 2, because data is {}. This causes a problem with some load balancers.
+
 ## 1.4.0
 
 ### Minor Changes
