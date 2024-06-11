@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.6.0
+
+### Minor Changes
+
+- ccbdc4c: Update ISO10383 specifications.
+
 ## 0.5.0
 
 ### Minor Changes

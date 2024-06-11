@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.4.2
+
+### Patch Changes
+
+- f73d4b4: Handle numbers in parameter serializer
+
 ## 1.4.1
 
 ### Patch Changes
