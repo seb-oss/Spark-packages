@@ -1,49 +1,67 @@
 import type { ArrayFormat } from '@sebspark/openapi-core'
 
+type Param = string | number | undefined | Array<Param>
+type Params = Record<string, Param>
+
 const encodeParam = (param: string) => encodeURIComponent(param)
-const encodeValue = (param: string, encodeCommas = false) => {
-  if (encodeCommas) {
-    return encodeURIComponent(param)
+const encodeValue = (param: Param, encodeCommas = false) => {
+  if (typeof param === 'number' || typeof param === 'string') {
+    if (encodeCommas) {
+      return encodeURIComponent(param)
+    }
+
+    return param
+      .toString()
+      .split(',')
+      .map((p) => encodeURIComponent(p))
+      .join(',')
   }
-  return param
-    .split(',')
-    .map((p) => encodeURIComponent(p))
-    .join(',')
+
+  return ''
 }
 
-export const paramsSerializer =
-  (format?: ArrayFormat | undefined) =>
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  (params?: Record<string, any>): string => {
-    if (!params) {
-      return ''
-    }
-    return Object.entries(params)
-      .filter(([, value]) => value !== undefined)
-      .flatMap(([key, value]) => {
-        if (Array.isArray(value)) {
-          if (format === 'comma') {
-            return `${encodeParam(key)}=${value
-              .map((v) => encodeValue(v, true))
-              .join(',')}`
-          }
-
-          return value.map((arrayValue, ix) => {
-            switch (format) {
-              case 'indices': {
-                return `${encodeParam(key)}[${ix}]=${encodeValue(arrayValue)}`
-              }
-              case 'repeat': {
-                return `${encodeParam(key)}=${encodeValue(arrayValue)}`
-              }
-              default: {
-                // 'brackets'
-                return `${encodeParam(key)}[]=${encodeValue(arrayValue)}`
-              }
-            }
-          })
-        }
-        return `${encodeParam(key)}=${encodeValue(value)}`
-      })
-      .join('&')
+export const paramsSerializer = (format?: ArrayFormat) => (params?: Params) => {
+  if (!params) {
+    return ''
   }
+
+  const s = []
+
+  for (const [key, value] of Object.entries(params)) {
+    if (value === undefined) {
+      continue
+    }
+
+    if (Array.isArray(value)) {
+      const title = encodeParam(key)
+
+      if (format === 'comma') {
+        s.push(`${title}=${value.map((v) => encodeValue(v, true)).join(',')}`)
+        continue
+      }
+
+      value.forEach((v, ix) => {
+        const value = encodeValue(v)
+
+        switch (format) {
+          case 'indices': {
+            s.push(`${title}[${ix}]=${value}`)
+            break
+          }
+          case 'repeat': {
+            s.push(`${title}=${value}`)
+            break
+          }
+          default: {
+            s.push(`${title}[]=${value}`)
+            break
+          }
+        }
+      })
+    } else {
+      s.push(`${encodeParam(key)}=${encodeValue(value)}`)
+    }
+  }
+
+  return s.join('&')
+}
