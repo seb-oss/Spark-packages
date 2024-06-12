@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/trading-hours",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 0.4.0
+
+### Minor Changes
+
+- 322473b: Add support for new markets (DSME, FSME, and NSME)
+
 ## 0.3.1
 
 ### Patch Changes
