@@ -953,10 +953,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/api/-/api-1.7.0.tgz#b139c81999c23e3c8d3c0a7234480e945920fc40"
   integrity sha512-AdY5wvN0P2vXBi3b29hxZgSFvdhdxPB9+f0B6s//P9Q8nibRWeA3cHm8UmLpio9ABigkVHJ5NMPk+Mz8VCCyrw==
 
-"@opentelemetry/context-async-hooks@1.24.1":
-  version "1.24.1"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/context-async-hooks/-/context-async-hooks-1.24.1.tgz#1db7116d78f60e993e0d337bd497885a53deba1a"
-  integrity sha512-R5r6DO4kgEOVBxFXhXjwospLQkv+sYxwCfjvoZBe7Zm6KKXAV9kDSJhi/D1BweowdZmO+sdbENLs374gER8hpQ==
+"@opentelemetry/context-async-hooks@1.25.0":
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/context-async-hooks/-/context-async-hooks-1.25.0.tgz#bc3dcb1302b34b0f56047dd0d0f56b33013f657f"
+  integrity sha512-sBW313mnMyFg0cp/40BRzrZBWG+581s2j5gIsa5fgGadswyILk4mNFATsqrCOpAx945RDuZ2B7ThQLgor9OpfA==
 
 "@opentelemetry/core@1.24.1":
   version "1.24.1"
@@ -1084,19 +1084,19 @@
     "@opentelemetry/sdk-trace-base" "1.25.0"
     protobufjs "^7.3.0"
 
-"@opentelemetry/propagator-b3@1.24.1":
-  version "1.24.1"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-b3/-/propagator-b3-1.24.1.tgz#37ff0ee875b585fdbc095e58651cb8b09e09e051"
-  integrity sha512-nda97ZwhpZKyUJTXqQuKzNhPMUgMLunbbGWn8kroBwegn+nh6OhtyGkrVQsQLNdVKJl0KeB5z0ZgeWszrYhwFw==
+"@opentelemetry/propagator-b3@1.25.0":
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-b3/-/propagator-b3-1.25.0.tgz#bd37a043d4290765c7edbab83bb34a23845be540"
+  integrity sha512-/A+1Tbnf0uwnP51OkoaQlrb9YILdHsoqIISna1MNXpZRzf42xm6LVLb49i+m/zlJoW1e8P4ekcrditR5pfmwog==
   dependencies:
-    "@opentelemetry/core" "1.24.1"
+    "@opentelemetry/core" "1.25.0"
 
-"@opentelemetry/propagator-jaeger@1.24.1":
-  version "1.24.1"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-jaeger/-/propagator-jaeger-1.24.1.tgz#cbc07aa29ee1a4351a161e6cd1ed13b958f1da54"
-  integrity sha512-7bRBJn3FG1l195A1m+xXRHvgzAOBsfmRi9uZ5Da18oTh7BLmNDiA8+kpk51FpTsU1PCikPVpRDNPhKVB6lyzZg==
+"@opentelemetry/propagator-jaeger@1.25.0":
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/propagator-jaeger/-/propagator-jaeger-1.25.0.tgz#7ea9f781237ab1ecbedf16847f066f94655c023f"
+  integrity sha512-uwA5xqaPISXeX+YutqbjmzENnCGCvrIXlqIXP5gRoA5N6S3W28p+ExL77TugMKHN5gXklapF67jDfz7lq5ETzQ==
   dependencies:
-    "@opentelemetry/core" "1.24.1"
+    "@opentelemetry/core" "1.25.0"
 
 "@opentelemetry/resources@1.24.1":
   version "1.24.1"
@@ -1150,16 +1150,16 @@
     "@opentelemetry/resources" "1.25.0"
     "@opentelemetry/semantic-conventions" "1.25.0"
 
-"@opentelemetry/sdk-trace-node@1.24.1":
-  version "1.24.1"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/sdk-trace-node/-/sdk-trace-node-1.24.1.tgz#9bcb08ee64416531ff71edba7d46972b24606345"
-  integrity sha512-/FZX8uWaGIAwsDhqI8VvQ+qWtfMNlXjaFYGc+vmxgdRFppCSSIRwrPyIhJO1qx61okyYhoyxVEZAfoiNxrfJCg==
+"@opentelemetry/sdk-trace-node@1.25.0":
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/sdk-trace-node/-/sdk-trace-node-1.25.0.tgz#6cd76b4844e4bb7643395462ecaed1cc46b7cb8c"
+  integrity sha512-sYdZmNCkqthPpjwCxAJk5aQNLxCOQjT1u3JMGvO6rb3Ic8uFdnzXavP13Md9uYPcZBo+KxetyDhCf0x8wJGRng==
   dependencies:
-    "@opentelemetry/context-async-hooks" "1.24.1"
-    "@opentelemetry/core" "1.24.1"
-    "@opentelemetry/propagator-b3" "1.24.1"
-    "@opentelemetry/propagator-jaeger" "1.24.1"
-    "@opentelemetry/sdk-trace-base" "1.24.1"
+    "@opentelemetry/context-async-hooks" "1.25.0"
+    "@opentelemetry/core" "1.25.0"
+    "@opentelemetry/propagator-b3" "1.25.0"
+    "@opentelemetry/propagator-jaeger" "1.25.0"
+    "@opentelemetry/sdk-trace-base" "1.25.0"
     semver "^7.5.2"
 
 "@opentelemetry/semantic-conventions@1.24.1":
