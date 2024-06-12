@@ -44,6 +44,7 @@ export function holidays(mic: SebMarket, year: number) {
     case 'XNGM':
     case 'SSME':
     case 'XSTO':
+    case 'NSME':
       return [
         staticDates.newYearsDay,
         christian.epiphany,
@@ -109,6 +110,7 @@ export function holidays(mic: SebMarket, year: number) {
       ]
 
     case 'XHEL':
+    case 'FSME':
       return [
         staticDates.newYearsDay,
         christian.epiphany,
@@ -125,6 +127,7 @@ export function holidays(mic: SebMarket, year: number) {
       ]
 
     case 'XCSE':
+    case 'DSME':
       return [
         staticDates.newYearsDay,
         christian.beforeGoodFriday,
@@ -184,6 +187,7 @@ export function halfdays(mic: SebMarket, year: number) {
     case 'XNGM':
     case 'SSME':
     case 'XSTO':
+    case 'NSME':
       return [
         // Before Epiphany | Trettondagsafton
         // 6th of January

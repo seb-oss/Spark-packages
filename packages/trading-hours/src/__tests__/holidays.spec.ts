@@ -175,7 +175,7 @@ describe('#holidays', () => {
 })
 
 describe('#halfdays', () => {
-  test.each(['XSTO', 'SSME', 'XNGM'] as const)('%s', (mic) => {
+  test.each(['XSTO', 'SSME', 'XNGM', 'NSME'] as const)('%s', (mic) => {
     expect(halfdays(mic, 2024)).toEqual([
       '2024-01-05',
       '2024-03-28',
@@ -341,13 +341,17 @@ describe('#isOpen', () => {
 describe('#formatOpeningHours', () => {
   test.each([
     ['XSTO', '09:00 – 17:30'],
+    ['SSME', '09:00 – 17:30'],
+    ['NSME', '09:00 – 17:30'],
     ['XAMS', '09:00 – 17:30'],
     ['XPAR', '09:00 – 17:30'],
     ['XHEL', '10:00 – 18:25'],
+    ['FSME', '10:00 – 18:25'],
     ['XETR', '09:00 – 17:30'],
     ['EQTB', '08:00 – 22:00'],
     ['XMAD', '09:00 – 17:30'],
     ['XCSE', '09:00 – 16:55'],
+    ['DSME', '09:00 – 16:55'],
     ['XNGM', '09:00 – 17:25'],
     ['XSAT', '09:00 – 17:25'],
     ['MTAA', '09:00 – 17:30'],
@@ -362,6 +366,7 @@ describe('#formatOpeningHours', () => {
 
   test.each([
     ['XSTO', '2024-01-05', '09:00 – 13:00'],
+    ['NSME', '2024-01-05', '09:00 – 13:00'],
     ['MTAA', '2024-12-30', '09:00 – 17:30'],
     ['XAMS', '2024-12-24', '09:00 – 13:55'],
     ['XBRU', '2024-12-24', '09:00 – 13:55'],

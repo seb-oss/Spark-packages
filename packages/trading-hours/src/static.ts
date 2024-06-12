@@ -9,6 +9,14 @@ export const openingHours: OpeningHours = {
     irregularCloseHour: 13,
     irregularCloseMinute: 0,
   },
+  NSME: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 17,
+    closeMinute: 30,
+    irregularCloseHour: 13,
+    irregularCloseMinute: 0,
+  },
   XBER: {
     openHour: 8,
     openMinute: 0,
@@ -42,6 +50,12 @@ export const openingHours: OpeningHours = {
     },
   },
   XHEL: {
+    openHour: 10,
+    openMinute: 0,
+    closeHour: 18,
+    closeMinute: 25,
+  },
+  FSME: {
     openHour: 10,
     openMinute: 0,
     closeHour: 18,
@@ -86,6 +100,12 @@ export const openingHours: OpeningHours = {
     irregularCloseMinute: 0,
   },
   XCSE: {
+    openHour: 9,
+    openMinute: 0,
+    closeHour: 16,
+    closeMinute: 55,
+  },
+  DSME: {
     openHour: 9,
     openMinute: 0,
     closeHour: 16,
