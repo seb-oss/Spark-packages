@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.2.1
+
+### Patch Changes
+
+- 95b26d7: Fixed error where persistor could set ttl to float. Also added reuse of redis client for same settings.
+
 ## 1.2.0
 
 ### Minor Changes
