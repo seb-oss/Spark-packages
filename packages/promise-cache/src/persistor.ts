@@ -92,7 +92,7 @@ export class Persistor {
 
   private createOptions(ttl?: number): { EX: number } | object {
     if (ttl !== null && ttl !== undefined) {
-      return { EX: ttl / 1000 } // Return options object with Expiration time property
+      return { PX: Math.round(ttl) } // Return options object with Expiration time property in ms as an integer
     }
     return {} // Return empty object when ttl is null or undefined
   }
