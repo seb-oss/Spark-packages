@@ -125,7 +125,18 @@ export class Persistor {
   }
 }
 
+let _persistors: Record<string, Persistor> = {}
 export const createPersistor = (redis?: RedisClientOptions) => {
-  const persistor = new Persistor(redis)
-  return persistor
+  if (redis) {
+    const key = JSON.stringify(redis)
+    if (!_persistors[key]) {
+      const persistor = new Persistor(redis)
+    }
+    return _persistors[key]
+  }
+  return new Persistor()
+}
+
+export const clean = () => {
+  _persistors = {}
 }

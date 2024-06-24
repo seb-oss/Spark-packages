@@ -5,13 +5,13 @@ export class LocalStorage {
     return this.client.get(key)
   }
 
-  set(key: string, value: string, options?: { EX: number }) {
+  set(key: string, value: string, options?: { PX: number }) {
     this.client.set(key, value)
 
-    if (options?.EX) {
+    if (options?.PX) {
       setTimeout(() => {
         this.client.delete(key)
-      }, options.EX / 1000)
+      }, options.PX)
     }
   }
 
