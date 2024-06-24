@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.2.2
+
+### Patch Changes
+
+- 1fa4f6e: Fixed error in persistor cache
+
 ## 1.2.1
 
 ### Patch Changes
