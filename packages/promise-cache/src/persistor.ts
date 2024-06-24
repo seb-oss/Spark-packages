@@ -130,7 +130,7 @@ export const createPersistor = (redis?: RedisClientOptions) => {
   if (redis) {
     const key = JSON.stringify(redis)
     if (!_persistors[key]) {
-      const persistor = new Persistor(redis)
+      _persistors[key] = new Persistor(redis)
     }
     return _persistors[key]
   }
