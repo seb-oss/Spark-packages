@@ -14,7 +14,6 @@ import {
   format,
 } from 'winston'
 import type * as Transport from 'winston-transport'
-import { getCorrId } from './correlationid'
 
 let loggers: Record<string, Logger> = {}
 
@@ -51,14 +50,15 @@ export type LogOptions = {
   level?: LogLevel
   showLogs?: boolean
   shouldSendToGcp?: boolean
+  enableConsole?: boolean
   gcpProjectId?: string
   formattingOptions?: {
     colorize?: boolean
     timestamp?: boolean
     align?: boolean
-    corrId?: boolean
     stack?: boolean
   }
+  defaultMeta?: Record<string, unknown>,
   logHttpFunc?: LogFunc
   logHttpErrorFunc?: LogErrorFunc
 }
@@ -75,15 +75,16 @@ export const getLogger = ({
   level = 'info',
   showLogs = false, // force show logs on test environments
   shouldSendToGcp = false,
+  enableConsole = true,
   gcpProjectId,
   formattingOptions = {},
+  defaultMeta = {},
   logHttpFunc = logHttp,
   logHttpErrorFunc = logHttpError,
 }: LogOptions): LoggerResult => {
   const defaultFormattingOptions = {
     colorize: true,
     timestamp: true,
-    corrId: false,
     align: true,
     stack: true,
   }
@@ -101,15 +102,7 @@ export const getLogger = ({
       consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
       consoleFormattingOptions.align ? format.align() : format.simple(),
       format.printf((info) => {
-        let output = `[${info.timestamp}]`
-        if (consoleFormattingOptions.corrId) {
-          const corrId = getCorrId()
-          if (corrId) {
-            output += ` [${corrId}]`
-          }
-        }
-        output += ` ${info.level}: ${info.message}`
-        return output
+        return `[${info.timestamp}] ${info.level}: ${info.message}`
       }),
       consoleFormattingOptions.stack
         ? format.errors({ stack: true })
@@ -128,24 +121,25 @@ export const getLogger = ({
       loggingWinstonSettings.projectId = gcpProjectId
     }
 
-    const transports: Transport[] = shouldSendToGcp
-      ? [
-          new WinstonTransports.Console({
-            format: winstonConsoleFormat,
-          }),
-          new LoggingWinston(loggingWinstonSettings),
-        ]
-      : [
-          new WinstonTransports.Console({
-            format: winstonConsoleFormat,
-          }),
-        ]
+    const transports: Transport[] = []
+
+    if (enableConsole) {
+      transports.push(
+        new WinstonTransports.Console({
+          format: winstonConsoleFormat,
+        })
+      )
+    }
+    if (shouldSendToGcp) {
+      transports.push(new LoggingWinston(loggingWinstonSettings))
+    }    
 
     const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
       level,
       transports,
       silent,
+      defaultMeta
     })
   }
   return {
