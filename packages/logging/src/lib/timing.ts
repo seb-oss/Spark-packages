@@ -1,5 +1,5 @@
-import { AsyncLocalStorage } from "node:async_hooks"
-import type { NextFunction, Request, Response } from "express"
+import { AsyncLocalStorage } from 'node:async_hooks'
+import type { NextFunction, Request, Response } from 'express'
 
 export const asyncLocalStorage = new AsyncLocalStorage<{ startTime: number }>()
 
@@ -34,7 +34,7 @@ export const timingMiddleware = (
   runWithTiming(async () => {
     const startTime = getStartTime()
     if (startTime) {
-      res.setHeader("X-Start-Time", startTime.toString())
+      res.setHeader('X-Start-Time', startTime.toString())
     }
     next()
   })

@@ -58,7 +58,7 @@ export type LogOptions = {
     align?: boolean
     stack?: boolean
   }
-  defaultMeta?: Record<string, unknown>,
+  defaultMeta?: Record<string, unknown>
   logHttpFunc?: LogFunc
   logHttpErrorFunc?: LogErrorFunc
 }
@@ -132,14 +132,14 @@ export const getLogger = ({
     }
     if (shouldSendToGcp) {
       transports.push(new LoggingWinston(loggingWinstonSettings))
-    }    
+    }
 
     const silent = showLogs ? false : isSilent
     loggers[service] = createLogger({
       level,
       transports,
       silent,
-      defaultMeta
+      defaultMeta,
     })
   }
   return {
