@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.2.0
+
+### Minor Changes
+
+- f284f52: Added timing middleware and improved logger configuration
+
 ## 1.1.0
 
 ### Minor Changes
