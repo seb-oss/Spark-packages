@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.2.1
+
+### Patch Changes
+
+- c3b76e6: add missing export for timingMiddleware
+
 ## 1.2.0
 
 ### Minor Changes
