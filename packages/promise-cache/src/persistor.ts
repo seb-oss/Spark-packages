@@ -3,6 +3,7 @@ import { createClient } from 'redis'
 import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
+const isTestRunning = process.env.NODE_ENV === 'test'
 
 type GetType<T> = {
   value: T
@@ -28,7 +29,7 @@ export class Persistor {
 
   constructor(options: PersistorConstructorType) {
     const { redis, onError, onSuccess } = options
-    if (redis) {
+    if (redis && !isTestRunning) {
       this.redis = redis
     } else {
       //@ts-ignore
