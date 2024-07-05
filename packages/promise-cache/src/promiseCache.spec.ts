@@ -200,13 +200,13 @@ describe('PromiseCache', () => {
     expect(value5).toBe(500)
     expect(value6).toBe(600)
   })
-  
+
   it('should call onSuccess callback', async () => {
     const successSpy = vi.fn()
     const localCache10 = new PromiseCache<number>({
       ttlInSeconds: ttl,
       caseSensitive: false,
-      onSuccess: successSpy
+      onSuccess: successSpy,
     })
 
     expect(successSpy).toHaveBeenCalledOnce()

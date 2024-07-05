@@ -29,7 +29,7 @@ export class LocalStorage {
 
   // This is just for testing
   on(event: string, callback: (message: string) => void) {
-    if (event === 'connect' && callback){
+    if (event === 'connect' && callback) {
       callback('connect')
     }
 

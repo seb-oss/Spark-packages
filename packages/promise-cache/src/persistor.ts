@@ -17,8 +17,8 @@ type SetParams<T> = {
 }
 
 type PersistorConstructorType = {
-  redis?: RedisClientOptions,
-  onError?: () => void,
+  redis?: RedisClientOptions
+  onError?: () => void
   onSuccess?: () => void
 }
 
@@ -27,11 +27,7 @@ export class Persistor {
   private readonly redis?: RedisClientOptions
 
   constructor(options: PersistorConstructorType) {
-    const {
-      redis,
-      onError,
-      onSuccess,
-    } = options
+    const { redis, onError, onSuccess } = options
     if (redis) {
       this.redis = redis
     } else {
@@ -140,10 +136,10 @@ let _persistors: Record<string, Persistor> = {}
 export const createPersistor = ({
   redis,
   onError,
-  onSuccess
-}:{
-  redis?: RedisClientOptions,
-  onError?: () => void, 
+  onSuccess,
+}: {
+  redis?: RedisClientOptions
+  onError?: () => void
   onSuccess?: () => void
 }) => {
   if (redis) {
@@ -152,14 +148,14 @@ export const createPersistor = ({
       _persistors[key] = new Persistor({
         redis,
         onError,
-        onSuccess
+        onSuccess,
       })
     }
     return _persistors[key]
   }
   return new Persistor({
     onSuccess,
-    onError
+    onError,
   })
 }
 
