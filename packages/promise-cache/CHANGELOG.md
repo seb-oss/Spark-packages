@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.2.3
+
+### Patch Changes
+
+- adb4404: Add default error log
+
 ## 1.2.2
 
 ### Patch Changes
