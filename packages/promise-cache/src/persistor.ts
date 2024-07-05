@@ -16,24 +16,34 @@ type SetParams<T> = {
   ttl?: number
 }
 
+type PersistorConstructorType = {
+  redis?: RedisClientOptions,
+  onError?: () => void,
+  onSuccess?: () => void
+}
+
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
-  private status: 'connected' | 'disconnected' = 'disconnected'
   private readonly redis?: RedisClientOptions
 
-  constructor(redis?: RedisClientOptions) {
+  constructor(options: PersistorConstructorType) {
+    const {
+      redis,
+      onError,
+      onSuccess,
+    } = options
     if (redis) {
       this.redis = redis
     } else {
       //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
     }
-    this.connect()
+    this.connect(onError, onSuccess)
   }
 
   public async connect(
     onError?: (message: string) => void,
-    onConnect?: (message: string) => void
+    onSuccess?: (message: string) => void
   ) {
     try {
       this.client = CACHE_CLIENT(this.redis)
@@ -41,8 +51,9 @@ export class Persistor {
       this.client.on('error', (err) => {
         if (onError) {
           onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
+        } else {
+          console.error(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
         }
-        this.status = 'disconnected'
       })
 
       this.client.connect()
@@ -53,18 +64,18 @@ export class Persistor {
           return
         }
         this.client.on('connect', () => {
-          if (onConnect) {
-            onConnect(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
+          if (onSuccess) {
+            onSuccess(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
           }
-          this.status = 'connected'
           resolve(true)
         })
       })
     } catch (err) {
       if (onError) {
         onError(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
+      } else {
+        console.error(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
       }
-      this.status = 'disconnected'
     }
   }
 
@@ -126,15 +137,30 @@ export class Persistor {
 }
 
 let _persistors: Record<string, Persistor> = {}
-export const createPersistor = (redis?: RedisClientOptions) => {
+export const createPersistor = ({
+  redis,
+  onError,
+  onSuccess
+}:{
+  redis?: RedisClientOptions,
+  onError?: () => void, 
+  onSuccess?: () => void
+}) => {
   if (redis) {
     const key = JSON.stringify(redis)
     if (!_persistors[key]) {
-      _persistors[key] = new Persistor(redis)
+      _persistors[key] = new Persistor({
+        redis,
+        onError,
+        onSuccess
+      })
     }
     return _persistors[key]
   }
-  return new Persistor()
+  return new Persistor({
+    onSuccess,
+    onError
+  })
 }
 
 export const clean = () => {

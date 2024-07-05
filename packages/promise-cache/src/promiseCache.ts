@@ -16,12 +16,16 @@ export class PromiseCache<U> {
     ttlInSeconds,
     caseSensitive = false,
     redis,
+    onSuccess,
+    onError
   }: {
     ttlInSeconds?: number
     caseSensitive?: boolean
     redis?: RedisClientOptions
+    onError?: () => void
+    onSuccess?: () => void
   }) {
-    this.persistor = createPersistor(redis)
+    this.persistor = createPersistor({redis, onError, onSuccess})
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
       this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds.
