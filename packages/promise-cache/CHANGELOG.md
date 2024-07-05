@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.2.4
+
+### Patch Changes
+
+- 11554bb: Use LocalMemory instead redis if is a test
+
 ## 1.2.3
 
 ### Patch Changes
