@@ -13,9 +13,9 @@ import type {
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
-import type { Request } from 'express'
+import type { Request as ExpressRequest } from 'express'
 
-type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
+type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
 /* tslint:disable */
 /* eslint-disable */

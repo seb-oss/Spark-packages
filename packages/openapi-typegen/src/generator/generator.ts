@@ -12,7 +12,7 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
   * This file was auto-generated.
   * Do not make direct changes to the file.
   */
- 
+
  import type {
    APIResponse,
    APIServerDefinition,
@@ -23,13 +23,13 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
    RequestOptions,
    Serialized,
  } from '@sebspark/openapi-core'
- import type { Request } from 'express'
- 
- type Req = Pick<Request, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
- 
+ import type { Request as ExpressRequest } from 'express'
+
+ type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
+
  /* tslint:disable */
  /* eslint-disable */
- 
+
  ${generateComponents(doc.components)}
 
  ${doc.paths.length ? generateServer(name, doc.paths) : ''}
