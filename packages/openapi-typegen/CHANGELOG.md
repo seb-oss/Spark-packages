@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.8.3
+
+### Patch Changes
+
+- f328065: allow Request as a type name
+
 ## 1.8.2
 
 ### Patch Changes
