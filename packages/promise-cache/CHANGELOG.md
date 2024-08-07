@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.3.0
+
+### Minor Changes
+
+- 9ca6fe1: Exporting PromiseCacheOptions and RedisClientOptions types
+
 ## 1.2.4
 
 ### Patch Changes
