@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.6.2
+
+### Patch Changes
+
+- 93a37b3: Patch dependencies
+
 ## 0.6.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.7.1
+
+### Patch Changes
+
+- 93a37b3: Patch dependencies
+
 ## 0.7.0
 
 ### Minor Changes

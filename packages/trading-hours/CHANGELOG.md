@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 0.4.1
+
+### Patch Changes
+
+- 93a37b3: Patch dependencies
+
 ## 0.4.0
 
 ### Minor Changes
