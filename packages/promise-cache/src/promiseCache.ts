@@ -2,6 +2,16 @@ import type { RedisClientOptions } from 'redis'
 import type { Persistor } from './persistor'
 import { createPersistor } from './persistor'
 
+export type { RedisClientOptions }
+
+export type PromiseCacheOptions = {
+  ttlInSeconds?: number
+  caseSensitive?: boolean
+  redis?: RedisClientOptions
+  onError?: () => void
+  onSuccess?: () => void
+}
+
 export class PromiseCache<U> {
   public persistor: Persistor
   private readonly caseSensitive: boolean
@@ -18,13 +28,7 @@ export class PromiseCache<U> {
     redis,
     onSuccess,
     onError,
-  }: {
-    ttlInSeconds?: number
-    caseSensitive?: boolean
-    redis?: RedisClientOptions
-    onError?: () => void
-    onSuccess?: () => void
-  }) {
+  }: PromiseCacheOptions) {
     this.persistor = createPersistor({ redis, onError, onSuccess })
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
