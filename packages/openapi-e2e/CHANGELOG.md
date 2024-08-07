@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 1.1.2
+
+### Patch Changes
+
+- 93a37b3: Patch dependencies
+- Updated dependencies [93a37b3]
+  - @sebspark/openapi-client@1.4.3
+  - @sebspark/openapi-core@1.5.1
+  - @sebspark/openapi-express@1.1.4
+
 ## 1.1.1
 
 ### Patch Changes

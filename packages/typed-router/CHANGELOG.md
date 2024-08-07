@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.10
+
+### Patch Changes
+
+- 93a37b3: Patch dependencies
+
 ## 0.1.9
 
 ### Patch Changes
