@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.5.2
+
+### Patch Changes
+
+- 7548d7c: bump axios from 1.7.2 to 1.7.4
+
 ## 1.5.1
 
 ### Patch Changes
