@@ -722,31 +722,15 @@
     source-map-support "^0.5.16"
     uuid "^9.0.0"
 
-"@grpc/grpc-js@^1.1.8":
-  version "1.10.7"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.10.7.tgz#1abce1a8c4c90b79dbbe57d7e4310f3b0ce72899"
-  integrity sha512-ZMBVjSeDAz3tFSehyO6Pd08xZT1HfIwq3opbeM4cDlBh52gmwp0wVIPcQur53NN0ac68HMZ/7SF2rGRD5KmVmg==
+"@grpc/grpc-js@^1.1.8", "@grpc/grpc-js@~1.10.0", "@grpc/grpc-js@~1.10.3":
+  version "1.10.11"
+  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.10.11.tgz#ecc37165593f5608d6d682ffb476a5f9d3c65865"
+  integrity sha512-3RaoxOqkHHN2c05bwtBNVJmOf/UwMam0rZYtdl7dsRpsvDwcNpv6LkGgzltQ7xVf822LzBoKEPRvf4D7+xeIDw==
   dependencies:
     "@grpc/proto-loader" "^0.7.13"
     "@js-sdsl/ordered-map" "^4.4.2"
 
-"@grpc/grpc-js@~1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.10.0.tgz#23b5defd6a021a20924b4baca2dd1b3a3ecc3716"
-  integrity sha512-tx+eoEsqkMkLCHR4OOplwNIaJ7SVZWzeVKzEMBz8VR+TbssgBYOP4a0P+KQiQ6LaTG4SGaIEu7YTS8xOmkOWLA==
-  dependencies:
-    "@grpc/proto-loader" "^0.7.8"
-    "@types/node" ">=12.12.47"
-
-"@grpc/grpc-js@~1.10.3":
-  version "1.10.8"
-  resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.10.8.tgz#99787785cd8335be861afd1cd485ae9f058e4484"
-  integrity sha512-vYVqYzHicDqyKB+NQhAc54I1QWCBLCrYG6unqOIcBTHx+7x8C9lcoLj3KVJXs2VB4lUbpWY+Kk9NipcbXYWmvg==
-  dependencies:
-    "@grpc/proto-loader" "^0.7.13"
-    "@js-sdsl/ordered-map" "^4.4.2"
-
-"@grpc/proto-loader@^0.7.0", "@grpc/proto-loader@^0.7.8":
+"@grpc/proto-loader@^0.7.0":
   version "0.7.10"
   resolved "https://registry.yarnpkg.com/@grpc/proto-loader/-/proto-loader-0.7.10.tgz#6bf26742b1b54d0a473067743da5d3189d06d720"
   integrity sha512-CAqDfoaQ8ykFd9zqBDn4k6iWT9loLAlc2ETmDFS9JCD70gDcnA4L3AFEo2iV7KyAtAAHFW9ftq1Fz+Vsgq80RQ==
@@ -1647,7 +1631,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.5.tgz#ec10755e871497bcd83efe927e43ec46e8c0747e"
   integrity sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==
 
-"@types/node@*", "@types/node@20.14.2", "@types/node@>=10.0.0", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
+"@types/node@*", "@types/node@20.14.2", "@types/node@>=10.0.0", "@types/node@>=13.7.0":
   version "20.14.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.2.tgz#a5f4d2bcb4b6a87bffcaa717718c5a0f208f4a18"
   integrity sha512-xyu6WAMVwv6AKFLB+e/7ySZVr/0zLCzOa7rSpq6jNwpqOrUbcACDWC+53d4n2QHOnDou0fbIsg8wZu/sxrnI4Q==
