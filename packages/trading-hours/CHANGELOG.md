@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 0.4.2
+
+### Patch Changes
+
+- 512eba3: Remove SebMarket type.
+
 ## 0.4.1
 
 ### Patch Changes
