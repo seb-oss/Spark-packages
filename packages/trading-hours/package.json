@@ -13,7 +13,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "tsconfig": "*"

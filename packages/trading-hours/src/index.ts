@@ -1,2 +1,2 @@
 export * from './holidays'
-export type { SebMarket, Holiday } from './types'
+export type { Holiday } from './types'

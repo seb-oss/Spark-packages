@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns'
 import { openingHours } from './static'
-import type { Holiday, SebMarket } from './types'
+import type { Holiday } from './types'
 import {
   calculateMidsummerDay,
   christianHolidays,
@@ -20,7 +20,7 @@ import {
  * - https://www.tradinghours.com/
  * - https://www.nasdaqomxnordic.com/tradinghours
  */
-export function holidays(mic: SebMarket, year: number) {
+export function holidays(mic: string, year: number) {
   const market = normalizeMarket(mic)
 
   // Holidays that are the same every year
@@ -165,7 +165,7 @@ export function holidays(mic: SebMarket, year: number) {
  * Get half days for a specific market and year. In Sweden, half days are
  * common before holidays.
  */
-export function halfdays(mic: SebMarket, year: number) {
+export function halfdays(mic: string, year: number) {
   const market = normalizeMarket(mic)
   const staticDates = staticHolidays(year)
   const {
@@ -241,7 +241,7 @@ export function halfdays(mic: SebMarket, year: number) {
 /**
  * Check if a given date is a holiday for a specific market
  */
-export function isHoliday(mic: SebMarket, date: Date) {
+export function isHoliday(mic: string, date: Date) {
   if (date.getDay() === 0 || date.getDay() === 6) {
     return true
   }
@@ -252,7 +252,7 @@ export function isHoliday(mic: SebMarket, date: Date) {
 /**
  * Check if a given date is a half day for a specific market
  */
-export function isHalfday(mic: SebMarket, date: Date) {
+export function isHalfday(mic: string, date: Date) {
   return halfdays(mic, date.getFullYear()).includes(shortDate(date))
 }
 
@@ -260,7 +260,7 @@ export function isHalfday(mic: SebMarket, date: Date) {
  * Check if a specific market is open.
  * Takes into account holidays and half days
  */
-export function isOpen(mic: SebMarket) {
+export function isOpen(mic: string) {
   const market = normalizeMarket(mic)
   const now = new Date()
   const {
@@ -306,7 +306,7 @@ export function isOpen(mic: SebMarket) {
 /**
  * Format opening hours for a specific market
  */
-export function formatOpeningHours(mic: SebMarket) {
+export function formatOpeningHours(mic: string) {
   const market = normalizeMarket(mic)
   const now = new Date()
   const {
@@ -351,7 +351,7 @@ export function formatOpeningHours(mic: SebMarket) {
  * Returns a TypeScript union value which is useful if you need to support
  * multiple languages. Then the consumer can determine what to display to the user.
  */
-export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
+export function whichHoliday(mic: string, date: Date): Holiday | null {
   const market = normalizeMarket(mic)
 
   if (!isHoliday(market, date) && !isHalfday(market, date)) {
@@ -403,7 +403,7 @@ export function whichHoliday(mic: SebMarket, date: Date): Holiday | null {
   return holidays[formattedDate] ?? null
 }
 
-export function marketOpeningHours(mic: SebMarket, date: Date) {
+export function marketOpeningHours(mic: string, date: Date) {
   const market = normalizeMarket(mic)
   const hours = openingHours[market]
 

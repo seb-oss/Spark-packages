@@ -1,24 +1,3 @@
-export type SebMarket =
-  | 'DSME'
-  | 'EQTB'
-  | 'FSME'
-  | 'MTAA'
-  | 'NSME'
-  | 'SSME'
-  | 'XAMS'
-  | 'XBER'
-  | 'XBRU'
-  | 'XCSE'
-  | 'XETR'
-  | 'XHEL'
-  | 'XLIS'
-  | 'XLON'
-  | 'XMAD'
-  | 'XNGM'
-  | 'XPAR'
-  | 'XSAT'
-  | 'XSTO'
-
 export type Holiday =
   | 'ascensionDay'
   | 'assumptionDay'
@@ -48,4 +27,4 @@ type Hours = {
   special?: Partial<Record<Holiday, Hours>>
 }
 
-export type OpeningHours = Record<SebMarket, Hours>
+export type OpeningHours = Record<string, Hours>
