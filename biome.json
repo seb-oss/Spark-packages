@@ -15,7 +15,8 @@
       "ts-extensions.ts",
       "typescriptExtensions.ts",
       "openSearchTypes.ts",
-      "openapi-core/src/types.ts"
+      "openapi-core/src/types.ts",
+      "schemas/**"
     ]
   },
   "formatter": {
