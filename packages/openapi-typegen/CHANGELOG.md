@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.8.5
+
+### Patch Changes
+
+- b7a0309: Handle array enums using oneOf in type generation
+
 ## 1.8.4
 
 ### Patch Changes

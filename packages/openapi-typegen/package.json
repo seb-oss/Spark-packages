@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-typegen",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
