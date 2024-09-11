@@ -410,7 +410,7 @@ describe('typescript generator', () => {
 
       const expected = await format(`
         export type Details = StockDetails | FundDetails
-        
+
         export type DetailsDiscriminator = {
           STOCK: StockDetails
           FUND: FundDetails
@@ -429,6 +429,25 @@ describe('typescript generator', () => {
       }
       const expected = await format(`
         export type com_domain_MyType = {}
+        `)
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
+    it('generates correctly array items when using oneOf', async () => {
+      const type: ArrayType = {
+        type: 'array',
+        name: 'DetailsList',
+        items: {
+          type: 'object',
+          properties: [],
+          oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+        },
+      }
+
+      const expected = await format(`
+        export type DetailsList = (StockDetails | FundDetails)[]
         `)
       const generated = generateType(type)
       const formatted = await format(generated)
@@ -479,7 +498,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'get'> & {
         get: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<APIResponse<Serialized<User>[]>>}
@@ -550,7 +569,7 @@ describe('typescript generator', () => {
           /**
            * User
            * Gets user
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {Object} args.params - Path parameters for the request.
@@ -625,7 +644,7 @@ describe('typescript generator', () => {
           /**
            * User
            * Gets user
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {Object} args.headers - Headers for the request.
@@ -663,7 +682,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<APIResponse<Serialized<User>[]>>}
@@ -700,7 +719,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {User} args.body - Request body for the request.
@@ -758,7 +777,7 @@ describe('typescript generator', () => {
             /**
              * Users
              * Lists users
-             * 
+             *
              * @returns {Promise<[200, APIResponse<PartiallySerialized<User>[]>]>}
              */
             handler: (args: Req) => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
@@ -768,7 +787,7 @@ describe('typescript generator', () => {
         '/users/:id': {
           get: {
             /**
-             * 
+             *
              * @param {Object} args - The arguments for the request.
              * @param {Object} args.params - Path parameters for the request.
              * @param {string} args.params.id
@@ -855,7 +874,7 @@ describe('typescript generator', () => {
           /**
            * Foo
            * Get foo
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<undefined>}
