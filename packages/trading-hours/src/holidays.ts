@@ -19,6 +19,8 @@ import {
  *
  * - https://www.tradinghours.com/
  * - https://www.nasdaqomxnordic.com/tradinghours
+ * - https://www.avanza.se/aktier/oppettider-handelskalender.html
+ * - https://www.nordnet.se/se/marknad/borsens-oppettider
  */
 export function holidays(mic: string, year: number) {
   const market = normalizeMarket(mic)
