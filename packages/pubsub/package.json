@@ -22,7 +22,7 @@
     "@google-cloud/pubsub": "4.4.1",
     "@types/express": "4.17.21",
     "@types/html-escaper": "3.0.2",
-    "express": "4.19.2",
+    "express": "4.21.0",
     "html-escaper": "3.0.3"
   },
   "keywords": [
