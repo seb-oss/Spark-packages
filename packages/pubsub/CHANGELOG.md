@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 0.6.3
+
+### Patch Changes
+
+- ad4311e: Updated vulnerable express dependency
+
 ## 0.6.2
 
 ### Patch Changes
