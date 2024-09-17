@@ -26,6 +26,7 @@ import type {
   Parameter,
   Path,
   PrimitiveType,
+  RecordType,
   ResponseBody,
 } from '../types'
 
@@ -1136,6 +1137,68 @@ describe('openapi parser', () => {
             type: [{ type: 'EventTypeResponse' }],
             optional: false,
           },
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: true', () => {
+      const schema: SchemaObject = {
+        additionalProperties: true,
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'undefined' } as PrimitiveType,
+          } as RecordType,
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: $ref', () => {
+      const schema: SchemaObject = {
+        additionalProperties: { $ref: '#/components/schema/Card' },
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'Card' } as CustomType,
+          } as RecordType,
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: $schema', () => {
+      const schema: SchemaObject = {
+        additionalProperties: {
+          type: 'string',
+        },
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'string' } as PrimitiveType,
+          } as RecordType,
         ],
       }
 

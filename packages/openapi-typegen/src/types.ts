@@ -24,11 +24,17 @@ export type TypeDefinition =
   | ArrayType
   | CustomType
   | EnumType
+  | RecordType
 
 type BaseType = {
   name?: string
   title?: string
   description?: string
+}
+
+export type RecordType = BaseType & {
+  type: 'record'
+  items: TypeDefinition
 }
 
 export type PrimitiveType = BaseType & {
@@ -52,7 +58,7 @@ export type Discriminator = {
 export type ObjectType = BaseType & {
   type: 'object'
   properties: Property[]
-  allOf?: (CustomType | ObjectType)[]
+  allOf?: (CustomType | ObjectType | RecordType)[]
   anyOf?: (CustomType | ObjectType)[]
   oneOf?: (CustomType | ObjectType)[]
   discriminator?: Discriminator

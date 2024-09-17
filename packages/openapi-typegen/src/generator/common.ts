@@ -9,6 +9,7 @@ import type {
   ObjectType,
   PrimitiveType,
   Property,
+  RecordType,
   ResponseBody,
   TypeDefinition,
   UnknownType,
@@ -31,6 +32,10 @@ export const generateType = (parsed: TypeDefinition): string => {
     }
     case 'object': {
       type = generateObject(parsed as ObjectType)
+      break
+    }
+    case 'record': {
+      type = generateRecord(parsed as RecordType)
       break
     }
     case 'unknown': {
@@ -173,6 +178,12 @@ export const generateObject = (parsed: ObjectType): string => {
   }
 
   return lines.join('\n')
+}
+
+export const generateRecord = (parsed: RecordType): string => {
+  const itemType =
+    parsed.items.type === 'undefined' ? 'unknown' : generateType(parsed.items)
+  return `Record<string, ${itemType}>`
 }
 
 const generateDiscriminator = (

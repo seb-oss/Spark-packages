@@ -454,6 +454,34 @@ describe('typescript generator', () => {
 
       expect(formatted).toEqual(expected)
     })
+    it('generates an object type with only record', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'Card' } }],
+      }
+
+      const expected = await format('export type User = Record<string, Card>')
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates an object type with only record of any type', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'undefined' } }],
+      }
+
+      const expected = await format(
+        'export type User = Record<string, unknown>'
+      )
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
   })
   describe('generateResponseBody', () => {
     it('generates a response body with funky header ref', async () => {
