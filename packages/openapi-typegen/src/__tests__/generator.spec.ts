@@ -482,6 +482,45 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates an object type with a record property', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          {
+            name: 'dependencies',
+            description: 'Health status of external dependencies',
+            type: [
+              {
+                type: 'object',
+                name: undefined,
+                description: 'Health status of external dependencies',
+                properties: [],
+                allOf: [
+                  {
+                    type: 'record',
+                    items: { name: undefined, type: 'DependencyHealth' },
+                  },
+                ],
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+
+      const expected = await format(`export type Generic = {
+        id: string
+        /**
+         * Health status of external dependencies
+         */
+        dependencies: Record<string, DependencyHealth>
+      }`)
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
   })
   describe('generateResponseBody', () => {
     it('generates a response body with funky header ref', async () => {

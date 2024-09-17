@@ -1204,6 +1204,53 @@ describe('openapi parser', () => {
 
       expect(parsed).toEqual(expected)
     })
+
+    it('parses additionalProperties: $ref on a sub object', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          dependencies: {
+            type: 'object',
+            description: 'Health status of external dependencies',
+            additionalProperties: {
+              $ref: '#/components/schemas/DependencyHealth',
+            },
+          },
+        },
+        required: ['id', 'dependencies'],
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          {
+            name: 'dependencies',
+            description: 'Health status of external dependencies',
+            type: [
+              {
+                type: 'object',
+                name: undefined,
+                description: 'Health status of external dependencies',
+                properties: [],
+                allOf: [
+                  {
+                    type: 'record',
+                    items: { name: undefined, type: 'DependencyHealth' },
+                  },
+                ],
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
   })
   describe('parseParameters', () => {
     it('parses a simple schema', () => {
