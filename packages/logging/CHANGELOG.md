@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.2.3
+
+### Patch Changes
+
+- 4b4b691: fix express vulnerability in logging package
+
 ## 1.2.2
 
 ### Patch Changes
