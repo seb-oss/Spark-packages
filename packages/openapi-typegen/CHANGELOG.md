@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.9.0
+
+### Minor Changes
+
+- 052ad11: Added support for additionalProperties
+
 ## 1.8.5
 
 ### Patch Changes
