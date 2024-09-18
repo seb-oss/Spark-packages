@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 1.4.0
+
+### Minor Changes
+
+- f4ed2a1: Use retry from "@sebspark/retry" when try to connect to redis
+
 ## 1.3.1
 
 ### Patch Changes
