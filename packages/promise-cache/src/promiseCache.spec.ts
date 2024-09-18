@@ -13,7 +13,7 @@ import { PromiseCache, clean } from './index'
 vi.mock('redis')
 
 const REDIS_URL = {
-  url: 'redis://127.0.0.1:6379'
+  url: 'redis://127.0.0.1:6379',
 }
 
 const ttl = 1

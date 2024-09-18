@@ -1,6 +1,6 @@
+import { retry } from '@sebspark/retry'
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
-import { retry } from '@sebspark/retry'
 import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
@@ -27,7 +27,7 @@ type PersistorConstructorType = {
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
   private onError
-  private onSuccess 
+  private onSuccess
   private readonly redis?: RedisClientOptions
 
   constructor(options: PersistorConstructorType) {
@@ -75,7 +75,6 @@ export class Persistor {
         console.log(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
       })
 
-     
       return await this.client.connect()
     } catch (err) {
       if (this.onError) {
