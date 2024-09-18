@@ -1,5 +1,6 @@
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
+import { retry } from '@sebspark/retry'
 import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
@@ -19,60 +20,68 @@ type SetParams<T> = {
 
 type PersistorConstructorType = {
   redis?: RedisClientOptions
-  onError?: () => void
-  onSuccess?: () => void
+  onError?: (c: string) => void
+  onSuccess?: (c: string) => void
 }
 
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
+  private onError
+  private onSuccess 
   private readonly redis?: RedisClientOptions
 
   constructor(options: PersistorConstructorType) {
     const { redis, onError, onSuccess } = options
+    this.onError = onError
+    this.onSuccess = onSuccess
     if (redis && !isTestRunning) {
       this.redis = redis
     } else {
       //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
     }
-    this.connect(onError, onSuccess)
+    this.connect()
   }
 
-  public async connect(
-    onError?: (message: string) => void,
-    onSuccess?: (message: string) => void
-  ) {
+  public async connect() {
+    const settings = {
+      interval: (x: number) => {
+        return x * 2 * 1000
+      },
+      maxRetries: 5,
+      retryCondition: () => {
+        console.log('Trying to connect!')
+        return true
+      },
+    }
+    await retry(() => this.startConnection(), settings)
+  }
+
+  public async startConnection(): Promise<unknown> {
     try {
       this.client = CACHE_CLIENT(this.redis)
 
       this.client.on('error', (err) => {
-        if (onError) {
-          onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
-        } else {
-          console.error(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
+        if (this.onError) {
+          this.onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
         }
+        throw new Error(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
       })
 
-      this.client.connect()
-
-      await new Promise((resolve, reject) => {
-        if (!this.client) {
-          reject('Client not initialized')
-          return
+      this.client.on('connect', () => {
+        if (this.onSuccess) {
+          this.onSuccess(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
         }
-        this.client.on('connect', () => {
-          if (onSuccess) {
-            onSuccess(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
-          }
-          resolve(true)
-        })
+        console.log(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
       })
+
+     
+      return await this.client.connect()
     } catch (err) {
-      if (onError) {
-        onError(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
-      } else {
-        console.error(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
+      if (this.onError) {
+        this.onError(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
       }
+      throw new Error(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
     }
   }
 

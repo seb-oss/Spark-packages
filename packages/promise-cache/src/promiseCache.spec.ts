@@ -8,16 +8,22 @@ import {
   it,
   vi,
 } from 'vitest'
-import { PromiseCache } from './index'
+import { PromiseCache, clean } from './index'
 
 vi.mock('redis')
 
+const REDIS_URL = {
+  url: 'redis://127.0.0.1:6379'
+}
+
 const ttl = 1
 const cache: PromiseCache<number> = new PromiseCache<number>({
+  redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: false,
 })
 const caseSensitiveCache = new PromiseCache<number>({
+  redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: true,
 })
@@ -34,6 +40,7 @@ describe('PromiseCache', () => {
   })
 
   beforeEach(() => {
+    clean()
     // @ts-ignore
     cache.persistor.client.clear()
     // @ts-ignore
@@ -77,6 +84,7 @@ describe('PromiseCache', () => {
   it('should remove the cache entry after the TTL expires', async () => {
     const delegate = vi.fn().mockResolvedValue(42)
     const mCache = new PromiseCache<number>({
+      redis: REDIS_URL,
       ttlInSeconds: ttl,
     })
     await mCache.wrap('testKey1', delegate)
@@ -115,6 +123,7 @@ describe('PromiseCache', () => {
   it('should throw an exception if the delegate throws an error', async () => {
     const mockDelegate = vi.fn()
     const cache = new PromiseCache<number>({
+      redis: REDIS_URL,
       ttlInSeconds: ttl,
     })
 
@@ -168,10 +177,12 @@ describe('PromiseCache', () => {
 
   it('should share memory between PromiseCache instances', async () => {
     const localCache1 = new PromiseCache<number>({
+      redis: REDIS_URL,
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
     const localCache2 = new PromiseCache<number>({
+      redis: REDIS_URL,
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
@@ -204,6 +215,7 @@ describe('PromiseCache', () => {
   it('should call onSuccess callback', async () => {
     const successSpy = vi.fn()
     const localCache10 = new PromiseCache<number>({
+      redis: REDIS_URL,
       ttlInSeconds: ttl,
       caseSensitive: false,
       onSuccess: successSpy,
