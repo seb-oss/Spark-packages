@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.0
+
+### Major Changes
+
+- bfcf244: Add a name to the redis connection, then the PromiseCache class will get the current persistor with that connection name avoiding duplicates
+
 ## 1.4.0
 
 ### Minor Changes
