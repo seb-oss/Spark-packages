@@ -152,15 +152,11 @@ export const createPersistor = ({
   onSuccess?: () => void
 }) => {
   if (redis) {
-    const key = JSON.stringify(redis)
-    if (!_persistors[key]) {
-      _persistors[key] = new Persistor({
-        redis,
-        onError,
-        onSuccess,
-      })
-    }
-    return _persistors[key]
+    return new Persistor({
+      redis,
+      onError,
+      onSuccess,
+    })
   }
   return new Persistor({
     onSuccess,
