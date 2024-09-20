@@ -12,6 +12,8 @@ export type PromiseCacheOptions = {
   onSuccess?: () => void
 }
 
+export const promises = {}
+
 export class PromiseCache<U> {
   public persistor: Persistor
   private readonly caseSensitive: boolean

@@ -8,7 +8,7 @@ import {
   it,
   vi,
 } from 'vitest'
-import { PromiseCache, clean } from './index'
+import { PromiseCache } from './index'
 
 vi.mock('redis')
 
@@ -40,7 +40,6 @@ describe('PromiseCache', () => {
   })
 
   beforeEach(() => {
-    clean()
     // @ts-ignore
     cache.persistor.client.clear()
     // @ts-ignore
@@ -215,12 +214,55 @@ describe('PromiseCache', () => {
   it('should call onSuccess callback', async () => {
     const successSpy = vi.fn()
     const localCache10 = new PromiseCache<number>({
-      redis: REDIS_URL,
+      redis: {
+        url: REDIS_URL.url,
+        name: 'localCache11',
+      },
       ttlInSeconds: ttl,
       caseSensitive: false,
       onSuccess: successSpy,
     })
 
     expect(successSpy).toHaveBeenCalledOnce()
+  })
+
+  it('check persistor cache should be the same by id', async () => {
+    const localCache11 = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache_number',
+      },
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
+
+    const localCache12 = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache_number',
+      },
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
+    const localCache13 = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
+
+    const localCache14 = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      caseSensitive: false,
+    })
+
+    const id = localCache11.persistor.getClientId()
+    const id2 = localCache12.persistor.getClientId()
+    const id3 = localCache13.persistor.getClientId()
+
+    const id4 = localCache13.persistor.getClientId()
+    const id5 = localCache14.persistor.getClientId()
+
+    expect(id).toBe(id2)
+    expect(id).not.toBe(id3)
+    expect(id4).not.toBe(id5)
   })
 })

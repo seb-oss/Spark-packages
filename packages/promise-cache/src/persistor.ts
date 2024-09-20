@@ -1,3 +1,4 @@
+import { type UUID, randomUUID } from 'node:crypto'
 import { retry } from '@sebspark/retry'
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
@@ -26,6 +27,7 @@ type PersistorConstructorType = {
 
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
+  private clientId: UUID = randomUUID()
   private onError
   private onSuccess
   private readonly redis?: RedisClientOptions
@@ -106,6 +108,10 @@ export class Persistor {
     }
   }
 
+  public getClientId(): UUID {
+    return this.clientId
+  }
+
   private createOptions(ttl?: number): { EX: number } | object {
     if (ttl !== null && ttl !== undefined) {
       return { PX: Math.round(ttl) } // Return options object with Expiration time property in ms as an integer
@@ -141,7 +147,8 @@ export class Persistor {
   }
 }
 
-let _persistors: Record<string, Persistor> = {}
+const persistors: Record<string, Persistor> = {}
+
 export const createPersistor = ({
   redis,
   onError,
@@ -152,18 +159,23 @@ export const createPersistor = ({
   onSuccess?: () => void
 }) => {
   if (redis) {
-    return new Persistor({
-      redis,
-      onError,
-      onSuccess,
-    })
+    let connectionName = redis.url
+    if (redis.name) {
+      connectionName = redis.name
+    }
+    const key = connectionName as keyof typeof persistors
+    if (!persistors[key]) {
+      persistors[key] = new Persistor({
+        redis,
+        onError,
+        onSuccess,
+      })
+    }
+
+    return persistors[key]
   }
   return new Persistor({
     onSuccess,
     onError,
   })
-}
-
-export const clean = () => {
-  _persistors = {}
 }
