@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.2.4
+
+### Patch Changes
+
+- 0a38227: bug fix stack false no longer clears formatting
+
 ## 1.2.3
 
 ### Patch Changes
