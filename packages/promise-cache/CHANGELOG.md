@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.5
+
+### Patch Changes
+
+- 9342770: Use redis event ready instead connect to start storing data
+
 ## 2.0.4
 
 ### Patch Changes
