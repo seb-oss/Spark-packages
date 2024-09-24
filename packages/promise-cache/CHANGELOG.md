@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.3
+
+### Patch Changes
+
+- 5cfb14a: Change redis connection reuse logic
+
 ## 2.0.2
 
 ### Patch Changes
