@@ -30,6 +30,7 @@ export class Persistor {
   private clientId: UUID = randomUUID()
   private onError
   private onSuccess
+  private isConnected = false
   private readonly redis?: RedisClientOptions
 
   constructor(options: PersistorConstructorType) {
@@ -42,7 +43,9 @@ export class Persistor {
       //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
     }
-    this.connect()
+    if (!this.isConnected) {
+      this.connect()
+    }
   }
 
   public async connect() {
@@ -64,6 +67,8 @@ export class Persistor {
       this.client = CACHE_CLIENT(this.redis)
 
       this.client.on('error', (err) => {
+        this.isConnected = false
+
         if (this.onError) {
           this.onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
         }
@@ -71,6 +76,8 @@ export class Persistor {
       })
 
       this.client.on('connect', () => {
+        this.isConnected = true
+
         if (this.onSuccess) {
           this.onSuccess(
             `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
@@ -114,6 +121,10 @@ export class Persistor {
 
   public getClientId(): UUID {
     return this.clientId
+  }
+
+  public getIsClientConnected(): boolean {
+    return this.isConnected
   }
 
   private createOptions(ttl?: number): { EX: number } | object {
