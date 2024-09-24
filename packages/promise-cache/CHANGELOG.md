@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.4
+
+### Patch Changes
+
+- 3e9f97f: Fix: Return a promise to avoid errors in the retry function
+
 ## 2.0.3
 
 ### Patch Changes
