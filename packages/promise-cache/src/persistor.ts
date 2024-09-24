@@ -72,9 +72,13 @@ export class Persistor {
 
       this.client.on('connect', () => {
         if (this.onSuccess) {
-          this.onSuccess(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
+          this.onSuccess(
+            `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
+          )
         }
-        console.log(`📦 REDIS | Connection Ready | ${this.redis?.url}`)
+        console.log(
+          `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
+        )
       })
 
       return await this.client.connect()
