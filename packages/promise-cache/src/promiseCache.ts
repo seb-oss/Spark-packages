@@ -1,6 +1,6 @@
 import { type UUID, randomUUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
-import { Persistor, type PersistorConstructorType } from './persistor'
+import { Persistor } from './persistor'
 
 export type { RedisClientOptions }
 
@@ -8,7 +8,7 @@ export type PromiseCacheOptions = {
   ttlInSeconds?: number
   caseSensitive?: boolean
   redis?: RedisClientOptions
-  onError?: () => void
+  onError?: (error: string) => void
   onSuccess?: () => void
 }
 
@@ -19,13 +19,24 @@ const getPersistor = ({
   onError,
   onSuccess,
   clientId,
-}: PersistorConstructorType) => {
-  const connectionName = redis?.name || 'default'
+}: PromiseCacheOptions & { clientId: UUID }) => {
+  const connectionName = redis ? redis?.name || 'default' : 'local'
+
   if (!persistors[connectionName]) {
     persistors[connectionName] = new Persistor({
       redis,
-      onError,
-      onSuccess,
+      onError: (error: string) => {
+        onError?.(error)
+        console.error(
+          `❌ REDIS | Client Error | ${connectionName} | ${redis?.url}: ${error}`
+        )
+      },
+      onSuccess: () => {
+        onSuccess?.()
+        console.log(
+          `📦 REDIS | Connection Ready | ${connectionName} | ${redis?.url}`
+        )
+      },
       clientId,
     })
   }

@@ -22,8 +22,8 @@ type SetParams<T> = {
 export type PersistorConstructorType = {
   redis?: RedisClientOptions
   clientId?: UUID
-  onError?: (c: string) => void
-  onSuccess?: (c: string) => void
+  onError: (error: string) => void
+  onSuccess: () => void
 }
 
 export class Persistor {
@@ -70,37 +70,28 @@ export class Persistor {
   }
 
   public async startConnection(): Promise<unknown> {
-    try {
-      this.client = CACHE_CLIENT(this.redis)
+    return new Promise((resolve, reject) => {
+      try {
+        this.client = CACHE_CLIENT(this.redis)
 
-      this.client.on('error', (err) => {
-        this.isConnected = false
+        this.client.on('error', (err) => {
+          this.isConnected = false
+          this.onError(err)
+          reject()
+        })
 
-        if (this.onError) {
-          this.onError(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
-        }
-        throw new Error(`❌ REDIS | Client Error | ${this.redis?.url} ${err}`)
-      })
+        this.client.on('connect', () => {
+          this.isConnected = true
+          this.onSuccess()
+          resolve(true)
+        })
 
-      this.client.on('connect', () => {
-        this.isConnected = true
-        if (this.onSuccess) {
-          this.onSuccess(
-            `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
-          )
-        }
-        console.log(
-          `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
-        )
-      })
-
-      return await this.client.connect()
-    } catch (err) {
-      if (this.onError) {
-        this.onError(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
+        this.client.connect()
+      } catch (err) {
+        this.onError(`${err}`)
+        reject()
       }
-      throw new Error(`❌ REDIS | Connection Error | ${this.redis?.url} ${err}`)
-    }
+    })
   }
 
   public async size(): Promise<number> {
@@ -144,7 +135,7 @@ export class Persistor {
     key: string,
     { value, timestamp, ttl }: SetParams<T>
   ): Promise<void> {
-    if (!this.isConnected || !this.client) {
+    if (!this.client) {
       throw new Error('Client not connected')
     }
     try {
@@ -157,7 +148,7 @@ export class Persistor {
   }
 
   public async delete(key: string): Promise<void> {
-    if (!this.isConnected || !this.client) {
+    if (!this.client) {
       throw new Error('Client not connected')
     }
     try {
