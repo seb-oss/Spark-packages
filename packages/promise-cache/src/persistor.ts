@@ -52,7 +52,7 @@ export class Persistor {
       },
       maxRetries: 5,
       retryCondition: () => {
-        console.log('Trying to connect!')
+        console.log(`Trying to connect: ${this.clientId}, ${this.redis?.name}`)
         return true
       },
     }
