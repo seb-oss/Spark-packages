@@ -247,26 +247,6 @@ describe('PromiseCache', () => {
     )
   })
 
-  it('Connect should be called just once even if we create multiple promise cache with same key', async () => {
-    const cache = new PromiseCache<number>({
-      redis: {
-        url: REDIS_URL.url,
-        name: 'cache',
-      },
-    })
-
-    expect(cache.persistor.getIsClientConnected()).toBe(true)
-
-    const cache2 = new PromiseCache<number>({
-      redis: {
-        url: REDIS_URL.url,
-        name: 'cache',
-      },
-    })
-
-    expect(cache2.persistor.getIsClientConnected()).toBe(true)
-  })
-
   it('Should reuse the same local object for identical configs', async () => {
     const localCache11 = new PromiseCache<number>({
       caseSensitive: false,

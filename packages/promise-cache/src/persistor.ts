@@ -31,7 +31,6 @@ export class Persistor {
   private clientId?: UUID
   private onError
   private onSuccess
-  private isConnected = false
   private readonly redis?: RedisClientOptions
 
   constructor({
@@ -50,7 +49,7 @@ export class Persistor {
       CACHE_CLIENT = createLocalMemoryClient
     }
 
-    if (!this.isConnected) {
+    if (!this.client || !this.client.isReady) {
       this.connect()
     }
   }
@@ -60,37 +59,30 @@ export class Persistor {
       interval: (x: number) => {
         return x * 2 * 1000
       },
-      maxRetries: 5,
+      maxRetries: 3,
       retryCondition: () => {
-        console.log(`Trying to connect: ${this.clientId}, ${this.redis?.name}`)
+        console.log(
+          `Connecting to redis... ${this.clientId}, ${this.redis?.name}`
+        )
         return true
       },
     }
     await retry(() => this.startConnection(), settings)
   }
 
-  public async startConnection(): Promise<unknown> {
+  public startConnection(): Promise<unknown> {
     return new Promise((resolve, reject) => {
-      try {
-        this.client = CACHE_CLIENT(this.redis)
-
-        this.client.on('error', (err) => {
-          this.isConnected = false
+      this.client = CACHE_CLIENT(this.redis)
+        .on('error', (err) => {
           this.onError(err)
           reject()
         })
-
-        this.client.on('connect', () => {
-          this.isConnected = true
+        .on('ready', () => {
           this.onSuccess()
           resolve(true)
         })
 
-        this.client.connect()
-      } catch (err) {
-        this.onError(`${err}`)
-        reject()
-      }
+      return this.client.connect()
     })
   }
 
@@ -121,7 +113,7 @@ export class Persistor {
   }
 
   public getIsClientConnected(): boolean {
-    return this.isConnected
+    return !!this.client?.isReady
   }
 
   private createOptions(ttl?: number): { EX: number } | object {
