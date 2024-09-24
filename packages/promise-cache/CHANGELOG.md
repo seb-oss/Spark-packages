@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.1
+
+### Patch Changes
+
+- 0da73eb: Show in logs which client is trying to connect to redis
+
 ## 2.0.0
 
 ### Major Changes
