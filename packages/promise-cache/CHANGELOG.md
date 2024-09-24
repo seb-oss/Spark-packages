@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.2
+
+### Patch Changes
+
+- e21f808: Add connection flag to persistor
+
 ## 2.0.1
 
 ### Patch Changes
