@@ -1,13 +1,5 @@
 import { afterEach } from 'node:test'
-import {
-  afterAll,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest'
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import { PromiseCache } from './index'
 
 vi.mock('redis')
@@ -36,14 +28,8 @@ describe('PromiseCache', () => {
 
   beforeAll(() => {
     console.error = vi.fn()
+    console.log = vi.fn()
     vi.useFakeTimers({ shouldAdvanceTime: true })
-  })
-
-  beforeEach(() => {
-    // @ts-ignore
-    cache.persistor.client.clear()
-    // @ts-ignore
-    caseSensitiveCache.persistor.client.clear()
   })
 
   afterEach(() => {
@@ -213,20 +199,20 @@ describe('PromiseCache', () => {
 
   it('should call onSuccess callback', async () => {
     const successSpy = vi.fn()
-    const localCache10 = new PromiseCache<number>({
+    new PromiseCache<number>({
+      onSuccess: successSpy,
       redis: {
         url: REDIS_URL.url,
         name: 'localCache11',
       },
       ttlInSeconds: ttl,
       caseSensitive: false,
-      onSuccess: successSpy,
     })
 
     expect(successSpy).toHaveBeenCalledOnce()
   })
 
-  it('check persistor cache should be the same by id', async () => {
+  it('Should reuse the same redis connection for identical configs', async () => {
     const localCache11 = new PromiseCache<number>({
       redis: {
         url: REDIS_URL.url,
@@ -244,25 +230,57 @@ describe('PromiseCache', () => {
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
+
     const localCache13 = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache_number2',
+      },
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
 
-    const localCache14 = new PromiseCache<number>({
-      ttlInSeconds: ttl,
+    expect(localCache11.persistor).toBe(localCache12.persistor)
+    expect(localCache11.persistor).not.toBe(localCache13.persistor)
+    expect(localCache11.persistor.getClientId()).toBe(
+      localCache12.persistor.getClientId()
+    )
+  })
+
+  it('Connect should be called just once even if we create multiple promise cache with same key', async () => {
+    const cache = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache',
+      },
+    })
+
+    expect(cache.persistor.getIsClientConnected()).toBe(true)
+
+    const cache2 = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache',
+      },
+    })
+
+    expect(cache2.persistor.getIsClientConnected()).toBe(true)
+  })
+
+  it('Should reuse the same local object for identical configs', async () => {
+    const localCache11 = new PromiseCache<number>({
       caseSensitive: false,
     })
 
-    const id = localCache11.persistor.getClientId()
-    const id2 = localCache12.persistor.getClientId()
-    const id3 = localCache13.persistor.getClientId()
+    const localCache12 = new PromiseCache<number>({
+      caseSensitive: false,
+    })
 
-    const id4 = localCache13.persistor.getClientId()
-    const id5 = localCache14.persistor.getClientId()
+    const localCache13 = new PromiseCache<number>({
+      caseSensitive: false,
+    })
 
-    expect(id).toBe(id2)
-    expect(id).not.toBe(id3)
-    expect(id4).not.toBe(id5)
+    expect(localCache11.persistor).toBe(localCache12.persistor)
+    expect(localCache11.persistor).toBe(localCache13.persistor)
   })
 })

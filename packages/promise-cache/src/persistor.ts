@@ -1,4 +1,4 @@
-import { type UUID, randomUUID } from 'node:crypto'
+import type { UUID } from 'node:crypto'
 import { retry } from '@sebspark/retry'
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
@@ -19,30 +19,37 @@ type SetParams<T> = {
   ttl?: number
 }
 
-type PersistorConstructorType = {
+export type PersistorConstructorType = {
   redis?: RedisClientOptions
+  clientId?: UUID
   onError?: (c: string) => void
   onSuccess?: (c: string) => void
 }
 
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
-  private clientId: UUID = randomUUID()
+  private clientId?: UUID
   private onError
   private onSuccess
   private isConnected = false
   private readonly redis?: RedisClientOptions
 
-  constructor(options: PersistorConstructorType) {
-    const { redis, onError, onSuccess } = options
+  constructor({
+    redis,
+    clientId,
+    onSuccess,
+    onError,
+  }: PersistorConstructorType) {
     this.onError = onError
     this.onSuccess = onSuccess
+    this.clientId = clientId
     if (redis && !isTestRunning) {
       this.redis = redis
     } else {
       //@ts-ignore
       CACHE_CLIENT = createLocalMemoryClient
     }
+
     if (!this.isConnected) {
       this.connect()
     }
@@ -77,7 +84,6 @@ export class Persistor {
 
       this.client.on('connect', () => {
         this.isConnected = true
-
         if (this.onSuccess) {
           this.onSuccess(
             `📦 REDIS | Connection Ready | ${this.redis?.name} | ${this.clientId} | ${this.redis?.url}`
@@ -119,7 +125,7 @@ export class Persistor {
     }
   }
 
-  public getClientId(): UUID {
+  public getClientId(): UUID | undefined {
     return this.clientId
   }
 
@@ -138,8 +144,8 @@ export class Persistor {
     key: string,
     { value, timestamp, ttl }: SetParams<T>
   ): Promise<void> {
-    if (!this.client) {
-      throw new Error('Client not initialized')
+    if (!this.isConnected || !this.client) {
+      throw new Error('Client not connected')
     }
     try {
       const serializedData = JSON.stringify({ value, ttl, timestamp })
@@ -151,8 +157,8 @@ export class Persistor {
   }
 
   public async delete(key: string): Promise<void> {
-    if (!this.client) {
-      throw new Error('Client not initialized')
+    if (!this.isConnected || !this.client) {
+      throw new Error('Client not connected')
     }
     try {
       await this.client.del(key)
@@ -160,37 +166,4 @@ export class Persistor {
       throw new Error(`Error deleting data from redis: ${error}`)
     }
   }
-}
-
-const persistors: Record<string, Persistor> = {}
-
-export const createPersistor = ({
-  redis,
-  onError,
-  onSuccess,
-}: {
-  redis?: RedisClientOptions
-  onError?: () => void
-  onSuccess?: () => void
-}) => {
-  if (redis) {
-    let connectionName = redis.url
-    if (redis.name) {
-      connectionName = redis.name
-    }
-    const key = connectionName as keyof typeof persistors
-    if (!persistors[key]) {
-      persistors[key] = new Persistor({
-        redis,
-        onError,
-        onSuccess,
-      })
-    }
-
-    return persistors[key]
-  }
-  return new Persistor({
-    onSuccess,
-    onError,
-  })
 }

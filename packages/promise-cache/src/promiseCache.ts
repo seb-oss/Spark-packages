@@ -1,6 +1,6 @@
+import { type UUID, randomUUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
-import type { Persistor } from './persistor'
-import { createPersistor } from './persistor'
+import { Persistor, type PersistorConstructorType } from './persistor'
 
 export type { RedisClientOptions }
 
@@ -12,10 +12,29 @@ export type PromiseCacheOptions = {
   onSuccess?: () => void
 }
 
-export const promises = {}
+const persistors: Record<string, Persistor> = {}
+
+const getPersistor = ({
+  redis,
+  onError,
+  onSuccess,
+  clientId,
+}: PersistorConstructorType) => {
+  const connectionName = redis?.name || 'default'
+  if (!persistors[connectionName]) {
+    persistors[connectionName] = new Persistor({
+      redis,
+      onError,
+      onSuccess,
+      clientId,
+    })
+  }
+  return persistors[connectionName]
+}
 
 export class PromiseCache<U> {
   public persistor: Persistor
+  private clientId: UUID = randomUUID()
   private readonly caseSensitive: boolean
   private readonly ttl?: number // Time to live in milliseconds.
 
@@ -31,7 +50,12 @@ export class PromiseCache<U> {
     onSuccess,
     onError,
   }: PromiseCacheOptions) {
-    this.persistor = createPersistor({ redis, onError, onSuccess })
+    this.persistor = getPersistor({
+      redis,
+      onError,
+      onSuccess,
+      clientId: this.clientId,
+    })
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
       this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds.
