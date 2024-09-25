@@ -63,11 +63,11 @@ export class Persistor {
         ...this.redis,
         socket: {
           reconnectStrategy: (retries, cause) => {
-            if (retries === 3) {
+            if (retries === 5) {
               console.error('Error reconnecting... ', cause)
               return false
             }
-            return Math.min(retries * 50, 1000)
+            return retries * 1000
           },
         },
       })
