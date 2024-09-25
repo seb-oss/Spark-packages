@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.9
+
+### Patch Changes
+
+- 85f095f: Wait until the connection is ready
+
 ## 2.0.8
 
 ### Patch Changes
