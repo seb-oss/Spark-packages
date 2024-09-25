@@ -1,5 +1,4 @@
 import type { UUID } from 'node:crypto'
-import { retry } from '@sebspark/retry'
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
 import { createLocalMemoryClient } from './localMemory'
@@ -55,24 +54,23 @@ export class Persistor {
   }
 
   public async connect() {
-    const settings = {
-      interval: (x: number) => {
-        return x * 2 * 1000
-      },
-      maxRetries: 3,
-      retryCondition: () => {
-        console.log(
-          `Connecting to redis... ${this.clientId}, ${this.redis?.name}`
-        )
-        return true
-      },
-    }
-    await retry(() => this.startConnection(), settings)
+    await this.startConnection()
   }
 
   public startConnection(): Promise<unknown> {
     return new Promise((resolve, reject) => {
-      this.client = CACHE_CLIENT(this.redis)
+      this.client = CACHE_CLIENT({
+        ...this.redis,
+        socket: {
+          reconnectStrategy: (retries, cause) => {
+            if (retries === 3) {
+              console.error('Error reconnecting... ', cause)
+              return false
+            }
+            return Math.min(retries * 50, 1000)
+          },
+        },
+      })
         .on('error', (err) => {
           this.onError(err)
           reject()
@@ -80,6 +78,12 @@ export class Persistor {
         .on('ready', () => {
           this.onSuccess()
           resolve(true)
+        })
+        .on('reconnecting', () => {
+          console.log('reconnecting...', this.clientId)
+        })
+        .on('end', () => {
+          console.log('end...', this.clientId)
         })
 
       return this.client.connect()
