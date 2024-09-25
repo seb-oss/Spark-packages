@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.8
+
+### Patch Changes
+
+- f145e39: Remove max 5 tries
+
 ## 2.0.7
 
 ### Patch Changes
