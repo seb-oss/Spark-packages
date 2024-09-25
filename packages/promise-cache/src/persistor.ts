@@ -63,11 +63,8 @@ export class Persistor {
         ...this.redis,
         socket: {
           reconnectStrategy: (retries, cause) => {
-            if (retries === 5) {
-              console.error('Error reconnecting... ', cause)
-              return false
-            }
-            return retries * 1000
+            console.error(cause)
+            return 1000 * 2 ** retries
           },
         },
       })
@@ -131,8 +128,9 @@ export class Persistor {
     key: string,
     { value, timestamp, ttl }: SetParams<T>
   ): Promise<void> {
-    if (!this.client) {
-      throw new Error('Client not connected')
+    if (!this.client || !this.client.isReady) {
+      console.error('Client not ready')
+      return
     }
     try {
       const serializedData = JSON.stringify({ value, ttl, timestamp })
@@ -144,8 +142,9 @@ export class Persistor {
   }
 
   public async delete(key: string): Promise<void> {
-    if (!this.client) {
-      throw new Error('Client not connected')
+    if (!this.client || !this.client.isReady) {
+      console.error('Client not ready')
+      return
     }
     try {
       await this.client.del(key)
