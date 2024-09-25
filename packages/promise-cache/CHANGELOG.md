@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.6
+
+### Patch Changes
+
+- f7dd4c1: Remove retry library and use default retry system from redis
+
 ## 2.0.5
 
 ### Patch Changes
