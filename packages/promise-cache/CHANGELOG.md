@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.7
+
+### Patch Changes
+
+- f3ed352: Change retry timeoute
+
 ## 2.0.6
 
 ### Patch Changes
