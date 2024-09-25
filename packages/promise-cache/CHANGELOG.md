@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.0.10
+
+### Patch Changes
+
+- cccc089: Error in GCP Redis MemoryStore, doesnt support SETNAME command
+
 ## 2.0.9
 
 ### Patch Changes
