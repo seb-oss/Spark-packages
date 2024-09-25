@@ -57,7 +57,7 @@ export class Persistor {
     try {
       await new Promise((resolve, reject) => {
         this.client = CACHE_CLIENT({
-          ...this.redis,
+          url: this.redis?.url,
           socket: {
             reconnectStrategy: (retries, cause) => {
               console.error(cause)
