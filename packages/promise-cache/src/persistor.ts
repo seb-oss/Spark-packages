@@ -49,42 +49,43 @@ export class Persistor {
     }
 
     if (!this.client || !this.client.isReady) {
-      this.connect()
+      this.startConnection()
     }
   }
 
-  public async connect() {
-    await this.startConnection()
-  }
-
-  public startConnection(): Promise<unknown> {
-    return new Promise((resolve, reject) => {
-      this.client = CACHE_CLIENT({
-        ...this.redis,
-        socket: {
-          reconnectStrategy: (retries, cause) => {
-            console.error(cause)
-            return 1000 * 2 ** retries
+  public async startConnection() {
+    try {
+      await new Promise((resolve, reject) => {
+        this.client = CACHE_CLIENT({
+          ...this.redis,
+          socket: {
+            reconnectStrategy: (retries, cause) => {
+              console.error(cause)
+              return 1000 * 2 ** retries
+            },
           },
-        },
-      })
-        .on('error', (err) => {
-          this.onError(err)
-          reject()
         })
-        .on('ready', () => {
-          this.onSuccess()
-          resolve(true)
-        })
-        .on('reconnecting', () => {
-          console.log('reconnecting...', this.clientId)
-        })
-        .on('end', () => {
-          console.log('end...', this.clientId)
-        })
+          .on('error', (err) => {
+            this.onError(err)
+            reject(err)
+          })
+          .on('ready', () => {
+            this.onSuccess()
+            resolve(true)
+          })
+          .on('reconnecting', () => {
+            console.log('reconnecting...', this.clientId)
+          })
+          .on('end', () => {
+            console.log('end...', this.clientId)
+          })
 
-      return this.client.connect()
-    })
+        this.client.connect()
+      })
+    } catch (ex) {
+      this.onError(`${ex}`)
+      console.error(ex)
+    }
   }
 
   public async size(): Promise<number> {
