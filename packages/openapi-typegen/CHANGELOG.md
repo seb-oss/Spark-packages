@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.10.0
+
+### Minor Changes
+
+- 894bf2e: remove yarn as a dependency
+
 ## 1.9.0
 
 ### Minor Changes
