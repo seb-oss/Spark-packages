@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.3.0
+
+### Minor Changes
+
+- 265a850: upgrade express to 5.0.0
+
 ## 1.2.4
 
 ### Patch Changes
