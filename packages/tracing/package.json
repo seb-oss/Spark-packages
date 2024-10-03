@@ -28,7 +28,7 @@
     "@opentelemetry/instrumentation-http": "0.51.1",
     "@opentelemetry/instrumentation-pg": "0.41.0",
     "@opentelemetry/instrumentation-socket.io": "0.39.0",
-    "@opentelemetry/instrumentation-undici": "0.2.0",
+    "@opentelemetry/instrumentation-undici": "0.6.0",
     "@opentelemetry/sdk-trace-base": "1.25.0",
     "@opentelemetry/sdk-trace-node": "1.25.0"
   }
