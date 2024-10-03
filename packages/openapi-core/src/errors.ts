@@ -418,6 +418,8 @@ export const fromAxiosError = (axiosError: AxiosError): HttpError => {
   const cause = new Error(axiosError.message)
   cause.name = axiosError.name
   cause.stack = axiosError.stack
+  // If the error response has a data property pass it along
+  cause.cause = axiosError?.response?.data
 
   return createHttpError(statusCode, message, cause)
 }
