@@ -135,5 +135,5 @@ const ignoreHealthCheck = (
 }
 
 const ignorePostgres = (spanName: string) => {
-  return spanName === 'pg-pool.connect'
+  return spanName === 'pg-pool.connect' || spanName === 'pg.connect'
 }
