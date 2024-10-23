@@ -5,7 +5,6 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
-
 import { Type } from 'avsc'
 
 const schemaIdPattern = /^(?!goog)[a-zA-Z][a-zA-Z0-9-._~%+]{2,254}$/
@@ -21,7 +20,7 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
       'schemaId is no in a valid format. Check google cloud platform for more information'
     )
   }
-  
+
   const schema = await client.schema(cloudSchema.schemaId)
   try {
     const data = await schema.get()
@@ -54,13 +53,14 @@ const createOrGetTopic = async (
   await topic.setMetadata({
     ...topicMetadata,
     schemaSettings: {
-      encoding: "JSON",
-      firstRevisionId: topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
+      encoding: 'JSON',
+      firstRevisionId:
+        topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
       lastRevisionId: schemaData.revisionId,
       schema: schemaData.name,
     },
   })
-  
+
   return topic
 }
 
