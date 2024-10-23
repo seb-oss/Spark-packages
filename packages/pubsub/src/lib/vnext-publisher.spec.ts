@@ -4,6 +4,7 @@ import { PubSub, type Topic } from '@google-cloud/pubsub'
 import { z } from 'zod'
 import { zodToAvro } from './zod-to-avro'
 import { createPublisher } from './vnext-publisher'
+import { get } from 'node:http'
 
 const exampleSchema = z.object({
   messageType: z.string(),
@@ -29,6 +30,7 @@ vi.mock('@google-cloud/pubsub', () => {
     topics[name] = {
       name,
       publishMessage: vi.fn(),
+      get: vi.fn().mockImplementation(() => ([topics[name]]))
     } as unknown as Topic
     return topics[name]
   })
@@ -40,7 +42,6 @@ vi.mock('@google-cloud/pubsub', () => {
   })
 
   const pubsub: Partial<PubSub> = {
-    createTopic: mockTopic,
     topic: mockTopic,
     createSchema: vi.fn().mockImplementation(() => ({id: 'first-revision-id'})),
     schema: vi.fn().mockImplementation(() => schema)
@@ -88,6 +89,7 @@ describe('when creating a new pubsub client the internal client', () => {
     const randomNumber = Math.random()
 
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
+    const pubSubMock = new PubSub() as MockedObject<PubSub>
     /*topicMock.publishMessage.mockImplementation((data) => {
       console.log(data)
     })*/
@@ -100,6 +102,44 @@ describe('when creating a new pubsub client the internal client', () => {
     expect(PubSub).toBeCalledWith({
       projectId: 'test',
     })
+
+    
+
+    const message = { messageType: 'TYPE', created: new Date() }
+    await client
+      .topic('example')
+      .publish(message)
+    expect(topicMock.get).toBeCalledWith({autoCreate: true})
+    expect(topicMock.publishMessage).toBeCalledWith({ json: message});
+    /*expect(nuvarandeTopic.publish).toBeCalledWith({
+      projectId: 'test',
+    })*/
+
+    //expect(mockTopic).toBeCalled();
+  })
+})
+
+describe('when creating a new pubsub client, when topic already exists', () => {
+  it('should be initiated with the configuration', async () => {
+    const randomNumber = Math.random()
+
+    const topicMock = new PubSub().topic('example') as MockedObject<Topic>
+    const pubSubMock = new PubSub() as MockedObject<PubSub>
+    
+    /*topicMock.publishMessage.mockImplementation((data) => {
+      console.log(data)
+    })*/
+    console.log('topicMock', topicMock)
+
+    const client = createPublisher<ExamplePubsubChannels>({
+      projectId: 'test',
+    })
+
+    expect(PubSub).toBeCalledWith({
+      projectId: 'test',
+    })
+
+    
 
     const message = { messageType: 'TYPE', created: new Date() }
     await client
@@ -114,6 +154,7 @@ describe('when creating a new pubsub client the internal client', () => {
     //expect(mockTopic).toBeCalled();
   })
 })
+
 /*
 describe('when publishing on a topic the internal client is called with the correct values', () => {
     it('should be initiated with the configuration', async () => {

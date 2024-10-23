@@ -1,5 +1,6 @@
 import {
   type ClientConfig,
+  type ISchema,
   PubSub,
   SchemaTypes,
   type Topic,
@@ -20,65 +21,46 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
       'schemaId is no in a valid format. Check google cloud platform for more information'
     )
   }
-
+  const schema = await client.schema(cloudSchema.schemaId)
   try {
-    const schema = await client.schema(cloudSchema.schemaId)
-    const info = await schema.get()
-    return info.revisionId
+    const data = await schema.get()
+    return data
   } catch (err) {
-    const info = await client.createSchema(
+    await client.createSchema(
       cloudSchema.schemaId,
       SchemaTypes.Avro,
       cloudSchema.avroDefinition
     )
-    return info.id
+    const data = await schema.get()
+    return data
   }
 }
 
 const createOrGetTopic = async (
   client: PubSub,
   name: string,
-  schemaRevisionId?: string
+  schemaData?: ISchema
 ) => {
-  try {
+  const [topic] = await client.topic(name).get({ autoCreate: true })
 
-    if (!schemaRevisionId) {
-      try {
-        const [topic] = await client.createTopic(name)
-        return topic
-      } catch (err) {
-        return client.topic(name)
-      }
-    }
-    const topic = client.topic(name)
-    const [topicMetadata] = await topic.getMetadata()
-    const topicSchemaMetadata = topicMetadata.schemaSettings
-    const currentRevisionId =
-      topicSchemaMetadata?.lastRevisionId ??
-      topicSchemaMetadata?.firstRevisionId
-    if (!currentRevisionId || currentRevisionId !== schemaRevisionId) {
-      await topic.setMetadata({
-        ...topicMetadata,
-        schemaSettings: {
-          firstRevisionId:
-            topicSchemaMetadata?.firstRevisionId ?? schemaRevisionId,
-          lastRevisionId: schemaRevisionId,
-        },
-      })
-    }
-    return topic
-  } catch (err) {
-    const [topic] = await client.createTopic({
-      name,
-      schemaSettings: schemaRevisionId
-        ? {
-            schema: schemaRevisionId,
-            encoding: 'JSON',
-          }
-        : undefined,
-    })
+  if (!schemaData) {
     return topic
   }
+
+  const [topicMetadata] = await topic.getMetadata()
+  const topicSchemaMetadata = topicMetadata.schemaSettings
+  
+  await topic.setMetadata({
+    ...topicMetadata,
+    schemaSettings: {
+      encoding: "JSON",
+      firstRevisionId: topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
+      lastRevisionId: schemaData.revisionId,
+      schema: schemaData.name,
+    },
+  })
+  
+  return topic
 }
 
 export type PublisherClient<T extends Record<string, unknown>> = {
@@ -104,16 +86,11 @@ export const createPublisher = <T extends Record<string, unknown>>(
   ) => {
     if (!_topic) {
       if (schema) {
-        const currentSchemaRevisionId = await syncTopicSchema(client, schema)
-        _topic = await createOrGetTopic(
-          client,
-          name as string,
-          currentSchemaRevisionId ?? undefined
-        )
+        const schemaData = await syncTopicSchema(client, schema)
+        _topic = await createOrGetTopic(client, name as string, schemaData)
       }
-      console.log(client, name)
+
       _topic = await createOrGetTopic(client, name as string)
-      console.log('topic', _topic)
     }
     if (schema && !_type) {
       const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
@@ -124,19 +101,16 @@ export const createPublisher = <T extends Record<string, unknown>>(
     topic: (name, schema) => {
       return {
         initiate: async () => {
-          console.log('meow')
           return ensureInitiated(name, schema)
         },
-        publish: async (message) => {
+        publish: async (json) => {
           await ensureInitiated(name, schema)
 
-          console.log('hej', _type)
-
           if (_type) {
-            const dataBuffer = _type.toBuffer(message)
-            await _topic.publish(dataBuffer)
+            const data = _type.toBuffer(json)
+            await _topic.publishMessage({ data })
           } else {
-            await _topic.publishMessage({ json: message })
+            await _topic.publishMessage({ json })
           }
         },
       }
