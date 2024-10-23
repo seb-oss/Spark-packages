@@ -15,22 +15,24 @@ type CloudSchema = {
 }
 
 const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
-    if(!schemaIdPattern.test(cloudSchema.schemaId)){
-        throw Error("schemaId is no in a valid format. Check google cloud platform for more information");
-    }
+  if (!schemaIdPattern.test(cloudSchema.schemaId)) {
+    throw Error(
+      'schemaId is no in a valid format. Check google cloud platform for more information'
+    )
+  }
 
-    try {
-      const schema = await client.schema(cloudSchema.schemaId)
-      const info = await schema.get()
-      return info.revisionId
-    } catch (err) {
-      const info = await client.createSchema(
-        cloudSchema.schemaId,
-        SchemaTypes.Avro,
-        cloudSchema.avroDefinition
-      )
-      return info.id
-    }
+  try {
+    const schema = await client.schema(cloudSchema.schemaId)
+    const info = await schema.get()
+    return info.revisionId
+  } catch (err) {
+    const info = await client.createSchema(
+      cloudSchema.schemaId,
+      SchemaTypes.Avro,
+      cloudSchema.avroDefinition
+    )
+    return info.id
+  }
 }
 
 const createOrGetTopic = async (
@@ -39,8 +41,11 @@ const createOrGetTopic = async (
   schemaRevisionId?: string
 ) => {
   try {
+    console.log('name', name)
     const topic = client.topic(name)
+    console.log('topic', topic)
     if (!schemaRevisionId) {
+      console.log(client)
       return topic
     }
 
@@ -88,46 +93,55 @@ export const createPublisher = <T extends Record<string, unknown>>(
   clientOptions?: ClientConfig | undefined
 ): PublisherClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
+  console.log('client', client)
   let _topic: Topic
   let _type: Type
-  const ensureInitiated = async (name: string|number|symbol, schema: CloudSchema | undefined) => {
+  const ensureInitiated = async (
+    name: string | number | symbol,
+    schema: CloudSchema | undefined
+  ) => {
     if (!_topic) {
-        if (schema) {
-          const currentSchemaRevisionId = await syncTopicSchema(
-            client,
-            schema
-          )
-          _topic = await createOrGetTopic(
-            client,
-            name as string,
-            currentSchemaRevisionId ?? undefined
-          )
-        }
-        _topic = await createOrGetTopic(client, name as string)
+      if (schema) {
+        const currentSchemaRevisionId = await syncTopicSchema(client, schema)
+        _topic = await createOrGetTopic(
+          client,
+          name as string,
+          currentSchemaRevisionId ?? undefined
+        )
       }
-      if (schema && !_type) {
-        const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
-        _type = schemaType
-      }
+      console.log(client, name)
+      _topic = await createOrGetTopic(client, name as string)
+      console.log('topic', _topic)
+    }
+    if (schema && !_type) {
+      const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
+      _type = schemaType
+    }
   }
   const typedClient: PublisherClient<T> = {
     topic: (name, schema) => {
       return {
         initiate: async () => {
-            return ensureInitiated(name, schema)
+          console.log('meow')
+          return ensureInitiated(name, schema)
         },
         publish: async (message) => {
           await ensureInitiated(name, schema)
+
+          console.log('hej', _type)
 
           if (_type) {
             const dataBuffer = _type.toBuffer(message)
             await _topic.publish(dataBuffer)
           } else {
+            console.log(_topic)
             await _topic.publishMessage({ json: message })
           }
         },
       }
     },
   }
+
+  console.log('typedClient', typedClient)
   return typedClient
 }
