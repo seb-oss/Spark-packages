@@ -21,6 +21,7 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
       'schemaId is no in a valid format. Check google cloud platform for more information'
     )
   }
+  
   const schema = await client.schema(cloudSchema.schemaId)
   try {
     const data = await schema.get()
@@ -49,7 +50,7 @@ const createOrGetTopic = async (
 
   const [topicMetadata] = await topic.getMetadata()
   const topicSchemaMetadata = topicMetadata.schemaSettings
-  
+
   await topic.setMetadata({
     ...topicMetadata,
     schemaSettings: {
@@ -77,7 +78,6 @@ export const createPublisher = <T extends Record<string, unknown>>(
   clientOptions?: ClientConfig | undefined
 ): PublisherClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
-  console.log('client', client)
   let _topic: Topic
   let _type: Type
   const ensureInitiated = async (
@@ -116,7 +116,5 @@ export const createPublisher = <T extends Record<string, unknown>>(
       }
     },
   }
-
-  console.log('typedClient', typedClient)
   return typedClient
 }

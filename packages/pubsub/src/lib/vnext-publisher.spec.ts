@@ -1,14 +1,14 @@
 import { type Mock, type MockedObject, describe, expect, it, vi } from 'vitest'
-import { PubSub, type Topic } from '@google-cloud/pubsub'
+import { PubSub, Schema, SchemaTypes, type Topic } from '@google-cloud/pubsub'
 //import { createPublisher, createSubscriber } from './vnext'
 import { z } from 'zod'
 import { zodToAvro } from './zod-to-avro'
 import { createPublisher } from './vnext-publisher'
-import { get } from 'node:http'
+import { Type } from 'avsc'
 
 const exampleSchema = z.object({
   messageType: z.string(),
-  created: z.date(),
+  created: z.string(),
   data: z.string().optional(),
 })
 
@@ -30,25 +30,33 @@ vi.mock('@google-cloud/pubsub', () => {
     topics[name] = {
       name,
       publishMessage: vi.fn(),
-      get: vi.fn().mockImplementation(() => ([topics[name]]))
+      get: vi.fn().mockImplementation(() => ([topics[name]])),
+      getMetadata: vi.fn().mockImplementation(() => ([{schemaSettings:{}}])),
+      setMetadata: vi.fn()
     } as unknown as Topic
     return topics[name]
   })
 
-  const schema = vi.fn().mockImplementation(() => {
-    return {
+  const currentSchema = {
       get: vi.fn().mockImplementation(() => ({revisionId: 'a-revision-id'}))
     }
+
+  const schema = vi.fn().mockImplementation(() => {
+    return currentSchema;
   })
 
   const pubsub: Partial<PubSub> = {
     topic: mockTopic,
     createSchema: vi.fn().mockImplementation(() => ({id: 'first-revision-id'})),
-    schema: vi.fn().mockImplementation(() => schema)
+    schema: vi.fn().mockImplementation((name) => schema(name) as unknown as Schema)
   }
 
   return {
     PubSub: vi.fn().mockReturnValue(pubsub),
+    SchemaTypes: {
+        ProtocolBuffer: "PROTOCOL_BUFFER",
+        Avro: "AVRO"
+    }
   }
 })
 
@@ -86,14 +94,9 @@ const avroSchema = zodToAvro('ExampleMessage', zodValue)
 
 describe('when creating a new pubsub client the internal client', () => {
   it('should be initiated with the configuration', async () => {
-    const randomNumber = Math.random()
 
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
-    /*topicMock.publishMessage.mockImplementation((data) => {
-      console.log(data)
-    })*/
-    console.log('topicMock', topicMock)
 
     const client = createPublisher<ExamplePubsubChannels>({
       projectId: 'test',
@@ -103,33 +106,22 @@ describe('when creating a new pubsub client the internal client', () => {
       projectId: 'test',
     })
 
-    
-
-    const message = { messageType: 'TYPE', created: new Date() }
+    const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client
       .topic('example')
       .publish(message)
+
+    expect(pubSubMock.topic).toBeCalledWith("example")
     expect(topicMock.get).toBeCalledWith({autoCreate: true})
     expect(topicMock.publishMessage).toBeCalledWith({ json: message});
-    /*expect(nuvarandeTopic.publish).toBeCalledWith({
-      projectId: 'test',
-    })*/
-
-    //expect(mockTopic).toBeCalled();
   })
 })
 
-describe('when creating a new pubsub client, when topic already exists', () => {
+describe('when creating a new pubsub client the internal client with a schema that exists', () => {
   it('should be initiated with the configuration', async () => {
-    const randomNumber = Math.random()
-
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
-    
-    /*topicMock.publishMessage.mockImplementation((data) => {
-      console.log(data)
-    })*/
-    console.log('topicMock', topicMock)
+    const schemaMock = new PubSub().schema("schemaId") as MockedObject<Schema>
 
     const client = createPublisher<ExamplePubsubChannels>({
       projectId: 'test',
@@ -139,21 +131,57 @@ describe('when creating a new pubsub client, when topic already exists', () => {
       projectId: 'test',
     })
 
-    
-
-    const message = { messageType: 'TYPE', created: new Date() }
+    const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client
-      .topic('example')
+      .topic('example', {schemaId: 'schemaId', avroDefinition: JSON.stringify(exampleAvroSchema) })
       .publish(message)
+      const schemaType = Type.forSchema(exampleAvroSchema)
 
-    expect(topicMock.publishMessage).toBeCalledWith({ json: message});
-    /*expect(nuvarandeTopic.publish).toBeCalledWith({
-      projectId: 'test',
-    })*/
-
-    //expect(mockTopic).toBeCalled();
+    expect(pubSubMock.topic).toBeCalledWith("example")
+    expect(pubSubMock.schema).toBeCalled();
+    expect(schemaMock.get).toBeCalled();
+    expect(topicMock.get).toBeCalledWith({autoCreate: true})
+    expect(topicMock.publishMessage).toBeCalledWith({ data: schemaType.toBuffer(message)});
   })
 })
+
+describe('when creating a new pubsub client the internal client with a schema that does not exsist', () => {
+  it('should be initiated with the configuration', async () => {
+    const topicMock = new PubSub().topic('example') as MockedObject<Topic>
+    const pubSubMock = new PubSub() as MockedObject<PubSub>
+    const schemaMock = new PubSub().schema("schemaId") as MockedObject<Schema>
+
+    schemaMock.get.mockImplementationOnce(() => {
+      throw new Error('SCHEMA DOES NOT EXIST')
+    })
+
+    const client = createPublisher<ExamplePubsubChannels>({
+      projectId: 'test',
+    })
+
+    expect(PubSub).toBeCalledWith({
+      projectId: 'test',
+    })
+
+    const message = { messageType: 'TYPE', created: new Date().toISOString() }
+    await client
+      .topic('example', {schemaId: 'schemaId', avroDefinition: JSON.stringify(exampleAvroSchema) })
+      .publish(message)
+      const schemaType = Type.forSchema(exampleAvroSchema)
+
+    expect(pubSubMock.topic).toBeCalledWith("example")
+    expect(pubSubMock.schema).toBeCalled();
+    expect(schemaMock.get).toBeCalled();
+    expect(pubSubMock.createSchema).toBeCalledWith(
+      "schemaId",
+      SchemaTypes.Avro,
+      JSON.stringify(exampleAvroSchema)
+    );
+    expect(topicMock.get).toBeCalledWith({autoCreate: true})
+    expect(topicMock.publishMessage).toBeCalledWith({ data: schemaType.toBuffer(message)});
+  })
+})
+
 
 /*
 describe('when publishing on a topic the internal client is called with the correct values', () => {
