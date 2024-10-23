@@ -41,14 +41,16 @@ const createOrGetTopic = async (
   schemaRevisionId?: string
 ) => {
   try {
-    console.log('name', name)
-    const topic = client.topic(name)
-    console.log('topic', topic)
-    if (!schemaRevisionId) {
-      console.log(client)
-      return topic
-    }
 
+    if (!schemaRevisionId) {
+      try {
+        const [topic] = await client.createTopic(name)
+        return topic
+      } catch (err) {
+        return client.topic(name)
+      }
+    }
+    const topic = client.topic(name)
     const [topicMetadata] = await topic.getMetadata()
     const topicSchemaMetadata = topicMetadata.schemaSettings
     const currentRevisionId =
@@ -134,7 +136,6 @@ export const createPublisher = <T extends Record<string, unknown>>(
             const dataBuffer = _type.toBuffer(message)
             await _topic.publish(dataBuffer)
           } else {
-            console.log(_topic)
             await _topic.publishMessage({ json: message })
           }
         },

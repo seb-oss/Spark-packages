@@ -26,18 +26,24 @@ vi.mock('@google-cloud/pubsub', () => {
     if (topics[name]) {
       return topics[name]
     }
-    const randomNumber = Math.random()
     topics[name] = {
       name,
       publishMessage: vi.fn(),
-      check: randomNumber,
     } as unknown as Topic
     return topics[name]
+  })
+
+  const schema = vi.fn().mockImplementation(() => {
+    return {
+      get: vi.fn().mockImplementation(() => ({revisionId: 'a-revision-id'}))
+    }
   })
 
   const pubsub: Partial<PubSub> = {
     createTopic: mockTopic,
     topic: mockTopic,
+    createSchema: vi.fn().mockImplementation(() => ({id: 'first-revision-id'})),
+    schema: vi.fn().mockImplementation(() => schema)
   }
 
   return {
@@ -82,9 +88,9 @@ describe('when creating a new pubsub client the internal client', () => {
     const randomNumber = Math.random()
 
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
-    topicMock.publishMessage.mockImplementation((data) => {
+    /*topicMock.publishMessage.mockImplementation((data) => {
       console.log(data)
-    })
+    })*/
     console.log('topicMock', topicMock)
 
     const client = createPublisher<ExamplePubsubChannels>({
@@ -95,12 +101,12 @@ describe('when creating a new pubsub client the internal client', () => {
       projectId: 'test',
     })
 
-    client
+    const message = { messageType: 'TYPE', created: new Date() }
+    await client
       .topic('example')
-      .publish({ messageType: 'TYPE', created: new Date() })
+      .publish(message)
 
-    console.log(topicMock)
-    expect(topicMock.publishMessage.mock.calls.length).toBe(1)
+    expect(topicMock.publishMessage).toBeCalledWith({ json: message});
     /*expect(nuvarandeTopic.publish).toBeCalledWith({
       projectId: 'test',
     })*/
