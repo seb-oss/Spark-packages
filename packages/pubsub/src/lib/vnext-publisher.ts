@@ -22,6 +22,8 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
   }
 
   const schema = await client.schema(cloudSchema.schemaId)
+
+  // TODO: schema exists method
   try {
     const data = await schema.get()
     return data
@@ -117,4 +119,8 @@ export const createPublisher = <T extends Record<string, unknown>>(
     },
   }
   return typedClient
+}
+
+const schemaExists = async (client: PubSub, schemaId: string) => {
+  const schemas = client.listSchemas()
 }
