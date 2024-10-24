@@ -22,8 +22,11 @@
     "@google-cloud/pubsub": "4.4.1",
     "@types/express": "4.17.21",
     "@types/html-escaper": "3.0.2",
+    "avsc": "^5.7.7",
     "express": "4.21.0",
-    "html-escaper": "3.0.3"
+    "html-escaper": "3.0.3",
+    "ts-pattern": "^5.5.0",
+    "zod": "^3.23.8"
   },
   "keywords": [
     "google apis",
