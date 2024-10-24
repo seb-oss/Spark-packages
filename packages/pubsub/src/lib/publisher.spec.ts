@@ -1,14 +1,14 @@
-import { type Mock, type MockedObject, describe, expect, it, vi } from 'vitest'
 import {
   PubSub,
   type Schema,
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
-import { z } from 'zod'
-import { zodToAvro } from './zod-to-avro'
-import { createPublisher } from './publisher'
 import { Type } from 'avsc'
+import { type Mock, type MockedObject, describe, expect, it, vi } from 'vitest'
+import { z } from 'zod'
+import { createPublisher } from './publisher'
+import { zodToAvro } from './zod-to-avro'
 
 const exampleSchema = z.object({
   messageType: z.string(),
@@ -52,7 +52,7 @@ vi.mock('@google-cloud/pubsub', () => {
   const pubsub: Partial<PubSub> = {
     topic: mockTopic,
     listSchemas: vi.fn().mockImplementation(() => {
-      return [{name: "schemaId"}]
+      return [{ name: 'schemaId' }]
     }),
     createSchema: vi
       .fn()

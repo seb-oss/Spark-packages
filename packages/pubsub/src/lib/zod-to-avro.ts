@@ -1,3 +1,5 @@
+import type { schema } from 'avsc'
+import { P, match } from 'ts-pattern'
 import {
   ZodArray,
   ZodBigInt,
@@ -13,8 +15,6 @@ import {
   type ZodTypeAny,
   ZodUnion,
 } from 'zod'
-import { match, P } from 'ts-pattern'
-import type { schema } from 'avsc'
 
 export const zodToAvro = (
   name: string,

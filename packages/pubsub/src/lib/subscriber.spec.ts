@@ -1,8 +1,8 @@
-import { describe, it, vi, expect, type MockedObject, afterAll } from 'vitest'
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
+import type { Schema } from 'avsc'
+import { type MockedObject, afterAll, describe, expect, it, vi } from 'vitest'
 import { z } from 'zod'
 import { createSubscriber } from './subscriber'
-import type { Schema } from 'avsc'
 
 const exampleSchema = z.object({
   messageType: z.string(),
