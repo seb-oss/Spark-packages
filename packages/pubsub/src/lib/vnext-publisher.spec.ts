@@ -51,6 +51,9 @@ vi.mock('@google-cloud/pubsub', () => {
 
   const pubsub: Partial<PubSub> = {
     topic: mockTopic,
+    listSchemas: vi.fn().mockImplementation(() => {
+      return [{name: "schemaId"}]
+    }),
     createSchema: vi
       .fn()
       .mockImplementation(() => ({ id: 'first-revision-id' })),
@@ -80,28 +83,8 @@ const zodValue = z.object(
 )
 const avroSchema = zodToAvro('ExampleMessage', zodValue)
 
-// When client is set up with project id. PUBSUB is beeing called with the correct things.
-// When topic publish is run, we can se that correct data is beeing sent to the underlying things.
-// check that _topic.publishMessage({ json: message }) has been called.
-
-// When subsribe we can trigger the call back that is beeing registered.
-
-/*
-  things to test.
-  - Initiation is run with the correct parrams.
-  - If not schema
-    - Check if publish JSON is run on the instance
-  - If schema
-    - Schema sync is run with the right params
-    - Using publish instread of publish JSON
-    - Check if schema validation is working or not when publishing
-  
-
-
-*/
-
-describe('when creating a new pubsub client the internal client', () => {
-  it('should be initiated with the configuration', async () => {
+describe('when creating a new publisher client with no schema and publish a message', () => {
+  it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
 
@@ -122,8 +105,8 @@ describe('when creating a new pubsub client the internal client', () => {
   })
 })
 
-describe('when creating a new pubsub client the internal client with a schema that exists', () => {
-  it('should be initiated with the configuration', async () => {
+describe('when creating a new publisher client with schema that does not exist and publish a message', () => {
+  it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
     const schemaMock = new PubSub().schema('schemaId') as MockedObject<Schema>
@@ -155,15 +138,11 @@ describe('when creating a new pubsub client the internal client with a schema th
   })
 })
 
-describe('when creating a new pubsub client the internal client with a schema that does not exsist', () => {
-  it('should be initiated with the configuration', async () => {
+describe('when creating a new publisher client with schema that does exist and publish a message', () => {
+  it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
     const schemaMock = new PubSub().schema('schemaId') as MockedObject<Schema>
-
-    schemaMock.get.mockImplementationOnce(() => {
-      throw new Error('SCHEMA DOES NOT EXIST')
-    })
 
     const client = createPublisher<ExamplePubsubChannels>({
       projectId: 'test',
@@ -176,7 +155,7 @@ describe('when creating a new pubsub client the internal client with a schema th
     const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client
       .topic('example', {
-        schemaId: 'schemaId',
+        schemaId: 'schemaId-does-not-exist',
         avroDefinition: JSON.stringify(exampleAvroSchema),
       })
       .publish(message)
@@ -186,7 +165,7 @@ describe('when creating a new pubsub client the internal client with a schema th
     expect(pubSubMock.schema).toBeCalled()
     expect(schemaMock.get).toBeCalled()
     expect(pubSubMock.createSchema).toBeCalledWith(
-      'schemaId',
+      'schemaId-does-not-exist',
       SchemaTypes.Avro,
       JSON.stringify(exampleAvroSchema)
     )
@@ -196,18 +175,3 @@ describe('when creating a new pubsub client the internal client with a schema th
     })
   })
 })
-
-/*
-describe('when publishing on a topic the internal client is called with the correct values', () => {
-    it('should be initiated with the configuration', async () => {
-      const client = createSubscriber<ExamplePubsubChannels>({
-        projectId: 'test',
-      })
-      client.topic("example").publish({messageType: "the type", data: "Data goes here."});
-      
-      expect(PubSub).toBeCalledWith({
-        projectId: 'test',
-      })
-    })
-  })
-*/

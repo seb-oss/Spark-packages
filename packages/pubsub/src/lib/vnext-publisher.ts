@@ -23,19 +23,19 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
 
   const schema = await client.schema(cloudSchema.schemaId)
 
-  // TODO: schema exists method
-  try {
-    const data = await schema.get()
-    return data
-  } catch (err) {
-    await client.createSchema(
-      cloudSchema.schemaId,
-      SchemaTypes.Avro,
-      cloudSchema.avroDefinition
-    )
+  const exits = await schemaExists(client, cloudSchema.schemaId)
+  if (exits) {
     const data = await schema.get()
     return data
   }
+
+  await client.createSchema(
+    cloudSchema.schemaId,
+    SchemaTypes.Avro,
+    cloudSchema.avroDefinition
+  )
+  const data = await schema.get()
+  return data
 }
 
 const createOrGetTopic = async (
@@ -122,5 +122,10 @@ export const createPublisher = <T extends Record<string, unknown>>(
 }
 
 const schemaExists = async (client: PubSub, schemaId: string) => {
-  const schemas = client.listSchemas()
+  for await (const s of client.listSchemas()) {
+    if (s.name === schemaId) {
+      return true
+    }
+  }
+  return false
 }
