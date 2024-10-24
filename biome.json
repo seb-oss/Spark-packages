@@ -31,7 +31,6 @@
       }
     }
   },
-
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
