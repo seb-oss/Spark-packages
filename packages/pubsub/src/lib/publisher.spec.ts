@@ -7,7 +7,7 @@ import {
 } from '@google-cloud/pubsub'
 import { z } from 'zod'
 import { zodToAvro } from './zod-to-avro'
-import { createPublisher } from './vnext-publisher'
+import { createPublisher } from './publisher'
 import { Type } from 'avsc'
 
 const exampleSchema = z.object({
