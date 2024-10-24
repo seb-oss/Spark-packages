@@ -7,6 +7,7 @@
     "changeset": "changeset",
     "dev": "turbo dev",
     "format": "biome format --write",
+    "lint:write": "biome check --write",
     "generate:package": "turbo gen package",
     "lint": "turbo lint",
     "lint:watch": "turbo watch lint",
@@ -22,7 +23,7 @@
     "@changesets/cli": "2.27.5"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.0",
+    "@biomejs/biome": "1.9.4",
     "@turbo/gen": "2.0.1",
     "@types/node": "20.14.2",
     "@vitest/coverage-v8": "1.6.0",
