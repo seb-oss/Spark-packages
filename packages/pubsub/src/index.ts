@@ -1,6 +1,4 @@
-export { createPubsub } from './lib/pubsub'
-export { pushRouter } from './lib/router'
+export { createPublisher, type PublisherClient } from './lib/publisher'
+export { createSubscriber, type PubSubOptions, type SubscriptionClient, type TypedMessage } from './lib/subscriber'
+export { zodToAvro} from './lib/zod-to-avro'
 
-export type { ClientConfig } from './lib/client'
-export type { PubSubTopic } from './lib/pubsub'
-export type { PubSubHeaders, Unsubscriber } from './lib/subscriber'
