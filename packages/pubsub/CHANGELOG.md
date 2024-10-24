@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.0.0
+
+### Major Changes
+
+- 9265ac7: A new two part client with a publisher and a subscriber
+
 ## 0.6.3
 
 ### Patch Changes
