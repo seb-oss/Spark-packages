@@ -1,16 +1,18 @@
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
 import type { Schema } from 'avsc'
 import { type MockedObject, afterAll, describe, expect, it, vi } from 'vitest'
-import { z } from 'zod'
 import { createSubscriber } from './subscriber'
 
-const exampleSchema = z.object({
-  messageType: z.string(),
-  created: z.date(),
-  data: z.string().optional(),
-})
+type ExampleMessage = {
+  messageType: string
+  message: string
+}
 
-type ExampleMessage = z.infer<typeof exampleSchema>
+const message = {
+  messageType: 'type of message',
+  message: 'message data',
+} satisfies ExampleMessage
+
 type ExamplePubsubChannels = {
   example: ExampleMessage
 }
@@ -70,15 +72,6 @@ vi.mock('@google-cloud/pubsub', () => {
     },
   }
 })
-
-const description = 'This is an example message'
-const zodValue = z.object(
-  {
-    messageType: z.string(),
-    message: z.number(),
-  },
-  { description }
-)
 
 describe('subscriber', () => {
   const topicName = 'example'
