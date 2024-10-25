@@ -1,5 +1,6 @@
 import {
   type ClientConfig,
+  Encodings,
   type ISchema,
   PubSub,
   SchemaTypes,
@@ -43,7 +44,10 @@ const createOrGetTopic = async (
   name: string,
   schemaData?: ISchema
 ) => {
-  const [topic] = await client.topic(name).get({ autoCreate: true })
+
+  const [topic] = await client.topic(name).get({ autoCreate: true });
+
+  topic.setMetadata
 
   if (!schemaData) {
     return topic
@@ -53,13 +57,12 @@ const createOrGetTopic = async (
   const topicSchemaMetadata = topicMetadata.schemaSettings
 
   await topic.setMetadata({
-    ...topicMetadata,
     schemaSettings: {
-      encoding: 'JSON',
+      schema: schemaData.name,
+      encoding: Encodings.Json,
       firstRevisionId:
         topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
       lastRevisionId: schemaData.revisionId,
-      schema: schemaData.name,
     },
   })
 
