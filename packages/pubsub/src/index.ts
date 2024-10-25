@@ -5,4 +5,3 @@ export {
   type SubscriptionClient,
   type TypedMessage,
 } from './lib/subscriber'
-export { zodToAvro } from './lib/zod-to-avro'
