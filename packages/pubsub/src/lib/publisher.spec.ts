@@ -6,20 +6,35 @@ import {
 } from '@google-cloud/pubsub'
 import { Type } from 'avsc'
 import { type Mock, type MockedObject, describe, expect, it, vi } from 'vitest'
-import { z } from 'zod'
 import { createPublisher } from './publisher'
-import { zodToAvro } from './zod-to-avro'
 
-const exampleSchema = z.object({
-  messageType: z.string(),
-  created: z.string(),
-  data: z.string().optional(),
-})
+type ExampleMessage = {
+  messageType: string
+  message: string
+}
 
-type ExampleMessage = z.infer<typeof exampleSchema>
-const exampleAvroSchema = zodToAvro('Example', exampleSchema, {
-  namespace: 'com.acme.example',
-})
+const exampleAvroSchema = `
+{
+  "type": "record",
+  "name": "ExampleMessage",
+  "namespace": "com.example",
+  "fields": [
+    {
+      "name": "messageType",
+      "type": "string"
+    },
+    {
+      "name": "message",
+      "type": "string"
+    }
+  ]
+}
+`
+
+const message = {
+  messageType: 'type of message',
+  message: 'message data',
+} satisfies ExampleMessage
 
 type ExamplePubsubChannels = {
   example: ExampleMessage
@@ -74,14 +89,6 @@ vi.mock('@google-cloud/pubsub', () => {
 let subscriberFn: (args: { ack: Mock; nack: Mock; data: string }) => void
 
 const description = 'This is an example message'
-const zodValue = z.object(
-  {
-    messageType: z.string(),
-    message: z.number(),
-  },
-  { description }
-)
-const avroSchema = zodToAvro('ExampleMessage', zodValue)
 
 describe('when creating a new publisher client with no schema and publish a message', () => {
   it('should call the underlaying api with the correct values and message format', async () => {
@@ -96,7 +103,6 @@ describe('when creating a new publisher client with no schema and publish a mess
       projectId: 'test',
     })
 
-    const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client.topic('example').publish(message)
 
     expect(pubSubMock.topic).toBeCalledWith('example')
@@ -119,11 +125,10 @@ describe('when creating a new publisher client with schema that does not exist a
       projectId: 'test',
     })
 
-    const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client
       .topic('example', {
         schemaId: 'schemaId',
-        avroDefinition: JSON.stringify(exampleAvroSchema),
+        avroDefinition: exampleAvroSchema,
       })
       .publish(message)
     const schemaType = Type.forSchema(exampleAvroSchema)
@@ -152,7 +157,6 @@ describe('when creating a new publisher client with schema that does exist and p
       projectId: 'test',
     })
 
-    const message = { messageType: 'TYPE', created: new Date().toISOString() }
     await client
       .topic('example', {
         schemaId: 'schemaId-does-not-exist',

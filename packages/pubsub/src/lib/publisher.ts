@@ -21,7 +21,7 @@ const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
     )
   }
 
-  const schema = await client.schema(cloudSchema.schemaId)
+  const schema = client.schema(cloudSchema.schemaId)
 
   const exits = await schemaExists(client, cloudSchema.schemaId)
   if (exits) {
@@ -123,7 +123,7 @@ export const createPublisher = <T extends Record<string, unknown>>(
 
 const schemaExists = async (client: PubSub, schemaId: string) => {
   for await (const s of client.listSchemas()) {
-    if (s.name === schemaId) {
+    if (s.name?.endsWith(`/${schemaId}`)) {
       return true
     }
   }
