@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.1.0
+
+### Minor Changes
+
+- aca855c: Fixes bug that did not check if a schema exists in the correct way.
+
 ## 1.0.0
 
 ### Major Changes
