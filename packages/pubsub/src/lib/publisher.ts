@@ -57,7 +57,7 @@ const createOrGetTopic = async (
   await topic.setMetadata({
     schemaSettings: {
       schema: schemaData.name,
-      encoding: "JSON",
+      encoding: 'JSON',
       firstRevisionId:
         topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
       lastRevisionId: schemaData.revisionId,
