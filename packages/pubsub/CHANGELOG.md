@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.1.1
+
+### Patch Changes
+
+- 3cd36af: Changes what data is sent when updating metadata for a topic.
+
 ## 1.1.0
 
 ### Minor Changes
