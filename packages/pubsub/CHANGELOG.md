@@ -1,5 +1,12 @@
 # @sebspark/pubsub
 
+## 1.1.1
+
+### Patch Changes
+
+- e8d34a4: Only associate schema when topic are created
+- 3cd36af: Changes what data is sent when updating metadata for a topic.
+
 ## 1.1.0
 
 ### Minor Changes
