@@ -1,5 +1,6 @@
 import {
   type ClientConfig,
+  Encodings,
   type ISchema,
   PubSub,
   SchemaTypes,
@@ -43,24 +44,17 @@ const createOrGetTopic = async (
   name: string,
   schemaData?: ISchema
 ) => {
-  const [topic] = await client.topic(name).get({ autoCreate: true })
-
-  topic.setMetadata
-
-  if (!schemaData) {
+  const [exists] = await client.topic(name).exists()
+  if (exists) {
+    const [topic] = await client.topic(name).get()
     return topic
   }
 
-  const [topicMetadata] = await topic.getMetadata()
-  const topicSchemaMetadata = topicMetadata.schemaSettings
-
-  await topic.setMetadata({
+  const [topic] = await client.createTopic({
+    name: name,
     schemaSettings: {
-      schema: schemaData.name,
-      encoding: 'JSON',
-      firstRevisionId:
-        topicSchemaMetadata?.firstRevisionId ?? schemaData.revisionId,
-      lastRevisionId: schemaData.revisionId,
+      schema: schemaData?.name,
+      encoding: Encodings.Json,
     },
   })
 

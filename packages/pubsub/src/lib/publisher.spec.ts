@@ -52,6 +52,7 @@ vi.mock('@google-cloud/pubsub', () => {
       get: vi.fn().mockImplementation(() => [topics[name]]),
       getMetadata: vi.fn().mockImplementation(() => [{ schemaSettings: {} }]),
       setMetadata: vi.fn(),
+      exists: vi.fn().mockImplementation(() => [true]),
     } as unknown as Topic
     return topics[name]
   })
@@ -69,6 +70,7 @@ vi.mock('@google-cloud/pubsub', () => {
     listSchemas: vi.fn().mockImplementation(() => {
       return [{ name: 'schemaId' }]
     }),
+    createTopic: mockTopic,
     createSchema: vi
       .fn()
       .mockImplementation(() => ({ id: 'first-revision-id' })),
@@ -85,8 +87,6 @@ vi.mock('@google-cloud/pubsub', () => {
     },
   }
 })
-
-let subscriberFn: (args: { ack: Mock; nack: Mock; data: string }) => void
 
 const description = 'This is an example message'
 
@@ -106,7 +106,7 @@ describe('when creating a new publisher client with no schema and publish a mess
     await client.topic('example').publish(message)
 
     expect(pubSubMock.topic).toBeCalledWith('example')
-    expect(topicMock.get).toBeCalledWith({ autoCreate: true })
+    expect(topicMock.get).toBeCalledWith()
     expect(topicMock.publishMessage).toBeCalledWith({ json: message })
   })
 })
@@ -136,7 +136,7 @@ describe('when creating a new publisher client with schema that does not exist a
     expect(pubSubMock.topic).toBeCalledWith('example')
     expect(pubSubMock.schema).toBeCalled()
     expect(schemaMock.get).toBeCalled()
-    expect(topicMock.get).toBeCalledWith({ autoCreate: true })
+    expect(topicMock.get).toBeCalledWith()
     expect(topicMock.publishMessage).toBeCalledWith({
       data: schemaType.toBuffer(message),
     })
@@ -173,7 +173,7 @@ describe('when creating a new publisher client with schema that does exist and p
       SchemaTypes.Avro,
       exampleAvroSchema
     )
-    expect(topicMock.get).toBeCalledWith({ autoCreate: true })
+    expect(topicMock.get).toBeCalledWith()
     expect(topicMock.publishMessage).toBeCalledWith({
       data: schemaType.toBuffer(message),
     })
