@@ -4,8 +4,7 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
-import { Type } from 'avsc'
-import { type Mock, type MockedObject, describe, expect, it, vi } from 'vitest'
+import { type MockedObject, describe, expect, it, vi } from 'vitest'
 import { createPublisher } from './publisher'
 
 type ExampleMessage = {
@@ -131,15 +130,11 @@ describe('when creating a new publisher client with schema that does not exist a
         avroDefinition: exampleAvroSchema,
       })
       .publish(message)
-    const schemaType = Type.forSchema(JSON.parse(exampleAvroSchema))
-
     expect(pubSubMock.topic).toBeCalledWith('example')
     expect(pubSubMock.schema).toBeCalled()
     expect(schemaMock.get).toBeCalled()
     expect(topicMock.get).toBeCalledWith()
-    expect(topicMock.publishMessage).toBeCalledWith({
-      data: schemaType.toBuffer(message),
-    })
+    expect(topicMock.publishMessage).toBeCalledWith({ json: message })
   })
 })
 
@@ -163,8 +158,6 @@ describe('when creating a new publisher client with schema that does exist and p
         avroDefinition: exampleAvroSchema,
       })
       .publish(message)
-    const schemaType = Type.forSchema(JSON.parse(exampleAvroSchema))
-
     expect(pubSubMock.topic).toBeCalledWith('example')
     expect(pubSubMock.schema).toBeCalled()
     expect(schemaMock.get).toBeCalled()
@@ -174,8 +167,6 @@ describe('when creating a new publisher client with schema that does exist and p
       exampleAvroSchema
     )
     expect(topicMock.get).toBeCalledWith()
-    expect(topicMock.publishMessage).toBeCalledWith({
-      data: schemaType.toBuffer(message),
-    })
+    expect(topicMock.publishMessage).toBeCalledWith({ json: message })
   })
 })
