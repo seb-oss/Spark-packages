@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.1.2
+
+### Patch Changes
+
+- eb0180c: Only use JSON for sending messages
+
 ## 1.1.1
 
 ### Patch Changes

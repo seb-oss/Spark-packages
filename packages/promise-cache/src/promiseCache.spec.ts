@@ -136,6 +136,83 @@ describe('PromiseCache', () => {
     expect(mockDelegate).toHaveBeenCalledTimes(2)
   })
 
+  it('should get ttl from response if key is provided', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+      ttl: '112312',
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey4', mockDelegate, undefined, 'ttl')
+
+    // Cache should be set with the TTL from the response
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey4', {
+      timestamp: expect.any(Number),
+      ttl: 112312,
+      value: {
+        value: 42,
+        ttl: '112312',
+      },
+    })
+  })
+
+  it('should ignore ttl from response if parse fails', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+      ttl: '112adsa3a12',
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey5', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey5', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: {
+        value: 42,
+        ttl: '112adsa3a12',
+      },
+    })
+  })
+
+  it('should ignore ttl from response if key is not present', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey6', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey6', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: {
+        value: 42,
+      },
+    })
+  })
+
+  it('should ignore ttl from response if response is not an object', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue(42)
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey7', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey7', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: 42,
+    })
+  })
+
   it('should not differentiate between keys with different casing', async () => {
     const mockDelegate1 = vi.fn()
     const mockDelegate2 = vi.fn()
@@ -148,7 +225,7 @@ describe('PromiseCache', () => {
     expect(value1 === value2).toBeTruthy()
   })
 
-  it('should not differentiate between keys with different casing', async () => {
+  it('should differentiate between keys with different casing', async () => {
     const mockDelegate1 = vi.fn()
     const mockDelegate2 = vi.fn()
     mockDelegate1.mockResolvedValue(30)
