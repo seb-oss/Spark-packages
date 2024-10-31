@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.2.0
+
+### Minor Changes
+
+- 34eab98: Subscriptions now automatically ack messages if not overriden.
+
 ## 1.1.2
 
 ### Patch Changes
