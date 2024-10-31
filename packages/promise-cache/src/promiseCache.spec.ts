@@ -148,7 +148,7 @@ describe('PromiseCache', () => {
     expect(value1 === value2).toBeTruthy()
   })
 
-  it('should not differentiate between keys with different casing', async () => {
+  it('should differentiate between keys with different casing', async () => {
     const mockDelegate1 = vi.fn()
     const mockDelegate2 = vi.fn()
     mockDelegate1.mockResolvedValue(30)
