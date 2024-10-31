@@ -46,7 +46,10 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
   ): {
     subscribe<M extends T[K]>(
       name: string,
-      callback: (message: TypedMessage<M>) => void,
+      callbacks: {
+        onMessage: (message: TypedMessage<M>) => Promise<void>
+        onError?: (message: TypedMessage<M>, error: unknown) => Promise<void>
+      },
       options?: PubSubOptions
     ): Promise<Subscription>
   }
@@ -55,6 +58,7 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
 export type PubSubOptions = {
   expirationPolicy: number
   messageRetentionDuration: number
+  autoAck?: boolean
 }
 
 export const createSubscriber = <T extends Record<string, unknown>>(
@@ -69,7 +73,7 @@ export const createSubscriber = <T extends Record<string, unknown>>(
       return {
         subscribe: async (
           subscriptionName,
-          callback,
+          callbacks,
           options?: PubSubOptions
         ) => {
           if (!_topic) {
@@ -83,9 +87,21 @@ export const createSubscriber = <T extends Record<string, unknown>>(
             options
           )
 
-          subscription.on('message', (msg) => {
+          subscription.on('message', async (msg) => {
             const data = JSON.parse(msg.data.toString('utf8'))
-            callback(Object.assign(msg, { data }))
+            if (options?.autoAck === undefined || options.autoAck === true) {
+              try {
+                await callbacks.onMessage(Object.assign(msg, { data }))
+                msg.ack()
+              } catch (error) {
+                msg.nack()
+                callbacks.onError
+                  ? callbacks.onError(Object.assign(msg, { data }), error)
+                  : console.error(error)
+              }
+            } else {
+              await callbacks.onMessage(Object.assign(msg, { data }))
+            }
           })
 
           return subscription

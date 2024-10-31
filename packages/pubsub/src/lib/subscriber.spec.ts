@@ -35,7 +35,7 @@ vi.mock('@google-cloud/pubsub', () => {
       name,
       get: vi.fn().mockImplementation(() => [topics[name]]),
       createSubscription: vi.fn().mockImplementation(() => [subscriptionMock]),
-      subscription: vi.fn().mockImplementation((name) => {
+      subscription: vi.fn().mockImplementation((name: string) => {
         if (name === 'existing-subscription') {
           subscriptionExists = true
         }
@@ -84,7 +84,9 @@ describe('subscriber', () => {
       projectId: 'test',
     })
 
-    await subscriber.topic('example').subscribe(subscriptionName, () => {})
+    await subscriber
+      .topic('example')
+      .subscribe(subscriptionName, { onMessage: () => Promise.resolve() })
 
     expect(topicMock.createSubscription).toHaveBeenCalled()
     expect(topicMock.createSubscription).toHaveBeenCalledWith(
@@ -107,9 +109,9 @@ describe('subscriber', () => {
 
     topicMock.createSubscription.mockClear()
 
-    await subscriber
-      .topic('example')
-      .subscribe('existing-subscription', () => {})
+    await subscriber.topic('example').subscribe('existing-subscription', {
+      onMessage: () => Promise.resolve(),
+    })
 
     expect(topicMock.subscription).toHaveBeenCalled()
     expect(topicMock.createSubscription.mock.calls.length).toBe(0)
