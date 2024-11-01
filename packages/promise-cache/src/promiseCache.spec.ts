@@ -150,7 +150,7 @@ describe('PromiseCache', () => {
     // Cache should be set with the TTL from the response
     expect(mockedPersistorSet).toHaveBeenCalledWith('testkey4', {
       timestamp: expect.any(Number),
-      ttl: 112312,
+      ttl: 112312000,
       value: {
         value: 42,
         ttl: '112312',
