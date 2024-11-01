@@ -120,14 +120,14 @@ export class PromiseCache<U> {
    * @param key Cache key.
    * @param delegate The function to execute if the key is not in the cache.
    * @param ttlInSeconds Time to live in seconds.
-   * @param ttlKey The key in the response object that contains the TTL.
+   * @param ttlKeyInSeconds The key in the response object that contains the TTL.
    * @returns The result of the delegate function.
    */
   async wrap(
     key: string,
     delegate: () => Promise<U>,
     ttlInSeconds?: number,
-    ttlKey?: string
+    ttlKeyInSeconds?: string
   ): Promise<U> {
     const now = Date.now()
 
@@ -141,7 +141,7 @@ export class PromiseCache<U> {
     const cached = await this.persistor.get<U>(effectiveKey)
 
     if (cached) {
-      if (!ttlKey && cached.ttl !== effectiveTTL) {
+      if (!ttlKeyInSeconds && cached.ttl !== effectiveTTL) {
         console.error(
           `WARNING: TTL mismatch for key: ${effectiveKey}. It is recommended to use the same TTL for the same key.`
         )
@@ -154,9 +154,10 @@ export class PromiseCache<U> {
     const response = await delegate()
 
     // Get the TTL from the response if a TTL key is provided.
-    if (ttlKey) {
+    if (ttlKeyInSeconds) {
       const responseDict = response as Record<string, unknown>
-      effectiveTTL = Number(responseDict[ttlKey] as string) || effectiveTTL // Fall back to the default TTL if the TTL key is not found.
+      const responseTTL = Number(responseDict[ttlKeyInSeconds] as string) * 1000
+      effectiveTTL = responseTTL || effectiveTTL // Fall back to the default TTL if the TTL key is not found.
     }
 
     this.persistor.set(effectiveKey, {
