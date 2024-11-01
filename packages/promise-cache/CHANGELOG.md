@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.1.1
+
+### Patch Changes
+
+- df6468d: ttl in response should be in seconds
+
 ## 2.1.0
 
 ### Minor Changes
