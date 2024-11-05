@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.4.0
+
+### Minor Changes
+
+- 3863ff2: Publish Avro Json to PubSub
+
 ## 1.3.1
 
 ### Patch Changes
