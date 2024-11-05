@@ -78,7 +78,6 @@ export const createSubscriber = <T extends Record<string, unknown>>(
           if (!_topic) {
             _topic = client.topic(name as string)
           }
-          
           const subscription = _topic.subscription(subscriptionName)
           subscription.on('message', async (msg) => {
             const data = JSON.parse(msg.data.toString('utf8'))
