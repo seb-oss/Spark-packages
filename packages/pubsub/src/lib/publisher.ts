@@ -105,13 +105,7 @@ export const createPublisher = <T extends Record<string, unknown>>(
 
           if (_type) {
             const data = Buffer.from(_type.toString(json))
-            try {
-              await _topic.publishMessage({ data })
-              console.log('publish message used!')
-            } catch (error) {
-              await _topic.publish(data)
-              console.log('publish used')
-            }
+            await _topic.publishMessage({ data })
           } else {
             await _topic.publishMessage({ json })
           }
