@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.3.0
+
+### Minor Changes
+
+- 550801c: Use avro when there is a schema associated with the topic
+
 ## 1.2.0
 
 ### Minor Changes
