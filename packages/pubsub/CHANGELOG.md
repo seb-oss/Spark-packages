@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.0
+
+### Minor Changes
+
+- 7a037e0: Subscribe does not create a subscription. Use initiate.
+
 ## 1.4.0
 
 ### Minor Changes
