@@ -6,6 +6,7 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
+import { Type } from 'avsc'
 
 const schemaIdPattern = /^(?!goog)[a-zA-Z][a-zA-Z0-9-._~%+]{2,254}$/
 
@@ -75,6 +76,7 @@ export const createPublisher = <T extends Record<string, unknown>>(
 ): PublisherClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
   let _topic: Topic
+  let _type: Type
   const ensureInitiated = async (
     name: string | number | symbol,
     schema: CloudSchema | undefined
@@ -87,6 +89,10 @@ export const createPublisher = <T extends Record<string, unknown>>(
 
       _topic = await createOrGetTopic(client, name as string)
     }
+    if (schema && !_type) {
+      const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
+      _type = schemaType
+    }
   }
   const typedClient: PublisherClient<T> = {
     topic: (name, schema) => {
@@ -96,7 +102,13 @@ export const createPublisher = <T extends Record<string, unknown>>(
         },
         publish: async (json) => {
           await ensureInitiated(name, schema)
-          await _topic.publishMessage({ json })
+
+          if (_type) {
+            const data = _type.toBuffer(json)
+            await _topic.publishMessage({ data })
+          } else {
+            await _topic.publishMessage({ json })
+          }
         },
       }
     },
