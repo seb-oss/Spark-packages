@@ -77,24 +77,6 @@ describe('subscriber', () => {
   const topicName = 'example'
   const subscriptionName = 'example-subscription'
 
-  it('creates a new subscription if it does not exist', async () => {
-    const topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
-
-    const subscriber = createSubscriber<ExamplePubsubChannels>({
-      projectId: 'test',
-    })
-
-    await subscriber
-      .topic('example')
-      .subscribe(subscriptionName, { onMessage: () => Promise.resolve() })
-
-    expect(topicMock.createSubscription).toHaveBeenCalled()
-    expect(topicMock.createSubscription).toHaveBeenCalledWith(
-      `example_${subscriptionName}`,
-      expect.any(Object)
-    )
-  })
-
   it('uses an existing subscription if it exists', async () => {
     const topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
     const subscriptionMock = topicMock.subscription(

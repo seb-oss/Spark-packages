@@ -7,7 +7,7 @@ import {
   type Topic,
 } from '@google-cloud/pubsub'
 
-const createOrGetSubscription = async (
+const makeSureSubacriptionExists = async (
   topic: Topic,
   name: string,
   options?: PubSubOptions
@@ -26,14 +26,10 @@ const createOrGetSubscription = async (
   const [exists] = await topic.subscription(name).exists()
 
   if (exists) {
-    return topic.subscription(name)
+    return
   }
 
-  const [subscription] = await topic.createSubscription(
-    name,
-    createSubscriptionOptions
-  )
-  return subscription
+  await topic.createSubscription(name, createSubscriptionOptions)
 }
 
 export type TypedMessage<T> = Omit<Message, 'data'> & {
@@ -52,6 +48,10 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
       },
       options?: PubSubOptions
     ): Promise<Subscription>
+    initiate<M extends T[K]>(
+      name: string,
+      options?: PubSubOptions
+    ): Promise<void>
   }
 }
 
@@ -71,22 +71,15 @@ export const createSubscriber = <T extends Record<string, unknown>>(
       let _topic: Topic
 
       return {
-        subscribe: async (
-          subscriptionName,
-          callbacks,
-          options?: PubSubOptions
-        ) => {
+        initiate: async (subscriptionName, options) => {
+          await makeSureSubacriptionExists(_topic, subscriptionName, options)
+        },
+        subscribe: async (subscriptionName, callbacks, options) => {
           if (!_topic) {
             _topic = client.topic(name as string)
           }
-          const fullName = `${name as string}_${subscriptionName}`
-
-          const subscription = await createOrGetSubscription(
-            _topic,
-            fullName,
-            options
-          )
-
+          
+          const subscription = _topic.subscription(subscriptionName)
           subscription.on('message', async (msg) => {
             const data = JSON.parse(msg.data.toString('utf8'))
             if (options?.autoAck === undefined || options.autoAck === true) {
