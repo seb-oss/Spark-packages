@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -15,7 +15,8 @@
       "ts-extensions.ts",
       "typescriptExtensions.ts",
       "openSearchTypes.ts",
-      "openapi-core/src/types.ts"
+      "openapi-core/src/types.ts",
+      "schemas/**"
     ]
   },
   "formatter": {

@@ -1,5 +1,4 @@
 import { addDays, subDays } from 'date-fns'
-import type { SebMarket } from './types'
 
 const formatter = new Intl.DateTimeFormat('sv-SE', {
   dateStyle: 'short',
@@ -116,7 +115,7 @@ export function independenceDays(year: number) {
   }
 }
 
-export function marketHoliday(mic: SebMarket, year: number) {
+export function marketHoliday(mic: string, year: number) {
   switch (mic) {
     case 'XCSE':
       switch (year) {
@@ -137,7 +136,7 @@ export function marketHoliday(mic: SebMarket, year: number) {
   }
 }
 
-export function marketHalfdays(mic: SebMarket, year: number) {
+export function marketHalfdays(mic: string, year: number) {
   const industryVacation = Array.from({ length: 31 }, (_, i) => i + 1).map(
     (d) => `${year}-08-${d.toString().padStart(2, '0')}`
   )
@@ -177,6 +176,6 @@ export function convertTime(hour: number, minute: number) {
   return `${formattedHour}:${formattedMinute}`
 }
 
-export function normalizeMarket(mic: SebMarket) {
-  return mic.toUpperCase() as SebMarket
+export function normalizeMarket(mic: string) {
+  return mic.toUpperCase()
 }

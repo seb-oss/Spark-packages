@@ -47,7 +47,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: ['foo', 'bar'],
       }
-      const expected = await format(`export type Values = 'foo' | 'bar'`)
+      const expected = await format(`
+        export const VALUES_VALUES = ['foo', 'bar'] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
@@ -58,7 +61,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: [1, 2, 3],
       }
-      const expected = await format('export type Values = 1 | 2 | 3')
+      const expected = await format(`
+        export const VALUES_VALUES = [1, 2, 3] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
@@ -410,7 +416,7 @@ describe('typescript generator', () => {
 
       const expected = await format(`
         export type Details = StockDetails | FundDetails
-        
+
         export type DetailsDiscriminator = {
           STOCK: StockDetails
           FUND: FundDetails
@@ -434,6 +440,92 @@ describe('typescript generator', () => {
       const formatted = await format(generated)
 
       expect(formatted).toEqual(expected)
+    })
+    it('generates correctly array items when using oneOf', async () => {
+      const type: ArrayType = {
+        type: 'array',
+        name: 'DetailsList',
+        items: {
+          type: 'object',
+          properties: [],
+          oneOf: [{ type: 'StockDetails' }, { type: 'FundDetails' }],
+        },
+      }
+
+      const expected = await format(`
+        export type DetailsList = (StockDetails | FundDetails)[]
+        `)
+      const generated = generateType(type)
+      const formatted = await format(generated)
+
+      expect(formatted).toEqual(expected)
+    })
+    it('generates an object type with only record', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'Card' } }],
+      }
+
+      const expected = await format('export type User = Record<string, Card>')
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates an object type with only record of any type', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'undefined' } }],
+      }
+
+      const expected = await format(
+        'export type User = Record<string, unknown>'
+      )
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates an object type with a record property', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          {
+            name: 'dependencies',
+            description: 'Health status of external dependencies',
+            type: [
+              {
+                type: 'object',
+                name: undefined,
+                description: 'Health status of external dependencies',
+                properties: [],
+                allOf: [
+                  {
+                    type: 'record',
+                    items: { name: undefined, type: 'DependencyHealth' },
+                  },
+                ],
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+
+      const expected = await format(`export type Generic = {
+        id: string
+        /**
+         * Health status of external dependencies
+         */
+        dependencies: Record<string, DependencyHealth>
+      }`)
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
     })
   })
   describe('generateResponseBody', () => {
@@ -479,7 +571,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'get'> & {
         get: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<APIResponse<Serialized<User>[]>>}
@@ -550,7 +642,7 @@ describe('typescript generator', () => {
           /**
            * User
            * Gets user
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {Object} args.params - Path parameters for the request.
@@ -625,7 +717,7 @@ describe('typescript generator', () => {
           /**
            * User
            * Gets user
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {Object} args.headers - Headers for the request.
@@ -663,7 +755,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<APIResponse<Serialized<User>[]>>}
@@ -700,7 +792,7 @@ describe('typescript generator', () => {
       export type UserClient = Pick<BaseClient, 'post'> & {
         post: {
           /**
-           * 
+           *
            * @param {string} url
            * @param {Object} args - The arguments for the request.
            * @param {User} args.body - Request body for the request.
@@ -758,7 +850,7 @@ describe('typescript generator', () => {
             /**
              * Users
              * Lists users
-             * 
+             *
              * @returns {Promise<[200, APIResponse<PartiallySerialized<User>[]>]>}
              */
             handler: (args: Req) => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
@@ -768,7 +860,7 @@ describe('typescript generator', () => {
         '/users/:id': {
           get: {
             /**
-             * 
+             *
              * @param {Object} args - The arguments for the request.
              * @param {Object} args.params - Path parameters for the request.
              * @param {string} args.params.id
@@ -855,7 +947,7 @@ describe('typescript generator', () => {
           /**
            * Foo
            * Get foo
-           * 
+           *
            * @param {string} url
            * @param {RequestOptions} [opts] - Optional.
            * @returns {Promise<undefined>}

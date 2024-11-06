@@ -1,5 +1,11 @@
 # @sebspark/tracing
 
+## 0.0.3
+
+### Patch Changes
+
+- 40dc1ff: filter pg connect spans
+
 ## 0.0.2
 
 ### Patch Changes

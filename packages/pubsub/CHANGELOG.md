@@ -1,5 +1,66 @@
 # @sebspark/pubsub
 
+## 1.5.0
+
+### Minor Changes
+
+- 7a037e0: Subscribe does not create a subscription. Use initiate.
+
+## 1.4.0
+
+### Minor Changes
+
+- 3863ff2: Publish Avro Json to PubSub
+
+## 1.3.1
+
+### Patch Changes
+
+- d732bd9: Testing publishMessage and message
+
+## 1.3.0
+
+### Minor Changes
+
+- 550801c: Use avro when there is a schema associated with the topic
+
+## 1.2.0
+
+### Minor Changes
+
+- 34eab98: Subscriptions now automatically ack messages if not overriden.
+
+## 1.1.2
+
+### Patch Changes
+
+- eb0180c: Only use JSON for sending messages
+
+## 1.1.1
+
+### Patch Changes
+
+- e8d34a4: Only associate schema when topic are created
+- 3cd36af: Changes what data is sent when updating metadata for a topic.
+
+## 1.1.0
+
+### Minor Changes
+
+- aca855c: Fixes bug that did not check if a schema exists in the correct way.
+
+## 1.0.0
+
+### Major Changes
+
+- 9265ac7: A new two part client with a publisher and a subscriber
+
+## 0.6.3
+
+### Patch Changes
+
+- ad4311e: Updated vulnerable express dependency
+
 ## 0.6.2
 
 ### Patch Changes

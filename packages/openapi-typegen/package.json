@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-typegen",
-  "version": "1.8.4",
+  "version": "1.11.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,8 +28,7 @@
     "chalk": "<5",
     "change-case": "4.1.2",
     "prettier": "3.3.2",
-    "yaml": "2.4.3",
-    "yargs": "17.7.2",
-    "yarn": "1.22.22"
+    "yaml": "2.5.0",
+    "yargs": "17.7.2"
   }
 }

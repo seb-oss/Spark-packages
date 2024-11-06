@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/trading-hours",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,7 +13,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "tsconfig": "*"
