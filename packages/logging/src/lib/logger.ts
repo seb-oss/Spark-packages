@@ -104,9 +104,7 @@ export const getLogger = ({
       format.printf((info) => {
         return `[${info.timestamp}] ${info.level}: ${info.message}`
       }),
-      consoleFormattingOptions.stack
-        ? format.errors({ stack: true })
-        : format.simple()
+      format.errors({ stack: consoleFormattingOptions.stack })
     )
 
     const loggingWinstonSettings: Options = {

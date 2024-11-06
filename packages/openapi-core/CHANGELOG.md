@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.5.3
+
+### Patch Changes
+
+- beda07a: add custom error response to err.cause
+
 ## 1.5.2
 
 ### Patch Changes

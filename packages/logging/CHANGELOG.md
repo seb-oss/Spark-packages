@@ -1,5 +1,29 @@
 # @sebspark/logging
 
+## 1.4.0
+
+### Minor Changes
+
+- 639c691: bump some dependencies to non-vulnerable versions
+
+## 1.3.0
+
+### Minor Changes
+
+- 265a850: upgrade express to 5.0.0
+
+## 1.2.4
+
+### Patch Changes
+
+- 0a38227: bug fix stack false no longer clears formatting
+
+## 1.2.3
+
+### Patch Changes
+
+- 4b4b691: fix express vulnerability in logging package
+
 ## 1.2.2
 
 ### Patch Changes

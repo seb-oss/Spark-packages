@@ -1,4 +1,4 @@
-import { pascalCase } from 'change-case'
+import { constantCase, pascalCase } from 'change-case'
 import type {
   ArrayType,
   CustomType,
@@ -9,6 +9,7 @@ import type {
   ObjectType,
   PrimitiveType,
   Property,
+  RecordType,
   ResponseBody,
   TypeDefinition,
   UnknownType,
@@ -31,6 +32,10 @@ export const generateType = (parsed: TypeDefinition): string => {
     }
     case 'object': {
       type = generateObject(parsed as ObjectType)
+      break
+    }
+    case 'record': {
+      type = generateRecord(parsed as RecordType)
       break
     }
     case 'unknown': {
@@ -175,6 +180,12 @@ export const generateObject = (parsed: ObjectType): string => {
   return lines.join('\n')
 }
 
+export const generateRecord = (parsed: RecordType): string => {
+  const itemType =
+    parsed.items.type === 'undefined' ? 'unknown' : generateType(parsed.items)
+  return `Record<string, ${itemType}>`
+}
+
 const generateDiscriminator = (
   discriminator: Discriminator,
   name: string
@@ -199,6 +210,15 @@ export const generateArray = (parsed: ArrayType): string => {
 }
 
 export const generateEnum = (parsed: EnumType): string => {
+  if (parsed.name) {
+    const values = parsed.values.map(serializeValue).join(', ')
+    const valuesName = constantCase(`${parsed.name}_VALUES`)
+    return [
+      `export const ${valuesName} = [${values}] as const`,
+      `${preamble(parsed)}typeof ${valuesName}[number]`,
+    ].join('\n')
+  }
+
   return `${preamble(parsed)}${parsed.values.map(serializeValue).join(OR)}`
 }
 

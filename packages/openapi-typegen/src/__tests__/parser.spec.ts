@@ -26,6 +26,7 @@ import type {
   Parameter,
   Path,
   PrimitiveType,
+  RecordType,
   ResponseBody,
 } from '../types'
 
@@ -1134,6 +1135,115 @@ describe('openapi parser', () => {
           {
             name: 'eventType',
             type: [{ type: 'EventTypeResponse' }],
+            optional: false,
+          },
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: true', () => {
+      const schema: SchemaObject = {
+        additionalProperties: true,
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'undefined' } as PrimitiveType,
+          } as RecordType,
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: $ref', () => {
+      const schema: SchemaObject = {
+        additionalProperties: { $ref: '#/components/schema/Card' },
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'Card' } as CustomType,
+          } as RecordType,
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('parses additionalProperties: $schema', () => {
+      const schema: SchemaObject = {
+        additionalProperties: {
+          type: 'string',
+        },
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [],
+        allOf: [
+          {
+            type: 'record',
+            items: { type: 'string' } as PrimitiveType,
+          } as RecordType,
+        ],
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+
+    it('parses additionalProperties: $ref on a sub object', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          dependencies: {
+            type: 'object',
+            description: 'Health status of external dependencies',
+            additionalProperties: {
+              $ref: '#/components/schemas/DependencyHealth',
+            },
+          },
+        },
+        required: ['id', 'dependencies'],
+      }
+
+      const parsed = parseSchema('Generic', schema)
+      const expected: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          {
+            name: 'dependencies',
+            description: 'Health status of external dependencies',
+            type: [
+              {
+                type: 'object',
+                name: undefined,
+                description: 'Health status of external dependencies',
+                properties: [],
+                allOf: [
+                  {
+                    type: 'record',
+                    items: { name: undefined, type: 'DependencyHealth' },
+                  },
+                ],
+              },
+            ],
             optional: false,
           },
         ],

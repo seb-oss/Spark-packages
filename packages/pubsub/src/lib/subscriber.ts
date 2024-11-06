@@ -1,204 +1,105 @@
-import type {
-  CreateSubscriptionOptions,
-  Message,
-  Subscription,
-  Topic,
+import {
+  type ClientConfig,
+  type CreateSubscriptionOptions,
+  type Message,
+  PubSub,
+  type Subscription,
+  type Topic,
 } from '@google-cloud/pubsub'
-import { type ClientConfig, getOrCreateTopic } from './client'
 
-const ALREADY_EXISTS_ERROR = '6 ALREADY_EXISTS'
-
-export type AuthenticatedUser = {
-  token?: string
-}
-
-export type PubSubHeaders = {
-  authenticatedUser?: AuthenticatedUser
-  correlationId?: string
-  traceparent?: string
-}
-
-export type TypedMessage<T> = Message & {
-  body: T
-  headers: PubSubHeaders
-}
-
-type SubscriberArgs<T> = {
-  subscriberName: string
-} & SubscriberHandler<T>
-
-export type SubscriberHandler<T> = {
-  onError?: (err: Error) => void | Promise<void>
-  onSuccess: (msg: T, headers: PubSubHeaders) => void | Promise<void>
-}
-
-export type Unsubscriber = () => void
-
-export type Subscriber<T> = (args: SubscriberArgs<T>) => Promise<Unsubscriber>
-
-interface PubsubMessage<T> {
-  message: T
-  identity?: string
-}
-
-export const subscriptions: Record<string, Subscription> = {}
-
-const subscriptionDefaultConfig =
-  async (): Promise<CreateSubscriptionOptions> => {
-    const deadLetterTopicName =
-      process.env.PUBSUB_DEAD_LETTER_TOPIC || 'dead.letter.topic'
-    const maxDeliveryAttempts = Number.parseInt(
-      process.env.PUBSUB_MAX_DELIVERY_ATTEMPTS || '20',
-      10
-    )
-    const deadLetterTopic = (await getOrCreateTopic(deadLetterTopicName)).name
-
-    const subscriptionOptions: CreateSubscriptionOptions = {
-      deadLetterPolicy: {
-        deadLetterTopic,
-        maxDeliveryAttempts,
+const makeSureSubacriptionExists = async (
+  topic: Topic,
+  name: string,
+  options?: PubSubOptions
+) => {
+  const createSubscriptionOptions: CreateSubscriptionOptions = {
+    messageRetentionDuration: {
+      seconds: options?.messageRetentionDuration || 3600 * 24, // Default to 1 day.
+    },
+    expirationPolicy: {
+      ttl: {
+        seconds: options?.expirationPolicy || 3600 * 24 * 7, // Default to 7 days.
       },
-      retryPolicy: {
-        minimumBackoff: { seconds: 10 },
-        maximumBackoff: { seconds: 600 },
+    },
+  }
+
+  const [exists] = await topic.subscription(name).exists()
+
+  if (exists) {
+    return
+  }
+
+  await topic.createSubscription(name, createSubscriptionOptions)
+}
+
+export type TypedMessage<T> = Omit<Message, 'data'> & {
+  data: T
+}
+
+export type SubscriptionClient<T extends Record<string, unknown>> = {
+  topic<K extends keyof T>(
+    name: K
+  ): {
+    subscribe<M extends T[K]>(
+      name: string,
+      callbacks: {
+        onMessage: (message: TypedMessage<M>) => Promise<void>
+        onError?: (message: TypedMessage<M>, error: unknown) => Promise<void>
       },
-    }
-    return subscriptionOptions
+      options?: PubSubOptions
+    ): Promise<Subscription>
+    initiate<M extends T[K]>(
+      name: string,
+      options?: PubSubOptions
+    ): Promise<void>
   }
-
-const subscriptionPullConfig = (): Promise<CreateSubscriptionOptions> => {
-  return subscriptionDefaultConfig()
 }
 
-const subscriptionPushConfig = async (): Promise<CreateSubscriptionOptions> => {
-  if (!process.env.PUBSUB_PUSH_HOST) {
-    throw new Error(
-      'Environment variable PUBSUB_PUSH_HOST is missing and cannot set a push endpoint'
-    )
-  }
-
-  if (!process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL) {
-    console.warn(
-      'Environment variable PUBSUB_SERVICE_ACCOUNT_EMAIL should be set if running in GCP'
-    )
-  }
-
-  const subscriptionOptions = await subscriptionDefaultConfig()
-  const pushEndpoint = `${process.env.PUBSUB_PUSH_HOST}/pubsub/push`
-  const serviceAccountEmail = process.env.PUBSUB_SERVICE_ACCOUNT_EMAIL
-
-  subscriptionOptions.pushConfig = {
-    pushEndpoint,
-  }
-
-  if (serviceAccountEmail) {
-    subscriptionOptions.pushConfig.oidcToken = {
-      serviceAccountEmail,
-    }
-  }
-
-  return subscriptionOptions
+export type PubSubOptions = {
+  expirationPolicy: number
+  messageRetentionDuration: number
+  autoAck?: boolean
 }
 
-const getCreateSubscriptionOptions =
-  async (): Promise<CreateSubscriptionOptions> => {
-    switch (process.env.PUBSUB_DELIVERY_MODE) {
-      case 'push':
-        return subscriptionPushConfig()
-      case 'pull':
-        return subscriptionPullConfig()
-      default:
-        throw new Error(
-          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull'
-        )
-    }
-  }
+export const createSubscriber = <T extends Record<string, unknown>>(
+  clientOptions?: ClientConfig | undefined
+): SubscriptionClient<T> => {
+  const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
 
-const createOrGetSubscription = async (
-  subscriptionName: string,
-  topic: Topic
-): Promise<Subscription> => {
-  let subscription: Subscription
+  const typedClient: SubscriptionClient<T> = {
+    topic: (name) => {
+      let _topic: Topic
 
-  try {
-    ;[subscription] = await topic.createSubscription(
-      subscriptionName,
-      await getCreateSubscriptionOptions()
-    )
-  } catch (ex) {
-    if (ex instanceof Error && !ex.message.startsWith(ALREADY_EXISTS_ERROR)) {
-      throw ex
-    }
-    ;[subscription] = await topic.subscription(subscriptionName).get()
-  }
+      return {
+        initiate: async (subscriptionName, options) => {
+          await makeSureSubacriptionExists(_topic, subscriptionName, options)
+        },
+        subscribe: async (subscriptionName, callbacks, options) => {
+          if (!_topic) {
+            _topic = client.topic(name as string)
+          }
+          const subscription = _topic.subscription(subscriptionName)
+          subscription.on('message', async (msg) => {
+            const data = JSON.parse(msg.data.toString('utf8'))
+            if (options?.autoAck === undefined || options.autoAck === true) {
+              try {
+                await callbacks.onMessage(Object.assign(msg, { data }))
+                msg.ack()
+              } catch (error) {
+                msg.nack()
+                callbacks.onError
+                  ? callbacks.onError(Object.assign(msg, { data }), error)
+                  : console.error(error)
+              }
+            } else {
+              await callbacks.onMessage(Object.assign(msg, { data }))
+            }
+          })
 
-  subscriptions[subscription.name] = subscription
-  return subscription
-}
-
-export const subscriber =
-  <Msg, TopicName extends string | number | symbol>(
-    topicName: TopicName,
-    config?: ClientConfig
-  ): Subscriber<Msg> =>
-  async ({ subscriberName, onSuccess, onError }) => {
-    const topic = await getOrCreateTopic(topicName.toString(), config)
-    const subscriptionName = `${topicName.toString()}.${subscriberName}`
-    const subscription = await createOrGetSubscription(subscriptionName, topic)
-    const messageHandler = async (message: Message) => {
-      const data: PubsubMessage<Msg> = JSON.parse(message.data.toString())
-
-      const typed = {
-        ...message,
-        body: data.message,
-        headers: {
-          authenticatedUser: {
-            token: data.identity,
-          },
+          return subscription
         },
       }
-
-      // If data has no message property, treat it as a raw message, unwrapped.
-      if (!typed.body) {
-        typed.body = data as Msg
-      }
-
-      try {
-        await onSuccess(typed.body, typed.headers)
-        message.ack()
-      } catch (err) {
-        message.nack()
-        console.error(err)
-      }
-    }
-
-    const errorHandler = async (err: Error) => {
-      if (onError) await onError(err)
-    }
-
-    let messageHandlerEvent: 'message' | 'push-message'
-
-    switch (process.env.PUBSUB_DELIVERY_MODE) {
-      case 'push':
-        messageHandlerEvent = 'push-message'
-        break
-      case 'pull':
-        messageHandlerEvent = 'message'
-        break
-      default:
-        throw new Error(
-          'Environment variable PUBSUB_DELIVERY_MODE must be set to either push or pull'
-        )
-    }
-
-    // biome-ignore lint/suspicious/noExplicitAny: Any for event
-    subscription.on(messageHandlerEvent as any, messageHandler)
-    subscription.on('error', errorHandler)
-
-    const unsubscriber: Unsubscriber = () => {
-      subscription.off(messageHandlerEvent, messageHandler)
-      subscription.off('error', errorHandler)
-    }
-
-    return unsubscriber
+    },
   }
+  return typedClient
+}

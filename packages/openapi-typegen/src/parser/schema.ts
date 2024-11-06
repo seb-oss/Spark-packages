@@ -9,7 +9,9 @@ import type {
   EnumType,
   ObjectType,
   Primitive,
+  PrimitiveType,
   Property,
+  RecordType,
   TypeDefinition,
 } from '../types'
 import { parseDocumentation, parseEnumType, parseRef } from './common'
@@ -96,7 +98,29 @@ const parseObjectSchema = (
       mapping,
     }
   }
+  if (schema.additionalProperties) {
+    const record = parseAdditionalProperties(schema.additionalProperties)
+    if (!type.allOf) {
+      type.allOf = []
+    }
+    type.allOf.push(record)
+  }
   return type
+}
+
+const parseAdditionalProperties = (
+  schema: true | SchemaObject | ReferenceObject
+): RecordType => {
+  let items: TypeDefinition
+  if (schema === true) {
+    items = { type: 'undefined' } as PrimitiveType
+  } else {
+    items = parseSchema(undefined, schema)
+  }
+  return {
+    type: 'record',
+    items,
+  } as RecordType
 }
 
 const parseArraySchema = (

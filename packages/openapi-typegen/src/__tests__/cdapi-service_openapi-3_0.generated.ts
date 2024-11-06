@@ -6232,7 +6232,7 @@ export type dev_infrontfinance_cdapi_structured_product_PurgeCacheRequest = {
 /**
  * Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
  */
-export type google_protobuf_Any = {
+export type google_protobuf_Any = Record<string, unknown> & {
   /**
    * The type of the serialized message.
    */

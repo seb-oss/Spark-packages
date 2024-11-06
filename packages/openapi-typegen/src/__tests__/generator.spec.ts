@@ -47,7 +47,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: ['foo', 'bar'],
       }
-      const expected = await format(`export type Values = 'foo' | 'bar'`)
+      const expected = await format(`
+        export const VALUES_VALUES = ['foo', 'bar'] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
@@ -58,7 +61,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: [1, 2, 3],
       }
-      const expected = await format('export type Values = 1 | 2 | 3')
+      const expected = await format(`
+        export const VALUES_VALUES = [1, 2, 3] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
@@ -453,6 +459,73 @@ describe('typescript generator', () => {
       const formatted = await format(generated)
 
       expect(formatted).toEqual(expected)
+    })
+    it('generates an object type with only record', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'Card' } }],
+      }
+
+      const expected = await format('export type User = Record<string, Card>')
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates an object type with only record of any type', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'User',
+        properties: [],
+        allOf: [{ type: 'record', items: { type: 'undefined' } }],
+      }
+
+      const expected = await format(
+        'export type User = Record<string, unknown>'
+      )
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
+    })
+    it('generates an object type with a record property', async () => {
+      const type: ObjectType = {
+        type: 'object',
+        name: 'Generic',
+        properties: [
+          { name: 'id', type: [{ type: 'string' }], optional: false },
+          {
+            name: 'dependencies',
+            description: 'Health status of external dependencies',
+            type: [
+              {
+                type: 'object',
+                name: undefined,
+                description: 'Health status of external dependencies',
+                properties: [],
+                allOf: [
+                  {
+                    type: 'record',
+                    items: { name: undefined, type: 'DependencyHealth' },
+                  },
+                ],
+              },
+            ],
+            optional: false,
+          },
+        ],
+      }
+
+      const expected = await format(`export type Generic = {
+        id: string
+        /**
+         * Health status of external dependencies
+         */
+        dependencies: Record<string, DependencyHealth>
+      }`)
+      const generated = await format(generateType(type))
+
+      expect(generated).toEqual(expected)
     })
   })
   describe('generateResponseBody', () => {
