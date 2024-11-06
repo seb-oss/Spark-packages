@@ -1,4 +1,4 @@
-import { pascalCase } from 'change-case'
+import { constantCase, pascalCase } from 'change-case'
 import type {
   ArrayType,
   CustomType,
@@ -210,6 +210,15 @@ export const generateArray = (parsed: ArrayType): string => {
 }
 
 export const generateEnum = (parsed: EnumType): string => {
+  if (parsed.name) {
+    const values = parsed.values.map(serializeValue).join(', ')
+    const valuesName = constantCase(`${parsed.name}_VALUES`)
+    return [
+      `export const ${valuesName} = [${values}] as const`,
+      `${preamble(parsed)}typeof ${valuesName}[number]`,
+    ].join('\n')
+  }
+
   return `${preamble(parsed)}${parsed.values.map(serializeValue).join(OR)}`
 }
 

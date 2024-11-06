@@ -29,7 +29,8 @@ export type User = {
 
 export type UserList = User[]
 
-export type UserType = 'HUMAN' | 'SYSTEM'
+export const USER_TYPE_VALUES = ['HUMAN', 'SYSTEM'] as const
+export type UserType = typeof USER_TYPE_VALUES[number]
 
 export type HumanDetails = {
   name?: string
