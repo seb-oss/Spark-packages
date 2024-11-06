@@ -1,5 +1,17 @@
 # @sebspark/logging
 
+## 1.4.0
+
+### Minor Changes
+
+- 639c691: bump some dependencies to non-vulnerable versions
+
+## 1.3.0
+
+### Minor Changes
+
+- 265a850: upgrade express to 5.0.0
+
 ## 1.2.4
 
 ### Patch Changes
