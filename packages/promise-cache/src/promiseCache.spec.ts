@@ -1,13 +1,5 @@
 import { afterEach } from 'node:test'
-import {
-  afterAll,
-  beforeAll,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest'
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import { PromiseCache } from './index'
 
 vi.mock('redis')
@@ -36,14 +28,8 @@ describe('PromiseCache', () => {
 
   beforeAll(() => {
     console.error = vi.fn()
+    console.log = vi.fn()
     vi.useFakeTimers({ shouldAdvanceTime: true })
-  })
-
-  beforeEach(() => {
-    // @ts-ignore
-    cache.persistor.client.clear()
-    // @ts-ignore
-    caseSensitiveCache.persistor.client.clear()
   })
 
   afterEach(() => {
@@ -150,6 +136,83 @@ describe('PromiseCache', () => {
     expect(mockDelegate).toHaveBeenCalledTimes(2)
   })
 
+  it('should get ttl from response if key is provided', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+      ttl: '112312',
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey4', mockDelegate, undefined, 'ttl')
+
+    // Cache should be set with the TTL from the response
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey4', {
+      timestamp: expect.any(Number),
+      ttl: 112312000,
+      value: {
+        value: 42,
+        ttl: '112312',
+      },
+    })
+  })
+
+  it('should ignore ttl from response if parse fails', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+      ttl: '112adsa3a12',
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey5', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey5', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: {
+        value: 42,
+        ttl: '112adsa3a12',
+      },
+    })
+  })
+
+  it('should ignore ttl from response if key is not present', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue({
+      value: 42,
+    })
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey6', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey6', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: {
+        value: 42,
+      },
+    })
+  })
+
+  it('should ignore ttl from response if response is not an object', async () => {
+    const mockDelegate = vi.fn()
+
+    mockDelegate.mockResolvedValue(42)
+
+    const mockedPersistorSet = vi.spyOn(cache.persistor, 'set')
+    await cache.wrap('testKey7', mockDelegate, undefined, 'ttl')
+
+    expect(mockedPersistorSet).toHaveBeenCalledWith('testkey7', {
+      timestamp: expect.any(Number),
+      ttl: 1000,
+      value: 42,
+    })
+  })
+
   it('should not differentiate between keys with different casing', async () => {
     const mockDelegate1 = vi.fn()
     const mockDelegate2 = vi.fn()
@@ -162,7 +225,7 @@ describe('PromiseCache', () => {
     expect(value1 === value2).toBeTruthy()
   })
 
-  it('should not differentiate between keys with different casing', async () => {
+  it('should differentiate between keys with different casing', async () => {
     const mockDelegate1 = vi.fn()
     const mockDelegate2 = vi.fn()
     mockDelegate1.mockResolvedValue(30)
@@ -213,20 +276,20 @@ describe('PromiseCache', () => {
 
   it('should call onSuccess callback', async () => {
     const successSpy = vi.fn()
-    const localCache10 = new PromiseCache<number>({
+    new PromiseCache<number>({
+      onSuccess: successSpy,
       redis: {
         url: REDIS_URL.url,
         name: 'localCache11',
       },
       ttlInSeconds: ttl,
       caseSensitive: false,
-      onSuccess: successSpy,
     })
 
     expect(successSpy).toHaveBeenCalledOnce()
   })
 
-  it('check persistor cache should be the same by id', async () => {
+  it('Should reuse the same redis connection for identical configs', async () => {
     const localCache11 = new PromiseCache<number>({
       redis: {
         url: REDIS_URL.url,
@@ -244,25 +307,37 @@ describe('PromiseCache', () => {
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
+
     const localCache13 = new PromiseCache<number>({
+      redis: {
+        url: REDIS_URL.url,
+        name: 'cache_number2',
+      },
       ttlInSeconds: ttl,
       caseSensitive: false,
     })
 
-    const localCache14 = new PromiseCache<number>({
-      ttlInSeconds: ttl,
+    expect(localCache11.persistor).toBe(localCache12.persistor)
+    expect(localCache11.persistor).not.toBe(localCache13.persistor)
+    expect(localCache11.persistor.getClientId()).toBe(
+      localCache12.persistor.getClientId()
+    )
+  })
+
+  it('Should reuse the same local object for identical configs', async () => {
+    const localCache11 = new PromiseCache<number>({
       caseSensitive: false,
     })
 
-    const id = localCache11.persistor.getClientId()
-    const id2 = localCache12.persistor.getClientId()
-    const id3 = localCache13.persistor.getClientId()
+    const localCache12 = new PromiseCache<number>({
+      caseSensitive: false,
+    })
 
-    const id4 = localCache13.persistor.getClientId()
-    const id5 = localCache14.persistor.getClientId()
+    const localCache13 = new PromiseCache<number>({
+      caseSensitive: false,
+    })
 
-    expect(id).toBe(id2)
-    expect(id).not.toBe(id3)
-    expect(id4).not.toBe(id5)
+    expect(localCache11.persistor).toBe(localCache12.persistor)
+    expect(localCache11.persistor).toBe(localCache13.persistor)
   })
 })

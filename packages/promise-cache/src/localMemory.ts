@@ -1,5 +1,6 @@
 export class LocalStorage {
   client = new Map()
+  public isReady = false
 
   get(key: string) {
     return this.client.get(key)
@@ -29,8 +30,9 @@ export class LocalStorage {
 
   // This is just for testing
   on(event: string, callback: (message: string) => void) {
-    if (event === 'connect' && callback) {
-      callback('connect')
+    if (event === 'ready' && callback) {
+      this.isReady = true
+      callback('ready')
     }
 
     return this

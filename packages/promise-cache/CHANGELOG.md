@@ -1,5 +1,77 @@
 # @sebspark/promise-cache
 
+## 2.1.1
+
+### Patch Changes
+
+- df6468d: ttl in response should be in seconds
+
+## 2.1.0
+
+### Minor Changes
+
+- 6d40aae: enable setting cache ttl from promise response
+
+## 2.0.10
+
+### Patch Changes
+
+- cccc089: Error in GCP Redis MemoryStore, doesnt support SETNAME command
+
+## 2.0.9
+
+### Patch Changes
+
+- 85f095f: Wait until the connection is ready
+
+## 2.0.8
+
+### Patch Changes
+
+- f145e39: Remove max 5 tries
+
+## 2.0.7
+
+### Patch Changes
+
+- f3ed352: Change retry timeoute
+
+## 2.0.6
+
+### Patch Changes
+
+- f7dd4c1: Remove retry library and use default retry system from redis
+
+## 2.0.5
+
+### Patch Changes
+
+- 9342770: Use redis event ready instead connect to start storing data
+
+## 2.0.4
+
+### Patch Changes
+
+- 3e9f97f: Fix: Return a promise to avoid errors in the retry function
+
+## 2.0.3
+
+### Patch Changes
+
+- 5cfb14a: Change redis connection reuse logic
+
+## 2.0.2
+
+### Patch Changes
+
+- e21f808: Add connection flag to persistor
+
+## 2.0.1
+
+### Patch Changes
+
+- 0da73eb: Show in logs which client is trying to connect to redis
+
 ## 2.0.0
 
 ### Major Changes

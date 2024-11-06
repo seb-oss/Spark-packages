@@ -47,7 +47,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: ['foo', 'bar'],
       }
-      const expected = await format(`export type Values = 'foo' | 'bar'`)
+      const expected = await format(`
+        export const VALUES_VALUES = ['foo', 'bar'] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
@@ -58,7 +61,10 @@ describe('typescript generator', () => {
         name: 'Values',
         values: [1, 2, 3],
       }
-      const expected = await format('export type Values = 1 | 2 | 3')
+      const expected = await format(`
+        export const VALUES_VALUES = [1, 2, 3] as const
+        export type Values = typeof VALUES_VALUES[number]
+      `)
       const generated = await format(generateType(type))
 
       expect(generated).toEqual(expected)
