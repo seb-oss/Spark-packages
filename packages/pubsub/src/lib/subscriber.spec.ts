@@ -1,17 +1,12 @@
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
 import type { Schema } from 'avsc'
-import { type MockedObject, afterAll, describe, expect, it, vi } from 'vitest'
+import { type MockedObject, describe, expect, it, vi } from 'vitest'
 import { createSubscriber } from './subscriber'
 
 type ExampleMessage = {
   messageType: string
   message: string
 }
-
-const message = {
-  messageType: 'type of message',
-  message: 'message data',
-} satisfies ExampleMessage
 
 type ExamplePubsubChannels = {
   example: ExampleMessage
@@ -97,5 +92,26 @@ describe('subscriber', () => {
 
     expect(topicMock.subscription).toHaveBeenCalled()
     expect(topicMock.createSubscription.mock.calls.length).toBe(0)
+  })
+
+  it('created a subscription if it does not exist', async () => {
+    const topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
+    const subscriptionMock = topicMock.subscription(
+      subscriptionName
+    ) as MockedObject<Subscription>
+
+    subscriptionMock.exists.mockImplementation(() => [false])
+
+    const subscriber = createSubscriber<ExamplePubsubChannels>({
+      projectId: 'test',
+    })
+
+    topicMock.createSubscription.mockClear()
+
+    await subscriber.topic('example').subscribe('example-subscription', {
+      onMessage: () => Promise.resolve(),
+    })
+
+    expect(topicMock.createSubscription).toHaveBeenCalled()
   })
 })
