@@ -7,7 +7,7 @@ import {
   type Topic,
 } from '@google-cloud/pubsub'
 
-const makeSureSubacriptionExists = async (
+const makeSureSubscriptionExists = async (
   topic: Topic,
   name: string,
   options?: PubSubOptions
@@ -72,7 +72,7 @@ export const createSubscriber = <T extends Record<string, unknown>>(
 
       return {
         initiate: async (subscriptionName, options) => {
-          await makeSureSubacriptionExists(_topic, subscriptionName, options)
+          await makeSureSubscriptionExists(_topic, subscriptionName, options)
         },
         subscribe: async (subscriptionName, callbacks, options) => {
           if (!_topic) {
