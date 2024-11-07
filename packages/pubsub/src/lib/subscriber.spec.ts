@@ -1,7 +1,8 @@
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
 import type { Schema } from 'avsc'
-import { type MockedObject, describe, expect, it, vi } from 'vitest'
+import { type MockedObject, beforeAll, describe, expect, it, vi } from 'vitest'
 import { createSubscriber } from './subscriber'
+import { beforeEach } from 'node:test'
 
 type ExampleMessage = {
   messageType: string
@@ -72,46 +73,64 @@ describe('subscriber', () => {
   const topicName = 'example'
   const subscriptionName = 'example-subscription'
 
-  it('uses an existing subscription if it exists', async () => {
-    const topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
-    const subscriptionMock = topicMock.subscription(
+  let topicMock: MockedObject<Topic>
+  let subscriptionMock: MockedObject<Subscription>
+
+  beforeAll(() => {
+    topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
+    subscriptionMock = topicMock.subscription(
       subscriptionName
     ) as MockedObject<Subscription>
-
-    subscriptionMock.exists.mockImplementation(() => [true])
-
-    const subscriber = createSubscriber<ExamplePubsubChannels>({
-      projectId: 'test',
-    })
-
-    topicMock.createSubscription.mockClear()
-
-    await subscriber.topic('example').subscribe('existing-subscription', {
-      onMessage: () => Promise.resolve(),
-    })
-
-    expect(topicMock.subscription).toHaveBeenCalled()
-    expect(topicMock.createSubscription.mock.calls.length).toBe(0)
   })
 
-  it('created a subscription if it does not exist', async () => {
-    const topicMock = new PubSub().topic(topicName) as MockedObject<Topic>
-    const subscriptionMock = topicMock.subscription(
-      subscriptionName
-    ) as MockedObject<Subscription>
+  beforeEach(() => {})
 
-    subscriptionMock.exists.mockImplementation(() => [false])
+  describe('subscribe', () => {
+    it('uses an existing subscription if it exists', async () => {
+      subscriptionMock.exists.mockImplementationOnce(() => [true])
 
-    const subscriber = createSubscriber<ExamplePubsubChannels>({
-      projectId: 'test',
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      topicMock.createSubscription.mockClear()
+
+      await subscriber.topic('example').subscribe('existing-subscription', {
+        onMessage: () => Promise.resolve(),
+      })
+
+      expect(topicMock.subscription).toHaveBeenCalled()
+      expect(topicMock.createSubscription.mock.calls.length).toBe(0)
+    })
+  })
+
+  describe('initiate', () => {
+    it('does not create a subscription if it exists', async () => {
+      subscriptionMock.exists.mockImplementationOnce(() => [true])
+
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      topicMock.createSubscription.mockClear()
+
+      await subscriber.topic('example').initiate('existing-subscription')
+
+      expect(topicMock.createSubscription.mock.calls.length).toBe(0)
     })
 
-    topicMock.createSubscription.mockClear()
+    it('creates a subscription if it does not exist', async () => {
+      subscriptionMock.exists.mockImplementationOnce(() => [false])
 
-    await subscriber.topic('example').subscribe('example-subscription', {
-      onMessage: () => Promise.resolve(),
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      topicMock.createSubscription.mockClear()
+
+      await subscriber.topic('example').initiate('example-subscription')
+
+      expect(topicMock.createSubscription).toHaveBeenCalled()
     })
-
-    expect(topicMock.createSubscription).toHaveBeenCalled()
   })
 })
