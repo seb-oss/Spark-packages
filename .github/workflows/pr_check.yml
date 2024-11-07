@@ -32,8 +32,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Download dependencies
+        uses: bahmutov/npm-install@v1
 
       - name: Build all packages
         run: npm run build
