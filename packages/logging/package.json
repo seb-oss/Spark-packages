@@ -28,6 +28,6 @@
     "socket.io": "4.8.0",
     "socketio-wildcard": "2.0.0",
     "winston": "3.13.0",
-    "winston-transport": "4.7.0"
+    "winston-transport": "4.8.0"
   }
 }
