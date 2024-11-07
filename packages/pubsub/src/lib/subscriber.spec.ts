@@ -87,8 +87,6 @@ describe('subscriber', () => {
 
   describe('subscribe', () => {
     it('uses an existing subscription if it exists', async () => {
-      subscriptionMock.exists.mockImplementationOnce(() => [true])
-
       const subscriber = createSubscriber<ExamplePubsubChannels>({
         projectId: 'test',
       })
