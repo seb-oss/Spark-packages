@@ -50,14 +50,20 @@ const createOrGetTopic = async (
     return topic
   }
 
+  if (schemaData) {
+    const [topic] = await client.createTopic({
+      name: name,
+      schemaSettings: {
+        schema: schemaData?.name,
+        encoding: Encodings.Json,
+      },
+    })
+    return topic
+  }
+
   const [topic] = await client.createTopic({
     name: name,
-    schemaSettings: {
-      schema: schemaData?.name,
-      encoding: Encodings.Json,
-    },
   })
-
   return topic
 }
 
