@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 1.11.0
+
+### Minor Changes
+
+- 37984eb: Enums are now exported as a const (MY_ENUM_VALUES) and a type (MyEnum)
+
 ## 1.10.0
 
 ### Minor Changes

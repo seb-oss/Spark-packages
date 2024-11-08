@@ -1,5 +1,17 @@
 # @sebspark/pubsub
 
+## 1.5.1
+
+### Patch Changes
+
+- a39b6d0: Fixed bug that broke topic.initiate, leading to subscription creation failing.
+
+## 1.5.0
+
+### Minor Changes
+
+- 7a037e0: Subscribe does not create a subscription. Use initiate.
+
 ## 1.4.0
 
 ### Minor Changes

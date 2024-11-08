@@ -7,7 +7,7 @@ import {
   type Topic,
 } from '@google-cloud/pubsub'
 
-const makeSureSubacriptionExists = async (
+const makeSureSubscriptionExists = async (
   topic: Topic,
   name: string,
   options?: PubSubOptions
@@ -68,16 +68,13 @@ export const createSubscriber = <T extends Record<string, unknown>>(
 
   const typedClient: SubscriptionClient<T> = {
     topic: (name) => {
-      let _topic: Topic
+      const _topic: Topic = client.topic(name as string)
 
       return {
         initiate: async (subscriptionName, options) => {
-          await makeSureSubacriptionExists(_topic, subscriptionName, options)
+          await makeSureSubscriptionExists(_topic, subscriptionName, options)
         },
         subscribe: async (subscriptionName, callbacks, options) => {
-          if (!_topic) {
-            _topic = client.topic(name as string)
-          }
           const subscription = _topic.subscription(subscriptionName)
           subscription.on('message', async (msg) => {
             const data = JSON.parse(msg.data.toString('utf8'))
