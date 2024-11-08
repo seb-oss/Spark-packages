@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.2
+
+### Patch Changes
+
+- ffdebbf: Can create topic without schema
+
 ## 1.5.1
 
 ### Patch Changes
