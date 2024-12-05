@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 0.1.11
+
+### Patch Changes
+
+- 8308772: Updated vulnerable dependencies (express and axios)
+
 ## 0.1.10
 
 ### Patch Changes
