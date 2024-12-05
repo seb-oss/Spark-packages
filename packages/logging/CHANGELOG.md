@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.4.1
+
+### Patch Changes
+
+- e54d2b7: Updated dependencies
+
 ## 1.4.0
 
 ### Minor Changes

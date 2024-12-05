@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.4
+
+### Patch Changes
+
+- e54d2b7: Updated dependencies
+
 ## 1.5.3
 
 ### Patch Changes

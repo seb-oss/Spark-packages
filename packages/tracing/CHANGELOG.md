@@ -1,5 +1,11 @@
 # @sebspark/tracing
 
+## 0.1.1
+
+### Patch Changes
+
+- e54d2b7: Updated dependencies
+
 ## 0.1.0
 
 ### Minor Changes
