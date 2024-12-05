@@ -16,7 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/yargs": "17.0.32",
+    "@types/yargs": "17.0.33",
     "tsconfig": "*"
   },
   "dependencies": {

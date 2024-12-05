@@ -24,7 +24,7 @@
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.0",
     "express": "5.0.1",
-    "response-time": "2.3.2",
+    "response-time": "2.3.3",
     "socket.io": "4.8.1",
     "socketio-wildcard": "2.0.0",
     "winston": "3.13.0",
