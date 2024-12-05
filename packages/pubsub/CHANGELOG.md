@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.3
+
+### Patch Changes
+
+- 8308772: Updated vulnerable dependencies (express and axios)
+
 ## 1.5.2
 
 ### Patch Changes

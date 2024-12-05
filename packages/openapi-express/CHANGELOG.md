@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 1.1.6
+
+### Patch Changes
+
+- 8308772: Updated vulnerable dependencies (express and axios)
+- Updated dependencies [8308772]
+  - @sebspark/openapi-core@1.5.4
+
 ## 1.1.5
 
 ### Patch Changes
