@@ -110,7 +110,7 @@ export const createPublisher = <T extends Record<string, unknown>>(
           await ensureInitiated(name, schema)
 
           if (_type) {
-            const data = Buffer.from(_type.toString(json))
+            const data = _type.toString(json)
             await _topic.publishMessage({ data })
           } else {
             await _topic.publishMessage({ json })
