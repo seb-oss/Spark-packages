@@ -143,7 +143,7 @@ export class PromiseCache<U> {
     if (cached) {
       if (!ttlKeyInSeconds && cached.ttl !== effectiveTTL) {
         console.error(
-          `WARNING: TTL mismatch for key: ${effectiveKey}. It is recommended to use the same TTL for the same key.`
+          `WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.`
         )
       }
 
