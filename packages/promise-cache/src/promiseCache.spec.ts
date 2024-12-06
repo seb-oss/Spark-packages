@@ -94,7 +94,7 @@ describe('PromiseCache', () => {
     // Expect a warning message.
     expect(console.error).toHaveBeenCalledTimes(1)
     expect(console.error).toHaveBeenCalledWith(
-      'WARNING: TTL mismatch for key: testkey. It is recommended to use the same TTL for the same key.'
+      'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
     )
     expect(await cache.size()).toBe(1)
 
