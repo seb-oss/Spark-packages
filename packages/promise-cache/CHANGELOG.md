@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 2.1.2
+
+### Patch Changes
+
+- 3796c8e: stop logging redis keys as they might have sensitive information.
+
 ## 2.1.1
 
 ### Patch Changes
