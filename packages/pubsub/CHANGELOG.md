@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.6
+
+### Patch Changes
+
+- 6829923: publish must be called with a Buffer but is not typed as such 🤯
+
 ## 1.5.5
 
 ### Patch Changes
