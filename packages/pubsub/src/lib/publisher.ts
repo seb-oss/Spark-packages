@@ -6,6 +6,7 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
+import type { MessageOptions } from '@google-cloud/pubsub/build/src/topic'
 import { Type } from 'avsc'
 
 const schemaIdPattern = /^(?!goog)[a-zA-Z][a-zA-Z0-9-._~%+]{2,254}$/
@@ -110,9 +111,11 @@ export const createPublisher = <T extends Record<string, unknown>>(
           await ensureInitiated(name, schema)
 
           if (_type) {
-            const data = new Uint8Array(
-              Buffer.from(_type.toString(json), 'utf-8')
-            )
+            // Pubsub requires a Buffer but the typing forbids a Buffer 🤯
+            const data = Buffer.from(
+              _type.toString(json),
+              'utf-8'
+            ) as unknown as MessageOptions['data']
             await _topic.publishMessage({ data })
           } else {
             await _topic.publishMessage({ json })
