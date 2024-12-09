@@ -2,6 +2,8 @@ import type { UUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
 import { createClient } from 'redis'
 import { createLocalMemoryClient } from './localMemory'
+import type { Logger } from 'winston'
+import { deserialize, serialize } from './serializerUtils'
 
 let CACHE_CLIENT = createClient
 const isTestRunning = process.env.NODE_ENV === 'test'
@@ -14,15 +16,20 @@ type GetType<T> = {
 
 type SetParams<T> = {
   value: T
-  timestamp: number
+  timestamp?: number
   ttl?: number
 }
 
 export type PersistorConstructorType = {
   redis?: RedisClientOptions
   clientId?: UUID
-  onError: (error: string) => void
-  onSuccess: () => void
+  onError?: (error: string) => void
+  onSuccess?: () => void
+  logger?: Logger
+}
+
+function toMillis(seconds: number) {
+  return seconds / 1000
 }
 
 export class Persistor {
@@ -30,6 +37,7 @@ export class Persistor {
   private clientId?: UUID
   private onError
   private onSuccess
+  private logger: Logger | undefined
   private readonly redis?: RedisClientOptions
 
   constructor({
@@ -37,10 +45,12 @@ export class Persistor {
     clientId,
     onSuccess,
     onError,
+    logger,
   }: PersistorConstructorType) {
-    this.onError = onError
-    this.onSuccess = onSuccess
+    this.onError = onError || (() => {})
+    this.onSuccess = onSuccess || (() => {})
     this.clientId = clientId
+    this.logger = logger
     if (redis && !isTestRunning) {
       this.redis = redis
     } else {
@@ -74,17 +84,17 @@ export class Persistor {
             resolve(true)
           })
           .on('reconnecting', () => {
-            console.log('reconnecting...', this.clientId)
+            this.logger?.info('reconnecting...', this.clientId)
           })
           .on('end', () => {
-            console.log('end...', this.clientId)
+            this.logger?.info('end...', this.clientId)
           })
 
         this.client.connect()
       })
     } catch (ex) {
       this.onError(`${ex}`)
-      console.error(ex)
+      this.logger?.error(ex)
     }
   }
 
@@ -93,21 +103,6 @@ export class Persistor {
       throw new Error('Client not initialized')
     }
     return await this.client.DBSIZE()
-  }
-
-  public async get<T>(key: string): Promise<GetType<T> | null> {
-    if (!this.client) {
-      throw new Error('Client not initialized')
-    }
-    try {
-      const result = await this.client.get(key)
-      if (!result) {
-        return null
-      }
-      return JSON.parse(result) as GetType<T>
-    } catch (error) {
-      throw new Error(`Error getting data from redis: ${error}`)
-    }
   }
 
   public getClientId(): UUID | undefined {
@@ -120,21 +115,32 @@ export class Persistor {
 
   private createOptions(ttl?: number): { EX: number } | object {
     if (ttl !== null && ttl !== undefined) {
-      return { PX: Math.round(ttl) } // Return options object with Expiration time property in ms as an integer
+      return { PX: Math.round(toMillis(ttl)) } // Return options object with Expiration time property in ms as an integer
     }
     return {} // Return empty object when ttl is null or undefined
   }
 
+  /**
+   * Set a value in the cache.
+   * @param key Cache key.
+   * @param object.value Value to set in the cache.
+   * @param object.ttl Time to live in seconds.
+   * @param object.timestamp Timestamp
+   */
   public async set<T>(
     key: string,
-    { value, timestamp, ttl }: SetParams<T>
+    { value, timestamp = Date.now(), ttl }: SetParams<T>
   ): Promise<void> {
     if (!this.client || !this.client.isReady) {
-      console.error('Client not ready')
+      this.logger?.error('Client not ready')
       return
     }
     try {
-      const serializedData = JSON.stringify({ value, ttl, timestamp })
+      const serializedData = JSON.stringify({
+        value: serialize<T>(value),
+        ttl,
+        timestamp,
+      })
       const options = this.createOptions(ttl)
       await this.client.set(key, serializedData, options)
     } catch (error) {
@@ -142,9 +148,38 @@ export class Persistor {
     }
   }
 
+  /**
+   * Get a value from the cache.
+   * @param key Cache key.
+   * @returns GetType<T> value
+   */
+  public async get<T>(key: string): Promise<GetType<T> | null> {
+    if (!this.client) {
+      throw new Error('Client not initialized')
+    }
+    try {
+      const data = await this.client.get(key)
+      if (!data) {
+        return null
+      }
+      const storedData = JSON.parse(data)
+      const deserialized = JSON.parse(storedData.value)
+      return {
+        ...storedData,
+        value: deserialize(deserialized),
+      } as GetType<T>
+    } catch (error) {
+      throw new Error(`Error getting data from redis: ${error}`)
+    }
+  }
+
+  /**
+   * Delete a value from the cache.
+   * @param key Cache key
+   */
   public async delete(key: string): Promise<void> {
     if (!this.client || !this.client.isReady) {
-      console.error('Client not ready')
+      this.logger?.error('Client not ready')
       return
     }
     try {
