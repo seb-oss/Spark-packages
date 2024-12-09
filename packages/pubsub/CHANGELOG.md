@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.5.5
+
+### Patch Changes
+
+- dd76d7f: Fixed error in publish with updated gogogle pubsub pkg
+
 ## 1.5.4
 
 ### Patch Changes
