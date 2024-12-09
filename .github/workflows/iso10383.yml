@@ -2,13 +2,17 @@ name: ISO10383
 
 on:
   schedule:
-    - cron: '0 10 11 JUN *' # 2024-06-11
-    - cron: '0 10 09 JUL *' # 2024-07-09
-    - cron: '0 10 13 AUG *' # 2024-08-13
-    - cron: '0 10 10 SEP *' # 2024-09-10
-    - cron: '0 10 15 OCT *' # 2024-10-15
-    - cron: '0 10 13 NOV *' # 2024-11-13
+    # https://www.iso20022.org/market-identifier-codes
     - cron: '0 10 10 DEC *' # 2024-12-10
+    - cron: '0 10 14 JAN *' # 2025-01-13
+    - cron: '0 10 11 FEB *' # 2025-02-11
+    - cron: '0 10 11 MAR *' # 2025-03-11
+    - cron: '0 10 15 APR *' # 2025-04-15
+    - cron: '0 10 13 MAY *' # 2025-05-13
+    - cron: '0 10 10 JUN *' # 2025-06-10
+    - cron: '0 10 15 JUL *' # 2025-07-15
+    - cron: '0 10 12 AUG *' # 2025-08-12
+    - cron: '0 10 09 SEP *' # 2025-09-09
 
 concurrency:
   group: iso10383
