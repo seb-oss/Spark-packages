@@ -2,4 +2,6 @@
 "@sebspark/promise-cache": major
 ---
 
-TTL is always seconds, support for custom logger injection, handle set, map, object, array.
+- TTL is always seconds.
+- Support logger injection.
+- Handle complex types; set, map, object, array.
