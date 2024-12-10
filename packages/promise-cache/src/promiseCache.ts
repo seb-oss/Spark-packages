@@ -1,5 +1,6 @@
 import { type UUID, randomUUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
+import type { Logger } from 'winston'
 import { Persistor } from './persistor'
 
 export type { RedisClientOptions }
@@ -10,12 +11,14 @@ export type PromiseCacheOptions = {
   redis?: RedisClientOptions
   onError?: (error: string) => void
   onSuccess?: () => void
+  logger?: Logger
 }
 
 const persistors: Record<string, Persistor> = {}
 
 const getPersistor = ({
   redis,
+  logger,
   onError,
   onSuccess,
   clientId,
@@ -27,17 +30,18 @@ const getPersistor = ({
       redis,
       onError: (error: string) => {
         onError?.(error)
-        console.error(
+        logger?.error(
           `❌ REDIS | Client Error | ${connectionName} | ${redis?.url}: ${error}`
         )
       },
       onSuccess: () => {
         onSuccess?.()
-        console.log(
+        logger?.info(
           `📦 REDIS | Connection Ready | ${connectionName} | ${redis?.url}`
         )
       },
       clientId,
+      logger,
     })
   }
   return persistors[connectionName]
@@ -60,12 +64,14 @@ export class PromiseCache<U> {
     redis,
     onSuccess,
     onError,
+    logger,
   }: PromiseCacheOptions) {
     this.persistor = getPersistor({
       redis,
       onError,
       onSuccess,
       clientId: this.clientId,
+      logger,
     })
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
@@ -82,7 +88,7 @@ export class PromiseCache<U> {
   }
 
   /**
-   * Set a value in the cache.
+   * Override a value in the cache.
    * @param key Cache key.
    * @param value Cache value.
    * @param ttlInSeconds Time to live in seconds.
@@ -96,8 +102,7 @@ export class PromiseCache<U> {
     const effectiveKey = this.caseSensitive ? key : key.toLowerCase()
 
     // Determine the TTL and unique cache key for this specific call.
-    const effectiveTTL =
-      ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
+    const effectiveTTL = ttlInSeconds !== undefined ? ttlInSeconds : this.ttl
 
     await this.persistor.set(effectiveKey, {
       value,
