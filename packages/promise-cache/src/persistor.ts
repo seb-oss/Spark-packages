@@ -1,8 +1,8 @@
 import type { UUID } from 'node:crypto'
-import type { RedisClientOptions } from 'redis'
-import { createClient } from 'redis'
-import { createLocalMemoryClient } from './localMemory'
+import { type RedisClientOptions, createClient } from 'redis'
 import type { Logger } from 'winston'
+
+import { createLocalMemoryClient } from './localMemory'
 import { deserialize, serialize } from './serializerUtils'
 
 let CACHE_CLIENT = createClient

@@ -48,16 +48,22 @@ export function serialize<T>(value: T): string {
     case 'object': {
       if (Array.isArray(value)) {
         return JSON.stringify({ type: 'array', value: value.map(serialize) })
-      } else if (value instanceof Map) {
+      } 
+
+      if (value instanceof Map) {
         const entries = Array.from(value.entries()).map(([key, val]) => [
           serialize(key),
           serialize(val),
         ])
         return JSON.stringify({ type: 'map', value: entries })
-      } else if (value instanceof Set) {
+      }
+
+      if (value instanceof Set) {
         const entries = Array.from(value).map(serialize)
         return JSON.stringify({ type: 'set', value: entries })
-      } else if (value.constructor === Object) {
+      }
+
+      if (value.constructor === Object) {
         const entries = Object.entries(value).reduce(
           (acc, [key, val]) => {
             acc[key] = serialize(val)
@@ -65,10 +71,12 @@ export function serialize<T>(value: T): string {
           },
           {} as Record<string, string>
         )
+
         return JSON.stringify({ type: 'object', value: entries })
-      } else {
-        throw new Error('Cannot serialize non-plain objects')
-      }
+      } 
+
+      throw new Error('Cannot serialize non-plain objects')
+
     }
     default:
       throw new Error(`Unsupported type: ${type}`)
@@ -127,14 +135,18 @@ export function deserialize(serialized: Serialized): Serializable {
       return parsed.value.map(deserializePrimitives)
     case 'map': {
       const map = new Map<Serializable, Serializable>()
-      parsed.value.forEach(([key, val]) => {
+
+      for (const [key, val] of parsed.value) {
         map.set(deserializePrimitives(key), deserializePrimitives(val))
-      })
+      }
       return map
     }
     case 'set': {
       const set = new Set<Serializable>()
-      parsed.value.forEach((item) => set.add(deserialize(item)))
+
+      for (const item of parsed.value) {
+        set.add(deserialize(item))
+      }
       return set
     }
     case 'object': {
