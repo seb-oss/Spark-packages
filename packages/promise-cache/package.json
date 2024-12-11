@@ -19,7 +19,6 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "redis": "4.7.0",
-    "@sebspark/retry": "*"
+    "redis": "4.7.0"
   }
 }
