@@ -5,8 +5,21 @@
 ### Major Changes
 
 - 8466c95: - TTL is always seconds.
-    Support logger injection.
-    Handle complex types; set, map, object, array.
+  - Support logger injection.
+  - Handle complex types; set, map, object, array.
+
+### Patch Changes
+
+- 9138c3b: Log errors in persistor
+- 4e51747: Use logger in persistor
+
+## 3.0.0
+
+### Major Changes
+
+- 8466c95: - TTL is always seconds.
+  Support logger injection.
+  Handle complex types; set, map, object, array.
 
 ## 2.1.2
 
