@@ -19,8 +19,8 @@ describe('Persistor', () => {
   })
 
   beforeAll(() => {
-    // console.error = vi.fn()
-    // console.log = vi.fn()
+    console.error = vi.fn()
+    console.log = vi.fn()
     vi.useFakeTimers({ shouldAdvanceTime: true })
   })
 
