@@ -144,6 +144,7 @@ export class Persistor {
       const options = this.createOptions(ttl)
       await this.client.set(key, serializedData, options)
     } catch (error) {
+      this.logger?.error(`Error setting data in redis: ${error}`)
       throw new Error(`Error setting data in redis: ${error}`)
     }
   }
@@ -155,7 +156,8 @@ export class Persistor {
    */
   public async get<T>(key: string): Promise<GetType<T> | null> {
     if (!this.client) {
-      throw new Error('Client not initialized')
+      this.logger?.error('Client not ready')
+      return null
     }
     try {
       const data = await this.client.get(key)
@@ -169,6 +171,7 @@ export class Persistor {
         value: deserialize(deserialized),
       } as GetType<T>
     } catch (error) {
+      this.logger?.error(`Error getting data in redis: ${error}`)
       throw new Error(`Error getting data from redis: ${error}`)
     }
   }
@@ -185,6 +188,7 @@ export class Persistor {
     try {
       await this.client.del(key)
     } catch (error) {
+      this.logger?.error(`Error deleting data from redis: ${error}`)
       throw new Error(`Error deleting data from redis: ${error}`)
     }
   }
