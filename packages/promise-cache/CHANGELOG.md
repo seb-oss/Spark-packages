@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 3.0.0
+
+### Major Changes
+
+- 8466c95: - TTL is always seconds.
+    Support logger injection.
+    Handle complex types; set, map, object, array.
+
 ## 2.1.2
 
 ### Patch Changes
