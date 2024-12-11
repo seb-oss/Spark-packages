@@ -246,54 +246,77 @@ describe('Persistor', () => {
     })
 
     // Nested map
-    // const nestedMap = new Map<unknown, unknown>([
-    //     ['innerMap', new Map<string, unknown>([
-    //         ['nestedKey1', 'nestedValue1'],
-    //         ['nestedKey2', 42],
-    //     ])],
-    //     ['anotherMap', new Map<boolean, string>([
-    //         [true, 'trueValue'],
-    //         [false, 'falseValue'],
-    //     ])],
-    // ]);
+    const nestedMap = new Map<unknown, unknown>([
+      [
+        'innerMap',
+        new Map<string, unknown>([
+          ['nestedKey1', 'nestedValue1'],
+          ['nestedKey2', 42],
+        ]),
+      ],
+      [
+        'anotherMap',
+        new Map<boolean, string>([
+          [true, 'trueValue'],
+          [false, 'falseValue'],
+        ]),
+      ],
+    ])
+    store.set('testKey', { value: nestedMap, ttl: 10, timestamp })
+    expect(await store.get('testKey')).toEqual({
+      value: nestedMap,
+      ttl: 10,
+      timestamp,
+    })
 
-    // store.set('testKey', { value: nestedMap, ttl: 10, timestamp })
-    // expect(await store.get('testKey')).toEqual({ value: nestedMap, ttl: 10, timestamp })
+    store.set('testKey', { value: nestedMap, ttl: 10, timestamp })
+    expect(await store.get('testKey')).toEqual({
+      value: nestedMap,
+      ttl: 10,
+      timestamp,
+    })
 
     // Complex structure
-    // const complexTestStructure = {
-    //     sets: {
-    //         simpleSet: new Set([1, 2, 3]),
-    //         mixedSet: new Set([42, 'hello', true, null, 123]),
-    //     },
-    //     maps: {
-    //         simpleMap: new Map([
-    //             ['key1', 'value1'],
-    //             ['key2', 'value2'],
-    //         ]),
-    //         nestedMap: new Map([
-    //             ['innerMap', new Map<string, unknown>([
-    //                 ['nestedKey1', 'nestedValue1'],
-    //                 ['nestedKey2', 42],
-    //             ])],
-    //         ]),
-    //     },
-    //     object: {
-    //         basic: {
-    //             name: 'Alice',
-    //             age: 25,
-    //         },
-    //         withNestedData: {
-    //             hobbies: ['reading', 'coding'],
-    //             preferences: {
-    //                 theme: 'dark',
-    //                 notifications: false,
-    //             },
-    //         },
-    //     },
-    // };
+    const complexTestStructure = {
+      sets: {
+        simpleSet: new Set([1, 2, 3]),
+        mixedSet: new Set([42, 'hello', true, null, 123]),
+      },
+      maps: {
+        simpleMap: new Map([
+          ['key1', 'value1'],
+          ['key2', 'value2'],
+        ]),
+        nestedMap: new Map([
+          [
+            'innerMap',
+            new Map<string, unknown>([
+              ['nestedKey1', 'nestedValue1'],
+              ['nestedKey2', 42],
+            ]),
+          ],
+        ]),
+      },
+      object: {
+        basic: {
+          name: 'Alice',
+          age: 25,
+        },
+        withNestedData: {
+          hobbies: ['reading', 'coding'],
+          preferences: {
+            theme: 'dark',
+            notifications: false,
+          },
+        },
+      },
+    }
 
-    // store.set('testKey', { value: complexTestStructure, ttl: 10, timestamp })
-    // expect(await store.get('testKey')).toEqual({ value: complexTestStructure, ttl: 10, timestamp })
+    store.set('testKey', { value: complexTestStructure, ttl: 10, timestamp })
+    expect(await store.get('testKey')).toEqual({
+      value: complexTestStructure,
+      ttl: 10,
+      timestamp,
+    })
   })
 })

@@ -48,7 +48,7 @@ export function serialize<T>(value: T): string {
     case 'object': {
       if (Array.isArray(value)) {
         return JSON.stringify({ type: 'array', value: value.map(serialize) })
-      } 
+      }
 
       if (value instanceof Map) {
         const entries = Array.from(value.entries()).map(([key, val]) => [
@@ -73,10 +73,9 @@ export function serialize<T>(value: T): string {
         )
 
         return JSON.stringify({ type: 'object', value: entries })
-      } 
+      }
 
       throw new Error('Cannot serialize non-plain objects')
-
     }
     default:
       throw new Error(`Unsupported type: ${type}`)
@@ -108,7 +107,9 @@ function deserializePrimitives(serialized: Serialized): Serializable {
     case 'null':
       return null
     default:
-      throw new Error(`Unsupported type during deserialization: ${parsed.type}`)
+      throw new Error(
+        `Unsupported type during deserialization: ${JSON.stringify(parsed)}`
+      )
   }
 }
 
@@ -132,12 +133,12 @@ export function deserialize(serialized: Serialized): Serializable {
     case 'null':
       return deserializePrimitives(parsed)
     case 'array':
-      return parsed.value.map(deserializePrimitives)
+      return parsed.value.map(deserialize)
     case 'map': {
       const map = new Map<Serializable, Serializable>()
 
       for (const [key, val] of parsed.value) {
-        map.set(deserializePrimitives(key), deserializePrimitives(val))
+        map.set(deserialize(key), deserialize(val))
       }
       return map
     }
