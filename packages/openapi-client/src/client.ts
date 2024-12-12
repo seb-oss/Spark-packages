@@ -4,17 +4,29 @@ import {
   type ClientOptions,
   type RequestArgs,
   type RequestOptions,
-  Verb,
   fromAxiosError,
 } from '@sebspark/openapi-core'
 import { retry } from '@sebspark/retry'
 import axios, { type AxiosError, type AxiosHeaders } from 'axios'
+import type { Logger } from 'winston'
 import { paramsSerializer } from './paramsSerializer'
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
-  globalOptions?: ClientOptions
+  globalOptions?: ClientOptions,
+  logger?: Logger
 ): C => {
+  if (logger) {
+    axios.interceptors.request.use((request) => {
+      logger.debug(JSON.stringify(request, null, 2))
+      return request
+    })
+
+    axios.interceptors.response.use((response) => {
+      logger.debug(JSON.stringify(response, null, 2))
+      return response
+    })
+  }
   const client: BaseClient = {
     get: (url, args, opts) =>
       callServer(mergeArgs(baseURL, url, 'get', args, opts, globalOptions)),

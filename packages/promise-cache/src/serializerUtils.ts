@@ -113,6 +113,20 @@ function deserializePrimitives(serialized: Serialized): Serializable {
   }
 }
 
+export default function isPlainObject(value: Serialized) {
+  if (typeof value !== 'object' || value === null) {
+    return false
+  }
+
+  const prototype = Object.getPrototypeOf(value)
+  return (
+    (prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) &&
+    !(Symbol.toStringTag in value) &&
+    !(Symbol.iterator in value)
+  )
+}
 /**
  * Deserialize a value from a string.
  * @param serialized string to deserialize
