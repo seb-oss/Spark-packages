@@ -76,9 +76,9 @@ Find trading hours of a market, when it&#x27;s closed for holidays, or when it&#
 
 Use Opentelemetry for collecting traces and exporting to Cloud Trace
 
-### [@sebspark/iam](./packages/iam)
+### [@sebspark/gcp-iam](./packages/gcp-iam)
 
-JWT utilities
+Google IAM utilities.
 
 <!--NEW_PACKAGE-->
 

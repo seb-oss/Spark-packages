@@ -1,3 +1,0 @@
-# `@sebspark/iam`
-
-JWT utilities
