@@ -5,18 +5,18 @@
   "scripts": {
     "build": "turbo build",
     "changeset": "changeset",
+    "clean": "rm -rf ./packages/**/dist",
     "dev": "turbo dev",
     "format": "biome format --write",
-    "lint:write": "biome check --write",
     "generate:package": "turbo gen package",
-    "lint": "turbo lint",
     "lint:watch": "turbo watch lint",
+    "lint:write": "biome check --write",
+    "lint": "turbo lint",
     "release": "npm run build && npx changeset publish",
-    "test": "turbo test",
+    "start": "turbo watch lint test typecheck",
     "test:watch": "turbo watch test",
-    "typecheck": "turbo typecheck",
-    "clean": "rm -rf ./packages/**/dist",
-    "start": "turbo watch lint test typecheck"
+    "test": "turbo test",
+    "typecheck": "turbo typecheck"
   },
   "private": true,
   "dependencies": {
