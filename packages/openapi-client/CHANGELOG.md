@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.5.1
+
+### Patch Changes
+
+- b48ad58: Fix error converting circular structure to JSON
+
 ## 1.5.0
 
 ### Minor Changes
