@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.5.0
+
+### Minor Changes
+
+- 40820fe: Inject logger in typedClient
+
 ## 1.4.5
 
 ### Patch Changes
