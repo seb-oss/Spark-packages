@@ -18,12 +18,23 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 ): C => {
   if (logger) {
     axios.interceptors.request.use((request) => {
-      logger.debug(JSON.stringify(request, null, 2))
+      const requestObject = {
+        url: request.url,
+        params: request.params,
+        headers: request.headers,
+      }
+      logger.debug(JSON.stringify(requestObject, null, 2))
       return request
     })
 
     axios.interceptors.response.use((response) => {
-      logger.debug(JSON.stringify(response, null, 2))
+      const responseObject = {
+        data: response.data,
+        config: response.config,
+        headers: response.headers,
+      }
+
+      logger.debug(JSON.stringify(responseObject, null, 2))
       return response
     })
   }
