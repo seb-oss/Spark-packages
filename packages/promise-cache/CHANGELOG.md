@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.2.0
+
+### Minor Changes
+
+- eb01a28: ESM fix for superjson
+
 ## 3.1.0
 
 ### Minor Changes
