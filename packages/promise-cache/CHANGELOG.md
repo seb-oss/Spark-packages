@@ -1,5 +1,17 @@
 # @sebspark/promise-cache
 
+## 3.2.0
+
+### Minor Changes
+
+- eb01a28: ESM fix for superjson
+
+## 3.1.0
+
+### Minor Changes
+
+- 88bb2f2: Uses superjson for serialization/dezerialisation
+
 ## 3.0.1
 
 ### Patch Changes
