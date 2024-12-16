@@ -1,9 +1,8 @@
 import type { UUID } from 'node:crypto'
 import { type RedisClientOptions, createClient } from 'redis'
+import superjson from 'superjson'
 import type { Logger } from 'winston'
-
 import { createLocalMemoryClient } from './localMemory'
-import { deserialize, serialize } from './serializerUtils'
 
 let CACHE_CLIENT = createClient
 const isTestRunning = process.env.NODE_ENV === 'test'
@@ -136,8 +135,8 @@ export class Persistor {
       return
     }
     try {
-      const serializedData = JSON.stringify({
-        value: serialize<T>(value),
+      const serializedData = superjson.stringify({
+        value,
         ttl,
         timestamp,
       })
@@ -164,12 +163,8 @@ export class Persistor {
       if (!data) {
         return null
       }
-      const storedData = JSON.parse(data)
-      const deserialized = JSON.parse(storedData.value)
-      return {
-        ...storedData,
-        value: deserialize(deserialized),
-      } as GetType<T>
+
+      return superjson.parse(data) as GetType<T>
     } catch (error) {
       this.logger?.error(`Error getting data in redis: ${error}`)
       throw new Error(`Error getting data from redis: ${error}`)

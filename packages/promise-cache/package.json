@@ -19,6 +19,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "redis": "4.7.0"
+    "redis": "4.7.0",
+    "superjson": "^2.2.2"
   }
 }
