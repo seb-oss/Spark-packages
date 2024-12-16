@@ -19,6 +19,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
+    "fix-esm": "^1.0.1",
     "redis": "4.7.0",
     "superjson": "^2.2.2"
   }
