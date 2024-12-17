@@ -38,7 +38,7 @@ describe('Google IAM', () => {
       expect(signBlobMock).toHaveBeenCalledWith({
         delegates: ['test-service-account-email'],
         name: 'projects/-/serviceAccounts/test-service-account-email',
-        payload: expect.any(Buffer),
+        payload: expect.any(Uint8Array),
       })
     })
     it('when called with the same URI it should only sign once', async () => {
