@@ -1,7 +1,7 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import type { Logger } from 'winston'
 import { LruCache } from './lruCache'
-const expInSeconds = 60
+const expInSeconds = 60 * 60
 const apiGatewayJwtCache = new LruCache<string>({
   ttl: (1000 * expInSeconds) / 2,
 })
