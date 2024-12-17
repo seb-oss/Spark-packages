@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.3.0
+
+### Minor Changes
+
+- 9c694f4: Fix promise cache with authentication
+
 ## 3.2.0
 
 ### Minor Changes
