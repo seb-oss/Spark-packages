@@ -2,7 +2,6 @@ import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import { type Mock, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { Logger } from 'winston'
 import { getApiGatewayToken } from './apiGatewayToken'
-import { GoogleAuth } from 'google-auth-library'
 
 vi.mock('@google-cloud/iam-credentials', () => ({
   IAMCredentialsClient: vi.fn().mockReturnValue({
