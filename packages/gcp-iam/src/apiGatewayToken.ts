@@ -1,6 +1,8 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import type { Logger } from 'winston'
 import { LruCache } from './lruCache'
+import { GoogleAuth } from 'google-auth-library'
+
 const expInSeconds = 60 * 60
 const apiGatewayJwtCache = new LruCache<string>({
   ttl: (1000 * expInSeconds) / 2,
@@ -15,7 +17,7 @@ const apiGatewayJwtCache = new LruCache<string>({
  */
 export const getApiGatewayToken = async (
   apiURL: string,
-  serviceAccountEmail: string,
+  serviceAccountEmail2: string,
   logger?: Logger
 ): Promise<string> => {
   /**
@@ -30,7 +32,16 @@ export const getApiGatewayToken = async (
 
   try {
     const iamClient = new IAMCredentialsClient()
+    const auth = new GoogleAuth()
+    const cred = await auth.getCredentials()
+    const serviceAccountEmail = cred.client_email
 
+    console.log(serviceAccountEmail)
+
+    if (!serviceAccountEmail) {
+      throw new Error('No account e-mail found.')
+    }
+    console.log('serviceAccountEmail - should not be undef')
     /**
      * JWT Header.
      */
