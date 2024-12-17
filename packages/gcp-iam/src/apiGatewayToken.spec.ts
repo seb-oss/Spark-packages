@@ -2,10 +2,19 @@ import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import { type Mock, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { Logger } from 'winston'
 import { getApiGatewayToken } from './apiGatewayToken'
+import { GoogleAuth } from 'google-auth-library'
 
 vi.mock('@google-cloud/iam-credentials', () => ({
   IAMCredentialsClient: vi.fn().mockReturnValue({
     signBlob: vi.fn().mockResolvedValue(['test-signed-jwt']),
+  }),
+}))
+
+vi.mock('google-auth-library', () => ({
+  GoogleAuth: vi.fn().mockReturnValue({
+    getCredentials: vi
+      .fn()
+      .mockResolvedValue({ client_email: 'some@place.eu' }),
   }),
 }))
 
@@ -27,17 +36,14 @@ describe('Google IAM', () => {
         },
       ])
 
-      const JWT = await getApiGatewayToken(
-        'test-audience',
-        'test-service-account-email'
-      )
+      const JWT = await getApiGatewayToken('test-audience')
 
       expect(JWT).toMatchSnapshot()
 
       expect(signBlobMock).toHaveBeenCalled()
       expect(signBlobMock).toHaveBeenCalledWith({
-        delegates: ['test-service-account-email'],
-        name: 'projects/-/serviceAccounts/test-service-account-email',
+        delegates: ['some@place.eu'],
+        name: 'projects/-/serviceAccounts/some@place.eu',
         payload: expect.any(Uint8Array),
       })
     })
@@ -50,15 +56,9 @@ describe('Google IAM', () => {
 
       signBlobMock.mockClear()
 
-      const originalJWT = await getApiGatewayToken(
-        'test-audience-double',
-        'test-service-account-email-double'
-      )
+      const originalJWT = await getApiGatewayToken('test-audience-double')
 
-      const cachedJWT = await getApiGatewayToken(
-        'test-audience-double',
-        'test-service-account-email-double'
-      )
+      const cachedJWT = await getApiGatewayToken('test-audience-double')
 
       expect(originalJWT).equal(cachedJWT)
 
@@ -74,7 +74,6 @@ describe('Google IAM', () => {
       try {
         await getApiGatewayToken(
           'test-audience-error',
-          'test-service-account-email-error',
           loggerMock as unknown as Logger
         )
       } catch (error) {
