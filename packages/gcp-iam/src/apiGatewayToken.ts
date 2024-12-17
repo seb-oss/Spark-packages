@@ -66,7 +66,7 @@ export const getApiGatewayToken = async (
     const [response] = await iamClient.signBlob({
       delegates: [serviceAccountEmail],
       name: `projects/-/serviceAccounts/${serviceAccountEmail}`,
-      payload: Buffer.from(unsignedJWT),
+      payload: new Uint8Array(Buffer.from(unsignedJWT)),
     })
 
     if (!response.signedBlob) {
