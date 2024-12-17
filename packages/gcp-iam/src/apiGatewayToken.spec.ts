@@ -41,6 +41,29 @@ describe('Google IAM', () => {
         payload: expect.any(Buffer),
       })
     })
+    it('when called with the same URI it should only sign once', async () => {
+      signBlobMock.mockResolvedValueOnce([
+        {
+          signedBlob: Buffer.from('test-signed-jwt'),
+        },
+      ])
+
+      signBlobMock.mockClear()
+
+      const originalJWT = await getApiGatewayToken(
+        'test-audience-double',
+        'test-service-account-email-double'
+      )
+
+      const cachedJWT = await getApiGatewayToken(
+        'test-audience-double',
+        'test-service-account-email-double'
+      )
+
+      expect(originalJWT).equal(cachedJWT)
+
+      expect(signBlobMock).toHaveBeenCalledOnce()
+    })
 
     it('should log errors if passed a logger', async () => {
       signBlobMock.mockRejectedValueOnce(new Error('test-error'))
@@ -50,8 +73,8 @@ describe('Google IAM', () => {
 
       try {
         await getApiGatewayToken(
-          'test-audience',
-          'test-service-account-email',
+          'test-audience-error',
+          'test-service-account-email-error',
           loggerMock as unknown as Logger
         )
       } catch (error) {

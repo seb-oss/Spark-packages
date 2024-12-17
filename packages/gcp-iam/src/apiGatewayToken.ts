@@ -1,6 +1,10 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import type { Logger } from 'winston'
-
+import { LruCache } from './lruCache'
+const expInSeconds = 60
+const apiGatewayJwtCache = new LruCache<string>({
+  ttl: (1000 * expInSeconds) / 2,
+})
 /**
  * Generate a system token for the API Gateway.
  * This is intended to be run under the context of the service account signing the JWT.
@@ -14,6 +18,16 @@ export const getApiGatewayToken = async (
   serviceAccountEmail: string,
   logger?: Logger
 ): Promise<string> => {
+  /**
+   * Check if there is a cached JWT
+   */
+
+  const cachedJwt = apiGatewayJwtCache.get(apiURL)
+  console.log(cachedJwt)
+  if (cachedJwt) {
+    return cachedJwt
+  }
+
   try {
     const iamClient = new IAMCredentialsClient()
 
@@ -37,7 +51,7 @@ export const getApiGatewayToken = async (
       sub: serviceAccountEmail,
       aud: apiURL,
       iat: now,
-      exp: now + 60,
+      exp: now + expInSeconds,
     }
 
     const payloadBase64 = Buffer.from(JSON.stringify(payload)).toString(
@@ -67,6 +81,8 @@ export const getApiGatewayToken = async (
     // Combine into the final JWT.
     const signedJWT = `${unsignedJWT}.${signature}`
 
+    // cache generated jwt
+    apiGatewayJwtCache.put(apiURL, signedJWT)
     return signedJWT
   } catch (error) {
     if (logger) {
