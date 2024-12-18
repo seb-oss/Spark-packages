@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.3.1
+
+### Patch Changes
+
+- 817cee6: fix, add redis object to redis create client setup
+
 ## 3.3.0
 
 ### Minor Changes
