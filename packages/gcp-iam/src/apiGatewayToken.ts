@@ -24,7 +24,6 @@ export const getApiGatewayToken = async (
    */
 
   const cachedJwt = apiGatewayJwtCache.get(apiURL)
-  console.log(cachedJwt)
   if (cachedJwt) {
     return cachedJwt
   }
