@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 0.2.1
+
+### Patch Changes
+
+- 0a43670: Remove console.log
+
 ## 0.2.0
 
 ### Minor Changes
