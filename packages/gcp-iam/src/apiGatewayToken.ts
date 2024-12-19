@@ -96,9 +96,12 @@ export const getApiGatewayToken = async (
     apiGatewayJwtCache.put(apiURL, signedJWT)
     return signedJWT
   } catch (error) {
-    if (logger) {
-      logger.error('Error generating system JWT', error)
+    if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
+      logger?.warn('Soft fail enabled, returning empty JWT')
+      return ''
     }
+
+    logger?.error('Error generating system JWT', error)
 
     throw new Error('Error generating system JWT')
   }
