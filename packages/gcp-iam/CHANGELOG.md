@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 0.3.0
+
+### Minor Changes
+
+- 0fc33ba: Support soft failure, meaning it returns an empty string on failure. The intended use is for local development when not running in a GCP context.
+
 ## 0.2.1
 
 ### Patch Changes
