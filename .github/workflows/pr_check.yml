@@ -46,7 +46,7 @@ jobs:
         run: corepack enable
 
       - name: Build all packages
-        run: yarn workspaces foreach run build
+        run: yarn workspaces foreach --recursive --topological run build
 
   lint:
     name: Lint
@@ -79,7 +79,7 @@ jobs:
         run: corepack enable
 
       - name: Run type checking
-        run: yarn workspaces foreach run typecheck
+        run: yarn workspaces foreach --all --parallel run typecheck
 
   test:
     name: Test
@@ -98,4 +98,4 @@ jobs:
         run: corepack enable
 
       - name: Run tests
-        run: yarn workspaces foreach run test
+        run: yarn workspaces foreach --all --parallel run test

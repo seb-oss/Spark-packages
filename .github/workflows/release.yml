@@ -94,7 +94,7 @@ jobs:
         run: corepack enable
 
       - name: Run tests
-        run: yarn workspaces foreach run test
+        run: yarn workspaces foreach --all --parallel run test
 
   lint:
     name: Lint
@@ -127,7 +127,7 @@ jobs:
         run: corepack enable
 
       - name: Run type checking
-        run: yarn workspaces foreach run typecheck
+        run: yarn workspaces foreach --all --parallel run typecheck
 
   changeset:
     name: Create Release Pull Request or Publish to NPM
