@@ -1,5 +1,4 @@
 import type { OutgoingHttpHeaders } from 'node:http'
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { RetrySettings } from '@sebspark/retry'
 import type { NextFunction, Request, Response } from 'express'
 import type {
@@ -62,7 +61,9 @@ export type PayloadRequestArgs = RequestArgs & {
 export type RequestOptions = {
   retry?: RetrySettings
   headers?: OutgoingHttpHeaders & Record<string, string>
-  httpsAgent?: any,
+  // biome-ignore lint/suspicious/noExplicitAny: ignore
+  httpsAgent?: any
+  // biome-ignore lint/suspicious/noExplicitAny: ignore
   httpAgent?: any
 }
 

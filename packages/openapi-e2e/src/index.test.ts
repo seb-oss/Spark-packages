@@ -5,7 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import type {
   InstrumentEntityResponse,
   MarketdataClient,
-} from './schemas/Marketdata'
+} from './schemas/marketdata'
 import { app, markets } from './server'
 
 describe('openapi e2e tests', () => {

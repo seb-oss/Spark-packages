@@ -4,9 +4,7 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": {
-    "openapi-typegen": "./cli.mjs"
-  },
+  "bin": "./cli.mjs",
   "files": [
     "dist",
     "cli.mjs"

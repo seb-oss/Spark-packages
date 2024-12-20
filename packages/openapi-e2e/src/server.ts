@@ -10,7 +10,7 @@ import type {
   InstrumentEntityResponse,
   MarketListResponse,
   MarketdataServer,
-} from './schemas/Marketdata'
+} from './schemas/marketdata'
 
 export const markets: MarketListResponse = {
   data: [
@@ -28,7 +28,6 @@ const api: MarketdataServer = {
   '/secured': {
     get: {
       handler: async ({ headers }) => {
-        console.log(headers)
         if (!headers['x-client-key']) throw new UnauthorizedError()
         if (!headers['x-api-key']) throw new ForbiddenError()
         return [200, { data: 'ok' }]
