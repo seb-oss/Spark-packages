@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-core",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

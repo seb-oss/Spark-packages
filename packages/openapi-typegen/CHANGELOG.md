@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 2.0.0
+
+### Major Changes
+
+- 1ef46ab: Updated express to v5
+
+### Patch Changes
+
+- Updated dependencies [1ef46ab]
+  - @sebspark/openapi-core@2.0.0
+
 ## 1.11.0
 
 ### Minor Changes

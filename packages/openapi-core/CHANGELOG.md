@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.0.0
+
+### Major Changes
+
+- 1ef46ab: Updated express to v5
+
 ## 1.6.0
 
 ### Minor Changes

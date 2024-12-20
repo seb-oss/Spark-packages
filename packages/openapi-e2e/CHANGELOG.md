@@ -1,5 +1,18 @@
 # @sebspark/openapi-e2e
 
+## 2.0.0
+
+### Major Changes
+
+- 1ef46ab: Updated express to v5
+
+### Patch Changes
+
+- Updated dependencies [1ef46ab]
+  - @sebspark/openapi-client@2.0.0
+  - @sebspark/openapi-core@2.0.0
+  - @sebspark/openapi-express@2.0.0
+
 ## 1.1.2
 
 ### Patch Changes
