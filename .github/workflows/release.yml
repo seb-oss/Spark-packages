@@ -11,40 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  install:
-    name: Install dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Enable Corepack
-        run: corepack enable
-        
-      - name: Cache Yarn dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn install
-
   analyze:
     name: Analyze with CodeQL
-    needs: [install]
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
@@ -60,6 +28,22 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -71,7 +55,6 @@ jobs:
 
   licenses:
     name: Check licenses
-    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -84,13 +67,29 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Run license check
         run: node tools/check-licenses.mjs
 
   test:
     name: Tests
-    needs: [install, licenses]
+    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -103,13 +102,29 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Run tests
         run: yarn workspaces foreach --all --parallel run test
 
   lint:
     name: Lint
-    needs: [install, licenses]
+    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -122,6 +137,22 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
@@ -131,7 +162,7 @@ jobs:
 
   typecheck:
     name: Type check
-    needs: [install, licenses]
+    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -144,6 +175,22 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Run type checking
         run: yarn workspaces foreach --all --parallel run typecheck
@@ -163,6 +210,22 @@ jobs:
 
       - name: Enable Corepack
         run: corepack enable
+
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
         
       - name: Create Changeset PR
         uses: changesets/action@v1
