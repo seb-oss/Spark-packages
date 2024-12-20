@@ -11,46 +11,55 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  install:
-    name: Install dependencies
+  checkout:
+    name: Checkout Repository
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+  setup-node:
+    name: Setup Node.js
+    needs: [checkout]
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
 
-      - name: Setup Yarn
+      - name: Enable Corepack
         run: corepack enable
+
+  install:
+    name: Install dependencies
+    needs: [setup-node]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Yarn dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            .yarn/cache
+            .yarn/unplugged
+            .yarn/build-state.yml
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: Install dependencies
         run: yarn install
 
   analyze:
     name: Analyze with CodeQL
+    needs: [install]
     runs-on: ubuntu-latest
     timeout-minutes: 360
     permissions:
       security-events: write
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Setup Yarn
-        run: corepack enable
-
-      - name: Install dependencies
-        run: yarn install
-
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
@@ -61,49 +70,25 @@ jobs:
 
   licenses:
     name: Check licenses
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Setup Yarn
-        run: corepack enable
-
       - name: Run license check
         run: node tools/check-licenses.mjs
 
   test:
     name: Tests
-    runs-on: ubuntu-latest
     needs: [install, licenses]
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Setup Yarn
-        run: corepack enable
-
       - name: Run tests
-        run: yarn workspaces foreach --all run test
+        run: yarn workspaces foreach --all --parallel run test
 
   lint:
     name: Lint
-    runs-on: ubuntu-latest
     needs: [install, licenses]
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
 
@@ -112,42 +97,17 @@ jobs:
 
   typecheck:
     name: Type check
-    runs-on: ubuntu-latest
     needs: [install, licenses]
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Setup Yarn
-        run: corepack enable
-
       - name: Run type checking
-        run: yarn workspaces foreach --all run typecheck
+        run: yarn workspaces foreach --all --parallel run typecheck
 
   changeset:
     name: Create Release Pull Request or Publish to NPM
-    runs-on: ubuntu-latest
     needs: [test, lint, typecheck, analyze]
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Setup Yarn
-        run: corepack enable
-
-      - name: Install dependencies
-        run: yarn install
-
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
