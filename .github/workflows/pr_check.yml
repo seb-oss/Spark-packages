@@ -79,7 +79,7 @@ jobs:
         run: corepack enable
 
       - name: Run type checking
-        run: yarn workspaces foreach --all --parallel run typecheck
+        run: yarn workspaces foreach --all run typecheck
 
   test:
     name: Test
@@ -98,4 +98,4 @@ jobs:
         run: corepack enable
 
       - name: Run tests
-        run: yarn workspaces foreach --all --parallel run test
+        run: yarn workspaces foreach --all run test
