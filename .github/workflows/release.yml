@@ -11,18 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  checkout:
-    name: Checkout Repository
+  setup-node:
+    name: Setup Node.js
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-  setup-node:
-    name: Setup Node.js
-    needs: [checkout]
-    runs-on: ubuntu-latest
-    steps:
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -36,6 +31,9 @@ jobs:
     needs: [setup-node]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Cache Yarn dependencies
         id: cache
         uses: actions/cache@v3
@@ -60,6 +58,9 @@ jobs:
     permissions:
       security-events: write
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
@@ -73,6 +74,9 @@ jobs:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Run license check
         run: node tools/check-licenses.mjs
 
@@ -81,6 +85,9 @@ jobs:
     needs: [install, licenses]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Run tests
         run: yarn workspaces foreach --all --parallel run test
 
@@ -89,6 +96,9 @@ jobs:
     needs: [install, licenses]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
 
@@ -100,6 +110,9 @@ jobs:
     needs: [install, licenses]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Run type checking
         run: yarn workspaces foreach --all --parallel run typecheck
 
@@ -108,6 +121,9 @@ jobs:
     needs: [test, lint, typecheck, analyze]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
