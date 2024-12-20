@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 1.6.0
+
+### Minor Changes
+
+- b288618: support for http(s) agent in axios request
+
 ## 1.5.4
 
 ### Patch Changes
