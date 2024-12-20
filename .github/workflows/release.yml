@@ -18,8 +18,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
 
   analyze:
     name: Analyze with CodeQL
@@ -31,6 +39,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -46,7 +65,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - run: node tools/check-licenses.mjs
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Run license check
+        run: node tools/check-licenses.mjs
 
   test:
     name: Tests
@@ -56,11 +85,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Setup Yarn
+        run: corepack enable
 
       - name: Run tests
-        run: npm run test
+        run: yarn workspaces foreach run test
 
   lint:
     name: Lint
@@ -84,11 +118,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
 
-      - name: Run linting
-        run: npm run typecheck
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Run type checking
+        run: yarn workspaces foreach run typecheck
 
   changeset:
     name: Create Release Pull Request or Publish to NPM
@@ -98,13 +137,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Setup Yarn
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
 
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
-          publish: npm run release
+          publish: yarn release
           commit: 'chore(release): update versions'
           title: 'chore(release): update versions'
         env:
