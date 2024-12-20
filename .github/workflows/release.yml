@@ -114,7 +114,7 @@ jobs:
         run: yarn install --immutable
         
       - name: Run tests
-        run: yarn workspaces foreach --worktree --parallel run test
+        run: yarn test
 
   lint:
     name: Lint
@@ -183,7 +183,7 @@ jobs:
         run: yarn install --immutable
         
       - name: Run type checking
-        run: yarn workspaces foreach --worktree --parallel run typecheck
+        run: yarn typecheck
 
   changeset:
     name: Create Release Pull Request or Publish to NPM
