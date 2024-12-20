@@ -34,16 +34,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -73,16 +71,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Run license check
         run: node tools/check-licenses.mjs
@@ -108,16 +104,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Run tests
         run: yarn workspaces foreach --all --parallel run test
@@ -143,16 +137,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
@@ -181,16 +173,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Run type checking
         run: yarn workspaces foreach --all --parallel run typecheck
@@ -216,16 +206,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
+            node_modules
             .yarn/cache
-            .yarn/unplugged
-            .yarn/build-state.yml
-            .pnp.*
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
         
       - name: Create Changeset PR
         uses: changesets/action@v1
