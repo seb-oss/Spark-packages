@@ -81,5 +81,17 @@ describe('Google IAM', () => {
 
       expect(loggerMock.error).toHaveBeenCalled()
     })
+
+    it('should return an empty string if GCP_IAM_SOFT_FAIL is true', async () => {
+      signBlobMock.mockRejectedValueOnce(new Error('test-error'))
+      process.env.GCP_IAM_SOFT_FAIL = 'true'
+
+      const JWT = await getApiGatewayToken('test-audience-soft-fail')
+
+      expect(JWT).toBe('')
+
+      // biome-ignore lint/performance/noDelete: This is a test :o)
+      delete process.env.GCP_IAM_SOFT_FAIL
+    })
   })
 })
