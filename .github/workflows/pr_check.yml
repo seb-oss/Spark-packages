@@ -108,7 +108,7 @@ jobs:
         run: yarn install --immutable
         
       - name: Run type checking
-        run: yarn workspaces foreach --all --parallel run typecheck
+        run: yarn workspaces foreach --worktree --parallel run typecheck
 
   test:
     name: Test
@@ -140,4 +140,4 @@ jobs:
         run: yarn install --immutable
         
       - name: Run tests
-        run: yarn workspaces foreach --all --parallel run test
+        run: yarn workspaces foreach --worktree --parallel run test
