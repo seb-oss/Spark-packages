@@ -111,6 +111,8 @@ const mergeArgs = (
     body,
     retry,
     arrayFormat: global?.arrayFormat,
+    httpsAgent: extras?.httpsAgent,
+    httpAgent: extras?.httpAgent,
   }
 
   return merged
