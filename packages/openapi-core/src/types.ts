@@ -62,6 +62,8 @@ export type PayloadRequestArgs = RequestArgs & {
 export type RequestOptions = {
   retry?: RetrySettings
   headers?: OutgoingHttpHeaders & Record<string, string>
+  httpsAgent?: any,
+  httpAgent?: any
 }
 
 export type ArrayFormat = 'indices' | 'brackets' | 'repeat' | 'comma'

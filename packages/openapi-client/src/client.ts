@@ -78,6 +78,8 @@ const callServer = async <
           params: args.params,
           paramsSerializer: serializer,
           data: body,
+          httpsAgent: args.httpsAgent,
+          httpAgent: args.httpAgent,
         }),
       args.retry
     )
