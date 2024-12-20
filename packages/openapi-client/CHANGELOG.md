@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 1.6.1
+
+### Patch Changes
+
+- 5aa2b5a: forward http(s)Agent through arg merge
+
 ## 1.6.0
 
 ### Minor Changes
