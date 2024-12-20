@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: Build all packages
         run: yarn workspaces foreach --recursive --topological run build
@@ -70,7 +70,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
@@ -105,7 +105,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Run type checking
         run: yarn workspaces foreach --all --parallel run typecheck
@@ -137,7 +137,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Run tests
         run: yarn workspaces foreach --all --parallel run test

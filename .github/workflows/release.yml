@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -78,7 +78,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Run license check
         run: node tools/check-licenses.mjs
@@ -111,7 +111,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Run tests
         run: yarn workspaces foreach --all --parallel run test
@@ -144,7 +144,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
@@ -180,7 +180,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Run type checking
         run: yarn workspaces foreach --all --parallel run typecheck
@@ -213,7 +213,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
         
       - name: Create Changeset PR
         uses: changesets/action@v1
