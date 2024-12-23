@@ -26,7 +26,7 @@
     "@opentelemetry/exporter-zipkin": "1.29.0",
     "@opentelemetry/instrumentation-express": "0.44.0",
     "@opentelemetry/instrumentation-http": "0.56.0",
-    "@opentelemetry/instrumentation-pg": "0.41.0",
+    "@opentelemetry/instrumentation-pg": "0.50.0",
     "@opentelemetry/instrumentation-socket.io": "0.45.0",
     "@opentelemetry/instrumentation-undici": "0.7.0",
     "@opentelemetry/sdk-trace-base": "1.29.0",
