@@ -103,6 +103,6 @@ export const getApiGatewayToken = async (
 
     logger?.error('Error generating system JWT', error)
 
-    throw new Error('Error generating system JWT')
+    throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
 }
