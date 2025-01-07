@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 0.3.1
+
+### Patch Changes
+
+- de46799: log api gateway errors
+
 ## 0.3.0
 
 ### Minor Changes
