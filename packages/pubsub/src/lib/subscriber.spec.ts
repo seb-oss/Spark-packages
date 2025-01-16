@@ -131,4 +131,18 @@ describe('subscriber', () => {
       expect(topicMock.createSubscription).toHaveBeenCalled()
     })
   })
+
+  describe('unsubscribe', () => {
+    it('unsubscribes from a subscription', async () => {
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      subscriptionMock.delete = vi.fn()
+
+      await subscriber.topic('example').unsubscribe('example-subscription')
+
+      expect(subscriptionMock.delete).toHaveBeenCalled()
+    })
+  })
 })
