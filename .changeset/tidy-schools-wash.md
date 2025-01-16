@@ -2,4 +2,4 @@
 "@sebspark/pubsub": minor
 ---
 
-Add method for unsubscribing.
+Add methods for closing and deleting a subscription.

@@ -132,15 +132,29 @@ describe('subscriber', () => {
     })
   })
 
-  describe('unsubscribe', () => {
-    it('unsubscribes from a subscription', async () => {
+  describe('close', () => {
+    it('closes a subscription', async () => {
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      subscriptionMock.close = vi.fn()
+
+      await subscriber.topic('example').close('example-subscription')
+
+      expect(subscriptionMock.close).toHaveBeenCalled()
+    })
+  })
+
+  describe('delete', () => {
+    it('deletes a subscription', async () => {
       const subscriber = createSubscriber<ExamplePubsubChannels>({
         projectId: 'test',
       })
 
       subscriptionMock.delete = vi.fn()
 
-      await subscriber.topic('example').unsubscribe('example-subscription')
+      await subscriber.topic('example').delete('example-subscription')
 
       expect(subscriptionMock.delete).toHaveBeenCalled()
     })
