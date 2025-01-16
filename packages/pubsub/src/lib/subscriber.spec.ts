@@ -131,4 +131,32 @@ describe('subscriber', () => {
       expect(topicMock.createSubscription).toHaveBeenCalled()
     })
   })
+
+  describe('close', () => {
+    it('closes a subscription', async () => {
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      subscriptionMock.close = vi.fn()
+
+      await subscriber.topic('example').close('example-subscription')
+
+      expect(subscriptionMock.close).toHaveBeenCalled()
+    })
+  })
+
+  describe('delete', () => {
+    it('deletes a subscription', async () => {
+      const subscriber = createSubscriber<ExamplePubsubChannels>({
+        projectId: 'test',
+      })
+
+      subscriptionMock.delete = vi.fn()
+
+      await subscriber.topic('example').delete('example-subscription')
+
+      expect(subscriptionMock.delete).toHaveBeenCalled()
+    })
+  })
 })

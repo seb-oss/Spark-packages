@@ -95,6 +95,14 @@ export const createSubscriber = <T extends Record<string, unknown>>(
 
           return subscription
         },
+        close: async (subscriptionName: string) => {
+          const subscription = _topic.subscription(subscriptionName)
+          await subscription.close()
+        },
+        delete: async (subscriptionName: string) => {
+          const subscription = _topic.subscription(subscriptionName)
+          await subscription.delete()
+        },
       }
     },
   }
