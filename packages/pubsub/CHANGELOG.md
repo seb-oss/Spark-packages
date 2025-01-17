@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.6.1
+
+### Patch Changes
+
+- cde53cf: Add missing methods to SubscriptionClient type.
+
 ## 1.6.0
 
 ### Minor Changes
