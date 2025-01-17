@@ -52,6 +52,8 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
       name: string,
       options?: PubSubOptions
     ): Promise<void>
+    close: (name: string) => Promise<void>
+    delete: (name: string) => Promise<void>
   }
 }
 
