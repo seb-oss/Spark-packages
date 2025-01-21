@@ -52,6 +52,8 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
       name: string,
       options?: PubSubOptions
     ): Promise<void>
+    close: (name: string) => Promise<void>
+    delete: (name: string) => Promise<void>
   }
 }
 
@@ -94,6 +96,14 @@ export const createSubscriber = <T extends Record<string, unknown>>(
           })
 
           return subscription
+        },
+        close: async (subscriptionName: string) => {
+          const subscription = _topic.subscription(subscriptionName)
+          await subscription.close()
+        },
+        delete: async (subscriptionName: string) => {
+          const subscription = _topic.subscription(subscriptionName)
+          await subscription.delete()
         },
       }
     },

@@ -8,9 +8,7 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "spanner-migrate": "./dist/cli.js"
-  },
+  "bin": "./dist/cli.js",
   "scripts": {
     "build": "tsup-node src/index.ts src/cli.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",

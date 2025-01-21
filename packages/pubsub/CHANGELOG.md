@@ -1,5 +1,17 @@
 # @sebspark/pubsub
 
+## 1.6.1
+
+### Patch Changes
+
+- cde53cf: Add missing methods to SubscriptionClient type.
+
+## 1.6.0
+
+### Minor Changes
+
+- 63b515f: Add methods for closing and deleting a subscription.
+
 ## 1.5.6
 
 ### Patch Changes
