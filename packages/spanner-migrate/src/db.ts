@@ -13,13 +13,12 @@ export const SQL_SELECT_TABLE_MIGRATIONS = `
 
 export const SQL_CREATE_TABLE_MIGRATIONS = `
   CREATE TABLE migrations (
-    id STRING(255) NOT NULL, -- Full file name (e.g., "20250119T143000_add_users_table")
-    description STRING(255) NOT NULL, -- Human-readable description (e.g., "Add Users Table")
-    applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(), -- When the migration was applied
-    up STRING(MAX), -- The up migration script
-    down STRING(MAX), -- The down migration script
-  PRIMARY KEY (id)
-)
+    id STRING(128) NOT NULL,
+    description STRING(256) NOT NULL,
+    applied_at TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp = true),
+    up STRING(1024),
+    down STRING(1024)
+  ) PRIMARY KEY (id)
 `
 
 export const ensureMigrationTable = async (database: Database) => {
@@ -29,7 +28,12 @@ export const ensureMigrationTable = async (database: Database) => {
 
   // Create migration table
   console.log('Creating migration table')
-  await database.run(SQL_CREATE_TABLE_MIGRATIONS)
+  try {
+    await database.updateSchema(SQL_CREATE_TABLE_MIGRATIONS)
+  } catch (err) {
+    console.error('Failed to create migrations table')
+    throw err
+  }
 }
 
 export const getAppliedMigrations = async (

@@ -14,13 +14,16 @@ export const applyUp = async (db: Database, migration: Migration) => {
     const req: ExecuteSqlRequest = {
       sql: `
           INSERT INTO migrations (id, description, applied_at, up, down)
-          VALUES (@id, @description, CURRENT_TIMESTAMP(), @upScript, @downScript)
+          VALUES (@id, @description, CURRENT_TIMESTAMP(), @up, @down)
         `,
       params: migration,
       json: true,
     }
 
-    await db.run(req)
+    await db.runTransactionAsync(async (transaction) => {
+      await transaction.runUpdate(req)
+      await transaction.commit()
+    })
     console.log(`Migration recorded in the database: ${migration.id}`)
   } catch (error) {
     throw new Error(
@@ -57,13 +60,16 @@ export const applyDown = async (db: Database) => {
   }
 
   // Step 3: Remove the migration record
-  await db.query(
-    `
-    DELETE FROM migrations
-    WHERE id = @id
-    `,
-    { id: lastMigration.id }
-  )
+  await db.runTransactionAsync(async (transaction) => {
+    await transaction.runUpdate({
+      sql: `
+      DELETE FROM migrations
+      WHERE id = @id
+      `,
+      params: { id: lastMigration.id },
+    })
+    await transaction.commit()
+  })
 
   console.log(
     `Successfully rolled back migration: ${lastMigration.description}`
@@ -82,19 +88,21 @@ const runScript = async (db: Database, script: string): Promise<void> => {
     throw new Error('No valid SQL statements found in the script.')
   }
 
-  if (statements.length === 1) {
-    // Single statement, run directly
-    console.log(`Executing single statement: ${statements[0]}`)
-    await db.run(statements[0])
-  } else {
-    // Multiple statements, use a transaction
-    console.log(`Executing ${statements.length} statements in a transaction.`)
-    await db.runTransactionAsync(async (transaction) => {
-      for (const statement of statements) {
-        console.log(`Executing statement: ${statement}`)
-        await transaction.run(statement)
-      }
-      await transaction.commit()
-    })
+  // Loop over statements (since schema changes cannot be run in a transaction)
+  for (const statement of statements) {
+    console.log(`Executing statement: ${statement}`)
+
+    const sql = statement.replace(/--.*$/gm, '') // Remove comments
+
+    if (isSchemaChange(sql)) {
+      await db.updateSchema(sql)
+    } else {
+      await db.runTransactionAsync(async (transaction) => {
+        await transaction.runUpdate(sql)
+        await transaction.commit()
+      })
+    }
   }
 }
+
+const isSchemaChange = (sql: string) => /^\s*(CREATE|ALTER|DROP|TRUNCATE)\b/i.test(sql)

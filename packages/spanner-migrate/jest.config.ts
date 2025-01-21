@@ -7,4 +7,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: './coverage',
+  testMatch: ['**/*.spec.ts', '**/*.test.ts'], // Only include *.spec.ts and *.test.ts files
 }

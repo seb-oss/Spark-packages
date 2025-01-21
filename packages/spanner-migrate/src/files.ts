@@ -1,5 +1,5 @@
 import { access, readdir, mkdir, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import { join, resolve } from 'node:path'
 import { Config, Migration } from './types'
 
 export const getMigrationFiles = async (path: string): Promise<string[]> => {
@@ -26,12 +26,12 @@ export const getMigration = async (
 ): Promise<Migration> => {
   try {
     // Construct the full file path
-    const filePath = join(path, `${id}.ts`)
+    const filePath = resolve(process.cwd(), join(path, `${id}.ts`))
 
     // Check if the file exists
     try {
       await access(filePath)
-    } catch {
+    } catch (err) {
       throw new Error(`Migration file not found: ${filePath}`)
     }
 
@@ -67,27 +67,24 @@ export const getNewMigrations = (
   applied: Migration[],
   files: string[]
 ): string[] => {
-  try {
-    // Ensure files are sorted to match applied sequence
-    const sortedFiles = files.sort()
+  // Ensure files are sorted to match applied sequence
+  const sortedFiles = files.sort()
 
-    // Check for interlacing or missing migrations
-    for (let ix = 0; ix < applied.length; ix++) {
-      if (sortedFiles[ix] !== applied[ix].id) {
-        throw new Error(
-          `Mismatch between applied migrations and files. Found '${sortedFiles[ix]}' but expected '${applied[ix].id}' at position ${ix}.`
-        )
-      }
+  // Check for interlacing or missing migrations
+  for (let ix = 0; ix < applied.length; ix++) {
+    console.log(sortedFiles[ix], applied[ix].id)
+    if (sortedFiles[ix] !== applied[ix].id) {
+      throw new Error(
+        `Mismatch between applied migrations and files. Found '${sortedFiles[ix]}' but expected '${applied[ix].id}' at position ${ix}.`
+      )
     }
-
-    // Return new migrations (files not already applied)
-    const newMigrations = sortedFiles.slice(applied.length)
-    console.log(`Found ${newMigrations.length} new migrations.`)
-
-    return newMigrations
-  } catch (error) {
-    throw new Error(`Failed to compare migrations: ${(error as Error).message}`)
   }
+
+  // Return new migrations (files not already applied)
+  const newMigrations = sortedFiles.slice(applied.length)
+  console.log(`Found ${newMigrations.length} new migrations.`)
+
+  return newMigrations
 }
 
 export const createMigration = async (
@@ -104,8 +101,7 @@ export const createMigration = async (
   const filePath = join(path, filename)
 
   // Template migration content
-  const template = `
-// ${timestamp}
+  const template = `// ${timestamp}
 // ${description}
 
 export const up = \`
