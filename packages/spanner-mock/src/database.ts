@@ -4,7 +4,7 @@ import { createTransaction } from './transaction'
 
 export const createMockDatabase = () => {
   const tables = new Map<string, ReturnType<typeof createMockTable>>()
-  const transaction = createTransaction()
+  let transaction = createTransaction()
 
   return {
     table: jest.fn((tableName: string) => {
@@ -18,9 +18,18 @@ export const createMockDatabase = () => {
         return [[]] // Mocked query results
       }
     ),
-    runTransactionAsync: jest.fn(async (transactionFn: (transaction: any) => Promise<void>) => {
-      await transactionFn(transaction)
+    updateSchema: jest.fn(
+      async (statements: string[]) => {
+        return [] // Successful schema update
+      }
+    ),
+    runTransactionAsync: jest.fn((transactionFn: (transaction: any) => Promise<void>) => {
+      const promise = new Promise((resolve, reject) => {
+        transaction.setCallbacks(resolve, reject)
+      })
+      transactionFn(transaction)
+      return promise
     }),
-    getTransaction: () => transaction, // Expose the transaction for testing
+    getTransaction: async () => [transaction], // Expose the transaction for testing
   }
 }
