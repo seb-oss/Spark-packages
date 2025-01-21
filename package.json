@@ -16,6 +16,7 @@
     "start": "turbo watch lint test typecheck",
     "test:watch": "turbo watch test",
     "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
     "typecheck": "turbo typecheck"
   },
   "private": true,

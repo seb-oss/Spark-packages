@@ -1,0 +1,23 @@
+{
+  "name": "@sebspark/spanner-mock",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check ."
+  },
+  "devDependencies": {
+    "tsconfig": "*"
+  },
+  "peerDependencies": {
+    "@jest/globals": "^29.7.0",
+    "vitest": "^3.0.2"
+  }
+}

@@ -80,6 +80,14 @@ Use Opentelemetry for collecting traces and exporting to Cloud Trace
 
 Google IAM utilities.
 
+### [@sebspark/spanner-mock](./packages/spanner-mock)
+
+A (so far incomplete) mocking library for Spanner DB
+
+### [@sebspark/spanner-migrate](./packages/spanner-migrate)
+
+Migration tool for Spanner DB
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
