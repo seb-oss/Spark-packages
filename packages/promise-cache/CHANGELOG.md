@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.3.2
+
+### Patch Changes
+
+- 47838b1: allow passing pingInterval as a redis option
+
 ## 3.3.1
 
 ### Patch Changes
