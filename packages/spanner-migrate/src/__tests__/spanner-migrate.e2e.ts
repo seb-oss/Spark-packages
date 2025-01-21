@@ -1,15 +1,26 @@
 jest.unmock('@google-cloud/spanner')
 
-import { Database, Instance, Spanner } from '@google-cloud/spanner'
-import { GenericContainer, StartedTestContainer, Wait } from 'testcontainers'
-import { access, constants, readdir, readFile, rm, rmdir } from 'node:fs/promises'
+import { execSync } from 'node:child_process'
+import {
+  constants,
+  access,
+  readFile,
+  readdir,
+  rm,
+  rmdir,
+} from 'node:fs/promises'
 import { resolve } from 'node:path'
 import type { Readable } from 'node:stream'
 import { inspect } from 'node:util'
-import { execSync } from 'node:child_process'
+import { type Database, type Instance, Spanner } from '@google-cloud/spanner'
+import {
+  GenericContainer,
+  type StartedTestContainer,
+  Wait,
+} from 'testcontainers'
 
-import { create, init, up, down, status } from '..'
-import { Config } from '../types'
+import { create, down, init, status, up } from '..'
+import type { Config } from '../types'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -33,7 +44,7 @@ describe('spanner-migrate', () => {
     const logConsumer = (stream: Readable) => {
       stream
         .on('data', (chunk) => {
-          process.stdout.write(chunk);
+          process.stdout.write(chunk)
         })
         .on('error', (error) => {
           process.stderr.write(inspect(error, false, 1000, true))
@@ -42,23 +53,29 @@ describe('spanner-migrate', () => {
 
     // Start the Spanner emulator container
     console.log('Starting Spanner container')
-    spannerContainer = await new GenericContainer('gcr.io/cloud-spanner-emulator/emulator:latest')
+    spannerContainer = await new GenericContainer(
+      'gcr.io/cloud-spanner-emulator/emulator:latest'
+    )
       .withExposedPorts(9010, 9020)
       .withStartupTimeout(120000)
       .withLogConsumer(logConsumer)
-      .withWaitStrategy(Wait.forLogMessage(/gRPC server listening at 0.0.0.0:9010/ig))
+      .withWaitStrategy(
+        Wait.forLogMessage(/gRPC server listening at 0.0.0.0:9010/gi)
+      )
       .start()
 
-    const emulatorHost = `localhost`
+    const emulatorHost = 'localhost'
     const grpcPort = spannerContainer.getMappedPort(9010)
     const restPort = spannerContainer.getMappedPort(9020)
 
     // Set up host
-    execSync(`gcloud config configurations create spanner-emulator`)
+    execSync('gcloud config configurations create spanner-emulator')
     execSync('gcloud config configurations activate spanner-emulator')
     execSync('gcloud config set auth/disable_credentials true')
     execSync(`gcloud config set project ${config.projectId}`)
-    execSync(`gcloud config set api_endpoint_overrides/spanner http://${emulatorHost}:${restPort}/`)
+    execSync(
+      `gcloud config set api_endpoint_overrides/spanner http://${emulatorHost}:${restPort}/`
+    )
 
     process.env.SPANNER_EMULATOR_HOST = `${emulatorHost}:${grpcPort}`
 
@@ -66,8 +83,12 @@ describe('spanner-migrate', () => {
     execSync('gcloud spanner instances list')
 
     // Set up instance and database
-    execSync(`gcloud spanner instances create ${config.instanceName} --config=emulator-config --description="Test Instance" --nodes=1`)
-    execSync(`gcloud spanner databases create ${config.databaseName} --instance=${config.instanceName}`)
+    execSync(
+      `gcloud spanner instances create ${config.instanceName} --config=emulator-config --description="Test Instance" --nodes=1`
+    )
+    execSync(
+      `gcloud spanner databases create ${config.databaseName} --instance=${config.instanceName}`
+    )
 
     // Set up Spanner client to connect to emulator
     spannerClient = new Spanner({
@@ -77,7 +98,6 @@ describe('spanner-migrate', () => {
     // Create an instance and a database
     instance = spannerClient.instance(config.instanceName)
     database = instance.database(config.databaseName)
-    
   })
   afterAll(async () => {
     await spannerContainer.stop()
@@ -139,16 +159,24 @@ describe('spanner-migrate', () => {
       expect(schema[0][1]).toMatch(/CREATE TABLE users/gi)
 
       let migrationStatus = await status(config)
-      expect(migrationStatus).toMatch(/Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users/)
-      expect(migrationStatus).toMatch(/New\n--------------------------------------------------------------------------------\n20250121144738000_create_table_and_index_adresses/)
+      expect(migrationStatus).toMatch(
+        /Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users/
+      )
+      expect(migrationStatus).toMatch(
+        /New\n--------------------------------------------------------------------------------\n20250121144738000_create_table_and_index_adresses/
+      )
 
       await down(config)
       schema = await database.getSchema()
       expect(schema[0]).toHaveLength(1)
 
       migrationStatus = await status(config)
-      expect(migrationStatus).toMatch(/Applied\n--------------------------------------------------------------------------------\n/)
-      expect(migrationStatus).toMatch(/New\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/)
+      expect(migrationStatus).toMatch(
+        /Applied\n--------------------------------------------------------------------------------\n/
+      )
+      expect(migrationStatus).toMatch(
+        /New\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/
+      )
     })
     it('runs a multiple migrations up and down', async () => {
       // Up all
@@ -161,8 +189,12 @@ describe('spanner-migrate', () => {
 
       let migrationStatus = await status(config)
       migrationStatus = await status(config)
-      expect(migrationStatus).toMatch(/Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/)
-      expect(migrationStatus).toMatch(/New\n--------------------------------------------------------------------------------\n/)
+      expect(migrationStatus).toMatch(
+        /Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/
+      )
+      expect(migrationStatus).toMatch(
+        /New\n--------------------------------------------------------------------------------\n/
+      )
 
       // Down one
       await down(config)
@@ -171,8 +203,12 @@ describe('spanner-migrate', () => {
 
       migrationStatus = await status(config)
       migrationStatus = await status(config)
-      expect(migrationStatus).toMatch(/Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n/)
-      expect(migrationStatus).toMatch(/New\n--------------------------------------------------------------------------------\n20250121144738000_create_table_and_index_adresses/)
+      expect(migrationStatus).toMatch(
+        /Applied\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n/
+      )
+      expect(migrationStatus).toMatch(
+        /New\n--------------------------------------------------------------------------------\n20250121144738000_create_table_and_index_adresses/
+      )
 
       // Down one
       await down(config)
@@ -181,8 +217,12 @@ describe('spanner-migrate', () => {
 
       migrationStatus = await status(config)
       migrationStatus = await status(config)
-      expect(migrationStatus).toMatch(/Applied\n--------------------------------------------------------------------------------\n/)
-      expect(migrationStatus).toMatch(/New\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/)
+      expect(migrationStatus).toMatch(
+        /Applied\n--------------------------------------------------------------------------------\n/
+      )
+      expect(migrationStatus).toMatch(
+        /New\n--------------------------------------------------------------------------------\n20250120145638000_create_table_users\n20250121144738000_create_table_and_index_adresses/
+      )
     })
   })
 })

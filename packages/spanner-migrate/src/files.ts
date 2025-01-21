@@ -1,6 +1,6 @@
-import { access, readdir, mkdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, readdir, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
-import { Config, Migration } from './types'
+import type { Config, Migration } from './types'
 
 export const getMigrationFiles = async (path: string): Promise<string[]> => {
   try {

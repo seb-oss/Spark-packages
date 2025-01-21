@@ -1,14 +1,19 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest, Transaction } from '@google-cloud/spanner/build/src/transaction'
-import { applyUp, applyDown } from '../apply'
-import { Migration } from '../types'
+import type {
+  ExecuteSqlRequest,
+  Transaction,
+} from '@google-cloud/spanner/build/src/transaction'
+import { applyDown, applyUp } from '../apply'
+import type { Migration } from '../types'
 
 describe('apply.ts', () => {
   let db: jest.Mocked<Database>
 
   beforeEach(() => {
     // Assume `Database` is mocked globally
-    db = new Spanner().instance('my-instance').database('my-database') as jest.Mocked<Database>
+    db = new Spanner()
+      .instance('my-instance')
+      .database('my-database') as jest.Mocked<Database>
     jest.clearAllMocks()
   })
 
@@ -28,7 +33,7 @@ describe('apply.ts', () => {
       expect(db.updateSchema).toHaveBeenCalledWith(migration.up)
 
       const [transaction] = await db.getTransaction()
-      
+
       expect(transaction.runUpdate).toHaveBeenCalledWith(
         expect.objectContaining({
           sql: expect.stringContaining('INSERT INTO migrations'),
@@ -49,10 +54,14 @@ describe('apply.ts', () => {
 
       await applyUp(db, migration)
 
-      expect(db.updateSchema).toHaveBeenCalledWith('CREATE TABLE a (id STRING NOT NULL) PRIMARY KEY (id)')
-      expect(db.updateSchema).toHaveBeenCalledWith('CREATE TABLE b (id STRING NOT NULL) PRIMARY KEY (id)')
+      expect(db.updateSchema).toHaveBeenCalledWith(
+        'CREATE TABLE a (id STRING NOT NULL) PRIMARY KEY (id)'
+      )
+      expect(db.updateSchema).toHaveBeenCalledWith(
+        'CREATE TABLE b (id STRING NOT NULL) PRIMARY KEY (id)'
+      )
 
-      const [transaction] = (await db.getTransaction())
+      const [transaction] = await db.getTransaction()
 
       expect(transaction.runUpdate).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -91,7 +100,10 @@ describe('apply.ts', () => {
       }
 
       db.run.mockImplementation(async (request) => {
-        if (typeof request !== 'string' && (request as ExecuteSqlRequest).sql.trim().startsWith('SELECT')) {
+        if (
+          typeof request !== 'string' &&
+          (request as ExecuteSqlRequest).sql.trim().startsWith('SELECT')
+        ) {
           return [[lastMigration]]
         }
         return []
@@ -124,7 +136,9 @@ describe('apply.ts', () => {
         return []
       })
 
-      await expect(applyDown(db)).rejects.toThrow('No migrations found to roll back.')
+      await expect(applyDown(db)).rejects.toThrow(
+        'No migrations found to roll back.'
+      )
     })
 
     it('should throw an error if the down script fails', async () => {

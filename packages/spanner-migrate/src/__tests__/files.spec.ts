@@ -1,15 +1,14 @@
+import type { Dirent } from 'node:fs'
 import { access, mkdir, readdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import {
-  getMigrationFiles,
-  getMigration,
-  getNewMigrations,
   createMigration,
+  getMigration,
+  getMigrationFiles,
+  getNewMigrations,
   writeConfig,
 } from '../files'
 import type { Migration } from '../types'
-import type { Dirent } from 'node:fs'
-
 
 // Mock node:fs/promises methods
 jest.mock('node:fs/promises', () => ({
@@ -35,13 +34,19 @@ describe('files.ts', () => {
 
   describe('getMigrationFiles', () => {
     it('returns migration file IDs', async () => {
-      const mockFiles = ['20250101T123456_add_users.ts', '20250102T123456_add_roles.ts']
+      const mockFiles = [
+        '20250101T123456_add_users.ts',
+        '20250102T123456_add_roles.ts',
+      ]
       readdirMock.mockResolvedValue(mockFiles as unknown as Dirent[])
 
       const result = await getMigrationFiles(mockPath)
 
       expect(readdirMock).toHaveBeenCalledWith(mockPath)
-      expect(result).toEqual(['20250101T123456_add_users', '20250102T123456_add_roles'])
+      expect(result).toEqual([
+        '20250101T123456_add_users',
+        '20250102T123456_add_roles',
+      ])
     })
 
     it('throws an error if readdir fails', async () => {
@@ -81,7 +86,9 @@ describe('files.ts', () => {
     })
 
     it('throws an error if migration file does not exist', async () => {
-      accessMock.mockImplementation(async () => { throw new Error('File not found') })
+      accessMock.mockImplementation(async () => {
+        throw new Error('File not found')
+      })
 
       await expect(getMigration(mockPath, mockMigrationId)).rejects.toThrow(
         `Migration file not found: ${mockMigrationPath}`
@@ -102,7 +109,13 @@ describe('files.ts', () => {
   describe('getNewMigrations', () => {
     it('returns new migration IDs', () => {
       const applied: Migration[] = [
-        { id: '20250101T123456_add_users', description: '', up: '', down: '', appliedAt: undefined },
+        {
+          id: '20250101T123456_add_users',
+          description: '',
+          up: '',
+          down: '',
+          appliedAt: undefined,
+        },
       ]
       const files = [
         '20250101T123456_add_users',
@@ -112,14 +125,26 @@ describe('files.ts', () => {
 
       const result = getNewMigrations(applied, files)
 
-      expect(result).toEqual(['20250102T123456_add_roles', '20250103T123456_add_permissions'])
+      expect(result).toEqual([
+        '20250102T123456_add_roles',
+        '20250103T123456_add_permissions',
+      ])
     })
 
     it('throws an error for interlaced or missing migrations', () => {
       const applied: Migration[] = [
-        { id: '20250103T123456_add_users', description: '', up: '', down: '', appliedAt: undefined },
+        {
+          id: '20250103T123456_add_users',
+          description: '',
+          up: '',
+          down: '',
+          appliedAt: undefined,
+        },
       ]
-      const files = ['20250103T123456_add_permissions', '20250103T123456_add_users']
+      const files = [
+        '20250103T123456_add_permissions',
+        '20250103T123456_add_users',
+      ]
 
       expect(() => getNewMigrations(applied, files)).toThrow(
         `Mismatch between applied migrations and files. Found '20250103T123456_add_permissions' but expected '20250103T123456_add_users' at position 0.`
@@ -147,9 +172,9 @@ describe('files.ts', () => {
     it('throws an error if migration creation fails', async () => {
       mkdirMock.mockRejectedValue(new Error('Cannot create directory'))
 
-      await expect(createMigration(mockPath, 'Add Users Table')).rejects.toThrow(
-        'Error creating migration: Cannot create directory'
-      )
+      await expect(
+        createMigration(mockPath, 'Add Users Table')
+      ).rejects.toThrow('Error creating migration: Cannot create directory')
     })
   })
 
@@ -177,8 +202,14 @@ describe('files.ts', () => {
       writeFileMock.mockRejectedValue(new Error('Cannot write file'))
 
       await expect(
-        writeConfig(mockConfigPath, { migrationsPath: './migrations', instanceName: 'spanner-instance', databaseName: 'spanner-db' })
-      ).rejects.toThrow('Error writing configuration to ./mock/spanner-migrate.config.json: Cannot write file')
+        writeConfig(mockConfigPath, {
+          migrationsPath: './migrations',
+          instanceName: 'spanner-instance',
+          databaseName: 'spanner-db',
+        })
+      ).rejects.toThrow(
+        'Error writing configuration to ./mock/spanner-migrate.config.json: Cannot write file'
+      )
     })
   })
 })

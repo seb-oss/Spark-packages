@@ -7,8 +7,8 @@ export const up = `
     username STRING(50) NOT NULL,
     email STRING(100) NOT NULL,
   ) PRIMARY KEY (id);
-`;
+`
 
 export const down = `
   DROP TABLE users;
-`;
+`

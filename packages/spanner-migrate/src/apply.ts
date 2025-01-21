@@ -1,6 +1,6 @@
 import type { Database } from '@google-cloud/spanner'
 import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
-import { Migration } from './types'
+import type { Migration } from './types'
 
 export const applyUp = async (db: Database, migration: Migration) => {
   try {
@@ -105,4 +105,5 @@ const runScript = async (db: Database, script: string): Promise<void> => {
   }
 }
 
-const isSchemaChange = (sql: string) => /^\s*(CREATE|ALTER|DROP|TRUNCATE)\b/i.test(sql)
+const isSchemaChange = (sql: string) =>
+  /^\s*(CREATE|ALTER|DROP|TRUNCATE)\b/i.test(sql)

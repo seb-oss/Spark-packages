@@ -1,7 +1,7 @@
+import * as apply from '../apply'
 import * as db from '../db'
 import * as files from '../files'
-import * as apply from '../apply'
-import { init, create, up, down, status } from '../index'
+import { create, down, init, status, up } from '../index'
 import type { Config } from '../types'
 
 jest.mock('../db')
@@ -72,9 +72,15 @@ describe('index.ts', () => {
 
       await up(mockConfig, 1)
 
-      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(expect.anything())
-      expect(mockDb.getAppliedMigrations).toHaveBeenCalledWith(expect.anything())
-      expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(mockConfig.migrationsPath)
+      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
+        expect.anything()
+      )
+      expect(mockDb.getAppliedMigrations).toHaveBeenCalledWith(
+        expect.anything()
+      )
+      expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(
+        mockConfig.migrationsPath
+      )
       expect(mockFiles.getNewMigrations).toHaveBeenCalledWith(
         appliedMigrations,
         migrationFiles
@@ -99,7 +105,9 @@ describe('index.ts', () => {
 
       await down(mockConfig)
 
-      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(expect.anything())
+      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
+        expect.anything()
+      )
       expect(mockApply.applyDown).toHaveBeenCalledWith(expect.anything())
     })
   })
@@ -122,9 +130,15 @@ describe('index.ts', () => {
 
       const result = await status(mockConfig)
 
-      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(expect.anything())
-      expect(mockDb.getAppliedMigrations).toHaveBeenCalledWith(expect.anything())
-      expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(mockConfig.migrationsPath)
+      expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
+        expect.anything()
+      )
+      expect(mockDb.getAppliedMigrations).toHaveBeenCalledWith(
+        expect.anything()
+      )
+      expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(
+        mockConfig.migrationsPath
+      )
       expect(mockFiles.getNewMigrations).toHaveBeenCalledWith(
         appliedMigrations,
         migrationFiles

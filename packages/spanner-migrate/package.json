@@ -8,9 +8,11 @@
   "files": [
     "dist"
   ],
-  "bin": "./dist/cli.js",
+  "bin": {
+    "spanner-migrate": "./dist/cli.js"
+  },
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build": "tsup-node src/index.ts src/cli.ts --format esm,cjs --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "jest --config jest.config.ts --passWithNoTests --coverage",

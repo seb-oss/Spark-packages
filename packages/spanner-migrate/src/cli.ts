@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import { join } from 'node:path'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { up, down, status, init, create } from './index'
+import { create, down, init, status, up } from './index'
 import type { Config } from './types'
 
 const CONFIG_FILE = './.spanner-migrate.config.json'

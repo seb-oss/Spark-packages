@@ -1,4 +1,5 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
+import { applyDown, applyUp } from './apply'
 import { ensureMigrationTable, getAppliedMigrations } from './db'
 import {
   createMigration,
@@ -7,7 +8,6 @@ import {
   getNewMigrations,
   writeConfig,
 } from './files'
-import { applyDown, applyUp } from './apply'
 import type { Config } from './types'
 
 const getDb = ({ projectId, databaseName, instanceName }: Config): Database => {
@@ -63,9 +63,9 @@ export const status = async (config: Config) => {
     '',
     'Applied',
     '--------------------------------------------------------------------------------',
-    appliedMigrations.map((m) => m.id).join('\n') + '\n',
+    `${appliedMigrations.map((m) => m.id).join('\n')}\n`,
     'New',
     '--------------------------------------------------------------------------------',
-    newMigrations.join('\n') + '\n',
+    `${newMigrations.join('\n')}\n`,
   ].join('\n')
 }

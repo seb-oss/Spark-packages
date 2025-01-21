@@ -1,5 +1,10 @@
-import { Spanner, type Instance, type Database } from '@google-cloud/spanner'
-import { ensureMigrationTable, getAppliedMigrations, SQL_CREATE_TABLE_MIGRATIONS, SQL_SELECT_TABLE_MIGRATIONS } from '../db'
+import { type Database, type Instance, Spanner } from '@google-cloud/spanner'
+import {
+  SQL_CREATE_TABLE_MIGRATIONS,
+  SQL_SELECT_TABLE_MIGRATIONS,
+  ensureMigrationTable,
+  getAppliedMigrations,
+} from '../db'
 
 describe('prepare', () => {
   let spanner: jest.Mocked<Spanner>
@@ -24,7 +29,9 @@ describe('prepare', () => {
 
       // only select, no create
       expect(database.updateSchema).toHaveBeenCalledTimes(1)
-      expect(database.updateSchema).toHaveBeenCalledWith(SQL_CREATE_TABLE_MIGRATIONS)
+      expect(database.updateSchema).toHaveBeenCalledWith(
+        SQL_CREATE_TABLE_MIGRATIONS
+      )
     })
     it('creates does not create table if it does exist', async () => {
       // return table row
@@ -48,13 +55,15 @@ describe('prepare', () => {
           appliedAt: '2025-01-19T14:30:00Z',
         },
       ]
-      database.run.mockImplementation(async () => ([mockMigrations]))
+      database.run.mockImplementation(async () => [mockMigrations])
 
       const migrations = await getAppliedMigrations(database)
 
       expect(database.run).toHaveBeenCalledWith(
         expect.objectContaining({
-          sql: expect.stringContaining('SELECT id, description, up, down, applied_at as appliedAt'),
+          sql: expect.stringContaining(
+            'SELECT id, description, up, down, applied_at as appliedAt'
+          ),
         })
       )
       expect(migrations).toEqual(mockMigrations)
@@ -62,9 +71,13 @@ describe('prepare', () => {
 
     it('throws an error if the query fails', async () => {
       // Mock an error during query
-      database.run.mockImplementation(async () => { throw new Error('Query failed') })
+      database.run.mockImplementation(async () => {
+        throw new Error('Query failed')
+      })
 
-      await expect(getAppliedMigrations(database)).rejects.toThrow('Failed to get applied migrations: Query failed')
+      await expect(getAppliedMigrations(database)).rejects.toThrow(
+        'Failed to get applied migrations: Query failed'
+      )
     })
   })
 })
