@@ -75,6 +75,7 @@ export class Persistor {
           url: this.redis?.url,
           username: this.redis?.username,
           password: this.redis?.password,
+          pingInterval: this.redis?.pingInterval || undefined,
           socket: {
             ...this.redis?.socket,
             reconnectStrategy: (retries, cause) => {
