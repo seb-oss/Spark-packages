@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 0.2.0
+
+### Minor Changes
+
+- 7606c20: switched from .ts to .sql migrations files
+
 ## 0.1.1
 
 ### Patch Changes
