@@ -67,7 +67,7 @@ yargs(hideBin(process.argv))
       const fullDescription = args.description.join(' ')
       await create(config, fullDescription)
       console.log(
-        `Migration file created: '${join(config.migrationsPath, args.description.join('_'))}.ts'`
+        `Migration file created: '${join(config.migrationsPath, args.description.join('_'))}.sql'`
       )
     }
   )

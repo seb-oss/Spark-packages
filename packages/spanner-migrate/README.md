@@ -50,6 +50,26 @@ Create a new migration file.
 spanner-migrate create add users table
 ```
 
+**Result:**
+
+Example:
+
+`./migrations/20250120145638000_create_table_users.sql`
+
+```sql
+-- Created: 2025-01-20T14:56:38.000Z
+-- Description: create table users
+
+---- UP ----
+
+
+
+---- DOWN ----
+
+
+
+```
+
 #### `up`
 Apply pending migrations
 

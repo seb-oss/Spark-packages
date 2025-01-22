@@ -1,5 +1,5 @@
 import type { Dirent } from 'node:fs'
-import { access, mkdir, readdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import {
   createMigration,
@@ -15,6 +15,7 @@ jest.mock('node:fs/promises', () => ({
   access: jest.fn(),
   readdir: jest.fn(),
   mkdir: jest.fn(),
+  readFile: jest.fn(),
   writeFile: jest.fn(),
 }))
 
@@ -22,9 +23,10 @@ jest.mock('node:fs/promises', () => ({
 const accessMock = access as jest.MockedFunction<typeof access>
 const mkdirMock = mkdir as jest.MockedFunction<typeof mkdir>
 const readdirMock = readdir as jest.MockedFunction<typeof readdir>
+const readFileMock = readFile as jest.MockedFunction<typeof readFile>
 const writeFileMock = writeFile as jest.MockedFunction<typeof writeFile>
 
-describe('files.ts', () => {
+describe('files', () => {
   const mockPath = './mock/migrations'
   const mockConfigPath = './mock/spanner-migrate.config.json'
 
@@ -35,8 +37,8 @@ describe('files.ts', () => {
   describe('getMigrationFiles', () => {
     it('returns migration file IDs', async () => {
       const mockFiles = [
-        '20250101T123456_add_users.ts',
-        '20250102T123456_add_roles.ts',
+        '20250101T123456_add_users.sql',
+        '20250102T123456_add_roles.sql',
       ]
       readdirMock.mockResolvedValue(mockFiles as unknown as Dirent[])
 
@@ -60,45 +62,45 @@ describe('files.ts', () => {
 
   describe('getMigration', () => {
     const mockMigrationId = '20250101T123456_add_users'
-    const mockMigrationPath = resolve(mockPath, `${mockMigrationId}.ts`)
-
-    beforeEach(() => {
-      jest.resetModules()
-    })
+    const mockMigrationPath = resolve(mockPath, `${mockMigrationId}.sql`)
 
     it('returns the migration object if valid', async () => {
-      const mockModule = {
-        up: 'CREATE TABLE users (id STRING(36))',
-        down: 'DROP TABLE users',
-      }
-      jest.mock(mockMigrationPath, () => mockModule, { virtual: true })
+      const migrationFile = `-- Created: 2025-01-20T14:56:38.000Z
+-- Description: Create table users
+
+---- UP ----
+
+CREATE TABLE users (id STRING(36))
+
+---- DOWN ----
+
+DROP TABLE users
+`
       accessMock.mockResolvedValue(undefined)
+      readFileMock.mockResolvedValue(migrationFile)
 
       const result = await getMigration(mockPath, mockMigrationId)
 
       expect(accessMock).toHaveBeenCalledWith(mockMigrationPath)
       expect(result).toEqual({
         id: mockMigrationId,
-        description: 'Add Users',
-        up: mockModule.up,
-        down: mockModule.down,
+        description: 'Create table users',
+        up: 'CREATE TABLE users (id STRING(36))',
+        down: 'DROP TABLE users',
       })
     })
 
     it('throws an error if migration file does not exist', async () => {
-      accessMock.mockImplementation(async () => {
-        throw new Error('File not found')
-      })
+      readFileMock.mockRejectedValue(new Error('File not found'))
 
       await expect(getMigration(mockPath, mockMigrationId)).rejects.toThrow(
-        `Migration file not found: ${mockMigrationPath}`
+        'Failed to get migration 20250101T123456_add_users: File not found'
       )
     })
 
     it('throws an error if migration file is invalid', async () => {
-      const invalidModule = { up: 'CREATE TABLE users (id STRING(36))' } // Missing down
-      jest.mock(mockMigrationPath, () => invalidModule, { virtual: true })
       accessMock.mockImplementation(async () => undefined)
+      readFileMock.mockResolvedValue('Herp derp')
 
       await expect(getMigration(mockPath, mockMigrationId)).rejects.toThrow(
         `Migration file ${mockMigrationPath} does not export required scripts (up, down).`
@@ -163,8 +165,8 @@ describe('files.ts', () => {
 
       expect(mkdirMock).toHaveBeenCalledWith(mockPath, { recursive: true })
       expect(writeFileMock).toHaveBeenCalledWith(
-        expect.stringMatching(/^mock\/migrations\/\d+_add_users_table\.ts$/),
-        expect.stringMatching(/-- SQL for migrate up/),
+        expect.stringMatching(/^mock\/migrations\/\d+_add_users_table\.sql$/),
+        expect.stringMatching(/^-- Created: /),
         'utf8'
       )
     })
