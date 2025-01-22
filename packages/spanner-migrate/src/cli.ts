@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises'
 import { join } from 'node:path'
+import input from '@inquirer/input'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { create, down, init, status, up } from './index'
@@ -20,40 +21,39 @@ async function loadConfig(): Promise<Config> {
 
 yargs(hideBin(process.argv))
   .scriptName('spanner-migrate')
-  .usage('$0 <command> [options]')
-  .command<Config>(
+  .usage('$0 <command>')
+  .command(
     'init',
     'Initialize a .spanner-migrate.config.json file',
-    (yargs) => {
-      yargs.option('migrationsPath', {
-        type: 'string',
-        describe: 'Path to the migrations folder',
-        default: './spanner-migrations',
+    async () => {
+      const migrationsPath = await input({
+        message: 'Enter the path for your migrations',
+        required: true,
+        default: './migrations',
       })
-      yargs.option('instanceName', {
-        type: 'string',
-        describe: 'Spanner instance name',
-        demandOption: true,
+      const instanceName = await input({
+        message: 'Enter Spanner instance name',
+        required: true,
       })
-      yargs.option('databaseName', {
-        type: 'string',
-        describe: 'Spanner database name',
-        demandOption: true,
+      const databaseName = await input({
+        message: 'Enter Spanner database name',
+        required: true,
       })
-      yargs.option('projectName', {
-        type: 'string',
-        describe: 'Google Cloud project name (optional)',
+      const projectId = await input({
+        message: 'Enter Google Cloud project name',
+        required: false,
       })
-    },
-    async (args) => {
-      // Call the `init` method from index.ts
-      await init(args, CONFIG_FILE)
+
+      const config: Config = { instanceName, databaseName, migrationsPath }
+      if (projectId) config.projectId = projectId
+
+      await init(config, CONFIG_FILE)
 
       console.log(`Configuration written to ${CONFIG_FILE}`)
     }
   )
-  .command<{ description: string }>(
-    'create <description>',
+  .command<{ description: string[] }>(
+    'create <description ...>',
     'Create a new migration file',
     (yargs) => {
       yargs.positional('description', {
@@ -64,9 +64,10 @@ yargs(hideBin(process.argv))
     },
     async (args) => {
       const config = await loadConfig()
-      await create(config, args.description)
+      const fullDescription = args.description.join(' ')
+      await create(config, fullDescription)
       console.log(
-        `Migration file created: '${join(config.migrationsPath, args.description)}'`
+        `Migration file created: '${join(config.migrationsPath, args.description.join('_'))}.ts'`
       )
     }
   )
@@ -97,6 +98,6 @@ yargs(hideBin(process.argv))
     const migrationStatus = await status(config)
     console.log(migrationStatus)
   })
+  .demandCommand()
   .help()
-  .strict()
   .parse()
