@@ -12,7 +12,7 @@ const mockDb = db as jest.Mocked<typeof db>
 const mockFiles = files as jest.Mocked<typeof files>
 const mockApply = apply as jest.Mocked<typeof apply>
 
-describe('index.ts', () => {
+describe('index', () => {
   const mockConfig: Config = {
     migrationsPath: '/mock/migrations',
     instanceName: 'mock-instance',

@@ -92,13 +92,11 @@ const runScript = async (db: Database, script: string): Promise<void> => {
   for (const statement of statements) {
     console.log(`Executing statement: ${statement}`)
 
-    const sql = statement.replace(/--.*$/gm, '') // Remove comments
-
-    if (isSchemaChange(sql)) {
-      await db.updateSchema(sql)
+    if (isSchemaChange(statement)) {
+      await db.updateSchema(statement)
     } else {
       await db.runTransactionAsync(async (transaction) => {
-        await transaction.runUpdate(sql)
+        await transaction.runUpdate(statement)
         await transaction.commit()
       })
     }

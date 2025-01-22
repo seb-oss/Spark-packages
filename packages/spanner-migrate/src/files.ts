@@ -1,4 +1,4 @@
-import { access, mkdir, readdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import type { Config, Migration } from './types'
 
@@ -9,8 +9,8 @@ export const getMigrationFiles = async (path: string): Promise<string[]> => {
 
     // Filter and map files to extract the `id` (file name without extension)
     const migrationFileIds = files
-      .filter((file) => file.endsWith('.ts')) // Only include .ts files
-      .map((file) => file.replace(/\.ts$/, '')) // Remove file extension to use as `id`
+      .filter((file) => file.endsWith('.sql')) // Only include .sql files
+      .map((file) => file.replace(/\.sql$/, '')) // Remove file extension to use as `id`
 
     return migrationFileIds
   } catch (error) {
@@ -26,7 +26,7 @@ export const getMigration = async (
 ): Promise<Migration> => {
   try {
     // Construct the full file path
-    const filePath = resolve(process.cwd(), join(path, `${id}.ts`))
+    const filePath = resolve(process.cwd(), join(path, `${id}.sql`))
 
     // Check if the file exists
     try {
@@ -36,31 +36,37 @@ export const getMigration = async (
     }
 
     // Dynamically import the migration file
-    const migrationModule = await import(filePath)
+    const migrationText = await readFile(filePath, 'utf8')
+
+    const up = getSql(migrationText, 'up')
+    const down = getSql(migrationText, 'down')
+    const description = getDescription(migrationText)
 
     // Validate that the required exports (`up` and `down`) exist
-    if (!migrationModule.up || !migrationModule.down) {
+    if (!up || !down) {
       throw new Error(
         `Migration file ${filePath} does not export required scripts (up, down).`
       )
     }
 
     // Return the migration as a `Migration` object
-    return {
-      id,
-      description: id
-        .split('_')
-        .slice(1)
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' '), // Generate a human-readable description
-      up: migrationModule.up,
-      down: migrationModule.down,
-    }
+    return { id, description, up, down }
   } catch (error) {
     throw new Error(
       `Failed to get migration ${id}: ${(error as Error).message}`
     )
   }
+}
+
+const getDescription = (text: string | undefined) =>
+  text?.match(/^--\s*Description:\s*(.+)$/m)?.[1]?.trim() || ''
+
+const getSql = (text: string | undefined, direction: 'up' | 'down') => {
+  const rx = {
+    up: /---- UP ----\n([\s\S]*?)\n---- DOWN ----/,
+    down: /---- DOWN ----\n([\s\S]*)$/,
+  }
+  return text?.match(rx[direction])?.[1]?.replace(/--.*$/gm, '').trim()
 }
 
 export const getNewMigrations = (
@@ -95,22 +101,22 @@ export const createMigration = async (
   const timestamp = new Date().toISOString()
   const compactTimestamp = timestamp.replace(/[-:.TZ]/g, '')
   const parsedDescription = description.replace(/\s+/g, '_').toLowerCase()
-  const filename = `${compactTimestamp}_${parsedDescription}.ts`
+  const filename = `${compactTimestamp}_${parsedDescription}.sql`
 
   // Full file path
   const filePath = join(path, filename)
 
   // Template migration content
-  const template = `// ${timestamp}
-// ${description}
+  const template = `-- Created: ${timestamp}
+-- Description: ${description}
 
-export const up = \`
-  -- SQL for migrate up
-\`
+---- UP ----
 
-export const down = \`
-  -- SQL for migrate down
-\`
+
+
+---- DOWN ----
+
+
 `
 
   try {

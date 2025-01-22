@@ -6,7 +6,7 @@ import type {
 import { applyDown, applyUp } from '../apply'
 import type { Migration } from '../types'
 
-describe('apply.ts', () => {
+describe('apply', () => {
   let db: jest.Mocked<Database>
 
   beforeEach(() => {

@@ -140,7 +140,7 @@ describe('spanner-migrate', () => {
 
       const files = await readdir(resolve(config.migrationsPath))
       expect(files).toHaveLength(1)
-      expect(files[0]).toMatch(/^\d{17}_this_is_a_test_migration.ts$/)
+      expect(files[0]).toMatch(/^\d{17}_this_is_a_test_migration.sql$/)
     })
   })
   describe('up/status/down', () => {
