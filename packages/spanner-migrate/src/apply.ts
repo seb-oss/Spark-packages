@@ -1,5 +1,8 @@
 import type { Database } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
+import type {
+  ExecuteSqlRequest,
+  Transaction,
+} from '@google-cloud/spanner/build/src/transaction'
 import type { Migration } from './types'
 
 export const applyUp = async (db: Database, migration: Migration) => {
@@ -20,7 +23,7 @@ export const applyUp = async (db: Database, migration: Migration) => {
       json: true,
     }
 
-    await db.runTransactionAsync(async (transaction) => {
+    await db.runTransactionAsync(async (transaction: Transaction) => {
       await transaction.runUpdate(req)
       await transaction.commit()
     })

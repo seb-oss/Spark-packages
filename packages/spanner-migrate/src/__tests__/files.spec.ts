@@ -9,29 +9,30 @@ import {
   writeConfig,
 } from '../files'
 import type { Migration } from '../types'
+import { vi, describe, it, expect, afterEach, type Mock } from 'vitest'
 
 // Mock node:fs/promises methods
-jest.mock('node:fs/promises', () => ({
-  access: jest.fn(),
-  readdir: jest.fn(),
-  mkdir: jest.fn(),
-  readFile: jest.fn(),
-  writeFile: jest.fn(),
+vi.mock('node:fs/promises', () => ({
+  access: vi.fn(),
+  readdir: vi.fn(),
+  mkdir: vi.fn(),
+  readFile: vi.fn(),
+  writeFile: vi.fn(),
 }))
 
 // Declare mocks
-const accessMock = access as jest.MockedFunction<typeof access>
-const mkdirMock = mkdir as jest.MockedFunction<typeof mkdir>
-const readdirMock = readdir as jest.MockedFunction<typeof readdir>
-const readFileMock = readFile as jest.MockedFunction<typeof readFile>
-const writeFileMock = writeFile as jest.MockedFunction<typeof writeFile>
+const accessMock = access as Mock
+const mkdirMock = mkdir as Mock
+const readdirMock = readdir as Mock
+const readFileMock = readFile as Mock
+const writeFileMock = writeFile as Mock
 
 describe('files', () => {
   const mockPath = './mock/migrations'
   const mockConfigPath = './mock/spanner-migrate.config.json'
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('getMigrationFiles', () => {

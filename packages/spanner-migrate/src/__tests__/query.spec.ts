@@ -1,12 +1,13 @@
 import type { Database } from '@google-cloud/spanner'
 import { runQuery } from '../query'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 describe('runQuery', () => {
   let database: jest.Mocked<Database>
 
   beforeEach(() => {
     database = {
-      run: jest.fn().mockResolvedValue([[]]),
+      run: vi.fn().mockResolvedValue([[]]),
     } as unknown as jest.Mocked<Database>
   })
 
