@@ -2791,7 +2791,7 @@ __metadata:
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
     "@sebspark/retry": "npm:*"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:22.10.10"
     axios: "npm:1.7.9"
     tsconfig: "npm:*"
   languageName: unknown
@@ -2894,7 +2894,7 @@ __metadata:
     "@jest/globals": "npm:29.7.0"
     "@sebspark/spanner-mock": "npm:*"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:22.10.10"
     "@types/yargs": "npm:17.0.33"
     jest: "npm:29.7.0"
     testcontainers: "npm:10.16.0"
@@ -3392,12 +3392,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.14.2":
-  version: 20.14.2
-  resolution: "@types/node@npm:20.14.2"
+"@types/node@npm:22.10.10":
+  version: 22.10.10
+  resolution: "@types/node@npm:22.10.10"
   dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10c0/2d86e5f2227aaa42212e82ea0affe72799111b888ff900916376450b02b09b963ca888b20d9c332d8d2b833ed4781987867a38eaa2e4863fa8439071468b0a6f
+    undici-types: "npm:~6.20.0"
+  checksum: 10c0/3425772d4513cd5dbdd87c00acda088113c03a97445f84f6a89744c60a66990b56c9d3a7213d09d57b6b944ae8ff45f985565e0c1846726112588e33a22dd12b
   languageName: node
   linkType: hard
 
@@ -10839,7 +10839,7 @@ __metadata:
     "@biomejs/biome": "npm:1.9.4"
     "@changesets/cli": "npm:2.27.11"
     "@turbo/gen": "npm:2.3.3"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:22.10.10"
     "@vitest/coverage-v8": "npm:2.1.8"
     csv-parse: "npm:5.6.0"
     fast-xml-parser: "npm:4.5.1"
