@@ -536,9 +536,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/apply-release-plan@npm:^7.0.7":
-  version: 7.0.7
-  resolution: "@changesets/apply-release-plan@npm:7.0.7"
+"@changesets/apply-release-plan@npm:^7.0.8":
+  version: 7.0.8
+  resolution: "@changesets/apply-release-plan@npm:7.0.8"
   dependencies:
     "@changesets/config": "npm:^3.0.5"
     "@changesets/get-version-range-type": "npm:^0.4.0"
@@ -553,7 +553,7 @@ __metadata:
     prettier: "npm:^2.7.1"
     resolve-from: "npm:^5.0.0"
     semver: "npm:^7.5.3"
-  checksum: 10c0/6ecbcccd46832b230b0c734ec2fc77648401f837dea91a7bf63be07207e4bb01cc6e1d6a05644bb85b6ee4b556bad031f43af7e8c742b873ee1313edb0a03929
+  checksum: 10c0/1332f4d5223564f25641e43fccc84a12d5660fb4cdd76337cdc777c7dbaab2e35bfd0e24ba7962430467bbf351819fd8f59ce3e982cb9a226696efa214781fe0
   languageName: node
   linkType: hard
 
@@ -580,11 +580,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@changesets/cli@npm:2.27.11":
-  version: 2.27.11
-  resolution: "@changesets/cli@npm:2.27.11"
+"@changesets/cli@npm:2.27.12":
+  version: 2.27.12
+  resolution: "@changesets/cli@npm:2.27.12"
   dependencies:
-    "@changesets/apply-release-plan": "npm:^7.0.7"
+    "@changesets/apply-release-plan": "npm:^7.0.8"
     "@changesets/assemble-release-plan": "npm:^6.0.5"
     "@changesets/changelog-git": "npm:^0.2.0"
     "@changesets/config": "npm:^3.0.5"
@@ -614,7 +614,7 @@ __metadata:
     term-size: "npm:^2.1.0"
   bin:
     changeset: bin.js
-  checksum: 10c0/dcaad88c6cd671c5a37005358ed3ab51b5f6f74e2dc1747af060e7bac6918a1ad31e122ca51ef1d337cb291e10997ad4e9156878aa90bf977ed8d38456c603da
+  checksum: 10c0/63911d8ee9cb91213f54c06de2ab1b85701eaf2ae99e6e2ad4f2bd807222152ba288df5724b68b75f5368099064af9dcea8604070a731762e2d67ac1db12d7b2
   languageName: node
   linkType: hard
 
@@ -2766,7 +2766,7 @@ __metadata:
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
     "@sebspark/retry": "npm:*"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:20.17.16"
     axios: "npm:1.7.9"
     tsconfig: "npm:*"
   languageName: unknown
@@ -2809,7 +2809,7 @@ __metadata:
     change-case: "npm:4.1.2"
     prettier: "npm:3.4.2"
     tsconfig: "npm:*"
-    yaml: "npm:2.6.1"
+    yaml: "npm:2.7.0"
     yargs: "npm:17.7.2"
   bin:
     openapi-typegen: ./cli.mjs
@@ -2869,10 +2869,10 @@ __metadata:
     "@jest/globals": "npm:29.7.0"
     "@sebspark/spanner-mock": "npm:*"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:20.14.2"
+    "@types/node": "npm:20.17.16"
     "@types/yargs": "npm:17.0.33"
     jest: "npm:29.7.0"
-    testcontainers: "npm:10.16.0"
+    testcontainers: "npm:10.17.1"
     ts-jest: "npm:29.2.5"
     tsconfig: "npm:*"
     typescript: "npm:5.7.3"
@@ -3016,11 +3016,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.3.3":
-  version: 2.3.3
-  resolution: "@turbo/gen@npm:2.3.3"
+"@turbo/gen@npm:2.3.4":
+  version: 2.3.4
+  resolution: "@turbo/gen@npm:2.3.4"
   dependencies:
-    "@turbo/workspaces": "npm:2.3.3"
+    "@turbo/workspaces": "npm:2.3.4"
     commander: "npm:^10.0.0"
     fs-extra: "npm:^10.1.0"
     inquirer: "npm:^8.2.4"
@@ -3033,13 +3033,13 @@ __metadata:
     validate-npm-package-name: "npm:^5.0.0"
   bin:
     gen: dist/cli.js
-  checksum: 10c0/90924ca392549fb02bd0e23d473376686afa77f6753770ecdd1ec626e573116fd1e36355729e3fa24130c9b30a33fcfe63785a0204557370ce01e0e57ccab2d8
+  checksum: 10c0/1305555146171a1b5ae8bcc4c5d2ae7567fde2e097331b3077694d3cf57403757594f4fa38b07f59b7c68dfcfa2b396b539d0e76b00ba16fdf1f23d0aef6c4e3
   languageName: node
   linkType: hard
 
-"@turbo/workspaces@npm:2.3.3":
-  version: 2.3.3
-  resolution: "@turbo/workspaces@npm:2.3.3"
+"@turbo/workspaces@npm:2.3.4":
+  version: 2.3.4
+  resolution: "@turbo/workspaces@npm:2.3.4"
   dependencies:
     commander: "npm:^10.0.0"
     execa: "npm:5.1.1"
@@ -3054,7 +3054,7 @@ __metadata:
     update-check: "npm:^1.5.4"
   bin:
     workspaces: dist/cli.js
-  checksum: 10c0/2e5dd44b4c7f2bc9ceffb6fa8118ca76efc21c828f70576f06ca59849d378371d04a6a3cbf5373795cb037a8b7069473924d708122b51bd6bdd77e86da1354b1
+  checksum: 10c0/6575b6cee99b2245c6d6cecd3492a2519e484a55c2771cd63e27927ab520a5558af87ecf4021e9455f554076a9f931ee6948871d393a59d261dabc4f7c09398a
   languageName: node
   linkType: hard
 
@@ -3367,12 +3367,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.14.2":
-  version: 20.14.2
-  resolution: "@types/node@npm:20.14.2"
+"@types/node@npm:20.17.16":
+  version: 20.17.16
+  resolution: "@types/node@npm:20.17.16"
   dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 10c0/2d86e5f2227aaa42212e82ea0affe72799111b888ff900916376450b02b09b963ca888b20d9c332d8d2b833ed4781987867a38eaa2e4863fa8439071468b0a6f
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/50c589dd6a377238bc51b6fb5b8fc60ff6d688df0bde621d4a9fc59f480eb956cdf6d46052e1cb9536f150bc62e9194ddc733aa78b65e812155b4d3a32717de2
   languageName: node
   linkType: hard
 
@@ -10812,14 +10812,14 @@ __metadata:
   resolution: "sebspark@workspace:."
   dependencies:
     "@biomejs/biome": "npm:1.9.4"
-    "@changesets/cli": "npm:2.27.11"
-    "@turbo/gen": "npm:2.3.3"
-    "@types/node": "npm:20.14.2"
+    "@changesets/cli": "npm:2.27.12"
+    "@turbo/gen": "npm:2.3.4"
+    "@types/node": "npm:20.17.16"
     "@vitest/coverage-v8": "npm:2.1.8"
     csv-parse: "npm:5.6.0"
     fast-xml-parser: "npm:4.5.1"
     tsup: "npm:8.3.5"
-    turbo: "npm:2.3.3"
+    turbo: "npm:2.3.4"
     typescript: "npm:5.7.3"
     vitest: "npm:2.1.8"
   languageName: unknown
@@ -11732,9 +11732,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:10.16.0":
-  version: 10.16.0
-  resolution: "testcontainers@npm:10.16.0"
+"testcontainers@npm:10.17.1":
+  version: 10.17.1
+  resolution: "testcontainers@npm:10.17.1"
   dependencies:
     "@balena/dockerignore": "npm:^1.0.2"
     "@types/dockerode": "npm:^3.3.29"
@@ -11751,7 +11751,7 @@ __metadata:
     tar-fs: "npm:^3.0.6"
     tmp: "npm:^0.2.3"
     undici: "npm:^5.28.4"
-  checksum: 10c0/17f748927d484e63718e2a745c776d54a893eba08c4fa20b84e5056f2ef45f585e39c7a1ffebea37ec63ae96e71dd50de5a611d4d313f63380bacca52b12737a
+  checksum: 10c0/7707790330385db82ef8f9abee052b7830c7cfce1166db4154626d09611698958568650db189eadd5e8c58e264bce36c71ce46002e04eb7ecd3dab48c70b436a
   languageName: node
   linkType: hard
 
@@ -12114,58 +12114,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-darwin-64@npm:2.3.3"
+"turbo-darwin-64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-darwin-64@npm:2.3.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-darwin-arm64@npm:2.3.3"
+"turbo-darwin-arm64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-darwin-arm64@npm:2.3.4"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-linux-64@npm:2.3.3"
+"turbo-linux-64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-linux-64@npm:2.3.4"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-linux-arm64@npm:2.3.3"
+"turbo-linux-arm64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-linux-arm64@npm:2.3.4"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-windows-64@npm:2.3.3"
+"turbo-windows-64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-windows-64@npm:2.3.4"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo-windows-arm64@npm:2.3.3"
+"turbo-windows-arm64@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo-windows-arm64@npm:2.3.4"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:2.3.3":
-  version: 2.3.3
-  resolution: "turbo@npm:2.3.3"
+"turbo@npm:2.3.4":
+  version: 2.3.4
+  resolution: "turbo@npm:2.3.4"
   dependencies:
-    turbo-darwin-64: "npm:2.3.3"
-    turbo-darwin-arm64: "npm:2.3.3"
-    turbo-linux-64: "npm:2.3.3"
-    turbo-linux-arm64: "npm:2.3.3"
-    turbo-windows-64: "npm:2.3.3"
-    turbo-windows-arm64: "npm:2.3.3"
+    turbo-darwin-64: "npm:2.3.4"
+    turbo-darwin-arm64: "npm:2.3.4"
+    turbo-linux-64: "npm:2.3.4"
+    turbo-linux-arm64: "npm:2.3.4"
+    turbo-windows-64: "npm:2.3.4"
+    turbo-windows-arm64: "npm:2.3.4"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -12181,7 +12181,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10c0/9aab52fb868a2b6246f41fe2343dec56c70252a9cb7729a3ea183458cfa728c1445d1b98882dd43542f0ffd46524e8ba7776fe0925e31a86904b113222778fa5
+  checksum: 10c0/c3c52f5aa4b7c38536f0229f59ae76592c581af351ebf4b6ed0eea95bd1534ed19d84fdaea6f8f26c106dfc95394f78d4361c95aa1ae3bacc255b4a8500d53cc
   languageName: node
   linkType: hard
 
@@ -12298,6 +12298,13 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~6.19.2":
+  version: 6.19.8
+  resolution: "undici-types@npm:6.19.8"
+  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
   languageName: node
   linkType: hard
 
@@ -13076,16 +13083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:2.6.1":
-  version: 2.6.1
-  resolution: "yaml@npm:2.6.1"
-  bin:
-    yaml: bin.mjs
-  checksum: 10c0/aebf07f61c72b38c74d2b60c3a3ccf89ee4da45bcd94b2bfb7899ba07a5257625a7c9f717c65a6fc511563d48001e01deb1d9e55f0133f3e2edf86039c8c1be7
-  languageName: node
-  linkType: hard
-
-"yaml@npm:^2.2.2":
+"yaml@npm:2.7.0, yaml@npm:^2.2.2":
   version: 2.7.0
   resolution: "yaml@npm:2.7.0"
   bin:
