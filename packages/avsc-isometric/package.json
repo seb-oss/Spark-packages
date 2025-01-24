@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "avsc": "5.7.7",
-    "buffer": "^6.0.3",
-    "events": "^3.3.0",
-    "process": "^0.11.10",
+    "buffer": "6.0.3",
+    "events": "3.3.0",
+    "process": "0.11.10",
     "stream-browserify": "3.0.0"
   }
 }
