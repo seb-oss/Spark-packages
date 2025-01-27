@@ -75,7 +75,7 @@ export class PromiseCache<U> {
     })
     this.caseSensitive = caseSensitive
     if (ttlInSeconds) {
-      this.ttl = ttlInSeconds * 1000 // Convert seconds to milliseconds.
+      this.ttl = ttlInSeconds // Conversion to milliseconds is done in the persistor.
     }
   }
 
@@ -140,8 +140,7 @@ export class PromiseCache<U> {
     const effectiveKey = this.caseSensitive ? key : key.toLowerCase()
 
     // Determine the TTL and unique cache key for this specific call.
-    let effectiveTTL =
-      ttlInSeconds !== undefined ? ttlInSeconds * 1000 : this.ttl
+    let effectiveTTL = ttlInSeconds ?? this.ttl
 
     const cached = await this.persistor.get<U>(effectiveKey)
 
@@ -161,7 +160,7 @@ export class PromiseCache<U> {
     // Get the TTL from the response if a TTL key is provided.
     if (ttlKeyInSeconds) {
       const responseDict = response as Record<string, unknown>
-      const responseTTL = Number(responseDict[ttlKeyInSeconds] as string) * 1000
+      const responseTTL = Number(responseDict[ttlKeyInSeconds] as string)
       effectiveTTL = responseTTL || effectiveTTL // Fall back to the default TTL if the TTL key is not found.
     }
 
