@@ -2556,7 +2556,7 @@ __metadata:
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@google-cloud/iam-credentials": "npm:3.3.0"
-    google-auth-library: "npm:9.15.0"
+    google-auth-library: "npm:9.15.1"
     tsconfig: "npm:*"
   languageName: unknown
   linkType: soft
@@ -6801,7 +6801,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-auth-library@npm:9.15.0, google-auth-library@npm:^9.0.0, google-auth-library@npm:^9.3.0":
+"google-auth-library@npm:9.15.1":
+  version: 9.15.1
+  resolution: "google-auth-library@npm:9.15.1"
+  dependencies:
+    base64-js: "npm:^1.3.0"
+    ecdsa-sig-formatter: "npm:^1.0.11"
+    gaxios: "npm:^6.1.1"
+    gcp-metadata: "npm:^6.1.0"
+    gtoken: "npm:^7.0.0"
+    jws: "npm:^4.0.0"
+  checksum: 10c0/6eef36d9a9cb7decd11e920ee892579261c6390104b3b24d3e0f3889096673189fe2ed0ee43fd563710e2560de98e63ad5aa4967b91e7f4e69074a422d5f7b65
+  languageName: node
+  linkType: hard
+
+"google-auth-library@npm:^9.0.0, google-auth-library@npm:^9.3.0":
   version: 9.15.0
   resolution: "google-auth-library@npm:9.15.0"
   dependencies:
