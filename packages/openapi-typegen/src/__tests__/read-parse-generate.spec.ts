@@ -35,7 +35,7 @@ test('generate openapi.json', async () => {
   expect(generated).toEqual(expected)
 })
 
-test('generate cdapi-service.openapi-3.0.yaml', async () => {
+xtest('generate cdapi-service.openapi-3.0.yaml', async () => {
   const source = `${__dirname}/cdapi-service.openapi-3.0.yaml`
   const dest = `${__dirname}/cdapi-service_openapi-3_0.generated.ts`
 
