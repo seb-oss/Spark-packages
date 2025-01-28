@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.3.3
+
+### Patch Changes
+
+- 7e1c4d0: fix issue where ttl was being converted to ms twice
+
 ## 3.3.2
 
 ### Patch Changes
