@@ -13,12 +13,16 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@testcontainers/redis": "^10.17.2",
+    "testcontainers": "^10.17.2",
     "tsconfig": "*"
   },
   "dependencies": {
+    "date-fn": "^0.0.2",
     "fix-esm": "1.0.1",
     "redis": "4.7.0",
     "superjson": "2.2.2"
