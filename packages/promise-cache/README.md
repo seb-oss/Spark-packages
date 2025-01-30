@@ -173,7 +173,7 @@ The basic functionality of this new implementation is:
 3. You call the cache's wrap function to wrap your original function(s)
 4. You call the wrapped function(s) instead of the originals
 
-** Why the change? **
+**Why the change?**
 
 When trying to add support for caching _to_ a specified time in addition to _for_ a specified time, it tuyrned out to be hard given the original implementation. Changing the implementation proved hard without breaking changes. So a new implementation is is.
 
