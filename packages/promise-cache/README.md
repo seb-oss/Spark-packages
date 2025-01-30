@@ -276,6 +276,18 @@ const cachedGetById = cache.wrap(myApiCall, {
   key: (id) => `getById:${id}`,
   expires: time.seconds(100),
 })
+
+// Fixed at today 20:00:00 UTC
+const cachedGetById = cache.wrap(myApiCall, {
+  key: (id) => `getById:${id}`,
+  expires: time.today(20),
+})
+
+// Fixed at tomorrow 00:00:00
+const cachedGetById = cache.wrap(myApiCall, {
+  key: (id) => `getById:${id}`,
+  expires: time.tomorrow(),
+})
 ```
 
 If expiry is not set or yields an unusable value, it will default to 1 sec.
