@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.5.0
+
+### Minor Changes
+
+- 8c2661a: Added sub, today and tomorrow to time
+
 ## 3.4.0
 
 ### Minor Changes
