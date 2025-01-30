@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 1.0.0
+
+### Major Changes
+
+- 142e991: target set to ES2022
+
 ## 0.1.1
 
 ### Patch Changes
