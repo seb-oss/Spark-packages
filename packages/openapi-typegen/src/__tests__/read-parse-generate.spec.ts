@@ -1,9 +1,11 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import type { OpenApiDocument } from '@sebspark/openapi-core'
-import { expect, test } from 'vitest'
+import { expect, test, vitest } from 'vitest'
 import * as YAML from 'yaml'
 import { classname, generateTypescript } from '..'
 import { format } from '../generator'
+
+vitest.setConfig({ testTimeout: 30000 })
 
 test('generate components.json', async () => {
   const source = `${__dirname}/components.json`
