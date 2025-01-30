@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.4.0
+
+### Minor Changes
+
+- 142e991: New implementation Cache
+
 ## 3.3.3
 
 ### Patch Changes
