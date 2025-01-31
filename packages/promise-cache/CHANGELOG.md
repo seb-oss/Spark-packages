@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.6.0
+
+### Minor Changes
+
+- da3931e: Exposing serializer
+
 ## 3.5.0
 
 ### Minor Changes
