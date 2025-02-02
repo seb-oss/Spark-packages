@@ -420,6 +420,13 @@ describe('cache e2e', () => {
         const remaining = await cache.persistor.lRange('pop-key', 0, -1)
         expect(remaining).toEqual(['b'])
       })
+
+      it('returns null for a key after all elements are popped from a list', async () => {
+        await persistor.rPush('mylist', ['item1']) // Add one item
+        await persistor.lPop('mylist') // Remove it
+
+        expect(await persistor.get('mylist')).toBeNull() // Redis would return null
+      })
     })
 
     describe('.sAdd, .sRem, and .sMembers', () => {
@@ -608,6 +615,19 @@ describe('cache e2e', () => {
         expect(results).toEqual([2, 4, ['left2', 'left1', 'right1', 'right2']])
       })
 
+      it('executes multiple lPop and rPop operations in a batch', async () => {
+        await persistor.rPush('list-key', ['a', 'b', 'c']) // Add elements to list
+
+        const multi = persistor.multi()
+        multi.lPop('list-key') // Should remove 'a'
+        multi.rPop('list-key') // Should remove 'c'
+        multi.lRange('list-key', 0, -1) // Remaining list should be ['b']
+
+        const results = await multi.exec()
+
+        expect(results).toEqual(['a', 'c', ['b']]) // Assert return values
+      })
+
       it('executes multiple set operations in a batch', async () => {
         const multi = cache.persistor.multi()
         multi.sAdd('set-key', ['one', 'two', 'three'])
@@ -712,55 +732,93 @@ describe('cache e2e', () => {
         expect(await cache.persistor.get('key2')).toBeNull()
       })
 
-      it('executes all supported operations in a single multi batch', async () => {
-        const multi = cache.persistor.multi()
+      it('executes multiple mixed operations in a batch', async () => {
+        const multi = persistor.multi()
 
+        // String operations
         multi.set('key1', 'value1')
-        multi.setNX('key2', 'value2')
-        multi.setEx('expiring-key', 2, 'value3')
-        multi.pSetEx('p-expiring-key', 500, 'value4')
-        multi.hSet('hash-key', 'field', 'hash-value')
-        multi.lPush('list-key', ['left'])
-        multi.rPush('list-key', ['right'])
-        multi.sAdd('set-key', ['set-value'])
-        multi.zAdd('sorted-key', [{ score: 1, value: 'sorted-item' }])
+        multi.setEx('key-ex', 2, 'expiring-value')
+        multi.pSetEx('key-px', 500, 'millisecond-expiring-value')
+        multi.setNX('unique-key', 'nx-value')
+        multi.get('key1')
+        multi.del('key1')
+        multi.expire('key-ex', 3)
+        multi.ttl('key-ex')
+        multi.exists(['key-ex', 'non-existent-key'])
+
+        // Numeric operations
         multi.incr('counter')
-        multi.incrBy('counter', 5)
+        multi.incrBy('counter', 3)
         multi.decr('counter')
         multi.decrBy('counter', 2)
-        multi.exists('key1')
-        multi.exists('non-existent-key')
-        multi.expire('key1', 1)
-        multi.ttl('expiring-key')
+
+        // Hash operations
+        multi.hSet('hash-key', 'field1', 'hash-value1')
+        multi.hSet('hash-key', 'field2', 'hash-value2')
+        multi.hGet('hash-key', 'field1')
+
+        // List operations (Push before Pop)
+        multi.lPush('list-key', ['left1', 'left2'])
+        multi.rPush('list-key', ['right1', 'right2'])
+        multi.lPop('list-key')
+        multi.rPop('list-key')
+        multi.lRange('list-key', 0, -1)
+
+        // Set operations
+        multi.sAdd('set-key', ['one', 'two', 'three'])
+        multi.sRem('set-key', 'two')
+        multi.sMembers('set-key')
+
+        // Sorted set operations
+        multi.zAdd('sorted-key', [
+          { score: 1, value: 'one' },
+          { score: 2, value: 'two' },
+          { score: 3, value: 'three' },
+        ])
+        multi.zRange('sorted-key', 0, -1)
+        multi.zRem('sorted-key', 'two')
+
+        // Flush all operation
         multi.flushAll()
 
         const results = await multi.exec()
 
         expect(results).toEqual([
           'OK', // set
-          true, // setNX (succeeded)
           'OK', // setEx
           'OK', // pSetEx
-          1, // hSet
-          1, // lPush
-          2, // rPush (list size now 2)
-          1, // sAdd
-          1, // zAdd
-          1, // incr (starts at 0 -> 1)
-          6, // incrBy (1 + 5)
-          5, // decr (6 - 1)
-          3, // decrBy (5 - 2)
-          1, // exists (key1 exists)
-          0, // exists (non-existent-key)
-          true, // expire (key1 should expire)
-          expect.any(Number), // ttl (should be > 0 for expiring-key)
-          'OK', // flushAll (all keys deleted)
-        ])
+          true, // setNX (new key added)
+          'value1', // get
+          1, // del (1 key deleted)
+          true, // expire
+          expect.any(Number), // ttl (remaining time for expiration)
+          1, // exists (only 'key-ex' exists, not 'non-existent-key')
 
-        await wait(1100)
-        expect(await cache.persistor.get('expiring-key')).toBeNull()
-        expect(await cache.persistor.get('p-expiring-key')).toBeNull()
-        expect(await cache.persistor.get('key1')).toBeNull()
+          1, // incr (counter 0 → 1)
+          4, // incrBy (counter 1 → 4)
+          3, // decr (counter 4 → 3)
+          1, // decrBy (counter 3 → 1)
+
+          1, // hSet (new field added)
+          1, // hSet (new field added)
+          'hash-value1', // hGet
+
+          2, // lPush (new list length)
+          4, // rPush (new list length after push)
+          'left2', // lPop (first element removed)
+          'right2', // rPop (last element removed)
+          ['left1', 'right1'], // lRange (remaining list content)
+
+          3, // sAdd (three new values added)
+          1, // sRem (one value removed)
+          expect.arrayContaining(['one', 'three']), // sMembers (remaining set members)
+
+          3, // zAdd (three new values added)
+          ['one', 'two', 'three'], // zRange (entire sorted set)
+          1, // zRem (one value removed)
+
+          'OK', // flushAll (everything cleared)
+        ])
       })
     })
   })

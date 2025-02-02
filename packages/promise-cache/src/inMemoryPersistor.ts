@@ -51,7 +51,13 @@ export class InMemoryPersistor implements IPersistor {
     value: string,
     options?: SetOptions
   ): Promise<'OK' | null> {
-    // Set the value
+    if (options?.NX && this.store.has(key)) {
+      return null // NX means "only set if key does not exist"
+    }
+    if (options?.XX && !this.store.has(key)) {
+      return null // XX means "only set if key exists"
+    }
+
     this.store.set(key, value)
 
     // Handle TTL (Expiration)

@@ -25,6 +25,52 @@ describe('InMemoryPersistor', () => {
       expect(result).toBe('OK')
       expect(await persistor.get('key')).toBe('value2')
     })
+
+    it('returns null when set is used with NX and the key already exists', async () => {
+      await persistor.set('existing-key', 'initial')
+      const result = await persistor.set('existing-key', 'new-value', {
+        NX: true,
+      })
+      expect(result).toBeNull()
+      expect(await persistor.get('existing-key')).toBe('initial') // Should not be overwritten
+    })
+
+    it('overwrites a key when set is used with XX', async () => {
+      await persistor.set('existing-key', 'initial')
+      const result = await persistor.set('existing-key', 'updated', {
+        XX: true,
+      })
+      expect(result).toBe('OK')
+      expect(await persistor.get('existing-key')).toBe('updated')
+    })
+
+    it('returns null when set is used with XX and the key does not exist', async () => {
+      const result = await persistor.set('non-existent-key', 'value', {
+        XX: true,
+      })
+      expect(result).toBeNull()
+      expect(await persistor.get('non-existent-key')).toBeNull()
+    })
+
+    it('sets expiration using EXAT', async () => {
+      const futureTimestamp = Math.floor((Date.now() + 2000) / 1000) // 2 sec ahead
+      await persistor.set('key-exat', 'value', { EXAT: futureTimestamp })
+
+      expect(await persistor.get('key-exat')).toBe('value')
+
+      vi.advanceTimersByTime(2000)
+      expect(await persistor.get('key-exat')).toBeNull()
+    })
+
+    it('sets expiration using PXAT', async () => {
+      const futureTimestamp = Date.now() + 1500 // 1.5 sec ahead
+      await persistor.set('key-pxat', 'value', { PXAT: futureTimestamp })
+
+      expect(await persistor.get('key-pxat')).toBe('value')
+
+      vi.advanceTimersByTime(1500)
+      expect(await persistor.get('key-pxat')).toBeNull()
+    })
   })
 
   describe('.get', () => {
@@ -50,6 +96,14 @@ describe('InMemoryPersistor', () => {
       const result = await persistor.del('non-existent-key')
       expect(result).toBe(0)
     })
+
+    it('removes expiration when deleting a key', async () => {
+      await persistor.set('expiring-key', 'value', { EX: 5 }) // Set with expiration
+      expect(await persistor.ttl('expiring-key')).toBeGreaterThan(0) // Ensure TTL exists
+
+      await persistor.del('expiring-key')
+      expect(await persistor.ttl('expiring-key')).toBe(-2) // Key should be gone
+    })
   })
 
   describe('.expire', () => {
@@ -67,6 +121,13 @@ describe('InMemoryPersistor', () => {
     it('returns false when trying to expire a non-existent key', async () => {
       const result = await persistor.expire('non-existent-key', 1)
       expect(result).toBe(false)
+    })
+
+    it('returns false when trying to expire an already expired key', async () => {
+      await persistor.setEx('temp-key', 1, 'value')
+
+      vi.advanceTimersByTime(1100)
+      expect(await persistor.expire('temp-key', 2)).toBe(false)
     })
   })
 
@@ -100,6 +161,27 @@ describe('InMemoryPersistor', () => {
 
       expect(await persistor.get('key1')).toBeNull()
       expect(await persistor.get('key2')).toBeNull()
+    })
+
+    it('clears active expirations when flushAll is called', async () => {
+      await persistor.set('expiring-key', 'value', { EX: 10 }) // Set a key with expiration
+
+      expect(await persistor.get('expiring-key')).toBe('value') // Ensure it's there
+
+      await persistor.flushAll() // Should trigger the loop
+
+      expect(await persistor.get('expiring-key')).toBeNull() // Store is cleared
+    })
+
+    it('removes all expirations when calling flushAll()', async () => {
+      await persistor.set('key1', 'value1', { EX: 5 }) // Expiring key
+      await persistor.set('key2', 'value2', { EX: 10 }) // Another expiring key
+      expect(await persistor.ttl('key1')).toBeGreaterThan(0)
+      expect(await persistor.ttl('key2')).toBeGreaterThan(0)
+
+      await persistor.flushAll()
+      expect(await persistor.ttl('key1')).toBe(-2)
+      expect(await persistor.ttl('key2')).toBe(-2)
     })
   })
 
@@ -207,6 +289,21 @@ describe('InMemoryPersistor', () => {
       const value = await persistor.hGet('hash-key', 'field1')
       expect(value).toBe('value1')
     })
+
+    it('updates an existing hash field', async () => {
+      await persistor.hSet('hash-key', 'field', 'value1')
+      const result = await persistor.hSet('hash-key', 'field', 'value2')
+
+      expect(result).toBe(0) // 0 means field was updated, not newly added
+      expect(await persistor.hGet('hash-key', 'field')).toBe('value2')
+    })
+
+    it('returns undefined when getting a non-existent hash field', async () => {
+      await persistor.hSet('hash-key', 'field1', 'value1')
+      expect(
+        await persistor.hGet('hash-key', 'non-existent-field')
+      ).toBeUndefined()
+    })
   })
 
   describe('.lPush and .rPush', () => {
@@ -223,6 +320,15 @@ describe('InMemoryPersistor', () => {
       const range = await persistor.lRange('list-key', 0, -1)
       expect(range).toEqual(['left2', 'left1', 'right1', 'right2'])
     })
+
+    it('pushes elements into an empty list', async () => {
+      expect(await persistor.lPush('empty-list', ['item1'])).toBe(1)
+      expect(await persistor.rPush('empty-list', ['item2'])).toBe(2)
+      expect(await persistor.lRange('empty-list', 0, -1)).toEqual([
+        'item1',
+        'item2',
+      ])
+    })
   })
 
   describe('.lPop and .rPop', () => {
@@ -237,6 +343,25 @@ describe('InMemoryPersistor', () => {
 
       const remaining = await persistor.lRange('pop-key', 0, -1)
       expect(remaining).toEqual(['b'])
+    })
+
+    it('returns null when popping from an empty list', async () => {
+      expect(await persistor.lPop('empty-list')).toBeNull()
+      expect(await persistor.rPop('empty-list')).toBeNull()
+    })
+
+    it('removes the key when the last element is popped from a the left', async () => {
+      await persistor.rPush('pop-key', ['only-element']) // 1 element list
+
+      expect(await persistor.lPop('pop-key')).toBe('only-element') // Pop last item
+      expect(await persistor.get('pop-key')).toBeNull() // Key should be deleted
+    })
+
+    it('removes the key when the last element is popped from the right', async () => {
+      await persistor.rPush('pop-key', ['only-element']) // 1 element list
+
+      expect(await persistor.rPop('pop-key')).toBe('only-element') // Pop last item
+      expect(await persistor.get('pop-key')).toBeNull() // Key should be deleted
     })
   })
 
@@ -258,6 +383,14 @@ describe('InMemoryPersistor', () => {
       members = await persistor.sMembers('set-key')
       expect(members.sort()).toEqual(['one', 'three'])
     })
+
+    it('does not add duplicate elements to a set', async () => {
+      expect(await persistor.sAdd('set-key', ['one', 'two'])).toBe(2)
+      expect(await persistor.sAdd('set-key', ['two', 'three'])).toBe(1) // Only 'three' is new
+      expect(await persistor.sMembers('set-key')).toEqual(
+        expect.arrayContaining(['one', 'two', 'three'])
+      )
+    })
   })
 
   describe('.zAdd, .zRange, and .zRem', () => {
@@ -277,6 +410,16 @@ describe('InMemoryPersistor', () => {
 
       const updatedRange = await persistor.zRange('sorted-key', 0, -1)
       expect(updatedRange).toEqual(['one', 'three'])
+    })
+
+    it('updates the score of an existing sorted set member', async () => {
+      await persistor.zAdd('sorted-key', [{ score: 1, value: 'one' }])
+      const result = await persistor.zAdd('sorted-key', [
+        { score: 3, value: 'one' },
+      ])
+
+      expect(result).toBe(0) // No new elements, just an update
+      expect(await persistor.zRange('sorted-key', 0, -1)).toEqual(['one']) // Still same member
     })
   })
 
@@ -466,6 +609,19 @@ describe('InMemoryPersistor', () => {
       expect(results).toEqual([2, 4, ['left2', 'left1', 'right1', 'right2']])
     })
 
+    it('executes multiple lPop and rPop operations in a batch', async () => {
+      await persistor.rPush('list-key', ['a', 'b', 'c']) // Add elements to list
+
+      const multi = persistor.multi()
+      multi.lPop('list-key') // Should remove 'a'
+      multi.rPop('list-key') // Should remove 'c'
+      multi.lRange('list-key', 0, -1) // Remaining list should be ['b']
+
+      const results = await multi.exec()
+
+      expect(results).toEqual(['a', 'c', ['b']]) // Assert return values
+    })
+
     it('executes multiple sAdd operations in a batch', async () => {
       const multi = persistor.multi()
       multi.sAdd('set-key', ['one', 'two', 'three'])
@@ -525,36 +681,90 @@ describe('InMemoryPersistor', () => {
 
     it('executes multiple mixed operations in a batch', async () => {
       const multi = persistor.multi()
+
+      // String operations
       multi.set('key1', 'value1')
-      multi.hSet('hash-key', 'field', 'hash-value')
-      multi.lPush('list-key', ['list-item1', 'list-item2'])
-      multi.rPush('list-key', ['list-item3', 'list-item4'])
-      multi.sAdd('set-key', ['set-value1', 'set-value2'])
-      multi.zAdd('sorted-key', [{ score: 1, value: 'sorted-item' }])
-      multi.incr('counter')
+      multi.setEx('key-ex', 2, 'expiring-value')
+      multi.pSetEx('key-px', 500, 'millisecond-expiring-value')
+      multi.setNX('unique-key', 'nx-value')
       multi.get('key1')
-      multi.hGet('hash-key', 'field')
+      multi.del('key1')
+      multi.expire('key-ex', 3)
+      multi.ttl('key-ex')
+      multi.exists(['key-ex', 'non-existent-key'])
+
+      // Numeric operations
+      multi.incr('counter')
+      multi.incrBy('counter', 3)
+      multi.decr('counter')
+      multi.decrBy('counter', 2)
+
+      // Hash operations
+      multi.hSet('hash-key', 'field1', 'hash-value1')
+      multi.hSet('hash-key', 'field2', 'hash-value2')
+      multi.hGet('hash-key', 'field1')
+
+      // List operations (Push before Pop)
+      multi.lPush('list-key', ['left1', 'left2'])
+      multi.rPush('list-key', ['right1', 'right2'])
+      multi.lPop('list-key')
+      multi.rPop('list-key')
       multi.lRange('list-key', 0, -1)
+
+      // Set operations
+      multi.sAdd('set-key', ['one', 'two', 'three'])
+      multi.sRem('set-key', 'two')
       multi.sMembers('set-key')
+
+      // Sorted set operations
+      multi.zAdd('sorted-key', [
+        { score: 1, value: 'one' },
+        { score: 2, value: 'two' },
+        { score: 3, value: 'three' },
+      ])
       multi.zRange('sorted-key', 0, -1)
-      multi.exists('key1')
+      multi.zRem('sorted-key', 'two')
+
+      // Flush all operation
+      multi.flushAll()
 
       const results = await multi.exec()
 
       expect(results).toEqual([
         'OK', // set
-        1, // hSet
-        2, // lPush
-        4, // rPush
-        2, // sAdd
-        1, // zAdd
-        1, // incr
+        'OK', // setEx
+        'OK', // pSetEx
+        true, // setNX (new key added)
         'value1', // get
-        'hash-value', // hGet
-        ['list-item2', 'list-item1', 'list-item3', 'list-item4'], // lRange
-        expect.arrayContaining(['set-value1', 'set-value2']), // sMembers
-        ['sorted-item'], // zRange
-        1, // exists
+        1, // del (1 key deleted)
+        true, // expire
+        expect.any(Number), // ttl (remaining time for expiration)
+        1, // exists (only 'key-ex' exists, not 'non-existent-key')
+
+        1, // incr (counter 0 → 1)
+        4, // incrBy (counter 1 → 4)
+        3, // decr (counter 4 → 3)
+        1, // decrBy (counter 3 → 1)
+
+        1, // hSet (new field added)
+        1, // hSet (new field added)
+        'hash-value1', // hGet
+
+        2, // lPush (new list length)
+        4, // rPush (new list length after push)
+        'left2', // lPop (first element removed)
+        'right2', // rPop (last element removed)
+        ['left1', 'right1'], // lRange (remaining list content)
+
+        3, // sAdd (three new values added)
+        1, // sRem (one value removed)
+        expect.arrayContaining(['one', 'three']), // sMembers (remaining set members)
+
+        3, // zAdd (three new values added)
+        ['one', 'two', 'three'], // zRange (entire sorted set)
+        1, // zRem (one value removed)
+
+        'OK', // flushAll (everything cleared)
       ])
     })
   })
