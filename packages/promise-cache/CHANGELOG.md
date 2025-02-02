@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.8.0
+
+### Minor Changes
+
+- 72d7c2d: deserialize is now usable with null values (will return null)
+
 ## 3.7.0
 
 ### Minor Changes
