@@ -20,7 +20,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "2.13.0",
+    "@opensearch-project/opensearch": "3.2.0",
     "omit": "1.0.1"
   }
 }
