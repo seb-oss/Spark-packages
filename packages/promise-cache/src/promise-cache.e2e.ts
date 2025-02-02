@@ -61,37 +61,4 @@ describe('promise-cache', () => {
     expect(result3).toEqual(42)
     expect(promise).toHaveBeenCalledTimes(2)
   })
-  it.skip('works with exp', async () => {
-    const cache = new PromiseCache<number>(options)
-    const promise = vi.fn(async () => 42)
-
-    const now = new Date()
-    const exp = addMilliseconds(now, 200)
-
-    const wrapped = () => cache.wrap('the_answer', promise, 0.2)
-
-    const result1 = await wrapped()
-    const result2 = await wrapped()
-
-    // Returns correct value
-    expect(result1).toEqual(42)
-    expect(result2).toEqual(42)
-
-    // Caches response
-    expect(promise).toHaveBeenCalledTimes(1)
-
-    // Puts response in redis
-    const stored = await cache.persistor.get<number>('the_answer')
-    expect(stored).toEqual<typeof stored>({
-      timestamp: expect.any(Number),
-      value: 42,
-      ttl: 0.2,
-    })
-
-    // Expire
-    await wait(200)
-    const result3 = await wrapped()
-    expect(result3).toEqual(42)
-    expect(promise).toHaveBeenCalledTimes(2)
-  })
 })
