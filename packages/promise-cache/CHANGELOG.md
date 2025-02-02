@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.7.0
+
+### Minor Changes
+
+- 6936f21: Added support for setEx, pSetEx, setNX, exists, incr/decr, hSet/hGet, lPush/rPush, sAdd/sRem, zAdd/zRem and multi to IPersistor
+
 ## 3.6.0
 
 ### Minor Changes
