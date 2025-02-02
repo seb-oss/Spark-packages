@@ -37,9 +37,9 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
         const resultPromise = (async () => {
           try {
             // Check cache
-            const cached = await persistor.get(key)
+            const cached = deserialize<R>(await persistor.get(key))
             if (cached !== null) {
-              return deserialize<R>(cached)
+              return cached
             }
 
             // No cached value
