@@ -14,20 +14,22 @@ Everything starts with an index definition. This must be declared as a const whi
 
 ```typescript
 import type {
-  OpenSearchIndexMapping,
+  IndexDefinition,
   DocumentFor,
   SearchRequest,
 } from '@sebspark/opensearch'
 
 export const personIndex = {
-  index: 'persons',
-  mappings: {
-    properties: {
-      name: { type: 'keyword', required: true },
-      age: { type: 'integer', required: true },
-    }
-  }
-} as const satisfies OpenSearchIndexMapping // Must be declared as const
+  index: 'person',
+  body: {
+    mappings: {
+      properties: {
+        name: { type: 'keyword' },
+        age: { type: 'integer' },
+      },
+    },
+  },
+} as const satisfies IndexDefinition
 
 export type PersonIndex = typeof personIndex
 export type PersonDocument = DocumentFor<PersonIndex>
@@ -40,7 +42,6 @@ Using the index definition and your types, you can now start interacting with Op
 import { OpenSearchClient } from '@sebspark/opensearch'
 import {
   personIndex,
-  personIndexName,
   type PersonIndex,
   type PersonDocument,
   type PersonSearch,
@@ -64,7 +65,7 @@ async function run () {
   }
 
   // Store it
-  await client.index<PersonIndex>({
+  await client.index<PersonIndex>({ // <- This will auto complete on index name
     index: 'person',
     body: doc,
   })
@@ -84,4 +85,58 @@ async function run () {
   
   // result.body.hits.hits <- This has type PersonDocument[]
 }
+```
+
+## Helpers
+
+### Bulk operations
+
+Since bulk operations are a bit tricky to call, this library offers a few utility functions to simplify:
+
+```typescript
+import {
+  bulkIndex,
+  bulkCreate,
+  bulkUpdate,
+  bulkDelete,
+} from '@sebspark/opensearch'
+
+// create a bunch of documents with automatic id:s
+const indexWithAutoId = bulkIndex<PersonIndex>('persons', [
+  { name: 'John Wick', age: 52 },
+  { name: 'Jason Bourne', age: 50 },
+])
+await opensearchClient.bulk(indexWithAutoId)
+
+// Name to lower case without spaces
+const idGen = (doc: PersonDocument) =>
+  doc.name.replace(/\s/g, '').toLowerCase()
+
+// create a bunch of documents with id generator function
+const indexWithIdGen = bulkIndex<PersonIndex>('persons', [
+  { name: 'John Wick', age: 52 },
+  { name: 'Jason Bourne', age: 50 },
+], idGen)
+await opensearchClient.bulk(indexWithIdGen)
+
+// create a bunch of documents and fail if id exists
+const createDocs = bulkCreate<PersonIndex>('persons', [
+  { name: 'John Wick', age: 52 },
+  { name: 'Jason Bourne', age: 50 },
+], idGen)
+await opensearchClient.bulk(createDocs)
+
+// update a bunch of documents
+const updateDocs = bulkUpdate<PersonIndex>('persons', [
+  { doc: { name: 'John Wick', age: 53 } },
+  { doc: { name: 'Jason Bourne', age: 51 } },
+], idGen)
+await opensearchClient.bulk(updateDocs)
+
+// delete a bunch of documents
+const deleteDocs = bulkDelete<PersonIndex>('persons', [
+  'johnwick',
+  'jasonbourne',
+])
+await opensearchClient.bulk(deleteDocs)
 ```

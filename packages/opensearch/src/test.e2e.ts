@@ -213,7 +213,7 @@ describe('OpenSearchClient', () => {
       expect(indexResponse.body.items[1].index.status).toBe(201)
 
       // Verify that the documents are indexed.
-      const searchResponse = await opensearchClient.search({
+      const searchResponse = await opensearchClient.search<PersonIndex>({
         index: 'person',
         body: { query: { match_all: {} } },
       })

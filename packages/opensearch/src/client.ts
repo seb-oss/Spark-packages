@@ -8,14 +8,15 @@ import type {
   TransportRequestPromise,
 } from '@opensearch-project/opensearch/lib/Transport'
 import type {
+  BulkRequest,
+  BulkResponse,
   IndexDefinition,
   IndexRequest,
-  Indices,
-  IndicesExistsRequest,
   SearchRequest,
   SearchResponse,
 } from './types'
-import type { BulkRequest, BulkResponse } from './types/bulk'
+import type { Indices } from './types/common'
+import type { IndicesExistsRequest } from './types/indx'
 
 type TypedIndices = Omit<Indices, 'exists'> & {
   exists<T extends IndexDefinition>(
@@ -29,7 +30,7 @@ type TypedIndices = Omit<Indices, 'exists'> & {
  * - Uses `Omit<Client, "search">` to remove `search()` from `Client`.
  * - Defines a new `search<T>()` method with stricter type safety.
  */
-interface OpenSearchClient
+export interface OpenSearchClient
   extends Omit<Client, 'search' | 'index' | 'bulk' | 'indices'> {
   search<T extends IndexDefinition>(
     params: SearchRequest<T>,
