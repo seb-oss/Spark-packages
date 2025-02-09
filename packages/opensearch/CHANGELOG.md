@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 1.0.0
+
+### Major Changes
+
+- 342088f: Rewrite of OpenSearch helpers
+
 ## 0.3.3
 
 ### Patch Changes
