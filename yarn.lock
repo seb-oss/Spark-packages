@@ -1712,9 +1712,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opensearch-project/opensearch@npm:2.13.0":
-  version: 2.13.0
-  resolution: "@opensearch-project/opensearch@npm:2.13.0"
+"@opensearch-project/opensearch@npm:3.2.0":
+  version: 3.2.0
+  resolution: "@opensearch-project/opensearch@npm:3.2.0"
   dependencies:
     aws4: "npm:^1.11.0"
     debug: "npm:^4.3.1"
@@ -1722,7 +1722,7 @@ __metadata:
     json11: "npm:^2.0.0"
     ms: "npm:^2.1.3"
     secure-json-parse: "npm:^2.4.0"
-  checksum: 10c0/c379d51fda6062fc1b857789583646ac9eecc0a255db1f7601220d7f8f84e50fcd08de81fb66ffdceb75b7752b2dd21d8aba0e397f0e8700f456332021d1db36
+  checksum: 10c0/340a08ed2f3677fd1f7a15124b1cbd82e4eca104e06fca99e6a8cd2694320786ad300a0840f238577a02fa9ddfac6aa24c6451891af6da73a29bae5de0ebce13
   languageName: node
   linkType: hard
 
@@ -2666,9 +2666,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/opensearch@workspace:packages/opensearch"
   dependencies:
-    "@opensearch-project/opensearch": "npm:2.13.0"
-    "@types/omit": "npm:1.0.3"
-    omit: "npm:1.0.1"
+    "@opensearch-project/opensearch": "npm:3.2.0"
+    testcontainers: "npm:10.18.0"
     tsconfig: "npm:*"
   languageName: unknown
   linkType: soft
@@ -3247,13 +3246,6 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 10c0/9f9b4a1c4e2db2994ef36f165322b3bb807466e3f92751ed52a40af0212917bc6ecd12dc6775eb829176b71b26570bea9c6a0a2d9e3ae6b496721c71934244db
-  languageName: node
-  linkType: hard
-
-"@types/omit@npm:1.0.3":
-  version: 1.0.3
-  resolution: "@types/omit@npm:1.0.3"
-  checksum: 10c0/403ab53a77d5f6d2f3a0ab8a9818a0697ae4080d4bce75b3330e90a275d799851a626fc304ba12c058780501a8f636da242bffdcc972e30c1c7854f59d180b0e
   languageName: node
   linkType: hard
 
@@ -9109,13 +9101,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"omit@npm:1.0.1":
-  version: 1.0.1
-  resolution: "omit@npm:1.0.1"
-  checksum: 10c0/04ef989ff0a3305d97ca533bad4c2be68dc8057d2f42f423a60b6ab142d23d5fdc145c6130f850a57f855ef079697b421aac96932a193f01a0a58e7209a8acbf
-  languageName: node
-  linkType: hard
-
 "on-finished@npm:2.4.1, on-finished@npm:^2.3.0, on-finished@npm:^2.4.1":
   version: 2.4.1
   resolution: "on-finished@npm:2.4.1"
@@ -10516,7 +10501,7 @@ __metadata:
     csv-parse: "npm:5.6.0"
     fast-xml-parser: "npm:4.5.1"
     tsup: "npm:8.3.5"
-    turbo: "npm:2.3.4"
+    turbo: "npm:^2.4.0"
     typescript: "npm:5.7.3"
     vitest: "npm:3.0.4"
   languageName: unknown
@@ -11452,6 +11437,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"testcontainers@npm:10.18.0":
+  version: 10.18.0
+  resolution: "testcontainers@npm:10.18.0"
+  dependencies:
+    "@balena/dockerignore": "npm:^1.0.2"
+    "@types/dockerode": "npm:^3.3.29"
+    archiver: "npm:^7.0.1"
+    async-lock: "npm:^1.4.1"
+    byline: "npm:^5.0.0"
+    debug: "npm:^4.3.5"
+    docker-compose: "npm:^0.24.8"
+    dockerode: "npm:^3.3.5"
+    get-port: "npm:^5.1.1"
+    proper-lockfile: "npm:^4.1.2"
+    properties-reader: "npm:^2.3.0"
+    ssh-remote-port-forward: "npm:^1.0.4"
+    tar-fs: "npm:^3.0.6"
+    tmp: "npm:^0.2.3"
+    undici: "npm:^5.28.5"
+  checksum: 10c0/efd4ca00c38d0b4152da5630525e236769c04b9ca726d124403107a6eedbfdfca79dda7f73770a0ea18ac34a55353953f3337d7543ec11a659b8c96219f39d8c
+  languageName: node
+  linkType: hard
+
 "testcontainers@npm:^10.17.2":
   version: 10.17.2
   resolution: "testcontainers@npm:10.17.2"
@@ -11827,58 +11835,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-darwin-64@npm:2.3.4"
+"turbo-darwin-64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-darwin-64@npm:2.4.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-darwin-arm64@npm:2.3.4"
+"turbo-darwin-arm64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-darwin-arm64@npm:2.4.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-linux-64@npm:2.3.4"
+"turbo-linux-64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-linux-64@npm:2.4.0"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-linux-arm64@npm:2.3.4"
+"turbo-linux-arm64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-linux-arm64@npm:2.4.0"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-windows-64@npm:2.3.4"
+"turbo-windows-64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-windows-64@npm:2.4.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo-windows-arm64@npm:2.3.4"
+"turbo-windows-arm64@npm:2.4.0":
+  version: 2.4.0
+  resolution: "turbo-windows-arm64@npm:2.4.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:2.3.4":
-  version: 2.3.4
-  resolution: "turbo@npm:2.3.4"
+"turbo@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "turbo@npm:2.4.0"
   dependencies:
-    turbo-darwin-64: "npm:2.3.4"
-    turbo-darwin-arm64: "npm:2.3.4"
-    turbo-linux-64: "npm:2.3.4"
-    turbo-linux-arm64: "npm:2.3.4"
-    turbo-windows-64: "npm:2.3.4"
-    turbo-windows-arm64: "npm:2.3.4"
+    turbo-darwin-64: "npm:2.4.0"
+    turbo-darwin-arm64: "npm:2.4.0"
+    turbo-linux-64: "npm:2.4.0"
+    turbo-linux-arm64: "npm:2.4.0"
+    turbo-windows-64: "npm:2.4.0"
+    turbo-windows-arm64: "npm:2.4.0"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -11894,7 +11902,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10c0/c3c52f5aa4b7c38536f0229f59ae76592c581af351ebf4b6ed0eea95bd1534ed19d84fdaea6f8f26c106dfc95394f78d4361c95aa1ae3bacc255b4a8500d53cc
+  checksum: 10c0/c4fe9b2c19dd039865469c3a3fef28fb53aebbae20e1e87e198e006a7d6d70b87cacc1450323b349078a7290889bfbb70c7d369dfda9cd04abfcab6996ad6ae3
   languageName: node
   linkType: hard
 

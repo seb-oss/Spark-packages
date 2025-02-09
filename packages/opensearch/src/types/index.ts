@@ -1,0 +1,7 @@
+export type { BulkRequest, BulkResponse, UpdateAction } from './bulk'
+export type { IndexDefinition } from './common'
+export type { DocumentFor } from './documents'
+export type { IndexRequest, IndexResponse } from './indx'
+export * from './queries'
+export type { SearchRequest, SearchResponse } from './search'
+export type { Primitive, DeepPartial } from './utilityTypes'
