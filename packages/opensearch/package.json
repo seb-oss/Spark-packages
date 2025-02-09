@@ -13,14 +13,14 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/omit": "1.0.3",
+    "testcontainers": "10.18.0",
     "tsconfig": "*"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "2.13.0",
-    "omit": "1.0.1"
+    "@opensearch-project/opensearch": "3.2.0"
   }
 }

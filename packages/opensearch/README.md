@@ -2,94 +2,86 @@
 
 A wrapper for OpenSearch Client to assist with typed queries, indices etc
 
-## Usage
+## Add
 
 ```zsh
 yarn add @sebspark/opensearch @opensearch-project/opensearch
 ```
 
-**Note:** Data types require a property called `id` of type `string`
+## Usage
+
+Everything starts with an index definition. This must be declared as a const which **satisfies** `OpenSearchIndexMapping`. From this you can then derive your documents and search queries.
 
 ```typescript
-import { Client } from '@opensearch-project/opensearch'
-import { helper } from '@sebspark/opensearch'
+import type {
+  OpenSearchIndexMapping,
+  DocumentFor,
+  SearchRequest,
+} from '@sebspark/opensearch'
 
-const client = new Client({})
-const typedClient = helper(client)
-
-type Data = {
-  id: string
-  user: {
-    name: string
-    age: number
+export const personIndex = {
+  index: 'persons',
+  mappings: {
+    properties: {
+      name: { type: 'keyword', required: true },
+      age: { type: 'integer', required: true },
+    }
   }
-  blog: {
-    posts: Array<{
-      title: string
-      text: string
-    }>
+} as const satisfies OpenSearchIndexMapping // Must be declared as const
+
+export type PersonIndex = typeof personIndex
+export type PersonDocument = DocumentFor<PersonIndex>
+export type PersonSearch = SearchRequest<PersonIndex>
+```
+
+Using the index definition and your types, you can now start interacting with OpenSearch with typeahead:
+
+```typescript
+import { OpenSearchClient } from '@sebspark/opensearch'
+import {
+  personIndex,
+  personIndexName,
+  type PersonIndex,
+  type PersonDocument,
+  type PersonSearch,
+} from './personIndex'
+
+async function run () {
+  const client = new OpenSearchClient()
+
+  // Check if the index exists
+  const { body: exists } = await client.indices.exists<PersonIndex>({ index: 'person' })
+
+  // If not: create it
+  if (!exists) {
+    await client.indices.create(personIndex)
   }
-}
 
-type UserOnly = Pick<Data, 'id' | 'user'>
+  // Create a document
+  const doc: PersonDocument = { // <- This will auto complete on fields and types
+    name: 'John Wick',
+    age: 52,
+  }
 
-// Typed index creation
-async function createIndex() {
-  await helper(client as Client).typedIndexCreate<Data>('data', {
-    mappings: {
-      properties: {
-        user: {
-          age: {
-            type: 'integer'
-          },
-        },
-        isTrue: {
-          type: 'boolean'
+  // Store it
+  await client.index<PersonIndex>({
+    index: 'person',
+    body: doc,
+  })
+
+  // Find it
+  const searchQuery: PersonSearch = { // <- This will auto complete on fields and types
+    index: personIndexName,
+    body: {
+      query: {
+        match: {
+          name: 'John Wick'
         }
       }
     }
-  })
-}
-
-// Typed insert
-async function indexDocument() {
-  await helper(client as Client).typedIndex<Data>('data', {
-    id: 'foo',
-    isTrue: true,
-    user: {
-      age: 42,
-      name: 'Arthur Dent',
-    }
-  })
-}
-
-// Typed search
-async function loadData() {
-  // result: Data[]
-  const { result } = await typedClient.typedSearch<Data>({
-    index: 'data',
-    body: {
-      query: {
-        term: {
-          'user.name': {
-            value: 'Arthur Dent',
-          },
-        },
-      },
-    },
-  })
-  return result
-}
-async function loadPartialData() {
-  // result: UserOnly[]
-  const { result } = await typedClient.typedSearch<Data, UserOnly>({
-    index: 'data',
-    body: {
-      query: {
-        fields: ['user.age', 'user.name'],
-      },
-    },
-  })
-  return result
+  }
+  const result = await client.search(searchQuery)
+  
+  // result.body.hits.hits <- This has type PersonDocument[]
 }
 ```
