@@ -35,7 +35,7 @@
     "@jest/globals": "29.7.0",
     "@types/node": "20.17.16",
     "typescript": "5.7.3",
-    "vitest": "3.0.4",
+    "vitest": "3.0.5",
     "yargs": "17.7.2"
   }
 }
