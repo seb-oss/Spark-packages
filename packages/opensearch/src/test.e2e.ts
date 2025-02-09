@@ -208,10 +208,9 @@ describe('OpenSearchClient', () => {
       const indexResponse = await opensearchClient.bulk(bulkIndexPayload)
 
       // Expect one response per document.
-      expect(indexResponse.body.items).toHaveLength(indexDocs.length)
-      indexResponse.body.items.forEach((item) => {
-        expect(item.index.status).toBe(201)
-      })
+      expect(indexResponse.body.items).toHaveLength(2)
+      expect(indexResponse.body.items[0].index.status).toBe(201)
+      expect(indexResponse.body.items[1].index.status).toBe(201)
 
       // Verify that the documents are indexed.
       const searchResponse = await opensearchClient.search({
@@ -240,10 +239,9 @@ describe('OpenSearchClient', () => {
       const createResponse = await opensearchClient.bulk(bulkCreatePayload)
 
       // Expect one response per document.
-      expect(createResponse.body.items).toHaveLength(createDocs.length)
-      createResponse.body.items.forEach((item) => {
-        expect(item.create.status).toBe(201)
-      })
+      expect(createResponse.body.items).toHaveLength(2)
+      expect(createResponse.body.items[0].create.status).toBe(201)
+      expect(createResponse.body.items[1].create.status).toBe(201)
 
       // Verify that the created documents exist.
       const searchResponse = await opensearchClient.search({

@@ -18,7 +18,8 @@ export type IndexRequestBody<T> = T extends {
   body: { mappings: { properties: infer P } }
 }
   ? MapOpenSearchTypes<P>
-  : Record<string, any>
+  : // biome-ignore lint/suspicious/noExplicitAny:
+    Record<string, any>
 
 export interface IndexResponse extends Index_Response {}
 

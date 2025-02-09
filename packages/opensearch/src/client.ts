@@ -63,7 +63,7 @@ type OpenSearchClientConstructor = new (
  * - Casts the instance to `OpenSearchClient` so TypeScript recognizes the new `search<T>()` signature.
  * - The `as unknown as` trick ensures `new OpenSearchClient()` is valid.
  */
-const OpenSearchClient: OpenSearchClientConstructor = function (
+export const OpenSearchClient: OpenSearchClientConstructor = function (
   this: Client,
   ...args: ConstructorParameters<typeof Client>
 ) {
@@ -72,5 +72,3 @@ const OpenSearchClient: OpenSearchClientConstructor = function (
 } as unknown as {
   new (...args: ConstructorParameters<typeof Client>): OpenSearchClient
 }
-
-export type { OpenSearchClient }
