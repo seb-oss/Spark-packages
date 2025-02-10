@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@testcontainers/redis": "^10.17.2",
-    "testcontainers": "^10.17.2",
+    "testcontainers": "^10.18.0",
     "tsconfig": "*"
   },
   "dependencies": {

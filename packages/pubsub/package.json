@@ -19,9 +19,9 @@
     "@sebspark/tsconfig": "*"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "4.9.0",
+    "@google-cloud/pubsub": "4.10.0",
     "@types/express": "5.0.0",
-    "@types/html-escaper": "3.0.2",
+    "@types/html-escaper": "3.0.4",
     "avsc": "^5.7.7",
     "express": "5.0.1",
     "html-escaper": "3.0.3"
