@@ -5,7 +5,7 @@ A wrapper for OpenSearch Client to assist with typed queries, indices etc
 ## Add
 
 ```zsh
-yarn add @sebspark/opensearch @opensearch-project/opensearch
+yarn add @sebspark/opensearch
 ```
 
 ## Usage
