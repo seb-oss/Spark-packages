@@ -3,9 +3,6 @@ name: ISO10383
 on:
   schedule:
     # https://www.iso20022.org/market-identifier-codes
-    - cron: '0 10 10 DEC *' # 2024-12-10
-    - cron: '0 10 14 JAN *' # 2025-01-13
-    - cron: '0 10 11 FEB *' # 2025-02-11
     - cron: '0 10 11 MAR *' # 2025-03-11
     - cron: '0 10 15 APR *' # 2025-04-15
     - cron: '0 10 13 MAY *' # 2025-05-13
@@ -77,8 +74,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Download dependencies
-        uses: bahmutov/npm-install@v1
+        run: yarn install --immutable
 
       - name: Create Changeset PR
         uses: changesets/action@v1
