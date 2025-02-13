@@ -35,7 +35,7 @@ describe('Google IAM', () => {
         },
       ])
 
-      const JWT = await getApiGatewayToken({apiURL: 'test-audience'})
+      const JWT = await getApiGatewayToken({ apiURL: 'test-audience' })
 
       expect(JWT).toMatchSnapshot()
 
@@ -55,9 +55,13 @@ describe('Google IAM', () => {
 
       signBlobMock.mockClear()
 
-      const originalJWT = await getApiGatewayToken({ apiURL: 'test-audience-double'})
+      const originalJWT = await getApiGatewayToken({
+        apiURL: 'test-audience-double',
+      })
 
-      const cachedJWT = await getApiGatewayToken({apiURL: 'test-audience-double'})
+      const cachedJWT = await getApiGatewayToken({
+        apiURL: 'test-audience-double',
+      })
 
       expect(originalJWT).equal(cachedJWT)
 
@@ -73,7 +77,7 @@ describe('Google IAM', () => {
       try {
         await getApiGatewayToken({
           apiURL: 'test-audience-error',
-          logger: loggerMock as unknown as Logger
+          logger: loggerMock as unknown as Logger,
         })
       } catch (error) {
         expect(error).toBeInstanceOf(Error)
@@ -86,7 +90,9 @@ describe('Google IAM', () => {
       signBlobMock.mockRejectedValueOnce(new Error('test-error'))
       process.env.GCP_IAM_SOFT_FAIL = 'true'
 
-      const JWT = await getApiGatewayToken({apiURL: 'test-audience-soft-fail'})
+      const JWT = await getApiGatewayToken({
+        apiURL: 'test-audience-soft-fail',
+      })
 
       expect(JWT).toBe('')
 

@@ -1,8 +1,6 @@
 export class LruCache<T> {
-  private values: Map<string, { timestamp: number; data: T, ttl: number }> = new Map<
-    string,
-    { timestamp: number; data: T, ttl: number }
-  >()
+  private values: Map<string, { timestamp: number; data: T; ttl: number }> =
+    new Map<string, { timestamp: number; data: T; ttl: number }>()
   private readonly maxEntries: number = 10000
   private readonly defaultTTL: number = 1000 * 10 // 10 seconds
 
@@ -16,8 +14,12 @@ export class LruCache<T> {
 
     if (hasKey) {
       // peek the entry, re-insert for LRU strategy
-      const entry = this.values.get(key) as { timestamp: number; data: T, ttl: number }
-      if (Date.now() - entry.timestamp > entry.ttl ) {
+      const entry = this.values.get(key) as {
+        timestamp: number
+        data: T
+        ttl: number
+      }
+      if (Date.now() - entry.timestamp > entry.ttl) {
         this.values.delete(key)
         return undefined
       }
@@ -34,6 +36,10 @@ export class LruCache<T> {
       this.values.delete(keyToDelete)
     }
 
-    this.values.set(key, { data: value, timestamp: Date.now(), ttl: ttl || this.defaultTTL })
+    this.values.set(key, {
+      data: value,
+      timestamp: Date.now(),
+      ttl: ttl || this.defaultTTL,
+    })
   }
 }
