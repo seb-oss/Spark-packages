@@ -14,15 +14,22 @@ const apiGatewayJwtCache = new LruCache<string>()
  * @param logger An optional logger to use for logging.
  * @returns A JWT.
  */
-export const getApiGatewayToken = async (
-  apiURL: string,
+export const getApiGatewayToken = async ({
+  apiURL,
+  key,
+  ttl,
+  logger,
+}: {
+  apiURL: string
+  key?: string
+  ttl?: number
   logger?: Logger
-): Promise<string> => {
+}): Promise<string> => {
   /**
    * Check if there is a cached JWT
    */
 
-  const cachedJwt = apiGatewayJwtCache.get(apiURL)
+  const cachedJwt = apiGatewayJwtCache.get(key || apiURL)
   if (cachedJwt) {
     return cachedJwt
   }
@@ -92,7 +99,7 @@ export const getApiGatewayToken = async (
     const signedJWT = `${unsignedJWT}.${signature}`
 
     // cache generated jwt
-    apiGatewayJwtCache.put(apiURL, signedJWT)
+    apiGatewayJwtCache.put(key || apiURL, signedJWT, ttl)
     return signedJWT
   } catch (error) {
     if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
