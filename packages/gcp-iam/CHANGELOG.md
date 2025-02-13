@@ -1,5 +1,15 @@
 # @sebspark/gcp-iam
 
+## 0.4.0
+
+### Minor Changes
+
+- 4a446a2: Breaking change: Change parameters in function getApiGatewayToken to pass a custom key to dont reuse the same jwt between user sessions, also to setup a custom ttl
+
+### Patch Changes
+
+- cbdf644: chore: reduce the cache ttl to 10 seconds
+
 ## 0.3.1
 
 ### Patch Changes
