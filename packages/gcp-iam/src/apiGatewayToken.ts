@@ -16,7 +16,7 @@ const apiGatewayJwtCache = new LruCache<string>()
  */
 export const getApiGatewayToken = async (
   apiURL: string,
-  logger?: Logger,
+  logger?: Logger
 ): Promise<string> => {
   /**
    * Check if there is a cached JWT
