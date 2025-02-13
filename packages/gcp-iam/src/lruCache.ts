@@ -4,7 +4,7 @@ export class LruCache<T> {
     { timestamp: number; data: T }
   >()
   private readonly maxEntries: number = 10000
-  private readonly ttl: number = 1000 * 60 * 10 // 1 minute
+  private readonly ttl: number = 1000 * 10 // 10 seconds
 
   constructor(props?: { ttl?: number; maxEntries?: number }) {
     this.ttl = props?.ttl ?? this.ttl

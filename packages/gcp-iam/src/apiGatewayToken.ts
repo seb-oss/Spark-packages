@@ -4,9 +4,8 @@ import type { Logger } from 'winston'
 import { LruCache } from './lruCache'
 
 const expInSeconds = 60 * 60
-const apiGatewayJwtCache = new LruCache<string>({
-  ttl: (1000 * expInSeconds) / 2,
-})
+// TODO: Make ttl changeable from getApiGatewayToken function
+const apiGatewayJwtCache = new LruCache<string>()
 /**
  * Generate a system token for the API Gateway.
  * This is intended to be run under the context of the service account signing the JWT.
@@ -17,7 +16,7 @@ const apiGatewayJwtCache = new LruCache<string>({
  */
 export const getApiGatewayToken = async (
   apiURL: string,
-  logger?: Logger
+  logger?: Logger,
 ): Promise<string> => {
   /**
    * Check if there is a cached JWT
