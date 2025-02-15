@@ -30,6 +30,6 @@ export const createMockDatabase = () => {
         return promise
       }
     ),
-    getTransaction: async () => [transaction], // Expose the transaction for testing
+    getTransaction: async () => [transaction],
   }
 }
