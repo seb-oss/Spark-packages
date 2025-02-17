@@ -15,6 +15,9 @@ describe('prepare', () => {
     instance = spanner.instance('my-instance') as jest.Mocked<Instance>
     database = instance.database('my-database') as jest.Mocked<Database>
   })
+  afterEach(() => {
+    spanner.close()
+  })
   describe('ensure ensureMigrationTable', () => {
     it('checks if table exists', async () => {
       await ensureMigrationTable(database)

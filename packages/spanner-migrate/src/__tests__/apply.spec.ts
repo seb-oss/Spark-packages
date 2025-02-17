@@ -1,20 +1,22 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
-import type {
-  ExecuteSqlRequest,
-  Transaction,
-} from '@google-cloud/spanner/build/src/transaction'
+import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
 import { applyDown, applyUp } from '../apply'
 import type { Migration } from '../types'
 
 describe('apply', () => {
+  let spanner: jest.Mocked<Spanner>
   let db: jest.Mocked<Database>
 
   beforeEach(() => {
     // Assume `Database` is mocked globally
-    db = new Spanner()
+    spanner = new Spanner() as jest.Mocked<Spanner>
+    db = spanner
       .instance('my-instance')
       .database('my-database') as jest.Mocked<Database>
     jest.clearAllMocks()
+  })
+  afterEach(() => {
+    spanner.close()
   })
 
   describe('applyUp', () => {
