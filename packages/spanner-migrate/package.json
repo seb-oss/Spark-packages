@@ -33,7 +33,7 @@
   "dependencies": {
     "@inquirer/input": "4.1.6",
     "@jest/globals": "29.7.0",
-    "@types/node": "20.17.17",
+    "@types/node": "22.13.5",
     "typescript": "5.7.3",
     "vitest": "3.0.5",
     "yargs": "17.7.2"

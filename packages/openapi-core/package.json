@@ -16,7 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/node": "20.17.17",
+    "@types/node": "22.13.5",
     "tsconfig": "*"
   },
   "dependencies": {
