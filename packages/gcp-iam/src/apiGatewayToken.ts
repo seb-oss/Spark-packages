@@ -92,6 +92,9 @@ export const getApiGatewayToken = async ({
       )
     }
 
+    // Debug.
+    console.log('IAM KeyID', response.keyId)
+
     // Encode the binary signature to Base64.
     const signature = Buffer.from(response.signedBlob).toString('base64')
 
