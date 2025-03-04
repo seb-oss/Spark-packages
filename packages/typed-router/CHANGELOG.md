@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 1.0.1
+
+### Patch Changes
+
+- fde8ea1: Update dependencies.
+
 ## 1.0.0
 
 ### Major Changes
