@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.0.0
+
+### Major Changes
+
+- 58ed044: Rewrite of spanner-migrate to dupport multiple databases. Also first version of cli-tester - a tool for testing @inquirer based cli:s.
+
 ## 0.2.0
 
 ### Minor Changes
