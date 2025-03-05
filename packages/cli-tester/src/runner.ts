@@ -59,9 +59,19 @@ export function run(
   argsOrOptions?: string[] | SpawnOptions,
   maybeOptions?: SpawnOptions
 ): CliTester {
-  const childProcess = Array.isArray(argsOrOptions)
-    ? spawn(command, argsOrOptions, maybeOptions as SpawnOptions)
-    : spawn(command, [], argsOrOptions as SpawnOptions)
+
+  let args: string[]
+  let options: SpawnOptions
+
+  if (Array.isArray(argsOrOptions)) {
+    args = argsOrOptions
+    options = maybeOptions || {}
+  } else {
+    args = []
+    options = argsOrOptions || {}
+  }
+
+  const childProcess = spawn(command, args, options)
 
   // Log all buffers
   // childProcess.stdout?.on('data', (chunk) => { console.log(Array.from(chunk).join(',')) })
