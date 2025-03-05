@@ -1,4 +1,5 @@
 export const ansiPatterns = {
+  // biome-ignore lint/suspicious/noControlCharactersInRegex:
   all: /\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])/g,
 
   // Green checkmark ✓ → \x1B[32m✓\x1B[39m

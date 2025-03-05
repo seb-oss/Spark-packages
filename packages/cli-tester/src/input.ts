@@ -41,6 +41,7 @@ export const input = (childProcess: ChildProcess, value: string) =>
         const cleanText = chunk.toString().replace(ansiPatterns.all, '').trim()
 
         // Extract text after the red error indicator ("> ")
+        // biome-ignore lint/suspicious/noControlCharactersInRegex:
         const errorMatch = chunk.toString().match(/\x1B\[31m>\s(.*)/) // Match red "> " followed by text
         const errorMessage = errorMatch
           ? errorMatch[1].replace(ansiPatterns.all, '').trim()
