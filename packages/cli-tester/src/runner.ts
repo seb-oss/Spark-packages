@@ -59,7 +59,6 @@ export function run(
   argsOrOptions?: string[] | SpawnOptions,
   maybeOptions?: SpawnOptions
 ): CliTester {
-
   let args: string[]
   let options: SpawnOptions
 
