@@ -1,5 +1,6 @@
 import type { ChildProcess } from 'node:child_process'
 import { ansiPatterns } from './characters'
+import { COMMAND_TIMEOUT } from './utils'
 
 /**
  * Sends input to the CLI process and waits for confirmation.
@@ -15,11 +16,15 @@ import { ansiPatterns } from './characters'
  * @throws If input is required but not provided, an error is captured from the CLI output.
  * @throws If no response is received within **500ms**, the promise rejects with a timeout error.
  */
-export const input = (childProcess: ChildProcess, value: string) =>
+export const input = (
+  childProcess: ChildProcess,
+  value: string,
+  timeoutMs = COMMAND_TIMEOUT
+) =>
   new Promise<void>((resolve, reject) => {
     const timeout = setTimeout(
       () => reject(new Error('Timeout waiting for input')),
-      500
+      timeoutMs
     )
 
     const inputListener = (chunk: Buffer) => {
