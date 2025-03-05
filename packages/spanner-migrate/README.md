@@ -14,110 +14,196 @@ yarn add -D @sebspark/spanner-migrate
 
 ---
 
-## CLI Usage
+## CLI Commands
 
-Run `spanner-migrate` from your project root. If no command is provided, the help message is displayed.
+`spanner-migrate` provides several commands for managing database migrations in Google Spanner.
 
-```zsh
-spanner-migrate [command] [options]
-```
+### Initialize Configuration
 
-### Commands
-
-#### `init`
-Initialize a Spanner migration configuration file (`.spanner-migrate.config.json`).
-
-**Usage:**
-
-```zsh
+```sh
 spanner-migrate init
 ```
 
-**Prompts:**
-- `Enter the path for your migrations`: Directory for migration files (default: `./migrations`).
-- `Enter Spanner instance name`: The name of the Spanner instance.
-- `Enter Spanner database name`: The name of the Spanner database.
-- `Enter Google Cloud project name`: (Optional) The Google Cloud project name.
+Initializes a `.spanner-migrate.config.json` file by prompting for:
+- Spanner instance name
+- One or more database configurations
+- Optional Google Cloud project name
 
----
+### Create a Migration
 
-#### `create <description>`
-Create a new migration file.
-
-**Usage:**
-
-```zsh
+```sh
+spanner-migrate create <description ...> [--database <name>]
 spanner-migrate create add users table
+spanner-migrate create --database=mydb add users table
 ```
 
-**Result:**
+Creates a new migration file with the specified description.
 
-Example:
+- If `--database` (`-d`) is provided, it uses the specified database.
+- If multiple databases exist and none is specified, the user is prompted to select one.
+- The filename is generated from the description (`<timestamp>_add_users_table.sql`).
 
-`./migrations/20250120145638000_create_table_users.sql`
+### Apply Migrations
 
-```sql
--- Created: 2025-01-20T14:56:38.000Z
--- Description: create table users
-
----- UP ----
-
-
-
----- DOWN ----
-
-
-
-```
-
-#### `up`
-Apply pending migrations
-
-**Usage:**
-
-```zsh
+```sh
 spanner-migrate up
+spanner-migrate up --database <name>
+spanner-migrate up --database <name> --max <n>
 ```
 
-If you don't want to apply all pending migrations, use the `--max` or `-m` flag
+Applies pending migrations.
 
-```zsh
-spanner migrate up --max 1
-```
+- If **no** `--database` and `--max` are provided, applies all migrations to all databases.
+- If `--database` (`-d`) is provided, applies migrations only to that database.
+- If `--max` (`-m`) is provided, limits the number of migrations applied (requires `--database`).
+- `--max` must be an integer greater than 0.
 
-#### `down`
-Rollback one migration
+### Roll Back Last Migration
 
-**Usage:**
-
-```zsh
+```sh
 spanner-migrate down
+spanner-migrate down --database <name>
 ```
 
-#### `status`
-Check migration status
+Rolls back the last applied migration.
 
-**Usage:**
+- If a **single** database exists, it is automatically selected.
+- If multiple databases exist, `--database` is **required**.
+- The specified `--database` must exist.
 
-```zsh
+### Show Migration Status
+
+```sh
 spanner-migrate status
+spanner-migrate status --database <name>
 ```
-Displays an overview of applied and peding migrations
 
-```text
-Migrations
+Displays migration status.
 
-Applied
---------------------------------------------------------------------------------
-20250122080434866_add_users_table
-20250122080444982_add_index_on_users
+- If `--database` is specified, shows status for that database.
+- If no `--database` is provided, shows status for all configured databases.
 
-New
---------------------------------------------------------------------------------
-20250122080444982_add_index_on_users
+### Help
+
+```sh
+spanner-migrate --help
+spanner-migrate <command> --help
 ```
+
+Displays help for the CLI or a specific command.
 
 ---
+
+## Programmatic Usage
+
+In addition to the CLI, `spanner-migrate` can be used as a Node.js module to manage migrations programmatically.
+
+### Importing
+
+```typescript
+import { init, create, up, down, status } from '@sebspark/spanner-migrate'
+```
+
+### Initializing Configuration
+
+```typescript
+import { init, type Config } from '@sebspark/spanner-migrate'
+
+const config: Config = {
+  instance: {
+    name: 'my-instance',
+    databases: [
+      { name: 'mydb', migrationsPath: './migrations' },
+    ],
+  },
+  projectId: 'my-gcp-project',
+}
+
+await init(config, '.spanner-migrate.config.json')
+```
+
+Writes the given configuration to a `.spanner-migrate.config.json` file.
+
+### Creating a Migration
+
+```typescript
+import { create, type DatabaseConfig } from '@sebspark/spanner-migrate'
+
+const databaseConfig: DatabaseConfig = {
+  name: 'mydb',
+  migrationsPath: './migrations',
+}
+
+await create(databaseConfig, 'add users table')
+```
+
+Creates a new migration file for the specified database.
+
+### Applying Migrations
+
+```typescript
+import { up, type Config, type DatabaseConfig } from '@sebspark/spanner-migrate'
+
+// Load configuration
+const config: Config = /* Load from file or define inline */
+
+// Apply all migrations to all databases
+await up(config)
+
+// Apply all migrations to a specific database
+const databaseConfig: DatabaseConfig = config.instance.databases[0]
+await up(config, databaseConfig)
+
+// Apply up to 5 migrations to a specific database
+await up(config, databaseConfig, 5)
+```
+
+- Applies pending migrations.
+- If a database is specified, only applies migrations to that database.
+- If `max` is specified, applies at most `max` migrations.
+
+### Rolling Back Migrations
+
+```typescript
+import { up, type Config, type DatabaseConfig } from '@sebspark/spanner-migrate'
+
+const config: Config = /* Load from file */
+const databaseConfig: DatabaseConfig = config.instance.databases[0]
+
+// Roll back the last applied migration
+await down(config, databaseConfig)
+```
+
+- Rolls back the last applied migration for the specified database.
+- Requires a database to be specified.
+
+### Checking Migration Status
+
+```typescript
+import { up, type Config, type DatabaseConfig } from '@sebspark/spanner-migrate'
+
+const config: Config = /* Load from file */
+
+// Check status for all databases
+const migrationStatus = await status(config)
+console.log(migrationStatus)
+
+// Check status for a specific database
+const databaseConfig = config.instance.databases[0]
+const migrationStatusSingle = await status(config, [databaseConfig])
+console.log(migrationStatusSingle)
+```
+
+- Displays applied and pending migrations for one or more databases.
+- If a specific database is provided, only its status is shown.
+
+## Running on Spanner Emulator
+
+If you want to test your migrations against a Spanner Emulator, you will need to set:
+
+```typescript
+process.env.SPANNER_EMULATOR_HOST = 'localhost:<port>'
+```
 
 ## License
 

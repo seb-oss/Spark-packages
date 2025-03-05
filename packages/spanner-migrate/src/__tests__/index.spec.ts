@@ -14,9 +14,15 @@ const mockApply = apply as jest.Mocked<typeof apply>
 
 describe('index', () => {
   const mockConfig: Config = {
-    migrationsPath: '/mock/migrations',
-    instanceName: 'mock-instance',
-    databaseName: 'mock-database',
+    instance: {
+      name: 'mock-instance',
+      databases: [
+        {
+          name: 'mock-database',
+          migrationsPath: '/mock/migrations',
+        },
+      ],
+    },
     projectId: 'mock-project',
   }
 
@@ -38,10 +44,10 @@ describe('index', () => {
     it('creates a new migration file', async () => {
       const description = 'Add Users Table'
 
-      await create(mockConfig, description)
+      await create(mockConfig.instance.databases[0], description)
 
       expect(mockFiles.createMigration).toHaveBeenCalledWith(
-        mockConfig.migrationsPath,
+        mockConfig.instance.databases[0].migrationsPath,
         description
       )
     })
@@ -70,7 +76,7 @@ describe('index', () => {
       })
       mockApply.applyUp.mockResolvedValue(undefined)
 
-      await up(mockConfig, 1)
+      await up(mockConfig, mockConfig.instance.databases[0], 1)
 
       expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
         expect.anything()
@@ -79,14 +85,14 @@ describe('index', () => {
         expect.anything()
       )
       expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(
-        mockConfig.migrationsPath
+        mockConfig.instance.databases[0].migrationsPath
       )
       expect(mockFiles.getNewMigrations).toHaveBeenCalledWith(
         appliedMigrations,
         migrationFiles
       )
       expect(mockFiles.getMigration).toHaveBeenCalledWith(
-        mockConfig.migrationsPath,
+        mockConfig.instance.databases[0].migrationsPath,
         '20250102T123456_add_roles'
       )
       expect(mockApply.applyUp).toHaveBeenCalledWith(expect.anything(), {
@@ -103,7 +109,7 @@ describe('index', () => {
       mockDb.ensureMigrationTable.mockResolvedValue(undefined)
       mockApply.applyDown.mockResolvedValue(undefined)
 
-      await down(mockConfig)
+      await down(mockConfig, mockConfig.instance.databases[0])
 
       expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
         expect.anything()
@@ -128,7 +134,7 @@ describe('index', () => {
       mockFiles.getMigrationFiles.mockResolvedValue(migrationFiles)
       mockFiles.getNewMigrations.mockReturnValue(newMigrations)
 
-      const result = await status(mockConfig)
+      const result = await status(mockConfig, mockConfig.instance.databases)
 
       expect(mockDb.ensureMigrationTable).toHaveBeenCalledWith(
         expect.anything()
@@ -137,7 +143,7 @@ describe('index', () => {
         expect.anything()
       )
       expect(mockFiles.getMigrationFiles).toHaveBeenCalledWith(
-        mockConfig.migrationsPath
+        mockConfig.instance.databases[0].migrationsPath
       )
       expect(mockFiles.getNewMigrations).toHaveBeenCalledWith(
         appliedMigrations,
