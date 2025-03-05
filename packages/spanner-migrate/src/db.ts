@@ -21,15 +21,15 @@ export const SQL_CREATE_TABLE_MIGRATIONS = `
   ) PRIMARY KEY (id)
 `
 
-export const ensureMigrationTable = async (database: Database) => {
+export const ensureMigrationTable = async (db: Database) => {
   // Check if table exists
-  const [rows] = await database.run(SQL_SELECT_TABLE_MIGRATIONS)
+  const [rows] = await db.run(SQL_SELECT_TABLE_MIGRATIONS)
   if (rows.length) return
 
   // Create migration table
   console.log('Creating migration table')
   try {
-    await database.updateSchema(SQL_CREATE_TABLE_MIGRATIONS)
+    await db.updateSchema(SQL_CREATE_TABLE_MIGRATIONS)
   } catch (err) {
     console.error('Failed to create migrations table')
     throw err

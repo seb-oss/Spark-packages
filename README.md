@@ -88,6 +88,10 @@ A (so far incomplete) mocking library for Spanner DB
 
 Migration tool for Spanner DB
 
+### [@sebspark/cli-tester](./packages/cli-tester)
+
+A wrapper for child_process spawn to simplify interactive cli tests
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

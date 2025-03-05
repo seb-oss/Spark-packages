@@ -78,7 +78,6 @@ export const getNewMigrations = (
 
   // Check for interlacing or missing migrations
   for (let ix = 0; ix < applied.length; ix++) {
-    console.log(sortedFiles[ix], applied[ix].id)
     if (sortedFiles[ix] !== applied[ix].id) {
       throw new Error(
         `Mismatch between applied migrations and files. Found '${sortedFiles[ix]}' but expected '${applied[ix].id}' at position ${ix}.`
@@ -88,7 +87,6 @@ export const getNewMigrations = (
 
   // Return new migrations (files not already applied)
   const newMigrations = sortedFiles.slice(applied.length)
-  console.log(`Found ${newMigrations.length} new migrations.`)
 
   return newMigrations
 }

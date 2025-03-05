@@ -6,9 +6,23 @@ export type Migration = {
   appliedAt?: Date
 }
 
-export type Config = {
+export type DatabaseConfig = {
+  name: string
   migrationsPath: string
+}
+
+export type InstanceConfig = {
+  name: string
+  databases: DatabaseConfig[]
+}
+
+export type Config = {
+  instance: InstanceConfig
+  projectId?: string
+}
+
+export type DbPath = {
+  projectId?: string
   instanceName: string
   databaseName: string
-  projectId?: string
 }

@@ -8,9 +8,9 @@ import {
   getNewMigrations,
   writeConfig,
 } from './files'
-import type { Config } from './types'
+import type { Config, DatabaseConfig, DbPath } from './types'
 
-const getDb = ({ projectId, databaseName, instanceName }: Config): Database => {
+const getDb = ({ projectId, databaseName, instanceName }: DbPath): Database => {
   const spanner = projectId ? new Spanner({ projectId }) : new Spanner()
   return spanner.instance(instanceName).database(databaseName)
 }
@@ -19,53 +19,96 @@ export const init = async (config: Config, configPath: string) => {
   await writeConfig(configPath, config)
 }
 
-export const create = async (config: Config, description: string) => {
+export const create = async (config: DatabaseConfig, description: string) => {
   await createMigration(config.migrationsPath, description)
 }
 
-export const up = async (config: Config, max = 1000) => {
-  const db = getDb(config)
+export const up = async (
+  config: Config,
+  database?: DatabaseConfig,
+  max?: number
+) => {
+  // Check arguments
+  if (max && !database) {
+    throw new Error('Max number of migrations requires specifying a database')
+  }
+  const databases = database ? [database] : config.instance.databases
 
-  await ensureMigrationTable(db)
+  for (const databaseConfig of databases) {
+    const path: DbPath = {
+      projectId: config.projectId,
+      instanceName: config.instance.name,
+      databaseName: databaseConfig.name,
+    }
+    const db = getDb(path)
 
-  const appliedMigrations = await getAppliedMigrations(db)
-  const migrationFiles = await getMigrationFiles(config.migrationsPath)
-  const newMigrations = getNewMigrations(appliedMigrations, migrationFiles)
+    await ensureMigrationTable(db)
 
-  console.log(`Found ${newMigrations.length} new migrations.`)
-  console.log(newMigrations.map((mig) => `\t${mig}`).join('\n'))
+    const appliedMigrations = await getAppliedMigrations(db)
+    const migrationFiles = await getMigrationFiles(
+      databaseConfig.migrationsPath
+    )
+    const newMigrations = getNewMigrations(appliedMigrations, migrationFiles)
 
-  for (const id of newMigrations.slice(0, max)) {
-    const migration = await getMigration(config.migrationsPath, id)
-    await applyUp(db, migration)
+    console.log(`Found ${newMigrations.length} new migrations.`)
+    console.log(newMigrations.map((mig) => `\t${mig}`).join('\n'))
+
+    // Limit number of migrations if specified
+    const newMigrationsToApply = max
+      ? newMigrations.slice(0, max)
+      : newMigrations
+
+    for (const id of newMigrationsToApply) {
+      const migration = await getMigration(databaseConfig.migrationsPath, id)
+      await applyUp(db, migration)
+    }
   }
 }
 
-export const down = async (config: Config) => {
-  const db = getDb(config)
+export const down = async (config: Config, database: DatabaseConfig) => {
+  const path: DbPath = {
+    projectId: config.projectId,
+    instanceName: config.instance.name,
+    databaseName: database.name,
+  }
+  const db = getDb(path)
 
   await ensureMigrationTable(db)
 
   await applyDown(db)
 }
 
-export const status = async (config: Config) => {
-  const db = getDb(config)
+export const status = async (config: Config, databases?: DatabaseConfig[]) => {
+  const statuses: string[] = []
+  for (const databaseConfig of databases || config.instance.databases) {
+    const path: DbPath = {
+      projectId: config.projectId,
+      instanceName: config.instance.name,
+      databaseName: databaseConfig.name,
+    }
+    const db = getDb(path)
 
-  await ensureMigrationTable(db)
+    await ensureMigrationTable(db)
 
-  const appliedMigrations = await getAppliedMigrations(db)
-  const migrationFiles = await getMigrationFiles(config.migrationsPath)
-  const newMigrations = getNewMigrations(appliedMigrations, migrationFiles)
+    const appliedMigrations = await getAppliedMigrations(db)
+    const migrationFiles = await getMigrationFiles(
+      databaseConfig.migrationsPath
+    )
+    const newMigrations = getNewMigrations(appliedMigrations, migrationFiles)
 
-  return [
-    'Migrations',
-    '',
-    'Applied',
-    '--------------------------------------------------------------------------------',
-    `${appliedMigrations.map((m) => m.id).join('\n')}\n`,
-    'New',
-    '--------------------------------------------------------------------------------',
-    `${newMigrations.join('\n')}\n`,
-  ].join('\n')
+    statuses.push(
+      [
+        `Migrations [${databaseConfig.name}]`,
+        '',
+        'Applied',
+        '--------------------------------------------------------------------------------',
+        `${appliedMigrations.map((m) => m.id).join('\n')}\n`,
+        'New',
+        '--------------------------------------------------------------------------------',
+        `${newMigrations.join('\n')}\n`,
+      ].join('\n')
+    )
+  }
+
+  return statuses.join('\n\n')
 }

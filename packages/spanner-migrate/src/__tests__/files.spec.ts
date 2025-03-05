@@ -8,7 +8,7 @@ import {
   getNewMigrations,
   writeConfig,
 } from '../files'
-import type { Migration } from '../types'
+import type { Config, Migration } from '../types'
 
 // Mock node:fs/promises methods
 jest.mock('node:fs/promises', () => ({
@@ -184,11 +184,17 @@ DROP TABLE users
     it('writes configuration to the specified file', async () => {
       writeFileMock.mockResolvedValue(undefined)
 
-      const config = {
-        migrationsPath: './migrations',
-        instanceName: 'spanner-instance',
-        databaseName: 'spanner-db',
-        projectName: 'project-id',
+      const config: Config = {
+        instance: {
+          name: 'spanner-instance',
+          databases: [
+            {
+              name: 'test-instance',
+              migrationsPath: './migrations/test-instance',
+            },
+          ],
+        },
+        projectId: 'project-id',
       }
 
       await writeConfig(mockConfigPath, config)
@@ -205,9 +211,16 @@ DROP TABLE users
 
       await expect(
         writeConfig(mockConfigPath, {
-          migrationsPath: './migrations',
-          instanceName: 'spanner-instance',
-          databaseName: 'spanner-db',
+          instance: {
+            name: 'spanner-instance',
+            databases: [
+              {
+                name: 'test-instance',
+                migrationsPath: './migrations/test-instance',
+              },
+            ],
+          },
+          projectId: 'project-id',
         })
       ).rejects.toThrow(
         'Error writing configuration to ./mock/spanner-migrate.config.json: Cannot write file'
