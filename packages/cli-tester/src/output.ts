@@ -1,7 +1,7 @@
 import type { ChildProcess } from 'node:child_process'
 import { ansiPatterns } from './characters'
 
-export const output = (childProcess: ChildProcess, timeoutMs = 1000) =>
+export const output = (childProcess: ChildProcess, timeoutMs = 5000) =>
   new Promise<string>((resolve, reject) => {
     // Reject on timeout
     const timeout = setTimeout(
