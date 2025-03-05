@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 0.4.1
+
+### Patch Changes
+
+- 4c522b4: Add debug logging of KeyID from IAM Client.
+
 ## 0.4.0
 
 ### Minor Changes

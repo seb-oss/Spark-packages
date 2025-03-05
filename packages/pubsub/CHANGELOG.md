@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.6.2
+
+### Patch Changes
+
+- fde8ea1: Update dependencies.
+
 ## 1.6.1
 
 ### Patch Changes
