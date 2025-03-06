@@ -21,6 +21,6 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "3.2.0"
+    "@opensearch-project/opensearch": "3.4.0"
   }
 }
