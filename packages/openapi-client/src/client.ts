@@ -18,14 +18,17 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   logger?: Logger
 ): C => {
   if (globalOptions?.authorizationTokenGenerator) {
-    const fn = globalOptions.authorizationTokenGenerator()
-
     axios.interceptors.request.use(async (request) => {
-      if (fn) {
-        const authorizationTokenHeaders = await fn(request.url)
+      if (globalOptions?.authorizationTokenGenerator) {
+        const authorizationTokenHeaders =
+          await globalOptions.authorizationTokenGenerator(request.url)
 
-        for (const [key, value] of Object.entries(authorizationTokenHeaders)) {
-          request.headers.set(key, value)
+        if (authorizationTokenHeaders) {
+          for (const [key, value] of Object.entries(
+            authorizationTokenHeaders
+          )) {
+            request.headers.set(key, value)
+          }
         }
       }
 
@@ -34,8 +37,6 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   }
 
   if (globalOptions?.authorizationTokenRefresh) {
-    const refreshFn = globalOptions.authorizationTokenRefresh()
-
     // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
     const refreshAuthLogic = async (failedRequest: any) => {
       if (!axios.isAxiosError(failedRequest)) {
@@ -45,8 +46,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       const axiosError = failedRequest as AxiosError
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
-      if (refreshFn && url) {
-        await refreshFn(axiosError.request.url)
+      if (globalOptions?.authorizationTokenRefresh && url) {
+        await globalOptions?.authorizationTokenRefresh(axiosError.request.url)
       }
     }
 
