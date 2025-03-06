@@ -33,8 +33,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     })
   }
 
-  if (globalOptions?.authorizationTokenGenerator) {
-    const refreshFn = globalOptions.authorizationTokenGenerator()
+  if (globalOptions?.authorizationTokenRefresh) {
+    const refreshFn = globalOptions.authorizationTokenRefresh()
 
     // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
     const refreshAuthLogic = async (failedRequest: any) => {
@@ -44,7 +44,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
       const axiosError = failedRequest as AxiosError
 
-      if (refreshFn && axiosError.request?.url) {
+      const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
+      if (refreshFn && url) {
         await refreshFn(axiosError.request.url)
       }
     }

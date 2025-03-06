@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
-    "tsconfig": "*"
+    "nock": "14.0.1",
+    "tsconfig": "*",
+    "vitest": "^3.0.7"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
