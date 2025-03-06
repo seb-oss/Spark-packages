@@ -15,13 +15,13 @@ beforeEach(() => {
   const app = express()
   app.use(router)
   client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`)
-  return new Promise((resolve) => {
+  return new Promise<void>((resolve) => {
     server = app.listen(PORT, () => resolve())
   })
 })
 afterEach(() => {
-  return new Promise((resolve) => {
-    server.close(() => resolve())
+  return new Promise<void>((resolve) => {
+    server.close(() => resolve(undefined))
   })
 })
 

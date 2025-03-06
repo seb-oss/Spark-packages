@@ -8,6 +8,7 @@ import {
 } from '@sebspark/openapi-core'
 import { retry } from '@sebspark/retry'
 import axios, { type AxiosError, type AxiosHeaders } from 'axios'
+import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import type { Logger } from 'winston'
 import { paramsSerializer } from './paramsSerializer'
 
@@ -16,6 +17,43 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   globalOptions?: ClientOptions,
   logger?: Logger
 ): C => {
+  if (globalOptions?.authorizationTokenGenerator) {
+    axios.interceptors.request.use(async (request) => {
+      if (globalOptions?.authorizationTokenGenerator) {
+        const authorizationTokenHeaders =
+          await globalOptions.authorizationTokenGenerator(request.url)
+
+        if (authorizationTokenHeaders) {
+          for (const [key, value] of Object.entries(
+            authorizationTokenHeaders
+          )) {
+            request.headers.set(key, value)
+          }
+        }
+      }
+
+      return request
+    })
+  }
+
+  if (globalOptions?.authorizationTokenRefresh) {
+    // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
+    const refreshAuthLogic = async (failedRequest: any) => {
+      if (!axios.isAxiosError(failedRequest)) {
+        return
+      }
+
+      const axiosError = failedRequest as AxiosError
+
+      const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
+      if (globalOptions?.authorizationTokenRefresh && url) {
+        await globalOptions?.authorizationTokenRefresh(axiosError.request.url)
+      }
+    }
+
+    createAuthRefreshInterceptor(axios, refreshAuthLogic)
+  }
+
   if (logger) {
     axios.interceptors.request.use((request) => {
       const requestObject = {

@@ -1,6 +1,6 @@
 {
-  "name": "@sebspark/openapi-core",
-  "version": "2.0.1",
+  "name": "@sebspark/openapi-auth-iam",
+  "version": "0.0.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,17 +13,12 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/node": "20.17.17",
-    "tsconfig": "*",
-    "tsup-node": "0.1.0",
-    "typescript": "5.8.2",
-    "vitest": "3.0.8"
+    "tsconfig": "*"
   },
   "dependencies": {
-    "@sebspark/retry": "*",
-    "axios": "1.8.1"
+    "@sebspark/gcp-iam": "*"
   }
 }

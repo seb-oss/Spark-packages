@@ -92,6 +92,10 @@ Migration tool for Spanner DB
 
 A wrapper for child_process spawn to simplify interactive cli tests
 
+### [@sebspark/openapi-auth-iam](./packages/openapi-auth-iam)
+
+Token generator and refresh functions for OpenApi Client and Google IAM.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

@@ -42,4 +42,8 @@ export class LruCache<T> {
       ttl: ttl || this.defaultTTL,
     })
   }
+
+  public clear(key: string) {
+    this.values.delete(key)
+  }
 }

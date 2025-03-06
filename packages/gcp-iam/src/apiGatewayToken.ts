@@ -14,7 +14,7 @@ const apiGatewayJwtCache = new LruCache<string>()
  * @param logger An optional logger to use for logging.
  * @returns A JWT.
  */
-export const getApiGatewayToken = async ({
+export const getApiGatewayTokenByUrl = async ({
   apiURL,
   key,
   ttl,
@@ -114,4 +114,28 @@ export const getApiGatewayToken = async ({
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
+}
+
+/**
+ *
+ * @param key Clears a cached JWT by key.
+ */
+export const clearCache = async (key: string) => {
+  apiGatewayJwtCache.clear(key)
+}
+
+/**
+ * Generates a JWT for the API Gateway, using Client ID as audience.
+ * @param clientId OAUTH Client ID.
+ * @returns ID Token.
+ */
+export const getApiGatewayTokenByClientId = async (
+  clientId: string
+): Promise<string> => {
+  const auth = new GoogleAuth({
+    scopes: 'https://www.googleapis.com/auth/cloud-platform',
+  })
+  const client = await auth.getIdTokenClient(clientId)
+
+  return await client.idTokenProvider.fetchIdToken(clientId)
 }
