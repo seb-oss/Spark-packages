@@ -2892,6 +2892,7 @@ __metadata:
     "@sebspark/openapi-typegen": "npm:*"
     "@sebspark/retry": "npm:*"
     axios: "npm:1.8.1"
+    axios-auth-refresh: "npm:^3.3.6"
     tsconfig: "npm:*"
   languageName: unknown
   linkType: soft
@@ -4523,6 +4524,15 @@ __metadata:
   version: 1.13.2
   resolution: "aws4@npm:1.13.2"
   checksum: 10c0/c993d0d186d699f685d73113733695d648ec7d4b301aba2e2a559d0cd9c1c902308cc52f4095e1396b23fddbc35113644e7f0a6a32753636306e41e3ed6f1e79
+  languageName: node
+  linkType: hard
+
+"axios-auth-refresh@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "axios-auth-refresh@npm:3.3.6"
+  peerDependencies:
+    axios: ">= 0.18 < 0.19.0 || >= 0.19.1"
+  checksum: 10c0/c0089eceeec697f239315ca0b3c79f95cf45831eac92c7f8a7475c776dfa2d64017450422981fbd39a6786fdf10e95c40b70fc70648ed5e2b7fe466ba1e1e4a8
   languageName: node
   linkType: hard
 

@@ -115,3 +115,7 @@ export const getApiGatewayToken = async ({
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
 }
+
+export const clearCache = (key: string) => {
+  apiGatewayJwtCache.clear(key)
+}

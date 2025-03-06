@@ -71,6 +71,8 @@ export type ArrayFormat = 'indices' | 'brackets' | 'repeat' | 'comma'
 
 export type ClientOptions = RequestOptions & {
   arrayFormat?: ArrayFormat
+  authorizationTokenGenerator?: () => ((url: string | undefined) => Promise<Map<string, string>>) | undefined;
+  authorizationTokenRefresh?: () => ((url: string | undefined) => Promise<void>) | undefined;
 }
 
 export type BaseClient = {
