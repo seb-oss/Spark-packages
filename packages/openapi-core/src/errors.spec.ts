@@ -22,9 +22,9 @@ describe('fromAxiosError: ', async () => {
 
     expect(returnedError.message).toBe('Internal Server Error') // fallback since response does not contain statusText property
     expect(returnedError.statusCode).toBe(500) // fallback since response does not contain legit status
-    expect(returnedError.cause.name).toBe('AxiosError')
-    expect(returnedError.cause.stack).toBeDefined()
-    expect(returnedError.cause.cause).toStrictEqual({})
+    expect((returnedError.cause as AxiosError).name).toBe('AxiosError')
+    expect((returnedError.cause as AxiosError).stack).toBeDefined()
+    expect((returnedError.cause as AxiosError).cause).toStrictEqual({})
   })
 
   test('returns appropriate HttpError (404) based on response status and data', () => {
@@ -44,7 +44,9 @@ describe('fromAxiosError: ', async () => {
 
     expect(returnedError.message).toBe('Internal Server Error') // fallback since response does not contain statusText property
     expect(returnedError.statusCode).toBe(404)
-    expect(returnedError.cause.cause).toStrictEqual(response.data)
+    expect((returnedError.cause as AxiosError).cause).toStrictEqual(
+      response.data
+    )
   })
 
   test('returns appropriate HttpError (401) based on response status and data', () => {
@@ -70,6 +72,8 @@ describe('fromAxiosError: ', async () => {
 
     expect(returnedError.message).toBe('Unauthorized')
     expect(returnedError.statusCode).toBe(401)
-    expect(returnedError.cause.cause).toStrictEqual(response.data)
+    expect((returnedError.cause as AxiosError).cause).toStrictEqual(
+      response.data
+    )
   })
 })

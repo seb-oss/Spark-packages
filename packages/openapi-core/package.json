@@ -13,12 +13,14 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "20.17.17",
     "tsconfig": "*",
-    "tsup-node": "0.1.0"
+    "tsup-node": "0.1.0",
+    "typescript": "5.8.2",
+    "vitest": "3.0.8"
   },
   "dependencies": {
     "@sebspark/retry": "*",
