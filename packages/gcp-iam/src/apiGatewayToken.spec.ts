@@ -1,7 +1,7 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import { type Mock, beforeAll, describe, expect, it, vi } from 'vitest'
 import type { Logger } from 'winston'
-import { getApiGatewayToken } from './apiGatewayToken'
+import { getApiGatewayTokenByUrl } from './apiGatewayToken'
 
 vi.mock('@google-cloud/iam-credentials', () => ({
   IAMCredentialsClient: vi.fn().mockReturnValue({
@@ -18,7 +18,7 @@ vi.mock('google-auth-library', () => ({
 }))
 
 describe('Google IAM', () => {
-  describe('getApiGatewayToken', () => {
+  describe('getApiGatewayTokenByUrl', () => {
     let signBlobMock: Mock
 
     const iamClientMock = new IAMCredentialsClient()
@@ -35,7 +35,7 @@ describe('Google IAM', () => {
         },
       ])
 
-      const JWT = await getApiGatewayToken({ apiURL: 'test-audience' })
+      const JWT = await getApiGatewayTokenByUrl({ apiURL: 'test-audience' })
 
       expect(JWT).toMatchSnapshot()
 
@@ -55,11 +55,11 @@ describe('Google IAM', () => {
 
       signBlobMock.mockClear()
 
-      const originalJWT = await getApiGatewayToken({
+      const originalJWT = await getApiGatewayTokenByUrl({
         apiURL: 'test-audience-double',
       })
 
-      const cachedJWT = await getApiGatewayToken({
+      const cachedJWT = await getApiGatewayTokenByUrl({
         apiURL: 'test-audience-double',
       })
 
@@ -75,7 +75,7 @@ describe('Google IAM', () => {
       }
 
       try {
-        await getApiGatewayToken({
+        await getApiGatewayTokenByUrl({
           apiURL: 'test-audience-error',
           logger: loggerMock as unknown as Logger,
         })
@@ -90,7 +90,7 @@ describe('Google IAM', () => {
       signBlobMock.mockRejectedValueOnce(new Error('test-error'))
       process.env.GCP_IAM_SOFT_FAIL = 'true'
 
-      const JWT = await getApiGatewayToken({
+      const JWT = await getApiGatewayTokenByUrl({
         apiURL: 'test-audience-soft-fail',
       })
 
