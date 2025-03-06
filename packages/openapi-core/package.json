@@ -17,7 +17,8 @@
   },
   "devDependencies": {
     "@types/node": "20.17.17",
-    "tsconfig": "*"
+    "tsconfig": "*",
+    "tsup-node": "0.1.0"
   },
   "dependencies": {
     "@sebspark/retry": "*",

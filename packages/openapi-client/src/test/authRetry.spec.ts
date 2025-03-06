@@ -20,15 +20,13 @@ describe('Auth Retry Tests', () => {
   });
 
   const authorizationTokenGeneratorMock = vi.fn();
-  const authorizationTokenGenerator = () => authorizationTokenGeneratorMock
 
   const authorizationTokenRefreshMock = vi.fn();
-  const authorizationTokenRefresh = () => authorizationTokenRefreshMock
 
   
   const apiClient = TypedClient<ApiClient>(url, {
-    authorizationTokenGenerator,
-    authorizationTokenRefresh
+    authorizationTokenGenerator: authorizationTokenGeneratorMock,
+    authorizationTokenRefresh: authorizationTokenRefreshMock
   });
 
   it('should refresh token and retry on auth failure', async () => {
