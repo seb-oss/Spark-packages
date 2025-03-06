@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 1.0.0
+
+### Major Changes
+
+- ee5cc7e: Added support for specifying api token generator with auto-refresh when using openapi client.
+
 ## 0.4.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.1.0
+
+### Minor Changes
+
+- ee5cc7e: Added support for specifying api token generator with auto-refresh when using openapi client.
+
 ## 2.0.1
 
 ### Patch Changes
