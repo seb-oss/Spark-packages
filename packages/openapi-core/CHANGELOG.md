@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.1.1
+
+### Patch Changes
+
+- 4034515: Update authorizationTokenGenerator signature
+
 ## 2.1.0
 
 ### Minor Changes
