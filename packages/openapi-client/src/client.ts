@@ -19,7 +19,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 ): C => {
   if (globalOptions?.authorizationTokenGenerator) {
     axios.interceptors.request.use(async (request) => {
-      if (globalOptions?.authorizationTokenGenerator) {
+      if (globalOptions?.authorizationTokenGenerator && request.url) {
         const authorizationTokenHeaders =
           await globalOptions.authorizationTokenGenerator(request.url)
 
@@ -47,7 +47,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       if (globalOptions?.authorizationTokenRefresh && url) {
-        await globalOptions?.authorizationTokenRefresh(axiosError.request.url)
+        await globalOptions?.authorizationTokenRefresh(url)
       }
     }
 
