@@ -5,7 +5,7 @@ import {
 } from '@sebspark/gcp-iam'
 import type { Logger } from 'winston'
 
-export const apiGatewayTokenByUrlGenerator = async (
+export const apiGatewayTokenByUrlGenerator = (
   apiKey: string,
   logger?: Logger
 ) => {
@@ -22,7 +22,7 @@ export const apiGatewayTokenByUrlGenerator = async (
   }
 }
 
-export const apiGatewayTokenByClientIdGenerator = async (
+export const apiGatewayTokenByClientIdGenerator = (
   apiKey: string,
   clientId: string
 ) => {
@@ -36,7 +36,7 @@ export const apiGatewayTokenByClientIdGenerator = async (
   }
 }
 
-export const apiGatewayTokenRefresh = async () => {
+export const apiGatewayTokenRefresh = () => {
   return async (url: string) => {
     return await clearCache(url)
   }
