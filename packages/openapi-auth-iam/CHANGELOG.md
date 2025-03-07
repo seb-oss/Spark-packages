@@ -1,5 +1,11 @@
 # @sebspark/openapi-auth-iam
 
+## 1.0.1
+
+### Patch Changes
+
+- 49a60c3: Fix incorrect return type.
+
 ## 1.0.0
 
 ### Major Changes
