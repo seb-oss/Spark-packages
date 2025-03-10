@@ -18,10 +18,17 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   logger?: Logger
 ): C => {
   if (globalOptions?.authorizationTokenGenerator) {
+    logger?.debug('Authorization token generator is set')
     axios.interceptors.request.use(async (request) => {
       if (globalOptions?.authorizationTokenGenerator && request.url) {
         const authorizationTokenHeaders =
           await globalOptions.authorizationTokenGenerator(request.url)
+
+        logger?.debug(
+          'Authorization token headers',
+          authorizationTokenHeaders,
+          request.url
+        )
 
         if (authorizationTokenHeaders) {
           for (const [key, value] of Object.entries(
@@ -32,6 +39,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         }
       }
 
+      logger?.debug('Request', request)
       return request
     })
   }
@@ -39,13 +47,16 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   if (globalOptions?.authorizationTokenRefresh) {
     // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
     const refreshAuthLogic = async (failedRequest: any) => {
+      logger?.debug('Failed request', failedRequest)
       if (!axios.isAxiosError(failedRequest)) {
+        logger?.error('Failed request is not an axios error')
         return
       }
 
       const axiosError = failedRequest as AxiosError
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
+      logger?.debug('Failed request config', axiosError.config)
       if (globalOptions?.authorizationTokenRefresh && url) {
         await globalOptions?.authorizationTokenRefresh(url)
       }
