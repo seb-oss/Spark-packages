@@ -1,4 +1,5 @@
-import { type UUID, randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
+import type { UUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
 import type { Logger } from 'winston'
 import { Persistor } from './persistor'
