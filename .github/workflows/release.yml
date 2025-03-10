@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -79,18 +79,17 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Run license check
         run: node tools/check-licenses.mjs
 
   test:
     name: Tests
-    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -112,18 +111,17 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Run tests
         run: yarn test
 
   lint:
     name: Lint
-    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -145,7 +143,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
 
@@ -154,12 +152,11 @@ jobs:
 
   typecheck:
     name: Type check
-    needs: [licenses]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -181,18 +178,23 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Run type checking
         run: yarn typecheck
 
   changeset:
     name: Create Release Pull Request or Publish to NPM
-    needs: [test, lint, typecheck, analyze]
+    needs:
+      - analyze
+      - licenses
+      - lint
+      - test
+      - typecheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -214,13 +216,13 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --immutable
-        
+
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
           publish: yarn release
-          commit: 'chore(release): update versions'
-          title: 'chore(release): update versions'
+          commit: "chore(release): update versions"
+          title: "chore(release): update versions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
