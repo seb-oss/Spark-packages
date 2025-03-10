@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.2
+
+### Patch Changes
+
+- 47d6196: Add debug logging.
+
 ## 2.1.1
 
 ### Patch Changes
