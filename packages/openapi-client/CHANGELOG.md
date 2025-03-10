@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.5
+
+### Patch Changes
+
+- 5a06650: Use baseUrl from request; don't add /
+
 ## 2.1.4
 
 ### Patch Changes
