@@ -21,7 +21,7 @@
   },
   "private": true,
   "dependencies": {
-    "@changesets/cli": "2.28.1"
+    "@changesets/cli": "2.27.12"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
