@@ -1,4 +1,5 @@
-import { type SpawnOptions, spawn } from 'node:child_process'
+import { spawn } from 'node:child_process'
+import type { SpawnOptions } from 'node:child_process'
 import { keys } from './characters'
 import { check } from './check'
 import { input } from './input'
@@ -6,7 +7,6 @@ import { output } from './output'
 import { parse } from './prompt'
 import { select } from './select'
 import type { CliTester, PromptType } from './types'
-import { wait } from './utils'
 
 /**
  * Spawns a new CLI process and provides a set of methods to interact with it.
