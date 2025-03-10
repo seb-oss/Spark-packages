@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.4
+
+### Patch Changes
+
+- 927eddc: Pass full URL to authorizationTokenGenerator
+
 ## 2.1.3
 
 ### Patch Changes
