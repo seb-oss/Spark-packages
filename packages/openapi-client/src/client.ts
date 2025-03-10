@@ -19,14 +19,17 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 ): C => {
   if (globalOptions?.authorizationTokenGenerator) {
     logger?.debug('Authorization token generator is set')
+
     axios.interceptors.request.use(async (request) => {
-      if (globalOptions?.authorizationTokenGenerator && request.url) {
+      const url = `${baseURL}/${request.url}`
+      if (globalOptions?.authorizationTokenGenerator && url) {
         const authorizationTokenHeaders =
-          await globalOptions.authorizationTokenGenerator(request.url)
+          await globalOptions.authorizationTokenGenerator(url)
 
         logger?.debug('Authorization token headers')
         logger?.debug(authorizationTokenHeaders)
-        logger?.debug(request.url)
+        logger?.debug('URL')
+        logger?.debug(url)
 
         if (authorizationTokenHeaders) {
           for (const [key, value] of Object.entries(
@@ -38,7 +41,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         }
       }
 
-      logger?.debug('Request')
+      logger?.debug('Intercepted request')
       logger?.debug(JSON.stringify(request, null, 2))
       return request
     })
@@ -49,6 +52,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     const refreshAuthLogic = async (failedRequest: any) => {
       logger?.debug('Failed request')
       logger?.debug(failedRequest)
+
       if (!axios.isAxiosError(failedRequest)) {
         logger?.error('Failed request is not an axios error')
         return
@@ -56,10 +60,13 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
       const axiosError = failedRequest as AxiosError
 
-      const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       logger?.debug('Failed request config')
       logger?.debug(JSON.stringify(axiosError.config, null, 2))
+
+      const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       if (globalOptions?.authorizationTokenRefresh && url) {
+        logger?.debug('Refreshing token for URL')
+        logger?.debug(url)
         await globalOptions?.authorizationTokenRefresh(url)
       }
     }
