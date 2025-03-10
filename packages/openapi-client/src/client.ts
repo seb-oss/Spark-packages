@@ -24,22 +24,22 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         const authorizationTokenHeaders =
           await globalOptions.authorizationTokenGenerator(request.url)
 
-        logger?.debug(
-          'Authorization token headers',
-          authorizationTokenHeaders,
-          request.url
-        )
+        logger?.debug('Authorization token headers')
+        logger?.debug(authorizationTokenHeaders)
+        logger?.debug(request.url)
 
         if (authorizationTokenHeaders) {
           for (const [key, value] of Object.entries(
             authorizationTokenHeaders
           )) {
+            logger?.debug(`Setting header ${key} to ${value}`)
             request.headers.set(key, value)
           }
         }
       }
 
-      logger?.debug('Request', request)
+      logger?.debug('Request')
+      logger?.debug(JSON.stringify(request, null, 2))
       return request
     })
   }
@@ -47,7 +47,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   if (globalOptions?.authorizationTokenRefresh) {
     // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
     const refreshAuthLogic = async (failedRequest: any) => {
-      logger?.debug('Failed request', failedRequest)
+      logger?.debug('Failed request')
+      logger?.debug(failedRequest)
       if (!axios.isAxiosError(failedRequest)) {
         logger?.error('Failed request is not an axios error')
         return
@@ -56,7 +57,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       const axiosError = failedRequest as AxiosError
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
-      logger?.debug('Failed request config', axiosError.config)
+      logger?.debug('Failed request config')
+      logger?.debug(JSON.stringify(axiosError.config, null, 2))
       if (globalOptions?.authorizationTokenRefresh && url) {
         await globalOptions?.authorizationTokenRefresh(url)
       }
@@ -87,6 +89,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       return response
     })
   }
+
   const client: BaseClient = {
     get: (url, args, opts) =>
       callServer(mergeArgs(baseURL, url, 'get', args, opts, globalOptions)),
@@ -99,6 +102,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     delete: (url, args, opts) =>
       callServer(mergeArgs(baseURL, url, 'delete', args, opts, globalOptions)),
   }
+
   return client as C
 }
 
