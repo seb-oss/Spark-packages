@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.3
+
+### Patch Changes
+
+- edffdcc: Better debug logging.
+
 ## 2.1.2
 
 ### Patch Changes
