@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.5.0
+
+### Minor Changes
+
+- d8508bd: Set console log level and allow LOG_LEVEL env to override level.
+
 ## 1.4.2
 
 ### Patch Changes
