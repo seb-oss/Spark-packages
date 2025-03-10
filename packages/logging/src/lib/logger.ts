@@ -82,6 +82,20 @@ export const getLogger = ({
   logHttpFunc = logHttp,
   logHttpErrorFunc = logHttpError,
 }: LogOptions): LoggerResult => {
+  try {
+    if (process.env.LOG_LEVEL) {
+      level = process.env.LOG_LEVEL as LogLevel
+      console.log(
+        `Winston log level is set to: ${level} from LOG_LEVEL env var`
+      )
+    }
+  } catch (error) {
+    console.error(
+      `Unable to set LOG_LEVEL from env (it is set to ${process.env.LOG_LEVEL})`,
+      error
+    )
+  }
+
   const defaultFormattingOptions = {
     colorize: true,
     timestamp: true,
@@ -125,6 +139,7 @@ export const getLogger = ({
       transports.push(
         new WinstonTransports.Console({
           format: winstonConsoleFormat,
+          level,
         })
       )
     }

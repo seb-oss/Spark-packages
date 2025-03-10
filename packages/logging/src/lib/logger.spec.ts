@@ -61,6 +61,19 @@ describe('logging', () => {
         message: 'hello',
       })
     })
+    it('sets log level', async () => {
+      const { logger } = getLogger({
+        level: 'debug',
+        service: 'test',
+        showLogs: true,
+      })
+      expect(logger.level).toBe('debug')
+    })
+    it('reads LOG_LEVEL env var', async () => {
+      process.env.LOG_LEVEL = 'warn'
+      const { logger } = getLogger({ service: 'test', showLogs: true })
+      expect(logger.level).toBe('warn')
+    })
   })
 
   describe('formatting', () => {
