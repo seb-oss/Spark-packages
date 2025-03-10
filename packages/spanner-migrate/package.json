@@ -32,7 +32,7 @@
     "@google-cloud/spanner": "*"
   },
   "dependencies": {
-    "@inquirer/prompts": "7.3.3",
+    "@inquirer/prompts": "7.3.2",
     "@jest/globals": "29.7.0",
     "@types/node": "20.17.17",
     "typescript": "5.8.2",
