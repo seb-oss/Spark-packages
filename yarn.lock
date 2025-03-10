@@ -3066,7 +3066,7 @@ __metadata:
     testcontainers: "npm:10.18.0"
     ts-jest: "npm:29.2.6"
     tsconfig: "npm:*"
-    typescript: "npm:5.7.3"
+    typescript: "npm:5.8.2"
     vitest: "npm:3.0.7"
     yargs: "npm:17.7.2"
   peerDependencies:
@@ -11173,7 +11173,7 @@ __metadata:
     fast-xml-parser: "npm:4.5.1"
     tsup: "npm:8.4.0"
     turbo: "npm:^2.4.4"
-    typescript: "npm:5.7.3"
+    typescript: "npm:5.8.2"
     vitest: "npm:3.0.7"
   languageName: unknown
   linkType: soft
@@ -12616,16 +12616,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.7.3":
-  version: 5.7.3
-  resolution: "typescript@npm:5.7.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/b7580d716cf1824736cc6e628ab4cd8b51877408ba2be0869d2866da35ef8366dd6ae9eb9d0851470a39be17cbd61df1126f9e211d8799d764ea7431d5435afa
-  languageName: node
-  linkType: hard
-
 "typescript@npm:5.8.2":
   version: 5.8.2
   resolution: "typescript@npm:5.8.2"
@@ -12643,16 +12633,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/5f6cad2e728a8a063521328e612d7876e12f0d8a8390d3b3aaa452a6a65e24e9ac8ea22beb72a924fd96ea0a49ea63bb4e251fb922b12eedfb7f7a26475e5c56
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>":
-  version: 5.7.3
-  resolution: "typescript@patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>::version=5.7.3&hash=5786d5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/6fd7e0ed3bf23a81246878c613423730c40e8bdbfec4c6e4d7bf1b847cbb39076e56ad5f50aa9d7ebd89877999abaee216002d3f2818885e41c907caaa192cc4
   languageName: node
   linkType: hard
 
