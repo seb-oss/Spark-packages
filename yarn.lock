@@ -3216,11 +3216,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.4.2":
-  version: 2.4.2
-  resolution: "@turbo/gen@npm:2.4.2"
+"@turbo/gen@npm:2.4.4":
+  version: 2.4.4
+  resolution: "@turbo/gen@npm:2.4.4"
   dependencies:
-    "@turbo/workspaces": "npm:2.4.2"
+    "@turbo/workspaces": "npm:2.4.4"
     commander: "npm:^10.0.0"
     fs-extra: "npm:^10.1.0"
     inquirer: "npm:^8.2.4"
@@ -3233,13 +3233,13 @@ __metadata:
     validate-npm-package-name: "npm:^5.0.0"
   bin:
     gen: dist/cli.js
-  checksum: 10c0/a5e460b6e06d64e421576c84ee36174a6766a1ad1d227d2d585e9d2b22a06e7fc21b262035c23b1acf0f2be777267fc8078a7b7c27a52806fdab3e23b87b424b
+  checksum: 10c0/a4d0dfc01eb5e3aeb1919720776e31c5428a6234df6107d60c02b3c447f02de63f4fd615dfa2c918d11a26c95dc45d15c22f99ced1a4bc4c89076248604b7360
   languageName: node
   linkType: hard
 
-"@turbo/workspaces@npm:2.4.2":
-  version: 2.4.2
-  resolution: "@turbo/workspaces@npm:2.4.2"
+"@turbo/workspaces@npm:2.4.4":
+  version: 2.4.4
+  resolution: "@turbo/workspaces@npm:2.4.4"
   dependencies:
     commander: "npm:^10.0.0"
     execa: "npm:5.1.1"
@@ -3254,7 +3254,7 @@ __metadata:
     update-check: "npm:^1.5.4"
   bin:
     workspaces: dist/cli.js
-  checksum: 10c0/0616a65b9e018551a415818d094fc1d981dbbcb6ac0d585f399bbc3262ca6ac07ec8d1ff335e1ecd11aa2bc5878deffeb24d34bcaf9fb3fc5dfe671ae368bc79
+  checksum: 10c0/5a6735c5b9a40aa2c42ca0b3eccfb584f779b5aa45247893a9fb6068e481c1573f26770932d297e951abccc5de01d08cfd0845d639d1c9dca911f389967b62b4
   languageName: node
   linkType: hard
 
@@ -11166,7 +11166,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:1.9.4"
     "@changesets/cli": "npm:2.27.12"
-    "@turbo/gen": "npm:2.4.2"
+    "@turbo/gen": "npm:2.4.4"
     "@types/node": "npm:20.17.17"
     "@vitest/coverage-v8": "npm:3.0.7"
     csv-parse: "npm:5.6.0"
