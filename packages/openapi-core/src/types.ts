@@ -73,7 +73,7 @@ export type ClientOptions = RequestOptions & {
   arrayFormat?: ArrayFormat
   authorizationTokenGenerator?: (
     url: string
-  ) => Promise<Map<string, string>> | undefined
+  ) => Promise<Record<string, string>> | undefined
   authorizationTokenRefresh?: (url: string) => Promise<void> | undefined
 }
 

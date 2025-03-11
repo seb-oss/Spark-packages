@@ -9,16 +9,16 @@ export const apiGatewayTokenByUrlGenerator = (
   apiKey: string,
   logger?: Logger
 ) => {
-  return async (url: string): Promise<Map<string, string>> => {
+  return async (url: string): Promise<Record<string, string>> => {
     const token = await getApiGatewayTokenByUrl({
       apiURL: url,
       logger,
     })
 
-    return new Map<string, string>([
-      ['Proxy-Authorization', `Bearer ${token}`],
-      ['x-api-key', apiKey],
-    ])
+    return {
+      'Proxy-Authorization': `Bearer ${token}`,
+      'x-api-key': apiKey
+    }
   }
 }
 
@@ -26,13 +26,13 @@ export const apiGatewayTokenByClientIdGenerator = (
   apiKey: string,
   clientId: string
 ) => {
-  return async (): Promise<Map<string, string>> => {
+  return async (): Promise<Record<string, string>> => {
     const token = await getApiGatewayTokenByClientId(clientId)
 
-    return new Map<string, string>([
-      ['Proxy-Authorization', `Bearer ${token}`],
-      ['x-api-key', apiKey],
-    ])
+    return {
+      'Proxy-Authorization': `Bearer ${token}`,
+      'x-api-key': apiKey
+    }
   }
 }
 

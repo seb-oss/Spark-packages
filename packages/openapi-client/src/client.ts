@@ -21,7 +21,17 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     logger?.debug('Authorization token generator is set')
 
     axios.interceptors.request.use(async (request) => {
+      logger?.debug('baseUrl')
+      logger?.debug(request.baseURL)
+
+      logger?.debug('request url')
+      logger?.debug(request.url)
+
       const url = `${request.baseURL}${request.url}`
+
+      logger?.debug('URL')
+      logger?.debug(url)
+
       if (globalOptions?.authorizationTokenGenerator && url) {
         const authorizationTokenHeaders =
           await globalOptions.authorizationTokenGenerator(url)
@@ -32,11 +42,10 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         logger?.debug(url)
 
         if (authorizationTokenHeaders) {
-          for (const [key, value] of Object.entries(
-            authorizationTokenHeaders
-          )) {
+          for (const key of Object.keys(authorizationTokenHeaders)) {
+            const value = authorizationTokenHeaders[key]
             logger?.debug(`Setting header ${key} to ${value}`)
-            request.headers.set(key, value)
+            request.headers[key] = value
           }
         }
       }
