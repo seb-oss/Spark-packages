@@ -24,10 +24,11 @@ export const apiGatewayTokenByUrlGenerator = (
 
 export const apiGatewayTokenByClientIdGenerator = (
   apiKey: string,
-  clientId: string
+  clientId: string,
+  logger?: Logger
 ) => {
   return async (): Promise<Record<string, string>> => {
-    const token = await getApiGatewayTokenByClientId(clientId)
+    const token = await getApiGatewayTokenByClientId(clientId, logger)
 
     return {
       'Proxy-Authorization': `Bearer ${token}`,

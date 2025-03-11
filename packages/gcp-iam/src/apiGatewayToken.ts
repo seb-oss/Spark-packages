@@ -106,7 +106,7 @@ export const getApiGatewayTokenByUrl = async ({
     return signedJWT
   } catch (error) {
     if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
-      logger?.warn('Soft fail enabled, returning empty JWT')
+      logger?.info('Soft fail enabled, returning empty JWT')
       return ''
     }
 
@@ -130,12 +130,24 @@ export const clearCache = async (key: string) => {
  * @returns ID Token.
  */
 export const getApiGatewayTokenByClientId = async (
-  clientId: string
+  clientId: string,
+  logger?: Logger
 ): Promise<string> => {
-  const auth = new GoogleAuth({
-    scopes: 'https://www.googleapis.com/auth/cloud-platform',
-  })
-  const client = await auth.getIdTokenClient(clientId)
+  try {
+    const auth = new GoogleAuth({
+      scopes: 'https://www.googleapis.com/auth/cloud-platform',
+    })
+    const client = await auth.getIdTokenClient(clientId)
 
-  return await client.idTokenProvider.fetchIdToken(clientId)
+    return await client.idTokenProvider.fetchIdToken(clientId)
+  } catch (error) {
+    if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
+      logger?.info('Soft fail enabled, returning empty JWT')
+      return ''
+    }
+
+    logger?.error('Error generating system JWT', error)
+
+    throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
+  }
 }
