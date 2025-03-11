@@ -1,5 +1,11 @@
 # @sebspark/openapi-auth-iam
 
+## 1.0.3
+
+### Patch Changes
+
+- ac217da: Fix header iterator.
+
 ## 1.0.2
 
 ### Patch Changes

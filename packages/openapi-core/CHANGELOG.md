@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.1.2
+
+### Patch Changes
+
+- ac217da: Fix header iterator.
+
 ## 2.1.1
 
 ### Patch Changes
