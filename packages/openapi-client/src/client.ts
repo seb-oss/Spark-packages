@@ -18,28 +18,15 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   logger?: Logger
 ): C => {
   if (globalOptions?.authorizationTokenGenerator) {
-    logger?.debug('Authorization token generator is set')
+    logger?.debug('authorizationTokenGenerator is set')
 
     axios.interceptors.request.use(async (request) => {
-      logger?.debug('baseUrl')
-      logger?.debug(request.baseURL)
-
-      logger?.debug('request url')
-      logger?.debug(request.url)
-
       const url = `${request.baseURL}${request.url}`
-
-      logger?.debug('URL')
-      logger?.debug(url)
+      logger?.debug(`Intercepting request to ${url}`)
 
       if (globalOptions?.authorizationTokenGenerator && url) {
         const authorizationTokenHeaders =
           await globalOptions.authorizationTokenGenerator(url)
-
-        logger?.debug('Authorization token headers')
-        logger?.debug(authorizationTokenHeaders)
-        logger?.debug('URL')
-        logger?.debug(url)
 
         if (authorizationTokenHeaders) {
           for (const key of Object.keys(authorizationTokenHeaders)) {
@@ -50,7 +37,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         }
       }
 
-      logger?.debug('Intercepted request')
+      logger?.debug('Intercepted request:')
       logger?.debug(JSON.stringify(request, null, 2))
       return request
     })
@@ -60,7 +47,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
     const refreshAuthLogic = async (failedRequest: any) => {
       logger?.debug('Failed request')
-      logger?.debug(failedRequest)
+      logger?.debug(JSON.stringify(failedRequest, null, 2))
 
       if (!axios.isAxiosError(failedRequest)) {
         logger?.error('Failed request is not an axios error')
@@ -69,13 +56,12 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
       const axiosError = failedRequest as AxiosError
 
-      logger?.debug('Failed request config')
+      logger?.debug('Failed request config:')
       logger?.debug(JSON.stringify(axiosError.config, null, 2))
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       if (globalOptions?.authorizationTokenRefresh && url) {
-        logger?.debug('Refreshing token for URL')
-        logger?.debug(url)
+        logger?.debug(`Refreshing token for URL ${url}`)
         await globalOptions?.authorizationTokenRefresh(url)
       }
     }
