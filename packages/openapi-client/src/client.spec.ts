@@ -1,10 +1,10 @@
-import type { Server } from 'node:http'
 import express from 'express'
+import type { Server } from 'node:http'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import type { Logger } from 'winston'
 import { TypedClient } from './client'
 import { accessToken, router } from './test/client.helper'
 import type { OpenapiClient, User } from './test/openapi'
-import type { Logger } from 'winston'
 
 describe('TypedClient', () => {
   let client: OpenapiClient
