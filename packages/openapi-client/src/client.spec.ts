@@ -131,21 +131,27 @@ describe('TypedClient', () => {
         'Proxy-Authorization': 'Bearer 123',
         'X-API-Key': 'a-1-b-2-c-3',
       }
-      
+
       authorizationTokenGeneratorMock.mockResolvedValue(generatedHeaders)
 
-      const client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`, {
-        authorizationTokenGenerator: authorizationTokenGeneratorMock,
-      }, loggerMock as unknown as Logger)
+      const client = TypedClient<OpenapiClient>(
+        `http://localhost:${PORT}`,
+        {
+          authorizationTokenGenerator: authorizationTokenGeneratorMock,
+        },
+        loggerMock as unknown as Logger
+      )
 
       try {
         await client.get('/users', { headers: { Authorization: accessToken } })
-      } catch (error) {
-        
-      }
+      } catch (error) {}
 
-      expect(debugMock).toHaveBeenCalledWith('Setting header Proxy-Authorization to Bearer 123')
-      expect(debugMock).toHaveBeenCalledWith('Setting header X-API-Key to a-1-b-2-c-3')
+      expect(debugMock).toHaveBeenCalledWith(
+        'Setting header Proxy-Authorization to Bearer 123'
+      )
+      expect(debugMock).toHaveBeenCalledWith(
+        'Setting header X-API-Key to a-1-b-2-c-3'
+      )
     })
   })
 })

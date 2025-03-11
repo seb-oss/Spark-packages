@@ -17,7 +17,7 @@ export const apiGatewayTokenByUrlGenerator = (
 
     return {
       'Proxy-Authorization': `Bearer ${token}`,
-      'x-api-key': apiKey
+      'x-api-key': apiKey,
     }
   }
 }
@@ -31,7 +31,7 @@ export const apiGatewayTokenByClientIdGenerator = (
 
     return {
       'Proxy-Authorization': `Bearer ${token}`,
-      'x-api-key': apiKey
+      'x-api-key': apiKey,
     }
   }
 }
