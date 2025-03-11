@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 1.1.0
+
+### Minor Changes
+
+- d4fb078: Optional logger, support soft-fail.
+
 ## 1.0.0
 
 ### Major Changes

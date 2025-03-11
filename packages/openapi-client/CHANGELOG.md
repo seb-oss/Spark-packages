@@ -1,5 +1,14 @@
 # @sebspark/openapi-client
 
+## 2.1.7
+
+### Patch Changes
+
+- bbb6d97: Tidying up debug logs
+- 59de1b8: Patch axios
+- Updated dependencies [59de1b8]
+  - @sebspark/openapi-core@2.1.3
+
 ## 2.1.6
 
 ### Patch Changes

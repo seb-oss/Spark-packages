@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.1.3
+
+### Patch Changes
+
+- 59de1b8: Patch axios
+
 ## 2.1.2
 
 ### Patch Changes

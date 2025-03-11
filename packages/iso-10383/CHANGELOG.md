@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.14.0
+
+### Minor Changes
+
+- cd12577: Update ISO10383 specifications.
+
 ## 0.13.0
 
 ### Minor Changes

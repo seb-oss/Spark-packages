@@ -1,5 +1,16 @@
 # @sebspark/openapi-auth-iam
 
+## 1.1.0
+
+### Minor Changes
+
+- d4fb078: Optional logger, support soft-fail.
+
+### Patch Changes
+
+- Updated dependencies [d4fb078]
+  - @sebspark/gcp-iam@1.1.0
+
 ## 1.0.3
 
 ### Patch Changes
