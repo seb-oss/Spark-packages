@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 2.1.6
+
+### Patch Changes
+
+- ac217da: Fix header iterator.
+- Updated dependencies [ac217da]
+  - @sebspark/openapi-core@2.1.2
+
 ## 2.1.5
 
 ### Patch Changes
