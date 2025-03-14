@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 1.1.1
+
+### Patch Changes
+
+- c8444d5: Better debug logging.
+
 ## 1.1.0
 
 ### Minor Changes
