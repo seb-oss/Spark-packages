@@ -85,13 +85,10 @@ export const getLogger = ({
   try {
     if (process.env.LOG_LEVEL) {
       level = process.env.LOG_LEVEL as LogLevel
-      console.log(
-        `Winston log level is set to: ${level} from LOG_LEVEL env var`
-      )
     }
   } catch (error) {
     console.error(
-      `Unable to set LOG_LEVEL from env (it is set to ${process.env.LOG_LEVEL})`,
+      `Logger[${service}]: Unable to set level (LOG_LEVEL=${process.env.LOG_LEVEL})`,
       error
     )
   }
