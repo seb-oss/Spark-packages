@@ -49,7 +49,7 @@ const generateResponses = (
   responses: Record<number, ResponseBody | CustomType>
 ): string =>
   Object.entries(responses)
-    .filter(([code]) => Number.parseInt(code, 10) < 400)
+    .filter(([code]) => Number.parseInt(code, 10) < 500)
     .map(([code, response]) =>
       generateResponse(Number.parseInt(code, 10), response)
     )
