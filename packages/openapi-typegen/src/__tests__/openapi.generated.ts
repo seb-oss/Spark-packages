@@ -79,7 +79,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} [args.query] - Optional. Query parameters for the request.
        * @param {number} [args.query.page] - Optional.
        * @param {number} [args.query.limit] - Optional.
-       * @returns {Promise<[200, APIResponse<PartiallySerialized<CardList>>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<CardList>>] | [401, APIResponse<PartiallySerialized<HttpError>>]>}
        */
       handler: (
         args?: Req & {
@@ -88,7 +88,10 @@ export type CardsAPIServer = APIServerDefinition & {
             limit?: number
           }
         },
-      ) => Promise<[200, APIResponse<PartiallySerialized<CardList>>]>
+      ) => Promise<
+        | [200, APIResponse<PartiallySerialized<CardList>>]
+        | [401, APIResponse<PartiallySerialized<HttpError>>]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -126,7 +129,7 @@ export type CardsAPIServer = APIServerDefinition & {
        * @param {Object} args.headers - Headers for the request.
        * @param {string} args.headers["X-User-Id"]
        * @param {string} [args.headers["X-Distributor-Id"]] - Optional.
-       * @returns {Promise<[200, APIResponse<PartiallySerialized<Card>>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<Card>>] | [401, APIResponse<PartiallySerialized<HttpError>>]>}
        */
       handler: (
         args: Req & {
@@ -141,7 +144,10 @@ export type CardsAPIServer = APIServerDefinition & {
             cardNickname: boolean
           }
         },
-      ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
+      ) => Promise<
+        | [200, APIResponse<PartiallySerialized<Card>>]
+        | [401, APIResponse<PartiallySerialized<HttpError>>]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }

@@ -30,7 +30,7 @@ export type User = {
 export type UserList = User[]
 
 export const USER_TYPE_VALUES = ['HUMAN', 'SYSTEM'] as const
-export type UserType = typeof USER_TYPE_VALUES[number]
+export type UserType = (typeof USER_TYPE_VALUES)[number]
 
 export type HumanDetails = {
   name?: string
@@ -82,7 +82,7 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args - The arguments for the request.
        * @param {PageParam & LimitParam} [args.query] - Optional. Query parameters for the request.
        * @param {ApiKeyAuth} args.headers - Headers for the request.
-       * @returns {Promise<[200, APIResponse<PartiallySerialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<UserList>, {'X-Rate-Limit': XRateLimit, apiKey: string}>] | [401, UnauthorizedError]>}
        */
       handler: (
         args: Req & {
@@ -90,13 +90,14 @@ export type ExampleAPIServer = APIServerDefinition & {
           query?: PageParam & LimitParam
         },
       ) => Promise<
-        [
-          200,
-          APIResponse<
-            PartiallySerialized<UserList>,
-            { 'X-Rate-Limit': XRateLimit; apiKey: string }
-          >,
-        ]
+        | [
+            200,
+            APIResponse<
+              PartiallySerialized<UserList>,
+              { 'X-Rate-Limit': XRateLimit; apiKey: string }
+            >,
+          ]
+        | [401, UnauthorizedError]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -106,11 +107,15 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args - The arguments for the request.
        * @param {ApiKeyAuth} args.headers - Headers for the request.
        * @param {UserCreate} args.body - Request body for the request.
-       * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>]>}
+       * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>] | [400, undefined] | [401, UnauthorizedError]>}
        */
       handler: (
         args: Req & { body: UserCreate; headers: LowerCaseHeaders<ApiKeyAuth> },
-      ) => Promise<[201, APIResponse<PartiallySerialized<User>>]>
+      ) => Promise<
+        | [201, APIResponse<PartiallySerialized<User>>]
+        | [400, undefined]
+        | [401, UnauthorizedError]
+      >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
@@ -122,7 +127,7 @@ export type ExampleAPIServer = APIServerDefinition & {
        * @param {Object} args.params - Path parameters for the request.
        * @param {string} args.params.userId
        * @param {ApiKeyAuth} args.headers - Headers for the request.
-       * @returns {Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>]>}
+       * @returns {Promise<[200, APIResponse<PartiallySerialized<User>, {'x-api-key': string}>] | [401, UnauthorizedError] | [404, undefined]>}
        */
       handler: (
         args: Req & {
@@ -132,7 +137,9 @@ export type ExampleAPIServer = APIServerDefinition & {
           }
         },
       ) => Promise<
-        [200, APIResponse<PartiallySerialized<User>, { 'x-api-key': string }>]
+        | [200, APIResponse<PartiallySerialized<User>, { 'x-api-key': string }>]
+        | [401, UnauthorizedError]
+        | [404, undefined]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
