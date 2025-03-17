@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 2.1.0
+
+### Minor Changes
+
+- e4665c0: Adds 400 errors to server components.
+
 ## 2.0.1
 
 ### Patch Changes
