@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 0.2.0
+
+### Minor Changes
+
+- 431e989: Add GBX (Pence sterling).
+
 ## 0.1.3
 
 ### Patch Changes

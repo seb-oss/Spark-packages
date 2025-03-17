@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.5.1
+
+### Patch Changes
+
+- 9561d6f: Only console.log if setting log level fails
+
 ## 1.5.0
 
 ### Minor Changes
