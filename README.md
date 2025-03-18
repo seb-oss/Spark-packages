@@ -96,6 +96,10 @@ A wrapper for child_process spawn to simplify interactive cli tests
 
 Token generator and refresh functions for OpenApi Client and Google IAM.
 
+### [@sebspark/tradeinsight](./packages/tradeinsight)
+
+Trade Insight client library with helps
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
