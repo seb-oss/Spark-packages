@@ -1,11 +1,15 @@
 import type { ArrayFormat } from '@sebspark/openapi-core'
 
-type Param = string | number | undefined | Array<Param>
+type Param = boolean | string | number | undefined | Array<Param>
 type Params = Record<string, Param>
 
 const encodeParam = (param: string) => encodeURIComponent(param)
 const encodeValue = (param: Param, encodeCommas = false) => {
-  if (typeof param === 'number' || typeof param === 'string') {
+  if (
+    typeof param === 'number' ||
+    typeof param === 'string' ||
+    typeof param === 'boolean'
+  ) {
     if (encodeCommas) {
       return encodeURIComponent(param)
     }
