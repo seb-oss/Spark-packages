@@ -3110,6 +3110,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/tradeinsight@workspace:packages/tradeinsight":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/tradeinsight@workspace:packages/tradeinsight"
+  dependencies:
+    tsconfig: "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/trading-hours@workspace:packages/trading-hours":
   version: 0.0.0-use.local
   resolution: "@sebspark/trading-hours@workspace:packages/trading-hours"
