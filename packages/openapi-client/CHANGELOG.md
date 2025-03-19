@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.8
+
+### Patch Changes
+
+- 119117d: Fix support for boolean query params.
+
 ## 2.1.7
 
 ### Patch Changes
