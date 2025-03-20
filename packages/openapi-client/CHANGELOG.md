@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.9
+
+### Patch Changes
+
+- 027b65b: Each typed client now has its own axios instance so interceptors don't get mixed up
+
 ## 2.1.8
 
 ### Patch Changes
