@@ -12,12 +12,14 @@ describe('openapi e2e tests', () => {
   const PORT = 12345
   let server: Server
   let client: MarketdataClient
+
   beforeAll(async () => {
     await new Promise<void>((resolve) => {
       server = app.listen(PORT, () => resolve())
       client = TypedClient<MarketdataClient>(`http://localhost:${PORT}`)
     })
   })
+
   afterAll(
     () =>
       new Promise<void>((resolve, reject) => {
@@ -27,10 +29,12 @@ describe('openapi e2e tests', () => {
         })
       })
   )
+
   it('returns markets', async () => {
     const result = await client.get('/markets')
     expect(result.data).toEqual(markets)
   })
+
   it('works for multiple parameter urls', async () => {
     const result = await client.get(
       '/markets/:mic/instruments/:isin/:currency',
@@ -50,6 +54,7 @@ describe('openapi e2e tests', () => {
       },
     })
   })
+
   it('sends headers', async () => {
     const result = await client.get('/secured', {
       headers: { 'X-Api-Key': 'yo!', 'X-Client-Key': 'Hello' },

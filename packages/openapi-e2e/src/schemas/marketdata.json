@@ -18,7 +18,11 @@
             }
           }
         ],
-        "security": [{ "ApiKey": [] }],
+        "security": [
+          {
+            "ApiKey": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -30,8 +34,50 @@
               }
             }
           },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/header/extract": {
+      "get": {
+        "summary": "Get the value of the x-test-value header",
+        "parameters": [
+          {
+            "name": "X-Test-Value",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "ApiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     },
@@ -67,10 +113,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     },
@@ -98,10 +152,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     },
@@ -125,7 +187,11 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "enum": ["INDICIES", "STOCKS", "FUNDS"]
+                "enum": [
+                  "INDICIES",
+                  "STOCKS",
+                  "FUNDS"
+                ]
               }
             }
           }
@@ -141,10 +207,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     },
@@ -188,10 +262,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     },
@@ -219,10 +301,18 @@
               }
             }
           },
-          "401": { "$ref": "#/components/responses/Unauthorized" },
-          "403": { "$ref": "#/components/responses/Forbidden" },
-          "404": { "$ref": "#/components/responses/NotFound" },
-          "500": { "$ref": "#/components/responses/InternalServerError" }
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
         }
       }
     }
@@ -233,7 +323,9 @@
         "description": "Unauthorized",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       },
@@ -241,7 +333,9 @@
         "description": "Forbidden",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       },
@@ -249,7 +343,9 @@
         "description": "Not Found",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       },
@@ -257,7 +353,9 @@
         "description": "Internal Server Error",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       }
@@ -273,11 +371,16 @@
             "type": "string"
           }
         },
-        "required": ["id", "name"]
+        "required": [
+          "id",
+          "name"
+        ]
       },
       "Market": {
         "allOf": [
-          { "$ref": "#/components/schemas/MarketListItem" },
+          {
+            "$ref": "#/components/schemas/MarketListItem"
+          },
           {
             "type": "object",
             "properties": {
@@ -334,8 +437,12 @@
             "items": {
               "type": "object",
               "properties": {
-                "data": { "$ref": "#/components/schemas/MarketListItem" },
-                "links": { "$ref": "#/components/schemas/SelfLink" }
+                "data": {
+                  "$ref": "#/components/schemas/MarketListItem"
+                },
+                "links": {
+                  "$ref": "#/components/schemas/SelfLink"
+                }
               }
             }
           },
@@ -346,7 +453,10 @@
             "$ref": "#/components/schemas/PaginationMeta"
           }
         },
-        "required": ["data", "links"]
+        "required": [
+          "data",
+          "links"
+        ]
       },
       "MarketEntityResponse": {
         "type": "object",
@@ -354,9 +464,14 @@
           "data": {
             "$ref": "#/components/schemas/Market"
           },
-          "links": { "$ref": "#/components/schemas/SelfLink" }
+          "links": {
+            "$ref": "#/components/schemas/SelfLink"
+          }
         },
-        "required": ["data", "links"]
+        "required": [
+          "data",
+          "links"
+        ]
       },
       "InstrumentListItem": {
         "type": "object",
@@ -412,7 +527,9 @@
       },
       "Instrument": {
         "allOf": [
-          { "$ref": "#/components/schemas/InstrumentListItem" },
+          {
+            "$ref": "#/components/schemas/InstrumentListItem"
+          },
           {
             "type": "object",
             "properties": {
@@ -425,7 +542,10 @@
                 "format": "date-time"
               }
             },
-            "required": ["lastValidDate", "lastValidDateTime"]
+            "required": [
+              "lastValidDate",
+              "lastValidDateTime"
+            ]
           }
         ]
       },
@@ -437,8 +557,12 @@
             "items": {
               "type": "object",
               "properties": {
-                "data": { "$ref": "#/components/schemas/InstrumentListItem" },
-                "links": { "$ref": "#/components/schemas/SelfLink" }
+                "data": {
+                  "$ref": "#/components/schemas/InstrumentListItem"
+                },
+                "links": {
+                  "$ref": "#/components/schemas/SelfLink"
+                }
               }
             }
           },
@@ -449,7 +573,10 @@
             "$ref": "#/components/schemas/PaginationMeta"
           }
         },
-        "required": ["data", "links"]
+        "required": [
+          "data",
+          "links"
+        ]
       },
       "InstrumentEntityResponse": {
         "type": "object",
@@ -461,7 +588,10 @@
             "$ref": "#/components/schemas/SelfLink"
           }
         },
-        "required": ["data", "links"]
+        "required": [
+          "data",
+          "links"
+        ]
       },
       "SelfLink": {
         "type": "object",
@@ -470,7 +600,9 @@
             "type": "string"
           }
         },
-        "required": ["self"]
+        "required": [
+          "self"
+        ]
       },
       "PaginationLinks": {
         "type": "object",
@@ -491,7 +623,9 @@
             "type": "string"
           }
         },
-        "required": ["self"]
+        "required": [
+          "self"
+        ]
       },
       "PaginationMeta": {
         "type": "object",
@@ -520,7 +654,10 @@
             "type": "string"
           }
         },
-        "required": ["code", "message"]
+        "required": [
+          "code",
+          "message"
+        ]
       }
     },
     "securitySchemes": {

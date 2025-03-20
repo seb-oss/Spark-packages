@@ -1,5 +1,6 @@
 import {
   ForbiddenError,
+  InternalServerError,
   NotImplementedError,
   type PartiallySerialized,
   UnauthorizedError,
@@ -31,6 +32,14 @@ const api: MarketdataServer = {
         if (!headers['x-client-key']) throw new UnauthorizedError()
         if (!headers['x-api-key']) throw new ForbiddenError()
         return [200, { data: 'ok' }]
+      },
+    },
+  },
+  '/header/extract': {
+    get: {
+      handler: async ({ headers }) => {
+        if (!headers['x-test-value']) throw new InternalServerError()
+        return [200, { data: headers['x-test-value'] }]
       },
     },
   },
