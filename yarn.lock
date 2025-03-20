@@ -3003,6 +3003,7 @@ __metadata:
     "@types/express": "npm:5.0.0"
     express: "npm:5.0.1"
     tsconfig: "npm:*"
+    vitest: "npm:3.0.9"
   languageName: unknown
   linkType: soft
 
@@ -13067,7 +13068,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^3.0.9":
+"vitest@npm:3.0.9, vitest@npm:^3.0.9":
   version: 3.0.9
   resolution: "vitest@npm:3.0.9"
   dependencies:
