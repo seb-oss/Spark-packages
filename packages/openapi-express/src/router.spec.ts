@@ -44,6 +44,12 @@ type Server = APIServerDefinition & {
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
+  '/nocontent': {
+    get: {
+      handler: () => Promise<[204, APIResponse<undefined>]>
+      pre?: GenericRouteHandler | GenericRouteHandler[]
+    }
+  }
 }
 
 let app: Express
@@ -82,6 +88,11 @@ beforeEach(() => {
             data: { id: 'foo' },
           },
         ]),
+      },
+    },
+    '/nocontent': {
+      get: {
+        handler: vi.fn().mockResolvedValue([204, undefined]),
       },
     },
   } as Server
@@ -152,4 +163,14 @@ test('it handles errors correctly', async () => {
   const { body, error } = await client.get('/users')
   expect(error).toBeInstanceOf(Error)
   expect(body.message).toEqual('Internal Server Error')
+})
+
+test('/nocontent is called correctly', async () => {
+  ;(server['/nocontent'].get.handler as Mock).mockResolvedValue([
+    204,
+    undefined,
+  ])
+  const response = await client.get('/nocontent')
+  expect(response.statusCode).toEqual(204)
+  expect(response.body).toEqual({})
 })

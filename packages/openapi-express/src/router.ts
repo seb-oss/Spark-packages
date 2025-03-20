@@ -45,19 +45,29 @@ export const TypedRouter = (
       ) => {
         try {
           const [status, response] = await route.handler(req)
+          res.status(status)
+
+          if (!response) {
+            res.end()
+            return
+          }
+
           const { headers, data } = response as APIResponse<
             unknown,
             Record<string, string>
           >
 
-          res.status(status)
           if (headers) {
             for (const [name, value] of Object.entries(headers)) {
               res.setHeader(name, value)
             }
           }
-          if (data) res.send(data)
-          else res.end()
+
+          if (data) {
+            res.send(data)
+          } else {
+            res.end()
+          }
         } catch (error) {
           next(error)
         }
