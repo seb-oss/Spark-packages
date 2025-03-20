@@ -7,20 +7,30 @@ import {
   fromAxiosError,
 } from '@sebspark/openapi-core'
 import { retry } from '@sebspark/retry'
-import axios, { type AxiosError, type AxiosHeaders } from 'axios'
+import axios, {
+  type AxiosInstance,
+  type AxiosError,
+  type AxiosHeaders,
+} from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import type { Logger } from 'winston'
 import { paramsSerializer } from './paramsSerializer'
+
+export type TypedAxiosClient<T> = T & {
+  axiosInstance: AxiosInstance
+}
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
   globalOptions?: ClientOptions,
   logger?: Logger
-): C => {
+): TypedAxiosClient<C> => {
+  const axiosInstance = axios.create()
+
   if (globalOptions?.authorizationTokenGenerator) {
     logger?.debug('authorizationTokenGenerator is set')
 
-    axios.interceptors.request.use(async (request) => {
+    axiosInstance.interceptors.request.use(async (request) => {
       const url = `${request.baseURL}${request.url}`
       logger?.debug(`Intercepting request to ${url}`)
 
@@ -66,11 +76,11 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       }
     }
 
-    createAuthRefreshInterceptor(axios, refreshAuthLogic)
+    createAuthRefreshInterceptor(axiosInstance, refreshAuthLogic)
   }
 
   if (logger) {
-    axios.interceptors.request.use((request) => {
+    axiosInstance.interceptors.request.use((request) => {
       const requestObject = {
         url: request.url,
         params: request.params,
@@ -80,7 +90,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       return request
     })
 
-    axios.interceptors.response.use((response) => {
+    axiosInstance.interceptors.response.use((response) => {
       const responseObject = {
         data: response.data,
         config: response.config,
@@ -94,18 +104,33 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
   const client: BaseClient = {
     get: (url, args, opts) =>
-      callServer(mergeArgs(baseURL, url, 'get', args, opts, globalOptions)),
+      callServer(
+        axiosInstance,
+        mergeArgs(baseURL, url, 'get', args, opts, globalOptions)
+      ),
     post: (url, args, opts) =>
-      callServer(mergeArgs(baseURL, url, 'post', args, opts, globalOptions)),
+      callServer(
+        axiosInstance,
+        mergeArgs(baseURL, url, 'post', args, opts, globalOptions)
+      ),
     put: (url, args, opts) =>
-      callServer(mergeArgs(baseURL, url, 'put', args, opts, globalOptions)),
+      callServer(
+        axiosInstance,
+        mergeArgs(baseURL, url, 'put', args, opts, globalOptions)
+      ),
     patch: (url, args, opts) =>
-      callServer(mergeArgs(baseURL, url, 'patch', args, opts, globalOptions)),
+      callServer(
+        axiosInstance,
+        mergeArgs(baseURL, url, 'patch', args, opts, globalOptions)
+      ),
     delete: (url, args, opts) =>
-      callServer(mergeArgs(baseURL, url, 'delete', args, opts, globalOptions)),
+      callServer(
+        axiosInstance,
+        mergeArgs(baseURL, url, 'delete', args, opts, globalOptions)
+      ),
   }
 
-  return client as C
+  return { ...client, axiosInstance } as TypedAxiosClient<C>
 }
 
 const callServer = async <
@@ -114,6 +139,7 @@ const callServer = async <
     Record<string, string> | undefined
   >,
 >(
+  axiosInstance: AxiosInstance,
   args: Partial<ClientOptions & RequestArgs>
 ): Promise<R> => {
   try {
@@ -125,7 +151,7 @@ const callServer = async <
         : args.body
     const { headers, data } = await retry(
       () =>
-        axios.request({
+        axiosInstance.request({
           baseURL: args.baseUrl,
           url: args.url,
           method: args.method,
