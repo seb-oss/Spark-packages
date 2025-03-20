@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 2.0.2
+
+### Patch Changes
+
+- eaa6cbf: Fix support for 204 routes.
+
 ## 2.0.1
 
 ### Patch Changes
