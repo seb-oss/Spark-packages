@@ -2,12 +2,12 @@ import type { Server } from 'node:http'
 import express from 'express'
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import type { Logger } from 'winston'
-import { TypedClient } from './client'
+import { type TypedAxiosClient, TypedClient } from './client'
 import { accessToken, router } from './test/client.helper'
 import type { OpenapiClient, User } from './test/openapi'
 
 describe('TypedClient', () => {
-  let client: OpenapiClient
+  let client: TypedAxiosClient<OpenapiClient>
   let server: Server
   const headers = expect.any(Object)
 
