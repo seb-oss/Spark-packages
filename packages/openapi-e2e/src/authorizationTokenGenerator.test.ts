@@ -13,7 +13,7 @@ import type { MarketdataClient } from './schemas/marketdata'
 import { app } from './server'
 
 describe('openapi client authorization token generator', () => {
-  const PORT = 12345
+  const PORT = 61002
   let server: Server
 
   let clientOne: MarketdataClient
@@ -60,13 +60,13 @@ describe('openapi client authorization token generator', () => {
     const resultOne = await clientOne.get('/header/extract')
     expect(resultOne.data).toEqual('one')
     expect(authorizationTokenGeneratorOne).toHaveBeenCalledWith(
-      'http://localhost:12345/header/extract'
+      `http://localhost:${PORT}/header/extract`
     )
 
     const resultTwo = await clientTwo.get('/header/extract')
     expect(resultTwo.data).toEqual('two')
     expect(authorizationTokenGeneratorTwo).toHaveBeenCalledWith(
-      'http://localhost:12345/header/extract'
+      `http://localhost:${PORT}/header/extract`
     )
   })
 })

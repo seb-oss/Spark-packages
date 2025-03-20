@@ -9,7 +9,7 @@ import type {
 import { app, markets } from './server'
 
 describe('openapi e2e tests', () => {
-  const PORT = 12345
+  const PORT = 61001
   let server: Server
   let client: MarketdataClient
 

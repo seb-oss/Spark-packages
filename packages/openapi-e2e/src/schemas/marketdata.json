@@ -56,11 +56,6 @@
             }
           }
         ],
-        "security": [
-          {
-            "ApiKey": []
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -71,9 +66,6 @@
                 }
               }
             }
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
           },
           "500": {
             "$ref": "#/components/responses/InternalServerError"
