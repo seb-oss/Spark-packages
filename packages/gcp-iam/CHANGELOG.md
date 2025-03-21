@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 1.2.1
+
+### Patch Changes
+
+- b68f6fd: Fix ttl from seconds to milliseconds
+
 ## 1.2.0
 
 ### Minor Changes
