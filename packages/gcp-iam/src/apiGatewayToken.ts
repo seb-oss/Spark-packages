@@ -5,39 +5,19 @@ import { LruCache } from './lruCache'
 
 const expInSeconds = 60 * 60
 // TODO: Make ttl changeable from getApiGatewayToken function
-const apiGatewayJwtCache = new LruCache<string>()
-/**
- * Generate a system token for the API Gateway.
- * This is intended to be run under the context of the service account signing the JWT.
- * @param apiUrl The URL of the API Gateway including the path of the specific API to be accessed using the token.
- * @param serviceAccountEmail The email of the service account to be used.
- * @param logger An optional logger to use for logging.
- * @returns A JWT.
- */
-export const getApiGatewayTokenByUrl = async ({
+const apiGatewayJwtCache = new LruCache<Promise<string>>()
+
+const generateTokenByUrl = async ({
   apiURL,
   key,
-  ttl,
   logger,
 }: {
   apiURL: string
   key?: string
-  ttl?: number
   logger?: Logger
-}): Promise<string> => {
-  /**
-   * Check if there is a cached JWT
-   */
-
-  const cachedJwt = apiGatewayJwtCache.get(key || apiURL)
-  if (cachedJwt) {
-    logger?.debug(`JWT for ${key || apiURL} found in cache.`)
-    return cachedJwt
-  }
-
+}) => {
   try {
     const iamClient = new IAMCredentialsClient()
-
     const auth = new GoogleAuth()
     const cred = await auth.getCredentials()
     const serviceAccountEmail = cred.client_email
@@ -47,7 +27,7 @@ export const getApiGatewayTokenByUrl = async ({
     }
 
     // Remove when verified
-    logger?.info(`Serice account e-mail beeing used: ${serviceAccountEmail}`)
+    logger?.info(`Service account e-mail being used: ${serviceAccountEmail}`)
 
     /**
      * JWT Header.
@@ -104,8 +84,6 @@ export const getApiGatewayTokenByUrl = async ({
     // Combine into the final JWT.
     const signedJWT = `${unsignedJWT}.${signature}`
 
-    // cache generated jwt
-    apiGatewayJwtCache.put(key || apiURL, signedJWT, ttl)
     return signedJWT
   } catch (error) {
     if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
@@ -120,6 +98,30 @@ export const getApiGatewayTokenByUrl = async ({
 }
 
 /**
+ * Generate a system token for the API Gateway.
+ * This is intended to be run under the context of the service account signing the JWT.
+ * @param apiUrl The URL of the API Gateway including the path of the specific API to be accessed using the token.
+ * @param serviceAccountEmail The email of the service account to be used.
+ * @param logger An optional logger to use for logging.
+ * @returns A JWT.
+ */
+export const getApiGatewayTokenByUrl = async ({
+  apiURL,
+  key,
+  logger,
+}: {
+  apiURL: string
+  key?: string
+  logger?: Logger
+}): Promise<string> => {
+  return checkCache({
+    cacheKey: key || apiURL,
+    generate: () => generateTokenByUrl({ apiURL, key, logger }),
+    logger,
+  })
+}
+
+/**
  *
  * @param key Clears a cached JWT by key.
  */
@@ -127,15 +129,30 @@ export const clearCache = async (key: string) => {
   apiGatewayJwtCache.clear(key)
 }
 
-/**
- * Generates a JWT for the API Gateway, using Client ID as audience.
- * @param clientId OAUTH Client ID.
- * @returns ID Token.
- */
-export const getApiGatewayTokenByClientId = async (
-  clientId: string,
-  logger?: Logger
-): Promise<string> => {
+const checkCache = ({
+  cacheKey,
+  generate,
+  logger,
+}: { cacheKey: string; generate: () => Promise<string>; logger?: Logger }) => {
+  /**
+   * Check if there is a cached JWT
+   */
+
+  const cachedJwt = apiGatewayJwtCache.get(cacheKey)
+  if (cachedJwt) {
+    logger?.debug(`JWT for ${cacheKey} found in cache.`)
+    return cachedJwt
+  }
+
+  const jwtPromise = generate()
+
+  // cache generated jwt
+  apiGatewayJwtCache.put(cacheKey, jwtPromise, expInSeconds / 2)
+
+  return jwtPromise
+}
+
+const generateTokenByClientId = async (clientId: string, logger?: Logger) => {
   try {
     const auth = new GoogleAuth({
       scopes: 'https://www.googleapis.com/auth/cloud-platform',
@@ -154,4 +171,20 @@ export const getApiGatewayTokenByClientId = async (
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
+}
+
+/**
+ * Generates a JWT for the API Gateway, using Client ID as audience.
+ * @param clientId OAUTH Client ID.
+ * @returns ID Token.
+ */
+export const getApiGatewayTokenByClientId = async (
+  clientId: string,
+  logger?: Logger
+): Promise<string> => {
+  return checkCache({
+    cacheKey: clientId,
+    generate: () => generateTokenByClientId(clientId),
+    logger,
+  })
 }
