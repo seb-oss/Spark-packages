@@ -147,7 +147,7 @@ const checkCache = ({
   const jwtPromise = generate()
 
   // cache generated jwt
-  apiGatewayJwtCache.put(cacheKey, jwtPromise, expInSeconds / 2 * 1000)
+  apiGatewayJwtCache.put(cacheKey, jwtPromise, (expInSeconds / 2) * 1000)
 
   return jwtPromise
 }
