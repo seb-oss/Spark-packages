@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 1.2.0
+
+### Minor Changes
+
+- 7663922: Update cache strategy for gateway api token generation
+
 ## 1.1.1
 
 ### Patch Changes
