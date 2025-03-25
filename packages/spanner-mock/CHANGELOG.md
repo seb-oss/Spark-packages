@@ -1,5 +1,11 @@
 # @sebspark/spanner-mock
 
+## 0.2.2
+
+### Patch Changes
+
+- 99e1893: Patched some transaction handling
+
 ## 0.2.1
 
 ### Patch Changes
