@@ -8,6 +8,9 @@
     "dev": {
       "cache": false
     },
+    "generate:avro": {
+      "dependsOn": ["^build"]
+    },
     "lint": {},
     "test": {
       "dependsOn": ["^build"],

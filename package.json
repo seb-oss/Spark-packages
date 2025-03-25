@@ -8,6 +8,7 @@
     "clean": "rm -rf ./packages/**/dist",
     "dev": "turbo dev",
     "format": "biome format --write",
+    "generate:avro": "turbo generate:avro",
     "generate:package": "turbo gen package",
     "lint:watch": "turbo watch lint",
     "lint:write": "biome check --write",
