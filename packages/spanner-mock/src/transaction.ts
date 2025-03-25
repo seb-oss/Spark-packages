@@ -4,11 +4,11 @@ type ResolveReject = (value?: unknown) => void
 type Key = string | string[]
 
 export const createTransaction = () => {
-  let resolve: ResolveReject
-  let reject: ResolveReject
+  let resolve: ResolveReject | undefined = undefined
+  let reject: ResolveReject | undefined = undefined
   return {
     run: jest.fn((statement: string) => {}),
-    runUpdate: jest.fn((statement: string) => {}),
+    runUpdate: jest.fn(async (statement: string) => [1]),
     insert: jest.fn((table: string, rows: unknown[]) => {}),
     update: jest.fn((table: string, rows: unknown[]) => {}),
     deleteRows: jest.fn((table: string, keys: Key[]) => {}),
@@ -19,10 +19,23 @@ export const createTransaction = () => {
     getReadTimestamp: jest.fn(() => {}),
     getCommitTimestamp: jest.fn(() => {}),
     commit: jest.fn(async () => {
-      resolve()
+      if (resolve) {
+        resolve([])
+        resolve = undefined
+        reject = undefined
+      } else {
+        return []
+      }
     }),
     rollback: jest.fn(async () => {
-      reject(new Error())
+      const error = new Error()
+      if (reject) {
+        reject(error)
+        resolve = undefined
+        reject = undefined
+      } else {
+        throw error
+      }
     }),
     setCallbacks: (
       _resolve: (value?: unknown) => void,
