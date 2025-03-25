@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 0.3.0
+
+### Minor Changes
+
+- 549fb9f: Add declarations for StockTicker and Pub/Sub things.
+
 ## 0.2.0
 
 ### Minor Changes
