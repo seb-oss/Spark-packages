@@ -1,6 +1,30 @@
-{
+export interface InstrumentPrice {
+	ask: null | number;
+	bid: null | number;
+	last: null | number;
+	lastInSek: null | number;
+}
+
+export interface Ticker {
+	id: string;
+	mic: string;
+	isin: string;
+	ticker: string;
+	currencyCode: string;
+	price: InstrumentPrice;
+}
+
+export interface TickerMessage {
+	tickers: Ticker[];
+}
+
+ export const CloudSchema  = { 
+
+        schemaId: 'ticker-v1', 
+
+        avroDefinition: `{
   "type": "record",
-  "name": "StockTickerMessage",
+  "name": "TickerMessage",
   "namespace": "com.financial.api",
   "doc": "Real-time update containing the latest pricing details of financial instruments.",
   "fields": [
@@ -10,13 +34,13 @@
         "type": "array",
         "items": {
           "type": "record",
-          "name": "StockTicker",
+          "name": "Ticker",
           "doc": "A real-time update containing the latest pricing details of a financial instrument.",
           "fields": [
             {
               "name": "id",
               "type": "string",
-              "doc": "Unique identifier of the instrument, consists of TYPE, ISIN, MIC, and Currency Code. Format: TYPE-ISIN;MIC;CurrencyCode"
+              "doc": "Unique identifier of the instrument. Consists of type followed by the least common denominators making it unique. Example: STOCK-SE0000148884;XSTO;SEK"
             },
             {
               "name": "mic",
@@ -78,3 +102,6 @@
     }
   ]
 }
+` 
+
+    }
