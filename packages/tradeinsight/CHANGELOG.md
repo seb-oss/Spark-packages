@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 0.4.0
+
+### Minor Changes
+
+- 3705e20: Name changes because Tickers are not just for stocks.
+
 ## 0.3.0
 
 ### Minor Changes
