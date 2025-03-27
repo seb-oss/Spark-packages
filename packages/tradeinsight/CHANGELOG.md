@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 0.5.0
+
+### Minor Changes
+
+- 771d9d9: Adds schema processing for subscribers
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.7.0
+
+### Minor Changes
+
+- 771d9d9: Adds schema processing for subscribers
+
 ## 1.6.2
 
 ### Patch Changes
