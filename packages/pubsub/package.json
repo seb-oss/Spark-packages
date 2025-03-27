@@ -16,7 +16,8 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*"
+    "@sebspark/tsconfig": "*",
+    "vitest": "^3.0.9"
   },
   "dependencies": {
     "@google-cloud/pubsub": "4.10.0",

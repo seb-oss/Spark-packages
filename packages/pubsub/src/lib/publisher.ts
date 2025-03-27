@@ -8,13 +8,9 @@ import {
 } from '@google-cloud/pubsub'
 import type { MessageOptions } from '@google-cloud/pubsub/build/src/topic'
 import { Type } from 'avsc'
+import type { CloudSchema } from './shared'
 
 const schemaIdPattern = /^(?!goog)[a-zA-Z][a-zA-Z0-9-._~%+]{2,254}$/
-
-type CloudSchema = {
-  schemaId: string
-  avroDefinition: string
-}
 
 const syncTopicSchema = async (client: PubSub, cloudSchema: CloudSchema) => {
   if (!schemaIdPattern.test(cloudSchema.schemaId)) {

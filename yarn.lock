@@ -3073,6 +3073,7 @@ __metadata:
     avsc: "npm:^5.7.7"
     express: "npm:5.0.1"
     html-escaper: "npm:3.0.3"
+    vitest: "npm:^3.0.9"
   languageName: unknown
   linkType: soft
 

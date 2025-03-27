@@ -6,6 +6,8 @@ import {
   type Subscription,
   type Topic,
 } from '@google-cloud/pubsub'
+import { Type } from 'avsc'
+import type { CloudSchema } from './shared'
 
 const makeSureSubscriptionExists = async (
   topic: Topic,
@@ -38,7 +40,8 @@ export type TypedMessage<T> = Omit<Message, 'data'> & {
 
 export type SubscriptionClient<T extends Record<string, unknown>> = {
   topic<K extends keyof T>(
-    name: K
+    name: K,
+    cloudSchema?: CloudSchema
   ): {
     subscribe<M extends T[K]>(
       name: string,
@@ -67,9 +70,15 @@ export const createSubscriber = <T extends Record<string, unknown>>(
   clientOptions?: ClientConfig | undefined
 ): SubscriptionClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
+  let _type: Type
 
   const typedClient: SubscriptionClient<T> = {
-    topic: (name) => {
+    topic: (name, schema) => {
+      if (schema && !_type) {
+        const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
+        _type = schemaType
+      }
+
       const _topic: Topic = client.topic(name as string)
 
       return {
@@ -79,7 +88,9 @@ export const createSubscriber = <T extends Record<string, unknown>>(
         subscribe: async (subscriptionName, callbacks, options) => {
           const subscription = _topic.subscription(subscriptionName)
           subscription.on('message', async (msg) => {
-            const data = JSON.parse(msg.data.toString('utf8'))
+            const data = _type
+              ? _type.fromBuffer(msg.data)
+              : JSON.parse(msg.data.toString('utf8'))
             if (options?.autoAck === undefined || options.autoAck === true) {
               try {
                 await callbacks.onMessage(Object.assign(msg, { data }))
