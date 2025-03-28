@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.7.1
+
+### Patch Changes
+
+- 72afa44: When a schema is used, publish in binary to keep messages intact.
+
 ## 1.7.0
 
 ### Minor Changes
