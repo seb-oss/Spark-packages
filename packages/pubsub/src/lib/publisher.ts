@@ -52,7 +52,7 @@ const createOrGetTopic = async (
       name: name,
       schemaSettings: {
         schema: schemaData?.name,
-        encoding: Encodings.Json,
+        encoding: Encodings.Binary,
       },
     })
     return topic
@@ -108,9 +108,8 @@ export const createPublisher = <T extends Record<string, unknown>>(
 
           if (_type) {
             // Pubsub requires a Buffer but the typing forbids a Buffer 🤯
-            const data = Buffer.from(
-              _type.toString(json),
-              'utf-8'
+            const data = _type.toBuffer(
+              json
             ) as unknown as MessageOptions['data']
             await _topic.publishMessage({ data })
           } else {
