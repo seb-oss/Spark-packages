@@ -2,6 +2,11 @@ import * as fs from 'node:fs'
 import path from 'node:path'
 import { type RecordType, avroToTypeScript } from 'avro-typescript'
 
+/**
+ * TODO: Implement dynamic schema generation.
+ *       We want to be able to add and export multiple schemas and versions.
+ */
+
 const schemaPath = path.resolve(process.cwd(), 'schemas/tickerMessage.avsc')
 const outputPath = path.resolve(process.cwd(), 'src/generated/tickerMessage.ts')
 
