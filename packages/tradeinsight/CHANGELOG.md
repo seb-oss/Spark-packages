@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 0.5.1
+
+### Patch Changes
+
+- 95e88eb: Update README with some examples.
+
 ## 0.5.0
 
 ### Minor Changes
