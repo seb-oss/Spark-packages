@@ -2983,7 +2983,7 @@ __metadata:
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
     "@sebspark/retry": "npm:*"
-    "@types/node": "npm:20.17.17"
+    "@types/node": "npm:22.13.17"
     axios: "npm:1.8.2"
     tsconfig: "npm:*"
     tsup-node: "npm:0.1.0"
@@ -3095,7 +3095,7 @@ __metadata:
     "@sebspark/cli-tester": "npm:*"
     "@sebspark/spanner-mock": "npm:*"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:20.17.17"
+    "@types/node": "npm:22.13.17"
     "@types/yargs": "npm:17.0.33"
     jest: "npm:29.7.0"
     testcontainers: "npm:10.18.0"
@@ -3612,12 +3612,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:20.17.17":
-  version: 20.17.17
-  resolution: "@types/node@npm:20.17.17"
+"@types/node@npm:22.13.17":
+  version: 22.13.17
+  resolution: "@types/node@npm:22.13.17"
   dependencies:
-    undici-types: "npm:~6.19.2"
-  checksum: 10c0/6aebc8053b96f1b6d82c3a3fe5fc20d9f7eeb507d79d967221bbecaa2b26665fa1c9efe460be2a2f4aaae4e98f37797df7d5a4189f2b6edf8abf9f82f7fd8b1f
+    undici-types: "npm:~6.20.0"
+  checksum: 10c0/77a052fec0fe02f60557e1c5f3f28eb09cd9bee426be88328a94689150a3c0df5b4b6b69fad28157fb34521693dad0b311ecd7f613845d681ff973991310c20e
   languageName: node
   linkType: hard
 
@@ -11221,7 +11221,7 @@ __metadata:
     "@biomejs/biome": "npm:1.9.4"
     "@changesets/cli": "npm:2.28.1"
     "@turbo/gen": "npm:2.4.4"
-    "@types/node": "npm:20.17.17"
+    "@types/node": "npm:22.13.17"
     "@vitest/coverage-v8": "npm:3.0.9"
     csv-parse: "npm:5.6.0"
     fast-xml-parser: "npm:4.5.1"
@@ -12734,13 +12734,6 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 10c0/bb673d7876c2d411b6eb6c560e0c571eef4a01c1c19925175d16e3a30c4c428181fb8d7ae802a261f283e4166a0ac435e2f505743aa9e45d893f9a3df017b501
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~6.19.2":
-  version: 6.19.8
-  resolution: "undici-types@npm:6.19.8"
-  checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
   languageName: node
   linkType: hard
 
