@@ -35,15 +35,20 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       logger?.debug(`Intercepting request to ${url}`)
 
       if (globalOptions?.authorizationTokenGenerator && url) {
-        const authorizationTokenHeaders =
-          await globalOptions.authorizationTokenGenerator(url)
+        try {
+          const authorizationTokenHeaders =
+            await globalOptions.authorizationTokenGenerator(url)
 
-        if (authorizationTokenHeaders) {
-          for (const key of Object.keys(authorizationTokenHeaders)) {
-            const value = authorizationTokenHeaders[key]
-            logger?.debug(`Setting header ${key} to ${value}`)
-            request.headers[key] = value
+          if (authorizationTokenHeaders) {
+            for (const key of Object.keys(authorizationTokenHeaders)) {
+              const value = authorizationTokenHeaders[key]
+              logger?.debug(`Setting header ${key} to ${value}`)
+              request.headers[key] = value
+            }
           }
+        } catch (error) {
+          logger?.error(`Error generating token for URL: ${url}`)
+          throw error
         }
       }
 
@@ -72,7 +77,12 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       if (globalOptions?.authorizationTokenRefresh && url) {
         logger?.debug(`Refreshing token for URL ${url}`)
-        await globalOptions?.authorizationTokenRefresh(url)
+        try {
+          await globalOptions?.authorizationTokenRefresh(url)
+        } catch (error) {
+          logger?.error(`Error refreshing token for URL: ${url}`)
+          throw error
+        }
       }
     }
 
