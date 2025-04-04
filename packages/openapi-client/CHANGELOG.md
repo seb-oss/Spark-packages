@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.1.10
+
+### Patch Changes
+
+- dad93d8: Error logs for token generation
+
 ## 2.1.9
 
 ### Patch Changes
