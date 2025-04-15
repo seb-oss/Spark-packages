@@ -1,5 +1,16 @@
 # @sebspark/openapi-client
 
+## 2.2.0
+
+### Minor Changes
+
+- f4b36e9: Ability to specify timeout for requests
+
+### Patch Changes
+
+- Updated dependencies [f4b36e9]
+  - @sebspark/openapi-core@2.2.0
+
 ## 2.1.10
 
 ### Patch Changes
