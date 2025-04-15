@@ -65,6 +65,7 @@ export type RequestOptions = {
   httpsAgent?: any
   // biome-ignore lint/suspicious/noExplicitAny: ignore
   httpAgent?: any
+  timeout?: number
 }
 
 export type ArrayFormat = 'indices' | 'brackets' | 'repeat' | 'comma'

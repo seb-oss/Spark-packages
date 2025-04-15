@@ -171,6 +171,7 @@ const callServer = async <
           data: body,
           httpsAgent: args.httpsAgent,
           httpAgent: args.httpAgent,
+          timeout: args.timeout,
         }),
       args.retry
     )
@@ -204,6 +205,7 @@ const mergeArgs = (
     arrayFormat: global?.arrayFormat,
     httpsAgent: extras?.httpsAgent,
     httpAgent: extras?.httpAgent,
+    timeout: extras?.timeout ?? global?.timeout,
   }
 
   return merged
