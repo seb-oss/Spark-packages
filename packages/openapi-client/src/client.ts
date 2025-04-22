@@ -27,6 +27,11 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 ): TypedAxiosClient<C> => {
   const axiosInstance = axios.create()
 
+  logger?.debug(
+    'client initialized with arrayFormat',
+    globalOptions?.arrayFormat
+  )
+
   if (globalOptions?.authorizationTokenGenerator) {
     logger?.debug('authorizationTokenGenerator is set')
 
@@ -116,27 +121,32 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     get: (url, args, opts) =>
       callServer(
         axiosInstance,
-        mergeArgs(baseURL, url, 'get', args, opts, globalOptions)
+        mergeArgs(baseURL, url, 'get', args, opts, globalOptions),
+        logger
       ),
     post: (url, args, opts) =>
       callServer(
         axiosInstance,
-        mergeArgs(baseURL, url, 'post', args, opts, globalOptions)
+        mergeArgs(baseURL, url, 'post', args, opts, globalOptions),
+        logger
       ),
     put: (url, args, opts) =>
       callServer(
         axiosInstance,
-        mergeArgs(baseURL, url, 'put', args, opts, globalOptions)
+        mergeArgs(baseURL, url, 'put', args, opts, globalOptions),
+        logger
       ),
     patch: (url, args, opts) =>
       callServer(
         axiosInstance,
-        mergeArgs(baseURL, url, 'patch', args, opts, globalOptions)
+        mergeArgs(baseURL, url, 'patch', args, opts, globalOptions),
+        logger
       ),
     delete: (url, args, opts) =>
       callServer(
         axiosInstance,
-        mergeArgs(baseURL, url, 'delete', args, opts, globalOptions)
+        mergeArgs(baseURL, url, 'delete', args, opts, globalOptions),
+        logger
       ),
   }
 
@@ -150,10 +160,18 @@ const callServer = async <
   >,
 >(
   axiosInstance: AxiosInstance,
-  args: Partial<ClientOptions & RequestArgs>
+  args: Partial<ClientOptions & RequestArgs>,
+  logger?: Logger
 ): Promise<R> => {
   try {
     const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
+
+    logger?.debug('[callServer] typeof serializer:', typeof serializer)
+    logger?.debug(
+      '[callServer] sample serialization:',
+      serializer({ test: ['a', 'b'] })
+    )
+
     const body =
       args.method?.toLowerCase() === 'get' ||
       args.method?.toLowerCase() === 'delete'
