@@ -1,10 +1,9 @@
 import { Router, json } from 'express'
 import type { RequestHandler } from 'express'
 import {
-  AccessToken,
   type HttpError,
   type User,
-  type UserList,
+  type UserList
 } from './openapi'
 
 export const accessToken = 'Bearer access token'
@@ -70,4 +69,10 @@ router.get('/undocumented-security', authorize, (_req, res) => {
 router.get('/undocumented-security/:id', authorize, (_req, res) => {
   res.status(204).end()
 })
+
+router.get('/search', (req, res) => {
+  const received = req.query.type as string[]
+  res.json({ received })
+})
+
 export { router }

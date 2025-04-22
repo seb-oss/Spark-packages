@@ -171,6 +171,25 @@ export type OpenapiServer = APIServerDefinition & {
       ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
+  },
+    '/search': {
+    get: {
+      /**
+       *
+       * @param {Object} args - The arguments for the request.
+       * @param {Object} args.query - Query parameters.
+       * @param {Array<string>} args.query.type
+       * @returns {Promise<[200, APIResponse<{ received: string[] }>>}
+       */
+      handler: (
+        args: Req & {
+          query: {
+            type: string[]
+          }
+        }
+      ) => Promise<[200, APIResponse<{ received: string[] }>]>
+      pre?: GenericRouteHandler | GenericRouteHandler[]
+    }
   }
 }
 
@@ -179,6 +198,15 @@ export type OpenapiClient = Pick<
   'get' | 'post' | 'delete' | 'put'
 > & {
   get: {
+    (
+      url: '/search',
+      args: {
+        query: {
+          type: string[]
+        }
+      },
+      opts?: RequestOptions,
+    ): Promise<APIResponse<{ received: string | string[] }>>
     /**
      *
      * @param {string} url

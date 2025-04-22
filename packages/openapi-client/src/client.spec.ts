@@ -115,6 +115,30 @@ describe('TypedClient', () => {
     ).resolves.toEqual({ data: '', headers })
   })
 
+  test('serializes query array with repeat format', async () => {
+    const client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`, {
+      arrayFormat: 'repeat',
+    })
+
+    const result = await client.get('/search', {
+      query: { type: ['x', 'y'] },
+    })
+
+    expect(result.data.received).toEqual(['x', 'y'])
+  })
+
+  test('serializes query array with comma format', async () => {
+    const client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`, {
+      arrayFormat: 'comma',
+    })
+
+    const result = await client.get('/search', {
+      query: { type: ['x', 'y'] },
+    })
+
+    expect(result.data.received).toEqual('x,y')
+  })
+
   describe('with authorizationTokenGenerator', () => {
     const authorizationTokenGeneratorMock = vi.fn()
     const loggerMock = {
