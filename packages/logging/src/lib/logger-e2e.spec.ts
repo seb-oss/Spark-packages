@@ -6,10 +6,6 @@ import { getLogger } from './logger'
 
 describe('logging e2e verification', () => {
   describe('logger', () => {
-    beforeEach(() => {
-      delete process.env.LOG_LEVEL
-    })
-
     it('logs info to console', async () => {
       const { logger } = getLogger({
         service: 'test',

@@ -74,10 +74,10 @@ export type LoggerResult = {
 
 // Implement masking function
 export const maskSensitiveData = (
-  info: any,
+  info: object | string | unknown,
   sensitivityRules: SensitivityRules
-): any => {
-  const tryParseJSON = (str: string): any => {
+): object | string | unknown => {
+  const tryParseJSON = (str: string): object | null => {
     try {
       return JSON.parse(str)
     } catch {
@@ -86,6 +86,7 @@ export const maskSensitiveData = (
   }
 
   if (typeof info === 'string') {
+    let result = info
     // Attempt to parse the string as JSON
     const parsed = tryParseJSON(info)
     if (parsed) {
@@ -94,24 +95,24 @@ export const maskSensitiveData = (
     }
 
     // If parsing fails, apply masking rules directly to the string
-    sensitivityRules.forEach((rule) => {
+    for (const rule of sensitivityRules) {
       if (rule.pattern.test(info)) {
-        info = info.replace(rule.pattern, rule.replacement)
+        result = info.replace(rule.pattern, rule.replacement)
       }
-    })
-    return info
+    }
+    return result
   }
 
   if (typeof info === 'object' && info !== null) {
     // Recursively mask sensitive data in objects
     for (const key in info) {
-      if (info.hasOwnProperty(key)) {
+      if (Object.hasOwn(info, key)) {
         if (typeof info[key] === 'string') {
-          sensitivityRules.forEach((rule) => {
+          for (const rule of sensitivityRules) {
             if (key === rule.key || rule.pattern.test(info[key])) {
               info[key] = info[key].replace(rule.pattern, rule.replacement)
             }
-          })
+          }
         } else if (typeof info[key] === 'object') {
           info[key] = maskSensitiveData(info[key], sensitivityRules)
         }
@@ -123,7 +124,7 @@ export const maskSensitiveData = (
 }
 const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
   format.printf(({ level, message, timestamp }) => {
-    let maskedMessage
+    let maskedMessage: object | string | unknown
     try {
       maskedMessage = maskSensitiveData(message, sensitivityRules)
     } catch (e) {
@@ -209,12 +210,7 @@ export const getLogger = ({
     }
 
     const silent = showLogs ? false : isSilent
-    loggers[service] = createLogger({
-      level,
-      transports,
-      silent,
-      defaultMeta,
-    })
+    loggers[service] = createLogger({ level, transports, silent, defaultMeta })
   }
   return {
     logger: loggers[service],
@@ -246,11 +242,7 @@ const logHttp = (
   _res: Response
 ) => {
   if (!url.includes('health')) {
-    logger.info(`${method} ${url}`, {
-      url,
-      method,
-      query,
-    })
+    logger.info(`${method} ${url}`, { url, method, query })
   }
 }
 
@@ -260,12 +252,7 @@ const logHttpError = (
   _res: Response,
   error: Error
 ) => {
-  logger.error(error.message, {
-    url,
-    method,
-    query,
-    stack: error,
-  })
+  logger.error(error.message, { url, method, query, stack: error })
 }
 
 const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
@@ -284,11 +271,7 @@ const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
 
     socket.on('*', (packet) => {
       const [eventName, ...eventData] = packet.data
-      logger.info('Socket event', {
-        id: socket.id,
-        eventName,
-        eventData,
-      })
+      logger.info('Socket event', { id: socket.id, eventName, eventData })
     })
 
     socket.on('reconnect', () => {
