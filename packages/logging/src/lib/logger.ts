@@ -74,7 +74,8 @@ export type LoggerResult = {
 
 // Implement masking function
 export const maskSensitiveData = (
-  info: object | string | unknown,
+  // biome-ignore lint/suspicious/noExplicitAny: Because object | strng | unknown is a can of worms
+  info: any,
   sensitivityRules: SensitivityRules
 ): object | string | unknown => {
   const tryParseJSON = (str: string): object | null => {
