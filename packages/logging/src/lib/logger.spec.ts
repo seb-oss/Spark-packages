@@ -84,10 +84,10 @@ describe('logging', () => {
 
       const callArgs = spy.mock.calls[0]
       expect(callArgs).toHaveLength(5)
-      expect(callArgs[0]).toStrictEqual(Winston.format.colorize({ all: true }))
-      expect(callArgs[1]).toStrictEqual(Winston.format.timestamp())
-      expect(callArgs[2]).toStrictEqual(Winston.format.align())
-      expect(callArgs[4]).toStrictEqual(Winston.format.errors({ stack: true }))
+      expect(callArgs[0]).toStrictEqual(Winston.format.timestamp())
+      expect(callArgs[1]).toStrictEqual(Winston.format.json())
+      expect(callArgs[2]).toStrictEqual(Winston.format.errors({ stack: true }))
+      expect(callArgs[4]).toStrictEqual(Winston.format.colorize({ all: true }))
 
       spy.mockRestore()
     })
@@ -97,18 +97,15 @@ describe('logging', () => {
       getLogger({
         service: 'test',
         showLogs: true,
-        formattingOptions: {
-          colorize: false,
-          align: false,
-        },
+        formattingOptions: { colorize: false, align: false },
       })
 
       const callArgs = spy.mock.calls[0]
       expect(callArgs).toHaveLength(5)
-      expect(callArgs[0]).toStrictEqual(Winston.format.uncolorize())
-      expect(callArgs[1]).toStrictEqual(Winston.format.timestamp())
-      expect(callArgs[2]).toStrictEqual(Winston.format.simple())
-      expect(callArgs[4]).toStrictEqual(Winston.format.errors({ stack: true }))
+      expect(callArgs[0]).toStrictEqual(Winston.format.timestamp())
+      expect(callArgs[1]).toStrictEqual(Winston.format.json())
+      expect(callArgs[2]).toStrictEqual(Winston.format.errors({ stack: true }))
+      expect(callArgs[4]).toStrictEqual(Winston.format.uncolorize())
 
       spy.mockRestore()
     })

@@ -44,6 +44,8 @@ export type LogErrorFunc = (
   error: Error
 ) => void
 
+type SensitivityRules = { key: string; pattern: RegExp; replacement: string }[]
+
 export type LogOptions = {
   service: string
   version?: string
@@ -61,6 +63,7 @@ export type LogOptions = {
   defaultMeta?: Record<string, unknown>
   logHttpFunc?: LogFunc
   logHttpErrorFunc?: LogErrorFunc
+  maskingSensitivityRules?: SensitivityRules
 }
 export type LoggerResult = {
   logger: Logger
@@ -68,6 +71,72 @@ export type LoggerResult = {
   errorRequestMiddleware: () => ErrorRequestHandler
   instrumentSocket: (server: Server) => Server
 }
+
+// Implement masking function
+export const maskSensitiveData = (
+  // biome-ignore lint/suspicious/noExplicitAny: Because object | strng | unknown is a can of worms
+  info: any,
+  sensitivityRules: SensitivityRules
+): object | string | unknown => {
+  const tryParseJSON = (str: string): object | null => {
+    try {
+      return JSON.parse(str)
+    } catch {
+      return null
+    }
+  }
+
+  if (typeof info === 'string') {
+    let result = info
+    // Attempt to parse the string as JSON
+    const parsed = tryParseJSON(info)
+    if (parsed) {
+      // If parsing succeeds, mask the parsed object
+      return JSON.stringify(maskSensitiveData(parsed, sensitivityRules))
+    }
+
+    // If parsing fails, apply masking rules directly to the string
+    for (const rule of sensitivityRules) {
+      if (rule.pattern.test(info)) {
+        result = info.replace(rule.pattern, rule.replacement)
+      }
+    }
+    return result
+  }
+
+  if (typeof info === 'object' && info !== null) {
+    // Recursively mask sensitive data in objects
+    for (const key in info) {
+      if (Object.hasOwn(info, key)) {
+        if (typeof info[key] === 'string') {
+          for (const rule of sensitivityRules) {
+            if (key === rule.key || rule.pattern.test(info[key])) {
+              info[key] = info[key].replace(rule.pattern, rule.replacement)
+            }
+          }
+        } else if (typeof info[key] === 'object') {
+          info[key] = maskSensitiveData(info[key], sensitivityRules)
+        }
+      }
+    }
+  }
+
+  return info
+}
+const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
+  format.printf(({ level, message, timestamp }) => {
+    let maskedMessage: object | string | unknown
+    try {
+      maskedMessage = maskSensitiveData(message, sensitivityRules)
+    } catch (e) {
+      maskedMessage = message
+    }
+    return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
+  })
+
+const unmaskedMessageFormat = format.printf(({ level, message, timestamp }) => {
+  return `[${timestamp}] ${level}: ${JSON.stringify(message)}`
+})
 
 export const getLogger = ({
   service,
@@ -81,6 +150,7 @@ export const getLogger = ({
   defaultMeta = {},
   logHttpFunc = logHttp,
   logHttpErrorFunc = logHttpError,
+  maskingSensitivityRules = [],
 }: LogOptions): LoggerResult => {
   try {
     if (process.env.LOG_LEVEL) {
@@ -106,24 +176,23 @@ export const getLogger = ({
   }
 
   if (!loggers[service]) {
-    const winstonConsoleFormat = format.combine(
+    const winstonFormat = format.combine(
+      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
+      format.json(),
+      format.errors({ stack: consoleFormattingOptions.stack }),
+      maskingSensitivityRules.length // Enable masking if rules are passsed
+        ? maskedMessageFormat(maskingSensitivityRules)
+        : unmaskedMessageFormat,
+
       consoleFormattingOptions.colorize
         ? format.colorize({ all: true })
-        : format.uncolorize(),
-      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
-      consoleFormattingOptions.align ? format.align() : format.simple(),
-      format.printf((info) => {
-        return `[${info.timestamp}] ${info.level}: ${info.message}`
-      }),
-      format.errors({ stack: consoleFormattingOptions.stack })
+        : format.uncolorize()
     )
 
     const loggingWinstonSettings: Options = {
       level,
-      serviceContext: {
-        service,
-        version,
-      },
+      serviceContext: { service, version },
+      format: winstonFormat,
     }
 
     if (gcpProjectId) {
@@ -134,10 +203,7 @@ export const getLogger = ({
 
     if (enableConsole) {
       transports.push(
-        new WinstonTransports.Console({
-          format: winstonConsoleFormat,
-          level,
-        })
+        new WinstonTransports.Console({ format: winstonFormat, level })
       )
     }
     if (shouldSendToGcp) {
@@ -145,12 +211,7 @@ export const getLogger = ({
     }
 
     const silent = showLogs ? false : isSilent
-    loggers[service] = createLogger({
-      level,
-      transports,
-      silent,
-      defaultMeta,
-    })
+    loggers[service] = createLogger({ level, transports, silent, defaultMeta })
   }
   return {
     logger: loggers[service],
@@ -182,11 +243,7 @@ const logHttp = (
   _res: Response
 ) => {
   if (!url.includes('health')) {
-    logger.info(`${method} ${url}`, {
-      url,
-      method,
-      query,
-    })
+    logger.info(`${method} ${url}`, { url, method, query })
   }
 }
 
@@ -196,12 +253,7 @@ const logHttpError = (
   _res: Response,
   error: Error
 ) => {
-  logger.error(error.message, {
-    url,
-    method,
-    query,
-    stack: error,
-  })
+  logger.error(error.message, { url, method, query, stack: error })
 }
 
 const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
@@ -220,11 +272,7 @@ const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
 
     socket.on('*', (packet) => {
       const [eventName, ...eventData] = packet.data
-      logger.info('Socket event', {
-        id: socket.id,
-        eventName,
-        eventData,
-      })
+      logger.info('Socket event', { id: socket.id, eventName, eventData })
     })
 
     socket.on('reconnect', () => {
