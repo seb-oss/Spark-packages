@@ -44,6 +44,8 @@ export type LogErrorFunc = (
   error: Error
 ) => void
 
+type SensitivityRules = { key: string; pattern: RegExp; replacement: string }[]
+
 export type LogOptions = {
   service: string
   version?: string
@@ -61,6 +63,7 @@ export type LogOptions = {
   defaultMeta?: Record<string, unknown>
   logHttpFunc?: LogFunc
   logHttpErrorFunc?: LogErrorFunc
+  maskingSensitivityRules?: SensitivityRules
 }
 export type LoggerResult = {
   logger: Logger
@@ -68,6 +71,70 @@ export type LoggerResult = {
   errorRequestMiddleware: () => ErrorRequestHandler
   instrumentSocket: (server: Server) => Server
 }
+
+// Implement masking function
+export const maskSensitiveData = (
+  info: any,
+  sensitivityRules: SensitivityRules
+): any => {
+  const tryParseJSON = (str: string): any => {
+    try {
+      return JSON.parse(str)
+    } catch {
+      return null
+    }
+  }
+
+  if (typeof info === 'string') {
+    // Attempt to parse the string as JSON
+    const parsed = tryParseJSON(info)
+    if (parsed) {
+      // If parsing succeeds, mask the parsed object
+      return JSON.stringify(maskSensitiveData(parsed, sensitivityRules))
+    }
+
+    // If parsing fails, apply masking rules directly to the string
+    sensitivityRules.forEach((rule) => {
+      if (rule.pattern.test(info)) {
+        info = info.replace(rule.pattern, rule.replacement)
+      }
+    })
+    return info
+  }
+
+  if (typeof info === 'object' && info !== null) {
+    // Recursively mask sensitive data in objects
+    for (const key in info) {
+      if (info.hasOwnProperty(key)) {
+        if (typeof info[key] === 'string') {
+          sensitivityRules.forEach((rule) => {
+            if (key === rule.key || rule.pattern.test(info[key])) {
+              info[key] = info[key].replace(rule.pattern, rule.replacement)
+            }
+          })
+        } else if (typeof info[key] === 'object') {
+          info[key] = maskSensitiveData(info[key], sensitivityRules)
+        }
+      }
+    }
+  }
+
+  return info
+}
+const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
+  format.printf(({ level, message, timestamp }) => {
+    let maskedMessage
+    try {
+      maskedMessage = maskSensitiveData(message, sensitivityRules)
+    } catch (e) {
+      maskedMessage = message
+    }
+    return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
+  })
+
+const unmaskedMessageFormat = format.printf(({ level, message, timestamp }) => {
+  return `[${timestamp}] ${level}: ${JSON.stringify(message)}`
+})
 
 export const getLogger = ({
   service,
@@ -81,6 +148,7 @@ export const getLogger = ({
   defaultMeta = {},
   logHttpFunc = logHttp,
   logHttpErrorFunc = logHttpError,
+  maskingSensitivityRules = [],
 }: LogOptions): LoggerResult => {
   try {
     if (process.env.LOG_LEVEL) {
@@ -106,24 +174,23 @@ export const getLogger = ({
   }
 
   if (!loggers[service]) {
-    const winstonConsoleFormat = format.combine(
+    const winstonFormat = format.combine(
+      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
+      format.json(),
+      format.errors({ stack: consoleFormattingOptions.stack }),
+      maskingSensitivityRules.length // Enable masking if rules are passsed
+        ? maskedMessageFormat(maskingSensitivityRules)
+        : unmaskedMessageFormat,
+
       consoleFormattingOptions.colorize
         ? format.colorize({ all: true })
-        : format.uncolorize(),
-      consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
-      consoleFormattingOptions.align ? format.align() : format.simple(),
-      format.printf((info) => {
-        return `[${info.timestamp}] ${info.level}: ${info.message}`
-      }),
-      format.errors({ stack: consoleFormattingOptions.stack })
+        : format.uncolorize()
     )
 
     const loggingWinstonSettings: Options = {
       level,
-      serviceContext: {
-        service,
-        version,
-      },
+      serviceContext: { service, version },
+      format: winstonFormat,
     }
 
     if (gcpProjectId) {
@@ -134,10 +201,7 @@ export const getLogger = ({
 
     if (enableConsole) {
       transports.push(
-        new WinstonTransports.Console({
-          format: winstonConsoleFormat,
-          level,
-        })
+        new WinstonTransports.Console({ format: winstonFormat, level })
       )
     }
     if (shouldSendToGcp) {
