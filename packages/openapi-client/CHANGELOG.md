@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.2.1
+
+### Patch Changes
+
+- d33f146: Add debug logging for serializer
+
 ## 2.2.0
 
 ### Minor Changes
