@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.6.0
+
+### Minor Changes
+
+- 6ab51d6: enable option for providing sensitivity rules that can be used for masking sensitive information
+
 ## 1.5.1
 
 ### Patch Changes
