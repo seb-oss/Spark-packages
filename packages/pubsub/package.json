@@ -20,7 +20,7 @@
     "vitest": "^3.0.9"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "4.10.0",
+    "@google-cloud/pubsub": "4.11.0",
     "@types/express": "5.0.0",
     "@types/html-escaper": "3.0.4",
     "avsc": "^5.7.7",
