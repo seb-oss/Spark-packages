@@ -71,7 +71,7 @@ router.get('/undocumented-security/:id', authorize, (_req, res) => {
 })
 
 router.get('/search', (req, res) => {
-  const received = req.query.type as string[]
+  const received = req.query.type
   res.json({ received })
 })
 
