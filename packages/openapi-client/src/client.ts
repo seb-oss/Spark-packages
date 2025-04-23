@@ -166,10 +166,9 @@ const callServer = async <
   try {
     const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
 
-    logger?.debug('[callServer] typeof serializer:', typeof serializer)
+    logger?.debug(`[callServer] typeof serializer: ${typeof serializer}`)
     logger?.debug(
-      '[callServer] sample serialization:',
-      serializer({ test: ['a', 'b'] })
+      `[callServer] sample serialization: ${serializer({ test: ['a', 'b'] })}`
     )
 
     const body =
