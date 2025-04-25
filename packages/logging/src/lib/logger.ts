@@ -1,4 +1,5 @@
 import { LoggingWinston, type Options } from '@google-cloud/logging-winston'
+import { error } from 'console'
 import type {
   ErrorRequestHandler,
   Request,
@@ -124,14 +125,46 @@ export const maskSensitiveData = (
   return info
 }
 const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
-  format.printf(({ level, message, timestamp }) => {
+  format((info) => {
+    const { level, message, timestamp } = info
+
+    console.log('\n ====> WHAT IS INFO', info)
+    // if (info.stack) {
+    // }
     let maskedMessage: object | string | unknown
     try {
+      // if (info.stack) {
+      //   maskSensitiveData(info.stack, sensitivityRules)
+      // }
       maskedMessage = maskSensitiveData(message, sensitivityRules)
     } catch (e) {
       maskedMessage = message
     }
-    return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
+
+    if (info.stack) {
+    }
+
+    return {
+      message: 'foo bar',
+      timestamp,
+      level: 'warn',
+    }
+    // return JSON.stringify(info)
+
+    // return JSON.stringify({
+    //   message: maskSensitiveData(message, sensitivityRules),
+    //   level: 'info',
+    //   stack: info.stack
+    //     ? maskSensitiveData(info.stack, sensitivityRules)
+    //     : undefined,
+    //   error: info.error
+    //     ? maskSensitiveData(info.error, sensitivityRules)
+    //     : undefined,
+    //   timestamp,
+    // })
+    // return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
+
+    // return 'HERP DERP'
   })
 
 const unmaskedMessageFormat = format.printf(({ level, message, timestamp }) => {
@@ -175,24 +208,46 @@ export const getLogger = ({
     ...formattingOptions,
   }
 
+  const GoogleCloudLoggingFormatter = (sensitivityRules: SensitivityRules) =>
+    format((info, opts = {}) => {
+      // console.log('INFO', info)
+
+      // return {
+      //   message: 'foo bar',
+      //   level: info.level,
+      //   severity: info['level'].toUpperCase(),
+      // }
+      info.message = maskSensitiveData(info.message, sensitivityRules)
+      if (info.stack) {
+        info.stack = maskSensitiveData(info.stack, sensitivityRules)
+      }
+      if (info.error) {
+        info.error = maskSensitiveData(info.error, sensitivityRules)
+      }
+      return info
+    })
+
   if (!loggers[service]) {
     const winstonFormat = format.combine(
       consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
-      format.json(),
-      format.errors({ stack: consoleFormattingOptions.stack }),
-      maskingSensitivityRules.length // Enable masking if rules are passsed
-        ? maskedMessageFormat(maskingSensitivityRules)
-        : unmaskedMessageFormat,
+      GoogleCloudLoggingFormatter(maskingSensitivityRules)(),
+      // maskedMessageFormat(maskingSensitivityRules)(),
+      format.json()
 
-      consoleFormattingOptions.colorize
-        ? format.colorize({ all: true })
-        : format.uncolorize()
+      // format.errors({ stack: consoleFormattingOptions.stack }),
+      // maskingSensitivityRules.length // Enable masking if rules are passsed
+      //   ? maskedMessageFormat(maskingSensitivityRules)
+      //   : unmaskedMessageFormat,
+      // consoleFormattingOptions.colorize
+      //   ? format.colorize({ all: true })
+      //   : format.uncolorize()
     )
 
     const loggingWinstonSettings: Options = {
       level,
       serviceContext: { service, version },
-      format: winstonFormat,
+      // format: winstonFormat,
+      // redirectToStdout: true,
     }
 
     if (gcpProjectId) {
@@ -202,16 +257,22 @@ export const getLogger = ({
     const transports: Transport[] = []
 
     if (enableConsole) {
-      transports.push(
-        new WinstonTransports.Console({ format: winstonFormat, level })
-      )
+      transports.push(new WinstonTransports.Console({ level }))
     }
     if (shouldSendToGcp) {
-      transports.push(new LoggingWinston(loggingWinstonSettings))
+      const loggerTransport = new LoggingWinston(loggingWinstonSettings)
+
+      transports.push(loggerTransport)
     }
 
     const silent = showLogs ? false : isSilent
-    loggers[service] = createLogger({ level, transports, silent, defaultMeta })
+    loggers[service] = createLogger({
+      level,
+      transports,
+      silent,
+      defaultMeta,
+      format: winstonFormat,
+    })
   }
   return {
     logger: loggers[service],
