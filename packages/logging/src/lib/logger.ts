@@ -235,9 +235,7 @@ export const getLogger = ({
       transports.push(new WinstonTransports.Console({ level }))
     }
     if (shouldSendToGcp) {
-      const loggerTransport = new LoggingWinston(loggingWinstonSettings)
-
-      transports.push(loggerTransport)
+      transports.push(new LoggingWinston(loggingWinstonSettings))
     }
 
     const silent = showLogs ? false : isSilent
