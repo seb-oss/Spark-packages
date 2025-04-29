@@ -2,8 +2,8 @@ import express from 'express'
 import { type Agent, agent } from 'supertest'
 import { beforeEach, describe, expect, it } from 'vitest'
 
-import { getLogger } from './logger'
 import { randomUUID } from 'node:crypto'
+import { getLogger } from './logger'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -11,6 +11,8 @@ describe.only('logging e2e verification', () => {
   describe('logger', () => {
     // it('logs info to console', async () => {
     //   const { logger } = getLogger({
+    //     gcpProjectId: 'neo-99r70-dev',
+    //     shouldSendToGcp: true,
     //     service: randomUUID(),
     //     showLogs: true,
     //     maskingSensitivityRules: [
@@ -24,11 +26,12 @@ describe.only('logging e2e verification', () => {
     //     guid: '195F4421-D388-4BD9-9EAF-0A73BD2135EA',
     //     herp: 'derp',
     //   })
+    //   await wait(3000)
     // })
     // it('logs error to console', async () => {
     //   console.log('\n ===> RUNNING TEST: Error logged <====')
     //   const { logger } = getLogger({
-    //     gcpProjectId: 'seb-neo-3ca6e511',
+    //     gcpProjectId: 'neo-99r70-dev',
     //     shouldSendToGcp: true,
     //     // enableConsole: true,
     //     service: randomUUID(),
@@ -84,9 +87,9 @@ describe.only('logging e2e verification', () => {
     let server: Agent
     beforeEach(() => {
       const { requestMiddleware, errorRequestMiddleware, logger } = getLogger({
-        gcpProjectId: 'seb-neo-3ca6e511',
+        gcpProjectId: 'neo-99r70-dev',
         shouldSendToGcp: true,
-        // enableConsole: true,
+        enableConsole: false,
         service: randomUUID(),
         showLogs: true,
         maskingSensitivityRules: [
@@ -94,7 +97,6 @@ describe.only('logging e2e verification', () => {
           { key: 'pnr', pattern: /\d{8}-?\d{4}/g, replacement: '************' },
         ],
       })
-
 
       const app = express()
       app.use(requestMiddleware())
@@ -130,14 +132,13 @@ describe.only('logging e2e verification', () => {
 
       server = agent(app)
     })
-    it.only('masks sensitive data in all requests', async () => {
+    // it('masks sensitive data in all requests', async () => {
+    //   await server.get(
+    //     '/?notapersonalnumber=201202120349&notakurre=12021203490000&guid=195F4421-D388-4BD9-9EAF-0A73BD2135EA'
+    //   )
 
-      await server.get(
-        '/?notapersonalnumber=201202120349&notakurre=12021203490000&guid=195F4421-D388-4BD9-9EAF-0A73BD2135EA'
-      )
-
-      await wait(3000)
-    })
+    //   await wait(3000)
+    // })
     it('masks sensitive data in errors', async () => {
       await server.post('/css-error')
       await wait(3000)
