@@ -167,53 +167,6 @@ export const maskSensitiveData = (
   return info
 }
 
-const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
-  format((info) => {
-    const { level, message, timestamp } = info
-
-    console.log('\n ====> WHAT IS INFO', info)
-    // if (info.stack) {
-    // }
-    let maskedMessage: object | string | unknown
-    try {
-      // if (info.stack) {
-      //   maskSensitiveData(info.stack, sensitivityRules)
-      // }
-      maskedMessage = maskSensitiveData(message, sensitivityRules)
-    } catch (e) {
-      maskedMessage = message
-    }
-
-    if (info.stack) {
-    }
-
-    return {
-      message: 'foo bar',
-      timestamp,
-      level: 'warn',
-    }
-    // return JSON.stringify(info)
-
-    // return JSON.stringify({
-    //   message: maskSensitiveData(message, sensitivityRules),
-    //   level: 'info',
-    //   stack: info.stack
-    //     ? maskSensitiveData(info.stack, sensitivityRules)
-    //     : undefined,
-    //   error: info.error
-    //     ? maskSensitiveData(info.error, sensitivityRules)
-    //     : undefined,
-    //   timestamp,
-    // })
-    // return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
-
-    // return 'HERP DERP'
-  })
-
-const unmaskedMessageFormat = format.printf(({ level, message, timestamp }) => {
-  return `[${timestamp}] ${level}: ${JSON.stringify(message)}`
-})
-
 export const getLogger = ({
   service,
   version,
@@ -253,6 +206,9 @@ export const getLogger = ({
 
   const GoogleCloudLoggingFormatter = (sensitivityRules: SensitivityRules) =>
     format((info, opts = {}) => {
+      if (!sensitivityRules.length) {
+        return info
+      }
       return maskSensitiveData(info, sensitivityRules) as TransformableInfo
     })
 
@@ -260,13 +216,8 @@ export const getLogger = ({
     const winstonFormat = format.combine(
       consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
       GoogleCloudLoggingFormatter(maskingSensitivityRules)(),
-      // maskedMessageFormat(maskingSensitivityRules)(),
-      format.json()
-
-      // format.errors({ stack: consoleFormattingOptions.stack }),
-      // maskingSensitivityRules.length // Enable masking if rules are passsed
-      //   ? maskedMessageFormat(maskingSensitivityRules)
-      //   : unmaskedMessageFormat,
+      format.json(),
+      format.errors({ stack: consoleFormattingOptions.stack })
     )
 
     const loggingWinstonSettings: Options = {
@@ -278,7 +229,6 @@ export const getLogger = ({
         },
         type: 'k8s_container',
       },
-      format: winstonFormat,
       redirectToStdout: false,
     }
 
@@ -303,7 +253,7 @@ export const getLogger = ({
       transports,
       silent,
       defaultMeta,
-      // format: winstonFormat,
+      format: winstonFormat,
     })
   }
   return {
