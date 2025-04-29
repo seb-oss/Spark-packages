@@ -223,13 +223,6 @@ export const getLogger = ({
     const loggingWinstonSettings: Options = {
       level,
       serviceContext: { service, version },
-      resource: {
-        labels: {
-          container_name: 'herpderp',
-        },
-        type: 'k8s_container',
-      },
-      redirectToStdout: false,
     }
 
     if (gcpProjectId) {
