@@ -83,11 +83,10 @@ describe('logging', () => {
       getLogger({ service: 'test', showLogs: true })
 
       const callArgs = spy.mock.calls[0]
-      expect(callArgs).toHaveLength(5)
+      expect(callArgs).toHaveLength(4)
       expect(callArgs[0]).toStrictEqual(Winston.format.timestamp())
-      expect(callArgs[1]).toStrictEqual(Winston.format.json())
-      expect(callArgs[2]).toStrictEqual(Winston.format.errors({ stack: true }))
-      expect(callArgs[4]).toStrictEqual(Winston.format.colorize({ all: true }))
+      expect(callArgs[2]).toStrictEqual(Winston.format.json())
+      expect(callArgs[3]).toStrictEqual(Winston.format.errors({ stack: true }))
 
       spy.mockRestore()
     })
@@ -101,11 +100,10 @@ describe('logging', () => {
       })
 
       const callArgs = spy.mock.calls[0]
-      expect(callArgs).toHaveLength(5)
+      expect(callArgs).toHaveLength(4)
       expect(callArgs[0]).toStrictEqual(Winston.format.timestamp())
-      expect(callArgs[1]).toStrictEqual(Winston.format.json())
-      expect(callArgs[2]).toStrictEqual(Winston.format.errors({ stack: true }))
-      expect(callArgs[4]).toStrictEqual(Winston.format.uncolorize())
+      expect(callArgs[2]).toStrictEqual(Winston.format.json())
+      expect(callArgs[3]).toStrictEqual(Winston.format.errors({ stack: true }))
 
       spy.mockRestore()
     })

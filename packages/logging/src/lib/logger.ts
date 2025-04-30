@@ -15,6 +15,8 @@ import {
 } from 'winston'
 import type * as Transport from 'winston-transport'
 
+import type { TransformableInfo } from 'logform'
+
 let loggers: Record<string, Logger> = {}
 
 // Clear out loggers (for test purposes)
@@ -72,12 +74,15 @@ export type LoggerResult = {
   instrumentSocket: (server: Server) => Server
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: Because object | strng | unknown is a can of worms
+type ExtendedError = Error & { [key: string]: any }
+
 // Implement masking function
 export const maskSensitiveData = (
   // biome-ignore lint/suspicious/noExplicitAny: Because object | strng | unknown is a can of worms
   info: any,
   sensitivityRules: SensitivityRules
-): object | string | unknown => {
+): object | string | Error | unknown => {
   const tryParseJSON = (str: string): object | null => {
     try {
       return JSON.parse(str)
@@ -87,21 +92,59 @@ export const maskSensitiveData = (
   }
 
   if (typeof info === 'string') {
-    let result = info
-    // Attempt to parse the string as JSON
     const parsed = tryParseJSON(info)
     if (parsed) {
-      // If parsing succeeds, mask the parsed object
       return JSON.stringify(maskSensitiveData(parsed, sensitivityRules))
     }
 
-    // If parsing fails, apply masking rules directly to the string
+    // Apply all matching rules
+    let result = info
     for (const rule of sensitivityRules) {
-      if (rule.pattern.test(info)) {
-        result = info.replace(rule.pattern, rule.replacement)
-      }
+      result = result.replace(rule.pattern, rule.replacement)
     }
     return result
+  }
+
+  if (Array.isArray(info)) {
+    return info.map((item) => maskSensitiveData(item, sensitivityRules))
+  }
+
+  if (info instanceof Error) {
+    const errorCopy: ExtendedError = new Error()
+
+    // Mask the message
+    errorCopy.message = sensitivityRules.reduce((msg, rule) => {
+      return rule.pattern.test(msg)
+        ? msg.replace(rule.pattern, rule.replacement)
+        : msg
+    }, info.message)
+
+    // Mask the stack (if it exists)
+    if (info.stack) {
+      errorCopy.stack = sensitivityRules.reduce((stack, rule) => {
+        return rule.pattern.test(stack)
+          ? stack.replace(rule.pattern, rule.replacement)
+          : stack
+      }, info.stack)
+    }
+
+    // Copy any other enumerable properties (if any)
+    for (const key in info) {
+      if (Object.hasOwn(info, key)) {
+        const value = (info as ExtendedError)[key]
+        if (typeof value === 'string') {
+          errorCopy[key] = sensitivityRules.reduce((val, rule) => {
+            return rule.pattern.test(val)
+              ? val.replace(rule.pattern, rule.replacement)
+              : val
+          }, value)
+        } else {
+          errorCopy[key] = maskSensitiveData(value, sensitivityRules)
+        }
+      }
+    }
+
+    return errorCopy
   }
 
   if (typeof info === 'object' && info !== null) {
@@ -123,20 +166,6 @@ export const maskSensitiveData = (
 
   return info
 }
-const maskedMessageFormat = (sensitivityRules: SensitivityRules) =>
-  format.printf(({ level, message, timestamp }) => {
-    let maskedMessage: object | string | unknown
-    try {
-      maskedMessage = maskSensitiveData(message, sensitivityRules)
-    } catch (e) {
-      maskedMessage = message
-    }
-    return `[${timestamp}] ${level}: ${JSON.stringify(maskedMessage)}`
-  })
-
-const unmaskedMessageFormat = format.printf(({ level, message, timestamp }) => {
-  return `[${timestamp}] ${level}: ${JSON.stringify(message)}`
-})
 
 export const getLogger = ({
   service,
@@ -175,24 +204,25 @@ export const getLogger = ({
     ...formattingOptions,
   }
 
+  const GoogleCloudLoggingFormatter = (sensitivityRules: SensitivityRules) =>
+    format((info, opts = {}) => {
+      if (!sensitivityRules.length) {
+        return info
+      }
+      return maskSensitiveData(info, sensitivityRules) as TransformableInfo
+    })
+
   if (!loggers[service]) {
     const winstonFormat = format.combine(
       consoleFormattingOptions.timestamp ? format.timestamp() : format.simple(),
+      GoogleCloudLoggingFormatter(maskingSensitivityRules)(),
       format.json(),
-      format.errors({ stack: consoleFormattingOptions.stack }),
-      maskingSensitivityRules.length // Enable masking if rules are passsed
-        ? maskedMessageFormat(maskingSensitivityRules)
-        : unmaskedMessageFormat,
-
-      consoleFormattingOptions.colorize
-        ? format.colorize({ all: true })
-        : format.uncolorize()
+      format.errors({ stack: consoleFormattingOptions.stack })
     )
 
     const loggingWinstonSettings: Options = {
       level,
       serviceContext: { service, version },
-      format: winstonFormat,
     }
 
     if (gcpProjectId) {
@@ -202,16 +232,20 @@ export const getLogger = ({
     const transports: Transport[] = []
 
     if (enableConsole) {
-      transports.push(
-        new WinstonTransports.Console({ format: winstonFormat, level })
-      )
+      transports.push(new WinstonTransports.Console({ level }))
     }
     if (shouldSendToGcp) {
       transports.push(new LoggingWinston(loggingWinstonSettings))
     }
 
     const silent = showLogs ? false : isSilent
-    loggers[service] = createLogger({ level, transports, silent, defaultMeta })
+    loggers[service] = createLogger({
+      level,
+      transports,
+      silent,
+      defaultMeta,
+      format: winstonFormat,
+    })
   }
   return {
     logger: loggers[service],
