@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.6.1
+
+### Patch Changes
+
+- 886fd56: use google cloud formatter to allow masking sensitive data
+
 ## 1.6.0
 
 ### Minor Changes
