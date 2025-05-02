@@ -19,11 +19,11 @@
     "@sebspark/tsconfig": "*",
     "@types/response-time": "2.3.8",
     "@types/socketio-wildcard": "2.0.7",
-    "supertest": "7.0.0"
+    "supertest": "7.1.0"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.0",
-    "express": "5.0.1",
+    "express": "5.1.0",
     "response-time": "2.3.3",
     "socket.io": "4.8.1",
     "socketio-wildcard": "2.0.0",

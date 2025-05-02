@@ -18,25 +18,25 @@
     "typecheck": "tsc --noEmit "
   },
   "devDependencies": {
-    "@google-cloud/spanner": "7.19.0",
+    "@google-cloud/spanner": "7.21.0",
     "@sebspark/cli-tester": "*",
     "@sebspark/spanner-mock": "*",
     "@types/jest": "29.5.14",
     "@types/yargs": "17.0.33",
     "jest": "29.7.0",
-    "testcontainers": "10.18.0",
-    "ts-jest": "29.2.6",
+    "testcontainers": "10.25.0",
+    "ts-jest": "29.3.2",
     "tsconfig": "*"
   },
   "peerDependencies": {
     "@google-cloud/spanner": "*"
   },
   "dependencies": {
-    "@inquirer/prompts": "7.3.2",
+    "@inquirer/prompts": "7.5.0",
     "@jest/globals": "29.7.0",
-    "@types/node": "20.17.17",
+    "@types/node": "20.17.32",
     "typescript": "5.8.3",
-    "vitest": "3.0.8",
+    "vitest": "3.1.2",
     "yargs": "17.7.2"
   }
 }

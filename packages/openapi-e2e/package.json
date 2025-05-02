@@ -13,12 +13,12 @@
     "@sebspark/openapi-client": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/openapi-express": "*",
-    "express": "5.0.1"
+    "express": "5.1.0"
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
-    "@types/express": "5.0.0",
+    "@types/express": "5.0.1",
     "tsconfig": "*",
-    "vitest": "3.0.9"
+    "vitest": "3.1.2"
   }
 }

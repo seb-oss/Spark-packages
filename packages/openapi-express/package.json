@@ -16,13 +16,13 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/supertest": "6.0.2",
-    "express": "5.0.1",
-    "supertest": "7.0.0",
+    "@types/supertest": "6.0.3",
+    "express": "5.1.0",
+    "supertest": "7.1.0",
     "tsconfig": "*"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
-    "express": "5.0.1"
+    "express": "5.1.0"
   }
 }

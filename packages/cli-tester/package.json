@@ -16,7 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@inquirer/prompts": "^7.3.2",
+    "@inquirer/prompts": "7.5.0",
     "tsconfig": "*"
   }
 }

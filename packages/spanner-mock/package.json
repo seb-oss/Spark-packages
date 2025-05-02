@@ -18,6 +18,6 @@
   },
   "peerDependencies": {
     "@jest/globals": "^29.7.0",
-    "vitest": "^3.0.2"
+    "vitest": "^3.1.2"
   }
 }
