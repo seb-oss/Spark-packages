@@ -36,6 +36,9 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
         // Create a new promise to prevent duplicate processing
         const resultPromise = (async () => {
           try {
+            // Ensure persistor is connected and ready
+            await ensurePersistorIsReady(persistor)
+
             // Check cache
             const cached = deserialize<R>(await persistor.get(key))
             if (cached !== null) {
@@ -50,6 +53,9 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
               typeof options.expiry === 'function'
                 ? options.expiry(args, result)
                 : options.expiry
+
+            // Ensure persistor is still connected and ready
+            await ensurePersistorIsReady(persistor)
 
             // Save to cache
             const serialized = serialize(result)
@@ -71,4 +77,33 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
     },
   }
   return cache
+}
+
+const ensurePersistorIsReady = async (persistor: IPersistor) => {
+  // Persistor is connected and ready
+  if (persistor.isReady) {
+    return
+  }
+
+  // Persistor is connecting but not ready
+  if (persistor.isOpen) {
+    await new Promise<void>((resolve) => {
+      if (persistor.isReady) return resolve()
+      persistor.once('ready', resolve)
+      return
+    })
+  }
+
+  // Persistor should connect
+  try {
+    await persistor.connect()
+  } catch (err) {
+    if ((err as Error).message === 'Socket already opened') {
+      // Connection is already in progress
+      await new Promise<void>((resolve) => {
+        if (persistor.isReady) return resolve()
+        persistor.once('ready', resolve)
+      })
+    }
+  }
 }

@@ -25,7 +25,7 @@ describe('cache e2e', () => {
   beforeAll(async () => {
     container = await new RedisContainer().start()
     persistor = createClient({ url: container.getConnectionUrl() })
-    await persistor.connect()
+    persistor.connect()
 
     cache = createCache(persistor)
   })
@@ -36,7 +36,9 @@ describe('cache e2e', () => {
   })
 
   beforeEach(async () => {
-    await cache.persistor.flushAll() // Clear cache before each test
+    if (cache.persistor.isReady) {
+      await cache.persistor.flushAll() // Clear cache before each test
+    }
   })
 
   it('returns the same value as the unwrapped function', async () => {

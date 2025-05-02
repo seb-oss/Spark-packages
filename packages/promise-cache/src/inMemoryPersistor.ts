@@ -1,3 +1,4 @@
+import { RedisClientType } from '@redis/client'
 import type { SetOptions } from 'redis'
 import type { IPersistor, IPersistorMulti, MultiExecReturnTypes } from './types'
 
@@ -35,6 +36,22 @@ export class InMemoryPersistor implements IPersistor {
     this.store = new Map()
     this.expirations = new Map()
     this.expiryTimestamps = new Map()
+  }
+
+  async connect() {
+    return this
+  }
+
+  get isReady(): boolean {
+    return true
+  }
+
+  get isOpen(): boolean {
+    return true
+  }
+
+  once() {
+    return this
   }
 
   /**

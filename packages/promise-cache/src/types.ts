@@ -297,7 +297,17 @@ export interface IPersistor {
    * @returns Resolves to the number of elements removed.
    */
   zRem: (key: string, members: string | string[]) => Promise<number>
+
+  isReady: boolean
+  isOpen: boolean
+
+  connect: () => Promise<IPersistor>
+
+  once: (event: IPersistorEvent, cb: EventCallback) => IPersistor
 }
+
+type IPersistorEvent = 'ready' | 'connect' | 'reconnecting'
+type EventCallback = () => void
 
 /**
  * Interface for executing multiple storage commands in a batch operation.
