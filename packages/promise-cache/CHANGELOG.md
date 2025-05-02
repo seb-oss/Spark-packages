@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.9.0
+
+### Minor Changes
+
+- 14bf5a6: New cache wrapper now ensures persistor is connected
+
 ## 3.8.0
 
 ### Minor Changes
