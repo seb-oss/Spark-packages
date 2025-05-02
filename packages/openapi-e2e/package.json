@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-e2e",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "Apache-2.0",
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
