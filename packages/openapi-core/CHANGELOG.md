@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.2.1
+
+### Patch Changes
+
+- 06948d0: Updated dependencies
+
 ## 2.2.0
 
 ### Minor Changes

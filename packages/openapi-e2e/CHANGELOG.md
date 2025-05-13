@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 2.0.2
+
+### Patch Changes
+
+- 06948d0: Updated dependencies
+- Updated dependencies [06948d0]
+  - @sebspark/openapi-express@2.0.3
+  - @sebspark/openapi-client@2.2.3
+  - @sebspark/openapi-core@2.2.1
+
 ## 2.0.1
 
 ### Patch Changes
