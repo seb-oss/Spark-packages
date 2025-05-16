@@ -2061,6 +2061,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/core@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@opentelemetry/core@npm:2.0.1"
+  dependencies:
+    "@opentelemetry/semantic-conventions": "npm:^1.29.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.0.0 <1.10.0"
+  checksum: 10c0/d587b1289559757d80da98039f9f57612f84f72ec608cd665dc467c7c6c5ce3a987dfcc2c63b521c7c86ce984a2552b3ead15a0dc458de1cf6bde5cdfe4ca9d8
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/exporter-trace-otlp-proto@npm:0.57.1":
   version: 0.57.1
   resolution: "@opentelemetry/exporter-trace-otlp-proto@npm:0.57.1"
@@ -2295,6 +2306,13 @@ __metadata:
   version: 1.28.0
   resolution: "@opentelemetry/semantic-conventions@npm:1.28.0"
   checksum: 10c0/deb8a0f744198071e70fea27143cf7c9f7ecb7e4d7b619488c917834ea09b31543c1c2bcea4ec5f3cf68797f0ef3549609c14e859013d9376400ac1499c2b9cb
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/semantic-conventions@npm:^1.29.0":
+  version: 1.33.0
+  resolution: "@opentelemetry/semantic-conventions@npm:1.33.0"
+  checksum: 10c0/b2d9d5e7e828140f00fec034462fcca190ace989937d6f7d8e9671e8313c70506a4e1d77d9e88e8e6032d24ba713a97672d99882a050ce6096a18fa9864624c5
   languageName: node
   linkType: hard
 
@@ -3008,7 +3026,7 @@ __metadata:
     "@google-cloud/opentelemetry-cloud-trace-exporter": "npm:2.4.1"
     "@google-cloud/trace-agent": "npm:8.0.0"
     "@opentelemetry/api": "npm:1.9.0"
-    "@opentelemetry/core": "npm:1.30.1"
+    "@opentelemetry/core": "npm:2.0.1"
     "@opentelemetry/exporter-trace-otlp-proto": "npm:0.57.1"
     "@opentelemetry/exporter-zipkin": "npm:1.30.1"
     "@opentelemetry/instrumentation-express": "npm:0.47.1"
