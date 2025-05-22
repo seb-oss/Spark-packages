@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.7.2
+
+### Patch Changes
+
+- 06948d0: Updated dependencies
+
 ## 1.7.1
 
 ### Patch Changes

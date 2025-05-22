@@ -1,5 +1,18 @@
 # @sebspark/openapi-typegen
 
+## 2.2.0
+
+### Minor Changes
+
+- 22f4144: Export server paths as separate type
+- 601f782: Update tests
+
+### Patch Changes
+
+- 06948d0: Updated dependencies
+- Updated dependencies [06948d0]
+  - @sebspark/openapi-core@2.2.1
+
 ## 2.1.0
 
 ### Minor Changes

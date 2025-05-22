@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.9.1
+
+### Patch Changes
+
+- 06948d0: Updated dependencies
+
 ## 3.9.0
 
 ### Minor Changes
