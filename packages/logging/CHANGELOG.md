@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.7.1
+
+### Patch Changes
+
+- da3bf90: Missing dependencies
+
 ## 1.7.0
 
 ### Minor Changes
