@@ -11,13 +11,16 @@ import { documentServerPath } from './document'
 export const generateServer = (name: string, paths: Path[]): string => {
   const tokens: string[] = []
 
-  tokens.push(`export type ${name}Server = APIServerDefinition & {`)
+  tokens.push(`export type ${name}ServerPaths = {`)
 
   for (const [url, methods] of Object.entries(groupPathsByUrl(paths))) {
     tokens.push(generatePath(url, methods))
   }
 
   tokens.push('}')
+  tokens.push(
+    `export type ${name}Server = APIServerDefinition & ${name}ServerPaths`
+  )
 
   return tokens.join('\n')
 }
