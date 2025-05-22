@@ -70,7 +70,7 @@ export type HttpError = {
   stack?: string
 }
 
-export type CardsAPIServer = APIServerDefinition & {
+export type CardsAPIServerPaths = {
   '/': {
     get: {
       /**
@@ -178,6 +178,8 @@ export type CardsAPIServer = APIServerDefinition & {
     }
   }
 }
+
+export type CardsAPIServer = APIServerDefinition & CardsAPIServerPaths
 
 export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
   get: {

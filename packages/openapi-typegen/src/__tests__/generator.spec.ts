@@ -844,7 +844,7 @@ describe('typescript generator', () => {
         },
       ]
       const expected = await format(`
-      export type UserServer = APIServerDefinition & {
+      export type UserServerPaths = {
         '/users': {
           get: {
             /**
@@ -875,6 +875,8 @@ describe('typescript generator', () => {
           }
         }
       }
+      
+      export type UserServer = APIServerDefinition & UserServerPaths
       `)
       const generated = await format(generateServer('User', paths))
 

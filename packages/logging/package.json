@@ -19,7 +19,9 @@
     "@sebspark/tsconfig": "*",
     "@types/response-time": "2.3.8",
     "@types/socketio-wildcard": "2.0.7",
-    "supertest": "7.1.0"
+    "@types/utils-merge": "^1",
+    "supertest": "7.1.0",
+    "utils-merge": "^1.0.1"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.0",

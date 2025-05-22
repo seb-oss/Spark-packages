@@ -74,7 +74,7 @@ export type ApiKeyAuth = {
   'X-API-KEY': string
 }
 
-export type ExampleAPIServer = APIServerDefinition & {
+export type ExampleAPIServerPaths = {
   '/users': {
     get: {
       /**
@@ -145,6 +145,8 @@ export type ExampleAPIServer = APIServerDefinition & {
     }
   }
 }
+
+export type ExampleAPIServer = APIServerDefinition & ExampleAPIServerPaths
 
 export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
   get: {

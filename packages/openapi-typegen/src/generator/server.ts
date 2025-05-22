@@ -18,6 +18,7 @@ export const generateServer = (name: string, paths: Path[]): string => {
   }
 
   tokens.push('}')
+  tokens.push('\n')
   tokens.push(
     `export type ${name}Server = APIServerDefinition & ${name}ServerPaths`
   )

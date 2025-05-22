@@ -6261,7 +6261,7 @@ export type OAuth = {
   Authorization: string
 }
 
-export type CdapiServiceOpenapiServer = APIServerDefinition & {
+export type CdapiServiceOpenapiServerPaths = {
   '/bond/benchmarks': {
     get: {
       /**
@@ -22177,6 +22177,8 @@ export type CdapiServiceOpenapiServer = APIServerDefinition & {
     }
   }
 }
+
+export type CdapiServiceOpenapiServer = APIServerDefinition & CdapiServiceOpenapiServerPaths
 
 export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
   get: {
