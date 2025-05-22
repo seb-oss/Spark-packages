@@ -17,9 +17,11 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
+    "@types/destroy": "^1",
     "@types/response-time": "2.3.8",
     "@types/socketio-wildcard": "2.0.7",
     "@types/utils-merge": "^1",
+    "destroy": "^1.2.0",
     "supertest": "7.1.0",
     "utils-merge": "^1.0.1"
   },
