@@ -109,7 +109,7 @@ describe('prepare', () => {
       // only select, no create
       expect(database.updateSchema).toHaveBeenCalledTimes(1)
       expect(database.updateSchema).toHaveBeenCalledWith(
-        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX);'
+        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX)'
       )
     })
     it('updates down if to narrow', async () => {
@@ -148,7 +148,7 @@ describe('prepare', () => {
       // only select, no create
       expect(database.updateSchema).toHaveBeenCalledTimes(1)
       expect(database.updateSchema).toHaveBeenCalledWith(
-        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX);'
+        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX)'
       )
     })
     it('updates up and down if to narrow', async () => {
@@ -187,10 +187,10 @@ describe('prepare', () => {
       // only select, no create
       expect(database.updateSchema).toHaveBeenCalledTimes(2)
       expect(database.updateSchema).toHaveBeenCalledWith(
-        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX);'
+        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX)'
       )
       expect(database.updateSchema).toHaveBeenCalledWith(
-        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX);'
+        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX)'
       )
     })
   })

@@ -55,7 +55,7 @@ export const ensureMigrationTable = async (db: Database) => {
           `Updating 'up' column of migration table to ${expectedType}`
         )
         await db.updateSchema(
-          `ALTER TABLE migrations ALTER COLUMN up ${expectedType};`
+          `ALTER TABLE migrations ALTER COLUMN up ${expectedType}`
         )
       } catch (err) {
         console.error('Failed to update migrations table')
@@ -69,7 +69,7 @@ export const ensureMigrationTable = async (db: Database) => {
           `Updating 'down' column of migration table to ${expectedType}`
         )
         await db.updateSchema(
-          `ALTER TABLE migrations ALTER COLUMN down ${expectedType};`
+          `ALTER TABLE migrations ALTER COLUMN down ${expectedType}`
         )
       } catch (err) {
         console.error('Failed to update migrations table')
