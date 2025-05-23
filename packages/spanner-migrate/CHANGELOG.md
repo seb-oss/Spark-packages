@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.0
+
+### Minor Changes
+
+- 3388fef: Widened up and down columns for migrations and updated Spanner dependency to 8.0.0
+
 ## 1.0.1
 
 ### Patch Changes
