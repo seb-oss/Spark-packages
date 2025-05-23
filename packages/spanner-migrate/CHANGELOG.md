@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.2
+
+### Patch Changes
+
+- f95d28e: Fixed flaky migration table update
+
 ## 1.1.1
 
 ### Patch Changes
