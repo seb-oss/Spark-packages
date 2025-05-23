@@ -22,7 +22,10 @@ describe('prepare', () => {
     it('checks if table exists', async () => {
       await ensureMigrationTable(database)
 
-      expect(database.run).toHaveBeenCalledWith(SQL_SELECT_TABLE_MIGRATIONS)
+      expect(database.run).toHaveBeenCalledWith({
+        sql: SQL_SELECT_TABLE_MIGRATIONS,
+        json: true,
+      })
     })
     it('creates table if it does not exist', async () => {
       // return table row

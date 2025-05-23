@@ -28,7 +28,7 @@ export const SQL_CREATE_TABLE_MIGRATIONS = `
 
 export const ensureMigrationTable = async (db: Database) => {
   // Check if table exists
-  const [rows] = await db.run(SQL_SELECT_TABLE_MIGRATIONS)
+  const [rows] = await db.run({ sql: SQL_SELECT_TABLE_MIGRATIONS, json: true })
 
   if (rows.length === 0) {
     // Create migration table
