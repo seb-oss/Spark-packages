@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.1
+
+### Patch Changes
+
+- 0bb3f0e: removed ; at the end of alter column
+
 ## 1.1.0
 
 ### Minor Changes
