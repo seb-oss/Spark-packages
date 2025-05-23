@@ -19,7 +19,7 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "@google-cloud/iam-credentials": "3.3.0",
+    "@google-cloud/iam-credentials": "4.0.1",
     "google-auth-library": "9.15.1"
   }
 }
