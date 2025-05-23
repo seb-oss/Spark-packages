@@ -4,11 +4,16 @@ import type { Migration } from './types'
 
 export const SQL_SELECT_TABLE_MIGRATIONS = `
   SELECT
-    table_name
+    t.TABLE_NAME,
+    c.COLUMN_NAME,
+    c.SPANNER_TYPE
   FROM
-    information_schema.tables
+    information_schema.TABLES t
+  INNER JOIN
+  	information_schema.COLUMNS c
+  ON t.TABLE_NAME = c.TABLE_NAME
   WHERE
-    table_name = 'migrations'
+    t.TABLE_NAME = 'migrations'
 `
 
 export const SQL_CREATE_TABLE_MIGRATIONS = `
@@ -16,23 +21,61 @@ export const SQL_CREATE_TABLE_MIGRATIONS = `
     id STRING(128) NOT NULL,
     description STRING(256) NOT NULL,
     applied_at TIMESTAMP NOT NULL OPTIONS (allow_commit_timestamp = true),
-    up STRING(1024),
-    down STRING(1024)
+    up STRING(MAX),
+    down STRING(MAX)
   ) PRIMARY KEY (id)
 `
 
 export const ensureMigrationTable = async (db: Database) => {
   // Check if table exists
   const [rows] = await db.run(SQL_SELECT_TABLE_MIGRATIONS)
-  if (rows.length) return
 
-  // Create migration table
-  console.log('Creating migration table')
-  try {
-    await db.updateSchema(SQL_CREATE_TABLE_MIGRATIONS)
-  } catch (err) {
-    console.error('Failed to create migrations table')
-    throw err
+  if (rows.length === 0) {
+    // Create migration table
+    console.log('Creating migration table')
+    try {
+      await db.updateSchema(SQL_CREATE_TABLE_MIGRATIONS)
+    } catch (err) {
+      console.error('Failed to create migrations table')
+      throw err
+    }
+  } else {
+    const typedRows = rows as {
+      TABLE_NAME: string
+      COLUMN_NAME: string
+      SPANNER_TYPE: string
+    }[]
+    const upType = typedRows.find((r) => r.COLUMN_NAME === 'up')
+    const downType = typedRows.find((r) => r.COLUMN_NAME === 'down')
+    const expectedType = 'STRING(MAX)'
+
+    if (upType?.SPANNER_TYPE !== expectedType) {
+      try {
+        console.log(
+          `Updating 'up' column of migration table to ${expectedType}`
+        )
+        await db.updateSchema(
+          `ALTER TABLE migrations ALTER COLUMN up ${expectedType};`
+        )
+      } catch (err) {
+        console.error('Failed to update migrations table')
+        throw err
+      }
+    }
+
+    if (downType?.SPANNER_TYPE !== expectedType) {
+      try {
+        console.log(
+          `Updating 'down' column of migration table to ${expectedType}`
+        )
+        await db.updateSchema(
+          `ALTER TABLE migrations ALTER COLUMN down ${expectedType};`
+        )
+      } catch (err) {
+        console.error('Failed to update migrations table')
+        throw err
+      }
+    }
   }
 }
 

@@ -38,12 +38,160 @@ describe('prepare', () => {
     })
     it('creates does not create table if it does exist', async () => {
       // return table row
-      database.run.mockImplementation(() => [[{ table_name: 'migrations' }]])
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(MAX)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'applied_at',
+            SPANNER_TYPE: 'TIMESTAMP',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'description',
+            SPANNER_TYPE: 'STRING(256)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'id',
+            SPANNER_TYPE: 'STRING(128)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'down',
+            SPANNER_TYPE: 'STRING(MAX)',
+          },
+        ],
+      ])
 
       await ensureMigrationTable(database)
 
       // only select, no create
       expect(database.updateSchema).toHaveBeenCalledTimes(0)
+    })
+    it('updates up if to narrow', async () => {
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'applied_at',
+            SPANNER_TYPE: 'TIMESTAMP',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'description',
+            SPANNER_TYPE: 'STRING(256)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'id',
+            SPANNER_TYPE: 'STRING(128)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'down',
+            SPANNER_TYPE: 'STRING(MAX)',
+          },
+        ],
+      ])
+
+      await ensureMigrationTable(database)
+
+      // only select, no create
+      expect(database.updateSchema).toHaveBeenCalledTimes(1)
+      expect(database.updateSchema).toHaveBeenCalledWith(
+        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX);'
+      )
+    })
+    it('updates down if to narrow', async () => {
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(MAX)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'applied_at',
+            SPANNER_TYPE: 'TIMESTAMP',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'description',
+            SPANNER_TYPE: 'STRING(256)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'id',
+            SPANNER_TYPE: 'STRING(128)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'down',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+        ],
+      ])
+
+      await ensureMigrationTable(database)
+
+      // only select, no create
+      expect(database.updateSchema).toHaveBeenCalledTimes(1)
+      expect(database.updateSchema).toHaveBeenCalledWith(
+        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX);'
+      )
+    })
+    it('updates up and down if to narrow', async () => {
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'applied_at',
+            SPANNER_TYPE: 'TIMESTAMP',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'description',
+            SPANNER_TYPE: 'STRING(256)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'id',
+            SPANNER_TYPE: 'STRING(128)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'down',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+        ],
+      ])
+
+      await ensureMigrationTable(database)
+
+      // only select, no create
+      expect(database.updateSchema).toHaveBeenCalledTimes(2)
+      expect(database.updateSchema).toHaveBeenCalledWith(
+        'ALTER TABLE migrations ALTER COLUMN up STRING(MAX);'
+      )
+      expect(database.updateSchema).toHaveBeenCalledWith(
+        'ALTER TABLE migrations ALTER COLUMN down STRING(MAX);'
+      )
     })
   })
   describe('getAppliedMigrations', () => {

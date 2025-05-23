@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit "
   },
   "devDependencies": {
-    "@google-cloud/spanner": "7.21.0",
+    "@google-cloud/spanner": "8.0.0",
     "@sebspark/cli-tester": "*",
     "@sebspark/spanner-mock": "*",
     "@types/jest": "29.5.14",
