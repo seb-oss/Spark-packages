@@ -60,4 +60,37 @@ describe('promise-cache', () => {
     expect(result3).toEqual(42)
     expect(promise).toHaveBeenCalledTimes(2)
   })
+
+  it('falls back to wrapped function if Redis goes down during execution and fallbackOnCacheError is enabled', async () => {
+    const cache = new PromiseCache<number>({
+      ...options,
+      fallbackToFunction: true, // Enable fallback
+    })
+
+    let timesCalled = 0
+    const promise = vi.fn(async () => {
+      console.log('Promise function called') // Debug log
+      if (timesCalled > 0) return 84
+      timesCalled++
+      return 42
+    })
+
+    const ttl = 120 // 2 minutes TTL
+    const wrapped = () => cache.wrap('test', promise, ttl)
+
+    // First call: Redis is up, should cache the result
+    const result1 = await wrapped()
+    expect(result1).toEqual(42)
+    expect(promise).toHaveBeenCalledTimes(1)
+
+    // Mock Redis to simulate failure
+    vi.spyOn(cache.persistor, 'get').mockImplementation(async () => {
+      throw new Error('Redis unavailable')
+    })
+
+    // Second call: Redis is down, should fallback to the wrapped function
+    const result2 = await wrapped()
+    expect(result2).toEqual(84) // Verify it returns the new value
+    expect(promise).toHaveBeenCalledTimes(2) // Function is called again due to fallback
+  })
 })
