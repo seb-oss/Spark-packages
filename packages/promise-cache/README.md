@@ -20,14 +20,15 @@ yarn install @sebspark/promise-cache
 
 ### **PromiseCache Class**
 
-| Params        | Type                | Default   | Description                                   |
-|---------------|---------------------|-----------|-----------------------------------------------|
-| redis         | RedisClientOptions  | undefined | Redis instance url, skip if use local memory  |
-| ttlInSeconds  | number              | undefined | Persist time in Seconds                       |
-| caseSensituve | boolean             | false     | Retrieving cache with case sensitive          |
-| onSuccess     | function            | undefined | Callback function if connection is success    |
-| onError       | function            | undefined | Callback function if there is an error        |
-| logger        | winston Logger      | undefined | Logger                                        |
+| Params             | Type                | Default   | Description                                      |
+|--------------------|---------------------|-----------|--------------------------------------------------|
+| redis              | RedisClientOptions  | undefined | Redis instance url, skip if use local memory     |
+| ttlInSeconds       | number              | undefined | Persist time in Seconds                          |
+| caseSensituve      | boolean             | false     | Retrieving cache with case sensitive             |
+| fallbackToFunction | boolean             | false     | Executes the wrapped function if persistor fails |
+| onSuccess          | function            | undefined | Callback function if connection is success       |
+| onError            | function            | undefined | Callback function if there is an error           |
+| logger             | winston Logger      | undefined | Logger                                           |
 
 ```typescript
 import { PromiseCache } from '@sebspark/promise-cache'
