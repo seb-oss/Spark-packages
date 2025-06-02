@@ -1,5 +1,5 @@
-import { randomUUID } from 'node:crypto'
 import type { UUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
 import type { Logger } from 'winston'
 import { Persistor } from './persistor'
@@ -160,14 +160,15 @@ export class PromiseCache<U> {
 
         return cached.value
       }
-    } catch (error) {
+    } catch (err) {
+      const error = err as Error
       if (!this.fallbackToFunction) {
         throw error
       }
 
       console.error(
         'redis error, falling back to function execution',
-        error.message
+        error instanceof Error ? error.message : String(error)
       )
     }
 
@@ -182,12 +183,13 @@ export class PromiseCache<U> {
     }
 
     try {
-      this.persistor.set(effectiveKey, {
+      await this.persistor.set(effectiveKey, {
         value: response,
         timestamp: now,
         ttl: effectiveTTL,
       })
-    } catch (error) {
+    } catch (err) {
+      const error = err as Error
       console.error('failed to cache result', error.message)
     }
 
