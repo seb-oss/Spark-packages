@@ -51,6 +51,7 @@ vi.mock('@google-cloud/pubsub', () => {
       get: vi.fn().mockImplementation(() => [topics[name]]),
       getMetadata: vi.fn().mockImplementation(() => [{ schemaSettings: {} }]),
       setMetadata: vi.fn(),
+      setPublishOptions: vi.fn(),
       exists: vi.fn().mockImplementation(() => [true]),
     } as unknown as Topic
     return topics[name]
@@ -104,9 +105,25 @@ describe('when creating a new publisher client with no schema and publish a mess
 
     await client.topic('example').publish(message)
 
+    expect(topicMock.setPublishOptions).toBeCalledTimes(0)
+
     expect(pubSubMock.topic).toBeCalledWith('example')
     expect(topicMock.get).toBeCalledWith()
     expect(topicMock.publishMessage).toBeCalledWith({ json: message })
+  })
+  it('sets publish options', async () => {
+    const topicMock = new PubSub().topic('example') as MockedObject<Topic>
+
+    const client = createPublisher<ExamplePubsubChannels>(undefined, {
+      batching: { maxMessages: 1 },
+    })
+    await client.topic('example').initiate()
+    await client.topic('example').initiate()
+
+    expect(topicMock.setPublishOptions).toBeCalledTimes(1)
+    expect(topicMock.setPublishOptions).toBeCalledWith({
+      batching: { maxMessages: 1 },
+    })
   })
 })
 

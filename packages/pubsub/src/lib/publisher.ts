@@ -6,7 +6,10 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
-import type { MessageOptions } from '@google-cloud/pubsub/build/src/topic'
+import type {
+  MessageOptions,
+  PublishOptions,
+} from '@google-cloud/pubsub/build/src/topic'
 import { Type } from 'avsc'
 import type { CloudSchema } from './shared'
 
@@ -75,7 +78,8 @@ export type PublisherClient<T extends Record<string, unknown>> = {
 }
 
 export const createPublisher = <T extends Record<string, unknown>>(
-  clientOptions?: ClientConfig | undefined
+  clientOptions?: ClientConfig | undefined,
+  publishOptions?: PublishOptions | undefined
 ): PublisherClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
   let _topic: Topic
@@ -85,16 +89,23 @@ export const createPublisher = <T extends Record<string, unknown>>(
     schema: CloudSchema | undefined
   ) => {
     if (!_topic) {
+      // Get or create topic
       if (schema) {
         const schemaData = await syncTopicSchema(client, schema)
         _topic = await createOrGetTopic(client, name as string, schemaData)
+      } else {
+        _topic = await createOrGetTopic(client, name as string)
       }
 
-      _topic = await createOrGetTopic(client, name as string)
-    }
-    if (schema && !_type) {
-      const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
-      _type = schemaType
+      // Set publish options
+      if (publishOptions) {
+        _topic.setPublishOptions(publishOptions)
+      }
+
+      if (schema && !_type) {
+        const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
+        _type = schemaType
+      }
     }
   }
   const typedClient: PublisherClient<T> = {
