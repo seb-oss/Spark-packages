@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.0
+
+### Minor Changes
+
+- d6f45e6: added support for PublishOptions
+
 ## 1.7.2
 
 ### Patch Changes
