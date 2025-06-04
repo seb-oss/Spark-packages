@@ -248,7 +248,7 @@ describe('cache', () => {
     const wrapped = cache.wrap(delegate, { key: 'resolve-key' })
 
     await wrapped(5)
-    expect(persistor.get('resolve-key')).resolves.toBe('{"json":10}')
+    await expect(persistor.get('resolve-key')).resolves.toBe('{"json":10}')
 
     await wrapped(5) // Cached value should be used
     expect(delegate).toHaveBeenCalledOnce()
