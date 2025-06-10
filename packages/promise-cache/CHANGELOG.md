@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 3.10.0
+
+### Minor Changes
+
+- daaca84: enable fallback to wrapped function in promiseCache on cache retrieval failure
+
 ## 3.9.1
 
 ### Patch Changes
