@@ -1,5 +1,6 @@
 import { afterEach } from 'node:test'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
+import type { Logger } from 'winston'
 import { PromiseCache } from './index'
 
 vi.mock('redis')
@@ -21,13 +22,13 @@ const cache: PromiseCache<number> = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: false,
-  logger: logger as any,
+  logger: logger as unknown as Logger,
 })
 const caseSensitiveCache = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: true,
-  logger: logger as any,
+  logger: logger as unknown as Logger,
 })
 
 describe('PromiseCache', () => {

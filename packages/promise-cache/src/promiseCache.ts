@@ -78,7 +78,7 @@ export class PromiseCache<U> {
       clientId: this.clientId,
       logger: this.logger,
     })
-    
+
     this.caseSensitive = caseSensitive
     this.fallbackToFunction = fallbackToFunction
 
