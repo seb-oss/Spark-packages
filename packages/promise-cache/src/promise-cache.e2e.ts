@@ -69,7 +69,6 @@ describe('promise-cache', () => {
 
     let timesCalled = 0
     const promise = vi.fn(async () => {
-      console.log('Promise function called') // Debug log
       if (timesCalled > 0) return 84
       timesCalled++
       return 42

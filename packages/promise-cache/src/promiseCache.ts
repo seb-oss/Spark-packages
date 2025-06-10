@@ -51,11 +51,11 @@ const getPersistor = ({
 
 export class PromiseCache<U> {
   public persistor: Persistor
-  private clientId: UUID = randomUUID()
+  private readonly clientId: UUID = randomUUID()
   private readonly caseSensitive: boolean
   private readonly fallbackToFunction: boolean // If true, the cache will fallback to the delegate function if there is an error retrieving the cache.
   private readonly ttl?: number // Time to live in milliseconds.
-
+  private readonly logger: Logger | undefined
   /**
    * Initialize a new PromiseCache.
    * @param ttlInSeconds Default cache TTL.
@@ -77,6 +77,7 @@ export class PromiseCache<U> {
       clientId: this.clientId,
       logger,
     })
+    this.logger = logger
     this.caseSensitive = caseSensitive
     this.fallbackToFunction = fallbackToFunction
 
@@ -153,7 +154,7 @@ export class PromiseCache<U> {
 
       if (cached) {
         if (!ttlKeyInSeconds && cached.ttl !== effectiveTTL) {
-          console.error(
+          this.logger?.error(
             'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
           )
         }
@@ -166,7 +167,7 @@ export class PromiseCache<U> {
         throw error
       }
 
-      console.error(
+      this.logger?.error(
         'redis error, falling back to function execution',
         error instanceof Error ? error.message : String(error)
       )
@@ -190,7 +191,7 @@ export class PromiseCache<U> {
       })
     } catch (err) {
       const error = err as Error
-      console.error('failed to cache result', error.message)
+      this.logger?.error('failed to cache result', error.message)
     }
 
     return response
