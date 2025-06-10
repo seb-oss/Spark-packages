@@ -39,10 +39,10 @@ function toMillis(seconds: number) {
 
 export class Persistor {
   public client: ReturnType<typeof createClient> | null = null
-  private clientId?: UUID
-  private onError
-  private onSuccess
-  private logger: Logger | undefined
+  private readonly clientId?: UUID
+  private readonly onError
+  private readonly onSuccess
+  private readonly logger: Logger | undefined
   private readonly redis?: RedisClientOptions
 
   constructor({
@@ -79,7 +79,7 @@ export class Persistor {
           socket: {
             ...this.redis?.socket,
             reconnectStrategy: (retries, cause) => {
-              console.error(cause)
+              this.logger?.error(cause)
               return 1000 * 2 ** retries
             },
           },

@@ -1,5 +1,5 @@
-import { randomUUID } from 'node:crypto'
 import type { UUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import type { RedisClientOptions } from 'redis'
 import type { Logger } from 'winston'
 import { Persistor } from './persistor'
@@ -10,6 +10,7 @@ export type PromiseCacheOptions = {
   ttlInSeconds?: number
   caseSensitive?: boolean
   redis?: RedisClientOptions
+  fallbackToFunction?: boolean
   onError?: (error: string) => void
   onSuccess?: () => void
   logger?: Logger
@@ -50,10 +51,11 @@ const getPersistor = ({
 
 export class PromiseCache<U> {
   public persistor: Persistor
-  private clientId: UUID = randomUUID()
+  private readonly clientId: UUID = randomUUID()
   private readonly caseSensitive: boolean
+  private readonly fallbackToFunction: boolean // If true, the cache will fallback to the delegate function if there is an error retrieving the cache.
   private readonly ttl?: number // Time to live in milliseconds.
-
+  private readonly logger: Logger | undefined
   /**
    * Initialize a new PromiseCache.
    * @param ttlInSeconds Default cache TTL.
@@ -63,18 +65,23 @@ export class PromiseCache<U> {
     ttlInSeconds,
     caseSensitive = false,
     redis,
+    fallbackToFunction = false,
     onSuccess,
     onError,
     logger,
   }: PromiseCacheOptions) {
+    this.logger = logger
     this.persistor = getPersistor({
       redis,
       onError,
       onSuccess,
       clientId: this.clientId,
-      logger,
+      logger: this.logger,
     })
+
     this.caseSensitive = caseSensitive
+    this.fallbackToFunction = fallbackToFunction
+
     if (ttlInSeconds) {
       this.ttl = ttlInSeconds // Conversion to milliseconds is done in the persistor.
     }
@@ -143,16 +150,28 @@ export class PromiseCache<U> {
     // Determine the TTL and unique cache key for this specific call.
     let effectiveTTL = ttlInSeconds ?? this.ttl
 
-    const cached = await this.persistor.get<U>(effectiveKey)
+    try {
+      const cached = await this.persistor.get<U>(effectiveKey)
 
-    if (cached) {
-      if (!ttlKeyInSeconds && cached.ttl !== effectiveTTL) {
-        console.error(
-          'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
-        )
+      if (cached) {
+        if (!ttlKeyInSeconds && cached.ttl !== effectiveTTL) {
+          this.logger?.error(
+            'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
+          )
+        }
+
+        return cached.value
+      }
+    } catch (err) {
+      const error = err as Error
+      if (!this.fallbackToFunction) {
+        throw error
       }
 
-      return cached.value
+      this.logger?.error(
+        'redis error, falling back to function execution',
+        error instanceof Error ? error.message : String(error)
+      )
     }
 
     // Execute the delegate, cache the response with the current timestamp, and return it.
@@ -165,11 +184,16 @@ export class PromiseCache<U> {
       effectiveTTL = responseTTL || effectiveTTL // Fall back to the default TTL if the TTL key is not found.
     }
 
-    this.persistor.set(effectiveKey, {
-      value: response,
-      timestamp: now,
-      ttl: effectiveTTL,
-    })
+    try {
+      await this.persistor.set(effectiveKey, {
+        value: response,
+        timestamp: now,
+        ttl: effectiveTTL,
+      })
+    } catch (err) {
+      const error = err as Error
+      console.error('failed to cache result', error.message)
+    }
 
     return response
   }
