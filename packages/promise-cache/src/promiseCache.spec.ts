@@ -9,15 +9,25 @@ const REDIS_URL = {
 }
 
 const ttl = 1
+
+const logger = vi.hoisted(() => ({
+  error: vi.fn(),
+  info: vi.fn(),
+  debug: vi.fn(),
+  warn: vi.fn(),
+}))
+
 const cache: PromiseCache<number> = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: false,
+  logger: logger as any,
 })
 const caseSensitiveCache = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: true,
+  logger: logger as any,
 })
 
 describe('PromiseCache', () => {
@@ -27,8 +37,6 @@ describe('PromiseCache', () => {
   })
 
   beforeAll(() => {
-    console.error = vi.fn()
-    console.log = vi.fn()
     vi.useFakeTimers({ shouldAdvanceTime: true })
   })
 
@@ -92,8 +100,8 @@ describe('PromiseCache', () => {
     await cache.wrap('testKey', mockDelegate, 2)
 
     // Expect a warning message.
-    expect(console.error).toHaveBeenCalledTimes(1)
-    expect(console.error).toHaveBeenCalledWith(
+    expect(logger.error).toHaveBeenCalledTimes(1)
+    expect(logger.error).toHaveBeenCalledWith(
       'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
     )
     expect(await cache.size()).toBe(1)

@@ -70,14 +70,15 @@ export class PromiseCache<U> {
     onError,
     logger,
   }: PromiseCacheOptions) {
+    this.logger = logger
     this.persistor = getPersistor({
       redis,
       onError,
       onSuccess,
       clientId: this.clientId,
-      logger,
+      logger: this.logger,
     })
-    this.logger = logger
+    
     this.caseSensitive = caseSensitive
     this.fallbackToFunction = fallbackToFunction
 
@@ -191,7 +192,7 @@ export class PromiseCache<U> {
       })
     } catch (err) {
       const error = err as Error
-      this.logger?.error('failed to cache result', error.message)
+      console.error('failed to cache result', error.message)
     }
 
     return response
