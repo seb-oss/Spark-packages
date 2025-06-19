@@ -1119,6 +1119,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@google-cloud/precise-date@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@google-cloud/precise-date@npm:4.0.0"
+  checksum: 10c0/8788bec6bb5db3fcc9cf72f346dc7af35d0ad1c9457d40f800e580dc58631568589b6795b48bef88b958b718c81cd326b0ccfe9d0ef9e7d7e85f45c1375e9c14
+  languageName: node
+  linkType: hard
+
 "@google-cloud/precise-date@npm:^5.0.0":
   version: 5.0.0
   resolution: "@google-cloud/precise-date@npm:5.0.0"
@@ -1154,6 +1161,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@google-cloud/promisify@npm:~4.0.0":
+  version: 4.0.0
+  resolution: "@google-cloud/promisify@npm:4.0.0"
+  checksum: 10c0/4332cbd923d7c6943ecdf46f187f1417c84bb9c801525cd74d719c766bfaad650f7964fb74576345f6537b6d6273a4f2992c8d79ebec6c8b8401b23d626b8dd3
+  languageName: node
+  linkType: hard
+
 "@google-cloud/pubsub@npm:5.0.0":
   version: 5.0.0
   resolution: "@google-cloud/pubsub@npm:5.0.0"
@@ -1173,6 +1187,51 @@ __metadata:
     lodash.snakecase: "npm:^4.1.1"
     p-defer: "npm:^3.0.0"
   checksum: 10c0/39b60e69d75bf8bbe391ab462cd5bb5393037068441dad912d0e97e604cb1922c13f3d64bb3fecb85b578ba3177a6ab35f401bdec03d76b53cab0413d282a623
+  languageName: node
+  linkType: hard
+
+"@google-cloud/pubsub@npm:^4.3.3":
+  version: 4.11.0
+  resolution: "@google-cloud/pubsub@npm:4.11.0"
+  dependencies:
+    "@google-cloud/paginator": "npm:^5.0.0"
+    "@google-cloud/precise-date": "npm:^4.0.0"
+    "@google-cloud/projectify": "npm:^4.0.0"
+    "@google-cloud/promisify": "npm:~4.0.0"
+    "@opentelemetry/api": "npm:~1.9.0"
+    "@opentelemetry/semantic-conventions": "npm:~1.30.0"
+    arrify: "npm:^2.0.0"
+    extend: "npm:^3.0.2"
+    google-auth-library: "npm:^9.3.0"
+    google-gax: "npm:^4.3.3"
+    heap-js: "npm:^2.2.0"
+    is-stream-ended: "npm:^0.1.4"
+    lodash.snakecase: "npm:^4.1.1"
+    p-defer: "npm:^3.0.0"
+  checksum: 10c0/2042dab921fc27409bc304ded427e575e8d36927ee29fcf9c086f415a23e534752f56a11343735f0a84b0d586c1c35cdda0ac43a9eb849351cce1cd81e73c764
+  languageName: node
+  linkType: hard
+
+"@google-cloud/pubsub@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@google-cloud/pubsub@npm:5.1.0"
+  dependencies:
+    "@google-cloud/paginator": "npm:^6.0.0"
+    "@google-cloud/precise-date": "npm:^5.0.0"
+    "@google-cloud/projectify": "npm:^5.0.0"
+    "@google-cloud/promisify": "npm:^5.0.0"
+    "@opentelemetry/api": "npm:~1.9.0"
+    "@opentelemetry/core": "npm:^1.30.1"
+    "@opentelemetry/semantic-conventions": "npm:~1.34.0"
+    arrify: "npm:^2.0.0"
+    extend: "npm:^3.0.2"
+    google-auth-library: "npm:^10.0.0-rc.1"
+    google-gax: "npm:^5.0.1-rc.0"
+    heap-js: "npm:^2.6.0"
+    is-stream-ended: "npm:^0.1.4"
+    lodash.snakecase: "npm:^4.1.1"
+    p-defer: "npm:^3.0.0"
+  checksum: 10c0/72a9c8fd66bc3319be4636f9b8ba900f4a20c47ee49b6aa6628f1d0af097b932b5c2a31a8a2d84dd2803e16766a8f9c7e59d99981ca3ae9ac3eb94c096454699
   languageName: node
   linkType: hard
 
@@ -1855,6 +1914,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@msgpack/msgpack@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "@msgpack/msgpack@npm:2.8.0"
+  checksum: 10c0/5964ed3daad9ccf314238da81c91152dc693bca167b2469445c1d3ce0495443612e543d052281061a91ec48ed44a6a49dd3a334b5d0dbe2dc2db6ea6143e5787
+  languageName: node
+  linkType: hard
+
+"@msgpack/msgpack@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "@msgpack/msgpack@npm:3.1.2"
+  checksum: 10c0/4fee6dbea70a485d3a787ac76dd43687f489d662f22919237db1f2abbc3c88070c1d3ad78417ce6e764bcd041051680284654021f52068e0aff82d570cb942d5
+  languageName: node
+  linkType: hard
+
 "@mswjs/interceptors@npm:^0.38.5":
   version: 0.38.6
   resolution: "@mswjs/interceptors@npm:0.38.6"
@@ -2030,7 +2103,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/core@npm:1.30.1, @opentelemetry/core@npm:^1.1.0, @opentelemetry/core@npm:^1.26.0, @opentelemetry/core@npm:^1.8.0":
+"@opentelemetry/core@npm:1.30.1, @opentelemetry/core@npm:^1.1.0, @opentelemetry/core@npm:^1.26.0, @opentelemetry/core@npm:^1.30.1, @opentelemetry/core@npm:^1.8.0":
   version: 1.30.1
   resolution: "@opentelemetry/core@npm:1.30.1"
   dependencies:
@@ -2289,10 +2362,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/semantic-conventions@npm:^1.22.0, @opentelemetry/semantic-conventions@npm:^1.27.0, @opentelemetry/semantic-conventions@npm:^1.29.0, @opentelemetry/semantic-conventions@npm:^1.30.0":
+"@opentelemetry/semantic-conventions@npm:^1.22.0, @opentelemetry/semantic-conventions@npm:^1.27.0, @opentelemetry/semantic-conventions@npm:^1.29.0, @opentelemetry/semantic-conventions@npm:^1.30.0, @opentelemetry/semantic-conventions@npm:~1.34.0":
   version: 1.34.0
   resolution: "@opentelemetry/semantic-conventions@npm:1.34.0"
   checksum: 10c0/a51a32a5cf5c803bd2125a680d0abacbff632f3b255d0fe52379dac191114a0e8d72a34f9c46c5483ccfe91c4061c309f3cf61a19d11347e2a69779e82cfefd0
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/semantic-conventions@npm:~1.30.0":
+  version: 1.30.0
+  resolution: "@opentelemetry/semantic-conventions@npm:1.30.0"
+  checksum: 10c0/0bf99552e3b4b7e8b7eb504b678d52f59c6f259df88e740a2011a0d858e523d36fee86047ae1b7f45849c77f00f970c3059ba58e0a06a7d47d6f01dbe8c455bd
   languageName: node
   linkType: hard
 
@@ -2842,6 +2922,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/socket.io-gcp-pubsub-emitter@workspace:packages/socket.io-gcp-pubsub-emitter":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/socket.io-gcp-pubsub-emitter@workspace:packages/socket.io-gcp-pubsub-emitter"
+  dependencies:
+    "@google-cloud/pubsub": "npm:^5.1.0"
+    "@msgpack/msgpack": "npm:^3.1.2"
+    "@socket.io/gcp-pubsub-adapter": "npm:^0.1.0"
+    "@testcontainers/gcloud": "npm:^11.0.3"
+    socket.io: "npm:^4.8.1"
+    socket.io-adapter: "npm:^2.5.5"
+    socket.io-client: "npm:^4.8.1"
+    testcontainers: "npm:^11.0.3"
+    tsconfig: "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/spanner-migrate@workspace:packages/spanner-migrate":
   version: 0.0.0-use.local
   resolution: "@sebspark/spanner-migrate@workspace:packages/spanner-migrate"
@@ -2964,6 +3060,28 @@ __metadata:
   version: 3.1.2
   resolution: "@socket.io/component-emitter@npm:3.1.2"
   checksum: 10c0/c4242bad66f67e6f7b712733d25b43cbb9e19a595c8701c3ad99cbeb5901555f78b095e24852f862fffb43e96f1d8552e62def885ca82ae1bb05da3668fd87d7
+  languageName: node
+  linkType: hard
+
+"@socket.io/gcp-pubsub-adapter@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@socket.io/gcp-pubsub-adapter@npm:0.1.0"
+  dependencies:
+    "@google-cloud/pubsub": "npm:^4.3.3"
+    "@msgpack/msgpack": "npm:^2.8.0"
+    debug: "npm:~4.3.4"
+  peerDependencies:
+    socket.io-adapter: ^2.5.4
+  checksum: 10c0/8e6710ad2ef0f394444692923ac2d066786cfdc46bc8c0f35926068cb4be4e72edb063a7f47ad2bbec2cf9b82bc9a54b1838e7b58e6bb877c8e86d0b4dc267f4
+  languageName: node
+  linkType: hard
+
+"@testcontainers/gcloud@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "@testcontainers/gcloud@npm:11.0.3"
+  dependencies:
+    testcontainers: "npm:^11.0.3"
+  checksum: 10c0/d11f574d5fc4e09d8c778e40bd5a05cb37316e15160ac6928ac317f5781039e1d411d064e268aa12a348d56b40b796907abeddefbcf53986b1c51582ce6983a6
   languageName: node
   linkType: hard
 
@@ -3177,6 +3295,17 @@ __metadata:
     "@types/node": "npm:*"
     "@types/ssh2": "npm:*"
   checksum: 10c0/86c730e000f7b9cc9fde1e46de4ab2edb6909ebe8d7ddfbe3db5496d5570e9147b7ef93d8f648ce415ca55067852abcfd28fd5639a820c71975801641d15eac9
+  languageName: node
+  linkType: hard
+
+"@types/dockerode@npm:^3.3.39":
+  version: 3.3.41
+  resolution: "@types/dockerode@npm:3.3.41"
+  dependencies:
+    "@types/docker-modem": "npm:*"
+    "@types/node": "npm:*"
+    "@types/ssh2": "npm:*"
+  checksum: 10c0/41c6efe6c0153ec62f98ec292046fde3c4c233486c709fc4a394d915a1d26740effb8739857693e02e282469f49d657cfc3bac6b85f492c5f32b94cc2578e8e7
   languageName: node
   linkType: hard
 
@@ -5601,7 +5730,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.4.0":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.4.0, debug@npm:^4.4.1":
   version: 4.4.1
   resolution: "debug@npm:4.4.1"
   dependencies:
@@ -5793,6 +5922,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"docker-compose@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "docker-compose@npm:1.2.0"
+  dependencies:
+    yaml: "npm:^2.2.2"
+  checksum: 10c0/0bc4ef187904dba55b76b3450b7b2d65b7ee19afdff0d74ffc6ccb573d7ae63de329f13ad01ffc76ddf702a12060a848287b3ff76477014d5e9b63e0958146dd
+  languageName: node
+  linkType: hard
+
 "docker-modem@npm:^5.0.6":
   version: 5.0.6
   resolution: "docker-modem@npm:5.0.6"
@@ -5817,6 +5955,21 @@ __metadata:
     tar-fs: "npm:~2.1.2"
     uuid: "npm:^10.0.0"
   checksum: 10c0/c0c974425fcca8c91c6c6419f0f06be13a63c17c38b73f78bd79cd35c8cb5699211727366747c7357fdfe749f5bf5823ab2896abd0db77fadab11001c294c1a4
+  languageName: node
+  linkType: hard
+
+"dockerode@npm:^4.0.7":
+  version: 4.0.7
+  resolution: "dockerode@npm:4.0.7"
+  dependencies:
+    "@balena/dockerignore": "npm:^1.0.2"
+    "@grpc/grpc-js": "npm:^1.11.1"
+    "@grpc/proto-loader": "npm:^0.7.13"
+    docker-modem: "npm:^5.0.6"
+    protobufjs: "npm:^7.3.2"
+    tar-fs: "npm:~2.1.2"
+    uuid: "npm:^10.0.0"
+  checksum: 10c0/1ac6e1c0b589ea4878416ef334ae94d79da4261b3b7710a469cc27840667acbcf5ee22a4ec00a0ab61b03b670689f7605114ae9f021e5d2a6dfc22314d098b75
   languageName: node
   linkType: hard
 
@@ -5990,6 +6143,19 @@ __metadata:
   dependencies:
     once: "npm:^1.4.0"
   checksum: 10c0/870b423afb2d54bb8d243c63e07c170409d41e20b47eeef0727547aea5740bd6717aca45597a9f2745525667a6b804c1e7bede41f856818faee5806dd9ff3975
+  languageName: node
+  linkType: hard
+
+"engine.io-client@npm:~6.6.1":
+  version: 6.6.3
+  resolution: "engine.io-client@npm:6.6.3"
+  dependencies:
+    "@socket.io/component-emitter": "npm:~3.1.0"
+    debug: "npm:~4.3.1"
+    engine.io-parser: "npm:~5.2.1"
+    ws: "npm:~8.17.1"
+    xmlhttprequest-ssl: "npm:~2.1.1"
+  checksum: 10c0/ebe0b1da6831d5a68564f9ffb80efe682da4f0538488eaffadf0bcf5177a8b4472cdb01d18a9f20dece2f8de30e2df951eb4635bef2f1b492e9f08a523db91a0
   languageName: node
   linkType: hard
 
@@ -7080,7 +7246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-gax@npm:^4.0.3":
+"google-gax@npm:^4.0.3, google-gax@npm:^4.3.3":
   version: 4.6.1
   resolution: "google-gax@npm:4.6.1"
   dependencies:
@@ -7273,7 +7439,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"heap-js@npm:^2.6.0":
+"heap-js@npm:^2.2.0, heap-js@npm:^2.6.0":
   version: 2.6.0
   resolution: "heap-js@npm:2.6.0"
   checksum: 10c0/49fad329f38987ee5cf76841e504b5a6b537781718997a7f4922a706be80afc07f6d92c77ae7036c7ed16ceaa6258d0d294793a120c12389926138edcb73876e
@@ -11057,13 +11223,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socket.io-adapter@npm:~2.5.2":
+"socket.io-adapter@npm:^2.5.5, socket.io-adapter@npm:~2.5.2":
   version: 2.5.5
   resolution: "socket.io-adapter@npm:2.5.5"
   dependencies:
     debug: "npm:~4.3.4"
     ws: "npm:~8.17.1"
   checksum: 10c0/04a5a2a9c4399d1b6597c2afc4492ab1e73430cc124ab02b09e948eabf341180b3866e2b61b5084cb899beb68a4db7c328c29bda5efb9207671b5cb0bc6de44e
+  languageName: node
+  linkType: hard
+
+"socket.io-client@npm:^4.8.1":
+  version: 4.8.1
+  resolution: "socket.io-client@npm:4.8.1"
+  dependencies:
+    "@socket.io/component-emitter": "npm:~3.1.0"
+    debug: "npm:~4.3.2"
+    engine.io-client: "npm:~6.6.1"
+    socket.io-parser: "npm:~4.2.4"
+  checksum: 10c0/544c49cc8cc77118ef68b758a8a580c8e680a5909cae05c566d2cc07ec6cd6720a4f5b7e985489bf2a8391749177a5437ac30b8afbdf30b9da6402687ad51c86
   languageName: node
   linkType: hard
 
@@ -11077,7 +11255,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socket.io@npm:4.8.1":
+"socket.io@npm:4.8.1, socket.io@npm:^4.8.1":
   version: 4.8.1
   resolution: "socket.io@npm:4.8.1"
   dependencies:
@@ -11591,6 +11769,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tar-fs@npm:^3.0.9":
+  version: 3.0.10
+  resolution: "tar-fs@npm:3.0.10"
+  dependencies:
+    bare-fs: "npm:^4.0.1"
+    bare-path: "npm:^3.0.0"
+    pump: "npm:^3.0.0"
+    tar-stream: "npm:^3.1.5"
+  dependenciesMeta:
+    bare-fs:
+      optional: true
+    bare-path:
+      optional: true
+  checksum: 10c0/b8e8c1c3e9be6928a6252b491a58fe435ad01e3d7c62959cf7796f3f733d07a5ccece8b1ab81ea94c18167388759f33b6d59d6022103cdbb40a4c7c7879b63ab
+  languageName: node
+  linkType: hard
+
 "tar-fs@npm:~2.1.2":
   version: 2.1.2
   resolution: "tar-fs@npm:2.1.2"
@@ -11774,6 +11969,29 @@ __metadata:
     tmp: "npm:^0.2.3"
     undici: "npm:^5.29.0"
   checksum: 10c0/d82742602a4b5e6e5752d8d9c44953739a372c42ec95375bc1d1adbe054065ccf07666846f10bf4c362fe89b33c21c160387d9da08ee53af992b3968bc2113f5
+  languageName: node
+  linkType: hard
+
+"testcontainers@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "testcontainers@npm:11.0.3"
+  dependencies:
+    "@balena/dockerignore": "npm:^1.0.2"
+    "@types/dockerode": "npm:^3.3.39"
+    archiver: "npm:^7.0.1"
+    async-lock: "npm:^1.4.1"
+    byline: "npm:^5.0.0"
+    debug: "npm:^4.4.1"
+    docker-compose: "npm:^1.2.0"
+    dockerode: "npm:^4.0.7"
+    get-port: "npm:^7.1.0"
+    proper-lockfile: "npm:^4.1.2"
+    properties-reader: "npm:^2.3.0"
+    ssh-remote-port-forward: "npm:^1.0.4"
+    tar-fs: "npm:^3.0.9"
+    tmp: "npm:^0.2.3"
+    undici: "npm:^7.10.0"
+  checksum: 10c0/c5cfec9596aa8f9dd05671c0f1480fd38bc9a70c4b8c124be1245c0294ace040f6a8ea0428c39223baa2e50542d8b0182a2992cabe1e3ebe085035b9186f738d
   languageName: node
   linkType: hard
 
@@ -12363,6 +12581,13 @@ __metadata:
   dependencies:
     "@fastify/busboy": "npm:^2.0.0"
   checksum: 10c0/e4e4d631ca54ee0ad82d2e90e7798fa00a106e27e6c880687e445cc2f13b4bc87c5eba2a88c266c3eecffb18f26e227b778412da74a23acc374fca7caccec49b
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.10.0":
+  version: 7.10.0
+  resolution: "undici@npm:7.10.0"
+  checksum: 10c0/756ac876a8df845bc89eb8348c35d33a0ff63c17eb45b664075c961a7fbd4a398f94f9dce438262f55fe66e4bbb0a46aa63a3fd58ce51361c616aff11a270450
   languageName: node
   linkType: hard
 
@@ -13001,6 +13226,13 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 10c0/f4a49064afae4500be772abdc2211c8518f39e1c959640457dcee15d4488628620625c783902a52af2dd02f68558da2868fd06e6fd0e67ebcd09e6881b1b5bfe
+  languageName: node
+  linkType: hard
+
+"xmlhttprequest-ssl@npm:~2.1.1":
+  version: 2.1.2
+  resolution: "xmlhttprequest-ssl@npm:2.1.2"
+  checksum: 10c0/70d60869323e823f473a238f78fd108437edbc3690ecd5859c39c83217080090a18899b272e515769c0d1f518cc64cbed6b6995b23fdd7ba13b297d530b6e631
   languageName: node
   linkType: hard
 

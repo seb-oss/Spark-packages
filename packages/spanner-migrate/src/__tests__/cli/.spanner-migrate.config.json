@@ -1,0 +1,16 @@
+{
+  "instance": {
+    "name": "test-instance",
+    "databases": [
+      {
+        "name": "database-1",
+        "migrationsPath": "./migrations/database-1"
+      },
+      {
+        "name": "database-2",
+        "migrationsPath": "./migrations/database-2"
+      }
+    ]
+  },
+  "projectId": "test-project"
+}
