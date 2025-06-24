@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 2.3.0
+
+### Minor Changes
+
+- 1ef8116: Wrap query in Serialized<> type
+
 ## 2.2.0
 
 ### Minor Changes
