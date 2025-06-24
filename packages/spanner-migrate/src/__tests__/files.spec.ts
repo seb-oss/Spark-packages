@@ -40,7 +40,9 @@ describe('files', () => {
         '20250101T123456_add_users.sql',
         '20250102T123456_add_roles.sql',
       ]
-      readdirMock.mockResolvedValue(mockFiles as unknown as Dirent[])
+      readdirMock.mockResolvedValue(
+        mockFiles as unknown as Dirent<Buffer<ArrayBufferLike>>[]
+      )
 
       const result = await getMigrationFiles(mockPath)
 
