@@ -24,15 +24,15 @@ A Testcontainers-based wrapper for the Cloud Spanner emulator, enabling easy end
 * [Getting Started](#getting-started)
 * [API Reference](#api-reference)
 
-  * [SpannerEmulatorContainer](#spanemeremulatorcontainer)
-  * [StartedSpannerEmulatorContainer](#startedspanemeremulatorcontainer)
+  * [SpannerEmulatorContainer](#spanneremulatorcontainer)
+  * [StartedSpannerEmulatorContainer](#startedspanneremulatorcontainer)
 * [Example Usage](#example-usage)
 
   * [Basic Flow](#basic-flow)
   * [Vitest E2E Tests](#vitest-e2e-tests)
 * [Configuration](#configuration)
-
----
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Installation
 
@@ -165,3 +165,21 @@ describe('Spanner E2E', () => {
 | ----------------------- | ---------------------------------------------------- |
 | `GOOGLE_CLOUD_PROJECT`  | Google Cloud project ID (defaults to `test-project`) |
 | `SPANNER_EMULATOR_HOST` | Set by container to point gRPC client to emulator    |
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feat/my-feature`)
+3. Commit your changes (`git commit -m 'feat: My feature'`)
+4. Push to the branch (`git push origin feat/my-feature`)
+5. Open a Pull Request
+
+Please include unit/e2e tests and update documentation where appropriate.
+
+---
+
+## License
+
+MIT © \[Your Name or Organization]
