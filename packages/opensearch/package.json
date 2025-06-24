@@ -17,7 +17,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "testcontainers": "10.25.0",
+    "testcontainers": "11.0.3",
     "tsconfig": "*"
   },
   "dependencies": {

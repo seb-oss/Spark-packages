@@ -19,7 +19,7 @@ describe('promise-cache', () => {
   let redis: StartedRedisContainer
   let options: PromiseCacheOptions
   beforeAll(async () => {
-    redis = await new RedisContainer().start()
+    redis = await new RedisContainer('redis:8-alpine').start()
     options = { redis: { url: redis.getConnectionUrl() } }
   })
   beforeEach(async () => {

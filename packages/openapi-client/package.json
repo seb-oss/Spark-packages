@@ -19,14 +19,14 @@
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
-    "nock": "14.0.4",
+    "nock": "14.0.5",
     "tsconfig": "*",
-    "vitest": "3.1.2"
+    "vitest": "3.2.4"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
-    "axios": "1.9.0",
+    "axios": "1.10.0",
     "axios-auth-refresh": "3.3.6"
   }
 }
