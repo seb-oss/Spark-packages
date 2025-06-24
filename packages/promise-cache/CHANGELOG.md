@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 4.0.0
+
+### Major Changes
+
+- e70a51d: Updated redis dependency to v5
+
 ## 3.10.1
 
 ### Patch Changes
