@@ -1,0 +1,26 @@
+{
+  "name": "@sebspark/testcontainers-spanner",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check .",
+    "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "typecheck": "vitest --typecheck.only --passWithNoTests"
+  },
+  "devDependencies": {
+    "@google-cloud/spanner": "^8.0.0",
+    "tsconfig": "*"
+  },
+  "dependencies": {
+    "testcontainers": "^11.0.3"
+  }
+}

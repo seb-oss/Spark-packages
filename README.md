@@ -104,6 +104,10 @@ Trade Insight client library with helps
 
 A Socket.IO PubSub emitter, allowing to communicate with a group of Socket.IO servers from another Node.js process
 
+### [@sebspark/testcontainers-spanner](./packages/testcontainers-spanner)
+
+A test container implementation of Spanner DB
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

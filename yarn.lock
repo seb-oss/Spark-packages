@@ -1235,7 +1235,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/spanner@npm:8.0.0":
+"@google-cloud/spanner@npm:8.0.0, @google-cloud/spanner@npm:^8.0.0":
   version: 8.0.0
   resolution: "@google-cloud/spanner@npm:8.0.0"
   dependencies:
@@ -2972,6 +2972,16 @@ __metadata:
   peerDependencies:
     "@jest/globals": ^29.7.0
     vitest: ^3.1.2
+  languageName: unknown
+  linkType: soft
+
+"@sebspark/testcontainers-spanner@workspace:packages/testcontainers-spanner":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/testcontainers-spanner@workspace:packages/testcontainers-spanner"
+  dependencies:
+    "@google-cloud/spanner": "npm:^8.0.0"
+    testcontainers: "npm:^11.0.3"
+    tsconfig: "npm:*"
   languageName: unknown
   linkType: soft
 
