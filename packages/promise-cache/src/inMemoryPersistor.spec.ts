@@ -110,7 +110,7 @@ describe('InMemoryPersistor', () => {
     it('sets expiration on an existing key', async () => {
       await persistor.set('expiring-key', 'value')
       const result = await persistor.expire('expiring-key', 1)
-      expect(result).toBe(true)
+      expect(result).toBe(1)
 
       expect(await persistor.get('expiring-key')).toBe('value')
 
@@ -120,14 +120,14 @@ describe('InMemoryPersistor', () => {
 
     it('returns false when trying to expire a non-existent key', async () => {
       const result = await persistor.expire('non-existent-key', 1)
-      expect(result).toBe(false)
+      expect(result).toBe(0)
     })
 
     it('returns false when trying to expire an already expired key', async () => {
       await persistor.setEx('temp-key', 1, 'value')
 
       vi.advanceTimersByTime(1100)
-      expect(await persistor.expire('temp-key', 2)).toBe(false)
+      expect(await persistor.expire('temp-key', 2)).toBe(0)
     })
   })
 
@@ -212,11 +212,11 @@ describe('InMemoryPersistor', () => {
   describe('.setNX', () => {
     it('only sets a key if it does not exist', async () => {
       const firstSet = await persistor.setNX('nx-key', 'first-value')
-      expect(firstSet).toBe(true)
+      expect(firstSet).toBe(1)
       expect(await persistor.get('nx-key')).toBe('first-value')
 
       const secondSet = await persistor.setNX('nx-key', 'second-value')
-      expect(secondSet).toBe(false)
+      expect(secondSet).toBe(0)
       expect(await persistor.get('nx-key')).toBe('first-value')
     })
   })
@@ -300,9 +300,7 @@ describe('InMemoryPersistor', () => {
 
     it('returns undefined when getting a non-existent hash field', async () => {
       await persistor.hSet('hash-key', 'field1', 'value1')
-      expect(
-        await persistor.hGet('hash-key', 'non-existent-field')
-      ).toBeUndefined()
+      expect(await persistor.hGet('hash-key', 'non-existent-field')).toBe(null)
     })
   })
 
@@ -464,7 +462,7 @@ describe('InMemoryPersistor', () => {
       multi.setNX('unique-key', 'second') // Should fail
       const results = await multi.exec()
 
-      expect(results).toEqual([true, false])
+      expect(results).toEqual([1, 0])
       expect(await persistor.get('unique-key')).toBe('first') // Should not be overridden
     })
 
@@ -501,7 +499,7 @@ describe('InMemoryPersistor', () => {
       multi.expire('expiring-key', 1)
       const results = await multi.exec()
 
-      expect(results).toEqual([true])
+      expect(results).toEqual([1])
       expect(await persistor.get('expiring-key')).toBe('value')
 
       vi.advanceTimersByTime(1100)
@@ -513,7 +511,7 @@ describe('InMemoryPersistor', () => {
 
       const multi = persistor.multi()
       multi.ttl('expiring-key')
-      const results = await multi.exec()
+      const results = (await multi.exec()) as number[]
 
       expect(results[0]).toBeGreaterThan(0) // Should be at most 2 seconds
     })
@@ -734,10 +732,10 @@ describe('InMemoryPersistor', () => {
         'OK', // set
         'OK', // setEx
         'OK', // pSetEx
-        true, // setNX (new key added)
+        1, // setNX (new key added)
         'value1', // get
         1, // del (1 key deleted)
-        true, // expire
+        1, // expire
         expect.any(Number), // ttl (remaining time for expiration)
         1, // exists (only 'key-ex' exists, not 'non-existent-key')
 

@@ -252,7 +252,7 @@ describe('cache e2e', () => {
       it('sets expiration on an existing key', async () => {
         await cache.persistor.set('expiring-key', 'value')
         const result = await cache.persistor.expire('expiring-key', 1)
-        expect(result).toBe(true) // true means expiration was set
+        expect(result).toBe(1) // true means expiration was set
 
         expect(await cache.persistor.get('expiring-key')).toBe('value')
 
@@ -261,7 +261,7 @@ describe('cache e2e', () => {
       })
 
       it('returns false when trying to expire a non-existent key', async () => {
-        expect(await cache.persistor.expire('non-existent-key', 1)).toBe(false)
+        expect(await cache.persistor.expire('non-existent-key', 1)).toBe(0)
       })
     })
 
@@ -323,11 +323,11 @@ describe('cache e2e', () => {
     describe('.setNX', () => {
       it('only sets a key if it does not exist', async () => {
         const firstSet = await cache.persistor.setNX('nx-key', 'first-value')
-        expect(firstSet).toBe(true)
+        expect(firstSet).toBe(1)
         expect(await cache.persistor.get('nx-key')).toBe('first-value')
 
         const secondSet = await cache.persistor.setNX('nx-key', 'second-value')
-        expect(secondSet).toBe(false) // Should not overwrite
+        expect(secondSet).toBe(0) // Should not overwrite
         expect(await cache.persistor.get('nx-key')).toBe('first-value')
       })
     })
@@ -520,7 +520,7 @@ describe('cache e2e', () => {
 
         const results = await multi.exec()
 
-        expect(results).toEqual([true, false, true]) // true (set), false (failed to overwrite), true (set)
+        expect(results).toEqual([1, 0, 1]) // true (set), false (failed to overwrite), true (set)
         expect(await cache.persistor.get('nx-key1')).toBe('value1')
         expect(await cache.persistor.get('nx-key2')).toBe('value3')
       })
@@ -670,7 +670,7 @@ describe('cache e2e', () => {
 
         const results = await multi.exec()
 
-        expect(results).toEqual([true, false]) // true (set), false (key does not exist)
+        expect(results).toEqual([1, 0]) // true (set), false (key does not exist)
 
         await wait(1100)
         expect(await cache.persistor.get('expiring-key1')).toBeNull()
@@ -687,7 +687,7 @@ describe('cache e2e', () => {
         multi.ttl('nonexistent-key') // Does not exist
 
         await wait(1000)
-        const results = await multi.exec()
+        const results = (await multi.exec()) as number[]
 
         expect(results[0]).toBeGreaterThan(0) // TTL should be > 0
         expect(results[1]).toBe(-1) // No expiration
@@ -789,10 +789,10 @@ describe('cache e2e', () => {
           'OK', // set
           'OK', // setEx
           'OK', // pSetEx
-          true, // setNX (new key added)
+          1, // setNX (new key added)
           'value1', // get
           1, // del (1 key deleted)
-          true, // expire
+          1, // expire
           expect.any(Number), // ttl (remaining time for expiration)
           1, // exists (only 'key-ex' exists, not 'non-existent-key')
 

@@ -1,4 +1,3 @@
-import { RedisClientType } from '@redis/client'
 import type { SetOptions } from 'redis'
 import type { IPersistor, IPersistorMulti, MultiExecReturnTypes } from './types'
 
@@ -137,10 +136,10 @@ export class InMemoryPersistor implements IPersistor {
    * @param value - The string value to store.
    * @returns Resolves to `true` if the key was set, or `false` if the key already exists.
    */
-  async setNX(key: string, value: string): Promise<boolean> {
-    if (this.store.has(key)) return false
+  async setNX(key: string, value: string): Promise<number> {
+    if (this.store.has(key)) return 0
     this.store.set(key, value)
-    return true
+    return 1
   }
 
   /**
@@ -177,10 +176,10 @@ export class InMemoryPersistor implements IPersistor {
    * @param {number} seconds - The TTL in seconds.
    * @returns {Promise<number>} Resolves to `1` if the TTL was set, or `0` if the key does not exist.
    */
-  async expire(key: string, seconds: number): Promise<boolean> {
-    if (!this.store.has(key)) return false
+  async expire(key: string, seconds: number): Promise<number> {
+    if (!this.store.has(key)) return 0
     this.setExpiration(key, seconds * 1000) // Convert seconds to ms
-    return true
+    return 1
   }
 
   /**
@@ -297,11 +296,11 @@ export class InMemoryPersistor implements IPersistor {
    *
    * @param key - The hash key.
    * @param field - The field name to retrieve.
-   * @returns Resolves to the field value, or `undefined` if the field does not exist.
+   * @returns Resolves to the field value, or `null` if the field does not exist.
    */
-  async hGet(key: string, field: string): Promise<string | undefined> {
+  async hGet(key: string, field: string): Promise<string | null> {
     const hash = JSON.parse(this.store.get(key) ?? '{}')
-    return hash[field] ?? undefined
+    return hash[field] ?? null
   }
 
   /**

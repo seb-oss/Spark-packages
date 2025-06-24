@@ -3,8 +3,12 @@ import type { SetOptions, createClient } from 'redis'
 type Client = ReturnType<typeof createClient>
 type Multi = ReturnType<Client['multi']>
 export type MultiExecReturnTypes =
-  | Awaited<ReturnType<Multi['exec']>>[number]
+  | string[]
+  | string
+  | number
   | boolean
+  | null
+  | undefined
 
 /**
  * Defines the expiration strategy for cached values.
@@ -99,7 +103,7 @@ export interface IPersistor {
    * @param seconds - TTL in seconds.
    * @returns Resolves to `true` if the expiration was successfully set, `false` if the key does not exist.
    */
-  expire: (key: string, seconds: number) => Promise<boolean>
+  expire: (key: string, seconds: number) => Promise<number>
 
   /**
    * Gets the remaining TTL (time-to-live) of a key.
@@ -145,7 +149,7 @@ export interface IPersistor {
    * @param value - The string value to store.
    * @returns Resolves to `true` if the key was set, or `false` if the key already exists.
    */
-  setNX: (key: string, value: string) => Promise<boolean>
+  setNX: (key: string, value: string) => Promise<number>
 
   /**
    * Creates a multi-command batch operation.
@@ -206,7 +210,7 @@ export interface IPersistor {
    * @param field - The field name.
    * @returns Resolves to the value, or `undefined` if the field does not exist.
    */
-  hGet: (key: string, field: string) => Promise<string | undefined>
+  hGet: (key: string, field: string) => Promise<string | null>
 
   /**
    * Pushes values to the left (head) of a list.
@@ -533,5 +537,5 @@ export interface IPersistorMulti {
    * @returns A promise resolving to an array of results for each command.
    * The result type can be `string | number | boolean | null`, depending on the command.
    */
-  exec: () => Promise<MultiExecReturnTypes[]>
+  exec: () => Promise<MultiExecReturnTypes[] | unknown>
 }
