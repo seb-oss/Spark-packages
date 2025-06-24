@@ -21,12 +21,18 @@ const generateArgs = (
         const partName =
           part === 'path' ? 'params' : part === 'header' ? 'headers' : part
 
-        tokens.push(
-          `${partName}${arg.optional ? '?' : ''}: ${wrapArgs(
-            generateType(arg),
-            isServer && part === 'header'
-          )}`
-        )
+        if (partName === 'query') {
+          tokens.push(
+            `${partName}${arg.optional ? '?' : ''}: Serialized<${generateType(arg)}>`
+          )
+        } else {
+          tokens.push(
+            `${partName}${arg.optional ? '?' : ''}: ${wrapArgs(
+              generateType(arg),
+              isServer && part === 'header'
+            )}`
+          )
+        }
       }
     }
 

@@ -87,7 +87,7 @@ export type ExampleAPIServerPaths = {
       handler: (
         args: Req & {
           headers: LowerCaseHeaders<ApiKeyAuth>
-          query?: PageParam & LimitParam
+          query?: Serialized<PageParam & LimitParam>
         },
       ) => Promise<
         | [
@@ -161,7 +161,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/users',
-      args: { headers: ApiKeyAuth; query?: PageParam & LimitParam },
+      args: { headers: ApiKeyAuth; query?: Serialized<PageParam & LimitParam> },
       opts?: RequestOptions,
     ): Promise<
       APIResponse<

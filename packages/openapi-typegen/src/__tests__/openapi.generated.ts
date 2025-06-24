@@ -83,10 +83,10 @@ export type CardsAPIServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: {
+          query?: Serialized<{
             page?: number
             limit?: number
-          }
+          }>
         },
       ) => Promise<
         | [200, APIResponse<PartiallySerialized<CardList>>]
@@ -111,9 +111,9 @@ export type CardsAPIServerPaths = {
           params: {
             cardId: string
           }
-          query: {
+          query: Serialized<{
             cardNickname: boolean
-          }
+          }>
         },
       ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -140,9 +140,9 @@ export type CardsAPIServerPaths = {
           params: {
             cardId: string
           }
-          query: {
+          query: Serialized<{
             cardNickname: boolean
-          }
+          }>
         },
       ) => Promise<
         | [200, APIResponse<PartiallySerialized<Card>>]
@@ -196,10 +196,10 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
     (
       url: '/',
       args?: {
-        query?: {
+        query?: Serialized<{
           page?: number
           limit?: number
-        }
+        }>
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<CardList>>>
@@ -227,9 +227,9 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         params: {
           cardId: string
         }
-        query: {
+        query: Serialized<{
           cardNickname: boolean
-        }
+        }>
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
@@ -252,9 +252,9 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         params: {
           cardId: string
         }
-        query: {
+        query: Serialized<{
           cardNickname: boolean
-        }
+        }>
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
