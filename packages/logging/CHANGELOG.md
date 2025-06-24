@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 1.7.2
+
+### Patch Changes
+
+- 744b05f: Updated dependencies
+
 ## 1.7.1
 
 ### Patch Changes

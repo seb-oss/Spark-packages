@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.1
+
+### Patch Changes
+
+- 744b05f: Updated dependencies
+
 ## 1.8.0
 
 ### Minor Changes
