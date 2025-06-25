@@ -196,10 +196,10 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
     (
       url: '/',
       args?: {
-        query?: Serialized<{
+        query?: {
           page?: number
           limit?: number
-        }>
+        }
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<CardList>>>
@@ -227,9 +227,9 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         params: {
           cardId: string
         }
-        query: Serialized<{
+        query: {
           cardNickname: boolean
-        }>
+        }
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
@@ -252,9 +252,9 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         params: {
           cardId: string
         }
-        query: Serialized<{
+        query: {
           cardNickname: boolean
-        }>
+        }
       },
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>

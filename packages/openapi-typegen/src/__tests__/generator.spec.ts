@@ -667,7 +667,7 @@ describe('typescript generator', () => {
                  */
                 intent?: string
               }
-              query?: Serialized<{
+              query?: {
                 /**
                  * The page number for pagination.
                  */
@@ -676,7 +676,7 @@ describe('typescript generator', () => {
                  * The number of items per page.
                  */
                 size?: number
-              }>
+              }
             },
             opts?: RequestOptions
           ): Promise<APIResponse<Serialized<User>>>

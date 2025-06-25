@@ -21,7 +21,7 @@ const generateArgs = (
         const partName =
           part === 'path' ? 'params' : part === 'header' ? 'headers' : part
 
-        if (partName === 'query') {
+        if (partName === 'query' && isServer) {
           tokens.push(
             `${partName}${arg.optional ? '?' : ''}: Serialized<${generateType(arg)}>`
           )

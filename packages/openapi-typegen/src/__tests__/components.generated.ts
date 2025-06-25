@@ -161,7 +161,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/users',
-      args: { headers: ApiKeyAuth; query?: Serialized<PageParam & LimitParam> },
+      args: { headers: ApiKeyAuth; query?: PageParam & LimitParam },
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
