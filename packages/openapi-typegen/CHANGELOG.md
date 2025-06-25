@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 2.3.2
+
+### Patch Changes
+
+- eeffca3: Do not use Serialized<> for client types
+
 ## 2.3.1
 
 ### Patch Changes
