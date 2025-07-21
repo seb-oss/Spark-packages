@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.2.2
+
+### Patch Changes
+
+- cb58141: import 'util' without node prefix for Metro and polyfill support
+
 ## 2.2.1
 
 ### Patch Changes
