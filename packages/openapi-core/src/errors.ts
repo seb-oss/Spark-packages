@@ -1,4 +1,4 @@
-import { inspect } from 'node:util'
+import { inspect } from 'util' // use 'util' for RN Metro + polyfill support
 import type { AxiosError } from 'axios'
 
 export type ClientErrorCode =
