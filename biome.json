@@ -27,7 +27,7 @@
     "rules": {
       "recommended": true,
       "style": {      
-        "useNodejsImportProtocol": "warn",      
+        "useNodejsImportProtocol": "warn",
         "useShorthandFunctionType": "off"
       }
     }
