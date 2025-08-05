@@ -1,5 +1,11 @@
 # @sebspark/testcontainers-spanner
 
+## 0.1.1
+
+### Patch Changes
+
+- e9097fc: Deprecate package in favor of @testcontainers/gcloud and add migration guide
+
 ## 0.1.0
 
 ### Minor Changes
