@@ -1,6 +1,6 @@
-// src/test-iap-container.spec.ts
-import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest'
 import { GenericContainer, Network, type StartedNetwork } from 'testcontainers'
+// src/test-iap-container.spec.ts
+import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
 import { TestIapContainer } from './test-iap-container'
 
 // --- helpers ---
@@ -10,7 +10,7 @@ const waitHttpOk = (url: string, timeoutMs = 10000) =>
     const tick = () => {
       fetch(url)
         .then(() => resolve())
-        .catch(err => {
+        .catch((err) => {
           if (Date.now() - start > timeoutMs) reject(err)
           else setTimeout(tick, 150)
         })
@@ -36,7 +36,8 @@ describe('TestIapContainer', () => {
       .withNetworkAliases('upstream')
       .withExposedPorts(3000)
       .withCommand([
-        'node', '-e',
+        'node',
+        '-e',
         // tiny echo server => { headers, url }
         `require('http').createServer((req,res)=>{let b='';
           req.on('data',d=>b+=d);
@@ -44,7 +45,7 @@ describe('TestIapContainer', () => {
             res.setHeader('content-type','application/json');
             res.end(JSON.stringify({headers:req.headers, url:req.url}));
           });
-        }).listen(3000,'0.0.0.0')`
+        }).listen(3000,'0.0.0.0')`,
       ])
       .start()
 
@@ -66,7 +67,7 @@ describe('TestIapContainer', () => {
         const token = Buffer.from(JSON.stringify(claims)).toString('base64url')
 
         const res = await fetch(`${baseUrl}/echo?q=1`, {
-          headers: { authorization: `Bearer ${token}` }
+          headers: { authorization: `Bearer ${token}` },
         })
 
         // helpful debug when it fails
@@ -75,13 +76,16 @@ describe('TestIapContainer', () => {
         }
         expect(res.status).toBe(200)
 
-        const body = await res.json() as { headers: Record<string, string>, url: string }
+        const body = (await res.json()) as {
+          headers: Record<string, string>
+          url: string
+        }
 
         // Path & query preserved
         expect(body.url).toBe('/echo?q=1')
 
         // Authorization should be replaced with a JWT (3 segments)
-        const auth = body.headers['authorization']
+        const auth = body.headers.authorization
         expect(auth).toMatch(/^Bearer [^.]+\.[^.]+\.[^.]+$/)
 
         // Should NOT still be the base64url token we sent
@@ -101,12 +105,13 @@ describe('TestIapContainer', () => {
       .withNetworkAliases('downstream')
       .withExposedPorts(4000)
       .withCommand([
-        'node', '-e',
+        'node',
+        '-e',
         // responds with a fixed token regardless of query
         `require('http').createServer((req,res)=>{
           res.writeHead(200,{'content-type':'text/plain'});
           res.end('downstream-token');
-        }).listen(4000,'0.0.0.0')`
+        }).listen(4000,'0.0.0.0')`,
       ])
       .start()
 
@@ -116,11 +121,12 @@ describe('TestIapContainer', () => {
       .withNetworkAliases('upstream2')
       .withExposedPorts(3000)
       .withCommand([
-        'node','-e',
+        'node',
+        '-e',
         `require('http').createServer((req,res)=>{
           res.setHeader('content-type','application/json');
           res.end(JSON.stringify({headers:req.headers}));
-        }).listen(3000,'0.0.0.0')`
+        }).listen(3000,'0.0.0.0')`,
       ])
       .start()
 
@@ -142,12 +148,12 @@ describe('TestIapContainer', () => {
         const token = Buffer.from(JSON.stringify(claims)).toString('base64url')
 
         const res = await fetch(baseUrl, {
-          headers: { authorization: `Bearer ${token}` }
+          headers: { authorization: `Bearer ${token}` },
         })
-        const body = await res.json() as { headers: Record<string, string> }
+        const body = (await res.json()) as { headers: Record<string, string> }
 
         // Downstream token should be passed through as Bearer
-        expect(body.headers['authorization']).toBe('Bearer downstream-token')
+        expect(body.headers.authorization).toBe('Bearer downstream-token')
       } finally {
         await (await iap).stop()
       }

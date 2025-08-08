@@ -82,14 +82,10 @@ export class TestIapContainer {
     const hasStartJs = fs.existsSync(startJs)
 
     if (!hasStartMjs && !hasStartJs) {
-      throw new Error(
-        `Could not find ${startMjs} or ${startJs}`
-      )
+      throw new Error(`Could not find ${startMjs} or ${startJs}`)
     }
 
-    const entry = hasStartMjs
-      ? '/app/dist/start.mjs'
-      : '/app/dist/start.js'
+    const entry = hasStartMjs ? '/app/dist/start.mjs' : '/app/dist/start.js'
 
     // mount dist + the installed 'jose' module so imports work inside the container
     const josePkgPath = tryResolveNearSelf('jose/package.json')

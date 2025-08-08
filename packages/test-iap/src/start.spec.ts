@@ -3,7 +3,7 @@ import { createProxyServer } from './server'
 
 const listenMock = vi.fn((port: number, cb?: () => void) => cb?.())
 vi.mock('./server', () => ({
-  createProxyServer: vi.fn(() => ({ listen: listenMock }))
+  createProxyServer: vi.fn(() => ({ listen: listenMock })),
 }))
 
 const setEnv = (env: Record<string, string | undefined>) => {

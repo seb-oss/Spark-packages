@@ -60,7 +60,7 @@ export const createProxyServer = (config: ProxyConfig) => {
       const payload = {
         name: err instanceof Error ? err.name : 'Error',
         message: err instanceof Error ? err.message : String(err),
-        stack: err instanceof Error ? err.stack : undefined
+        stack: err instanceof Error ? err.stack : undefined,
       }
       res.writeHead(500, { 'content-type': 'application/json' })
       res.end(JSON.stringify(payload))
@@ -100,15 +100,15 @@ export const createProxyServer = (config: ProxyConfig) => {
       const payload = {
         name: err instanceof Error ? err.name : 'Error',
         message: err instanceof Error ? err.message : String(err),
-        stack: err instanceof Error ? err.stack : undefined
+        stack: err instanceof Error ? err.stack : undefined,
       }
       const body = Buffer.from(JSON.stringify(payload))
       socket.write(
-        'HTTP/1.1 500 Internal Server Error\r\n' +
-        'Connection: close\r\n' +
-        'Content-Type: application/json\r\n' +
-        `Content-Length: ${body.length}\r\n` +
-        '\r\n'
+        `HTTP/1.1 500 Internal Server Error
+Connection: close
+Content-Type: application/json
+Content-Length: ${body.length}
+`
       )
       socket.write(body)
       socket.destroy()
