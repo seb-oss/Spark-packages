@@ -73,7 +73,7 @@ export type PublisherClient<T extends Record<string, unknown>> = {
     cloudSchema?: CloudSchema
   ): {
     publish<M extends T[K]>(message: M): Promise<void>
-    initiate(): Promise<void>
+    initiate(): Promise<{ topic: Topic; type: Type | undefined }>
   }
 }
 
@@ -82,32 +82,47 @@ export const createPublisher = <T extends Record<string, unknown>>(
   publishOptions?: PublishOptions | undefined
 ): PublisherClient<T> => {
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
-  let _topic: Topic
-  let _type: Type
+  const topics = new Map<string | number | symbol, Topic>()
+  const types = new Map<string | number | symbol, Type>()
+
   const ensureInitiated = async (
     name: string | number | symbol,
     schema: CloudSchema | undefined
   ) => {
-    if (!_topic) {
-      // Get or create topic
-      if (schema) {
-        const schemaData = await syncTopicSchema(client, schema)
-        _topic = await createOrGetTopic(client, name as string, schemaData)
-      } else {
-        _topic = await createOrGetTopic(client, name as string)
-      }
+    if (topics.has(name)) {
+      const topic = topics.get(name) as Topic
+      const type = types.get(name)
 
-      // Set publish options
-      if (publishOptions) {
-        _topic.setPublishOptions(publishOptions)
-      }
-
-      if (schema && !_type) {
-        const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
-        _type = schemaType
-      }
+      return { topic, type }
     }
+
+    // Get or create topic
+    let topic: Topic
+    let type = types.get(name)
+
+    if (schema) {
+      const schemaData = await syncTopicSchema(client, schema)
+      topic = await createOrGetTopic(client, name as string, schemaData)
+    } else {
+      topic = await createOrGetTopic(client, name as string)
+    }
+
+    topics.set(name, topic)
+
+    // Set publish options
+    if (publishOptions) {
+      topic.setPublishOptions(publishOptions)
+    }
+
+    if (schema && !type) {
+      const schemaType = Type.forSchema(JSON.parse(schema.avroDefinition))
+      types.set(name, schemaType)
+      type = schemaType
+    }
+
+    return { topic, type }
   }
+
   const typedClient: PublisherClient<T> = {
     topic: (name, schema) => {
       return {
@@ -115,16 +130,16 @@ export const createPublisher = <T extends Record<string, unknown>>(
           return ensureInitiated(name, schema)
         },
         publish: async (json) => {
-          await ensureInitiated(name, schema)
+          const { topic, type } = await ensureInitiated(name, schema)
 
-          if (_type) {
+          if (type) {
             // Pubsub requires a Buffer but the typing forbids a Buffer 🤯
-            const data = _type.toBuffer(
+            const data = type.toBuffer(
               json
             ) as unknown as MessageOptions['data']
-            await _topic.publishMessage({ data })
+            await topic.publishMessage({ data })
           } else {
-            await _topic.publishMessage({ json })
+            await topic.publishMessage({ json })
           }
         },
       }
