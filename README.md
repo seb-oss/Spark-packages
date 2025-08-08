@@ -108,6 +108,10 @@ A Socket.IO PubSub emitter, allowing to communicate with a group of Socket.IO se
 
 A test container implementation of Spanner DB
 
+### [@sebspark/test-iap](./packages/test-iap)
+
+A fake IAP which can be used to run e2e tests
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

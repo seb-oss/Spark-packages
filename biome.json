@@ -39,5 +39,13 @@
       "arrowParentheses": "always",
       "trailingCommas": "es5"
     }
-  }
+  },
+  "overrides": [
+    {
+      "include": ["**/*.spec.*", "**/*.test.*"],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ]
 }

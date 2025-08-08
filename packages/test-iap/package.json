@@ -1,0 +1,32 @@
+{
+  "name": "@sebspark/test-iap",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "yarn build:index && yarn build:start",
+    "build:index": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build:start": "tsup-node src/start.ts --format esm",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check .",
+    "test": "vitest run --passWithNoTests --coverage",
+    "pretest:e2e": "yarn build",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "typecheck": "vitest --typecheck.only --passWithNoTests"
+  },
+  "dependencies": {
+    "jose": "^6.0.12",
+    "testcontainers": "^11.5.1"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1",
+    "nock": "^14.0.9",
+    "tsconfig": "*",
+    "ws": "^8.18.3"
+  }
+}
