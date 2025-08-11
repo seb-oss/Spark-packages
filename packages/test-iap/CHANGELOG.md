@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 0.1.1
+
+### Patch Changes
+
+- 9268050: Fixed documentation
+
 ## 0.1.0
 
 ### Minor Changes
