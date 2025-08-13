@@ -24,6 +24,7 @@
     "vitest": "3.2.4"
   },
   "dependencies": {
+    "@sebspark/openapi-auth-iam": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
     "axios": "1.10.0",

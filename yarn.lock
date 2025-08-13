@@ -3038,7 +3038,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam":
+"@sebspark/openapi-auth-iam@npm:*, @sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
@@ -3051,6 +3051,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
+    "@sebspark/openapi-auth-iam": "npm:*"
     "@sebspark/openapi-core": "npm:*"
     "@sebspark/openapi-typegen": "npm:*"
     "@sebspark/retry": "npm:*"
