@@ -52,5 +52,3 @@ export type GatewayGraphqlClientArgs = {
   uri: string
   apiKey: string
 }
-
-

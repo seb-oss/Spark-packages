@@ -173,7 +173,7 @@ const callServer = async <
 
     const body =
       args.method?.toLowerCase() === 'get' ||
-        args.method?.toLowerCase() === 'delete'
+      args.method?.toLowerCase() === 'delete'
         ? undefined
         : args.body
     const { headers, data } = await retry(
@@ -187,7 +187,7 @@ const callServer = async <
           paramsSerializer: serializer,
           data: body,
           httpsAgent: args.httpsAgent,
-          httpAgent: args.httpAgent
+          httpAgent: args.httpAgent,
         }),
       args.retry
     )
@@ -220,7 +220,7 @@ const mergeArgs = (
     retry,
     arrayFormat: global?.arrayFormat,
     httpsAgent: extras?.httpsAgent,
-    httpAgent: extras?.httpAgent
+    httpAgent: extras?.httpAgent,
   }
 
   return merged
