@@ -21,6 +21,7 @@
     "@sebspark/openapi-typegen": "*",
     "nock": "14.0.5",
     "tsconfig": "*",
+    "tsup-node": "^0.1.0",
     "vitest": "3.2.4"
   },
   "dependencies": {

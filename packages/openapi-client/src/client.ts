@@ -1,20 +1,11 @@
-import {
-  type APIResponse,
-  type BaseClient,
-  type ClientOptions,
-  type RequestArgs,
-  type RequestOptions,
-  fromAxiosError,
-} from '@sebspark/openapi-core'
+import type { APIResponse, BaseClient, ClientOptions, RequestArgs, RequestOptions } from '@sebspark/openapi-core';
+import { fromAxiosError } from '@sebspark/openapi-core';
 import { retry } from '@sebspark/retry'
-import axios, {
-  type AxiosInstance,
-  type AxiosError,
-  type AxiosHeaders,
-} from 'axios'
-import createAuthRefreshInterceptor from 'axios-auth-refresh'
-import type { Logger } from 'winston'
-import { paramsSerializer } from './paramsSerializer'
+import axios from 'axios';
+import type { AxiosInstance, AxiosError, AxiosHeaders } from 'axios';
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import type { Logger } from 'winston';
+import { paramsSerializer } from './paramsSerializer';
 
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance
@@ -173,7 +164,7 @@ const callServer = async <
 
     const body =
       args.method?.toLowerCase() === 'get' ||
-      args.method?.toLowerCase() === 'delete'
+        args.method?.toLowerCase() === 'delete'
         ? undefined
         : args.body
     const { headers, data } = await retry(
