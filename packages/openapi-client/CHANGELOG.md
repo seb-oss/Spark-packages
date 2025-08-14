@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 2.4.0
+
+### Minor Changes
+
+- a3fd21e: Adds Gateway Graphql Client
+
 ## 2.3.0
 
 ### Minor Changes
