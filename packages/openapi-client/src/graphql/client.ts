@@ -5,7 +5,7 @@ import {
 import type { ClientOptions } from '@sebspark/openapi-core'
 import type { Logger } from 'winston'
 
-import { TypedClient } from '@sebspark/openapi-client'
+import { TypedClient } from '../client'
 import type {
   GatewayGraphqlClientArgs,
   GatewayGraphqlClient as GatewayGraphqlClientType,
