@@ -1,5 +1,4 @@
 import * as auth from '@sebspark/openapi-auth-iam'
-import * as openapi from '@sebspark/openapi-client'
 import {
   type Mock,
   type Mocked,
@@ -10,9 +9,11 @@ import {
   it,
   vi,
 } from 'vitest'
+import * as clientModule from '../client'
 
 import type { ClientOptions } from '@sebspark/openapi-core'
-import type { ILogger } from '@tradeinsight/commontypes'
+
+import type { Logger } from 'winston'
 import { GatewayGraphqlClient } from './'
 import type { GatewayGraphqlClientArgs } from './types'
 
@@ -20,11 +21,13 @@ vi.mock('@sebspark/openapi-auth-iam', () => ({
   apiGatewayTokenByUrlGenerator: vi.fn(),
   apiGatewayTokenRefresh: vi.fn(),
 }))
-vi.mock('@sebspark/openapi-client', () => ({
+vi.mock('../client', () => ({
   TypedClient: vi.fn(),
 }))
 
-const TypedClient = openapi.TypedClient as Mock<typeof openapi.TypedClient>
+const TypedClient = clientModule.TypedClient as Mock<
+  typeof clientModule.TypedClient
+>
 const apiGatewayTokenByUrlGenerator =
   auth.apiGatewayTokenByUrlGenerator as Mock<
     typeof auth.apiGatewayTokenByUrlGenerator
@@ -38,7 +41,7 @@ describe('GatewayGraphqlClient', () => {
   const uri = 'https://uri'
 
   let args: GatewayGraphqlClientArgs
-  let logger: Mocked<ILogger>
+  let logger: Mocked<Logger>
   let typedClient: {
     get: MockedFunction<(path: string) => Promise<any>>
     post: MockedFunction<
@@ -53,11 +56,11 @@ describe('GatewayGraphqlClient', () => {
     vi.clearAllMocks()
 
     logger = {
-      debug: vi.fn((obj: any) => {}),
-      error: vi.fn((obj: any) => {}),
-      info: vi.fn((obj: any) => {}),
-      warn: vi.fn((obj: any) => {}),
-    }
+      debug: vi.fn(),
+      error: vi.fn(),
+      info: vi.fn(),
+      warn: vi.fn(),
+    } as any
 
     args = {
       apiKey,
