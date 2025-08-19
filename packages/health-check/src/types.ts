@@ -14,8 +14,6 @@ export type Liveness = Status & {
 export type Freshness = {
   lastChecked: string
   lastSuccess: string | null
-  ttlMs: number
-  isStale: boolean
 }
 
 export type Observed = {
