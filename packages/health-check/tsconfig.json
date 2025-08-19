@@ -1,0 +1,4 @@
+{
+  "extends": "@sebspark/tsconfig/base.json",
+  "include": ["."]
+}

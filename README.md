@@ -112,6 +112,10 @@ A test container implementation of Spanner DB
 
 A fake IAP which can be used to run e2e tests
 
+### [@sebspark/health-check](./packages/health-check)
+
+An easy way to add health check routes to your API
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
