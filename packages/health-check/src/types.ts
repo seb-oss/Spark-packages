@@ -73,3 +73,8 @@ export type ReadinessPayload = Status & {
   summary: ReadinessSummary
   checks: Record<string, DependencyCheck>
 }
+
+export type HealthSummary = Status
+  & Pick<ReadinessPayload, 'summary' | 'checks'>
+  & Pick<Liveness, 'system' | 'process'>
+  & { timestamp: string }
