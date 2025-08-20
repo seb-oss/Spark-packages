@@ -6,6 +6,7 @@ import type {
   Observed,
   StatusValue,
 } from './types'
+import { runAgainstTimeout, singleFlight } from './timing'
 
 /**
  * Base configuration shared by all dependency monitor modes.
@@ -24,6 +25,13 @@ type BaseConfig = {
    * - Must not be set for inline mode
    */
   pollRate?: number
+
+  /**
+   * Polling interval in milliseconds for failed calls.
+   * - Defaults to pollRate for polled and async modes
+   * - Must not be set for inline mode
+   */
+  retryRate?: number
 }
 
 /**
@@ -47,6 +55,14 @@ export type SyncInlineConfig = BaseConfig & {
   syncCall: () => Promise<StatusValue>
   asyncCall?: never
   pollRate?: undefined
+  retryRate?: undefined
+
+
+  /**
+   * Time in ms before call is considered failed
+   * Defaults to 1000
+   */
+  timeout?: number
 }
 
 /**
@@ -199,6 +215,11 @@ export class DependencyMonitor {
         ? 'polled'
         : 'inline'
 
+    // only one call for check at a time
+    if (this.mode === 'inline') {
+      this.check = singleFlight(this.check.bind(this))
+    }
+
     if (this.mode !== 'inline') {
       this.doCheck()
     }
@@ -221,7 +242,7 @@ export class DependencyMonitor {
     }
 
     if (this.config.syncCall) {
-      this.doSyncCheck()
+      await this.doSyncCheck()
     } else {
       this.doAsyncCheck()
     }
@@ -233,8 +254,10 @@ export class DependencyMonitor {
   private async doSyncCheck() {
     const start = Date.now()
 
+    const { syncCall, timeout } = this.config as SyncInlineConfig
+    const { pollRate, retryRate } = this.config as SyncPolledConfig
     try {
-      this.status = (await this.config.syncCall?.()) as StatusValue
+      this.status = await runAgainstTimeout(syncCall(), timeout)
 
       const end = new Date()
       this.freshness = {
@@ -250,14 +273,19 @@ export class DependencyMonitor {
       this.observed = undefined
 
       const end = new Date()
-      this.freshness = {
-        lastChecked: end.toISOString(),
-        lastSuccess: null,
+      if (this.freshness) {
+        this.freshness.lastChecked = end.toISOString()
+      } else {
+        this.freshness = {
+          lastChecked: end.toISOString(),
+          lastSuccess: null,
+        }
       }
     }
 
     if (this.config.pollRate && !this.isDisposed) {
-      this.timeout = setTimeout(() => this.doCheck(), this.config.pollRate)
+      const delay = this.status === 'error' ? retryRate || pollRate : pollRate
+      this.timeout = setTimeout(() => this.doCheck(), delay)
     }
   }
 
@@ -289,6 +317,10 @@ export class DependencyMonitor {
    * - In polled/async mode: returns the cached result.
    */
   public async check(): Promise<DependencyCheck> {
+    if (this.isDisposed) {
+      throw new Error('DependencyMonitor has been disposed')
+    }
+
     if (this.mode === 'inline') {
       await this.doCheck()
     }

@@ -1,17 +1,16 @@
 import express, { type Express, Router } from 'express'
 import { agent } from 'supertest'
-// health-monitor.methods.spec.ts
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { HealthMonitor } from './health-monitor'
+import { DependencyMonitor } from './dependency-monitor'
 
-describe('HealthMonitor methods', () => {
+describe('HealthMonitor', () => {
   describe('.ping', () => {
     it('returns ok', () => {
       const monitor = new HealthMonitor()
       expect(monitor.ping()).toEqual({ status: 'ok' })
     })
   })
-
   describe('.live', () => {
     beforeEach(() => {
       vi.useFakeTimers()
@@ -20,15 +19,42 @@ describe('HealthMonitor methods', () => {
       vi.useRealTimers()
     })
 
-    it('returns uptime and a fresh timestamp', () => {
-      const monitor = new HealthMonitor()
+    it('returns ok, a fresh timestamp, and system/process info', () => {
+      using monitor = new HealthMonitor()
       const res = monitor.live()
+
+      // status + fresh timestamp
       expect(res.status).toBe('ok')
-      expect(res.uptime).toEqual(expect.any(Number))
-      expect(Date.now() - Date.parse(res.timestamp)).toBeLessThan(10)
+      expect(typeof res.timestamp).toBe('string')
+      expect(Date.now() - Date.parse(res.timestamp)).toBeLessThan(50)
+
+      // system summary
+      expect(res.system).toMatchObject({
+        hostname: expect.any(String),
+        platform: expect.any(String),
+        release: expect.any(String),
+        arch: expect.any(String),
+        uptime: expect.any(Number),
+        totalmem: expect.any(Number),
+        freemem: expect.any(Number),
+        memUsedRatio: expect.any(Number),
+        cpus: {
+          count: expect.any(Number),
+          // model/speedMHz are optional; don’t assert them strictly
+        },
+      })
+      expect(Array.isArray(res.system.loadavg)).toBe(true)
+      expect(res.system.loadavg).toHaveLength(3)
+
+      // process summary
+      expect(res.process).toMatchObject({
+        pid: expect.any(Number),
+        node: expect.any(String),
+        uptime: expect.any(Number),
+        memory: expect.any(Object),
+      })
     })
   })
-
   describe('.ready', () => {
     beforeEach(() => {
       vi.useFakeTimers()
@@ -45,10 +71,10 @@ describe('HealthMonitor methods', () => {
 
     it('includes inline dependency result and overall ok', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('db', {
+      monitor.addDependency('db', new DependencyMonitor({
         impact: 'critical',
         syncCall: async () => 'ok',
-      })
+      }))
       const res = await monitor.ready()
       expect(res.status).toBe('ok')
       expect(res.checks.db).toMatchObject({
@@ -64,11 +90,11 @@ describe('HealthMonitor methods', () => {
 
     it('includes polled dependency result (initial tick) and overall ok', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('redis', {
+      monitor.addDependency('redis', new DependencyMonitor({
         impact: 'critical',
         pollRate: 10_000,
         syncCall: async () => 'ok',
-      })
+      }))
 
       await vi.runAllTicks()
 
@@ -84,11 +110,11 @@ describe('HealthMonitor methods', () => {
 
     it('overall degraded when a non-critical dependency is degraded', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('paymentsApi', {
+      monitor.addDependency('paymentsApi', new DependencyMonitor({
         impact: 'non_critical',
         pollRate: 5_000,
         syncCall: async () => 'degraded',
-      })
+      }))
 
       await vi.runAllTicks()
 
@@ -99,12 +125,12 @@ describe('HealthMonitor methods', () => {
 
     it('overall error when a critical dependency errors', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('postgres', {
+      monitor.addDependency('postgres', new DependencyMonitor({
         impact: 'critical',
         syncCall: async () => {
           throw new Error('boom')
         },
-      })
+      }))
 
       const res = await monitor.ready()
       expect(res.status).toBe('error')
@@ -113,13 +139,13 @@ describe('HealthMonitor methods', () => {
 
     it('uses cached async result and can degrade overall', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('quotesApi', {
+      monitor.addDependency('quotesApi', new DependencyMonitor({
         impact: 'non_critical',
         pollRate: 10_000,
         asyncCall: (report) => {
           setTimeout(() => report('degraded'), 1_000)
         },
-      })
+      }))
 
       await vi.runAllTicks()
       await vi.advanceTimersByTimeAsync(1_000)
@@ -132,11 +158,11 @@ describe('HealthMonitor methods', () => {
 
     it('synthesizes an error snapshot when a dependency check rejects', async () => {
       const monitor = new HealthMonitor()
-      monitor.addDependency('flaky', {
+      monitor.addDependency('flaky', new DependencyMonitor({
         impact: 'non_critical',
         pollRate: 10_000,
         syncCall: async () => 'ok',
-      })
+      }))
 
       // Force the underlying DependencyMonitor to reject on check()
       const dep = (monitor as any).dependencies.get('flaky')
@@ -209,6 +235,41 @@ describe('HealthMonitor methods', () => {
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(200)
       expect(res.body).toEqual(payload)
+    })
+  })
+  describe('.dispose', () => {
+    it('dispose() calls dispose on all dependency monitors', () => {
+      const monitor = new HealthMonitor()
+
+      const db = new DependencyMonitor({
+        impact: 'critical',
+        syncCall: async () => 'ok'
+      })
+      const redis = new DependencyMonitor({
+        impact: 'critical',
+        pollRate: 5_000,
+        syncCall: async () => 'ok'
+      })
+      const quotesApi = new DependencyMonitor({
+        impact: 'non_critical',
+        pollRate: 10_000,
+        asyncCall: report => report('ok')
+      })
+
+      monitor
+        .addDependency('db', db)
+        .addDependency('redis', redis)
+        .addDependency('quotesApi', quotesApi)
+
+      const dbDispose = vi.spyOn(db, 'dispose')
+      const redisDispose = vi.spyOn(redis, 'dispose')
+      const quotesDispose = vi.spyOn(quotesApi, 'dispose')
+
+      monitor.dispose()
+
+      expect(dbDispose).toHaveBeenCalledTimes(1)
+      expect(redisDispose).toHaveBeenCalledTimes(1)
+      expect(quotesDispose).toHaveBeenCalledTimes(1)
     })
   })
 })

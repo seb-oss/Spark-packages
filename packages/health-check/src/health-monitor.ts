@@ -4,7 +4,12 @@ import {
   type DependencyMonitorConfig,
 } from './dependency-monitor'
 import { liveness, ping } from './static-checks'
+import { throttle } from './timing'
 import type { DependencyCheck, Impact } from './types'
+
+export interface HealthMonitorConfig {
+  throttle: number
+}
 
 /**
  * HealthMonitor wires up standard health check endpoints for an Express app.
@@ -46,29 +51,34 @@ export class HealthMonitor {
   /**
    * Create a new HealthMonitor instance with its own router and dependency map.
    */
-  constructor() {
+  constructor(config?: HealthMonitorConfig) {
     this._router = this.createRouter()
     this.dependencies = new Map()
+
+    const thr = config ? config.throttle : 10
+    if (thr > 0) {
+      this.ready = throttle(this.ready.bind(this), thr)
+    }
   }
 
   /**
    * Register a named dependency to be checked as part of readiness.
    *
    * @param name - Identifier for the dependency (e.g. "postgres", "redis").
-   * @param config - Dependency monitor configuration (inline, polled, or async).
+   * @param dependency - DependencyMonitor
    * @returns this for chaining
    *
    * @example
    * ```ts
-   * monitor.addDependency('redis', {
+   * monitor.addDependency('redis', new DependencyMonitor({
    *   impact: 'critical',
    *   pollRate: 5000,
    *   syncCall: async () => redis.ping() ? 'ok' : 'error'
-   * })
+   * }))
    * ```
    */
-  public addDependency(name: string, config: DependencyMonitorConfig) {
-    this.dependencies.set(name, new DependencyMonitor(config))
+  public addDependency(name: string, dependency: DependencyMonitor) {
+    this.dependencies.set(name, dependency)
     return this
   }
 
