@@ -1,11 +1,11 @@
-import { Router } from 'express'
+import { Router, type ErrorRequestHandler } from 'express'
 import {
   DependencyMonitor,
   type DependencyMonitorConfig,
 } from './dependency-monitor'
 import { liveness, ping } from './static-checks'
 import { throttle } from './timing'
-import type { DependencyCheck, Impact } from './types'
+import type { DependencyCheck, HealthSummary, Impact, ReadinessPayload, ReadinessSummary } from './types'
 
 export interface HealthMonitorConfig {
   throttle: number
@@ -88,21 +88,53 @@ export class HealthMonitor {
   private createRouter() {
     const router = Router()
 
+    // Health
+    router.get('/health', async (_req, res, next) => {
+      try {
+        const health = await this.health()
+        res.status(200).json(health)
+      } catch (err) {
+        next(err)
+      }
+    })
+
     // Ping
-    router.get('/health/ping', (_req, res) => {
-      res.status(200).json(this.ping())
+    router.get('/health/ping', (_req, res, next) => {
+      try {
+        res.status(200).json(this.ping())
+      } catch (err) {
+        next(err)
+      }
     })
 
     // Liveness
-    router.get('/health/live', (_req, res) => {
-      res.status(200).json(this.live())
+    router.get('/health/live', (_req, res, next) => {
+      try {
+        res.status(200).json(this.live())
+      } catch (err) {
+        next(err)
+      }
     })
 
     // Readiness
-    router.get('/health/ready', async (_req, res) => {
-      const readiness = await this.ready()
-      res.status(200).json(readiness)
+    router.get('/health/ready', async (_req, res, next) => {
+      try {
+        const readiness = await this.ready()
+        res.status(200).json(readiness)
+      } catch (err) {
+        next(err)
+      }
     })
+
+    // Error handler
+    const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+      const message = err instanceof Error ? err.message : String(err)
+      res.status(500).json({
+        status: 'error',
+        error: { message },
+      })
+    }
+    router.use(errorHandler)
 
     return router
   }
@@ -150,7 +182,7 @@ export class HealthMonitor {
    * }
    * ```
    */
-  public async ready() {
+  public async ready(): Promise<ReadinessPayload> {
     const entries = Array.from(this.dependencies.entries())
 
     const settled = await Promise.allSettled(
@@ -187,23 +219,72 @@ export class HealthMonitor {
       }
     }
 
-    let status: import('./types').StatusValue = 'ok'
+    // ----- summary -------------------------------------------------------------
+    let criticalOk = 0
+    let criticalFailing = 0 // counts any non-ok critical (degraded OR error)
 
+    let nonCritOk = 0
+    let nonCritDegraded = 0
+    let nonCritFailing = 0  // non-critical with status === 'error'
+
+    const degradedReasons: string[] = []
+
+    for (const [name, c] of Object.entries(checks)) {
+      const isCritical = c.impact === 'critical'
+      if (c.status === 'ok') {
+        if (isCritical) criticalOk++
+        else nonCritOk++
+      } else if (c.status === 'degraded') {
+        if (isCritical) criticalFailing++            // critical degraded counts as failing
+        else nonCritDegraded++
+        degradedReasons.push(`${name}:degraded`)
+      } else { // 'error'
+        if (isCritical) criticalFailing++
+        else nonCritFailing++
+        degradedReasons.push(`${name}:${c.error?.code ?? 'error'}`)
+      }
+    }
+
+    const summary: ReadinessSummary = {
+      critical: { ok: criticalOk, failing: criticalFailing },
+      nonCritical: { ok: nonCritOk, degraded: nonCritDegraded, failing: nonCritFailing },
+      degradedReasons,
+    }
+
+    // ----- overall status (same rules as before) -------------------------------
+    let status: import('./types').StatusValue = 'ok'
     const values = Object.values(checks)
-    const anyCriticalError = values.some(
-      (c) => c.impact === 'critical' && c.status === 'error'
-    )
-    const anyDegradedOrError = values.some(
-      (c) => c.status === 'degraded' || c.status === 'error'
-    )
-    const anyCriticalDegraded = values.some(
-      (c) => c.impact === 'critical' && c.status === 'degraded'
-    )
+    const anyCriticalError = values.some(c => c.impact === 'critical' && c.status === 'error')
+    const anyDegradedOrError = values.some(c => c.status === 'degraded' || c.status === 'error')
+    const anyCriticalDegraded = values.some(c => c.impact === 'critical' && c.status === 'degraded')
 
     if (anyCriticalError) status = 'error'
     else if (anyCriticalDegraded || anyDegradedOrError) status = 'degraded'
 
-    return { status, checks }
+    // ----- payload -------------------------------------------------------------
+    const payload: ReadinessPayload = {
+      status,
+      timestamp: new Date().toISOString(),
+      // service: { name, version, instanceId } // (optional; if you add config later)
+      summary,
+      checks,
+    }
+
+    return payload
+  }
+
+  public async health() {
+    const { status, checks, summary } = await this.ready()
+    const { timestamp, system, process } = this.live()
+
+    return {
+      status,
+      timestamp,
+      system,
+      process,
+      checks,
+      summary,
+    } as HealthSummary
   }
 
   /**
