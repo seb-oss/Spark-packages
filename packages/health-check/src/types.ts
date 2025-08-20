@@ -6,9 +6,34 @@ export type Status = {
   status: StatusValue
 }
 
-export type Liveness = Status & {
+export type System = {
+  hostname: string
+  platform: NodeJS.Platform
+  release: string
+  arch: string
   uptime: number
+  loadavg: [number, number, number] // 1, 5, 15 min
+  totalmem: number
+  freemem: number
+  memUsedRatio: number // 0..1
+  cpus: {
+    count: number
+    model?: string
+    speedMHz?: number
+  }
+}
+
+export type Process = {
+  pid: number
+  node: string
+  uptime: number
+  memory: NodeJS.MemoryUsage
+}
+
+export type Liveness = Status & {
   timestamp: string
+  system: System
+  process: Process
 }
 
 export type Freshness = {
