@@ -24,52 +24,65 @@ const monitor = new HealthMonitor()
 // Critical inline dependency: Database
 monitor.addDependency('db', new DependencyMonitor({
   impact: 'critical',
+  healthyLimitMs: 50,      // ≤ 50ms and 'ok' ⇒ ok
+  timeoutLimitMs: 500,     // > 500ms ⇒ error (aborted)
   syncCall: async () => {
     try {
-      const latency = await db.ping() // returns round-trip ms or throws
-      if (latency < 50) return 'ok'
-      return 'degraded'
-    } catch {
-      return 'error'
+      const latencyMs = await db.ping() // throws on failure
+      // When syncCall returns 'ok' but took > healthyLimitMs, monitor marks it 'degraded'
+      return 'ok'
+    } catch (err) {
+      return err as Error // treated as 'error'
     }
   },
 }))
 
-// Non-critical polled dependency: External API (check triggered on regular intervals)
+// Non-critical polled dependency: External API
 monitor.addDependency('externalApi', new DependencyMonitor({
   impact: 'non_critical',
+  pollRate: 10_000,        // run every 10s and cache the result
+  healthyLimitMs: 250,     // ≤ 250ms and 'ok' ⇒ ok
+  timeoutLimitMs: 1000,    // > 1000ms ⇒ error (request times out)
   syncCall: async () => {
     try {
-      const res = await fetch('https://status.example.com/health')
-      if (res.ok) return 'ok'
-      return 'degraded'
-    } catch {
-      return 'error'
+      const res = await fetch('https://status.example.com/health', { method: 'GET' })
+      // 'ok' within healthyLimitMs ⇒ ok; 'ok' but slower ⇒ degraded; non-2xx ⇒ degraded
+      return res.ok ? 'ok' : 'degraded'
+    } catch (err) {
+      return err as Error
     }
   },
-  pollRate: 10_000,
 }))
 
-// Critical dependency PubSub
+// Critical async dependency: Pub/Sub round-trip (ping/pong)
 monitor.addDependency('pubsub', new DependencyMonitor({
   impact: 'critical',
-  pollRate: 15_000,
+  pollRate: 15_000,        // start a new async round-trip every 15s
+  healthyLimitMs: 100,     // pong within 100ms ⇒ ok; slower ⇒ degraded
+  timeoutLimitMs: 1000,    // no pong by 1s ⇒ error
   asyncCall: async (report) => {
-    pubsub
-      .topic('my-topic')
-      .subscription('my-subscription')
-      .on('message', (msg) => {
-        const parsed = JSON.parse(msg.data.toString())
-        if (parsed.type === 'pong') {
-          report('ok')
-        }
-      })
+    const topic = pubsub.topic('health-topic')
+    const sub   = topic.subscription('health-sub')
 
-    pubsub
-      .topic('my-topic')
-      .publishMessage({
-        data: Buffer.from(JSON.stringify({ type: 'ping' }))
-      })
+    // listen for a single pong
+    const onMessage = (msg: any) => {
+      try {
+        const data = JSON.parse(msg.data.toString())
+        if (data.type === 'pong') {
+          report('ok') // monitor classifies ok/degraded based on elapsed time
+        } else {
+          report('degraded')
+        }
+      } catch (e) {
+        report(e as Error)
+      } finally {
+        sub.removeListener('message', onMessage)
+      }
+    }
+    sub.on('message', onMessage)
+
+    // publish ping
+    await topic.publishMessage({ data: Buffer.from(JSON.stringify({ type: 'ping' })) })
   },
 }))
 

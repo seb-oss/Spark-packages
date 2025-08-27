@@ -1,10 +1,10 @@
 import { performance } from 'node:perf_hooks'
 import net from 'node:net'
-import { RedisContainer } from '@testcontainers/redis'
+import { RedisContainer, type StartedRedisContainer } from '@testcontainers/redis'
 
 export const startRedis = async () => new RedisContainer('redis:8-alpine').start()
 
-export const pingRedis = (host: string, port: number, timeoutMs = 1500) => new Promise<number>((resolve, reject) => {
+export const pingRedis = (redis: StartedRedisContainer, timeoutMs = 1500) => new Promise<number>((resolve, reject) => {
   const start = performance.now()
   const socket = new net.Socket()
   let done = false
@@ -25,7 +25,7 @@ export const pingRedis = (host: string, port: number, timeoutMs = 1500) => new P
   socket.once('timeout', () => finish(new Error('timeout')))
   socket.once('error', (err) => finish(err))
 
-  socket.connect(port, host, () => {
+  socket.connect(redis.getPort(), redis.getHost(), () => {
     socket.write('PING\r\n')
   })
 

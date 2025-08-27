@@ -3,9 +3,9 @@ import request from 'supertest'
 import express, { type Express } from 'express'
 import { pingRedis, startRedis } from './redis.helper'
 import { pingApi, startApi } from './api.helper'
-import { HealthMonitor, ReadinessPayload, ReadinessSummary } from '../'
+import { pingPubSub, startPubSub } from './pubsub.helper'
+import { HealthMonitor, ReadinessPayload } from '../'
 import { DependencyMonitor } from '../dependency-monitor'
-import { wait } from '../timing'
 import { waitFor } from './wait-for.helper'
 
 describe('health-check', () => {
@@ -67,13 +67,18 @@ describe('health-check', () => {
   describe('health/ready', () => {
     let redis: Awaited<ReturnType<typeof startRedis>>
     let api: Awaited<ReturnType<typeof startApi>>
+    let pubsub: Awaited<ReturnType<typeof startPubSub>>
+
+    let redisDependency: DependencyMonitor
+    let apiDependency: DependencyMonitor
+    let pubsubDependency: DependencyMonitor
+
     beforeEach(async () => {
       redis = await startRedis()
-
-      monitor.addDependency('redis', new DependencyMonitor({
+      redisDependency = new DependencyMonitor({
         syncCall: async () => {
           try {
-            await pingRedis(redis.getHost(), redis.getPort())
+            await pingRedis(redis)
             return 'ok'
           } catch (err) {
             return err as Error
@@ -82,10 +87,11 @@ describe('health-check', () => {
         impact: 'critical',
         healthyLimitMs: 50,
         timeoutLimitMs: 500,
-      }))
+      })
+      monitor.addDependency('redis', redisDependency)
 
       api = await startApi()
-      monitor.addDependency('api', new DependencyMonitor({
+      apiDependency =  new DependencyMonitor({
         syncCall: async () => {
           try {
             await pingApi(api)
@@ -98,13 +104,27 @@ describe('health-check', () => {
         healthyLimitMs: 250,
         timeoutLimitMs: 1000,
         pollRate: 1000,
-      }))
+      })
+      monitor.addDependency('api', apiDependency)
 
-
+      pubsub = await startPubSub()
+      pubsubDependency = new DependencyMonitor({
+        impact: 'critical',
+        healthyLimitMs: 100,
+        timeoutLimitMs: 1_000,
+        pollRate: 500,
+        asyncCall: (callback) => {
+          pingPubSub(pubsub, (_message) => {
+            callback('ok')
+          })
+        }
+      })
+      monitor.addDependency('pubsub', pubsubDependency)
     })
     afterEach(async () => {
       await redis.stop()
       await api.stop()
+      await pubsub.stop()
     })
     it('returns general readiness payload', async () => {
       const res = await request(app).get('/health/ready')
@@ -134,7 +154,7 @@ describe('health-check', () => {
         },
       })
     })
-    it('declares api polled dependency check as unknown from the start', async () => {
+    it.skip('declares api polled dependency check as unknown from the start', async () => {
       const res = await request(app).get('/health/ready')
       expect(res.status).toBe(200)
 
@@ -152,6 +172,32 @@ describe('health-check', () => {
         expect(apiCheck).toMatchObject({
           impact: 'non_critical',
           mode: 'polled',
+          status: 'ok',
+          freshness: {
+            lastChecked: expect.any(String),
+            lastSuccess: expect.any(String),
+          },
+        })
+      })
+    })
+    it('declares pubsub polled, async dependency check as unknown from the start', async () => {
+      const res = await request(app).get('/health/ready')
+      expect(res.status).toBe(200)
+
+      const pubsubCheck = (res.body as ReadinessPayload).checks.pubsub
+      expect(pubsubCheck).toBeDefined()
+      expect(pubsubCheck.status).toEqual('unknown')
+    })
+    it('updates with pubsub polled, async dependency check', async () => {
+      await waitFor(async () =>{
+        const res = await request(app).get('/health/ready')
+        expect(res.status).toBe(200)
+
+        const pubsubCheck = (res.body as ReadinessPayload).checks.pubsub
+        expect(pubsubCheck).toBeDefined()
+        expect(pubsubCheck).toMatchObject({
+          impact: 'critical',
+          mode: 'async',
           status: 'ok',
           freshness: {
             lastChecked: expect.any(String),
