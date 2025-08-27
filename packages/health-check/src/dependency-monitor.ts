@@ -1,10 +1,15 @@
-import type {
-  DependencyCheck,
-  Freshness,
-  Impact,
-  Mode,
-  Observed,
-  StatusValue,
+import preformance from 'node:perf_hooks'
+import {
+  TimeoutError,
+  UnknownError,
+  type CheckError,
+  type DependencyCheck,
+  type DependencyStatusValue,
+  type Freshness,
+  type Impact,
+  type Mode,
+  type Observed,
+  type StatusValue,
 } from './types'
 import { runAgainstTimeout, singleFlight } from './timing'
 
@@ -32,89 +37,58 @@ type BaseConfig = {
    * - Must not be set for inline mode
    */
   retryRate?: number
+
+  /**
+   * Maximum response time in milliseconds considered healthy.
+   * - A call resolving within this time window **and** returning `"ok"` → status `"ok"`
+   * - A call resolving after this but **before** `timeoutLimitMs` → status `"degraded"`
+   */
+  healthyLimitMs: number
+
+  /**
+   * Absolute upper bound in milliseconds; beyond this a call is considered `"error"`.
+   * - Inline: the awaited call is raced with a timeout and rejected past this limit
+   * - Polled/Async: escalate `unknown` → `degraded` at `healthyLimitMs`, then `"error"` at `timeoutLimitMs`
+   * - Any late `"ok"` result after this limit is ignored
+   */
+  timeoutLimitMs: number
 }
 
 /**
- * Inline mode configuration:
- * - `syncCall` is executed **only when `check()` is called**
- * - No polling is performed
- *
- * @example
- * ```ts
- * monitor.addDependency('db', {
- *   impact: 'critical',
- *   syncCall: async () => {
- *     await db.ping()
- *     return 'ok'
- *   }
- * })
- * ```
+ * Inline mode configuration (no polling).
+ * `syncCall` runs **only** when {@link DependencyMonitor.check} is invoked.
  */
 export type SyncInlineConfig = BaseConfig & {
-  /** Function that performs the check immediately when `check()` is called. */
-  syncCall: () => Promise<StatusValue>
+  /** Performs the check immediately when {@link DependencyMonitor.check} is called. */
+  syncCall: () => Promise<DependencyStatusValue | Error>
   asyncCall?: never
   pollRate?: undefined
   retryRate?: undefined
-
-
-  /**
-   * Time in ms before call is considered failed
-   * Defaults to 1000
-   */
-  timeout?: number
 }
 
 /**
- * Polled mode configuration:
- * - `syncCall` is executed automatically on an interval defined by `pollRate`
- * - Result is cached; `check()` returns the latest cached result
- *
- * @example
- * ```ts
- * monitor.addDependency('redis', {
- *   impact: 'critical',
- *   pollRate: 10_000,
- *   syncCall: async () => {
- *     await redis.ping()
- *     return 'ok'
- *   }
- * })
- * ```
+ * Polled mode configuration.
+ * `syncCall` runs on an interval (`pollRate`) and results are cached.
  */
 export type SyncPolledConfig = BaseConfig & {
-  /** Function that performs the check at every poll interval. */
-  syncCall: () => Promise<StatusValue>
+  /** Performs the check at each poll interval. */
+  syncCall: () => Promise<DependencyStatusValue | Error>
   /** Polling interval in milliseconds. */
   pollRate: number
   asyncCall?: never
 }
 
 /**
- * Async mode configuration:
- * - `asyncCall` is executed automatically on an interval defined by `pollRate`
- * - The dependency must call `reportResponse` once the result is available
- * - Useful for async APIs where the result arrives later (e.g. message queue, external HTTP call)
- *
- * @example
- * ```ts
- * monitor.addDependency('paymentsApi', {
- *   impact: 'non_critical',
- *   pollRate: 15_000,
- *   asyncCall: async (report) => {
- *     const res = await fetch('https://api.example.com/health')
- *     report(res.ok ? 'ok' : 'error')
- *   }
- * })
- * ```
+ * Async mode configuration.
+ * `asyncCall` starts a check and must report via the provided callback.
  */
 export type AsyncConfig = BaseConfig & {
   /**
-   * Function that starts an async check.
-   * It must call `reportResponse` with the resulting status when available.
+   * Starts an asynchronous check. Must call `reportResponse` once a result is available.
+   * The callback may be invoked with a `DependencyStatusValue` or an `Error`.
    */
   asyncCall: (
-    reportResponse: (status: StatusValue) => void | Promise<void>
+    reportResponse: (status: DependencyStatusValue | Error) => void | Promise<void>
   ) => void | Promise<void>
   /** Polling interval in milliseconds. */
   pollRate: number
@@ -122,9 +96,7 @@ export type AsyncConfig = BaseConfig & {
 }
 
 /**
- * Configuration for a dependency monitor.
- *
- * One of:
+ * Discriminated configuration for a dependency monitor.
  * - {@link SyncInlineConfig} → inline checks on demand
  * - {@link SyncPolledConfig} → synchronous checks on a fixed interval
  * - {@link AsyncConfig} → asynchronous checks that report back via callback
@@ -135,75 +107,45 @@ export type DependencyMonitorConfig =
   | AsyncConfig
 
 /**
- * DependencyMonitor is responsible for tracking the health of a dependency
- * using one of three modes:
+ * Tracks the health of a single dependency in one of three modes:
  *
- * - **inline**: `syncCall` executed only when `check()` is called
- * - **polled**: `syncCall` executed periodically on `pollRate`
- * - **async**: `asyncCall` executed periodically on `pollRate` and reports via callback
+ * - **inline**: `syncCall` executed only when {@link check} is called
+ * - **polled**: `syncCall` executed on `pollRate`; latest result cached
+ * - **async**: `asyncCall` executed on `pollRate`, result returned via callback
  *
- * It records the last status, freshness, and observed latency.
+ * The monitor:
+ * - classifies results using `healthyLimitMs` and `timeoutLimitMs`
+ * - records freshness (`lastChecked`, `lastSuccess`)
+ * - records observed latency (ms) when applicable
  *
- * ### Examples
- *
- * #### Inline
- * ```ts
- * const monitor = new DependencyMonitor({
- *   impact: 'critical',
- *   syncCall: async () => {
- *     await db.ping()
- *     return 'ok'
- *   }
- * })
- *
- * const status = await monitor.check()
- * console.log(status.status) // "ok" or "error"
- * ```
- *
- * #### Polled
- * ```ts
- * const monitor = new DependencyMonitor({
- *   impact: 'critical',
- *   pollRate: 10_000,
- *   syncCall: async () => {
- *     await redis.ping()
- *     return 'ok'
- *   }
- * })
- *
- * // Automatically runs every 10 seconds, cached result returned by check()
- * const snapshot = await monitor.check()
- * ```
- *
- * #### Async
- * ```ts
- * const monitor = new DependencyMonitor({
- *   impact: 'non_critical',
- *   pollRate: 15_000,
- *   asyncCall: async (report) => {
- *     // fire async request
- *     const res = await fetch('https://api.example.com/health')
- *     report(res.ok ? 'ok' : 'error')
- *   }
- * })
- *
- * // Cached async result
- * const snapshot = await monitor.check()
- * ```
+ * Status interpretation:
+ * - `"ok"` only if returned `"ok"` **and** latency ≤ `healthyLimitMs`
+ * - `"degraded"` if returned `"degraded"` **or** latency > `healthyLimitMs` but ≤ `timeoutLimitMs`
+ * - `"error"` if returned `"error"`, an `Error`, or exceeded `timeoutLimitMs`
+ * - `"unknown"` is the initial state before first successful/failed result (polled/async)
  */
 export class DependencyMonitor {
+  /** Immutable configuration for this monitor. */
   private readonly config: DependencyMonitorConfig
+  /** Operational mode determined from the configuration. */
   private readonly mode: Mode
 
-  private status?: StatusValue
+  /** Last computed status (starts as `"unknown"` until first result). */
+  private status: StatusValue
+  /** Optional error details from the last failure. */
+  private error?: CheckError
+  /** Last observed metrics (e.g., latency). */
   private observed?: Observed
+  /** Freshness timestamps for last check/success. */
   private freshness?: Freshness
 
+  /** Indicates whether this monitor has been disposed. */
   private isDisposed = false
+  /** Internal timer handle for polling/retry. */
   private timeout?: NodeJS.Timeout
 
   /**
-   * Creates a new DependencyMonitor for the given config.
+   * Create a new {@link DependencyMonitor}.
    * @param config Monitor configuration (inline, polled, or async).
    */
   constructor(config: DependencyMonitorConfig) {
@@ -215,23 +157,28 @@ export class DependencyMonitor {
         ? 'polled'
         : 'inline'
 
-    // only one call for check at a time
+    this.status = 'unknown'
+
+    // Deduplicate concurrent inline checks (single-flight).
     if (this.mode === 'inline') {
       this.check = singleFlight(this.check.bind(this))
     }
 
+    // Kick off the first cycle for polled/async.
     if (this.mode !== 'inline') {
       this.doCheck()
     }
   }
 
+  /** Impact of this dependency (critical/non_critical). */
   public get impact() {
     return this.config.impact
   }
 
   /**
    * Run one check cycle depending on the configured mode.
-   * For polled/async, this is called automatically.
+   * - Inline: no-op here (runs in {@link check})
+   * - Polled/Async: invoked automatically and re-scheduled as needed
    */
   private async doCheck() {
     if (this.timeout) {
@@ -249,72 +196,130 @@ export class DependencyMonitor {
   }
 
   /**
-   * Executes a synchronous (inline/polled) check and updates internal state.
+   * Execute a synchronous (inline/polled) check and update internal state.
+   * Classification:
+   * - OK if `"ok"` and latency ≤ `healthyLimitMs`
+   * - Degraded if `"degraded"` or latency between `(healthyLimitMs, timeoutLimitMs]`
+   * - Error if `"error"`, `Error`, or timeout exceeded
    */
   private async doSyncCheck() {
-    const start = Date.now()
+    const start = performance.now()
 
-    const { syncCall, timeout } = this.config as SyncInlineConfig
-    const { pollRate, retryRate } = this.config as SyncPolledConfig
+    const { syncCall, timeoutLimitMs } = this.config as SyncInlineConfig
+
     try {
-      this.status = await runAgainstTimeout(syncCall(), timeout)
+      const response = await runAgainstTimeout(syncCall(), timeoutLimitMs)
+      const duration = performance.now() - start
 
-      const end = new Date()
-      this.freshness = {
-        lastChecked: end.toISOString(),
-        lastSuccess: end.toISOString(),
-      }
+      this.handleDependencyResponse(response, duration)
+    } catch (err) {
+      this.handleDependencyError(err as Error)
+    }
+  }
 
-      this.observed = {
-        latencyMs: end.getTime() - start,
-      }
-    } catch (_err) {
-      this.status = 'error'
-      this.observed = undefined
+  /**
+   * Execute an asynchronous check (async mode).
+   * - Initializes timers to escalate `unknown` → `degraded` → `error`
+   *   if no callback result arrives within the thresholds.
+   * - On callback, clears timers and classifies the result with latency.
+   */
+  private async doAsyncCheck() {
+    const { asyncCall, healthyLimitMs, timeoutLimitMs } = this.config as AsyncConfig
 
-      const end = new Date()
-      if (this.freshness) {
-        this.freshness.lastChecked = end.toISOString()
-      } else {
-        this.freshness = {
-          lastChecked: end.toISOString(),
-          lastSuccess: null,
-        }
-      }
+    const start = performance.now()
+    let callActive = true
+    let healthTimeout: NodeJS.Timeout | undefined
+    let serviceTimeout: NodeJS.Timeout | undefined
+    
+    asyncCall((response) => {
+      if (!callActive) return
+      callActive = false
+      clearTimeout(healthTimeout)
+      clearTimeout(serviceTimeout)
+
+      const duration = performance.now() - start
+      this.handleDependencyResponse(response, duration)
+    })
+
+    // Escalate to degraded after healthy limit if still waiting.
+    healthTimeout = setTimeout(() => {
+      if (callActive) this.status = 'degraded'
+    }, healthyLimitMs)
+
+    // Escalate to error after timeout limit if still waiting.
+    serviceTimeout = setTimeout(() => {
+      if (!callActive) return
+      callActive = false
+      clearTimeout(healthTimeout)
+      this.handleDependencyError(new TimeoutError())
+    }, timeoutLimitMs)
+  }
+
+  /**
+   * Normalize a successful dependency response into status + metadata.
+   * @param response Returned status value or Error from the dependency
+   * @param duration Measured latency in milliseconds
+   */
+  private handleDependencyResponse(response: DependencyStatusValue | Error, duration: number) {
+    if (response instanceof Error) {
+      return this.handleDependencyError(response)
+    }
+    if (response === 'error') {
+      return this.handleDependencyError(new UnknownError())
     }
 
+    this.error = undefined
+    this.status =
+      response === 'ok' && duration <= this.config.healthyLimitMs
+        ? 'ok'
+        : 'degraded'
+
+    const end = new Date()
+    this.freshness = {
+      lastChecked: end.toISOString(),
+      lastSuccess: end.toISOString(),
+    }
+
+    this.observed = { latencyMs: duration }
+
+    // Schedule next poll if applicable.
     if (this.config.pollRate && !this.isDisposed) {
-      const delay = this.status === 'error' ? retryRate || pollRate : pollRate
+      const delay = this.config.pollRate
       this.timeout = setTimeout(() => this.doCheck(), delay)
     }
   }
 
   /**
-   * Executes an asynchronous check (async mode).
-   * The dependency must call `reportResponse` to provide a result.
+   * Normalize a failed dependency result into `"error"` and update metadata.
+   * @param error Error thrown/returned or synthesized (e.g., timeout)
    */
-  private async doAsyncCheck() {
-    const start = Date.now()
-    this.config.asyncCall?.((status) => {
-      const end = new Date()
-      this.status = status
-      this.freshness = {
-        lastChecked: end.toISOString(),
-        lastSuccess: status !== 'error' ? end.toISOString() : null,
-      }
-      this.observed =
-        status !== 'error' ? { latencyMs: end.getTime() - start } : undefined
+  private handleDependencyError(error: Error & { code?: string }) {
+    this.status = 'error'
+    this.observed = undefined
+    this.error = {
+      code: error.code || 'UNKNOWN',
+      message: error.message
+    }
 
-      if (!this.isDisposed) {
-        this.timeout = setTimeout(() => this.doCheck(), this.config.pollRate)
-      }
-    })
+    const end = new Date()
+    if (this.freshness) {
+      this.freshness.lastChecked = end.toISOString()
+    } else {
+      this.freshness = { lastChecked: end.toISOString(), lastSuccess: null }
+    }
+
+    // Schedule retry/poll if configured.
+    if ((this.config.retryRate || this.config.pollRate) && !this.isDisposed) {
+      const delay = this.config.retryRate || this.config.pollRate
+      this.timeout = setTimeout(() => this.doCheck(), delay)
+    }
   }
 
   /**
-   * Returns the current dependency check result.
-   * - In inline mode: executes the `syncCall`.
-   * - In polled/async mode: returns the cached result.
+   * Get a snapshot of the dependency’s current health.
+   * - Inline mode: executes the `syncCall` (single-flight guarded)
+   * - Polled/Async: returns the cached result
+   * @throws if the monitor has been disposed
    */
   public async check(): Promise<DependencyCheck> {
     if (this.isDisposed) {
@@ -331,22 +336,21 @@ export class DependencyMonitor {
       mode: this.mode,
       freshness: this.freshness as Freshness,
       observed: this.observed,
+      error: this.error,
     }
 
     return result
   }
 
-  /**
-   * Symbol-based disposer so the monitor can be used with `using`.
-   */
+  /** Symbol-based disposer for use with `using`. */
   public [Symbol.dispose]() {
     this.dispose()
   }
 
   /**
-   * Disposes the monitor:
-   * - clears timers
-   * - prevents further checks
+   * Dispose the monitor:
+   * - Clears any scheduled timers
+   * - Prevents further checks from running
    */
   public dispose() {
     this.isDisposed = true

@@ -6,6 +6,8 @@ describe('DependencyMonitor', () => {
   it('can be instantiated', () => {
     const monitor = new DependencyMonitor({
       impact: 'critical',
+      healthyLimitMs: 50,
+      timeoutLimitMs: 500,
       syncCall: async () => 'ok',
     })
     expect(monitor).toBeInstanceOf(DependencyMonitor)
@@ -14,6 +16,8 @@ describe('DependencyMonitor', () => {
     it('reports correct base info', async () => {
       const monitor = new DependencyMonitor({
         impact: 'critical',
+        healthyLimitMs: 50,
+        timeoutLimitMs: 500,
         syncCall: async () => 'ok',
       })
       const status = await monitor.check()
@@ -22,6 +26,8 @@ describe('DependencyMonitor', () => {
     it.skip('throws if called after dispose', async () => {
       const monitor = new DependencyMonitor({
         impact: 'critical',
+        healthyLimitMs: 50,
+        timeoutLimitMs: 500,
         syncCall: async () => 'ok',
       })
       monitor.dispose()
@@ -36,6 +42,8 @@ describe('DependencyMonitor', () => {
       it('reports correct mode', async () => {
         const monitor = new DependencyMonitor({
           impact: 'critical',
+          healthyLimitMs: 50,
+          timeoutLimitMs: 500,
           syncCall: async () => 'ok',
         })
         const status = await monitor.check()
@@ -45,6 +53,8 @@ describe('DependencyMonitor', () => {
         const dependency = vi.fn().mockResolvedValue('error')
         const monitor = new DependencyMonitor({
           impact: 'critical',
+          healthyLimitMs: 50,
+          timeoutLimitMs: 500,
           syncCall: dependency,
         })
         const status = await monitor.check()
@@ -54,6 +64,8 @@ describe('DependencyMonitor', () => {
         const dependency = vi.fn().mockResolvedValue('error')
         const monitor = new DependencyMonitor({
           impact: 'critical',
+          healthyLimitMs: 50,
+          timeoutLimitMs: 500,
           syncCall: dependency,
         })
 
@@ -69,7 +81,8 @@ describe('DependencyMonitor', () => {
         const dependency = vi.fn()
         const monitor = new DependencyMonitor({
           impact: 'critical',
-          timeout: 1000,
+          healthyLimitMs: 500,
+          timeoutLimitMs: 1_000,
           syncCall: dependency,
         })
 
@@ -108,6 +121,8 @@ describe('DependencyMonitor', () => {
         using monitor = new DependencyMonitor({
           impact: 'critical',
           syncCall: async () => 'ok',
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           pollRate: 10_000,
         })
         const status = await monitor.check()
@@ -117,13 +132,15 @@ describe('DependencyMonitor', () => {
         using monitor = new DependencyMonitor({
           impact: 'critical',
           syncCall: async () => 'ok',
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           pollRate: 10_000,
         })
         const status = await monitor.check()
         expect(status).toEqual({
           impact: 'critical',
           mode: 'polled',
-          status: undefined,
+          status: 'unknown',
           observed: undefined,
           freshness: undefined,
         })
@@ -133,6 +150,8 @@ describe('DependencyMonitor', () => {
         using monitor = new DependencyMonitor({
           impact: 'critical',
           syncCall: dependency,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           pollRate: 10_000,
         })
         expect(dependency).toHaveBeenCalledTimes(1)
@@ -142,6 +161,8 @@ describe('DependencyMonitor', () => {
         using monitor = new DependencyMonitor({
           impact: 'critical',
           syncCall: dependency,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           pollRate: 10_000,
         })
         await monitor.check()
@@ -152,6 +173,8 @@ describe('DependencyMonitor', () => {
         using monitor = new DependencyMonitor({
           impact: 'critical',
           syncCall: dependency,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           pollRate: 10_000,
         })
 
@@ -174,6 +197,8 @@ describe('DependencyMonitor', () => {
         const monitor = new DependencyMonitor({
           impact: 'critical',
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           retryRate: 2_000,
           syncCall: dependency
         })
@@ -203,6 +228,8 @@ describe('DependencyMonitor', () => {
         const monitor = new DependencyMonitor({
           impact: 'critical',
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           retryRate: 3_000,
           syncCall: dependency
         })
@@ -228,6 +255,8 @@ describe('DependencyMonitor', () => {
         const monitor = new DependencyMonitor({
           impact: 'critical',
           pollRate: 1_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
           syncCall: dependency
         })
 
@@ -261,6 +290,8 @@ describe('DependencyMonitor', () => {
             report('ok')
           },
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
         })
         const status = await monitor.check()
         expect(status.mode).toEqual('async')
@@ -277,6 +308,8 @@ describe('DependencyMonitor', () => {
           impact: 'critical',
           asyncCall: dependency,
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
         })
 
         // allow constructor tick to run
@@ -295,6 +328,8 @@ describe('DependencyMonitor', () => {
           impact: 'critical',
           asyncCall: dependency,
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
         })
 
         await vi.runAllTicks()
@@ -314,6 +349,8 @@ describe('DependencyMonitor', () => {
           impact: 'critical',
           asyncCall: dependency,
           pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
         })
 
         // initial call from constructor
@@ -340,6 +377,8 @@ describe('DependencyMonitor', () => {
           impact: 'critical',
           asyncCall: dependency,
           pollRate: 10_000,
+          healthyLimitMs: 1_200,
+          timeoutLimitMs: 2_000,
         })
 
         await vi.runAllTicks() // schedules the setTimeout inside asyncCall
@@ -362,6 +401,8 @@ describe('DependencyMonitor', () => {
             impact: 'critical',
             asyncCall: dependency,
             pollRate: 10_000,
+            healthyLimitMs: 800,
+            timeoutLimitMs: 2_000,
           })
 
           await vi.runAllTicks()

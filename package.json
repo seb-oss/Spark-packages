@@ -18,6 +18,7 @@
     "test:watch": "turbo watch test",
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
+    "test:e2e:watch": "turbo watch test:e2e",
     "typecheck": "turbo typecheck"
   },
   "private": true,
@@ -32,7 +33,7 @@
     "csv-parse": "5.6.0",
     "fast-xml-parser": "4.5.3",
     "tsup": "8.5.0",
-    "turbo": "^2.5.5",
+    "turbo": "^2.5.6",
     "typescript": "5.8.3",
     "vitest": "3.1.2"
   },

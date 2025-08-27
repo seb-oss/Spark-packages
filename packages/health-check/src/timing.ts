@@ -1,13 +1,6 @@
-import { resolve } from "path"
+import { TimeoutError } from './types'
 
-export class TimeoutError extends Error {
-  constructor() {
-    super('timeout')
-    this.name = 'TimeoutError'
-  }
-}
-
-export const wait = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
+export const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
 
 export const runTimeoutTimer = async (ms: number) => {
   await wait(ms)

@@ -1,4 +1,5 @@
-export type StatusValue = 'ok' | 'degraded' | 'error'
+export type DependencyStatusValue = 'ok' | 'degraded' | 'error'
+export type StatusValue = DependencyStatusValue | 'unknown' | 'draining'
 export type Impact = 'critical' | 'non_critical'
 export type Mode = 'inline' | 'polled' | 'async'
 
@@ -78,3 +79,17 @@ export type HealthSummary = Status
   & Pick<ReadinessPayload, 'summary' | 'checks'>
   & Pick<Liveness, 'system' | 'process'>
   & { timestamp: string }
+
+export class TimeoutError extends Error {
+  constructor() {
+    super('timeout')
+    this.name = 'TimeoutError'
+  }
+}
+
+export class UnknownError extends Error {
+  constructor() {
+    super('unknown')
+    this.name = 'UnknownError'
+  }
+}

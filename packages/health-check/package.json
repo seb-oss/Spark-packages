@@ -13,13 +13,19 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest run --config ../../vitest.e2e.config.ts",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@testcontainers/gcloud": "^11.5.1",
+    "@testcontainers/mockserver": "^11.5.1",
+    "@testcontainers/redis": "^11.5.1",
+    "mockserver-client": "^5.15.0",
     "supertest": "^7.1.4",
+    "testcontainers": "^11.5.1",
     "tsconfig": "*"
   }
 }

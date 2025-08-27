@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import {
-  TimeoutError,
   wait,
   runTimeoutTimer,
   runAgainstTimeout,
   throttle,
   singleFlight,
 } from './timing'
+import { TimeoutError } from './types'
 
 describe('TimeoutError', () => {
   it('is an Error with the expected name and message', () => {
