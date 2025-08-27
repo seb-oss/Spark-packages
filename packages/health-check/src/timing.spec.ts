@@ -1,10 +1,10 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import {
-  wait,
-  runTimeoutTimer,
   runAgainstTimeout,
-  throttle,
+  runTimeoutTimer,
   singleFlight,
+  throttle,
+  wait,
 } from './timing'
 import { TimeoutError } from './types'
 
@@ -129,7 +129,7 @@ describe('throttled', () => {
     // After retention window → new call occurs
     await vi.advanceTimersByTimeAsync(1000)
     const p3 = throttled()
-    await Promise.resolve()    
+    await Promise.resolve()
     expect(fn).toHaveBeenCalledTimes(2)
     expect(p3).not.toBe(p1)
     await expect(p3).resolves.toBe('v')

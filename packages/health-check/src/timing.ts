@@ -1,14 +1,18 @@
 import { TimeoutError } from './types'
 
-export const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
+export const wait = (ms: number) =>
+  new Promise<void>((resolve) => setTimeout(resolve, ms))
 
 export const runTimeoutTimer = async (ms: number) => {
   await wait(ms)
   throw new TimeoutError()
 }
 
-export const runAgainstTimeout = <T>(promise: Promise<T>, ms?: number | undefined): Promise<T> => {
-  if (ms as number > 0) {
+export const runAgainstTimeout = <T>(
+  promise: Promise<T>,
+  ms?: number | undefined
+): Promise<T> => {
+  if ((ms as number) > 0) {
     return Promise.race([promise, runTimeoutTimer(ms as number)])
   }
 
@@ -23,9 +27,10 @@ export const runAgainstTimeout = <T>(promise: Promise<T>, ms?: number | undefine
  *
  * Fully preserves the original function signature.
  */
-export const throttle = <
-  F extends (...args: any[]) => Promise<any>
->(fn: F, ms: number) => {
+export const throttle = <F extends (...args: unknown[]) => Promise<unknown>>(
+  fn: F,
+  ms: number
+) => {
   type R = ReturnType<F> // a Promise<T>
 
   let current: R | null = null
@@ -48,7 +53,7 @@ export const throttle = <
           }, ms)
         } else {
           current = null
-        }      
+        }
       })
     }
 
@@ -65,5 +70,7 @@ export const throttle = <
  * Essentially just throttled with timeout 0
  */
 export const singleFlight = <
-  F extends (...args: any[]) => Promise<any>
->(fn: F) => throttle<F>(fn, 0)
+  F extends (...args: unknown[]) => Promise<unknown>,
+>(
+  fn: F
+) => throttle<F>(fn, 0)

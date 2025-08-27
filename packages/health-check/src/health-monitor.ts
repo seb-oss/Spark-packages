@@ -1,11 +1,17 @@
-import { Router, type ErrorRequestHandler } from 'express'
-import {
+import { type ErrorRequestHandler, Router } from 'express'
+import type {
   DependencyMonitor,
-  type DependencyMonitorConfig,
+  DependencyMonitorConfig,
 } from './dependency-monitor'
 import { liveness, ping } from './static-checks'
 import { throttle } from './timing'
-import type { DependencyCheck, HealthSummary, Impact, ReadinessPayload, ReadinessSummary } from './types'
+import type {
+  DependencyCheck,
+  HealthSummary,
+  Impact,
+  ReadinessPayload,
+  ReadinessSummary,
+} from './types'
 
 export interface HealthMonitorConfig {
   throttle: number
@@ -225,7 +231,7 @@ export class HealthMonitor {
 
     let nonCritOk = 0
     let nonCritDegraded = 0
-    let nonCritFailing = 0  // non-critical with status === 'error'
+    let nonCritFailing = 0 // non-critical with status === 'error'
 
     const degradedReasons: string[] = []
 
@@ -235,10 +241,12 @@ export class HealthMonitor {
         if (isCritical) criticalOk++
         else nonCritOk++
       } else if (c.status === 'degraded') {
-        if (isCritical) criticalFailing++            // critical degraded counts as failing
+        if (isCritical)
+          criticalFailing++ // critical degraded counts as failing
         else nonCritDegraded++
         degradedReasons.push(`${name}:degraded`)
-      } else { // 'error'
+      } else {
+        // 'error'
         if (isCritical) criticalFailing++
         else nonCritFailing++
         degradedReasons.push(`${name}:${c.error?.code ?? 'error'}`)
@@ -247,16 +255,26 @@ export class HealthMonitor {
 
     const summary: ReadinessSummary = {
       critical: { ok: criticalOk, failing: criticalFailing },
-      nonCritical: { ok: nonCritOk, degraded: nonCritDegraded, failing: nonCritFailing },
+      nonCritical: {
+        ok: nonCritOk,
+        degraded: nonCritDegraded,
+        failing: nonCritFailing,
+      },
       degradedReasons,
     }
 
     // ----- overall status (same rules as before) -------------------------------
     let status: import('./types').StatusValue = 'ok'
     const values = Object.values(checks)
-    const anyCriticalError = values.some(c => c.impact === 'critical' && c.status === 'error')
-    const anyDegradedOrError = values.some(c => c.status === 'degraded' || c.status === 'error')
-    const anyCriticalDegraded = values.some(c => c.impact === 'critical' && c.status === 'degraded')
+    const anyCriticalError = values.some(
+      (c) => c.impact === 'critical' && c.status === 'error'
+    )
+    const anyDegradedOrError = values.some(
+      (c) => c.status === 'degraded' || c.status === 'error'
+    )
+    const anyCriticalDegraded = values.some(
+      (c) => c.impact === 'critical' && c.status === 'degraded'
+    )
 
     if (anyCriticalError) status = 'error'
     else if (anyCriticalDegraded || anyDegradedOrError) status = 'degraded'

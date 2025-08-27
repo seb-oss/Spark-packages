@@ -1,8 +1,8 @@
 import express, { type Express, Router } from 'express'
 import { agent } from 'supertest'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { HealthMonitor } from './health-monitor'
 import { DependencyMonitor } from './dependency-monitor'
+import { HealthMonitor } from './health-monitor'
 
 describe('HealthMonitor', () => {
   describe('.ping', () => {
@@ -76,12 +76,15 @@ describe('HealthMonitor', () => {
 
     it('includes inline dependency result and overall ok', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('db', new DependencyMonitor({
-        impact: 'critical',
-        healthyLimitMs: 50,
-        timeoutLimitMs: 1_000,
-        syncCall: async () => 'ok',
-      }))
+      monitor.addDependency(
+        'db',
+        new DependencyMonitor({
+          impact: 'critical',
+          healthyLimitMs: 50,
+          timeoutLimitMs: 1_000,
+          syncCall: async () => 'ok',
+        })
+      )
       const res = await monitor.ready()
       expect(res.status).toBe('ok')
       expect(res.checks.db).toMatchObject({
@@ -97,13 +100,16 @@ describe('HealthMonitor', () => {
 
     it('includes polled dependency result (initial tick) and overall ok', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('redis', new DependencyMonitor({
-        impact: 'critical',
-        pollRate: 1_000,
-        healthyLimitMs: 50,
-        timeoutLimitMs: 500,
-        syncCall: async () => 'ok',
-      }))
+      monitor.addDependency(
+        'redis',
+        new DependencyMonitor({
+          impact: 'critical',
+          pollRate: 1_000,
+          healthyLimitMs: 50,
+          timeoutLimitMs: 500,
+          syncCall: async () => 'ok',
+        })
+      )
 
       await vi.advanceTimersByTimeAsync(0)
 
@@ -141,14 +147,17 @@ describe('HealthMonitor', () => {
 
     it('overall error when a critical dependency errors', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('postgres', new DependencyMonitor({
-        impact: 'critical',
-        healthyLimitMs: 50,
-        timeoutLimitMs: 1000,
-        syncCall: async () => {
-          throw new Error('boom')
-        },
-      }))
+      monitor.addDependency(
+        'postgres',
+        new DependencyMonitor({
+          impact: 'critical',
+          healthyLimitMs: 50,
+          timeoutLimitMs: 1000,
+          syncCall: async () => {
+            throw new Error('boom')
+          },
+        })
+      )
 
       const res = await monitor.ready()
       expect(res.status).toBe('error')
@@ -157,15 +166,18 @@ describe('HealthMonitor', () => {
 
     it('uses cached async result and can degrade overall', async () => {
       using monitor = new HealthMonitor()
-      monitor.addDependency('quotesApi', new DependencyMonitor({
-        impact: 'non_critical',
-        pollRate: 10_000,
-        healthyLimitMs: 250,
-        timeoutLimitMs: 3000,
-        asyncCall: (report) => {
-          setTimeout(() => report('degraded'), 1_000)
-        },
-      }))
+      monitor.addDependency(
+        'quotesApi',
+        new DependencyMonitor({
+          impact: 'non_critical',
+          pollRate: 10_000,
+          healthyLimitMs: 250,
+          timeoutLimitMs: 3000,
+          asyncCall: (report) => {
+            setTimeout(() => report('degraded'), 1_000)
+          },
+        })
+      )
 
       await vi.advanceTimersByTimeAsync(0)
       await vi.advanceTimersByTimeAsync(1_000)
@@ -178,13 +190,16 @@ describe('HealthMonitor', () => {
 
     it('synthesizes an error snapshot when a dependency check rejects', async () => {
       const monitor = new HealthMonitor()
-      monitor.addDependency('flaky', new DependencyMonitor({
-        impact: 'non_critical',
-        pollRate: 10_000,
-        healthyLimitMs: 500,
-        timeoutLimitMs: 3_000,
-        syncCall: async () => 'ok',
-      }))
+      monitor.addDependency(
+        'flaky',
+        new DependencyMonitor({
+          impact: 'non_critical',
+          pollRate: 10_000,
+          healthyLimitMs: 500,
+          timeoutLimitMs: 3_000,
+          syncCall: async () => 'ok',
+        })
+      )
 
       // Force the underlying DependencyMonitor to reject on check()
       const dep = (monitor as any).dependencies.get('flaky')
@@ -267,21 +282,21 @@ describe('HealthMonitor', () => {
         impact: 'critical',
         healthyLimitMs: 50,
         timeoutLimitMs: 500,
-        syncCall: async () => 'ok'
+        syncCall: async () => 'ok',
       })
       const redis = new DependencyMonitor({
         impact: 'critical',
         healthyLimitMs: 500,
         timeoutLimitMs: 2_000,
         pollRate: 5_000,
-        syncCall: async () => 'ok'
+        syncCall: async () => 'ok',
       })
       const quotesApi = new DependencyMonitor({
         impact: 'non_critical',
         healthyLimitMs: 800,
         timeoutLimitMs: 3_000,
         pollRate: 10_000,
-        asyncCall: report => report('ok')
+        asyncCall: (report) => report('ok'),
       })
 
       monitor

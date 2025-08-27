@@ -75,10 +75,9 @@ export type ReadinessPayload = Status & {
   checks: Record<string, DependencyCheck>
 }
 
-export type HealthSummary = Status
-  & Pick<ReadinessPayload, 'summary' | 'checks'>
-  & Pick<Liveness, 'system' | 'process'>
-  & { timestamp: string }
+export type HealthSummary = Status &
+  Pick<ReadinessPayload, 'summary' | 'checks'> &
+  Pick<Liveness, 'system' | 'process'> & { timestamp: string }
 
 export class TimeoutError extends Error {
   constructor() {

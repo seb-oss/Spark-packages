@@ -36,7 +36,9 @@ describe('DependencyMonitor', () => {
       await monitor.check().then(success).catch(fail)
 
       expect(success).not.toHaveBeenCalled()
-      expect(fail).toHaveBeenCalledWith(new Error('DependencyMonitor has been disposed'))
+      expect(fail).toHaveBeenCalledWith(
+        new Error('DependencyMonitor has been disposed')
+      )
     })
     describe('mode: inline', () => {
       it('reports correct mode', async () => {
@@ -191,8 +193,8 @@ describe('DependencyMonitor', () => {
         const dependency = vi
           .fn<() => Promise<'ok' | 'error'>>()
           .mockRejectedValueOnce(new Error('boom')) // 1st call errors
-          .mockResolvedValueOnce('ok')              // retry succeeds
-          .mockResolvedValue('ok')                  // subsequent calls succeed
+          .mockResolvedValueOnce('ok') // retry succeeds
+          .mockResolvedValue('ok') // subsequent calls succeed
 
         const monitor = new DependencyMonitor({
           impact: 'critical',
@@ -200,7 +202,7 @@ describe('DependencyMonitor', () => {
           healthyLimitMs: 800,
           timeoutLimitMs: 2_000,
           retryRate: 2_000,
-          syncCall: dependency
+          syncCall: dependency,
         })
 
         // initial poll runs immediately in constructor
@@ -223,7 +225,7 @@ describe('DependencyMonitor', () => {
         const dependency = vi
           .fn<() => Promise<'ok' | 'error'>>()
           .mockResolvedValueOnce('error') // 1st call returns 'error' status
-          .mockResolvedValueOnce('ok')    // retry succeeds
+          .mockResolvedValueOnce('ok') // retry succeeds
 
         const monitor = new DependencyMonitor({
           impact: 'critical',
@@ -231,7 +233,7 @@ describe('DependencyMonitor', () => {
           healthyLimitMs: 800,
           timeoutLimitMs: 2_000,
           retryRate: 3_000,
-          syncCall: dependency
+          syncCall: dependency,
         })
 
         await vi.runAllTicks()
@@ -257,7 +259,7 @@ describe('DependencyMonitor', () => {
           pollRate: 1_000,
           healthyLimitMs: 800,
           timeoutLimitMs: 2_000,
-          syncCall: dependency
+          syncCall: dependency,
         })
 
         // initial scheduled call

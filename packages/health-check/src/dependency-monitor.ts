@@ -1,7 +1,6 @@
 import preformance from 'node:perf_hooks'
+import { runAgainstTimeout, singleFlight } from './timing'
 import {
-  TimeoutError,
-  UnknownError,
   type CheckError,
   type DependencyCheck,
   type DependencyStatusValue,
@@ -10,8 +9,9 @@ import {
   type Mode,
   type Observed,
   type StatusValue,
+  TimeoutError,
+  UnknownError,
 } from './types'
-import { runAgainstTimeout, singleFlight } from './timing'
 
 /**
  * Base configuration shared by all dependency monitor modes.
@@ -88,7 +88,9 @@ export type AsyncConfig = BaseConfig & {
    * The callback may be invoked with a `DependencyStatusValue` or an `Error`.
    */
   asyncCall: (
-    reportResponse: (status: DependencyStatusValue | Error) => void | Promise<void>
+    reportResponse: (
+      status: DependencyStatusValue | Error
+    ) => void | Promise<void>
   ) => void | Promise<void>
   /** Polling interval in milliseconds. */
   pollRate: number
@@ -224,13 +226,16 @@ export class DependencyMonitor {
    * - On callback, clears timers and classifies the result with latency.
    */
   private async doAsyncCheck() {
-    const { asyncCall, healthyLimitMs, timeoutLimitMs } = this.config as AsyncConfig
+    const { asyncCall, healthyLimitMs, timeoutLimitMs } = this
+      .config as AsyncConfig
 
     const start = performance.now()
     let callActive = true
+    // biome-ignore lint/style/useConst: timeout defined later
     let healthTimeout: NodeJS.Timeout | undefined
+    // biome-ignore lint/style/useConst: timeout defined later
     let serviceTimeout: NodeJS.Timeout | undefined
-    
+
     asyncCall((response) => {
       if (!callActive) return
       callActive = false
@@ -260,7 +265,10 @@ export class DependencyMonitor {
    * @param response Returned status value or Error from the dependency
    * @param duration Measured latency in milliseconds
    */
-  private handleDependencyResponse(response: DependencyStatusValue | Error, duration: number) {
+  private handleDependencyResponse(
+    response: DependencyStatusValue | Error,
+    duration: number
+  ) {
     if (response instanceof Error) {
       return this.handleDependencyError(response)
     }
@@ -298,7 +306,7 @@ export class DependencyMonitor {
     this.observed = undefined
     this.error = {
       code: error.code || 'UNKNOWN',
-      message: error.message
+      message: error.message,
     }
 
     const end = new Date()
