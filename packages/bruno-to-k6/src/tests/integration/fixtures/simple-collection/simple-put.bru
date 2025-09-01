@@ -1,0 +1,13 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: https://example.test/items/123
+}
+
+body:json {
+  { "name": "Widget v2" }
+}

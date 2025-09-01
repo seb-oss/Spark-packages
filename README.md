@@ -116,6 +116,10 @@ A fake IAP which can be used to run e2e tests
 
 An easy way to add health check routes to your API
 
+### [@sebspark/bruno-to-k6](./packages/bruno-to-k6)
+
+Converts Bruno files to k6 scripts
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
