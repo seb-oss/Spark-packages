@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.2
+
+### Patch Changes
+
+- d8dcd5d: Updates google-cloud/pubsub to match all between all the packages
+
 ## 1.8.1
 
 ### Patch Changes
