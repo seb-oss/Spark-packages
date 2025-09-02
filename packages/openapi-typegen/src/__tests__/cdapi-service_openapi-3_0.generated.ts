@@ -10,6 +10,7 @@ import type {
   GenericRouteHandler,
   LowerCaseHeaders,
   PartiallySerialized,
+  QueryParams,
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
@@ -6398,7 +6399,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -6685,7 +6686,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -6972,7 +6973,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -7259,7 +7260,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -7546,7 +7547,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -7833,7 +7834,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -8120,7 +8121,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -8283,7 +8284,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -8432,7 +8433,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -8720,7 +8721,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -9007,7 +9008,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -9294,7 +9295,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -9581,7 +9582,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -9868,7 +9869,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -10155,7 +10156,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -10457,7 +10458,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -10745,7 +10746,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -11033,7 +11034,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -11320,7 +11321,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -11608,7 +11609,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -11895,7 +11896,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -12068,7 +12069,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             fields?: string
             source?: string[]
@@ -12119,7 +12120,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             fields?: string
             source?: string[]
@@ -12190,7 +12191,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             fields?: string
             source?: string[]
@@ -12325,7 +12326,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -12470,7 +12471,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             code?: string[]
             fields?: string
             source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
@@ -12501,7 +12502,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             code?: string[]
             fields?: string
             source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
@@ -12542,7 +12543,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
             isin?: string
@@ -12675,7 +12676,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -12821,7 +12822,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: number[]
             offset?: number
@@ -12851,7 +12852,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -12970,7 +12971,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -13207,7 +13208,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -13444,7 +13445,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -13681,7 +13682,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -13918,7 +13919,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -14155,7 +14156,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -14392,7 +14393,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -14537,7 +14538,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             orbit_id?: number
             vwd_key?: string[]
             check_snapquote?: boolean
@@ -14585,7 +14586,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             fields?: string
             source?: 'TECHNICAL_ANALYSIS_SOURCE_UNSPECIFIED' | 'FTA'
@@ -14627,7 +14628,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: number[]
             trading_venue_code?: string[]
@@ -14761,7 +14762,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -15000,7 +15001,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -15153,7 +15154,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -15291,7 +15292,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -15469,7 +15470,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             fields?: string
           }>
@@ -15497,7 +15498,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -15545,7 +15546,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: number[]
             isin?: string[]
             nsin?: string[]
@@ -15585,7 +15586,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             id?: string[]
             isin?: string[]
             nsin?: string[]
@@ -15622,7 +15623,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             isin?: string
             fields?: string
             report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
@@ -15670,7 +15671,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             isin?: string[]
             instrument_id?: string[]
             fields?: string
@@ -15807,7 +15808,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -15939,7 +15940,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -16056,7 +16057,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -16280,7 +16281,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -16504,7 +16505,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -16728,7 +16729,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -16952,7 +16953,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -17176,7 +17177,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -17400,7 +17401,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -17659,7 +17660,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -17923,7 +17924,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -18187,7 +18188,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -18451,7 +18452,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -18715,7 +18716,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -18871,7 +18872,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             compartment_id?: number
             instrument_id?: string
@@ -19014,7 +19015,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -19172,7 +19173,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: number[]
             instrument_id?: string
@@ -19205,7 +19206,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -19342,7 +19343,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -19606,7 +19607,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -19870,7 +19871,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -20134,7 +20135,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -20398,7 +20399,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -20677,7 +20678,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -20941,7 +20942,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -21205,7 +21206,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -21361,7 +21362,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             from_currency_code?: string
             to_currency_code?: string[]
@@ -21391,7 +21392,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -21434,7 +21435,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -21493,7 +21494,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -21547,7 +21548,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             listing_id?: string
             fields?: string
             date_lt?: string
@@ -21600,7 +21601,7 @@ export type CdapiServiceOpenapiServerPaths = {
  */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             listing_id?: string
             fields?: string
             timestamp_lt?: string
@@ -21645,7 +21646,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -21685,7 +21686,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -21789,7 +21790,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -21925,7 +21926,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -22010,7 +22011,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]
@@ -22077,7 +22078,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             ping?: number
           }>
         },
@@ -22121,7 +22122,7 @@ export type CdapiServiceOpenapiServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             fields?: string
             id?: string[]
             isin?: string[]

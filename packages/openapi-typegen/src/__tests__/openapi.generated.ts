@@ -10,6 +10,7 @@ import type {
   GenericRouteHandler,
   LowerCaseHeaders,
   PartiallySerialized,
+  QueryParams,
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
@@ -83,7 +84,7 @@ export type CardsAPIServerPaths = {
        */
       handler: (
         args?: Req & {
-          query?: Serialized<{
+          query?: QueryParams<{
             page?: number
             limit?: number
           }>
@@ -111,7 +112,7 @@ export type CardsAPIServerPaths = {
           params: {
             cardId: string
           }
-          query: Serialized<{
+          query: QueryParams<{
             cardNickname: boolean
           }>
         },
@@ -140,7 +141,7 @@ export type CardsAPIServerPaths = {
           params: {
             cardId: string
           }
-          query: Serialized<{
+          query: QueryParams<{
             cardNickname: boolean
           }>
         },

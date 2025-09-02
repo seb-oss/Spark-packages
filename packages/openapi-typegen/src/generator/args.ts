@@ -23,7 +23,7 @@ const generateArgs = (
 
         if (partName === 'query' && isServer) {
           tokens.push(
-            `${partName}${arg.optional ? '?' : ''}: Serialized<${generateType(arg)}>`
+            `${partName}${arg.optional ? '?' : ''}: QueryParams<${generateType(arg)}>`
           )
         } else {
           tokens.push(

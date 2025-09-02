@@ -20,6 +20,7 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
    GenericRouteHandler,
    LowerCaseHeaders,
    PartiallySerialized,
+   QueryParams,
    RequestOptions,
    Serialized,
  } from '@sebspark/openapi-core'

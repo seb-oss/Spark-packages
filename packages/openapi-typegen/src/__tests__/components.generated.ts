@@ -10,6 +10,7 @@ import type {
   GenericRouteHandler,
   LowerCaseHeaders,
   PartiallySerialized,
+  QueryParams,
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
@@ -87,7 +88,7 @@ export type ExampleAPIServerPaths = {
       handler: (
         args: Req & {
           headers: LowerCaseHeaders<ApiKeyAuth>
-          query?: Serialized<PageParam & LimitParam>
+          query?: QueryParams<PageParam & LimitParam>
         },
       ) => Promise<
         | [

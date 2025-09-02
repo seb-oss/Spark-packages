@@ -25,6 +25,34 @@ export type Serialized<T> = {
                 T[P]
 }
 
+// Type helper that converts specific types to strings while preserving string unions
+type ConvertToQueryParam<T> =
+  // Number to string
+  T extends number
+    ? string
+    : // boolean to string
+      T extends boolean
+      ? string
+      : // date to string
+        T extends Date
+        ? string
+        : // Keep string unions
+          T extends string
+          ? T // Keep string unions and literals as-is
+          : // Recurse on arrays
+            T extends Array<infer U>
+            ? Array<ConvertToQueryParam<U>>
+            : // Recurse on objects
+              T extends object
+              ? { [K in keyof T]: ConvertToQueryParam<T[K]> }
+              : // Everything else is left as is
+                T
+
+// Main QueryParams type that applies the conversion
+export type QueryParams<T> = {
+  [K in keyof T]: ConvertToQueryParam<T[K]>
+}
+
 export type PartiallySerialized<T> = T | Serialized<T>
 
 export type LowerCaseHeaders<T> = {
