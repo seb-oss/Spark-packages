@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.3.0
+
+### Minor Changes
+
+- ab95efe: Update wrapper around query parameters to convert primitives to strings since that's what's actually returned by Node.
+
 ## 2.2.2
 
 ### Patch Changes
