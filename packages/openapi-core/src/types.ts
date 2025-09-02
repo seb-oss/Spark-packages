@@ -6,9 +6,10 @@ import type {
   LowerCaseHeaders,
   PartiallySerialized,
   Serialized,
+  QueryParams
 } from './ts-extensions'
 
-export type { PartiallySerialized, Serialized, LowerCaseHeaders }
+export type { PartiallySerialized, Serialized, LowerCaseHeaders, QueryParams }
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
