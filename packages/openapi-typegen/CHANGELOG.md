@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 3.0.0
+
+### Major Changes
+
+- ab95efe: Update wrapper around query parameters to convert primitives to strings since that's what's actually returned by Node.
+
+### Patch Changes
+
+- Updated dependencies [ab95efe]
+  - @sebspark/openapi-core@2.3.0
+
 ## 2.3.2
 
 ### Patch Changes
