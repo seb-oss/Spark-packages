@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.3.1
+
+### Patch Changes
+
+- ded2b5c: Export QueryParams type
+
 ## 2.3.0
 
 ### Minor Changes
