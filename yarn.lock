@@ -2099,6 +2099,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/core@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@opentelemetry/core@npm:2.1.0"
+  dependencies:
+    "@opentelemetry/semantic-conventions": "npm:^1.29.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.0.0 <1.10.0"
+  checksum: 10c0/562c44c89150ef9cc7be4fcbfccfb62f71eb95d487de79b6a2716bb960da7d181f5e2ae3354ed6bd0bba0a3903fe5b7dad14b9a4a92fa90ab1b9172f11a3743d
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/core@npm:^2.0.0":
   version: 2.0.1
   resolution: "@opentelemetry/core@npm:2.0.1"
@@ -3270,7 +3281,7 @@ __metadata:
     "@google-cloud/opentelemetry-cloud-trace-exporter": "npm:2.4.1"
     "@google-cloud/trace-agent": "npm:8.0.0"
     "@opentelemetry/api": "npm:1.9.0"
-    "@opentelemetry/core": "npm:1.30.1"
+    "@opentelemetry/core": "npm:2.1.0"
     "@opentelemetry/exporter-trace-otlp-proto": "npm:0.57.1"
     "@opentelemetry/exporter-zipkin": "npm:1.30.1"
     "@opentelemetry/instrumentation-express": "npm:0.47.1"
