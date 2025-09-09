@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.20.0
+
+### Minor Changes
+
+- a1573c0: Update ISO10383 specifications.
+
 ## 0.19.0
 
 ### Minor Changes
