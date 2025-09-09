@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/iso-10383",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
