@@ -3,13 +3,10 @@ name: ISO10383
 on:
   schedule:
     # https://www.iso20022.org/market-identifier-codes
-    - cron: '0 10 11 MAR *' # 2025-03-11
-    - cron: '0 10 15 APR *' # 2025-04-15
-    - cron: '0 10 13 MAY *' # 2025-05-13
-    - cron: '0 10 10 JUN *' # 2025-06-10
-    - cron: '0 10 15 JUL *' # 2025-07-15
-    - cron: '0 10 12 AUG *' # 2025-08-12
-    - cron: '0 10 09 SEP *' # 2025-09-09
+    # These are scheduled one day _after_ the publication date
+    - cron: "0 10 14 OCT *" # 2025-10-14
+    - cron: "0 10 11 NOV *" # 2025-11-11
+    - cron: "0 10 09 DEC *" # 2025-12-09
 
 concurrency:
   group: iso10383
@@ -57,7 +54,7 @@ jobs:
 
       - name: Push changes
         env:
-          CI_COMMIT_MESSAGE: 'chore: update ISO-10383 specifications'
+          CI_COMMIT_MESSAGE: "chore: update ISO-10383 specifications"
           CI_COMMIT_AUTHOR: 📈 ISO10383 Bot
         run: |
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
@@ -89,8 +86,8 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: npm run release
-          commit: 'chore(release): update versions'
-          title: 'chore(release): update versions'
+          commit: "chore(release): update versions"
+          title: "chore(release): update versions"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
