@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 4.0.1
+
+### Patch Changes
+
+- 9b3f745: Don't allow negative values when setting expire times in redis.
+
 ## 4.0.0
 
 ### Major Changes
