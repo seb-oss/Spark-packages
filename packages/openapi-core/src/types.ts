@@ -5,8 +5,8 @@ import type {
   Empty,
   LowerCaseHeaders,
   PartiallySerialized,
+  QueryParams,
   Serialized,
-  QueryParams
 } from './ts-extensions'
 
 export type { PartiallySerialized, Serialized, LowerCaseHeaders, QueryParams }
