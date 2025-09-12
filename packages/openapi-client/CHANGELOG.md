@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 2.4.1
+
+### Patch Changes
+
+- 9140e2b: bump axios to ^1.12.0
+- Updated dependencies [9140e2b]
+  - @sebspark/openapi-core@2.3.2
+
 ## 2.4.0
 
 ### Minor Changes
