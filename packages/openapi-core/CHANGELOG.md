@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.3.3
+
+### Patch Changes
+
+- bf3ee62: use 'util' for RN Metro + polyfill support
+
 ## 2.3.2
 
 ### Patch Changes
