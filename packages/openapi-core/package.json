@@ -24,6 +24,6 @@
   },
   "dependencies": {
     "@sebspark/retry": "*",
-    "axios": "1.10.0"
+    "axios": "^1.12.0"
   }
 }
