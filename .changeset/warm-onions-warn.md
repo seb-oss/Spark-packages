@@ -1,6 +1,6 @@
 ---
-"@sebspark/openapi-client": major
-"@sebspark/openapi-core": major
+"@sebspark/openapi-client": patch
+"@sebspark/openapi-core": patch
 ---
 
 bump axios to ^1.12.0
