@@ -1,0 +1,20 @@
+meta {
+  name: auth-digest
+  type: http
+  seq: 13
+}
+
+get {
+  url: https://example.test/digest
+  body: none
+  auth: digest
+}
+
+auth:digest {
+  username: alice
+  password: secret
+}
+
+settings {
+  encodeUrl: true
+}

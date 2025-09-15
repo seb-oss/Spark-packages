@@ -1,0 +1,16 @@
+meta {
+  name: body-multipart-form
+  type: http
+  seq: 6
+}
+
+post {
+  url: https://example.test/upload
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  meta: {"type":"doc"}
+  file: {{filePath}}
+}

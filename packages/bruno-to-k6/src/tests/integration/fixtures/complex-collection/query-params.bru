@@ -1,0 +1,17 @@
+meta {
+  name: query-params
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://example.test/search
+  body: none
+  auth: none
+}
+
+params:query {
+  q: widgets
+  page: 2
+  ~debug: 1
+}

@@ -1,11 +1,17 @@
 meta {
-  name: create
+  name: simple-post
   type: http
   seq: 2
 }
 
 post {
   url: https://example.test/items
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
 }
 
 body:json {

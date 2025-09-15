@@ -1,0 +1,20 @@
+meta {
+  name: scripts-pre-post
+  type: http
+  seq: 11
+}
+
+get {
+  url: https://example.test/scripted
+  body: none
+  auth: none
+}
+
+script:pre-request {
+  req.setHeader("X-From-Pre", "yes");
+}
+
+script:post-response {
+  const j = res.json();
+  // intentionally no tests here; just a post hook
+}

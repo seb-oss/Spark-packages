@@ -1,38 +1,22 @@
 import path from 'node:path'
-import { findBrunoRoot, listRequestFiles, resolveEnvFileByName } from './project'
-import { parseBruSource, parseBrunoEnvSource } from './parse'
-import { buildRunPlan } from './plan'
-import { generateK6Main, generateK6RequestFiles } from './generate'
-import { readText, writeText, ensureDir } from './io'
-
-/* ---- public types ---- */
-
-export interface BrunoToK6Opts {
-  /** Environment name to load from <root>/environments/<name>.bru (optional). */
-  environment?: string
-  /** Also emit per-request files alongside main output. */
-  separate: boolean
-  /** Path to a JSON file containing k6 options or a JSON string (up to you later). */
-  k6Options?: string
-  /** Output file path; if undefined, main script is written to stdout. */
-  output?: string
-}
-
-export type ConvertResult = {
-  main: string
-  requests?: Array<{ filename: string; contents: string }>
-}
+import { flatten, readCollection } from './collection'
+import {
+  type GenerateMainOptions,
+  generateMain,
+  generateSeparate,
+} from './generate'
+import { ensureDir, writeText } from './io'
+import type { BrunoToK6Opts, ConvertResult } from './types'
 
 /**
  * Convert a Bruno file or collection directory into k6 script(s).
  *
- * Orchestration only — delegates to `project`, `parse`, `plan`, `generate`, `io`.
- * - Discovers Bruno root (folder with bruno.json)
- * - Collects request files (.bru) to convert
- * - Resolves the requested environment by name (if provided)
- * - Builds a run plan (order, tags, etc.) for codegen
- * - Generates main k6 script and optional per-request files
- * - Writes outputs when `opts.output` is provided (stdout otherwise)
+ * Steps:
+ * 1) Build a scoped collection (root, subfolder, or single request), always loading environments from the bruno root
+ * 2) Optionally select an environment by name
+ * 3) Flatten the collection tree to an ordered list of requests with paths
+ * 4) Generate either a single-file main or separate files
+ * 5) Optionally write outputs to disk
  */
 export const convertBrunoFileOrCollection = async (
   inputPath: string,
@@ -40,64 +24,56 @@ export const convertBrunoFileOrCollection = async (
 ): Promise<ConvertResult> => {
   const absInput = path.resolve(process.cwd(), inputPath)
 
-  // 1) locate bruno root
-  const root = await findBrunoRoot(absInput) // throws if not found
+  // 1) read a scoped collection (handles root / subfolder / single .bru)
+  const collection = readCollection(absInput)
 
-  // 2) collect request files
-  const requestFiles = await listRequestFiles(absInput, root) // returns absolute paths to *.bru requests
+  // 2) pick environment (optional) — pass through unchanged
+  const selectedEnv = opts.brunoEnvironmentName
+    ? collection.environments?.[opts.brunoEnvironmentName]
+    : undefined
+  if (opts.brunoEnvironmentName && !selectedEnv) {
+    throw new Error(
+      `Environment "${opts.brunoEnvironmentName}" not found under ${collection.root}/environments`
+    )
+  }
 
-  if (!requestFiles.length) {
+  // 3) flatten requests
+  const items = flatten(collection.children)
+  if (!items.length) {
     throw new Error(`No .bru request files found under ${absInput}`)
   }
 
-  // 3) resolve environment (optional)
-  let envVars: Record<string, string> | undefined
-  if (opts.environment) {
-    const envFile = await resolveEnvFileByName(root, opts.environment)
-    const envSrc = await readText(envFile)
-    envVars = parseBrunoEnvSource(envSrc).vars
+  // 4) generate code
+  const genOpts: GenerateMainOptions = {
+    env: selectedEnv,
+    k6Options: opts.k6Options,
+  }
+  let main: string
+  let requestFiles: Array<{ filename: string; contents: string }> | undefined
+
+  if (opts.separate) {
+    const res = generateSeparate(items, genOpts)
+    main = res.main
+    requestFiles = res.files
+  } else {
+    main = generateMain(items, genOpts)
   }
 
-  // 4) parse requests → IR
-  const requestsIR = []
-  for (const file of requestFiles) {
-    const src = await readText(file)
-    const ir = parseBruSource(src, { path: file })
-    requestsIR.push(ir)
-  }
-
-  // 5) build plan (ordering, groups, tags, etc.)
-  const plan = buildRunPlan({
-    root,
-    requests: requestsIR,
-    env: envVars,
-  })
-
-  // 6) generate k6 code
-  const main = generateK6Main(plan, {
-    env: envVars,
-    k6Options: opts.k6Options, // pass-through for now
-  })
-
-  const requests = opts.separate
-    ? generateK6RequestFiles(plan)
-    : undefined
-
-  // 7) write outputs (if desired)
+  // 5) optionally write to disk
   if (opts.output) {
     const outFile = path.resolve(process.cwd(), opts.output)
     const outDir = path.dirname(outFile)
     await ensureDir(outDir)
     await writeText(outFile, main)
 
-    if (opts.separate && requests?.length) {
-      const reqDir = path.join(outDir, 'requests')
-      await ensureDir(reqDir)
-      await Promise.all(
-        requests.map(f => writeText(path.join(reqDir, f.filename), f.contents))
-      )
+    if (opts.separate && requestFiles?.length) {
+      for (const f of requestFiles) {
+        const full = path.join(outDir, f.filename) // f.filename already 'requests/<path>.js'
+        await ensureDir(path.dirname(full))
+        await writeText(full, f.contents)
+      }
     }
   }
 
-  return { main, requests }
+  return { main, requests: requestFiles }
 }

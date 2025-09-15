@@ -1,0 +1,23 @@
+meta {
+  name: body-sparql
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://example.test/sparql
+  body: sparql
+  auth: inherit
+}
+
+body:sparql {
+  SELECT ?s ?p ?o
+  WHERE {
+    ?s ?p ?o
+  }
+  LIMIT 10
+}
+
+settings {
+  encodeUrl: true
+}

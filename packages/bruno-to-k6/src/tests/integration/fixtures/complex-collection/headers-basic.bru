@@ -1,0 +1,17 @@
+meta {
+  name: headers-basic
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://example.test/headers
+  body: none
+  auth: none
+}
+
+headers {
+  X-Trace-Id: abc-123
+  Accept: application/json
+  ~X-Disabled: nope
+}

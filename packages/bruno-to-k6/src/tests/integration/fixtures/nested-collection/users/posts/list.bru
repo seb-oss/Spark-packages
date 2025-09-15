@@ -1,0 +1,19 @@
+meta {
+  name: list
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://example.com/users/:id/posts
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 45
+}
+
+settings {
+  encodeUrl: true
+}

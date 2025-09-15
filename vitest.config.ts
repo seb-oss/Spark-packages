@@ -8,6 +8,8 @@ export default defineConfig({
         '**/*.helper.ts', // Excludes test helpers
         '**/__scaffold__/*', // Excludes test scaffolding code
         '**/dist/*', // Excludes built files
+        '**/tests/*',
+        '**/fixtures/**/expected/**/*.js',
       ],
     },
   },

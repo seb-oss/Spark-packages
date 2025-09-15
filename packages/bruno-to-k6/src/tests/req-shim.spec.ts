@@ -1,6 +1,6 @@
 // src/req-shim.spec.ts
-import { describe, it, expect } from 'vitest'
-import { createReqShim, type RequestDraft } from '../req-shim'
+import { describe, expect, it } from 'vitest'
+import { type RequestDraft, createReqShim } from '../req-shim'
 
 const makeDraft = (over: Partial<RequestDraft> = {}): RequestDraft => ({
   method: 'GET',

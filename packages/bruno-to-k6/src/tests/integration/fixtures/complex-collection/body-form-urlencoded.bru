@@ -1,0 +1,16 @@
+meta {
+  name: body-form-urlencoded
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://example.test/login
+  body: formUrlEncoded
+  auth: none
+}
+
+body:form-urlencoded {
+  username: alice
+  password: secret
+}

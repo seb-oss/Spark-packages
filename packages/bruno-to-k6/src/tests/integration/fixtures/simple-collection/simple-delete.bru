@@ -1,9 +1,11 @@
 meta {
-  name: remove
+  name: simple-delete
   type: http
   seq: 4
 }
 
 delete {
   url: https://example.test/items/123
+  body: none
+  auth: none
 }

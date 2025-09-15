@@ -10,6 +10,7 @@
       "testschemas/**",
       "test/**",
       "coverage/**",
+      "fixtures/**",
       "*.generated.ts",
       "package.json",
       "ts-extensions.ts",

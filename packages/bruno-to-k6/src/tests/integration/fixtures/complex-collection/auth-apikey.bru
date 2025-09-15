@@ -1,0 +1,17 @@
+meta {
+  name: auth-apikey
+  type: http
+  seq: 10
+}
+
+get {
+  url: https://example.test/with-apikey
+  body: none
+  auth: apikey
+}
+
+auth:apikey {
+  key: X-Api-Key
+  value: 123
+  placement: header
+}

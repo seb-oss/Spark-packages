@@ -1,0 +1,15 @@
+meta {
+  name: body-text-raw
+  type: http
+  seq: 4
+}
+
+post {
+  url: https://example.test/raw
+  body: text
+  auth: none
+}
+
+body:text {
+  "hello=world&x=1"
+}

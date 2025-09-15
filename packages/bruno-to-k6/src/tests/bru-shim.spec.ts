@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { createBruShim } from '../bru-shim'
 
 describe('createBruShim', () => {
@@ -10,14 +10,12 @@ describe('createBruShim', () => {
     expect(env.token).toBe('abc123')
     expect(bru.getEnvVar('token')).toBe('abc123')
   })
-
   it('returns undefined for missing env var', () => {
     const env: Record<string, string> = {}
     const bru = createBruShim({ env })
 
     expect(bru.getEnvVar('missing')).toBeUndefined()
   })
-
   it('sets and gets vars of any type', () => {
     const env: Record<string, string> = {}
     const vars: Record<string, unknown> = {}
@@ -28,7 +26,6 @@ describe('createBruShim', () => {
     expect(bru.getVar<number>('count')).toBe(42)
     expect(bru.getVar('payload')).toEqual({ ok: true })
   })
-
   it('overwrites existing env var values', () => {
     const env: Record<string, string> = { mode: 'old' }
     const bru = createBruShim({ env })
@@ -36,7 +33,6 @@ describe('createBruShim', () => {
     bru.setEnvVar('mode', 'new')
     expect(env.mode).toBe('new')
   })
-
   it('mutates the provided vars object by reference', () => {
     const env: Record<string, string> = {}
     const vars: Record<string, unknown> = {}
@@ -56,7 +52,6 @@ describe('createBruShim', () => {
     expect(bru.hasEnvVar('x')).toBe(false)
     expect(bru.getEnvVar('x')).toBeUndefined()
   })
-
   it('global / collection / folder vars are exposed', () => {
     const env: Record<string, string> = {}
     const bru = createBruShim({
@@ -74,7 +69,6 @@ describe('createBruShim', () => {
     expect(bru.getCollectionVar('ns')).toBe('orders')
     expect(bru.getFolderVar('team')).toBe('core')
   })
-
   it('reads process env via getProcessEnv', () => {
     const key = 'BRU_TEST_KEY'
     const old = process.env[key]
@@ -85,7 +79,6 @@ describe('createBruShim', () => {
     if (old === undefined) delete process.env[key]
     else process.env[key] = old
   })
-
   it('hasVar / deleteVar / deleteAllVars manage runtime vars', () => {
     const vars: Record<string, unknown> = {}
     const bru = createBruShim({ env: {}, vars })
@@ -104,7 +97,6 @@ describe('createBruShim', () => {
     bru.deleteAllVars()
     expect(Object.keys(vars)).toEqual([])
   })
-
   it('interpolate resolves {{var}}, {{env.X}}, {{global.X}}, {{folder.X}}, {{collection.X}}', () => {
     const env = { TOKEN: 't-123', email: 'a@b.com' }
     const vars = { id: 7 }
@@ -121,7 +113,6 @@ describe('createBruShim', () => {
     const out = bru.interpolate(input)
     expect(out).toBe('id=7 token=t-123 r=eu f=core c=orders email=a@b.com')
   })
-
   it('sleep awaits at least the requested duration', async () => {
     vi.useFakeTimers()
     const bru = createBruShim({ env: {} })
@@ -140,14 +131,12 @@ describe('createBruShim', () => {
 
     vi.useRealTimers()
   })
-
   it('disableParsingResponseJson toggles flag', () => {
     const bru = createBruShim({ env: {} })
     expect(bru.flags.disableJsonParsing).toBe(false)
     bru.disableParsingResponseJson()
     expect(bru.flags.disableJsonParsing).toBe(true)
   })
-
   it('setNextRequest stores name and triggers hook', () => {
     const hook = vi.fn()
     const bru = createBruShim({ env: {}, onSetNextRequest: hook })
@@ -155,7 +144,6 @@ describe('createBruShim', () => {
     expect(bru.flags.nextRequest).toBe('Login')
     expect(hook).toHaveBeenCalledWith('Login')
   })
-
   it('runRequest delegates to handler and returns its value', async () => {
     const handler = vi.fn().mockResolvedValue({ ok: true })
     const bru = createBruShim({ env: {}, onRunRequest: handler })
@@ -163,7 +151,6 @@ describe('createBruShim', () => {
     expect(handler).toHaveBeenCalledWith('Auth/Token')
     expect(res).toEqual({ ok: true })
   })
-
   it('getEnvName / getCollectionName / cwd return provided values', () => {
     const bru = createBruShim({
       env: {},

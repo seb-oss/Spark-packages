@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "@usebruno/lang": "0.28.0",
-    "cac": "6.7.14"
+    "cac": "6.7.14",
+    "case-anything": "3.1.2"
   },
   "devDependencies": {
     "tsconfig": "*"

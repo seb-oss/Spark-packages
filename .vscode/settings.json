@@ -1,0 +1,4 @@
+{
+  "vitest.disableWorkspaceWarning": true,
+  "git.ignoreLimitWarning": true
+}

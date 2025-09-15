@@ -1,0 +1,25 @@
+meta {
+  name: body-graphql
+  type: http
+  seq: 7
+}
+
+post {
+  url: https://example.test/graphql
+  body: graphql
+  auth: none
+}
+
+body:graphql {
+  query Q($id: String!) {
+    me {
+      id
+    }
+  }
+}
+
+body:graphql:vars {
+  {
+    "id": "1"
+  }
+}

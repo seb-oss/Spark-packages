@@ -1,0 +1,15 @@
+meta {
+  name: body-json-raw
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://example.test/items
+  body: json
+  auth: none
+}
+
+body:json {
+  { "name": "Widget", "price": 10.5 }
+}

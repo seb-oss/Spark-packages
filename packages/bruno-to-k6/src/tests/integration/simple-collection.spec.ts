@@ -1,55 +1,45 @@
-// tests/integration/simple-collection.spec.ts
-import { describe, it, expect } from 'vitest'
 import path from 'node:path'
-import fs from 'node:fs/promises'
-import { fileURLToPath } from 'node:url'
+import { describe, expect, it } from 'vitest'
+import { flatten, readCollection } from '../../collection'
 import { convertBrunoFileOrCollection } from '../../main'
+import { fixturePaths, matchOrCreate } from '../helpers'
 
-// ESM __dirname shim
-//const __filename = fileURLToPath(import.meta.url)
-//const __dirname = path.dirname(__filename)
+const { FIX, EXP, EXP_PR } = fixturePaths(__dirname, 'simple-collection')
 
-const FIX = path.join(__dirname, 'fixtures', 'simple-collection')
-const EXP = path.join(FIX, 'expected')
+const collection = flatten(readCollection(FIX).children).map((fr) => fr.path)
 
-const read = (p: string) => fs.readFile(p, 'utf8')
-const norm = (s: string) => s.replace(/\r\n/g, '\n').trim()
-
-describe('integration: simple-collection via main', () => {
-  it('pointing at the collection directory returns main matching expected/main.js', async () => {
-    // call main with the directory; no env, no separate, no output
+describe(`integration: simple-collection`, () => {
+  it('generates a single file for a collection', async () => {
     const { main } = await convertBrunoFileOrCollection(FIX, {
       separate: false,
     })
 
-    const expected = await read(path.join(EXP, 'main.js'))
-    expect(norm(main)).toBe(norm(expected))
+    await matchOrCreate(path.join(EXP, 'main.js'), main)
   })
 
-  it('pointing at a single .bru returns main matching expected/simple-get.js', async () => {
-    // IMPORTANT: update this name if your single-file fixture is named differently
-    const singleFile = path.join(FIX, 'simple-get.bru')
+  it.each(collection)('generates a single file for %s.bru', async (filename) => {
+    const singleFile = path.join(FIX, `${filename}.bru`)
 
     const { main } = await convertBrunoFileOrCollection(singleFile, {
       separate: false,
     })
 
-    const expected = await read(path.join(EXP, 'simple-get.js'))
-    expect(norm(main)).toBe(norm(expected))
+    await matchOrCreate(path.join(EXP, `${filename}.js`), main)
   })
 
-  it('when separate=true returns per-request files (filenames only sanity check)', async () => {
-    const { requests } = await convertBrunoFileOrCollection(FIX, {
+  it('returns per-request files for a collection', async () => {
+    const { main, requests } = await convertBrunoFileOrCollection(FIX, {
       separate: true,
     })
 
+    await matchOrCreate(path.join(EXP_PR, 'main.js'), main)
+
     expect(Array.isArray(requests)).toBe(true)
-    // loose check: we expect at least one emitted file, names end with .js
-    expect((requests ?? []).length).toBeGreaterThan(0)
     for (const f of requests ?? []) {
       expect(f.filename.endsWith('.js')).toBe(true)
       expect(typeof f.contents).toBe('string')
-      expect(f.contents.length).toBeGreaterThan(0)
+
+      await matchOrCreate(path.join(EXP_PR, f.filename), f.contents)
     }
   })
 })

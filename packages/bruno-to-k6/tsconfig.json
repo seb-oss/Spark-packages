@@ -1,4 +1,7 @@
 {
   "extends": "@sebspark/tsconfig/base.json",
-  "include": ["."]
+  "include": ["."],
+  "compilerOptions": {
+    "moduleResolution": "bundler"
+  }
 }
