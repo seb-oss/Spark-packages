@@ -20,12 +20,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "jose": "^6.0.12",
-    "testcontainers": "^11.5.1"
+    "jose": "^6.1.0",
+    "testcontainers": "^11.7.0"
   },
   "devDependencies": {
     "@types/ws": "^8.18.1",
-    "nock": "^14.0.9",
+    "nock": "^14.0.10",
     "tsconfig": "*",
     "ws": "^8.18.3"
   }

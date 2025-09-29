@@ -16,14 +16,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "20.19.1",
+    "@types/node": "20.19.17",
     "tsconfig": "*",
     "tsup-node": "0.1.0",
-    "typescript": "5.8.3",
+    "typescript": "5.9.2",
     "vitest": "3.2.4"
   },
   "dependencies": {
     "@sebspark/retry": "*",
-    "axios": "^1.12.0"
+    "axios": "^1.12.2"
   }
 }

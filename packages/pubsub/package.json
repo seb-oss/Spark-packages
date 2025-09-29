@@ -23,7 +23,7 @@
     "@google-cloud/pubsub": "5.2.0",
     "@types/express": "5.0.3",
     "@types/html-escaper": "3.0.4",
-    "avsc": "^5.7.7",
+    "avsc": "^5.7.9",
     "express": "5.1.0",
     "html-escaper": "3.0.3"
   },

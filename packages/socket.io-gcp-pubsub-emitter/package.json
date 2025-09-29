@@ -18,10 +18,10 @@
   },
   "devDependencies": {
     "@socket.io/gcp-pubsub-adapter": "^0.1.0",
-    "@testcontainers/gcloud": "^11.0.3",
+    "@testcontainers/gcloud": "^11.7.0",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
-    "testcontainers": "^11.0.3",
+    "testcontainers": "^11.7.0",
     "tsconfig": "*"
   },
   "dependencies": {
