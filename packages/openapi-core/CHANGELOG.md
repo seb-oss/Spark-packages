@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 2.3.4
+
+### Patch Changes
+
+- 5c6e183: Updated dependencies
+
 ## 2.3.3
 
 ### Patch Changes
