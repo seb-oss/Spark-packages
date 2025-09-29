@@ -3001,7 +3001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.2.3, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.2.4, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3025,7 +3025,7 @@ __metadata:
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.2.3"
+    "@sebspark/avsc-isometric": "npm:0.2.4"
     "@types/yargs": "npm:17.0.33"
     boxen: "npm:5.1.2"
     chalk: "npm:4.1.2"
