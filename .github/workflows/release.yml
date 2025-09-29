@@ -146,6 +146,8 @@ jobs:
 
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
+        with:
+          version: 2.2.4
 
       - name: Check linting, formatting, and imports
         run: biome ci
