@@ -4,7 +4,7 @@ import {
   type InternalAxiosRequestConfig,
 } from 'axios'
 import { describe, expect, it, vi } from 'vitest'
-import { type RetrySettings, interval, retry, retryCondition } from './retry'
+import { interval, type RetrySettings, retry, retryCondition } from './retry'
 
 describe('retry', () => {
   it('it calls through', async () => {
