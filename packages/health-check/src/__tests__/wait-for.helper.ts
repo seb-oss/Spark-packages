@@ -5,7 +5,7 @@ export type WaitForConfig = {
   timeout?: number
 }
 
-const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms))
+const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
 
 /**
  * Repeatedly executes `fn` until it stops throwing or the timeout elapses.

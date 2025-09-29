@@ -1,5 +1,5 @@
 import type { Dirent } from 'node:fs'
-import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import {
   createMigration,

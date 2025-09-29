@@ -1,2 +1,2 @@
-export { generate } from './generator'
 export { format } from './formatter'
+export { generate } from './generator'

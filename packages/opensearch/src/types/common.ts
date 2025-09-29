@@ -2,9 +2,9 @@ import type {
   Indices_Create_Request,
   Indices_Create_RequestBody,
 } from '@opensearch-project/opensearch/api/'
-import type OpenSearchAPI from '@opensearch-project/opensearch/api/OpenSearchApi'
 import type { Common_Mapping } from '@opensearch-project/opensearch/api/_types'
 import type * as Common from '@opensearch-project/opensearch/api/_types/_common'
+import type OpenSearchAPI from '@opensearch-project/opensearch/api/OpenSearchApi'
 import type { NestedPaths } from './utilityTypes'
 
 /**

@@ -1,28 +1,27 @@
 export interface InstrumentPrice {
-	ask: null | number;
-	bid: null | number;
-	last: null | number;
-	lastInSek: null | number;
+  ask: null | number
+  bid: null | number
+  last: null | number
+  lastInSek: null | number
 }
 
 export interface Ticker {
-	id: string;
-	mic: string;
-	isin: string;
-	ticker: string;
-	currencyCode: string;
-	price: InstrumentPrice;
+  id: string
+  mic: string
+  isin: string
+  ticker: string
+  currencyCode: string
+  price: InstrumentPrice
 }
 
 export interface TickerMessage {
-	tickers: Ticker[];
+  tickers: Ticker[]
 }
 
- export const CloudSchema  = { 
+export const CloudSchema = {
+  schemaId: 'ticker-v1',
 
-        schemaId: 'ticker-v1', 
-
-        avroDefinition: `{
+  avroDefinition: `{
   "type": "record",
   "name": "TickerMessage",
   "namespace": "com.financial.api",
@@ -102,6 +101,5 @@ export interface TickerMessage {
     }
   ]
 }
-` 
-
-    }
+`,
+}

@@ -7,8 +7,8 @@ import type {
 } from '@sebspark/openapi-core'
 import { fromAxiosError } from '@sebspark/openapi-core'
 import { retry } from '@sebspark/retry'
-import axios from 'axios'
 import type { AxiosError, AxiosHeaders, AxiosInstance } from 'axios'
+import axios from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import type { Logger } from 'winston'
 import { paramsSerializer } from './paramsSerializer'
@@ -61,7 +61,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   }
 
   if (globalOptions?.authorizationTokenRefresh) {
-    // biome-ignore lint/suspicious/noExplicitAny: TODO: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: TODO
     const refreshAuthLogic = async (failedRequest: any) => {
       logger?.debug('Failed request')
       logger?.debug(JSON.stringify(failedRequest, null, 2))
@@ -225,9 +225,9 @@ const mergeArgs = (
 
 const merge = (
   prop: keyof (ClientOptions & RequestArgs),
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: it is any
   ...args: (any | undefined)[]
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: it is any
 ): any => Object.assign({}, ...args.map((a) => a?.[prop] || {}))
 
 const setParams = (url: string, params: Record<string, string> = {}): string =>

@@ -63,7 +63,7 @@ export type ClientArgs<T> = {
   [P in keyof T as Exclude<P, 'headers'>]: T[P]
 } & (T extends { headers?: infer H }
   ? { headers?: LowerCaseHeaders<H> }
-  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  : // biome-ignore lint/complexity/noBannedTypes: helper - not prod code
     {}) &
-  // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  // biome-ignore lint/complexity/noBannedTypes: helper - not prod code
   (T extends { headers: infer H } ? { headers: LowerCaseHeaders<H> } : {})

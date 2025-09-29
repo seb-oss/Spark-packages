@@ -6,7 +6,7 @@ import { parsePaths } from './paths'
 import { parseRequestBodies } from './requestBodies'
 import { parseResponseBodies } from './responseBodies'
 import { parseSchemas } from './schema'
-import { parseSecurityScheme, parseSecuritySchemes } from './securitySchemes'
+import { parseSecuritySchemes } from './securitySchemes'
 
 export const parseDocument = (
   schema: OpenApiDocument

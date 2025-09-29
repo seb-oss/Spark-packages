@@ -7,7 +7,6 @@ import {
 import type { Server } from 'socket.io'
 import type { Socket } from 'socket.io-client'
 import {
-  type Mock,
   afterAll,
   afterEach,
   beforeAll,
@@ -15,6 +14,7 @@ import {
   describe,
   expect,
   it,
+  type Mock,
   vi,
 } from 'vitest'
 import { Emitter } from '../emitter'

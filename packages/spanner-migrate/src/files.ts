@@ -1,4 +1,4 @@
-import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
+import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import type { Config, Migration } from './types'
 
@@ -31,7 +31,7 @@ export const getMigration = async (
     // Check if the file exists
     try {
       await access(filePath)
-    } catch (err) {
+    } catch {
       throw new Error(`Migration file not found: ${filePath}`)
     }
 

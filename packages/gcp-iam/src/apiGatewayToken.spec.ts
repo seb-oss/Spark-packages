@@ -1,5 +1,5 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
-import { type Mock, beforeAll, describe, expect, it, vi } from 'vitest'
+import { beforeAll, describe, expect, it, type Mock, vi } from 'vitest'
 import type { Logger } from 'winston'
 import { getApiGatewayTokenByUrl } from './apiGatewayToken'
 

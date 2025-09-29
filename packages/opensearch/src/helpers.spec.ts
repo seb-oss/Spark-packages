@@ -1,11 +1,11 @@
 // bulkIndex.test.ts
 import { describe, expect, it } from 'vitest'
 import {
-  type IdFunction,
   bulkCreate,
   bulkDelete,
   bulkIndex,
   bulkUpdate,
+  type IdFunction,
 } from './helpers'
 import type { IndexDefinition } from './types/common'
 import type { DocumentFor } from './types/documents'

@@ -1,7 +1,4 @@
-import type {
-  BaseClient,
-  RequestOptions,
-} from '@sebspark/openapi-core'
+import type { BaseClient, RequestOptions } from '@sebspark/openapi-core'
 
 export type ApiClient = Pick<BaseClient, 'get'> & {
   get: {

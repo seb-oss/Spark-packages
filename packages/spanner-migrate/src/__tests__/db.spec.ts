@@ -1,9 +1,9 @@
 import { type Database, type Instance, Spanner } from '@google-cloud/spanner'
 import {
-  SQL_CREATE_TABLE_MIGRATIONS,
-  SQL_SELECT_TABLE_MIGRATIONS,
   ensureMigrationTable,
   getAppliedMigrations,
+  SQL_CREATE_TABLE_MIGRATIONS,
+  SQL_SELECT_TABLE_MIGRATIONS,
 } from '../db'
 
 describe('prepare', () => {

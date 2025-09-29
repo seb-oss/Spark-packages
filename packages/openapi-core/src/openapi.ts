@@ -84,7 +84,7 @@ export type ComponentsObject = {
   pathItems?: Record<string, PathItemObject>
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: not our definition
 type RequestBody = any
 
 export type LinkObject = {

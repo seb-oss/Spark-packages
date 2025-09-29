@@ -4,7 +4,7 @@ import {
   SchemaTypes,
   type Topic,
 } from '@google-cloud/pubsub'
-import { type MockedObject, describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, type MockedObject, vi } from 'vitest'
 import { createPublisher } from './publisher'
 
 type ExampleMessage = {

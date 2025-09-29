@@ -1,8 +1,8 @@
 import {
-  type JWK_RSA_Public,
   calculateJwkThumbprint,
   exportJWK,
   generateKeyPair,
+  type JWK_RSA_Public,
 } from 'jose'
 
 type JWK = JWK_RSA_Public & { alg: string; kid: string }

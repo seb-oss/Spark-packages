@@ -1,6 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const fixESM = require('fix-esm')
+
 import type SuperJSON from 'superjson'
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
 const superjson: SuperJSON = fixESM.require('superjson')
 

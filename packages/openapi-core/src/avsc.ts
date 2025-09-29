@@ -18,7 +18,7 @@ export type AvroField = {
   name: string
   type: AvroSchema
   doc?: string
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: not our decision
   default?: any
   order?: 'ascending' | 'descending' | 'ignore'
 }

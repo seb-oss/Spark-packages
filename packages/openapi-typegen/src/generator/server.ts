@@ -1,11 +1,6 @@
-import {
-  type CustomType,
-  type Path,
-  type ResponseBody,
-  TypeDefinition,
-} from '../types'
+import type { CustomType, Path, ResponseBody } from '../types'
 import { generateServerArgs } from './args'
-import { OR, generateResponseBody } from './common'
+import { generateResponseBody, OR } from './common'
 import { documentServerPath } from './document'
 
 export const generateServer = (name: string, paths: Path[]): string => {

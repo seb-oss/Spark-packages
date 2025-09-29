@@ -1,5 +1,4 @@
 import type { Common } from '@opensearch-project/opensearch/api/_types'
-import { DeepPartial } from './types'
 import type {
   BulkRequest,
   CreateOperation,

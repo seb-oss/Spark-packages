@@ -1,4 +1,4 @@
-import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises'
+import { mkdir, readdir, readFile, stat, writeFile } from 'node:fs/promises'
 import { parse, resolve } from 'node:path'
 import type { OpenApiDocument } from '@sebspark/openapi-core'
 import { pascalCase } from 'change-case'

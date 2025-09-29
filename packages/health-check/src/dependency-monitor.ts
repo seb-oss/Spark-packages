@@ -1,4 +1,4 @@
-import preformance from 'node:perf_hooks'
+import { performance } from 'node:perf_hooks'
 import { runAgainstTimeout, singleFlight } from './timing'
 import {
   type CheckError,
@@ -231,9 +231,7 @@ export class DependencyMonitor {
 
     const start = performance.now()
     let callActive = true
-    // biome-ignore lint/style/useConst: timeout defined later
     let healthTimeout: NodeJS.Timeout | undefined
-    // biome-ignore lint/style/useConst: timeout defined later
     let serviceTimeout: NodeJS.Timeout | undefined
 
     asyncCall((response) => {

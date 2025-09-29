@@ -29,9 +29,9 @@ export type GatewayGraphqlClient = Pick<BaseClient, 'post' | 'get'> & {
       opts?: RequestOptions
     ): Promise<
       APIResponse<{
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        // biome-ignore lint/suspicious/noExplicitAny: it is any
         data: Record<string, any>
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        // biome-ignore lint/suspicious/noExplicitAny: it is any[]
         errors?: ({ message: string } & Record<string, any>)[]
       }>
     >

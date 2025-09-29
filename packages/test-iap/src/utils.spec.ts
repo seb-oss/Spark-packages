@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 import type { Headers, JsonObject } from './types'
 import {
-  IntrospectionError,
   defaultPort,
   flattenHeaders,
   getHeader,
   hasHeader,
+  IntrospectionError,
   parseAuthorizationHeader,
   setHeader,
   toHttpBase,

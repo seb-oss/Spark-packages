@@ -19,7 +19,7 @@ export const parseParameter = (
     in: schema.in,
     parameterName: schema.name,
     optional: !schema.required,
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: schema is always defined here
     type: parseSchema(undefined, schema.schema!),
     ...parseDocumentation(schema),
   }

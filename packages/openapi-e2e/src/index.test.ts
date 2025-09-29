@@ -2,12 +2,12 @@ import type { Server } from 'node:http'
 import { TypedClient } from '@sebspark/openapi-client'
 import type { Serialized } from '@sebspark/openapi-core'
 import {
-  type Mock,
   afterAll,
   beforeAll,
   describe,
   expect,
   it,
+  type Mock,
   vi,
 } from 'vitest'
 import type {

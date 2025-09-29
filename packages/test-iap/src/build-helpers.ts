@@ -12,7 +12,7 @@ export const getThisFileUrl = (): string => {
     return pathToFileURL(__filename).href
   }
   // biome-ignore lint/security/noGlobalEval: needed for cjs/esm compatibility
-  // biome-ignore lint/style/noCommaOperator: needed for cjs/esm compatibility
+  // biome-ignore lint/complexity/noCommaOperator: needed for cjs/esm compatibility
   return (0, eval)('import.meta.url') as string
 }
 

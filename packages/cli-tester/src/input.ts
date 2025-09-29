@@ -46,7 +46,7 @@ export const input = (
         const cleanText = chunk.toString().replace(ansiPatterns.all, '').trim()
 
         // Extract text after the red error indicator ("> ")
-        // biome-ignore lint/suspicious/noControlCharactersInRegex:
+        // biome-ignore lint/suspicious/noControlCharactersInRegex: Yep - that's prompt for ya
         const errorMatch = chunk.toString().match(/\x1B\[31m>\s(.*)/) // Match red "> " followed by text
         const errorMessage = errorMatch
           ? errorMatch[1].replace(ansiPatterns.all, '').trim()

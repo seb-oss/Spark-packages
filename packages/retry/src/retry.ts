@@ -95,7 +95,7 @@ export const retryCondition = {
           if (typeof code === 'number') return code
           if (code === 'client') return clientErrorCodes
           if (code === 'server') return serverErrorCodes
-          return
+          return 500
         })
         .filter((code) => !!code) as number[]
       const status =

@@ -17,10 +17,10 @@ export type SchemaType =
 
 export type SchemaEnum = string[] | number[] | boolean[]
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: not our decision
 export type DefaultValue = string | number | boolean | any[] | any
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: not our decision
 export type Example = any
 
 export type ExampleObject = {

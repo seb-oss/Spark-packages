@@ -1,7 +1,5 @@
-import type { Response } from 'express'
-import type { Request } from 'express'
-import type { ParamsDictionary } from 'express-serve-static-core'
-import type { NextFunction } from 'express-serve-static-core'
+import type { Request, Response } from 'express'
+import type { NextFunction, ParamsDictionary } from 'express-serve-static-core'
 import type { ParsedQs } from 'qs'
 import { expect, test, vi } from 'vitest'
 import {

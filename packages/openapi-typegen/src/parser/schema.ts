@@ -196,7 +196,6 @@ const parsePropertyType = (
     const types: TypeDefinition[] = []
     for (const allOf of schemaObject.allOf) {
       const type = parseSchema(undefined, allOf)
-      // biome-ignore lint/performance/noDelete: <explanation>
       delete type.name
       types.push(type)
     }

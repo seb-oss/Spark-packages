@@ -3,8 +3,8 @@ import { generateClient } from './client'
 import { generateHeader, generateResponseBody, generateType } from './common'
 import { generateServer } from './server'
 
-export { generateType } from './common'
 export { generateClient } from './client'
+export { generateType } from './common'
 export { generateServer } from './server'
 
 export const generate = (name: string, doc: ParsedOpenApiDocument): string => `

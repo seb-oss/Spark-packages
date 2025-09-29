@@ -2,17 +2,17 @@ import {
   type APIResponse,
   type APIServerDefinition,
   type APIServerOptions,
+  createHttpError,
   type HttpError,
   type Verb,
-  createHttpError,
 } from '@sebspark/openapi-core'
 import {
   type ErrorRequestHandler,
+  json,
   type NextFunction,
   type Request,
   type Response,
   Router,
-  json,
 } from 'express'
 
 export const TypedRouter = (

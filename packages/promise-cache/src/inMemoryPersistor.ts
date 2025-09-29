@@ -282,10 +282,7 @@ export class InMemoryPersistor implements IPersistor {
    */
   async hSet(key: string, field: string, value: string): Promise<number> {
     const existingHash = JSON.parse(this.store.get(key) ?? '{}')
-    const isNewField = !Object.prototype.hasOwnProperty.call(
-      existingHash,
-      field
-    )
+    const isNewField = !Object.hasOwn(existingHash, field)
     existingHash[field] = value
     this.store.set(key, JSON.stringify(existingHash))
     return isNewField ? 1 : 0

@@ -1,3 +1,3 @@
-export type { Mode, ProxyConfig } from './types'
 export { createProxyServer } from './server'
-export { TestIapContainer, StartedTestIapContainer } from './test-iap-container'
+export { StartedTestIapContainer, TestIapContainer } from './test-iap-container'
+export type { Mode, ProxyConfig } from './types'

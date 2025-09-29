@@ -1,5 +1,6 @@
-import { inspect } from 'util' // use 'util' for RN Metro + polyfill support
 import type { AxiosError } from 'axios'
+// biome-ignore lint/style/useNodejsImportProtocol: use 'util' for RN Metro + polyfill support
+import { inspect } from 'util'
 
 export type ClientErrorCode =
   | 400

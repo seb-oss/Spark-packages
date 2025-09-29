@@ -78,7 +78,7 @@ const parseSecurity = (
 ): RequestArgs => {
   const args: RequestArgs = {}
   for (const secReq of security) {
-    for (const [name, claims] of Object.entries(secReq)) {
+    for (const [name] of Object.entries(secReq)) {
       const param = findRef<SecuritySchemeObject>(
         components,
         `#/components/securitySchemes/${name}`
@@ -123,7 +123,7 @@ const parseParameters = (
           arg.properties.push({
             name,
             optional: !header.required,
-            // biome-ignore lint/style/noNonNullAssertion: <explanation>
+            // biome-ignore lint/style/noNonNullAssertion: schema is never null here
             type: [{ type: parseSchema(undefined, header.schema!).type }],
             ...parseDocumentation((header.schema || {}) as SchemaObject),
           })

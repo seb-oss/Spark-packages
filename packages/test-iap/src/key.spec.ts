@@ -1,8 +1,8 @@
 import { calculateJwkThumbprint, exportJWK } from 'jose'
 // src/key.spec.ts
 import { beforeAll, describe, expect, it } from 'vitest'
-import { generateKey } from './keys'
 import type { Key } from './keys'
+import { generateKey } from './keys'
 
 let mainKey: Key
 

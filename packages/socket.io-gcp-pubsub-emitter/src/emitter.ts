@@ -8,8 +8,6 @@ import type {
 } from './typed-events'
 import type { BroadcastOptions, EmitterOptions } from './types'
 
-const UID = 'emitter'
-
 export class Emitter<EmitEvents extends EventsMap = DefaultEventsMap> {
   private readonly opts: EmitterOptions
   private readonly broadcastOptions: BroadcastOptions

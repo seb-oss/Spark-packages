@@ -18,7 +18,7 @@ export const parse = <T extends PromptType = undefined>(
   }
 
   // Ensure TypeScript correctly infers the return type
-  // biome-ignore lint/suspicious/noExplicitAny:
+  // biome-ignore lint/suspicious/noExplicitAny: generic inference
   return prompt as any
 }
 

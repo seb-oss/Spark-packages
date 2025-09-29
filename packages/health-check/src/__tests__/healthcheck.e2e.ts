@@ -1,11 +1,11 @@
-import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest'
-import request from 'supertest'
 import express, { type Express } from 'express'
-import { pingRedis, startRedis } from './redis.helper'
+import request from 'supertest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { HealthMonitor, ReadinessPayload } from '..'
+import { DependencyMonitor } from '../dependency-monitor'
 import { pingApi, startApi } from './api.helper'
 import { pingPubSub, startPubSub } from './pubsub.helper'
-import { HealthMonitor, ReadinessPayload } from '../'
-import { DependencyMonitor } from '../dependency-monitor'
+import { pingRedis, startRedis } from './redis.helper'
 import { waitFor } from './wait-for.helper'
 
 describe('health-check', () => {
@@ -91,7 +91,7 @@ describe('health-check', () => {
       monitor.addDependency('redis', redisDependency)
 
       api = await startApi()
-      apiDependency =  new DependencyMonitor({
+      apiDependency = new DependencyMonitor({
         syncCall: async () => {
           try {
             await pingApi(api)
@@ -117,7 +117,7 @@ describe('health-check', () => {
           pingPubSub(pubsub, (_message) => {
             callback('ok')
           })
-        }
+        },
       })
       monitor.addDependency('pubsub', pubsubDependency)
     })
@@ -163,7 +163,7 @@ describe('health-check', () => {
       expect(apiCheck.status).toEqual('unknown')
     })
     it('updates with api polled dependency check', async () => {
-      await waitFor(async () =>{
+      await waitFor(async () => {
         const res = await request(app).get('/health/ready')
         expect(res.status).toBe(200)
 
@@ -189,7 +189,7 @@ describe('health-check', () => {
       expect(pubsubCheck.status).toEqual('unknown')
     })
     it('updates with pubsub polled, async dependency check', async () => {
-      await waitFor(async () =>{
+      await waitFor(async () => {
         const res = await request(app).get('/health/ready')
         expect(res.status).toBe(200)
 

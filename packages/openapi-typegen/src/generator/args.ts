@@ -53,5 +53,5 @@ const wrapArgs = (args: string, wrap: boolean): string => {
 }
 
 export const argsOptional = (args: RequestArgs) =>
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  // biome-ignore lint/style/noNonNullAssertion: will never be null
   parts.reduce((o, p) => o && (!args[p] || args[p]!.optional), true)

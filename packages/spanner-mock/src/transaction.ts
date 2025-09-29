@@ -4,8 +4,8 @@ type ResolveReject = (value?: unknown) => void
 type Key = string | string[]
 
 export const createTransaction = () => {
-  let resolve: ResolveReject | undefined = undefined
-  let reject: ResolveReject | undefined = undefined
+  let resolve: ResolveReject | undefined
+  let reject: ResolveReject | undefined
   return {
     run: jest.fn((statement: string) => {}),
     runUpdate: jest.fn(async (statement: string) => [1]),

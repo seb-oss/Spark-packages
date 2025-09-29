@@ -1,12 +1,14 @@
 import type { UUID } from 'node:crypto'
-import { type RedisClientOptions, createClient } from 'redis'
+import { createClient, type RedisClientOptions } from 'redis'
 
 import type { Logger } from 'winston'
 import { createLocalMemoryClient } from './localMemory'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const fixESM = require('fix-esm')
+
 import type SuperJSON from 'superjson'
+
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
 const superjson: SuperJSON = fixESM.require('superjson')
 
@@ -59,7 +61,7 @@ export class Persistor {
     if (redis && !isTestRunning) {
       this.redis = redis
     } else {
-      //@ts-ignore
+      //@ts-expect-error
       CACHE_CLIENT = createLocalMemoryClient
     }
 

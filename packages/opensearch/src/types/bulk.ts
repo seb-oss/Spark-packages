@@ -1,6 +1,5 @@
 import type {
   Bulk_Request,
-  Bulk_RequestBody,
   Bulk_ResponseBody,
 } from '@opensearch-project/opensearch/api'
 import type {

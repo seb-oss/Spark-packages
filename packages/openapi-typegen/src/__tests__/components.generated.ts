@@ -89,7 +89,7 @@ export type ExampleAPIServerPaths = {
         args: Req & {
           headers: LowerCaseHeaders<ApiKeyAuth>
           query?: QueryParams<PageParam & LimitParam>
-        },
+        }
       ) => Promise<
         | [
             200,
@@ -111,7 +111,7 @@ export type ExampleAPIServerPaths = {
        * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>] | [400, undefined] | [401, UnauthorizedError]>}
        */
       handler: (
-        args: Req & { body: UserCreate; headers: LowerCaseHeaders<ApiKeyAuth> },
+        args: Req & { body: UserCreate; headers: LowerCaseHeaders<ApiKeyAuth> }
       ) => Promise<
         | [201, APIResponse<PartiallySerialized<User>>]
         | [400, undefined]
@@ -136,7 +136,7 @@ export type ExampleAPIServerPaths = {
           params: {
             userId: string
           }
-        },
+        }
       ) => Promise<
         | [200, APIResponse<PartiallySerialized<User>, { 'x-api-key': string }>]
         | [401, UnauthorizedError]
@@ -163,7 +163,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
     (
       url: '/users',
       args: { headers: ApiKeyAuth; query?: PageParam & LimitParam },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<
       APIResponse<
         Serialized<UserList>,
@@ -188,7 +188,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
           userId: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<User>, { 'x-api-key': string }>>
   }
   post: {
@@ -204,7 +204,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
     (
       url: '/users',
       args: { body: UserCreate; headers: ApiKeyAuth },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<User>>>
   }
 }

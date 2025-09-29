@@ -52,7 +52,7 @@ export interface HealthMonitorConfig {
 export class HealthMonitor {
   private readonly _router: Router
   private readonly dependencies: Map<string, DependencyMonitor>
-  private isDisposed = false
+  // private isDisposed = false
 
   /**
    * Create a new HealthMonitor instance with its own router and dependency map.
@@ -325,7 +325,7 @@ export class HealthMonitor {
    * - (future: could also stop all dependency monitors)
    */
   public dispose() {
-    this.isDisposed = true
+    // this.isDisposed = true
     for (const dependency of this.dependencies.values()) {
       dependency.dispose()
     }

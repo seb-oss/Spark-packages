@@ -8,7 +8,7 @@ import type {
 } from '@sebspark/openapi-core'
 import type { Path, TypeDefinition } from '../types'
 import { parseArgs } from './args'
-import { parseDocumentation, parseRef } from './common'
+import { parseDocumentation } from './common'
 import { parseResponseBody } from './responseBodies'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>

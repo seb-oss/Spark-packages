@@ -1,8 +1,7 @@
+import { randomUUID } from 'node:crypto'
 import express from 'express'
 import { type Agent, agent } from 'supertest'
 import { beforeEach, describe, expect, it } from 'vitest'
-
-import { randomUUID } from 'node:crypto'
 import { getLogger } from './logger'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))

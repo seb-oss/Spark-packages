@@ -1,7 +1,3 @@
-/* eslint-disable max-depth */
-/* eslint-disable complexity */
-/* eslint-disable max-lines */
-/* eslint-disable @typescript-eslint/no-var-requires */
 import * as opentelemetry from '@opentelemetry/api'
 
 // Not functionally required but gives some insight what happens behind the scenes
@@ -9,30 +5,27 @@ const { diag, DiagConsoleLogger, DiagLogLevel } = opentelemetry
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO)
 
 import { TraceExporter } from '@google-cloud/opentelemetry-cloud-trace-exporter'
+import type { Attributes, SpanKind } from '@opentelemetry/api'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto'
 import { registerInstrumentations } from '@opentelemetry/instrumentation'
+import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
+import { PgInstrumentation } from '@opentelemetry/instrumentation-pg'
 import { SocketIoInstrumentation } from '@opentelemetry/instrumentation-socket.io'
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
-
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici'
+import { Resource } from '@opentelemetry/resources'
+import type { Sampler, SpanExporter } from '@opentelemetry/sdk-trace-base'
 import {
   AlwaysOnSampler,
   BatchSpanProcessor,
   SamplingDecision,
 } from '@opentelemetry/sdk-trace-base'
-
-import { Resource } from '@opentelemetry/resources'
+import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 import {
   SEMATTRS_HTTP_ROUTE,
   SEMATTRS_HTTP_TARGET,
   SEMRESATTRS_SERVICE_NAME,
 } from '@opentelemetry/semantic-conventions'
-
-import type { Attributes, SpanKind } from '@opentelemetry/api'
-import { ExpressInstrumentation } from '@opentelemetry/instrumentation-express'
-import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
-import { PgInstrumentation } from '@opentelemetry/instrumentation-pg'
-import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici'
-import type { Sampler, SpanExporter } from '@opentelemetry/sdk-trace-base'
 
 type CloudTraceConfig = {
   projectId: string
@@ -121,7 +114,7 @@ function filterSampler(
 }
 
 const ignoreHealthCheck = (
-  spanName: string,
+  _spanName: string,
   spanKind: SpanKind,
   attributes: Attributes
 ) => {

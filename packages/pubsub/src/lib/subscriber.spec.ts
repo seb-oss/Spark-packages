@@ -1,7 +1,7 @@
 import { beforeEach } from 'node:test'
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
 import type { Schema } from 'avsc'
-import { type MockedObject, beforeAll, describe, expect, it, vi } from 'vitest'
+import { beforeAll, describe, expect, it, type MockedObject, vi } from 'vitest'
 import { createSubscriber } from './subscriber'
 
 type ExampleMessage = {

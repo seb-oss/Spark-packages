@@ -8,7 +8,7 @@ import {
 } from '@sebspark/openapi-core'
 import express, { type Express } from 'express'
 import { type Agent, agent } from 'supertest'
-import { type Mock, beforeEach, expect, test, vi } from 'vitest'
+import { beforeEach, expect, type Mock, test, vi } from 'vitest'
 import { TypedRouter } from './router'
 
 type User = {
@@ -24,9 +24,9 @@ type Server = APIServerDefinition & {
   }
   '/users/:id': {
     get: {
-      handler: (args: { params: { id: string } }) => Promise<
-        [200, APIResponse<PartiallySerialized<User>>]
-      >
+      handler: (args: {
+        params: { id: string }
+      }) => Promise<[200, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }

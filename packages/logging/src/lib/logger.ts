@@ -5,17 +5,16 @@ import type {
   RequestHandler,
   Response,
 } from 'express'
+import type { TransformableInfo } from 'logform'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
 import {
-  type Logger,
-  transports as WinstonTransports,
   createLogger,
   format,
+  type Logger,
+  transports as WinstonTransports,
 } from 'winston'
 import type * as Transport from 'winston-transport'
-
-import type { TransformableInfo } from 'logform'
 
 let loggers: Record<string, Logger> = {}
 
@@ -205,7 +204,7 @@ export const getLogger = ({
   }
 
   const GoogleCloudLoggingFormatter = (sensitivityRules: SensitivityRules) =>
-    format((info, opts = {}) => {
+    format((info, _opts = {}) => {
       if (!sensitivityRules.length) {
         return info
       }
@@ -296,7 +295,7 @@ const makeSocketInstrumentation = (logger: Logger) => (server: Server) => {
     logger.info('Socket connected', { id: socket.id })
 
     const emit = socket.emit
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // biome-ignore lint/suspicious/noExplicitAny: nvm
     ;(socket as any).emit = (eventName: string, ...eventData: unknown[]) => {
       socket.emit = emit
       socket.emit(eventName, ...eventData)

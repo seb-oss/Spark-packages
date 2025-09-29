@@ -18,7 +18,7 @@ export type IndexRequestBody<T> = T extends {
   body: { mappings: { properties: infer P } }
 }
   ? MapOpenSearchTypes<P>
-  : // biome-ignore lint/suspicious/noExplicitAny:
+  : // biome-ignore lint/suspicious/noExplicitAny: not our definition
     Record<string, any>
 
 export interface IndexResponse extends Index_Response {}

@@ -1,5 +1,5 @@
-import { spawn } from 'node:child_process'
 import type { SpawnOptions } from 'node:child_process'
+import { spawn } from 'node:child_process'
 import { keys } from './characters'
 import { check } from './check'
 import { input } from './input'

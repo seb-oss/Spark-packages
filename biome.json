@@ -1,23 +1,15 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "organizeImports": {
-    "enabled": true
+  "$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "files": {
-    "ignore": [
-      "generated/**",
-      "dist/**",
-      "testschemas/**",
-      "test/**",
-      "coverage/**",
-      "*.generated.ts",
-      "package.json",
-      "ts-extensions.ts",
-      "typescriptExtensions.ts",
-      "openSearchTypes.ts",
-      "openapi-core/src/types.ts",
-      "schemas/**"
-    ]
+    "includes": ["packages/*/src/**/*"],
+    "maxSize": 2000000
   },
   "formatter": {
     "indentStyle": "space"
@@ -42,7 +34,30 @@
   },
   "overrides": [
     {
-      "include": ["**/*.spec.*", "**/*.test.*"],
+      "includes": ["**/generated/**", "**/*.generated.*"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": [
+        "**/*.spec.*",
+        "**/*.test.*",
+        "**/*.e2e.*",
+        "**/__tests__/**",
+        "**/__mocks__/**",
+        "**/__scaffold__/**"
+      ],
+      "linter": {
+        "enabled": false
+      }
+    },
+
+    {
+      "includes": ["packages/openapi-e2e/**", "packages/spanner-mock/**"],
       "linter": {
         "enabled": false
       }

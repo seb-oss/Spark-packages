@@ -1,7 +1,7 @@
 import type { Topic } from '@google-cloud/pubsub'
 import { createAdapter } from '@socket.io/gcp-pubsub-adapter'
 import { Server } from 'socket.io'
-import { type Socket, io } from 'socket.io-client'
+import { io, type Socket } from 'socket.io-client'
 
 export const wait = (ms: number) =>
   new Promise<void>((res) => setTimeout(res, ms))

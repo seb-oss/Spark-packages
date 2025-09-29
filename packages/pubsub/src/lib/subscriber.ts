@@ -51,7 +51,7 @@ export type SubscriptionClient<T extends Record<string, unknown>> = {
       },
       options?: PubSubOptions
     ): Promise<Subscription>
-    initiate<M extends T[K]>(
+    initiate<_M extends T[K]>(
       name: string,
       options?: PubSubOptions
     ): Promise<void>

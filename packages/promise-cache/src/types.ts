@@ -1,7 +1,5 @@
-import type { SetOptions, createClient } from 'redis'
+import type { SetOptions } from 'redis'
 
-type Client = ReturnType<typeof createClient>
-type Multi = ReturnType<Client['multi']>
 export type MultiExecReturnTypes =
   | string[]
   | string

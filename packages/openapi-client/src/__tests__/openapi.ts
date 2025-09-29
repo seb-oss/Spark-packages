@@ -64,7 +64,7 @@ export type OpenapiServer = APIServerDefinition & {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<UserList>>]>}
        */
       handler: (
-        args: Req & { headers: LowerCaseHeaders<AccessToken> },
+        args: Req & { headers: LowerCaseHeaders<AccessToken> }
       ) => Promise<[200, APIResponse<PartiallySerialized<UserList>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -77,7 +77,7 @@ export type OpenapiServer = APIServerDefinition & {
        * @returns {Promise<[201, APIResponse<PartiallySerialized<User>>]>}
        */
       handler: (
-        args: Req & { body: User; headers: LowerCaseHeaders<AccessToken> },
+        args: Req & { body: User; headers: LowerCaseHeaders<AccessToken> }
       ) => Promise<[201, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -98,7 +98,7 @@ export type OpenapiServer = APIServerDefinition & {
           params: {
             userId: string
           }
-        },
+        }
       ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -117,7 +117,7 @@ export type OpenapiServer = APIServerDefinition & {
           params: {
             userId: string
           }
-        },
+        }
       ) => Promise<[200, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -138,7 +138,7 @@ export type OpenapiServer = APIServerDefinition & {
           params: {
             userId: string
           }
-        },
+        }
       ) => Promise<[200, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -167,12 +167,12 @@ export type OpenapiServer = APIServerDefinition & {
           params: {
             id: string
           }
-        },
+        }
       ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
-  },
-    '/search': {
+  }
+  '/search': {
     get: {
       /**
        *
@@ -205,7 +205,7 @@ export type OpenapiClient = Pick<
           type: string[]
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<{ received: string | string[] }>>
     /**
      *
@@ -218,7 +218,7 @@ export type OpenapiClient = Pick<
     (
       url: '/users',
       args: { headers: AccessToken },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<UserList>>>
     /**
      *
@@ -238,7 +238,7 @@ export type OpenapiClient = Pick<
           userId: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<User>>>
     /**
      *
@@ -263,7 +263,7 @@ export type OpenapiClient = Pick<
           id: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<undefined>
   }
   post: {
@@ -279,7 +279,7 @@ export type OpenapiClient = Pick<
     (
       url: '/users',
       args: { body: User; headers: AccessToken },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<User>>>
   }
   delete: {
@@ -301,7 +301,7 @@ export type OpenapiClient = Pick<
           userId: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<undefined>
   }
   put: {
@@ -325,7 +325,7 @@ export type OpenapiClient = Pick<
           userId: string
         }
       },
-      opts?: RequestOptions,
+      opts?: RequestOptions
     ): Promise<APIResponse<Serialized<User>>>
   }
 }

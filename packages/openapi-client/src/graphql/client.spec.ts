@@ -1,19 +1,17 @@
 import * as auth from '@sebspark/openapi-auth-iam'
+import type { ClientOptions } from '@sebspark/openapi-core'
 import {
-  type Mock,
-  type Mocked,
-  type MockedFunction,
   beforeEach,
   describe,
   expect,
   it,
+  type Mock,
+  type Mocked,
+  type MockedFunction,
   vi,
 } from 'vitest'
-import * as clientModule from '../client'
-
-import type { ClientOptions } from '@sebspark/openapi-core'
-
 import type { Logger } from 'winston'
+import * as clientModule from '../client'
 import { GatewayGraphqlClient } from './'
 import type { GatewayGraphqlClientArgs } from './types'
 

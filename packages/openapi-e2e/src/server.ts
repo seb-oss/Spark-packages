@@ -9,8 +9,8 @@ import { TypedRouter } from '@sebspark/openapi-express'
 import express from 'express'
 import type {
   InstrumentEntityResponse,
-  MarketListResponse,
   MarketdataServer,
+  MarketListResponse,
 } from './schemas/marketdata'
 
 export const markets: MarketListResponse = {
@@ -66,7 +66,7 @@ const api: MarketdataServer = {
   },
   '/markets/:mic/instruments': {
     get: {
-      handler: async (args) => {
+      handler: async () => {
         throw new NotImplementedError()
       },
     },

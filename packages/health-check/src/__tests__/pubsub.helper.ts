@@ -1,12 +1,18 @@
 import { performance } from 'node:perf_hooks'
-import { PubSub, type Message } from '@google-cloud/pubsub'
-import { PubSubEmulatorContainer, type StartedPubSubEmulatorContainer } from '@testcontainers/gcloud'
+import { type Message, PubSub } from '@google-cloud/pubsub'
+import {
+  PubSubEmulatorContainer,
+  type StartedPubSubEmulatorContainer,
+} from '@testcontainers/gcloud'
 
 export const startPubSub = async () => {
-  const emulator = await new PubSubEmulatorContainer('gcr.io/google.com/cloudsdktool/google-cloud-cli:532.0.0-emulators').start()
+  const emulator = await new PubSubEmulatorContainer(
+    'gcr.io/google.com/cloudsdktool/google-cloud-cli:532.0.0-emulators'
+  ).start()
 
   // Ensure topics and subscriptions
-  const { sendSubscription, receiveTopic } = await ensureTopicsAndSubscriptions(emulator)
+  const { sendSubscription, receiveTopic } =
+    await ensureTopicsAndSubscriptions(emulator)
 
   // Set up ping/pong
   sendSubscription.on('message', (msg) => {
@@ -14,7 +20,7 @@ export const startPubSub = async () => {
     msg.ack()
     if (message === 'PING') {
       receiveTopic.publishMessage({
-        data: Buffer.from('PONG')
+        data: Buffer.from('PONG'),
       })
     }
   })
@@ -22,10 +28,14 @@ export const startPubSub = async () => {
   return emulator
 }
 
-export const pingPubSub = async (emulator: StartedPubSubEmulatorContainer, callback: (message: string) => void) => {
+export const pingPubSub = async (
+  emulator: StartedPubSubEmulatorContainer,
+  callback: (message: string) => void
+) => {
   const pubsub = new PubSub({ projectId: emulator.getProjectId() })
 
-  const { sendTopic, receiveSubscription } = await ensureTopicsAndSubscriptions(emulator)
+  const { sendTopic, receiveSubscription } =
+    await ensureTopicsAndSubscriptions(emulator)
 
   const handler = (msg: Message) => {
     const message = msg.data.toString()
@@ -40,7 +50,9 @@ export const pingPubSub = async (emulator: StartedPubSubEmulatorContainer, callb
   sendTopic.publishMessage({ data: Buffer.from('PING') })
 }
 
-const ensureTopicsAndSubscriptions = async (emulator: StartedPubSubEmulatorContainer) => {
+const ensureTopicsAndSubscriptions = async (
+  emulator: StartedPubSubEmulatorContainer
+) => {
   const pubsub = new PubSub({
     projectId: emulator.getProjectId(),
     apiEndpoint: emulator.getEmulatorEndpoint(),
@@ -55,7 +67,9 @@ const ensureTopicsAndSubscriptions = async (emulator: StartedPubSubEmulatorConta
   }
 
   // Create outgoing subscription
-  const sendSubscription = pubsub.topic('send').subscription('send_subscription')
+  const sendSubscription = pubsub
+    .topic('send')
+    .subscription('send_subscription')
   const [sendSubscriptionExists] = await sendSubscription.exists()
   if (!sendSubscriptionExists) {
     await sendSubscription.create()
@@ -69,7 +83,9 @@ const ensureTopicsAndSubscriptions = async (emulator: StartedPubSubEmulatorConta
   }
 
   // Create incoming subscription
-  const receiveSubscription = pubsub.topic('receive').subscription('receive_subscription')
+  const receiveSubscription = pubsub
+    .topic('receive')
+    .subscription('receive_subscription')
   const [receiveSubscriptionExists] = await receiveSubscription.exists()
   if (!receiveSubscriptionExists) {
     await receiveSubscription.create()

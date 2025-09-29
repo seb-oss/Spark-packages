@@ -133,7 +133,11 @@ const checkCache = ({
   cacheKey,
   generate,
   logger,
-}: { cacheKey: string; generate: () => Promise<string>; logger?: Logger }) => {
+}: {
+  cacheKey: string
+  generate: () => Promise<string>
+  logger?: Logger
+}) => {
   /**
    * Check if there is a cached JWT
    */

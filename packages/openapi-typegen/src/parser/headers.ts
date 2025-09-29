@@ -14,7 +14,7 @@ export const parseHeader = (name: string, schema: HeaderObject): Header => {
   const header: Header = {
     name,
     optional: !schema.required,
-    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    // biome-ignore lint/style/noNonNullAssertion: here it is always defined
     type: parseSchema(undefined, schema.schema!),
     ...parseDocumentation(schema),
   }
