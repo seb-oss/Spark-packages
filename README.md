@@ -116,6 +116,14 @@ A fake IAP which can be used to run e2e tests
 
 An easy way to add health check routes to your API
 
+### [@sebspark/@sebspark/otel](./packages/@sebspark/otel)
+
+Open Telemetry helpers for logging, tracing and metrics
+
+### [@sebspark/otel](./packages/otel)
+
+Open Telemetry implementation of logging, tracing and metrics
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
