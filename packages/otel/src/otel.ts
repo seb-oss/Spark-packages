@@ -13,7 +13,13 @@ import { getResource } from './resource'
 
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
 
+let isInitialized = false
 export async function initialize() {
+  if (isInitialized) {
+    return
+  }
+  isInitialized = true
+
   try {
     const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
     const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
@@ -21,9 +27,8 @@ export async function initialize() {
     const resource = await getResource()
 
     // Enable context propagation (required for logs + spans to carry trace info)
-    context.setGlobalContextManager(
-      new AsyncLocalStorageContextManager().enable()
-    )
+    const contextManager = new AsyncLocalStorageContextManager().enable()
+    context.setGlobalContextManager(contextManager)
 
     // Manual setup for logs
     const logProvider = getLogProvider(resource, otlpEndpoint)
@@ -33,6 +38,7 @@ export async function initialize() {
     const spanProcessor = getSpanProcessor(otlpEndpoint)
     const metricReader = getMetricReader(otlpEndpoint)
     const sdk = new NodeSDK({
+      contextManager,
       spanProcessor,
       metricReader,
       instrumentations: [getNodeAutoInstrumentations()],
