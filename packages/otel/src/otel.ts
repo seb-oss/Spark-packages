@@ -6,7 +6,6 @@ import {
 } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
-import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { NodeSDK } from '@opentelemetry/sdk-node'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
 import { getResource } from './resource'
@@ -26,10 +25,6 @@ export async function initialize() {
 
     const resource = await getResource()
 
-    // Enable context propagation (required for logs + spans to carry trace info)
-    const contextManager = new AsyncLocalStorageContextManager().enable()
-    context.setGlobalContextManager(contextManager)
-
     // Manual setup for logs
     const logProvider = getLogProvider(resource, otlpEndpoint)
     logs.setGlobalLoggerProvider(logProvider)
@@ -38,7 +33,6 @@ export async function initialize() {
     const spanProcessor = getSpanProcessor(otlpEndpoint)
     const metricReader = getMetricReader(otlpEndpoint)
     const sdk = new NodeSDK({
-      contextManager,
       spanProcessor,
       metricReader,
       instrumentations: [getNodeAutoInstrumentations()],
