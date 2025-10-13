@@ -4,6 +4,7 @@ import {
   SpanStatusCode,
   trace,
 } from '@opentelemetry/api'
+import { initialize } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
 type OtelTracer = ReturnType<typeof trace.getTracer>
@@ -40,7 +41,10 @@ interface Tracer extends OtelTracer {
  * @param serviceOverride - Optional override for service name
  * @returns Tracer with helpers
  */
-export function getTracer(componentNameOverride?: string): Tracer {
+export async function getTracer(
+  componentNameOverride?: string
+): Promise<Tracer> {
+  await initialize()
   const { componentName, systemName, systemVersion } = detectTelemetryContext(
     componentNameOverride
   )

@@ -1,5 +1,4 @@
 import { SpanStatusCode } from '@opentelemetry/api'
-import { logs } from '@opentelemetry/api-logs'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { getLogger } from './logger'
 import { initialize } from './otel'
@@ -53,7 +52,7 @@ describe('otel initialize', () => {
     it('sets up telemetry with ConsoleSpanPrettyExporter and logs to console', async () => {
       await initialize()
 
-      const tracer = getTracer()
+      const tracer = await getTracer()
 
       // Start root HTTP server span
       await tracer.withTrace(

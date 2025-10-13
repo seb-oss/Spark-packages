@@ -1,9 +1,4 @@
-import {
-  context,
-  DiagConsoleLogger,
-  DiagLogLevel,
-  diag,
-} from '@opentelemetry/api'
+import { DiagConsoleLogger, DiagLogLevel, diag } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
 import { NodeSDK } from '@opentelemetry/sdk-node'
@@ -12,13 +7,15 @@ import { getResource } from './resource'
 
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
 
-let isInitialized = false
+let initialization: Promise<void> | undefined
 export async function initialize() {
-  if (isInitialized) {
-    return
+  if (!initialization) {
+    initialization = _initialize()
   }
-  isInitialized = true
+  return initialization
+}
 
+async function _initialize() {
   try {
     const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
     const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT

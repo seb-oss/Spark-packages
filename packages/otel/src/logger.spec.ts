@@ -10,6 +10,7 @@ import {
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { getLogger } from './logger'
+import { initialize } from './otel'
 
 // --- Extended in-memory exporter to inspect emitted logs ---
 class InMemoryLogRecordExporterExt extends InMemoryLogRecordExporter {
@@ -57,10 +58,8 @@ describe('getLogger', () => {
     expect(errorRecord).toBeDefined()
     expect(errorRecord?.body).toContain('Something went wrong')
   })
-  it('includes trace and span ids if available', () => {
-    context.setGlobalContextManager(
-      new AsyncLocalStorageContextManager().enable()
-    )
+  it('includes trace and span ids if available', async () => {
+    await initialize()
 
     const tracer = trace.getTracer('test')
     const span = tracer.startSpan('test-span')
@@ -71,6 +70,8 @@ describe('getLogger', () => {
     })
 
     span.end()
+
+    await new Promise((r) => setTimeout(r, 50))
 
     const record = exporter.getRecords().find((r) => r.body === 'inside-span')
 

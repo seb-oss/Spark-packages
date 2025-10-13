@@ -8,8 +8,8 @@ describe('getMeter', () => {
     const provider = new MeterProvider()
     metrics.setGlobalMeterProvider(provider)
   })
-  it('returns a meter from OpenTelemetry', () => {
-    const meter = getMeter()
+  it('returns a meter from OpenTelemetry', async () => {
+    const meter = await getMeter()
 
     expect(meter).toBeDefined()
     expect(typeof meter.createCounter).toBe('function')
@@ -21,8 +21,8 @@ describe('getMeter', () => {
 
     expect(m1).not.toBe(m2)
   })
-  it('can create a counter metric', () => {
-    const meter = getMeter('metric-service')
+  it('can create a counter metric', async () => {
+    const meter = await getMeter('metric-service')
 
     const counter = meter.createCounter('test_counter', {
       description: 'A test counter',
@@ -32,8 +32,8 @@ describe('getMeter', () => {
     expect(counter).toBeDefined()
     expect(typeof counter.add).toBe('function')
   })
-  it('can create a histogram metric', () => {
-    const meter = getMeter('histogram-service')
+  it('can create a histogram metric', async () => {
+    const meter = await getMeter('histogram-service')
 
     const histogram = meter.createHistogram('test_histogram', {
       description: 'A test histogram',

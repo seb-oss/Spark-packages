@@ -1,7 +1,9 @@
 import { metrics } from '@opentelemetry/api'
+import { initialize } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
-export function getMeter(componentNameOverride?: string) {
+export async function getMeter(componentNameOverride?: string) {
+  await initialize()
   const { componentName, systemName, systemVersion } = detectTelemetryContext(
     componentNameOverride
   )

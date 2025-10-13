@@ -61,7 +61,7 @@ Logs inside active spans automatically include:
 ```ts
 import { getTracer } from '@sebspark/otel'
 
-const tracer = getTracer()
+const tracer = getTracer() // async to ensure otel initialization
 
 await tracer.withTrace('trace.name', async (span) => {
   span.setAttribute('user.id', '123')
@@ -111,7 +111,7 @@ span.end()
 ```ts
 import { getMeter } from '@sebspark/otel'
 
-const meter = getMeter()
+const meter = getMeter() // async to ensure otel initialization
 
 const counter = meter.createCounter('http_requests_total', {
   description: 'Total number of HTTP requests',
