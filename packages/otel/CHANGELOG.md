@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.2.4
+
+### Patch Changes
+
+- 2c32898: Fixed wrongful options copy for span with parent
+
 ## 0.2.3
 
 ### Patch Changes
