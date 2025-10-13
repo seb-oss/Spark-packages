@@ -9,16 +9,20 @@ import { detectTelemetryContext } from './otel-context'
 type OtelTracer = ReturnType<typeof trace.getTracer>
 type Span = ReturnType<OtelTracer['startSpan']>
 
-type Func<T> = (span?: Span) => Promise<T> | T
-type SyncFunc<T> = (span?: Span) => T
+type Func<T> = (span: Span) => Promise<T> | T
+type SyncFunc<T> = (span: Span) => T
 
 type WithTrace = {
   <T>(name: string, fn: Func<T>): Promise<T>
   <T>(name: string, options: SpanOptions, fn: Func<T>): Promise<T>
+  <T>(name: string, parent: Span, fn: Func<T>): Promise<T>
+  <T>(name: string, options: SpanOptions, parent: Span, fn: Func<T>): Promise<T>
 }
 type WithTraceSync = {
   <T>(name: string, fn: SyncFunc<T>): T
   <T>(name: string, options: SpanOptions, fn: SyncFunc<T>): T
+  <T>(name: string, parent: Span, fn: SyncFunc<T>): T
+  <T>(name: string, options: SpanOptions, parent: Span, fn: SyncFunc<T>): T
 }
 
 /**
@@ -36,9 +40,14 @@ interface Tracer extends OtelTracer {
  * @param serviceOverride - Optional override for service name
  * @returns Tracer with helpers
  */
-export function getTracer(serviceOverride?: string): Tracer {
-  const { serviceName } = detectTelemetryContext(serviceOverride)
-  const tracer = trace.getTracer(serviceName) as Tracer
+export function getTracer(componentNameOverride?: string): Tracer {
+  const { componentName, systemName, systemVersion } = detectTelemetryContext(
+    componentNameOverride
+  )
+  const tracer = trace.getTracer(
+    componentName ?? systemName,
+    systemVersion
+  ) as Tracer
 
   /**
    * Runs a function inside a new span (async variant).
@@ -46,19 +55,23 @@ export function getTracer(serviceOverride?: string): Tracer {
    */
   const withTrace: WithTrace = async <T>(
     name: string,
-    optionsOrFn: SpanOptions | Func<T>,
-    maybeFn?: Func<T>
+    spanOptionsSpanOrFunc?: SpanOptions | Span | Func<T>,
+    spanOrFunc?: Span | Func<T>,
+    func?: Func<T>
   ): Promise<T> => {
-    const options: SpanOptions =
-      typeof maybeFn === 'function' ? (optionsOrFn as SpanOptions) : {}
-    const fn: Func<T> =
-      typeof maybeFn === 'function' ? maybeFn : (optionsOrFn as Func<T>)
+    const { options, parent, fn } = extractArgs(
+      spanOptionsSpanOrFunc,
+      spanOrFunc,
+      func
+    )
 
-    // Auto-nesting: span is parented if another is active
-    const ctx = context.active()
-    const span = tracer.startSpan(name, options, ctx)
+    const parentContext = parent
+      ? trace.setSpan(context.active(), parent)
+      : context.active()
 
-    return await context.with(trace.setSpan(ctx, span), async () => {
+    const span = tracer.startSpan(name, options, parentContext)
+
+    return await context.with(trace.setSpan(parentContext, span), async () => {
       try {
         const result = await fn(span)
         span.setStatus({ code: SpanStatusCode.OK })
@@ -80,18 +93,23 @@ export function getTracer(serviceOverride?: string): Tracer {
    */
   const withTraceSync: WithTraceSync = <T>(
     name: string,
-    optionsOrFn: SpanOptions | SyncFunc<T>,
-    maybeFn?: SyncFunc<T>
+    spanOptionsSpanOrFunc?: SpanOptions | Span | SyncFunc<T>,
+    spanOrFunc?: Span | SyncFunc<T>,
+    func?: SyncFunc<T>
   ): T => {
-    const options: SpanOptions =
-      typeof maybeFn === 'function' ? (optionsOrFn as SpanOptions) : {}
-    const fn: SyncFunc<T> =
-      typeof maybeFn === 'function' ? maybeFn : (optionsOrFn as SyncFunc<T>)
+    const { options, parent, fn } = extractArgs(
+      spanOptionsSpanOrFunc,
+      spanOrFunc,
+      func
+    )
 
-    const ctx = context.active()
-    const span = tracer.startSpan(name, options, ctx)
+    const parentContext = parent
+      ? trace.setSpan(context.active(), parent)
+      : context.active()
 
-    return context.with(trace.setSpan(ctx, span), () => {
+    const span = tracer.startSpan(name, options, parentContext)
+
+    return context.with(trace.setSpan(parentContext, span), () => {
       try {
         const result = fn(span)
         span.setStatus({ code: SpanStatusCode.OK })
@@ -111,4 +129,43 @@ export function getTracer(serviceOverride?: string): Tracer {
   tracer.withTraceSync = withTraceSync
 
   return tracer
+}
+
+type TraceArgs<T> = {
+  options: SpanOptions
+  parent?: Span
+  fn: (span: Span) => T
+}
+
+function extractArgs<T>(
+  spanOptionsSpanOrFunc?: SpanOptions | Span | ((span: Span) => T),
+  spanOrFunc?: Span | ((span: Span) => T),
+  func?: (span: Span) => T
+): TraceArgs<T> {
+  let options: SpanOptions = {}
+  let parent: Span | undefined
+  let fn: (span: Span) => T
+
+  if (typeof spanOptionsSpanOrFunc === 'function') {
+    fn = spanOptionsSpanOrFunc
+  } else if (typeof spanOrFunc === 'function') {
+    const spanOrSpanOptions = spanOptionsSpanOrFunc as Span | SpanOptions
+    if (
+      'startTime' in spanOrSpanOptions ||
+      'attributes' in spanOrSpanOptions ||
+      'kind' in spanOrSpanOptions
+    ) {
+      options = spanOrSpanOptions as SpanOptions
+    } else {
+      parent = spanOrSpanOptions as Span
+    }
+    fn = spanOrFunc
+  } else {
+    options = spanOptionsSpanOrFunc as SpanOptions
+    parent = spanOrFunc as Span
+    // biome-ignore lint/style/noNonNullAssertion: it IS defined here
+    fn = func!
+  }
+
+  return { options, parent, fn }
 }

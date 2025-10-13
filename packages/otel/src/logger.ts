@@ -2,37 +2,33 @@
 
 import { context, trace } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
+import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
 import { detectTelemetryContext } from './otel-context'
-
-type Severity =
-  | 'DEBUG'
-  | 'INFO'
-  | 'NOTICE'
-  | 'WARNING'
-  | 'ERROR'
-  | 'CRITICAL'
-  | 'ALERT'
-  | 'EMERGENCY'
 
 // biome-ignore lint/suspicious/noExplicitAny: library
 type Attrs = Record<string, any>
 
 export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
-  const { serviceName, serviceVersion, resourceAttributes } =
+  const { systemName, systemVersion, resourceAttributes } =
     detectTelemetryContext(serviceOverride)
-  const logger = logs.getLogger(serviceName, serviceVersion, {})
+  const logger = logs.getLogger(systemName, systemVersion)
 
   const defaultAttrs = {
     ...resourceAttributes,
     ...extraAttrs,
   }
 
-  function emit(severityText: Severity, body: string, attrs: Attrs = {}) {
+  function emit(
+    severityText: LOG_SEVERITY_NAME,
+    body: string,
+    attrs: Attrs = {}
+  ) {
     const span = trace.getSpan(context.active())
     const spanContext = span?.spanContext()
 
     logger.emit({
       severityText,
+      severityNumber: LOG_SEVERITY_MAP[severityText],
       body,
       attributes: {
         ...defaultAttrs,

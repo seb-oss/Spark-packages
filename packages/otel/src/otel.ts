@@ -1,72 +1,39 @@
-import { DiagConsoleLogger, DiagLogLevel, diag } from '@opentelemetry/api'
+import {
+  context,
+  DiagConsoleLogger,
+  DiagLogLevel,
+  diag,
+} from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
-import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http'
-import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http'
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
-import {
-  detectResources,
-  resourceFromAttributes,
-} from '@opentelemetry/resources'
-import {
-  BatchLogRecordProcessor,
-  LoggerProvider,
-} from '@opentelemetry/sdk-logs'
-import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
+import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { NodeSDK } from '@opentelemetry/sdk-node'
-import {
-  ATTR_SERVICE_NAME,
-  ATTR_SERVICE_VERSION,
-} from '@opentelemetry/semantic-conventions'
+import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
+import { getResource } from './resource'
 
-// ------------------------------------------------------------
-// Diagnostics (for troubleshooting instrumentation itself)
-// ------------------------------------------------------------
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
 
-// ------------------------------------------------------------
-// Configurable values (env‑based)
-// ------------------------------------------------------------
-const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
-const otlpEndpoint =
-  process.env.OTEL_EXPORTER_OTLP_ENDPOINT ?? 'http://localhost:4318'
-
-// ------------------------------------------------------------
-// Exporters and metric reader
-// ------------------------------------------------------------
-const traceExporter = new OTLPTraceExporter({
-  url: `${otlpEndpoint}/v1/traces`,
-})
-const metricExporter = new OTLPMetricExporter({
-  url: `${otlpEndpoint}/v1/metrics`,
-})
-const logExporter = new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
-const metricReader = new PeriodicExportingMetricReader({
-  exporter: metricExporter,
-})
-
-async function initialize() {
-  // ------------------------------------------------------------
-  // Async startup for resource detection and SDK init
-  // ------------------------------------------------------------
+export async function initialize() {
   try {
-    const baseRes = await detectResources()
-    const customRes = resourceFromAttributes({
-      [ATTR_SERVICE_NAME]: serviceName,
-      [ATTR_SERVICE_VERSION]: '1.0.0',
-    })
-    const resource = baseRes.merge(customRes)
+    const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
+    const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
 
-    // --- Logs setup (manual, separate from NodeSDK) ---
-    const logProvider = new LoggerProvider({
-      resource,
-      processors: [new BatchLogRecordProcessor(logExporter)],
-    })
+    const resource = await getResource()
+
+    // Enable context propagation (required for logs + spans to carry trace info)
+    context.setGlobalContextManager(
+      new AsyncLocalStorageContextManager().enable()
+    )
+
+    // Manual setup for logs
+    const logProvider = getLogProvider(resource, otlpEndpoint)
     logs.setGlobalLoggerProvider(logProvider)
 
-    // --- NodeSDK handles traces + metrics ---
+    // NodeSDK setup
+    const spanProcessor = getSpanProcessor(otlpEndpoint)
+    const metricReader = getMetricReader(otlpEndpoint)
     const sdk = new NodeSDK({
-      traceExporter,
+      spanProcessor,
       metricReader,
       instrumentations: [getNodeAutoInstrumentations()],
       resource,
@@ -75,7 +42,6 @@ async function initialize() {
     await sdk.start()
     console.log(`[otel] Telemetry initialized for "${serviceName}"`)
 
-    // --- Graceful shutdown ---
     process.on('SIGTERM', async () => {
       console.log('[otel] Shutting down...')
       await Promise.all([sdk.shutdown(), logProvider.shutdown()])
@@ -86,5 +52,3 @@ async function initialize() {
     console.error('[otel] Startup error:', err)
   }
 }
-
-initialize()

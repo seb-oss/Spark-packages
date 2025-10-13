@@ -44,7 +44,7 @@ describe('getLogger', () => {
     expect(record).toBeDefined()
     expect(record?.severityText).toBe('INFO')
     expect(record?.attributes?.foo).toBe('bar')
-    expect(record?.attributes?.['service.name']).toBe('unit-test-service')
+    expect(record?.attributes?.['component.name']).toBe('unit-test-service')
   })
   it('records an error message when given an Error object', async () => {
     const logger = getLogger('error-service')
