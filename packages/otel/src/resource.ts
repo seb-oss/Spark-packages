@@ -10,5 +10,9 @@ export const getResource = async () => {
   const customRes = resourceFromAttributes(resourceAttributes)
   const resource = baseRes.merge(customRes)
 
+  if (resource.waitForAsyncAttributes) {
+    await resource.waitForAsyncAttributes()
+  }
+
   return resource
 }

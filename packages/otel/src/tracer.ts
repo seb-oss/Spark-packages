@@ -150,15 +150,11 @@ function extractArgs<T>(
   let parent: Span | undefined
   let fn: (span: Span) => T
 
-  if (typeof spanOptionsSpanOrFunc === 'function') {
+  if (isFunction(spanOptionsSpanOrFunc)) {
     fn = spanOptionsSpanOrFunc
-  } else if (typeof spanOrFunc === 'function') {
+  } else if (isFunction(spanOrFunc)) {
     const spanOrSpanOptions = spanOptionsSpanOrFunc as Span | SpanOptions
-    if (
-      'startTime' in spanOrSpanOptions ||
-      'attributes' in spanOrSpanOptions ||
-      'kind' in spanOrSpanOptions
-    ) {
+    if (isSpanOptions(spanOrSpanOptions)) {
       options = spanOrSpanOptions as SpanOptions
     } else {
       parent = spanOrSpanOptions as Span
@@ -173,3 +169,21 @@ function extractArgs<T>(
 
   return { options, parent, fn }
 }
+
+const isFunction = (value: unknown): value is Function => (typeof value === 'function')
+const isSpan = (value: unknown): value is Span => (
+  value !== null &&
+  value !== undefined &&
+  isFunction((value as Span).spanContext) &&
+  isFunction((value as Span).end)
+)
+const isSpanOptions = (value: unknown): value is SpanOptions => (
+  value !== null &&
+  value !== undefined &&
+  (
+    !!(value as SpanOptions).startTime ||
+    !!(value as SpanOptions).attributes ||
+    !!(value as SpanOptions).kind
+  ) &&
+  !isSpan(value)
+)

@@ -1,77 +1,90 @@
-import { context, SpanStatusCode, trace } from '@opentelemetry/api'
+import { context, trace } from '@opentelemetry/api'
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { getTracer } from './tracer'
 
 describe('getTracer', () => {
   beforeEach(() => {
-    context.setGlobalContextManager(
-      new AsyncLocalStorageContextManager().enable()
-    )
+    context.setGlobalContextManager(new AsyncLocalStorageContextManager().enable())
   })
   it('returns a tracer with withTrace and withTraceSync methods', async () => {
     const tracer = await getTracer('test-svc')
-
     expect(typeof tracer.startSpan).toBe('function')
     expect(typeof tracer.withTrace).toBe('function')
     expect(typeof tracer.withTraceSync).toBe('function')
   })
   it('runs a function inside a span using withTraceSync', async () => {
     const tracer = await getTracer('sync-test')
-
     let activeSpanId: string | undefined
-
     const result = tracer.withTraceSync('sync-span', (span) => {
       activeSpanId = trace.getSpan(context.active())?.spanContext().spanId
       return 'ok'
     })
-
     expect(result).toBe('ok')
     expect(activeSpanId).toBeDefined()
   })
   it('runs a function inside a span using withTrace (async)', async () => {
     const tracer = await getTracer('async-test')
-
     let capturedSpanId: string | undefined
-
     const result = await tracer.withTrace('async-span', async (span) => {
       capturedSpanId = trace.getSpan(context.active())?.spanContext().spanId
       return 42
     })
-
     expect(result).toBe(42)
     expect(capturedSpanId).toBeDefined()
   })
   it('marks the span as error if the function throws (sync)', async () => {
     const tracer = await getTracer('error-test')
-
-    let capturedStatus: SpanStatusCode | undefined
-
     try {
-      tracer.withTraceSync('failing-span', (span) => {
+      tracer.withTraceSync('failing-span', () => {
         throw new Error('fail!')
       })
-    } catch (err) {
-      // intentionally swallow
-    }
-
-    // There's no built-in way to inspect ended spans without a span processor/exporter
-    // So this just ensures the span exists during execution
+    } catch {}
     const span = trace.getSpan(context.active())
-    expect(span).toBeUndefined() // it should be ended and out of context
+    expect(span).toBeUndefined()
   })
   it('marks the span as error if the function throws (async)', async () => {
     const tracer = await getTracer('async-error-test')
-
     try {
       await tracer.withTrace('failing-async', async () => {
         throw new Error('oh no!')
       })
-    } catch (err) {
-      // swallow on purpose
-    }
-
+    } catch {}
     const span = trace.getSpan(context.active())
     expect(span).toBeUndefined()
+  })
+  it('accepts span options only', async () => {
+    const tracer = await getTracer('opts-only')
+    const result = await tracer.withTrace('span-with-opts', { attributes: { foo: 'bar' } }, async (span) => {
+      return (span as any).attributes
+    })
+    expect(result).toEqual({ foo: 'bar' })
+  })
+  it('accepts parent span only', async () => {
+    const tracer = await getTracer('parent-only')
+    const parent = tracer.startSpan('parent')
+    const result = await tracer.withTrace('child', parent, async (child) => {
+      return child.spanContext().traceId === parent.spanContext().traceId
+    })
+    expect(result).toBe(true)
+    parent.end()
+  })
+  it('accepts both span options and parent span', async () => {
+    const tracer = await getTracer('opts-parent')
+    const parent = tracer.startSpan('parent')
+    const result = await tracer.withTrace('child', { attributes: { foo: 'bar' } }, parent, async (child) => {
+      return (child as any).attributes
+    })
+    expect(result).toEqual({foo: 'bar' })
+    parent.end()
+  })
+  it('sync version supports options and parent span', async () => {
+    const tracer = await getTracer('sync-mixed')
+    const parent = tracer.startSpan('parent')
+    const result = tracer.withTraceSync('child', { attributes: { x: 1 } }, parent, (child) => {
+      return (child as any).attributes
+    })
+    expect(result).toEqual({ x: 1 })
+    parent.end()
   })
 })
