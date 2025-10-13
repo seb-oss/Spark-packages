@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.2.1
+
+### Patch Changes
+
+- ac28d06: No duplicate contextManager
+
 ## 0.2.0
 
 ### Minor Changes
