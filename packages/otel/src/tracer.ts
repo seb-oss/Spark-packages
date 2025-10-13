@@ -170,20 +170,17 @@ function extractArgs<T>(
   return { options, parent, fn }
 }
 
-const isFunction = (value: unknown): value is Function => (typeof value === 'function')
-const isSpan = (value: unknown): value is Span => (
+const isFunction = (value: unknown): value is (...args: unknown[]) => unknown =>
+  typeof value === 'function'
+const isSpan = (value: unknown): value is Span =>
   value !== null &&
   value !== undefined &&
   isFunction((value as Span).spanContext) &&
   isFunction((value as Span).end)
-)
-const isSpanOptions = (value: unknown): value is SpanOptions => (
+const isSpanOptions = (value: unknown): value is SpanOptions =>
   value !== null &&
   value !== undefined &&
-  (
-    !!(value as SpanOptions).startTime ||
+  (!!(value as SpanOptions).startTime ||
     !!(value as SpanOptions).attributes ||
-    !!(value as SpanOptions).kind
-  ) &&
+    !!(value as SpanOptions).kind) &&
   !isSpan(value)
-)

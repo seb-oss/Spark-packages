@@ -5,7 +5,9 @@ import { getTracer } from './tracer'
 
 describe('getTracer', () => {
   beforeEach(() => {
-    context.setGlobalContextManager(new AsyncLocalStorageContextManager().enable())
+    context.setGlobalContextManager(
+      new AsyncLocalStorageContextManager().enable()
+    )
   })
   it('returns a tracer with withTrace and withTraceSync methods', async () => {
     const tracer = await getTracer('test-svc')
@@ -55,9 +57,13 @@ describe('getTracer', () => {
   })
   it('accepts span options only', async () => {
     const tracer = await getTracer('opts-only')
-    const result = await tracer.withTrace('span-with-opts', { attributes: { foo: 'bar' } }, async (span) => {
-      return (span as any).attributes
-    })
+    const result = await tracer.withTrace(
+      'span-with-opts',
+      { attributes: { foo: 'bar' } },
+      async (span) => {
+        return (span as any).attributes
+      }
+    )
     expect(result).toEqual({ foo: 'bar' })
   })
   it('accepts parent span only', async () => {
@@ -72,18 +78,28 @@ describe('getTracer', () => {
   it('accepts both span options and parent span', async () => {
     const tracer = await getTracer('opts-parent')
     const parent = tracer.startSpan('parent')
-    const result = await tracer.withTrace('child', { attributes: { foo: 'bar' } }, parent, async (child) => {
-      return (child as any).attributes
-    })
-    expect(result).toEqual({foo: 'bar' })
+    const result = await tracer.withTrace(
+      'child',
+      { attributes: { foo: 'bar' } },
+      parent,
+      async (child) => {
+        return (child as any).attributes
+      }
+    )
+    expect(result).toEqual({ foo: 'bar' })
     parent.end()
   })
   it('sync version supports options and parent span', async () => {
     const tracer = await getTracer('sync-mixed')
     const parent = tracer.startSpan('parent')
-    const result = tracer.withTraceSync('child', { attributes: { x: 1 } }, parent, (child) => {
-      return (child as any).attributes
-    })
+    const result = tracer.withTraceSync(
+      'child',
+      { attributes: { x: 1 } },
+      parent,
+      (child) => {
+        return (child as any).attributes
+      }
+    )
     expect(result).toEqual({ x: 1 })
     parent.end()
   })
