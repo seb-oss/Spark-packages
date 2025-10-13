@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.2.3
+
+### Patch Changes
+
+- 0288531: Tracer and Meter are asynch and Logger awaits init
+
 ## 0.2.2
 
 ### Patch Changes
