@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.3.1
+
+### Patch Changes
+
+- fc781e2: Switched places for spanId/traceId
+
 ## 0.3.0
 
 ### Minor Changes
