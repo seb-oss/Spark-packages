@@ -21,9 +21,9 @@ export function formatSpans(spans: ReadableSpan[]) {
 
   const service = formatService(rootSpan.resource)
   const timestamp = formatTimestamp(rootSpan.startTime)
-  const spanId = colors.gray(`[${rootSpan.spanContext().spanId}]`)
+  const traceId = colors.gray(`[${rootSpan.spanContext().traceId}]`)
 
-  const lines = [`${service} ${timestamp} ${spanId}`]
+  const lines = [`${service} ${timestamp} ${traceId}`]
 
   for (const span of spans) {
     const offset = hrTimeToMillis(span.startTime) - rootStart
@@ -59,9 +59,9 @@ export function formatSpan(
   const desc = formatDescription(span)
   const status = formatStatus(span)
   const duration = formatDuration(span, opts?.offsetMs)
-  const traceId = colors.gray(`[${span.spanContext().traceId}]`)
+  const spanId = colors.gray(`[${span.spanContext().spanId}]`)
 
-  return `${label} ${barColor(bar)} ${desc} ${status} ${duration} ${traceId}`
+  return `${label} ${barColor(bar)} ${desc} ${status} ${duration} ${spanId}`
 }
 
 function formatLabel(span: ReadableSpan, depth: number) {
