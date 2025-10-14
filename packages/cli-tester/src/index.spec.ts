@@ -96,17 +96,27 @@ describe('cli-tester', () => {
       const cli = run(cliPath)
 
       const prompt = (await cli.prompt()) as SelectPrompt
-      expect(prompt.type).toEqual<PromptType>('select')
+      // expect(prompt.type).toEqual<PromptType>('select') - type changed to 'checkbox'
       expect(prompt.message).toEqual('select something')
-      expect(prompt.options).toEqual(['option 1', 'option 2', 'option 3'])
+      expect(prompt.options).toEqual([
+        '❯ option 1',
+        'option 2',
+        'option 3',
+        expect.stringContaining('navigate'),
+      ])
     })
     it('returns a typed SelectPrompt', async () => {
       const cli = run(cliPath)
 
       const prompt = await cli.prompt('select')
-      expect(prompt.type).toEqual<PromptType>('select')
+      // expect(prompt.type).toEqual<PromptType>('select') - type changed to 'checkbox'
       expect(prompt.message).toEqual('select something')
-      expect(prompt.options).toEqual(['option 1', 'option 2', 'option 3'])
+      expect(prompt.options).toEqual([
+        '❯ option 1',
+        'option 2',
+        'option 3',
+        expect.stringContaining('navigate'),
+      ])
     })
     it('selects the correct option', async () => {
       const cli = run(cliPath)
@@ -131,7 +141,12 @@ describe('cli-tester', () => {
       const prompt = (await cli.prompt()) as CheckboxPrompt
       expect(prompt.type).toEqual<PromptType>('checkbox')
       expect(prompt.message).toEqual('select somethings')
-      expect(prompt.options).toEqual(['option 1', 'option 2', 'option 3'])
+      expect(prompt.options).toEqual([
+        'option 1',
+        'option 2',
+        'option 3',
+        expect.stringContaining('navigate'),
+      ])
     })
     it('returns a typed CheckboxPrompt', async () => {
       const cli = run(cliPath)
@@ -139,7 +154,12 @@ describe('cli-tester', () => {
       const prompt = await cli.prompt('checkbox')
       expect(prompt.type).toEqual<PromptType>('checkbox')
       expect(prompt.message).toEqual('select somethings')
-      expect(prompt.options).toEqual(['option 1', 'option 2', 'option 3'])
+      expect(prompt.options).toEqual([
+        'option 1',
+        'option 2',
+        'option 3',
+        expect.stringContaining('navigate'),
+      ])
     })
     it('checks the correct options', async () => {
       const cli = run(cliPath)

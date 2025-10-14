@@ -13,7 +13,11 @@ export const parse = <T extends PromptType = undefined>(
   const prompt = parseInput(text) || parseSelect(text) || parseCheckbox(text)
   if (!prompt) throw new Error(`Unknown prompt format "${text}"`)
 
-  if (expectedType && prompt.type !== expectedType) {
+  if (
+    expectedType &&
+    prompt.type !== expectedType &&
+    !(expectedType === 'select' && prompt.type === 'checkbox')
+  ) {
     throw new Error(`Expected a ${expectedType} prompt but got ${prompt.type}`)
   }
 

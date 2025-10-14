@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "jose": "^6.1.0",
-    "testcontainers": "^11.7.0"
+    "testcontainers": "^11.7.1"
   },
   "devDependencies": {
     "@types/ws": "^8.18.1",

@@ -17,14 +17,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@testcontainers/redis": "11.7.0",
-    "testcontainers": "11.7.0",
+    "@testcontainers/redis": "11.7.1",
+    "testcontainers": "11.7.1",
     "tsconfig": "*"
   },
   "dependencies": {
     "date-fn": "^0.0.2",
     "fix-esm": "1.0.1",
-    "redis": "5.8.2",
+    "redis": "5.8.3",
     "superjson": "2.2.2"
   }
 }

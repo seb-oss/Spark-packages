@@ -21,12 +21,12 @@
   },
   "devDependencies": {
     "@google-cloud/pubsub": "^5.2.0",
-    "@testcontainers/gcloud": "^11.7.0",
-    "@testcontainers/mockserver": "^11.7.0",
-    "@testcontainers/redis": "^11.7.0",
+    "@testcontainers/gcloud": "^11.7.1",
+    "@testcontainers/mockserver": "^11.7.1",
+    "@testcontainers/redis": "^11.7.1",
     "mockserver-client": "^5.15.0",
     "supertest": "^7.1.4",
-    "testcontainers": "^11.7.0",
+    "testcontainers": "^11.7.1",
     "tsconfig": "*"
   }
 }

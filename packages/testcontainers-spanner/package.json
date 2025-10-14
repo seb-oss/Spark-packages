@@ -17,10 +17,10 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@google-cloud/spanner": "^8.2.1",
+    "@google-cloud/spanner": "^8.2.2",
     "tsconfig": "*"
   },
   "dependencies": {
-    "testcontainers": "^11.7.0"
+    "testcontainers": "^11.7.1"
   }
 }
