@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/avsc-ts",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ovotech/avro-ts": "6.2.0",
-    "@sebspark/avsc-isometric": "0.2.4",
+    "@sebspark/avsc-isometric": "0.2.5",
     "boxen": "5.1.2",
     "chalk": "4.1.2",
     "stream-browserify": "3.0.0",
