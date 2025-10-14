@@ -170,7 +170,8 @@ function extractArgs<T>(
   return { options, parent, fn }
 }
 
-const isFunction = (value: unknown): boolean => typeof value === 'function'
+const isFunction = (value: unknown): value is (span: Span) => unknown =>
+  typeof value === 'function'
 const isSpan = (value: unknown): value is Span =>
   value !== null &&
   value !== undefined &&
