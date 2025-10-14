@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.3.0
+
+### Minor Changes
+
+- 2a7b207: Added span and trace id to span logs
+
 ## 0.2.4
 
 ### Patch Changes
