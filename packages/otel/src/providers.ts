@@ -5,6 +5,7 @@ import type { Resource } from '@opentelemetry/resources'
 import {
   BatchLogRecordProcessor,
   LoggerProvider,
+  type LogRecordProcessor,
   SimpleLogRecordProcessor,
 } from '@opentelemetry/sdk-logs'
 import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
@@ -20,20 +21,33 @@ export const getLogProvider = (
   resource: Resource,
   otlpEndpoint: string | undefined
 ) => {
-  const exporter = otlpEndpoint
-    ? new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
-    : new ConsoleLogPrettyExporter()
+  // With collector
+  if (otlpEndpoint) {
+    const exporter = new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
+    const processors: LogRecordProcessor[] = [
+      new BatchLogRecordProcessor(exporter),
+    ]
 
-  const processor = otlpEndpoint
-    ? new BatchLogRecordProcessor(exporter)
-    : new SimpleLogRecordProcessor(exporter)
+    // Console logging for cluster
+    if (process.env.LOG_LEVEL) {
+      processors.push(
+        new SimpleLogRecordProcessor(new ConsoleLogPrettyExporter())
+      )
+    }
 
-  const provider = new LoggerProvider({
+    return new LoggerProvider({
+      resource,
+      processors,
+    })
+  }
+
+  // Local dev
+  const exporter = new ConsoleLogPrettyExporter()
+  const processor = new SimpleLogRecordProcessor(exporter)
+  return new LoggerProvider({
     resource,
     processors: [processor],
   })
-
-  return provider
 }
 
 export const getSpanProcessor = (
