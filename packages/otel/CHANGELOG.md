@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.4.0
+
+### Minor Changes
+
+- 0dc99f6: Console logger is added if LOG_LEVEL is set, even if collector exists
+
 ## 0.3.1
 
 ### Patch Changes
