@@ -1,5 +1,11 @@
 # @sebspark/testcontainers-spanner
 
+## 0.1.3
+
+### Patch Changes
+
+- 29b9b20: Updated dependencies
+
 ## 0.1.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 4.0.3
+
+### Patch Changes
+
+- 29b9b20: Updated dependencies
+
 ## 4.0.2
 
 ### Patch Changes
