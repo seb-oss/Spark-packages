@@ -8,6 +8,11 @@ import {
 } from './shared'
 import { colors, statusColorMap, statusLabelMap } from './style'
 
+const LABEL_WIDTH = 20
+const DESCRIPTION_MAX_WIDTH = 16
+const BAR_MIN_WIDTH = 1
+const BAR_MAX_WIDTH = 20
+
 export function formatSpans(spans: ReadableSpan[]) {
   const rootSpan = spans[0]
   const rootStart = hrTimeToMillis(rootSpan.startTime)
@@ -16,8 +21,9 @@ export function formatSpans(spans: ReadableSpan[]) {
 
   const service = formatService(rootSpan.resource)
   const timestamp = formatTimestamp(rootSpan.startTime)
+  const spanId = colors.gray(`[${rootSpan.spanContext().spanId}]`)
 
-  const lines = [`${service} ${timestamp}`]
+  const lines = [`${service} ${timestamp} ${spanId}`]
 
   for (const span of spans) {
     const offset = hrTimeToMillis(span.startTime) - rootStart
@@ -53,20 +59,16 @@ export function formatSpan(
   const desc = formatDescription(span)
   const status = formatStatus(span)
   const duration = formatDuration(span, opts?.offsetMs)
+  const traceId = colors.gray(`[${span.spanContext().traceId}]`)
 
-  return `${label} ${barColor(bar)} ${desc} ${status} (${duration})`
+  return `${label} ${barColor(bar)} ${desc} ${status} ${duration} ${traceId}`
 }
-
-const LABEL_WIDTH = 25
 
 function formatLabel(span: ReadableSpan, depth: number) {
   const indent = '  '.repeat(depth) // 2 spaces per depth level
   const label = `${indent}└─ ${span.name}`
   return label.padEnd(LABEL_WIDTH)
 }
-
-const BAR_MIN_WIDTH = 1
-const BAR_MAX_WIDTH = 20
 
 function buildBar(
   span: ReadableSpan,
@@ -104,8 +106,6 @@ function buildBar(
 
   return (empty + bar).padEnd(BAR_MAX_WIDTH + 2)
 }
-
-const DESCRIPTION_MAX_WIDTH = 20
 
 function formatDescription(span: ReadableSpan): string {
   const keyPriority = [
@@ -181,7 +181,7 @@ function formatDuration(
   const format = (ms: number): string =>
     ms >= 1000 ? `${(ms / 1000).toFixed(2)} s` : `${ms} ms`
 
-  return `${format(offsetMs || 0)}–${format(duration)}`
+  return `(${format(offsetMs || 0)}–${format(duration)})`.padEnd(16)
 }
 
 function truncate(input: unknown, maxLength: number): string {
