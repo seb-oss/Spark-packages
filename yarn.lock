@@ -1135,20 +1135,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/opentelemetry-cloud-trace-exporter@npm:2.4.1":
-  version: 2.4.1
-  resolution: "@google-cloud/opentelemetry-cloud-trace-exporter@npm:2.4.1"
+"@google-cloud/opentelemetry-cloud-trace-exporter@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@google-cloud/opentelemetry-cloud-trace-exporter@npm:3.0.0"
   dependencies:
-    "@google-cloud/opentelemetry-resource-util": "npm:^2.4.0"
+    "@google-cloud/opentelemetry-resource-util": "npm:^3.0.0"
     "@grpc/grpc-js": "npm:^1.1.8"
-    "@grpc/proto-loader": "npm:^0.7.0"
+    "@grpc/proto-loader": "npm:^0.8.0"
     google-auth-library: "npm:^9.0.0"
   peerDependencies:
     "@opentelemetry/api": ^1.0.0
-    "@opentelemetry/core": ^1.0.0
-    "@opentelemetry/resources": ^1.0.0
-    "@opentelemetry/sdk-trace-base": ^1.0.0
-  checksum: 10c0/e77cbf4ca923ae524364382e14798fd298817d79a69aafa6bf91fc7a11b00376a3091a5a4abbf8c07a48906ab2c7fd8610be192a52c0d17d1380c29cced19637
+    "@opentelemetry/core": ^2.0.0
+    "@opentelemetry/resources": ^2.0.0
+    "@opentelemetry/sdk-trace-base": ^2.0.0
+  checksum: 10c0/b741cfea8a223cb6a30db6b347176500799c031b19943cacfcf5b738ac5951a1572ba706be46b589e6a9a0f96ea8cd0d77d5018ff1b200c3630ae40e8ae4090b
   languageName: node
   linkType: hard
 
@@ -1161,6 +1161,19 @@ __metadata:
   peerDependencies:
     "@opentelemetry/resources": ^1.0.0
   checksum: 10c0/ec323abbda453de6342f09226ae24d4a051969a9084773e3fb82d75eb4ea1752f35b8920ce7c825fd6dc9b75b1283ec6eeca73aa638484203d6e6e610fef0342
+  languageName: node
+  linkType: hard
+
+"@google-cloud/opentelemetry-resource-util@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@google-cloud/opentelemetry-resource-util@npm:3.0.0"
+  dependencies:
+    "@opentelemetry/semantic-conventions": "npm:^1.22.0"
+    gcp-metadata: "npm:^6.0.0"
+  peerDependencies:
+    "@opentelemetry/core": ^2.0.0
+    "@opentelemetry/resources": ^2.0.0
+  checksum: 10c0/ac0a89c9d94bb3d6b154be73806d2f9317f812d3333c4cd6939b653dba2e2668d0407dcf0572e103a00a1315096c815716047bb8dbbf64bc52fc0e13aaa1969e
   languageName: node
   linkType: hard
 
@@ -1357,7 +1370,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/proto-loader@npm:^0.7.0, @grpc/proto-loader@npm:^0.7.13":
+"@grpc/proto-loader@npm:^0.7.13":
   version: 0.7.15
   resolution: "@grpc/proto-loader@npm:0.7.15"
   dependencies:
@@ -4117,7 +4130,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tracing@workspace:packages/tracing"
   dependencies:
-    "@google-cloud/opentelemetry-cloud-trace-exporter": "npm:2.4.1"
+    "@google-cloud/opentelemetry-cloud-trace-exporter": "npm:3.0.0"
     "@google-cloud/trace-agent": "npm:8.0.0"
     "@opentelemetry/api": "npm:1.9.0"
     "@opentelemetry/core": "npm:1.30.1"
