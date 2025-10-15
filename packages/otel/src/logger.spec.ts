@@ -58,6 +58,17 @@ describe('getLogger', () => {
     expect(errorRecord).toBeDefined()
     expect(errorRecord?.body).toContain('Something went wrong')
   })
+  it('records an error message with error attached', async () => {
+    const logger = getLogger('error-service')
+    logger.error(new Error('Something went wrong'), new Error('new error'))
+
+    await wait(100)
+    const records = exporter.getRecords()
+
+    const errorRecord = records.find((r) => r.severityText === 'ERROR')
+    expect(errorRecord).toBeDefined()
+    expect(errorRecord?.body).toContain('Error: Something went wrong: Error: new error')
+  })
   it('includes trace and span ids if available', async () => {
     await initialize()
 

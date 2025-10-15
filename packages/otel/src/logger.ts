@@ -59,8 +59,18 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     info: (msg: string, attrs?: Attrs) => emit('INFO', msg, attrs),
     notice: (msg: string, attrs?: Attrs) => emit('NOTICE', msg, attrs),
     warn: (msg: string, attrs?: Attrs) => emit('WARNING', msg, attrs),
-    error: (msg: string | Error, attrs: Attrs = {}) => {
-      const body = msg instanceof Error ? msg.stack || msg.message : msg
+    error: (msg: string | Error, errOrAttrs?: Error | Attrs, maybeAttrs: Attrs = {}) => {
+      let body: string
+      let attrs: Attrs
+
+      if (errOrAttrs instanceof Error) {
+        body = `${msg}: ${errOrAttrs.stack || errOrAttrs.message}`
+        attrs = maybeAttrs
+      } else {
+        body = msg instanceof Error ? msg.stack || msg.message : msg
+        attrs = errOrAttrs || {}
+      }
+
       emit('ERROR', body, attrs)
     },
     critical: (msg: string, attrs?: Attrs) => emit('CRITICAL', msg, attrs),
