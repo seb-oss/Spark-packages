@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.4.2
+
+### Patch Changes
+
+- d323365: Change error function to be able to receive an error object as parameter
+
 ## 0.4.0
 
 ### Minor Changes
