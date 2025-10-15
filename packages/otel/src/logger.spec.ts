@@ -67,7 +67,9 @@ describe('getLogger', () => {
 
     const errorRecord = records.find((r) => r.severityText === 'ERROR')
     expect(errorRecord).toBeDefined()
-    expect(errorRecord?.body).toContain('Error: Something went wrong: Error: new error')
+    expect(errorRecord?.body).toContain(
+      'Error: Something went wrong: Error: new error'
+    )
   })
   it('includes trace and span ids if available', async () => {
     await initialize()
