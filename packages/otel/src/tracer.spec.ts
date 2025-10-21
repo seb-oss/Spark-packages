@@ -1,13 +1,12 @@
 import { context, trace } from '@opentelemetry/api'
-import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { initialize } from './otel'
 import { getTracer } from './tracer'
 
 describe('getTracer', () => {
-  beforeEach(() => {
-    context.setGlobalContextManager(
-      new AsyncLocalStorageContextManager().enable()
-    )
+  beforeEach(async () => {
+    // Initialize OpenTelemetry to ensure proper state
+    await initialize()
   })
   it('returns a tracer with withTrace and withTraceSync methods', async () => {
     const tracer = await getTracer('test-svc')
@@ -41,7 +40,7 @@ describe('getTracer', () => {
       tracer.withTraceSync('failing-span', () => {
         throw new Error('fail!')
       })
-    } catch {}
+    } catch { }
     const span = trace.getSpan(context.active())
     expect(span).toBeUndefined()
   })
@@ -51,7 +50,7 @@ describe('getTracer', () => {
       await tracer.withTrace('failing-async', async () => {
         throw new Error('oh no!')
       })
-    } catch {}
+    } catch { }
     const span = trace.getSpan(context.active())
     expect(span).toBeUndefined()
   })

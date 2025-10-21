@@ -1,12 +1,11 @@
-import { metrics } from '@opentelemetry/api'
-import { MeterProvider } from '@opentelemetry/sdk-metrics'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { getMeter } from './metrics'
+import { initialize } from './otel'
 
 describe('getMeter', () => {
-  beforeEach(() => {
-    const provider = new MeterProvider()
-    metrics.setGlobalMeterProvider(provider)
+  beforeEach(async () => {
+    // Initialize OpenTelemetry to ensure proper state
+    await initialize()
   })
   it('returns a meter from OpenTelemetry', async () => {
     const meter = await getMeter()

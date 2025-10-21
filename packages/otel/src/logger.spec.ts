@@ -8,7 +8,7 @@ import {
   SimpleLogRecordProcessor,
 } from '@opentelemetry/sdk-logs'
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { getLogger } from './logger'
 import { initialize } from './otel'
 
@@ -18,37 +18,59 @@ class InMemoryLogRecordExporterExt extends InMemoryLogRecordExporter {
     // @ts-expect-error internal field from base class
     return this._finishedLogRecords ?? []
   }
+
+  reset(): void {
+    // @ts-expect-error internal field from base class
+    this._finishedLogRecords = []
+  }
 }
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 describe('getLogger', () => {
-  const exporter = new InMemoryLogRecordExporterExt()
-  const provider = new LoggerProvider({
-    resource: resourceFromAttributes({ [ATTR_SERVICE_NAME]: 'test-service' }),
-    processors: [new SimpleLogRecordProcessor(exporter)],
-  })
-  beforeEach(() => {
-    exporter.reset()
-    logs.setGlobalLoggerProvider(provider)
-  })
-  it('emits an INFO log record with default attributes', async () => {
-    const logger = getLogger('unit-test-service')
-    logger.info('Hello from test', { foo: 'bar' })
+  let exporter: InMemoryLogRecordExporterExt
+  let provider: LoggerProvider
 
-    await wait(100)
+  beforeEach(async () => {
+    // Initialize OpenTelemetry first (will skip log provider setup in test mode)
+    await initialize()
+
+    // Create fresh exporter and provider for each test
+    exporter = new InMemoryLogRecordExporterExt()
+    provider = new LoggerProvider({
+      resource: resourceFromAttributes({ [ATTR_SERVICE_NAME]: 'test-service' }),
+      processors: [new SimpleLogRecordProcessor(exporter)],
+    })
+  })
+
+  afterEach(async () => {
+    // Clean up after each test
+    if (provider) {
+      await provider.shutdown()
+    }
+  })
+
+  it('emits an INFO log record with default attributes', async () => {
+    const logger = getLogger(
+      'test-service',
+      { 'test.custom': 'value' },
+      provider
+    )
+
+    logger.info('Hello from test', { message: 'custom' })
 
     const records = exporter.getRecords()
     expect(records.length).toBeGreaterThan(0)
     const record = records.find((r) => r.body === 'Hello from test')
-
     expect(record).toBeDefined()
     expect(record?.severityText).toBe('INFO')
-    expect(record?.attributes?.foo).toBe('bar')
-    expect(record?.attributes?.['component.name']).toBe('unit-test-service')
+    expect(record?.severityNumber).toBe(9)
+    expect(record?.attributes?.['component.name']).toBe('test-service')
+    expect(record?.attributes?.['test.custom']).toBe('value')
+    expect(record?.attributes?.message).toBe('custom')
   })
   it('records an error message when given an Error object', async () => {
-    const logger = getLogger('error-service')
+    const logger = getLogger('error-service', {}, provider)
     logger.error(new Error('Something went wrong'))
 
     await wait(100)
@@ -59,7 +81,7 @@ describe('getLogger', () => {
     expect(errorRecord?.body).toContain('Something went wrong')
   })
   it('records an error message with error attached', async () => {
-    const logger = getLogger('error-service')
+    const logger = getLogger('error-service', {}, provider)
     logger.error(new Error('Something went wrong'), new Error('new error'))
 
     await wait(100)
@@ -72,13 +94,11 @@ describe('getLogger', () => {
     )
   })
   it('includes trace and span ids if available', async () => {
-    await initialize()
-
     const tracer = trace.getTracer('test')
     const span = tracer.startSpan('test-span')
 
     context.with(trace.setSpan(context.active(), span), () => {
-      const logger = getLogger()
+      const logger = getLogger(undefined, {}, provider)
       logger.info('inside-span')
     })
 
