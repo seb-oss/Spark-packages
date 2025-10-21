@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.4.4
+
+### Patch Changes
+
+- 289c49f: Change initialization process
+
 ## 0.4.2
 
 ### Patch Changes
