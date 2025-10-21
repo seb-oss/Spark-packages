@@ -40,7 +40,7 @@ describe('getTracer', () => {
       tracer.withTraceSync('failing-span', () => {
         throw new Error('fail!')
       })
-    } catch { }
+    } catch {}
     const span = trace.getSpan(context.active())
     expect(span).toBeUndefined()
   })
@@ -50,7 +50,7 @@ describe('getTracer', () => {
       await tracer.withTrace('failing-async', async () => {
         throw new Error('oh no!')
       })
-    } catch { }
+    } catch {}
     const span = trace.getSpan(context.active())
     expect(span).toBeUndefined()
   })
