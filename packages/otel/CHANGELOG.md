@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 0.5.0
+
+### Minor Changes
+
+- 8eb2d7b: Managed init for otel
+
 ## 0.4.4
 
 ### Patch Changes
