@@ -1,9 +1,6 @@
-// src/logger.ts
-
 import { context, trace } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
-import { initialize } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
 // biome-ignore lint/suspicious/noExplicitAny: library
@@ -18,21 +15,11 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     ...extraAttrs,
   }
 
-  let isInitialized = false
   function emit(
     severityText: LOG_SEVERITY_NAME,
     body: string,
     attrs: Attrs = {}
   ) {
-    if (!isInitialized) {
-      initialize().then(() => {
-        isInitialized = true
-        // log delayed
-        emit(severityText, body, attrs)
-      })
-      return
-    }
-
     // Get the logger at the last second
     const logger = logs.getLogger(systemName, systemVersion)
 
