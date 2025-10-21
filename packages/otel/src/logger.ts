@@ -1,12 +1,18 @@
 import { context, trace } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
+import { isInitialized } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
 // biome-ignore lint/suspicious/noExplicitAny: library
 type Attrs = Record<string, any>
 
 export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
+  if (!isInitialized()) {
+    throw new Error(
+      'OpenTelemetry is not initialized. Please call initialize() before getting a logger.'
+    )
+  }
   const { systemName, systemVersion, resourceAttributes } =
     detectTelemetryContext(serviceOverride)
 

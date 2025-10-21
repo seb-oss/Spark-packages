@@ -5,17 +5,20 @@ import { NodeSDK } from '@opentelemetry/sdk-node'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
 import { getResource } from './resource'
 
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
-
 let initialization: Promise<void> | undefined
 export async function initialize() {
   if (!initialization) {
-    initialization = _initialize()
+    diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
+    initialization = initializeOtel()
   }
   return initialization
 }
 
-async function _initialize() {
+export function isInitialized() {
+  return initialization !== undefined
+}
+
+async function initializeOtel() {
   try {
     const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
     const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
