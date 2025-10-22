@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 1.0.1
+
+### Patch Changes
+
+- b5f0fd6: Update id parsing with new forex names
+
 ## 1.0.0
 
 ### Major Changes
