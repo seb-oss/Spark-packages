@@ -1,7 +1,7 @@
 import {
+  context,
   DiagConsoleLogger,
   DiagLogLevel,
-  context,
   diag,
   metrics,
   trace,
