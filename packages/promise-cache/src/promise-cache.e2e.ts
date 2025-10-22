@@ -21,7 +21,7 @@ describe('promise-cache', () => {
   beforeAll(async () => {
     redis = await new RedisContainer('redis:8-alpine').start()
     options = { redis: { url: redis.getConnectionUrl() } }
-  })
+  }, 60_000)
   beforeEach(async () => {
     await redis.executeCliCmd('FLUSHALL')
   })

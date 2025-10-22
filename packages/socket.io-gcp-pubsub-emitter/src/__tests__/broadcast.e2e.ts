@@ -66,7 +66,7 @@ beforeAll(async () => {
   ])
 
   emitter = new Emitter(topic)
-})
+}, 60_000)
 afterAll(async () => {
   await Promise.all(servers.map((s) => s.close()))
   servers = []

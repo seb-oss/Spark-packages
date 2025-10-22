@@ -28,7 +28,7 @@ describe('cache e2e', () => {
     persistor.connect()
 
     cache = createCache(persistor)
-  })
+  }, 60_000)
 
   afterAll(async () => {
     await persistor.quit()

@@ -25,6 +25,6 @@
     "date-fn": "^0.0.2",
     "fix-esm": "1.0.1",
     "redis": "5.8.3",
-    "superjson": "2.2.2"
+    "superjson": "2.2.3"
   }
 }
