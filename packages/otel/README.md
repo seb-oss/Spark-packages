@@ -51,11 +51,11 @@ Automatically:
 ### Logging
 
 ```ts
-// Will throw if OTEL is not yet initialized
 import { getLogger } from '@sebspark/otel'
 
 const logger = getLogger()
 
+// Will throw if OTEL is not yet initialized
 logger.debug('debug message')
 logger.info('something happened')
 logger.warn('almost bad')

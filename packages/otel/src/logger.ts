@@ -9,10 +9,6 @@ type Attrs = Record<string, any>
 
 export type Logger = ReturnType<typeof getLogger>
 export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
-  if (!isInitialized()) {
-    throw new Error('OTEL must be initialized before calling getLogger()')
-  }
-
   const { systemName, systemVersion, resourceAttributes } =
     detectTelemetryContext(serviceOverride)
 
@@ -27,6 +23,9 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     attrs: Attrs = {}
   ) {
     // Get the logger at the last second
+    if (!isInitialized()) {
+      throw new Error('OTEL must be initialized before calling getLogger()')
+    }
     const logger = logs.getLogger(systemName, systemVersion)
 
     const span = trace.getSpan(context.active())

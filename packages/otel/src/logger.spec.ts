@@ -13,8 +13,11 @@ import { getLogger, initialize } from './'
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 describe('getLogger', () => {
-  it('throws if OTEL is not yet initialized', () => {
-    expect(() => getLogger()).toThrow()
+  it('does not throw if OTEL is not yet initialized at initialization', () => {
+    expect(() => getLogger()).not.toThrow()
+  })
+  it('throws if OTEL is not yet initialized at first log call', () => {
+    expect(() => getLogger().info('hello')).toThrow()
   })
 
   describe('after initialize()', () => {
