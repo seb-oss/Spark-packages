@@ -5,8 +5,8 @@ export const parseId = (
   isin?: string
   mic?: string
   currency?: string
-  fromCurrency?: string
-  toCurrency?: string
+  baseCurrency?: string
+  quoteCurrency?: string
 } => {
   const [type, ...rest] = id.split('-')
   const [first, second, third] = rest.join('-').split(';')
@@ -30,17 +30,17 @@ export const parseId = (
 
   if (type === 'FOREX') {
     if (!first) {
-      throw new Error('Missing fromCurrency')
+      throw new Error('Missing baseCurrency')
     }
 
     if (!second) {
-      throw new Error('Missing toCurrency')
+      throw new Error('Missing quoteCurrency')
     }
 
     return {
       type,
-      fromCurrency: first,
-      toCurrency: second,
+      baseCurrency: first,
+      quoteCurrency: second,
     }
   }
 

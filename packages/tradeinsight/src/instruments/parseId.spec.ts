@@ -8,17 +8,17 @@ describe('parseId', () => {
 
       expect(result).toEqual({
         type: 'FOREX',
-        fromCurrency: 'USD',
-        toCurrency: 'EUR',
+        baseCurrency: 'USD',
+        quoteCurrency: 'EUR',
       })
     })
 
-    it('should throw an error if fromCurrency is missing', () => {
-      expect(() => parseId('FOREX-;EUR')).toThrowError('Missing fromCurrency')
+    it('should throw an error if baseCurrency is missing', () => {
+      expect(() => parseId('FOREX-;EUR')).toThrowError('Missing baseCurrency')
     })
 
-    it('should throw an error if toCurrency is missing', () => {
-      expect(() => parseId('FOREX-USD;')).toThrowError('Missing toCurrency')
+    it('should throw an error if quoteCurrency is missing', () => {
+      expect(() => parseId('FOREX-USD;')).toThrowError('Missing quoteCurrency')
     })
   })
 
