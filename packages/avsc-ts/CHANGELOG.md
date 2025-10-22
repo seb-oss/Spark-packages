@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.7
+
+### Patch Changes
+
+- 13a1692: Updated yargs dependency
+
 ## 0.4.6
 
 ### Patch Changes

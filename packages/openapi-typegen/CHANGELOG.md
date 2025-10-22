@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 3.0.2
+
+### Patch Changes
+
+- 13a1692: Updated yargs dependency
+
 ## 3.0.1
 
 ### Patch Changes

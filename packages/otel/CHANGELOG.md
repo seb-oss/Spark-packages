@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.0.2
+
+### Patch Changes
+
+- 4b1337a: Disabling context before initialize
+
 ## 1.0.1
 
 ### Patch Changes
