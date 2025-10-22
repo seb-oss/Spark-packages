@@ -1,6 +1,7 @@
 import {
   DiagConsoleLogger,
   DiagLogLevel,
+  context,
   diag,
   metrics,
   trace,
@@ -34,6 +35,7 @@ async function _initialize(instrumentations: Instrumentation[]) {
     const resource = await getResource()
 
     // Reset any previous instrumentation
+    context.disable()
     logs.disable()
     trace.disable()
     metrics.disable()
