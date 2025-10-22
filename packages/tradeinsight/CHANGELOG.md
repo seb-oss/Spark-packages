@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 1.0.0
+
+### Major Changes
+
+- 1d622e1: Change the parameters for creating a forex ID. Make it match names of a currency pair. This should make it easier to understand how it works.
+
 ## 0.5.1
 
 ### Patch Changes
