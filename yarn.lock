@@ -7564,14 +7564,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:4.5.3":
-  version: 4.5.3
-  resolution: "fast-xml-parser@npm:4.5.3"
+"fast-xml-parser@npm:5.3.0":
+  version: 5.3.0
+  resolution: "fast-xml-parser@npm:5.3.0"
   dependencies:
-    strnum: "npm:^1.1.1"
+    strnum: "npm:^2.1.0"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10c0/bf9ccadacfadc95f6e3f0e7882a380a7f219cf0a6f96575149f02cb62bf44c3b7f0daee75b8ff3847bcfd7fbcb201e402c71045936c265cf6d94b141ec4e9327
+  checksum: 10c0/9e398f83ac7be548bdbdd4186bef79d25b518b091ce658ba02ef45187aad1e1cfcf0a6c12b85cd904a2d829f2248a4db51c06652a617e73516d99e9c88c646b2
   languageName: node
   linkType: hard
 
@@ -11879,7 +11879,7 @@ __metadata:
     "@types/node": "npm:22.18.12"
     "@vitest/coverage-v8": "npm:3.2.4"
     csv-parse: "npm:5.6.0"
-    fast-xml-parser: "npm:4.5.3"
+    fast-xml-parser: "npm:5.3.0"
     tsup: "npm:8.5.0"
     turbo: "npm:^2.5.8"
     typescript: "npm:5.9.3"
@@ -12554,10 +12554,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strnum@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "strnum@npm:1.1.2"
-  checksum: 10c0/a0fce2498fa3c64ce64a40dada41beb91cabe3caefa910e467dc0518ef2ebd7e4d10f8c2202a6104f1410254cae245066c0e94e2521fb4061a5cb41831952392
+"strnum@npm:^2.1.0":
+  version: 2.1.1
+  resolution: "strnum@npm:2.1.1"
+  checksum: 10c0/1f9bd1f9b4c68333f25c2b1f498ea529189f060cd50aa59f1876139c994d817056de3ce57c12c970f80568d75df2289725e218bd9e3cdf73cd1a876c9c102733
   languageName: node
   linkType: hard
 
