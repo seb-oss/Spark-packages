@@ -14,8 +14,6 @@ export async function initialize() {
   return initialization
 }
 
-// For testing - allow resetting initialization state
-
 export function isInitialized() {
   return initialization !== undefined
 }
@@ -47,7 +45,7 @@ async function initializeOtel() {
       resource,
     })
 
-    await sdk.start()
+    sdk.start()
     console.log(`[otel] Telemetry initialized for "${serviceName}"`)
 
     process.on('SIGTERM', async () => {
