@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.0.0
+
+### Major Changes
+
+- d361253: OTEL instrumentation now requires initialize and specific instrumentations
+
 ## 0.4.2
 
 ### Patch Changes
