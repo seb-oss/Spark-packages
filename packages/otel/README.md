@@ -55,7 +55,7 @@ import { getLogger } from '@sebspark/otel'
 
 const logger = getLogger()
 
-// Will throw if OTEL is not yet initialized
+// Will do nothing if OTEL is not yet initialized
 logger.debug('debug message')
 logger.info('something happened')
 logger.warn('almost bad')

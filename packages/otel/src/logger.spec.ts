@@ -16,8 +16,8 @@ describe('getLogger', () => {
   it('does not throw if OTEL is not yet initialized at initialization', () => {
     expect(() => getLogger()).not.toThrow()
   })
-  it('throws if OTEL is not yet initialized at first log call', () => {
-    expect(() => getLogger().info('hello')).toThrow()
+  it('does not throw if OTEL is not yet initialized at first log call', () => {
+    expect(() => getLogger().info('hello')).not.toThrow()
   })
 
   describe('after initialize()', () => {
