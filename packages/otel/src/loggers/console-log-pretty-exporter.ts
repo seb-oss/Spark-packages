@@ -1,3 +1,4 @@
+import { SeverityNumber } from '@opentelemetry/api-logs'
 import { type ExportResult, ExportResultCode } from '@opentelemetry/core'
 import type {
   LogRecordExporter,
@@ -36,7 +37,20 @@ export class ConsoleLogPrettyExporter implements LogRecordExporter {
   ): void {
     for (const record of logRecords) {
       if ((record.severityNumber ?? 0) >= this.logThreshold) {
-        console.log(formatLogRecord(record))
+        const formatted = formatLogRecord(record)
+        const severity = record.severityNumber || SeverityNumber.UNSPECIFIED
+
+        if (severity >= SeverityNumber.ERROR) {
+          console.error(formatted)
+        } else if (severity >= SeverityNumber.WARN) {
+          console.warn(formatted)
+        } else if (severity >= SeverityNumber.INFO) {
+          console.info(formatted)
+        } else if (severity >= SeverityNumber.DEBUG) {
+          console.debug(formatted)
+        } else {
+          console.trace(formatted)
+        }
       }
     }
 

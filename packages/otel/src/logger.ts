@@ -1,16 +1,18 @@
 import { context, trace } from '@opentelemetry/api'
-import { type LoggerProvider, logs } from '@opentelemetry/api-logs'
+import { logs } from '@opentelemetry/api-logs'
 import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
-import { initialize, isInitialized } from './otel'
+import { isInitialized } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
 // biome-ignore lint/suspicious/noExplicitAny: library
 type Attrs = Record<string, any>
-export function getLogger(
-  serviceOverride?: string,
-  extraAttrs: Attrs = {},
-  testProvider?: LoggerProvider
-) {
+
+export type Logger = ReturnType<typeof getLogger>
+export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
+  if (!isInitialized()) {
+    throw new Error('OTEL must be initialized before calling getLogger()')
+  }
+
   const { systemName, systemVersion, resourceAttributes } =
     detectTelemetryContext(serviceOverride)
 
@@ -24,16 +26,8 @@ export function getLogger(
     body: string,
     attrs: Attrs = {}
   ) {
-    // Get the logger from test provider if provided, otherwise from global
-    if (!isInitialized()) {
-      initialize().then(() => {
-        emit(severityText, body, attrs)
-      })
-      return
-    }
-    const logger = testProvider
-      ? testProvider.getLogger(systemName, systemVersion)
-      : logs.getLogger(systemName, systemVersion)
+    // Get the logger at the last second
+    const logger = logs.getLogger(systemName, systemVersion)
 
     const span = trace.getSpan(context.active())
     const spanContext = span?.spanContext()

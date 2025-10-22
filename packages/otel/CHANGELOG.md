@@ -1,29 +1,5 @@
 # @sebspark/otel
 
-## 0.5.2
-
-### Patch Changes
-
-- e5c157e: Change initialize process
-
-## 0.5.1
-
-### Patch Changes
-
-- 0c7d61a: change otel init
-
-## 0.5.0
-
-### Minor Changes
-
-- 8eb2d7b: Managed init for otel
-
-## 0.4.4
-
-### Patch Changes
-
-- 289c49f: Change initialization process
-
 ## 0.4.2
 
 ### Patch Changes

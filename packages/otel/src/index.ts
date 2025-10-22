@@ -1,8 +1,5 @@
-import { initialize } from './otel'
-
+export * from './instrumentations'
 export * from './logger'
 export * from './metrics'
+export * from './otel'
 export * from './tracer'
-
-// Auto initialize
-initialize()

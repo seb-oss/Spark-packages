@@ -1,39 +1,46 @@
-import { DiagConsoleLogger, DiagLogLevel, diag } from '@opentelemetry/api'
+import {
+  DiagConsoleLogger,
+  DiagLogLevel,
+  diag,
+  metrics,
+  trace,
+} from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
-import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node'
+import type { Instrumentation } from '@opentelemetry/instrumentation'
 import { NodeSDK } from '@opentelemetry/sdk-node'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
 import { getResource } from './resource'
 
+diag.disable()
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
+
 let initialization: Promise<void> | undefined
-export async function initialize() {
+export async function initialize(...instrumentations: Instrumentation[]) {
   if (!initialization) {
-    diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
-    initialization = initializeOtel()
+    initialization = _initialize(instrumentations)
   }
   return initialization
 }
 
 export function isInitialized() {
-  return initialization !== undefined
+  return !!initialization
 }
 
-async function initializeOtel() {
+async function _initialize(instrumentations: Instrumentation[]) {
   try {
     const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
     const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
-    const isTestMode =
-      process.env.NODE_ENV === 'test' || process.env.VITEST === 'true'
 
     const resource = await getResource()
 
-    // Manual setup for logs - skip in test mode unless console logging is explicitly requested
-    let logProvider: ReturnType<typeof getLogProvider> | undefined
-    const shouldSetupLogProvider = !isTestMode || !!process.env.LOG_LEVEL
-    if (shouldSetupLogProvider) {
-      logProvider = getLogProvider(resource, otlpEndpoint)
-      logs.setGlobalLoggerProvider(logProvider)
-    }
+    // Reset any previous instrumentation
+    logs.disable()
+    trace.disable()
+    metrics.disable()
+
+    // Manual setup for logs
+    const logProvider = getLogProvider(resource, otlpEndpoint)
+    logs.setGlobalLoggerProvider(logProvider)
 
     // NodeSDK setup
     const spanProcessor = getSpanProcessor(otlpEndpoint)
@@ -41,33 +48,20 @@ async function initializeOtel() {
     const sdk = new NodeSDK({
       spanProcessor,
       metricReader,
-      instrumentations: [getNodeAutoInstrumentations()],
+      instrumentations,
       resource,
     })
 
-    sdk.start()
+    await sdk.start()
     console.log(`[otel] Telemetry initialized for "${serviceName}"`)
 
     process.on('SIGTERM', async () => {
       console.log('[otel] Shutting down...')
-      const shutdownPromises = [sdk.shutdown()]
-      if (logProvider) {
-        shutdownPromises.push(logProvider.shutdown())
-      }
-      await Promise.all(shutdownPromises)
+      await Promise.all([sdk.shutdown(), logProvider.shutdown()])
       console.log('[otel] Shutdown complete.')
       process.exit(0)
     })
   } catch (err) {
-    // In test environments, duplicate registration errors are common
-    // and can be safely ignored as long as telemetry is functional
-    if (
-      err instanceof Error &&
-      err.message.includes('duplicate registration')
-    ) {
-      console.warn('[otel] Warning - API already registered, continuing...')
-    } else {
-      console.error('[otel] Startup error:', err)
-    }
+    console.error('[otel] Startup error:', err)
   }
 }

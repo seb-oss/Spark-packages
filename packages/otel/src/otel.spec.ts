@@ -1,13 +1,11 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { getLogger } from './logger'
-import { initialize } from './otel'
-import { getTracer } from './tracer'
+import { getLogger, getTracer, initialize, instrumentations } from './'
 
 describe('otel initialize', () => {
   const originalEnv = process.env
   let consoleLog: ReturnType<typeof vi.spyOn>
-  let consoleDir: ReturnType<typeof vi.spyOn>
+  let consoleInfo: ReturnType<typeof vi.spyOn>
   let consoleError: ReturnType<typeof vi.spyOn>
 
   beforeEach(() => {
@@ -18,14 +16,14 @@ describe('otel initialize', () => {
     process.env.OTEL_SERVICE_VERSION = '0.6.2'
 
     consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})
-    consoleDir = vi.spyOn(console, 'dir').mockImplementation(() => {})
+    consoleInfo = vi.spyOn(console, 'info').mockImplementation(() => {})
     consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
   })
 
   afterEach(() => {
     process.env = originalEnv
     consoleLog.mockRestore()
-    consoleDir.mockRestore()
+    consoleInfo.mockRestore()
     consoleError.mockRestore()
   })
 
@@ -35,17 +33,17 @@ describe('otel initialize', () => {
     })
     it('sets up telemetry with ConsoleLogPrettyExporter and logs to console', async () => {
       process.env.LOG_LEVEL = 'INFO'
-      await initialize()
+      await initialize(instrumentations.express, instrumentations.http)
 
       const logger = getLogger()
       logger.info('e2e-log')
 
       await new Promise((r) => setTimeout(r, 500))
 
-      expect(consoleLog).toHaveBeenCalledWith(
+      expect(consoleInfo).toHaveBeenCalledWith(
         expect.stringContaining('[test-system@0.6.2]')
       )
-      expect(consoleLog).toHaveBeenCalledWith(
+      expect(consoleInfo).toHaveBeenCalledWith(
         expect.stringContaining('e2e-log')
       )
     })

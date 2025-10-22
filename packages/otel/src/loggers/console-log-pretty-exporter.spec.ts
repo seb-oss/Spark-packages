@@ -19,11 +19,19 @@ function createLogRecord(severityText: LOG_SEVERITY_NAME): ReadableLogRecord {
 }
 describe('ConsoleLogPrettyExporter', () => {
   const OLD_ENV = process.env
-  let consoleSpy: ReturnType<typeof vi.spyOn>
+  let consoleTrace: ReturnType<typeof vi.spyOn>
+  let consoleDebug: ReturnType<typeof vi.spyOn>
+  let consoleInfo: ReturnType<typeof vi.spyOn>
+  let consoleWarn: ReturnType<typeof vi.spyOn>
+  let consoleError: ReturnType<typeof vi.spyOn>
 
   beforeEach(() => {
     process.env = { ...OLD_ENV }
-    consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
+    consoleTrace = vi.spyOn(console, 'trace').mockImplementation(() => {})
+    consoleDebug = vi.spyOn(console, 'debug').mockImplementation(() => {})
+    consoleInfo = vi.spyOn(console, 'info').mockImplementation(() => {})
+    consoleWarn = vi.spyOn(console, 'warn').mockImplementation(() => {})
+    consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
   })
   afterEach(() => {
     vi.restoreAllMocks()
@@ -40,9 +48,12 @@ describe('ConsoleLogPrettyExporter', () => {
 
     exporter.export(logs, () => {})
 
-    expect(consoleSpy).toHaveBeenCalledTimes(2)
-    expect(consoleSpy.mock.calls[0][0]).toContain('Log at INFO')
-    expect(consoleSpy.mock.calls[1][0]).toContain('Log at ERROR')
+    expect(consoleInfo).toHaveBeenCalledWith(
+      expect.stringContaining('Log at INFO')
+    )
+    expect(consoleError).toHaveBeenCalledWith(
+      expect.stringContaining('Log at ERROR')
+    )
   })
   it('should honor LOG_LEVEL=DEBUG and include DEBUG logs', () => {
     process.env.LOG_LEVEL = 'debug'
@@ -55,7 +66,8 @@ describe('ConsoleLogPrettyExporter', () => {
 
     exporter.export(logs, () => {})
 
-    expect(consoleSpy).toHaveBeenCalledTimes(2)
+    expect(consoleDebug).toHaveBeenCalledOnce()
+    expect(consoleInfo).toHaveBeenCalledOnce()
   })
   it('should ignore all logs if LOG_LEVEL=FATAL and only ERROR is logged', () => {
     process.env.LOG_LEVEL = 'fatal'
@@ -69,7 +81,9 @@ describe('ConsoleLogPrettyExporter', () => {
 
     exporter.export(logs, () => {})
 
-    expect(consoleSpy).toHaveBeenCalledTimes(0)
+    expect(consoleDebug).not.toHaveBeenCalled()
+    expect(consoleInfo).not.toHaveBeenCalled()
+    expect(consoleError).not.toHaveBeenCalled()
   })
   it('should fallback to INFO if LOG_LEVEL is invalid', () => {
     process.env.LOG_LEVEL = 'made-up'
@@ -82,7 +96,7 @@ describe('ConsoleLogPrettyExporter', () => {
 
     exporter.export(logs, () => {})
 
-    expect(consoleSpy).toHaveBeenCalledTimes(1)
-    expect(consoleSpy.mock.calls[0][0]).toContain('Log at INFO')
+    expect(consoleDebug).toHaveBeenCalledTimes(0)
+    expect(consoleInfo).toHaveBeenCalledTimes(1)
   })
 })

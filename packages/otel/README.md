@@ -21,7 +21,20 @@ pnpm add @sebspark/otel
 **This must be the first import in your application:**
 
 ```ts
-import '@sebspark/otel'
+import { initialize, instrumentation } from '@sebspark/otel'
+
+async function start () {
+  await initialize(
+    instrumentation.undici,
+    instrumentation.http,
+    instrumentation.express,
+    instrumentation.redis,
+  )
+
+  // start your application
+}
+
+start()
 ```
 
 Automatically:
@@ -38,6 +51,7 @@ Automatically:
 ### Logging
 
 ```ts
+// Will throw if OTEL is not yet initialized
 import { getLogger } from '@sebspark/otel'
 
 const logger = getLogger()
@@ -61,7 +75,8 @@ Logs inside active spans automatically include:
 ```ts
 import { getTracer } from '@sebspark/otel'
 
-const tracer = getTracer() // async to ensure otel initialization
+// Will throw if OTEL is not yet initialized
+const tracer = getTracer()
 
 await tracer.withTrace('trace.name', async (span) => {
   span.setAttribute('user.id', '123')
@@ -111,7 +126,8 @@ span.end()
 ```ts
 import { getMeter } from '@sebspark/otel'
 
-const meter = getMeter() // async to ensure otel initialization
+// Will throw if OTEL is not yet initialized
+const meter = getMeter()
 
 const counter = meter.createCounter('http_requests_total', {
   description: 'Total number of HTTP requests',
