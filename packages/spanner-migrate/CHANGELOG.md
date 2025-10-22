@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.6
+
+### Patch Changes
+
+- 13a1692: Updated yargs dependency
+
 ## 1.1.5
 
 ### Patch Changes
