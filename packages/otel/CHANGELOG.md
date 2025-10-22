@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.0.1
+
+### Patch Changes
+
+- c360c99: Init check is moved to first log call instead of at getLogger()
+
 ## 1.0.0
 
 ### Major Changes
