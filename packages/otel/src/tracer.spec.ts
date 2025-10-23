@@ -6,12 +6,23 @@ import { getTracer } from './tracer'
 
 describe('getTracer', () => {
   it('warns if OTEL is not yet initialized', () => {
+    process.env.NODE_ENV = 'not test'
     const warn = vi.spyOn(console, 'warn')
 
     expect(() => getTracer()).not.toThrow()
     expect(warn).toHaveBeenCalledWith(
       expect.stringContaining('OTEL must be initialized')
     )
+
+    warn.mockRestore()
+    process.env.NODE_ENV = 'test'
+  })
+  it('does not warn if NODE_ENV=test', () => {
+    process.env.NODE_ENV = 'test'
+    const warn = vi.spyOn(console, 'warn')
+
+    expect(() => getTracer()).not.toThrow()
+    expect(warn).not.toHaveBeenCalled()
 
     warn.mockRestore()
   })

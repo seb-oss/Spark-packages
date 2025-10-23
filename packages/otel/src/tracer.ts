@@ -42,7 +42,7 @@ interface Tracer extends OtelTracer {
  * @returns Tracer with helpers
  */
 export function getTracer(componentNameOverride?: string): Tracer {
-  if (!isInitialized()) {
+  if (!isInitialized() && process.env.NODE_ENV !== 'test') {
     console.warn('OTEL must be initialized before calling getTracer()')
   }
 

@@ -23,7 +23,7 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     attrs: Attrs = {}
   ) {
     // Get the logger at the last second
-    if (!isInitialized()) {
+    if (!isInitialized() && process.env.NODE_ENV !== 'test') {
       console.warn('OTEL must be initialized before using logger')
       console.log(`[${severityText}] ${body}`)
       return

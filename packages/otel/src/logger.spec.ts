@@ -14,9 +14,12 @@ const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 describe('getLogger', () => {
   it('does not throw if OTEL is not yet initialized at initialization', () => {
+    process.env.NODE_ENV = 'not test'
     expect(() => getLogger()).not.toThrow()
+    process.env.NODE_ENV = 'test'
   })
   it('warns if OTEL is not yet initialized at first log call', () => {
+    process.env.NODE_ENV = 'not test'
     const warn = vi.spyOn(console, 'warn')
     const log = vi.spyOn(console, 'log')
 
@@ -28,6 +31,18 @@ describe('getLogger', () => {
 
     warn.mockRestore()
     log.mockRestore()
+    process.env.NODE_ENV = 'test'
+  })
+  it('does not warn if NODE_ENV=test', () => {
+    process.env.NODE_ENV = 'test'
+    const warn = vi.spyOn(console, 'warn')
+    const log = vi.spyOn(console, 'log')
+    const info = vi.spyOn(console, 'info')
+
+    expect(() => getLogger().info('hello')).not.toThrow()
+
+    expect(warn).not.toHaveBeenCalled()
+    expect(log).not.toHaveBeenCalled()
   })
 
   describe('after initialize()', () => {

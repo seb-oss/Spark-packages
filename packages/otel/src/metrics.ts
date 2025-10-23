@@ -3,7 +3,7 @@ import { isInitialized } from './otel'
 import { detectTelemetryContext } from './otel-context'
 
 export function getMeter(componentNameOverride?: string) {
-  if (!isInitialized()) {
+  if (!isInitialized() && process.env.NODE_ENV !== 'test') {
     console.warn('OTEL must be initialized before using getMeter()')
   }
 
