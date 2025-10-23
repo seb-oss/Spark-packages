@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.1.1
+
+### Patch Changes
+
+- b86cf2d: Instrumentation warnings are now supressed during testing
+
 ## 1.1.0
 
 ### Minor Changes
