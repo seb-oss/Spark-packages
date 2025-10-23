@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.1.2
+
+### Patch Changes
+
+- b8fe201: SpanStatusCode is exported as a value, not a type
+
 ## 1.1.1
 
 ### Patch Changes
