@@ -4,7 +4,7 @@ import { parseId } from './parseId'
 describe('parseId', () => {
   describe('FOREX', () => {
     it('should parse a valid FOREX id', () => {
-      const result = parseId('FOREX-USD;EUR')
+      const result = parseId('FOREX-USD_EUR')
 
       expect(result).toEqual({
         type: 'FOREX',
@@ -14,23 +14,23 @@ describe('parseId', () => {
     })
 
     it('should throw an error if baseCurrency is missing', () => {
-      expect(() => parseId('FOREX-;EUR')).toThrowError('Missing baseCurrency')
+      expect(() => parseId('FOREX-_EUR')).toThrowError('Missing baseCurrency')
     })
 
     it('should throw an error if quoteCurrency is missing', () => {
-      expect(() => parseId('FOREX-USD;')).toThrowError('Missing quoteCurrency')
+      expect(() => parseId('FOREX-USD_')).toThrowError('Missing quoteCurrency')
     })
   })
 
   describe('STOCK', () => {
     it('should parse a valid STOCK id', () => {
-      expect(parseId('STOCK-SE0000108656;XSTO;SEK')).toEqual({
+      expect(parseId('STOCK-SE0000108656_XSTO_SEK')).toEqual({
         type: 'STOCK',
         isin: 'SE0000108656',
         mic: 'XSTO',
         currency: 'SEK',
       })
-      expect(parseId('STOCK-FI0009000681;XHEL;EUR')).toEqual({
+      expect(parseId('STOCK-FI0009000681_XHEL_EUR')).toEqual({
         type: 'STOCK',
         isin: 'FI0009000681',
         mic: 'XHEL',
@@ -39,16 +39,16 @@ describe('parseId', () => {
     })
 
     it('should throw an error if MIC is missing', () => {
-      expect(() => parseId('STOCK-SE0000108656;;SEK')).toThrowError(
+      expect(() => parseId('STOCK-SE0000108656__SEK')).toThrowError(
         'Missing MIC'
       )
     })
 
     it('should throw an error if currency is missing', () => {
-      expect(() => parseId('STOCK-SE0000108656;XSTO')).toThrowError(
+      expect(() => parseId('STOCK-SE0000108656_XSTO')).toThrowError(
         'Missing currency'
       )
-      expect(() => parseId('STOCK-SE0000108656;XSTO;')).toThrowError(
+      expect(() => parseId('STOCK-SE0000108656_XSTO_')).toThrowError(
         'Missing currency'
       )
     })
