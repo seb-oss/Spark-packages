@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.0.5
+
+### Patch Changes
+
+- 90fa604: Changed initialization handling in logger to solve OTEL fail spam
+
 ## 1.0.4
 
 ### Patch Changes
