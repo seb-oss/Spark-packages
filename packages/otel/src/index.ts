@@ -10,7 +10,7 @@ export {
   type ObservableUpDownCounter,
   type Span,
   type SpanStatus,
-  type SpanStatusCode,
+  SpanStatusCode,
   type UpDownCounter,
 } from '@opentelemetry/api'
 export * from './instrumentations'
