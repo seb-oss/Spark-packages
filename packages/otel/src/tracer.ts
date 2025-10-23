@@ -43,7 +43,7 @@ interface Tracer extends OtelTracer {
  */
 export function getTracer(componentNameOverride?: string): Tracer {
   if (!isInitialized()) {
-    throw new Error('OTEL must be initialized before calling getMeter()')
+    console.warn('OTEL must be initialized before calling getTracer()')
   }
 
   const { componentName, systemName, systemVersion } = detectTelemetryContext(

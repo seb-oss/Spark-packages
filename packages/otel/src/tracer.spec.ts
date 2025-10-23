@@ -1,12 +1,19 @@
 import { context, trace } from '@opentelemetry/api'
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { initialize } from './otel'
 import { getTracer } from './tracer'
 
 describe('getTracer', () => {
-  it('throws if OTEL is not yet initialized', () => {
-    expect(() => getTracer()).toThrow()
+  it('warns if OTEL is not yet initialized', () => {
+    const warn = vi.spyOn(console, 'warn')
+
+    expect(() => getTracer()).not.toThrow()
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('OTEL must be initialized')
+    )
+
+    warn.mockRestore()
   })
   describe('after initialize()', () => {
     beforeEach(async () => {

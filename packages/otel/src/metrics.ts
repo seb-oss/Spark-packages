@@ -4,7 +4,7 @@ import { detectTelemetryContext } from './otel-context'
 
 export function getMeter(componentNameOverride?: string) {
   if (!isInitialized()) {
-    throw new Error('OTEL must be initialized before calling getMeter()')
+    console.warn('OTEL must be initialized before using getMeter()')
   }
 
   const { componentName, systemName, systemVersion } = detectTelemetryContext(

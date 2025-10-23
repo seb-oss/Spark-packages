@@ -1,12 +1,19 @@
 import { metrics } from '@opentelemetry/api'
 import { MeterProvider } from '@opentelemetry/sdk-metrics'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getMeter } from './metrics'
 import { initialize } from './otel'
 
 describe('getMeter', () => {
-  it('throws if OTEL is not yet initialized', () => {
-    expect(() => getMeter()).toThrow()
+  it('warns if OTEL is not yet initialized', () => {
+    const warn = vi.spyOn(console, 'warn')
+
+    expect(() => getMeter()).not.toThrow()
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('OTEL must be initialized')
+    )
+
+    warn.mockRestore()
   })
   describe('after initialize()', () => {
     beforeEach(async () => {

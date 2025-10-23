@@ -7,7 +7,7 @@ import {
   SimpleLogRecordProcessor,
 } from '@opentelemetry/sdk-logs'
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getLogger, initialize } from './'
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -16,8 +16,15 @@ describe('getLogger', () => {
   it('does not throw if OTEL is not yet initialized at initialization', () => {
     expect(() => getLogger()).not.toThrow()
   })
-  it('does not throw if OTEL is not yet initialized at first log call', () => {
+  it('warns if OTEL is not yet initialized at first log call', () => {
+    const warn = vi.spyOn(console, 'warn')
+
     expect(() => getLogger().info('hello')).not.toThrow()
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining('OTEL must be initialized')
+    )
+
+    warn.mockRestore()
   })
 
   describe('after initialize()', () => {
