@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.1.0
+
+### Minor Changes
+
+- a8ba986: OTEL exports usable types
+
 ## 1.0.5
 
 ### Patch Changes
