@@ -18,13 +18,16 @@ describe('getLogger', () => {
   })
   it('warns if OTEL is not yet initialized at first log call', () => {
     const warn = vi.spyOn(console, 'warn')
+    const log = vi.spyOn(console, 'log')
 
     expect(() => getLogger().info('hello')).not.toThrow()
     expect(warn).toHaveBeenCalledWith(
       expect.stringContaining('OTEL must be initialized')
     )
+    expect(log).toHaveBeenCalledWith('[INFO] hello')
 
     warn.mockRestore()
+    log.mockRestore()
   })
 
   describe('after initialize()', () => {

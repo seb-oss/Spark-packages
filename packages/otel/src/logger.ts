@@ -25,6 +25,7 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     // Get the logger at the last second
     if (!isInitialized()) {
       console.warn('OTEL must be initialized before using logger')
+      console.log(`[${severityText}] ${body}`)
       return
     }
     const logger = logs.getLogger(systemName, systemVersion)
