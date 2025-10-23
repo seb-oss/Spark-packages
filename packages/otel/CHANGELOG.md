@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.0.4
+
+### Patch Changes
+
+- 63fc64a: tracer and meter no longer throw before initialization
+
 ## 1.0.3
 
 ### Patch Changes
