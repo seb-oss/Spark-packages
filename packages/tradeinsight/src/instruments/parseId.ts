@@ -9,7 +9,7 @@ export const parseId = (
   quoteCurrency?: string
 } => {
   const [type, ...rest] = id.split('-')
-  const [first, second, third] = rest.join('-').split(';')
+  const [first, second, third] = rest.join().split('_')
 
   if (type === 'STOCK') {
     if (!second) {
