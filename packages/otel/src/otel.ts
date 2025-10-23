@@ -20,7 +20,9 @@ let _isInitialized = false
 export async function initialize(...instrumentations: Instrumentation[]) {
   if (!initialization) {
     initialization = _initialize(instrumentations)
-    initialization.then(() => { _isInitialized = true })
+    initialization.then(() => {
+      _isInitialized = true
+    })
   }
   return initialization
 }
