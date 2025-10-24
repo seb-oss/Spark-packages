@@ -3040,6 +3040,7 @@ __metadata:
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.1"
+    "@sebspark/otel": "npm:>=1.1.2"
     google-auth-library: "npm:9.15.1"
     tsconfig: "npm:*"
   peerDependencies:
@@ -3203,7 +3204,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:>=1.1.2, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
