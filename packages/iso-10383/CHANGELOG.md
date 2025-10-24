@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.21.1
+
+### Patch Changes
+
+- 604c94a: Updated dependencies
+
 ## 0.21.0
 
 ### Minor Changes

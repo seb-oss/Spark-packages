@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 1.1.0
+
+### Minor Changes
+
+- 604c94a: Updated @opensearch-project/opensearch to latest. Type system now uses OpenSearch:es exposed types.
+
 ## 1.0.3
 
 ### Patch Changes

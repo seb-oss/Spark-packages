@@ -1,5 +1,16 @@
 # @sebspark/openapi-auth-iam
 
+## 2.0.0
+
+### Major Changes
+
+- 604c94a: All logging is done through @sepspark/otel
+
+### Patch Changes
+
+- Updated dependencies [604c94a]
+  - @sebspark/gcp-iam@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes

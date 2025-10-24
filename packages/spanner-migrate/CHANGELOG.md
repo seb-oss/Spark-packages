@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.7
+
+### Patch Changes
+
+- 604c94a: Updated dependencies
+
 ## 1.1.6
 
 ### Patch Changes

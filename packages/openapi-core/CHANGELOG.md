@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 3.0.0
+
+### Major Changes
+
+- 604c94a: All logging is done through @sepspark/otel
+
 ## 2.3.5
 
 ### Patch Changes
