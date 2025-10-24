@@ -24,5 +24,8 @@
   "dependencies": {
     "@sebspark/openapi-core": "*",
     "express": "5.1.0"
+  },
+  "peerDependencies": {
+    "@sebspark/otel": ">=1.1.2"
   }
 }

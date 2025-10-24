@@ -9,7 +9,6 @@ import {
   test,
   vi,
 } from 'vitest'
-import type { Logger } from 'winston'
 import { accessToken, router } from './__tests__/client.helper'
 import type { OpenapiClient, User } from './__tests__/openapi'
 import { type TypedAxiosClient, TypedClient } from './client'
@@ -130,14 +129,6 @@ describe('TypedClient', () => {
 
     describe('with authorizationTokenGenerator', () => {
       const authorizationTokenGeneratorMock = vi.fn()
-      const loggerMock = {
-        debug: vi.fn(),
-      }
-      const debugMock = vi.fn()
-
-      beforeEach(() => {
-        loggerMock.debug = debugMock
-      })
 
       test('it works', async () => {
         const generatedHeaders = {
@@ -147,26 +138,15 @@ describe('TypedClient', () => {
 
         authorizationTokenGeneratorMock.mockResolvedValue(generatedHeaders)
 
-        const client = TypedClient<OpenapiClient>(
-          `http://localhost:${PORT}`,
-          {
-            authorizationTokenGenerator: authorizationTokenGeneratorMock,
-          },
-          loggerMock as unknown as Logger
-        )
+        const client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`, {
+          authorizationTokenGenerator: authorizationTokenGeneratorMock,
+        })
 
         try {
           await client.get('/users', {
             headers: { Authorization: accessToken },
           })
         } catch (error) {}
-
-        expect(debugMock).toHaveBeenCalledWith(
-          'Setting header Proxy-Authorization to Bearer 123'
-        )
-        expect(debugMock).toHaveBeenCalledWith(
-          'Setting header X-API-Key to a-1-b-2-c-3'
-        )
       })
     })
   })

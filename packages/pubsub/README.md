@@ -1,6 +1,17 @@
 # `@sebspark/pubsub`
 
-A wrapper around [@google-cloud/pubsub](https://www.npmjs.com/package/@google-cloud/pubsub) adding simple methods for publishing and subscribing with typed messages.
+## ⚠️ **Deprecated**
+
+This library is built on faulty assumptions for **Google PubSub**
+
+1. Topics and subscriptions should typically be created through Terraform or some other form of infrastructure as code
+2. Same thing goes for Schemas
+3. If a subscription is created in code, it should be unique and removed on SIGTERM
+4. Topics should not handle more than one message type
+
+Use vanilla [@google-cloud/pubsub](https://www.npmjs.com/package/@google-cloud/pubsub) instead!
+
+
 
 ## Examples
 

@@ -17,11 +17,11 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "vitest": "3.2.4"
+    "vitest": "4.0.3"
   },
   "dependencies": {
     "@google-cloud/pubsub": "5.2.0",
-    "@types/express": "5.0.3",
+    "@types/express": "5.0.4",
     "@types/html-escaper": "3.0.4",
     "avsc": "^5.7.9",
     "express": "5.1.0",

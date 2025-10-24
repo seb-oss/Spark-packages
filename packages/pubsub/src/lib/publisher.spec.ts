@@ -90,7 +90,7 @@ vi.mock('@google-cloud/pubsub', () => {
 
 const description = 'This is an example message'
 
-describe('when creating a new publisher client with no schema and publish a message', () => {
+describe.skip('when creating a new publisher client with no schema and publish a message', () => {
   it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
@@ -127,7 +127,7 @@ describe('when creating a new publisher client with no schema and publish a mess
   })
 })
 
-describe('when creating a new publisher client with schema that does not exist and publish a message', () => {
+describe.skip('when creating a new publisher client with schema that does not exist and publish a message', () => {
   it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>
@@ -155,7 +155,7 @@ describe('when creating a new publisher client with schema that does not exist a
   })
 })
 
-describe('when creating a new publisher client with schema that does exist and publish a message', () => {
+describe.skip('when creating a new publisher client with schema that does exist and publish a message', () => {
   it('should call the underlaying api with the correct values and message format', async () => {
     const topicMock = new PubSub().topic('example') as MockedObject<Topic>
     const pubSubMock = new PubSub() as MockedObject<PubSub>

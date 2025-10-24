@@ -17,15 +17,15 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/yargs": "17.0.33",
+    "@types/yargs": "17.0.34",
     "tsconfig": "*",
-    "vitest": "3.2.4"
+    "vitest": "4.0.3"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
-    "boxen": "<6",
-    "chalk": "<5",
-    "change-case": "4.1.2",
+    "boxen": "8.0.1",
+    "chalk": "5.6.2",
+    "change-case": "5.4.4",
     "prettier": "3.6.2",
     "yaml": "2.8.1",
     "yargs": "18.0.0"

@@ -39,7 +39,6 @@ describe('GatewayGraphqlClient', () => {
   const uri = 'https://uri'
 
   let args: GatewayGraphqlClientArgs
-  let logger: Mocked<Logger>
   let typedClient: {
     get: MockedFunction<(path: string) => Promise<any>>
     post: MockedFunction<
@@ -53,17 +52,9 @@ describe('GatewayGraphqlClient', () => {
   beforeEach(() => {
     vi.clearAllMocks()
 
-    logger = {
-      debug: vi.fn(),
-      error: vi.fn(),
-      info: vi.fn(),
-      warn: vi.fn(),
-    } as any
-
     args = {
       apiKey,
       uri,
-      logger,
     }
 
     typedClient = {
@@ -86,16 +77,13 @@ describe('GatewayGraphqlClient', () => {
           timeout: 10 * 1000,
           authorizationTokenGenerator: expect.any(Function),
           authorizationTokenRefresh: expect.any(Function),
-        }),
-        logger
+        })
       )
     })
     it('authorizationTokenGenerator calls through to apiGatewayTokenByUrlGenerator', async () => {
       const _tokens: Record<string, string> = {}
       const generator = vi.fn(async (url) => _tokens)
-      apiGatewayTokenByUrlGenerator.mockImplementation(
-        (apiKey, logger) => generator
-      )
+      apiGatewayTokenByUrlGenerator.mockImplementation((apiKey) => generator)
 
       new GatewayGraphqlClient(args)
       const [, options] = TypedClient.mock.calls[0] as [string, ClientOptions]
@@ -129,7 +117,6 @@ describe('GatewayGraphqlClient', () => {
 
       const result = await client.graphql<typeof data>('query', { id: 1 })
       expect(result).toEqual(data)
-      expect(logger.error).not.toHaveBeenCalled()
       expect(typedClient.post).toHaveBeenCalledWith(
         '/graphql',
         expect.objectContaining({
@@ -144,9 +131,6 @@ describe('GatewayGraphqlClient', () => {
       const client = new GatewayGraphqlClient(args)
 
       await expect(client.graphql('query')).rejects.toThrow('err1\nerr2')
-      expect(logger.error).toHaveBeenCalledWith(
-        `Error posting graphql query to: ${uri}`
-      )
     })
 
     it('logs and rethrows when client.post throws', async () => {
@@ -155,7 +139,6 @@ describe('GatewayGraphqlClient', () => {
       const client = new GatewayGraphqlClient(args)
 
       await expect(client.graphql('query')).rejects.toThrow(networkError)
-      expect(logger.error).toHaveBeenCalledWith(`Error posting graphql: ${uri}`)
     })
 
     it('trims query string before sending', async () => {
@@ -177,7 +160,6 @@ describe('GatewayGraphqlClient', () => {
       const client = new GatewayGraphqlClient(args)
       const healthy = await client.isHealthy()
       expect(healthy).toBe(true)
-      expect(logger.error).not.toHaveBeenCalled()
       expect(typedClient.get).toHaveBeenCalledWith('/health')
     })
 
@@ -187,7 +169,6 @@ describe('GatewayGraphqlClient', () => {
       const client = new GatewayGraphqlClient(args)
       const healthy = await client.isHealthy()
       expect(healthy).toBe(false)
-      expect(logger.error).toHaveBeenCalledWith(err)
       expect(typedClient.get).toHaveBeenCalledWith('/health')
     })
   })

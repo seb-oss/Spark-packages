@@ -1,6 +1,5 @@
 import { afterEach } from 'node:test'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import type { Logger } from 'winston'
 import { PromiseCache } from './index'
 
 vi.mock('redis')
@@ -11,24 +10,15 @@ const REDIS_URL = {
 
 const ttl = 1
 
-const logger = vi.hoisted(() => ({
-  error: vi.fn(),
-  info: vi.fn(),
-  debug: vi.fn(),
-  warn: vi.fn(),
-}))
-
 const cache: PromiseCache<number> = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: false,
-  logger: logger as unknown as Logger,
 })
 const caseSensitiveCache = new PromiseCache<number>({
   redis: REDIS_URL,
   ttlInSeconds: ttl,
   caseSensitive: true,
-  logger: logger as unknown as Logger,
 })
 
 describe('PromiseCache', () => {
@@ -100,11 +90,6 @@ describe('PromiseCache', () => {
     // Update the TTL to 2 seconds
     await cache.wrap('testKey', mockDelegate, 2)
 
-    // Expect a warning message.
-    expect(logger.error).toHaveBeenCalledTimes(1)
-    expect(logger.error).toHaveBeenCalledWith(
-      'WARNING: TTL mismatch for key. It is recommended to use the same TTL for the same key.'
-    )
     expect(await cache.size()).toBe(1)
 
     // Wait for the first cache to expire

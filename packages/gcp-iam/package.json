@@ -19,7 +19,10 @@
     "tsconfig": "*"
   },
   "dependencies": {
-    "@google-cloud/iam-credentials": "3.3.0",
+    "@google-cloud/iam-credentials": "4.2.1",
     "google-auth-library": "9.15.1"
+  },
+  "peerDependencies": {
+    "@sebspark/otel": ">=1.1.2"
   }
 }

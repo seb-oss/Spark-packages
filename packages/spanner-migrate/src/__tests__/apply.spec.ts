@@ -1,22 +1,52 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
 import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from 'vitest'
 import { applyDown, applyUp } from '../apply'
 import type { Migration } from '../types'
 
+vi.mock('@google-cloud/spanner', () => {
+  const transaction = {
+    runUpdate: vi.fn(async () => {}),
+    commit: vi.fn(async () => {}),
+  }
+  const db = {
+    run: vi.fn(async () => [[]]),
+    updateSchema: vi.fn(),
+    runTransactionAsync: vi.fn(async (cb) => {
+      return cb(transaction)
+    }),
+    getTransaction: vi.fn(async () => [transaction]),
+  }
+  const database = vi.fn().mockReturnValue(db)
+  const instance = vi.fn().mockReturnValue({ database })
+  class Spanner {
+    instance = instance
+  }
+  return { Spanner }
+})
+
 describe('apply', () => {
-  let spanner: jest.Mocked<Spanner>
-  let db: jest.Mocked<Database>
+  let spanner: Mocked<Spanner>
+  let db: Mocked<Database>
 
   beforeEach(() => {
     // Assume `Database` is mocked globally
-    spanner = new Spanner() as jest.Mocked<Spanner>
+    spanner = new Spanner() as Mocked<Spanner>
     db = spanner
       .instance('my-instance')
-      .database('my-database') as jest.Mocked<Database>
-    jest.clearAllMocks()
+      .database('my-database') as Mocked<Database>
+    vi.clearAllMocks()
   })
   afterEach(() => {
-    spanner.close()
+    vi.clearAllMocks()
   })
 
   describe('applyUp', () => {
@@ -110,6 +140,7 @@ describe('apply', () => {
         }
         return []
       })
+      db.updateSchema.mockImplementation(async () => {})
 
       await applyDown(db)
 

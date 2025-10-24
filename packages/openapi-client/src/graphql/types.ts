@@ -3,7 +3,6 @@ import type {
   BaseClient,
   RequestOptions,
 } from '@sebspark/openapi-core'
-import type { Logger } from 'winston'
 
 export type GatewayGraphqlClient = Pick<BaseClient, 'post' | 'get'> & {
   post: {
@@ -48,7 +47,6 @@ export type GatewayGraphqlClient = Pick<BaseClient, 'post' | 'get'> & {
 }
 
 export type GatewayGraphqlClientArgs = {
-  logger: Logger
   uri: string
   apiKey: string
 }

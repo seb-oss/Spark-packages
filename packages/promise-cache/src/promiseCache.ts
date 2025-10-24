@@ -1,7 +1,7 @@
 import type { UUID } from 'node:crypto'
 import { randomUUID } from 'node:crypto'
+import { getLogger } from '@sebspark/otel'
 import type { RedisClientOptions } from 'redis'
-import type { Logger } from 'winston'
 import { Persistor } from './persistor'
 
 export type { RedisClientOptions }
@@ -13,18 +13,18 @@ export type PromiseCacheOptions = {
   fallbackToFunction?: boolean
   onError?: (error: string) => void
   onSuccess?: () => void
-  logger?: Logger
 }
 
 const persistors: Record<string, Persistor> = {}
 
 const getPersistor = ({
   redis,
-  logger,
   onError,
   onSuccess,
   clientId,
 }: PromiseCacheOptions & { clientId: UUID }) => {
+  const logger = getLogger('PromiseCache persistor')
+
   const connectionName = redis ? redis?.name || 'default' : 'local'
 
   if (!persistors[connectionName]) {
@@ -43,7 +43,6 @@ const getPersistor = ({
         )
       },
       clientId,
-      logger,
     })
   }
   return persistors[connectionName]
@@ -55,7 +54,7 @@ export class PromiseCache<U> {
   private readonly caseSensitive: boolean
   private readonly fallbackToFunction: boolean // If true, the cache will fallback to the delegate function if there is an error retrieving the cache.
   private readonly ttl?: number // Time to live in milliseconds.
-  private readonly logger: Logger | undefined
+  private readonly logger: ReturnType<typeof getLogger>
   /**
    * Initialize a new PromiseCache.
    * @param ttlInSeconds Default cache TTL.
@@ -68,15 +67,17 @@ export class PromiseCache<U> {
     fallbackToFunction = false,
     onSuccess,
     onError,
-    logger,
   }: PromiseCacheOptions) {
-    this.logger = logger
+    this.logger = getLogger('PromiseCache')
+    this.logger.warn(
+      'PromiseCache class is deprecated. Use createCache instead'
+    )
+
     this.persistor = getPersistor({
       redis,
       onError,
       onSuccess,
       clientId: this.clientId,
-      logger: this.logger,
     })
 
     this.caseSensitive = caseSensitive
@@ -170,7 +171,7 @@ export class PromiseCache<U> {
 
       this.logger?.error(
         'redis error, falling back to function execution',
-        error instanceof Error ? error.message : String(error)
+        error as Error
       )
     }
 

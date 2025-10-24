@@ -6,11 +6,11 @@ import type {
   RequestOptions,
 } from '@sebspark/openapi-core'
 import { fromAxiosError } from '@sebspark/openapi-core'
+import { getLogger } from '@sebspark/otel'
 import { retry } from '@sebspark/retry'
-import type { AxiosError, AxiosHeaders, AxiosInstance } from 'axios'
+import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
-import type { Logger } from 'winston'
 import { paramsSerializer } from './paramsSerializer'
 
 export type TypedAxiosClient<T> = T & {
@@ -19,22 +19,22 @@ export type TypedAxiosClient<T> = T & {
 
 export const TypedClient = <C extends Partial<BaseClient>>(
   baseURL: string,
-  globalOptions?: ClientOptions,
-  logger?: Logger
+  globalOptions?: ClientOptions
 ): TypedAxiosClient<C> => {
   const axiosInstance = axios.create()
 
-  logger?.debug(
-    'client initialized with arrayFormat',
-    globalOptions?.arrayFormat
+  const logger = getLogger('TypedClient')
+
+  logger.debug(
+    `client initialized with arrayFormat '${globalOptions?.arrayFormat}'`
   )
 
   if (globalOptions?.authorizationTokenGenerator) {
-    logger?.debug('authorizationTokenGenerator is set')
+    logger.debug('authorizationTokenGenerator is set')
 
     axiosInstance.interceptors.request.use(async (request) => {
       const url = `${request.baseURL}${request.url}`
-      logger?.debug(`Intercepting request to ${url}`)
+      logger.debug(`Intercepting request to ${url}`)
 
       if (globalOptions?.authorizationTokenGenerator && url) {
         try {
@@ -44,18 +44,18 @@ export const TypedClient = <C extends Partial<BaseClient>>(
           if (authorizationTokenHeaders) {
             for (const key of Object.keys(authorizationTokenHeaders)) {
               const value = authorizationTokenHeaders[key]
-              logger?.debug(`Setting header ${key} to ${value}`)
+              logger.debug(`Setting header ${key} to ${value}`)
               request.headers[key] = value
             }
           }
         } catch (error) {
-          logger?.error(`Error generating token for URL: ${url}`)
+          logger.error(`Error generating token for URL: ${url}`, error as Error)
           throw error
         }
       }
 
-      logger?.debug('Intercepted request:')
-      logger?.debug(JSON.stringify(request, null, 2))
+      logger.debug('Intercepted request:')
+      logger.debug(JSON.stringify(request, null, 2))
       return request
     })
   }
@@ -63,26 +63,27 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   if (globalOptions?.authorizationTokenRefresh) {
     // biome-ignore lint/suspicious/noExplicitAny: TODO
     const refreshAuthLogic = async (failedRequest: any) => {
-      logger?.debug('Failed request')
-      logger?.debug(JSON.stringify(failedRequest, null, 2))
-
       if (!axios.isAxiosError(failedRequest)) {
-        logger?.error('Failed request is not an axios error')
+        logger.error(
+          'Failed request is not an axios error',
+          failedRequest as Error
+        )
         return
+      } else {
+        logger.debug('Failed request', failedRequest)
       }
 
       const axiosError = failedRequest as AxiosError
 
-      logger?.debug('Failed request config:')
-      logger?.debug(JSON.stringify(axiosError.config, null, 2))
+      logger.debug('Failed request config', axiosError.config)
 
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
       if (globalOptions?.authorizationTokenRefresh && url) {
-        logger?.debug(`Refreshing token for URL ${url}`)
+        logger.debug(`Refreshing token for URL ${url}`)
         try {
           await globalOptions?.authorizationTokenRefresh(url)
         } catch (error) {
-          logger?.error(`Error refreshing token for URL: ${url}`)
+          logger.error(`Error refreshing token for URL: ${url}`, error as Error)
           throw error
         }
       }
@@ -98,7 +99,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         params: request.params,
         headers: request.headers,
       }
-      logger.debug(JSON.stringify(requestObject, null, 2))
+      logger.debug('request', requestObject)
       return request
     })
 
@@ -109,7 +110,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
         headers: response.headers,
       }
 
-      logger.debug(JSON.stringify(responseObject, null, 2))
+      logger.debug('response', responseObject)
       return response
     })
   }
@@ -158,15 +159,12 @@ const callServer = async <
 >(
   axiosInstance: AxiosInstance,
   args: Partial<ClientOptions & RequestArgs>,
-  logger?: Logger
+  logger: ReturnType<typeof getLogger>
 ): Promise<R> => {
   try {
     const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
 
-    logger?.debug(`[callServer] typeof serializer: ${typeof serializer}`)
-    logger?.debug(
-      `[callServer] sample serialization: ${serializer({ test: ['a', 'b'] })}`
-    )
+    logger.debug(`[callServer] typeof serializer: ${typeof serializer}`)
 
     const body =
       args.method?.toLowerCase() === 'get' ||
@@ -179,7 +177,7 @@ const callServer = async <
           baseURL: args.baseUrl,
           url: args.url,
           method: args.method,
-          headers: args.headers as AxiosHeaders,
+          headers: args.headers as AxiosRequestConfig['headers'],
           params: args.params,
           paramsSerializer: serializer,
           data: body,

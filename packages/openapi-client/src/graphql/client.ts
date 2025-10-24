@@ -3,8 +3,7 @@ import {
   apiGatewayTokenRefresh,
 } from '@sebspark/openapi-auth-iam'
 import type { ClientOptions } from '@sebspark/openapi-core'
-import type { Logger } from 'winston'
-
+import { getLogger } from '@sebspark/otel'
 import { TypedClient } from '../client'
 import type {
   GatewayGraphqlClientArgs,
@@ -15,13 +14,13 @@ export class GatewayGraphqlClient<
   T extends GatewayGraphqlClientType = GatewayGraphqlClientType,
 > {
   public client: T
-  public logger: Logger
+  public logger: ReturnType<typeof getLogger>
   private uri: string
   private options: ClientOptions
 
   constructor(args: GatewayGraphqlClientArgs) {
     this.uri = args.uri
-    this.logger = args.logger
+    this.logger = getLogger('GatewayGraphqlClient')
     this.options = {
       timeout: 10 * 1000,
       authorizationTokenGenerator: async (url) => {
@@ -33,7 +32,7 @@ export class GatewayGraphqlClient<
         return apiGatewayTokenRefresh()(url)
       },
     }
-    this.client = TypedClient<T>(args.uri, this.options, this.logger)
+    this.client = TypedClient<T>(args.uri, this.options)
   }
 
   public async graphql<K>(query: string, variables?: Record<string, unknown>) {
@@ -59,7 +58,7 @@ export class GatewayGraphqlClient<
       await this.client.get('/health')
       return true
     } catch (error) {
-      this.logger.error(error)
+      this.logger.error(error as Error)
     }
     return false
   }

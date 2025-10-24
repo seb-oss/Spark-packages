@@ -1,6 +1,7 @@
 import type { Server } from 'node:http'
 import { TypedClient } from '@sebspark/openapi-client'
 import type { Serialized } from '@sebspark/openapi-core'
+import { findFreePorts } from 'find-free-ports'
 import {
   afterAll,
   beforeAll,
@@ -17,11 +18,12 @@ import type {
 import { app, markets } from './server'
 
 describe('openapi e2e tests', () => {
-  const PORT = 12345
+  let PORT: number
   let server: Server
   let client: MarketdataClient
 
   beforeAll(async () => {
+    PORT = (await findFreePorts())[0]
     await new Promise<void>((resolve) => {
       server = app.listen(PORT, () => resolve())
       client = TypedClient<MarketdataClient>(`http://localhost:${PORT}`)

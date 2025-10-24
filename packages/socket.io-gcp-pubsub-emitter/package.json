@@ -17,11 +17,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@socket.io/gcp-pubsub-adapter": "^0.1.0",
-    "@testcontainers/gcloud": "^11.7.1",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1",
-    "testcontainers": "^11.7.1",
+    "@socket.io/gcp-pubsub-adapter": "0.1.0",
+    "@testcontainers/gcloud": "11.7.2",
+    "find-free-ports": "3.1.1",
+    "socket.io": "4.8.1",
+    "socket.io-client": "4.8.1",
+    "testcontainers": "11.7.2",
     "tsconfig": "*"
   },
   "dependencies": {

@@ -2,6 +2,14 @@ import type { Dirent } from 'node:fs'
 import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import {
+  afterEach,
+  describe,
+  expect,
+  it,
+  type MockedFunction,
+  vi,
+} from 'vitest'
+import {
   createMigration,
   getMigration,
   getMigrationFiles,
@@ -11,27 +19,27 @@ import {
 import type { Config, Migration } from '../types'
 
 // Mock node:fs/promises methods
-jest.mock('node:fs/promises', () => ({
-  access: jest.fn(),
-  readdir: jest.fn(),
-  mkdir: jest.fn(),
-  readFile: jest.fn(),
-  writeFile: jest.fn(),
+vi.mock('node:fs/promises', () => ({
+  access: vi.fn(),
+  readdir: vi.fn(),
+  mkdir: vi.fn(),
+  readFile: vi.fn(),
+  writeFile: vi.fn(),
 }))
 
 // Declare mocks
-const accessMock = access as jest.MockedFunction<typeof access>
-const mkdirMock = mkdir as jest.MockedFunction<typeof mkdir>
-const readdirMock = readdir as jest.MockedFunction<typeof readdir>
-const readFileMock = readFile as jest.MockedFunction<typeof readFile>
-const writeFileMock = writeFile as jest.MockedFunction<typeof writeFile>
+const accessMock = access as MockedFunction<typeof access>
+const mkdirMock = mkdir as MockedFunction<typeof mkdir>
+const readdirMock = readdir as MockedFunction<typeof readdir>
+const readFileMock = readFile as MockedFunction<typeof readFile>
+const writeFileMock = writeFile as MockedFunction<typeof writeFile>
 
 describe('files', () => {
   const mockPath = './mock/migrations'
   const mockConfigPath = './mock/spanner-migrate.config.json'
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('getMigrationFiles', () => {
@@ -41,7 +49,7 @@ describe('files', () => {
         '20250102T123456_add_roles.sql',
       ]
       readdirMock.mockResolvedValue(
-        mockFiles as unknown as Dirent<Buffer<ArrayBufferLike>>[]
+        mockFiles as unknown as Dirent<Buffer<ArrayBuffer>>[]
       )
 
       const result = await getMigrationFiles(mockPath)

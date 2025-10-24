@@ -1,12 +1,4 @@
-import { Client } from '@opensearch-project/opensearch'
-import type {
-  Index_Response,
-  Indices_Exists_Response,
-} from '@opensearch-project/opensearch/api'
-import type {
-  TransportRequestOptions,
-  TransportRequestPromise,
-} from '@opensearch-project/opensearch/lib/Transport'
+import { type API, Client } from '@opensearch-project/opensearch'
 import type {
   BulkRequest,
   BulkResponse,
@@ -15,14 +7,18 @@ import type {
   SearchRequest,
   SearchResponse,
 } from './types'
-import type { Indices } from './types/common'
+import type {
+  Indices,
+  TransportRequestOptions,
+  TransportRequestPromise,
+} from './types/common'
 import type { IndicesExistsRequest } from './types/indx'
 
 type TypedIndices = Omit<Indices, 'exists'> & {
   exists<T extends IndexDefinition>(
     params: IndicesExistsRequest<T>,
     options?: TransportRequestOptions
-  ): TransportRequestPromise<Indices_Exists_Response>
+  ): TransportRequestPromise<API.Indices_Exists_Response>
 }
 
 /**
@@ -40,7 +36,7 @@ export interface OpenSearchClient
   index<T extends IndexDefinition>(
     params: IndexRequest<T>,
     options?: TransportRequestOptions
-  ): TransportRequestPromise<Index_Response>
+  ): TransportRequestPromise<API.Index_Response>
 
   bulk<T extends IndexDefinition>(
     params: BulkRequest<T>,

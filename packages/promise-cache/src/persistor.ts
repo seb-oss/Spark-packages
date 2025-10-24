@@ -1,12 +1,12 @@
 import type { UUID } from 'node:crypto'
 import { createClient, type RedisClientOptions } from 'redis'
 
-import type { Logger } from 'winston'
 import { createLocalMemoryClient } from './localMemory'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
 const fixESM = require('fix-esm')
 
+import { getLogger } from '@sebspark/otel'
 import type SuperJSON from 'superjson'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
@@ -32,7 +32,6 @@ export type PersistorConstructorType = {
   clientId?: UUID
   onError?: (error: string) => void
   onSuccess?: () => void
-  logger?: Logger
 }
 
 function toMillis(seconds: number) {
@@ -44,7 +43,7 @@ export class Persistor {
   private readonly clientId?: UUID
   private readonly onError
   private readonly onSuccess
-  private readonly logger: Logger | undefined
+  private readonly logger: ReturnType<typeof getLogger>
   private readonly redis?: RedisClientOptions
 
   constructor({
@@ -52,12 +51,15 @@ export class Persistor {
     clientId,
     onSuccess,
     onError,
-    logger,
   }: PersistorConstructorType) {
+    this.logger = getLogger('Persistor')
+    this.logger.warn(
+      'Persistor class is deprecated. Use InMemoryPersistor or redis: createClient instead'
+    )
+
     this.onError = onError || (() => {})
     this.onSuccess = onSuccess || (() => {})
     this.clientId = clientId
-    this.logger = logger
     if (redis && !isTestRunning) {
       this.redis = redis
     } else {
@@ -81,7 +83,7 @@ export class Persistor {
           socket: {
             ...this.redis?.socket,
             reconnectStrategy: (retries, cause) => {
-              this.logger?.error(cause)
+              this.logger.error(cause)
               return 1000 * 2 ** retries
             },
           },
@@ -95,17 +97,17 @@ export class Persistor {
             resolve(true)
           })
           .on('reconnecting', () => {
-            this.logger?.info('reconnecting...', this.clientId)
+            this.logger.info(`reconnecting... ${this.clientId}`)
           })
           .on('end', () => {
-            this.logger?.info('end...', this.clientId)
+            this.logger.info(`end... ${this.clientId}`)
           })
 
         this.client.connect()
       })
-    } catch (ex) {
-      this.onError(`${ex}`)
-      this.logger?.error(ex)
+    } catch (err) {
+      this.onError(`${err}`)
+      this.logger.error(err as Error)
     }
   }
 
@@ -143,7 +145,7 @@ export class Persistor {
     { value, timestamp = Date.now(), ttl }: SetParams<T>
   ): Promise<void> {
     if (!this.client || !this.client.isReady) {
-      this.logger?.error('Client not ready')
+      this.logger.error('Client not ready')
       return
     }
     try {
@@ -155,7 +157,7 @@ export class Persistor {
       const options = this.createOptions(ttl)
       await this.client.set(key, serializedData, options)
     } catch (error) {
-      this.logger?.error(`Error setting data in redis: ${error}`)
+      this.logger.error('Error setting data in redis', error as Error)
       throw new Error(`Error setting data in redis: ${error}`)
     }
   }
@@ -167,7 +169,7 @@ export class Persistor {
    */
   public async get<T>(key: string): Promise<GetType<T> | null> {
     if (!this.client) {
-      this.logger?.error('Client not ready')
+      this.logger.error('Client not ready')
       return null
     }
     try {
@@ -178,7 +180,7 @@ export class Persistor {
 
       return superjson.parse(data) as GetType<T>
     } catch (error) {
-      this.logger?.error(`Error getting data in redis: ${error}`)
+      this.logger.error(`Error getting data in redis: ${error}`)
       throw new Error(`Error getting data from redis: ${error}`)
     }
   }
@@ -189,13 +191,13 @@ export class Persistor {
    */
   public async delete(key: string): Promise<void> {
     if (!this.client || !this.client.isReady) {
-      this.logger?.error('Client not ready')
+      this.logger.error('Client not ready')
       return
     }
     try {
       await this.client.del(key)
     } catch (error) {
-      this.logger?.error(`Error deleting data from redis: ${error}`)
+      this.logger.error(`Error deleting data from redis: ${error}`)
       throw new Error(`Error deleting data from redis: ${error}`)
     }
   }

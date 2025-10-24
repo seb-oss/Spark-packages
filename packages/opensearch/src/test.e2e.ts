@@ -105,7 +105,7 @@ describe('OpenSearchClient', () => {
     const response = await opensearchClient.index<PersonIndex>({
       index: 'person',
       body: doc,
-      refresh: 'wait_for', // ✅ Ensures the document is searchable immediately
+      refresh: true, // ✅ Ensures the document is searchable immediately
     })
 
     expect(response.statusCode).toEqual(201)

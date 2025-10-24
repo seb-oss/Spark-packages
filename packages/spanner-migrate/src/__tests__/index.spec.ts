@@ -1,16 +1,27 @@
+import { afterEach, describe, expect, it, type Mocked, vi } from 'vitest'
 import * as apply from '../apply'
 import * as db from '../db'
 import * as files from '../files'
 import { create, down, init, status, up } from '../index'
 import type { Config } from '../types'
 
-jest.mock('../db')
-jest.mock('../files')
-jest.mock('../apply')
+vi.mock('../db')
+vi.mock('../files')
+vi.mock('../apply')
 
-const mockDb = db as jest.Mocked<typeof db>
-const mockFiles = files as jest.Mocked<typeof files>
-const mockApply = apply as jest.Mocked<typeof apply>
+vi.mock('@google-cloud/spanner', () => {
+  const db = {}
+  const database = vi.fn().mockReturnValue(db)
+  const instance = vi.fn().mockReturnValue({ database })
+  class Spanner {
+    instance = instance
+  }
+  return { Spanner }
+})
+
+const mockDb = db as Mocked<typeof db>
+const mockFiles = files as Mocked<typeof files>
+const mockApply = apply as Mocked<typeof apply>
 
 describe('index', () => {
   const mockConfig: Config = {
@@ -27,7 +38,7 @@ describe('index', () => {
   }
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('init', () => {

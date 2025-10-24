@@ -1,4 +1,4 @@
-import type { Common } from '@opensearch-project/opensearch/api/_types'
+import type { Types } from '@opensearch-project/opensearch'
 import type {
   BulkRequest,
   CreateOperation,
@@ -12,7 +12,7 @@ import type { DocumentFor } from './types/documents'
 
 export type IdFunction<T extends IndexDefinition> = (
   doc: DocumentFor<T>
-) => Common.Id
+) => Types.Common.Id
 
 /**
  * Constructs a bulk request payload for indexing documents.
@@ -103,7 +103,7 @@ export function bulkUpdate<T extends IndexDefinition>(
  */
 export function bulkDelete<T extends IndexDefinition>(
   index: T['index'],
-  ids: Common.Id[]
+  ids: Types.Common.Id[]
 ): BulkRequest<T> {
   const body = ids.map((_id) => {
     const op: DeleteOperation<T> = { _id }

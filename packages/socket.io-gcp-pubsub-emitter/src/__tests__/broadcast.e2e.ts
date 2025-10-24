@@ -1,9 +1,9 @@
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
-import { decode } from '@msgpack/msgpack'
 import {
   PubSubEmulatorContainer,
   type StartedPubSubEmulatorContainer,
 } from '@testcontainers/gcloud'
+import { findFreePorts } from 'find-free-ports'
 import type { Server } from 'socket.io'
 import type { Socket } from 'socket.io-client'
 import {
@@ -31,8 +31,10 @@ let topic: Topic
 let logger: Subscription
 let servers: Server[]
 let emitter: Emitter
+let clients: (typeof Socket)[]
+let listeners: Mock[]
 
-beforeAll(async () => {
+beforeEach(async () => {
   emulator = await new PubSubEmulatorContainer(IMAGE_GCLOUD).withReuse().start()
   process.env.PUBSUB_EMULATOR_HOST = emulator.getEmulatorEndpoint()
 
@@ -58,30 +60,22 @@ beforeAll(async () => {
     msg.ack()
   })*/
 
+  const ports = await findFreePorts(4)
+
   servers = await Promise.all([
-    startServer(3000, topic),
-    startServer(3001, topic),
-    startServer(3002, topic),
-    startServer(3003, topic),
+    startServer(ports[0], topic),
+    startServer(ports[1], topic),
+    startServer(ports[2], topic),
+    startServer(ports[3], topic),
   ])
 
   emitter = new Emitter(topic)
-}, 60_000)
-afterAll(async () => {
-  await Promise.all(servers.map((s) => s.close()))
-  servers = []
-  await emulator.stop()
-})
 
-let clients: (typeof Socket)[]
-let listeners: Mock[]
-
-beforeEach(async () => {
   clients = await Promise.all([
-    connectClient(3000, 'r1', 'r2'),
-    connectClient(3001, 'r2'),
-    connectClient(3002, 'r2', 'r3'),
-    connectClient(3003, 'r3'),
+    connectClient(ports[0], 'r1', 'r2'),
+    connectClient(ports[1], 'r2'),
+    connectClient(ports[2], 'r2', 'r3'),
+    connectClient(ports[3], 'r3'),
   ])
   listeners = [vi.fn(), vi.fn(), vi.fn(), vi.fn()]
 
@@ -90,11 +84,15 @@ beforeEach(async () => {
   }
 
   await wait(100)
-})
+}, 60_000)
 afterEach(async () => {
   for (const client of clients) {
     client.close()
   }
+
+  await Promise.all(servers.map((s) => s.close()))
+  servers = []
+  await emulator.stop()
 })
 
 describe('emitter', () => {

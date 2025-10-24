@@ -81,6 +81,10 @@ export const createPublisher = <T extends Record<string, unknown>>(
   clientOptions?: ClientConfig | undefined,
   publishOptions?: PublishOptions | undefined
 ): PublisherClient<T> => {
+  console.warn(
+    'This library is deprecated. Use vanilla @google-cloud/pubsub instead!'
+  )
+
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
   let _topic: Topic
   let _type: Type

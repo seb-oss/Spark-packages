@@ -1,9 +1,9 @@
-import type { Common_QueryDsl } from '@opensearch-project/opensearch/api/_types'
+import type { Types } from '@opensearch-project/opensearch'
 import type { BuiltinKeys, FieldValue, MapOpenSearchTypes } from './common'
 import type { NestedLeafPaths, NestedPaths } from './utilityTypes'
 
 export type BoolQuery<T> = Omit<
-  Common_QueryDsl.BoolQuery,
+  Types.Common_QueryDsl.BoolQuery,
   'must' | 'should' | 'filter' | 'must_not'
 > & {
   must?: QueryContainer<T>[]
@@ -13,7 +13,7 @@ export type BoolQuery<T> = Omit<
 }
 
 export type BoostingQuery<T> = Omit<
-  Common_QueryDsl.BoostingQuery,
+  Types.Common_QueryDsl.BoostingQuery,
   'positive' | 'negative'
 > & {
   positive: QueryContainer<T>
@@ -21,48 +21,48 @@ export type BoostingQuery<T> = Omit<
 }
 
 export type CombinedFieldsQuery<T> = Omit<
-  Common_QueryDsl.CombinedFieldsQuery,
+  Types.Common_QueryDsl.CombinedFieldsQuery,
   'fields'
 > & {
   fields: NestedPaths<T>[]
 }
 
-export type CommonTermsQuery = Common_QueryDsl.CommonTermsQuery
+export type CommonTermsQuery = Types.Common_QueryDsl.CommonTermsQuery
 
 export type ConstantScoreQuery<T> = Omit<
-  Common_QueryDsl.ConstantScoreQuery,
+  Types.Common_QueryDsl.ConstantScoreQuery,
   'filter'
 > & {
   filter: QueryContainer<T>
 }
 
-export type DateDecayFunction = Common_QueryDsl.DateDecayFunction
+export type DecayFunction = Types.Common_QueryDsl.DecayFunction
 
-export type DateDistanceFeatureQuery = Common_QueryDsl.DateDistanceFeatureQuery
+export type DecayFunctionBase = Types.Common_QueryDsl.DecayFunctionBase
 
-export type DateRangeQuery = Common_QueryDsl.DateRangeQuery
-
-export type DecayFunction = Common_QueryDsl.DecayFunction
-
-export type DecayFunctionBase = Common_QueryDsl.DecayFunctionBase
-
-export type DisMaxQuery<T> = Omit<Common_QueryDsl.DisMaxQuery, 'queries'> & {
+export type DisMaxQuery<T> = Omit<
+  Types.Common_QueryDsl.DisMaxQuery,
+  'queries'
+> & {
   queries: QueryContainer<T>[]
 }
 
 export type DistanceFeatureQuery<T> = Omit<
-  Common_QueryDsl.DistanceFeatureQuery,
+  Types.Common_QueryDsl.DistanceFeatureQuery,
   'field'
 > & {
   field: NestedPaths<T>
 }
 
-export type ExistsQuery<T> = Omit<Common_QueryDsl.ExistsQuery, 'field'> & {
+export type ExistsQuery<T> = Omit<
+  Types.Common_QueryDsl.ExistsQuery,
+  'field'
+> & {
   field: NestedPaths<T>
 }
 
 export type FieldAndFormat<T> = Omit<
-  Common_QueryDsl.FieldAndFormat,
+  Types.Common_QueryDsl.FieldAndFormat,
   'field'
 > & {
   field: NestedPaths<T>
@@ -73,90 +73,92 @@ export type FieldQuery<T, K> = Partial<
 >
 
 export type FieldValueFactorScoreFunction<T> = Omit<
-  Common_QueryDsl.FieldValueFactorScoreFunction,
+  Types.Common_QueryDsl.FieldValueFactorScoreFunction,
   'field'
 > & {
   field: NestedPaths<T>
 }
 
-export type FunctionBoostMode = Common_QueryDsl.FunctionBoostMode
+export type FunctionBoostMode = Types.Common_QueryDsl.FunctionBoostMode
 
 export type FunctionScoreQuery<T> = Omit<
-  Common_QueryDsl.FunctionScoreQuery,
+  Types.Common_QueryDsl.FunctionScoreQuery,
   'query'
 > & {
   query?: QueryContainer<T> | undefined
 }
 
-export type FuzzyQuery = Common_QueryDsl.FuzzyQuery
+export type FuzzyQuery = Types.Common_QueryDsl.FuzzyQuery
 
-export type GeoBoundingBoxQuery = Common_QueryDsl.GeoBoundingBoxQuery
+export type GeoBoundingBoxQuery = Types.Common_QueryDsl.GeoBoundingBoxQuery
 
-export type GeoDecayFunction = Common_QueryDsl.GeoDecayFunction
+export type GeoDistanceQuery = Types.Common_QueryDsl.GeoDistanceQuery
 
-export type GeoDistanceFeatureQuery = Common_QueryDsl.GeoDistanceFeatureQuery
-
-export type GeoDistanceQuery = Common_QueryDsl.GeoDistanceQuery
-
-export type GeoExecution = Common_QueryDsl.GeoExecution
+export type GeoExecution = Types.Common_QueryDsl.GeoExecution
 
 export type GeoPolygonQuery<T> = Omit<
-  Common_QueryDsl.GeoPolygonQuery,
+  Types.Common_QueryDsl.GeoPolygonQuery,
   'field'
 > & {
   field: NestedPaths<T>
 }
 
 export type GeoShapeQuery<T> = Omit<
-  Common_QueryDsl.GeoShapeQuery,
+  Types.Common_QueryDsl.GeoShapeQuery,
   'ignore_unmapped' | 'field'
 > & {
   field: NestedPaths<T>
 }
 
-export type GeoValidationMethod = Common_QueryDsl.GeoValidationMethod
+export type GeoValidationMethod = Types.Common_QueryDsl.GeoValidationMethod
 
-export type HasChildQuery<T> = Omit<Common_QueryDsl.HasChildQuery, 'query'> & {
-  query: QueryContainer<T>
-}
-
-export type HasParentQuery<T> = Omit<
-  Common_QueryDsl.HasParentQuery,
+export type HasChildQuery<T> = Omit<
+  Types.Common_QueryDsl.HasChildQuery,
   'query'
 > & {
   query: QueryContainer<T>
 }
 
-export type HybridQuery<T> = Omit<Common_QueryDsl.HybridQuery, 'queries'> & {
+export type HasParentQuery<T> = Omit<
+  Types.Common_QueryDsl.HasParentQuery,
+  'query'
+> & {
+  query: QueryContainer<T>
+}
+
+export type HybridQuery<T> = Omit<
+  Types.Common_QueryDsl.HybridQuery,
+  'queries'
+> & {
   queries?: QueryContainer<T>[]
 }
 
-export type IdsQuery = Common_QueryDsl.IdsQuery
+export type IdsQuery = Types.Common_QueryDsl.IdsQuery
 
-export type IntervalsQuery = Common_QueryDsl.IntervalsQuery
+export type IntervalsQuery = Types.Common_QueryDsl.IntervalsQuery
 
-export type KnnQuery<T> = Omit<Common_QueryDsl.KnnQuery, 'filter'> & {
+export type KnnQuery<T> = Omit<Types.Common_QueryDsl.KnnQuery, 'filter'> & {
   filter?: QueryContainer<T>[]
 }
 
-export type Like = Common_QueryDsl.Like
+export type Like = Types.Common_QueryDsl.Like
 
-export type LikeDocument = Common_QueryDsl.LikeDocument
+export type LikeDocument = Types.Common_QueryDsl.LikeDocument
 
-export type MatchAllQuery = Common_QueryDsl.MatchAllQuery
+export type MatchAllQuery = Types.Common_QueryDsl.MatchAllQuery
 
 export type MatchBoolPrefixQuery<T> = Omit<
-  Common_QueryDsl.MatchBoolPrefixQuery,
+  Types.Common_QueryDsl.MatchBoolPrefixQuery,
   'query' | 'fields'
 > & {
   fields: NestedPaths<T>[]
   query: string
 }
 
-export type MatchNoneQuery = Common_QueryDsl.MatchNoneQuery
+export type MatchNoneQuery = Types.Common_QueryDsl.MatchNoneQuery
 
 export type MatchPhrasePrefixQuery<T> = Omit<
-  Common_QueryDsl.MatchPhrasePrefixQuery,
+  Types.Common_QueryDsl.MatchPhrasePrefixQuery,
   'query' | 'field'
 > & {
   field: NestedPaths<T>
@@ -164,61 +166,64 @@ export type MatchPhrasePrefixQuery<T> = Omit<
 }
 
 export type MatchPhraseQuery<T> = Omit<
-  Common_QueryDsl.MatchPhraseQuery,
+  Types.Common_QueryDsl.MatchPhraseQuery,
   'query' | 'field'
 > & {
   field: NestedPaths<T>
   query: string
 }
 
-export type MatchQuery = FieldValue | Common_QueryDsl.MatchQuery
+export type MatchQuery = FieldValue | Types.Common_QueryDsl.MatchQuery
 
 export type MoreLikeThisQuery<T> = Omit<
-  Common_QueryDsl.MoreLikeThisQuery,
+  Types.Common_QueryDsl.MoreLikeThisQuery,
   'fields'
 > & {
   fields?: NestedPaths<T>[]
 }
 
 export type MultiMatchQuery<T> = Omit<
-  Common_QueryDsl.MultiMatchQuery,
+  Types.Common_QueryDsl.MultiMatchQuery,
   'fields'
 > & {
   fields?: NestedPaths<T>[]
 }
 
 export type NestedQuery<T> = Omit<
-  Common_QueryDsl.NestedQuery,
+  Types.Common_QueryDsl.NestedQuery,
   'query' | 'path'
 > & {
   path: NestedPaths<T>
   query: QueryContainer<T>
 }
 
-export type NeuralQuery<T> = Omit<Common_QueryDsl.NeuralQuery, 'filter'> & {
+export type NeuralQuery<T> = Omit<
+  Types.Common_QueryDsl.NeuralQuery,
+  'filter'
+> & {
   filter?: QueryContainer<T>
 }
 
-export type NumberRangeQuery<T> = Omit<
-  Common_QueryDsl.NumberRangeQuery,
+export type NumberRangeQueryParameters<T> = Omit<
+  Types.Common_QueryDsl.NumberRangeQueryParameters,
   'field'
 > & {
   field: NestedPaths<T>
 }
 
-export type ParentIdQuery = Common_QueryDsl.ParentIdQuery
+export type ParentIdQuery = Types.Common_QueryDsl.ParentIdQuery
 
 export type PercolateQuery<T> = Omit<
-  Common_QueryDsl.PercolateQuery,
+  Types.Common_QueryDsl.PercolateQuery,
   'field'
 > & {
   field: NestedPaths<T>
 }
 
-export type PinnedQuery = Common_QueryDsl.PinnedQuery
+export type PinnedQuery = Types.Common_QueryDsl.PinnedQuery
 
 export type PrefixQuery<T> = Omit<
-  Common_QueryDsl.PrefixQuery,
+  Types.Common_QueryDsl.PrefixQuery,
   'value' | 'field'
 > & {
   field: NestedPaths<T>
@@ -226,7 +231,7 @@ export type PrefixQuery<T> = Omit<
 }
 
 export type QueryContainer<T> = Omit<
-  Common_QueryDsl.QueryContainer,
+  Types.Common_QueryDsl.QueryContainer,
   | 'bool'
   | 'boosting'
   | 'combined_fields'
@@ -287,13 +292,13 @@ export type QueryContainer<T> = Omit<
   bool?: BoolQuery<T>
   boosting?: BoostingQuery<T>
   combined_fields?: CombinedFieldsQuery<T>
-  common?: FieldQuery<T, Common_QueryDsl.CommonTermsQuery>
+  common?: FieldQuery<T, Types.Common_QueryDsl.CommonTermsQuery>
   constant_score?: ConstantScoreQuery<T>
   dis_max?: DisMaxQuery<T>
   distance_feature?: DistanceFeatureQuery<T>
   exists?: ExistsQuery<T>
   function_score?: FunctionScoreQuery<T>
-  fuzzy?: FieldQuery<T, Common_QueryDsl.FuzzyQuery>
+  fuzzy?: FieldQuery<T, Types.Common_QueryDsl.FuzzyQuery>
   geo_bounding_box?: GeoBoundingBoxQuery
   geo_distance?: GeoDistanceQuery
   geo_polygon?: GeoPolygonQuery<T>
@@ -342,40 +347,40 @@ export type QueryContainer<T> = Omit<
   xy_shape?: XyShapeQuery<T>
 }
 
-export type QueryStringQuery = Common_QueryDsl.QueryStringQuery
+export type QueryStringQuery = Types.Common_QueryDsl.QueryStringQuery
 
-export type RangeQuery<T> = Omit<Common_QueryDsl.RangeQuery, 'field'> & {
+export type RangeQuery<T> = Omit<Types.Common_QueryDsl.RangeQuery, 'field'> & {
   field: NestedPaths<T>
 }
 
-export type RankFeatureQuery = Common_QueryDsl.RankFeatureQuery
+export type RankFeatureQuery = Types.Common_QueryDsl.RankFeatureQuery
 
 export type RegexpQuery<T> = Omit<
-  Common_QueryDsl.RegexpQuery,
+  Types.Common_QueryDsl.RegexpQuery,
   'value' | 'field'
 > & {
   field: NestedPaths<T>
   value: MapOpenSearchTypes<T>
 }
 
-export type ScriptQuery = Common_QueryDsl.ScriptQuery
+export type ScriptQuery = Types.Common_QueryDsl.ScriptQuery
 
 export type ScriptScoreQuery<T> = Omit<
-  Common_QueryDsl.ScriptScoreQuery,
+  Types.Common_QueryDsl.ScriptScoreQuery,
   'query'
 > & {
   query?: QueryContainer<T>
 }
 
 export type SimpleQueryStringQuery<T> = Omit<
-  Common_QueryDsl.SimpleQueryStringQuery,
+  Types.Common_QueryDsl.SimpleQueryStringQuery,
   'fields'
 > & {
   fields: NestedLeafPaths<T>[]
 }
 
 export type SpanQuery<T> = Omit<
-  Common_QueryDsl.SpanQuery,
+  Types.Common_QueryDsl.SpanQuery,
   | 'field_masking_span'
   | 'span_containing'
   | 'span_first'
@@ -398,7 +403,7 @@ export type SpanQuery<T> = Omit<
 }
 
 export type SpanContainingQuery<T> = Omit<
-  Common_QueryDsl.SpanContainingQuery,
+  Types.Common_QueryDsl.SpanContainingQuery,
   'big' | 'little'
 > & {
   big: SpanQuery<T>
@@ -406,7 +411,7 @@ export type SpanContainingQuery<T> = Omit<
 }
 
 export type SpanFieldMaskingQuery<T> = Omit<
-  Common_QueryDsl.SpanFieldMaskingQuery,
+  Types.Common_QueryDsl.SpanFieldMaskingQuery,
   'field' | 'query'
 > & {
   field: NestedPaths<T>
@@ -414,40 +419,43 @@ export type SpanFieldMaskingQuery<T> = Omit<
 }
 
 export type SpanFirstQuery<T> = Omit<
-  Common_QueryDsl.SpanFirstQuery,
+  Types.Common_QueryDsl.SpanFirstQuery,
   'match'
 > & {
   match: SpanQuery<T>
 }
 
 export type SpanMultiTermQuery<T> = Omit<
-  Common_QueryDsl.SpanMultiTermQuery,
+  Types.Common_QueryDsl.SpanMultiTermQuery,
   'match'
 > & {
   match: QueryContainer<T>
 }
 
 export type SpanNearQuery<T> = Omit<
-  Common_QueryDsl.SpanNearQuery,
+  Types.Common_QueryDsl.SpanNearQuery,
   'clauses'
 > & {
   clauses: SpanQuery<T>[]
 }
 
 export type SpanNotQuery<T> = Omit<
-  Common_QueryDsl.SpanNotQuery,
+  Types.Common_QueryDsl.SpanNotQuery,
   'include' | 'exclude'
 > & {
   include: SpanQuery<T>
   exclude: SpanQuery<T>
 }
 
-export type SpanOrQuery<T> = Omit<Common_QueryDsl.SpanOrQuery, 'clauses'> & {
+export type SpanOrQuery<T> = Omit<
+  Types.Common_QueryDsl.SpanOrQuery,
+  'clauses'
+> & {
   clauses: SpanQuery<T>[]
 }
 
 export type SpanTermQuery<T> = Omit<
-  Common_QueryDsl.SpanTermQuery,
+  Types.Common_QueryDsl.SpanTermQuery,
   'value' | 'field'
 > & {
   field: NestedPaths<T>
@@ -455,7 +463,7 @@ export type SpanTermQuery<T> = Omit<
 }
 
 export type SpanWithinQuery<T> = Omit<
-  Common_QueryDsl.SpanWithinQuery,
+  Types.Common_QueryDsl.SpanWithinQuery,
   'big' | 'little'
 > & {
   big: SpanQuery<T>
@@ -463,7 +471,7 @@ export type SpanWithinQuery<T> = Omit<
 }
 
 export type TermQuery<T> = Omit<
-  Common_QueryDsl.TermQuery,
+  Types.Common_QueryDsl.TermQuery,
   'value' | 'field'
 > & {
   field: NestedPaths<T>
@@ -471,7 +479,7 @@ export type TermQuery<T> = Omit<
 }
 
 export type TermsQuery<T> = Omit<
-  Common_QueryDsl.TermsQuery,
+  Types.Common_QueryDsl.TermsQuery,
   'terms' | 'field'
 > & {
   field: NestedPaths<T>
@@ -479,25 +487,28 @@ export type TermsQuery<T> = Omit<
 }
 
 export type TermsSetQuery<T> = Omit<
-  Common_QueryDsl.TermsSetQuery,
+  Types.Common_QueryDsl.TermsSetQuery,
   'terms' | 'field'
 > & {
   field: NestedPaths<T>
   terms: FieldValue[]
 }
 
-export type TypeQuery = Common_QueryDsl.TypeQuery
+export type TypeQuery = Types.Common_QueryDsl.TypeQuery
 
 export type WildcardQuery<T> = Omit<
-  Common_QueryDsl.WildcardQuery,
+  Types.Common_QueryDsl.WildcardQuery,
   'value' | 'field'
 > & {
   field: NestedPaths<T>
   value: MapOpenSearchTypes<T>
 }
 
-export type WrapperQuery = Common_QueryDsl.WrapperQuery
+export type WrapperQuery = Types.Common_QueryDsl.WrapperQuery
 
-export type XyShapeQuery<T> = Omit<Common_QueryDsl.XyShapeQuery, 'field'> & {
+export type XyShapeQuery<T> = Omit<
+  Types.Common_QueryDsl.XyShapeQuery,
+  'field'
+> & {
   field: NestedPaths<T>
 }

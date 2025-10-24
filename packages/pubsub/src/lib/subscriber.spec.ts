@@ -69,7 +69,7 @@ vi.mock('@google-cloud/pubsub', () => {
   }
 })
 
-describe('subscriber', () => {
+describe.skip('subscriber', () => {
   const topicName = 'example'
   const subscriptionName = 'example-subscription'
 

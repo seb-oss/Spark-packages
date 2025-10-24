@@ -17,8 +17,9 @@
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
-    "@types/express": "5.0.3",
+    "@types/express": "5.0.4",
+    "find-free-ports": "3.1.1",
     "tsconfig": "*",
-    "vitest": "3.2.4"
+    "vitest": "4.0.3"
   }
 }

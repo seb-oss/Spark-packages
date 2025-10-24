@@ -9,13 +9,14 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSources": false,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES2022"
+    "target": "ES2023"
   },
   "exclude": ["dist", "build", "node_modules", "**/*.spec.ts"]
 }

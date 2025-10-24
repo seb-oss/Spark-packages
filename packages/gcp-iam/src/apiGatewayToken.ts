@@ -1,20 +1,20 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
+import { getLogger } from '@sebspark/otel'
 import { GoogleAuth } from 'google-auth-library'
-import type { Logger } from 'winston'
 import { LruCache } from './lruCache'
 
 const expInSeconds = 60 * 60
 // TODO: Make ttl changeable from getApiGatewayToken function
 const apiGatewayJwtCache = new LruCache<Promise<string>>()
 
+const logger = getLogger('gcp-iam')
+
 const generateTokenByUrl = async ({
   apiURL,
   key,
-  logger,
 }: {
   apiURL: string
   key?: string
-  logger?: Logger
 }) => {
   try {
     const iamClient = new IAMCredentialsClient()
@@ -27,7 +27,7 @@ const generateTokenByUrl = async ({
     }
 
     // Remove when verified
-    logger?.info(`Service account e-mail being used: ${serviceAccountEmail}`)
+    logger.info(`Service account e-mail being used: ${serviceAccountEmail}`)
 
     /**
      * JWT Header.
@@ -74,7 +74,7 @@ const generateTokenByUrl = async ({
     }
 
     // Debug.
-    logger?.debug(
+    logger.debug(
       `New JWT for ${key || apiURL} created. Signed with ${response.keyId}.`
     )
 
@@ -87,11 +87,11 @@ const generateTokenByUrl = async ({
     return signedJWT
   } catch (error) {
     if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
-      logger?.info('Soft fail enabled, returning empty JWT')
+      logger.info('Soft fail enabled, returning empty JWT')
       return ''
     }
 
-    logger?.error('Error generating system JWT', error)
+    logger.error('Error generating system JWT', error as Error)
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
@@ -108,16 +108,13 @@ const generateTokenByUrl = async ({
 export const getApiGatewayTokenByUrl = async ({
   apiURL,
   key,
-  logger,
 }: {
   apiURL: string
   key?: string
-  logger?: Logger
 }): Promise<string> => {
   return checkCache({
     cacheKey: key || apiURL,
-    generate: () => generateTokenByUrl({ apiURL, key, logger }),
-    logger,
+    generate: () => generateTokenByUrl({ apiURL, key }),
   })
 }
 
@@ -132,11 +129,9 @@ export const clearCache = async (key: string) => {
 const checkCache = ({
   cacheKey,
   generate,
-  logger,
 }: {
   cacheKey: string
   generate: () => Promise<string>
-  logger?: Logger
 }) => {
   /**
    * Check if there is a cached JWT
@@ -144,7 +139,7 @@ const checkCache = ({
 
   const cachedJwt = apiGatewayJwtCache.get(cacheKey)
   if (cachedJwt) {
-    logger?.debug(`JWT for ${cacheKey} found in cache.`)
+    logger.debug(`JWT for ${cacheKey} found in cache.`)
     return cachedJwt
   }
 
@@ -156,7 +151,7 @@ const checkCache = ({
   return jwtPromise
 }
 
-const generateTokenByClientId = async (clientId: string, logger?: Logger) => {
+const generateTokenByClientId = async (clientId: string) => {
   try {
     const auth = new GoogleAuth({
       scopes: 'https://www.googleapis.com/auth/cloud-platform',
@@ -166,12 +161,11 @@ const generateTokenByClientId = async (clientId: string, logger?: Logger) => {
     return await client.idTokenProvider.fetchIdToken(clientId)
   } catch (error) {
     if (process.env.GCP_IAM_SOFT_FAIL === 'true') {
-      logger?.info('Soft fail enabled, returning empty JWT.')
+      logger.info('Soft fail enabled, returning empty JWT.')
       return ''
     }
 
-    logger?.error('Error generating system JWT', error)
-    logger?.error(JSON.stringify(error, null, 2))
+    logger.error('Error generating system JWT', error as Error)
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
@@ -183,12 +177,10 @@ const generateTokenByClientId = async (clientId: string, logger?: Logger) => {
  * @returns ID Token.
  */
 export const getApiGatewayTokenByClientId = async (
-  clientId: string,
-  logger?: Logger
+  clientId: string
 ): Promise<string> => {
   return checkCache({
     cacheKey: clientId,
     generate: () => generateTokenByClientId(clientId),
-    logger,
   })
 }

@@ -69,6 +69,10 @@ export type PubSubOptions = {
 export const createSubscriber = <T extends Record<string, unknown>>(
   clientOptions?: ClientConfig | undefined
 ): SubscriptionClient<T> => {
+  console.warn(
+    'This library is deprecated. Use vanilla @google-cloud/pubsub instead!'
+  )
+
   const client = clientOptions ? new PubSub(clientOptions) : new PubSub()
   let _type: Type
 

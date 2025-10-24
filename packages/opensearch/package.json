@@ -17,10 +17,10 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "testcontainers": "11.7.1",
+    "testcontainers": "11.7.2",
     "tsconfig": "*"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "3.2.0"
+    "@opensearch-project/opensearch": "3.5.1"
   }
 }

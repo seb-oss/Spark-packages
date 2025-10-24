@@ -3,19 +3,26 @@ import { beforeAll, describe, expect, it, type Mock, vi } from 'vitest'
 import type { Logger } from 'winston'
 import { getApiGatewayTokenByUrl } from './apiGatewayToken'
 
-vi.mock('@google-cloud/iam-credentials', () => ({
-  IAMCredentialsClient: vi.fn().mockReturnValue({
-    signBlob: vi.fn().mockResolvedValue(['test-signed-jwt']),
-  }),
-}))
+vi.mock('@google-cloud/iam-credentials', () => {
+  const signBlob = vi.fn().mockResolvedValue(['test-signed-jwt'])
 
-vi.mock('google-auth-library', () => ({
-  GoogleAuth: vi.fn().mockReturnValue({
-    getCredentials: vi
-      .fn()
-      .mockResolvedValue({ client_email: 'some@place.eu' }),
-  }),
-}))
+  class IAMCredentialsClient {
+    signBlob = signBlob
+  }
+
+  return { IAMCredentialsClient }
+})
+
+vi.mock('google-auth-library', () => {
+  const getCredentials = vi
+    .fn()
+    .mockResolvedValue({ client_email: 'some@place.eu' })
+  class GoogleAuth {
+    getCredentials = getCredentials
+  }
+
+  return { GoogleAuth }
+})
 
 describe('Google IAM', () => {
   describe('getApiGatewayTokenByUrl', () => {
@@ -70,20 +77,12 @@ describe('Google IAM', () => {
 
     it('should log errors if passed a logger', async () => {
       signBlobMock.mockRejectedValueOnce(new Error('test-error'))
-      const loggerMock = {
-        error: vi.fn(),
-      }
 
-      try {
-        await getApiGatewayTokenByUrl({
+      await expect(() =>
+        getApiGatewayTokenByUrl({
           apiURL: 'test-audience-error',
-          logger: loggerMock as unknown as Logger,
         })
-      } catch (error) {
-        expect(error).toBeInstanceOf(Error)
-      }
-
-      expect(loggerMock.error).toHaveBeenCalled()
+      ).rejects.toThrow()
     })
 
     it('should return an empty string if GCP_IAM_SOFT_FAIL is true', async () => {

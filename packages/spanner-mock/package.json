@@ -14,10 +14,11 @@
     "lint": "biome check ."
   },
   "devDependencies": {
+    "@jest/globals": "30.2.0",
     "tsconfig": "*"
   },
   "peerDependencies": {
-    "@jest/globals": "^29.7.0",
+    "@jest/globals": "30.2.0",
     "vitest": "^3.1.2"
   }
 }

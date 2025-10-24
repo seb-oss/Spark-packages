@@ -1,22 +1,44 @@
 import { type Database, type Instance, Spanner } from '@google-cloud/spanner'
 import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from 'vitest'
+import {
   ensureMigrationTable,
   getAppliedMigrations,
   SQL_CREATE_TABLE_MIGRATIONS,
   SQL_SELECT_TABLE_MIGRATIONS,
 } from '../db'
 
+vi.mock('@google-cloud/spanner', () => {
+  const db = {
+    run: vi.fn(async () => [[]]),
+    updateSchema: vi.fn(),
+  }
+  const database = vi.fn().mockReturnValue(db)
+  const instance = vi.fn().mockReturnValue({ database })
+  class Spanner {
+    instance = instance
+  }
+  return { Spanner }
+})
+
 describe('prepare', () => {
-  let spanner: jest.Mocked<Spanner>
-  let instance: jest.Mocked<Instance>
-  let database: jest.Mocked<Database>
+  let spanner: Mocked<Spanner>
+  let instance: Mocked<Instance>
+  let database: Mocked<Database>
   beforeEach(() => {
-    spanner = new Spanner() as jest.Mocked<Spanner>
-    instance = spanner.instance('my-instance') as jest.Mocked<Instance>
-    database = instance.database('my-database') as jest.Mocked<Database>
+    spanner = new Spanner() as Mocked<Spanner>
+    instance = spanner.instance('my-instance') as Mocked<Instance>
+    database = instance.database('my-database') as Mocked<Database>
   })
   afterEach(() => {
-    spanner.close()
+    vi.clearAllMocks()
   })
   describe('ensure ensureMigrationTable', () => {
     it('checks if table exists', async () => {

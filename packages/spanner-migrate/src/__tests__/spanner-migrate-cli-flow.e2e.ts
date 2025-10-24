@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { run } from '@sebspark/cli-tester'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import {
   createDatabase,
   createInstance,
@@ -40,7 +41,7 @@ const injectSql = async (createResult: string, up: string, down: string) => {
 }
 
 describe('Spanner Migrate CLI - entire flow', () => {
-  beforeAll(() => setup())
+  beforeAll(() => setup(), 60_000)
   afterAll(() => teardown())
 
   it('creates a config', async () => {
