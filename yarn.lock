@@ -3040,7 +3040,7 @@ __metadata:
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.1"
-    "@sebspark/otel": "npm:>=1.1.2"
+    "@sebspark/otel": "npm:*"
     google-auth-library: "npm:9.15.1"
     tsconfig: "npm:*"
   peerDependencies:
@@ -3120,6 +3120,7 @@ __metadata:
     "@sebspark/openapi-auth-iam": "npm:*"
     "@sebspark/openapi-core": "npm:*"
     "@sebspark/openapi-typegen": "npm:*"
+    "@sebspark/otel": "npm:*"
     "@sebspark/retry": "npm:*"
     axios: "npm:^1.12.2"
     axios-auth-refresh: "npm:3.3.6"
@@ -3166,6 +3167,7 @@ __metadata:
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@sebspark/openapi-core": "npm:*"
+    "@sebspark/otel": "npm:*"
     "@types/supertest": "npm:6.0.3"
     express: "npm:5.1.0"
     supertest: "npm:7.1.4"
@@ -3204,7 +3206,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@npm:>=1.1.2, @sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:*, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
@@ -3242,6 +3244,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
+    "@sebspark/otel": "npm:*"
     "@testcontainers/redis": "npm:11.7.2"
     date-fn: "npm:^0.0.2"
     fix-esm: "npm:1.0.1"

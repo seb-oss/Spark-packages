@@ -16,7 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/otel": ">=1.1.2",
+    "@sebspark/otel": "*",
     "tsconfig": "*"
   },
   "dependencies": {

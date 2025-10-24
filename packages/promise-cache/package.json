@@ -24,6 +24,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@sebspark/otel": "*",
     "@testcontainers/redis": "11.7.2",
     "testcontainers": "11.7.2",
     "tsconfig": "*"

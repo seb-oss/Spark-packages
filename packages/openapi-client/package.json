@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
+    "@sebspark/otel": "*",
     "nock": "14.0.10",
     "tsconfig": "*",
     "tsup-node": "^0.1.0",
