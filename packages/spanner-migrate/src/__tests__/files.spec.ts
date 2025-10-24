@@ -30,7 +30,7 @@ vi.mock('node:fs/promises', () => ({
 // Declare mocks
 const accessMock = access as MockedFunction<typeof access>
 const mkdirMock = mkdir as MockedFunction<typeof mkdir>
-const readdirMock = readdir as MockedFunction<typeof readdir>
+const readdirMock = readdir as unknown as MockedFunction<typeof readdir>
 const readFileMock = readFile as MockedFunction<typeof readFile>
 const writeFileMock = writeFile as MockedFunction<typeof writeFile>
 
