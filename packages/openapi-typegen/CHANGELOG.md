@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 4.0.0
+
+### Major Changes
+
+- 604c94a: All logging is done through @sepspark/otel
+
+### Patch Changes
+
+- Updated dependencies [604c94a]
+  - @sebspark/openapi-core@3.0.0
+
 ## 3.0.2
 
 ### Patch Changes

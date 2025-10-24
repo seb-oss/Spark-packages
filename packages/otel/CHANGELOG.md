@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.1.3
+
+### Patch Changes
+
+- 604c94a: Updated dependencies
+
 ## 1.1.2
 
 ### Patch Changes

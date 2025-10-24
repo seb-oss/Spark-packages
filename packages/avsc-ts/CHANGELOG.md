@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.8
+
+### Patch Changes
+
+- 604c94a: Updated dependencies
+
 ## 0.4.7
 
 ### Patch Changes
