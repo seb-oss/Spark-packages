@@ -1,5 +1,14 @@
 # @sebspark/openapi-express
 
+## 3.0.1
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+- Updated dependencies [3a40e49]
+  - @sebspark/openapi-core@3.0.1
+  - @sebspark/otel@1.1.4
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 0.2.2
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 0.2.1
 
 ### Patch Changes

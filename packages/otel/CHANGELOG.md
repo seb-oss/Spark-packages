@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 1.1.4
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 1.1.3
 
 ### Patch Changes

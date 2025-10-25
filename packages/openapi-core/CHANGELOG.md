@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 3.0.1
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+- Updated dependencies [3a40e49]
+  - @sebspark/retry@0.1.2
+
 ## 3.0.0
 
 ### Major Changes

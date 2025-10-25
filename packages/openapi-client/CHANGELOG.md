@@ -1,5 +1,16 @@
 # @sebspark/openapi-client
 
+## 3.0.1
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+- Updated dependencies [3a40e49]
+  - @sebspark/openapi-auth-iam@2.0.1
+  - @sebspark/openapi-core@3.0.1
+  - @sebspark/retry@0.1.2
+  - @sebspark/otel@1.1.4
+
 ## 3.0.0
 
 ### Major Changes

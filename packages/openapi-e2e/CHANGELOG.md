@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 3.0.1
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+- Updated dependencies [3a40e49]
+  - @sebspark/openapi-express@3.0.1
+  - @sebspark/openapi-client@3.0.1
+  - @sebspark/openapi-core@3.0.1
+
 ## 3.0.0
 
 ### Major Changes

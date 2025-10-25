@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.2.6
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 0.2.5
 
 ### Patch Changes
