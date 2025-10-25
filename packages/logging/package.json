@@ -17,18 +17,15 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "@types/destroy": "^1",
-    "@types/response-time": "2.3.9",
     "@types/socketio-wildcard": "2.0.7",
-    "@types/utils-merge": "^1",
-    "destroy": "^1.2.0",
-    "supertest": "7.1.4",
-    "utils-merge": "^1.0.1"
+    "qs": "6.14.0",
+    "supertest": "7.1.4"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.1",
     "express": "5.1.0",
-    "response-time": "2.3.4",
+    "express-serve-static-core": "0.1.1",
+    "logform": "2.7.0",
     "socket.io": "4.8.1",
     "socketio-wildcard": "2.0.0",
     "winston": "3.18.3",

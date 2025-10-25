@@ -16,15 +16,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@types/yargs": "17.0.34",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*",
+    "@types/yargs": "17.0.34"
   },
   "dependencies": {
     "@ovotech/avro-ts": "6.2.0",
     "@sebspark/avsc-isometric": "0.2.5",
     "boxen": "8.0.1",
     "chalk": "5.6.2",
-    "stream-browserify": "3.0.0",
     "yargs": "18.0.0"
   }
 }

@@ -2,16 +2,16 @@
   "name": "@sebspark/tracing",
   "version": "0.1.2",
   "license": "Apache-2.0",
+  "private": true,
   "devDependencies": {
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   },
   "dependencies": {
     "@google-cloud/opentelemetry-cloud-trace-exporter": "3.0.0",
-    "@google-cloud/trace-agent": "8.0.0",
     "@opentelemetry/api": "1.9.0",
     "@opentelemetry/core": "2.2.0",
     "@opentelemetry/exporter-trace-otlp-proto": "0.207.0",
-    "@opentelemetry/exporter-zipkin": "2.2.0",
+    "@opentelemetry/instrumentation": "0.207.0",
     "@opentelemetry/instrumentation-express": "0.56.0",
     "@opentelemetry/instrumentation-http": "0.207.0",
     "@opentelemetry/instrumentation-pg": "0.60.0",
@@ -19,6 +19,7 @@
     "@opentelemetry/instrumentation-undici": "0.18.0",
     "@opentelemetry/resources": "2.2.0",
     "@opentelemetry/sdk-trace-base": "2.2.0",
-    "@opentelemetry/sdk-trace-node": "2.2.0"
+    "@opentelemetry/sdk-trace-node": "2.2.0",
+    "@opentelemetry/semantic-conventions": "1.37.0"
   }
 }

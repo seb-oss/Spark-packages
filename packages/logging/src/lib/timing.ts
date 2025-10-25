@@ -1,5 +1,5 @@
 import { AsyncLocalStorage } from 'node:async_hooks'
-import type { NextFunction, Request, Response } from 'express'
+import type { NextFunction, Request, Response } from 'express-serve-static-core'
 
 export const asyncLocalStorage = new AsyncLocalStorage<{ startTime: number }>()
 

@@ -4,7 +4,7 @@ import type {
   Request,
   RequestHandler,
   Response,
-} from 'express'
+} from 'express-serve-static-core'
 import type { TransformableInfo } from 'logform'
 import type { Server, Socket } from 'socket.io'
 import wildcard from 'socketio-wildcard'
@@ -260,14 +260,14 @@ const makeRequestMiddleware =
   (logger: Logger, logFunc: LogFunc): RequestHandler =>
   async (req, res, next) => {
     logFunc(logger, req, res)
-    next()
+    next?.()
   }
 
 const makeRequestErrorMiddleware =
   (logger: Logger, logFunc: LogErrorFunc): ErrorRequestHandler =>
   (error, req, res, next) => {
     logFunc(logger, req, res, error)
-    next(error)
+    next?.(error)
   }
 
 const logHttp = (

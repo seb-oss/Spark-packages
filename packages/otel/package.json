@@ -18,6 +18,7 @@
   "dependencies": {
     "@opentelemetry/api": "1.9.0",
     "@opentelemetry/api-logs": "0.207.0",
+    "@opentelemetry/core": "2.2.0",
     "@opentelemetry/exporter-logs-otlp-http": "0.207.0",
     "@opentelemetry/exporter-metrics-otlp-http": "0.207.0",
     "@opentelemetry/exporter-trace-otlp-http": "0.207.0",
@@ -44,6 +45,6 @@
   },
   "devDependencies": {
     "@opentelemetry/context-async-hooks": "2.2.0",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   }
 }

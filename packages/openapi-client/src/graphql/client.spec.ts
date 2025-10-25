@@ -10,7 +10,6 @@ import {
   type MockedFunction,
   vi,
 } from 'vitest'
-import type { Logger } from 'winston'
 import * as clientModule from '../client'
 import { GatewayGraphqlClient } from './'
 import type { GatewayGraphqlClientArgs } from './types'

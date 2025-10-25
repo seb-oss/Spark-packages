@@ -1,7 +1,15 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { Resource } from '@opentelemetry/resources'
 import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type MockInstance,
+  vi,
+} from 'vitest'
 import { ConsoleSpanPrettyExporter } from './console-span-pretty-exporter'
 
 describe('ConsoleSpanPrettyExporter', () => {
@@ -27,7 +35,7 @@ describe('ConsoleSpanPrettyExporter', () => {
       events: [],
     }) as Partial<ReadableSpan> as ReadableSpan
 
-  let consoleLog: ReturnType<typeof vi.spyOn>
+  let consoleLog: MockInstance
 
   beforeEach(() => {
     consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})

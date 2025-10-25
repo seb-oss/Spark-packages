@@ -6,14 +6,14 @@ import {
   type HttpError,
   type Verb,
 } from '@sebspark/openapi-core'
-import {
-  type ErrorRequestHandler,
-  json,
-  type NextFunction,
-  type Request,
-  type Response,
-  Router,
-} from 'express'
+import { json, Router } from 'express'
+import type {
+  ErrorRequestHandler,
+  NextFunction,
+  Request,
+  RequestHandler,
+  Response,
+} from 'express-serve-static-core'
 
 export const TypedRouter = (
   api: APIServerDefinition,
@@ -21,7 +21,7 @@ export const TypedRouter = (
 ) => {
   const router = Router()
 
-  router.use(json())
+  router.use(json() as unknown as RequestHandler)
 
   // Add global pre to router
   const preUsings = Array.isArray(options.pre)
@@ -78,7 +78,7 @@ export const TypedRouter = (
         : route.pre
           ? [route.pre]
           : []
-      const handlers = pre.concat(handler)
+      const handlers = pre.concat(handler as RequestHandler)
 
       router[method as Verb](url, ...handlers)
     }

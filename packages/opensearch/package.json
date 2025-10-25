@@ -17,8 +17,8 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "testcontainers": "11.7.2",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*",
+    "testcontainers": "11.7.2"
   },
   "dependencies": {
     "@opensearch-project/opensearch": "3.5.1"

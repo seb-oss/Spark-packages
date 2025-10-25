@@ -19,7 +19,8 @@
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
     "test:e2e:watch": "turbo watch test:e2e",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "knip": "knip"
   },
   "private": true,
   "dependencies": {
@@ -28,10 +29,11 @@
   "devDependencies": {
     "@biomejs/biome": "2.3.0",
     "@turbo/gen": "2.5.8",
-    "@types/node": "22.18.12",
+    "@types/node": "^24.9.1",
     "@vitest/coverage-v8": "4.0.3",
+    "knip": "5.66.3",
     "tsup": "8.5.0",
-    "turbo": "^2.5.8",
+    "turbo": "2.5.8",
     "typescript": "5.9.3",
     "vitest": "4.0.3"
   },

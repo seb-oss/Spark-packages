@@ -1,4 +1,5 @@
-import { type ErrorRequestHandler, Router } from 'express'
+import { Router } from 'express'
+import type { ErrorRequestHandler } from 'express-serve-static-core'
 import type {
   DependencyMonitor,
   DependencyMonitorConfig,
@@ -100,7 +101,7 @@ export class HealthMonitor {
         const health = await this.health()
         res.status(200).json(health)
       } catch (err) {
-        next(err)
+        next?.(err)
       }
     })
 
@@ -109,7 +110,7 @@ export class HealthMonitor {
       try {
         res.status(200).json(this.ping())
       } catch (err) {
-        next(err)
+        next?.(err)
       }
     })
 
@@ -118,7 +119,7 @@ export class HealthMonitor {
       try {
         res.status(200).json(this.live())
       } catch (err) {
-        next(err)
+        next?.(err)
       }
     })
 
@@ -128,7 +129,7 @@ export class HealthMonitor {
         const readiness = await this.ready()
         res.status(200).json(readiness)
       } catch (err) {
-        next(err)
+        next?.(err)
       }
     })
 

@@ -5,27 +5,17 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "private": true,
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
-    "dev": "tsc --watch --noEmit",
-    "lint": "biome check .",
-    "test": "vitest run --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
-  },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "vitest": "4.0.3"
   },
   "dependencies": {
     "@google-cloud/pubsub": "5.2.0",
-    "@types/express": "5.0.4",
-    "@types/html-escaper": "3.0.4",
-    "avsc": "^5.7.9",
-    "express": "5.1.0",
-    "html-escaper": "3.0.3"
+    "avsc": "^5.7.9"
   },
   "keywords": [
     "google apis",

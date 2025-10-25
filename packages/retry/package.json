@@ -16,6 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*",
+    "axios": "1.12.2"
   }
 }

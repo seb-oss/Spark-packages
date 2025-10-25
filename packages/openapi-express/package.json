@@ -19,14 +19,15 @@
     "@sebspark/otel": "*",
     "@types/supertest": "6.0.3",
     "express": "5.1.0",
-    "supertest": "7.1.4",
-    "tsconfig": "*"
+    "supertest": "7.1.4"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
-    "express": "5.1.0"
+    "express": "5.1.0",
+    "express-serve-static-core": "0.1.1"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=1.1.3"
+    "@sebspark/otel": ">=1.1.3",
+    "@sebspark/tsconfig": "*"
   }
 }

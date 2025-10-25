@@ -1,6 +1,14 @@
 import { HrTime } from '@opentelemetry/api'
 import type { ReadableLogRecord } from '@opentelemetry/sdk-logs'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type MockInstance,
+  vi,
+} from 'vitest'
 import { LOG_SEVERITY_MAP, LOG_SEVERITY_NAME } from '../consts'
 import { ConsoleLogPrettyExporter } from './console-log-pretty-exporter'
 
@@ -19,11 +27,11 @@ function createLogRecord(severityText: LOG_SEVERITY_NAME): ReadableLogRecord {
 }
 describe('ConsoleLogPrettyExporter', () => {
   const OLD_ENV = process.env
-  let consoleTrace: ReturnType<typeof vi.spyOn>
-  let consoleDebug: ReturnType<typeof vi.spyOn>
-  let consoleInfo: ReturnType<typeof vi.spyOn>
-  let consoleWarn: ReturnType<typeof vi.spyOn>
-  let consoleError: ReturnType<typeof vi.spyOn>
+  let consoleTrace: MockInstance
+  let consoleDebug: MockInstance
+  let consoleInfo: MockInstance
+  let consoleWarn: MockInstance
+  let consoleError: MockInstance
 
   beforeEach(() => {
     process.env = { ...OLD_ENV }

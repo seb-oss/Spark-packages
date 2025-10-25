@@ -5,17 +5,13 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "private": true,
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
-    "dev": "tsc --watch --noEmit",
-    "lint": "biome check ."
-  },
   "devDependencies": {
     "@jest/globals": "30.2.0",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   },
   "peerDependencies": {
     "@jest/globals": "30.2.0",

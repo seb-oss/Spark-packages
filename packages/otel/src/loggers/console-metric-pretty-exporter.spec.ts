@@ -6,8 +6,15 @@ import {
   type ScopeMetrics,
   type SumMetricData,
 } from '@opentelemetry/sdk-metrics'
-import stripAnsi from 'strip-ansi'
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type MockInstance,
+  vi,
+} from 'vitest'
 import { ConsoleMetricPrettyExporter } from './console-metric-pretty-exporter'
 
 describe('ConsoleMetricPrettyExporter', () => {
@@ -47,7 +54,7 @@ describe('ConsoleMetricPrettyExporter', () => {
       ] as ScopeMetrics[],
     }) as Partial<ResourceMetrics> as ResourceMetrics
 
-  let consoleLog: ReturnType<typeof vi.spyOn>
+  let consoleLog: MockInstance
 
   beforeEach(() => {
     consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})

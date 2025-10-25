@@ -24,9 +24,8 @@
     "testcontainers": "^11.7.2"
   },
   "devDependencies": {
+    "@sebspark/tsconfig": "*",
     "@types/ws": "^8.18.1",
-    "nock": "^14.0.10",
-    "tsconfig": "*",
     "ws": "^8.18.3"
   }
 }

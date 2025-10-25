@@ -17,8 +17,8 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.34",
-    "tsconfig": "*",
     "vitest": "4.0.3"
   },
   "dependencies": {

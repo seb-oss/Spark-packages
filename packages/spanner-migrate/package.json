@@ -20,9 +20,9 @@
   "devDependencies": {
     "@google-cloud/spanner": "8.2.2",
     "@sebspark/cli-tester": "*",
+    "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.34",
-    "testcontainers": "11.7.2",
-    "tsconfig": "*"
+    "testcontainers": "11.7.2"
   },
   "peerDependencies": {
     "@google-cloud/spanner": "*"

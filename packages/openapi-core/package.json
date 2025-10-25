@@ -16,13 +16,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "tsconfig": "*",
+    "@sebspark/tsconfig": "*",
     "tsup-node": "0.1.0",
     "typescript": "5.9.3",
     "vitest": "4.0.3"
   },
   "dependencies": {
     "@sebspark/retry": "*",
-    "axios": "^1.12.2"
+    "axios": "1.12.2",
+    "express-serve-static-core": "0.1.1"
   }
 }

@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@inquirer/prompts": "7.9.0",
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   }
 }

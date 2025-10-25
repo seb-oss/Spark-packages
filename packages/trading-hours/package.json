@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "tsconfig": "*"
+    "@sebspark/tsconfig": "*"
   },
   "dependencies": {
     "date-fns": "4.1.0"

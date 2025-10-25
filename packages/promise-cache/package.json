@@ -25,12 +25,12 @@
   },
   "devDependencies": {
     "@sebspark/otel": "*",
+    "@sebspark/tsconfig": "*",
     "@testcontainers/redis": "11.7.2",
-    "testcontainers": "11.7.2",
-    "tsconfig": "*"
+    "testcontainers": "11.7.2"
   },
   "dependencies": {
-    "date-fn": "^0.0.2",
+    "date-fns": "4.1.0",
     "fix-esm": "1.0.1",
     "redis": "5.9.0",
     "superjson": "2.2.3"

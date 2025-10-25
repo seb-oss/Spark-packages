@@ -2,6 +2,7 @@
   "name": "@sebspark/openapi-e2e",
   "version": "3.0.0",
   "license": "Apache-2.0",
+  "private": true,
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
@@ -17,9 +18,9 @@
   },
   "devDependencies": {
     "@sebspark/openapi-typegen": "*",
+    "@sebspark/tsconfig": "*",
     "@types/express": "5.0.4",
     "find-free-ports": "3.1.1",
-    "tsconfig": "*",
     "vitest": "4.0.3"
   }
 }

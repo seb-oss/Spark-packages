@@ -1,6 +1,6 @@
 import type { OutgoingHttpHeaders } from 'node:http'
 import type { RetrySettings } from '@sebspark/retry'
-import type { NextFunction, Request, Response } from 'express'
+import type { Request, RequestHandler } from 'express-serve-static-core'
 import type {
   Empty,
   LowerCaseHeaders,
@@ -24,13 +24,11 @@ export type APIResponse<
     ? { data: Data }
     : { data: Data; headers: Headers }
 
-export type GenericRouteHandler = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => void | Promise<void>
+// For backwards compatibility
+export type GenericRouteHandler = RequestHandler
+
 export type RouteHandler = {
-  pre?: GenericRouteHandler | GenericRouteHandler[]
+  pre?: RequestHandler | RequestHandler[]
   handler: <
     RequestArgs,
     Response extends [
@@ -47,7 +45,7 @@ export type Route<Handler extends RouteHandler = RouteHandler> = Record<
 >
 export type APIServerDefinition = Record<string, Partial<Route>>
 export type APIServerOptions = {
-  pre?: GenericRouteHandler | GenericRouteHandler[]
+  pre?: RequestHandler | RequestHandler[]
 }
 
 export type RequestArgs = Request & {
