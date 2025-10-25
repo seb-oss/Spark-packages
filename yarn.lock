@@ -3517,6 +3517,7 @@ __metadata:
   dependencies:
     "@sebspark/tsconfig": "npm:*"
     express: "npm:5.1.0"
+    express-serve-static-core: "npm:0.1.1"
   languageName: unknown
   linkType: soft
 

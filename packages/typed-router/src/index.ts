@@ -1,5 +1,10 @@
-import type { NextFunction, Request, Response } from 'express'
 import { Router } from 'express'
+import type {
+  NextFunction,
+  Request,
+  RequestHandler,
+  Response,
+} from 'express-serve-static-core'
 
 export type ResponseType = [number, unknown]
 
@@ -49,8 +54,7 @@ const abstractedHandler = <R extends MethodDefinition>(
         R[T]['requestQuery'],
         R[T]['requestParams'],
         R[T]['requestHeaders'],
-        R[T]['requestBody'],
-        R[T]['response'][1]
+        R[T]['requestBody']
       >
     ) => Promise<R[T]['response'] | R[T]['error']>
   ) => {
@@ -74,15 +78,15 @@ const abstractedHandler = <R extends MethodDefinition>(
 
     switch (method) {
       case 'GET':
-        return router.get(strPath, handler)
+        return router.get(strPath, handler as RequestHandler)
       case 'POST':
-        return router.post(strPath, handler)
+        return router.post(strPath, handler as RequestHandler)
       case 'PUT':
-        return router.put(strPath, handler)
+        return router.put(strPath, handler as RequestHandler)
       case 'PATCH':
-        return router.patch(strPath, handler)
+        return router.patch(strPath, handler as RequestHandler)
       case 'DELETE':
-        return router.delete(strPath, handler)
+        return router.delete(strPath, handler as RequestHandler)
     }
   }
 
@@ -105,11 +109,11 @@ export const TypedRouter = <R extends RouteDefinitions>() => {
   }
 }
 
-type RouteArguments<QueryParams, PathParams, Headers, Body, Response> = {
+type RouteArguments<QueryParams, PathParams, Headers, Body> = {
   user: AuthenticatedUser
   queryParams: QueryParams
   pathParams: PathParams
   headers: Headers
   body: Body
-  request: Request<PathParams, Response, Body, QueryParams>
+  request: Request
 }
