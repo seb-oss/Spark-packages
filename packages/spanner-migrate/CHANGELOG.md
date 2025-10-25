@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 1.1.8
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 1.1.7
 
 ### Patch Changes

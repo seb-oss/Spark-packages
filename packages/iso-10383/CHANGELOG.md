@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 0.21.2
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 0.21.1
 
 ### Patch Changes

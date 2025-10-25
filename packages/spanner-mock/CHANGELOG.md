@@ -1,5 +1,11 @@
 # @sebspark/spanner-mock
 
+## 0.2.4
+
+### Patch Changes
+
+- 3a40e49: Cleaned up dependencies
+
 ## 0.2.3
 
 ### Patch Changes
