@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 2.0.0
+
+### Major Changes
+
+- 3199e70: Change instrument IDs to be URL safe
+
 ## 1.0.2
 
 ### Patch Changes
