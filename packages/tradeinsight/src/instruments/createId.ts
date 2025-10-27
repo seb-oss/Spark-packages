@@ -26,3 +26,6 @@ export const createForexId = ({
   baseCurrency: string
   quoteCurrency: string
 }) => `FOREX-${baseCurrency}_${quoteCurrency}`.toUpperCase()
+
+export const createIndexId = ({ ticker }: { ticker: string }) =>
+  `INDEX-${ticker}`.toUpperCase()
