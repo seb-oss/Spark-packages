@@ -6,7 +6,7 @@ export const createStockId = ({
   isin: string
   currency: string
   mic: string
-}) => `STOCK-${isin};${mic};${currency}`.toUpperCase()
+}) => `STOCK-${isin}_${mic}_${currency}`.toUpperCase()
 
 /**
  * Create an ID for a FOREX instrument, i.e. a currency relationship.
@@ -25,4 +25,7 @@ export const createForexId = ({
 }: {
   baseCurrency: string
   quoteCurrency: string
-}) => `FOREX-${baseCurrency};${quoteCurrency}`.toUpperCase()
+}) => `FOREX-${baseCurrency}_${quoteCurrency}`.toUpperCase()
+
+export const createIndexId = ({ ticker }: { ticker: string }) =>
+  `INDEX-${ticker}`.toUpperCase()

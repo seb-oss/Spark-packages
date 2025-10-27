@@ -1,15 +1,24 @@
-export const parseId = (
-  id: string
-): {
-  type: 'STOCK' | 'FOREX'
-  isin?: string
-  mic?: string
-  currency?: string
-  baseCurrency?: string
-  quoteCurrency?: string
-} => {
+type StockId = {
+  type: 'STOCK'
+  isin: string
+  mic: string
+  currency: string
+}
+
+type ForexId = {
+  type: 'FOREX'
+  baseCurrency: string
+  quoteCurrency: string
+}
+
+type IndexId = {
+  type: 'INDEX'
+  ticker: string
+}
+
+export const parseId = (id: string): StockId | ForexId | IndexId => {
   const [type, ...rest] = id.split('-')
-  const [first, second, third] = rest.join('-').split(';')
+  const [first, second, third] = rest.join().split('_')
 
   if (type === 'STOCK') {
     if (!second) {
@@ -41,6 +50,17 @@ export const parseId = (
       type,
       baseCurrency: first,
       quoteCurrency: second,
+    }
+  }
+
+  if (type === 'INDEX') {
+    if (!first) {
+      throw new Error('Missing ticker')
+    }
+
+    return {
+      type,
+      ticker: first,
     }
   }
 
