@@ -4220,12 +4220,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:4.0.3":
-  version: 4.0.3
-  resolution: "@vitest/coverage-v8@npm:4.0.3"
+"@vitest/coverage-v8@npm:4.0.4":
+  version: 4.0.4
+  resolution: "@vitest/coverage-v8@npm:4.0.4"
   dependencies:
     "@bcoe/v8-coverage": "npm:^1.0.2"
-    "@vitest/utils": "npm:4.0.3"
+    "@vitest/utils": "npm:4.0.4"
     ast-v8-to-istanbul: "npm:^0.3.5"
     debug: "npm:^4.4.3"
     istanbul-lib-coverage: "npm:^3.2.2"
@@ -4236,12 +4236,12 @@ __metadata:
     std-env: "npm:^3.9.0"
     tinyrainbow: "npm:^3.0.3"
   peerDependencies:
-    "@vitest/browser": 4.0.3
-    vitest: 4.0.3
+    "@vitest/browser": 4.0.4
+    vitest: 4.0.4
   peerDependenciesMeta:
     "@vitest/browser":
       optional: true
-  checksum: 10c0/5f067034687b4494efeb37bd2f327f3399e9defda9661d43a44bcd1f5581df4a9c083cebae967561d21b6f9d9f08db637e2c0d935b7566c945165816cc93f3f1
+  checksum: 10c0/cebddeeccc137c6e676e8a5e4c403b302ef355af4cce1ff2288e96005b48c39f799777e40464dc6ffbf141b6b05f412d1b015faa33b7dfa6b8b255a51c0f0afc
   languageName: node
   linkType: hard
 
@@ -4287,6 +4287,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/pretty-format@npm:4.0.4":
+  version: 4.0.4
+  resolution: "@vitest/pretty-format@npm:4.0.4"
+  dependencies:
+    tinyrainbow: "npm:^3.0.3"
+  checksum: 10c0/6b0a109b94b172798a5f302c705c5923b2b0550fddf89d7b8589b64604b3024ae6028a7b0a3903876b7ceb0fa72aaede1ba3b32d3fc561c4a64b0cdea6893a12
+  languageName: node
+  linkType: hard
+
 "@vitest/runner@npm:4.0.3":
   version: 4.0.3
   resolution: "@vitest/runner@npm:4.0.3"
@@ -4322,6 +4331,16 @@ __metadata:
     "@vitest/pretty-format": "npm:4.0.3"
     tinyrainbow: "npm:^3.0.3"
   checksum: 10c0/b773bb0133307176762a932bab0480e77c9b378406eb92c82f37a16d214b1d873a0378e4c567c4b05bf4628073bc7fc18b519a7c0bdaf75e18311545ca00c5ba
+  languageName: node
+  linkType: hard
+
+"@vitest/utils@npm:4.0.4":
+  version: 4.0.4
+  resolution: "@vitest/utils@npm:4.0.4"
+  dependencies:
+    "@vitest/pretty-format": "npm:4.0.4"
+    tinyrainbow: "npm:^3.0.3"
+  checksum: 10c0/62d864bd3568cd7fedf857ecba3fc84b1d08657bdb545e09b601b6d21dd38733ec0a207880990876250b3c66c79b440287981936ba8d8e52986669c35eb21096
   languageName: node
   linkType: hard
 
@@ -10870,7 +10889,7 @@ __metadata:
     "@changesets/cli": "npm:2.29.7"
     "@turbo/gen": "npm:2.5.8"
     "@types/node": "npm:^24.9.1"
-    "@vitest/coverage-v8": "npm:4.0.3"
+    "@vitest/coverage-v8": "npm:4.0.4"
     knip: "npm:5.66.3"
     tsup: "npm:8.5.0"
     turbo: "npm:2.5.8"
