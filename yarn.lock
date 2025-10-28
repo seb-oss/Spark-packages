@@ -3247,7 +3247,7 @@ __metadata:
     "@sebspark/otel": "npm:*"
     "@sebspark/retry": "npm:*"
     "@sebspark/tsconfig": "npm:*"
-    axios: "npm:^1.12.2"
+    axios: "npm:^1.13.0"
     axios-auth-refresh: "npm:3.3.6"
     express: "npm:5.1.0"
     nock: "npm:14.0.10"
@@ -3264,7 +3264,7 @@ __metadata:
   dependencies:
     "@sebspark/retry": "npm:*"
     "@sebspark/tsconfig": "npm:*"
-    axios: "npm:1.12.2"
+    axios: "npm:1.13.0"
     express-serve-static-core: "npm:0.1.1"
     tsup-node: "npm:0.1.0"
     typescript: "npm:5.9.3"
@@ -3401,7 +3401,7 @@ __metadata:
   resolution: "@sebspark/retry@workspace:packages/retry"
   dependencies:
     "@sebspark/tsconfig": "npm:*"
-    axios: "npm:1.12.2"
+    axios: "npm:1.13.0"
   languageName: unknown
   linkType: soft
 
@@ -4951,14 +4951,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.12.2, axios@npm:^1.12.2":
-  version: 1.12.2
-  resolution: "axios@npm:1.12.2"
+"axios@npm:1.13.0, axios@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "axios@npm:1.13.0"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10c0/80b063e318cf05cd33a4d991cea0162f3573481946f9129efb7766f38fde4c061c34f41a93a9f9521f02b7c9565ccbc197c099b0186543ac84a24580017adfed
+  checksum: 10c0/2af09f8ad9db9565bf97055eb0ddd2fd4abd9a03d23157b409348c9589370a88c3ede02e11fd1268becb780a77b62bdf9488650dd7208eda57edceca1d65622e
   languageName: node
   linkType: hard
 

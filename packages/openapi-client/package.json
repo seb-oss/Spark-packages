@@ -30,7 +30,7 @@
     "@sebspark/openapi-auth-iam": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
-    "axios": "^1.12.2",
+    "axios": "^1.13.0",
     "axios-auth-refresh": "3.3.6"
   },
   "peerDependencies": {
