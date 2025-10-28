@@ -19,7 +19,7 @@
     "@sebspark/tsconfig": "*",
     "tsup-node": "0.1.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.3"
+    "vitest": "4.0.4"
   },
   "dependencies": {
     "@sebspark/retry": "*",

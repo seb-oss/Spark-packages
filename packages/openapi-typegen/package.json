@@ -19,7 +19,7 @@
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.34",
-    "vitest": "4.0.3"
+    "vitest": "4.0.4"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",

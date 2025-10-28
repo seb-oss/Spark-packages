@@ -24,7 +24,7 @@
     "express": "5.1.0",
     "nock": "14.0.10",
     "tsup-node": "^0.1.0",
-    "vitest": "4.0.3"
+    "vitest": "4.0.4"
   },
   "dependencies": {
     "@sebspark/openapi-auth-iam": "*",
