@@ -1,16 +1,8 @@
 import type { UUID } from 'node:crypto'
-import { createClient, type RedisClientOptions } from 'redis'
-
-import { createLocalMemoryClient } from './localMemory'
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-unsafe-assignment
-const fixESM = require('fix-esm')
-
 import { getLogger } from '@sebspark/otel'
-import type SuperJSON from 'superjson'
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-assignment
-const superjson: SuperJSON = fixESM.require('superjson')
+import { createClient, type RedisClientOptions } from 'redis'
+import superjson from 'superjson'
+import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
 const isTestRunning = process.env.NODE_ENV === 'test'
