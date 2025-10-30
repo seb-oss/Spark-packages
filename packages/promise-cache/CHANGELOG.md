@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 5.0.2
+
+### Patch Changes
+
+- 99cc4b9: ESM import of superjson in Persistor
+
 ## 5.0.1
 
 ### Patch Changes
