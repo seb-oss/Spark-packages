@@ -35,7 +35,7 @@
     "tsup": "8.5.0",
     "turbo": "2.5.8",
     "typescript": "5.9.3",
-    "vitest": "4.0.3"
+    "vitest": "4.0.5"
   },
   "resolutions": {
     "cross-spawn": "~7.0.6",
