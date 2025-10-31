@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.0
+
+### Major Changes
+
+- 0864ec2: Minimum node version 22
+
 ## 0.1.4
 
 ### Patch Changes

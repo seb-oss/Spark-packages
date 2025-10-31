@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 1.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
 ## 0.4.3
 
 ### Patch Changes

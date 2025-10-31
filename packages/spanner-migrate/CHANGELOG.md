@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
 ## 1.1.8
 
 ### Patch Changes
