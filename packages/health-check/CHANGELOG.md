@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.1
+
+### Patch Changes
+
+- 512cdc5: DependencyMonitor is now exposed
+
 ## 1.0.0
 
 ### Major Changes
