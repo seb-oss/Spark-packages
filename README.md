@@ -10,7 +10,16 @@ A pubsub subscriber helper.
 
 ### [@sebspark/pubsub](./packages/pubsub/)
 
-A wrapper around Google PubSub adding support for typing, serialization/deserialization, naming of subscriptions for specific topics, push routes and some more.
+## ⚠️ **Deprecated**
+
+This library is built on faulty assumptions for **Google PubSub**
+
+1. Topics and subscriptions should typically be created through Terraform or some other form of infrastructure as code
+2. Same thing goes for Schemas
+3. If a subscription is created in code, it should be unique and removed on SIGTERM
+4. Topics should not handle more than one message type
+
+Use vanilla [@google-cloud/pubsub](https://www.npmjs.com/package/@google-cloud/pubsub) instead!
 
 ### [@sebspark/typed-router](./packages/typed-router/)
 
@@ -72,17 +81,9 @@ A simple caching wrapper for promises.
 
 Find trading hours of a market, when it&#x27;s closed for holidays, or when it&#x27;s only open for part of the day.
 
-### [@sebspark/tracing](./packages/tracing)
-
-Use Opentelemetry for collecting traces and exporting to Cloud Trace
-
 ### [@sebspark/gcp-iam](./packages/gcp-iam)
 
 Google IAM utilities.
-
-### [@sebspark/spanner-mock](./packages/spanner-mock)
-
-A (so far incomplete) mocking library for Spanner DB
 
 ### [@sebspark/spanner-migrate](./packages/spanner-migrate)
 
@@ -111,10 +112,6 @@ A fake IAP which can be used to run e2e tests
 ### [@sebspark/health-check](./packages/health-check)
 
 An easy way to add health check routes to your API
-
-### [@sebspark/@sebspark/otel](./packages/@sebspark/otel)
-
-Open Telemetry helpers for logging, tracing and metrics
 
 ### [@sebspark/otel](./packages/otel)
 
