@@ -1,5 +1,17 @@
 # @sebspark/openapi-express
 
+## 4.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
+### Patch Changes
+
+- Updated dependencies [0864ec2]
+  - @sebspark/openapi-core@4.0.0
+  - @sebspark/otel@2.0.0
+
 ## 3.0.1
 
 ### Patch Changes

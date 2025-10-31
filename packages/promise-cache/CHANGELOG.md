@@ -1,5 +1,16 @@
 # @sebspark/promise-cache
 
+## 6.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
+### Patch Changes
+
+- Updated dependencies [0864ec2]
+  - @sebspark/otel@2.0.0
+
 ## 5.0.2
 
 ### Patch Changes

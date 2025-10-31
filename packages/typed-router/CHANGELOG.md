@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 2.0.0
+
+### Major Changes
+
+- 0864ec2: Minimum node version 22
+
 ## 1.0.2
 
 ### Patch Changes

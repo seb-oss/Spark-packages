@@ -1,5 +1,18 @@
 # @sebspark/openapi-e2e
 
+## 4.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
+### Patch Changes
+
+- Updated dependencies [0864ec2]
+  - @sebspark/openapi-express@4.0.0
+  - @sebspark/openapi-client@4.0.0
+  - @sebspark/openapi-core@4.0.0
+
 ## 3.0.1
 
 ### Patch Changes

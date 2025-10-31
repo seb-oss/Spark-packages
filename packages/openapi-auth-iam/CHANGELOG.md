@@ -1,5 +1,15 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.0
+
+### Major Changes
+
+- 0864ec2: ESM only. Minimum node version 22
+
+### Patch Changes
+
+- @sebspark/gcp-iam@3.0.0
+
 ## 2.0.1
 
 ### Patch Changes
