@@ -1,6 +1,5 @@
 import type { Database } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
-import type { Migration } from './types'
+import type { ExecuteSqlRequest, Migration } from './types.js'
 
 export const applyUp = async (db: Database, migration: Migration) => {
   try {

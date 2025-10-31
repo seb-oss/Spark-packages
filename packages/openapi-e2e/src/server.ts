@@ -11,7 +11,7 @@ import type {
   InstrumentEntityResponse,
   MarketdataServer,
   MarketListResponse,
-} from './schemas/marketdata'
+} from './schemas/marketdata.js'
 
 export const markets: MarketListResponse = {
   data: [

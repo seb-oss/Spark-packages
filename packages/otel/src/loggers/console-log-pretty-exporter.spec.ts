@@ -9,8 +9,8 @@ import {
   type MockInstance,
   vi,
 } from 'vitest'
-import { LOG_SEVERITY_MAP, LOG_SEVERITY_NAME } from '../consts'
-import { ConsoleLogPrettyExporter } from './console-log-pretty-exporter'
+import { LOG_SEVERITY_MAP, LOG_SEVERITY_NAME } from '../consts.js'
+import { ConsoleLogPrettyExporter } from './console-log-pretty-exporter.js'
 
 function createLogRecord(severityText: LOG_SEVERITY_NAME): ReadableLogRecord {
   return {

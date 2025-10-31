@@ -3,6 +3,7 @@
   "version": "4.0.1",
   "license": "Apache-2.0",
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "bin": "./cli.mjs",
   "files": [
@@ -10,7 +11,7 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts src/cli.ts --format cjs --dts",
+    "build": "tsup-node src/index.ts src/cli.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -19,7 +20,7 @@
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.34",
-    "vitest": "4.0.3"
+    "vitest": "4.0.5"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",

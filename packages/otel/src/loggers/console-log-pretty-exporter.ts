@@ -4,8 +4,8 @@ import type {
   LogRecordExporter,
   ReadableLogRecord,
 } from '@opentelemetry/sdk-logs'
-import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from '../consts'
-import { formatLogRecord } from './formatters'
+import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from '../consts.js'
+import { formatLogRecord } from './formatters/index.js'
 
 export class ConsoleLogPrettyExporter implements LogRecordExporter {
   private readonly logThreshold: number

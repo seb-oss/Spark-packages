@@ -1,6 +1,6 @@
 import type { Database } from '@google-cloud/spanner'
 import { beforeEach, describe, expect, it, type Mocked, vi } from 'vitest'
-import { runQuery } from '../query'
+import { runQuery } from '../query.js'
 
 vi.mock('@google-cloud/spanner', () => {
   const db = {}

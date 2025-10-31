@@ -2,7 +2,7 @@ import type { UUID } from 'node:crypto'
 import { randomUUID } from 'node:crypto'
 import { getLogger } from '@sebspark/otel'
 import type { RedisClientOptions } from 'redis'
-import { Persistor } from './persistor'
+import { Persistor } from './persistor.js'
 
 export type { RedisClientOptions }
 

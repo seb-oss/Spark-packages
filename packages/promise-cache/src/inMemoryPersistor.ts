@@ -1,5 +1,9 @@
 import type { SetOptions } from 'redis'
-import type { IPersistor, IPersistorMulti, MultiExecReturnTypes } from './types'
+import type {
+  IPersistor,
+  IPersistorMulti,
+  MultiExecReturnTypes,
+} from './types.js'
 
 /**
  * An in-memory key-value store with Redis-like behavior.

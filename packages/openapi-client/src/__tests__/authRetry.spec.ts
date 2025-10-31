@@ -2,8 +2,8 @@ import { HttpError } from '@sebspark/openapi-core'
 import { AxiosError } from 'axios'
 import nock from 'nock'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { TypedClient } from '../client'
-import { ApiClient } from './api'
+import { TypedClient } from '../client.js'
+import { ApiClient } from './api.js'
 
 describe('Auth Retry Tests', () => {
   const url = 'https://api.example.com'
@@ -62,10 +62,10 @@ describe('Auth Retry Tests', () => {
       try {
         await apiClient.get('/health')
         expect(false).toBe(true)
-      } catch (error) {
-        expect(((error as HttpError).cause as AxiosError).cause?.message).toBe(
-          'Unauthorized'
-        )
+      } catch (err) {
+        const error = err as HttpError
+        const cause = error.cause as AxiosError
+        expect((cause.cause as Error)?.message).toBe('Unauthorized')
 
         expect(authorizationTokenRefreshMock).toHaveBeenCalledOnce()
         expect(authorizationTokenGeneratorMock).toBeCalledTimes(2)

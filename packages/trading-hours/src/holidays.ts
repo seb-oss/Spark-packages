@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns'
-import { openingHours } from './static'
-import type { Holiday } from './types'
+import { openingHours } from './static.js'
+import type { Holiday } from './types.js'
 import {
   calculateMidsummerDay,
   christianHolidays,
@@ -11,7 +11,7 @@ import {
   normalizeMarket,
   shortDate,
   staticHolidays,
-} from './utils'
+} from './utils.js'
 
 /**
  * Get holidays for a specific market and year

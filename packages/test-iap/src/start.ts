@@ -1,6 +1,6 @@
 import assert from 'node:assert'
-import { createProxyServer } from './server'
-import type { ProxyConfig } from './types'
+import { createProxyServer } from './server.js'
+import type { ProxyConfig } from './types.js'
 
 // Read env and normalize the listen port
 const { PORT, TARGET, MODE, DOWNSTREAM } = process.env

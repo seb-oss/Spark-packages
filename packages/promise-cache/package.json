@@ -4,6 +4,7 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
@@ -16,7 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -33,7 +34,7 @@
     "date-fns": "4.1.0",
     "fix-esm": "1.0.1",
     "redis": "5.9.0",
-    "superjson": "2.2.3"
+    "superjson": "2.2.5"
   },
   "peerDependencies": {
     "@sebspark/otel": ">=1.1.4"

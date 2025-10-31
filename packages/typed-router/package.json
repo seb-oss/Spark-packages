@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build": "tsup-node src/index.ts --format esm,cjs --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --coverage",

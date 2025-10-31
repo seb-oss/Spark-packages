@@ -1,4 +1,4 @@
-import type { Headers, JsonObject } from './types'
+import type { Headers, JsonObject } from './types.js'
 
 export const defaultPort = (target: URL) => {
   if (target.protocol === 'https:' || target.protocol === 'wss:') return 443

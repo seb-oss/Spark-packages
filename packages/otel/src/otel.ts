@@ -9,8 +9,12 @@ import {
 import { logs } from '@opentelemetry/api-logs'
 import type { Instrumentation } from '@opentelemetry/instrumentation'
 import { NodeSDK } from '@opentelemetry/sdk-node'
-import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
-import { getResource } from './resource'
+import {
+  getLogProvider,
+  getMetricReader,
+  getSpanProcessor,
+} from './providers.js'
+import { getResource } from './resource.js'
 
 diag.disable()
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)

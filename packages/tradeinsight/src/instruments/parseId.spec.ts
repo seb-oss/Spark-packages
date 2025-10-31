@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { parseId } from './parseId'
+import { parseId } from './parseId.js'
 
 describe('parseId', () => {
   describe('INDEX', () => {

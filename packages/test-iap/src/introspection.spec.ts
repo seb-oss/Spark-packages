@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import type { JsonObject, ProxyConfig } from './types'
+import type { JsonObject, ProxyConfig } from './types.js'
 
 // Mocks for JWT helpers
 vi.mock('./jwt', () => ({
@@ -9,10 +9,10 @@ vi.mock('./jwt', () => ({
   ),
 }))
 
-import { introspect } from './introspection'
+import { introspect } from './introspection.js'
 // Use the real utils + introspect after mocks are set up
-import { createJwt, getRemoteJwt } from './jwt'
-import { getHeader, parseAuthorizationHeader } from './utils'
+import { createJwt, getRemoteJwt } from './jwt.js'
+import { getHeader, parseAuthorizationHeader } from './utils.js'
 
 const b64u = (o: unknown) =>
   Buffer.from(JSON.stringify(o)).toString('base64url')

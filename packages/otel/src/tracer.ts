@@ -4,8 +4,8 @@ import {
   SpanStatusCode,
   trace,
 } from '@opentelemetry/api'
-import { isInitialized } from './otel'
-import { detectTelemetryContext } from './otel-context'
+import { isInitialized } from './otel.js'
+import { detectTelemetryContext } from './otel-context.js'
 
 type OtelTracer = ReturnType<typeof trace.getTracer>
 type Span = ReturnType<OtelTracer['startSpan']>

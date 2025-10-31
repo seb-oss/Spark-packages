@@ -1,7 +1,7 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { type ExportResult, ExportResultCode } from '@opentelemetry/core'
 import type { ReadableSpan, SpanExporter } from '@opentelemetry/sdk-trace-node'
-import { formatSpans } from './formatters'
+import { formatSpans } from './formatters/index.js'
 
 export class ConsoleSpanPrettyExporter implements SpanExporter {
   private readonly allowedStatuses: Set<number>

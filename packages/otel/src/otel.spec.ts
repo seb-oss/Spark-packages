@@ -8,7 +8,7 @@ import {
   type MockInstance,
   vi,
 } from 'vitest'
-import { getLogger, getTracer, initialize, instrumentations } from './'
+import { getLogger, getTracer, initialize, instrumentations } from './index.js'
 
 describe('otel initialize', () => {
   const originalEnv = process.env

@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { SignJWT } from 'jose'
-import { generateKey, type Key } from './keys'
-import type { JsonObject } from './types'
+import { generateKey, type Key } from './keys.js'
+import type { JsonObject } from './types.js'
 
 let _key: Key | undefined
 export const getKey = async (): Promise<Key> => {

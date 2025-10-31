@@ -4,9 +4,9 @@ import type {
   Path,
   Property,
   RequestArgs,
-} from '../types'
-import { argsOptional } from './args'
-import { AND, OR, rxProperVariable } from './common'
+} from '../types.js'
+import { argsOptional } from './args.js'
+import { AND, OR, rxProperVariable } from './common.js'
 
 export const document = ({ title, description }: DocumentableType): string => {
   if (title || description) {

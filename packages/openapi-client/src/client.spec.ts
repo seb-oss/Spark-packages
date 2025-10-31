@@ -9,9 +9,9 @@ import {
   test,
   vi,
 } from 'vitest'
-import { accessToken, router } from './__tests__/client.helper'
-import type { OpenapiClient, User } from './__tests__/openapi'
-import { type TypedAxiosClient, TypedClient } from './client'
+import { accessToken, router } from './__tests__/client.helper.js'
+import type { OpenapiClient, User } from './__tests__/openapi.js'
+import { type TypedAxiosClient, TypedClient } from './client.js'
 
 describe('TypedClient', () => {
   let client: TypedAxiosClient<OpenapiClient>

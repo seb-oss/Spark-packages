@@ -1,5 +1,5 @@
 import type { SetOptions } from 'redis'
-import type { Expiry } from './types'
+import type { Expiry } from './types.js'
 
 /**
  * Converts an Expiry value into Redis SetOptions.

@@ -4,12 +4,13 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -25,11 +26,11 @@
     "socket.io-client": "4.8.1"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "^5.2.0",
-    "@msgpack/msgpack": "^3.1.2",
-    "socket.io-adapter": "^2.5.5"
+    "@google-cloud/pubsub": "5.2.0",
+    "@msgpack/msgpack": "3.1.2",
+    "socket.io-adapter": "2.5.5"
   },
   "resolutions": {
-    "@google-cloud/pubsub": "^5.2.0"
+    "@google-cloud/pubsub": "5.2.0"
   }
 }

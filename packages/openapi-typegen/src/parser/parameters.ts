@@ -1,7 +1,7 @@
 import type { ParameterObject } from '@sebspark/openapi-core'
-import type { Parameter } from '../types'
-import { parseDocumentation } from './common'
-import { parseSchema } from './schema'
+import type { Parameter } from '../types.js'
+import { parseDocumentation } from './common.js'
+import { parseSchema } from './schema.js'
 
 export const parseParameters = (
   schemas: Record<string, ParameterObject> = {}

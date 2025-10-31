@@ -11,7 +11,7 @@ import {
   it,
   vi,
 } from 'vitest'
-import { PromiseCache, type PromiseCacheOptions } from './promiseCache'
+import { PromiseCache, type PromiseCacheOptions } from './promiseCache.js'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

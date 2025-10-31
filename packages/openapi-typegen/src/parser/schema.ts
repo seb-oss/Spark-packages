@@ -13,8 +13,8 @@ import type {
   Property,
   RecordType,
   TypeDefinition,
-} from '../types'
-import { parseDocumentation, parseEnumType, parseRef } from './common'
+} from '../types.js'
+import { parseDocumentation, parseEnumType, parseRef } from './common.js'
 
 export const parseSchemas = (
   schemas: Record<string, SchemaObject> = {}

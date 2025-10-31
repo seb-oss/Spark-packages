@@ -5,8 +5,8 @@ import {
   formatService,
   formatTimestamp,
   hrTimeToMillis,
-} from './shared'
-import { colors, statusColorMap, statusLabelMap } from './style'
+} from './shared.js'
+import { colors, statusColorMap, statusLabelMap } from './style.js'
 
 const LABEL_WIDTH = 20
 const DESCRIPTION_MAX_WIDTH = 16

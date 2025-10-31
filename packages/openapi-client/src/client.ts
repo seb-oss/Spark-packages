@@ -8,10 +8,15 @@ import type {
 import { fromAxiosError } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
 import { retry } from '@sebspark/retry'
-import type { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios'
+import type {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from 'axios'
 import axios from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
-import { paramsSerializer } from './paramsSerializer'
+import { paramsSerializer } from './paramsSerializer.js'
 
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance
@@ -61,14 +66,16 @@ export const TypedClient = <C extends Partial<BaseClient>>(
   }
 
   if (globalOptions?.authorizationTokenRefresh) {
-    // biome-ignore lint/suspicious/noExplicitAny: TODO
-    const refreshAuthLogic = async (failedRequest: any) => {
+    const refreshAuthLogic = async (
+      // biome-ignore lint/suspicious/noExplicitAny: Defined by dependency
+      failedRequest: any
+    ): Promise<AxiosResponse> => {
       if (!axios.isAxiosError(failedRequest)) {
         logger.error(
           'Failed request is not an axios error',
           failedRequest as Error
         )
-        return
+        throw failedRequest
       } else {
         logger.debug('Failed request', failedRequest)
       }
@@ -87,6 +94,8 @@ export const TypedClient = <C extends Partial<BaseClient>>(
           throw error
         }
       }
+
+      return axiosError.response as AxiosResponse
     }
 
     createAuthRefreshInterceptor(axiosInstance, refreshAuthLogic)

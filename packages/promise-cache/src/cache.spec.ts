@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { createCache } from './cache'
-import { InMemoryPersistor } from './inMemoryPersistor'
-import type { Cache, IPersistor } from './types'
+import { createCache } from './cache.js'
+import { InMemoryPersistor } from './inMemoryPersistor.js'
+import type { Cache, IPersistor } from './types.js'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

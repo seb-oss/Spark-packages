@@ -1,5 +1,6 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { stdout } from 'node:process'
 import { run } from '@sebspark/cli-tester'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import {
@@ -7,7 +8,7 @@ import {
   createInstance,
   parseStatus,
   startSpanner,
-} from './e2e/helpers'
+} from './e2e/helpers.js'
 
 const cwd = resolve(__dirname, 'cli')
 const cliPath = resolve(__dirname, '../../dist/cli.js')
@@ -16,6 +17,8 @@ const instance = 'test-instance'
 const database1 = 'database-1'
 const database2 = 'database-2'
 const projectId = 'test-project'
+
+// const print = (txt: string) => stdout.write(`${txt}\n`)
 
 const setup = async () => {
   await mkdir(cwd, { recursive: true })

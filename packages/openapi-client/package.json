@@ -4,13 +4,14 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/test/ -o ./src/test/",
-    "build": "tsup-node src/index.ts --format esm,cjs --dts",
+    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -24,13 +25,13 @@
     "express": "5.1.0",
     "nock": "14.0.10",
     "tsup-node": "^0.1.0",
-    "vitest": "4.0.3"
+    "vitest": "4.0.5"
   },
   "dependencies": {
     "@sebspark/openapi-auth-iam": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
-    "axios": "^1.12.2",
+    "axios": "1.13.1",
     "axios-auth-refresh": "3.3.6"
   },
   "peerDependencies": {

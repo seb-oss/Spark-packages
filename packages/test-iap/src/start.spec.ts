@@ -1,5 +1,13 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { createProxyServer } from './server'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mock,
+  vi,
+} from 'vitest'
+import { createProxyServer } from './server.js'
 
 const listenMock = vi.fn((port: number, cb?: () => void) => cb?.())
 vi.mock('./server', () => ({
@@ -19,7 +27,7 @@ const setEnv = (env: Record<string, string | undefined>) => {
 }
 
 describe('start.ts bootstrap', () => {
-  let logSpy: ReturnType<typeof vi.spyOn>
+  let logSpy: Mock
 
   beforeEach(() => {
     vi.resetModules()
@@ -34,7 +42,7 @@ describe('start.ts bootstrap', () => {
   it('starts in local mode by default when DOWNSTREAM is not set', async () => {
     setEnv({ TARGET: 'http://core:3000', PORT: '4567' })
 
-    await import('./start')
+    await import('./start.js')
 
     // createProxyServer called with inferred local mode
     expect(createProxyServer).toHaveBeenCalledTimes(1)
@@ -59,7 +67,7 @@ describe('start.ts bootstrap', () => {
       DOWNSTREAM: 'https://issuer.example/api/token',
     })
 
-    await import('./start')
+    await import('./start.js')
 
     expect(createProxyServer).toHaveBeenCalledTimes(1)
     const cfg = (createProxyServer as any).mock.calls[0][0]
@@ -81,7 +89,7 @@ describe('start.ts bootstrap', () => {
       PORT: '8080',
     })
 
-    await import('./start')
+    await import('./start.js')
 
     const cfg = (createProxyServer as any).mock.calls[0][0]
     expect(cfg.mode).toBe('local')
@@ -92,7 +100,7 @@ describe('start.ts bootstrap', () => {
   it('throws if MODE=downstream but DOWNSTREAM is missing', async () => {
     setEnv({ TARGET: 'http://core:3000', MODE: 'downstream' })
 
-    await expect(import('./start')).rejects.toThrow(
+    await expect(import('./start.js')).rejects.toThrow(
       /DOWNSTREAM must be set when MODE=downstream/i
     )
     expect(createProxyServer).not.toHaveBeenCalled()
@@ -101,14 +109,14 @@ describe('start.ts bootstrap', () => {
   it('throws if TARGET is missing', async () => {
     setEnv({})
 
-    await expect(import('./start')).rejects.toThrow(/TARGET must be set/i)
+    await expect(import('./start.js')).rejects.toThrow(/TARGET must be set/i)
     expect(createProxyServer).not.toHaveBeenCalled()
   })
 
   it('throws if TARGET has unsupported protocol', async () => {
     setEnv({ TARGET: 'ftp://example.com' })
 
-    await expect(import('./start')).rejects.toThrow(
+    await expect(import('./start.js')).rejects.toThrow(
       /TARGET must start with http/i
     )
     expect(createProxyServer).not.toHaveBeenCalled()
@@ -121,7 +129,7 @@ describe('start.ts bootstrap', () => {
       DOWNSTREAM: 'ws://issuer.example/api/token',
     })
 
-    await expect(import('./start')).rejects.toThrow(
+    await expect(import('./start.js')).rejects.toThrow(
       /DOWNSTREAM must be an absolute URL/i
     )
     expect(createProxyServer).not.toHaveBeenCalled()
@@ -130,7 +138,7 @@ describe('start.ts bootstrap', () => {
   it('defaults PORT to 3000 when PORT is not a number', async () => {
     setEnv({ TARGET: 'http://core:3000', PORT: 'nope' })
 
-    await import('./start')
+    await import('./start.js')
 
     expect(listenMock).lastCalledWith(3000, expect.any(Function))
   })

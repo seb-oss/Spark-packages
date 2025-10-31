@@ -1,9 +1,9 @@
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import type { OpenApiDocument } from '@sebspark/openapi-core'
 import { expect, test, vitest } from 'vitest'
 import * as YAML from 'yaml'
-import { classname, generateTypescript } from '..'
-import { format } from '../generator'
+import { format } from '../generator/index.js'
+import { classname, generateTypescript } from '../index.js'
 
 vitest.setConfig({ testTimeout: 30000 })
 

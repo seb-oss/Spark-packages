@@ -1,7 +1,7 @@
 import { GenericContainer, Network, type StartedNetwork } from 'testcontainers'
 // src/test-iap-container.spec.ts
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import { TestIapContainer } from './test-iap-container'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { TestIapContainer } from './test-iap-container.js'
 
 // --- helpers ---
 const waitHttpOk = (url: string, timeoutMs = 10000) =>

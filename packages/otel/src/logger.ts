@@ -1,8 +1,8 @@
 import { context, trace } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
-import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
-import { isInitialized } from './otel'
-import { detectTelemetryContext } from './otel-context'
+import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts.js'
+import { isInitialized } from './otel.js'
+import { detectTelemetryContext } from './otel-context.js'
 
 // biome-ignore lint/suspicious/noExplicitAny: library
 type Attrs = Record<string, any>

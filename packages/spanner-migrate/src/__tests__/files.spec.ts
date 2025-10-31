@@ -15,8 +15,8 @@ import {
   getMigrationFiles,
   getNewMigrations,
   writeConfig,
-} from '../files'
-import type { Config, Migration } from '../types'
+} from '../files.js'
+import type { Config, Migration } from '../types.js'
 
 // Mock node:fs/promises methods
 vi.mock('node:fs/promises', () => ({

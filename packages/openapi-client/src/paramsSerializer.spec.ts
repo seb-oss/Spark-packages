@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { paramsSerializer } from './paramsSerializer'
+import { paramsSerializer } from './paramsSerializer.js'
 
 describe('paramsSerializer', () => {
   const params = {

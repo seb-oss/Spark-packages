@@ -8,8 +8,8 @@ import {
   type StartedNetwork,
   type StartedTestContainer,
 } from 'testcontainers'
-import { getThisDir, tryResolveNearSelf } from './build-helpers'
-import type { Mode } from './types'
+import { getThisDir, tryResolveNearSelf } from './build-helpers.js'
+import type { Mode } from './types.js'
 
 export class TestIapContainer {
   private baseImage = 'node:22-alpine'

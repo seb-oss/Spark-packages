@@ -13,8 +13,8 @@ export {
   SpanStatusCode,
   type UpDownCounter,
 } from '@opentelemetry/api'
-export * from './instrumentations'
-export * from './logger'
-export * from './metrics'
-export * from './otel'
-export * from './tracer'
+export * from './instrumentations.js'
+export * from './logger.js'
+export * from './metrics.js'
+export * from './otel.js'
+export * from './tracer.js'

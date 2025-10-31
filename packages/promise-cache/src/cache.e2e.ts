@@ -13,7 +13,7 @@ import {
   it,
   vi,
 } from 'vitest'
-import { createCache } from './cache'
+import { createCache } from './cache.js'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

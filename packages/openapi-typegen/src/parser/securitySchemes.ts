@@ -1,5 +1,5 @@
 import type { SecuritySchemeObject } from '@sebspark/openapi-core'
-import type { Parameter } from '../types'
+import type { Parameter } from '../types.js'
 
 export const parseSecuritySchemes = (
   schemes: Record<string, SecuritySchemeObject> = {}

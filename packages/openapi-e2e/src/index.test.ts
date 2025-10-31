@@ -14,8 +14,8 @@ import {
 import type {
   InstrumentEntityResponse,
   MarketdataClient,
-} from './schemas/marketdata'
-import { app, markets } from './server'
+} from './schemas/marketdata.js'
+import { app, markets } from './server.js'
 
 describe('openapi e2e tests', () => {
   let PORT: number

@@ -13,9 +13,12 @@ import {
   BatchSpanProcessor,
   type SpanProcessor,
 } from '@opentelemetry/sdk-trace-node'
-import { ConsoleLogPrettyExporter, ConsoleSpanPrettyExporter } from './loggers'
-import { ConsoleMetricPrettyExporter } from './loggers/console-metric-pretty-exporter'
-import { TreeSpanProcessor } from './loggers/tree-span-processor'
+import { ConsoleMetricPrettyExporter } from './loggers/console-metric-pretty-exporter.js'
+import {
+  ConsoleLogPrettyExporter,
+  ConsoleSpanPrettyExporter,
+} from './loggers/index.js'
+import { TreeSpanProcessor } from './loggers/tree-span-processor.js'
 
 export const getLogProvider = (
   resource: Resource,

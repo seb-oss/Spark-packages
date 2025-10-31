@@ -15,7 +15,7 @@ import {
   type MockInstance,
   vi,
 } from 'vitest'
-import { ConsoleMetricPrettyExporter } from './console-metric-pretty-exporter'
+import { ConsoleMetricPrettyExporter } from './console-metric-pretty-exporter.js'
 
 describe('ConsoleMetricPrettyExporter', () => {
   const createMetric = (name: string): MetricData =>

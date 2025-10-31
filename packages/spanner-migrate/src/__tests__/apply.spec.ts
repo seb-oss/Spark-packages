@@ -1,5 +1,4 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest } from '@google-cloud/spanner/build/src/transaction'
 import {
   afterEach,
   beforeEach,
@@ -9,8 +8,8 @@ import {
   type Mocked,
   vi,
 } from 'vitest'
-import { applyDown, applyUp } from '../apply'
-import type { Migration } from '../types'
+import { applyDown, applyUp } from '../apply.js'
+import type { ExecuteSqlRequest, Migration } from '../types.js'
 
 vi.mock('@google-cloud/spanner', () => {
   const transaction = {

@@ -8,7 +8,7 @@ import {
 } from '@opentelemetry/sdk-logs'
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { getLogger, initialize } from './'
+import { getLogger, initialize } from './index.js'
 
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 

@@ -3,10 +3,10 @@ import type {
   ReferenceObject,
   ResponseObject,
 } from '@sebspark/openapi-core'
-import type { CustomType, ResponseBody } from '../types'
-import { parseDocumentation, parseRef } from './common'
-import { parseHeader } from './headers'
-import { parseSchema } from './schema'
+import type { CustomType, ResponseBody } from '../types.js'
+import { parseDocumentation, parseRef } from './common.js'
+import { parseHeader } from './headers.js'
+import { parseSchema } from './schema.js'
 
 export const parseResponseBodies = (
   responses: Record<string, ResponseObject | ReferenceObject> = {}

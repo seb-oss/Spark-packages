@@ -1,8 +1,8 @@
 import http from 'node:http'
 import https from 'node:https'
 import net from 'node:net'
-import { introspect } from './introspection'
-import type { ProxyConfig } from './types'
+import { introspect } from './introspection.js'
+import type { ProxyConfig } from './types.js'
 import {
   defaultPort,
   flattenHeaders,
@@ -10,7 +10,7 @@ import {
   setHeader,
   toHttpBase,
   toWsBase,
-} from './utils'
+} from './utils.js'
 
 export const createProxyServer = (config: ProxyConfig) => {
   if (!config.target)

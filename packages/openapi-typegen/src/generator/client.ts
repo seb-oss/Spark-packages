@@ -1,8 +1,8 @@
 import type { Verb } from '@sebspark/openapi-core'
-import type { Path } from '../types'
-import { generateClientArgs } from './args'
-import { generateResponseBody, OR, serializeValue } from './common'
-import { documentClientPath } from './document'
+import type { Path } from '../types.js'
+import { generateClientArgs } from './args.js'
+import { generateResponseBody, OR, serializeValue } from './common.js'
+import { documentClientPath } from './document.js'
 
 export const generateClient = (name: string, paths: Path[]): string => {
   const groupedCalls: Partial<Record<Verb, string[]>> = {}

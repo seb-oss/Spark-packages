@@ -8,7 +8,7 @@ import {
   resourceFromAttributes,
   serviceInstanceIdDetector,
 } from '@opentelemetry/resources'
-import { detectTelemetryContext } from './otel-context'
+import { detectTelemetryContext } from './otel-context.js'
 
 export const getResource = async () => {
   const baseRes = await detectResources({

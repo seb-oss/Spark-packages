@@ -13,7 +13,7 @@ import {
   getAppliedMigrations,
   SQL_CREATE_TABLE_MIGRATIONS,
   SQL_SELECT_TABLE_MIGRATIONS,
-} from '../db'
+} from '../db.js'
 
 vi.mock('@google-cloud/spanner', () => {
   const db = {

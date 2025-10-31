@@ -1,6 +1,6 @@
-import type { RequestHandler } from 'express'
 import { json, Router } from 'express'
-import type { HttpError, User, UserList } from './openapi'
+import type { NextFunction, RequestHandler } from 'express-serve-static-core'
+import type { HttpError, User, UserList } from './openapi.js'
 
 export const accessToken = 'Bearer access token'
 
@@ -14,13 +14,13 @@ const authorize: RequestHandler = (req, res, next) => {
     res.status(403).send({ message: 'Forbidden' } as HttpError)
     return
   }
-  next()
+  next?.()
 }
 
 const users = new Map<string, User>()
 
 const router = Router()
-router.use(json())
+router.use(json() as NextFunction)
 router.get('/users', authorize, (req, res) => {
   res.status(200).send(Array.from(users.values()) as UserList)
 })

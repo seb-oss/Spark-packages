@@ -13,8 +13,8 @@ import type {
   ResponseBody,
   TypeDefinition,
   UnknownType,
-} from '../types'
-import { document } from './document'
+} from '../types.js'
+import { document } from './document.js'
 
 export const OR = ' | '
 export const AND = ' & '

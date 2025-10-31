@@ -7,8 +7,10 @@ import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions'
-import stringify from 'fast-safe-stringify'
-import { colors, levelColorMap, levelIconMap } from './style'
+import fss from 'fast-safe-stringify'
+import { colors, levelColorMap, levelIconMap } from './style.js'
+
+const stringify = fss.default.stableStringify
 
 type IResource = Pick<Resource, 'attributes'>
 type IInstrumentation = ReadableLogRecord['instrumentationScope']

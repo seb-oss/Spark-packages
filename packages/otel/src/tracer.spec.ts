@@ -1,8 +1,8 @@
 import { context, trace } from '@opentelemetry/api'
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { initialize } from './otel'
-import { getTracer } from './tracer'
+import { initialize } from './otel.js'
+import { getTracer } from './tracer.js'
 
 describe('getTracer', () => {
   it('warns if OTEL is not yet initialized', () => {

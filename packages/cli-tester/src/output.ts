@@ -1,6 +1,6 @@
 import type { ChildProcess } from 'node:child_process'
-import { ansiPatterns } from './characters'
-import { COMMAND_TIMEOUT } from './utils'
+import { ansiPatterns } from './characters.js'
+import { COMMAND_TIMEOUT } from './utils.js'
 
 export const output = (
   childProcess: ChildProcess,

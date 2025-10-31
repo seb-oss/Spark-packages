@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { InMemoryPersistor } from './inMemoryPersistor'
-import type { IPersistor } from './types'
+import { InMemoryPersistor } from './inMemoryPersistor.js'
+import type { IPersistor } from './types.js'
 
 describe('InMemoryPersistor', () => {
   let persistor: IPersistor

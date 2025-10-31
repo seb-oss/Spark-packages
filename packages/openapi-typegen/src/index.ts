@@ -3,8 +3,8 @@ import { parse, resolve } from 'node:path'
 import type { OpenApiDocument } from '@sebspark/openapi-core'
 import { pascalCase } from 'change-case'
 import * as YAML from 'yaml'
-import { generate as _generate, format } from './generator'
-import { parseDocument } from './parser'
+import { generate as _generate, format } from './generator/index.js'
+import { parseDocument } from './parser/index.js'
 
 export const generateTypescript = async (
   name: string,

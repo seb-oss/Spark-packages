@@ -7,9 +7,7 @@ import { findFreePorts } from 'find-free-ports'
 import type { Server } from 'socket.io'
 import type { Socket } from 'socket.io-client'
 import {
-  afterAll,
   afterEach,
-  beforeAll,
   beforeEach,
   describe,
   expect,
@@ -17,8 +15,8 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import { Emitter } from '../emitter'
-import { connectClient, startServer, wait } from './helpers'
+import { Emitter } from '../emitter.js'
+import { connectClient, startServer, wait } from './helpers.js'
 
 const PROJECT_ID = 'test-project'
 process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID

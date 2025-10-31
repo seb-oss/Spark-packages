@@ -1,6 +1,6 @@
-import { createJwt, getRemoteJwt } from './jwt'
-import type { Headers, Mode, ProxyConfig } from './types'
-import { getHeader, parseAuthorizationHeader } from './utils'
+import { createJwt, getRemoteJwt } from './jwt.js'
+import type { Headers, Mode, ProxyConfig } from './types.js'
+import { getHeader, parseAuthorizationHeader } from './utils.js'
 
 export const introspect = async (
   config: ProxyConfig,

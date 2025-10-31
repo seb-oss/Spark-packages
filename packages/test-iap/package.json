@@ -4,14 +4,15 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "type": "module",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "yarn build:index && yarn build:start",
-    "build:index": "tsup-node src/index.ts --format esm,cjs --dts",
-    "build:start": "tsup-node src/start.ts --format esm",
+    "build:index": "tsup-node src/index.ts --format esm --target node22 --dts",
+    "build:start": "tsup-node src/start.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -20,12 +21,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "jose": "^6.1.0",
-    "testcontainers": "^11.7.2"
+    "jose": "6.1.0",
+    "testcontainers": "11.7.2"
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "@types/ws": "^8.18.1",
-    "ws": "^8.18.3"
+    "@types/ws": "8.18.1",
+    "ws": "8.18.3"
   }
 }

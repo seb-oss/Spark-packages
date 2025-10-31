@@ -7,7 +7,7 @@ import type {
   EventParams,
   EventsMap,
   TypedEventBroadcaster,
-} from './typed-events'
+} from './typed-events.js'
 import {
   type BroadcastFlags,
   type BroadcastOptions,
@@ -15,7 +15,7 @@ import {
   type Packet,
   PacketType,
   RESERVED_EVENTS,
-} from './types'
+} from './types.js'
 
 export class BroadcastOperator<EmitEvents extends EventsMap>
   implements TypedEventBroadcaster<EmitEvents>
