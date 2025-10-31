@@ -2759,7 +2759,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     google-auth-library: "npm:10.4.2"
   peerDependencies:
-    "@sebspark/otel": ">=1.1.4"
+    "@sebspark/otel": ">=2.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2843,7 +2843,7 @@ __metadata:
     tsup-node: "npm:^0.1.0"
     vitest: "npm:4.0.5"
   peerDependencies:
-    "@sebspark/otel": ">=1.1.4"
+    "@sebspark/otel": ">=2.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2888,7 +2888,7 @@ __metadata:
     express-serve-static-core: "npm:0.1.1"
     supertest: "npm:7.1.4"
   peerDependencies:
-    "@sebspark/otel": ">=1.1.4"
+    "@sebspark/otel": ">=2.0.0"
     "@sebspark/tsconfig": "*"
   languageName: unknown
   linkType: soft
@@ -2970,7 +2970,7 @@ __metadata:
     superjson: "npm:2.2.5"
     testcontainers: "npm:11.7.2"
   peerDependencies:
-    "@sebspark/otel": ">=1.1.4"
+    "@sebspark/otel": ">=2.0.0"
   languageName: unknown
   linkType: soft
 
