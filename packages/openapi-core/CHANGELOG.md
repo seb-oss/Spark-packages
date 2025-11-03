@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.0.2
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+- Updated dependencies [7e5c2e9]
+  - @sebspark/retry@1.0.1
+
 ## 4.0.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/promise-cache",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -29,6 +29,6 @@
     "superjson": "2.2.5"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=2.0.1"
+    "@sebspark/otel": ">=2.0.2"
   }
 }

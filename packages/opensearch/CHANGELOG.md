@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 2.0.1
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+
 ## 2.0.0
 
 ### Major Changes

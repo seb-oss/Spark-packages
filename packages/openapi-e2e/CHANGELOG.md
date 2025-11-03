@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 4.0.2
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+- Updated dependencies [7e5c2e9]
+  - @sebspark/openapi-express@5.0.0
+  - @sebspark/openapi-client@4.0.2
+  - @sebspark/openapi-core@4.0.2
+
 ## 4.0.1
 
 ### Patch Changes
