@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "date-fns": "4.1.0",
-    "fix-esm": "1.0.1",
     "redis": "5.9.0",
     "superjson": "2.2.5"
   },

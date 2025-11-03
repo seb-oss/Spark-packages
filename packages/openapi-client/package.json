@@ -31,7 +31,8 @@
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
     "axios": "1.13.1",
-    "axios-auth-refresh": "3.3.6"
+    "axios-auth-refresh": "3.3.6",
+    "express-serve-static-core": "0.1.1"
   },
   "peerDependencies": {
     "@sebspark/otel": ">=2.0.1"
