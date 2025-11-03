@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.0.3
+
+### Patch Changes
+
+- eb99a27: Marked opentelemetry dependencies as external
+
 ## 2.0.2
 
 ### Patch Changes
