@@ -31,7 +31,7 @@
     "@turbo/gen": "2.5.8",
     "@types/node": "^24.9.1",
     "@vitest/coverage-v8": "4.0.5",
-    "knip": "5.66.4",
+    "knip": "5.67.0",
     "tsup": "8.5.0",
     "turbo": "2.5.8",
     "typescript": "5.9.3",
