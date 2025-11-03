@@ -2630,7 +2630,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.2.6, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.2.7, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -2655,7 +2655,7 @@ __metadata:
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.2.6"
+    "@sebspark/avsc-isometric": "npm:0.2.7"
     "@sebspark/tsconfig": "npm:*"
     "@types/yargs": "npm:17.0.34"
     boxen: "npm:8.0.1"
@@ -2684,7 +2684,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     google-auth-library: "npm:10.5.0"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.1"
+    "@sebspark/otel": ">=2.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2769,7 +2769,7 @@ __metadata:
     tsup-node: "npm:^0.1.0"
     vitest: "npm:4.0.6"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.1"
+    "@sebspark/otel": ">=2.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2814,7 +2814,7 @@ __metadata:
     express-serve-static-core: "npm:0.1.1"
     supertest: "npm:7.1.4"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.1"
+    "@sebspark/otel": ">=2.0.2"
     "@sebspark/tsconfig": "*"
   languageName: unknown
   linkType: soft
@@ -2895,7 +2895,7 @@ __metadata:
     superjson: "npm:2.2.5"
     testcontainers: "npm:11.7.2"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.1"
+    "@sebspark/otel": ">=2.0.2"
   languageName: unknown
   linkType: soft
 
@@ -2985,11 +2985,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:1.0.1, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   languageName: unknown
   linkType: soft
+
+"@sebspark/tsconfig@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@sebspark/tsconfig@npm:1.0.1"
+  checksum: 10c0/b18282076b4d6adcc2b5e8d869f06d53bb62268a9e6369ccfcd5c01fd1d205f08c59b5b4b322c4023e440757e8d4b8a2464cca08d19cca8690fbf64e08ff705c
+  languageName: node
+  linkType: hard
 
 "@sebspark/typed-router@workspace:packages/typed-router":
   version: 0.0.0-use.local

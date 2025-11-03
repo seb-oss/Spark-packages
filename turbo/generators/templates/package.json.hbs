@@ -2,20 +2,20 @@
   "name": "@sebspark/{{name}}",
   "version": "0.0.0",
   "license": "Apache-2.0",
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --target node22 --dts",
+    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
-    "devDependencies": {
+  "devDependencies": {
     "tsconfig": "*"
   }
 }
