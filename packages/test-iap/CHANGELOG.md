@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+
 ## 1.0.0
 
 ### Major Changes

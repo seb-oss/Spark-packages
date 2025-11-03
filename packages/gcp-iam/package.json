@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/gcp-iam",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,6 +24,6 @@
     "google-auth-library": "10.5.0"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=2.0.0"
+    "@sebspark/otel": ">=2.0.1"
   }
 }
