@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+
 ## 3.0.0
 
 ### Major Changes

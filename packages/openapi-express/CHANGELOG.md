@@ -1,5 +1,14 @@
 # @sebspark/openapi-express
 
+## 4.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+- Updated dependencies [d801e1e]
+  - @sebspark/openapi-core@4.0.1
+  - @sebspark/otel@2.0.1
+
 ## 4.0.0
 
 ### Major Changes

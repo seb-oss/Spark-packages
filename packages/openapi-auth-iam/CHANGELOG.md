@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+- Updated dependencies [d801e1e]
+  - @sebspark/gcp-iam@3.0.1
+
 ## 3.0.0
 
 ### Major Changes

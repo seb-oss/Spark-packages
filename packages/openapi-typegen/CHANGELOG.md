@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+- Updated dependencies [d801e1e]
+  - @sebspark/openapi-core@4.0.1
+
 ## 5.0.0
 
 ### Major Changes

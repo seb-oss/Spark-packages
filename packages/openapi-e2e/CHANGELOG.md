@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 4.0.1
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+- Updated dependencies [d801e1e]
+  - @sebspark/openapi-express@4.0.1
+  - @sebspark/openapi-client@4.0.1
+  - @sebspark/openapi-core@4.0.1
+
 ## 4.0.0
 
 ### Major Changes

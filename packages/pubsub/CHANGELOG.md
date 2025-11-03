@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.5
+
+### Patch Changes
+
+- d801e1e: Updated dependencies and fixed some exports
+
 ## 1.8.4
 
 ### Patch Changes
