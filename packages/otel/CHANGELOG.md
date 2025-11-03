@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.0.4
+
+### Patch Changes
+
+- 618a019: Dynamically imported instrumentations
+
 ## 2.0.3
 
 ### Patch Changes
