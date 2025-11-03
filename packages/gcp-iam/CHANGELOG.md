@@ -1,5 +1,13 @@
 # @sebspark/gcp-iam
 
+## 3.0.2
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+- Updated dependencies [7e5c2e9]
+  - @sebspark/otel@2.0.2
+
 ## 3.0.1
 
 ### Patch Changes

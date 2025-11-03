@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.2.7
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+
 ## 0.2.6
 
 ### Patch Changes

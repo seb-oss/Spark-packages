@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.6
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+
 ## 1.8.5
 
 ### Patch Changes

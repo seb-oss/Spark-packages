@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.2
+
+### Patch Changes
+
+- 7e5c2e9: Switched to new tsconfig with moduleResolution=bundler
+
 ## 1.0.1
 
 ### Patch Changes
