@@ -1,4 +1,4 @@
 {
-  "extends": "@sebspark/tsconfig/base.json",
+  "extends": "@sebspark/tsconfig/tsconfig.lib.json",
   "include": ["src"]
 }

@@ -9,14 +9,14 @@ import type {
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
-import { findRef } from '../parser/common.js'
-import { parseHeader } from '../parser/headers.js'
-import { parseParameter } from '../parser/parameters.js'
-import { parsePath } from '../parser/paths.js'
-import { parseRequestBodies } from '../parser/requestBodies.js'
-import { parseResponseBodies } from '../parser/responseBodies.js'
-import { parseSchema } from '../parser/schema.js'
-import { parseSecurityScheme } from '../parser/securitySchemes.js'
+import { findRef } from '../parser/common'
+import { parseHeader } from '../parser/headers'
+import { parseParameter } from '../parser/parameters'
+import { parsePath } from '../parser/paths'
+import { parseRequestBodies } from '../parser/requestBodies'
+import { parseResponseBodies } from '../parser/responseBodies'
+import { parseSchema } from '../parser/schema'
+import { parseSecurityScheme } from '../parser/securitySchemes'
 import type {
   ArrayType,
   CustomType,
@@ -28,7 +28,7 @@ import type {
   PrimitiveType,
   RecordType,
   ResponseBody,
-} from '../types.js'
+} from '../types'
 
 describe('findRef', () => {
   it('finds headers', () => {

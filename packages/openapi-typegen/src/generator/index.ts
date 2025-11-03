@@ -1,2 +1,2 @@
-export { format } from './formatter.js'
-export { generate } from './generator.js'
+export { format } from './formatter'
+export { generate } from './generator'

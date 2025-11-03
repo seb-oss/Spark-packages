@@ -1,4 +1,4 @@
-import type { OpeningHours } from './types.js'
+import type { OpeningHours } from './types'
 
 export const openingHours: OpeningHours = {
   XSTO: {

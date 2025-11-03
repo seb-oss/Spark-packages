@@ -10,7 +10,7 @@ import {
   type MockInstance,
   vi,
 } from 'vitest'
-import { ConsoleSpanPrettyExporter } from './console-span-pretty-exporter.js'
+import { ConsoleSpanPrettyExporter } from './console-span-pretty-exporter'
 
 describe('ConsoleSpanPrettyExporter', () => {
   const createSpan = (name: string, status: SpanStatusCode): ReadableSpan =>

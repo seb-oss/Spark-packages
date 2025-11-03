@@ -7,7 +7,7 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import { createProxyServer } from './server.js'
+import { createProxyServer } from './server'
 
 const listenMock = vi.fn((port: number, cb?: () => void) => cb?.())
 vi.mock('./server', () => ({

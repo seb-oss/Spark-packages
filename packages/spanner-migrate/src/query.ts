@@ -1,5 +1,5 @@
 import type { Database } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest, Json } from './types.js'
+import type { ExecuteSqlRequest, Json } from './types'
 
 export const runQuery = async <T = Json>(
   database: Database,

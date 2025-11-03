@@ -1,2 +1,2 @@
-export * from './holidays.js'
-export type { Holiday } from './types.js'
+export * from './holidays'
+export type { Holiday } from './types'

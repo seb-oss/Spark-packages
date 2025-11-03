@@ -3,7 +3,7 @@ import type {
   PushMetricExporter,
   ResourceMetrics,
 } from '@opentelemetry/sdk-metrics'
-import { formatMetrics } from './formatters/index.js'
+import { formatMetrics } from './formatters/index'
 
 export class ConsoleMetricPrettyExporter implements PushMetricExporter {
   private readonly patterns: RegExp[]

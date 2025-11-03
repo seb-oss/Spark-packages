@@ -15,8 +15,8 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import { Emitter } from '../emitter.js'
-import { connectClient, startServer, wait } from './helpers.js'
+import { Emitter } from '../emitter'
+import { connectClient, startServer, wait } from './helpers'
 
 const PROJECT_ID = 'test-project'
 process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID

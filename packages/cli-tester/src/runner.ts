@@ -1,12 +1,12 @@
 import type { SpawnOptions } from 'node:child_process'
 import { spawn } from 'node:child_process'
-import { keys } from './characters.js'
-import { check } from './check.js'
-import { input } from './input.js'
-import { output } from './output.js'
-import { parse } from './prompt.js'
-import { select } from './select.js'
-import type { CliTester, PromptType } from './types.js'
+import { keys } from './characters'
+import { check } from './check'
+import { input } from './input'
+import { output } from './output'
+import { parse } from './prompt'
+import { select } from './select'
+import type { CliTester, PromptType } from './types'
 
 /**
  * Spawns a new CLI process and provides a set of methods to interact with it.

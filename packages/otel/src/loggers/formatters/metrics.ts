@@ -10,8 +10,8 @@ import {
   formatScope,
   formatService,
   formatTimestamp,
-} from './shared.js'
-import { colors } from './style.js'
+} from './shared'
+import { colors } from './style'
 
 export function formatMetrics(resourceMetrics: ResourceMetrics): string {
   const { resource, scopeMetrics } = resourceMetrics

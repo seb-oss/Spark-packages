@@ -1,6 +1,6 @@
 import { afterEach } from 'node:test'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import { Persistor } from './index.js'
+import { Persistor } from './index'
 
 vi.mock('redis')
 

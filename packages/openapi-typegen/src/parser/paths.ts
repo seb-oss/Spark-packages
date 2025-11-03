@@ -6,10 +6,10 @@ import type {
   ResponsesObject,
   Verb,
 } from '@sebspark/openapi-core'
-import type { Path, TypeDefinition } from '../types.js'
-import { parseArgs } from './args.js'
-import { parseDocumentation } from './common.js'
-import { parseResponseBody } from './responseBodies.js'
+import type { Path, TypeDefinition } from '../types'
+import { parseArgs } from './args'
+import { parseDocumentation } from './common'
+import { parseResponseBody } from './responseBodies'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>
   Object.entries(doc.paths || {}).flatMap(([name, path]) =>

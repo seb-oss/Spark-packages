@@ -1,7 +1,7 @@
-import type { CustomType, Path, ResponseBody } from '../types.js'
-import { generateServerArgs } from './args.js'
-import { generateResponseBody, OR } from './common.js'
-import { documentServerPath } from './document.js'
+import type { CustomType, Path, ResponseBody } from '../types'
+import { generateServerArgs } from './args'
+import { generateResponseBody, OR } from './common'
+import { documentServerPath } from './document'
 
 export const generateServer = (name: string, paths: Path[]): string => {
   const tokens: string[] = []

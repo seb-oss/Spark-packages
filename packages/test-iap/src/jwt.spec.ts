@@ -1,8 +1,8 @@
 import { importJWK, jwtVerify } from 'jose'
 import nock from 'nock'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { createJwt, getKey, getRemoteJwt } from './jwt.js'
-import type { JsonObject } from './types.js'
+import { createJwt, getKey, getRemoteJwt } from './jwt'
+import type { JsonObject } from './types'
 
 describe('createJwt', () => {
   const fixed = new Date('2030-01-01T00:00:00Z')

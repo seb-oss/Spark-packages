@@ -1,8 +1,8 @@
 import { metrics } from '@opentelemetry/api'
 import { MeterProvider } from '@opentelemetry/sdk-metrics'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { getMeter } from './metrics.js'
-import { initialize } from './otel.js'
+import { getMeter } from './metrics'
+import { initialize } from './otel'
 
 describe('getMeter', () => {
   it('warns if OTEL is not yet initialized', () => {

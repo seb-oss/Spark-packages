@@ -16,7 +16,7 @@ import type {
 } from 'axios'
 import axios from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
-import { paramsSerializer } from './paramsSerializer.js'
+import { paramsSerializer } from './paramsSerializer'
 
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance

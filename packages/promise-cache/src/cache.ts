@@ -1,6 +1,6 @@
-import { deserialize, serialize } from './serializer.js'
-import { toSetOptions } from './setOptions.js'
-import type { Cache, CachingOptions, IPersistor } from './types.js'
+import { deserialize, serialize } from './serializer'
+import { toSetOptions } from './setOptions'
+import type { Cache, CachingOptions, IPersistor } from './types'
 
 /**
  * Creates a cache instance using a given persistor.

@@ -4,8 +4,8 @@ import { join } from 'node:path'
 import { input, select } from '@inquirer/prompts'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { create, down, init, status, up } from './index.js'
-import type { Config, DatabaseConfig } from './types.js'
+import { create, down, init, status, up } from './index'
+import type { Config, DatabaseConfig } from './types'
 
 const CONFIG_FILE = './.spanner-migrate.config.json'
 

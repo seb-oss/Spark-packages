@@ -4,7 +4,7 @@ import type {
   Prompt,
   PromptType,
   SelectPrompt,
-} from './types.js'
+} from './types'
 
 export const parse = <T extends PromptType = undefined>(
   text: string,

@@ -8,7 +8,7 @@ import {
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions'
 import fss from 'fast-safe-stringify'
-import { colors, levelColorMap, levelIconMap } from './style.js'
+import { colors, levelColorMap, levelIconMap } from './style'
 
 const stringify = fss.default.stableStringify
 

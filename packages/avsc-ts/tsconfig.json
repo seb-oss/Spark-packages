@@ -1,5 +1,5 @@
 {
-  "extends": "@sebspark/tsconfig/base.json",
+  "extends": "@sebspark/tsconfig/tsconfig.lib.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules", "**/spec.ts", "testschemas"]
 }

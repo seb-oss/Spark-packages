@@ -3,7 +3,7 @@ import type {
   MessageBindingsObject,
   OperationBindingsObject,
   ServerBindingsObject,
-} from './bindings.js'
+} from './bindings'
 import type {
   Example,
   ExternalDocumentationObject,
@@ -14,7 +14,7 @@ import type {
   SecuritySchemeObject,
   ServerObject,
   TagObject,
-} from './common.js'
+} from './common'
 
 export type AsyncApiDocument = {
   asyncapi: string

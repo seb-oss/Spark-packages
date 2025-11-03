@@ -2,7 +2,7 @@ import type { UUID } from 'node:crypto'
 import { getLogger } from '@sebspark/otel'
 import { createClient, type RedisClientOptions } from 'redis'
 import superjson from 'superjson'
-import { createLocalMemoryClient } from './localMemory.js'
+import { createLocalMemoryClient } from './localMemory'
 
 let CACHE_CLIENT = createClient
 const isTestRunning = process.env.NODE_ENV === 'test'

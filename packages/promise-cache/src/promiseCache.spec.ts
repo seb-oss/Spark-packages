@@ -1,6 +1,6 @@
 import { afterEach } from 'node:test'
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest'
-import { PromiseCache } from './index.js'
+import { PromiseCache } from './index'
 
 vi.mock('redis')
 

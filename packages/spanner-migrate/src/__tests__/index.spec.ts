@@ -1,9 +1,9 @@
 import { afterEach, describe, expect, it, type Mocked, vi } from 'vitest'
-import * as apply from '../apply.js'
-import * as db from '../db.js'
-import * as files from '../files.js'
-import { create, down, init, status, up } from '../index.js'
-import type { Config } from '../types.js'
+import * as apply from '../apply'
+import * as db from '../db'
+import * as files from '../files'
+import { create, down, init, status, up } from '../index'
+import type { Config } from '../types'
 
 vi.mock('../db')
 vi.mock('../files')

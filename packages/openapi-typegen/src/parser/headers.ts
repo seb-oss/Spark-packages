@@ -1,7 +1,7 @@
 import type { HeaderObject } from '@sebspark/openapi-core'
-import type { Header } from '../types.js'
-import { parseDocumentation } from './common.js'
-import { parseSchema } from './schema.js'
+import type { Header } from '../types'
+import { parseDocumentation } from './common'
+import { parseSchema } from './schema'
 
 export const parseHeaders = (
   schemas: Record<string, HeaderObject> = {}

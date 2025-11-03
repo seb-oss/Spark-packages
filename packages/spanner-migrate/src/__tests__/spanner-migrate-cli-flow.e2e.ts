@@ -8,7 +8,7 @@ import {
   createInstance,
   parseStatus,
   startSpanner,
-} from './e2e/helpers.js'
+} from './e2e/helpers'
 
 const cwd = resolve(__dirname, 'cli')
 const cliPath = resolve(__dirname, '../../dist/cli.js')

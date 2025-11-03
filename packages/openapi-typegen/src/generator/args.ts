@@ -1,5 +1,5 @@
-import type { RequestArgs } from '../types.js'
-import { generateType } from './common.js'
+import type { RequestArgs } from '../types'
+import { generateType } from './common'
 
 export const generateClientArgs = (args: RequestArgs | undefined): string =>
   generateArgs(args, false)

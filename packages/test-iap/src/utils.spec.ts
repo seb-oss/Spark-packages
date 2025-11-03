@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { Headers, JsonObject } from './types.js'
+import type { Headers, JsonObject } from './types'
 import {
   defaultPort,
   flattenHeaders,
@@ -10,7 +10,7 @@ import {
   setHeader,
   toHttpBase,
   toWsBase,
-} from './utils.js'
+} from './utils'
 
 const b64u = (o: unknown) =>
   Buffer.from(JSON.stringify(o)).toString('base64url')

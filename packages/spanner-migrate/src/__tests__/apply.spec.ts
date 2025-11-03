@@ -8,8 +8,8 @@ import {
   type Mocked,
   vi,
 } from 'vitest'
-import { applyDown, applyUp } from '../apply.js'
-import type { ExecuteSqlRequest, Migration } from '../types.js'
+import { applyDown, applyUp } from '../apply'
+import type { ExecuteSqlRequest, Migration } from '../types'
 
 vi.mock('@google-cloud/spanner', () => {
   const transaction = {

@@ -6,7 +6,7 @@ import type {
   SchemaObject,
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
-import type { EnumType } from '../types.js'
+import type { EnumType } from '../types'
 
 export const parseRef = (ref: string): string =>
   ref.substring(ref.lastIndexOf('/') + 1)

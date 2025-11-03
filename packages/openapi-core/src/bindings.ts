@@ -1,4 +1,4 @@
-import type { HttpMethod, ReferenceObject, SchemaObject } from './common.js'
+import type { HttpMethod, ReferenceObject, SchemaObject } from './common'
 
 export type ChannelBindingsObject = {
   http?: HttpChannelBindingObject

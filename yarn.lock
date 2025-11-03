@@ -2985,7 +2985,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:1.0.1, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   languageName: unknown
@@ -9908,6 +9908,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.3.3"
     "@changesets/cli": "npm:2.29.7"
+    "@sebspark/tsconfig": "npm:1.0.1"
     "@turbo/gen": "npm:2.6.0"
     "@types/node": "npm:22.19.0"
     "@vitest/coverage-v8": "npm:4.0.6"

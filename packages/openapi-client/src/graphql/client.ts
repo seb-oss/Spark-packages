@@ -4,11 +4,11 @@ import {
 } from '@sebspark/openapi-auth-iam'
 import type { ClientOptions } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
-import { TypedClient } from '../client.js'
+import { TypedClient } from '../client'
 import type {
   GatewayGraphqlClientArgs,
   GatewayGraphqlClient as GatewayGraphqlClientType,
-} from './types.js'
+} from './types'
 
 export class GatewayGraphqlClient<
   T extends GatewayGraphqlClientType = GatewayGraphqlClientType,

@@ -1,4 +1,4 @@
-import type { TickerMessage } from '../generated/tickerMessage.js'
+import type { TickerMessage } from '../generated/tickerMessage'
 
 export const TickersTopic = 'tradeinsight.tickers'
 export type TickersPubSubChannels = {

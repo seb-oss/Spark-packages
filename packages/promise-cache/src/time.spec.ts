@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
-import * as time from './time.js'
+import * as time from './time'
 
 describe('time', () => {
   beforeEach(() => {

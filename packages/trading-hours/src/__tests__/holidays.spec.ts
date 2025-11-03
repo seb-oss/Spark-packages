@@ -8,7 +8,7 @@ import {
   isOpen,
   marketOpeningHours,
   whichHoliday,
-} from '../holidays.js'
+} from '../holidays'
 
 beforeEach(() => {
   vi.useFakeTimers()

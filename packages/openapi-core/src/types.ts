@@ -7,7 +7,7 @@ import type {
   PartiallySerialized,
   QueryParams,
   Serialized,
-} from './ts-extensions.js'
+} from './ts-extensions'
 
 export type { PartiallySerialized, Serialized, LowerCaseHeaders, QueryParams }
 

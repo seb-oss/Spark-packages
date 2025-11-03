@@ -1,7 +1,7 @@
 import type { ChildProcess } from 'node:child_process'
-import { keys } from './characters.js'
-import { input } from './input.js'
-import { COMMAND_DELAY, wait } from './utils.js'
+import { keys } from './characters'
+import { input } from './input'
+import { COMMAND_DELAY, wait } from './utils'
 
 export const select = async (
   childProcess: ChildProcess,

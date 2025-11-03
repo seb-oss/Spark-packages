@@ -1,6 +1,6 @@
 import { metrics } from '@opentelemetry/api'
-import { isInitialized } from './otel.js'
-import { detectTelemetryContext } from './otel-context.js'
+import { isInitialized } from './otel'
+import { detectTelemetryContext } from './otel-context'
 
 export function getMeter(componentNameOverride?: string) {
   if (!isInitialized() && process.env.NODE_ENV !== 'test') {

@@ -1,6 +1,6 @@
 import { json, Router } from 'express'
 import type { NextFunction, RequestHandler } from 'express-serve-static-core'
-import type { HttpError, User, UserList } from './openapi.js'
+import type { HttpError, User, UserList } from './openapi'
 
 export const accessToken = 'Bearer access token'
 

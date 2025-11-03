@@ -10,7 +10,7 @@ import type {
   SecuritySchemeObject,
   ServerObject,
   TagObject,
-} from './common.js'
+} from './common'
 
 // Example of expanding the schema with other OpenAPI components
 export type OpenApiDocument = {

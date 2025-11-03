@@ -10,9 +10,9 @@ import {
   type MockedFunction,
   vi,
 } from 'vitest'
-import * as clientModule from '../client.js'
-import { GatewayGraphqlClient } from './index.js'
-import type { GatewayGraphqlClientArgs } from './types.js'
+import * as clientModule from '../client'
+import { GatewayGraphqlClient } from './index'
+import type { GatewayGraphqlClientArgs } from './types'
 
 vi.mock('@sebspark/openapi-auth-iam', () => ({
   apiGatewayTokenByUrlGenerator: vi.fn(),

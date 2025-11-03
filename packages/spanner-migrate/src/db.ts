@@ -1,5 +1,5 @@
 import type { Database } from '@google-cloud/spanner'
-import type { ExecuteSqlRequest, Migration } from './types.js'
+import type { ExecuteSqlRequest, Migration } from './types'
 
 export const SQL_SELECT_TABLE_MIGRATIONS = `
   SELECT

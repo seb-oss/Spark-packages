@@ -1,12 +1,12 @@
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
-import { run } from './index.js'
+import { run } from './index'
 import type {
   CheckboxPrompt,
   InputPrompt,
   PromptType,
   SelectPrompt,
-} from './types.js'
+} from './types'
 
 describe('cli-tester', () => {
   describe('input', () => {

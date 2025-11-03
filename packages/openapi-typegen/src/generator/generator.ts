@@ -1,11 +1,11 @@
-import type { ParsedComponents, ParsedOpenApiDocument } from '../types.js'
-import { generateClient } from './client.js'
-import { generateHeader, generateResponseBody, generateType } from './common.js'
-import { generateServer } from './server.js'
+import type { ParsedComponents, ParsedOpenApiDocument } from '../types'
+import { generateClient } from './client'
+import { generateHeader, generateResponseBody, generateType } from './common'
+import { generateServer } from './server'
 
-export { generateClient } from './client.js'
-export { generateType } from './common.js'
-export { generateServer } from './server.js'
+export { generateClient } from './client'
+export { generateType } from './common'
+export { generateServer } from './server'
 
 export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
  /**

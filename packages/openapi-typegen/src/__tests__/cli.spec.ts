@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { filename } from '../index.js'
+import { filename } from '../index'
 
 describe('cli', () => {
   describe('filename', () => {

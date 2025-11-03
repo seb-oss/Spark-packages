@@ -1,14 +1,14 @@
 import type { SchemaObject } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
-import { generateResponseBody, typeName } from '../generator/common.js'
-import { format } from '../generator/formatter.js'
+import { generateResponseBody, typeName } from '../generator/common'
+import { format } from '../generator/formatter'
 import {
   generateClient,
   generateServer,
   generateType,
-} from '../generator/generator.js'
-import { classname } from '../index.js'
-import { parseSchema } from '../parser/schema.js'
+} from '../generator/generator'
+import { classname } from '../index'
+import { parseSchema } from '../parser/schema'
 import type {
   ArrayType,
   CustomType,
@@ -17,7 +17,7 @@ import type {
   Path,
   PrimitiveType,
   ResponseBody,
-} from '../types.js'
+} from '../types'
 
 describe('typescript generator', () => {
   describe('generateType', async () => {

@@ -1,14 +1,14 @@
 import { type Database, Spanner } from '@google-cloud/spanner'
-import { applyDown, applyUp } from './apply.js'
-import { ensureMigrationTable, getAppliedMigrations } from './db.js'
+import { applyDown, applyUp } from './apply'
+import { ensureMigrationTable, getAppliedMigrations } from './db'
 import {
   createMigration,
   getMigration,
   getMigrationFiles,
   getNewMigrations,
   writeConfig,
-} from './files.js'
-import type { Config, DatabaseConfig, DbPath } from './types.js'
+} from './files'
+import type { Config, DatabaseConfig, DbPath } from './types'
 
 const getDb = ({ projectId, databaseName, instanceName }: DbPath): Database => {
   const spanner = projectId ? new Spanner({ projectId }) : new Spanner()

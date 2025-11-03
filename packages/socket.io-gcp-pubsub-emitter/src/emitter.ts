@@ -1,12 +1,12 @@
 import type { Topic } from '@google-cloud/pubsub'
-import { BroadcastOperator } from './operator.js'
+import { BroadcastOperator } from './operator'
 import type {
   DefaultEventsMap,
   EventNames,
   EventParams,
   EventsMap,
-} from './typed-events.js'
-import type { BroadcastOptions, EmitterOptions } from './types.js'
+} from './typed-events'
+import type { BroadcastOptions, EmitterOptions } from './types'
 
 export class Emitter<EmitEvents extends EventsMap = DefaultEventsMap> {
   private readonly opts: EmitterOptions

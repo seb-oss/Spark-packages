@@ -1,6 +1,6 @@
 import { AxiosError, AxiosHeaders } from 'axios'
 import { describe, expect, test } from 'vitest'
-import { fromAxiosError } from './errors.js'
+import { fromAxiosError } from './errors'
 
 const commonHeaders = new AxiosHeaders()
 const commonResponseProperties = {

@@ -1,6 +1,6 @@
 import type { ChildProcess } from 'node:child_process'
-import { ansiPatterns } from './characters.js'
-import { COMMAND_TIMEOUT } from './utils.js'
+import { ansiPatterns } from './characters'
+import { COMMAND_TIMEOUT } from './utils'
 
 /**
  * Sends input to the CLI process and waits for confirmation.

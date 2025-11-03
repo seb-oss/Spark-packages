@@ -1,9 +1,9 @@
 import http from 'node:http'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { WebSocket, WebSocketServer } from 'ws'
-import { introspect } from './introspection.js'
-import { createProxyServer } from './server.js'
-import type { ProxyConfig } from './types.js'
+import { introspect } from './introspection'
+import { createProxyServer } from './server'
+import type { ProxyConfig } from './types'
 
 vi.mock('./introspection', () => ({
   introspect: vi.fn(

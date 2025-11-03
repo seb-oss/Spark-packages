@@ -9,7 +9,7 @@ import {
 import express, { type Express } from 'express'
 import { type Agent, agent } from 'supertest'
 import { beforeEach, expect, type Mock, test, vi } from 'vitest'
-import { TypedRouter } from './router.js'
+import { TypedRouter } from './router'
 
 type User = {
   id: string

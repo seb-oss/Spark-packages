@@ -6,7 +6,7 @@ import {
   formatScope,
   formatService,
   formatTimestamp,
-} from './shared.js'
+} from './shared'
 
 export function formatLogRecord(record: ReadableLogRecord): string {
   const timestamp = formatTimestamp(record.hrTime)
