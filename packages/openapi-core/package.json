@@ -2,9 +2,8 @@
   "name": "@sebspark/openapi-core",
   "version": "4.0.0",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "type": "module",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -20,7 +19,7 @@
     "@sebspark/tsconfig": "*",
     "tsup-node": "0.1.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.5"
+    "vitest": "4.0.6"
   },
   "dependencies": {
     "@sebspark/retry": "*",

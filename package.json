@@ -27,20 +27,15 @@
     "@changesets/cli": "2.29.7"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.2",
-    "@turbo/gen": "2.5.8",
-    "@types/node": "^24.9.1",
-    "@vitest/coverage-v8": "4.0.5",
-    "knip": "5.66.4",
+    "@biomejs/biome": "2.3.3",
+    "@turbo/gen": "2.6.0",
+    "@types/node": "22.19.0",
+    "@vitest/coverage-v8": "4.0.6",
+    "knip": "5.67.1",
     "tsup": "8.5.0",
-    "turbo": "2.5.8",
+    "turbo": "2.6.0",
     "typescript": "5.9.3",
-    "vitest": "4.0.5"
-  },
-  "resolutions": {
-    "cross-spawn": "~7.0.6",
-    "semver": "~7.5.4",
-    "word-wrap": "~1.2.5"
+    "vitest": "4.0.6"
   },
   "workspaces": [
     "packages/*"
