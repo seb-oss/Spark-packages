@@ -2809,13 +2809,13 @@ __metadata:
   dependencies:
     "@sebspark/openapi-core": "npm:*"
     "@sebspark/otel": "npm:*"
+    "@sebspark/tsconfig": "npm:*"
     "@types/supertest": "npm:6.0.3"
     express: "npm:5.1.0"
     express-serve-static-core: "npm:0.1.1"
     supertest: "npm:7.1.4"
   peerDependencies:
     "@sebspark/otel": ">=2.0.2"
-    "@sebspark/tsconfig": "*"
   languageName: unknown
   linkType: soft
 

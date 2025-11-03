@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@sebspark/otel": "*",
+    "@sebspark/tsconfig": "*",
     "@types/supertest": "6.0.3",
     "express": "5.1.0",
     "supertest": "7.1.4"
@@ -27,7 +28,6 @@
     "express-serve-static-core": "0.1.1"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=2.0.2",
-    "@sebspark/tsconfig": "*"
+    "@sebspark/otel": ">=2.0.2"
   }
 }
