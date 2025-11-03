@@ -17,9 +17,12 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
 
 let initialization: Promise<void> | undefined
 let _isInitialized = false
-export async function initialize(...instrumentations: Instrumentation[]) {
+export async function initialize(
+  ...instrumentations: Promise<Instrumentation>[]
+) {
   if (!initialization) {
-    initialization = _initialize(instrumentations)
+    const resolvedInstrumentations = await Promise.all(instrumentations)
+    initialization = _initialize(resolvedInstrumentations)
     initialization.then(() => {
       _isInitialized = true
     })
