@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.0
+
+### Minor Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 2.0.0
 
 ### Major Changes

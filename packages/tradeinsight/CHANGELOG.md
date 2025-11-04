@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 3.0.2
 
 ### Patch Changes

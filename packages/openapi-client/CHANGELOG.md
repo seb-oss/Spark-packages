@@ -1,5 +1,15 @@
 # @sebspark/openapi-client
 
+## 4.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+- Updated dependencies [4b210c2]
+  - @sebspark/openapi-auth-iam@3.0.3
+  - @sebspark/openapi-core@4.0.3
+  - @sebspark/otel@2.0.5
+
 ## 4.0.2
 
 ### Patch Changes

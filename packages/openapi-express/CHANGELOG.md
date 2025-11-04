@@ -1,5 +1,14 @@
 # @sebspark/openapi-express
 
+## 5.0.1
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+- Updated dependencies [4b210c2]
+  - @sebspark/openapi-core@4.0.3
+  - @sebspark/otel@2.0.5
+
 ## 5.0.0
 
 ### Patch Changes
