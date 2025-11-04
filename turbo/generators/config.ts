@@ -50,6 +50,11 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: 'add',
+        path: '{{> new-package-folder}}/tsup.config.ts',
+        templateFile: 'templates/tsup.config.ts.hbs',
+      },
+      {
+        type: 'add',
         path: '{{> new-package-folder}}/src/index.ts',
         template: '',
       },

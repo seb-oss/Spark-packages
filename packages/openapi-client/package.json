@@ -5,12 +5,18 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/test/ -o ./src/test/",
-    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
+    "build": "tsup src/index.ts --config tsup.config.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -23,7 +29,7 @@
     "@sebspark/tsconfig": "*",
     "express": "5.1.0",
     "nock": "14.0.10",
-    "tsup-node": "^0.1.0",
+    "tsup": "8.5.0",
     "vitest": "4.0.6"
   },
   "dependencies": {

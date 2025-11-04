@@ -5,13 +5,19 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "yarn build:index && yarn build:start",
-    "build:index": "tsup-node src/index.ts --format esm --target node22 --dts",
-    "build:start": "tsup-node src/start.ts --format esm --target node22 --dts",
+    "build:index": "tsup src/index.ts --config ./tsup.config.ts",
+    "build:start": "tsup src/start.ts --config ./tsup.config.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

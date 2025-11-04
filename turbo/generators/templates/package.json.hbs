@@ -5,11 +5,17 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm --target node22 --dts",
+    "build": "tsup src/index.ts --config ./tsup.confiog.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

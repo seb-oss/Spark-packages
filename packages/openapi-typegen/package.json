@@ -11,7 +11,7 @@
     "cli.mjs"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts src/cli.ts --format esm --target node22 --dts",
+    "build": "tsup src/index.ts src/cli.ts --config ./tsup.config.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

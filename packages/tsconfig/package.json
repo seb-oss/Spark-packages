@@ -1,5 +1,25 @@
 {
   "name": "@sebspark/tsconfig",
   "version": "2.0.0",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "base.json",
+    "tsconfig.app.json",
+    "tsconfig.lib.json",
+    "tsup.js",
+    "tsup.d.ts"
+  ],
+  "exports": {
+    "./tsup": {
+      "types": "./tsup.d.ts",
+      "import": "./tsup.js"
+    },
+    "./tsconfig.app.json": "./tsconfig.app.json",
+    "./tsconfig.lib.json": "./tsconfig.lib.json",
+    "./base.json": "./base.json"
+  },
+  "dependencies": {
+    "tsup": "8.5.0"
+  }
 }
