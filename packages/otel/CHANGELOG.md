@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.0.5
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 2.0.4
 
 ### Patch Changes

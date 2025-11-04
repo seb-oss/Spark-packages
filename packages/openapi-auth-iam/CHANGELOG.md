@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+- Updated dependencies [4b210c2]
+  - @sebspark/gcp-iam@3.0.3
+
 ## 3.0.2
 
 ### Patch Changes

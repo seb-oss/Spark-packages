@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.0.2
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 1.0.1
 
 ### Patch Changes

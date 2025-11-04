@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 2.0.2
 
 ### Patch Changes

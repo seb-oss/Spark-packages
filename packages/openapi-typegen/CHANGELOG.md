@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+- Updated dependencies [4b210c2]
+  - @sebspark/openapi-core@4.0.3
+
 ## 5.0.2
 
 ### Patch Changes

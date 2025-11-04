@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.11
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 0.4.10
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.0.3
+
+### Patch Changes
+
+- 4b210c2: Standardized on a common build script
+
 ## 4.0.2
 
 ### Patch Changes

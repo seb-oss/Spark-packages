@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-express",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
@@ -34,6 +34,6 @@
     "express-serve-static-core": "0.1.1"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=2.0.2"
+    "@sebspark/otel": ">=2.0.5"
   }
 }
