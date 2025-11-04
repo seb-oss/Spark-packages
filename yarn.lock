@@ -2684,7 +2684,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     google-auth-library: "npm:10.5.0"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.2"
+    "@sebspark/otel": ">=2.0.5"
   languageName: unknown
   linkType: soft
 
@@ -2769,7 +2769,7 @@ __metadata:
     tsup: "npm:8.5.0"
     vitest: "npm:4.0.6"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.2"
+    "@sebspark/otel": ">=2.0.5"
   languageName: unknown
   linkType: soft
 
@@ -2815,7 +2815,7 @@ __metadata:
     express-serve-static-core: "npm:0.1.1"
     supertest: "npm:7.1.4"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.2"
+    "@sebspark/otel": ">=2.0.5"
   languageName: unknown
   linkType: soft
 
@@ -2895,7 +2895,7 @@ __metadata:
     superjson: "npm:2.2.5"
     testcontainers: "npm:11.7.2"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.2"
+    "@sebspark/otel": ">=2.0.5"
   languageName: unknown
   linkType: soft
 
@@ -2985,13 +2985,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:2.0.0, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
     tsup: "npm:8.5.0"
   languageName: unknown
   linkType: soft
+
+"@sebspark/tsconfig@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@sebspark/tsconfig@npm:2.0.0"
+  checksum: 10c0/6493f12b1d9d835f602fd71f52e855f5ede5ee820c3160b22d52a15fbf5fd25ce2a5c34742f9115010f6c60b31be91ec3dc1ff29c5f7f364f0ef1b44e9004d8f
+  languageName: node
+  linkType: hard
 
 "@sebspark/typed-router@workspace:packages/typed-router":
   version: 0.0.0-use.local
