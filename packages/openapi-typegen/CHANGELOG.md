@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.0.4
+
+### Patch Changes
+
+- 555a0fc: chore: export Request from express-serve-static-core, add axios-auth-refresh dependency
+- Updated dependencies [555a0fc]
+  - @sebspark/openapi-core@4.0.5
+
 ## 5.0.3
 
 ### Patch Changes
