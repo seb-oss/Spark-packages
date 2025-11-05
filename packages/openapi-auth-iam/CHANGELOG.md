@@ -1,5 +1,11 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.4
+
+### Patch Changes
+
+- 2e611c9: fix: dependencies
+
 ## 3.0.3
 
 ### Patch Changes

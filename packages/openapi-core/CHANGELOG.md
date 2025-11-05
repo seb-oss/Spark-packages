@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.0.6
+
+### Patch Changes
+
+- 2e611c9: fix: dependencies
+
 ## 4.0.5
 
 ### Patch Changes
