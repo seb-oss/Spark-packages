@@ -18,6 +18,9 @@ import axios from 'axios'
 import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import { paramsSerializer } from './paramsSerializer'
 
+const createAuthRefreshInterceptorFunc =
+  (createAuthRefreshInterceptor as any)?.default ?? createAuthRefreshInterceptor
+
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance
 }
@@ -98,7 +101,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       return axiosError.response as AxiosResponse
     }
 
-    createAuthRefreshInterceptor(axiosInstance, refreshAuthLogic)
+    createAuthRefreshInterceptorFunc(axiosInstance, refreshAuthLogic)
   }
 
   if (logger) {
