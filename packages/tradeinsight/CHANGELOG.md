@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.4
+
+### Patch Changes
+
+- 0ba06f2: fix: dependencies
+
 ## 3.0.3
 
 ### Patch Changes
