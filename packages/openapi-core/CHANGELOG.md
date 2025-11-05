@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.0.5
+
+### Patch Changes
+
+- 555a0fc: chore: export Request from express-serve-static-core, add axios-auth-refresh dependency
+
 ## 4.0.4
 
 ### Patch Changes
