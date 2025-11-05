@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.4
+
+### Patch Changes
+
+- a528fb5: chore: make @sebspark/otel a dependency
+
 ## 3.0.3
 
 ### Patch Changes
