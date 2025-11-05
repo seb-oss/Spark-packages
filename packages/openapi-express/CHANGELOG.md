@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 5.0.3
+
+### Patch Changes
+
+- 2e611c9: fix: dependencies
+- Updated dependencies [2e611c9]
+  - @sebspark/openapi-core@4.0.6
+
 ## 5.0.2
 
 ### Patch Changes
