@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 2.0.2
+
+### Patch Changes
+
+- 5bf3ac7: chore: update dependencies for express-serve-static-core
+
 ## 2.0.1
 
 ### Patch Changes

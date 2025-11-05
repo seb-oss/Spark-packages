@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.4
+
+### Patch Changes
+
+- 5bf3ac7: chore: update dependencies for express-serve-static-core
+
 ## 1.0.3
 
 ### Patch Changes

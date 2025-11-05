@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 4.0.4
+
+### Patch Changes
+
+- 5bf3ac7: chore: update dependencies for express-serve-static-core
+- Updated dependencies [5bf3ac7]
+  - @sebspark/openapi-core@4.0.4
+
 ## 4.0.3
 
 ### Patch Changes
