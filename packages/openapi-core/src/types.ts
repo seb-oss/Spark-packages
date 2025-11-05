@@ -9,6 +9,8 @@ import type {
   Serialized,
 } from './ts-extensions'
 
+export type ExpressRequest = Request
+
 export type { PartiallySerialized, Serialized, LowerCaseHeaders, QueryParams }
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'

@@ -2781,6 +2781,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     "@types/express-serve-static-core": "npm:5.1.0"
     axios: "npm:1.13.1"
+    axios-auth-refresh: "npm:1.0.5"
     tsup: "npm:8.5.0"
     typescript: "npm:5.9.3"
     vitest: "npm:4.0.6"
@@ -4332,6 +4333,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios-auth-refresh@npm:1.0.5":
+  version: 1.0.5
+  resolution: "axios-auth-refresh@npm:1.0.5"
+  dependencies:
+    axios: "npm:^0.18.0"
+  checksum: 10c0/1ece1847e7446a4c188fc23b09be2a8910e24cd3793f3c65a08fec54fb353efd1e4b0022d67fd8300663433e666db589d60059e0bc1af67a4bb959ebf9327284
+  languageName: node
+  linkType: hard
+
 "axios-auth-refresh@npm:3.3.6":
   version: 3.3.6
   resolution: "axios-auth-refresh@npm:3.3.6"
@@ -4349,6 +4359,16 @@ __metadata:
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
   checksum: 10c0/de9c3c6de43d3ee1146d3afe78645f19450cac6a5d7235bef8b8e8eeb705c2e47e2d231dea99cecaec4dae1897c521118ca9413b9d474063c719c4d94c5b9adc
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.18.0":
+  version: 0.18.1
+  resolution: "axios@npm:0.18.1"
+  dependencies:
+    follow-redirects: "npm:1.5.10"
+    is-buffer: "npm:^2.0.2"
+  checksum: 10c0/13d86542ad3e1de286a6262213b1cd62654307d89617bef5015e82aad389408c6f66bafa1e467b80af971cfe5ac5ed0b40a250f682f46ab9a1487060f0b6b661
   languageName: node
   linkType: hard
 
@@ -5355,6 +5375,15 @@ __metadata:
     supports-color:
       optional: true
   checksum: 10c0/d79136ec6c83ecbefd0f6a5593da6a9c91ec4d7ddc4b54c883d6e71ec9accb5f67a1a5e96d00a328196b5b5c86d365e98d8a3a70856aaf16b4e7b1985e67f5a6
+  languageName: node
+  linkType: hard
+
+"debug@npm:=3.1.0":
+  version: 3.1.0
+  resolution: "debug@npm:3.1.0"
+  dependencies:
+    ms: "npm:2.0.0"
+  checksum: 10c0/5bff34a352d7b2eaa31886eeaf2ee534b5461ec0548315b2f9f80bd1d2533cab7df1fa52e130ce27bc31c3945fbffb0fc72baacdceb274b95ce853db89254ea4
   languageName: node
   linkType: hard
 
@@ -6376,6 +6405,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"follow-redirects@npm:1.5.10":
+  version: 1.5.10
+  resolution: "follow-redirects@npm:1.5.10"
+  dependencies:
+    debug: "npm:=3.1.0"
+  checksum: 10c0/f56ca26dcf3c9996a6cf8868b61e369a35d4000ade0292bdd27b5e0934902681b037060b9fabe58e7042bb8b85166d5db8bbcf027f1825c1577e4cffd904fd3f
+  languageName: node
+  linkType: hard
+
 "follow-redirects@npm:^1.15.6":
   version: 1.15.11
   resolution: "follow-redirects@npm:1.15.11"
@@ -7303,6 +7341,13 @@ __metadata:
     call-bound: "npm:^1.0.2"
     has-tostringtag: "npm:^1.0.2"
   checksum: 10c0/6377344b31e9fcb707c6751ee89b11f132f32338e6a782ec2eac9393b0cbd32235dad93052998cda778ee058754860738341d8114910d50ada5615912bb929fc
+  languageName: node
+  linkType: hard
+
+"is-buffer@npm:^2.0.2":
+  version: 2.0.5
+  resolution: "is-buffer@npm:2.0.5"
+  checksum: 10c0/e603f6fced83cf94c53399cff3bda1a9f08e391b872b64a73793b0928be3e5f047f2bcece230edb7632eaea2acdbfcb56c23b33d8a20c820023b230f1485679a
   languageName: node
   linkType: hard
 
