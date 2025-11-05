@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@sebspark/retry": "*",
-    "axios": "1.13.1",
-    "express-serve-static-core": "0.1.1"
+    "@types/express-serve-static-core": "5.1.0",
+    "axios": "1.13.1"
   }
 }

@@ -17,8 +17,8 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "express": "5.1.0",
-    "express-serve-static-core": "0.1.1"
+    "@types/express-serve-static-core": "5.1.0",
+    "express": "5.1.0"
   },
   "devDependencies": {
     "@google-cloud/pubsub": "5.2.0",
