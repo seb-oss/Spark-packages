@@ -7,6 +7,7 @@ import type {
   APIResponse,
   APIServerDefinition,
   BaseClient,
+  ExpressRequest,
   GenericRouteHandler,
   LowerCaseHeaders,
   PartiallySerialized,
@@ -14,7 +15,6 @@ import type {
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
-import type { Request as ExpressRequest } from 'express-serve-static-core'
 
 type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 

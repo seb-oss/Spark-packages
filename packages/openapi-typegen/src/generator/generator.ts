@@ -17,7 +17,7 @@ export const generate = (name: string, doc: ParsedOpenApiDocument): string => `
    APIResponse,
    APIServerDefinition,
    BaseClient,
-   ExpressRequest
+   ExpressRequest,
    GenericRouteHandler,
    LowerCaseHeaders,
    PartiallySerialized,

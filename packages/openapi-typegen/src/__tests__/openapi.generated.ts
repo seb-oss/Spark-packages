@@ -7,6 +7,7 @@ import type {
   APIResponse,
   APIServerDefinition,
   BaseClient,
+  ExpressRequest,
   GenericRouteHandler,
   LowerCaseHeaders,
   PartiallySerialized,
@@ -14,7 +15,6 @@ import type {
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
-import type { Request as ExpressRequest } from 'express-serve-static-core'
 
 type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 
@@ -88,7 +88,7 @@ export type CardsAPIServerPaths = {
             page?: number
             limit?: number
           }>
-        }
+        },
       ) => Promise<
         | [200, APIResponse<PartiallySerialized<CardList>>]
         | [401, APIResponse<PartiallySerialized<HttpError>>]
@@ -115,7 +115,7 @@ export type CardsAPIServerPaths = {
           query: QueryParams<{
             cardNickname: boolean
           }>
-        }
+        },
       ) => Promise<[200, APIResponse<PartiallySerialized<Card>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -144,7 +144,7 @@ export type CardsAPIServerPaths = {
           query: QueryParams<{
             cardNickname: boolean
           }>
-        }
+        },
       ) => Promise<
         | [200, APIResponse<PartiallySerialized<Card>>]
         | [401, APIResponse<PartiallySerialized<HttpError>>]
@@ -173,7 +173,7 @@ export type CardsAPIServerPaths = {
           params: {
             cardId: string
           }
-        }
+        },
       ) => Promise<[204, undefined]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
@@ -202,7 +202,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
           limit?: number
         }
       },
-      opts?: RequestOptions
+      opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<CardList>>>
     /**
      *
@@ -232,7 +232,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
           cardNickname: boolean
         }
       },
-      opts?: RequestOptions
+      opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
   }
   delete: {
@@ -257,7 +257,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
           cardNickname: boolean
         }
       },
-      opts?: RequestOptions
+      opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
   }
   put: {
@@ -284,7 +284,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
           cardId: string
         }
       },
-      opts?: RequestOptions
+      opts?: RequestOptions,
     ): Promise<undefined>
   }
 }
