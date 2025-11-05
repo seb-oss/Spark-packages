@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "depcheck": "depcheck",
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

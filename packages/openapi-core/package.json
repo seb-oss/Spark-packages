@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.ts --config tsup.config.ts",
+    "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
@@ -30,7 +31,6 @@
   "dependencies": {
     "@sebspark/retry": "*",
     "@types/express-serve-static-core": "5.1.0",
-    "axios": "1.13.1",
-    "axios-auth-refresh": "1.0.5"
+    "axios": "1.13.1"
   }
 }

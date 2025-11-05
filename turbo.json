@@ -22,6 +22,7 @@
     "typecheck": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**/*.d.ts"]
-    }
+    },
+    "depcheck": {}
   }
 }
