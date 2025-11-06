@@ -3115,7 +3115,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:2.1.0, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
@@ -3123,6 +3123,15 @@ __metadata:
     tsup: "npm:8.5.0"
   languageName: unknown
   linkType: soft
+
+"@sebspark/tsconfig@npm:2.1.0":
+  version: 2.1.0
+  resolution: "@sebspark/tsconfig@npm:2.1.0"
+  dependencies:
+    tsup: "npm:8.5.0"
+  checksum: 10c0/881ad4cdbc527384185cf1029c7c1915437b80923d55dc87a633343cbe917407475a5cb1a144960167bd72ad9bbae3c4617e7177968760c8d93cbc832df61544
+  languageName: node
+  linkType: hard
 
 "@sebspark/typed-router@workspace:packages/typed-router":
   version: 0.0.0-use.local
