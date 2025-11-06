@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.2
+
+### Patch Changes
+
+- 133c172: fix: export ./tsdown
+
 ## 2.1.1
 
 ### Patch Changes
