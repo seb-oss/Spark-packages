@@ -8,7 +8,9 @@
     "tsconfig.app.json",
     "tsconfig.lib.json",
     "tsup.js",
-    "tsup.d.ts"
+    "tsup.d.ts",
+    "tdown.js",
+    "tdown.d.ts"
   ],
   "exports": {
     "./tsup": {
@@ -20,6 +22,7 @@
     "./base.json": "./base.json"
   },
   "dependencies": {
+    "tsdown": "0.16.0",
     "tsup": "8.5.0"
   }
 }
