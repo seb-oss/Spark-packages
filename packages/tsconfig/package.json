@@ -17,6 +17,10 @@
       "types": "./tsup.d.ts",
       "import": "./tsup.js"
     },
+    "./tsdown": {
+      "types": "./tsdown.d.ts",
+      "import": "./tsdown.js"
+    },
     "./tsconfig.app.json": "./tsconfig.app.json",
     "./tsconfig.lib.json": "./tsconfig.lib.json",
     "./base.json": "./base.json"
