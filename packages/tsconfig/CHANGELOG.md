@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.3
+
+### Patch Changes
+
+- 37ab2b5: fix(tsconfig): export typo
+
 ## 2.1.2
 
 ### Patch Changes
