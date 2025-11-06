@@ -9,8 +9,8 @@
     "tsconfig.lib.json",
     "tsup.js",
     "tsup.d.ts",
-    "tdown.js",
-    "tdown.d.ts"
+    "tsdown.js",
+    "tsdown.d.ts"
   ],
   "exports": {
     "./tsup": {
