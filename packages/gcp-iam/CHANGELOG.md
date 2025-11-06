@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.6
+
+### Patch Changes
+
+- c32b9e3: chore: migrate to tsdown
+
 ## 3.0.5
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 5.0.4
+
+### Patch Changes
+
+- c32b9e3: chore: migrate to tsdown
+- Updated dependencies [c32b9e3]
+  - @sebspark/openapi-core@4.0.7
+
 ## 5.0.3
 
 ### Patch Changes

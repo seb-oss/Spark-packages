@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.0.7
+
+### Patch Changes
+
+- c32b9e3: chore: migrate to tsdown
+
 ## 4.0.6
 
 ### Patch Changes
