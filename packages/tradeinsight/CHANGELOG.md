@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.5
+
+### Patch Changes
+
+- 9bc06a8: Include a React Native specific export
+
 ## 3.0.4
 
 ### Patch Changes
