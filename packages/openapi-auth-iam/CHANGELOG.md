@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.5
+
+### Patch Changes
+
+- c32b9e3: chore: migrate to tsdown
+- Updated dependencies [c32b9e3]
+  - @sebspark/gcp-iam@3.0.6
+
 ## 3.0.4
 
 ### Patch Changes

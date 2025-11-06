@@ -1,5 +1,14 @@
 # @sebspark/openapi-client
 
+## 4.0.6
+
+### Patch Changes
+
+- c32b9e3: chore: migrate to tsdown
+- Updated dependencies [c32b9e3]
+  - @sebspark/openapi-auth-iam@3.0.5
+  - @sebspark/openapi-core@4.0.7
+
 ## 4.0.5
 
 ### Patch Changes
