@@ -2806,7 +2806,7 @@ __metadata:
     "@sebspark/otel": "npm:*"
     "@sebspark/tsconfig": "npm:*"
     google-auth-library: "npm:10.5.0"
-    tsup: "npm:8.5.0"
+    tsdown: "npm:0.16.0"
     vitest: "npm:4.0.6"
   peerDependencies:
     "@sebspark/otel": ">=2.0.5"
@@ -2873,7 +2873,7 @@ __metadata:
   dependencies:
     "@sebspark/gcp-iam": "npm:*"
     "@sebspark/tsconfig": "npm:*"
-    tsup: "npm:8.5.0"
+    tsdown: "npm:0.16.0"
   languageName: unknown
   linkType: soft
 
@@ -2892,7 +2892,7 @@ __metadata:
     axios-auth-refresh: "npm:3.3.6"
     express: "npm:5.1.0"
     nock: "npm:14.0.10"
-    tsup: "npm:8.5.0"
+    tsdown: "npm:0.16.0"
     vitest: "npm:4.0.6"
   peerDependencies:
     "@sebspark/otel": ">=2.0.5"
@@ -2907,7 +2907,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     "@types/express-serve-static-core": "npm:5.1.0"
     axios: "npm:1.13.1"
-    tsup: "npm:8.5.0"
+    tsdown: "npm:0.16.0"
     typescript: "npm:5.9.3"
     vitest: "npm:4.0.6"
   languageName: unknown
@@ -2940,7 +2940,7 @@ __metadata:
     "@types/supertest": "npm:6.0.3"
     express: "npm:5.1.0"
     supertest: "npm:7.1.4"
-    tsup: "npm:8.5.0"
+    tsdown: "npm:0.16.0"
     vitest: "npm:4.0.6"
   peerDependencies:
     "@sebspark/otel": ">=2.0.5"

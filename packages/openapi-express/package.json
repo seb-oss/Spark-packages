@@ -3,19 +3,19 @@
   "version": "5.0.3",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --config tsup.config.ts",
+    "build": "tsdown src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
@@ -28,7 +28,7 @@
     "@types/supertest": "6.0.3",
     "express": "5.1.0",
     "supertest": "7.1.4",
-    "tsup": "8.5.0",
+    "tsdown": "0.16.0",
     "vitest": "4.0.6"
   },
   "dependencies": {
