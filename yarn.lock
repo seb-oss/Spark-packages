@@ -3119,7 +3119,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
-    tsdown: "npm:^0.16.0"
+    tsdown: "npm:0.16.0"
     tsup: "npm:8.5.0"
   languageName: unknown
   linkType: soft
@@ -11595,7 +11595,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsdown@npm:^0.16.0":
+"tsdown@npm:0.16.0":
   version: 0.16.0
   resolution: "tsdown@npm:0.16.0"
   dependencies:
