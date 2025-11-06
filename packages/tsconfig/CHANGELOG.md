@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.1
+
+### Patch Changes
+
+- 7846ecc: feat: add tsdown config
+
 ## 2.1.0
 
 ### Minor Changes
