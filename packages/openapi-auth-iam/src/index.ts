@@ -6,6 +6,13 @@ import {
 
 export const apiGatewayTokenByUrlGenerator = (apiKey: string) => {
   return async (url: string): Promise<Record<string, string>> => {
+    // Skip token generation in local environment
+    if (process.env.ENV === 'local') {
+      return {
+        'x-api-key': apiKey,
+      }
+    }
+
     const token = await getApiGatewayTokenByUrl({
       apiURL: url,
     })
@@ -22,6 +29,13 @@ export const apiGatewayTokenByClientIdGenerator = (
   clientId: string
 ) => {
   return async (): Promise<Record<string, string>> => {
+    // Skip token generation in local environment
+    if (process.env.ENV === 'local') {
+      return {
+        'x-api-key': apiKey,
+      }
+    }
+
     const token = await getApiGatewayTokenByClientId(clientId)
 
     return {
