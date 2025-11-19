@@ -1,5 +1,11 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.6
+
+### Patch Changes
+
+- 580843d: Skip token generation when environment is local
+
 ## 3.0.5
 
 ### Patch Changes
