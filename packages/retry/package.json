@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "axios": "1.13.1"
+    "axios": "1.13.2"
   }
 }
