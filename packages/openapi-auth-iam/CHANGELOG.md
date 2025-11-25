@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.7
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+- Updated dependencies [cacbaf5]
+  - @sebspark/gcp-iam@3.0.7
+
 ## 3.0.6
 
 ### Patch Changes

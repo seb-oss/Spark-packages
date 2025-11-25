@@ -1,5 +1,15 @@
 # @sebspark/openapi-client
 
+## 4.0.7
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+- Updated dependencies [cacbaf5]
+  - @sebspark/openapi-auth-iam@3.0.7
+  - @sebspark/openapi-core@4.0.8
+  - @sebspark/retry@1.0.2
+
 ## 4.0.6
 
 ### Patch Changes

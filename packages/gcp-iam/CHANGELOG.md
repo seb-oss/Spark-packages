@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.7
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+
 ## 3.0.6
 
 ### Patch Changes

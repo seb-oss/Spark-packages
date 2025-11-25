@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.2
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+
 ## 1.0.1
 
 ### Patch Changes

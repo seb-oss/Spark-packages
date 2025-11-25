@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.0.8
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+- Updated dependencies [cacbaf5]
+  - @sebspark/retry@1.0.2
+
 ## 4.0.7
 
 ### Patch Changes
