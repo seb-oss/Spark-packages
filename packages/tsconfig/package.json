@@ -32,8 +32,5 @@
   "dependencies": {
     "tsdown": "0.16.6",
     "tsup": "8.5.1"
-  },
-  "installConfig": {
-    "hoistingLimits": "workspaces"
   }
 }
