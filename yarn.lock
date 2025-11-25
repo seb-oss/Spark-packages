@@ -3033,7 +3033,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     "@testcontainers/gcloud": "npm:11.7.2"
     "@testcontainers/mockserver": "npm:11.7.2"
-    "@testcontainers/redis": "npm:11.7.2"
+    "@testcontainers/redis": "npm:11.8.1"
     "@types/express-serve-static-core": "npm:5.1.0"
     express: "npm:5.1.0"
     mockserver-client: "npm:5.15.0"
@@ -3229,7 +3229,7 @@ __metadata:
   dependencies:
     "@sebspark/otel": "npm:*"
     "@sebspark/tsconfig": "npm:*"
-    "@testcontainers/redis": "npm:11.7.2"
+    "@testcontainers/redis": "npm:11.8.1"
     date-fns: "npm:4.1.0"
     redis: "npm:5.10.0"
     superjson: "npm:2.2.5"
@@ -3402,12 +3402,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/redis@npm:11.7.2":
-  version: 11.7.2
-  resolution: "@testcontainers/redis@npm:11.7.2"
+"@testcontainers/redis@npm:11.8.1":
+  version: 11.8.1
+  resolution: "@testcontainers/redis@npm:11.8.1"
   dependencies:
-    testcontainers: "npm:^11.7.2"
-  checksum: 10c0/bea1d329bbf290e4e0c2dedfd75b00b4e9b088a0c08aa53df71191afc1296e7e7d7cc3e317b91bac9f7f5ba6aaf10d90a5713f9774d2d6bbc4cf7b910e8af62e
+    testcontainers: "npm:^11.8.1"
+  checksum: 10c0/080980421b696065b824c5c4522ecc9eee1f7c78d06a3ac3f1692a5e053aaaa4627b63665983650e99d6c38974cd3863960731d8ad4d0eae64909d4416c47159
   languageName: node
   linkType: hard
 
@@ -11664,7 +11664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^11.7.2":
+"testcontainers@npm:^11.7.2, testcontainers@npm:^11.8.1":
   version: 11.8.1
   resolution: "testcontainers@npm:11.8.1"
   dependencies:
