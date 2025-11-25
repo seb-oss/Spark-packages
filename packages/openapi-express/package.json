@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown src/index.ts",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
@@ -28,7 +28,6 @@
     "@types/supertest": "6.0.3",
     "express": "5.1.0",
     "supertest": "7.1.4",
-    "tsdown": "0.16.6",
     "vitest": "4.0.6"
   },
   "dependencies": {

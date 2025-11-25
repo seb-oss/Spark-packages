@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown src/index.ts",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "tsdown": "0.16.6",
     "vitest": "4.0.6"
   },
   "dependencies": {

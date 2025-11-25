@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/test/ -o ./src/test/",
-    "build": "tsdown src/index.ts",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
@@ -30,7 +30,6 @@
     "@sebspark/tsconfig": "*",
     "express": "5.1.0",
     "nock": "14.0.10",
-    "tsdown": "0.16.6",
     "vitest": "4.0.6"
   },
   "dependencies": {

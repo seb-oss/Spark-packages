@@ -1,4 +1,3 @@
-import type { UserConfig } from 'tsdown'
+import { defineConfig } from 'tsdown'
 
-declare const userConfig: UserConfig
-export default userConfig
+export default ReturnType<typeof defineConfig>

@@ -25,8 +25,14 @@
     "./tsconfig.lib.json": "./tsconfig.lib.json",
     "./base.json": "./base.json"
   },
+  "bin": {
+    "spark-build": "./node_modules/tsdown/dist/run.mjs"
+  },
   "dependencies": {
     "tsdown": "0.16.6",
     "tsup": "8.5.1"
+  },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
   }
 }

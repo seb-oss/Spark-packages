@@ -1,4 +1,6 @@
-export default {
+import { defineConfig } from 'tsdown'
+
+const userConfig = {
   format: ['esm'],
   platform: 'node',
   target: 'node24',
@@ -20,3 +22,5 @@ export default {
     'require-in-the-middle',
   ],
 }
+
+export default defineConfig(userConfig)

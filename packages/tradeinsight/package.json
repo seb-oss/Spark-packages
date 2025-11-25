@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --config ./tsup.config.ts",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "generate:avro": "ts-node ./scripts/avro-to-ts.ts",
@@ -26,7 +26,6 @@
     "@sebspark/tsconfig": "*",
     "avro-typescript": "1.3.0",
     "ts-node": "10.9.2",
-    "tsdown": "0.16.6",
     "vitest": "4.0.6"
   }
 }
