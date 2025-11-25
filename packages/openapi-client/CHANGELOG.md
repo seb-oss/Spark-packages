@@ -1,5 +1,14 @@
 # @sebspark/openapi-client
 
+## 4.0.8
+
+### Patch Changes
+
+- 66925c5: chore: expose tsdown as spark-build
+- Updated dependencies [66925c5]
+  - @sebspark/openapi-auth-iam@3.0.8
+  - @sebspark/openapi-core@4.0.9
+
 ## 4.0.7
 
 ### Patch Changes
