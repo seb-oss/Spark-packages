@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 5.0.6
+
+### Patch Changes
+
+- 66925c5: chore: expose tsdown as spark-build
+- Updated dependencies [66925c5]
+  - @sebspark/openapi-core@4.0.9
+
 ## 5.0.5
 
 ### Patch Changes

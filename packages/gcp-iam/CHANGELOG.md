@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.8
+
+### Patch Changes
+
+- 66925c5: chore: expose tsdown as spark-build
+
 ## 3.0.7
 
 ### Patch Changes

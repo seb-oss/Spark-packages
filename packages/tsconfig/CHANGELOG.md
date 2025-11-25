@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.5
+
+### Patch Changes
+
+- 66925c5: chore: expose tsdown as spark-build
+
 ## 2.1.4
 
 ### Patch Changes
