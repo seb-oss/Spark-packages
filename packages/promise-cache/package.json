@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "date-fns": "4.1.0",
-    "redis": "5.9.0",
+    "redis": "5.10.0",
     "superjson": "2.2.5"
   },
   "peerDependencies": {

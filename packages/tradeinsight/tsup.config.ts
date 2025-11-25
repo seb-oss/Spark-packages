@@ -1,4 +1,7 @@
-import config from '@sebspark/tsconfig/tsup'
-import { defineConfig } from 'tsup'
+import config from '@sebspark/tsconfig/tsdown'
+import { defineConfig } from 'tsdown'
 
-export default defineConfig(config)
+export default defineConfig({
+    ...config,
+    entry: ['src/index.ts'],
+})

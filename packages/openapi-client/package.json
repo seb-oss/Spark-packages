@@ -30,7 +30,7 @@
     "@sebspark/tsconfig": "*",
     "express": "5.1.0",
     "nock": "14.0.10",
-    "tsdown": "0.16.0",
+    "tsdown": "0.16.6",
     "vitest": "4.0.6"
   },
   "dependencies": {
@@ -38,7 +38,7 @@
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
     "@types/express-serve-static-core": "5.1.0",
-    "axios": "1.13.1",
+    "axios": "1.13.2",
     "axios-auth-refresh": "3.3.6"
   },
   "peerDependencies": {

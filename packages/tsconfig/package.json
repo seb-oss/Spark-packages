@@ -26,7 +26,7 @@
     "./base.json": "./base.json"
   },
   "dependencies": {
-    "tsdown": "0.16.0",
-    "tsup": "8.5.0"
+    "tsdown": "0.16.6",
+    "tsup": "8.5.1"
   }
 }

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "turbo build",
     "changeset": "changeset",
+    "check-upgrades": "node ./tools/check-upgrades.js && yarn upgrade-interactive",
     "clean": "rm -rf ./packages/**/dist",
     "depcheck": "turbo depcheck",
     "dev": "turbo dev",
@@ -29,14 +30,14 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.3",
-    "@sebspark/tsconfig": "2.1.0",
-    "@turbo/gen": "2.6.0",
+    "@sebspark/tsconfig": "*",
+    "@turbo/gen": "2.6.1",
     "@types/node": "24.10.0",
     "@vitest/coverage-v8": "4.0.6",
     "depcheck": "1.4.7",
     "knip": "5.67.1",
-    "tsup": "8.5.0",
-    "turbo": "2.6.0",
+    "tsup": "8.5.1",
+    "turbo": "2.6.1",
     "typescript": "5.9.3",
     "vitest": "4.0.6"
   },
