@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.8
+
+### Patch Changes
+
+- 87871bd: chore(tradeinsight): fix exports
+
 ## 3.0.7
 
 ### Patch Changes
