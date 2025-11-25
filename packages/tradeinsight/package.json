@@ -6,8 +6,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "react-native": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "react-native": "./dist/index.mjs"
     }
   },
   "files": [
