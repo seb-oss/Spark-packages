@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.4
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+
 ## 2.1.3
 
 ### Patch Changes

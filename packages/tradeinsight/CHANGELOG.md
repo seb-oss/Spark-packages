@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.6
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+
 ## 3.0.5
 
 ### Patch Changes

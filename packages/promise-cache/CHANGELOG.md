@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.1.0
+
+### Minor Changes
+
+- cacbaf5: chore: upgrade dependencies
+
 ## 6.0.3
 
 ### Patch Changes

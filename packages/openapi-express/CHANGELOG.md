@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 5.0.5
+
+### Patch Changes
+
+- cacbaf5: chore: upgrade dependencies
+- Updated dependencies [cacbaf5]
+  - @sebspark/openapi-core@4.0.8
+
 ## 5.0.4
 
 ### Patch Changes
