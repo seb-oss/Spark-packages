@@ -23,10 +23,11 @@
     },
     "./tsconfig.app.json": "./tsconfig.app.json",
     "./tsconfig.lib.json": "./tsconfig.lib.json",
-    "./base.json": "./base.json"
+    "./base.json": "./base.json",
+    "./run.js": "./run.js"
   },
   "bin": {
-    "spark-build": "./node_modules/tsdown/dist/run.mjs"
+    "spark-build": "./run.js"
   },
   "dependencies": {
     "tsdown": "0.16.6",

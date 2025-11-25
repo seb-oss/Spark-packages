@@ -3328,7 +3328,7 @@ __metadata:
     tsdown: "npm:0.16.6"
     tsup: "npm:8.5.1"
   bin:
-    spark-build: ./node_modules/tsdown/dist/run.mjs
+    spark-build: ./run.js
   languageName: unknown
   linkType: soft
 
