@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 2.1.6
+
+### Patch Changes
+
+- 26c1ad7: chore: fix spark-build
+
 ## 2.1.5
 
 ### Patch Changes
