@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.10
+
+### Patch Changes
+
+- dfd2e4b: chore(tradeinsight): export to cjs
+
 ## 3.0.9
 
 ### Patch Changes
