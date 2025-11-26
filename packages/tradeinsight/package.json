@@ -7,7 +7,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "react-native": "./dist/index.mjs"
+      "react-native": "./dist/index.js"
     }
   },
   "files": [
