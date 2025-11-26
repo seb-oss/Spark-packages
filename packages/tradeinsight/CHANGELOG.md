@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.9
+
+### Patch Changes
+
+- e371235: React Native export uses CJS
+
 ## 3.0.8
 
 ### Patch Changes
