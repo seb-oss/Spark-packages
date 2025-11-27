@@ -1257,7 +1257,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/grpc-js@npm:^1.10.9, @grpc/grpc-js@npm:^1.11.1, @grpc/grpc-js@npm:^1.12.6, @grpc/grpc-js@npm:^1.13.2, @grpc/grpc-js@npm:^1.14.0, @grpc/grpc-js@npm:^1.7.0, @grpc/grpc-js@npm:^1.7.1":
+"@grpc/grpc-js@npm:^1.10.9, @grpc/grpc-js@npm:^1.11.1, @grpc/grpc-js@npm:^1.12.6, @grpc/grpc-js@npm:^1.13.2, @grpc/grpc-js@npm:^1.14.1, @grpc/grpc-js@npm:^1.7.0, @grpc/grpc-js@npm:^1.7.1":
   version: 1.14.1
   resolution: "@grpc/grpc-js@npm:1.14.1"
   dependencies:
@@ -3030,7 +3030,7 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.0"
     "@sebspark/tsconfig": "npm:*"
-    "@testcontainers/gcloud": "npm:11.7.2"
+    "@testcontainers/gcloud": "npm:11.8.1"
     "@testcontainers/mockserver": "npm:11.7.2"
     "@testcontainers/redis": "npm:11.7.2"
     "@types/express-serve-static-core": "npm:5.1.0"
@@ -3262,7 +3262,7 @@ __metadata:
     "@msgpack/msgpack": "npm:3.1.2"
     "@sebspark/tsconfig": "npm:*"
     "@socket.io/gcp-pubsub-adapter": "npm:0.1.0"
-    "@testcontainers/gcloud": "npm:11.7.2"
+    "@testcontainers/gcloud": "npm:11.8.1"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.1"
     socket.io-adapter: "npm:2.5.5"
@@ -3379,13 +3379,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/gcloud@npm:11.7.2":
-  version: 11.7.2
-  resolution: "@testcontainers/gcloud@npm:11.7.2"
+"@testcontainers/gcloud@npm:11.8.1":
+  version: 11.8.1
+  resolution: "@testcontainers/gcloud@npm:11.8.1"
   dependencies:
-    "@grpc/grpc-js": "npm:^1.14.0"
-    testcontainers: "npm:^11.7.2"
-  checksum: 10c0/a8d749d6ece60e5c5fbeddb829eeffff0ce8d7f8ff092383119df6034f13072f8dc374737873644a4d7ef1e765826441295fea9aada1565511edf4a8e43186a6
+    "@grpc/grpc-js": "npm:^1.14.1"
+    testcontainers: "npm:^11.8.1"
+  checksum: 10c0/b114c58a6c155129229f9de1c251b9f4e8ca4bce53b6bb7b53fe727a05e6de23c8d0b38936eb2113b1f3d67c62cc7b12d687ecf6225a6ffb4d75d52dc28339f5
   languageName: node
   linkType: hard
 
@@ -11660,7 +11660,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^11.7.2":
+"testcontainers@npm:^11.7.2, testcontainers@npm:^11.8.1":
   version: 11.8.1
   resolution: "testcontainers@npm:11.8.1"
   dependencies:
