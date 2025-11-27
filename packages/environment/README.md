@@ -1,0 +1,3 @@
+# `@sebspark/environment`
+
+Environment

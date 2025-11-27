@@ -117,6 +117,10 @@ An easy way to add health check routes to your API
 
 Open Telemetry implementation of logging, tracing and metrics
 
+### [@sebspark/environment](./packages/environment)
+
+Handle environment variables with assertion
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

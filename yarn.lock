@@ -3010,6 +3010,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/environment@workspace:packages/environment":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/environment@workspace:packages/environment"
+  dependencies:
+    "@sebspark/tsconfig": "npm:*"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/gcp-iam@npm:*, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
