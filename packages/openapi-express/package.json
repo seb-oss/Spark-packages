@@ -26,14 +26,14 @@
     "@sebspark/otel": "*",
     "@sebspark/tsconfig": "*",
     "@types/supertest": "6.0.3",
-    "express": "5.1.0",
+    "express": "5.2.0",
     "supertest": "7.1.4",
     "vitest": "4.0.6"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
     "@types/express-serve-static-core": "5.1.0",
-    "express": "5.1.0"
+    "express": "5.2.0"
   },
   "peerDependencies": {
     "@sebspark/otel": ">=2.0.5"

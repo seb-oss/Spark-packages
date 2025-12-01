@@ -28,7 +28,7 @@
     "@sebspark/openapi-typegen": "*",
     "@sebspark/otel": "*",
     "@sebspark/tsconfig": "*",
-    "express": "5.1.0",
+    "express": "5.2.0",
     "nock": "14.0.10",
     "vitest": "4.0.6"
   },
