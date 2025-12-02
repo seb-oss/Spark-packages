@@ -24,7 +24,7 @@
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.1",
     "@types/express-serve-static-core": "5.1.0",
-    "express": "5.1.0",
+    "express": "5.2.1",
     "logform": "2.7.0",
     "socket.io": "4.8.1",
     "socketio-wildcard": "2.0.0",

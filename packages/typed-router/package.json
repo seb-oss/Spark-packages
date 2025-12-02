@@ -16,7 +16,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "express": "5.1.0"
+    "express": "5.2.1"
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
