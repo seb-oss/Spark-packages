@@ -25,7 +25,7 @@
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "11.7.2",
     "@testcontainers/mockserver": "11.7.2",
-    "@testcontainers/redis": "11.7.2",
+    "@testcontainers/redis": "11.9.0",
     "mockserver-client": "5.15.0",
     "supertest": "7.1.4"
   }
