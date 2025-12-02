@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 2.0.3
+
+### Patch Changes
+
+- ef9ccdc: Updated to latest express version
+
 ## 2.0.2
 
 ### Patch Changes

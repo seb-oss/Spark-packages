@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.5
+
+### Patch Changes
+
+- ef9ccdc: Updated to latest express version
+
 ## 1.0.4
 
 ### Patch Changes
