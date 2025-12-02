@@ -21,6 +21,7 @@ type SetParams<T> = {
 
 export type PersistorConstructorType = {
   redis?: RedisClientOptions
+  redisClient?: ReturnType<typeof createClient>
   clientId?: UUID
   onError?: (error: string) => void
   onSuccess?: () => void
@@ -40,6 +41,7 @@ export class Persistor {
 
   constructor({
     redis,
+    redisClient,
     clientId,
     onSuccess,
     onError,
@@ -52,7 +54,10 @@ export class Persistor {
     this.onError = onError || (() => {})
     this.onSuccess = onSuccess || (() => {})
     this.clientId = clientId
-    if (redis && !isTestRunning) {
+
+    if (redisClient) {
+      this.client = redisClient
+    } else if (redis && !isTestRunning) {
       this.redis = redis
     } else {
       //@ts-expect-error
