@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.0.7
+
+### Patch Changes
+
+- ef9ccdc: Updated to latest express version
+
 ## 5.0.6
 
 ### Patch Changes

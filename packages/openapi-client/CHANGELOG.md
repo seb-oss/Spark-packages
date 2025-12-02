@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.0.9
+
+### Patch Changes
+
+- ef9ccdc: Updated to latest express version
+
 ## 4.0.8
 
 ### Patch Changes

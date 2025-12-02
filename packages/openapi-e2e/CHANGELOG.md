@@ -1,5 +1,14 @@
 # @sebspark/openapi-e2e
 
+## 4.0.3
+
+### Patch Changes
+
+- ef9ccdc: Updated to latest express version
+- Updated dependencies [ef9ccdc]
+  - @sebspark/openapi-express@5.0.7
+  - @sebspark/openapi-client@4.0.9
+
 ## 4.0.2
 
 ### Patch Changes
