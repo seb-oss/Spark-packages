@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.1.1
+
+### Patch Changes
+
+- 8f727a4: Persistor now takes a redis client instance as optional parameter.
+
 ## 6.1.0
 
 ### Minor Changes
