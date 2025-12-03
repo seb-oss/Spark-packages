@@ -61,9 +61,6 @@ export const TypedClient = <C extends Partial<BaseClient>>(
           throw error
         }
       }
-
-      logger.debug('Intercepted request:')
-      logger.debug(JSON.stringify(request, null, 2))
       return request
     })
   }
