@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.0.11
+
+### Patch Changes
+
+- e4a6f7d: fix: do not log headers
+
 ## 4.0.10
 
 ### Patch Changes
