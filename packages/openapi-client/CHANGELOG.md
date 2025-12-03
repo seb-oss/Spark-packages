@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.0.10
+
+### Patch Changes
+
+- 71297be: fix: do not log full requests
+
 ## 4.0.9
 
 ### Patch Changes
