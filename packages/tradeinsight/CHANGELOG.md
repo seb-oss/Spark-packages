@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 3.0.11
+
+### Patch Changes
+
+- 750da82: feat: fund id parser/generator
+
 ## 3.0.10
 
 ### Patch Changes
