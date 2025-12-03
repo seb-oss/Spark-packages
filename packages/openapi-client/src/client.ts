@@ -52,7 +52,6 @@ export const TypedClient = <C extends Partial<BaseClient>>(
           if (authorizationTokenHeaders) {
             for (const key of Object.keys(authorizationTokenHeaders)) {
               const value = authorizationTokenHeaders[key]
-              logger.debug(`Setting header ${key} to ${value}`)
               request.headers[key] = value
             }
           }
