@@ -29,3 +29,6 @@ export const createForexId = ({
 
 export const createIndexId = ({ ticker }: { ticker: string }) =>
   `INDEX-${ticker}`.toUpperCase()
+
+export const createFundId = ({ isin }: { isin: string }) =>
+  `FUND-${isin}`.toUpperCase()

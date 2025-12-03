@@ -2,6 +2,21 @@ import { describe, expect, it } from 'vitest'
 import { parseId } from './parseId'
 
 describe('parseId', () => {
+  describe('FUND', () => {
+    it('should parse a valid FUND id', () => {
+      const result = parseId('FUND-SE0000108656')
+
+      expect(result).toEqual({
+        type: 'FUND',
+        isin: 'SE0000108656',
+      })
+    })
+
+    it('should throw an error if isin is missing', () => {
+      expect(() => parseId('FUND-')).toThrowError('Missing isin')
+    })
+  })
+
   describe('INDEX', () => {
     it('should parse a valid INDEX id', () => {
       const result = parseId('INDEX-OMXS30')

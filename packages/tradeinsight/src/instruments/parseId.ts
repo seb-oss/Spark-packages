@@ -16,7 +16,14 @@ type IndexId = {
   ticker: string
 }
 
-export const parseId = (id: string): StockId | ForexId | IndexId => {
+type FundId = {
+  type: 'FUND'
+  isin: string
+}
+
+type TradeInsightId = StockId | ForexId | IndexId | FundId
+
+export const parseId = (id: string): TradeInsightId => {
   const [type, ...rest] = id.split('-')
   const [first, second, third] = rest.join().split('_')
 
@@ -61,6 +68,17 @@ export const parseId = (id: string): StockId | ForexId | IndexId => {
     return {
       type,
       ticker: first,
+    }
+  }
+
+  if (type === 'FUND') {
+    if (!first) {
+      throw new Error('Missing isin')
+    }
+
+    return {
+      type,
+      isin: first,
     }
   }
 
