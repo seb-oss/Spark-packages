@@ -19,7 +19,11 @@ import createAuthRefreshInterceptor from 'axios-auth-refresh'
 import { paramsSerializer } from './paramsSerializer'
 
 const createAuthRefreshInterceptorFunc =
-  (createAuthRefreshInterceptor as any)?.default ?? createAuthRefreshInterceptor
+  (
+    createAuthRefreshInterceptor as unknown as {
+      default: typeof createAuthRefreshInterceptor
+    }
+  )?.default ?? createAuthRefreshInterceptor
 
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance

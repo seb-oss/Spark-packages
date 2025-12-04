@@ -22,7 +22,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@inquirer/prompts": "7.9.0",
+    "@inquirer/prompts": "7.10.1",
     "@sebspark/tsconfig": "*"
   }
 }

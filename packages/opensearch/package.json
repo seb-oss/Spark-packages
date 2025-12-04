@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "testcontainers": "11.7.2"
+    "testcontainers": "11.9.0"
   },
   "dependencies": {
     "@opensearch-project/opensearch": "3.5.1"

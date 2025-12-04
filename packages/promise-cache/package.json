@@ -19,13 +19,13 @@
   "devDependencies": {
     "@sebspark/otel": "*",
     "@sebspark/tsconfig": "*",
-    "@testcontainers/redis": "11.7.2",
-    "testcontainers": "11.7.2"
+    "@testcontainers/redis": "11.9.0",
+    "testcontainers": "11.9.0"
   },
   "dependencies": {
     "date-fns": "4.1.0",
     "redis": "5.10.0",
-    "superjson": "2.2.5"
+    "superjson": "2.2.6"
   },
   "peerDependencies": {
     "@sebspark/otel": ">=2.0.5"

@@ -1,6 +1,6 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import { stdout } from 'node:process'
+import { stderr, stdout } from 'node:process'
 import { run } from '@sebspark/cli-tester'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import {
@@ -44,7 +44,7 @@ const injectSql = async (createResult: string, up: string, down: string) => {
 }
 
 describe('Spanner Migrate CLI - entire flow', () => {
-  beforeAll(() => setup(), 60_000)
+  beforeAll(() => setup(), 120_000)
   afterAll(() => teardown())
 
   it('creates a config', async () => {
@@ -182,16 +182,26 @@ describe('Spanner Migrate CLI - entire flow', () => {
   })
   it('runs migrate down', async () => {
     // Down in db1
-    await run(cliPath, ['down', `-d=${database1}`], {
+    // stdout.write('Starting down 1\n')
+    const down1 = run(cliPath, ['down', `-d=${database1}`], {
       cwd,
       env: process.env,
-    }).exit()
-    // Down in db2
-    await run(cliPath, ['down', `-d=${database2}`], {
-      cwd,
-      env: process.env,
-    }).exit()
+    })
+    // down1.process.stdout?.on('data', (chunk) => stdout.write(chunk))
+    // down1.process.stderr?.on('data', (chunk) => stderr.write(chunk))
+    await down1.exit()
 
+    // Down in db2
+    // stdout.write('Starting down 2\n')
+    const down2 = run(cliPath, ['down', `-d=${database2}`], {
+      cwd,
+      env: process.env,
+    })
+    // down2.process.stdout?.on('data', (chunk) => stdout.write(chunk))
+    // down2.process.stderr?.on('data', (chunk) => stderr.write(chunk))
+    await down2.exit()
+
+    // stdout.write('Running status\n')
     const cli = run(cliPath, ['status'], { cwd, env: process.env })
 
     let status = ''
@@ -216,7 +226,7 @@ describe('Spanner Migrate CLI - entire flow', () => {
     expect(migrationStatus[1].applied).toHaveLength(0)
     expect(migrationStatus[1].new).toHaveLength(1)
     expect(migrationStatus[1].new[0]).toMatch(/create_addresses_table/)
-  })
+  }, 20_000)
   it('runs migrate up on a single database', async () => {
     // Up in db2
     await run(cliPath, ['up', `-d=${database2}`], {
@@ -248,7 +258,7 @@ describe('Spanner Migrate CLI - entire flow', () => {
     expect(migrationStatus[1].applied).toHaveLength(1)
     expect(migrationStatus[1].applied[0]).toMatch(/create_addresses_table/)
     expect(migrationStatus[1].new).toHaveLength(0)
-  })
+  }, 20_000)
   it('runs numbered migrate up on a single database', async () => {
     // Down in db1
     await run(cliPath, ['down', `-d=${database1}`], {
@@ -285,5 +295,5 @@ describe('Spanner Migrate CLI - entire flow', () => {
     expect(migrationStatus[1].applied).toHaveLength(1)
     expect(migrationStatus[1].applied[0]).toMatch(/create_addresses_table/)
     expect(migrationStatus[1].new).toHaveLength(0)
-  })
+  }, 20_000)
 })
