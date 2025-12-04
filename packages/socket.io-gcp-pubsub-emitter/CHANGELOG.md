@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.4
+
+### Patch Changes
+
+- 7df8217: Updated dependencies
+
 ## 1.0.3
 
 ### Patch Changes
