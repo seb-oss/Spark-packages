@@ -2986,7 +2986,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.2.7, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.2.8, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3011,7 +3011,7 @@ __metadata:
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.2.7"
+    "@sebspark/avsc-isometric": "npm:0.2.8"
     "@sebspark/tsconfig": "npm:*"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
@@ -3133,7 +3133,7 @@ __metadata:
     nock: "npm:14.0.10"
     vitest: "npm:4.0.6"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.5"
+    "@sebspark/otel": ">=2.0.6"
   languageName: unknown
   linkType: soft
 
@@ -3259,7 +3259,7 @@ __metadata:
     superjson: "npm:2.2.6"
     testcontainers: "npm:11.9.0"
   peerDependencies:
-    "@sebspark/otel": ">=2.0.5"
+    "@sebspark/otel": ">=2.0.6"
   languageName: unknown
   linkType: soft
 
