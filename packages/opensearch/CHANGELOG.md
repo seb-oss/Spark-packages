@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 2.1.0
+
+### Minor Changes
+
+- 69ddad9: Exporting additional types for index definitions
+
 ## 2.0.3
 
 ### Patch Changes
