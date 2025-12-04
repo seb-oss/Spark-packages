@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 2.0.3
+
+### Patch Changes
+
+- 7df8217: Updated dependencies
+
 ## 2.0.2
 
 ### Patch Changes
