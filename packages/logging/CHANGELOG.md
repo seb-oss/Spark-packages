@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.4
+
+### Patch Changes
+
+- 8626deb: Updated vulnerable, transitive jws dependency
+
 ## 2.0.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.7
+
+### Patch Changes
+
+- 8626deb: Updated vulnerable, transitive jws dependency
+
 ## 1.0.6
 
 ### Patch Changes

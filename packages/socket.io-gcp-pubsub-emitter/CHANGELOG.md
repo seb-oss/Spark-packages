@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.5
+
+### Patch Changes
+
+- 8626deb: Updated vulnerable, transitive jws dependency
+
 ## 1.0.4
 
 ### Patch Changes

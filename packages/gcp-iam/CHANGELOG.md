@@ -1,5 +1,13 @@
 # @sebspark/gcp-iam
 
+## 3.0.10
+
+### Patch Changes
+
+- 8626deb: Updated vulnerable, transitive jws dependency
+- Updated dependencies [8626deb]
+  - @sebspark/otel@2.0.7
+
 ## 3.0.9
 
 ### Patch Changes
