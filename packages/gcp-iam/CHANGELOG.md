@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.9
+
+### Patch Changes
+
+- cc28876: Updated dependencies
+
 ## 3.0.8
 
 ### Patch Changes
