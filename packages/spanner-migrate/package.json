@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/spanner-migrate",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
@@ -34,7 +34,7 @@
     "@google-cloud/spanner": "*"
   },
   "dependencies": {
-    "@inquirer/prompts": "7.10.1",
+    "@inquirer/prompts": "8.0.2",
     "typescript": "5.9.3",
     "yargs": "18.0.0"
   }

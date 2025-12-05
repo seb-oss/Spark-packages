@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.0
+
+### Major Changes
+
+- cc28876: Added support for dynamic and made all properties optional in documents
+
 ## 2.1.0
 
 ### Minor Changes

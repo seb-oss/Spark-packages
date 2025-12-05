@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.7
+
+### Patch Changes
+
+- cc28876: Updated dependencies
+
 ## 1.8.6
 
 ### Patch Changes
