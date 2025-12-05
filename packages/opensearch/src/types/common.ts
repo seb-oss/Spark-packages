@@ -68,7 +68,9 @@ export type MapOpenSearchTypes<T> = T extends Property
                     T['properties'][K]
                   >
                 }
-              : never
+              : T extends { dynamic: 'true' }
+                ? Record<string, unknown>
+                : never
             : never
   : T extends Record<string, Property>
     ? { [K in keyof T]: MapOpenSearchTypes<T[K]> }

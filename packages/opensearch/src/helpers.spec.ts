@@ -1,4 +1,3 @@
-// bulkIndex.test.ts
 import { describe, expect, it } from 'vitest'
 import {
   bulkCreate,
@@ -18,6 +17,10 @@ const personIndex = {
       properties: {
         name: { type: 'keyword' },
         age: { type: 'integer' },
+        nested: {
+          type: 'object',
+          dynamic: 'true',
+        },
       },
     },
   },
@@ -29,7 +32,7 @@ type PersonDocument = DocumentFor<PersonIndex>
 describe('bulkIndex helper', () => {
   it('builds a bulk insert payload without an id generator', () => {
     const docs: PersonDocument[] = [
-      { name: 'John Wick', age: 52 },
+      { name: 'John Wick', age: 52, nested: { foo: 'bar' } },
       { name: 'Jane Doe', age: 30 },
     ]
 
@@ -58,7 +61,7 @@ describe('bulkIndex helper', () => {
 
     // Example id generator: use a slug version of the name.
     const idFn: IdFunction<PersonIndex> = (doc: PersonDocument) =>
-      doc.name.toLowerCase().replace(/\s+/g, '-')
+      doc.name!.toLowerCase().replace(/\s+/g, '-')
 
     // Call the helper providing the id function.
     const bulkPayload = bulkIndex<typeof personIndex>(
@@ -89,7 +92,7 @@ describe('bulkCreate helper', () => {
 
     // Provide an id generator function that creates an _id from the name.
     const idFn: IdFunction<PersonIndex> = (doc: PersonDocument) =>
-      doc.name.toLowerCase()
+      doc.name!.toLowerCase()
     const bulkPayload = bulkCreate(personIndex.index, docs, idFn)
 
     expect(bulkPayload.index).toBe('person')

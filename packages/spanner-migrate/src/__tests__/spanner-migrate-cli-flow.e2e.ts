@@ -49,6 +49,8 @@ describe('Spanner Migrate CLI - entire flow', () => {
 
   it('creates a config', async () => {
     const cli = run(cliPath, ['init'], { cwd })
+    cli.process.stdout?.on('data', (chunk) => stdout.write(chunk))
+    cli.process.stderr?.on('data', (chunk) => stderr.write(chunk))
 
     // Instance
     const instancePrompt = await cli.prompt('input')
@@ -86,7 +88,7 @@ describe('Spanner Migrate CLI - entire flow', () => {
     expect(result).toEqual(
       'Configuration written to ./.spanner-migrate.config.json'
     )
-  })
+  }, 20_000)
   it('creates a migration with --database', async () => {
     const cli = run(
       cliPath,

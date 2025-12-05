@@ -1,4 +1,6 @@
 import type { ChildProcess } from 'node:child_process'
+import { styleText } from 'node:util'
+import figures from '@inquirer/figures'
 import { ansiPatterns } from './characters'
 import { COMMAND_TIMEOUT } from './utils'
 
@@ -28,17 +30,15 @@ export const input = (
     )
 
     const inputListener = (chunk: Buffer) => {
-      const bytes = Array.from(chunk).join(',')
-
-      if (bytes.includes(ansiPatterns.greenCheckmark)) {
+      if (chunk.includes(styleText('green', figures.tick))) {
         // ✔ detected → Input was accepted
         clearTimeout(timeout)
         childProcess.stdout?.off('data', inputListener)
         return resolve()
       }
 
-      if (bytes.includes(ansiPatterns.errorMessage)) {
-        // ❌ Detected red error message → capture and reject
+      if (chunk.includes(styleText('red', '> '))) {
+        // Detected cursor return for retry → capture and reject
         clearTimeout(timeout)
         childProcess.stdout?.off('data', inputListener)
 
@@ -46,8 +46,7 @@ export const input = (
         const cleanText = chunk.toString().replace(ansiPatterns.all, '').trim()
 
         // Extract text after the red error indicator ("> ")
-        // biome-ignore lint/suspicious/noControlCharactersInRegex: Yep - that's prompt for ya
-        const errorMatch = chunk.toString().match(/\x1B\[31m>\s(.*)/) // Match red "> " followed by text
+        const errorMatch = chunk.toString().match(/>\s(.*)/) // Match red "> " followed by text
         const errorMessage = errorMatch
           ? errorMatch[1].replace(ansiPatterns.all, '').trim()
           : cleanText // Extract the error text

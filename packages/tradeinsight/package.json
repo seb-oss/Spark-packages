@@ -26,6 +26,6 @@
     "@sebspark/tsconfig": "*",
     "avro-typescript": "1.3.0",
     "ts-node": "10.9.2",
-    "vitest": "4.0.6"
+    "vitest": "4.0.15"
   }
 }
