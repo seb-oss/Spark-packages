@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.0
+
+### Major Changes
+
+- cc28876: Updated tsdown to v0.17
+
 ## 2.1.6
 
 ### Patch Changes
