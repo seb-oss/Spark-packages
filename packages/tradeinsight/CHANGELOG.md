@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 4.0.0
+
+### Major Changes
+
+- 03ec7dd: ESM only
+
 ## 3.0.12
 
 ### Patch Changes
