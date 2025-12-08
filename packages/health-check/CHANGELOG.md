@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.8
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 1.0.7
 
 ### Patch Changes

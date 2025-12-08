@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 6.1.3
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+- Updated dependencies [e0cb5ee]
+  - @sebspark/otel@2.0.8
+
 ## 6.1.2
 
 ### Patch Changes

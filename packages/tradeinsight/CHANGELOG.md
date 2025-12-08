@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 4.0.1
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 4.0.0
 
 ### Major Changes

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-typegen",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",

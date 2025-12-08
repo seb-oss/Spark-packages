@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.0.8
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 2.0.7
 
 ### Patch Changes

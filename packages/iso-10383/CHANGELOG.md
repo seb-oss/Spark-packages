@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.1.1
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 1.1.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @sebspark/cli-tester
 
+## 1.0.6
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 1.0.5
 
 ### Patch Changes
