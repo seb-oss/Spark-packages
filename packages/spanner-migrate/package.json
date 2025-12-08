@@ -3,20 +3,20 @@
   "version": "2.0.5",
   "license": "Apache-2.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
     }
   },
   "files": [
     "dist"
   ],
-  "bin": "./dist/cli.js",
+  "bin": "./dist/cli.mjs",
   "scripts": {
-    "build": "tsup src/index.ts src/cli.ts --config ./tsup.config.ts",
+    "build": "spark-build src/index.ts src/cli.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

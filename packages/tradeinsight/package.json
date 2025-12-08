@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "spark-build src/index.ts --format esm",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "generate:avro": "ts-node ./scripts/avro-to-ts.ts",

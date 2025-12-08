@@ -3306,7 +3306,7 @@ __metadata:
   peerDependencies:
     "@google-cloud/spanner": "*"
   bin:
-    spanner-migrate: ./dist/cli.js
+    spanner-migrate: ./dist/cli.mjs
   languageName: unknown
   linkType: soft
 

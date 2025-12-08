@@ -11,7 +11,7 @@ import {
 } from './e2e/helpers'
 
 const cwd = resolve(__dirname, 'cli')
-const cliPath = resolve(__dirname, '../../dist/cli.js')
+const cliPath = resolve(__dirname, '../../dist/cli.mjs')
 
 const instance = 'test-instance'
 const database1 = 'database-1'
