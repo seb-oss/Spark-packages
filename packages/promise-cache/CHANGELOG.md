@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.2.0
+
+### Minor Changes
+
+- ebddd25: Added support for hGetAll to IPersistor / InMemoryPersistor
+
 ## 6.1.3
 
 ### Patch Changes
