@@ -59,6 +59,10 @@ describe('bulkIndex helper', () => {
       { name: 'Jane Doe', age: 30 },
     ]
 
+    // check assignability
+    docs[0].age = 53
+    docs[0].nested = {}
+
     // Example id generator: use a slug version of the name.
     const idFn: IdFunction<PersonIndex> = (doc: PersonDocument) =>
       doc.name!.toLowerCase().replace(/\s+/g, '-')
