@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.4
+
+### Patch Changes
+
+- c7886fc: retry should still support cjs
+
 ## 1.0.3
 
 ### Patch Changes
