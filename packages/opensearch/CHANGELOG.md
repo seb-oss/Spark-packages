@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.2
+
+### Patch Changes
+
+- d2b8690: Remove readonly from DocumentFor properties
+
 ## 3.0.1
 
 ### Patch Changes
