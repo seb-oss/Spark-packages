@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.1
+
+### Patch Changes
+
+- ad5a205: Updated tsdown
+
 ## 3.0.0
 
 ### Major Changes
