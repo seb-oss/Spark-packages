@@ -64,7 +64,7 @@ export type MapOpenSearchTypes<T> = T extends Property
           : T['type'] extends 'object' | 'nested'
             ? T extends { properties: Record<string, Property> }
               ? {
-                  [K in keyof T['properties']]: MapOpenSearchTypes<
+                  -readonly [K in keyof T['properties']]: MapOpenSearchTypes<
                     T['properties'][K]
                   >
                 }
@@ -73,7 +73,7 @@ export type MapOpenSearchTypes<T> = T extends Property
                 : never
             : never
   : T extends Record<string, Property>
-    ? { [K in keyof T]: MapOpenSearchTypes<T[K]> }
+    ? { -readonly [K in keyof T]: MapOpenSearchTypes<T[K]> }
     : never
 
 export type MapQueryProperties<T extends IndexDefinition> = T extends {
