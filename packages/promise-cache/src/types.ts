@@ -3,6 +3,7 @@ import type { SetOptions } from 'redis'
 export type MultiExecReturnTypes =
   | string[]
   | string
+  | { [x: string]: string }
   | number
   | boolean
   | null
@@ -57,11 +58,19 @@ export type Cache = {
    * @param {CachingOptions<A>} options - Caching options, including key strategy.
    * @returns {Delegate<A, R>} A new function that caches results.
    */
-  wrap: <A extends unknown[], R>(
+  wrap<A extends unknown[], R>(
     delegate: (...args: A) => Promise<R>,
     options: CachingOptions<A, R>
-  ) => (...args: A) => Promise<R>
+  ): (...args: A) => Promise<R>
 }
+
+export type HashTypes = string | number
+export type HashValue =
+  | {
+      [x: string]: HashTypes
+      [x: number]: HashTypes
+    }
+  | Map<HashTypes, HashTypes>
 
 /**
  * Interface for a key-value storage system that supports Redis-like commands.
@@ -75,25 +84,25 @@ export interface IPersistor {
    * @param options - Expiration options (TTL, absolute expiration, etc.).
    * @returns Resolves to `"OK"` if successful, otherwise `null` if the operation fails.
    */
-  set: (
+  set(
     key: string,
-    value: string,
+    value: HashTypes,
     options?: SetOptions
-  ) => Promise<string | null>
+  ): Promise<string | null>
 
   /**
    * Retrieves a value from Redis or Memory.
    * @param key - The storage key.
    * @returns Resolves to the stored value as a string, or `null` if the key does not exist.
    */
-  get: (key: string) => Promise<string | null>
+  get(key: string): Promise<string | null>
 
   /**
    * Deletes a key from Redis or Memory.
    * @param key - The storage key.
    * @returns Resolves to the number of keys removed (`1` if deleted, `0` if the key was not found).
    */
-  del: (key: string) => Promise<number>
+  del(key: string): Promise<number>
 
   /**
    * Sets a time-to-live (TTL) in seconds for a key.
@@ -101,7 +110,7 @@ export interface IPersistor {
    * @param seconds - TTL in seconds.
    * @returns Resolves to `true` if the expiration was successfully set, `false` if the key does not exist.
    */
-  expire: (key: string, seconds: number) => Promise<number>
+  expire(key: string, seconds: number): Promise<number>
 
   /**
    * Gets the remaining TTL (time-to-live) of a key.
@@ -111,13 +120,13 @@ export interface IPersistor {
    * - `-1` if the key exists but has no expiration.
    * - `-2` if the key does not exist.
    */
-  ttl: (key: string) => Promise<number>
+  ttl(key: string): Promise<number>
 
   /**
    * Clears all keys from the storage system.
    * @returns Resolves to `"OK"` when the operation completes successfully.
    */
-  flushAll: () => Promise<string>
+  flushAll(): Promise<string>
 
   /**
    * Stores a value and sets an expiration time in seconds.
@@ -126,7 +135,7 @@ export interface IPersistor {
    * @param value - The string value to store.
    * @returns Resolves to `"OK"` if successful, otherwise `null` if the operation fails.
    */
-  setEx: (key: string, seconds: number, value: string) => Promise<string | null>
+  setEx(key: string, seconds: number, value: string): Promise<string | null>
 
   /**
    * Stores a value and sets an expiration time in milliseconds.
@@ -135,11 +144,11 @@ export interface IPersistor {
    * @param value - The string value to store.
    * @returns Resolves to `"OK"` if successful, otherwise `null` if the operation fails.
    */
-  pSetEx: (
+  pSetEx(
     key: string,
     milliseconds: number,
     value: string
-  ) => Promise<string | null>
+  ): Promise<string | null>
 
   /**
    * Stores a value **only if the key does not already exist**.
@@ -147,35 +156,35 @@ export interface IPersistor {
    * @param value - The string value to store.
    * @returns Resolves to `true` if the key was set, or `false` if the key already exists.
    */
-  setNX: (key: string, value: string) => Promise<number>
+  setNX(key: string, value: string): Promise<number>
 
   /**
    * Creates a multi-command batch operation.
    * This allows multiple commands to be executed in a batch, improving performance.
    * @returns An instance of `IPersistorMulti` to queue multiple commands.
    */
-  multi: () => IPersistorMulti
+  multi(): IPersistorMulti
 
   /**
    * Checks if keys exist in storage.
    * @param keys - One or more keys to check.
    * @returns Resolves to the number of keys that exist.
    */
-  exists: (key: string | string[]) => Promise<number>
+  exists(key: string | string[]): Promise<number>
 
   /**
    * Increments a key by 1.
    * @param key - The key to increment.
    * @returns Resolves to the new value after increment.
    */
-  incr: (key: string) => Promise<number>
+  incr(key: string): Promise<number>
 
   /**
    * Decrements a key by 1.
    * @param key - The key to decrement.
    * @returns Resolves to the new value after decrement.
    */
-  decr: (key: string) => Promise<number>
+  decr(key: string): Promise<number>
 
   /**
    * Increments a key by a specified amount.
@@ -183,7 +192,7 @@ export interface IPersistor {
    * @param increment - The amount to increase by.
    * @returns Resolves to the new value after increment.
    */
-  incrBy: (key: string, increment: number) => Promise<number>
+  incrBy(key: string, increment: number): Promise<number>
 
   /**
    * Decrements a key by a specified amount.
@@ -191,7 +200,7 @@ export interface IPersistor {
    * @param decrement - The amount to decrease by.
    * @returns Resolves to the new value after decrement.
    */
-  decrBy: (key: string, decrement: number) => Promise<number>
+  decrBy(key: string, decrement: number): Promise<number>
 
   /**
    * Sets a field in a hash.
@@ -200,15 +209,30 @@ export interface IPersistor {
    * @param value - The value to store.
    * @returns Resolves to `1` if the field was added, or `0` if updated.
    */
-  hSet: (key: string, field: string, value: string) => Promise<number>
+  hSet(key: string, field: string, value: HashTypes): Promise<number>
+
+  /**
+   * Sets a (partial) hash.
+   * @param key - The hash key.
+   * @param value - The (partial) value to store.
+   * @returns Resolves to `1` if a field was added, or `0` if updated.
+   */
+  hSet(key: string, value: HashValue): Promise<number>
 
   /**
    * Retrieves a field from a hash.
    * @param key - The hash key.
    * @param field - The field name.
-   * @returns Resolves to the value, or `undefined` if the field does not exist.
+   * @returns Resolves to the value, or null if the field does not exist.
    */
-  hGet: (key: string, field: string) => Promise<string | null>
+  hGet(key: string, field: string): Promise<string | null>
+
+  /**
+   * Retrieves a hash value.
+   * @param key - The hash key.
+   * @returns Resolves to the value, or null if the hash does not exist.
+   */
+  hGetAll(key: string): Promise<{ [x: string]: string }>
 
   /**
    * Pushes values to the left (head) of a list.
@@ -216,7 +240,7 @@ export interface IPersistor {
    * @param values - The values to add.
    * @returns Resolves to the length of the list after the operation.
    */
-  lPush: (key: string, values: string | string[]) => Promise<number>
+  lPush(key: string, values: string | string[]): Promise<number>
 
   /**
    * Pushes values to the right (tail) of a list.
@@ -224,21 +248,21 @@ export interface IPersistor {
    * @param values - The values to add.
    * @returns Resolves to the length of the list after the operation.
    */
-  rPush: (key: string, values: string | string[]) => Promise<number>
+  rPush(key: string, values: string | string[]): Promise<number>
 
   /**
    * Removes and returns the first element from a list.
    * @param key - The list key.
    * @returns Resolves to the removed element, or `null` if the list is empty.
    */
-  lPop: (key: string) => Promise<string | null>
+  lPop(key: string): Promise<string | null>
 
   /**
    * Removes and returns the last element from a list.
    * @param key - The list key.
    * @returns Resolves to the removed element, or `null` if the list is empty.
    */
-  rPop: (key: string) => Promise<string | null>
+  rPop(key: string): Promise<string | null>
 
   /**
    * Retrieves a range of elements from a list.
@@ -247,7 +271,7 @@ export interface IPersistor {
    * @param stop - The stop index (inclusive).
    * @returns Resolves to an array of elements in the range.
    */
-  lRange: (key: string, start: number, stop: number) => Promise<string[]>
+  lRange(key: string, start: number, stop: number): Promise<string[]>
 
   /**
    * Adds members to a set.
@@ -255,7 +279,7 @@ export interface IPersistor {
    * @param values - The values to add.
    * @returns Resolves to the number of elements successfully added.
    */
-  sAdd: (key: string, values: string | string[]) => Promise<number>
+  sAdd(key: string, values: string | string[]): Promise<number>
 
   /**
    * Removes members from a set.
@@ -263,14 +287,14 @@ export interface IPersistor {
    * @param values - The values to remove.
    * @returns Resolves to the number of elements removed.
    */
-  sRem: (key: string, values: string | string[]) => Promise<number>
+  sRem(key: string, values: string | string[]): Promise<number>
 
   /**
    * Retrieves all members of a set.
    * @param key - The set key.
    * @returns Resolves to an array of all members in the set.
    */
-  sMembers: (key: string) => Promise<string[]>
+  sMembers(key: string): Promise<string[]>
 
   /**
    * Adds members to a sorted set with scores.
@@ -278,10 +302,10 @@ export interface IPersistor {
    * @param members - An array of objects with `score` and `value`.
    * @returns Resolves to the number of elements successfully added.
    */
-  zAdd: (
+  zAdd(
     key: string,
     members: { score: number; value: string }[]
-  ) => Promise<number>
+  ): Promise<number>
 
   /**
    * Retrieves a range of members from a sorted set.
@@ -290,7 +314,7 @@ export interface IPersistor {
    * @param stop - The stop index (inclusive).
    * @returns Resolves to an array of member values in the range.
    */
-  zRange: (key: string, start: number, stop: number) => Promise<string[]>
+  zRange(key: string, start: number, stop: number): Promise<string[]>
 
   /**
    * Removes members from a sorted set.
@@ -298,14 +322,14 @@ export interface IPersistor {
    * @param members - The members to remove.
    * @returns Resolves to the number of elements removed.
    */
-  zRem: (key: string, members: string | string[]) => Promise<number>
+  zRem(key: string, members: string | string[]): Promise<number>
 
   isReady: boolean
   isOpen: boolean
 
-  connect: () => Promise<IPersistor>
+  connect(): Promise<IPersistor>
 
-  once: (event: IPersistorEvent, cb: EventCallback) => IPersistor
+  once(event: IPersistorEvent, cb: EventCallback): IPersistor
 }
 
 type IPersistorEvent = 'ready' | 'connect' | 'reconnecting'
@@ -323,7 +347,7 @@ export interface IPersistorMulti {
    * @param options - Expiration options (TTL, absolute expiration, etc.).
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  set: (key: string, value: string, options?: SetOptions) => IPersistorMulti
+  set(key: string, value: HashTypes, options?: SetOptions): IPersistorMulti
 
   /**
    * Stores a value and sets an expiration time in seconds.
@@ -332,7 +356,7 @@ export interface IPersistorMulti {
    * @param value - The string value to store.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  setEx: (key: string, seconds: number, value: string) => IPersistorMulti
+  setEx(key: string, seconds: number, value: string): IPersistorMulti
 
   /**
    * Stores a value and sets an expiration time in milliseconds.
@@ -341,7 +365,7 @@ export interface IPersistorMulti {
    * @param value - The string value to store.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  pSetEx: (key: string, milliseconds: number, value: string) => IPersistorMulti
+  pSetEx(key: string, milliseconds: number, value: string): IPersistorMulti
 
   /**
    * Stores a value **only if the key does not already exist**.
@@ -349,21 +373,21 @@ export interface IPersistorMulti {
    * @param value - The string value to store.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  setNX: (key: string, value: string) => IPersistorMulti
+  setNX(key: string, value: string): IPersistorMulti
 
   /**
    * Retrieves a value from Redis or Memory.
    * @param key - The storage key.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  get: (key: string) => IPersistorMulti
+  get(key: string): IPersistorMulti
 
   /**
    * Deletes a key from Redis or Memory.
    * @param key - The storage key.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  del: (key: string) => IPersistorMulti
+  del(key: string): IPersistorMulti
 
   /**
    * Sets a time-to-live (TTL) in seconds for a key.
@@ -371,34 +395,34 @@ export interface IPersistorMulti {
    * @param seconds - TTL in seconds.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  expire: (key: string, seconds: number) => IPersistorMulti
+  expire(key: string, seconds: number): IPersistorMulti
 
   /**
    * Gets the remaining TTL (time-to-live) of a key.
    * @param key - The storage key.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  ttl: (key: string) => IPersistorMulti
+  ttl(key: string): IPersistorMulti
 
   /**
    * Clears all keys from the storage system.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  flushAll: () => IPersistorMulti
+  flushAll(): IPersistorMulti
 
   /**
    * Queues an `exists` operation in the transaction.
    * @param key - The storage key or an array of keys.
    * @returns The `IPersistorMulti` instance for method chaining.
    */
-  exists: (key: string | string[]) => IPersistorMulti
+  exists(key: string | string[]): IPersistorMulti
 
   /**
    * Queues an `incr` operation in the transaction.
    * @param key - The storage key.
    * @returns The `IPersistorMulti` instance for method chaining.
    */
-  incr: (key: string) => IPersistorMulti
+  incr(key: string): IPersistorMulti
 
   /**
    * Queues an `incrBy` operation in the transaction.
@@ -406,14 +430,14 @@ export interface IPersistorMulti {
    * @param increment - The amount to increment by.
    * @returns The `IPersistorMulti` instance for method chaining.
    */
-  incrBy: (key: string, increment: number) => IPersistorMulti
+  incrBy(key: string, increment: number): IPersistorMulti
 
   /**
    * Queues a `decr` operation in the transaction.
    * @param key - The storage key.
    * @returns The `IPersistorMulti` instance for method chaining.
    */
-  decr: (key: string) => IPersistorMulti
+  decr(key: string): IPersistorMulti
 
   /**
    * Queues a `decrBy` operation in the transaction.
@@ -421,7 +445,7 @@ export interface IPersistorMulti {
    * @param decrement - The amount to decrement by.
    * @returns The `IPersistorMulti` instance for method chaining.
    */
-  decrBy: (key: string, decrement: number) => IPersistorMulti
+  decrBy(key: string, decrement: number): IPersistorMulti
 
   /**
    * Sets a field in a hash.
@@ -430,15 +454,30 @@ export interface IPersistorMulti {
    * @param value - The value to store.
    * @returns The multi-instance for chaining.
    */
-  hSet: (key: string, field: string, value: string) => IPersistorMulti
+  hSet(key: string, field: string, value: HashTypes): IPersistorMulti
+
+  /**
+   * Sets a (partial) hash.
+   * @param key - The hash key.
+   * @param value - The (partial) value to store.
+   * @returns Resolves to `1` if a field was added, or `0` if updated.
+   */
+  hSet(key: string, value: HashValue): IPersistorMulti
 
   /**
    * Retrieves a field from a hash.
    * @param key - The hash key.
    * @param field - The field name.
-   * @returns The multi-instance for chaining.
+   * @returns Resolves to the value, or null if the field does not exist.
    */
-  hGet: (key: string, field: string) => IPersistorMulti
+  hGet(key: string, field: string): IPersistorMulti
+
+  /**
+   * Retrieves a hash value.
+   * @param key - The hash key.
+   * @returns Resolves to the value, or null if the hash does not exist.
+   */
+  hGetAll(key: string): IPersistorMulti
 
   /**
    * Pushes values to the left (head) of a list.
@@ -446,7 +485,7 @@ export interface IPersistorMulti {
    * @param values - The values to add.
    * @returns The multi-instance for chaining.
    */
-  lPush: (key: string, values: string | string[]) => IPersistorMulti
+  lPush(key: string, values: string | string[]): IPersistorMulti
 
   /**
    * Pushes values to the right (tail) of a list.
@@ -454,21 +493,21 @@ export interface IPersistorMulti {
    * @param values - The values to add.
    * @returns The multi-instance for chaining.
    */
-  rPush: (key: string, values: string | string[]) => IPersistorMulti
+  rPush(key: string, values: string | string[]): IPersistorMulti
 
   /**
    * Removes and returns the first element from a list.
    * @param key - The list key.
    * @returns The multi-instance for chaining.
    */
-  lPop: (key: string) => IPersistorMulti
+  lPop(key: string): IPersistorMulti
 
   /**
    * Removes and returns the last element from a list.
    * @param key - The list key.
    * @returns The multi-instance for chaining.
    */
-  rPop: (key: string) => IPersistorMulti
+  rPop(key: string): IPersistorMulti
 
   /**
    * Retrieves a range of elements from a list.
@@ -477,7 +516,7 @@ export interface IPersistorMulti {
    * @param stop - The stop index (inclusive).
    * @returns The multi-instance for chaining.
    */
-  lRange: (key: string, start: number, stop: number) => IPersistorMulti
+  lRange(key: string, start: number, stop: number): IPersistorMulti
 
   /**
    * Adds members to a set.
@@ -485,7 +524,7 @@ export interface IPersistorMulti {
    * @param values - The values to add.
    * @returns The multi-instance for chaining.
    */
-  sAdd: (key: string, values: string | string[]) => IPersistorMulti
+  sAdd(key: string, values: string | string[]): IPersistorMulti
 
   /**
    * Removes members from a set.
@@ -493,14 +532,14 @@ export interface IPersistorMulti {
    * @param values - The values to remove.
    * @returns The multi-instance for chaining.
    */
-  sRem: (key: string, values: string | string[]) => IPersistorMulti
+  sRem(key: string, values: string | string[]): IPersistorMulti
 
   /**
    * Retrieves all members of a set.
    * @param key - The set key.
    * @returns The multi-instance for chaining.
    */
-  sMembers: (key: string) => IPersistorMulti
+  sMembers(key: string): IPersistorMulti
 
   /**
    * Adds members to a sorted set with scores.
@@ -508,10 +547,10 @@ export interface IPersistorMulti {
    * @param members - An array of objects with `score` and `value`.
    * @returns The multi-instance for chaining.
    */
-  zAdd: (
+  zAdd(
     key: string,
     members: { score: number; value: string }[]
-  ) => IPersistorMulti
+  ): IPersistorMulti
 
   /**
    * Retrieves a range of members from a sorted set.
@@ -520,7 +559,7 @@ export interface IPersistorMulti {
    * @param stop - The stop index (inclusive).
    * @returns The multi-instance for chaining.
    */
-  zRange: (key: string, start: number, stop: number) => IPersistorMulti
+  zRange(key: string, start: number, stop: number): IPersistorMulti
 
   /**
    * Removes members from a sorted set.
@@ -528,12 +567,12 @@ export interface IPersistorMulti {
    * @param members - The members to remove.
    * @returns The multi-instance for chaining.
    */
-  zRem: (key: string, members: string | string[]) => IPersistorMulti
+  zRem(key: string, members: string | string[]): IPersistorMulti
 
   /**
    * Executes all queued commands and returns their results.
    * @returns A promise resolving to an array of results for each command.
    * The result type can be `string | number | boolean | null`, depending on the command.
    */
-  exec: () => Promise<MultiExecReturnTypes[] | unknown>
+  exec(): Promise<MultiExecReturnTypes[] | unknown>
 }

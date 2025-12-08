@@ -1,5 +1,11 @@
 import type { SetOptions } from 'redis'
-import type { IPersistor, IPersistorMulti, MultiExecReturnTypes } from './types'
+import type {
+  HashTypes,
+  HashValue,
+  IPersistor,
+  IPersistorMulti,
+  MultiExecReturnTypes,
+} from './types'
 
 /**
  * An in-memory key-value store with Redis-like behavior.
@@ -64,7 +70,7 @@ export class InMemoryPersistor implements IPersistor {
    */
   async set(
     key: string,
-    value: string,
+    value: HashTypes,
     options?: SetOptions
   ): Promise<'OK' | null> {
     if (options?.NX && this.store.has(key)) {
@@ -74,7 +80,7 @@ export class InMemoryPersistor implements IPersistor {
       return null // XX means "only set if key exists"
     }
 
-    this.store.set(key, value)
+    this.store.set(key, String(value))
 
     // Handle TTL (Expiration)
     if (options?.EX !== undefined) {
@@ -280,12 +286,26 @@ export class InMemoryPersistor implements IPersistor {
    * @param value - The value to store.
    * @returns Resolves to `1` if a new field was added, `0` if an existing field was updated.
    */
-  async hSet(key: string, field: string, value: string): Promise<number> {
+  async hSet(
+    key: string,
+    fieldOrValue: string | HashValue,
+    value?: HashTypes
+  ): Promise<number> {
     const existingHash = JSON.parse(this.store.get(key) ?? '{}')
-    const isNewField = !Object.hasOwn(existingHash, field)
-    existingHash[field] = value
+    let newFields = 0
+    const hashValue =
+      value !== undefined
+        ? { [fieldOrValue as string]: value }
+        : (fieldOrValue as HashValue)
+
+    for (const [key, val] of Object.entries(hashValue)) {
+      if (!Object.hasOwn(existingHash, key)) {
+        newFields++
+      }
+      existingHash[key] = String(val)
+    }
     this.store.set(key, JSON.stringify(existingHash))
-    return isNewField ? 1 : 0
+    return newFields
   }
 
   /**
@@ -298,6 +318,15 @@ export class InMemoryPersistor implements IPersistor {
   async hGet(key: string, field: string): Promise<string | null> {
     const hash = JSON.parse(this.store.get(key) ?? '{}')
     return hash[field] ?? null
+  }
+
+  /**
+   * Retrieves a hash value.
+   * @param key - The hash key.
+   * @returns Resolves to the value, or null if the hash does not exist.
+   */
+  async hGetAll(key: string): Promise<{ [x: string]: string }> {
+    return JSON.parse(this.store.get(key) ?? '{}')
   }
 
   /**
@@ -746,8 +775,21 @@ class InMemoryMulti implements IPersistorMulti {
    * @param value - The value to store.
    * @returns The `IPersistorMulti` instance to allow method chaining.
    */
-  hSet(key: string, field: string, value: string): IPersistorMulti {
-    this.commands.add(() => this.persistor.hSet(key, field, value))
+  hSet(
+    key: string,
+    fieldOrValue: string | HashValue,
+    value?: HashTypes
+  ): IPersistorMulti {
+    if (value !== undefined) {
+      this.commands.add(() =>
+        this.persistor.hSet(key, fieldOrValue as string, value)
+      )
+    } else {
+      this.commands.add(() =>
+        this.persistor.hSet(key, fieldOrValue as HashValue)
+      )
+    }
+
     return this
   }
 
@@ -761,6 +803,17 @@ class InMemoryMulti implements IPersistorMulti {
    */
   hGet(key: string, field: string): IPersistorMulti {
     this.commands.add(() => this.persistor.hGet(key, field))
+    return this
+  }
+
+  /**
+   * Queues an `hSet` command to store a field-value pair in a hash.
+   * The command will be executed when `exec()` is called.
+   * @param key - The hash key.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  hGetAll(key: string): IPersistorMulti {
+    this.commands.add(() => this.persistor.hGetAll(key))
     return this
   }
 
