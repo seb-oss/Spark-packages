@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.3
+
+### Patch Changes
+
+- 3299d70: Readonly removal propagates to sub objects of Document
+
 ## 3.0.2
 
 ### Patch Changes
