@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.0.7
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 5.0.6
 
 ### Patch Changes

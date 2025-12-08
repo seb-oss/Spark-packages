@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 1.0.4
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 1.0.3
 
 ### Patch Changes

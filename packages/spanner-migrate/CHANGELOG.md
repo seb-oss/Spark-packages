@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.6
+
+### Patch Changes
+
+- e0cb5ee: Updated build from tsup to tsdown
+
 ## 2.0.5
 
 ### Patch Changes
