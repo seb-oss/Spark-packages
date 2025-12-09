@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.2
+
+### Patch Changes
+
+- 38b52c4: Updated tsdown
+
 ## 3.0.1
 
 ### Patch Changes
