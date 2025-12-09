@@ -2424,13 +2424,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@oxc-project/runtime@npm:^0.101.0":
-  version: 0.101.0
-  resolution: "@oxc-project/runtime@npm:0.101.0"
-  checksum: 10c0/86fd7bb37e94986e7a09bde07a16fa63cebeaada6bcb8963bc07087d54c107d1a128e1c4a5d27b9b593354c092b8976d7653b6700fbb0da0a2b925fb3de4b34c
-  languageName: node
-  linkType: hard
-
 "@oxc-project/types@npm:=0.101.0":
   version: 0.101.0
   resolution: "@oxc-project/types@npm:0.101.0"
@@ -3346,7 +3339,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
-    tsdown: "npm:0.17.1"
+    tsdown: "npm:0.17.2"
     tsup: "npm:8.5.1"
   bin:
     spark-build: ./run.js
@@ -3738,12 +3731,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:24.10.1, @types/node@npm:>=10.0.0, @types/node@npm:>=13.7.0":
+"@types/node@npm:*, @types/node@npm:>=10.0.0, @types/node@npm:>=13.7.0":
   version: 24.10.1
   resolution: "@types/node@npm:24.10.1"
   dependencies:
     undici-types: "npm:~7.16.0"
   checksum: 10c0/d6bca7a78f550fbb376f236f92b405d676003a8a09a1b411f55920ef34286ee3ee51f566203920e835478784df52662b5b2af89159d9d319352e9ea21801c002
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:24.10.2":
+  version: 24.10.2
+  resolution: "@types/node@npm:24.10.2"
+  dependencies:
+    undici-types: "npm:~7.16.0"
+  checksum: 10c0/560c894e1a9bf7468718ceca8cd520361fd0d3fcc0b020c2f028fc722b28b5b56aecd16736a9b753d52a14837c066cf23480a8582ead59adc63a7e4333bc976c
   languageName: node
   linkType: hard
 
@@ -10773,7 +10775,7 @@ __metadata:
     "@changesets/cli": "npm:2.29.8"
     "@sebspark/tsconfig": "npm:*"
     "@turbo/gen": "npm:2.6.3"
-    "@types/node": "npm:24.10.1"
+    "@types/node": "npm:24.10.2"
     "@vitest/coverage-v8": "npm:4.0.15"
     depcheck: "npm:1.4.7"
     knip: "npm:5.71.0"
@@ -11886,9 +11888,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsdown@npm:0.17.1":
-  version: 0.17.1
-  resolution: "tsdown@npm:0.17.1"
+"tsdown@npm:0.17.2":
+  version: 0.17.2
+  resolution: "tsdown@npm:0.17.2"
   dependencies:
     ansis: "npm:^4.2.0"
     cac: "npm:^6.7.14"
@@ -11903,7 +11905,7 @@ __metadata:
     tinyglobby: "npm:^0.2.15"
     tree-kill: "npm:^1.2.2"
     unconfig-core: "npm:^7.4.2"
-    unrun: "npm:^0.2.17"
+    unrun: "npm:^0.2.19"
   peerDependencies:
     "@arethetypeswrong/core": ^0.18.1
     "@vitejs/devtools": ^0.0.0-alpha.19
@@ -11926,7 +11928,7 @@ __metadata:
       optional: true
   bin:
     tsdown: dist/run.mjs
-  checksum: 10c0/fd19b71548209ef7a5a94015f08e7cc38d868c308f5dcf109277d4babee46fda4510dd2c40571f5ff6f827d4ac2f7c3f3f87cb51c43643b574354e4afed265f9
+  checksum: 10c0/3f6e3eb62ba2e7fdcefb47d439b2df6bf373a35b4deebef2089151c504c1f1b902d6a0473b8bec42b787c005f001bd166dd53c59df9bcb552edb250632df6a28
   languageName: node
   linkType: hard
 
@@ -12242,11 +12244,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unrun@npm:^0.2.17":
-  version: 0.2.17
-  resolution: "unrun@npm:0.2.17"
+"unrun@npm:^0.2.19":
+  version: 0.2.19
+  resolution: "unrun@npm:0.2.19"
   dependencies:
-    "@oxc-project/runtime": "npm:^0.101.0"
     rolldown: "npm:1.0.0-beta.53"
   peerDependencies:
     synckit: ^0.11.11
@@ -12255,7 +12256,7 @@ __metadata:
       optional: true
   bin:
     unrun: dist/cli.mjs
-  checksum: 10c0/a0eb9cf446b85a76c887076193559d2678f623755d707c47a3b77c155cb2fa26429286b622cd8121012ac7b17b4f3c5497bd43bc105344b3e04fb4c44424ff53
+  checksum: 10c0/3dfc95fbadafcb92787994a12cc854701b4259f7b86c56965c0cd518d864cf29c67df8a80e3399c8dd19fcdd15a2323a0ad2ff616b0676180255206bd6e9cd03
   languageName: node
   linkType: hard
 
