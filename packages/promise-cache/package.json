@@ -25,7 +25,7 @@
   "devDependencies": {
     "@sebspark/otel": "*",
     "@sebspark/tsconfig": "*",
-    "@testcontainers/redis": "11.9.0",
+    "@testcontainers/redis": "11.10.0",
     "testcontainers": "11.9.0"
   },
   "dependencies": {
