@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.4
+
+### Patch Changes
+
+- aeef361: feat: nested properties should be optional
+
 ## 3.0.3
 
 ### Patch Changes
