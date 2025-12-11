@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 4.0.2
+
+### Patch Changes
+
+- c1e737e: feat: create and parse v2 ids
+
 ## 4.0.1
 
 ### Patch Changes
