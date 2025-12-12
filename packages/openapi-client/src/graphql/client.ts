@@ -1,7 +1,4 @@
-import {
-  apiGatewayTokenByUrlGenerator,
-  apiGatewayTokenRefresh,
-} from '@sebspark/openapi-auth-iam'
+
 import type { ClientOptions } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
 import { TypedClient } from '../client'
@@ -22,14 +19,8 @@ export class GatewayGraphqlClient<
     this.uri = args.uri
     this.logger = getLogger('GatewayGraphqlClient')
     this.options = {
-      timeout: 10 * 1000,
-      authorizationTokenGenerator: async (url) => {
-        this.logger.debug(`Generating token for: ${this.uri}`)
-        return apiGatewayTokenByUrlGenerator(args.apiKey)(url)
-      },
-      authorizationTokenRefresh: async (url) => {
-        this.logger.debug(`Refreshing token for: ${this.uri}`)
-        return apiGatewayTokenRefresh()(url)
+      headers: {
+        'x-api-key': args.apiKey,
       },
     }
     this.client = TypedClient<T>(args.uri, this.options)

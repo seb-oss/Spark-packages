@@ -1,12 +1,9 @@
-import * as auth from '@sebspark/openapi-auth-iam'
-import type { ClientOptions } from '@sebspark/openapi-core'
 import {
   beforeEach,
   describe,
   expect,
   it,
   type Mock,
-  type Mocked,
   type MockedFunction,
   vi,
 } from 'vitest'
@@ -14,23 +11,12 @@ import * as clientModule from '../client'
 import { GatewayGraphqlClient } from './index'
 import type { GatewayGraphqlClientArgs } from './types'
 
-vi.mock('@sebspark/openapi-auth-iam', () => ({
-  apiGatewayTokenByUrlGenerator: vi.fn(),
-  apiGatewayTokenRefresh: vi.fn(),
-}))
 vi.mock('../client', () => ({
   TypedClient: vi.fn(),
 }))
 
 const TypedClient = clientModule.TypedClient as Mock<
   typeof clientModule.TypedClient
->
-const apiGatewayTokenByUrlGenerator =
-  auth.apiGatewayTokenByUrlGenerator as Mock<
-    typeof auth.apiGatewayTokenByUrlGenerator
-  >
-const apiGatewayTokenRefresh = auth.apiGatewayTokenRefresh as Mock<
-  typeof auth.apiGatewayTokenRefresh
 >
 
 describe('GatewayGraphqlClient', () => {
@@ -65,7 +51,7 @@ describe('GatewayGraphqlClient', () => {
     )
   })
 
-  describe('constructor and token generation', () => {
+  describe('constructor', () => {
     it('creates a TypedClient with the correct args', () => {
       new GatewayGraphqlClient(args)
 
@@ -73,39 +59,11 @@ describe('GatewayGraphqlClient', () => {
       expect(TypedClient).toHaveBeenCalledWith(
         uri,
         expect.objectContaining({
-          timeout: 10 * 1000,
-          authorizationTokenGenerator: expect.any(Function),
-          authorizationTokenRefresh: expect.any(Function),
+          headers: {
+            'x-api-key': apiKey,
+          },
         })
       )
-    })
-    it('authorizationTokenGenerator calls through to apiGatewayTokenByUrlGenerator', async () => {
-      const _tokens: Record<string, string> = {}
-      const generator = vi.fn(async (url) => _tokens)
-      apiGatewayTokenByUrlGenerator.mockImplementation((apiKey) => generator)
-
-      new GatewayGraphqlClient(args)
-      const [, options] = TypedClient.mock.calls[0] as [string, ClientOptions]
-      const { authorizationTokenGenerator } = options
-
-      const tokens = await authorizationTokenGenerator!('/graphql')
-
-      expect(apiGatewayTokenByUrlGenerator).toHaveBeenCalledWith(apiKey)
-      expect(generator).toHaveBeenCalledWith('/graphql')
-      expect(tokens).toEqual(_tokens)
-    })
-    it('authorizationTokenRefresh calls through to apiGatewayTokenRefresh', async () => {
-      const refresher = vi.fn(async (url: string) => {})
-      apiGatewayTokenRefresh.mockImplementation(() => refresher)
-
-      new GatewayGraphqlClient(args)
-      const [, options] = TypedClient.mock.calls[0] as [string, ClientOptions]
-      const { authorizationTokenRefresh } = options
-
-      const tokens = await authorizationTokenRefresh!('/health')
-
-      expect(apiGatewayTokenRefresh).toHaveBeenCalled()
-      expect(refresher).toHaveBeenCalledWith('/health')
     })
   })
   describe('graphql method', () => {

@@ -49,4 +49,5 @@ export type GatewayGraphqlClient = Pick<BaseClient, 'post' | 'get'> & {
 export type GatewayGraphqlClientArgs = {
   uri: string
   apiKey: string
+
 }
