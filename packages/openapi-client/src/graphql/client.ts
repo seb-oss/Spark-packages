@@ -1,4 +1,3 @@
-
 import type { ClientOptions } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
 import { TypedClient } from '../client'
