@@ -31,7 +31,7 @@ jobs:
 
       - name: Cache Yarn dependencies
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             node_modules
@@ -68,7 +68,7 @@ jobs:
 
       - name: Cache Yarn dependencies
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             node_modules
@@ -100,7 +100,7 @@ jobs:
 
       - name: Cache Yarn dependencies
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             node_modules
@@ -132,7 +132,7 @@ jobs:
 
       - name: Cache Yarn dependencies
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             node_modules
@@ -169,7 +169,7 @@ jobs:
 
       - name: Cache Yarn dependencies
         id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             node_modules
@@ -207,7 +207,7 @@ jobs:
 
       # - name: Cache Yarn dependencies
       #   id: cache
-      #   uses: actions/cache@v4
+      #   uses: actions/cache@v5
       #   with:
       #     path: |
       #       node_modules
