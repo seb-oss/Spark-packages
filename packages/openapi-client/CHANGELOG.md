@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.1.0
+
+### Minor Changes
+
+- b877b56: Removes Token Generator from the graphql client
+
 ## 4.0.13
 
 ### Patch Changes
