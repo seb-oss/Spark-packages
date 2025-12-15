@@ -39,10 +39,10 @@ export const createETPId = ({ mic, isin, currency }: Omit<ETPId, 'type'>) =>
 export const createFundId = ({ isin, currency }: Omit<FundId, 'type'>) =>
   `${types.FND}_${isin}_${currency}`.toUpperCase()
 
-export const createIndexId = ({ ticker, currency }: IndexId) =>
+export const createIndexId = ({ ticker, currency }: Omit<IndexId, 'type'>) =>
   `${types.IDX}_${ticker}_${currency}`.toUpperCase()
 
-export const createForexId = ({ quoteCurrency, baseCurrency }: ForexId) =>
+export const createForexId = ({ quoteCurrency, baseCurrency }: Omit<ForexId, 'type'>) =>
   `${types.FXS}_${baseCurrency}_${quoteCurrency}`.toUpperCase()
 
 export const createStockId = ({ isin, mic, currency }: Omit<StockId, 'type'>) =>
