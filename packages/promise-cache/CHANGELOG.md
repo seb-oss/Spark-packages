@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.2.1
+
+### Patch Changes
+
+- 87c769d: Updated dependencies
+
 ## 6.2.0
 
 ### Minor Changes
