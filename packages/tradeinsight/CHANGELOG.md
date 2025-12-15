@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 4.0.3
+
+### Patch Changes
+
+- 6a84145: chore: omit type in id creation
+
 ## 4.0.2
 
 ### Patch Changes
