@@ -64,9 +64,9 @@ export type MapOpenSearchTypes<T> = T extends Property
           : T['type'] extends 'object' | 'nested'
             ? T extends { properties: Record<string, Property> }
               ? {
-                  -readonly [K in keyof T['properties']]:
-                    | MapOpenSearchTypes<T['properties'][K]>
-                    | undefined
+                  -readonly [K in keyof T['properties']]?: MapOpenSearchTypes<
+                    T['properties'][K]
+                  >
                 }
               : T extends { dynamic: 'true' }
                 ? Record<string, unknown>
