@@ -19,6 +19,7 @@ beforeEach(async () => {
   memoryClient = new InMemoryPersistor()
 }, 60_000)
 afterEach(async () => {
+  await redis.executeCliCmd('FLUSHALL')
   await redisClient.close()
   await redis.stop()
 })
