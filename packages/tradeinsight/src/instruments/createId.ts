@@ -1,34 +1,52 @@
-export const createStockId = ({
+import {
+  type BondExchangeId,
+  type BondOTCId,
+  type DerivativeId,
+  type ETFId,
+  type ETPId,
+  type ForexId,
+  type FundId,
+  type IndexId,
+  type StockId,
+  types,
+} from './types'
+
+export const createBondExchangeId = ({
   isin,
   mic,
   currency,
-}: {
-  isin: string
-  currency: string
-  mic: string
-}) => `STOCK-${isin}_${mic}_${currency}`.toUpperCase()
+}: Omit<BondExchangeId, 'type'>) =>
+  `${types.BNE}_${isin}_${mic}_${currency}`.toUpperCase()
 
-/**
- * Create an ID for a FOREX instrument, i.e. a currency relationship.
- * The structure matches a currency pair:
- *
- * Base currency / quote currency = Exchange rate
- *
- * @see https://en.wikipedia.org/wiki/Currency_pair
- * @example
- * EUR/USD = 1.45
- * This means a person would need 1.45 US dollars to purchase one Euro.
- */
+export const createBondOTCId = ({ isin, currency }: Omit<BondOTCId, 'type'>) =>
+  `${types.BND}_${isin}_${currency}`.toUpperCase()
+
+export const createDerivativeId = ({
+  ticker,
+  mic,
+  currency,
+  strike,
+  expiry,
+}: Omit<DerivativeId, 'type'>) =>
+  `${types.DER}_${ticker}_${mic}_${currency}_${strike}_${expiry}`.toUpperCase()
+
+export const createETFId = ({ mic, isin, currency }: Omit<ETFId, 'type'>) =>
+  `${types.ETF}_${isin}_${mic}_${currency}`.toUpperCase()
+
+export const createETPId = ({ mic, isin, currency }: Omit<ETPId, 'type'>) =>
+  `${types.ETP}_${isin}_${mic}_${currency}`.toUpperCase()
+
+export const createFundId = ({ isin, currency }: Omit<FundId, 'type'>) =>
+  `${types.FND}_${isin}_${currency}`.toUpperCase()
+
+export const createIndexId = ({ ticker, currency }: Omit<IndexId, 'type'>) =>
+  `${types.IDX}_${ticker}_${currency}`.toUpperCase()
+
 export const createForexId = ({
   quoteCurrency,
   baseCurrency,
-}: {
-  baseCurrency: string
-  quoteCurrency: string
-}) => `FOREX-${baseCurrency}_${quoteCurrency}`.toUpperCase()
+}: Omit<ForexId, 'type'>) =>
+  `${types.FXS}_${baseCurrency}_${quoteCurrency}`.toUpperCase()
 
-export const createIndexId = ({ ticker }: { ticker: string }) =>
-  `INDEX-${ticker}`.toUpperCase()
-
-export const createFundId = ({ isin }: { isin: string }) =>
-  `FUND-${isin}`.toUpperCase()
+export const createStockId = ({ isin, mic, currency }: Omit<StockId, 'type'>) =>
+  `${types.STO}_${isin}_${mic}_${currency}`.toUpperCase()

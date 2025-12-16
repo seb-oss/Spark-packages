@@ -8,18 +8,13 @@
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
       "react-native": "./dist/index.mjs"
-    },
-    "./v2": {
-      "types": "./dist/index-v2.d.mts",
-      "import": "./dist/index-v2.mjs",
-      "react-native": "./dist/index-v2.mjs"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "spark-build src/index.ts src/index-v2.ts",
+    "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "generate:avro": "ts-node ./scripts/avro-to-ts.ts",
