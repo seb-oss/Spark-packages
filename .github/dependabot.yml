@@ -6,10 +6,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    cooldown:
-      semver-patch-days: 3
-      semver-minor-days: 3
-      semver-major-days: 3
 
   # Enable version updates for npm
   - package-ecosystem: "npm"
@@ -17,9 +13,7 @@ updates:
     schedule:
       interval: "daily"
     cooldown:
-      semver-patch-days: 3
-      semver-minor-days: 3
-      semver-major-days: 3
+      default-days: 3
     # effectively remove limit
     open-pull-requests-limit: 100
     ignore:
@@ -32,7 +26,3 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    cooldown:
-      semver-patch-days: 3
-      semver-minor-days: 3
-      semver-major-days: 3
