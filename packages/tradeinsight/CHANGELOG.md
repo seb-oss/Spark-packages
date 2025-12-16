@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 5.0.0
+
+### Major Changes
+
+- 1340960: feat: new id structure
+
 ## 4.0.3
 
 ### Patch Changes

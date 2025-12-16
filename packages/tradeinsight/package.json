@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/tradeinsight",
-  "version": "4.0.3",
+  "version": "5.0.0",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
