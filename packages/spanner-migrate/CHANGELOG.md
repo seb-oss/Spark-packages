@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.7
+
+### Patch Changes
+
+- b40eb86: Updated dependencies
+
 ## 2.0.6
 
 ### Patch Changes

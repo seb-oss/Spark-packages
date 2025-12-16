@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.0.6
+
+### Patch Changes
+
+- b40eb86: Updated dependencies
+
 ## 1.0.5
 
 ### Patch Changes
