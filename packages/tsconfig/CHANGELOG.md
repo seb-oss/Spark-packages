@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.3
+
+### Patch Changes
+
+- b40eb86: Updated dependencies
+
 ## 3.0.2
 
 ### Patch Changes

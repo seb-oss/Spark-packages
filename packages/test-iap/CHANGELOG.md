@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.7
+
+### Patch Changes
+
+- b40eb86: Updated dependencies
+
 ## 1.0.6
 
 ### Patch Changes
