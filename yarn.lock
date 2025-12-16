@@ -3339,7 +3339,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
-    tsdown: "npm:0.17.2"
+    tsdown: "npm:0.18.0"
     tsup: "npm:8.5.1"
   bin:
     spark-build: ./run.js
@@ -5896,6 +5896,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"defu@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "defu@npm:6.1.4"
+  checksum: 10c0/2d6cc366262dc0cb8096e429368e44052fdf43ed48e53ad84cc7c9407f890301aa5fcb80d0995abaaf842b3949f154d060be4160f7a46cb2bc2f7726c81526f5
+  languageName: node
+  linkType: hard
+
 "degenerator@npm:^5.0.0":
   version: 5.0.1
   resolution: "degenerator@npm:5.0.1"
@@ -7928,10 +7935,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-without-cache@npm:^0.2.2":
-  version: 0.2.2
-  resolution: "import-without-cache@npm:0.2.2"
-  checksum: 10c0/5c3c1ac477f0832aac6762cc64437c985384aae941f077c844dd5586c2dea88a0616592f48f42aa929f1987d2a7662f0927a053e967935c233adfb08cb3a0ad8
+"import-without-cache@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "import-without-cache@npm:0.2.3"
+  checksum: 10c0/29de6707a626647f4fa037a4a730b5105f544cc7da7158ba9735863e6e514d6d48642abd2c0c53e8889cba803343399fc4d5a7a6ba89c30a329ae5b297911663
   languageName: node
   linkType: hard
 
@@ -11911,15 +11918,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsdown@npm:0.17.2":
-  version: 0.17.2
-  resolution: "tsdown@npm:0.17.2"
+"tsdown@npm:0.18.0":
+  version: 0.18.0
+  resolution: "tsdown@npm:0.18.0"
   dependencies:
     ansis: "npm:^4.2.0"
     cac: "npm:^6.7.14"
+    defu: "npm:^6.1.4"
     empathic: "npm:^2.0.0"
     hookable: "npm:^5.5.3"
-    import-without-cache: "npm:^0.2.2"
+    import-without-cache: "npm:^0.2.3"
     obug: "npm:^2.1.1"
     rolldown: "npm:1.0.0-beta.53"
     rolldown-plugin-dts: "npm:^0.18.3"
@@ -11951,7 +11959,7 @@ __metadata:
       optional: true
   bin:
     tsdown: dist/run.mjs
-  checksum: 10c0/3f6e3eb62ba2e7fdcefb47d439b2df6bf373a35b4deebef2089151c504c1f1b902d6a0473b8bec42b787c005f001bd166dd53c59df9bcb552edb250632df6a28
+  checksum: 10c0/c055733b92610c120369ab100a164a00b1d20d194a70c06e4e4a925e66677ad226e0bdf5126857061ebb835b99e5a57e83bf0b3247012892337641dc1ae3723e
   languageName: node
   linkType: hard
 
