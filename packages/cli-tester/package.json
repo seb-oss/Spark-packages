@@ -25,7 +25,7 @@
     "@inquirer/figures": "2.0.2"
   },
   "devDependencies": {
-    "@inquirer/prompts": "8.0.2",
+    "@inquirer/prompts": "8.1.0",
     "@sebspark/tsconfig": "*"
   }
 }
