@@ -33,7 +33,6 @@ export type ExecuteSqlRequest = Extract<Parameters<Database['run']>[0], object>
 export type RunResponse = Database['run'] extends {
   // biome-ignore lint/suspicious/noExplicitAny: Defined by Dependency
   (q: any): Promise<infer R>
-  // biome-ignore lint/suspicious/noRedeclare: Defined by Dependency
   // biome-ignore lint/suspicious/noExplicitAny: Defined by Dependency
   (q: any, o?: any): Promise<infer R>
   // biome-ignore lint/suspicious/noExplicitAny: Defined by Dependency
