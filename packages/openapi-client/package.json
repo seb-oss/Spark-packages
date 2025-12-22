@@ -30,7 +30,7 @@
     "@sebspark/tsconfig": "*",
     "express": "5.2.1",
     "nock": "14.0.10",
-    "vitest": "4.0.15"
+    "vitest": "4.0.16"
   },
   "dependencies": {
     "@sebspark/openapi-auth-iam": "*",
