@@ -2100,14 +2100,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-net@npm:0.52.0":
-  version: 0.52.0
-  resolution: "@opentelemetry/instrumentation-net@npm:0.52.0"
+"@opentelemetry/instrumentation-net@npm:0.53.0":
+  version: 0.53.0
+  resolution: "@opentelemetry/instrumentation-net@npm:0.53.0"
   dependencies:
     "@opentelemetry/instrumentation": "npm:^0.208.0"
+    "@opentelemetry/semantic-conventions": "npm:^1.33.0"
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
-  checksum: 10c0/6374f4e6cc2b7d477738161a9c9b72fc4d3ad82283a0031f90a83c005b8eaeeadcc41eee8022052a5c709b97c96e633011cc992a4972c82eca45ab2406ce4936
+  checksum: 10c0/8e4969f755e676758a0eb8755289edc150f18a3af00b042ed40d3bf2a6da739f34efbd384ba4cbff45a60f9101cbf82a8ed4ddb4f9f1dbe91244e69ec2bae5f9
   languageName: node
   linkType: hard
 
@@ -2384,7 +2385,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/semantic-conventions@npm:1.38.0, @opentelemetry/semantic-conventions@npm:^1.22.0, @opentelemetry/semantic-conventions@npm:^1.24.0, @opentelemetry/semantic-conventions@npm:^1.27.0, @opentelemetry/semantic-conventions@npm:^1.29.0, @opentelemetry/semantic-conventions@npm:^1.30.0":
+"@opentelemetry/semantic-conventions@npm:1.38.0, @opentelemetry/semantic-conventions@npm:^1.22.0, @opentelemetry/semantic-conventions@npm:^1.24.0, @opentelemetry/semantic-conventions@npm:^1.27.0, @opentelemetry/semantic-conventions@npm:^1.29.0, @opentelemetry/semantic-conventions@npm:^1.30.0, @opentelemetry/semantic-conventions@npm:^1.33.0":
   version: 1.38.0
   resolution: "@opentelemetry/semantic-conventions@npm:1.38.0"
   checksum: 10c0/ae93e39ac18bf47df2b11d43e9a0dc1673b9d33e5f1e7f357c92968e6329fb9a67cf8a447e9a7150948ee3f8178b38274db365b8fa775a8c54802e0c6ccdd2ca
@@ -3214,7 +3215,7 @@ __metadata:
     "@opentelemetry/instrumentation-fs": "npm:0.28.0"
     "@opentelemetry/instrumentation-grpc": "npm:0.208.0"
     "@opentelemetry/instrumentation-http": "npm:0.208.0"
-    "@opentelemetry/instrumentation-net": "npm:0.52.0"
+    "@opentelemetry/instrumentation-net": "npm:0.53.0"
     "@opentelemetry/instrumentation-redis": "npm:0.57.1"
     "@opentelemetry/instrumentation-socket.io": "npm:0.55.0"
     "@opentelemetry/instrumentation-undici": "npm:0.19.0"
