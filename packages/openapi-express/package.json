@@ -28,7 +28,7 @@
     "@types/supertest": "6.0.3",
     "express": "5.2.1",
     "supertest": "7.1.4",
-    "vitest": "4.0.15"
+    "vitest": "4.0.16"
   },
   "dependencies": {
     "@sebspark/openapi-core": "*",
