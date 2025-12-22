@@ -2124,14 +2124,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-socket.io@npm:0.55.0":
-  version: 0.55.0
-  resolution: "@opentelemetry/instrumentation-socket.io@npm:0.55.0"
+"@opentelemetry/instrumentation-socket.io@npm:0.55.1":
+  version: 0.55.1
+  resolution: "@opentelemetry/instrumentation-socket.io@npm:0.55.1"
   dependencies:
     "@opentelemetry/instrumentation": "npm:^0.208.0"
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
-  checksum: 10c0/8e2de911f6ab1835c711e7f93fa682cdf7bba2449147ad270c8157082a4233a4ed954a0778080374f252b0b2f247b4fd791669133a2d63ceab93e9ca0538aa10
+  checksum: 10c0/8ab0ba15cd5513695b5914e47e1ff8ea0686bcef6b2f715219ba0ef91b793d06370e3d196bb3bc1938b26a4e40faf1be06b48e8dd9fa6f9200e08918c53c1166
   languageName: node
   linkType: hard
 
@@ -3216,7 +3216,7 @@ __metadata:
     "@opentelemetry/instrumentation-http": "npm:0.208.0"
     "@opentelemetry/instrumentation-net": "npm:0.52.0"
     "@opentelemetry/instrumentation-redis": "npm:0.57.1"
-    "@opentelemetry/instrumentation-socket.io": "npm:0.55.0"
+    "@opentelemetry/instrumentation-socket.io": "npm:0.55.1"
     "@opentelemetry/instrumentation-undici": "npm:0.19.0"
     "@opentelemetry/resource-detector-container": "npm:0.7.11"
     "@opentelemetry/resource-detector-gcp": "npm:0.43.0"
