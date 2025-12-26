@@ -3280,7 +3280,7 @@ __metadata:
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.1"
     socket.io-adapter: "npm:2.5.5"
-    socket.io-client: "npm:4.8.1"
+    socket.io-client: "npm:4.8.2"
   languageName: unknown
   linkType: soft
 
@@ -5825,7 +5825,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.3.7, debug@npm:^4.4.0, debug@npm:^4.4.3":
+"debug@npm:4, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.3.7, debug@npm:^4.4.0, debug@npm:^4.4.3, debug@npm:~4.4.1":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
   dependencies:
@@ -11039,15 +11039,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socket.io-client@npm:4.8.1":
-  version: 4.8.1
-  resolution: "socket.io-client@npm:4.8.1"
+"socket.io-client@npm:4.8.2":
+  version: 4.8.2
+  resolution: "socket.io-client@npm:4.8.2"
   dependencies:
     "@socket.io/component-emitter": "npm:~3.1.0"
-    debug: "npm:~4.3.2"
+    debug: "npm:~4.4.1"
     engine.io-client: "npm:~6.6.1"
     socket.io-parser: "npm:~4.2.4"
-  checksum: 10c0/544c49cc8cc77118ef68b758a8a580c8e680a5909cae05c566d2cc07ec6cd6720a4f5b7e985489bf2a8391749177a5437ac30b8afbdf30b9da6402687ad51c86
+  checksum: 10c0/3f07b3b6b1632452adbb132a1a55dfdec2df1670e36cddedcf2433d8186f9eb8bef9f6088e8f019e4351f02c5e3da7340bc5820745ec6c600ea5ca2910802ee5
   languageName: node
   linkType: hard
 
