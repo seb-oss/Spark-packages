@@ -1267,7 +1267,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grpc/grpc-js@npm:^1.14.3":
+"@grpc/grpc-js@npm:^1.14.2, @grpc/grpc-js@npm:^1.14.3":
   version: 1.14.3
   resolution: "@grpc/grpc-js@npm:1.14.3"
   dependencies:
@@ -3089,7 +3089,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.2.10, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:*, @sebspark/avsc-isometric@npm:0.2.10, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3199,7 +3199,6 @@ __metadata:
     "@google-cloud/logging-winston": "npm:6.0.1"
     "@sebspark/tsconfig": "npm:*"
     "@types/express-serve-static-core": "npm:5.1.0"
-    "@types/socketio-wildcard": "npm:2.0.7"
     express: "npm:5.2.1"
     logform: "npm:2.7.0"
     qs: "npm:6.14.1"
@@ -3386,6 +3385,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/socket.io-avro@npm:*, @sebspark/socket.io-avro@workspace:packages/socket.io-avro":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/socket.io-avro@workspace:packages/socket.io-avro"
+  dependencies:
+    "@sebspark/avsc-isometric": "npm:*"
+    find-free-ports: "npm:3.1.1"
+    socket.io: "npm:4.8.3"
+    socket.io-client: "npm:4.8.3"
+    socket.io-parser: "npm:4.2.5"
+    tsconfig: "npm:*"
+  peerDependencies:
+    socket.io: 4.8.3
+    socket.io-client: 4.8.3
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/socket.io-gcp-pubsub-emitter@workspace:packages/socket.io-gcp-pubsub-emitter":
   version: 0.0.0-use.local
   resolution: "@sebspark/socket.io-gcp-pubsub-emitter@workspace:packages/socket.io-gcp-pubsub-emitter"
@@ -3437,10 +3452,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tradeinsight@workspace:packages/tradeinsight"
   dependencies:
+    "@google-cloud/pubsub": "npm:5.2.0"
+    "@sebspark/avsc-isometric": "npm:*"
+    "@sebspark/socket.io-avro": "npm:*"
     "@sebspark/tsconfig": "npm:*"
-    avro-typescript: "npm:1.3.0"
-    ts-node: "npm:10.9.2"
-    vitest: "npm:4.0.16"
+    "@testcontainers/gcloud": "npm:11.10.0"
+    find-free-ports: "npm:3.1.1"
+    google-gax: "npm:5.0.6"
+    socket.io: "npm:4.8.3"
+    socket.io-client: "npm:4.8.3"
+  peerDependencies:
+    "@google-cloud/pubsub": 5.2.0
+    socket.io: 4.8.1
+    socket.io-client: 4.8.1
   languageName: unknown
   linkType: soft
 
@@ -3508,6 +3532,16 @@ __metadata:
   version: 1.0.0
   resolution: "@standard-schema/spec@npm:1.0.0"
   checksum: 10c0/a1ab9a8bdc09b5b47aa8365d0e0ec40cc2df6437be02853696a0e377321653b0d3ac6f079a8c67d5ddbe9821025584b1fb71d9cc041a6666a96f1fadf2ece15f
+  languageName: node
+  linkType: hard
+
+"@testcontainers/gcloud@npm:11.10.0":
+  version: 11.10.0
+  resolution: "@testcontainers/gcloud@npm:11.10.0"
+  dependencies:
+    "@grpc/grpc-js": "npm:^1.14.2"
+    testcontainers: "npm:^11.10.0"
+  checksum: 10c0/5712bdd58a233079361d12a5332ff6df190366a3b47a43a72cd329dff0c5848f8d4bc96f6e6815bdaa82ddd647ab3f09ad951fff3ee8043ebd9e15bfa07bb8b7
   languageName: node
   linkType: hard
 
@@ -3728,15 +3762,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/engine.io@npm:*":
-  version: 3.1.10
-  resolution: "@types/engine.io@npm:3.1.10"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/b294a8bc2d81ab3f924a6d8988a9cbf341f68132d486f7dd763aec2f5eef6c836941ae60083ff8cbe043b5caea969a8b5373e8008e60d09f22e5a64a7ce6cbc8
-  languageName: node
-  linkType: hard
-
 "@types/eslint-scope@npm:^3.7.7":
   version: 3.7.7
   resolution: "@types/eslint-scope@npm:3.7.7"
@@ -3945,43 +3970,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/socket.io-client@npm:1.4.36":
-  version: 1.4.36
-  resolution: "@types/socket.io-client@npm:1.4.36"
-  checksum: 10c0/8aa36200164bdd5735e91816e33d85af4902ce437e51821dccae594df2ff23f1bf169e25719ffa74ac97b35d9be9bfd25e67c7bc5c91c3e28eb4454b4f8207f0
-  languageName: node
-  linkType: hard
-
-"@types/socket.io-parser@npm:*":
-  version: 2.2.1
-  resolution: "@types/socket.io-parser@npm:2.2.1"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/eafc204617c06728a8a3f348ef8fcfbffc3935b445ad082dd7ce76765262e934226f011f84a28c798abaf54ccc070e98c6826603bfee82a3610502a388d9cfba
-  languageName: node
-  linkType: hard
-
-"@types/socket.io@npm:2.1.13":
-  version: 2.1.13
-  resolution: "@types/socket.io@npm:2.1.13"
-  dependencies:
-    "@types/engine.io": "npm:*"
-    "@types/node": "npm:*"
-    "@types/socket.io-parser": "npm:*"
-  checksum: 10c0/19f25e7247eaaee748ce4a41a1295c491329d9224665dc73ce842ff5c7b0cc71461bfbd8c117517fc10521f7725f5fcf75e3eef35108311471c8377aa9478101
-  languageName: node
-  linkType: hard
-
-"@types/socketio-wildcard@npm:2.0.7":
-  version: 2.0.7
-  resolution: "@types/socketio-wildcard@npm:2.0.7"
-  dependencies:
-    "@types/socket.io": "npm:2.1.13"
-    "@types/socket.io-client": "npm:1.4.36"
-  checksum: 10c0/4af686660c72fa2516975f5128f0f8f76a38e31bbbf9dc14fcb9544aead52070064ec5095ab811fcb56699cd078136e637b8a730545145a20017239ef72733f8
-  languageName: node
-  linkType: hard
-
 "@types/ssh2-streams@npm:*":
   version: 0.1.13
   resolution: "@types/ssh2-streams@npm:0.1.13"
@@ -4014,6 +4002,20 @@ __metadata:
   version: 0.0.33
   resolution: "@types/stack-trace@npm:0.0.33"
   checksum: 10c0/cc8345f042f5de17f960652974d67aac71bf864b748f3efbd10a8c5315c0a7a8a13ab17931c239b9fe6b531a44378347509dc8a97a24dfa1247b93af3f943650
+  languageName: node
+  linkType: hard
+
+"@types/strip-bom@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/strip-bom@npm:3.0.0"
+  checksum: 10c0/6638635fb52dc1f7a4aa596445170ffc731f3bea307d25d79709dcce14f80870128a6f0304032863b9d1a86b4b5f45d48bcaf96abe81f42e61f0a3eb18a1b996
+  languageName: node
+  linkType: hard
+
+"@types/strip-json-comments@npm:0.0.30":
+  version: 0.0.30
+  resolution: "@types/strip-json-comments@npm:0.0.30"
+  checksum: 10c0/90509e345ac16c79f7aa7d7ef52e388e5be923f3456cf8052d36ee0eb4abc5ec4080c5f010f78cf01f5599546577eb3724256bc698663e86f0fe08a5a3fb7f68
   languageName: node
   linkType: hard
 
@@ -4856,13 +4858,6 @@ __metadata:
   dependencies:
     possible-typed-array-names: "npm:^1.0.0"
   checksum: 10c0/d07226ef4f87daa01bd0fe80f8f310982e345f372926da2e5296aecc25c41cab440916bbaa4c5e1034b453af3392f67df5961124e4b586df1e99793a1374bdb2
-  languageName: node
-  linkType: hard
-
-"avro-typescript@npm:1.3.0":
-  version: 1.3.0
-  resolution: "avro-typescript@npm:1.3.0"
-  checksum: 10c0/bdda904a2dcaf601873519b5dc8ddcacc6ae085fe60c4059a31027241091e5a93f1fc5852ba422bbae11606c27ece1b17d3b15614f6157c1578e9492ea4d0dcb
   languageName: node
   linkType: hard
 
@@ -7742,6 +7737,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"google-gax@npm:5.0.6, google-gax@npm:^5.0.0, google-gax@npm:^5.0.1-rc.0":
+  version: 5.0.6
+  resolution: "google-gax@npm:5.0.6"
+  dependencies:
+    "@grpc/grpc-js": "npm:^1.12.6"
+    "@grpc/proto-loader": "npm:^0.8.0"
+    duplexify: "npm:^4.1.3"
+    google-auth-library: "npm:^10.1.0"
+    google-logging-utils: "npm:^1.1.1"
+    node-fetch: "npm:^3.3.2"
+    object-hash: "npm:^3.0.0"
+    proto3-json-serializer: "npm:^3.0.0"
+    protobufjs: "npm:^7.5.3"
+    retry-request: "npm:^8.0.0"
+    rimraf: "npm:^5.0.1"
+  checksum: 10c0/1b368602340a80362d3a520727882feeabf7aa747097bf347de6b422d5b7dfa933e501ad18e4e44c84cde6fb6690038c1c4455ae885d68ce6db598e9e459cdff
+  languageName: node
+  linkType: hard
+
 "google-gax@npm:^4.0.3, google-gax@npm:^4.3.3":
   version: 4.6.1
   resolution: "google-gax@npm:4.6.1"
@@ -7759,25 +7773,6 @@ __metadata:
     retry-request: "npm:^7.0.0"
     uuid: "npm:^9.0.1"
   checksum: 10c0/740e47beb1def74d3e0074f8582fd919423f6c261b8cfa1c6a6c1c5bf9d8b92a11f1afe07eb1eea2fda7f4b6603c836f9427ed3cfa4c04ae97eb00db7c291400
-  languageName: node
-  linkType: hard
-
-"google-gax@npm:^5.0.0, google-gax@npm:^5.0.1-rc.0":
-  version: 5.0.6
-  resolution: "google-gax@npm:5.0.6"
-  dependencies:
-    "@grpc/grpc-js": "npm:^1.12.6"
-    "@grpc/proto-loader": "npm:^0.8.0"
-    duplexify: "npm:^4.1.3"
-    google-auth-library: "npm:^10.1.0"
-    google-logging-utils: "npm:^1.1.1"
-    node-fetch: "npm:^3.3.2"
-    object-hash: "npm:^3.0.0"
-    proto3-json-serializer: "npm:^3.0.0"
-    protobufjs: "npm:^7.5.3"
-    retry-request: "npm:^8.0.0"
-    rimraf: "npm:^5.0.1"
-  checksum: 10c0/1b368602340a80362d3a520727882feeabf7aa747097bf347de6b422d5b7dfa933e501ad18e4e44c84cde6fb6690038c1c4455ae885d68ce6db598e9e459cdff
   languageName: node
   linkType: hard
 
@@ -11051,7 +11046,6 @@ __metadata:
     "@vitest/coverage-v8": "npm:4.0.16"
     depcheck: "npm:1.4.7"
     knip: "npm:5.79.0"
-    tsup: "npm:8.5.1"
     turbo: "npm:2.7.2"
     typescript: "npm:5.9.3"
     vitest: "npm:4.0.16"
@@ -11323,6 +11317,16 @@ __metadata:
     engine.io-client: "npm:~6.6.1"
     socket.io-parser: "npm:~4.2.4"
   checksum: 10c0/76c0d86de0b636d0bf5011cf3425212c900f43dac632db6eb493816920cd035af7ddd92fea9a106b45eb347405953c0414eb3a5d465b180215e46fc8b61420b3
+  languageName: node
+  linkType: hard
+
+"socket.io-parser@npm:4.2.5":
+  version: 4.2.5
+  resolution: "socket.io-parser@npm:4.2.5"
+  dependencies:
+    "@socket.io/component-emitter": "npm:~3.1.0"
+    debug: "npm:~4.4.1"
+  checksum: 10c0/fce2b7a76eed9babc7b4156e82e5cd478b0bc5eb877d52ae48aa0d90fe2d11be5a9e576fbc8bdbf3dd656863965ad133ba6c7d45172a1e020270e7c7891c1b35
   languageName: node
   linkType: hard
 
@@ -11662,7 +11666,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strip-json-comments@npm:~2.0.1":
+"strip-json-comments@npm:^2.0.0, strip-json-comments@npm:~2.0.1":
   version: 2.0.1
   resolution: "strip-json-comments@npm:2.0.1"
   checksum: 10c0/b509231cbdee45064ff4f9fd73609e2bcc4e84a4d508e9dd0f31f70356473fde18abfb5838c17d56fb236f5a06b102ef115438de0600b749e818a35fbbc48c43
@@ -11945,6 +11949,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"testcontainers@npm:^11.10.0":
+  version: 11.10.0
+  resolution: "testcontainers@npm:11.10.0"
+  dependencies:
+    "@balena/dockerignore": "npm:^1.0.2"
+    "@types/dockerode": "npm:^3.3.47"
+    archiver: "npm:^7.0.1"
+    async-lock: "npm:^1.4.1"
+    byline: "npm:^5.0.0"
+    debug: "npm:^4.4.3"
+    docker-compose: "npm:^1.3.0"
+    dockerode: "npm:^4.0.9"
+    get-port: "npm:^7.1.0"
+    proper-lockfile: "npm:^4.1.2"
+    properties-reader: "npm:^2.3.0"
+    ssh-remote-port-forward: "npm:^1.0.4"
+    tar-fs: "npm:^3.1.1"
+    tmp: "npm:^0.2.5"
+    undici: "npm:^7.16.0"
+  checksum: 10c0/1ae0ee097bb214a314285a33cbfdbe41abc7099f6622f1ab0f9cb33ed80267c5964ce218ceec1b4ff7fd3781586337b298bb8819dd343f52190862f7ca628fe6
+  languageName: node
+  linkType: hard
+
 "text-decoder@npm:^1.1.0":
   version: 1.2.3
   resolution: "text-decoder@npm:1.2.3"
@@ -12167,6 +12194,18 @@ __metadata:
     ts-node-transpile-only: dist/bin-transpile.js
     ts-script: dist/bin-script-deprecated.js
   checksum: 10c0/5f29938489f96982a25ba650b64218e83a3357d76f7bede80195c65ab44ad279c8357264639b7abdd5d7e75fc269a83daa0e9c62fd8637a3def67254ecc9ddc2
+  languageName: node
+  linkType: hard
+
+"tsconfig@npm:*":
+  version: 7.0.0
+  resolution: "tsconfig@npm:7.0.0"
+  dependencies:
+    "@types/strip-bom": "npm:^3.0.0"
+    "@types/strip-json-comments": "npm:0.0.30"
+    strip-bom: "npm:^3.0.0"
+    strip-json-comments: "npm:^2.0.0"
+  checksum: 10c0/7a5dec94b9e42017d93041b1962c174afde00fd8f3066eea81a5e5b743065e95f3bedebff0edbe215b2517f8cdace8c9f15651a78d5eb7409cad2fc107e5eb98
   languageName: node
   linkType: hard
 

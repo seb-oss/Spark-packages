@@ -4,28 +4,56 @@
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "react-native": "./dist/index.mjs"
+    "./broker": {
+      "types": "./dist/market-data-broker.d.mts",
+      "import": "./dist/market-data-broker.mjs",
+      "react-native": "./dist/market-data-broker.mjs"
+    },
+    "./subscriber": {
+      "types": "./dist/market-data-subscriber.d.mts",
+      "import": "./dist/market-data-subscriber.mjs",
+      "react-native": "./dist/market-data-subscriber.mjs"
+    },
+    "./schemas": {
+      "types": "./dist/schemas.d.mts",
+      "import": "./dist/schemas.mjs",
+      "react-native": "./dist/schemas.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.mts",
+      "import": "./dist/utils.mjs",
+      "react-native": "./dist/utils.mjs"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "spark-build src/index.ts",
+    "build": "spark-build src/market-data-broker.ts src/market-data-subscriber.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
-    "generate:avro": "ts-node ./scripts/avro-to-ts.ts",
+    "typegen": "avsc-ts -i ./schemas -o ./src/generated",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
+  "dependencies": {
+    "@sebspark/avsc-isometric": "*",
+    "@sebspark/socket.io-avro": "*"
+  },
+  "peerDependencies": {
+    "@google-cloud/pubsub": "5.2.0",
+    "socket.io": "4.8.1",
+    "socket.io-client": "4.8.1"
+  },
   "devDependencies": {
+    "@google-cloud/pubsub": "5.2.0",
     "@sebspark/tsconfig": "*",
-    "avro-typescript": "1.3.0",
-    "ts-node": "10.9.2",
-    "vitest": "4.0.16"
+    "@testcontainers/gcloud": "11.10.0",
+    "find-free-ports": "3.1.1",
+    "google-gax": "5.0.6",
+    "socket.io": "4.8.3",
+    "socket.io-client": "4.8.3"
   }
 }

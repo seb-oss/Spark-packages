@@ -13,7 +13,7 @@ const parseSchema = (schema: Schema): string => {
     },
   })
   let name = type.name
-  let itemName: string | undefined
+  // let itemName: string | undefined
   if (!name) {
     // handle array root type
     // biome-ignore lint/suspicious/noExplicitAny: any is required for dynamic type
@@ -22,7 +22,7 @@ const parseSchema = (schema: Schema): string => {
     if (!dynamic.itemsType?.name) throw new Error('Schema must have a name')
 
     name = `${dynamic.itemsType?.name}sArray`
-    itemName = `${dynamic.itemsType?.name}[]`
+    // itemName = `${dynamic.itemsType?.name}[]`
   }
 
   record[name] = type
@@ -33,15 +33,10 @@ const parseSchema = (schema: Schema): string => {
     .replace(/ {4}/g, '  ') // two spaces
     .replace(/^export type AvroType = .+(\[\]|(\n\n))/gm, '')
 
-  return `${ts}
-const avro${name} = Type.forSchema(${JSON.stringify(type.schema())})
-
-export const ${name}Converter = {
-  toBuffer: (data: ${itemName || name}) => avro${name}.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avro${name}.fromBuffer(buffer) as ${
-    itemName || name
-  }
-}
+  return `${ts}\
+export const ${name}Schema = ${JSON.stringify(type.schema())} as const satisfies Schema
+export const ${name}Type = Type.forSchema(${name}Schema)
+export type ${name}Payload = AvroPayload<typeof ${name}Schema>
 `
 }
 
@@ -80,7 +75,39 @@ export const parse = (...schemas: Schema[]): string => {
   }
 
   return `// Auto generated. Do not edit!
-import { Type } from '@sebspark/avsc-isometric'
+import { Type, type Schema } from '@sebspark/avsc-isometric'
+
+/**
+ * Extracts the record definition from a schema branch
+ */
+type ExtractRecord<T> = T extends { name: infer N; fields: readonly any[] }
+  ? N extends string
+    ? { [K in N]: { [F in T['fields'][number] as F['name']]: ResolveType<F['type']> } }
+    : never
+  : never
+
+/**
+ * Resolves Avro types (int, string, arrays, unions) to TypeScript
+ */
+type ResolveType<T> = T extends 'int' | 'long' | 'double' ? number
+  : T extends 'string' ? string
+  : T extends readonly ['null', infer U] ? ResolveType<U> | null
+  : T extends { type: 'array'; items: infer I } ? ResolveType<I>[]
+  : T extends { name: string; fields: readonly any[] } ? { [F in T['fields'][number] as F['name']]: ResolveType<F['type']> }
+  : any
+
+/**
+ * The final Payload structure derived from your specific Schema
+ */
+export type AvroPayload<S> = S extends { fields: readonly any[] }
+  ? {
+      [F in S['fields'][number] as F['name']]: F['name'] extends 'data'
+        ? (S['fields'][number] & { name: 'data' })['type'] extends readonly any[]
+          ? ExtractRecord<(S['fields'][number] & { name: 'data' })['type'][number]> | null
+          : never
+        : ResolveType<F['type']>
+    }
+  : never
 
 ${parsed.join('\n')}`
 }

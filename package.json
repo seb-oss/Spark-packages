@@ -10,7 +10,7 @@
     "depcheck": "turbo depcheck",
     "dev": "turbo dev",
     "format": "biome format --write",
-    "generate:avro": "turbo generate:avro",
+    "typegen": "turbo typegen",
     "generate:package": "turbo gen package",
     "lint:watch": "turbo watch lint",
     "lint:write": "biome check --write",
@@ -36,7 +36,6 @@
     "@vitest/coverage-v8": "4.0.16",
     "depcheck": "1.4.7",
     "knip": "5.79.0",
-    "tsup": "8.5.1",
     "turbo": "2.7.2",
     "typescript": "5.9.3",
     "vitest": "4.0.16"

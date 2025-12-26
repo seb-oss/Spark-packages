@@ -2,6 +2,49 @@ import type { Schema } from 'avsc'
 import { expect, test } from 'vitest'
 import { parse } from './parse'
 
+test('id adds the correct header', () => {
+  const schema: Schema = {
+    name: 'Schema',
+    type: 'record',
+    fields: [],
+  }
+  const ts = parse(schema)
+
+  expect(ts).toContain(`// Auto generated. Do not edit!
+import { Type, type Schema } from '@sebspark/avsc-isometric'
+
+/**
+ * Extracts the record definition from a schema branch
+ */
+type ExtractRecord<T> = T extends { name: infer N; fields: readonly any[] }
+  ? N extends string
+    ? { [K in N]: { [F in T['fields'][number] as F['name']]: ResolveType<F['type']> } }
+    : never
+  : never
+
+/**
+ * Resolves Avro types (int, string, arrays, unions) to TypeScript
+ */
+type ResolveType<T> = T extends 'int' | 'long' | 'double' ? number
+  : T extends 'string' ? string
+  : T extends readonly ['null', infer U] ? ResolveType<U> | null
+  : T extends { type: 'array'; items: infer I } ? ResolveType<I>[]
+  : T extends { name: string; fields: readonly any[] } ? { [F in T['fields'][number] as F['name']]: ResolveType<F['type']> }
+  : any
+
+/**
+ * The final Payload structure derived from your specific Schema
+ */
+export type AvroPayload<S> = S extends { fields: readonly any[] }
+  ? {
+      [F in S['fields'][number] as F['name']]: F['name'] extends 'data'
+        ? (S['fields'][number] & { name: 'data' })['type'] extends readonly any[]
+          ? ExtractRecord<(S['fields'][number] & { name: 'data' })['type'][number]> | null
+          : never
+        : ResolveType<F['type']>
+    }
+  : never`)
+})
 test('it parses simple schema', () => {
   const simple: Schema = {
     name: 'Simple',
@@ -15,19 +58,13 @@ test('it parses simple schema', () => {
   }
   const ts = parse(simple)
 
-  expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from '@sebspark/avsc-isometric'
-
+  expect(ts).toContain(`
 export interface Simple {
   stringField: string
 }
-
-const avroSimple = Type.forSchema(${JSON.stringify(simple)})
-
-export const SimpleConverter = {
-  toBuffer: (data: Simple) => avroSimple.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroSimple.fromBuffer(buffer) as Simple
-}
+export const SimpleSchema = ${JSON.stringify(simple)} as const satisfies Schema
+export const SimpleType = Type.forSchema(SimpleSchema)
+export type SimplePayload = AvroPayload<typeof SimpleSchema>
 `)
 })
 
@@ -45,22 +82,16 @@ test('does not tamper with doc', () => {
   }
   const ts = parse(simple)
 
-  expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from '@sebspark/avsc-isometric'
-
+  expect(ts).toContain(`
 /**
  * A sentence that could end here; yet continues for a bit.
  */
 export interface Simple {
   stringField: string
 }
-
-const avroSimple = Type.forSchema({"name":"Simple","type":"record","fields":[{"name":"stringField","type":"string"}]})
-
-export const SimpleConverter = {
-  toBuffer: (data: Simple) => avroSimple.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroSimple.fromBuffer(buffer) as Simple
-}
+export const SimpleSchema = {"name":"Simple","type":"record","fields":[{"name":"stringField","type":"string"}]} as const satisfies Schema
+export const SimpleType = Type.forSchema(SimpleSchema)
+export type SimplePayload = AvroPayload<typeof SimpleSchema>
 `)
 })
 
@@ -87,30 +118,20 @@ test('it parses multiple schemas', () => {
   }
   const ts = parse(simpleString, simpleInt)
 
-  expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from '@sebspark/avsc-isometric'
-
+  expect(ts).toContain(`
 export interface SimpleString {
   stringField: string
 }
-
-const avroSimpleString = Type.forSchema(${JSON.stringify(simpleString)})
-
-export const SimpleStringConverter = {
-  toBuffer: (data: SimpleString) => avroSimpleString.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroSimpleString.fromBuffer(buffer) as SimpleString
-}
+export const SimpleStringSchema = ${JSON.stringify(simpleString)} as const satisfies Schema
+export const SimpleStringType = Type.forSchema(SimpleStringSchema)
+export type SimpleStringPayload = AvroPayload<typeof SimpleStringSchema>
 
 export interface SimpleInt {
   intField: number
 }
-
-const avroSimpleInt = Type.forSchema(${JSON.stringify(simpleInt)})
-
-export const SimpleIntConverter = {
-  toBuffer: (data: SimpleInt) => avroSimpleInt.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroSimpleInt.fromBuffer(buffer) as SimpleInt
-}
+export const SimpleIntSchema = ${JSON.stringify(simpleInt)} as const satisfies Schema
+export const SimpleIntType = Type.forSchema(SimpleIntSchema)
+export type SimpleIntPayload = AvroPayload<typeof SimpleIntSchema>
 `)
 })
 
@@ -182,27 +203,17 @@ test('it parses array types', () => {
 
   const ts = parse(itemSchema, arraySchema)
 
-  expect(ts).toEqual(`// Auto generated. Do not edit!
-import { Type } from '@sebspark/avsc-isometric'
-
+  expect(ts).toContain(`
 export interface Item {
   childField: string
 }
-
-const avroItem = Type.forSchema({"name":"Item","type":"record","fields":[{"name":"childField","type":"string"}]})
-
-export const ItemConverter = {
-  toBuffer: (data: Item) => avroItem.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroItem.fromBuffer(buffer) as Item
-}
+export const ItemSchema = {"name":"Item","type":"record","fields":[{"name":"childField","type":"string"}]} as const satisfies Schema
+export const ItemType = Type.forSchema(ItemSchema)
+export type ItemPayload = AvroPayload<typeof ItemSchema>
 
 
-
-const avroItemsArray = Type.forSchema({"type":"array","items":{"name":"Item","type":"record","fields":[{"name":"childField","type":"string"}]}})
-
-export const ItemsArrayConverter = {
-  toBuffer: (data: Item[]) => avroItemsArray.toBuffer(data),
-  fromBuffer: (buffer: Buffer) => avroItemsArray.fromBuffer(buffer) as Item[]
-}
+export const ItemsArraySchema = {"type":"array","items":{"name":"Item","type":"record","fields":[{"name":"childField","type":"string"}]}} as const satisfies Schema
+export const ItemsArrayType = Type.forSchema(ItemsArraySchema)
+export type ItemsArrayPayload = AvroPayload<typeof ItemsArraySchema>
 `)
 })

@@ -121,6 +121,10 @@ Open Telemetry implementation of logging, tracing and metrics
 
 Handle environment variables with assertion
 
+### [@sebspark/socket.io-avro](./packages/socket.io-avro)
+
+Avro parser and helpers for creating socket servers and socket clients using it
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

@@ -1,4 +1,10 @@
 {
   "extends": "@sebspark/tsconfig/tsconfig.lib.json",
-  "include": ["."]
+  "include": ["."],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "socketio-wildcard": ["src/socketio-wildcard.d.ts"]
+    }
+  }
 }
