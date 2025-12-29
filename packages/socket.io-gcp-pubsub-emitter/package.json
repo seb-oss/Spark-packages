@@ -33,7 +33,7 @@
   "dependencies": {
     "@google-cloud/pubsub": "5.2.0",
     "@msgpack/msgpack": "3.1.2",
-    "socket.io-adapter": "2.5.5"
+    "socket.io-adapter": "2.5.6"
   },
   "resolutions": {
     "@google-cloud/pubsub": "5.2.0"
