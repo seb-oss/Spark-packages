@@ -28,7 +28,7 @@
     "@testcontainers/gcloud": "11.10.0",
     "find-free-ports": "3.1.1",
     "socket.io": "4.8.1",
-    "socket.io-client": "4.8.1"
+    "socket.io-client": "4.8.3"
   },
   "dependencies": {
     "@google-cloud/pubsub": "5.2.0",
