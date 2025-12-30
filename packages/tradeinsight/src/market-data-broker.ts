@@ -21,7 +21,8 @@ import {
   type Price,
   type ServerEvents,
   type SubscribeMessage,
-} from './schemas'
+} from './avro-schemas'
+import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 
 export type BrokerServer<
   CE extends ClientEvents = ClientEvents,
@@ -71,6 +72,8 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
   private readonly id: string
   private readonly namespace: BrokerNamespace<S>
   private readonly channels: Map<ChannelName, Channel>
+  private readonly logger: ReturnType<typeof getLogger>
+  private readonly tracer: ReturnType<typeof getTracer>
 
   constructor(config: MarketDataBrokerConfig<S>) {
     this.id = config.id || randomUUID()
@@ -96,6 +99,9 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
 
     this.namespace.use((socket, next) => this.authorize(socket, next))
     this.namespace.on('connect', (socket) => this.onConnect(socket))
+
+    this.logger = getLogger('MarketDataBroker', { id: this.id })
+    this.tracer = getTracer('MarketDataBroker')
   }
 
   //#region Socket handling
@@ -109,24 +115,28 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
   }
 
   private onConnect(socket: BrokerSocket) {
-    // console.log('onConnect', socket.id)
+    this.logger.debug('onConnect', { socketId: socket.id })
     socket.on('disconnect', (reason) => this.onDisconnect(socket, reason))
     socket.on('subscribe', (payload) => this.onSubscribe(socket, payload))
   }
 
   private onDisconnect(socket: BrokerSocket, _reason: DisconnectReason) {
+    this.logger.debug('onConnect', { socketId: socket.id })
     for (const channel of CHANNELS) {
       this.channels.get(channel)?.subscribers.delete(socket.id)
     }
   }
 
   private onSubscribe(socket: BrokerSocket, { rooms }: SubscribeMessage) {
-    // console.log('socket subscribed', rooms)
-
     // remove malformed subscriptions
     const filteredRooms = rooms.filter((room) =>
       CHANNELS.some((channel) => room.startsWith(channel))
     )
+
+    if (filteredRooms.join(',') !== rooms.join(',')) {
+      this.logger.warn('Malformed rooms detected', { socketId: socket.id, rooms: rooms })
+    }
+    this.logger.debug('onSubscribe', { socketId: socket.id, rooms: filteredRooms })
 
     const targetSet = new Set(filteredRooms)
     const currentSet = socket.rooms
@@ -221,6 +231,7 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
     }
 
     // Create subscription
+    const span = this.tracer.startSpan('createPubsubSubscription')
     try {
       channel.status = 'creating'
 
@@ -238,6 +249,9 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
         },
         messageRetentionDuration: 600,
       }
+
+      span.setAttributes({ topic: topicId, subscription: name, channelName })
+
       const [subscription] = await channel.topic.createSubscription(
         name,
         options
@@ -250,10 +264,17 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
       channel.subscription = subscription
 
       channel.status = 'subscribing'
+      span.setStatus({ code: SpanStatusCode.OK })
+      span.end()
     } catch (err) {
-      console.error('Error creating subscription', err)
+      const error = err as Error
+      this.logger.error('Error creating subscription', error)
+      span.setStatus({ code: SpanStatusCode.ERROR, message: error.message })
+      span.recordException(error)
+      span.end()
+
       await wait(1_000)
-      console.log('Retry creating subscription for', channelName)
+      this.logger.info(`Retry creating subscription for ${channelName})`)
       await this.createPubsubSubscription(channel, channelName)
     }
   }
@@ -282,16 +303,25 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
     }
 
     // Delete subscription
+    const span = this.tracer.startSpan('deletePubsubSubscription')
+    span.setAttribute('subscription', channel.subscription.name)
     try {
       channel.status = 'deleting'
       await channel.subscription.delete()
       channel.subscription = undefined
       channel.status = 'none'
+      span.setStatus({ code: SpanStatusCode.OK })
+      span.end()
     } catch (err) {
-      console.error('Error deleting subscription', err)
+      const error = err as Error
+      this.logger.error('Error deleting subscription', error)
+      span.setStatus({ code: SpanStatusCode.ERROR, message: error.message })
+      span.recordException(error)
+      span.end()
+
       channel.status = 'pendingDelete'
       await wait(1_000)
-      console.log('Retry deleting subscription')
+      this.logger.info('Retry deleting subscription')
       await this.deletePubsubSubscription(channel)
     }
   }
@@ -307,6 +337,7 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
 
       // Check if message is too old
       if (Date.now() - message.publishTime.getTime() > EXPIRY_TIME) {
+        this.logger.warn('Message is too old', message)
         return
       }
 
@@ -322,8 +353,8 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
             return this.handlePriceMessage(message)
           }
         }
-      } catch (err) {
-        console.error('Error handling message', err)
+      } catch (error) {
+        this.logger.error('Error handling message', error as Error)
       }
     })
   }

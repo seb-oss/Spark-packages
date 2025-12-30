@@ -28,6 +28,18 @@ console.log(type, fromCurrency, toCurrency)
 // FXS, USD, EUR
 ```
 
+## TradeInsight OpenAPI Client
+
+```typescript
+import type { TradeinsightV2Client } from '@sebspark/tradeinsight/openapi'
+import { TypedClient } from '@sebspark/openapi-client'
+
+const host = process.env.TRADE_INSIGHT_HOST as string
+
+const client = TypedClient<TradeinsightV2Client>(host)
+const instrument = await client.get('/instruments/:id', { params: { id: 'STO_SE0000108656_XSTO_SEK' } })
+```
+
 ## Market data broker (server)
 
 This broker will handle all subscription requests and listen for events on TradeInsights market data topics and pipe them to the interested parties.
@@ -37,7 +49,7 @@ import { createServer } from 'node:http'
 import { PubSub } from '@google-cloud/pubsub'
 import { createParser } from '@sebspark/socket.io-avro/parser'
 import { type BrokerServer, MarketDataBroker } from '@sebspark/tradeinsight/broker'
-import { allSchemas } from '@sebspark/tradeinsight/schemas'
+import { allSchemas } from '@sebspark/tradeinsight/avro'
 import { Server } from 'socket.io'
 
 const httpServer = createServer()
@@ -74,7 +86,7 @@ process.on('SIGTERM', async () => {
 
 ```typescript
 import { createParser } from '@sebspark/socket.io-avro/parser'
-import { allSchemas } from '@sebspark/tradeinsight/schemas'
+import { allSchemas } from '@sebspark/tradeinsight/avro'
 import { MarketDataSubscriber } from '@sebspark/tradeinsight/subscriber'
 
 const parser = createAvroParser(allSchemas)

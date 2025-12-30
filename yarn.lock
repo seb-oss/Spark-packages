@@ -3454,6 +3454,9 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.0"
     "@sebspark/avsc-isometric": "npm:*"
+    "@sebspark/openapi-core": "npm:*"
+    "@sebspark/openapi-typegen": "npm:*"
+    "@sebspark/otel": "npm:*"
     "@sebspark/socket.io-avro": "npm:*"
     "@sebspark/tsconfig": "npm:*"
     "@testcontainers/gcloud": "npm:11.10.0"

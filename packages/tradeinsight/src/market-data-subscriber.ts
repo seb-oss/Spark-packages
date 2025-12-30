@@ -4,7 +4,7 @@ import {
   type Socket,
   type SocketOptions,
 } from 'socket.io-client'
-import { type ClientEvents, NAMESPACE, type ServerEvents } from './schemas'
+import { type ClientEvents, NAMESPACE, type ServerEvents } from './avro-schemas'
 
 type BrokerSocket = Socket<ServerEvents, ClientEvents>
 interface TypedListener<Events> {
