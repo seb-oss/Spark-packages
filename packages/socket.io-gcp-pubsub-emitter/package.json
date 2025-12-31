@@ -25,7 +25,7 @@
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "@socket.io/gcp-pubsub-adapter": "0.1.0",
-    "@testcontainers/gcloud": "11.10.0",
+    "@testcontainers/gcloud": "11.11.0",
     "find-free-ports": "3.1.1",
     "socket.io": "4.8.1",
     "socket.io-client": "4.8.1"

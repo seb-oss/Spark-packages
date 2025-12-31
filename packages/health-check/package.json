@@ -29,7 +29,7 @@
   "devDependencies": {
     "@google-cloud/pubsub": "5.2.0",
     "@sebspark/tsconfig": "*",
-    "@testcontainers/gcloud": "11.10.0",
+    "@testcontainers/gcloud": "11.11.0",
     "@testcontainers/mockserver": "11.10.0",
     "@testcontainers/redis": "11.10.0",
     "mockserver-client": "5.15.0",
