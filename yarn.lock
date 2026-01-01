@@ -3083,7 +3083,7 @@ __metadata:
     "@types/socketio-wildcard": "npm:2.0.7"
     express: "npm:5.2.1"
     logform: "npm:2.7.0"
-    qs: "npm:6.14.0"
+    qs: "npm:6.14.1"
     socket.io: "npm:4.8.1"
     socketio-wildcard: "npm:2.0.0"
     supertest: "npm:7.1.4"
@@ -10158,7 +10158,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.14.0, qs@npm:^6.11.2, qs@npm:^6.14.0":
+"qs@npm:6.14.1":
+  version: 6.14.1
+  resolution: "qs@npm:6.14.1"
+  dependencies:
+    side-channel: "npm:^1.1.0"
+  checksum: 10c0/0e3b22dc451f48ce5940cbbc7c7d9068d895074f8c969c0801ac15c1313d1859c4d738e46dc4da2f498f41a9ffd8c201bd9fb12df67799b827db94cc373d2613
+  languageName: node
+  linkType: hard
+
+"qs@npm:^6.11.2, qs@npm:^6.14.0":
   version: 6.14.0
   resolution: "qs@npm:6.14.0"
   dependencies:
