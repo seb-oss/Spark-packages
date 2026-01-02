@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-client",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -40,6 +40,6 @@
     "axios-auth-refresh": "3.3.6"
   },
   "peerDependencies": {
-    "@sebspark/otel": ">=2.0.6"
+    "@sebspark/otel": ">=2.0.9"
   }
 }
