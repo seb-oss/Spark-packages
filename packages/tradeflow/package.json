@@ -1,0 +1,69 @@
+{
+  "name": "@sebspark/tradeflow",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./avro": {
+      "types": "./dist/avro-schemas.d.mts",
+      "import": "./dist/avro-schemas.mjs",
+      "react-native": "./dist/avro-schemas.mjs"
+    },
+    "./broker": {
+      "types": "./dist/order-broker.d.mts",
+      "import": "./dist/order-broker.mjs",
+      "react-native": "./dist/order-broker.mjs"
+    },
+    "./ca3": {
+      "types": "./dist/ca3-client.d.mts",
+      "import": "./dist/ca3-client.mjs",
+      "react-native": "./dist/ca3-client.mjs"
+    },
+    "./openapi": {
+      "types": "./dist/openapi.d.mts",
+      "import": "./dist/openapi.mjs",
+      "react-native": "./dist/openapi.mjs"
+    },
+    "./subscriber": {
+      "types": "./dist/order-subscriber.d.mts",
+      "import": "./dist/order-subscriber.mjs",
+      "react-native": "./dist/order-subscriber.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "spark-build src/order-broker.ts src/order-subscriber.ts src/avro-schemas.ts src/openapi.ts src/ca3-client.ts --dts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check .",
+    "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "typecheck": "vitest --typecheck.only --passWithNoTests",
+    "typegen": "openapi-typegen -i ./schemas -o ./src/generated/"
+  },
+  "dependencies": {
+    "@sebspark/avsc-isometric": "*",
+    "@sebspark/openapi-core": "*",
+    "@sebspark/otel": "*",
+    "@sebspark/socket.io-avro": "*",
+    "@sebspark/tradeinsight": "*"
+  },
+  "peerDependencies": {
+    "@google-cloud/pubsub": "5.2.0",
+    "socket.io": "4.8.3",
+    "socket.io-client": "4.8.3"
+  },
+  "devDependencies": {
+    "@google-cloud/pubsub": "5.2.0",
+    "@sebspark/openapi-typegen": "*",
+    "@testcontainers/gcloud": "11.11.0",
+    "find-free-ports": "3.1.1",
+    "google-gax": "5.0.6",
+    "socket.io": "4.8.3",
+    "socket.io-client": "4.8.3",
+    "tsconfig": "*"
+  }
+}

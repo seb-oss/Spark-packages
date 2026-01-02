@@ -10,14 +10,14 @@ import { findFreePorts } from 'find-free-ports'
 import * as gax from 'google-gax'
 import { Server } from 'socket.io'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { BrokerServer, MarketDataBroker } from '../market-data-broker'
-import { MarketDataSubscriber } from '../market-data-subscriber'
 import {
   allSchemas,
   type NewsItem,
   type Orderbook,
   type Price,
-} from '../schemas'
+} from '../avro-schemas'
+import { BrokerServer, MarketDataBroker } from '../market-data-broker'
+import { MarketDataSubscriber } from '../market-data-subscriber'
 import { ensureTopic } from './helper'
 
 describe('TradeInsight socket service', () => {

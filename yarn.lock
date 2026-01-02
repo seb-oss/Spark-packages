@@ -3448,12 +3448,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tradeinsight@workspace:packages/tradeinsight":
+"@sebspark/tradeflow@workspace:packages/tradeflow":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/tradeflow@workspace:packages/tradeflow"
+  dependencies:
+    "@google-cloud/pubsub": "npm:5.2.0"
+    "@sebspark/avsc-isometric": "npm:*"
+    "@sebspark/openapi-core": "npm:*"
+    "@sebspark/openapi-typegen": "npm:*"
+    "@sebspark/otel": "npm:*"
+    "@sebspark/socket.io-avro": "npm:*"
+    "@sebspark/tradeinsight": "npm:*"
+    "@testcontainers/gcloud": "npm:11.11.0"
+    find-free-ports: "npm:3.1.1"
+    google-gax: "npm:5.0.6"
+    socket.io: "npm:4.8.3"
+    socket.io-client: "npm:4.8.3"
+    tsconfig: "npm:*"
+  peerDependencies:
+    "@google-cloud/pubsub": 5.2.0
+    socket.io: 4.8.3
+    socket.io-client: 4.8.3
+  languageName: unknown
+  linkType: soft
+
+"@sebspark/tradeinsight@npm:*, @sebspark/tradeinsight@workspace:packages/tradeinsight":
   version: 0.0.0-use.local
   resolution: "@sebspark/tradeinsight@workspace:packages/tradeinsight"
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.0"
     "@sebspark/avsc-isometric": "npm:*"
+    "@sebspark/openapi-client": "npm:*"
     "@sebspark/openapi-core": "npm:*"
     "@sebspark/openapi-typegen": "npm:*"
     "@sebspark/otel": "npm:*"
@@ -3466,6 +3491,7 @@ __metadata:
     socket.io-client: "npm:4.8.3"
   peerDependencies:
     "@google-cloud/pubsub": 5.2.0
+    "@sebspark/openapi-client": "*"
     socket.io: 4.8.1
     socket.io-client: 4.8.1
   languageName: unknown

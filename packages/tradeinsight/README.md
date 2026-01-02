@@ -30,6 +30,12 @@ console.log(type, fromCurrency, toCurrency)
 
 ## TradeInsight OpenAPI Client
 
+This requires installation of peer dependencies:
+
+```zsh
+yarn add -E @sebspark/openapi-client
+```
+
 ```typescript
 import type { TradeinsightV2Client } from '@sebspark/tradeinsight/openapi'
 import { TypedClient } from '@sebspark/openapi-client'
@@ -41,6 +47,12 @@ const instrument = await client.get('/instruments/:id', { params: { id: 'STO_SE0
 ```
 
 ## Market data broker (server)
+
+This requires installation of peer dependencies:
+
+```zsh
+yarn add -E @google-cloud/pubsub socket.io
+```
 
 This broker will handle all subscription requests and listen for events on TradeInsights market data topics and pipe them to the interested parties.
 
@@ -83,6 +95,12 @@ process.on('SIGTERM', async () => {
 ```
 
 ## Market data subscriber (client)
+
+This requires installation of peer dependencies:
+
+```zsh
+yarn add -E socket.io-client
+```
 
 ```typescript
 import { createParser } from '@sebspark/socket.io-avro/parser'

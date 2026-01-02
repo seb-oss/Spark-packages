@@ -1,0 +1,1876 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "TradeFlow for Retail",
+    "version": "0.1.0-draft",
+    "description": "TradeFlow for Retail is built for retail investors and corporate clients, enabling secure order creation, updates, cancellations, and execution across securities and investment products. With integrated support for account permissions, geographical restrictions, and regulatory requirements, TradeFlow for Retail ensures every trade is compliant and efficient — from initial intent to final execution."
+  },
+  "servers": [
+    {
+      "url": "/api/v1",
+      "description": "Primary API (versioned)."
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": [],
+      "jwtAssertion": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "capabilities",
+      "description": "User trading capabilities (PGCs) and active restrictions."
+    },
+    {
+      "name": "orders",
+      "description": "Order ex-ante estimate, placement, replace, cancel, and lifecycle."
+    },
+    {
+      "name": "system",
+      "description": "Operational endpoints."
+    }
+  ],
+  "paths": {
+    "/health/ping": {
+      "get": {
+        "tags": ["system"],
+        "summary": "Health ping",
+        "description": "Basic health status.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service responds with basic status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_Status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/live": {
+      "get": {
+        "tags": ["system"],
+        "summary": "Liveness",
+        "description": "Liveness signal with system and process metrics.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Liveness payload.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_Liveness"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "tags": ["system"],
+        "summary": "Readiness",
+        "description": "Readiness including dependency checks and summary.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Readiness payload.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_ReadinessPayload"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": ["system"],
+        "summary": "Comprehensive health summary",
+        "description": "Combined view of status, system/process metrics, and readiness summary.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Health summary.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_HealthSummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/private/capabilities": {
+      "get": {
+        "tags": ["capabilities"],
+        "summary": "Get user trading capabilities & restrictions",
+        "description": "Returns the user's Product Group Certificates (PGCs) and any active trading restrictions. Authorization is based on both Bearer token and jwt-assertion header.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Capabilities and restrictions for the authenticated user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionRestrictionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/private/orders": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "List orders",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paged list of orders (latest state per order).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderListEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      },
+      "post": {
+        "tags": ["orders"],
+        "summary": "Ex-ante (create) — create/refresh provisional order and MiFID ex-ante costs & charges",
+        "description": "Creates or refreshes a provisional Order and returns the aggregated Order snapshot. On success, the Order will include the latest ex-ante estimate under estimate and status EX_ANTE_RES.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/NewOrderSingleEstimateBody"
+        },
+        "responses": {
+          "201": {
+            "description": "Order updated with ex-ante (EX_ANTE_RES).",
+            "headers": {
+              "Location": {
+                "description": "URL of the created order resource.",
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          }
+        }
+      }
+    },
+    "/private/orders/{id}": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "Get order by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          },
+          {
+            "$ref": "#/components/parameters/OrderId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderEntity"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["orders"],
+        "summary": "Cancel order",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          },
+          {
+            "$ref": "#/components/parameters/OrderId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order updated (CANCEL_REQ).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderEntity"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    },
+    "/private/orders/{id}/send-to-market": {
+      "post": {
+        "tags": ["orders"],
+        "summary": "Confirm create (send provisional order to market)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          },
+          {
+            "$ref": "#/components/parameters/OrderId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order updated (CREATE_REQ).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    },
+    "/private/orders/{id}/replace": {
+      "post": {
+        "tags": ["orders"],
+        "summary": "Ex-ante (replace) — request MiFID costs & charges for a replace",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          },
+          {
+            "$ref": "#/components/parameters/OrderId"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/OrderUpdateEstimateBody"
+        },
+        "responses": {
+          "201": {
+            "description": "Order updated with ex-ante for replace (EX_ANTE_RES). The Order reflects a new clOrdId for the replace preview.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/UnprocessableEntity"
+          }
+        }
+      }
+    },
+    "/private/orders/{id}/history": {
+      "get": {
+        "tags": ["orders"],
+        "summary": "Get order history",
+        "description": "Returns the chronological sequence of commands, reports, ex-ante estimates, and errors for a specific order.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JwtAssertionHeader"
+          },
+          {
+            "$ref": "#/components/parameters/OrderId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order history retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/OrderHistoryItem"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "NullableDate": {
+        "type": ["string", "null"]
+      },
+      "Instrument": {
+        "type": "object",
+        "description": "Trading instrument details.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "isin": {
+            "type": "string"
+          },
+          "mic": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": ["isin", "mic", "currency"]
+      },
+      "OrderSide": {
+        "type": "string",
+        "enum": ["B", "S"],
+        "description": "Order side."
+      },
+      "CurrencyRestriction": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "Currency"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason to restrictions"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CurrencyRestrictions": {
+        "type": "object",
+        "properties": {
+          "currencies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CurrencyRestriction"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "StockMarkets": {
+        "type": "object",
+        "properties": {
+          "market": {
+            "type": "string",
+            "description": "Describes which stock market"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason to restrictions, either \"VPN\" or country code"
+          },
+          "restrictions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "TradingRestrictions": {
+        "type": "object",
+        "properties": {
+          "stockMarkets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StockMarkets"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderUpdate": {
+        "type": "object",
+        "description": "Fields allowed when replacing an existing order (id provided in path).",
+        "properties": {
+          "price": {
+            "type": "number"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "validUntil": {
+            "type": "string"
+          }
+        },
+        "required": ["accountId", "price", "quantity", "validUntil"]
+      },
+      "OrderInput": {
+        "type": "object",
+        "description": "Order input parameters.",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "side": {
+            "$ref": "#/components/schemas/OrderSide"
+          },
+          "instrument": {
+            "$ref": "#/components/schemas/Instrument"
+          },
+          "orderType": {
+            "$ref": "#/components/schemas/OrderType"
+          },
+          "timeInForce": {
+            "$ref": "#/components/schemas/TimeInForce"
+          },
+          "price": {
+            "type": "number",
+            "description": "Limit/stop/indicative price per unit in 'currency' where applicable."
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "validUntil": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "accountId",
+          "side",
+          "instrument",
+          "quantity",
+          "price",
+          "orderType",
+          "timeInForce"
+        ]
+      },
+      "Estimate": {
+        "type": "object",
+        "description": "Ex-ante cost and charges estimate.",
+        "properties": {
+          "clOrdId": {
+            "type": "string"
+          },
+          "settledCurrency": {
+            "type": "string"
+          },
+          "settledFxRate": {
+            "type": "number"
+          },
+          "commission": {
+            "type": "number"
+          },
+          "settledPrice": {
+            "type": "number"
+          },
+          "finalPrice": {
+            "type": "number"
+          },
+          "custodyAccountTypeCode": {
+            "type": "string"
+          },
+          "validity": {
+            "type": "string"
+          },
+          "totalVolumeTraded": {
+            "type": "number"
+          }
+        }
+      },
+      "ExecutionType": {
+        "type": "string",
+        "description": "Execution event type (CONST_FORMAT).",
+        "enum": [
+          "NEW",
+          "PARTIAL_FILL",
+          "FILL",
+          "DONE_FOR_DAY",
+          "CANCELED",
+          "REPLACED",
+          "PENDING_CANCEL",
+          "STOPPED",
+          "REJECTED",
+          "SUSPENDED",
+          "PENDING_NEW",
+          "CALCULATED",
+          "EXPIRED",
+          "ACCEPTED_FOR_BIDDING",
+          "PENDING_REPLACE"
+        ]
+      },
+      "OrderReportStatus": {
+        "type": "string",
+        "description": "Status values that can appear in market-derived reports (excludes REQ/RES/REJ).",
+        "enum": [
+          "NEW",
+          "PARTIALLY_FILLED",
+          "FILLED",
+          "DONE_FOR_DAY",
+          "CANCELED",
+          "REPLACED",
+          "PENDING_CANCEL",
+          "STOPPED",
+          "REJECTED",
+          "SUSPENDED",
+          "PENDING_NEW",
+          "CALCULATED",
+          "EXPIRED",
+          "ACCEPTED_FOR_BIDDING",
+          "PENDING_REPLACE"
+        ]
+      },
+      "OrderStatus": {
+        "type": "string",
+        "description": "Order chain status enum.",
+        "enum": [
+          "EX_ANTE_REPLACE_CREATED",
+          "EX_ANTE_CREATED",
+          "UNSPECIFIED",
+          "CANCELED",
+          "DONE_FOR_DAY",
+          "FILLED",
+          "ON_MARKET",
+          "PARTIALLY_FILLED",
+          "SENDING_CANCEL",
+          "SENT_CANCEL",
+          "REJECTED",
+          "STOPPED",
+          "SENDING_TO_MARKET",
+          "SENT_TO_MARKET",
+          "SUSPENDED",
+          "CALCULATED",
+          "EXPIRED",
+          "ACCEPTED_FOR_BIDDING",
+          "SENDING_REPLACE",
+          "SENT_REPLACE",
+          "REPLACED"
+        ]
+      },
+      "TimeInForce": {
+        "type": "string",
+        "description": "Time-in-force policy (CONST_FORMAT).",
+        "enum": ["DAY", "GTD"]
+      },
+      "OrderType": {
+        "type": "string",
+        "description": "Order type (CONST_FORMAT).",
+        "enum": ["LIMIT"]
+      },
+      "Order": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OrderInput"
+          },
+          {
+            "type": "object",
+            "description": "Order chain with status, estimates, and execution details.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Stable identifier for the order chain (rootClOrdId)."
+              },
+              "status": {
+                "$ref": "#/components/schemas/OrderStatus"
+              },
+              "estimate": {
+                "$ref": "#/components/schemas/Estimate"
+              },
+              "executionReport": {
+                "$ref": "#/components/schemas/OrderExecutionReport"
+              },
+              "error": {
+                "$ref": "#/components/schemas/OrderError"
+              },
+              "sentToMarketAt": {
+                "type": "string"
+              },
+              "estimateCreatedAt": {
+                "type": "string"
+              },
+              "currency": {
+                "type": "string",
+                "description": "The settled currency of the order, not the instrument currency."
+              },
+              "completedAt": {
+                "type": "string",
+                "description": "When the order reached a terminal state (FILLED/CANCELED/REJECTED/EXPIRED)."
+              },
+              "updatedAt": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "status", "updatedAt", "createdAt", "links"]
+          }
+        ]
+      },
+      "OrderEntityLinks": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri"
+          },
+          "history": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": ["self"]
+      },
+      "OrderEntity": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Order"
+          },
+          "links": {
+            "$ref": "#/components/schemas/OrderEntityLinks"
+          }
+        },
+        "required": ["data", "links"]
+      },
+      "SessionRestrictionResponse": {
+        "type": "object",
+        "description": "Response payload for user trading capabilities and restrictions.",
+        "properties": {
+          "currencyRestrictions": {
+            "$ref": "#/components/schemas/CurrencyRestrictions"
+          },
+          "sessionLocation": {
+            "type": "string",
+            "description": "Inferred country code for the session based on IP address."
+          },
+          "tradingRestrictions": {
+            "$ref": "#/components/schemas/TradingRestrictions"
+          }
+        }
+      },
+      "OrderListEnvelope": {
+        "type": "object",
+        "description": "List envelope for order chains with paging, sorting, and filter echo (including defaults).",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderEntity"
+            }
+          }
+        },
+        "required": ["data", "paging", "filters"]
+      },
+      "OrderSortField": {
+        "type": "string",
+        "enum": ["UPDATED_AT", "SUBMITTED_AT", "STATUS", "SIDE", "MIC", "ISIN"],
+        "description": "Sortable fields for orders."
+      },
+      "OrderFilters": {
+        "type": "object",
+        "description": "Echo of applied filters (with defaults) for an order list request.",
+        "properties": {
+          "accountIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If omitted or empty => no account filter."
+          },
+          "side": {
+            "type": "string",
+            "enum": ["BUY", "SELL"],
+            "description": "If omitted => both sides (no filter)."
+          },
+          "mics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If omitted or empty => no MIC filter."
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If omitted or empty => no status filter."
+          },
+          "isins": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If omitted or empty => no ISIN filter."
+          },
+          "fromDate": {
+            "type": "string",
+            "description": "Server default: now-7d when not provided by client. ALWAYS present in response."
+          },
+          "toDate": {
+            "type": "string",
+            "description": "Optional upper bound. If omitted, server may treat as 'now' at request time; may be omitted in response as well."
+          }
+        },
+        "required": ["fromDate"]
+      },
+      "OrderHistoryKind": {
+        "type": "string",
+        "enum": ["COMMAND", "REPORT", "EX_ANTE_ESTIMATE", "ERROR"],
+        "description": "Discriminator for history items."
+      },
+      "OrderErrorType": {
+        "type": "string",
+        "enum": ["EX_ANTE_ESTIMATE_ERROR", "ORDER_CANCEL_REJECT"],
+        "description": "Discriminator for OrderError subtypes."
+      },
+      "ExAnteEstimateFailureReason": {
+        "type": "string",
+        "description": "Categorical reason for ex-ante estimate failure (subject to expansion).",
+        "enum": [
+          "GENERIC",
+          "INSTRUMENT_NOT_TRADABLE",
+          "ACCOUNT_NOT_ELIGIBLE",
+          "INSUFFICIENT_BALANCE",
+          "INVALID_QUANTITY",
+          "INVALID_PRICE",
+          "SERVICE_UNAVAILABLE"
+        ]
+      },
+      "CancelRejectReason": {
+        "type": "string",
+        "description": "Human-readable cancel/reject reason (CONST_FORMAT).",
+        "enum": [
+          "TOO_LATE_TO_CANCEL",
+          "UNKNOWN_ORDER",
+          "BROKER_CREDIT",
+          "ORDER_ALREADY_IN_PENDING_STATUS",
+          "DUPLICATE_CL_ORD_ID",
+          "ORIG_ORD_MOD_TIME",
+          "UNABLE_TO_PROCESS_ORDER_MASS_CANCEL_REQUEST",
+          "OTHER",
+          "INVALID_PRICE_INCREMENT",
+          "PRICE_EXCEEDS_CURRENT_PRICE",
+          "PRICE_EXCEEDS_CURRENT_PRICE_BAND"
+        ]
+      },
+      "CancelRejectResponseTo": {
+        "type": "string",
+        "description": "Which client action the cancel reject responds to (CONST_FORMAT).",
+        "enum": ["ORDER_CANCEL", "ORDER_CANCEL_REPLACE"]
+      },
+      "OrderError": {
+        "type": "object",
+        "description": "Base error type for order history items. Discriminated by 'type'.",
+        "required": ["type", "message", "occurredAt"],
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/OrderErrorType"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable description of the error."
+          },
+          "occurredAt": {
+            "type": "string"
+          },
+          "clOrdId": {
+            "type": "string",
+            "description": "Related client order id, when applicable."
+          }
+        },
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "EX_ANTE_ESTIMATE_ERROR": "#/components/schemas/ExAnteEstimateError",
+            "ORDER_CANCEL_REJECT": "#/components/schemas/OrderCancelRejectError"
+          }
+        }
+      },
+      "ExAnteEstimateError": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OrderError"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "$ref": "#/components/schemas/ExAnteEstimateFailureReason"
+              },
+              "details": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "Optional structured context for the failure."
+              }
+            }
+          }
+        ]
+      },
+      "OrderCancelRejectError": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/OrderError"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "orderId": {
+                "type": "string",
+                "description": "Venue/broker order id if available."
+              },
+              "orderStatus": {
+                "$ref": "#/components/schemas/OrderReportStatus"
+              },
+              "origClOrdId": {
+                "type": "string"
+              },
+              "cancelRejectReason": {
+                "$ref": "#/components/schemas/CancelRejectReason"
+              },
+              "responseTo": {
+                "$ref": "#/components/schemas/CancelRejectResponseTo"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "OrderHistoryItem": {
+        "type": "object",
+        "description": "Chronological item in the lifecycle of an order (command, report, ex-ante estimate, or error). Includes chain identifiers per item.",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/OrderHistoryKind"
+          },
+          "commandInput": {
+            "$ref": "#/components/schemas/OrderInput",
+            "description": "Present when kind=COMMAND."
+          },
+          "report": {
+            "$ref": "#/components/schemas/OrderExecutionReport",
+            "description": "Present when kind=REPORT."
+          },
+          "estimate": {
+            "$ref": "#/components/schemas/Estimate",
+            "description": "Present when kind=EX_ANTE_ESTIMATE."
+          },
+          "error": {
+            "$ref": "#/components/schemas/OrderError",
+            "description": "Present when kind=ERROR."
+          },
+          "transactTime": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "OrderId reference carried when applicable (previous accepted OrderId in the chain)."
+          }
+        },
+        "required": ["id", "kind", "transactTime"],
+        "oneOf": [
+          {
+            "properties": {
+              "kind": {
+                "const": "COMMAND"
+              }
+            },
+            "required": ["kind", "commandInput"],
+            "not": {
+              "required": ["report", "exAnte", "error"]
+            }
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "REPORT"
+              }
+            },
+            "required": ["kind", "report"],
+            "not": {
+              "required": ["commandInput", "exAnte", "error"]
+            }
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "EX_ANTE_ESTIMATE"
+              }
+            },
+            "required": ["kind", "exAnte"],
+            "not": {
+              "required": ["commandInput", "report", "error"]
+            }
+          },
+          {
+            "properties": {
+              "kind": {
+                "const": "ERROR"
+              }
+            },
+            "required": ["kind", "error"],
+            "not": {
+              "required": ["commandInput", "report", "exAnte"]
+            }
+          }
+        ]
+      },
+      "OperationErrorCode": {
+        "type": "string",
+        "description": "Machine-readable error codes (CONST_FORMAT).",
+        "enum": [
+          "EX_ANTE_EXPIRED",
+          "INVALID_ORDER_STATE",
+          "UNKNOWN_ORDER",
+          "UNKNOWN_CL_ORD_ID",
+          "DUPLICATE_CONFIRMATION",
+          "VALIDATION_FAILED",
+          "BAD_REQUEST",
+          "INVALID_COMMAND"
+        ]
+      },
+      "OperationError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/OperationErrorCode"
+          },
+          "error": {
+            "type": "string",
+            "description": "Human-readable message."
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": ["code", "error"]
+      },
+      "ServerError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "INTERNAL_SERVER_ERROR",
+            "description": "Machine-readable error code."
+          },
+          "message": {
+            "type": "string",
+            "example": "An unexpected error occurred on the server.",
+            "description": "Human-readable error message."
+          },
+          "timestamp": {
+            "type": "string",
+            "example": "2025-10-27T14:55:00Z",
+            "description": "UTC timestamp of when the error occurred."
+          }
+        },
+        "required": ["code", "message", "timestamp"],
+        "additionalProperties": false
+      },
+      "SortDirection": {
+        "type": "string",
+        "enum": ["ASC", "DESC"],
+        "description": "Sort direction."
+      },
+      "PageLinks": {
+        "type": "object",
+        "description": "RFC 5988-style navigation links. URIs include query parameters for next/prev traversal.",
+        "properties": {
+          "first": {
+            "type": "string",
+            "format": "uri"
+          },
+          "prev": {
+            "type": "string",
+            "format": "uri"
+          },
+          "next": {
+            "type": "string",
+            "format": "uri"
+          },
+          "last": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "OffsetPagingMeta": {
+        "type": "object",
+        "description": "Offset-based paging metadata for list endpoints.",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1-based page index."
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "totalPages": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Computed as ceil(total / pageSize)."
+          }
+        },
+        "required": ["page", "pageSize", "total", "totalPages"]
+      },
+      "HealthCheck_StatusValue": {
+        "type": "string",
+        "enum": ["ok", "degraded", "error"],
+        "description": "Health status value."
+      },
+      "HealthCheck_Impact": {
+        "type": "string",
+        "enum": ["critical", "non_critical"],
+        "description": "Operational impact if the dependency fails."
+      },
+      "HealthCheck_Mode": {
+        "type": "string",
+        "enum": ["inline", "polled", "async"],
+        "description": "How the dependency is checked."
+      },
+      "HealthCheck_Status": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/HealthCheck_StatusValue"
+          }
+        },
+        "required": ["status"]
+      },
+      "HealthCheck_System": {
+        "type": "object",
+        "properties": {
+          "hostname": {
+            "type": "string"
+          },
+          "platform": {
+            "type": "string",
+            "description": "NodeJS.Platform"
+          },
+          "release": {
+            "type": "string"
+          },
+          "arch": {
+            "type": "string",
+            "description": "e.g., x64, arm64"
+          },
+          "uptime": {
+            "type": "number",
+            "description": "Seconds."
+          },
+          "loadavg": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "Load averages for 1, 5, 15 minutes."
+          },
+          "totalmem": {
+            "type": "number"
+          },
+          "freemem": {
+            "type": "number"
+          },
+          "memUsedRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "cpus": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "model": {
+                "type": "string"
+              },
+              "speedMHz": {
+                "type": "number"
+              }
+            },
+            "required": ["count"]
+          }
+        },
+        "required": [
+          "hostname",
+          "platform",
+          "release",
+          "arch",
+          "uptime",
+          "loadavg",
+          "totalmem",
+          "freemem",
+          "memUsedRatio",
+          "cpus"
+        ]
+      },
+      "HealthCheck_MemoryUsage": {
+        "type": "object",
+        "description": "Process memory usage (NodeJS.MemoryUsage).",
+        "properties": {
+          "rss": {
+            "type": "number"
+          },
+          "heapTotal": {
+            "type": "number"
+          },
+          "heapUsed": {
+            "type": "number"
+          },
+          "external": {
+            "type": "number"
+          },
+          "arrayBuffers": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": {
+          "type": "number"
+        }
+      },
+      "HealthCheck_Process": {
+        "type": "object",
+        "properties": {
+          "pid": {
+            "type": "integer"
+          },
+          "node": {
+            "type": "string",
+            "description": "Node.js version string."
+          },
+          "uptime": {
+            "type": "number",
+            "description": "Seconds."
+          },
+          "memory": {
+            "$ref": "#/components/schemas/HealthCheck_MemoryUsage"
+          }
+        },
+        "required": ["pid", "node", "uptime", "memory"]
+      },
+      "HealthCheck_Liveness": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string"
+              },
+              "system": {
+                "$ref": "#/components/schemas/HealthCheck_System"
+              },
+              "process": {
+                "$ref": "#/components/schemas/HealthCheck_Process"
+              }
+            },
+            "required": ["timestamp", "system", "process"]
+          }
+        ]
+      },
+      "HealthCheck_Freshness": {
+        "type": "object",
+        "properties": {
+          "lastChecked": {
+            "type": "string"
+          },
+          "lastSuccess": {
+            "type": ["string", "null"]
+          }
+        },
+        "required": ["lastChecked", "lastSuccess"]
+      },
+      "HealthCheck_Observed": {
+        "type": "object",
+        "properties": {
+          "latencyMs": {
+            "type": ["number", "null"]
+          }
+        },
+        "additionalProperties": true
+      },
+      "HealthCheck_CheckError": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": ["code", "message"]
+      },
+      "HealthCheck_DependencyCheck": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "impact": {
+                "$ref": "#/components/schemas/HealthCheck_Impact"
+              },
+              "mode": {
+                "$ref": "#/components/schemas/HealthCheck_Mode"
+              },
+              "freshness": {
+                "$ref": "#/components/schemas/HealthCheck_Freshness"
+              },
+              "observed": {
+                "$ref": "#/components/schemas/HealthCheck_Observed"
+              },
+              "details": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "error": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/HealthCheck_CheckError"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "since": {
+                "type": ["string", "null"]
+              }
+            },
+            "required": ["impact", "mode", "freshness"]
+          }
+        ]
+      },
+      "HealthCheck_ReadinessSummary": {
+        "type": "object",
+        "properties": {
+          "critical": {
+            "type": "object",
+            "properties": {
+              "ok": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "failing": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": ["ok", "failing"]
+          },
+          "nonCritical": {
+            "type": "object",
+            "properties": {
+              "ok": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "degraded": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "failing": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": ["ok", "degraded", "failing"]
+          },
+          "degradedReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": ["critical", "nonCritical", "degradedReasons"]
+      },
+      "HealthCheck_ReadinessPayload": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string"
+              },
+              "service": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  },
+                  "instanceId": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "summary": {
+                "$ref": "#/components/schemas/HealthCheck_ReadinessSummary"
+              },
+              "checks": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/HealthCheck_DependencyCheck"
+                },
+                "description": "Keyed by dependency name."
+              }
+            },
+            "required": ["timestamp", "summary", "checks"]
+          }
+        ]
+      },
+      "HealthCheck_HealthSummary": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string"
+              },
+              "summary": {
+                "$ref": "#/components/schemas/HealthCheck_ReadinessSummary"
+              },
+              "checks": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/HealthCheck_DependencyCheck"
+                }
+              },
+              "system": {
+                "$ref": "#/components/schemas/HealthCheck_System"
+              },
+              "process": {
+                "$ref": "#/components/schemas/HealthCheck_Process"
+              }
+            },
+            "required": ["timestamp", "summary", "checks", "system", "process"]
+          }
+        ]
+      },
+      "LastCapacityEnum": {
+        "type": "string",
+        "enum": [
+          "ORD_REJ_REASON_UNSPECIFIED",
+          "ORD_REJ_REASON_BROKER_CREDIT",
+          "ORD_REJ_REASON_EXCHANGE_CLOSED",
+          "ORD_REJ_REASON_ORDER_EXCEEDS_LIMIT",
+          "ORD_REJ_REASON_UNKNOWN_SYMBOL",
+          "ORD_REJ_REASON_TOO_LATE_TO_ENTER",
+          "ORD_REJ_REASON_DUPLICATE_ORDER",
+          "ORD_REJ_REASON_UNKNOWN_ORDER",
+          "ORD_REJ_REASON_DUPLICATE_OF_AVERBALLY_COMMUNICATED_ORDER",
+          "ORD_REJ_REASON_STALE_ORDER",
+          "ORD_REJ_REASON_INVALID_INVESTOR_ID",
+          "ORD_REJ_REASON_SURVEILLENCE_OPTION",
+          "ORD_REJ_REASON_TRADE_ALONG_REQUIRED",
+          "ORD_REJ_REASON_UNSUPPORTED_ORDER_CHARACTERISTIC",
+          "ORD_REJ_REASON_INCORRECT_ALLOCATED_QUANTITY",
+          "ORD_REJ_REASON_INCORRECT_QUANTITY",
+          "ORD_REJ_REASON_OTHER",
+          "ORD_REJ_REASON_UNKNOWN_ACCOUNT",
+          "ORD_REJ_REASON_INVALID_PRICE_INCREMENT",
+          "ORD_REJ_REASON_PRICE_EXCEEDS_CURRENT_PRICE_BAND",
+          "UNRECOGNIZED"
+        ],
+        "description": "FIX OrdRejReason values."
+      },
+      "LastLiquidityIndEnum": {
+        "type": "object",
+        "description": "Protobuf timestamp with seconds and nanoseconds.",
+        "properties": {
+          "seconds": {
+            "type": "number",
+            "description": "Seconds since Unix epoch."
+          },
+          "nanos": {
+            "type": "number",
+            "description": "Nanoseconds component."
+          }
+        },
+        "required": ["seconds", "nanos"]
+      },
+      "Timestamp": {
+        "type": "object",
+        "description": "Protobuf timestamp with seconds and nanoseconds.",
+        "properties": {
+          "seconds": {
+            "type": "number",
+            "description": "Seconds since Unix epoch."
+          },
+          "nanos": {
+            "type": "number",
+            "description": "Nanoseconds component."
+          }
+        },
+        "required": ["seconds", "nanos"]
+      },
+      "OrderExecutionReport": {
+        "type": "object",
+        "description": "Simplified execution report with essential trading details.",
+        "properties": {
+          "averagePrice": {
+            "type": "number",
+            "description": "Average price of fills."
+          },
+          "cumulativeQuantityFilled": {
+            "type": "number",
+            "description": "Cumulative quantity filled."
+          },
+          "lastPrice": {
+            "type": "number",
+            "description": "Last price."
+          },
+          "lastQuantity": {
+            "type": "number",
+            "description": "Last quantity."
+          },
+          "transactTime": {
+            "$ref": "#/components/schemas/Timestamp",
+            "description": "Transaction time."
+          },
+          "stopPrice": {
+            "type": "number",
+            "description": "Stop price."
+          },
+          "expireTime": {
+            "$ref": "#/components/schemas/Timestamp",
+            "description": "Expiration time."
+          },
+          "quantityRemaining": {
+            "type": "number",
+            "description": "Quantity remaining."
+          }
+        },
+        "required": ["orderStatus", "clOrdId"]
+      }
+    },
+    "parameters": {
+      "AuthorizationHeader": {
+        "name": "Authorization",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^Bearer\\s+.+$"
+        },
+        "description": "JWT bearer token: 'Bearer <token>'"
+      },
+      "JwtAssertionHeader": {
+        "name": "jwt-assertion",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "End user JWT token. Required for authenticated endpoints."
+      },
+      "OrderId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "Stable order chain id (root ClOrdId assigned at first ex-ante)."
+      },
+      "ClOrdIdPath": {
+        "name": "clOrdId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The clOrdId returned by the ex-ante (replace) step being confirmed."
+      },
+      "ConfirmCommandReplace": {
+        "name": "command",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": ["REQ_REPLACE"]
+        },
+        "description": "Explicit confirmation intent. Must be REQ_REPLACE for this endpoint; any other value results in 400 BadRequest with code INVALID_COMMAND."
+      },
+      "Page": {
+        "name": "page",
+        "in": "query",
+        "description": "1-based page index (default 1).",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 1
+        }
+      },
+      "PageSize": {
+        "name": "pageSize",
+        "in": "query",
+        "description": "Items per page (default 50).",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500,
+          "default": 50
+        }
+      },
+      "FromDate": {
+        "name": "fromDate",
+        "in": "query",
+        "description": "Lower bound (inclusive). If omitted, server defaults to now-7d and echoes the resolved value in response.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "ToDate": {
+        "name": "toDate",
+        "in": "query",
+        "description": "Upper bound (exclusive). Optional.",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "SortByOrder": {
+        "name": "sortBy",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/OrderSortField"
+            }
+          ],
+          "default": "UPDATED_AT"
+        }
+      },
+      "SortDir": {
+        "name": "sortDir",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/SortDirection"
+            }
+          ],
+          "default": "DESC"
+        }
+      },
+      "FilterAccountIds": {
+        "name": "accountIds",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "FilterSide": {
+        "name": "side",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string",
+          "enum": ["BUY", "SELL"]
+        }
+      },
+      "FilterMics": {
+        "name": "mics",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "FilterStatuses": {
+        "name": "statuses",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "FilterIsins": {
+        "name": "isins",
+        "in": "query",
+        "required": false,
+        "style": "form",
+        "explode": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "NewOrderSingleEstimateBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OrderInput"
+            }
+          }
+        }
+      },
+      "OrderUpdateEstimateBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OrderUpdate"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      },
+      "UnprocessableEntity": {
+        "description": "Validation failed.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found (e.g., preview clOrdId expired, or id missing).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "Conflict (e.g., ex-ante expired, incompatible state, duplicate confirmation).",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Missing/invalid bearer token.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ServerError"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Authenticated but not authorized.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/OperationError"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT Bearer authentication. Include as 'Authorization: Bearer <token>'."
+      },
+      "jwtAssertion": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "jwt-assertion",
+        "description": "JWT assertion header required for authenticated endpoints. The end user jwt token. Naming is for compatibility with existing systems."
+      }
+    }
+  }
+}

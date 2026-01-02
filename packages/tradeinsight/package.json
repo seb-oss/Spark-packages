@@ -34,7 +34,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "spark-build src/market-data-broker.ts src/market-data-subscriber.ts src/avro-schemas.ts",
+    "build": "spark-build src/market-data-broker.ts src/market-data-subscriber.ts src/avro-schemas.ts src/openapi.ts --dts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "typegen": "openapi-typegen -i ./schemas -o ./src/generated/",
@@ -51,11 +51,13 @@
   },
   "peerDependencies": {
     "@google-cloud/pubsub": "5.2.0",
+    "@sebspark/openapi-client": "*",
     "socket.io": "4.8.1",
     "socket.io-client": "4.8.1"
   },
   "devDependencies": {
     "@google-cloud/pubsub": "5.2.0",
+    "@sebspark/openapi-client": "*",
     "@sebspark/openapi-typegen": "*",
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "11.10.0",

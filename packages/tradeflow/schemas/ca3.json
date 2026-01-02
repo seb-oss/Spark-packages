@@ -1,0 +1,912 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CA3",
+    "version": "1.0.0",
+    "contact": {
+      "email": "SavingsSelfServiceMaintenanceSupport@seb.se"
+    },
+    "description": "CA3 api",
+    "license": {
+      "name": "",
+      "url": ""
+    },
+    "x-seb": {
+      "domain": "DOM18",
+      "team": "team34"
+    },
+    "x-seb-api": {
+      "id": "9cd451b6-cdd9-402f-a618-babab3635e0f"
+    },
+    "x-seb-portal": {
+      "summary": "Savings authorization component (CA3)",
+      "category": "servicing/savings and investments",
+      "state": "active"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://ca3.sebshift.dev.sebank.se",
+      "x-environment": "dev"
+    },
+    {
+      "url": "https://ca3.sebshift.stg.sebank.se",
+      "x-environment": "stage"
+    },
+    {
+      "url": "https://ca3.sebshift.prd.sebank.se",
+      "x-environment": "prod"
+    }
+  ],
+  "paths": {
+    "/Company/CleanCache": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "Company number you want to fetch",
+            "in": "header",
+            "name": "company_number",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "jwt-assertion",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "tags": ["Company"]
+      }
+    },
+    "/Company/Get": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter_account_id",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_account_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/AccountType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_function_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/FunctionsType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_all_accounts",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_investment_amount_currency",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_cash_accounts",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mic_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Company number you want to fetch",
+            "in": "header",
+            "name": "company_number",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "jwt-assertion",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyOutputmodel"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "tags": ["Company"]
+      }
+    },
+    "/Private/CleanCache": {
+      "delete": {
+        "parameters": [
+          {
+            "description": "",
+            "in": "header",
+            "name": "jwt-assertion",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Bad Request"
+          }
+        },
+        "tags": ["Private"]
+      }
+    },
+    "/Private/Get": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter_account_id",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_account_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/AccountType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_function_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/FunctionsType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_investment_amount_currency",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_cash_accounts",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mic_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "jwt-assertion",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountsOutputModel"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "tags": ["Private"]
+      }
+    },
+    "/Private/GetEx": {
+      "get": {
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter_account_id",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_account_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/AccountType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter_function_type",
+            "schema": {
+              "items": {
+                "$ref": "#/components/schemas/FunctionsType"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_investment_amount_currency",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exclude_cash_accounts",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mic_code",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "",
+            "in": "header",
+            "name": "jwt-assertion",
+            "required": true,
+            "schema": {
+              "default": "",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountsOutputModel"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SebBaseErrorModel"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        },
+        "tags": ["Private"]
+      }
+    },
+    "/ping": {
+      "get": {
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "tags": ["Maintenance"]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Account": {
+        "additionalProperties": false,
+        "properties": {
+          "account_identifier": {
+            "$ref": "#/components/schemas/AccountIdentifier"
+          },
+          "account_is_deactivated": {
+            "type": "boolean"
+          },
+          "account_owners": {
+            "items": {
+              "$ref": "#/components/schemas/AccountOwner"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "account_type": {
+            "$ref": "#/components/schemas/AccountType"
+          },
+          "advisory_account": {
+            "type": "boolean"
+          },
+          "amount_and_currency": {
+            "$ref": "#/components/schemas/AmountAndCurrency"
+          },
+          "arrangement_type_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "currency_accounts": {
+            "items": {
+              "$ref": "#/components/schemas/CurrencyAccount"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "custom_account_name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "functions": {
+            "items": {
+              "$ref": "#/components/schemas/FunctionsType"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "portfolio_bond": {
+            "type": "boolean"
+          },
+          "primary_account_owner": {
+            "nullable": true,
+            "type": "string"
+          },
+          "related_accounts": {
+            "items": {
+              "$ref": "#/components/schemas/RelatedAccount"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "user_to_account_relation_type": {
+            "$ref": "#/components/schemas/UserToAccountRelationType"
+          }
+        },
+        "type": "object"
+      },
+      "AccountIdType": {
+        "enum": ["AccountNumber", "Bban", "Iban"],
+        "type": "string"
+      },
+      "AccountIdentifier": {
+        "additionalProperties": false,
+        "properties": {
+          "account_identifier_type": {
+            "$ref": "#/components/schemas/AccountIdType"
+          },
+          "identifier": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AccountOwner": {
+        "additionalProperties": false,
+        "properties": {
+          "customer_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customer_number": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "AccountRelationType": {
+        "enum": ["PreferedCashAccount", "ConnectedAccount", "CashAccount"],
+        "type": "string"
+      },
+      "AccountType": {
+        "enum": ["Custody", "Investment", "IPS", "Insurance", "ISK", "Cash"],
+        "type": "string"
+      },
+      "AccountsOutputModel": {
+        "additionalProperties": false,
+        "properties": {
+          "accounts": {
+            "items": {
+              "$ref": "#/components/schemas/Account"
+            },
+            "nullable": true,
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "AmountAndCurrency": {
+        "additionalProperties": false,
+        "properties": {
+          "amount_type": {
+            "$ref": "#/components/schemas/AmountType"
+          },
+          "currency_code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "error_message": {
+            "nullable": true,
+            "type": "string"
+          },
+          "value": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "AmountType": {
+        "enum": ["AvailablePurchaseAmount", "Balance"],
+        "type": "string"
+      },
+      "CompanyAccount": {
+        "additionalProperties": false,
+        "properties": {
+          "account_deactivated": {
+            "type": "boolean"
+          },
+          "account_functions": {
+            "items": {
+              "$ref": "#/components/schemas/FunctionsType"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "account_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "account_name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "account_type": {
+            "$ref": "#/components/schemas/AccountType"
+          },
+          "account_type_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "advisory_account": {
+            "type": "boolean"
+          },
+          "amount_and_currency": {
+            "$ref": "#/components/schemas/AmountAndCurrency"
+          },
+          "connected_cashaccount": {
+            "nullable": true,
+            "type": "string"
+          },
+          "currency_accounts": {
+            "items": {
+              "$ref": "#/components/schemas/CurrencyAccount"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "encrypted_account_id": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CompanyDetails": {
+        "additionalProperties": false,
+        "properties": {
+          "address_country_code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ibf_customer": {
+            "type": "boolean"
+          },
+          "kyc_ok": {
+            "type": "boolean"
+          },
+          "legal_form": {
+            "nullable": true,
+            "type": "string"
+          },
+          "lei_npid": {
+            "type": "boolean"
+          },
+          "pb_kr_code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tax_country_code": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CompanyFunction": {
+        "additionalProperties": false,
+        "properties": {
+          "company_function": {
+            "$ref": "#/components/schemas/CompanyFunctionsType"
+          },
+          "level": {
+            "nullable": true,
+            "type": "string"
+          },
+          "profile": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CompanyFunctionsType": {
+        "enum": [
+          "OpenCustodyAccount",
+          "ViewCustodyAccountInformation",
+          "ViewCustodyAccountSecurities",
+          "ViewSecuritiesSettlement",
+          "ViewSecuritiesTradeDetails",
+          "RegisterSecuritiesTrade",
+          "CancelSecuritiesTrade",
+          "SignSecuritiesTrade",
+          "RegisterAgreement",
+          "SignAgreement",
+          "CancelAgreement",
+          "ViewAgreementDetails",
+          "KycReviewPermission",
+          "NotImplemented"
+        ],
+        "type": "string"
+      },
+      "CompanyOutputmodel": {
+        "additionalProperties": false,
+        "properties": {
+          "accounts": {
+            "items": {
+              "$ref": "#/components/schemas/CompanyAccount"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "company_details": {
+            "$ref": "#/components/schemas/CompanyDetails"
+          },
+          "company_functions": {
+            "items": {
+              "$ref": "#/components/schemas/CompanyFunction"
+            },
+            "nullable": true,
+            "type": "array"
+          },
+          "company_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "company_name": {
+            "nullable": true,
+            "type": "string"
+          },
+          "customer_details": {
+            "$ref": "#/components/schemas/CustomerDetails"
+          },
+          "customer_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "encrypted_company_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "encrypted_customer_id": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CurrencyAccount": {
+        "additionalProperties": false,
+        "properties": {
+          "account_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "amount_type": {
+            "$ref": "#/components/schemas/AmountType"
+          },
+          "ar_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "currency_code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "relation_type": {
+            "$ref": "#/components/schemas/AccountRelationType"
+          },
+          "value": {
+            "format": "double",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "CustomerDetails": {
+        "additionalProperties": false,
+        "properties": {
+          "address_country_code": {
+            "nullable": true,
+            "type": "string"
+          },
+          "npid": {
+            "type": "boolean"
+          },
+          "tax_country_code": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "FunctionsType": {
+        "enum": [
+          "BuyFundOrder",
+          "SellFundOrder",
+          "BuySecurityOrder",
+          "SellSecurityOrder",
+          "ViewArrangement",
+          "ViewHoldings",
+          "InitialPublicOfferingOnSecurity",
+          "IssueSecurity",
+          "ManageFundOrder",
+          "ManageSecurityOrder",
+          "ViewFundOrder",
+          "ViewSecurityOrder",
+          "ManageSecurityBuyOrder",
+          "ManageSecuritySellOrder",
+          "ViewFundTransaction",
+          "ViewSecurityTransaction"
+        ],
+        "type": "string"
+      },
+      "RelatedAccount": {
+        "additionalProperties": false,
+        "properties": {
+          "account_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ar_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "relation_type": {
+            "$ref": "#/components/schemas/AccountRelationType"
+          }
+        },
+        "type": "object"
+      },
+      "SebBaseErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "nullable": true,
+            "type": "string"
+          },
+          "instance": {
+            "nullable": true,
+            "type": "string"
+          },
+          "request_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "stack_trace": {
+            "nullable": true,
+            "type": "string"
+          },
+          "status": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "type": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "UserToAccountRelationType": {
+        "enum": ["Owner", "ParentalGuardian", "PowerOfAttorney"],
+        "type": "string"
+      }
+    }
+  }
+}

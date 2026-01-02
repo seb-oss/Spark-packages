@@ -6,6 +6,7 @@ import type {
   Subscription,
   Topic,
 } from '@google-cloud/pubsub'
+import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 import type {
   DefaultEventsMap,
   DisconnectReason,
@@ -22,7 +23,6 @@ import {
   type ServerEvents,
   type SubscribeMessage,
 } from './avro-schemas'
-import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 
 export type BrokerServer<
   CE extends ClientEvents = ClientEvents,
@@ -121,7 +121,7 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
   }
 
   private onDisconnect(socket: BrokerSocket, _reason: DisconnectReason) {
-    this.logger.debug('onConnect', { socketId: socket.id })
+    this.logger.debug('onDisconnect', { socketId: socket.id })
     for (const channel of CHANNELS) {
       this.channels.get(channel)?.subscribers.delete(socket.id)
     }
@@ -134,9 +134,15 @@ export class MarketDataBroker<S extends BrokerServer = BrokerServer> {
     )
 
     if (filteredRooms.join(',') !== rooms.join(',')) {
-      this.logger.warn('Malformed rooms detected', { socketId: socket.id, rooms: rooms })
+      this.logger.warn('Malformed rooms detected', {
+        socketId: socket.id,
+        rooms: rooms,
+      })
     }
-    this.logger.debug('onSubscribe', { socketId: socket.id, rooms: filteredRooms })
+    this.logger.debug('onSubscribe', {
+      socketId: socket.id,
+      rooms: filteredRooms,
+    })
 
     const targetSet = new Set(filteredRooms)
     const currentSet = socket.rooms

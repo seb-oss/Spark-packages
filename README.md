@@ -125,6 +125,10 @@ Handle environment variables with assertion
 
 Avro parser and helpers for creating socket servers and socket clients using it
 
+### [@sebspark/tradeflow](./packages/tradeflow)
+
+TradeFlow client library with helpers for consuming the API and managing socket updates
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
