@@ -1,0 +1,45 @@
+{
+  "name": "@sebspark/socket.io-avro",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": {
+    "./parser": {
+      "types": "./dist/parser.d.mts",
+      "import": "./dist/parser.mjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.mts",
+      "import": "./dist/server.mjs"
+    },
+    "./client": {
+      "types": "./dist/client.d.mts",
+      "import": "./dist/client.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "spark-build src/parser.ts src/server.ts src/client.ts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check .",
+    "test": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "typecheck": "vitest --typecheck.only --passWithNoTests"
+  },
+  "dependencies": {
+    "@sebspark/avsc-isometric": "*",
+    "socket.io-parser": "4.2.5"
+  },
+  "peerDependencies": {
+    "socket.io": "4.8.3",
+    "socket.io-client": "4.8.3"
+  },
+  "devDependencies": {
+    "find-free-ports": "3.1.1",
+    "socket.io": "4.8.3",
+    "socket.io-client": "4.8.3",
+    "tsconfig": "*"
+  }
+}

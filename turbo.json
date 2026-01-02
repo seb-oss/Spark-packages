@@ -8,7 +8,7 @@
     "dev": {
       "cache": false
     },
-    "generate:avro": {
+    "typegen": {
       "dependsOn": ["^build"]
     },
     "lint": {},
