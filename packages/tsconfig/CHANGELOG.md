@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.4
+
+### Patch Changes
+
+- 48ab717: Updated dependencies
+
 ## 3.0.3
 
 ### Patch Changes

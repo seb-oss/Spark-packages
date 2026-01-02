@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.10
+
+### Patch Changes
+
+- 48ab717: Updated dependencies
+
 ## 1.0.9
 
 ### Patch Changes
