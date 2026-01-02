@@ -15,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "generate": "yarn openapi-typegen -i ./src/test/ -o ./src/test/",
+    "generate": "yarn openapi-typegen -i ./src/__tests__/ -o ./src/__tests__/",
     "build": "spark-build src/index.ts",
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
@@ -30,10 +30,9 @@
     "@sebspark/tsconfig": "*",
     "express": "5.2.1",
     "nock": "14.0.10",
-    "vitest": "4.0.15"
+    "vitest": "4.0.16"
   },
   "dependencies": {
-    "@sebspark/openapi-auth-iam": "*",
     "@sebspark/openapi-core": "*",
     "@sebspark/retry": "*",
     "@types/express-serve-static-core": "5.1.0",
