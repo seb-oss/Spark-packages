@@ -8754,9 +8754,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:5.74.0":
-  version: 5.74.0
-  resolution: "knip@npm:5.74.0"
+"knip@npm:5.78.0":
+  version: 5.78.0
+  resolution: "knip@npm:5.78.0"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -8776,7 +8776,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/b40d50eb74a18d67f79323d49dc7f12cf4f4655697793a7808751147e3bf7dfb3c1f9fb41677b45c9f078d519f36c88fe01dc019dc1a7c5419075d76778bc406
+  checksum: 10c0/2d23fa06941ab5e84b4461d1796b8ded147e7b854ee6d5107e0558a5d4b2c6f5ab70b5b3d29cea2d1e1b133947f972cc0c2c01a1e4d13e681fe0d6f162554bd9
   languageName: node
   linkType: hard
 
@@ -11050,7 +11050,7 @@ __metadata:
     "@types/node": "npm:24.10.4"
     "@vitest/coverage-v8": "npm:4.0.16"
     depcheck: "npm:1.4.7"
-    knip: "npm:5.74.0"
+    knip: "npm:5.78.0"
     tsup: "npm:8.5.1"
     turbo: "npm:2.7.2"
     typescript: "npm:5.9.3"
