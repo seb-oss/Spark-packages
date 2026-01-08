@@ -1,5 +1,13 @@
 # @sebspark/avsc-isometric
 
+## 0.3.0
+
+### Minor Changes
+
+- 0c29f25: Introduces Avro-based binary serialization for socket.io connections.
+
+  @sebspark/avsc-isometric exposes more types necessary for @sebspark/socket.io-avro
+
 ## 0.2.10
 
 ### Patch Changes
