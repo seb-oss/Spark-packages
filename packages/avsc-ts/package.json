@@ -2,14 +2,15 @@
   "name": "@sebspark/avsc-ts",
   "version": "0.4.14",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "bin": "dist/cli.js",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "type": "module",
+  "bin": "dist/cli.mjs",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts src/cli.ts --format cjs --dts",
+    "build": "spark-build src/index.ts src/cli.ts --dts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",

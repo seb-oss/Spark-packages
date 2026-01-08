@@ -3121,7 +3121,7 @@ __metadata:
     chalk: "npm:5.6.2"
     yargs: "npm:18.0.0"
   bin:
-    avsc-ts: dist/cli.js
+    avsc-ts: dist/cli.mjs
   languageName: unknown
   linkType: soft
 
@@ -3205,6 +3205,7 @@ __metadata:
     socket.io: "npm:4.8.3"
     socketio-wildcard: "npm:2.0.0"
     supertest: "npm:7.1.4"
+    tsup: "npm:8.5.1"
     winston: "npm:3.19.0"
     winston-transport: "npm:4.9.0"
   languageName: unknown
@@ -3524,6 +3525,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:*"
     "@types/express-serve-static-core": "npm:5.1.0"
     express: "npm:5.2.1"
+    tsup: "npm:8.5.1"
   languageName: unknown
   linkType: soft
 

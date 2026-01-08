@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "*",
-    "@types/express-serve-static-core": "5.1.0"
+    "@types/express-serve-static-core": "5.1.0",
+    "tsup": "8.5.1"
   },
   "keywords": [
     "express",

@@ -4,13 +4,14 @@ import { Server } from 'socket.io'
 import io, { type Socket } from 'socket.io-client'
 
 type AdapterTopic = Parameters<typeof createAdapter>[0]
+type Adapter = Parameters<Server['adapter']>[0]
 
 export const wait = (ms: number) =>
   new Promise<void>((res) => setTimeout(res, ms))
 
 export const startServer = (port: number, topic: Topic) => {
   const adapter = createAdapter(topic as unknown as AdapterTopic)
-  const server = new Server().adapter(adapter)
+  const server = new Server().adapter(adapter as unknown as Adapter)
   server.listen(port)
 
   server.on('connection', (socket) => {
@@ -28,7 +29,7 @@ export const startServer = (port: number, topic: Topic) => {
 }
 
 export const connectClient = (port: number, ...rooms: string[]) =>
-  new Promise<typeof Socket>((resolve) => {
+  new Promise<Socket>((resolve) => {
     const client = io(`http://localhost:${port}`)
     client.on('connect', async () => {
       for (const room of rooms) {
