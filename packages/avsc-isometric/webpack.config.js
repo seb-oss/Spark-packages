@@ -1,108 +1,50 @@
-module.exports = [
-  // ESM build
-  {
-    entry: './src/index.js',
-    mode: 'production',
-    experiments: {
-      outputModule: true,
-    },
-    output: {
-      path: `${__dirname}/dist`,
-      filename: 'index.mjs',
-      library: {
-        type: 'module',
-      },
-      environment: {
-        module: true,
-      },
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          loader: 'string-replace-loader',
-          options: {
-            multiple: [
-              {
-                search: '(this\\.buf\\.)utf8Write(.*?)\\);',
-                replace: "$1write$2, 'utf8');",
-                flags: '',
-              },
-              {
-                search: '(this\\.buf\\.)utf8Slice(.*?\\));',
-                replace: "$1slice$2.toString('utf8');",
-                flags: '',
-              },
-            ],
-          },
-        },
-      ],
-    },
-    externals: [
+module.exports = {
+  entry: './src/index.js',
+  mode: 'production',
+  output: {
+    path: `${__dirname}/dist`,
+    filename: 'index.js',
+    library: 'avsc',
+    libraryTarget: 'umd',
+    globalObject: 'this',
+  },
+  module: {
+    rules: [
       {
-        stream: 'stream-browserify',
-        buffer: 'buffer',
+        test: /\.js$/,
+        loader: 'string-replace-loader',
+        options: {
+          // Patch
+          multiple: [
+            {
+              search: '(this\\.buf\\.)utf8Write(.*?)\\);',
+              replace: "$1write$2, 'utf8');",
+              flags: '',
+            },
+            {
+              search: '(this\\.buf\\.)utf8Slice(.*?\\));',
+              replace: "$1slice$2.toString('utf8');",
+              flags: '',
+            },
+          ],
+        },
       },
     ],
-    resolve: {
-      fallback: {
-        assert: require.resolve('assert-browserify'),
-        fs: false,
-        path: false,
-        zlib: require.resolve('browserify-zlib'),
-        process: require.resolve('process'),
-        events: require.resolve('events'),
-      },
+  },
+  externals: [
+    {
+      stream: 'stream-browserify',
+      buffer: 'buffer',
+    },
+  ],
+  resolve: {
+    fallback: {
+      assert: require.resolve('assert-browserify'),
+      fs: false,
+      path: false,
+      zlib: require.resolve('browserify-zlib'),
+      process: require.resolve('process'),
+      events: require.resolve('events'),
     },
   },
-  // CJS build (existing)
-  {
-    entry: './src/index.js',
-    mode: 'production',
-    output: {
-      path: `${__dirname}/dist`,
-      filename: 'index.js',
-      library: 'avsc',
-      libraryTarget: 'umd',
-      globalObject: 'this',
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          loader: 'string-replace-loader',
-          options: {
-            multiple: [
-              {
-                search: '(this\\.buf\\.)utf8Write(.*?)\\);',
-                replace: "$1write$2, 'utf8');",
-                flags: '',
-              },
-              {
-                search: '(this\\.buf\\.)utf8Slice(.*?\\));',
-                replace: "$1slice$2.toString('utf8');",
-                flags: '',
-              },
-            ],
-          },
-        },
-      ],
-    },
-    externals: [
-      {
-        stream: 'stream-browserify',
-        buffer: 'buffer',
-      },
-    ],
-    resolve: {
-      fallback: {
-        assert: require.resolve('assert-browserify'),
-        fs: false,
-        path: false,
-        zlib: require.resolve('browserify-zlib'),
-        process: require.resolve('process'),
-        events: require.resolve('events'),
-      },
-    },
-  },
-]
+}
