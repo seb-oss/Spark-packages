@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.1
+
+### Patch Changes
+
+- 87902d9: Locked avsc-isometric version
+
 ## 0.1.0
 
 ### Minor Changes
