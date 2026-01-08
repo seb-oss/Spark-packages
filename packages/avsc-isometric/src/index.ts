@@ -1,5 +1,6 @@
 export type { Schema } from 'avsc'
 export { Type } from 'avsc'
+
 import type { schema } from 'avsc'
 
 export type AvroSchema = schema.AvroSchema
