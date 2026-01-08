@@ -29,15 +29,15 @@
     "@changesets/cli": "2.29.8"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.3.11",
     "@sebspark/tsconfig": "*",
-    "@turbo/gen": "2.7.2",
+    "@turbo/gen": "2.7.3",
     "@types/node": "24.10.4",
     "@vitest/coverage-v8": "4.0.16",
     "depcheck": "1.4.7",
     "knip": "5.79.0",
     "tsup": "8.5.1",
-    "turbo": "2.7.2",
+    "turbo": "2.7.3",
     "typescript": "5.9.3",
     "vitest": "4.0.16"
   },
