@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.4.0
+
+### Minor Changes
+
+- aeb488a: Added ESM build
+
 ## 0.3.0
 
 ### Minor Changes
