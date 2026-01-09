@@ -102,6 +102,6 @@ export type SortOptions<T> =
       _score?: Types.Common.ScoreSort
       _script?: Types.Common.ScriptSort
     }
-  | Record<NestedPaths<T>, Types.Common.FieldSort>
+  | Partial<Record<NestedPaths<T>, Types.Common.FieldSort>>
 
 export type BuiltinKeys = '_id' | '_index'
