@@ -30,6 +30,6 @@
   "devDependencies": {
     "@sebspark/tsconfig": "*",
     "@types/ws": "8.18.1",
-    "ws": "8.18.3"
+    "ws": "8.19.0"
   }
 }
