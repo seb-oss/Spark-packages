@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-core",
-  "version": "4.0.11",
+  "version": "4.0.12",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,12 +23,12 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "typescript": "5.9.3",
     "vitest": "4.0.16"
   },
   "dependencies": {
-    "@sebspark/retry": "1.0.4",
+    "@sebspark/retry": "1.0.5",
     "axios": "1.13.2",
     "express": "5.2.1"
   }

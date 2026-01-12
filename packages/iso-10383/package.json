@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/iso-10383",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "generate": "node scripts/parseMicCsv.mjs src/lib/specifications/iso10383.csv src/lib/generated/iso10383.ts"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "change-case": "5.4.4",
     "csv-parse": "6.1.0"
   },

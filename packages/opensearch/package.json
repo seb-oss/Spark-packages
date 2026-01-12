@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/opensearch",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "testcontainers": "11.11.0"
   },
   "dependencies": {

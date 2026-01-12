@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/otel",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "@opentelemetry/context-async-hooks": "2.3.0",
-    "@sebspark/tsconfig": "3.0.4"
+    "@sebspark/tsconfig": "3.0.5"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/health-check",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@google-cloud/pubsub": "5.2.1",
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "@testcontainers/gcloud": "11.11.0",
     "@testcontainers/mockserver": "11.11.0",
     "@testcontainers/redis": "11.11.0",

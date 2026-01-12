@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/environment",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,6 +23,6 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4"
+    "@sebspark/tsconfig": "3.0.5"
   }
 }

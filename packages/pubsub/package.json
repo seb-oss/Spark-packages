@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/pubsub",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "vitest": "4.0.16"
   },
   "dependencies": {
