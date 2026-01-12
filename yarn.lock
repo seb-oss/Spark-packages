@@ -1840,6 +1840,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/api-logs@npm:0.209.0":
+  version: 0.209.0
+  resolution: "@opentelemetry/api-logs@npm:0.209.0"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.3.0"
+  checksum: 10c0/ceb3b7c610aec95938c27fbe1076c9d16afeb5e4f1af94de90c29bfcefce6d5732b43f356b3c6fd31a83b6fcb604fb976ce2c3d8c7a660f6200f76e681e20c4c
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/api@npm:1.9.0, @opentelemetry/api@npm:^1.3.0, @opentelemetry/api@npm:^1.7.0, @opentelemetry/api@npm:^1.9.0, @opentelemetry/api@npm:~1.9.0":
   version: 1.9.0
   resolution: "@opentelemetry/api@npm:1.9.0"
@@ -2170,6 +2179,19 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
   checksum: 10c0/969b13fdde91f2c85e5aae9a68b7a5c37dec2e44110f7ab5bd225f141c97b798c6a943a8bb27008ac807d55bf3f6614195768fc93c28c28abef820fbff034716
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/instrumentation@npm:0.209.0":
+  version: 0.209.0
+  resolution: "@opentelemetry/instrumentation@npm:0.209.0"
+  dependencies:
+    "@opentelemetry/api-logs": "npm:0.209.0"
+    import-in-the-middle: "npm:^2.0.0"
+    require-in-the-middle: "npm:^8.0.0"
+  peerDependencies:
+    "@opentelemetry/api": ^1.3.0
+  checksum: 10c0/c528e787d4d1ba1f3085b774a02d701fc6ea24dd060d62a7ede071f4ac19149d4a08af27dfe4bd0b399ae4f9187d93ba84c13cdd0e1d2a57c39e22db2b19eaa0
   languageName: node
   linkType: hard
 
@@ -3326,7 +3348,7 @@ __metadata:
     "@opentelemetry/exporter-logs-otlp-http": "npm:0.208.0"
     "@opentelemetry/exporter-metrics-otlp-http": "npm:0.208.0"
     "@opentelemetry/exporter-trace-otlp-http": "npm:0.208.0"
-    "@opentelemetry/instrumentation": "npm:0.208.0"
+    "@opentelemetry/instrumentation": "npm:0.209.0"
     "@opentelemetry/instrumentation-dns": "npm:0.52.0"
     "@opentelemetry/instrumentation-express": "npm:0.57.1"
     "@opentelemetry/instrumentation-fs": "npm:0.28.0"
