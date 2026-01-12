@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.10
+
+### Patch Changes
+
+- a7c1649: feat: nested property should be an array
+
 ## 3.0.8
 
 ### Patch Changes
