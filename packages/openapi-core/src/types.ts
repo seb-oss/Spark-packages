@@ -1,6 +1,6 @@
 import type { OutgoingHttpHeaders } from 'node:http'
 import type { RetrySettings } from '@sebspark/retry'
-import type { Request, RequestHandler } from 'express-serve-static-core'
+import type { Request, RequestHandler } from 'express'
 import type {
   Empty,
   LowerCaseHeaders,

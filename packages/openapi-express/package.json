@@ -23,19 +23,15 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/otel": "*",
-    "@sebspark/tsconfig": "*",
+    "@sebspark/otel": "2.0.9",
+    "@sebspark/tsconfig": "3.0.4",
     "@types/supertest": "6.0.3",
     "express": "5.2.1",
-    "supertest": "7.1.4",
+    "supertest": "7.2.2",
     "vitest": "4.0.16"
   },
   "dependencies": {
-    "@sebspark/openapi-core": "*",
-    "@types/express-serve-static-core": "5.1.0",
+    "@sebspark/openapi-core": "4.0.11",
     "express": "5.2.1"
-  },
-  "peerDependencies": {
-    "@sebspark/otel": ">=2.0.9"
   }
 }

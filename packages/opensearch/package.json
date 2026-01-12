@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*",
+    "@sebspark/tsconfig": "3.0.4",
     "testcontainers": "11.11.0"
   },
   "dependencies": {

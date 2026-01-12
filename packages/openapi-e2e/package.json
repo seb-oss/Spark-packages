@@ -13,14 +13,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "*",
-    "@sebspark/openapi-core": "*",
-    "@sebspark/openapi-express": "*",
+    "@sebspark/openapi-client": "4.1.1",
+    "@sebspark/openapi-core": "4.0.11",
+    "@sebspark/openapi-express": "workspace:packages/openapi-express",
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@sebspark/openapi-typegen": "*",
-    "@sebspark/tsconfig": "*",
+    "@sebspark/openapi-typegen": "5.0.8",
+    "@sebspark/tsconfig": "3.0.4",
     "@types/express": "5.0.6",
     "find-free-ports": "3.1.1",
     "vitest": "4.0.16"

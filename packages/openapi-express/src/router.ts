@@ -6,19 +6,20 @@ import {
   type HttpError,
   type Verb,
 } from '@sebspark/openapi-core'
-import { json, Router } from 'express'
-import type {
-  ErrorRequestHandler,
-  NextFunction,
-  Request,
-  RequestHandler,
-  Response,
-} from 'express-serve-static-core'
+import {
+  type ErrorRequestHandler,
+  json,
+  type NextFunction,
+  type Request,
+  type RequestHandler,
+  type Response,
+  Router,
+} from 'express'
 
 export const TypedRouter = (
   api: APIServerDefinition,
   options: APIServerOptions = {}
-) => {
+): Router => {
   const router = Router()
 
   router.use(json() as unknown as RequestHandler)

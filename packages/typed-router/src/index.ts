@@ -1,10 +1,10 @@
-import { Router } from 'express'
-import type {
-  NextFunction,
-  Request,
-  RequestHandler,
-  Response,
-} from 'express-serve-static-core'
+import {
+  type NextFunction,
+  type Request,
+  type RequestHandler,
+  type Response,
+  Router,
+} from 'express'
 
 export type ResponseType = [number, unknown]
 
@@ -93,7 +93,16 @@ const abstractedHandler = <R extends MethodDefinition>(
   return customHandler
 }
 
-export const TypedRouter = <R extends RouteDefinitions>() => {
+export interface TypedRouter<R extends RouteDefinitions> {
+  expressRouter: Router
+  get: ReturnType<typeof abstractedHandler<NonNullable<R['get']>>>
+  post: ReturnType<typeof abstractedHandler<NonNullable<R['post']>>>
+  put: ReturnType<typeof abstractedHandler<NonNullable<R['put']>>>
+  patch: ReturnType<typeof abstractedHandler<NonNullable<R['patch']>>>
+  delete: ReturnType<typeof abstractedHandler<NonNullable<R['delete']>>>
+}
+
+export const TypedRouter = <R extends RouteDefinitions>(): TypedRouter<R> => {
   const expressRouter = Router()
 
   return {

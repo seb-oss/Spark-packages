@@ -25,21 +25,18 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/openapi-typegen": "*",
-    "@sebspark/otel": "*",
-    "@sebspark/tsconfig": "*",
+    "@sebspark/openapi-typegen": "5.0.8",
+    "@sebspark/otel": "2.0.9",
+    "@sebspark/tsconfig": "3.0.4",
     "express": "5.2.1",
     "nock": "14.0.10",
     "vitest": "4.0.16"
   },
   "dependencies": {
-    "@sebspark/openapi-core": "*",
-    "@sebspark/retry": "*",
-    "@types/express-serve-static-core": "5.1.0",
+    "@sebspark/openapi-core": "4.0.11",
+    "@sebspark/retry": "1.0.4",
+    "@types/express-serve-static-core": "5.1.1",
     "axios": "1.13.2",
     "axios-auth-refresh": "3.3.6"
-  },
-  "peerDependencies": {
-    "@sebspark/otel": ">=2.0.9"
   }
 }

@@ -22,7 +22,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*"
+    "@sebspark/tsconfig": "3.0.4"
   },
   "dependencies": {
     "date-fns": "4.1.0"

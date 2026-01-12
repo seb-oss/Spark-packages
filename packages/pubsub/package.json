@@ -10,12 +10,12 @@
     "dist"
   ],
   "devDependencies": {
-    "@sebspark/tsconfig": "*",
+    "@sebspark/tsconfig": "3.0.4",
     "vitest": "4.0.16"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "5.2.0",
-    "avsc": "^5.7.9"
+    "@google-cloud/pubsub": "5.2.1",
+    "avsc": "5.7.9"
   },
   "keywords": [
     "google apis",

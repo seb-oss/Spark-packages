@@ -19,8 +19,7 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*",
-    "@types/express-serve-static-core": "5.1.0"
+    "@sebspark/tsconfig": "3.0.4"
   },
   "keywords": [
     "express",

@@ -16,14 +16,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*",
+    "@sebspark/tsconfig": "3.0.4",
     "@types/socketio-wildcard": "2.0.7",
     "qs": "6.14.1",
-    "supertest": "7.1.4"
+    "supertest": "7.2.2"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.1",
-    "@types/express-serve-static-core": "5.1.0",
+    "@types/express-serve-static-core": "5.1.1",
     "express": "5.2.1",
     "logform": "2.7.0",
     "socket.io": "4.8.3",

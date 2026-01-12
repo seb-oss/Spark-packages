@@ -22,10 +22,10 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@inquirer/figures": "2.0.2"
+    "@inquirer/figures": "2.0.3"
   },
   "devDependencies": {
-    "@inquirer/prompts": "8.1.0",
-    "@sebspark/tsconfig": "*"
+    "@inquirer/prompts": "8.2.0",
+    "@sebspark/tsconfig": "3.0.4"
   }
 }

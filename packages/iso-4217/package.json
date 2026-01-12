@@ -23,7 +23,7 @@
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "*",
+    "@sebspark/tsconfig": "3.0.4",
     "fast-xml-parser": "5.3.3"
   },
   "keywords": [
