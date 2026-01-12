@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/typed-router",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -19,7 +19,7 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4"
+    "@sebspark/tsconfig": "3.0.5"
   },
   "keywords": [
     "express",

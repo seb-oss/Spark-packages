@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/iso-4217",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "fast-xml-parser": "5.3.3"
   },
   "keywords": [

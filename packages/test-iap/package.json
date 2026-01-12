@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/test-iap",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -28,7 +28,7 @@
     "testcontainers": "11.11.0"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "@types/ws": "8.18.1",
     "ws": "8.19.0"
   }

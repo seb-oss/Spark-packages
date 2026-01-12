@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/tradeinsight",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.4",
+    "@sebspark/tsconfig": "3.0.5",
     "avro-typescript": "1.3.0",
     "ts-node": "10.9.2",
     "vitest": "4.0.16"
