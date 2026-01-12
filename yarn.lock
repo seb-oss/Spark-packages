@@ -3188,7 +3188,6 @@ __metadata:
     "@sebspark/otel": "npm:2.0.9"
     "@sebspark/retry": "npm:1.0.4"
     "@sebspark/tsconfig": "npm:3.0.4"
-    "@types/express-serve-static-core": "npm:5.1.1"
     axios: "npm:1.13.2"
     axios-auth-refresh: "npm:3.3.6"
     express: "npm:5.2.1"
