@@ -14,7 +14,7 @@
     "vitest": "4.0.16"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "5.2.0",
+    "@google-cloud/pubsub": "5.2.1",
     "avsc": "^5.7.9"
   },
   "keywords": [
