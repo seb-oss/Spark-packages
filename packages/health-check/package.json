@@ -33,6 +33,6 @@
     "@testcontainers/mockserver": "11.11.0",
     "@testcontainers/redis": "11.11.0",
     "mockserver-client": "5.15.0",
-    "supertest": "7.1.4"
+    "supertest": "7.2.2"
   }
 }

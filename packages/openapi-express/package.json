@@ -27,7 +27,7 @@
     "@sebspark/tsconfig": "*",
     "@types/supertest": "6.0.3",
     "express": "5.2.1",
-    "supertest": "7.1.4",
+    "supertest": "7.2.2",
     "vitest": "4.0.16"
   },
   "dependencies": {

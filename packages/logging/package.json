@@ -19,7 +19,7 @@
     "@sebspark/tsconfig": "*",
     "@types/socketio-wildcard": "2.0.7",
     "qs": "6.14.1",
-    "supertest": "7.1.4"
+    "supertest": "7.2.2"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.1",
