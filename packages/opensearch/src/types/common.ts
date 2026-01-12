@@ -61,7 +61,7 @@ export type MapOpenSearchTypes<T> = T extends Property
         ? boolean
         : T['type'] extends 'date' | 'date_nanos'
           ? Date
-          : T['type'] extends 'object' | 'nested'
+          : T['type'] extends 'object'
             ? T extends { properties: Record<string, Property> }
               ? {
                   -readonly [K in keyof T['properties']]?: MapOpenSearchTypes<
@@ -71,7 +71,15 @@ export type MapOpenSearchTypes<T> = T extends Property
               : T extends { dynamic: 'true' }
                 ? Record<string, unknown>
                 : never
-            : never
+            : T['type'] extends 'nested'
+              ? T extends { properties: Record<string, Property> }
+                ? Array<{
+                    -readonly [K in keyof T['properties']]?: MapOpenSearchTypes<
+                      T['properties'][K]
+                    >
+                  }>
+                : never
+              : never
   : T extends Record<string, Property>
     ? { -readonly [K in keyof T]: MapOpenSearchTypes<T[K]> }
     : never
