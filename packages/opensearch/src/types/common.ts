@@ -60,7 +60,7 @@ export type MapOpenSearchTypes<T> = T extends Property
       : T['type'] extends 'boolean'
         ? boolean
         : T['type'] extends 'date' | 'date_nanos'
-          ? Date
+          ? string
           : T['type'] extends 'object'
             ? T extends { properties: Record<string, Property> }
               ? {
