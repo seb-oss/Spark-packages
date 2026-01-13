@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.11
+
+### Patch Changes
+
+- 8c7a661: feat: opensearch date is stored as string
+
 ## 3.0.10
 
 ### Patch Changes
