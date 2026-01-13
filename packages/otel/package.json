@@ -52,5 +52,9 @@
   "devDependencies": {
     "@opentelemetry/context-async-hooks": "2.3.0",
     "@sebspark/tsconfig": "3.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }

@@ -35,5 +35,9 @@
     "Market Identifier Codes",
     "MIC",
     "Securities"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
+  }
 }

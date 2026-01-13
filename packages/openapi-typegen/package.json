@@ -36,5 +36,9 @@
     "prettier": "3.7.4",
     "yaml": "2.8.2",
     "yargs": "18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }

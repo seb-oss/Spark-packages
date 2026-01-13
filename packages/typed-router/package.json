@@ -26,5 +26,9 @@
     "middleware",
     "router",
     "typescript"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
+  }
 }

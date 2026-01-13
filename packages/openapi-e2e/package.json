@@ -24,5 +24,9 @@
     "@types/express": "5.0.6",
     "find-free-ports": "3.1.1",
     "vitest": "4.0.16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }

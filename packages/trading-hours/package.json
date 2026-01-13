@@ -26,5 +26,9 @@
   },
   "dependencies": {
     "date-fns": "4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }

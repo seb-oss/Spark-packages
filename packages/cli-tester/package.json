@@ -27,5 +27,9 @@
   "devDependencies": {
     "@inquirer/prompts": "8.2.0",
     "@sebspark/tsconfig": "3.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }

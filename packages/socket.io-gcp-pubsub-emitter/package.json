@@ -37,5 +37,9 @@
   },
   "resolutions": {
     "@google-cloud/pubsub": "5.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
   }
 }
