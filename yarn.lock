@@ -3184,7 +3184,7 @@ __metadata:
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@sebspark/openapi-core": "npm:4.0.12"
-    "@sebspark/openapi-typegen": "npm:5.0.9"
+    "@sebspark/openapi-typegen": "npm:5.0.10"
     "@sebspark/otel": "npm:2.0.10"
     "@sebspark/retry": "npm:1.0.5"
     "@sebspark/tsconfig": "npm:3.0.5"
@@ -3216,7 +3216,7 @@ __metadata:
     "@sebspark/openapi-client": "npm:4.1.2"
     "@sebspark/openapi-core": "npm:4.0.12"
     "@sebspark/openapi-express": "workspace:packages/openapi-express"
-    "@sebspark/openapi-typegen": "npm:5.0.9"
+    "@sebspark/openapi-typegen": "npm:5.0.10"
     "@sebspark/tsconfig": "npm:3.0.5"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
@@ -3239,7 +3239,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.0.9, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.0.10, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
