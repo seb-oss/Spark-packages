@@ -30,7 +30,7 @@
     "@sebspark/tsconfig": "3.0.5",
     "express": "5.2.1",
     "nock": "14.0.10",
-    "vitest": "4.0.16"
+    "vitest": "4.0.17"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.0.12",

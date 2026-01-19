@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@sebspark/tsconfig": "3.0.5",
-    "vitest": "4.0.16"
+    "vitest": "4.0.17"
   },
   "dependencies": {
     "@google-cloud/iam-credentials": "4.2.1",

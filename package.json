@@ -39,7 +39,7 @@
     "tsup": "8.5.1",
     "turbo": "2.7.4",
     "typescript": "5.9.3",
-    "vitest": "4.0.16"
+    "vitest": "4.0.17"
   },
   "workspaces": [
     "packages/*"
