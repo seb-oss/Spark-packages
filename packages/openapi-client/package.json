@@ -25,7 +25,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/openapi-typegen": "5.0.9",
+    "@sebspark/openapi-typegen": "5.0.10",
     "@sebspark/otel": "2.0.10",
     "@sebspark/tsconfig": "3.0.5",
     "express": "5.2.1",

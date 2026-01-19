@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.0.10
+
+### Patch Changes
+
+- 0eac178: fix: allOf should generate an array
+
 ## 5.0.8
 
 ### Patch Changes
