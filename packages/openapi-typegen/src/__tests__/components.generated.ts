@@ -21,6 +21,14 @@ type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 /* tslint:disable */
 /* eslint-disable */
 
+export type AllOfThisThat = {
+  all?: ({
+    ofThis?: string
+  } & {
+    ofThat?: string
+  })[]
+}
+
 export type User = {
   id: string
   name?: string

@@ -142,6 +142,30 @@
   },
   "components": {
     "schemas": {
+      "AllOfThisThat": {
+        "type": "object",
+        "properties": {
+          "all": {
+            "type": "array",
+            "items": {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "ofThis": { "type": "string" }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ofThat": { "type": "string" }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
       "User": {
         "type": "object",
         "properties": {
