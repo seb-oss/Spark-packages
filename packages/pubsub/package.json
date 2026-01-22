@@ -9,10 +9,6 @@
   "files": [
     "dist"
   ],
-  "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5",
-    "vitest": "4.0.16"
-  },
   "dependencies": {
     "@google-cloud/pubsub": "5.2.1",
     "avsc": "5.7.9"

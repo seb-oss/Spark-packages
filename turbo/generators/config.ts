@@ -1,6 +1,8 @@
 import type { PlopTypes } from '@turbo/gen'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
+  plop.setHelper('year', () => new Date().getFullYear().toString())
+  
   plop.setPartial(
     'new-package-folder',
     '{{ turbo.paths.root }}/packages/{{name}}'
@@ -51,7 +53,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: 'add',
         path: '{{> new-package-folder}}/tsup.config.ts',
-        templateFile: 'templates/tsup.config.ts.hbs',
+        templateFile: 'templates/tsdown.config.ts.hbs',
       },
       {
         type: 'add',

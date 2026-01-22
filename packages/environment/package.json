@@ -22,9 +22,6 @@
     "test": "vitest run --passWithNoTests --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
-  "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"

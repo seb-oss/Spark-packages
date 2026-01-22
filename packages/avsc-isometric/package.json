@@ -19,7 +19,6 @@
     "build": "webpack && tsc && cp src/index.mjs dist/index.mjs"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5",
     "assert-browserify": "2.0.0",
     "browserify-zlib": "0.2.0",
     "string-replace-loader": "3.3.0",

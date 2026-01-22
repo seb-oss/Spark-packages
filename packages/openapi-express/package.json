@@ -24,11 +24,9 @@
   },
   "devDependencies": {
     "@sebspark/otel": "2.0.10",
-    "@sebspark/tsconfig": "3.0.5",
     "@types/supertest": "6.0.3",
     "express": "5.2.1",
-    "supertest": "7.2.2",
-    "vitest": "4.0.16"
+    "supertest": "7.2.2"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.0.12",

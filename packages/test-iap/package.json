@@ -28,7 +28,6 @@
     "testcontainers": "11.11.0"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5",
     "@types/ws": "8.18.1",
     "ws": "8.19.0"
   },

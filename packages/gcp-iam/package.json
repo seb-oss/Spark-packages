@@ -16,10 +16,6 @@
     "test": "vitest run --passWithNoTests --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
-  "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5",
-    "vitest": "4.0.16"
-  },
   "dependencies": {
     "@google-cloud/iam-credentials": "4.2.1",
     "@sebspark/otel": "2.0.10",

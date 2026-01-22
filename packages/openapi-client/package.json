@@ -27,10 +27,8 @@
   "devDependencies": {
     "@sebspark/openapi-typegen": "5.0.10",
     "@sebspark/otel": "2.0.10",
-    "@sebspark/tsconfig": "3.0.5",
     "express": "5.2.1",
-    "nock": "14.0.10",
-    "vitest": "4.0.16"
+    "nock": "14.0.10"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.0.12",

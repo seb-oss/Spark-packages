@@ -26,7 +26,6 @@
   "devDependencies": {
     "@google-cloud/spanner": "8.4.0",
     "@sebspark/cli-tester": "1.0.8",
-    "@sebspark/tsconfig": "3.0.5",
     "@types/yargs": "17.0.35",
     "testcontainers": "11.11.0"
   },

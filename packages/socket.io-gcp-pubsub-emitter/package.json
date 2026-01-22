@@ -23,7 +23,6 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5",
     "@socket.io/gcp-pubsub-adapter": "0.1.0",
     "@testcontainers/gcloud": "11.11.0",
     "find-free-ports": "3.1.1",

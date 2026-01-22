@@ -18,9 +18,6 @@
   "dependencies": {
     "express": "5.2.1"
   },
-  "devDependencies": {
-    "@sebspark/tsconfig": "3.0.5"
-  },
   "keywords": [
     "express",
     "middleware",

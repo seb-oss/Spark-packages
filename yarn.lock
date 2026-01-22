@@ -1644,7 +1644,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/trace-mapping@npm:^0.3.23, @jridgewell/trace-mapping@npm:^0.3.24, @jridgewell/trace-mapping@npm:^0.3.25, @jridgewell/trace-mapping@npm:^0.3.28, @jridgewell/trace-mapping@npm:^0.3.31":
+"@jridgewell/trace-mapping@npm:^0.3.24, @jridgewell/trace-mapping@npm:^0.3.25, @jridgewell/trace-mapping@npm:^0.3.28, @jridgewell/trace-mapping@npm:^0.3.31":
   version: 0.3.31
   resolution: "@jridgewell/trace-mapping@npm:0.3.31"
   dependencies:
@@ -3054,7 +3054,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     assert-browserify: "npm:2.0.0"
     avsc: "npm:5.7.9"
     browserify-zlib: "npm:0.2.0"
@@ -3092,15 +3091,12 @@ __metadata:
   dependencies:
     "@inquirer/figures": "npm:2.0.3"
     "@inquirer/prompts": "npm:8.2.0"
-    "@sebspark/tsconfig": "npm:3.0.5"
   languageName: unknown
   linkType: soft
 
 "@sebspark/environment@workspace:packages/environment":
   version: 0.0.0-use.local
   resolution: "@sebspark/environment@workspace:packages/environment"
-  dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
   languageName: unknown
   linkType: soft
 
@@ -3110,9 +3106,7 @@ __metadata:
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.1"
     "@sebspark/otel": "npm:2.0.10"
-    "@sebspark/tsconfig": "npm:3.0.5"
     google-auth-library: "npm:10.5.0"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3121,7 +3115,6 @@ __metadata:
   resolution: "@sebspark/health-check@workspace:packages/health-check"
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.1"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@testcontainers/gcloud": "npm:11.11.0"
     "@testcontainers/mockserver": "npm:11.11.0"
     "@testcontainers/redis": "npm:11.11.0"
@@ -3136,7 +3129,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-10383@workspace:packages/iso-10383"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     change-case: "npm:5.4.4"
     csv-parse: "npm:6.1.0"
   languageName: unknown
@@ -3146,7 +3138,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-4217@workspace:packages/iso-4217"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     fast-xml-parser: "npm:5.3.3"
   languageName: unknown
   linkType: soft
@@ -3156,7 +3147,6 @@ __metadata:
   resolution: "@sebspark/logging@workspace:packages/logging"
   dependencies:
     "@google-cloud/logging-winston": "npm:6.0.1"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/express-serve-static-core": "npm:5.1.1"
     "@types/socketio-wildcard": "npm:2.0.7"
     express: "npm:5.2.1"
@@ -3175,7 +3165,6 @@ __metadata:
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
     "@sebspark/gcp-iam": "npm:3.0.12"
-    "@sebspark/tsconfig": "npm:3.0.5"
   languageName: unknown
   linkType: soft
 
@@ -3187,12 +3176,10 @@ __metadata:
     "@sebspark/openapi-typegen": "npm:5.0.10"
     "@sebspark/otel": "npm:2.0.10"
     "@sebspark/retry": "npm:1.0.5"
-    "@sebspark/tsconfig": "npm:3.0.5"
     axios: "npm:1.13.2"
     axios-auth-refresh: "npm:3.3.6"
     express: "npm:5.2.1"
     nock: "npm:14.0.10"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3201,11 +3188,8 @@ __metadata:
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
     "@sebspark/retry": "npm:1.0.5"
-    "@sebspark/tsconfig": "npm:3.0.5"
     axios: "npm:1.13.2"
     express: "npm:5.2.1"
-    typescript: "npm:5.9.3"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3217,11 +3201,9 @@ __metadata:
     "@sebspark/openapi-core": "npm:4.0.12"
     "@sebspark/openapi-express": "workspace:packages/openapi-express"
     "@sebspark/openapi-typegen": "npm:5.0.10"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
     find-free-ports: "npm:3.1.1"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3231,11 +3213,9 @@ __metadata:
   dependencies:
     "@sebspark/openapi-core": "npm:4.0.12"
     "@sebspark/otel": "npm:2.0.10"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/supertest": "npm:6.0.3"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3244,13 +3224,11 @@ __metadata:
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
     "@sebspark/openapi-core": "npm:4.0.12"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:5.6.2"
     change-case: "npm:5.4.4"
     prettier: "npm:3.7.4"
-    vitest: "npm:4.0.16"
     yaml: "npm:2.8.2"
     yargs: "npm:18.0.0"
   bin:
@@ -3263,7 +3241,6 @@ __metadata:
   resolution: "@sebspark/opensearch@workspace:packages/opensearch"
   dependencies:
     "@opensearch-project/opensearch": "npm:3.5.1"
-    "@sebspark/tsconfig": "npm:3.0.5"
     testcontainers: "npm:11.11.0"
   languageName: unknown
   linkType: soft
@@ -3297,7 +3274,6 @@ __metadata:
     "@opentelemetry/sdk-node": "npm:0.209.0"
     "@opentelemetry/sdk-trace-node": "npm:2.3.0"
     "@opentelemetry/semantic-conventions": "npm:1.38.0"
-    "@sebspark/tsconfig": "npm:3.0.5"
     fast-safe-stringify: "npm:2.1.1"
     kleur: "npm:4.1.5"
   languageName: unknown
@@ -3308,7 +3284,6 @@ __metadata:
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
     "@sebspark/otel": "npm:2.0.10"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@testcontainers/redis": "npm:11.11.0"
     date-fns: "npm:4.1.0"
     redis: "npm:5.10.0"
@@ -3322,9 +3297,7 @@ __metadata:
   resolution: "@sebspark/pubsub@workspace:packages/pubsub"
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.1"
-    "@sebspark/tsconfig": "npm:3.0.5"
     avsc: "npm:5.7.9"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3332,7 +3305,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/retry@workspace:packages/retry"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     axios: "npm:1.13.2"
   languageName: unknown
   linkType: soft
@@ -3358,7 +3330,6 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.1"
     "@msgpack/msgpack": "npm:3.1.3"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@socket.io/gcp-pubsub-adapter": "npm:0.1.0"
     "@testcontainers/gcloud": "npm:11.11.0"
     find-free-ports: "npm:3.1.1"
@@ -3375,7 +3346,6 @@ __metadata:
     "@google-cloud/spanner": "npm:8.4.0"
     "@inquirer/prompts": "npm:8.2.0"
     "@sebspark/cli-tester": "npm:1.0.8"
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:11.11.0"
     typescript: "npm:5.9.3"
@@ -3391,7 +3361,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/test-iap@workspace:packages/test-iap"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     "@types/ws": "npm:8.18.1"
     jose: "npm:6.1.3"
     testcontainers: "npm:11.11.0"
@@ -3403,10 +3372,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/tradeinsight@workspace:packages/tradeinsight"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     avro-typescript: "npm:1.3.0"
     ts-node: "npm:10.9.2"
-    vitest: "npm:4.0.16"
   languageName: unknown
   linkType: soft
 
@@ -3414,7 +3381,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/trading-hours@workspace:packages/trading-hours"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     date-fns: "npm:4.1.0"
   languageName: unknown
   linkType: soft
@@ -3434,7 +3400,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/typed-router@workspace:packages/typed-router"
   dependencies:
-    "@sebspark/tsconfig": "npm:3.0.5"
     express: "npm:5.2.1"
   languageName: unknown
   linkType: soft
@@ -3546,11 +3511,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.7.4":
-  version: 2.7.4
-  resolution: "@turbo/gen@npm:2.7.4"
+"@turbo/gen@npm:2.7.5":
+  version: 2.7.5
+  resolution: "@turbo/gen@npm:2.7.5"
   dependencies:
-    "@turbo/workspaces": "npm:2.7.4"
+    "@turbo/workspaces": "npm:2.7.5"
     commander: "npm:10.0.0"
     fs-extra: "npm:10.1.0"
     inquirer: "npm:8.2.4"
@@ -3563,13 +3528,13 @@ __metadata:
     validate-npm-package-name: "npm:5.0.0"
   bin:
     gen: dist/cli.js
-  checksum: 10c0/c98d4836404a8f16527b79c56c2778bbe78f32116b2bec45778e53bbee53e93fc82e7630ed7ee624419e0ce47dd238af3cb07e87b6da5b8bced29c07508a23eb
+  checksum: 10c0/aa97d11d80d7f085030b2bcc0a078019dbf793a3093e8267535c0ae9c5a90e5d625a16a263b57738ad7217e5139942683e117aef995464ca605356437ed3123e
   languageName: node
   linkType: hard
 
-"@turbo/workspaces@npm:2.7.4":
-  version: 2.7.4
-  resolution: "@turbo/workspaces@npm:2.7.4"
+"@turbo/workspaces@npm:2.7.5":
+  version: 2.7.5
+  resolution: "@turbo/workspaces@npm:2.7.5"
   dependencies:
     commander: "npm:10.0.0"
     execa: "npm:5.1.1"
@@ -3584,7 +3549,7 @@ __metadata:
     update-check: "npm:1.5.4"
   bin:
     workspaces: dist/cli.js
-  checksum: 10c0/e4a97abeab818e24de7749af4a9e8a1f272a09e2d6d9684fc0b2fc5db6db81e599c403a2cfef446fff00c67186f0ad49299dfba05004c22bb74e84544366eb6f
+  checksum: 10c0/94ecf79fe87f590f748e926e0e609f983a278b99ccc74b3fe5af040276d43acaff915e7d7f792a284440bff3ce9308e5c5d16f90d0d4c4480c2fba011a406e66
   languageName: node
   linkType: hard
 
@@ -3835,12 +3800,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:24.10.7":
-  version: 24.10.7
-  resolution: "@types/node@npm:24.10.7"
+"@types/node@npm:24.10.9":
+  version: 24.10.9
+  resolution: "@types/node@npm:24.10.9"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10c0/dcc1b8caf16c7b54dfccbe5c23cf4156e924cebcd9ab0a00147c841279f8151a10888c76fd82dda76e0a849aaf5a57097ee2b156308a355959900c1e647d7e61
+  checksum: 10c0/e9e436fcd2136bddb1bbe3271a89f4653910bcf6ee8047c4117f544c7905a106c039e2720ee48f28505ef2560e22fb9ead719f28bf5e075fdde0c1120e38e3b2
   languageName: node
   linkType: hard
 
@@ -4071,50 +4036,49 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-v8@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/coverage-v8@npm:4.0.16"
+"@vitest/coverage-v8@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/coverage-v8@npm:4.0.17"
   dependencies:
     "@bcoe/v8-coverage": "npm:^1.0.2"
-    "@vitest/utils": "npm:4.0.16"
-    ast-v8-to-istanbul: "npm:^0.3.8"
+    "@vitest/utils": "npm:4.0.17"
+    ast-v8-to-istanbul: "npm:^0.3.10"
     istanbul-lib-coverage: "npm:^3.2.2"
     istanbul-lib-report: "npm:^3.0.1"
-    istanbul-lib-source-maps: "npm:^5.0.6"
     istanbul-reports: "npm:^3.2.0"
     magicast: "npm:^0.5.1"
     obug: "npm:^2.1.1"
     std-env: "npm:^3.10.0"
     tinyrainbow: "npm:^3.0.3"
   peerDependencies:
-    "@vitest/browser": 4.0.16
-    vitest: 4.0.16
+    "@vitest/browser": 4.0.17
+    vitest: 4.0.17
   peerDependenciesMeta:
     "@vitest/browser":
       optional: true
-  checksum: 10c0/3edd18dc994949d5180a3fbd9c1af4ca4756735e82cffb73b3c0918ad23a4c71521287a205cc61a39b63453448e9bfd207f82b2d472fd757dfbb47987dbe99a8
+  checksum: 10c0/a7120ec1446f4a7a3d0d1c2963a406ec281e99a2c7d163725de0a7ad166d9b996f00a14f8386da09bc3fde0441356e4fb9f3ff99e3cb5a3e8d09ddc8c076cf42
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/expect@npm:4.0.16"
+"@vitest/expect@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/expect@npm:4.0.17"
   dependencies:
     "@standard-schema/spec": "npm:^1.0.0"
     "@types/chai": "npm:^5.2.2"
-    "@vitest/spy": "npm:4.0.16"
-    "@vitest/utils": "npm:4.0.16"
+    "@vitest/spy": "npm:4.0.17"
+    "@vitest/utils": "npm:4.0.17"
     chai: "npm:^6.2.1"
     tinyrainbow: "npm:^3.0.3"
-  checksum: 10c0/add4dde3548b6f65b6d7d364607713f9db258642add248a23805fa1172e48d76a7822080249efb882120b408772684569b2e78581ed3d5f282e215d7f21be183
+  checksum: 10c0/cdaa6827aa3a9473d51fd0944bcd698a94507929fa3c98b00bbdb74342319ec04279f01108d7d2dd7cbcd0d8062f65a3f21bb3615c0d5223e61adcc036c8b370
   languageName: node
   linkType: hard
 
-"@vitest/mocker@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/mocker@npm:4.0.16"
+"@vitest/mocker@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/mocker@npm:4.0.17"
   dependencies:
-    "@vitest/spy": "npm:4.0.16"
+    "@vitest/spy": "npm:4.0.17"
     estree-walker: "npm:^3.0.3"
     magic-string: "npm:^0.30.21"
   peerDependencies:
@@ -4125,54 +4089,54 @@ __metadata:
       optional: true
     vite:
       optional: true
-  checksum: 10c0/cf4469a4745e3cdd46e8ee4e20aa04369e7f985d40175d974d3a6f6d331bf9d8610f9638c5a18f7ff59a30ff04b19f4b823457b4c79142186fe463fa4cee80c5
+  checksum: 10c0/54e657fa5b79764926b15aac993528bfe7083f6731209253617b1f27d328aa3297fcbf96b67e84d1a5632553231f795585f2396f563837cf117a574c87f5cef7
   languageName: node
   linkType: hard
 
-"@vitest/pretty-format@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/pretty-format@npm:4.0.16"
+"@vitest/pretty-format@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/pretty-format@npm:4.0.17"
   dependencies:
     tinyrainbow: "npm:^3.0.3"
-  checksum: 10c0/11243e9c2d2d011ae23825c6b7464a4385a4a4efc4ceb28b7854bb9d73491f440b89d12f62c5c9737d26375cf9585b11bc20183d4dea4e983e79d5e162407eb9
+  checksum: 10c0/10a2dd7e2daf7ee006107d380bbd28b66b09a7014d31087daab0dea7dee0d12868cfcf6b3372729268502fd9065162345b68b9b9c5d225f5c6c2fd2c664a2a86
   languageName: node
   linkType: hard
 
-"@vitest/runner@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/runner@npm:4.0.16"
+"@vitest/runner@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/runner@npm:4.0.17"
   dependencies:
-    "@vitest/utils": "npm:4.0.16"
+    "@vitest/utils": "npm:4.0.17"
     pathe: "npm:^2.0.3"
-  checksum: 10c0/7f4614a9fe5e9f3683d30fb82d1489796c669df45fbc0beb22d39539e4b12ebef462062705545ca04391a0406af62088cbf1d613a812ecc9ea753a0edbfd5d26
+  checksum: 10c0/f4ccc236d1ed5ba2186d5f36ff0306d4ac7b711a40d7316ad6fd71c0f7229482b19969a8737e87670f3d4efb08f2138ff5b47a744fd7ae8db6c03cf991293a04
   languageName: node
   linkType: hard
 
-"@vitest/snapshot@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/snapshot@npm:4.0.16"
+"@vitest/snapshot@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/snapshot@npm:4.0.17"
   dependencies:
-    "@vitest/pretty-format": "npm:4.0.16"
+    "@vitest/pretty-format": "npm:4.0.17"
     magic-string: "npm:^0.30.21"
     pathe: "npm:^2.0.3"
-  checksum: 10c0/4fa63ffa4f30c909078210a1edcb059dbfa3ec3deaebb8f93637f65a7efae9a2d7714129bae0cf615512a683e925cf31f281fc4cb02f1fdc4c72f68ce21ca11f
+  checksum: 10c0/31a047a097b13eff6c0f5393ea3e7203771ae9a22afe6465cd9023fd2ed516ddccd84523d48504a032c9d04a86a12e3f1235e08bb2ffc7d7a125e372c41ef53d
   languageName: node
   linkType: hard
 
-"@vitest/spy@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/spy@npm:4.0.16"
-  checksum: 10c0/2502918e703d60ef64854d0fa83ebf94da64b80e81b80c319568feee3d86069fd46e24880a768edba06c8caba13801e44005e17a0f16d9b389486f24d539f0bf
+"@vitest/spy@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/spy@npm:4.0.17"
+  checksum: 10c0/c290731ba3392f11eaba8fc7fa08063a3a4d14af6baeec210b260ccd5a46613196fb4a8ff3ac8bf91a9606aef90eee9b6364bda130ce71abff368e35dfe2b265
   languageName: node
   linkType: hard
 
-"@vitest/utils@npm:4.0.16":
-  version: 4.0.16
-  resolution: "@vitest/utils@npm:4.0.16"
+"@vitest/utils@npm:4.0.17":
+  version: 4.0.17
+  resolution: "@vitest/utils@npm:4.0.17"
   dependencies:
-    "@vitest/pretty-format": "npm:4.0.16"
+    "@vitest/pretty-format": "npm:4.0.17"
     tinyrainbow: "npm:^3.0.3"
-  checksum: 10c0/bba35b4e102be03e106ced227809437573aa5c5f64d512301ca8de127dcb91cbedc11a2e823305f8ba82528c909c10510ec8c7e3d92b3d6d1c1aec33e143572a
+  checksum: 10c0/1e2e4d7d7709ec022f603a1e12015523a2290f326c0bbe0c6bd5481ec396d4efc6bf8c738d601915d88e74267e9841df1e05157edced10f5048865204aeb86ff
   languageName: node
   linkType: hard
 
@@ -4772,14 +4736,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ast-v8-to-istanbul@npm:^0.3.8":
-  version: 0.3.8
-  resolution: "ast-v8-to-istanbul@npm:0.3.8"
+"ast-v8-to-istanbul@npm:^0.3.10":
+  version: 0.3.10
+  resolution: "ast-v8-to-istanbul@npm:0.3.10"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.31"
     estree-walker: "npm:^3.0.3"
     js-tokens: "npm:^9.0.1"
-  checksum: 10c0/6f7d74fc36011699af6d4ad88ecd8efc7d74bd90b8e8dbb1c69d43c8f4bec0ed361fb62a5b5bd98bbee02ee87c62cd8bcc25a39634964e45476bf5489dfa327f
+  checksum: 10c0/8a7a07c04f8f130b8a5abb76cdb31cce06a8eb4b7d4abbe207bc721132127ae332e857b96aa415ac43ec2c6c9312508210c598f61a7de2d0e3db5615e6b03183
   languageName: node
   linkType: hard
 
@@ -8478,17 +8442,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-lib-source-maps@npm:^5.0.6":
-  version: 5.0.6
-  resolution: "istanbul-lib-source-maps@npm:5.0.6"
-  dependencies:
-    "@jridgewell/trace-mapping": "npm:^0.3.23"
-    debug: "npm:^4.1.1"
-    istanbul-lib-coverage: "npm:^3.0.0"
-  checksum: 10c0/ffe75d70b303a3621ee4671554f306e0831b16f39ab7f4ab52e54d356a5d33e534d97563e318f1333a6aae1d42f91ec49c76b6cd3f3fb378addcb5c81da0255f
-  languageName: node
-  linkType: hard
-
 "istanbul-reports@npm:^3.2.0":
   version: 3.2.0
   resolution: "istanbul-reports@npm:3.2.0"
@@ -10982,15 +10935,15 @@ __metadata:
     "@biomejs/biome": "npm:2.3.11"
     "@changesets/cli": "npm:2.29.8"
     "@sebspark/tsconfig": "npm:*"
-    "@turbo/gen": "npm:2.7.4"
-    "@types/node": "npm:24.10.7"
-    "@vitest/coverage-v8": "npm:4.0.16"
+    "@turbo/gen": "npm:2.7.5"
+    "@types/node": "npm:24.10.9"
+    "@vitest/coverage-v8": "npm:4.0.17"
     depcheck: "npm:1.4.7"
     knip: "npm:5.80.2"
     tsup: "npm:8.5.1"
-    turbo: "npm:2.7.4"
+    turbo: "npm:2.7.5"
     typescript: "npm:5.9.3"
-    vitest: "npm:4.0.16"
+    vitest: "npm:4.0.17"
   languageName: unknown
   linkType: soft
 
@@ -12219,58 +12172,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-darwin-64@npm:2.7.4"
+"turbo-darwin-64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-darwin-64@npm:2.7.5"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-darwin-arm64@npm:2.7.4"
+"turbo-darwin-arm64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-darwin-arm64@npm:2.7.5"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-linux-64@npm:2.7.4"
+"turbo-linux-64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-linux-64@npm:2.7.5"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-linux-arm64@npm:2.7.4"
+"turbo-linux-arm64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-linux-arm64@npm:2.7.5"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-windows-64@npm:2.7.4"
+"turbo-windows-64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-windows-64@npm:2.7.5"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo-windows-arm64@npm:2.7.4"
+"turbo-windows-arm64@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo-windows-arm64@npm:2.7.5"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:2.7.4":
-  version: 2.7.4
-  resolution: "turbo@npm:2.7.4"
+"turbo@npm:2.7.5":
+  version: 2.7.5
+  resolution: "turbo@npm:2.7.5"
   dependencies:
-    turbo-darwin-64: "npm:2.7.4"
-    turbo-darwin-arm64: "npm:2.7.4"
-    turbo-linux-64: "npm:2.7.4"
-    turbo-linux-arm64: "npm:2.7.4"
-    turbo-windows-64: "npm:2.7.4"
-    turbo-windows-arm64: "npm:2.7.4"
+    turbo-darwin-64: "npm:2.7.5"
+    turbo-darwin-arm64: "npm:2.7.5"
+    turbo-linux-64: "npm:2.7.5"
+    turbo-linux-arm64: "npm:2.7.5"
+    turbo-windows-64: "npm:2.7.5"
+    turbo-windows-arm64: "npm:2.7.5"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -12286,7 +12239,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10c0/506a59df8d898833efb7d41b552a3a448a26fb2ebd5d545d37bf1e4854bdab0a0b847d8d82f962f499ba5340b7dc123abb5d4ceb9dae12b32ec6c46d1f5fe6fc
+  checksum: 10c0/fdaec7f15c04685fd2a61fd6899b08adbcc8fa0fb1001b54626c585c1159c3f410a3ad20067ebe8093da2d3796c4dbb930136d68d09dbb59c7ff51a39516f2a8
   languageName: node
   linkType: hard
 
@@ -12689,17 +12642,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:4.0.16":
-  version: 4.0.16
-  resolution: "vitest@npm:4.0.16"
+"vitest@npm:4.0.17":
+  version: 4.0.17
+  resolution: "vitest@npm:4.0.17"
   dependencies:
-    "@vitest/expect": "npm:4.0.16"
-    "@vitest/mocker": "npm:4.0.16"
-    "@vitest/pretty-format": "npm:4.0.16"
-    "@vitest/runner": "npm:4.0.16"
-    "@vitest/snapshot": "npm:4.0.16"
-    "@vitest/spy": "npm:4.0.16"
-    "@vitest/utils": "npm:4.0.16"
+    "@vitest/expect": "npm:4.0.17"
+    "@vitest/mocker": "npm:4.0.17"
+    "@vitest/pretty-format": "npm:4.0.17"
+    "@vitest/runner": "npm:4.0.17"
+    "@vitest/snapshot": "npm:4.0.17"
+    "@vitest/spy": "npm:4.0.17"
+    "@vitest/utils": "npm:4.0.17"
     es-module-lexer: "npm:^1.7.0"
     expect-type: "npm:^1.2.2"
     magic-string: "npm:^0.30.21"
@@ -12717,10 +12670,10 @@ __metadata:
     "@edge-runtime/vm": "*"
     "@opentelemetry/api": ^1.9.0
     "@types/node": ^20.0.0 || ^22.0.0 || >=24.0.0
-    "@vitest/browser-playwright": 4.0.16
-    "@vitest/browser-preview": 4.0.16
-    "@vitest/browser-webdriverio": 4.0.16
-    "@vitest/ui": 4.0.16
+    "@vitest/browser-playwright": 4.0.17
+    "@vitest/browser-preview": 4.0.17
+    "@vitest/browser-webdriverio": 4.0.17
+    "@vitest/ui": 4.0.17
     happy-dom: "*"
     jsdom: "*"
   peerDependenciesMeta:
@@ -12744,7 +12697,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 10c0/b195c272198f7957c11186eb70ee78e2ec0f4524b4b5306ca8f05e41b3d84c6a4a15d02fca58d82f2b32ba61f610ae8a2a23d463a8336d7323e4832db5eef223
+  checksum: 10c0/e1648bbfe2d01e23ceb6856863344035d2a1c139f39e8b15859e6ea8dc510ac3ba425df7c45486492d85ca516472aa892540dfd11ab6ad0613be98fd56d40716
   languageName: node
   linkType: hard
 
