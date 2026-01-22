@@ -10,7 +10,7 @@
     "dist"
   ],
   "dependencies": {
-    "@google-cloud/pubsub": "5.2.1",
+    "@google-cloud/pubsub": "5.2.2",
     "avsc": "5.7.9"
   },
   "keywords": [
