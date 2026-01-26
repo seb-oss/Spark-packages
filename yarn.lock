@@ -1211,9 +1211,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/spanner@npm:8.4.0":
-  version: 8.4.0
-  resolution: "@google-cloud/spanner@npm:8.4.0"
+"@google-cloud/spanner@npm:8.5.0":
+  version: 8.5.0
+  resolution: "@google-cloud/spanner@npm:8.5.0"
   dependencies:
     "@babel/core": "npm:7.27.7"
     "@babel/helpers": "npm:7.27.6"
@@ -1253,7 +1253,7 @@ __metadata:
     teeny-request: "npm:^10.0.0"
     through2: "npm:^4.0.2"
     uuid: "npm:^11.1.0"
-  checksum: 10c0/ba6049df9f66d987835f607067800eb684d60ba5ca894c2994d8f97ea74848de2b4846ae48009a7d47dfb0876901763430bfc962b497dd65d8647b8ce99807f3
+  checksum: 10c0/cfffb96754af48e0faaecda913c6d84a2677cd7c20dc8e43920a822e7ba52b05a6b202cef4852cef82b3b1eecb890c004753ff9398ebb5dd940c6d20564da060
   languageName: node
   linkType: hard
 
@@ -3343,7 +3343,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/spanner-migrate@workspace:packages/spanner-migrate"
   dependencies:
-    "@google-cloud/spanner": "npm:8.4.0"
+    "@google-cloud/spanner": "npm:8.5.0"
     "@inquirer/prompts": "npm:8.2.0"
     "@sebspark/cli-tester": "npm:1.0.8"
     "@types/yargs": "npm:17.0.35"
@@ -3351,7 +3351,7 @@ __metadata:
     typescript: "npm:5.9.3"
     yargs: "npm:18.0.0"
   peerDependencies:
-    "@google-cloud/spanner": 8.4.0
+    "@google-cloud/spanner": 8.5.0
   bin:
     spanner-migrate: ./dist/cli.mjs
   languageName: unknown
