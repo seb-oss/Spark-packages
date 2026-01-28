@@ -37,7 +37,7 @@
     "depcheck": "1.4.7",
     "knip": "5.80.2",
     "tsup": "8.5.1",
-    "turbo": "2.7.5",
+    "turbo": "2.7.6",
     "typescript": "5.9.3",
     "vitest": "4.0.17"
   },
