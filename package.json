@@ -41,6 +41,9 @@
     "typescript": "5.9.3",
     "vitest": "4.0.18"
   },
+  "resolutions": {
+    "undici": "7.20.0"
+  },
   "workspaces": [
     "packages/*"
   ],
