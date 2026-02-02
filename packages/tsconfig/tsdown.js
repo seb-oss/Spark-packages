@@ -19,6 +19,7 @@ const userConfig = {
     '@opentelemetry/instrumentation-fs',
     '@opentelemetry/instrumentation-undici',
     '@opentelemetry/instrumentation-socket.io',
+    '@protobufjs/inquire',
     'require-in-the-middle',
   ],
 }
