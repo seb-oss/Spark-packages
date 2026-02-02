@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-express",
-  "version": "5.0.10",
+  "version": "5.0.11",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,13 +23,13 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/otel": "2.0.10",
+    "@sebspark/otel": "2.0.11",
     "@types/supertest": "6.0.3",
     "express": "5.2.1",
     "supertest": "7.2.2"
   },
   "dependencies": {
-    "@sebspark/openapi-core": "4.0.12",
+    "@sebspark/openapi-core": "4.0.13",
     "express": "5.2.1"
   },
   "repository": {

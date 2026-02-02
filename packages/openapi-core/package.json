@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-core",
-  "version": "4.0.12",
+  "version": "4.0.13",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@sebspark/retry": "1.0.5",
+    "@sebspark/retry": "1.0.6",
     "axios": "1.13.4",
     "express": "5.2.1"
   },

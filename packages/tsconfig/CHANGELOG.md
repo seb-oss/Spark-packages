@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.6
+
+### Patch Changes
+
+- 11a11ce: Updated dependencies
+
 ## 3.0.4
 
 ### Patch Changes
