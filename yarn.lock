@@ -3254,7 +3254,7 @@ __metadata:
   dependencies:
     "@sebspark/openapi-client": "npm:4.1.2"
     "@sebspark/openapi-core": "npm:4.0.12"
-    "@sebspark/openapi-express": "workspace:packages/openapi-express"
+    "@sebspark/openapi-express": "npm:5.0.10"
     "@sebspark/openapi-typegen": "npm:5.0.10"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
@@ -3262,7 +3262,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.0.10, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
