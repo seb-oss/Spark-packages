@@ -33,7 +33,7 @@
   "dependencies": {
     "@sebspark/openapi-core": "4.0.12",
     "@sebspark/retry": "1.0.5",
-    "axios": "1.13.2",
+    "axios": "1.13.4",
     "axios-auth-refresh": "3.3.6"
   },
   "repository": {
