@@ -7,6 +7,11 @@ const userConfig = {
   dts: true,
   sourcemap: true,
   clean: true,
+  inputOptions: {
+    checks: {
+      eval: false,
+    },
+  },
   external: [
     // full centralized list of CJS deps
     '@opentelemetry/instrumentation',
@@ -19,7 +24,6 @@ const userConfig = {
     '@opentelemetry/instrumentation-fs',
     '@opentelemetry/instrumentation-undici',
     '@opentelemetry/instrumentation-socket.io',
-    '@protobufjs/inquire',
     'require-in-the-middle',
   ],
 }
