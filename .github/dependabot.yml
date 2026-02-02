@@ -17,6 +17,10 @@ updates:
     # effectively remove limit
     open-pull-requests-limit: 100
     ignore:
+      # handled via `yarn dlx @turbo/codemod@latest update`
+      - dependency-name: 'turbo'
+      - dependency-name: '@vercel/turbo'
+
       # ignore odd versions as they will never become LTS
       - dependency-name: "@types/node"
         versions: [ "25.*", "27.*", "29.*", "31.*", "33.*", "35.*", "37.*" ]
