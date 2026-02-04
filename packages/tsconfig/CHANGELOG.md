@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.7
+
+### Patch Changes
+
+- 513bf74: Suppress errors from bundling dependencies
+
 ## 3.0.6
 
 ### Patch Changes
