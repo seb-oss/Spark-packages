@@ -1,5 +1,6 @@
 import { defineConfig } from 'tsdown'
 
+/** @type {import('tsdown').UserConfig} */
 const userConfig = {
   format: ['esm'],
   platform: 'node',
@@ -7,6 +8,7 @@ const userConfig = {
   dts: true,
   sourcemap: true,
   clean: true,
+  inlineOnly: false,
   inputOptions: {
     checks: {
       eval: false,
