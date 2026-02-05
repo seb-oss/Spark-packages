@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/socket.io-avro",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
@@ -29,7 +29,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@sebspark/avsc-isometric": "0.4.1",
+    "@sebspark/avsc-isometric": "0.4.2",
     "socket.io-parser": "4.2.5"
   },
   "peerDependencies": {
