@@ -1,5 +1,12 @@
 # @sebspark/socket.io-avro
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [d1d35ec]
+  - @sebspark/avsc-isometric@0.4.2
+
 ## 0.1.2
 
 ### Patch Changes

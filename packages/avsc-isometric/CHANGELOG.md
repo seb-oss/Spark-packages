@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.4.2
+
+### Patch Changes
+
+- d1d35ec: Updated webpack
+
 ## 0.4.0
 
 ### Minor Changes
