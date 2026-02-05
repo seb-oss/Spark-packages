@@ -90,10 +90,6 @@ export type FunctionScoreQuery<T> = Omit<
 
 export type FuzzyQuery = Types.Common_QueryDsl.FuzzyQuery
 
-export type GeoBoundingBoxQuery = Types.Common_QueryDsl.GeoBoundingBoxQuery
-
-export type GeoDistanceQuery = Types.Common_QueryDsl.GeoDistanceQuery
-
 export type GeoExecution = Types.Common_QueryDsl.GeoExecution
 
 export type GeoPolygonQuery<T> = Omit<
@@ -133,8 +129,6 @@ export type HybridQuery<T> = Omit<
   queries?: QueryContainer<T>[]
 }
 
-export type IdsQuery = Types.Common_QueryDsl.IdsQuery
-
 export type IntervalsQuery = Types.Common_QueryDsl.IntervalsQuery
 
 export type KnnQuery<T> = Omit<Types.Common_QueryDsl.KnnQuery, 'filter'> & {
@@ -145,8 +139,6 @@ export type Like = Types.Common_QueryDsl.Like
 
 export type LikeDocument = Types.Common_QueryDsl.LikeDocument
 
-export type MatchAllQuery = Types.Common_QueryDsl.MatchAllQuery
-
 export type MatchBoolPrefixQuery<T> = Omit<
   Types.Common_QueryDsl.MatchBoolPrefixQuery,
   'query' | 'fields'
@@ -154,8 +146,6 @@ export type MatchBoolPrefixQuery<T> = Omit<
   fields: NestedPaths<T>[]
   query: string
 }
-
-export type MatchNoneQuery = Types.Common_QueryDsl.MatchNoneQuery
 
 export type MatchPhrasePrefixQuery<T> = Omit<
   Types.Common_QueryDsl.MatchPhrasePrefixQuery,
@@ -211,16 +201,12 @@ export type NumberRangeQueryParameters<T> = Omit<
   field: NestedPaths<T>
 }
 
-export type ParentIdQuery = Types.Common_QueryDsl.ParentIdQuery
-
 export type PercolateQuery<T> = Omit<
   Types.Common_QueryDsl.PercolateQuery,
   'field'
 > & {
   field: NestedPaths<T>
 }
-
-export type PinnedQuery = Types.Common_QueryDsl.PinnedQuery
 
 export type PrefixQuery<T> = Omit<
   Types.Common_QueryDsl.PrefixQuery,
@@ -242,35 +228,26 @@ export type QueryContainer<T> = Omit<
   | 'exists'
   | 'function_score'
   | 'fuzzy'
-  | 'geo_bounding_box'
-  | 'geo_distance'
   | 'geo_polygon'
   | 'geo_shape'
   | 'has_child'
   | 'has_parent'
   | 'hybrid'
-  | 'ids'
   | 'intervals'
   | 'knn'
   | 'match'
-  | 'match_all'
   | 'match_bool_prefix'
-  | 'match_none'
   | 'match_phrase'
   | 'match_phrase_prefix'
   | 'more_like_this'
   | 'multi_match'
   | 'nested'
   | 'neural'
-  | 'parent_id'
   | 'percolate'
-  | 'pinned'
   | 'prefix'
-  | 'query_string'
   | 'range'
   | 'rank_feature'
   | 'regexp'
-  | 'script'
   | 'script_score'
   | 'simple_query_string'
   | 'span_containing'
@@ -284,9 +261,7 @@ export type QueryContainer<T> = Omit<
   | 'term'
   | 'terms'
   | 'terms_set'
-  | 'type'
   | 'wildcard'
-  | 'wrapper'
   | 'xy_shape'
 > & {
   bool?: BoolQuery<T>
@@ -299,35 +274,26 @@ export type QueryContainer<T> = Omit<
   exists?: ExistsQuery<T>
   function_score?: FunctionScoreQuery<T>
   fuzzy?: FieldQuery<T, Types.Common_QueryDsl.FuzzyQuery>
-  geo_bounding_box?: GeoBoundingBoxQuery
-  geo_distance?: GeoDistanceQuery
   geo_polygon?: GeoPolygonQuery<T>
   geo_shape?: GeoShapeQuery<T>
   has_child?: HasChildQuery<T>
   has_parent?: HasParentQuery<T>
   hybrid?: HybridQuery<T>
-  ids?: IdsQuery
   intervals?: FieldQuery<T, IntervalsQuery>
   knn?: FieldQuery<T, KnnQuery<T>>
   match?: FieldQuery<T, MatchQuery>
-  match_all?: MatchAllQuery
   match_bool_prefix?: FieldQuery<T, MatchBoolPrefixQuery<T>>
-  match_none?: MatchNoneQuery
   match_phrase?: FieldQuery<T, MatchPhraseQuery<T>>
   match_phrase_prefix?: FieldQuery<T, MatchPhrasePrefixQuery<T>>
   more_like_this?: MoreLikeThisQuery<T>
   multi_match?: MultiMatchQuery<T>
   nested?: NestedQuery<T>
   neural?: FieldQuery<T, NeuralQuery<T>>
-  parent_id?: ParentIdQuery
   percolate?: PercolateQuery<T>
-  pinned?: PinnedQuery
   prefix?: FieldQuery<T, PrefixQuery<T>>
-  query_string?: QueryStringQuery
   range?: FieldQuery<T, RangeQuery<T>>
   rank_feature?: RankFeatureQuery
   regexp?: FieldQuery<T, RegexpQuery<T>>
-  script?: ScriptQuery
   script_score?: ScriptScoreQuery<T>
   simple_query_string?: SimpleQueryStringQuery<T>
   span_containing?: SpanContainingQuery<T>
@@ -341,13 +307,9 @@ export type QueryContainer<T> = Omit<
   term?: FieldQuery<T, TermQuery<T>>
   terms?: TermsQuery<T>
   terms_set?: FieldQuery<T, TermsSetQuery<T>>
-  type?: TypeQuery
   wildcard?: FieldQuery<T, WildcardQuery<T>>
-  wrapper?: WrapperQuery
   xy_shape?: XyShapeQuery<T>
 }
-
-export type QueryStringQuery = Types.Common_QueryDsl.QueryStringQuery
 
 export type RangeQuery<T> = Omit<Types.Common_QueryDsl.RangeQuery, 'field'> & {
   field: NestedPaths<T>
@@ -362,8 +324,6 @@ export type RegexpQuery<T> = Omit<
   field: NestedPaths<T>
   value: MapOpenSearchTypes<T>
 }
-
-export type ScriptQuery = Types.Common_QueryDsl.ScriptQuery
 
 export type ScriptScoreQuery<T> = Omit<
   Types.Common_QueryDsl.ScriptScoreQuery,
@@ -494,8 +454,6 @@ export type TermsSetQuery<T> = Omit<
   terms: FieldValue[]
 }
 
-export type TypeQuery = Types.Common_QueryDsl.TypeQuery
-
 export type WildcardQuery<T> = Omit<
   Types.Common_QueryDsl.WildcardQuery,
   'value' | 'field'
@@ -503,8 +461,6 @@ export type WildcardQuery<T> = Omit<
   field: NestedPaths<T>
   value: MapOpenSearchTypes<T>
 }
-
-export type WrapperQuery = Types.Common_QueryDsl.WrapperQuery
 
 export type XyShapeQuery<T> = Omit<
   Types.Common_QueryDsl.XyShapeQuery,

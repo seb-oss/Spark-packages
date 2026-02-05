@@ -6,6 +6,7 @@ import {
   bulkUpdate,
   type IdFunction,
 } from './helpers'
+import { SearchRequest } from './types'
 import type { IndexDefinition } from './types/common'
 import type { DocumentFor } from './types/documents'
 
