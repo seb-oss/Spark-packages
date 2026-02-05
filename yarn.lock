@@ -3105,7 +3105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.4.1, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.4.2, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3129,7 +3129,7 @@ __metadata:
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.4.1"
+    "@sebspark/avsc-isometric": "npm:0.4.2"
     "@sebspark/tsconfig": "npm:3.0.7"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
@@ -3368,7 +3368,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/socket.io-avro@workspace:packages/socket.io-avro"
   dependencies:
-    "@sebspark/avsc-isometric": "npm:0.4.1"
+    "@sebspark/avsc-isometric": "npm:0.4.2"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.3"
     socket.io-client: "npm:4.8.3"
