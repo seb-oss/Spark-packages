@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.12
+
+### Patch Changes
+
+- 5a167db: Fixes ids filter
+
 ## 3.0.11
 
 ### Patch Changes
