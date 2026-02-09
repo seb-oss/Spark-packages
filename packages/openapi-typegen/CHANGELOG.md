@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.0.12
+
+### Patch Changes
+
+- 9b8d277: chore: array query params can be single item
+
 ## 5.0.11
 
 ### Patch Changes
