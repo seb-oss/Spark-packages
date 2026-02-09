@@ -224,6 +224,18 @@
       }
     },
     "parameters": {
+      "FilterByCountry": {
+        "name": "country",
+        "in": "query",
+        "description": "Comma separated country codes in ISO 3166-2 format.",
+        "style": "form",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
       "PageParam": {
         "name": "page",
         "in": "query",

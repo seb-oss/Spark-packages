@@ -61,6 +61,10 @@ export type UserDetailsDiscriminator = {
  */
 export type XRateLimit = { 'X-Rate-Limit'?: number }
 
+export type FilterByCountry = {
+  country?: string[] | string
+}
+
 export type PageParam = {
   page?: number
 }
