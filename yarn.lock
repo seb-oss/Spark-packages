@@ -3213,7 +3213,7 @@ __metadata:
     axios: "npm:1.13.5"
     axios-auth-refresh: "npm:3.3.6"
     express: "npm:5.2.1"
-    nock: "npm:14.0.10"
+    nock: "npm:15.0.0"
   languageName: unknown
   linkType: soft
 
@@ -9394,14 +9394,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nock@npm:14.0.10":
-  version: 14.0.10
-  resolution: "nock@npm:14.0.10"
+"nock@npm:15.0.0":
+  version: 15.0.0
+  resolution: "nock@npm:15.0.0"
   dependencies:
     "@mswjs/interceptors": "npm:^0.39.5"
     json-stringify-safe: "npm:^5.0.1"
-    propagate: "npm:^2.0.0"
-  checksum: 10c0/4868ce7c3e6a51ee83b496a1305eb821ad89427eb9e09c3c431344d91fd49974717e214fe97548be7d5f9a8039fefc3602ffbaad036f3508dd2c143726e3cfb8
+  checksum: 10c0/e11294749dbbdbe74f21808950ab7051bf9fb5bea67732845c1d16d8f16273f02898d9b607fe6affe7ceb3b3b20d0c045eb9bb9f3d2c4bb78a7b4dbda82fa727
   languageName: node
   linkType: hard
 
@@ -10161,13 +10160,6 @@ __metadata:
     err-code: "npm:^2.0.2"
     retry: "npm:^0.12.0"
   checksum: 10c0/9c7045a1a2928094b5b9b15336dcd2a7b1c052f674550df63cc3f36cd44028e5080448175b6f6ca32b642de81150f5e7b1a98b728f15cb069f2dd60ac2616b96
-  languageName: node
-  linkType: hard
-
-"propagate@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "propagate@npm:2.0.1"
-  checksum: 10c0/01e1023b60ae4050d1a2783f976d7db702022dbdb70dba797cceedad8cfc01b3939c41e77032f8c32aa9d93192fe937ebba1345e8604e5ce61fd3b62ee3003b8
   languageName: node
   linkType: hard
 
