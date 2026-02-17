@@ -27,7 +27,7 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@google-cloud/pubsub": "5.2.2",
+    "@google-cloud/pubsub": "5.2.3",
     "@testcontainers/gcloud": "11.11.0",
     "@testcontainers/mockserver": "11.11.0",
     "@testcontainers/redis": "11.11.0",
