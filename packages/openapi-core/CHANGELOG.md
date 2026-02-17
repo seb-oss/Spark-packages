@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.0.14
+
+### Patch Changes
+
+- 043373c: Update vulnerable axios
+
 ## 4.0.13
 
 ### Patch Changes
