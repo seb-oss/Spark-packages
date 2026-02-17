@@ -1,5 +1,12 @@
 # @sebspark/openapi-e2e
 
+## 4.0.9
+
+### Patch Changes
+
+- Updated dependencies [c8dcadb]
+  - @sebspark/openapi-client@4.1.4
+
 ## 4.0.8
 
 ### Patch Changes

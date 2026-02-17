@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/avsc-isometric",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

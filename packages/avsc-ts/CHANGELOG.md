@@ -1,5 +1,12 @@
 # @sebspark/avsc-ts
 
+## 0.4.19
+
+### Patch Changes
+
+- Updated dependencies [c8dcadb]
+  - @sebspark/avsc-isometric@0.4.3
+
 ## 0.4.18
 
 ### Patch Changes
