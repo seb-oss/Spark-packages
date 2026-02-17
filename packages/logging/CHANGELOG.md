@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.8
+
+### Patch Changes
+
+- c8dcadb: Updated dependencies
+
 ## 2.0.6
 
 ### Patch Changes

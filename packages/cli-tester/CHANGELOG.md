@@ -1,5 +1,11 @@
 # @sebspark/cli-tester
 
+## 1.0.9
+
+### Patch Changes
+
+- c8dcadb: Updated dependencies
+
 ## 1.0.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.0.12
+
+### Patch Changes
+
+- c8dcadb: Updated dependencies
+
 ## 2.0.11
 
 ### Patch Changes

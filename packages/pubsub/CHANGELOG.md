@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.11
+
+### Patch Changes
+
+- c8dcadb: Updated dependencies
+
 ## 1.8.10
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 1.0.13
+
+### Patch Changes
+
+- c8dcadb: Updated dependencies
+
 ## 1.0.12
 
 ### Patch Changes
