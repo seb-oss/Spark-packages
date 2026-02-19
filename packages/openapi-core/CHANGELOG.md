@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.0
+
+### Minor Changes
+
+- d164617: Added utility functions to enhance schemas
+
 ## 4.0.14
 
 ### Patch Changes
