@@ -6,9 +6,9 @@ import {
   bulkUpdate,
   type IdFunction,
 } from './helpers'
-import { SearchRequest } from './types'
 import type { IndexDefinition } from './types/common'
 import type { DocumentFor } from './types/documents'
+import type { SearchRequest } from './types/search'
 
 // A dummy index definition for testing purposes
 const personIndex = {
@@ -21,6 +21,12 @@ const personIndex = {
         nested: {
           type: 'object',
           dynamic: 'true',
+        },
+        foo: {
+          type: 'object',
+          properties: {
+            bar: { type: 'keyword' },
+          },
         },
       },
     },

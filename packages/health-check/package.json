@@ -27,10 +27,10 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@google-cloud/pubsub": "5.2.3",
-    "@testcontainers/gcloud": "11.11.0",
-    "@testcontainers/mockserver": "11.11.0",
-    "@testcontainers/redis": "11.11.0",
+    "@google-cloud/pubsub": "5.2.4",
+    "@testcontainers/gcloud": "11.12.0",
+    "@testcontainers/mockserver": "11.12.0",
+    "@testcontainers/redis": "11.12.0",
     "mockserver-client": "5.15.0",
     "supertest": "7.2.2"
   },

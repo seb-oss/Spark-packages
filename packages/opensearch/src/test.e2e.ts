@@ -78,6 +78,14 @@ describe('OpenSearchClient', () => {
       mappings: {
         properties: {
           name: { type: 'keyword' },
+          text: {
+            type: 'text',
+            fields: {
+              keyword: {
+                type: 'keyword',
+              },
+            },
+          },
           age: { type: 'integer' },
         },
       },
@@ -88,10 +96,11 @@ describe('OpenSearchClient', () => {
   type PersonDocument = DocumentFor<PersonIndex>
   type PersonSearch = SearchRequest<PersonIndex>
 
-  const doc: PersonDocument = {
+  const doc = {
     age: 52,
     name: 'John Wick',
-  }
+    text: 'Sortable',
+  } satisfies PersonDocument
 
   it('creates an index from an index definition', async () => {
     opensearchClient.indices.exists<PersonIndex>({ index: 'person' })
@@ -99,7 +108,6 @@ describe('OpenSearchClient', () => {
 
     expect(response.body.acknowledged).toBe(true)
   })
-
   it('stores a typed document', async () => {
     // Store
     const response = await opensearchClient.index<PersonIndex>({
@@ -110,7 +118,6 @@ describe('OpenSearchClient', () => {
 
     expect(response.statusCode).toEqual(201)
   })
-
   it('finds a typed document', async () => {
     // Find
     const search: PersonSearch = {
@@ -129,7 +136,23 @@ describe('OpenSearchClient', () => {
     expect(result.body.hits.hits).toHaveLength(1)
     expect(result.body.hits.hits[0]._source).toEqual(doc)
   })
+  it('sorts by text with keyword field', async () => {
+    // Find
+    const search: PersonSearch = {
+      index: 'person',
+      body: {
+        query: {
+          match_all: {},
+        },
+        sort: { 'text.keyword': { order: 'asc' } },
+      },
+    }
 
+    const result = await opensearchClient.search(search)
+
+    expect(result.body.hits.hits).toHaveLength(1)
+    expect(result.body.hits.hits[0]._source).toEqual(doc)
+  })
   it('manages bulk operations', async () => {
     // Prepare bulk operations
     const bulkRequest: BulkRequest<PersonIndex> = {
@@ -195,7 +218,6 @@ describe('OpenSearchClient', () => {
     const fooResult = await opensearchClient.search(fooSearch)
     expect(fooResult.body.hits.hits).toHaveLength(0)
   })
-
   describe('e2e: Bulk operations helpers', () => {
     it('bulkIndex: should index documents', async () => {
       // Insert documents using bulkIndex (auto-generated IDs).
@@ -221,7 +243,6 @@ describe('OpenSearchClient', () => {
       expect(names).toContain('John Wick')
       expect(names).toContain('Alice')
     })
-
     it('bulkCreate: should create documents with explicit IDs', async () => {
       // Create documents using bulkCreate (explicit IDs).
       const createDocs: PersonDocument[] = [
@@ -229,7 +250,7 @@ describe('OpenSearchClient', () => {
         { name: 'Evelyn Salt', age: 35 },
       ]
       const createIdFn = (doc: PersonDocument) =>
-        doc.name.replace(/\s/g, '').toLowerCase()
+        doc.name!.replace(/\s/g, '').toLowerCase()
       const bulkCreatePayload = bulkCreate(
         personIndex.index,
         createDocs,
@@ -252,7 +273,6 @@ describe('OpenSearchClient', () => {
       expect(names).toContain('Jason Bourne')
       expect(names).toContain('Evelyn Salt')
     })
-
     it('bulkUpdate: should update an existing document and upsert a new one', async () => {
       // Prepare update actions:
       // a) Update "Jason Bourne" to change age from 48 to 50.
@@ -266,7 +286,7 @@ describe('OpenSearchClient', () => {
       ]
       // Use the same ID generator as in bulkCreate.
       const updateIdFn = (doc: PersonDocument) =>
-        doc.name.replace(/\s/g, '').toLowerCase()
+        doc.name!.replace(/\s/g, '').toLowerCase()
       const bulkUpdatePayload = bulkUpdate(
         personIndex.index,
         updateActions,
@@ -299,7 +319,6 @@ describe('OpenSearchClient', () => {
       )
       expect(nonExistent?._source.age).toBe(60)
     })
-
     it('bulkDelete: should delete a document', async () => {
       // Delete the "Non Existent" document.
       // Compute its ID using the same generator used in updates/creates.

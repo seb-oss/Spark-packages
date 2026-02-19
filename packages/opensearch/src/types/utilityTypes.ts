@@ -31,3 +31,7 @@ export type OneOf<T> = {
 export type Primitive = string | number | boolean
 
 export type Empty = Record<string, never>
+
+export type Prettify<T> = {
+  [K in keyof T]: T[K]
+} & {}

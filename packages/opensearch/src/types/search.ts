@@ -7,14 +7,14 @@ import type {
   SourceConfig,
 } from './core_search'
 import type { QueryContainer } from './queries'
+import { Prettify } from './utilityTypes'
 
-export type SearchRequest<T extends IndexDefinition> = Omit<
-  API.Search_Request,
-  'body' | 'index'
-> & {
-  index: T['index']
-  body: SearchRequestBody<T>
-}
+export type SearchRequest<T extends IndexDefinition> = Prettify<
+  Omit<API.Search_Request, 'body' | 'index'> & {
+    index: T['index']
+    body: SearchRequestBody<T>
+  }
+>
 
 export type SearchRequestBody<T extends IndexDefinition> = Omit<
   API.Search_RequestBody,
@@ -27,12 +27,11 @@ export type SearchRequestBody<T extends IndexDefinition> = Omit<
   _source?: SourceConfig<MapQueryProperties<T>>
 }
 
-export type SearchResponse<T extends IndexDefinition> = Omit<
-  API.Search_Response,
-  'body'
-> & {
-  body: SearchResponseBody<T>
-}
+export type SearchResponse<T extends IndexDefinition> = Prettify<
+  Omit<API.Search_Response, 'body'> & {
+    body: SearchResponseBody<T>
+  }
+>
 
 export type SearchResponseBody<T extends IndexDefinition> = Omit<
   API.Search_ResponseBody,

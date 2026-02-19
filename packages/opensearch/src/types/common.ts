@@ -43,6 +43,8 @@ export type IndexDefinition = Omit<API.Indices_Create_Request, 'body'> & {
   body: IndicesCreateRequestBody
 }
 
+declare const TEXT_VALUE: unique symbol
+
 /**
  * Converts OpenSearch field definitions into TypeScript types.
  */
@@ -99,9 +101,23 @@ export interface TransportRequestPromise<T> extends Promise<T> {
   finally(onFinally?: (() => void) | undefined | null): Promise<T>
 }
 
-export type Sort<T> = SortOptions<T> | SortOptions<T>[]
+export type FieldPaths<T extends IndexDefinition> = T extends {
+  body: { mappings: { properties: infer P extends Record<string, Property> } }
+}
+  ? NestedPaths<MapQueryProperties<T>> | SubFieldPaths<P>
+  : never
 
-export type SortOptions<T> =
+type SubFieldPaths<P extends Record<string, Property>> = {
+  [K in keyof P & string]: P[K] extends {
+    fields: infer F extends Record<string, Property>
+  }
+    ? `${K}.${keyof F & string}`
+    : never
+}[keyof P & string]
+
+export type Sort<T extends IndexDefinition> = SortOptions<T> | SortOptions<T>[]
+
+export type SortOptions<T extends IndexDefinition> =
   | '_score'
   | '_doc'
   | {
@@ -110,6 +126,6 @@ export type SortOptions<T> =
       _score?: Types.Common.ScoreSort
       _script?: Types.Common.ScriptSort
     }
-  | Partial<Record<NestedPaths<T>, Types.Common.FieldSort>>
+  | Partial<Record<FieldPaths<T>, Types.Common.FieldSort>>
 
 export type BuiltinKeys = '_id' | '_index'

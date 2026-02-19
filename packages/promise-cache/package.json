@@ -23,8 +23,8 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@testcontainers/redis": "11.11.0",
-    "testcontainers": "11.11.0"
+    "@testcontainers/redis": "11.12.0",
+    "testcontainers": "11.12.0"
   },
   "dependencies": {
     "@sebspark/otel": "2.0.12",
