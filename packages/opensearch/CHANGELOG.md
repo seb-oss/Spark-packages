@@ -1,5 +1,12 @@
 # @sebspark/opensearch
 
+## 3.0.13
+
+### Patch Changes
+
+- 35ec1a0: Fixed type for text property with keyword field
+- 35ec1a0: Updated dependencies
+
 ## 3.0.12
 
 ### Patch Changes
