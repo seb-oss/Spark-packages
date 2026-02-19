@@ -7,7 +7,7 @@ import type {
   SourceConfig,
 } from './core_search'
 import type { QueryContainer } from './queries'
-import { Prettify } from './utilityTypes'
+import type { Prettify } from './utilityTypes'
 
 export type SearchRequest<T extends IndexDefinition> = Prettify<
   Omit<API.Search_Request, 'body' | 'index'> & {
