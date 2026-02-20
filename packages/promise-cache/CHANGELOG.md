@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.3.0
+
+### Minor Changes
+
+- 064312c: Added zAdd, zIncrBy, zRange, zRangeWithScores, zScore, zRank, zCount, zRangeByScore, zRangeByScoreWithScores, zRem
+
 ## 6.2.7
 
 ### Patch Changes
