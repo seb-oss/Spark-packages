@@ -23,7 +23,7 @@ export type SearchRequestBody<T extends IndexDefinition> = Omit<
   query?: QueryContainer<MapQueryProperties<T>>
   collapse?: FieldCollapse<MapQueryProperties<T>>
   highlight?: Highlight<MapQueryProperties<T>>
-  sort?: Sort<MapQueryProperties<T>>
+  sort?: Sort<T>
   _source?: SourceConfig<MapQueryProperties<T>>
 }
 
