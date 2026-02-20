@@ -4,4 +4,10 @@ export * from './persistor'
 export * from './promiseCache'
 export * as serializer from './serializer'
 export * as time from './time'
-export type { Cache, CachingOptions, IPersistor } from './types'
+export type {
+  Cache,
+  CachingOptions,
+  IPersistor,
+  IPersistorMulti,
+  ZMember,
+} from './types'

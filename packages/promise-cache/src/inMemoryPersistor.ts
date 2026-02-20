@@ -497,13 +497,18 @@ export class InMemoryPersistor implements IPersistor {
   ): Promise<number> {
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const existingIndex = sortedSet.findIndex((entry) => entry.value === member)
+    const newScore =
+      existingIndex !== -1
+        ? sortedSet[existingIndex].score + increment
+        : increment
+    const updated: ZMember = { score: newScore, value: member }
     if (existingIndex !== -1) {
-      sortedSet[existingIndex].score += increment
+      sortedSet[existingIndex] = updated
     } else {
-      sortedSet.push({ score: increment, value: member })
+      sortedSet.push(updated)
     }
     this.store.set(key, JSON.stringify(sortMembers(sortedSet)))
-    return sortedSet.find((entry) => entry.value === member)!.score
+    return newScore
   }
   /**
    * Retrieves a range of members from a sorted set.
