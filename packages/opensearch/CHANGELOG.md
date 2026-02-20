@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.14
+
+### Patch Changes
+
+- f564dba: Fixed Sort type
+
 ## 3.0.13
 
 ### Patch Changes
