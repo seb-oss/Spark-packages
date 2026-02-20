@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.3.1
+
+### Patch Changes
+
+- a005bef: Export all exposed types
+
 ## 6.3.0
 
 ### Minor Changes
