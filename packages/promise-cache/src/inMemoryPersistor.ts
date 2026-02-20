@@ -5,7 +5,11 @@ import type {
   IPersistor,
   IPersistorMulti,
   MultiExecReturnTypes,
+  ZMember,
 } from './types'
+
+const sortMembers = (members: ZMember[]): ZMember[] =>
+  [...members].sort((a, b) => a.score - b.score)
 
 /**
  * An in-memory key-value store with Redis-like behavior.
@@ -457,20 +461,16 @@ export class InMemoryPersistor implements IPersistor {
 
   /**
    * Adds members to a sorted set with scores.
-   *
    * @param key - The sorted set key.
-   * @param members - An array of objects containing `{ score, value }`.
-   * @returns Resolves to the number of new elements added.
+   * @param members - A member or array of members with `score` and `value`.
+   * @returns Resolves to the number of elements successfully added.
    */
-  async zAdd(
-    key: string,
-    members: { score: number; value: string }[]
-  ): Promise<number> {
-    const sortedSet: { score: number; value: string }[] = JSON.parse(
-      this.store.get(key) ?? '[]'
-    )
+  async zAdd(key: string, members: ZMember | ZMember[]): Promise<number> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const initialSize = sortedSet.length
-    for (const { score, value } of members) {
+    for (const { score, value } of Array.isArray(members)
+      ? members
+      : [members]) {
       const existingIndex = sortedSet.findIndex(
         (entry) => entry.value === value
       )
@@ -480,47 +480,141 @@ export class InMemoryPersistor implements IPersistor {
         sortedSet.push({ score, value })
       }
     }
-    sortedSet.sort((a, b) => a.score - b.score)
-    this.store.set(key, JSON.stringify(sortedSet))
+    this.store.set(key, JSON.stringify(sortMembers(sortedSet)))
     return sortedSet.length - initialSize
   }
-
   /**
-   * Retrieves a range of elements from a sorted set.
-   *
+   * Increments the score of a member in a sorted set.
    * @param key - The sorted set key.
-   * @param start - The starting index.
-   * @param stop - The stopping index.
-   * @returns Resolves to an array of sorted set values in the range.
+   * @param increment - The amount to increment the score by.
+   * @param member - The member to increment.
+   * @returns Resolves to the new score.
+   */
+  async zIncrBy(
+    key: string,
+    increment: number,
+    member: string
+  ): Promise<number> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    const existingIndex = sortedSet.findIndex((entry) => entry.value === member)
+    if (existingIndex !== -1) {
+      sortedSet[existingIndex].score += increment
+    } else {
+      sortedSet.push({ score: increment, value: member })
+    }
+    this.store.set(key, JSON.stringify(sortMembers(sortedSet)))
+    return sortedSet.find((entry) => entry.value === member)!.score
+  }
+  /**
+   * Retrieves a range of members from a sorted set.
+   * @param key - The sorted set key.
+   * @param start - The start index.
+   * @param stop - The stop index (inclusive).
+   * @returns Resolves to an array of member values in the range.
    */
   async zRange(key: string, start: number, stop: number): Promise<string[]> {
-    const sortedSet: { score: number; value: string }[] = JSON.parse(
-      this.store.get(key) ?? '[]'
-    )
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const normalizedStop = stop === -1 ? sortedSet.length : stop + 1
     return sortedSet.slice(start, normalizedStop).map((entry) => entry.value)
   }
-
   /**
-   * Removes elements from a sorted set.
-   *
+   * Retrieves a range of members with scores from a sorted set.
    * @param key - The sorted set key.
-   * @param members - One or more values to remove.
+   * @param start - The start index.
+   * @param stop - The stop index (inclusive).
+   * @param options - Optional. Pass `{ REV: true }` to return in descending score order.
+   * @returns Resolves to an array of ZMember in the range.
+   */
+  async zRangeWithScores(
+    key: string,
+    start: number,
+    stop: number,
+    options?: { REV: boolean }
+  ): Promise<ZMember[]> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    const ordered = options?.REV ? [...sortedSet].reverse() : sortedSet
+    const normalizedStop = stop === -1 ? ordered.length : stop + 1
+    return ordered.slice(start, normalizedStop)
+  }
+  /**
+   * Returns the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param member - The member to get the score for.
+   * @returns Resolves to the score or null if the member does not exist.
+   */
+  async zScore(key: string, member: string): Promise<number | null> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    return sortedSet.find((entry) => entry.value === member)?.score ?? null
+  }
+  /**
+   * Returns the rank of a member in a sorted set, ordered from low to high.
+   * @param key - The sorted set key.
+   * @param member - The member to get the rank for.
+   * @returns Resolves to the rank or null if the member does not exist.
+   */
+  async zRank(key: string, member: string): Promise<number | null> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    const index = sortedSet.findIndex((entry) => entry.value === member)
+    return index === -1 ? null : index
+  }
+  /**
+   * Returns the number of members in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to the number of members in the score range.
+   */
+  async zCount(key: string, min: number, max: number): Promise<number> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    return sortedSet.filter((entry) => entry.score >= min && entry.score <= max)
+      .length
+  }
+  /**
+   * Returns members in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to an array of member values in the score range.
+   */
+  async zRangeByScore(
+    key: string,
+    min: number,
+    max: number
+  ): Promise<string[]> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    return sortedSet
+      .filter((entry) => entry.score >= min && entry.score <= max)
+      .map((entry) => entry.value)
+  }
+  /**
+   * Returns members with scores in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to an array of ZMember in the score range.
+   */
+  async zRangeByScoreWithScores(
+    key: string,
+    min: number,
+    max: number
+  ): Promise<ZMember[]> {
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    return sortedSet.filter((entry) => entry.score >= min && entry.score <= max)
+  }
+  /**
+   * Removes members from a sorted set.
+   * @param key - The sorted set key.
+   * @param members - The members to remove.
    * @returns Resolves to the number of elements removed.
    */
   async zRem(key: string, members: string | string[]): Promise<number> {
-    const sortedSet: { score: number; value: string }[] = JSON.parse(
-      this.store.get(key) ?? '[]'
-    )
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const valuesToRemove = Array.isArray(members) ? members : [members]
-    const initialSize = sortedSet.length
-    this.store.set(
-      key,
-      JSON.stringify(
-        sortedSet.filter((entry) => !valuesToRemove.includes(entry.value))
-      )
+    const filtered = sortedSet.filter(
+      (entry) => !valuesToRemove.includes(entry.value)
     )
-    return initialSize - JSON.parse(this.store.get(key) ?? '[]').length
+    this.store.set(key, JSON.stringify(filtered))
+    return sortedSet.length - filtered.length
   }
 
   /**
@@ -920,25 +1014,28 @@ class InMemoryMulti implements IPersistorMulti {
   }
 
   /**
-   * Queues a `zAdd` command to add elements to a sorted set with scores.
-   * The command will be executed when `exec()` is called.
-   *
+   * Queues a `zAdd` command to add members to a sorted set with scores.
    * @param key - The sorted set key.
-   * @param members - An array of objects with `score` and `value`.
+   * @param members - A member or array of members with `score` and `value`.
    * @returns The `IPersistorMulti` instance to allow method chaining.
    */
-  zAdd(
-    key: string,
-    members: { score: number; value: string }[]
-  ): IPersistorMulti {
+  zAdd(key: string, members: ZMember | ZMember[]): IPersistorMulti {
     this.commands.add(() => this.persistor.zAdd(key, members))
     return this
   }
-
   /**
-   * Queues a `zRange` command to retrieve a range of elements from a sorted set.
-   * The command will be executed when `exec()` is called.
-   *
+   * Queues a `zIncrBy` command to increment the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param increment - The amount to increment the score by.
+   * @param member - The member to increment.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zIncrBy(key: string, increment: number, member: string): IPersistorMulti {
+    this.commands.add(() => this.persistor.zIncrBy(key, increment, member))
+    return this
+  }
+  /**
+   * Queues a `zRange` command to retrieve a range of members from a sorted set.
    * @param key - The sorted set key.
    * @param start - The start index.
    * @param stop - The stop index (inclusive).
@@ -948,11 +1045,86 @@ class InMemoryMulti implements IPersistorMulti {
     this.commands.add(() => this.persistor.zRange(key, start, stop))
     return this
   }
-
   /**
-   * Queues a `zRem` command to remove elements from a sorted set.
-   * The command will be executed when `exec()` is called.
-   *
+   * Queues a `zRangeWithScores` command to retrieve a range of members with scores from a sorted set.
+   * @param key - The sorted set key.
+   * @param start - The start index.
+   * @param stop - The stop index (inclusive).
+   * @param options - Optional. Pass `{ REV: true }` to return in descending score order.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zRangeWithScores(
+    key: string,
+    start: number,
+    stop: number,
+    options?: { REV: boolean }
+  ): IPersistorMulti {
+    this.commands.add(() =>
+      this.persistor.zRangeWithScores(key, start, stop, options)
+    )
+    return this
+  }
+  /**
+   * Queues a `zScore` command to get the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param member - The member to get the score for.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zScore(key: string, member: string): IPersistorMulti {
+    this.commands.add(() => this.persistor.zScore(key, member))
+    return this
+  }
+  /**
+   * Queues a `zRank` command to get the rank of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param member - The member to get the rank for.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zRank(key: string, member: string): IPersistorMulti {
+    this.commands.add(() => this.persistor.zRank(key, member))
+    return this
+  }
+  /**
+   * Queues a `zCount` command to count members in a score range.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zCount(key: string, min: number, max: number): IPersistorMulti {
+    this.commands.add(() => this.persistor.zCount(key, min, max))
+    return this
+  }
+  /**
+   * Queues a `zRangeByScore` command to retrieve members within a score range.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zRangeByScore(key: string, min: number, max: number): IPersistorMulti {
+    this.commands.add(() => this.persistor.zRangeByScore(key, min, max))
+    return this
+  }
+  /**
+   * Queues a `zRangeByScoreWithScores` command to retrieve members with scores within a score range.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  zRangeByScoreWithScores(
+    key: string,
+    min: number,
+    max: number
+  ): IPersistorMulti {
+    this.commands.add(() =>
+      this.persistor.zRangeByScoreWithScores(key, min, max)
+    )
+    return this
+  }
+  /**
+   * Queues a `zRem` command to remove members from a sorted set.
    * @param key - The sorted set key.
    * @param members - The members to remove.
    * @returns The `IPersistorMulti` instance to allow method chaining.

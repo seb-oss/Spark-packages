@@ -6,6 +6,7 @@ export type MultiExecReturnTypes =
   | { [x: string]: string }
   | number
   | boolean
+  | ZMember[]
   | null
   | undefined
 
@@ -71,6 +72,11 @@ export type HashValue =
       [x: number]: HashTypes
     }
   | Map<HashTypes, HashTypes>
+
+export interface ZMember {
+  score: number
+  value: string
+}
 
 /**
  * Interface for a key-value storage system that supports Redis-like commands.
@@ -302,10 +308,16 @@ export interface IPersistor {
    * @param members - An array of objects with `score` and `value`.
    * @returns Resolves to the number of elements successfully added.
    */
-  zAdd(
-    key: string,
-    members: { score: number; value: string }[]
-  ): Promise<number>
+  zAdd(key: string, members: ZMember | ZMember[]): Promise<number>
+
+  /**
+   * Increments the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param increment - The amount to increment the score by.
+   * @param member - The member to increment.
+   * @returns Resolves to the new score.
+   */
+  zIncrBy(key: string, increment: number, member: string): Promise<number>
 
   /**
    * Retrieves a range of members from a sorted set.
@@ -317,12 +329,70 @@ export interface IPersistor {
   zRange(key: string, start: number, stop: number): Promise<string[]>
 
   /**
+   * Retrieves a range of members with scores from a sorted set.
+   * @param key - The sorted set key.
+   * @param start - The start index.
+   * @param stop - The stop index (inclusive).
+   * @param options - Optional. Pass `{ REV: true }` to return in descending score order.
+   * @returns Resolves to an array of ZMember in the range.
+   */
+  zRangeWithScores(
+    key: string,
+    start: number,
+    stop: number,
+    options?: { REV: boolean }
+  ): Promise<ZMember[]>
+
+  /**
    * Removes members from a sorted set.
    * @param key - The sorted set key.
    * @param members - The members to remove.
    * @returns Resolves to the number of elements removed.
    */
   zRem(key: string, members: string | string[]): Promise<number>
+
+  /**
+   * Returns the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param member - The member to get the score for.
+   * @returns Resolves to the score or null if the member does not exist.
+   */
+  zScore(key: string, member: string): Promise<number | null>
+  /**
+   * Returns the rank of a member in a sorted set, ordered from low to high.
+   * @param key - The sorted set key.
+   * @param member - The member to get the rank for.
+   * @returns Resolves to the rank or null if the member does not exist.
+   */
+  zRank(key: string, member: string): Promise<number | null>
+  /**
+   * Returns the number of members in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to the number of members in the score range.
+   */
+  zCount(key: string, min: number, max: number): Promise<number>
+  /**
+   * Returns members in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to an array of member values in the score range.
+   */
+  zRangeByScore(key: string, min: number, max: number): Promise<string[]>
+  /**
+   * Returns members with scores in a sorted set with scores between min and max.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns Resolves to an array of ZMember in the score range.
+   */
+  zRangeByScoreWithScores(
+    key: string,
+    min: number,
+    max: number
+  ): Promise<ZMember[]>
 
   isReady: boolean
   isOpen: boolean
@@ -544,14 +614,18 @@ export interface IPersistorMulti {
   /**
    * Adds members to a sorted set with scores.
    * @param key - The sorted set key.
-   * @param members - An array of objects with `score` and `value`.
+   * @param members - A member or array of members with `score` and `value`.
    * @returns The multi-instance for chaining.
    */
-  zAdd(
-    key: string,
-    members: { score: number; value: string }[]
-  ): IPersistorMulti
-
+  zAdd(key: string, members: ZMember | ZMember[]): IPersistorMulti
+  /**
+   * Increments the score of a member in a sorted set.
+   * @param key - The sorted set key.
+   * @param increment - The amount to increment the score by.
+   * @param member - The member to increment.
+   * @returns The multi-instance for chaining.
+   */
+  zIncrBy(key: string, increment: number, member: string): IPersistorMulti
   /**
    * Retrieves a range of members from a sorted set.
    * @param key - The sorted set key.
@@ -560,7 +634,20 @@ export interface IPersistorMulti {
    * @returns The multi-instance for chaining.
    */
   zRange(key: string, start: number, stop: number): IPersistorMulti
-
+  /**
+   * Retrieves a range of members with scores from a sorted set.
+   * @param key - The sorted set key.
+   * @param start - The start index.
+   * @param stop - The stop index (inclusive).
+   * @param options - Optional. Pass `{ REV: true }` to return in descending score order.
+   * @returns The multi-instance for chaining.
+   */
+  zRangeWithScores(
+    key: string,
+    start: number,
+    stop: number,
+    options?: { REV: boolean }
+  ): IPersistorMulti
   /**
    * Removes members from a sorted set.
    * @param key - The sorted set key.
@@ -568,6 +655,49 @@ export interface IPersistorMulti {
    * @returns The multi-instance for chaining.
    */
   zRem(key: string, members: string | string[]): IPersistorMulti
+
+  /**
+   * Queues a `zScore` command.
+   * @param key - The sorted set key.
+   * @param member - The member to get the score for.
+   * @returns The multi-instance for chaining.
+   */
+  zScore(key: string, member: string): IPersistorMulti
+  /**
+   * Queues a `zRank` command.
+   * @param key - The sorted set key.
+   * @param member - The member to get the rank for.
+   * @returns The multi-instance for chaining.
+   */
+  zRank(key: string, member: string): IPersistorMulti
+  /**
+   * Queues a `zCount` command.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The multi-instance for chaining.
+   */
+  zCount(key: string, min: number, max: number): IPersistorMulti
+  /**
+   * Queues a `zRangeByScore` command.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The multi-instance for chaining.
+   */
+  zRangeByScore(key: string, min: number, max: number): IPersistorMulti
+  /**
+   * Queues a `zRangeByScoreWithScores` command.
+   * @param key - The sorted set key.
+   * @param min - The minimum score.
+   * @param max - The maximum score.
+   * @returns The multi-instance for chaining.
+   */
+  zRangeByScoreWithScores(
+    key: string,
+    min: number,
+    max: number
+  ): IPersistorMulti
 
   /**
    * Executes all queued commands and returns their results.
