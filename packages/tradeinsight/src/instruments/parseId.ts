@@ -156,16 +156,16 @@ export const parseId = (id: string): TradeInsightId => {
         throw new Error('Missing isin')
       }
       if (!second) {
-        throw new Error('Missing mic')
+        throw new Error('Missing currency')
       }
       if (!third) {
-        throw new Error('Missing currency')
+        throw new Error('Missing mic')
       }
       return {
         type: 'STO',
         isin: first,
-        mic: second,
-        currency: third,
+        mic: third,
+        currency: second,
       } satisfies StockId as StockId
     }
 

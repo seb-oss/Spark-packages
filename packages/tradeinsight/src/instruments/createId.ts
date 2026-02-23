@@ -49,4 +49,4 @@ export const createForexId = ({
   `${types.FXS}_${baseCurrency}_${quoteCurrency}`.toUpperCase()
 
 export const createStockId = ({ isin, mic, currency }: Omit<StockId, 'type'>) =>
-  `${types.STO}_${isin}_${mic}_${currency}`.toUpperCase()
+  `${types.STO}_${isin}_${currency}_${mic}`.toUpperCase()

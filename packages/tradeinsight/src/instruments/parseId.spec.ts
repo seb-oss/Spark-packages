@@ -259,7 +259,7 @@ describe('parseId', () => {
 
   describe('STO', () => {
     let result: TradeInsightId | undefined
-    const id = 'STO_SE0000695874_XSTO_SEK'
+    const id = 'STO_SE0000695874_SEK_XSTO'
     it('should parse a valid STO id', () => {
       result = parseId(id)
 
@@ -275,12 +275,10 @@ describe('parseId', () => {
       expect(() => parseId('STO')).toThrowError('Missing isin')
     })
     it('should throw an error if mic is missing', () => {
-      expect(() => parseId('STO_SE0000695874')).toThrowError('Missing mic')
+      expect(() => parseId('STO_SE0000695874')).toThrowError('Missing currency')
     })
     it('should throw an error if currency is missing', () => {
-      expect(() => parseId('STO_SE0000695874_XSTO')).toThrowError(
-        'Missing currency'
-      )
+      expect(() => parseId('STO_SE0000695874_SEK')).toThrowError('Missing mic')
     })
     it('should create new to same id', () => {
       const newId = createStockId(result as StockId)
