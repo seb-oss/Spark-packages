@@ -13,13 +13,13 @@ const currency = 'SEK'
 const id = createStockId({ isin, mic, currency })
 
 console.log(id)
-// STOCK-SE0000108656;XSTO;SEK
+// STO_SE0000108656_SEK_XSTO
 ```
 
 ### Parse ID
 
 ```javascript
-const { type, fromCurrency, toCurrency } = parseId('FOREX-USD;EUR')
-console.log(type, fromCurrency, toCurrency)
+const { type, baseCurrency, quoteCurrency } = parseId('FXS_USD_EUR')
+console.log(type, baseCurrency, quoteCurrency)
 // FOREX, USD, EUR
 ```
