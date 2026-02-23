@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 6.0.0
+
+### Major Changes
+
+- 02e19c9: feat: change stock id format
+
 ## 5.0.1
 
 ### Patch Changes
