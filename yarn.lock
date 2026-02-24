@@ -3389,7 +3389,7 @@ __metadata:
   resolution: "@sebspark/health-check@workspace:packages/health-check"
   dependencies:
     "@google-cloud/pubsub": "npm:5.2.4"
-    "@sebspark/hyper-media": "npm:0.1.0"
+    "@sebspark/hyper-media": "npm:0.1.1"
     "@testcontainers/gcloud": "npm:11.12.0"
     "@testcontainers/mockserver": "npm:11.12.0"
     "@testcontainers/redis": "npm:11.12.0"
@@ -3399,7 +3399,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/hyper-media@npm:0.1.0, @sebspark/hyper-media@workspace:packages/hyper-media":
+"@sebspark/hyper-media@npm:0.1.1, @sebspark/hyper-media@workspace:packages/hyper-media":
   version: 0.0.0-use.local
   resolution: "@sebspark/hyper-media@workspace:packages/hyper-media"
   dependencies:
