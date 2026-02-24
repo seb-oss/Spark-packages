@@ -100,21 +100,50 @@ app.listen(3000, () => {
 ```json
 {
   "tags": [
-    { "name": "system", "description": "Operational endpoints." }
+    {
+      "name": "health",
+      "description": "Health endpoints."
+    }
   ],
   "paths": {
-    "/health/ping": {
+    "/health": {
       "get": {
-        "tags": ["system"],
-        "summary": "Health ping",
-        "description": "Basic health status.",
+        "tags": [
+          "health"
+        ],
+        "summary": "Comprehensive health summary",
+        "description": "Combined view of status, system/process metrics, and readiness summary. Includes links to all child endpoints.",
         "security": [],
         "responses": {
           "200": {
-            "description": "Service responds with basic status.",
+            "description": "Health summary envelope.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HealthCheck_Status" }
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_HealthSummary_Entity"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ping": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Status ping",
+        "description": "Basic health status. Links back to parent /health.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Status entity.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_Status_Entity"
+                }
               }
             }
           }
@@ -123,16 +152,20 @@ app.listen(3000, () => {
     },
     "/health/live": {
       "get": {
-        "tags": ["system"],
+        "tags": [
+          "health"
+        ],
         "summary": "Liveness",
-        "description": "Liveness signal with system and process metrics.",
+        "description": "Liveness signal with system and process metrics. Links back to parent /health.",
         "security": [],
         "responses": {
           "200": {
-            "description": "Liveness payload.",
+            "description": "Liveness entity.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HealthCheck_Liveness" }
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_Liveness_Entity"
+                }
               }
             }
           }
@@ -141,34 +174,20 @@ app.listen(3000, () => {
     },
     "/health/ready": {
       "get": {
-        "tags": ["system"],
+        "tags": [
+          "health"
+        ],
         "summary": "Readiness",
-        "description": "Readiness including dependency checks and summary.",
+        "description": "Readiness including dependency checks and summary. Links back to parent /health.",
         "security": [],
         "responses": {
           "200": {
-            "description": "Readiness payload.",
+            "description": "Readiness entity.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HealthCheck_ReadinessPayload" }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/health": {
-      "get": {
-        "tags": ["system"],
-        "summary": "Comprehensive health summary",
-        "description": "Combined view of status, system/process metrics, and readiness summary.",
-        "security": [],
-        "responses": {
-          "200": {
-            "description": "Health summary.",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HealthCheck_HealthSummary" }
+                "schema": {
+                  "$ref": "#/components/schemas/HealthCheck_Readiness_Entity"
+                }
               }
             }
           }
@@ -178,139 +197,325 @@ app.listen(3000, () => {
   },
   "components": {
     "schemas": {
+      "Verb": {
+        "type": "string",
+        "enum": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE"
+        ],
+        "description": "HTTP method for the link."
+      },
+      "Link": {
+        "type": "object",
+        "description": "A hypermedia link.",
+        "properties": {
+          "href": {
+            "type": "string",
+            "format": "uri-reference",
+            "description": "Target URL."
+          },
+          "method": {
+            "$ref": "#/components/schemas/Verb"
+          }
+        },
+        "required": [
+          "href",
+          "method"
+        ]
+      },
       "HealthCheck_StatusValue": {
         "type": "string",
-        "enum": ["ok", "degraded", "error"],
+        "enum": [
+          "ok",
+          "degraded",
+          "error"
+        ],
         "description": "Health status value."
       },
       "HealthCheck_Impact": {
         "type": "string",
-        "enum": ["critical", "non_critical"],
+        "enum": [
+          "critical",
+          "non_critical"
+        ],
         "description": "Operational impact if the dependency fails."
       },
       "HealthCheck_Mode": {
         "type": "string",
-        "enum": ["inline", "polled", "async"],
+        "enum": [
+          "inline",
+          "polled",
+          "async"
+        ],
         "description": "How the dependency is checked."
       },
       "HealthCheck_Status": {
         "type": "object",
         "properties": {
-          "status": { "$ref": "#/components/schemas/HealthCheck_StatusValue" }
+          "status": {
+            "$ref": "#/components/schemas/HealthCheck_StatusValue"
+          }
         },
-        "required": ["status"]
+        "required": [
+          "status"
+        ]
       },
       "HealthCheck_System": {
         "type": "object",
         "properties": {
-          "hostname": { "type": "string" },
+          "hostname": {
+            "type": "string"
+          },
           "platform": {
             "type": "string",
             "description": "NodeJS.Platform",
-            "enum": ["aix","android","darwin","freebsd","linux","openbsd","sunos","win32"]
+            "enum": [
+              "aix",
+              "android",
+              "darwin",
+              "freebsd",
+              "linux",
+              "openbsd",
+              "sunos",
+              "win32"
+            ]
           },
-          "release": { "type": "string" },
-          "arch": { "type": "string", "description": "e.g., x64, arm64" },
-          "uptime": { "type": "number", "description": "Seconds." },
+          "release": {
+            "type": "string"
+          },
+          "arch": {
+            "type": "string",
+            "description": "e.g., x64, arm64"
+          },
+          "uptime": {
+            "type": "number",
+            "description": "Seconds."
+          },
           "loadavg": {
             "type": "array",
-            "items": { "type": "number" },
+            "items": {
+              "type": "number"
+            },
             "minItems": 3,
             "maxItems": 3,
             "description": "Load averages for 1, 5, 15 minutes."
           },
-          "totalmem": { "type": "number" },
-          "freemem": { "type": "number" },
-          "memUsedRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+          "totalmem": {
+            "type": "number"
+          },
+          "freemem": {
+            "type": "number"
+          },
+          "memUsedRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
           "cpus": {
             "type": "object",
             "properties": {
-              "count": { "type": "integer", "minimum": 1 },
-              "model": { "type": "string" },
-              "speedMHz": { "type": "number" }
+              "count": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "model": {
+                "type": "string"
+              },
+              "speedMHz": {
+                "type": "number"
+              }
             },
-            "required": ["count"]
+            "required": [
+              "count"
+            ]
           }
         },
         "required": [
-          "hostname","platform","release","arch","uptime","loadavg",
-          "totalmem","freemem","memUsedRatio","cpus"
+          "hostname",
+          "platform",
+          "release",
+          "arch",
+          "uptime",
+          "loadavg",
+          "totalmem",
+          "freemem",
+          "memUsedRatio",
+          "cpus"
         ]
       },
       "HealthCheck_MemoryUsage": {
         "type": "object",
         "description": "Process memory usage (NodeJS.MemoryUsage).",
         "properties": {
-          "rss": { "type": "number" },
-          "heapTotal": { "type": "number" },
-          "heapUsed": { "type": "number" },
-          "external": { "type": "number" },
-          "arrayBuffers": { "type": "number" }
+          "rss": {
+            "type": "number"
+          },
+          "heapTotal": {
+            "type": "number"
+          },
+          "heapUsed": {
+            "type": "number"
+          },
+          "external": {
+            "type": "number"
+          },
+          "arrayBuffers": {
+            "type": "number"
+          }
         },
-        "additionalProperties": { "type": "number" }
+        "additionalProperties": {
+          "type": "number"
+        }
       },
       "HealthCheck_Process": {
         "type": "object",
         "properties": {
-          "pid": { "type": "integer" },
-          "node": { "type": "string", "description": "Node.js version string." },
-          "uptime": { "type": "number", "description": "Seconds." },
-          "memory": { "$ref": "#/components/schemas/HealthCheck_MemoryUsage" }
+          "pid": {
+            "type": "integer"
+          },
+          "node": {
+            "type": "string",
+            "description": "Node.js version string."
+          },
+          "uptime": {
+            "type": "number",
+            "description": "Seconds."
+          },
+          "memory": {
+            "$ref": "#/components/schemas/HealthCheck_MemoryUsage"
+          }
         },
-        "required": ["pid","node","uptime","memory"]
+        "required": [
+          "pid",
+          "node",
+          "uptime",
+          "memory"
+        ]
       },
       "HealthCheck_Liveness": {
         "allOf": [
-          { "$ref": "#/components/schemas/HealthCheck_Status" },
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
           {
             "type": "object",
             "properties": {
-              "timestamp": { "type": "string", "format": "date-time" },
-              "system": { "$ref": "#/components/schemas/HealthCheck_System" },
-              "process": { "$ref": "#/components/schemas/HealthCheck_Process" }
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "system": {
+                "$ref": "#/components/schemas/HealthCheck_System"
+              },
+              "process": {
+                "$ref": "#/components/schemas/HealthCheck_Process"
+              }
             },
-            "required": ["timestamp","system","process"]
+            "required": [
+              "timestamp",
+              "system",
+              "process"
+            ]
           }
         ]
       },
       "HealthCheck_Freshness": {
         "type": "object",
         "properties": {
-          "lastChecked": { "type": "string", "format": "date-time" },
-          "lastSuccess": { "type": ["string","null"], "format": "date-time" }
+          "lastChecked": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastSuccess": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
         },
-        "required": ["lastChecked","lastSuccess"]
+        "required": [
+          "lastChecked",
+          "lastSuccess"
+        ]
       },
       "HealthCheck_Observed": {
         "type": "object",
         "properties": {
-          "latencyMs": { "type": ["number","null"] }
+          "latencyMs": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
         },
         "additionalProperties": true
       },
       "HealthCheck_CheckError": {
         "type": "object",
         "properties": {
-          "code": { "type": "string" },
-          "message": { "type": "string" }
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
         },
-        "required": ["code","message"]
+        "required": [
+          "code",
+          "message"
+        ]
       },
       "HealthCheck_DependencyCheck": {
         "allOf": [
-          { "$ref": "#/components/schemas/HealthCheck_Status" },
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
           {
             "type": "object",
             "properties": {
-              "impact": { "$ref": "#/components/schemas/HealthCheck_Impact" },
-              "mode": { "$ref": "#/components/schemas/HealthCheck_Mode" },
-              "freshness": { "$ref": "#/components/schemas/HealthCheck_Freshness" },
-              "observed": { "$ref": "#/components/schemas/HealthCheck_Observed" },
-              "details": { "type": "object", "additionalProperties": true },
-              "error": { "oneOf": [ { "$ref": "#/components/schemas/HealthCheck_CheckError" }, { "type": "null" } ] },
-              "since": { "type": ["string","null"], "format": "date-time" }
+              "impact": {
+                "$ref": "#/components/schemas/HealthCheck_Impact"
+              },
+              "mode": {
+                "$ref": "#/components/schemas/HealthCheck_Mode"
+              },
+              "freshness": {
+                "$ref": "#/components/schemas/HealthCheck_Freshness"
+              },
+              "observed": {
+                "$ref": "#/components/schemas/HealthCheck_Observed"
+              },
+              "details": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "error": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/HealthCheck_CheckError"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "since": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
             },
-            "required": ["impact","mode","freshness"]
+            "required": [
+              "impact",
+              "mode",
+              "freshness"
+            ]
           }
         ]
       },
@@ -320,72 +525,272 @@ app.listen(3000, () => {
           "critical": {
             "type": "object",
             "properties": {
-              "ok": { "type": "integer", "minimum": 0 },
-              "failing": { "type": "integer", "minimum": 0 }
+              "ok": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "failing": {
+                "type": "integer",
+                "minimum": 0
+              }
             },
-            "required": ["ok","failing"]
+            "required": [
+              "ok",
+              "failing"
+            ]
           },
           "nonCritical": {
             "type": "object",
             "properties": {
-              "ok": { "type": "integer", "minimum": 0 },
-              "degraded": { "type": "integer", "minimum": 0 },
-              "failing": { "type": "integer", "minimum": 0 }
+              "ok": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "degraded": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "failing": {
+                "type": "integer",
+                "minimum": 0
+              }
             },
-            "required": ["ok","degraded","failing"]
-          },
-          "degradedReasons": {
-            "type": "array",
-            "items": { "type": "string" }
+            "required": [
+              "ok",
+              "degraded",
+              "failing"
+            ]
           }
         },
-        "required": ["critical","nonCritical","degradedReasons"]
+        "required": [
+          "critical",
+          "nonCritical"
+        ]
       },
       "HealthCheck_ReadinessPayload": {
         "allOf": [
-          { "$ref": "#/components/schemas/HealthCheck_Status" },
+          {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
           {
             "type": "object",
             "properties": {
-              "timestamp": { "type": "string", "format": "date-time" },
-              "service": {
-                "type": "object",
-                "properties": {
-                  "name": { "type": "string" },
-                  "version": { "type": "string" },
-                  "instanceId": { "type": "string" }
-                },
-                "additionalProperties": false
+              "summary": {
+                "$ref": "#/components/schemas/HealthCheck_ReadinessSummary"
               },
-              "summary": { "$ref": "#/components/schemas/HealthCheck_ReadinessSummary" },
-              "checks": {
+              "dependencies": {
                 "type": "object",
-                "additionalProperties": { "$ref": "#/components/schemas/HealthCheck_DependencyCheck" },
-                "description": "Keyed by dependency name."
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/HealthCheck_DependencyCheck"
+                }
               }
             },
-            "required": ["timestamp","summary","checks"]
+            "required": [
+              "summary"
+            ]
           }
         ]
       },
       "HealthCheck_HealthSummary": {
         "allOf": [
-          { "$ref": "#/components/schemas/HealthCheck_Status" },
+          {
+            "$ref": "#/components/schemas/HealthCheck_Liveness"
+          },
           {
             "type": "object",
             "properties": {
-              "timestamp": { "type": "string", "format": "date-time" },
-              "summary": { "$ref": "#/components/schemas/HealthCheck_ReadinessSummary" },
-              "checks": {
-                "type": "object",
-                "additionalProperties": { "$ref": "#/components/schemas/HealthCheck_DependencyCheck" }
-              },
-              "system": { "$ref": "#/components/schemas/HealthCheck_System" },
-              "process": { "$ref": "#/components/schemas/HealthCheck_Process" }
+              "summary": {
+                "$ref": "#/components/schemas/HealthCheck_ReadinessSummary"
+              }
             },
-            "required": ["timestamp","summary","checks","system","process"]
+            "required": [
+              "summary"
+            ]
           }
         ]
+      },
+      "HealthCheck_Status_Entity": {
+        "type": "object",
+        "description": "Envelope for the status (ping) resource.",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HealthCheck_Status"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "parent": {
+                "$ref": "#/components/schemas/Link"
+              }
+            },
+            "required": [
+              "self",
+              "parent"
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "links"
+        ],
+        "example": {
+          "data": {
+            "status": "ok"
+          },
+          "links": {
+            "self": {
+              "href": "/health/ping",
+              "method": "GET"
+            },
+            "parent": {
+              "href": "/health",
+              "method": "GET"
+            }
+          }
+        }
+      },
+      "HealthCheck_Liveness_Entity": {
+        "type": "object",
+        "description": "Envelope for the liveness resource.",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HealthCheck_Liveness"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "parent": {
+                "$ref": "#/components/schemas/Link"
+              }
+            },
+            "required": [
+              "self",
+              "parent"
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "links"
+        ],
+        "example": {
+          "data": {
+            "status": "ok",
+            "timestamp": "2026-02-24T12:00:00Z"
+          },
+          "links": {
+            "self": {
+              "href": "/health/live",
+              "method": "GET"
+            },
+            "parent": {
+              "href": "/health",
+              "method": "GET"
+            }
+          }
+        }
+      },
+      "HealthCheck_Readiness_Entity": {
+        "type": "object",
+        "description": "Envelope for the readiness resource.",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HealthCheck_ReadinessPayload"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "parent": {
+                "$ref": "#/components/schemas/Link"
+              }
+            },
+            "required": [
+              "self",
+              "parent"
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "links"
+        ],
+        "example": {
+          "links": {
+            "self": {
+              "href": "/health/ready",
+              "method": "GET"
+            },
+            "parent": {
+              "href": "/health",
+              "method": "GET"
+            }
+          }
+        }
+      },
+      "HealthCheck_HealthSummary_Entity": {
+        "type": "object",
+        "description": "Envelope for the root health summary resource. Links to all children.",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/HealthCheck_HealthSummary"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "liveness": {
+                "$ref": "#/components/schemas/Link"
+              },
+              "readiness": {
+                "$ref": "#/components/schemas/Link"
+              }
+            },
+            "required": [
+              "self",
+              "status",
+              "liveness",
+              "readiness"
+            ]
+          }
+        },
+        "required": [
+          "data",
+          "links"
+        ],
+        "example": {
+          "links": {
+            "self": {
+              "href": "/health",
+              "method": "GET"
+            },
+            "status": {
+              "href": "/health/ping",
+              "method": "GET"
+            },
+            "liveness": {
+              "href": "/health/live",
+              "method": "GET"
+            },
+            "readiness": {
+              "href": "/health/ready",
+              "method": "GET"
+            }
+          }
+        }
       }
     }
   }
@@ -396,64 +801,90 @@ app.listen(3000, () => {
 
 ```yaml
 tags:
-  - name: system
+  - name: health
     description: Operational endpoints.
+
 paths:
-  /health/ping:
-    get:
-      tags: [system]
-      summary: Health ping
-      description: Basic health status.
-      security: []
-      responses:
-        "200":
-          description: Service responds with basic status.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HealthCheck_Status'
-  /health/live:
-    get:
-      tags: [system]
-      summary: Liveness
-      description: Liveness signal with system and process metrics.
-      security: []
-      responses:
-        "200":
-          description: Liveness payload.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HealthCheck_Liveness'
-  /health/ready:
-    get:
-      tags: [system]
-      summary: Readiness
-      description: Readiness including dependency checks and summary.
-      security: []
-      responses:
-        "200":
-          description: Readiness payload.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HealthCheck_ReadinessPayload'
   /health:
     get:
-      tags: [system]
+      tags: [health]
       summary: Comprehensive health summary
-      description: Combined view of status, system/process metrics, and readiness summary.
+      description: Combined view of status, system/process metrics, and readiness summary. Includes links to all child endpoints.
       security: []
       responses:
         "200":
-          description: Health summary.
+          description: Health summary envelope.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HealthCheck_HealthSummary'
+                $ref: '#/components/schemas/HealthCheck_HealthSummary_Entity'
+
+  /health/ping:
+    get:
+      tags: [health]
+      summary: Status ping
+      description: Basic health status. Links back to parent /health.
+      security: []
+      responses:
+        "200":
+          description: Status entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck_Status_Entity'
+
+  /health/live:
+    get:
+      tags: [health]
+      summary: Liveness
+      description: Liveness signal with system and process metrics. Links back to parent /health.
+      security: []
+      responses:
+        "200":
+          description: Liveness entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck_Liveness_Entity'
+
+  /health/ready:
+    get:
+      tags: [health]
+      summary: Readiness
+      description: Readiness including dependency checks and summary. Links back to parent /health.
+      security: []
+      responses:
+        "200":
+          description: Readiness entity.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheck_Readiness_Entity'
 
 components:
   schemas:
+
+    # ─── Shared link primitives ───────────────────────────────────────────────
+
+    Verb:
+      type: string
+      enum: [GET, POST, PUT, PATCH, DELETE]
+      description: HTTP method for the link.
+
+    Link:
+      type: object
+      description: A hypermedia link.
+      properties:
+        href:
+          type: string
+          format: uri-reference
+          description: Target URL.
+        method:
+          $ref: '#/components/schemas/Verb'
+      required: [href, method]
+
+    # ─── Domain schemas ───────────────────────────────────────────────────────
+
     HealthCheck_StatusValue:
       type: string
       enum: [ok, degraded, error]
@@ -655,4 +1086,140 @@ components:
               type: integer
               minimum: 0
           required: [ok, degraded, failing]
+      required: [critical, nonCritical]
+
+    HealthCheck_ReadinessPayload:
+      allOf:
+        - $ref: '#/components/schemas/HealthCheck_Status'
+        - type: object
+          properties:
+            summary:
+              $ref: '#/components/schemas/HealthCheck_ReadinessSummary'
+            dependencies:
+              type: object
+              additionalProperties:
+                $ref: '#/components/schemas/HealthCheck_DependencyCheck'
+          required: [summary]
+
+    HealthCheck_HealthSummary:
+      allOf:
+        - $ref: '#/components/schemas/HealthCheck_Liveness'
+        - type: object
+          properties:
+            summary:
+              $ref: '#/components/schemas/HealthCheck_ReadinessSummary'
+          required: [summary]
+
+    # ─── Entity wrappers ──────────────────────────────────────────────────────
+
+    HealthCheck_Status_Entity:
+      type: object
+      description: Envelope for the status (ping) resource.
+      properties:
+        data:
+          $ref: '#/components/schemas/HealthCheck_Status'
+        links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+            parent:
+              $ref: '#/components/schemas/Link'
+          required: [self, parent]
+      required: [data, links]
+      example:
+        data:
+          status: ok
+        links:
+          self:
+            href: /health/ping
+            method: GET
+          parent:
+            href: /health
+            method: GET
+
+    HealthCheck_Liveness_Entity:
+      type: object
+      description: Envelope for the liveness resource.
+      properties:
+        data:
+          $ref: '#/components/schemas/HealthCheck_Liveness'
+        links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+            parent:
+              $ref: '#/components/schemas/Link'
+          required: [self, parent]
+      required: [data, links]
+      example:
+        data:
+          status: ok
+          timestamp: "2026-02-24T12:00:00Z"
+        links:
+          self:
+            href: /health/live
+            method: GET
+          parent:
+            href: /health
+            method: GET
+
+    HealthCheck_Readiness_Entity:
+      type: object
+      description: Envelope for the readiness resource.
+      properties:
+        data:
+          $ref: '#/components/schemas/HealthCheck_ReadinessPayload'
+        links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+            parent:
+              $ref: '#/components/schemas/Link'
+          required: [self, parent]
+      required: [data, links]
+      example:
+        links:
+          self:
+            href: /health/ready
+            method: GET
+          parent:
+            href: /health
+            method: GET
+
+    HealthCheck_HealthSummary_Entity:
+      type: object
+      description: Envelope for the root health summary resource. Links to all children.
+      properties:
+        data:
+          $ref: '#/components/schemas/HealthCheck_HealthSummary'
+        links:
+          type: object
+          properties:
+            self:
+              $ref: '#/components/schemas/Link'
+            status:
+              $ref: '#/components/schemas/Link'
+            liveness:
+              $ref: '#/components/schemas/Link'
+            readiness:
+              $ref: '#/components/schemas/Link'
+          required: [self, status, liveness, readiness]
+      required: [data, links]
+      example:
+        links:
+          self:
+            href: /health
+            method: GET
+          status:
+            href: /health/ping
+            method: GET
+          liveness:
+            href: /health/live
+            method: GET
+          readiness:
+            href: /health/ready
+            method: GET
 ```

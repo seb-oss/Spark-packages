@@ -23,7 +23,6 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@types/express-serve-static-core": "5.1.1",
     "express": "5.2.1"
   },
   "devDependencies": {

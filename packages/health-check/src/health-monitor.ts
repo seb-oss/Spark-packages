@@ -1,9 +1,9 @@
-import { Router } from 'express'
-import type { ErrorRequestHandler } from 'express-serve-static-core'
+import { type ErrorRequestHandler, Router } from 'express'
 import type {
   DependencyMonitor,
   DependencyMonitorConfig,
 } from './dependency-monitor'
+import { entity } from './entity'
 import { liveness, ping } from './static-checks'
 import { throttle } from './timing'
 import type {
@@ -96,38 +96,56 @@ export class HealthMonitor {
     const router = Router()
 
     // Health
-    router.get('/health', async (_req, res, next) => {
+    router.get('/health', async (req, res, next) => {
       try {
         const health = await this.health()
-        res.status(200).json(health)
+        res.status(200).json(
+          entity(req, health, {
+            ping: { method: 'GET', href: '/health/ping' },
+            live: { method: 'GET', href: '/health/live' },
+            ready: { method: 'GET', href: '/health/ready' },
+          })
+        )
       } catch (err) {
         next?.(err)
       }
     })
 
     // Ping
-    router.get('/health/ping', (_req, res, next) => {
+    router.get('/health/ping', (req, res, next) => {
       try {
-        res.status(200).json(this.ping())
+        res.status(200).json(
+          entity(req, this.ping(), {
+            health: { method: 'GET', href: '/health' },
+          })
+        )
       } catch (err) {
         next?.(err)
       }
     })
 
     // Liveness
-    router.get('/health/live', (_req, res, next) => {
+    router.get('/health/live', (req, res, next) => {
       try {
-        res.status(200).json(this.live())
+        res.status(200).json(
+          entity(req, this.live(), {
+            health: { method: 'GET', href: '/health' },
+          })
+        )
       } catch (err) {
         next?.(err)
       }
     })
 
     // Readiness
-    router.get('/health/ready', async (_req, res, next) => {
+    router.get('/health/ready', async (req, res, next) => {
       try {
         const readiness = await this.ready()
-        res.status(200).json(readiness)
+        res.status(200).json(
+          entity(req, readiness, {
+            health: { method: 'GET', href: '/health' },
+          })
+        )
       } catch (err) {
         next?.(err)
       }

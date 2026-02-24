@@ -1,6 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { DependencyMonitor } from './dependency-monitor'
-import { StatusValue } from './types'
 
 describe('DependencyMonitor', () => {
   it('can be instantiated', () => {

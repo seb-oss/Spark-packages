@@ -246,10 +246,18 @@ describe('HealthMonitor', () => {
 
     it('GET /health/ping calls .ping and returns its value', async () => {
       const stub = vi.spyOn(monitor, 'ping').mockReturnValue({ status: 'ok' })
-      const res = await agent(app).get('/health/ping')
+      const res = await agent(app)
+        .get('/health/ping')
+        .set('Host', 'mysystem.com')
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(200)
-      expect(res.body).toEqual({ status: 'ok' })
+      expect(res.body).toEqual({
+        data: { status: 'ok' },
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ping' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
     })
 
     it('GET /health/live calls .live and returns its value', async () => {
@@ -259,19 +267,67 @@ describe('HealthMonitor', () => {
         timestamp: '2025-08-19T12:00:00Z',
       }
       const stub = vi.spyOn(monitor, 'live').mockReturnValue(payload as any)
-      const res = await agent(app).get('/health/live')
+      const res = await agent(app)
+        .get('/health/live')
+        .set('Host', 'mysystem.com')
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(200)
-      expect(res.body).toEqual(payload)
+      expect(res.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/live' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
     })
 
     it('GET /health/ready calls .ready and returns its value', async () => {
       const payload = { status: 'ok', checks: { db: { status: 'ok' } } }
       const stub = vi.spyOn(monitor, 'ready').mockResolvedValue(payload as any)
-      const res = await agent(app).get('/health/ready')
+      const res = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(200)
-      expect(res.body).toEqual(payload)
+      expect(res.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ready' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+    })
+
+    it('GET /health returns a composed value', async () => {
+      const ping = { status: 'ok' }
+      const live = {
+        status: 'ok',
+        uptime: 123,
+        timestamp: '2025-08-19T12:00:00Z',
+      }
+      const ready = { status: 'ok', checks: { db: { status: 'ok' } } }
+
+      vi.spyOn(monitor, 'ping').mockReturnValue(ping as any)
+      vi.spyOn(monitor, 'live').mockReturnValue(live as any)
+      vi.spyOn(monitor, 'ready').mockResolvedValue(ready as any)
+
+      const res = await agent(app).get('/health').set('Host', 'mysystem.com')
+      expect(res.status).toBe(200)
+      expect(res.body).toEqual({
+        data: {
+          checks: {
+            db: { status: 'ok' },
+          },
+          status: 'ok',
+          timestamp: expect.any(String),
+        },
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health' },
+          ping: { method: 'GET', href: '//mysystem.com/health/ping' },
+          live: { method: 'GET', href: '//mysystem.com/health/live' },
+          ready: { method: 'GET', href: '//mysystem.com/health/ready' },
+        },
+      })
     })
   })
   describe('.dispose', () => {

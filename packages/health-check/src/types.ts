@@ -3,6 +3,18 @@ export type StatusValue = DependencyStatusValue | 'unknown' | 'draining'
 export type Impact = 'critical' | 'non_critical'
 export type Mode = 'inline' | 'polled' | 'async'
 
+export type Verb = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+
+export type Link = {
+  method: Verb
+  href: string
+}
+
+export interface Entity<T> {
+  data: T
+  links: Record<string, Link>
+}
+
 export type Status = {
   status: StatusValue
 }
