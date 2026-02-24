@@ -1,5 +1,13 @@
 # @sebspark/health-check
 
+## 2.0.1
+
+### Patch Changes
+
+- aaa50ea: Healthcheck now uses Hypermedia. Hypermedia got better jsdocs.
+- Updated dependencies [aaa50ea]
+  - @sebspark/hyper-media@0.1.1
+
 ## 2.0.0
 
 ### Major Changes
