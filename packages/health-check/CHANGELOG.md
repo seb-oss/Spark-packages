@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.0.0
+
+### Major Changes
+
+- 6037a11: Links changed to entities with hypermedia links
+
 ## 1.0.14
 
 ### Patch Changes
