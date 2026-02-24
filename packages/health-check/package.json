@@ -23,6 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
+    "@sebspark/hyper-media": "0.1.0",
     "express": "5.2.1"
   },
   "devDependencies": {

@@ -1,9 +1,9 @@
+import { toEntity } from '@sebspark/hyper-media'
 import { type ErrorRequestHandler, Router } from 'express'
 import type {
   DependencyMonitor,
   DependencyMonitorConfig,
 } from './dependency-monitor'
-import { entity } from './entity'
 import { liveness, ping } from './static-checks'
 import { throttle } from './timing'
 import type {
@@ -100,10 +100,10 @@ export class HealthMonitor {
       try {
         const health = await this.health()
         res.status(200).json(
-          entity(req, health, {
-            ping: { method: 'GET', href: '/health/ping' },
-            live: { method: 'GET', href: '/health/live' },
-            ready: { method: 'GET', href: '/health/ready' },
+          toEntity(req, health, {
+            ping: '/health/ping',
+            live: '/health/live',
+            ready: '/health/ready',
           })
         )
       } catch (err) {
@@ -115,8 +115,8 @@ export class HealthMonitor {
     router.get('/health/ping', (req, res, next) => {
       try {
         res.status(200).json(
-          entity(req, this.ping(), {
-            health: { method: 'GET', href: '/health' },
+          toEntity(req, this.ping(), {
+            health: '/health',
           })
         )
       } catch (err) {
@@ -128,8 +128,8 @@ export class HealthMonitor {
     router.get('/health/live', (req, res, next) => {
       try {
         res.status(200).json(
-          entity(req, this.live(), {
-            health: { method: 'GET', href: '/health' },
+          toEntity(req, this.live(), {
+            health: '/health',
           })
         )
       } catch (err) {
@@ -142,8 +142,8 @@ export class HealthMonitor {
       try {
         const readiness = await this.ready()
         res.status(200).json(
-          entity(req, readiness, {
-            health: { method: 'GET', href: '/health' },
+          toEntity(req, readiness, {
+            health: '/health',
           })
         )
       } catch (err) {
