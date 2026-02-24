@@ -3398,6 +3398,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/hyper-media@workspace:packages/hyper-media":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/hyper-media@workspace:packages/hyper-media"
+  dependencies:
+    express: "npm:5.2.1"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/iso-10383@workspace:packages/iso-10383":
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-10383@workspace:packages/iso-10383"

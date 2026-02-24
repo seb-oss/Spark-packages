@@ -125,6 +125,10 @@ Handle environment variables with assertion
 
 Avro parser and helpers for creating socket servers and socket clients using it
 
+### [@sebspark/hyper-media](./packages/hyper-media)
+
+Helpers for generating Hyper Media Entities and Links
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
