@@ -61,8 +61,8 @@ export const toEntity = <T>(
   return {
     data,
     links: {
-      ...resolvedLinks,
       self: { method: 'GET', href: resolveUrl(req) },
+      ...resolvedLinks,
     },
   }
 }

@@ -36,7 +36,7 @@ describe('toEntity', () => {
         href: '//api.example.com/trading/exchange/v1/orders?page=1&limit=10',
       })
     })
-    it('self link is not overridden by passed links', () => {
+    it('self link is overridden by passed links', () => {
       const req = mockRequest()
       const links: Record<string, Link> = {
         self: { method: 'GET', href: '/something/else' },
@@ -44,7 +44,7 @@ describe('toEntity', () => {
       const entity = toEntity(req, { foo: 'bar' }, links)
       expect(entity.links.self).toEqual({
         method: 'GET',
-        href: '//api.example.com/trading/exchange/v1/orders',
+        href: '//api.example.com/trading/exchange/v1/something/else',
       })
     })
   })

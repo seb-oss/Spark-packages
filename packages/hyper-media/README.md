@@ -47,9 +47,8 @@ URLs are constructed using forwarded headers in the following order:
 
 | Header | Purpose |
 |---|---|
-| `X-Forwarded-Host` | Public-facing hostname set by Kong |
-| `X-Forwarded-Proto` | Protocol set by Kong (not used in href, implicit `//`) |
-| `X-Forwarded-Prefix` | Path prefix accumulated across ALB hops |
+| `X-Forwarded-Host` | Public-facing hostname set by Gateway |
+| `X-Forwarded-Prefix` | Path prefix accumulated across Load Balancer hops |
 
 All hrefs use implicit protocol (`//host/path`) so the client inherits the protocol from the page context.
 
@@ -110,7 +109,7 @@ const entity = toEntity(req, order, {
 // }
 ```
 
-`self` is always derived from the request and cannot be overridden by the caller.
+`self` is derived from the request unless overridden overridden by the caller.
 
 Links accept either a full `Link` object or a string shorthand which defaults to `GET`:
 
@@ -189,7 +188,7 @@ const entity = toCursorListEntity(req, mappedItems, 10, 'next-abc', 'prev-abc')
 This library is designed for a multi-hop proxy architecture where each layer injects its own path segment via `X-Forwarded-Prefix`:
 
 ```
-Kong
+Gateway
   → sets X-Forwarded-Host: api.example.com
   → sets X-Forwarded-Proto: https
 
