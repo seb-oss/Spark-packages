@@ -3359,7 +3359,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/cli-tester@npm:1.0.9, @sebspark/cli-tester@workspace:packages/cli-tester":
+"@sebspark/cli-tester@npm:1.0.10, @sebspark/cli-tester@workspace:packages/cli-tester":
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
@@ -3374,7 +3374,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.14, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.15, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
@@ -3446,7 +3446,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
-    "@sebspark/gcp-iam": "npm:3.0.14"
+    "@sebspark/gcp-iam": "npm:3.0.15"
   languageName: unknown
   linkType: soft
 
@@ -3627,7 +3627,7 @@ __metadata:
   dependencies:
     "@google-cloud/spanner": "npm:8.6.0"
     "@inquirer/prompts": "npm:8.3.0"
-    "@sebspark/cli-tester": "npm:1.0.9"
+    "@sebspark/cli-tester": "npm:1.0.10"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:11.12.0"
     typescript: "npm:5.9.3"
