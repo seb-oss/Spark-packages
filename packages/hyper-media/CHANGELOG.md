@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.2
+
+### Patch Changes
+
+- 695837c: Overrideable self link
+
 ## 0.1.1
 
 ### Patch Changes
