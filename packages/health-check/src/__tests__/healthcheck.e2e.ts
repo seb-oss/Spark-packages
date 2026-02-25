@@ -25,7 +25,19 @@ describe('health-check', () => {
       const res = await request(app).get('/health/ping')
 
       expect(res.status).toBe(200)
-      expect(res.body).toEqual({ status: 'ok' })
+      expect(res.body).toEqual({
+        data: { status: 'ok' },
+        links: {
+          health: {
+            href: expect.stringMatching(/^\/\/[^/]+(:\d+)?\/health$/),
+            method: 'GET',
+          },
+          self: {
+            href: expect.stringMatching(/^\/\/[^/]+(:\d+)?\/health\/ping$/),
+            method: 'GET',
+          },
+        },
+      })
     })
   })
   describe('health/live', () => {
@@ -35,32 +47,38 @@ describe('health-check', () => {
       expect(res.status).toBe(200)
 
       expect(res.body).toMatchObject({
-        status: 'ok',
-        timestamp: expect.any(String),
-        system: {
-          hostname: expect.any(String),
-          platform: expect.any(String),
-          release: expect.any(String),
-          arch: expect.any(String),
-          uptime: expect.any(Number),
-          loadavg: expect.any(Array),
-          totalmem: expect.any(Number),
-          freemem: expect.any(Number),
-          memUsedRatio: expect.any(Number),
-          cpus: {
-            count: expect.any(Number),
+        data: {
+          status: 'ok',
+          timestamp: expect.any(String),
+          system: {
+            hostname: expect.any(String),
+            platform: expect.any(String),
+            release: expect.any(String),
+            arch: expect.any(String),
+            uptime: expect.any(Number),
+            loadavg: expect.any(Array),
+            totalmem: expect.any(Number),
+            freemem: expect.any(Number),
+            memUsedRatio: expect.any(Number),
+            cpus: {
+              count: expect.any(Number),
+            },
+          },
+          process: {
+            pid: expect.any(Number),
+            node: expect.any(String),
+            uptime: expect.any(Number),
+            memory: expect.any(Object),
           },
         },
-        process: {
-          pid: expect.any(Number),
-          node: expect.any(String),
-          uptime: expect.any(Number),
-          memory: expect.any(Object),
+        links: {
+          health: {},
+          self: {},
         },
       })
 
       // Check that timestamp is recent (within ~10ms of now)
-      const diff = Date.now() - Date.parse(res.body.timestamp)
+      const diff = Date.now() - Date.parse(res.body.data.timestamp)
       expect(diff).toBeLessThan(20)
     })
   })
@@ -131,7 +149,7 @@ describe('health-check', () => {
       expect(res.status).toBe(200)
 
       // assert general shape (don’t care what checks exist here)
-      expect(res.body).toMatchObject({
+      expect(res.body.data).toMatchObject({
         status: expect.stringMatching(/^(ok|degraded|error)$/),
         timestamp: expect.any(String),
         summary: expect.any(Object),
@@ -142,7 +160,7 @@ describe('health-check', () => {
       const res = await request(app).get('/health/ready')
       expect(res.status).toBe(200)
 
-      const redisCheck = res.body?.checks?.redis
+      const redisCheck = res.body?.data?.checks?.redis
       expect(redisCheck).toBeDefined()
       expect(redisCheck).toMatchObject({
         impact: 'critical',
@@ -158,7 +176,7 @@ describe('health-check', () => {
       const res = await request(app).get('/health/ready')
       expect(res.status).toBe(200)
 
-      const apiCheck = (res.body as ReadinessPayload).checks.api
+      const apiCheck = (res.body.data as ReadinessPayload).checks.api
       expect(apiCheck).toBeDefined()
       expect(apiCheck.status).toEqual('unknown')
     })
@@ -167,7 +185,7 @@ describe('health-check', () => {
         const res = await request(app).get('/health/ready')
         expect(res.status).toBe(200)
 
-        const apiCheck = (res.body as ReadinessPayload).checks.api
+        const apiCheck = (res.body.data as ReadinessPayload).checks.api
         expect(apiCheck).toBeDefined()
         expect(apiCheck).toMatchObject({
           impact: 'non_critical',
@@ -184,7 +202,7 @@ describe('health-check', () => {
       const res = await request(app).get('/health/ready')
       expect(res.status).toBe(200)
 
-      const pubsubCheck = (res.body as ReadinessPayload).checks.pubsub
+      const pubsubCheck = (res.body.data as ReadinessPayload).checks.pubsub
       expect(pubsubCheck).toBeDefined()
       expect(pubsubCheck.status).toEqual('unknown')
     })
@@ -193,7 +211,7 @@ describe('health-check', () => {
         const res = await request(app).get('/health/ready')
         expect(res.status).toBe(200)
 
-        const pubsubCheck = (res.body as ReadinessPayload).checks.pubsub
+        const pubsubCheck = (res.body.data as ReadinessPayload).checks.pubsub
         expect(pubsubCheck).toBeDefined()
         expect(pubsubCheck).toMatchObject({
           impact: 'critical',
