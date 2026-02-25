@@ -210,23 +210,13 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      # - name: Cache Yarn dependencies
-      #   id: cache
-      #   uses: actions/cache@v5
-      #   with:
-      #     path: |
-      #       node_modules
-      #       .yarn/cache
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
-
       - name: Install dependencies
         run: yarn install --immutable
 
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
+          version: yarn install && yarn changeset version  # updates lockfile after versioning
           publish: yarn release
           commit: "chore(release): update versions"
           title: "chore(release): update versions"
