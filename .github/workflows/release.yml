@@ -216,7 +216,7 @@ jobs:
       - name: Create Changeset PR
         uses: changesets/action@v1
         with:
-          version: yarn install && yarn changeset version  # updates lockfile after versioning
+          version: yarn version-packages
           publish: yarn release
           commit: "chore(release): update versions"
           title: "chore(release): update versions"

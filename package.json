@@ -14,6 +14,7 @@
     "generate:package": "turbo gen package",
     "lint:watch": "turbo watch lint",
     "lint:write": "biome check --write",
+    "knip": "knip",
     "lint": "turbo lint",
     "release": "turbo build && npx changeset publish",
     "start": "turbo watch lint test typecheck",
@@ -22,7 +23,7 @@
     "test:e2e": "turbo test:e2e",
     "test:e2e:watch": "turbo watch test:e2e",
     "typecheck": "turbo typecheck",
-    "knip": "knip"
+    "version-packages": "changeset version && yarn install --no-immutable"
   },
   "private": true,
   "dependencies": {
