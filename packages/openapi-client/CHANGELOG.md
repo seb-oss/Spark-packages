@@ -1,5 +1,12 @@
 # @sebspark/openapi-client
 
+## 4.1.7
+
+### Patch Changes
+
+- Updated dependencies [80e6230]
+  - @sebspark/otel@2.0.13
+
 ## 4.1.6
 
 ### Patch Changes
