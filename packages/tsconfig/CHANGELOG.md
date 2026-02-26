@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.8
+
+### Patch Changes
+
+- 80e6230: Updated dependencies
+
 ## 3.0.7
 
 ### Patch Changes

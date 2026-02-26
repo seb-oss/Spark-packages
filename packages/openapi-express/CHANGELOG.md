@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.0.14
+
+### Patch Changes
+
+- 80e6230: Updated dependencies
+
 ## 5.0.13
 
 ### Patch Changes
