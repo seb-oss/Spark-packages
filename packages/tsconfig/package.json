@@ -30,7 +30,7 @@
     "spark-build": "./run.js"
   },
   "dependencies": {
-    "tsdown": "0.20.3",
+    "tsdown": "0.21.0-beta.2",
     "tsup": "8.5.1"
   },
   "repository": {
