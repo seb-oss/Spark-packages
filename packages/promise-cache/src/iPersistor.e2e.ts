@@ -386,6 +386,27 @@ describe('multi', () => {
       .zRangeWithScores('instruments:by_volume', 0, 0, { REV: true })
     expect(await rMulti.exec()).toEqual(await mMulti.exec())
   })
+  test('zAdd to multiple different keys in one multi', async () => {
+    const rMulti = redisClient.multi()
+    const mMulti = memoryClient.multi()
+    rMulti
+      .zAdd('instruments:by_pct_change', { score: 0.415, value: 'TELIA' })
+      .zAdd('instruments:by_lv_pct_change', { score: 0.415, value: 'TELIA' })
+      .zAdd('instruments:by_volume', { score: 1068911, value: 'TELIA' })
+      .zAdd('instruments:by_turnover', { score: 49104307, value: 'TELIA' })
+    mMulti
+      .zAdd('instruments:by_pct_change', { score: 0.415, value: 'TELIA' })
+      .zAdd('instruments:by_lv_pct_change', { score: 0.415, value: 'TELIA' })
+      .zAdd('instruments:by_volume', { score: 1068911, value: 'TELIA' })
+      .zAdd('instruments:by_turnover', { score: 49104307, value: 'TELIA' })
+    expect(await rMulti.exec()).toEqual(await mMulti.exec())
+    expect(await redisClient.zRangeWithScores('instruments:by_volume', 0, -1)).toEqual(
+      await memoryClient.zRangeWithScores('instruments:by_volume', 0, -1)
+    )
+    expect(await redisClient.zRangeWithScores('instruments:by_turnover', 0, -1)).toEqual(
+      await memoryClient.zRangeWithScores('instruments:by_turnover', 0, -1)
+    )
+  })
   test('zIncrBy', async () => {
     const rMulti = redisClient.multi()
     const mMulti = memoryClient.multi()
