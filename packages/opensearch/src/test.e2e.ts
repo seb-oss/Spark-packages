@@ -91,7 +91,7 @@ describe('OpenSearchClient', () => {
             properties: {
               id: { type: 'keyword' },
               name: { type: 'keyword' },
-            }
+            },
           },
           age: { type: 'integer' },
         },
@@ -110,7 +110,7 @@ describe('OpenSearchClient', () => {
     assets: [
       { id: 'a', name: 'A' },
       { id: 'b', name: 'B' },
-    ]
+    ],
   } satisfies PersonDocument
 
   it('creates an index from an index definition', async () => {
@@ -174,11 +174,9 @@ describe('OpenSearchClient', () => {
             path: 'assets',
             query: {
               bool: {
-                should: [
-                  { match: { 'assets.id': 'a' } }
-                ]
-              }
-            }
+                should: [{ match: { 'assets.id': 'a' } }],
+              },
+            },
           },
         },
       },

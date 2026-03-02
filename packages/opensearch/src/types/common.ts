@@ -66,9 +66,9 @@ export type MapOpenSearchTypes<T> = T extends Property
           : T['type'] extends 'object'
             ? T extends { properties?: Record<string, Property> }
               ? {
-                  -readonly [K in keyof NonNullable<T['properties']>]?: MapOpenSearchTypes<
-                    NonNullable<T['properties']>[K]
-                  >
+                  -readonly [K in keyof NonNullable<
+                    T['properties']
+                  >]?: MapOpenSearchTypes<NonNullable<T['properties']>[K]>
                 }
               : T extends { dynamic: 'true' }
                 ? Record<string, unknown>
@@ -76,9 +76,9 @@ export type MapOpenSearchTypes<T> = T extends Property
             : T['type'] extends 'nested'
               ? T extends { properties?: Record<string, Property> }
                 ? Array<{
-                    -readonly [K in keyof NonNullable<T['properties']>]?: MapOpenSearchTypes<
-                      NonNullable<T['properties']>[K]
-                    >
+                    -readonly [K in keyof NonNullable<
+                      T['properties']
+                    >]?: MapOpenSearchTypes<NonNullable<T['properties']>[K]>
                   }>
                 : never
               : never
@@ -87,7 +87,7 @@ export type MapOpenSearchTypes<T> = T extends Property
     : never
 
 export type FlattenQueryType<T> = {
-  [K in keyof T]: T[K] extends Array<infer Item> 
+  [K in keyof T]: T[K] extends Array<infer Item>
     ? Item // 👈 This removes the '.length' and 'push/pop' suggestions
     : T[K]
 }
