@@ -33,7 +33,7 @@
     "@biomejs/biome": "2.4.4",
     "@sebspark/tsconfig": "*",
     "@turbo/gen": "2.8.11",
-    "@types/node": "24.10.14",
+    "@types/node": "24.10.15",
     "@vitest/coverage-v8": "4.0.18",
     "depcheck": "1.4.7",
     "knip": "5.85.0",
