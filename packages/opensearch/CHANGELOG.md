@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.15
+
+### Patch Changes
+
+- f2a144e: Fix range query
+
 ## 3.0.14
 
 ### Patch Changes
