@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.16
+
+### Patch Changes
+
+- f100f5b: Fixed search for nested properties
+
 ## 3.0.15
 
 ### Patch Changes
