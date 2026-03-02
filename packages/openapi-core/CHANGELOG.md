@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.1.1
+
+### Patch Changes
+
+- 063d384: Updated dependencies
+- Updated dependencies [063d384]
+  - @sebspark/retry@1.0.7
+
 ## 4.1.0
 
 ### Minor Changes

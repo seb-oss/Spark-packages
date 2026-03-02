@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.4.4
+
+### Patch Changes
+
+- 063d384: Updated dependencies
+
 ## 0.4.3
 
 ### Patch Changes
