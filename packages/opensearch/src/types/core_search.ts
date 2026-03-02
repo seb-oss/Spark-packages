@@ -15,16 +15,6 @@ export type Highlight<T> = Omit<Types.Core_Search.Highlight, 'fields'> & {
   fields: FieldQuery<T, Types.Core_Search.HighlightField>
 }
 
-export type InnerHits<T> = Omit<
-  Types.Core_Search.InnerHits,
-  'collapse' | 'highlight' | 'sort' | '_source'
-> & {
-  collapse?: FieldCollapse<T>
-  highlight?: Highlight<T>
-  sort?: Sort<T>
-  _source?: SourceConfig<T>
-}
-
 export type Hit<T extends IndexDefinition> = Omit<
   Types.Core_Search.Hit,
   '_source'

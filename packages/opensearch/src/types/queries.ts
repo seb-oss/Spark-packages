@@ -194,13 +194,6 @@ export type NeuralQuery<T> = Omit<
   filter?: QueryContainer<T>
 }
 
-export type NumberRangeQueryParameters<T> = Omit<
-  Types.Common_QueryDsl.NumberRangeQueryParameters,
-  'field'
-> & {
-  field: NestedPaths<T>
-}
-
 export type PercolateQuery<T> = Omit<
   Types.Common_QueryDsl.PercolateQuery,
   'field'
@@ -291,7 +284,7 @@ export type QueryContainer<T> = Omit<
   neural?: FieldQuery<T, NeuralQuery<T>>
   percolate?: PercolateQuery<T>
   prefix?: FieldQuery<T, PrefixQuery<T>>
-  range?: FieldQuery<T, RangeQuery<T>>
+  range?: FieldQuery<T, Types.Common_QueryDsl.RangeQuery>
   rank_feature?: RankFeatureQuery
   regexp?: FieldQuery<T, RegexpQuery<T>>
   script_score?: ScriptScoreQuery<T>
@@ -309,10 +302,6 @@ export type QueryContainer<T> = Omit<
   terms_set?: FieldQuery<T, TermsSetQuery<T>>
   wildcard?: FieldQuery<T, WildcardQuery<T>>
   xy_shape?: XyShapeQuery<T>
-}
-
-export type RangeQuery<T> = Omit<Types.Common_QueryDsl.RangeQuery, 'field'> & {
-  field: NestedPaths<T>
 }
 
 export type RankFeatureQuery = Types.Common_QueryDsl.RankFeatureQuery
