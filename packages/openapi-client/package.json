@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-client",
-  "version": "4.1.7",
+  "version": "4.1.8",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -25,14 +25,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@sebspark/openapi-typegen": "5.0.14",
+    "@sebspark/openapi-typegen": "5.0.15",
     "express": "5.2.1",
     "nock": "14.0.11"
   },
   "dependencies": {
-    "@sebspark/openapi-core": "4.1.0",
+    "@sebspark/openapi-core": "4.1.1",
     "@sebspark/otel": "2.0.13",
-    "@sebspark/retry": "1.0.6",
+    "@sebspark/retry": "1.0.7",
     "axios": "1.13.6",
     "axios-auth-refresh": "3.3.6"
   },
