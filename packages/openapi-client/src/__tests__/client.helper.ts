@@ -1,5 +1,4 @@
-import { json, Router } from 'express'
-import type { NextFunction, RequestHandler } from 'express-serve-static-core'
+import { json, type NextFunction, type RequestHandler, Router } from 'express'
 import type { HttpError, User, UserList } from './openapi'
 
 export const accessToken = 'Bearer access token'
@@ -19,7 +18,7 @@ const authorize: RequestHandler = (req, res, next) => {
 
 const users = new Map<string, User>()
 
-const router = Router()
+const router: Router = Router()
 router.use(json() as NextFunction)
 router.get('/users', authorize, (req, res) => {
   res.status(200).send(Array.from(users.values()) as UserList)

@@ -1,4 +1,15 @@
 {
-  "ignores": [],
-  "ignore-patterns": ["/dist"]
+  "ignore-patterns": ["/dist"],
+  "ignores": [
+    "@biomejs/biome",
+    "@sebspark/openapi-typegen",
+    "@sebspark/tsconfig",
+    "vitest",
+    "turbo",
+    "typescript",
+    "husky",
+    "ts-jest",
+    "tsx",
+    "syncpack"
+  ]
 }

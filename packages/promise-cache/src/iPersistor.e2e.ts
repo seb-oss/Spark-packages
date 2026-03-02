@@ -400,10 +400,14 @@ describe('multi', () => {
       .zAdd('instruments:by_volume', { score: 1068911, value: 'TELIA' })
       .zAdd('instruments:by_turnover', { score: 49104307, value: 'TELIA' })
     expect(await rMulti.exec()).toEqual(await mMulti.exec())
-    expect(await redisClient.zRangeWithScores('instruments:by_volume', 0, -1)).toEqual(
+    expect(
+      await redisClient.zRangeWithScores('instruments:by_volume', 0, -1)
+    ).toEqual(
       await memoryClient.zRangeWithScores('instruments:by_volume', 0, -1)
     )
-    expect(await redisClient.zRangeWithScores('instruments:by_turnover', 0, -1)).toEqual(
+    expect(
+      await redisClient.zRangeWithScores('instruments:by_turnover', 0, -1)
+    ).toEqual(
       await memoryClient.zRangeWithScores('instruments:by_turnover', 0, -1)
     )
   })

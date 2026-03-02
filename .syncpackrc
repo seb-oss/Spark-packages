@@ -1,0 +1,23 @@
+{
+  "source": [
+    "package.json",
+    "packages/*/package.json",
+    "apps/*/package.json"
+  ],
+  "versionGroups": [
+    {
+      "label": "Ignore semver rules for internal @sebspark packages",
+      "dependencies": ["@sebspark/*"],
+      "dependencyTypes": ["dev", "prod"],
+      "isIgnored": true
+    }
+  ],
+  "semverGroups": [
+    {
+      "label": "All external dependencies must be exact",
+      "range": "",
+      "dependencies": ["**"],
+      "packages": ["**"]
+    }
+  ]
+}

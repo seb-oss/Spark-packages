@@ -13,7 +13,7 @@ import type {
   RequestOptions,
   Serialized,
 } from '@sebspark/openapi-core'
-import type { Request as ExpressRequest } from 'express-serve-static-core'
+import type { Request as ExpressRequest } from 'express'
 
 type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
 

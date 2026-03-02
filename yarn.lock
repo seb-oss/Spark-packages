@@ -3501,7 +3501,6 @@ __metadata:
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.0"
-    "@sebspark/otel": "npm:2.0.13"
     "@types/supertest": "npm:7.2.0"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"
@@ -3639,8 +3638,6 @@ __metadata:
     testcontainers: "npm:11.12.0"
     typescript: "npm:5.9.3"
     yargs: "npm:18.0.0"
-  peerDependencies:
-    "@google-cloud/spanner": 8.4.0
   bin:
     spanner-migrate: ./dist/cli.mjs
   languageName: unknown
@@ -3793,51 +3790,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen-darwin-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen-darwin-64@npm:2.8.11"
+"@turbo/gen-darwin-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen-darwin-64@npm:2.8.12"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen-darwin-arm64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen-darwin-arm64@npm:2.8.11"
+"@turbo/gen-darwin-arm64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen-darwin-arm64@npm:2.8.12"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@turbo/gen-linux-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen-linux-64@npm:2.8.11"
+"@turbo/gen-linux-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen-linux-64@npm:2.8.12"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen-linux-arm64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen-linux-arm64@npm:2.8.11"
+"@turbo/gen-linux-arm64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen-linux-arm64@npm:2.8.12"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@turbo/gen-windows-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen-windows-64@npm:2.8.11"
+"@turbo/gen-windows-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen-windows-64@npm:2.8.12"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.8.11":
-  version: 2.8.11
-  resolution: "@turbo/gen@npm:2.8.11"
+"@turbo/gen@npm:2.8.12":
+  version: 2.8.12
+  resolution: "@turbo/gen@npm:2.8.12"
   dependencies:
     "@inquirer/prompts": "npm:^7.10.1"
-    "@turbo/gen-darwin-64": "npm:2.8.11"
-    "@turbo/gen-darwin-arm64": "npm:2.8.11"
-    "@turbo/gen-linux-64": "npm:2.8.11"
-    "@turbo/gen-linux-arm64": "npm:2.8.11"
-    "@turbo/gen-windows-64": "npm:2.8.11"
+    "@turbo/gen-darwin-64": "npm:2.8.12"
+    "@turbo/gen-darwin-arm64": "npm:2.8.12"
+    "@turbo/gen-linux-64": "npm:2.8.12"
+    "@turbo/gen-linux-arm64": "npm:2.8.12"
+    "@turbo/gen-windows-64": "npm:2.8.12"
     node-plop: "npm:0.26.3"
   dependenciesMeta:
     "@turbo/gen-darwin-64":
@@ -3852,7 +3849,7 @@ __metadata:
       optional: true
   bin:
     gen: bin/turbo-gen
-  checksum: 10c0/41828769e82aa7461bfda91b42975ea7f8e02d50c344c132f5b6c1ee895c1b4293e804886c9f87c34bd0aec4304bbc154574821ad4b3f3681dc3362eed65b02d
+  checksum: 10c0/58015352ed3fb4ef1d7fa0dcb0735fdf622322e014ffed680bf1031682d3f00fffe901d2dc8b71ba223cee8648310c11572d22cc7138228b135656a027f761f2
   languageName: node
   linkType: hard
 
@@ -4110,12 +4107,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:24.10.14":
-  version: 24.10.14
-  resolution: "@types/node@npm:24.10.14"
+"@types/node@npm:24.11.0":
+  version: 24.11.0
+  resolution: "@types/node@npm:24.11.0"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10c0/d26224c654bb028ec9f917152a4e9e562e589b321c1433d5445bc0f742575822ecb9c7aa6a4d90a73a85971369e4daee05e4101d31741ba1745f27139c0d3fe8
+  checksum: 10c0/4fb7390259e3b158d25dbecf52de8ce70fa18a4ed0949c9444bb6384517c361fa19781e6821ca8c18dc5f6af43eab72e9e159e07000e6b1286d082e8585d8c41
   languageName: node
   linkType: hard
 
@@ -10834,13 +10831,14 @@ __metadata:
     "@biomejs/biome": "npm:2.4.4"
     "@changesets/cli": "npm:2.29.8"
     "@sebspark/tsconfig": "npm:*"
-    "@turbo/gen": "npm:2.8.11"
-    "@types/node": "npm:24.10.14"
+    "@turbo/gen": "npm:2.8.12"
+    "@types/node": "npm:24.11.0"
     "@vitest/coverage-v8": "npm:4.0.18"
     depcheck: "npm:1.4.7"
     knip: "npm:5.85.0"
+    syncpack: "npm:14.0.0"
     tsup: "npm:8.5.1"
-    turbo: "npm:2.8.11"
+    turbo: "npm:2.8.12"
     typescript: "npm:5.9.3"
     vitest: "npm:4.0.18"
   languageName: unknown
@@ -11557,6 +11555,97 @@ __metadata:
   languageName: node
   linkType: hard
 
+"syncpack-darwin-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-darwin-arm64@npm:14.0.0"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-darwin-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-darwin-x64@npm:14.0.0"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-arm64-musl@npm:14.0.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-arm64@npm:14.0.0"
+  conditions: os=linux & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64-musl@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-x64-musl@npm:14.0.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-linux-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-linux-x64@npm:14.0.0"
+  conditions: os=linux & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-arm64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-windows-arm64@npm:14.0.0"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"syncpack-windows-x64@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack-windows-x64@npm:14.0.0"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"syncpack@npm:14.0.0":
+  version: 14.0.0
+  resolution: "syncpack@npm:14.0.0"
+  dependencies:
+    syncpack-darwin-arm64: "npm:14.0.0"
+    syncpack-darwin-x64: "npm:14.0.0"
+    syncpack-linux-arm64: "npm:14.0.0"
+    syncpack-linux-arm64-musl: "npm:14.0.0"
+    syncpack-linux-x64: "npm:14.0.0"
+    syncpack-linux-x64-musl: "npm:14.0.0"
+    syncpack-windows-arm64: "npm:14.0.0"
+    syncpack-windows-x64: "npm:14.0.0"
+  dependenciesMeta:
+    syncpack-darwin-arm64:
+      optional: true
+    syncpack-darwin-x64:
+      optional: true
+    syncpack-linux-arm64:
+      optional: true
+    syncpack-linux-arm64-musl:
+      optional: true
+    syncpack-linux-x64:
+      optional: true
+    syncpack-linux-x64-musl:
+      optional: true
+    syncpack-windows-arm64:
+      optional: true
+    syncpack-windows-x64:
+      optional: true
+  bin:
+    syncpack: index.cjs
+  checksum: 10c0/6dc7ca4d1dc91423194eef9c2e3939291d129285a1b219d17eb5620af86cd7680c6c2ad65277e201ab6c3c53a0bdf76b3226ed60c1d8a96183a804b76147efe3
+  languageName: node
+  linkType: hard
+
 "tapable@npm:^2.3.0":
   version: 2.3.0
   resolution: "tapable@npm:2.3.0"
@@ -12031,58 +12120,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-darwin-64@npm:2.8.11"
+"turbo-darwin-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-darwin-64@npm:2.8.12"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-darwin-arm64@npm:2.8.11"
+"turbo-darwin-arm64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-darwin-arm64@npm:2.8.12"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-linux-64@npm:2.8.11"
+"turbo-linux-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-linux-64@npm:2.8.12"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-linux-arm64@npm:2.8.11"
+"turbo-linux-arm64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-linux-arm64@npm:2.8.12"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-windows-64@npm:2.8.11"
+"turbo-windows-64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-windows-64@npm:2.8.12"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo-windows-arm64@npm:2.8.11"
+"turbo-windows-arm64@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo-windows-arm64@npm:2.8.12"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:2.8.11":
-  version: 2.8.11
-  resolution: "turbo@npm:2.8.11"
+"turbo@npm:2.8.12":
+  version: 2.8.12
+  resolution: "turbo@npm:2.8.12"
   dependencies:
-    turbo-darwin-64: "npm:2.8.11"
-    turbo-darwin-arm64: "npm:2.8.11"
-    turbo-linux-64: "npm:2.8.11"
-    turbo-linux-arm64: "npm:2.8.11"
-    turbo-windows-64: "npm:2.8.11"
-    turbo-windows-arm64: "npm:2.8.11"
+    turbo-darwin-64: "npm:2.8.12"
+    turbo-darwin-arm64: "npm:2.8.12"
+    turbo-linux-64: "npm:2.8.12"
+    turbo-linux-arm64: "npm:2.8.12"
+    turbo-windows-64: "npm:2.8.12"
+    turbo-windows-arm64: "npm:2.8.12"
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -12098,7 +12187,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 10c0/9c74e4c1494494ee3118c232d2136dfbfd15faf203d433ee73392c57acde43395f8095c8d05fd1d56b5ba58295fe7562ad6c6b9a767f2c86091833bcc53f726e
+  checksum: 10c0/062abeff6a78a8f230fc771bb5ee0090d51ef6a82989a4df634ff6f2990e883d6d23d1d3e9ad1092dc6008799145d7017bd2ba0b099de50cf2841eb202e3b843
   languageName: node
   linkType: hard
 
