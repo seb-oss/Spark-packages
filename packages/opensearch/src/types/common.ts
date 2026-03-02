@@ -64,20 +64,20 @@ export type MapOpenSearchTypes<T> = T extends Property
         : T['type'] extends 'date' | 'date_nanos'
           ? string
           : T['type'] extends 'object'
-            ? T extends { properties: Record<string, Property> }
+            ? T extends { properties?: Record<string, Property> }
               ? {
-                  -readonly [K in keyof T['properties']]?: MapOpenSearchTypes<
-                    T['properties'][K]
+                  -readonly [K in keyof NonNullable<T['properties']>]?: MapOpenSearchTypes<
+                    NonNullable<T['properties']>[K]
                   >
                 }
               : T extends { dynamic: 'true' }
                 ? Record<string, unknown>
                 : never
             : T['type'] extends 'nested'
-              ? T extends { properties: Record<string, Property> }
+              ? T extends { properties?: Record<string, Property> }
                 ? Array<{
-                    -readonly [K in keyof T['properties']]?: MapOpenSearchTypes<
-                      T['properties'][K]
+                    -readonly [K in keyof NonNullable<T['properties']>]?: MapOpenSearchTypes<
+                      NonNullable<T['properties']>[K]
                     >
                   }>
                 : never
@@ -86,12 +86,18 @@ export type MapOpenSearchTypes<T> = T extends Property
     ? { -readonly [K in keyof T]: MapOpenSearchTypes<T[K]> }
     : never
 
+export type FlattenQueryType<T> = {
+  [K in keyof T]: T[K] extends Array<infer Item> 
+    ? Item // 👈 This removes the '.length' and 'push/pop' suggestions
+    : T[K]
+}
+
 export type MapQueryProperties<T extends IndexDefinition> = T extends {
   body: {
     mappings: { properties: infer P }
   }
 }
-  ? MapOpenSearchTypes<P> // ✅ Keep the full structure instead of modifying it
+  ? FlattenQueryType<MapOpenSearchTypes<P>> // 👈 Use FlattenQueryType here
   : never
 
 export type Indices = Client['indices']

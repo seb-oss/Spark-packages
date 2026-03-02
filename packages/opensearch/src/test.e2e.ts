@@ -86,6 +86,13 @@ describe('OpenSearchClient', () => {
               },
             },
           },
+          assets: {
+            type: 'nested',
+            properties: {
+              id: { type: 'keyword' },
+              name: { type: 'keyword' },
+            }
+          },
           age: { type: 'integer' },
         },
       },
@@ -100,6 +107,10 @@ describe('OpenSearchClient', () => {
     age: 52,
     name: 'John Wick',
     text: 'Sortable',
+    assets: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+    ]
   } satisfies PersonDocument
 
   it('creates an index from an index definition', async () => {
@@ -145,6 +156,31 @@ describe('OpenSearchClient', () => {
           match_all: {},
         },
         sort: { 'text.keyword': { order: 'asc' } },
+      },
+    }
+
+    const result = await opensearchClient.search(search)
+
+    expect(result.body.hits.hits).toHaveLength(1)
+    expect(result.body.hits.hits[0]._source).toEqual(doc)
+  })
+  it('finds a document by nested property', async () => {
+    // Find
+    const search: PersonSearch = {
+      index: 'person',
+      body: {
+        query: {
+          nested: {
+            path: 'assets',
+            query: {
+              bool: {
+                should: [
+                  { match: { 'assets.id': 'a' } }
+                ]
+              }
+            }
+          },
+        },
       },
     }
 
