@@ -115,7 +115,9 @@ describe('OpenSearchClient', () => {
     }
 
     it('creates an index from an index definition', async () => {
-      const exists = await opensearchClient.indices.exists<PersonIndex>({ index: personIndex.index })
+      const exists = await opensearchClient.indices.exists<PersonIndex>({
+        index: personIndex.index,
+      })
       if (exists.body) {
         await opensearchClient.indices.delete({ index: personIndex.index })
       }
@@ -277,7 +279,9 @@ describe('OpenSearchClient', () => {
           index: 'person',
           body: { query: { match_all: {} } },
         })
-        const names = searchResponse.body.hits.hits.map((hit) => hit._source.name)
+        const names = searchResponse.body.hits.hits.map(
+          (hit) => hit._source.name
+        )
         expect(names).toContain('John Wick')
         expect(names).toContain('Alice')
       })
@@ -307,7 +311,9 @@ describe('OpenSearchClient', () => {
           index: 'person',
           body: { query: { match_all: {} } },
         })
-        const names = searchResponse.body.hits.hits.map((hit) => hit._source.name)
+        const names = searchResponse.body.hits.hits.map(
+          (hit) => hit._source.name
+        )
         expect(names).toContain('Jason Bourne')
         expect(names).toContain('Evelyn Salt')
       })
@@ -431,7 +437,9 @@ describe('OpenSearchClient', () => {
     }
 
     it('creates an index from an index definition', async () => {
-      const exists = await opensearchClient.indices.exists<ReportIndex>({ index: reportIndex.index })
+      const exists = await opensearchClient.indices.exists<ReportIndex>({
+        index: reportIndex.index,
+      })
       if (exists.body) {
         await opensearchClient.indices.delete({ index: reportIndex.index })
       }
