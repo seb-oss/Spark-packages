@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.17
+
+### Patch Changes
+
+- f96abfc: Make IndexRequest body accept partial documents
+
 ## 3.0.16
 
 ### Patch Changes
