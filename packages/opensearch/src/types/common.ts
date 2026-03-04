@@ -126,6 +126,7 @@ export type Sort<T extends IndexDefinition> = SortOptions<T> | SortOptions<T>[]
 export type SortOptions<T extends IndexDefinition> =
   | '_score'
   | '_doc'
+  | { _id: Types.Common.FieldSort }
   | {
       _doc?: Types.Common.ScoreSort
       _geo_distance?: Types.Common.GeoDistanceSort

@@ -1,5 +1,5 @@
 import type { Types } from '@opensearch-project/opensearch'
-import type { IndexDefinition, Sort } from './common'
+import type { IndexDefinition } from './common'
 import type { DocumentFor } from './documents'
 import type { FieldQuery, QueryContainer } from './queries'
 import type { NestedPaths } from './utilityTypes'
