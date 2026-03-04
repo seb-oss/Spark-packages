@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.18
+
+### Patch Changes
+
+- a511447: feat: support for sort by \_id
+
 ## 3.0.17
 
 ### Patch Changes
