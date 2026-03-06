@@ -23,7 +23,7 @@ export type TypeMapping = Omit<
   Types.Common_Mapping.TypeMapping,
   'properties'
 > & {
-  properties: Record<string, Property>
+  properties?: Record<string, Property>
 }
 
 /**
