@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.19
+
+### Patch Changes
+
+- 772044e: chore: properties is optional
+
 ## 3.0.18
 
 ### Patch Changes
