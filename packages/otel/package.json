@@ -34,7 +34,7 @@
     "@opentelemetry/instrumentation-fs": "0.31.0",
     "@opentelemetry/instrumentation-grpc": "0.212.0",
     "@opentelemetry/instrumentation-http": "0.212.0",
-    "@opentelemetry/instrumentation-net": "0.56.0",
+    "@opentelemetry/instrumentation-net": "0.57.0",
     "@opentelemetry/instrumentation-redis": "0.60.0",
     "@opentelemetry/instrumentation-socket.io": "0.59.0",
     "@opentelemetry/instrumentation-undici": "0.22.0",
