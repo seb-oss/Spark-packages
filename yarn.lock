@@ -3790,51 +3790,51 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen-darwin-64@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen-darwin-64@npm:2.8.12"
+"@turbo/gen-darwin-64@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen-darwin-64@npm:2.8.14"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen-darwin-arm64@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen-darwin-arm64@npm:2.8.12"
+"@turbo/gen-darwin-arm64@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen-darwin-arm64@npm:2.8.14"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@turbo/gen-linux-64@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen-linux-64@npm:2.8.12"
+"@turbo/gen-linux-64@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen-linux-64@npm:2.8.14"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen-linux-arm64@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen-linux-arm64@npm:2.8.12"
+"@turbo/gen-linux-arm64@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen-linux-arm64@npm:2.8.14"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"@turbo/gen-windows-64@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen-windows-64@npm:2.8.12"
+"@turbo/gen-windows-64@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen-windows-64@npm:2.8.14"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.8.12":
-  version: 2.8.12
-  resolution: "@turbo/gen@npm:2.8.12"
+"@turbo/gen@npm:2.8.14":
+  version: 2.8.14
+  resolution: "@turbo/gen@npm:2.8.14"
   dependencies:
     "@inquirer/prompts": "npm:^7.10.1"
-    "@turbo/gen-darwin-64": "npm:2.8.12"
-    "@turbo/gen-darwin-arm64": "npm:2.8.12"
-    "@turbo/gen-linux-64": "npm:2.8.12"
-    "@turbo/gen-linux-arm64": "npm:2.8.12"
-    "@turbo/gen-windows-64": "npm:2.8.12"
+    "@turbo/gen-darwin-64": "npm:2.8.14"
+    "@turbo/gen-darwin-arm64": "npm:2.8.14"
+    "@turbo/gen-linux-64": "npm:2.8.14"
+    "@turbo/gen-linux-arm64": "npm:2.8.14"
+    "@turbo/gen-windows-64": "npm:2.8.14"
     node-plop: "npm:0.26.3"
   dependenciesMeta:
     "@turbo/gen-darwin-64":
@@ -3849,7 +3849,7 @@ __metadata:
       optional: true
   bin:
     gen: bin/turbo-gen
-  checksum: 10c0/58015352ed3fb4ef1d7fa0dcb0735fdf622322e014ffed680bf1031682d3f00fffe901d2dc8b71ba223cee8648310c11572d22cc7138228b135656a027f761f2
+  checksum: 10c0/093515a1f9ba39af484b182976f762e267b9b1232ed209c4255a0940b5eb9a67856671838e55ea0dab64a92f1bca667edbbde9ed729e82a14eb97054aaa45b51
   languageName: node
   linkType: hard
 
@@ -10840,7 +10840,7 @@ __metadata:
     "@biomejs/biome": "npm:2.4.4"
     "@changesets/cli": "npm:2.29.8"
     "@sebspark/tsconfig": "npm:*"
-    "@turbo/gen": "npm:2.8.12"
+    "@turbo/gen": "npm:2.8.14"
     "@types/node": "npm:24.11.0"
     "@vitest/coverage-v8": "npm:4.0.18"
     depcheck: "npm:1.4.7"
