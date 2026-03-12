@@ -241,6 +241,14 @@ export interface IPersistor {
   hGetAll(key: string): Promise<{ [x: string]: string }>
 
   /**
+   * Deletes one or more fields from a hash.
+   * @param key - The hash key.
+   * @param fields - The field name(s) to delete.
+   * @returns Resolves to the number of fields removed.
+   */
+  hDel(key: string, fields: string | string[]): Promise<number>
+
+  /**
    * Pushes values to the left (head) of a list.
    * @param key - The list key.
    * @param values - The values to add.
@@ -548,6 +556,14 @@ export interface IPersistorMulti {
    * @returns Resolves to the value, or null if the hash does not exist.
    */
   hGetAll(key: string): IPersistorMulti
+
+  /**
+   * Deletes one or more fields from a hash.
+   * @param key - The hash key.
+   * @param fields - The field name(s) to delete.
+   * @returns The multi-instance for chaining.
+   */
+  hDel(key: string, fields: string | string[]): IPersistorMulti
 
   /**
    * Pushes values to the left (head) of a list.

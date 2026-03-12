@@ -334,6 +334,29 @@ export class InMemoryPersistor implements IPersistor {
   }
 
   /**
+   * Deletes one or more fields from a hash.
+   *
+   * @param key - The hash key.
+   * @param fields - The field name(s) to delete.
+   * @returns Resolves to the number of fields removed.
+   */
+  async hDel(key: string, fields: string | string[]): Promise<number> {
+    const hash = JSON.parse(this.store.get(key) ?? '{}')
+    const fieldsToDelete = Array.isArray(fields) ? fields : [fields]
+    let removed = 0
+    for (const field of fieldsToDelete) {
+      if (Object.hasOwn(hash, field)) {
+        delete hash[field]
+        removed++
+      }
+    }
+    if (removed > 0) {
+      this.store.set(key, JSON.stringify(hash))
+    }
+    return removed
+  }
+
+  /**
    * Pushes elements to the left (head) of a list.
    *
    * @param key - The list key.
@@ -913,6 +936,19 @@ class InMemoryMulti implements IPersistorMulti {
    */
   hGetAll(key: string): IPersistorMulti {
     this.commands.add(() => this.persistor.hGetAll(key))
+    return this
+  }
+
+  /**
+   * Queues an `hDel` command to delete one or more fields from a hash.
+   * The command will be executed when `exec()` is called.
+   *
+   * @param key - The hash key.
+   * @param fields - The field name(s) to delete.
+   * @returns The `IPersistorMulti` instance to allow method chaining.
+   */
+  hDel(key: string, fields: string | string[]): IPersistorMulti {
+    this.commands.add(() => this.persistor.hDel(key, fields))
     return this
   }
 

@@ -113,6 +113,45 @@ describe('hSet, hGet, hGetAll', () => {
   })
 })
 
+describe('hDel', () => {
+  test('deletes a single field', async () => {
+    const key = 'key'
+    await redisClient.hSet(key, { foo: 'bar', baz: 'qux' })
+    await memoryClient.hSet(key, { foo: 'bar', baz: 'qux' })
+    expect(await redisClient.hDel(key, 'foo')).toEqual(
+      await memoryClient.hDel(key, 'foo')
+    )
+    expect(await redisClient.hGetAll(key)).toEqual(
+      await memoryClient.hGetAll(key)
+    )
+  })
+  test('deletes multiple fields', async () => {
+    const key = 'key'
+    await redisClient.hSet(key, { foo: 'bar', baz: 'qux', herp: 'derp' })
+    await memoryClient.hSet(key, { foo: 'bar', baz: 'qux', herp: 'derp' })
+    expect(await redisClient.hDel(key, ['foo', 'baz'])).toEqual(
+      await memoryClient.hDel(key, ['foo', 'baz'])
+    )
+    expect(await redisClient.hGetAll(key)).toEqual(
+      await memoryClient.hGetAll(key)
+    )
+  })
+  test('returns 0 for non-existing field', async () => {
+    const key = 'key'
+    await redisClient.hSet(key, { foo: 'bar' })
+    await memoryClient.hSet(key, { foo: 'bar' })
+    expect(await redisClient.hDel(key, 'missing')).toEqual(
+      await memoryClient.hDel(key, 'missing')
+    )
+  })
+  test('returns 0 for non-existing key', async () => {
+    const key = 'missing'
+    expect(await redisClient.hDel(key, 'foo')).toEqual(
+      await memoryClient.hDel(key, 'foo')
+    )
+  })
+})
+
 describe('zAdd, zIncrBy, zRangeWithScores', () => {
   test('adds a member with a score', async () => {
     const key = 'instruments:by_volume'
