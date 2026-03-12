@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.4.0
+
+### Minor Changes
+
+- 1b2829b: Added hDel to IPersistor
+
 ## 6.3.2
 
 ### Patch Changes
