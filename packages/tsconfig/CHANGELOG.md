@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.9
+
+### Patch Changes
+
+- 2241dc7: Updated dependencies
+
 ## 3.0.8
 
 ### Patch Changes
