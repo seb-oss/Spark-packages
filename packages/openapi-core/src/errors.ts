@@ -413,7 +413,10 @@ export const createHttpError = (
 export const fromAxiosError = (axiosError: AxiosError): HttpError => {
   // Default to 500 Internal Server Error if the status code is not available
   const statusCode = (axiosError.response?.status || 500) as ErrorCode
-  const message = axiosError.response?.statusText || 'Internal Server Error'
+  const message =
+    axiosError.response?.statusText ||
+    axiosError.message ||
+    'Internal Server Error'
 
   // The internal error can contain more specific details about the Axios error
   const cause = new Error(axiosError.message)

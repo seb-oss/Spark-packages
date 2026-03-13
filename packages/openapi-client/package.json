@@ -34,7 +34,7 @@
     "@sebspark/otel": "2.0.13",
     "@sebspark/retry": "1.0.7",
     "axios": "1.13.6",
-    "axios-auth-refresh": "3.3.6"
+    "axios-auth-refresh": "5.0.2"
   },
   "repository": {
     "type": "git",
