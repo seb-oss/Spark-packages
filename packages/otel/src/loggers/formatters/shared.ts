@@ -41,10 +41,10 @@ export function formatScope(
   const { name, version } = instrumentationScope
   const scopeLabel =
     component || (name && name !== 'unknown' ? name : undefined)
+
   if (!scopeLabel) return ''
 
-  const versionLabel = version ? `@${version}` : ''
-  return colors.cyan(`${scopeLabel}${versionLabel} `)
+  return colors.cyan(`${scopeLabel} `)
 }
 
 export function formatMessage(record: ReadableLogRecord): string {
@@ -53,7 +53,11 @@ export function formatMessage(record: ReadableLogRecord): string {
 
 export function formatAttributes(attrs: LogAttributes): string {
   const keys = Object.keys(attrs).filter(
-    (k) => !k.startsWith('service.') && !k.startsWith('serviceContext.')
+    (k) =>
+      !k.startsWith('service.') &&
+      !k.startsWith('serviceContext.') &&
+      k !== 'cloud.orchestrator' &&
+      k !== 'component.name'
   )
   if (keys.length === 0) return ''
   const formatted = keys.map((k) => {

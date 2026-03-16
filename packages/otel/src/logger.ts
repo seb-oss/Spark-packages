@@ -48,31 +48,46 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     })
   }
 
-  return {
-    debug: (msg: string, attrs?: Attrs) => emit('DEBUG', msg, attrs),
-    info: (msg: string, attrs?: Attrs) => emit('INFO', msg, attrs),
-    notice: (msg: string, attrs?: Attrs) => emit('NOTICE', msg, attrs),
-    warn: (msg: string, attrs?: Attrs) => emit('WARNING', msg, attrs),
-    error: (
+  function resolveArgs(
+    msg: string | Error,
+    errOrAttrs?: Error | Attrs,
+    maybeAttrs: Attrs = {}
+  ): { body: string; attrs: Attrs } {
+    if (errOrAttrs instanceof Error) {
+      const body = `${msg}: ${errOrAttrs.stack || errOrAttrs.message}`
+      return { body, attrs: maybeAttrs }
+    }
+
+    const body = msg instanceof Error ? msg.stack || msg.message : msg
+    const attrs = errOrAttrs || {}
+    return { body, attrs }
+  }
+
+  type LogFn = {
+    (msg: string, attrs?: Attrs): void
+    (msg: string, error: Error, attrs?: Attrs): void
+    (error: Error, attrs?: Attrs): void
+  }
+
+  function createLogFn(severity: LOG_SEVERITY_NAME): LogFn {
+    return (
       msg: string | Error,
       errOrAttrs?: Error | Attrs,
       maybeAttrs: Attrs = {}
     ) => {
-      let body: string
-      let attrs: Attrs
+      const { body, attrs } = resolveArgs(msg, errOrAttrs, maybeAttrs)
+      emit(severity, body, attrs)
+    }
+  }
 
-      if (errOrAttrs instanceof Error) {
-        body = `${msg}: ${errOrAttrs.stack || errOrAttrs.message}`
-        attrs = maybeAttrs
-      } else {
-        body = msg instanceof Error ? msg.stack || msg.message : msg
-        attrs = errOrAttrs || {}
-      }
-
-      emit('ERROR', body, attrs)
-    },
-    critical: (msg: string, attrs?: Attrs) => emit('CRITICAL', msg, attrs),
-    alert: (msg: string, attrs?: Attrs) => emit('ALERT', msg, attrs),
-    emergency: (msg: string, attrs?: Attrs) => emit('EMERGENCY', msg, attrs),
+  return {
+    debug: createLogFn('DEBUG'),
+    info: createLogFn('INFO'),
+    notice: createLogFn('NOTICE'),
+    warn: createLogFn('WARNING'),
+    error: createLogFn('ERROR'),
+    critical: createLogFn('CRITICAL'),
+    alert: createLogFn('ALERT'),
+    emergency: createLogFn('EMERGENCY'),
   }
 }

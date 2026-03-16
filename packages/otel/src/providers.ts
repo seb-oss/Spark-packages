@@ -14,6 +14,7 @@ import {
   type SpanProcessor,
 } from '@opentelemetry/sdk-trace-node'
 import { ConsoleMetricPrettyExporter } from './loggers/console-metric-pretty-exporter'
+import { GcpJsonLogExporter } from './loggers/gcp-json-log-exporter'
 import {
   ConsoleLogPrettyExporter,
   ConsoleSpanPrettyExporter,
@@ -33,9 +34,13 @@ export const getLogProvider = (
 
     // Console logging for cluster
     if (process.env.LOG_LEVEL) {
-      processors.push(
-        new SimpleLogRecordProcessor(new ConsoleLogPrettyExporter())
+      const isGcp = !!(
+        process.env.KUBERNETES_SERVICE_HOST || process.env.GCP_PROJECT
       )
+      const consoleExporter = isGcp
+        ? new GcpJsonLogExporter()
+        : new ConsoleLogPrettyExporter()
+      processors.push(new SimpleLogRecordProcessor(consoleExporter))
     }
 
     return new LoggerProvider({

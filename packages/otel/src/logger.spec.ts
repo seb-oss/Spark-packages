@@ -102,6 +102,42 @@ describe('getLogger', () => {
         'Error: Something went wrong: Error: new error'
       )
     })
+    it('info accepts (string, Error) signature', async () => {
+      const logger = getLogger('test-service')
+      const err = new Error('something broke')
+      logger.info('context message', err)
+      await provider.forceFlush()
+
+      const records = exporter.getFinishedLogRecords()
+      const record = records.find((r) => r.severityText === 'INFO')
+      expect(record).toBeDefined()
+      expect(record?.body).toContain('context message')
+      expect(record?.body).toContain('something broke')
+    })
+    it('warn accepts (string, Error, attrs) signature', async () => {
+      const logger = getLogger('test-service')
+      const err = new Error('disk full')
+      logger.warn('storage issue', err, { disk: '/dev/sda1' })
+      await provider.forceFlush()
+
+      const records = exporter.getFinishedLogRecords()
+      const record = records.find((r) => r.severityText === 'WARNING')
+      expect(record).toBeDefined()
+      expect(record?.body).toContain('storage issue')
+      expect(record?.body).toContain('disk full')
+      expect(record?.attributes?.disk).toBe('/dev/sda1')
+    })
+    it('debug accepts (Error) signature', async () => {
+      const logger = getLogger('test-service')
+      const err = new Error('debug trace')
+      logger.debug(err)
+      await provider.forceFlush()
+
+      const records = exporter.getFinishedLogRecords()
+      const record = records.find((r) => r.severityText === 'DEBUG')
+      expect(record).toBeDefined()
+      expect(record?.body).toContain('debug trace')
+    })
     it('includes trace and span ids if available', async () => {
       const tracer = trace.getTracer('test')
       const span = tracer.startSpan('test-span')
