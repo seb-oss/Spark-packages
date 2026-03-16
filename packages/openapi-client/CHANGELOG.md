@@ -1,5 +1,12 @@
 # @sebspark/openapi-client
 
+## 4.1.10
+
+### Patch Changes
+
+- Updated dependencies [ed8453b]
+  - @sebspark/openapi-core@4.1.3
+
 ## 4.1.9
 
 ### Patch Changes
