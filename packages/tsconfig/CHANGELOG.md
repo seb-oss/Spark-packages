@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.10
+
+### Patch Changes
+
+- ed8453b: Updated dependencies
+
 ## 3.0.9
 
 ### Patch Changes

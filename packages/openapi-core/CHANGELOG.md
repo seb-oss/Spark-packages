@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.3
+
+### Patch Changes
+
+- ed8453b: Updated dependencies
+
 ## 4.1.2
 
 ### Patch Changes
