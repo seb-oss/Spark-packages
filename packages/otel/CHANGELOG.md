@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.0
+
+### Minor Changes
+
+- c60b7a4: chore: change logs formatting
+
 ## 2.0.14
 
 ### Patch Changes
