@@ -11,7 +11,7 @@ import type {
 
 export type ExpressRequest = Request
 
-export type { PartiallySerialized, Serialized, LowerCaseHeaders, QueryParams }
+export type { LowerCaseHeaders, PartiallySerialized, QueryParams, Serialized }
 
 export type Verb = 'get' | 'post' | 'put' | 'patch' | 'delete'
 
