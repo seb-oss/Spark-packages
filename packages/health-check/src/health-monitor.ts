@@ -141,7 +141,8 @@ export class HealthMonitor {
     router.get('/health/ready', async (req, res, next) => {
       try {
         const readiness = await this.ready()
-        res.status(200).json(
+        const status = readiness.summary.critical.failing > 0 ? 503 : 200
+        res.status(status).json(
           toEntity(req, readiness, {
             health: '/health',
           })

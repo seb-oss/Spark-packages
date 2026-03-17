@@ -281,14 +281,39 @@ describe('HealthMonitor', () => {
       })
     })
 
-    it('GET /health/ready calls .ready and returns its value', async () => {
-      const payload = { status: 'ok', checks: { db: { status: 'ok' } } }
+    it('GET /health/ready calls .ready and returns its value without failing critical dependencies', async () => {
+      const payload = {
+        status: 'ok',
+        checks: { db: { status: 'ok' } },
+        summary: { critical: { failing: 0 } },
+      }
       const stub = vi.spyOn(monitor, 'ready').mockResolvedValue(payload as any)
       const res = await agent(app)
         .get('/health/ready')
         .set('Host', 'mysystem.com')
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(200)
+      expect(res.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ready' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+    })
+
+    it('GET /health/ready calls .ready and returns its value with failing critical dependencies', async () => {
+      const payload = {
+        status: 'ok',
+        checks: { db: { status: 'ok' } },
+        summary: { critical: { failing: 1 } },
+      }
+      const stub = vi.spyOn(monitor, 'ready').mockResolvedValue(payload as any)
+      const res = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
+      expect(stub).toHaveBeenCalledTimes(1)
+      expect(res.status).toBe(503)
       expect(res.body).toEqual({
         data: payload,
         links: {
