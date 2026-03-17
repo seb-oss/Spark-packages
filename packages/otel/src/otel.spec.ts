@@ -33,6 +33,10 @@ describe('otel initialize', () => {
     consoleLog.mockRestore()
     consoleInfo.mockRestore()
     consoleError.mockRestore()
+    // Clean up globalThis symbols used by otel.ts to track initialization
+    const g = globalThis as Record<symbol, unknown>
+    delete g[Symbol.for('@sebspark/otel:initialized')]
+    delete g[Symbol.for('@sebspark/otel:initPromise')]
   })
 
   it('rejects if sdk.start() fails', async () => {

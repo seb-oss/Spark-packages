@@ -15,20 +15,36 @@ import { getResource } from './resource'
 diag.disable()
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.ERROR)
 
-let initialization: Promise<void> | undefined
-let _isInitialized = false
+// Use globalThis with a Symbol key so the flag is shared even when the module
+// is instantiated more than once (e.g. --import preload vs main app graph when
+// using tsx or other loaders that don't share the ESM module cache).
+const OTEL_INIT_KEY = Symbol.for('@sebspark/otel:initialized')
+const OTEL_INIT_PROMISE_KEY = Symbol.for('@sebspark/otel:initPromise')
+
+function getGlobal(): {
+  [key: symbol]: unknown
+} {
+  return globalThis as Record<symbol, unknown>
+}
+
 export async function initialize(
   ...instrumentations: Promise<Instrumentation>[]
 ) {
-  if (!initialization) {
+  const g = getGlobal()
+  if (!g[OTEL_INIT_PROMISE_KEY]) {
     const resolvedInstrumentations = await Promise.all(instrumentations)
-    initialization = _initialize(resolvedInstrumentations)
+    const promise = _initialize(resolvedInstrumentations).catch((err) => {
+      // Allow re-initialization if the first attempt fails
+      g[OTEL_INIT_PROMISE_KEY] = undefined
+      throw err
+    })
+    g[OTEL_INIT_PROMISE_KEY] = promise
   }
-  return initialization
+  return g[OTEL_INIT_PROMISE_KEY] as Promise<void>
 }
 
 export function isInitialized() {
-  return _isInitialized
+  return getGlobal()[OTEL_INIT_KEY] === true
 }
 
 async function _initialize(instrumentations: Instrumentation[]) {
@@ -58,7 +74,7 @@ async function _initialize(instrumentations: Instrumentation[]) {
   })
 
   sdk.start()
-  _isInitialized = true
+  getGlobal()[OTEL_INIT_KEY] = true
   console.log(`[otel] Telemetry initialized for "${serviceName}"`)
 
   process.on('SIGTERM', async () => {
