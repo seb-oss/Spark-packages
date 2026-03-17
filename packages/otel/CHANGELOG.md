@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.3
+
+### Patch Changes
+
+- 8cd0201: Fix for OTEL not initialized spam and double span.end()
+
 ## 2.1.2
 
 ### Patch Changes
