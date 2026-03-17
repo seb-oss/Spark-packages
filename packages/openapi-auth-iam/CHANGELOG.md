@@ -1,5 +1,11 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.19
+
+### Patch Changes
+
+- @sebspark/gcp-iam@3.0.21
+
 ## 3.0.18
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/promise-cache",
-  "version": "6.4.4",
+  "version": "6.4.5",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -27,7 +27,7 @@
     "testcontainers": "11.12.0"
   },
   "dependencies": {
-    "@sebspark/otel": "2.1.2",
+    "@sebspark/otel": "2.1.3",
     "date-fns": "4.1.0",
     "redis": "5.11.0",
     "superjson": "2.2.6"
