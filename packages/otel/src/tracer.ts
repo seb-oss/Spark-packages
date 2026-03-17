@@ -75,6 +75,15 @@ export function getTracer(componentNameOverride?: string): Tracer {
       : context.active()
 
     const span = tracer.startSpan(name, options, parentContext)
+    let ended = false
+    const originalEnd = span.end.bind(span)
+    const endOnce = () => {
+      if (!ended) {
+        ended = true
+        originalEnd()
+      }
+    }
+    span.end = endOnce
 
     return await context.with(trace.setSpan(parentContext, span), async () => {
       try {
@@ -87,7 +96,7 @@ export function getTracer(componentNameOverride?: string): Tracer {
         span.recordException?.(error)
         throw err
       } finally {
-        span.end()
+        endOnce()
       }
     })
   }
@@ -113,6 +122,15 @@ export function getTracer(componentNameOverride?: string): Tracer {
       : context.active()
 
     const span = tracer.startSpan(name, options, parentContext)
+    let ended = false
+    const originalEnd = span.end.bind(span)
+    const endOnce = () => {
+      if (!ended) {
+        ended = true
+        originalEnd()
+      }
+    }
+    span.end = endOnce
 
     return context.with(trace.setSpan(parentContext, span), () => {
       try {
@@ -125,7 +143,7 @@ export function getTracer(componentNameOverride?: string): Tracer {
         span.recordException?.(error)
         throw err
       } finally {
-        span.end()
+        endOnce()
       }
     })
   }

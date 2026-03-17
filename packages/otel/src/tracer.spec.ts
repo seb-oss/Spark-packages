@@ -114,6 +114,32 @@ describe('getTracer', () => {
       expect(result).toEqual({ foo: 'bar' })
       parent.end()
     })
+    it('only calls span.end() once if the callback also calls span.end() (async)', async () => {
+      const tracer = getTracer('double-end-async')
+      let endCallCount = 0
+      await tracer.withTrace('span', async (span) => {
+        const original = span.end.bind(span)
+        span.end = (...args) => {
+          endCallCount++
+          original(...args)
+        }
+        span.end()
+      })
+      expect(endCallCount).toBe(1)
+    })
+    it('only calls span.end() once if the callback also calls span.end() (sync)', () => {
+      const tracer = getTracer('double-end-sync')
+      let endCallCount = 0
+      tracer.withTraceSync('span', (span) => {
+        const original = span.end.bind(span)
+        span.end = (...args) => {
+          endCallCount++
+          original(...args)
+        }
+        span.end()
+      })
+      expect(endCallCount).toBe(1)
+    })
     it('sync version supports options and parent span', async () => {
       const tracer = getTracer('sync-mixed')
       const parent = tracer.startSpan('parent')

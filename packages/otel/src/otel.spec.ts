@@ -35,6 +35,32 @@ describe('otel initialize', () => {
     consoleError.mockRestore()
   })
 
+  it('rejects if sdk.start() fails', async () => {
+    const { NodeSDK } = await import('@opentelemetry/sdk-node')
+    vi.spyOn(NodeSDK.prototype, 'start').mockImplementationOnce(() => {
+      throw new Error('sdk start failed')
+    })
+
+    const { initialize } = await import('./otel')
+
+    await expect(initialize()).rejects.toThrow('sdk start failed')
+  })
+
+  it('isInitialized() returns false if sdk.start() fails', async () => {
+    const { NodeSDK } = await import('@opentelemetry/sdk-node')
+    vi.spyOn(NodeSDK.prototype, 'start').mockImplementationOnce(() => {
+      throw new Error('sdk start failed')
+    })
+
+    const { initialize, isInitialized: checkIsInitialized } = await import(
+      './otel'
+    )
+
+    await initialize().catch(() => {})
+
+    expect(checkIsInitialized()).toBe(false)
+  })
+
   describe('no OTLP', () => {
     beforeEach(() => {
       delete process.env.OTEL_EXPORTER_OTLP_ENDPOINT

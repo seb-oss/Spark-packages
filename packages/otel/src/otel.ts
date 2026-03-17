@@ -23,9 +23,6 @@ export async function initialize(
   if (!initialization) {
     const resolvedInstrumentations = await Promise.all(instrumentations)
     initialization = _initialize(resolvedInstrumentations)
-    initialization.then(() => {
-      _isInitialized = true
-    })
   }
   return initialization
 }
@@ -35,42 +32,39 @@ export function isInitialized() {
 }
 
 async function _initialize(instrumentations: Instrumentation[]) {
-  try {
-    const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
-    const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
+  const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
+  const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
 
-    const resource = await getResource()
+  const resource = await getResource()
 
-    // Reset any previous instrumentation
-    context.disable()
-    logs.disable()
-    trace.disable()
-    metrics.disable()
+  // Reset any previous instrumentation
+  context.disable()
+  logs.disable()
+  trace.disable()
+  metrics.disable()
 
-    // Manual setup for logs
-    const logProvider = getLogProvider(resource, otlpEndpoint)
-    logs.setGlobalLoggerProvider(logProvider)
+  // Manual setup for logs
+  const logProvider = getLogProvider(resource, otlpEndpoint)
+  logs.setGlobalLoggerProvider(logProvider)
 
-    // NodeSDK setup
-    const spanProcessor = getSpanProcessor(otlpEndpoint)
-    const metricReader = getMetricReader(otlpEndpoint)
-    const sdk = new NodeSDK({
-      spanProcessor,
-      metricReader,
-      instrumentations,
-      resource,
-    })
+  // NodeSDK setup
+  const spanProcessor = getSpanProcessor(otlpEndpoint)
+  const metricReader = getMetricReader(otlpEndpoint)
+  const sdk = new NodeSDK({
+    spanProcessor,
+    metricReader,
+    instrumentations,
+    resource,
+  })
 
-    await sdk.start()
-    console.log(`[otel] Telemetry initialized for "${serviceName}"`)
+  sdk.start()
+  _isInitialized = true
+  console.log(`[otel] Telemetry initialized for "${serviceName}"`)
 
-    process.on('SIGTERM', async () => {
-      console.log('[otel] Shutting down...')
-      await Promise.all([sdk.shutdown(), logProvider.shutdown()])
-      console.log('[otel] Shutdown complete.')
-      process.exit(0)
-    })
-  } catch (err) {
-    console.error('[otel] Startup error:', err)
-  }
+  process.on('SIGTERM', async () => {
+    console.log('[otel] Shutting down...')
+    await Promise.all([sdk.shutdown(), logProvider.shutdown()])
+    console.log('[otel] Shutdown complete.')
+    process.exit(0)
+  })
 }

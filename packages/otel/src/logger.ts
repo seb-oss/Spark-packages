@@ -17,6 +17,8 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     ...extraAttrs,
   }
 
+  let hasWarnedAboutInit = false
+
   function emit(
     severityText: LOG_SEVERITY_NAME,
     body: string,
@@ -24,7 +26,10 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
   ) {
     // Get the logger at the last second
     if (!isInitialized() && process.env.NODE_ENV !== 'test') {
-      console.warn('OTEL must be initialized before using logger')
+      if (!hasWarnedAboutInit) {
+        console.warn('OTEL must be initialized before using logger')
+        hasWarnedAboutInit = true
+      }
       console.log(`[${severityText}] ${body}`)
       return
     }

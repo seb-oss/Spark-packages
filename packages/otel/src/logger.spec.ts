@@ -33,6 +33,22 @@ describe('getLogger', () => {
     log.mockRestore()
     process.env.NODE_ENV = 'test'
   })
+  it('warns only once across multiple log calls before initialization', () => {
+    process.env.NODE_ENV = 'not test'
+    const warn = vi.spyOn(console, 'warn')
+    const log = vi.spyOn(console, 'log')
+
+    const logger = getLogger()
+    logger.info('hello')
+    logger.info('world')
+    logger.warn('something')
+
+    expect(warn).toHaveBeenCalledTimes(1)
+
+    warn.mockRestore()
+    log.mockRestore()
+    process.env.NODE_ENV = 'test'
+  })
   it('does not warn if NODE_ENV=test', () => {
     process.env.NODE_ENV = 'test'
     const warn = vi.spyOn(console, 'warn')

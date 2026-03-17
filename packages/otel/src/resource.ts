@@ -10,12 +10,19 @@ import {
 } from '@opentelemetry/resources'
 import { detectTelemetryContext } from './otel-context'
 
+const isOnGcp = () =>
+  !!(
+    process.env.K_SERVICE ||
+    process.env.GAE_APPLICATION ||
+    process.env.KUBERNETES_SERVICE_HOST
+  )
+
 export const getResource = async () => {
-  const baseRes = await detectResources({
+  const baseRes = detectResources({
     detectors: [
       containerDetector,
       envDetector,
-      gcpDetector,
+      ...(isOnGcp() ? [gcpDetector] : []),
       osDetector,
       processDetector,
       serviceInstanceIdDetector,
