@@ -46,6 +46,7 @@
     "vitest": "4.1.0"
   },
   "resolutions": {
+    "rollup": "4.59.0",
     "undici": "7.20.0"
   },
   "workspaces": [

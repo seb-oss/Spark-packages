@@ -84,7 +84,7 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     debug: createLogFn('DEBUG'),
     info: createLogFn('INFO'),
     notice: createLogFn('NOTICE'),
-    warn: createLogFn('WARNING'),
+    warn: createLogFn('WARN'),
     error: createLogFn('ERROR'),
     critical: createLogFn('CRITICAL'),
     alert: createLogFn('ALERT'),

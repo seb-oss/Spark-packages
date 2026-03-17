@@ -78,6 +78,20 @@ describe('getLogger', () => {
       expect(record?.attributes?.foo).toBe('bar')
       expect(record?.attributes?.['component.name']).toBe('unit-test-service')
     })
+    it('emits a WARN severity record for warn()', async () => {
+      const logger = getLogger('warn-service')
+      logger.warn('Something might be wrong')
+      await provider.forceFlush()
+
+      const records = exporter.getFinishedLogRecords()
+      const warnRecord = records.find(
+        (r) => r.body === 'Something might be wrong'
+      )
+
+      expect(warnRecord).toBeDefined()
+      expect(warnRecord?.severityText).toBe('WARN')
+      expect(warnRecord?.severityNumber).toBe(13)
+    })
     it('records an error message when given an Error object', async () => {
       const logger = getLogger('error-service')
       logger.error(new Error('Something went wrong'))
@@ -121,7 +135,7 @@ describe('getLogger', () => {
       await provider.forceFlush()
 
       const records = exporter.getFinishedLogRecords()
-      const record = records.find((r) => r.severityText === 'WARNING')
+      const record = records.find((r) => r.severityText === 'WARN')
       expect(record).toBeDefined()
       expect(record?.body).toContain('storage issue')
       expect(record?.body).toContain('disk full')
