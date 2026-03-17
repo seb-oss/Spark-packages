@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.1.0
+
+### Minor Changes
+
+- 903a0fb: chore: /ready should not return 200 if not ready
+
 ## 2.0.3
 
 ### Patch Changes
