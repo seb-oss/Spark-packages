@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.2
+
+### Patch Changes
+
+- 1c13543: add missing attribute gcp.log_name
+
 ## 2.1.1
 
 ### Patch Changes
