@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.5
+
+### Patch Changes
+
+- 23be838: chore: change k8s logs format
+
 ## 2.1.4
 
 ### Patch Changes
