@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.4
+
+### Patch Changes
+
+- 6cf0475: chore: format service name, remove wrong characters
+
 ## 2.1.3
 
 ### Patch Changes
