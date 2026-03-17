@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.1
+
+### Patch Changes
+
+- 1485c2d: Changed warning level text from WARNING to WARN
+
 ## 2.1.0
 
 ### Minor Changes
