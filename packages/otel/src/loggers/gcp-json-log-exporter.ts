@@ -39,6 +39,7 @@ const EXCLUDED_LABEL_KEYS = new Set([
   'cloud.orchestrator',
   'trace_id',
   'span_id',
+  'gcp.log_name',
 ])
 
 /**

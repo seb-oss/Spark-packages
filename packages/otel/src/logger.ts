@@ -38,6 +38,7 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
       severityNumber: LOG_SEVERITY_MAP[severityText],
       body,
       attributes: {
+        'gcp.log_name': systemName,
         ...defaultAttrs,
         ...(spanContext && {
           trace_id: spanContext.traceId,
