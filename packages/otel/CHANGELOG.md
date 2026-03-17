@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.6
+
+### Patch Changes
+
+- 5e9294e: chore: use global variables to store otel initialization
+
 ## 2.1.5
 
 ### Patch Changes
