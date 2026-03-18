@@ -1,5 +1,13 @@
 # @sebspark/health-check
 
+## 2.1.1
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/hyper-media@0.1.3
+
 ## 2.1.0
 
 ### Minor Changes

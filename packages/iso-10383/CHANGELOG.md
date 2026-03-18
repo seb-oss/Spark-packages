@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.2.2
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.2.0
 
 ### Minor Changes

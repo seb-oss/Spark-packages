@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.7
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 2.1.6
 
 ### Patch Changes

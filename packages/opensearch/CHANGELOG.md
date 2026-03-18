@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.20
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 3.0.19
 
 ### Patch Changes

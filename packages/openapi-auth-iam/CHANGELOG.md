@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.23
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/gcp-iam@3.0.25
+
 ## 3.0.22
 
 ### Patch Changes

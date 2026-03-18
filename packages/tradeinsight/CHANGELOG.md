@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 6.0.1
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 6.0.0
 
 ### Major Changes

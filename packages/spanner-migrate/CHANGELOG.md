@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.15
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 2.0.14
 
 ### Patch Changes

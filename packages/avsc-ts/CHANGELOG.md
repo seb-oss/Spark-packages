@@ -1,5 +1,13 @@
 # @sebspark/avsc-ts
 
+## 0.4.23
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/avsc-isometric@0.4.7
+
 ## 0.4.22
 
 ### Patch Changes

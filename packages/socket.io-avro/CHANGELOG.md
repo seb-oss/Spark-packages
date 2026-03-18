@@ -1,5 +1,13 @@
 # @sebspark/socket.io-avro
 
+## 0.1.9
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/avsc-isometric@0.4.7
+
 ## 0.1.8
 
 ### Patch Changes

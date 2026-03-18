@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 2.0.5
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 2.0.3
 
 ### Patch Changes

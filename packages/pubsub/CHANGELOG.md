@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.14
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.8.13
 
 ### Patch Changes

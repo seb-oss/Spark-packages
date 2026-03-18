@@ -1,5 +1,15 @@
 # @sebspark/openapi-client
 
+## 4.1.18
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/openapi-core@4.1.4
+  - @sebspark/otel@2.1.7
+  - @sebspark/retry@1.0.8
+
 ## 4.1.17
 
 ### Patch Changes

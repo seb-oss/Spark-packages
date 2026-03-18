@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.9
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 2.0.8
 
 ### Patch Changes

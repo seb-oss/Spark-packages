@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.1.4
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/retry@1.0.8
+
 ## 4.1.3
 
 ### Patch Changes
