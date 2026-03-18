@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.0.18
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/openapi-core@4.1.4
+
 ## 5.0.17
 
 ### Patch Changes

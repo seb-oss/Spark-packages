@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 4.0.23
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/openapi-client@4.1.18
+  - @sebspark/openapi-core@4.1.4
+  - @sebspark/openapi-express@5.0.18
+
 ## 4.0.22
 
 ### Patch Changes

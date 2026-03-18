@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.11
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 3.0.10
 
 ### Patch Changes

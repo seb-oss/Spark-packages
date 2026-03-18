@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.14
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.0.13
 
 ### Patch Changes

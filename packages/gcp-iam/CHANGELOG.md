@@ -1,5 +1,13 @@
 # @sebspark/gcp-iam
 
+## 3.0.25
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/otel@2.1.7
+
 ## 3.0.24
 
 ### Patch Changes

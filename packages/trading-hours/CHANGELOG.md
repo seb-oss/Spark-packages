@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 1.0.6
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.0.4
 
 ### Patch Changes

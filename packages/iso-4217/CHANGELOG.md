@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.0.13
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.0.12
 
 ### Patch Changes

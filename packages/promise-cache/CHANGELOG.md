@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 6.4.9
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+- Updated dependencies [736a0b3]
+  - @sebspark/otel@2.1.7
+
 ## 6.4.8
 
 ### Patch Changes

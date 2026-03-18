@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.3
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 0.1.2
 
 ### Patch Changes

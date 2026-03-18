@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.12
+
+### Patch Changes
+
+- 736a0b3: No bundling of packages in packages
+
 ## 1.0.11
 
 ### Patch Changes
