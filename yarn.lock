@@ -3409,7 +3409,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.4.7, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.4.8, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3433,8 +3433,8 @@ __metadata:
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.4.7"
-    "@sebspark/tsconfig": "npm:3.0.11"
+    "@sebspark/avsc-isometric": "npm:0.4.8"
+    "@sebspark/tsconfig": "npm:3.0.12"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:5.6.2"
@@ -3459,7 +3459,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.25, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.26, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
@@ -3531,7 +3531,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
-    "@sebspark/gcp-iam": "npm:3.0.25"
+    "@sebspark/gcp-iam": "npm:3.0.26"
   languageName: unknown
   linkType: soft
 
@@ -3679,7 +3679,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/socket.io-avro@workspace:packages/socket.io-avro"
   dependencies:
-    "@sebspark/avsc-isometric": "npm:0.4.7"
+    "@sebspark/avsc-isometric": "npm:0.4.8"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.3"
     socket.io-client: "npm:4.8.3"
@@ -3749,7 +3749,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.11, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.12, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:

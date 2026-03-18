@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.13
+
+### Patch Changes
+
+- 6d72f97: Updated dependencies
+
 ## 1.0.12
 
 ### Patch Changes

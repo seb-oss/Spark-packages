@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.2.0
+
+### Minor Changes
+
+- 6d72f97: Dependency monitors can now report status details
+
 ## 2.1.1
 
 ### Patch Changes

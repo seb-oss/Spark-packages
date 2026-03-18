@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.0.14
+
+### Patch Changes
+
+- 6d72f97: Updated dependencies
+
 ## 1.0.13
 
 ### Patch Changes
