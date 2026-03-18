@@ -3,6 +3,7 @@ import { runAgainstTimeout, singleFlight } from './timing'
 import {
   type CheckError,
   type DependencyCheck,
+  DependencyStatus,
   type DependencyStatusValue,
   type Freshness,
   type Impact,
@@ -60,7 +61,7 @@ type BaseConfig = {
  */
 export type SyncInlineConfig = BaseConfig & {
   /** Performs the check immediately when {@link DependencyMonitor.check} is called. */
-  syncCall: () => Promise<DependencyStatusValue | Error>
+  syncCall: () => Promise<DependencyStatus | DependencyStatusValue | Error>
   asyncCall?: never
   pollRate?: undefined
   retryRate?: undefined
@@ -72,7 +73,7 @@ export type SyncInlineConfig = BaseConfig & {
  */
 export type SyncPolledConfig = BaseConfig & {
   /** Performs the check at each poll interval. */
-  syncCall: () => Promise<DependencyStatusValue | Error>
+  syncCall: () => Promise<DependencyStatus | DependencyStatusValue | Error>
   /** Polling interval in milliseconds. */
   pollRate: number
   asyncCall?: never
@@ -85,11 +86,11 @@ export type SyncPolledConfig = BaseConfig & {
 export type AsyncConfig = BaseConfig & {
   /**
    * Starts an asynchronous check. Must call `reportResponse` once a result is available.
-   * The callback may be invoked with a `DependencyStatusValue` or an `Error`.
+   * The callback may be invoked with a `DependencyStatus | DependencyStatusValue` or an `Error`.
    */
   asyncCall: (
     reportResponse: (
-      status: DependencyStatusValue | Error
+      status: DependencyStatus | DependencyStatusValue | Error
     ) => void | Promise<void>
   ) => void | Promise<void>
   /** Polling interval in milliseconds. */
@@ -140,6 +141,8 @@ export class DependencyMonitor {
   private observed?: Observed
   /** Freshness timestamps for last check/success. */
   private freshness?: Freshness
+  /** Optional details returned by the helth check call. */
+  private details?: Record<string, unknown>
 
   /** Indicates whether this monitor has been disposed. */
   private isDisposed = false
@@ -264,19 +267,24 @@ export class DependencyMonitor {
    * @param duration Measured latency in milliseconds
    */
   private handleDependencyResponse(
-    response: DependencyStatusValue | Error,
+    response: DependencyStatus | DependencyStatusValue | Error,
     duration: number
   ) {
     if (response instanceof Error) {
       return this.handleDependencyError(response)
     }
-    if (response === 'error') {
+
+    const normalized: DependencyStatus =
+      typeof response === 'string' ? { status: response } : response
+
+    if (normalized.status === 'error') {
       return this.handleDependencyError(new UnknownError())
     }
 
     this.error = undefined
+    this.details = normalized.details
     this.status =
-      response === 'ok' && duration <= this.config.healthyLimitMs
+      normalized.status === 'ok' && duration <= this.config.healthyLimitMs
         ? 'ok'
         : 'degraded'
 
@@ -341,6 +349,7 @@ export class DependencyMonitor {
       impact: this.config.impact,
       mode: this.mode,
       freshness: this.freshness as Freshness,
+      details: this.details,
       observed: this.observed,
       error: this.error,
     }

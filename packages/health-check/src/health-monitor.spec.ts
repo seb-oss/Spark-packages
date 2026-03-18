@@ -145,6 +145,27 @@ describe('HealthMonitor', () => {
       expect(res.checks.paymentsApi.status).toBe('degraded')
     })
 
+    it('does not count a critical unknown dependency as failing', async () => {
+      using monitor = new HealthMonitor()
+      monitor.addDependency(
+        'pubsub',
+        new DependencyMonitor({
+          impact: 'critical',
+          pollRate: 10_000,
+          healthyLimitMs: 100,
+          timeoutLimitMs: 1_000,
+          asyncCall: (_report) => {
+            // never calls report — stays unknown
+          },
+        })
+      )
+
+      // don't advance timers — dep remains 'unknown'
+      const res = await monitor.ready()
+      expect(res.status).not.toBe('error')
+      expect(res.summary.critical.failing).toBe(0)
+    })
+
     it('overall error when a critical dependency errors', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(

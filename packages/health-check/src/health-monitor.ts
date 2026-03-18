@@ -12,6 +12,7 @@ import type {
   Impact,
   ReadinessPayload,
   ReadinessSummary,
+  StatusValue,
 } from './types'
 
 export interface HealthMonitorConfig {
@@ -257,7 +258,9 @@ export class HealthMonitor {
 
     for (const [name, c] of Object.entries(checks)) {
       const isCritical = c.impact === 'critical'
-      if (c.status === 'ok') {
+      if (c.status === 'unknown') {
+        // not yet checked — don't count as ok or failing
+      } else if (c.status === 'ok') {
         if (isCritical) criticalOk++
         else nonCritOk++
       } else if (c.status === 'degraded') {
@@ -284,7 +287,7 @@ export class HealthMonitor {
     }
 
     // ----- overall status (same rules as before) -------------------------------
-    let status: import('./types').StatusValue = 'ok'
+    let status: StatusValue = 'ok'
     const values = Object.values(checks)
     const anyCriticalError = values.some(
       (c) => c.impact === 'critical' && c.status === 'error'

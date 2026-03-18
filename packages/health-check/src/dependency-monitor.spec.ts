@@ -61,6 +61,69 @@ describe('DependencyMonitor', () => {
         const status = await monitor.check()
         expect(status.status).toEqual('error')
       })
+      describe('DependencyStatus object return', () => {
+        it('maps { status: "ok" } to ok when within healthyLimitMs', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => ({ status: 'ok' }),
+          })
+          const result = await monitor.check()
+          expect(result.status).toEqual('ok')
+        })
+        it('maps { status: "degraded" } to degraded', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => ({ status: 'degraded' }),
+          })
+          const result = await monitor.check()
+          expect(result.status).toEqual('degraded')
+        })
+        it('maps { status: "error" } to error', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => ({ status: 'error' }),
+          })
+          const result = await monitor.check()
+          expect(result.status).toEqual('error')
+        })
+        it('stores details from DependencyStatus on the check result', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => ({
+              status: 'ok',
+              details: { version: '1.2.3' },
+            }),
+          })
+          const result = await monitor.check()
+          expect(result.details).toEqual({ version: '1.2.3' })
+        })
+        it('clears details when a subsequent call returns a plain status value', async () => {
+          const dependency = vi
+            .fn()
+            .mockResolvedValueOnce({
+              status: 'ok',
+              details: { version: '1.2.3' },
+            })
+            .mockResolvedValueOnce('ok')
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: dependency,
+          })
+          await monitor.check()
+          const result = await monitor.check()
+          expect(result.details).toBeUndefined()
+        })
+      })
       it('calls the dependency every time', async () => {
         const dependency = vi.fn().mockResolvedValue('error')
         const monitor = new DependencyMonitor({
@@ -414,6 +477,53 @@ describe('DependencyMonitor', () => {
         const before = dependency.mock.calls.length
         await vi.advanceTimersByTimeAsync(30_000)
         expect(dependency).toHaveBeenCalledTimes(before) // no more polls after dispose
+      })
+
+      describe('DependencyStatus object report', () => {
+        it('maps reported { status: "ok" } to ok', async () => {
+          using monitor = new DependencyMonitor({
+            impact: 'critical',
+            asyncCall: (report) => {
+              report({ status: 'ok' })
+            },
+            pollRate: 10_000,
+            healthyLimitMs: 800,
+            timeoutLimitMs: 2_000,
+          })
+          await vi.runAllTicks()
+          const result = await monitor.check()
+          expect(result.status).toEqual('ok')
+        })
+
+        it('maps reported { status: "error" } to error', async () => {
+          using monitor = new DependencyMonitor({
+            impact: 'critical',
+            asyncCall: (report) => {
+              report({ status: 'error' })
+            },
+            pollRate: 10_000,
+            healthyLimitMs: 800,
+            timeoutLimitMs: 2_000,
+          })
+          await vi.runAllTicks()
+          const result = await monitor.check()
+          expect(result.status).toEqual('error')
+        })
+
+        it('stores details from reported DependencyStatus', async () => {
+          using monitor = new DependencyMonitor({
+            impact: 'critical',
+            asyncCall: (report) => {
+              report({ status: 'ok', details: { ping: 'pong' } })
+            },
+            pollRate: 10_000,
+            healthyLimitMs: 800,
+            timeoutLimitMs: 2_000,
+          })
+          await vi.runAllTicks()
+          const result = await monitor.check()
+          expect(result.details).toEqual({ ping: 'pong' })
+        })
       })
     })
   })

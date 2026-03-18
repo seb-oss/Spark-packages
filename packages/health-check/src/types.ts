@@ -1,4 +1,8 @@
 export type DependencyStatusValue = 'ok' | 'degraded' | 'error'
+export type DependencyStatus = {
+  status: DependencyStatusValue
+  details?: Record<string, unknown> | undefined
+}
 export type StatusValue = DependencyStatusValue | 'unknown' | 'draining'
 export type Impact = 'critical' | 'non_critical'
 export type Mode = 'inline' | 'polled' | 'async'
