@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.1.1
+
+### Patch Changes
+
+- 12b0e08: Route span uses correct url
+
 ## 5.1.0
 
 ### Minor Changes
