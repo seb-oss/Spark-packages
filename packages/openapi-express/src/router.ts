@@ -57,7 +57,7 @@ export const TypedRouter = (
           tracer = getTracer(serviceName)
         }
 
-        const span = tracer.startSpan(`${method.toUpperCase()} ${route}`)
+        const span = tracer.startSpan(`${method.toUpperCase()} ${url}`)
         span.setAttributes({
           'http.request.method': req.method,
           'http.route': url,

@@ -6,31 +6,50 @@ import {
   type PartiallySerialized,
   UnauthorizedError,
 } from '@sebspark/openapi-core'
+import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 import express, { type Express } from 'express'
 import { type Agent, agent } from 'supertest'
-import { beforeEach, describe, expect, type Mock, test, vi } from 'vitest'
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  type Mock,
+  Mocked,
+  test,
+  vi,
+} from 'vitest'
 import { TypedRouter } from './router'
 
-const { mockSpan, mockLogger, SpanStatusCode } = vi.hoisted(() => {
-  const mockSpan = {
-    setAttributes: vi.fn(),
+vi.mock('@sebspark/otel', () => {
+  const SpanStatusCode = { UNSET: 0, OK: 1, ERROR: 2 }
+  const logger = {
+    alert: vi.fn(),
+    critical: vi.fn(),
+    debug: vi.fn(),
+    emergency: vi.fn(),
+    error: vi.fn(),
+    info: vi.fn(),
+    notice: vi.fn(),
+    warn: vi.fn(),
+  }
+  const span = {
     setAttribute: vi.fn(),
+    setAttributes: vi.fn(),
     setStatus: vi.fn(),
     recordException: vi.fn(),
     end: vi.fn(),
   }
-  const mockLogger = { info: vi.fn(), error: vi.fn() }
-  const SpanStatusCode = { OK: 1, ERROR: 2 }
-  return { mockSpan, mockLogger, SpanStatusCode }
-})
+  const tracer = {
+    startSpan: vi.fn().mockReturnValue(span),
+  }
 
-vi.mock('@sebspark/otel', () => ({
-  SpanStatusCode,
-  getTracer: vi
-    .fn()
-    .mockReturnValue({ startSpan: vi.fn().mockReturnValue(mockSpan) }),
-  getLogger: vi.fn().mockReturnValue(mockLogger),
-}))
+  return {
+    getLogger: vi.fn().mockReturnValue(logger),
+    getTracer: vi.fn().mockReturnValue(tracer),
+    SpanStatusCode,
+  }
+})
 
 type User = {
   id: string
@@ -77,8 +96,17 @@ let app: Express
 let server: Server
 let options: APIServerOptions
 let client: Agent
+let logger: Mocked<ReturnType<typeof getLogger>>
+let tracer: Mocked<ReturnType<typeof getTracer>>
+let span: Mocked<ReturnType<typeof tracer.startSpan>>
 
 beforeEach(() => {
+  vi.clearAllMocks()
+
+  logger = vi.mocked(getLogger())
+  tracer = vi.mocked(getTracer())
+  span = vi.mocked(tracer.startSpan(''))
+
   app = express()
 
   server = {
@@ -197,56 +225,47 @@ test('/nocontent is called correctly', async () => {
 })
 
 describe('tracing and logging', () => {
-  beforeEach(() => {
-    vi.clearAllMocks()
-    // restore return values cleared by clearAllMocks
-    ;(server['/users'].get.handler as Mock).mockResolvedValue([
-      200,
-      { data: [] },
-    ])
-  })
-
-  test('starts a span with method and route template', async () => {
+  test('starts a span named "METHOD /route"', async () => {
     await client.get('/users')
-    expect(mockSpan.setAttributes).toHaveBeenCalledWith(
+    expect(tracer.startSpan).toHaveBeenCalledWith('GET /users')
+  })
+  test('sets request attributes on the span', async () => {
+    await client.get('/users')
+    expect(span.setAttributes).toHaveBeenCalledWith(
       expect.objectContaining({
         'http.request.method': 'GET',
         'http.route': '/users',
       })
     )
   })
-
   test('sets OK status and response code on success', async () => {
     await client.get('/users')
-    expect(mockSpan.setAttributes).toHaveBeenCalledWith({
+    expect(span.setAttributes).toHaveBeenCalledWith({
       'http.response.status_code': 200,
     })
-    expect(mockSpan.setStatus).toHaveBeenCalledWith({ code: SpanStatusCode.OK })
-    expect(mockSpan.end).toHaveBeenCalledTimes(1)
+    expect(span.setStatus).toHaveBeenCalledWith({ code: SpanStatusCode.OK })
+    expect(span.end).toHaveBeenCalledTimes(1)
   })
-
   test('logs info on success', async () => {
     await client.get('/users')
-    expect(mockLogger.info).toHaveBeenCalledWith('GET /users 200')
+    expect(logger.info).toHaveBeenCalledWith('GET /users 200')
   })
-
   test('records exception and sets ERROR status on handler error', async () => {
     const err = new Error('boom')
     ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
     await client.get('/users')
-    expect(mockSpan.recordException).toHaveBeenCalledWith(err)
-    expect(mockSpan.setStatus).toHaveBeenCalledWith({
+    expect(span.recordException).toHaveBeenCalledWith(err)
+    expect(span.setStatus).toHaveBeenCalledWith({
       code: SpanStatusCode.ERROR,
       message: 'boom',
     })
-    expect(mockSpan.setAttribute).toHaveBeenCalledWith('error.type', 'Error')
-    expect(mockSpan.end).toHaveBeenCalledTimes(1)
+    expect(span.setAttribute).toHaveBeenCalledWith('error.type', 'Error')
+    expect(span.end).toHaveBeenCalledTimes(1)
   })
-
   test('logs error on handler error', async () => {
     const err = new Error('boom')
     ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
     await client.get('/users')
-    expect(mockLogger.error).toHaveBeenCalledWith('GET /users', err)
+    expect(logger.error).toHaveBeenCalledWith('GET /users', err)
   })
 })
