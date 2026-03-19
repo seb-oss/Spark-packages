@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.2.1
+
+### Patch Changes
+
+- acb0290: Changed import to type
+
 ## 2.2.0
 
 ### Minor Changes

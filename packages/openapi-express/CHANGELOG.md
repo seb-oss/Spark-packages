@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.1.0
+
+### Minor Changes
+
+- acb0290: Added instrumentation
+
 ## 5.0.18
 
 ### Patch Changes
