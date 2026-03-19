@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.4",
+    "@sebspark/otel": "2.1.7",
     "express": "5.2.1"
   },
   "repository": {

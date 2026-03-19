@@ -6,6 +6,7 @@ import {
   type HttpError,
   type Verb,
 } from '@sebspark/openapi-core'
+import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 import {
   type ErrorRequestHandler,
   json,
@@ -15,6 +16,10 @@ import {
   type Response,
   Router,
 } from 'express'
+
+let logger: ReturnType<typeof getLogger>
+let tracer: ReturnType<typeof getTracer>
+const serviceName = '@sebspark/openapi-express'
 
 export const TypedRouter = (
   api: APIServerDefinition,
@@ -44,9 +49,30 @@ export const TypedRouter = (
         res: Response,
         next: NextFunction
       ) => {
+        // Logging and tracing
+        if (!logger) {
+          logger = getLogger(serviceName)
+        }
+        if (!tracer) {
+          tracer = getTracer(serviceName)
+        }
+
+        const span = tracer.startSpan(`${method.toUpperCase()} ${route}`)
+        span.setAttributes({
+          'http.request.method': req.method,
+          'http.route': url,
+          'url.path': req.path,
+          'url.scheme': req.protocol,
+          'server.address': req.hostname,
+          'network.protocol.version': req.httpVersion,
+        })
+
         try {
           const [status, response] = await route.handler(req)
           res.status(status)
+
+          span.setAttributes({ 'http.response.status_code': status })
+          span.setStatus({ code: SpanStatusCode.OK })
 
           if (!response) {
             res.end()
@@ -69,8 +95,25 @@ export const TypedRouter = (
           } else {
             res.end()
           }
+
+          logger.info(`${method.toUpperCase()} ${url} ${status}`)
         } catch (error) {
+          const err = (
+            error instanceof Error ? error : new Error(String(error))
+          ) as HttpError
+          span.recordException(err)
+          span.setStatus({ code: SpanStatusCode.ERROR, message: err.message })
+          span.setAttribute('error.type', err.constructor.name)
+
+          if (err.statusCode) {
+            span.setAttributes({ 'http.response.status_code': err.statusCode })
+          }
+
+          logger.error(`${method.toUpperCase()} ${url}`, err)
+
           next(error)
+        } finally {
+          span.end()
         }
       }
 

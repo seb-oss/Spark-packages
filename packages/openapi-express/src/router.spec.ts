@@ -8,8 +8,29 @@ import {
 } from '@sebspark/openapi-core'
 import express, { type Express } from 'express'
 import { type Agent, agent } from 'supertest'
-import { beforeEach, expect, type Mock, test, vi } from 'vitest'
+import { beforeEach, describe, expect, type Mock, test, vi } from 'vitest'
 import { TypedRouter } from './router'
+
+const { mockSpan, mockLogger, SpanStatusCode } = vi.hoisted(() => {
+  const mockSpan = {
+    setAttributes: vi.fn(),
+    setAttribute: vi.fn(),
+    setStatus: vi.fn(),
+    recordException: vi.fn(),
+    end: vi.fn(),
+  }
+  const mockLogger = { info: vi.fn(), error: vi.fn() }
+  const SpanStatusCode = { OK: 1, ERROR: 2 }
+  return { mockSpan, mockLogger, SpanStatusCode }
+})
+
+vi.mock('@sebspark/otel', () => ({
+  SpanStatusCode,
+  getTracer: vi
+    .fn()
+    .mockReturnValue({ startSpan: vi.fn().mockReturnValue(mockSpan) }),
+  getLogger: vi.fn().mockReturnValue(mockLogger),
+}))
 
 type User = {
   id: string
@@ -173,4 +194,59 @@ test('/nocontent is called correctly', async () => {
   const response = await client.get('/nocontent')
   expect(response.statusCode).toEqual(204)
   expect(response.body).toEqual({})
+})
+
+describe('tracing and logging', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    // restore return values cleared by clearAllMocks
+    ;(server['/users'].get.handler as Mock).mockResolvedValue([
+      200,
+      { data: [] },
+    ])
+  })
+
+  test('starts a span with method and route template', async () => {
+    await client.get('/users')
+    expect(mockSpan.setAttributes).toHaveBeenCalledWith(
+      expect.objectContaining({
+        'http.request.method': 'GET',
+        'http.route': '/users',
+      })
+    )
+  })
+
+  test('sets OK status and response code on success', async () => {
+    await client.get('/users')
+    expect(mockSpan.setAttributes).toHaveBeenCalledWith({
+      'http.response.status_code': 200,
+    })
+    expect(mockSpan.setStatus).toHaveBeenCalledWith({ code: SpanStatusCode.OK })
+    expect(mockSpan.end).toHaveBeenCalledTimes(1)
+  })
+
+  test('logs info on success', async () => {
+    await client.get('/users')
+    expect(mockLogger.info).toHaveBeenCalledWith('GET /users 200')
+  })
+
+  test('records exception and sets ERROR status on handler error', async () => {
+    const err = new Error('boom')
+    ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
+    await client.get('/users')
+    expect(mockSpan.recordException).toHaveBeenCalledWith(err)
+    expect(mockSpan.setStatus).toHaveBeenCalledWith({
+      code: SpanStatusCode.ERROR,
+      message: 'boom',
+    })
+    expect(mockSpan.setAttribute).toHaveBeenCalledWith('error.type', 'Error')
+    expect(mockSpan.end).toHaveBeenCalledTimes(1)
+  })
+
+  test('logs error on handler error', async () => {
+    const err = new Error('boom')
+    ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
+    await client.get('/users')
+    expect(mockLogger.error).toHaveBeenCalledWith('GET /users', err)
+  })
 })

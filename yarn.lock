@@ -3579,6 +3579,7 @@ __metadata:
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.4"
+    "@sebspark/otel": "npm:2.1.7"
     "@types/supertest": "npm:7.2.0"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"

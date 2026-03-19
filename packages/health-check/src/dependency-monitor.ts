@@ -3,7 +3,7 @@ import { runAgainstTimeout, singleFlight } from './timing'
 import {
   type CheckError,
   type DependencyCheck,
-  DependencyStatus,
+  type DependencyStatus,
   type DependencyStatusValue,
   type Freshness,
   type Impact,
