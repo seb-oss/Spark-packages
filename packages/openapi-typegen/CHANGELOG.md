@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.0.19
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+
 ## 5.0.18
 
 ### Patch Changes

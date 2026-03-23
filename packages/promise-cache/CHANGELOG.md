@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 6.4.11
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+- Updated dependencies [67871de]
+  - @sebspark/otel@2.1.8
+
 ## 6.4.10
 
 ### Patch Changes

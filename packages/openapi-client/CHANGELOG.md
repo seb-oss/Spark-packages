@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 4.1.19
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+- Updated dependencies [67871de]
+  - @sebspark/otel@2.1.8
+
 ## 4.1.18
 
 ### Patch Changes

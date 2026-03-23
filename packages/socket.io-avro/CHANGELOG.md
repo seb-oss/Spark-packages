@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.11
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+
 ## 0.1.10
 
 ### Patch Changes

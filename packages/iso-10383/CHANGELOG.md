@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.2.4
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+
 ## 1.2.3
 
 ### Patch Changes
