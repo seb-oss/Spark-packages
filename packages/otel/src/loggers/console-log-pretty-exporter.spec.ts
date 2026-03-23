@@ -187,6 +187,18 @@ describe('ConsoleLogPrettyExporter', () => {
     }
   })
 
+  it('should use console.log (not console.warn) for WARN severity', () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    const consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})
+
+    exporter.export([createLogRecord('WARN')], () => {})
+
+    expect(consoleLog).toHaveBeenCalledOnce()
+    expect(consoleWarn).not.toHaveBeenCalled()
+
+    consoleLog.mockRestore()
+  })
+
   it('should not show cloud.orchestrator or component.name in attributes', () => {
     process.env.LOG_LEVEL = 'debug'
     const exporter = new ConsoleLogPrettyExporter()

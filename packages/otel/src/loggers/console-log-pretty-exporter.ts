@@ -43,7 +43,7 @@ export class ConsoleLogPrettyExporter implements LogRecordExporter {
         if (severity >= SeverityNumber.ERROR) {
           console.error(formatted)
         } else if (severity >= SeverityNumber.WARN) {
-          console.warn(formatted)
+          console.log(formatted)
         } else if (severity >= SeverityNumber.INFO) {
           console.info(formatted)
         } else if (severity >= SeverityNumber.DEBUG) {
