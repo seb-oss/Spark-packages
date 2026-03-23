@@ -129,6 +129,10 @@ Avro parser and helpers for creating socket servers and socket clients using it
 
 Helpers for generating Hyper Media Entities and Links
 
+### [@sebspark/opentelemetry-instrumentation-opensearch](./packages/opentelemetry-instrumentation-opensearch)
+
+OTEL auto instrumentation for OpenSearch
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

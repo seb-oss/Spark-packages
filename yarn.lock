@@ -3763,6 +3763,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch"
+  dependencies:
+    "@opensearch-project/opensearch": "npm:3.5.1"
+    "@opentelemetry/api": "npm:1.9.0"
+    "@opentelemetry/core": "npm:2.6.0"
+    "@opentelemetry/instrumentation": "npm:0.213.0"
+    "@opentelemetry/sdk-trace-base": "npm:2.6.0"
+    "@opentelemetry/sdk-trace-node": "npm:2.6.0"
+    "@opentelemetry/semantic-conventions": "npm:1.40.0"
+    "@testcontainers/opensearch": "npm:11.13.0"
+  peerDependencies:
+    "@opensearch-project/opensearch": ">=2"
+    "@opentelemetry/api": ">=1.9.0"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/otel@npm:2.1.8, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
@@ -3973,6 +3991,16 @@ __metadata:
   dependencies:
     testcontainers: "npm:^11.13.0"
   checksum: 10c0/dfff41683c9f95e8474b09ad6698f287ac703a88cf51abd3c96df849c9b9f0ab26d9a8a596f0a556661470a7ce7ae822621557e776583ce3ff536f48fc97cc10
+  languageName: node
+  linkType: hard
+
+"@testcontainers/opensearch@npm:11.13.0":
+  version: 11.13.0
+  resolution: "@testcontainers/opensearch@npm:11.13.0"
+  dependencies:
+    testcontainers: "npm:^11.13.0"
+    zxcvbn: "npm:^4.4.2"
+  checksum: 10c0/f134fa51c81493285c78647442cb38f5367e426639db74f7b6b66b8f186aed20c752ed71926d0d0bead782d31dc1e38086444954c8c66390bda377b7d2d8cd29
   languageName: node
   linkType: hard
 
@@ -12918,5 +12946,12 @@ __metadata:
   version: 4.1.13
   resolution: "zod@npm:4.1.13"
   checksum: 10c0/d7e74e82dba81a91ffc3239cd85bc034abe193a28f7087a94ab258a3e48e9a7ca4141920cac979a0d781495b48fc547777394149f26be04c3dc642f58bbc3941
+  languageName: node
+  linkType: hard
+
+"zxcvbn@npm:^4.4.2":
+  version: 4.4.2
+  resolution: "zxcvbn@npm:4.4.2"
+  checksum: 10c0/862f101cc95247b30290bad67ade333e430a16763bb771ce4e4c5414396d987f9a64288225675c96bd6f8d3eba65da0dee119b2a4eaa2e249da3f540b036942e
   languageName: node
   linkType: hard
