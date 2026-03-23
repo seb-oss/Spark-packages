@@ -38,7 +38,7 @@ export function formatScope(
   instrumentationScope: IInstrumentation
 ): string {
   const component = resource.attributes['component.name']
-  const { name, version } = instrumentationScope
+  const { name } = instrumentationScope
   const scopeLabel =
     component || (name && name !== 'unknown' ? name : undefined)
 

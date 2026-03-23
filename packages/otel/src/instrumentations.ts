@@ -9,6 +9,7 @@ let _net: Promise<Instrumentation> | undefined
 let _fs: Promise<Instrumentation> | undefined
 let _undici: Promise<Instrumentation> | undefined
 let _socketIo: Promise<Instrumentation> | undefined
+let _opensearch: Promise<Instrumentation> | undefined
 
 export const instrumentations = {
   get http() {
@@ -90,5 +91,14 @@ export const instrumentations = {
       )
     }
     return _socketIo
+  },
+
+  get opensearch() {
+    if (!_opensearch) {
+      _opensearch = import(
+        '@sebspark/opentelemetry-instrumentation-opensearch'
+      ).then(({ OpenSearchInstrumentation }) => new OpenSearchInstrumentation())
+    }
+    return _opensearch
   },
 } as const
