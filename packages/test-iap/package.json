@@ -24,12 +24,13 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "jose": "6.2.1",
+    "jose": "6.2.2",
     "testcontainers": "11.13.0"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",
-    "ws": "8.19.0"
+    "nock": "15.0.0",
+    "ws": "8.20.0"
   },
   "repository": {
     "type": "git",

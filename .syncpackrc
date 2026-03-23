@@ -10,9 +10,22 @@
       "dependencies": ["@sebspark/*"],
       "dependencyTypes": ["dev", "prod"],
       "isIgnored": true
+    },
+    {
+      "label": "Ignore peer dependencies",
+      "dependencyTypes": ["peer"],
+      "dependencies": ["**"],
+      "isIgnored": true
     }
   ],
   "semverGroups": [
+    {
+      "label": "Peer dependencies may use ranges",
+      "dependencyTypes": ["peer"],
+      "dependencies": ["**"],
+      "packages": ["**"],
+      "isIgnored": true
+    },
     {
       "label": "All external dependencies must be exact",
       "range": "",

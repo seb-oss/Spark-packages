@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "change-case": "5.4.4",
-    "csv-parse": "6.2.0"
+    "csv-parse": "6.2.1"
   },
   "keywords": [
     "Financial",
