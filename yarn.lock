@@ -3608,12 +3608,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.27, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.28, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.1"
-    "@sebspark/otel": "npm:2.1.8"
+    "@sebspark/otel": "npm:2.2.0"
     google-auth-library: "npm:10.6.2"
   languageName: unknown
   linkType: soft
@@ -3680,17 +3680,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
-    "@sebspark/gcp-iam": "npm:3.0.27"
+    "@sebspark/gcp-iam": "npm:3.0.28"
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.1.19, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.1.20, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.4"
     "@sebspark/openapi-typegen": "npm:5.0.19"
-    "@sebspark/otel": "npm:2.1.8"
+    "@sebspark/otel": "npm:2.2.0"
     "@sebspark/retry": "npm:1.0.8"
     axios: "npm:1.13.6"
     axios-auth-refresh: "npm:5.0.2"
@@ -3713,9 +3713,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
-    "@sebspark/openapi-client": "npm:4.1.19"
+    "@sebspark/openapi-client": "npm:4.1.20"
     "@sebspark/openapi-core": "npm:4.1.4"
-    "@sebspark/openapi-express": "npm:5.1.2"
+    "@sebspark/openapi-express": "npm:5.1.3"
     "@sebspark/openapi-typegen": "npm:5.0.19"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
@@ -3723,12 +3723,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@npm:5.1.2, @sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.1.3, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.4"
-    "@sebspark/otel": "npm:2.1.8"
+    "@sebspark/otel": "npm:2.2.0"
     "@types/supertest": "npm:7.2.0"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"
@@ -3781,7 +3781,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@npm:2.1.8, @sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:2.2.0, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
@@ -3820,7 +3820,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
-    "@sebspark/otel": "npm:2.1.8"
+    "@sebspark/otel": "npm:2.2.0"
     "@testcontainers/redis": "npm:11.13.0"
     date-fns: "npm:4.1.0"
     redis: "npm:5.11.0"

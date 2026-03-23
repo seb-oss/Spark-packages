@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.2.0
+
+### Minor Changes
+
+- 3d2415a: Added instrumentation for opensearch
+
 ## 2.1.8
 
 ### Patch Changes
