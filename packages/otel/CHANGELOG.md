@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 2.1.8
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+
 ## 2.1.7
 
 ### Patch Changes

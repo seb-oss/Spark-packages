@@ -1,5 +1,13 @@
 # @sebspark/openapi-express
 
+## 5.1.2
+
+### Patch Changes
+
+- 67871de: Otel now warns on stdout. Also dependency updates.
+- Updated dependencies [67871de]
+  - @sebspark/otel@2.1.8
+
 ## 5.1.1
 
 ### Patch Changes
