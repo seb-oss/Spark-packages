@@ -17,7 +17,9 @@ let container: StartedOpenSearchContainer
 let opensearchClient: OpenSearchClient
 
 beforeAll(async () => {
-  container = await new OpenSearchContainer('opensearchproject/opensearch:2.18.0')
+  container = await new OpenSearchContainer(
+    'opensearchproject/opensearch:2.18.0'
+  )
     .withSecurityEnabled(false)
     .start()
 

@@ -230,7 +230,9 @@ describe('OpenSearchInstrumentation e2e', () => {
     })
 
     expect(result.statusCode).toBe(200)
-    const hits = result.body.hits.hits as unknown as Array<{ _source: typeof doc }>
+    const hits = result.body.hits.hits as unknown as Array<{
+      _source: typeof doc
+    }>
     expect(hits).toHaveLength(1)
     expect(hits[0]._source).toMatchObject(doc)
   })

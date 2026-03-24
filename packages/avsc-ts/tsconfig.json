@@ -1,5 +1,9 @@
 {
   "extends": "@sebspark/tsconfig/tsconfig.lib.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "types": ["node"]
+  },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules", "**/spec.ts", "testschemas"]
 }

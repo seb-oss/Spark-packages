@@ -1,4 +1,7 @@
 {
   "extends": "@sebspark/tsconfig/tsconfig.lib.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0"
+  },
   "include": ["."]
 }
