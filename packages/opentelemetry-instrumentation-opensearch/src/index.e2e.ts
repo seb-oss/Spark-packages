@@ -1,5 +1,7 @@
 import { Client } from '@opensearch-project/opensearch'
 import { SpanKind, SpanStatusCode } from '@opentelemetry/api'
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici'
 import {
   InMemorySpanExporter,
   SimpleSpanProcessor,
@@ -91,6 +93,34 @@ describe('OpenSearchInstrumentation e2e', () => {
     expect(span!.attributes[ATTR_DB_OPERATION_NAME]).toBe('search')
     expect(span!.attributes['db.opensearch.index']).toBe(index)
     expect(span!.attributes[ATTR_DB_QUERY_TEXT]).toBe(JSON.stringify(body))
+  })
+
+  it('omits db.query.text for a bodyless search', async () => {
+    exporter.reset()
+    await client.search({ index })
+    const span = exporter
+      .getFinishedSpans()
+      .find((s) => s.name === `search ${index}`)
+    expect(span).toBeDefined()
+    expect(span!.attributes[ATTR_DB_QUERY_TEXT]).toBeUndefined()
+  })
+
+  it('records opensearch execution stats on the span', async () => {
+    exporter.reset()
+    await client.index({ index, body: { name: 'stats-doc' }, refresh: true })
+    await client.search({ index, body: { query: { match_all: {} } } })
+    const span = exporter
+      .getFinishedSpans()
+      .find((s) => s.name === `search ${index}`)
+    expect(span!.attributes['db.opensearch.took']).toBeGreaterThanOrEqual(0)
+    expect(span!.attributes['db.opensearch.timed_out']).toBe(false)
+    expect(span!.attributes['db.opensearch.shards.total']).toBeGreaterThan(0)
+    expect(span!.attributes['db.opensearch.shards.successful']).toBeGreaterThan(
+      0
+    )
+    expect(span!.attributes['db.opensearch.shards.failed']).toBe(0)
+    expect(span!.attributes['db.opensearch.hits.total']).toBeGreaterThan(0)
+    expect(span!.attributes['http.response.status_code']).toBe(200)
   })
 
   it('sets server.address and server.port on the span', async () => {
@@ -216,6 +246,40 @@ describe('OpenSearchInstrumentation e2e', () => {
       .getFinishedSpans()
       .filter((s) => s.instrumentationScope.name.includes('http'))
     expect(httpSpans).toHaveLength(0)
+  })
+
+  it('captures db.query.text when http instrumentation is registered alongside opensearch instrumentation', async () => {
+    const localExporter = new InMemorySpanExporter()
+    const localProvider = new NodeTracerProvider({
+      spanProcessors: [new SimpleSpanProcessor(localExporter)],
+    })
+    localProvider.register()
+
+    const httpInstrumentation = new HttpInstrumentation()
+    httpInstrumentation.setTracerProvider(localProvider)
+    httpInstrumentation.enable()
+
+    const undiciInstrumentation = new UndiciInstrumentation()
+    undiciInstrumentation.setTracerProvider(localProvider)
+    undiciInstrumentation.enable()
+
+    const instrumentation = new OpenSearchInstrumentation()
+    instrumentation.setTracerProvider(localProvider)
+    instrumentation.enable()
+
+    const localClient = new Client({ node: container.getHttpUrl() })
+    const body = { query: { match_all: {} } }
+    await localClient.search({ index, body })
+
+    const span = localExporter
+      .getFinishedSpans()
+      .find((s) => s.name === `search ${index}`)
+    expect(span!.attributes[ATTR_DB_QUERY_TEXT]).toBe(JSON.stringify(body))
+
+    httpInstrumentation.disable()
+    undiciInstrumentation.disable()
+    instrumentation.disable()
+    await localProvider.shutdown()
   })
 
   it('instrumentation does not break opensearch responses — indexed document is returned by search', async () => {

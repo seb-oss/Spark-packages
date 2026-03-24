@@ -3885,6 +3885,8 @@ __metadata:
     "@opentelemetry/api": "npm:1.9.0"
     "@opentelemetry/core": "npm:2.6.0"
     "@opentelemetry/instrumentation": "npm:0.213.0"
+    "@opentelemetry/instrumentation-http": "npm:0.213.0"
+    "@opentelemetry/instrumentation-undici": "npm:0.23.0"
     "@opentelemetry/sdk-trace-base": "npm:2.6.0"
     "@opentelemetry/sdk-trace-node": "npm:2.6.0"
     "@opentelemetry/semantic-conventions": "npm:1.40.0"
