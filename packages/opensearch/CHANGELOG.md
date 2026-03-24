@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.0.22
+
+### Patch Changes
+
+- 67d6129: Updated dependencies
+
 ## 3.0.21
 
 ### Patch Changes
