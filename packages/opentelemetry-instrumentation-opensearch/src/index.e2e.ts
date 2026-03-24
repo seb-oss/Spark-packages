@@ -217,4 +217,21 @@ describe('OpenSearchInstrumentation e2e', () => {
       .filter((s) => s.instrumentationScope.name.includes('http'))
     expect(httpSpans).toHaveLength(0)
   })
+
+  it('instrumentation does not break opensearch responses — indexed document is returned by search', async () => {
+    const functionalIndex = 'functional_test_index'
+    await client.indices.create({ index: functionalIndex })
+    const doc = { title: 'hello world', value: 42 }
+    await client.index({ index: functionalIndex, body: doc, refresh: true })
+
+    const result = await client.search({
+      index: functionalIndex,
+      body: { query: { match: { title: 'hello world' } } },
+    })
+
+    expect(result.statusCode).toBe(200)
+    const hits = result.body.hits.hits as unknown as Array<{ _source: typeof doc }>
+    expect(hits).toHaveLength(1)
+    expect(hits[0]._source).toMatchObject(doc)
+  })
 })
