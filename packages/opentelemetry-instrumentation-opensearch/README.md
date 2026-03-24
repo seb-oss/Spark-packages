@@ -95,22 +95,59 @@ Set at span creation, before the request is sent.
 
 Set on the span after a successful response.
 
-| Attribute | Type | Example | Notes |
+#### Always present on search responses
+
+| Attribute | Type | Example | Description |
 |---|---|---|---|
 | `server.address` | string | `opensearch.example.com` | Hostname of the node that handled the request |
 | `server.port` | number | `9200` | Omitted when using the default port for the protocol |
 | `http.response.status_code` | number | `200` | HTTP status code of the response |
 | `db.opensearch.took` | number | `5` | Time in milliseconds OpenSearch spent executing the request |
 | `db.opensearch.timed_out` | boolean | `false` | Whether the request hit the `timeout` threshold |
-| `db.opensearch.terminated_early` | boolean | `true` | Whether the request hit the `terminate_after` document limit and returned partial results. Omitted when not present |
 | `db.opensearch.shards.total` | number | `5` | Total number of shards the request was executed against |
 | `db.opensearch.shards.successful` | number | `5` | Number of shards that responded successfully |
 | `db.opensearch.shards.failed` | number | `0` | Number of shards that failed |
-| `db.opensearch.shards.skipped` | number | `2` | Number of shards skipped (e.g. due to shard-level filtering). Omitted when not present |
-| `db.opensearch.hits.total` | number | `42` | Total number of matching documents. Omitted for non-search responses or when `hits.total` is not an object |
-| `db.opensearch.phase_took.can_match` | number | `1` | Time in milliseconds spent in the can-match phase. Only present for DFS queries |
-| `db.opensearch.phase_took.dfs_pre_query` | number | `2` | Time in milliseconds spent in the DFS pre-query phase |
-| `db.opensearch.phase_took.dfs_query` | number | `3` | Time in milliseconds spent in the DFS query phase |
-| `db.opensearch.phase_took.expand` | number | `0` | Time in milliseconds spent expanding search results |
-| `db.opensearch.phase_took.fetch` | number | `1` | Time in milliseconds spent fetching documents |
-| `db.opensearch.phase_took.query` | number | `4` | Time in milliseconds spent in the query phase |
+| `db.opensearch.hits.total` | number | `42` | Total number of matching documents |
+
+#### Conditionally present
+
+These attributes only appear when specific conditions are met, either because OpenSearch omits them by default or because they require the query to opt in.
+
+| Attribute | Type | Condition | When to use |
+|---|---|---|---|
+| `db.opensearch.shards.skipped` | number | Present when OpenSearch skips shards, e.g. when using `_routing` or shard-level filtering | Useful for verifying that routing is working as intended — a high skipped count means fewer shards are doing work |
+| `db.opensearch.terminated_early` | boolean | Present when the query includes `terminate_after: N` in the request body | Use `terminate_after` when you want to cap result collection for performance reasons (e.g. existence checks). The attribute tells you whether the cap was actually hit |
+| `db.opensearch.phase_took.*` | number | Present when the request uses `search_type: 'dfs_query_then_fetch'` | Use DFS search type when accurate relevance scoring across shards matters (e.g. small indices or cross-shard ranking). The phase breakdown lets you identify which phase dominates latency |
+
+To enable `phase_took`, set `search_type` on the request:
+
+```ts
+client.search({
+  index: 'my_index',
+  search_type: 'dfs_query_then_fetch',
+  body: { query: { ... } },
+})
+```
+
+To enable `terminated_early`, set `terminate_after` in the query body:
+
+```ts
+client.search({
+  index: 'my_index',
+  body: {
+    terminate_after: 1000,
+    query: { ... },
+  },
+})
+```
+
+#### `db.opensearch.phase_took.*` fields
+
+| Attribute | Description |
+|---|---|
+| `db.opensearch.phase_took.can_match` | Time spent determining which shards can match the query |
+| `db.opensearch.phase_took.dfs_pre_query` | Time spent collecting term statistics across shards before the query phase |
+| `db.opensearch.phase_took.dfs_query` | Time spent executing the query using globally collected term statistics |
+| `db.opensearch.phase_took.expand` | Time spent expanding results (e.g. for collapse/inner hits) |
+| `db.opensearch.phase_took.fetch` | Time spent fetching document source and fields |
+| `db.opensearch.phase_took.query` | Time spent in the standard query phase |
