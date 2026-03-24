@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.2.0
+
+### Minor Changes
+
+- b92b79a: Added a bunch of metrics
+
 ## 0.1.1
 
 ### Patch Changes
