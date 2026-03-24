@@ -1,4 +1,7 @@
-import { GenericContainer, type StartedTestContainer } from 'testcontainers'
+import {
+  OpenSearchContainer,
+  type StartedOpenSearchContainer,
+} from '@testcontainers/opensearch'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { OpenSearchClient } from './client'
 import { bulkCreate, bulkDelete, bulkIndex, bulkUpdate } from './helpers'
@@ -10,60 +13,16 @@ import type {
   UpdateAction,
 } from './types'
 
-let container: StartedTestContainer
+let container: StartedOpenSearchContainer
 let opensearchClient: OpenSearchClient
 
 beforeAll(async () => {
-  const image = 'opensearchproject/opensearch:2.18.0'
-
-  console.log(`Pulling image ${image}`)
-  container = await new GenericContainer(image)
-    .withExposedPorts(9200, 9600) // OpenSearch runs on 9200 (API) and 9600 (monitoring)
-    .withEnvironment({
-      'discovery.type': 'single-node',
-      OPENSEARCH_JAVA_OPTS: '-Xms512m -Xmx512m',
-      OPENSEARCH_INITIAL_ADMIN_PASSWORD: 'admin-password', // ✅ Fix: Set initial password
-      DISABLE_INSTALL_DEMO_CONFIG: 'true', // ✅ Optional: Prevent demo config installation
-      DISABLE_SECURITY_PLUGIN: 'true', // ✅ Optional: Disable security plugin if not needed
-    })
-    .withStartupTimeout(120_000) // ✅ Increase startup timeout
-    .withLogConsumer((stream) => {
-      // stream.on('data', line => process.stdout.write(`[OpenSearch] ${line.toString()}`))
-      stream.on('err', (line) =>
-        process.stderr.write(`[OpenSearch] [ERROR] ${line.toString()}`)
-      )
-    })
+  container = await new OpenSearchContainer('opensearchproject/opensearch:2.18.0')
+    .withSecurityEnabled(false)
     .start()
 
-  const port = container.getMappedPort(9200)
-  const host = container.getHost()
-
-  // Create OpenSearch client
-  opensearchClient = new OpenSearchClient({ node: `http://${host}:${port}` })
-
-  // Wait for OpenSearch to be ready
-  let isReady = false
-  for (let i = 0; i < 10; i++) {
-    try {
-      const response = await opensearchClient.ping()
-      if (response) {
-        isReady = true
-        break
-      }
-    } catch (err) {
-      console.log('Waiting for OpenSearch to be ready...')
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-    }
-  }
-
-  if (!isReady) {
-    console.log(await container.logs())
-
-    throw new Error('OpenSearch did not start in time')
-  }
-
-  console.log('OpenSearch container ready')
-}, 120000)
+  opensearchClient = new OpenSearchClient({ node: container.getHttpUrl() })
+}, 120_000)
 
 it('can connect to OpenSearch', async () => {
   const info = await opensearchClient.info()

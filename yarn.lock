@@ -3759,7 +3759,7 @@ __metadata:
   resolution: "@sebspark/opensearch@workspace:packages/opensearch"
   dependencies:
     "@opensearch-project/opensearch": "npm:3.5.1"
-    testcontainers: "npm:11.13.0"
+    "@testcontainers/opensearch": "npm:11.13.0"
   languageName: unknown
   linkType: soft
 
