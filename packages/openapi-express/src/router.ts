@@ -1,4 +1,15 @@
 import {
+  ATTR_ERROR_TYPE,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
+  ATTR_HTTP_ROUTE,
+  ATTR_NETWORK_PROTOCOL_VERSION,
+  ATTR_SERVER_ADDRESS,
+  ATTR_URL_PATH,
+  ATTR_URL_SCHEME,
+  METRIC_HTTP_SERVER_REQUEST_DURATION,
+} from '@opentelemetry/semantic-conventions'
+import {
   type APIResponse,
   type APIServerDefinition,
   type APIServerOptions,
@@ -16,15 +27,14 @@ import {
   type Response,
   Router,
 } from 'express'
-
-let logger: ReturnType<typeof getLogger>
-let tracer: ReturnType<typeof getTracer>
-const serviceName = '@sebspark/openapi-express'
+import pkg from '../package.json' with { type: 'json' }
 
 export const TypedRouter = (
   api: APIServerDefinition,
   options: APIServerOptions = {}
 ): Router => {
+  const logger = getLogger(pkg.name)
+  const tracer = getTracer(pkg.name)
   const router = Router()
 
   router.use(json() as unknown as RequestHandler)
@@ -49,29 +59,22 @@ export const TypedRouter = (
         res: Response,
         next: NextFunction
       ) => {
-        // Logging and tracing
-        if (!logger) {
-          logger = getLogger(serviceName)
-        }
-        if (!tracer) {
-          tracer = getTracer(serviceName)
-        }
-
+        const startTime = performance.now()
         const span = tracer.startSpan(`${method.toUpperCase()} ${url}`)
         span.setAttributes({
-          'http.request.method': req.method,
-          'http.route': url,
-          'url.path': req.path,
-          'url.scheme': req.protocol,
-          'server.address': req.hostname,
-          'network.protocol.version': req.httpVersion,
+          [ATTR_HTTP_REQUEST_METHOD]: req.method,
+          [ATTR_HTTP_ROUTE]: url,
+          [ATTR_URL_PATH]: req.path,
+          [ATTR_URL_SCHEME]: req.protocol,
+          [ATTR_SERVER_ADDRESS]: req.hostname,
+          [ATTR_NETWORK_PROTOCOL_VERSION]: req.httpVersion,
         })
 
         try {
           const [status, response] = await route.handler(req)
           res.status(status)
 
-          span.setAttributes({ 'http.response.status_code': status })
+          span.setAttributes({ [ATTR_HTTP_RESPONSE_STATUS_CODE]: status })
           span.setStatus({ code: SpanStatusCode.OK })
 
           if (!response) {
@@ -96,23 +99,35 @@ export const TypedRouter = (
             res.end()
           }
 
-          logger.info(`${method.toUpperCase()} ${url} ${status}`)
+          logger.info(`${method.toUpperCase()} ${url} ${status}`, {
+            [METRIC_HTTP_SERVER_REQUEST_DURATION]:
+              (performance.now() - startTime) / 1000,
+          })
         } catch (error) {
           const err = (
             error instanceof Error ? error : new Error(String(error))
           ) as HttpError
           span.recordException(err)
           span.setStatus({ code: SpanStatusCode.ERROR, message: err.message })
-          span.setAttribute('error.type', err.constructor.name)
+          span.setAttribute(ATTR_ERROR_TYPE, err.constructor.name)
 
           if (err.statusCode) {
-            span.setAttributes({ 'http.response.status_code': err.statusCode })
+            span.setAttributes({
+              [ATTR_HTTP_RESPONSE_STATUS_CODE]: err.statusCode,
+            })
           }
 
-          logger.error(`${method.toUpperCase()} ${url}`, err)
+          logger.error(`${method.toUpperCase()} ${url}`, err, {
+            [METRIC_HTTP_SERVER_REQUEST_DURATION]:
+              (performance.now() - startTime) / 1000,
+          })
 
           next(error)
         } finally {
+          span.setAttribute(
+            METRIC_HTTP_SERVER_REQUEST_DURATION,
+            (performance.now() - startTime) / 1000
+          )
           span.end()
         }
       }

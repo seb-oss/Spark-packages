@@ -1,4 +1,11 @@
 import {
+  ATTR_ERROR_TYPE,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
+  ATTR_HTTP_ROUTE,
+  METRIC_HTTP_SERVER_REQUEST_DURATION,
+} from '@opentelemetry/semantic-conventions'
+import {
   type APIResponse,
   type APIServerDefinition,
   type APIServerOptions,
@@ -9,16 +16,7 @@ import {
 import { getLogger, getTracer, SpanStatusCode } from '@sebspark/otel'
 import express, { type Express } from 'express'
 import { type Agent, agent } from 'supertest'
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  type Mock,
-  Mocked,
-  test,
-  vi,
-} from 'vitest'
+import { beforeEach, describe, expect, type Mocked, test, vi } from 'vitest'
 import { TypedRouter } from './router'
 
 vi.mock('@sebspark/otel', () => {
@@ -156,7 +154,7 @@ beforeEach(() => {
 
 test('/users is called correctly', async () => {
   const users: User[] = [{ id: 'foo' }, { id: 'bar' }]
-  ;(server['/users'].get.handler as Mock).mockResolvedValue([
+  vi.mocked(server['/users'].get.handler).mockResolvedValue([
     200,
     { data: users },
   ])
@@ -164,67 +162,124 @@ test('/users is called correctly', async () => {
   expect(response.statusCode).toEqual(200)
   expect(response.body).toEqual(users)
 })
-
 test('/users/:id is called correctly', async () => {
-  ;(server['/users/:id'].get.handler as Mock).mockImplementation(
+  vi.mocked(server['/users/:id'].get.handler).mockImplementation(
     async ({ params: { id } }) => [200, { data: { id } }]
   )
   const response = await client.get('/users/foobar')
   expect(response.statusCode).toEqual(200)
   expect(response.body).toEqual({ id: 'foobar' })
 })
-
 test('/headeronly sends headers', async () => {
   const response = await client.get('/headeronly')
   expect(response.statusCode).toEqual(204)
   expect(response.header['x-foo']).toEqual('bar')
 })
-
 test('/headerandbody sends headers and body', async () => {
   const response = await client.get('/headerandbody')
   expect(response.statusCode).toEqual(200)
   expect(response.header['x-foo']).toEqual('bar')
   expect(response.body).toEqual({ id: 'foo' })
 })
-
 test('it runs pre handlers', async () => {
-  ;(server['/users'].get.pre as Mock).mockImplementation((_req, _res, next) => {
-    next(new UnauthorizedError())
-  })
-
+  vi.mocked(server['/users'].get.pre as GenericRouteHandler).mockImplementation(
+    (_req, _res, next) => {
+      next(new UnauthorizedError())
+    }
+  )
   const response = await client.get('/users')
   expect(response.unauthorized).toBe(true)
 })
-
+test('it runs pre handlers passed as an array', async () => {
+  const pre1: GenericRouteHandler = vi
+    .fn()
+    .mockImplementation((_req, _res, next) => next())
+  const pre2: GenericRouteHandler = vi
+    .fn()
+    .mockImplementation((_req, _res, next) => {
+      next(new UnauthorizedError())
+    })
+  server['/users'].get.pre = [pre1, pre2]
+  const testApp = express()
+  testApp.use('/', TypedRouter(server, options))
+  const response = await agent(testApp).get('/users')
+  expect(pre1).toHaveBeenCalled()
+  expect(response.unauthorized).toBe(true)
+})
 test('it runs pre usings', async () => {
-  ;(options.pre as Mock).mockImplementation(async (_req, _res, next) => {
-    next(new UnauthorizedError())
-  })
+  vi.mocked(options.pre as GenericRouteHandler).mockImplementation(
+    async (_req, _res, next) => {
+      next(new UnauthorizedError())
+    }
+  )
   const response = await client.get('/users')
   expect(response.unauthorized).toBe(true)
 })
-
+test('it runs pre usings passed as an array', async () => {
+  const pre1: GenericRouteHandler = vi
+    .fn()
+    .mockImplementation((_req, _res, next) => next())
+  const pre2: GenericRouteHandler = vi
+    .fn()
+    .mockImplementation((_req, _res, next) => {
+      next(new UnauthorizedError())
+    })
+  const router = TypedRouter(server, { pre: [pre1, pre2] })
+  const testApp = express()
+  testApp.use('/', router)
+  const response = await agent(testApp).get('/users')
+  expect(pre1).toHaveBeenCalled()
+  expect(response.unauthorized).toBe(true)
+})
 test('it handles errors correctly', async () => {
   const err = new Error('error')
-  ;(server['/users'].get.handler as Mock).mockImplementation(async () => {
+  vi.mocked(server['/users'].get.handler).mockImplementation(async () => {
     throw err
   })
   const { body, error } = await client.get('/users')
   expect(error).toBeInstanceOf(Error)
   expect(body.message).toEqual('Internal Server Error')
 })
-
+test('it handles a thrown string correctly', async () => {
+  vi.mocked(server['/users'].get.handler).mockImplementation(async () => {
+    throw 'something went wrong'
+  })
+  const { body } = await client.get('/users')
+  expect(body.message).toEqual('Internal Server Error')
+})
+test('it handles a thrown plain object correctly', async () => {
+  vi.mocked(server['/users'].get.handler).mockImplementation(async () => {
+    throw { code: 'OOPS' }
+  })
+  const { body } = await client.get('/users')
+  expect(body.message).toEqual('Internal Server Error')
+})
 test('/nocontent is called correctly', async () => {
-  ;(server['/nocontent'].get.handler as Mock).mockResolvedValue([
+  vi.mocked(server['/nocontent'].get.handler).mockResolvedValue([204, {}])
+  const response = await client.get('/nocontent')
+  expect(response.statusCode).toEqual(204)
+  expect(response.body).toEqual({})
+})
+test('ends the response with no body when handler returns a falsy response', async () => {
+  // biome-ignore lint/suspicious/noExplicitAny: testing falsy response branch
+  vi.mocked(server['/nocontent'].get.handler).mockResolvedValue([
     204,
-    undefined,
+    undefined as any,
   ])
   const response = await client.get('/nocontent')
   expect(response.statusCode).toEqual(204)
   expect(response.body).toEqual({})
 })
-
 describe('tracing and logging', () => {
+  test('initialises logger and tracer with the package name', async () => {
+    await client.get('/users')
+    expect(vi.mocked(getLogger)).toHaveBeenCalledWith(
+      '@sebspark/openapi-express'
+    )
+    expect(vi.mocked(getTracer)).toHaveBeenCalledWith(
+      '@sebspark/openapi-express'
+    )
+  })
   test('starts a span named "METHOD /route"', async () => {
     await client.get('/users')
     expect(tracer.startSpan).toHaveBeenCalledWith('GET /users')
@@ -233,39 +288,91 @@ describe('tracing and logging', () => {
     await client.get('/users')
     expect(span.setAttributes).toHaveBeenCalledWith(
       expect.objectContaining({
-        'http.request.method': 'GET',
-        'http.route': '/users',
+        [ATTR_HTTP_REQUEST_METHOD]: 'GET',
+        [ATTR_HTTP_ROUTE]: '/users',
       })
     )
   })
   test('sets OK status and response code on success', async () => {
     await client.get('/users')
     expect(span.setAttributes).toHaveBeenCalledWith({
-      'http.response.status_code': 200,
+      [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
     })
     expect(span.setStatus).toHaveBeenCalledWith({ code: SpanStatusCode.OK })
     expect(span.end).toHaveBeenCalledTimes(1)
   })
   test('logs info on success', async () => {
     await client.get('/users')
-    expect(logger.info).toHaveBeenCalledWith('GET /users 200')
+    expect(logger.info).toHaveBeenCalledWith(
+      'GET /users 200',
+      expect.any(Object)
+    )
+  })
+  test('wraps a non-Error thrown value into an Error before recording it', async () => {
+    vi.mocked(server['/users'].get.handler).mockRejectedValue('boom')
+    await client.get('/users')
+    expect(span.recordException).toHaveBeenCalledWith(expect.any(Error))
+    expect(span.setStatus).toHaveBeenCalledWith(
+      expect.objectContaining({ code: SpanStatusCode.ERROR })
+    )
   })
   test('records exception and sets ERROR status on handler error', async () => {
     const err = new Error('boom')
-    ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
+    vi.mocked(server['/users'].get.handler).mockRejectedValue(err)
     await client.get('/users')
     expect(span.recordException).toHaveBeenCalledWith(err)
     expect(span.setStatus).toHaveBeenCalledWith({
       code: SpanStatusCode.ERROR,
       message: 'boom',
     })
-    expect(span.setAttribute).toHaveBeenCalledWith('error.type', 'Error')
+    expect(span.setAttribute).toHaveBeenCalledWith(ATTR_ERROR_TYPE, 'Error')
     expect(span.end).toHaveBeenCalledTimes(1)
+  })
+  test('sets http.response.status_code on the span when the error has a statusCode', async () => {
+    vi.mocked(server['/users'].get.handler).mockRejectedValue(
+      new UnauthorizedError()
+    )
+    await client.get('/users')
+    expect(span.setAttributes).toHaveBeenCalledWith({
+      [ATTR_HTTP_RESPONSE_STATUS_CODE]: 401,
+    })
   })
   test('logs error on handler error', async () => {
     const err = new Error('boom')
-    ;(server['/users'].get.handler as Mock).mockRejectedValue(err)
+    vi.mocked(server['/users'].get.handler).mockRejectedValue(err)
     await client.get('/users')
-    expect(logger.error).toHaveBeenCalledWith('GET /users', err)
+    expect(logger.error).toHaveBeenCalledWith(
+      'GET /users',
+      err,
+      expect.any(Object)
+    )
+  })
+  test('sets http.server.request.duration on the span in seconds', async () => {
+    await client.get('/users')
+    expect(span.setAttribute).toHaveBeenCalledWith(
+      METRIC_HTTP_SERVER_REQUEST_DURATION,
+      expect.any(Number)
+    )
+  })
+  test('includes duration in the info log on success', async () => {
+    await client.get('/users')
+    expect(logger.info).toHaveBeenCalledWith(
+      'GET /users 200',
+      expect.objectContaining({
+        [METRIC_HTTP_SERVER_REQUEST_DURATION]: expect.any(Number),
+      })
+    )
+  })
+  test('includes duration in the error log on failure', async () => {
+    const err = new Error('boom')
+    vi.mocked(server['/users'].get.handler).mockRejectedValue(err)
+    await client.get('/users')
+    expect(logger.error).toHaveBeenCalledWith(
+      'GET /users',
+      err,
+      expect.objectContaining({
+        [METRIC_HTTP_SERVER_REQUEST_DURATION]: expect.any(Number),
+      })
+    )
   })
 })

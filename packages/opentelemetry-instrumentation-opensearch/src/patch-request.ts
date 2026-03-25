@@ -21,7 +21,10 @@ import {
   ATTR_DB_SYSTEM_NAME,
 } from '@opentelemetry/semantic-conventions'
 import { parsePath } from './parse-path'
-import { extractResponseAttributes } from './response-attributes'
+import {
+  ATTR_DB_OPENSEARCH_DURATION_MS,
+  extractResponseAttributes,
+} from './response-attributes'
 import { serializeBody } from './serialize-body'
 import type { OpenSearchInstrumentationConfig } from './types'
 
@@ -76,7 +79,10 @@ export const createPatchedRequest = (
     )
     config.requestHook?.(span, params)
 
+    const startTime = Date.now()
+
     const onSuccess = (res: ApiResponse) => {
+      span.setAttribute(ATTR_DB_OPENSEARCH_DURATION_MS, Date.now() - startTime)
       for (const [key, value] of Object.entries(
         extractResponseAttributes(res)
       )) {
@@ -90,6 +96,7 @@ export const createPatchedRequest = (
     }
 
     const onError = (err: unknown) => {
+      span.setAttribute(ATTR_DB_OPENSEARCH_DURATION_MS, Date.now() - startTime)
       if (err instanceof Error) span.recordException(err)
       span.setStatus({ code: SpanStatusCode.ERROR })
       span.end()

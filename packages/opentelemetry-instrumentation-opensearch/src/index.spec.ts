@@ -465,6 +465,44 @@ describe('OpenSearchInstrumentation', () => {
     })
   })
 
+  describe('duration', () => {
+    it('sets db.opensearch.duration_ms on a successful request', async () => {
+      const { transport, exporter, original, teardown } = setup()
+      original.mockImplementation(
+        () =>
+          new Promise((resolve) => setTimeout(() => resolve(mockResponse), 20))
+      )
+
+      await transport.request({ method: 'POST', path: '/my_index/_search' })
+
+      const duration =
+        exporter.getFinishedSpans()[0].attributes['db.opensearch.duration_ms']
+      expect(typeof duration).toBe('number')
+      expect(duration as number).toBeGreaterThanOrEqual(20)
+      await teardown()
+    })
+
+    it('sets db.opensearch.duration_ms on a failed request', async () => {
+      const { transport, exporter, original, teardown } = setup()
+      original.mockImplementation(
+        () =>
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('timeout')), 20)
+          )
+      )
+
+      await expect(
+        transport.request({ method: 'POST', path: '/my_index/_search' })
+      ).rejects.toThrow()
+
+      const duration =
+        exporter.getFinishedSpans()[0].attributes['db.opensearch.duration_ms']
+      expect(typeof duration).toBe('number')
+      expect(duration as number).toBeGreaterThanOrEqual(20)
+      await teardown()
+    })
+  })
+
   describe('disable', () => {
     it('restores the original Transport.prototype.request', () => {
       const { original, teardown } = setup()

@@ -5,6 +5,8 @@ import {
   ATTR_SERVER_PORT,
 } from '@opentelemetry/semantic-conventions'
 
+export const ATTR_DB_OPENSEARCH_DURATION_MS = 'db.opensearch.duration_ms'
+
 export const extractResponseAttributes = (
   res: ApiResponse
 ): Record<string, string | number | boolean> => {

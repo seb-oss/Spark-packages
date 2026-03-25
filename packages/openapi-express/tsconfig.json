@@ -1,4 +1,10 @@
 {
   "extends": "@sebspark/tsconfig/tsconfig.lib.json",
-  "include": ["."]
+  "include": ["."],
+  "compilerOptions": {
+    "paths": {
+      "@sebspark/otel": ["../otel/src/index.ts"],
+      "@sebspark/openapi-core": ["../openapi-core/src/index.ts"]
+    }
+  }
 }

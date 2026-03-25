@@ -9,6 +9,7 @@ import type { OpenSearchInstrumentationConfig } from './types'
 
 export type { OpenSearchInstrumentationConfig } from './types'
 
+const PACKAGE_NAME: string = pkg.name
 const PACKAGE_VERSION: string = pkg.version
 const OPENSEARCH_CLIENT_VERSION: string = opensearchPkg.version
 
@@ -17,11 +18,7 @@ export class OpenSearchInstrumentation extends InstrumentationBase {
   private _original: OriginalRequest | undefined
 
   constructor(config: OpenSearchInstrumentationConfig = {}) {
-    super(
-      '@sebspark/opentelemetry-instrumentation-opensearch',
-      PACKAGE_VERSION,
-      { ...config, enabled: false }
-    )
+    super(PACKAGE_NAME, PACKAGE_VERSION, { ...config, enabled: false })
     this.osConfig = config
     if (config.enabled !== false) {
       this.enable()

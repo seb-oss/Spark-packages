@@ -3841,6 +3841,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
+    "@opentelemetry/semantic-conventions": "npm:1.40.0"
     "@sebspark/openapi-core": "npm:4.1.4"
     "@sebspark/otel": "npm:2.2.2"
     "@types/supertest": "npm:7.2.0"

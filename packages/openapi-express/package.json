@@ -28,6 +28,7 @@
     "supertest": "7.2.2"
   },
   "dependencies": {
+    "@opentelemetry/semantic-conventions": "1.40.0",
     "@sebspark/openapi-core": "4.1.4",
     "@sebspark/otel": "2.2.2"
   },
