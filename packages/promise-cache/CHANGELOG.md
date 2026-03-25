@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.4.15
+
+### Patch Changes
+
+- @sebspark/otel@2.2.3
+
 ## 6.4.14
 
 ### Patch Changes

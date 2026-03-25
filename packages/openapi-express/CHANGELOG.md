@@ -1,5 +1,15 @@
 # @sebspark/openapi-express
 
+## 5.2.0
+
+### Minor Changes
+
+- cd9e760: Duration added to openapie-express routes
+
+### Patch Changes
+
+- @sebspark/otel@2.2.3
+
 ## 5.1.5
 
 ### Patch Changes

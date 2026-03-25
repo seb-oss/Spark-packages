@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.2.1
+
+### Patch Changes
+
+- cd9e760: Duration added to openapie-express routes
+
 ## 0.2.0
 
 ### Minor Changes

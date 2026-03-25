@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.31
+
+### Patch Changes
+
+- @sebspark/otel@2.2.3
+
 ## 3.0.30
 
 ### Patch Changes
