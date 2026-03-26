@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.3.0
+
+### Minor Changes
+
+- 2f554f8: Router now logs full http attributes
+
 ## 5.2.0
 
 ### Minor Changes
