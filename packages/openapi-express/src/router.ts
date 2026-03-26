@@ -1,12 +1,16 @@
 import {
+  ATTR_CLIENT_ADDRESS,
   ATTR_ERROR_TYPE,
   ATTR_HTTP_REQUEST_METHOD,
   ATTR_HTTP_RESPONSE_STATUS_CODE,
   ATTR_HTTP_ROUTE,
   ATTR_NETWORK_PROTOCOL_VERSION,
   ATTR_SERVER_ADDRESS,
+  ATTR_SERVER_PORT,
   ATTR_URL_PATH,
+  ATTR_URL_QUERY,
   ATTR_URL_SCHEME,
+  ATTR_USER_AGENT_ORIGINAL,
   METRIC_HTTP_SERVER_REQUEST_DURATION,
 } from '@opentelemetry/semantic-conventions'
 import {
@@ -61,14 +65,23 @@ export const TypedRouter = (
       ) => {
         const startTime = performance.now()
         const span = tracer.startSpan(`${method.toUpperCase()} ${url}`)
-        span.setAttributes({
+        const query = req.url.split('?')[1]
+        const port = req.socket.localPort
+        const ip = req.ip
+        const userAgent = req.get('user-agent')
+        const requestAttributes = {
           [ATTR_HTTP_REQUEST_METHOD]: req.method,
           [ATTR_HTTP_ROUTE]: url,
           [ATTR_URL_PATH]: req.path,
+          ...(query && { [ATTR_URL_QUERY]: query }),
           [ATTR_URL_SCHEME]: req.protocol,
           [ATTR_SERVER_ADDRESS]: req.hostname,
+          ...(port && { [ATTR_SERVER_PORT]: port }),
           [ATTR_NETWORK_PROTOCOL_VERSION]: req.httpVersion,
-        })
+          ...(ip && { [ATTR_CLIENT_ADDRESS]: ip }),
+          ...(userAgent && { [ATTR_USER_AGENT_ORIGINAL]: userAgent }),
+        }
+        span.setAttributes(requestAttributes)
 
         try {
           const [status, response] = await route.handler(req)
@@ -100,6 +113,7 @@ export const TypedRouter = (
           }
 
           logger.info(`${method.toUpperCase()} ${url} ${status}`, {
+            ...requestAttributes,
             [METRIC_HTTP_SERVER_REQUEST_DURATION]:
               (performance.now() - startTime) / 1000,
           })
@@ -118,6 +132,7 @@ export const TypedRouter = (
           }
 
           logger.error(`${method.toUpperCase()} ${url}`, err, {
+            ...requestAttributes,
             [METRIC_HTTP_SERVER_REQUEST_DURATION]:
               (performance.now() - startTime) / 1000,
           })

@@ -1,8 +1,16 @@
 import {
+  ATTR_CLIENT_ADDRESS,
   ATTR_ERROR_TYPE,
   ATTR_HTTP_REQUEST_METHOD,
   ATTR_HTTP_RESPONSE_STATUS_CODE,
   ATTR_HTTP_ROUTE,
+  ATTR_NETWORK_PROTOCOL_VERSION,
+  ATTR_SERVER_ADDRESS,
+  ATTR_SERVER_PORT,
+  ATTR_URL_PATH,
+  ATTR_URL_QUERY,
+  ATTR_URL_SCHEME,
+  ATTR_USER_AGENT_ORIGINAL,
   METRIC_HTTP_SERVER_REQUEST_DURATION,
 } from '@opentelemetry/semantic-conventions'
 import {
@@ -285,11 +293,19 @@ describe('tracing and logging', () => {
     expect(tracer.startSpan).toHaveBeenCalledWith('GET /users')
   })
   test('sets request attributes on the span', async () => {
-    await client.get('/users')
+    await client.get('/users?foo=bar').set('user-agent', 'test-agent/1.0')
     expect(span.setAttributes).toHaveBeenCalledWith(
       expect.objectContaining({
         [ATTR_HTTP_REQUEST_METHOD]: 'GET',
         [ATTR_HTTP_ROUTE]: '/users',
+        [ATTR_URL_PATH]: '/users',
+        [ATTR_URL_QUERY]: 'foo=bar',
+        [ATTR_URL_SCHEME]: expect.any(String),
+        [ATTR_SERVER_ADDRESS]: expect.any(String),
+        [ATTR_SERVER_PORT]: expect.any(Number),
+        [ATTR_NETWORK_PROTOCOL_VERSION]: expect.any(String),
+        [ATTR_CLIENT_ADDRESS]: expect.any(String),
+        [ATTR_USER_AGENT_ORIGINAL]: 'test-agent/1.0',
       })
     )
   })
@@ -373,6 +389,83 @@ describe('tracing and logging', () => {
       expect.objectContaining({
         [METRIC_HTTP_SERVER_REQUEST_DURATION]: expect.any(Number),
       })
+    )
+  })
+  test('includes http attributes in the info log on success', async () => {
+    await client.get('/users?foo=bar').set('user-agent', 'test-agent/1.0')
+    expect(logger.info).toHaveBeenCalledWith(
+      'GET /users 200',
+      expect.objectContaining({
+        [ATTR_HTTP_REQUEST_METHOD]: 'GET',
+        [ATTR_HTTP_ROUTE]: '/users',
+        [ATTR_URL_PATH]: '/users',
+        [ATTR_URL_QUERY]: 'foo=bar',
+        [ATTR_URL_SCHEME]: expect.any(String),
+        [ATTR_SERVER_ADDRESS]: expect.any(String),
+        [ATTR_SERVER_PORT]: expect.any(Number),
+        [ATTR_NETWORK_PROTOCOL_VERSION]: expect.any(String),
+        [ATTR_CLIENT_ADDRESS]: expect.any(String),
+        [ATTR_USER_AGENT_ORIGINAL]: 'test-agent/1.0',
+      })
+    )
+  })
+  test('includes http attributes in the error log on failure', async () => {
+    const err = new Error('boom')
+    vi.mocked(server['/users'].get.handler).mockRejectedValue(err)
+    await client.get('/users?foo=bar').set('user-agent', 'test-agent/1.0')
+    expect(logger.error).toHaveBeenCalledWith(
+      'GET /users',
+      err,
+      expect.objectContaining({
+        [ATTR_HTTP_REQUEST_METHOD]: 'GET',
+        [ATTR_HTTP_ROUTE]: '/users',
+        [ATTR_URL_PATH]: '/users',
+        [ATTR_URL_QUERY]: 'foo=bar',
+        [ATTR_URL_SCHEME]: expect.any(String),
+        [ATTR_SERVER_ADDRESS]: expect.any(String),
+        [ATTR_SERVER_PORT]: expect.any(Number),
+        [ATTR_NETWORK_PROTOCOL_VERSION]: expect.any(String),
+        [ATTR_CLIENT_ADDRESS]: expect.any(String),
+        [ATTR_USER_AGENT_ORIGINAL]: 'test-agent/1.0',
+      })
+    )
+  })
+})
+
+describe('log label uses route template, not actual path', () => {
+  type AssetServer = APIServerDefinition & {
+    '/assets': { get: { handler: GenericRouteHandler } }
+    '/assets/:id': { get: { handler: GenericRouteHandler } }
+  }
+  let assetClient: Agent
+
+  beforeEach(() => {
+    const assetServer: AssetServer = {
+      '/assets': {
+        get: { handler: vi.fn().mockResolvedValue([200, { data: [] }]) },
+      },
+      '/assets/:id': {
+        get: {
+          handler: vi.fn().mockResolvedValue([200, { data: { id: 'foo' } }]),
+        },
+      },
+    }
+    const testApp = express()
+    testApp.use('/', TypedRouter(assetServer))
+    assetClient = agent(testApp)
+  })
+  test('GET /assets is logged as "GET /assets 200"', async () => {
+    await assetClient.get('/assets')
+    expect(logger.info).toHaveBeenCalledWith(
+      'GET /assets 200',
+      expect.any(Object)
+    )
+  })
+  test('GET /assets/STO_SE0000120784_SEK_XSTO is logged as "GET /assets/:id 200"', async () => {
+    await assetClient.get('/assets/STO_SE0000120784_SEK_XSTO')
+    expect(logger.info).toHaveBeenCalledWith(
+      'GET /assets/:id 200',
+      expect.any(Object)
     )
   })
 })
