@@ -1,9 +1,9 @@
 import express, { type Express, Router } from 'express'
 import { agent } from 'supertest'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { ReadinessPayload } from '../dist/index.mjs'
 import { DependencyMonitor } from './dependency-monitor'
 import { HealthMonitor } from './health-monitor'
-import { ReadinessPayload } from '../dist/index.mjs'
 
 describe('HealthMonitor', () => {
   describe('.ping', () => {
@@ -369,7 +369,7 @@ describe('HealthMonitor', () => {
             ok: 1,
             degraded: 1,
           },
-          degradedReasons: ['']
+          degradedReasons: [''],
         },
         timestamp: '',
       }

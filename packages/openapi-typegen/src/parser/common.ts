@@ -34,8 +34,7 @@ export const findRef = <T extends SchemaType>(
 ): T => {
   const [, , path, name] = ref.split('/')
   const schemaPath = components[path as SchemaPath]
-  if (!schemaPath || !schemaPath[name])
-    throw new Error(`Cannot find ref ${ref}`)
+  if (!schemaPath?.[name]) throw new Error(`Cannot find ref ${ref}`)
   return schemaPath[name] as T
 }
 
