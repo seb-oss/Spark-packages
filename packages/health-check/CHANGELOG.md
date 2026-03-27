@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.2.3
+
+### Patch Changes
+
+- 6db0b94: fix: do not count degraded as failing for critical dependencies
+
 ## 2.2.2
 
 ### Patch Changes
