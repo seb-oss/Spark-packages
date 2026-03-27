@@ -3690,7 +3690,7 @@ __metadata:
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
     "@sebspark/avsc-isometric": "npm:0.4.9"
-    "@sebspark/tsconfig": "npm:3.0.12"
+    "@sebspark/tsconfig": "npm:3.0.13"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:5.6.2"
@@ -3796,7 +3796,7 @@ __metadata:
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.4"
-    "@sebspark/openapi-typegen": "npm:5.0.19"
+    "@sebspark/openapi-typegen": "npm:5.0.20"
     "@sebspark/otel": "npm:2.2.3"
     "@sebspark/retry": "npm:1.0.8"
     axios: "npm:1.13.6"
@@ -3823,7 +3823,7 @@ __metadata:
     "@sebspark/openapi-client": "npm:4.1.23"
     "@sebspark/openapi-core": "npm:4.1.4"
     "@sebspark/openapi-express": "npm:5.3.0"
-    "@sebspark/openapi-typegen": "npm:5.0.19"
+    "@sebspark/openapi-typegen": "npm:5.0.20"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
     find-free-ports: "npm:3.1.1"
@@ -3845,7 +3845,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.0.19, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.0.20, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
@@ -4030,7 +4030,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.12, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.13, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
