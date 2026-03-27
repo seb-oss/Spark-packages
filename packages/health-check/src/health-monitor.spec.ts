@@ -3,6 +3,7 @@ import { agent } from 'supertest'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { DependencyMonitor } from './dependency-monitor'
 import { HealthMonitor } from './health-monitor'
+import { ReadinessPayload } from '../dist/index.mjs'
 
 describe('HealthMonitor', () => {
   describe('.ping', () => {
@@ -335,6 +336,49 @@ describe('HealthMonitor', () => {
         .set('Host', 'mysystem.com')
       expect(stub).toHaveBeenCalledTimes(1)
       expect(res.status).toBe(503)
+      expect(res.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ready' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+    })
+
+    it('GET /health/ready calls .ready and sets 200 for degraded status', async () => {
+      const payload: ReadinessPayload = {
+        status: 'degraded',
+        checks: {
+          db: {
+            status: 'degraded',
+            freshness: {
+              lastChecked: '',
+              lastSuccess: '',
+            },
+            impact: 'critical',
+            mode: 'inline',
+          },
+        },
+        summary: {
+          critical: {
+            failing: 0,
+            ok: 1,
+          },
+          nonCritical: {
+            failing: 0,
+            ok: 1,
+            degraded: 1,
+          },
+          degradedReasons: ['']
+        },
+        timestamp: '',
+      }
+      const stub = vi.spyOn(monitor, 'ready').mockResolvedValue(payload as any)
+      const res = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
+      expect(stub).toHaveBeenCalledTimes(1)
+      expect(res.status).toBe(200)
       expect(res.body).toEqual({
         data: payload,
         links: {
