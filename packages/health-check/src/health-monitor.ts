@@ -248,7 +248,8 @@ export class HealthMonitor {
 
     // ----- summary -------------------------------------------------------------
     let criticalOk = 0
-    let criticalFailing = 0 // counts any non-ok critical (degraded OR error)
+    let criticalDegraded = 0
+    let criticalFailing = 0
 
     let nonCritOk = 0
     let nonCritDegraded = 0
@@ -264,8 +265,7 @@ export class HealthMonitor {
         if (isCritical) criticalOk++
         else nonCritOk++
       } else if (c.status === 'degraded') {
-        if (isCritical)
-          criticalFailing++ // critical degraded counts as failing
+        if (isCritical) criticalDegraded++
         else nonCritDegraded++
         degradedReasons.push(`${name}:degraded`)
       } else {
@@ -277,7 +277,11 @@ export class HealthMonitor {
     }
 
     const summary: ReadinessSummary = {
-      critical: { ok: criticalOk, failing: criticalFailing },
+      critical: {
+        ok: criticalOk,
+        degraded: criticalDegraded,
+        failing: criticalFailing,
+      },
       nonCritical: {
         ok: nonCritOk,
         degraded: nonCritDegraded,

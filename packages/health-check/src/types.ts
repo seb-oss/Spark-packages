@@ -79,7 +79,7 @@ export type DependencyCheck = Status & {
 }
 
 export type ReadinessSummary = {
-  critical: { ok: number; failing: number }
+  critical: { ok: number; degraded: number; failing: number }
   nonCritical: { ok: number; degraded: number; failing: number }
   degradedReasons: string[]
 }
