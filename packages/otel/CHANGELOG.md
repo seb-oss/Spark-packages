@@ -1,5 +1,16 @@
 # @sebspark/otel
 
+## 3.0.0
+
+### Major Changes
+
+- 91aed80: Added instrumentation for outgoing http requests and removed SIGTERM listener
+
+### Patch Changes
+
+- Updated dependencies [91aed80]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.2.2
+
 ## 2.2.3
 
 ### Patch Changes
