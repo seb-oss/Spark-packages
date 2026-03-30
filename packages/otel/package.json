@@ -22,7 +22,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/api": "1.9.1",
     "@opentelemetry/api-logs": "0.213.0",
     "@opentelemetry/core": "2.6.0",
     "@opentelemetry/exporter-logs-otlp-http": "0.213.0",
