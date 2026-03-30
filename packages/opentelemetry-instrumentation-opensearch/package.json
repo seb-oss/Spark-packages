@@ -37,7 +37,7 @@
     "@opentelemetry/instrumentation-http": "0.213.0",
     "@opentelemetry/instrumentation-undici": "0.23.0",
     "@opentelemetry/sdk-trace-base": "2.6.0",
-    "@opentelemetry/sdk-trace-node": "2.6.0",
+    "@opentelemetry/sdk-trace-node": "2.6.1",
     "@testcontainers/opensearch": "11.13.0"
   },
   "repository": {
