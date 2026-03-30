@@ -121,6 +121,16 @@ describe('ConsoleMetricPrettyExporter', () => {
 
     expect(consoleLog).not.toHaveBeenCalled()
   })
+  it('shutdown resolves', async () => {
+    const exporter = new ConsoleMetricPrettyExporter()
+    await expect(exporter.shutdown()).resolves.toBeUndefined()
+  })
+
+  it('forceFlush resolves', async () => {
+    const exporter = new ConsoleMetricPrettyExporter()
+    await expect(exporter.forceFlush()).resolves.toBeUndefined()
+  })
+
   it('matches exact name if no wildcard', () => {
     process.env.METRIC_FILTER = 'db.query.count'
     const exporter = new ConsoleMetricPrettyExporter()

@@ -112,6 +112,11 @@ describe('ConsoleSpanPrettyExporter', () => {
     expect(consoleLog).toHaveBeenCalledTimes(1)
     expect(consoleLog.mock.calls[0][0]).toContain('span-error')
   })
+  it('shutdown resolves', async () => {
+    const exporter = new ConsoleSpanPrettyExporter()
+    await expect(exporter.shutdown()).resolves.toBeUndefined()
+  })
+
   it('ignores invalid SPAN_LEVEL entries gracefully', () => {
     process.env.SPAN_LEVEL = 'FOO,BAR,ERROR'
     const exporter = new ConsoleSpanPrettyExporter()

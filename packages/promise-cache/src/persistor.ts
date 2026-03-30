@@ -64,7 +64,7 @@ export class Persistor {
       CACHE_CLIENT = createLocalMemoryClient
     }
 
-    if (!this.client || !this.client.isReady) {
+    if (!this.client?.isReady) {
       this.startConnection()
     }
   }
@@ -141,7 +141,7 @@ export class Persistor {
     key: string,
     { value, timestamp = Date.now(), ttl }: SetParams<T>
   ): Promise<void> {
-    if (!this.client || !this.client.isReady) {
+    if (!this.client?.isReady) {
       this.logger.error('Client not ready')
       return
     }
@@ -187,7 +187,7 @@ export class Persistor {
    * @param key Cache key
    */
   public async delete(key: string): Promise<void> {
-    if (!this.client || !this.client.isReady) {
+    if (!this.client?.isReady) {
       this.logger.error('Client not ready')
       return
     }

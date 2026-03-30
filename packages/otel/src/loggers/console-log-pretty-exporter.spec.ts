@@ -187,6 +187,26 @@ describe('ConsoleLogPrettyExporter', () => {
     }
   })
 
+  it('should skip records with undefined severityNumber (treated as 0, below any threshold)', () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    const record = {
+      ...createLogRecord('INFO'),
+      severityNumber: undefined,
+    } as any
+    exporter.export([record], () => {})
+    expect(consoleInfo).not.toHaveBeenCalled()
+  })
+
+  it('should call shutdown and return resolved promise', async () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    await expect(exporter.shutdown()).resolves.toBeUndefined()
+  })
+
+  it('should call forceFlush and return resolved promise', async () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    await expect(exporter.forceFlush()).resolves.toBeUndefined()
+  })
+
   it('should use console.log (not console.warn) for WARN severity', () => {
     const exporter = new ConsoleLogPrettyExporter()
     const consoleLog = vi.spyOn(console, 'log').mockImplementation(() => {})
@@ -215,5 +235,27 @@ describe('ConsoleLogPrettyExporter', () => {
     expect(output).not.toContain('cloud.orchestrator')
     expect(output).not.toContain('component.name')
     expect(output).toContain('url=/health')
+  })
+
+  it('should call shutdown and return resolved promise', async () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    await expect(exporter.shutdown()).resolves.toBeUndefined()
+  })
+
+  it('should call forceFlush and return resolved promise', async () => {
+    const exporter = new ConsoleLogPrettyExporter()
+    await expect(exporter.forceFlush()).resolves.toBeUndefined()
+  })
+
+  it('should use console.trace for severity below DEBUG', () => {
+    process.env.LOG_LEVEL = 'TRACE'
+    const traceLevelExporter = new ConsoleLogPrettyExporter()
+    const traceRecord: ReadableLogRecord = {
+      ...createLogRecord('DEBUG'),
+      severityNumber: 1,
+      severityText: 'TRACE',
+    }
+    traceLevelExporter.export([traceRecord], () => {})
+    expect(consoleTrace).toHaveBeenCalled()
   })
 })

@@ -251,6 +251,16 @@ describe('GcpJsonLogExporter', () => {
     expect(parsed['logging.googleapis.com/labels']).toBeUndefined()
   })
 
+  it('shutdown resolves', async () => {
+    const exporter = new GcpJsonLogExporter()
+    await expect(exporter.shutdown()).resolves.toBeUndefined()
+  })
+
+  it('forceFlush resolves', async () => {
+    const exporter = new GcpJsonLogExporter()
+    await expect(exporter.forceFlush()).resolves.toBeUndefined()
+  })
+
   it('should use GOOGLE_CLOUD_PROJECT as fallback for GCP_PROJECT', () => {
     delete process.env.GCP_PROJECT
     process.env.GOOGLE_CLOUD_PROJECT = 'fallback-project'

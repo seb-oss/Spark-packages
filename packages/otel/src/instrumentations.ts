@@ -1,4 +1,5 @@
 import type { Instrumentation } from '@opentelemetry/instrumentation'
+import { buildHttpConfig, buildUndiciConfig } from './enrichments/outgoing-http'
 
 let _http: Promise<Instrumentation> | undefined
 let _express: Promise<Instrumentation> | undefined
@@ -15,7 +16,7 @@ export const instrumentations = {
   get http() {
     if (!_http) {
       _http = import('@opentelemetry/instrumentation-http').then(
-        ({ HttpInstrumentation }) => new HttpInstrumentation()
+        ({ HttpInstrumentation }) => new HttpInstrumentation(buildHttpConfig())
       )
     }
     return _http
@@ -78,7 +79,8 @@ export const instrumentations = {
   get undici() {
     if (!_undici) {
       _undici = import('@opentelemetry/instrumentation-undici').then(
-        ({ UndiciInstrumentation }) => new UndiciInstrumentation()
+        ({ UndiciInstrumentation }) =>
+          new UndiciInstrumentation(buildUndiciConfig())
       )
     }
     return _undici

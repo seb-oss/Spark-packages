@@ -8,6 +8,7 @@ import {
 } from '@opentelemetry/api'
 import { logs } from '@opentelemetry/api-logs'
 import type { Instrumentation } from '@opentelemetry/instrumentation'
+import type { LoggerProvider } from '@opentelemetry/sdk-logs'
 import { NodeSDK } from '@opentelemetry/sdk-node'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
 import { getResource } from './resource'
@@ -47,6 +48,9 @@ export function isInitialized() {
   return getGlobal()[OTEL_INIT_KEY] === true
 }
 
+let sdk: NodeSDK | undefined
+let logProvider: LoggerProvider | undefined
+
 async function _initialize(instrumentations: Instrumentation[]) {
   const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
   const otlpEndpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT
@@ -60,13 +64,13 @@ async function _initialize(instrumentations: Instrumentation[]) {
   metrics.disable()
 
   // Manual setup for logs
-  const logProvider = getLogProvider(resource, otlpEndpoint)
+  logProvider = getLogProvider(resource, otlpEndpoint)
   logs.setGlobalLoggerProvider(logProvider)
 
   // NodeSDK setup
   const spanProcessor = getSpanProcessor(otlpEndpoint)
   const metricReader = getMetricReader(otlpEndpoint)
-  const sdk = new NodeSDK({
+  sdk = new NodeSDK({
     spanProcessor,
     metricReader,
     instrumentations,
@@ -76,11 +80,16 @@ async function _initialize(instrumentations: Instrumentation[]) {
   sdk.start()
   getGlobal()[OTEL_INIT_KEY] = true
   console.log(`[otel] Telemetry initialized for "${serviceName}"`)
+}
 
-  process.on('SIGTERM', async () => {
+export const dispose = async () => {
+  const processes: Promise<void>[] = []
+  if (sdk) processes.push(sdk.shutdown())
+  if (logProvider) processes.push(logProvider.shutdown())
+
+  if (processes.length) {
     console.log('[otel] Shutting down...')
-    await Promise.all([sdk.shutdown(), logProvider.shutdown()])
+    await Promise.all(processes)
     console.log('[otel] Shutdown complete.')
-    process.exit(0)
-  })
+  }
 }

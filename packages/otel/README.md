@@ -21,20 +21,22 @@ pnpm add @sebspark/otel
 **This must be the first import in your application:**
 
 ```ts
-import { initialize, instrumentations } from '@sebspark/otel'
+import { initialize, instrumentations, dispose } from '@sebspark/otel'
 
-async function start () {
-  await initialize(
-    instrumentations.undici,
-    instrumentations.http,
-    instrumentations.express,
-    instrumentations.redis,
-  )
+await initialize(
+  instrumentations.undici,
+  instrumentations.http,
+  instrumentations.express,
+  instrumentations.redis,
+)
 
-  // start your application
-}
+// start your application
 
-start()
+// Add a listener for shutdown and call OTEL dispose to ensure messages
+// are flushed
+process.on('SIGTERM', async () => {
+  await dispose()
+})
 ```
 
 Automatically:

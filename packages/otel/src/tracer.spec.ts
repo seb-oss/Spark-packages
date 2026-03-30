@@ -60,6 +60,16 @@ describe('getTracer', () => {
       expect(result).toBe(42)
       expect(capturedSpanId).toBeDefined()
     })
+    it('treats null second argument as absent (isSpanOptions returns false for null)', async () => {
+      const tracer = getTracer('null-opts-test')
+      const result = await tracer.withTrace(
+        'null-opts',
+        null as any,
+        async () => 'ok'
+      )
+      expect(result).toBe('ok')
+    })
+
     it('marks the span as error if the function throws (sync)', async () => {
       const tracer = getTracer('error-test')
       try {
