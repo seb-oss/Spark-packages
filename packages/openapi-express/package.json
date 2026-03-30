@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-express",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@opentelemetry/semantic-conventions": "1.40.0",
-    "@sebspark/openapi-core": "4.1.4",
-    "@sebspark/otel": "2.2.3"
+    "@sebspark/openapi-core": "4.1.5",
+    "@sebspark/otel": "3.0.0"
   },
   "peerDependencies": {
     "express": ">=5"
