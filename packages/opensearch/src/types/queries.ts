@@ -427,13 +427,7 @@ export type TermQuery<T> = Omit<
   value: MapOpenSearchTypes<T>
 }
 
-export type TermsQuery<T> = Omit<
-  Types.Common_QueryDsl.TermsQuery,
-  'terms' | 'field'
-> & {
-  field: NestedPaths<T>
-  terms: FieldValue[]
-}
+export type TermsQuery<T> = FieldQuery<T, FieldValue[]>
 
 export type TermsSetQuery<T> = Omit<
   Types.Common_QueryDsl.TermsSetQuery,

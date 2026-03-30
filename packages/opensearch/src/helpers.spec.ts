@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, expectTypeOf, it } from 'vitest'
 import {
   bulkCreate,
   bulkDelete,
@@ -6,8 +6,9 @@ import {
   bulkUpdate,
   type IdFunction,
 } from './helpers'
-import type { IndexDefinition } from './types/common'
+import type { IndexDefinition, MapQueryProperties } from './types/common'
 import type { DocumentFor } from './types/documents'
+import type { TermsQuery } from './types/queries'
 import type { SearchRequest } from './types/search'
 
 // A dummy index definition for testing purposes
@@ -35,6 +36,7 @@ const personIndex = {
 
 type PersonIndex = typeof personIndex
 type PersonDocument = DocumentFor<PersonIndex>
+type PersonQuery = MapQueryProperties<PersonIndex>
 
 describe('bulkIndex helper', () => {
   it('builds a bulk insert payload without an id generator', () => {
@@ -162,5 +164,43 @@ describe('bulkDelete helper', () => {
     bulkPayload.body.forEach((item, idx) => {
       expect(item).toEqual({ delete: { _id: ids[idx] } })
     })
+  })
+})
+
+describe('TermsQuery type', () => {
+  it('should accept { [fieldName]: values[] } format (OpenSearch API format)', () => {
+    // The actual OpenSearch terms query uses { [fieldName]: values[] }
+    const query: TermsQuery<PersonQuery> = {
+      name: ['John', 'Jane'],
+    }
+    expectTypeOf(query).toMatchTypeOf<TermsQuery<PersonQuery>>()
+  })
+
+  it('should not require field and terms properties (old incorrect format)', () => {
+    // TermsQuery should be a record of { [fieldName]: values[] }, not { field, terms }
+    const query: TermsQuery<PersonQuery> = {}
+    expectTypeOf(query).not.toHaveProperty('field')
+    expectTypeOf(query).not.toHaveProperty('terms')
+  })
+
+  it('should work inside a SearchRequest', () => {
+    const search: SearchRequest<PersonIndex> = {
+      index: 'person',
+      body: {
+        query: {
+          terms: {
+            name: ['Alice', 'Bob'],
+          },
+        },
+      },
+    }
+    expect(search.body.query?.terms).toEqual({ name: ['Alice', 'Bob'] })
+  })
+
+  it('should support nested field paths', () => {
+    const query: TermsQuery<PersonQuery> = {
+      'foo.bar': ['baz', 'qux'],
+    }
+    expectTypeOf(query).toMatchTypeOf<TermsQuery<PersonQuery>>()
   })
 })
