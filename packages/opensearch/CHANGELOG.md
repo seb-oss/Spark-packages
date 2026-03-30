@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.1.0
+
+### Minor Changes
+
+- 24c88bb: Fixes terms query type structure to match opensearch query structure.
+
 ## 3.0.22
 
 ### Patch Changes
