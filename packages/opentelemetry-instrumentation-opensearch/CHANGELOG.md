@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.3.0
+
+### Minor Changes
+
+- f202dc3: Improved Opensearch tracing
+
 ## 0.2.2
 
 ### Patch Changes
