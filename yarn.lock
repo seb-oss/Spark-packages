@@ -3903,6 +3903,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
+    "@opensearch-project/opensearch": "npm:3.5.1"
     "@opentelemetry/api": "npm:1.9.1"
     "@opentelemetry/api-logs": "npm:0.214.0"
     "@opentelemetry/context-async-hooks": "npm:2.6.1"
@@ -3929,8 +3930,15 @@ __metadata:
     "@opentelemetry/sdk-trace-node": "npm:2.6.1"
     "@opentelemetry/semantic-conventions": "npm:1.40.0"
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.2.2"
+    "@testcontainers/opensearch": "npm:11.13.0"
+    "@testcontainers/redis": "npm:11.13.0"
+    axios: "npm:1.14.0"
+    express: "npm:5.2.1"
     fast-safe-stringify: "npm:2.1.1"
+    find-free-ports: "npm:3.1.1"
     kleur: "npm:4.1.5"
+    redis: "npm:5.11.0"
+    undici: "npm:7.24.6"
   languageName: unknown
   linkType: soft
 
@@ -12314,10 +12322,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:7.20.0":
-  version: 7.20.0
-  resolution: "undici@npm:7.20.0"
-  checksum: 10c0/99054958a07b4105e1461bf5f38550746a15e01d6807e7a2b0849f18e1bc3f481c1ad080ea87b255a39264cec5d80ebf2b3bc82c3e732d81e6a0cc3c920c05c6
+"undici@npm:7.24.6, undici@npm:^7.24.3":
+  version: 7.24.6
+  resolution: "undici@npm:7.24.6"
+  checksum: 10c0/0f5413ccb20bafe27637a3a02cada731c53ee75f1df79029099db3af1eaaed410488489d9f430c09bd30bf0b925cb75fc30c39dff0689f656fd6fb7d75ded95f
   languageName: node
   linkType: hard
 
