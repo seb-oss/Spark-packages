@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 3.0.3
+
+### Patch Changes
+
+- ae4b9bf: OTEL only tries to shut down once
+
 ## 3.0.2
 
 ### Patch Changes
