@@ -87,6 +87,10 @@ export const dispose = async () => {
   if (sdk) processes.push(sdk.shutdown())
   if (logProvider) processes.push(logProvider.shutdown())
 
+  // Only initiate shotdown once
+  sdk = undefined
+  logProvider = undefined
+
   if (processes.length) {
     console.log('[otel] Shutting down...')
     await Promise.all(processes)
