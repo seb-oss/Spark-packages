@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-e2e",
-  "version": "4.0.34",
+  "version": "4.0.35",
   "license": "Apache-2.0",
   "private": true,
   "type": "module",
@@ -13,9 +13,9 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.1.26",
+    "@sebspark/openapi-client": "4.1.27",
     "@sebspark/openapi-core": "4.1.5",
-    "@sebspark/openapi-express": "5.3.3",
+    "@sebspark/openapi-express": "5.3.4",
     "express": "5.2.1"
   },
   "devDependencies": {
