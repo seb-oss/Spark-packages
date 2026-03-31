@@ -99,7 +99,9 @@ export const instrumentations = {
     if (!_opensearch) {
       _opensearch = import(
         '@sebspark/opentelemetry-instrumentation-opensearch'
-      ).then(({ OpenSearchInstrumentation }) => new OpenSearchInstrumentation())
+      ).then(({ OpenSearchInstrumentation }) => new OpenSearchInstrumentation({
+        suppressInternalInstrumentation: true,
+      }))
     }
     return _opensearch
   },
