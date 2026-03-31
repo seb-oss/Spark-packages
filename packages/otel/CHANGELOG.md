@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 3.0.1
+
+### Patch Changes
+
+- 22bde73: Opensearch instrumentation does not call through to http instrumentation
+
 ## 3.0.0
 
 ### Major Changes
