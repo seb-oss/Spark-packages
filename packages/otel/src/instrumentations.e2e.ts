@@ -1,5 +1,4 @@
 import type { Server } from 'node:http'
-import { inspect } from 'node:util'
 import { Client as OpensearchClient } from '@opensearch-project/opensearch'
 import {
   OpenSearchContainer,
@@ -21,6 +20,7 @@ import {
   type Mock,
   vi,
 } from 'vitest'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
 
 const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   const { instrumentations } = await import('./index')
@@ -190,6 +190,12 @@ describe('instrumentations', () => {
       })
 
       expect(httpSpans).toHaveLength(2)
+      expect(httpSpans[0]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
+        name: 'GET localhost/'
+      }))
+      expect(httpSpans[1]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
+        name: 'POST localhost/'
+      }))
     })
   })
   describe('undici/express', () => {
@@ -220,6 +226,12 @@ describe('instrumentations', () => {
       )
 
       expect(undiciSpans).toHaveLength(2)
+      expect(undiciSpans[0]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
+        name: 'GET localhost/'
+      }))
+      expect(undiciSpans[1]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
+        name: 'POST localhost/'
+      }))
     })
   })
   describe('redis', () => {
