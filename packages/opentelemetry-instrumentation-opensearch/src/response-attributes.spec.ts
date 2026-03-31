@@ -1,4 +1,5 @@
 import {
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
   ATTR_SERVER_ADDRESS,
   ATTR_SERVER_PORT,
 } from '@opentelemetry/semantic-conventions'
@@ -41,7 +42,7 @@ describe('extractResponseAttributes', () => {
 
   it('sets http.response.status_code', () => {
     const attrs = extractResponseAttributes(makeResponse())
-    expect(attrs['http.response.status_code']).toBe(200)
+    expect(attrs[ATTR_HTTP_RESPONSE_STATUS_CODE]).toBe(200)
   })
 
   it('sets db.opensearch.took', () => {

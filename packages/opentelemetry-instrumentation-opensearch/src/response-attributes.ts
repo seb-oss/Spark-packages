@@ -1,6 +1,7 @@
 import type { Types } from '@opensearch-project/opensearch'
 import type { ApiResponse } from '@opensearch-project/opensearch/lib/Transport.js'
 import {
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
   ATTR_SERVER_ADDRESS,
   ATTR_SERVER_PORT,
 } from '@opentelemetry/semantic-conventions'
@@ -16,7 +17,7 @@ export const extractResponseAttributes = (
   attrs[ATTR_SERVER_ADDRESS] = hostname
   if (port) attrs[ATTR_SERVER_PORT] = Number(port)
   if (res.statusCode != null)
-    attrs['http.response.status_code'] = res.statusCode
+    attrs[ATTR_HTTP_RESPONSE_STATUS_CODE] = res.statusCode
 
   const body = res.body as Types.Core_Search.ResponseBody | null | undefined
   if (body == null) return attrs

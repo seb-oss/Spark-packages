@@ -15,6 +15,7 @@ import {
 } from '@opentelemetry/sdk-trace-base'
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 import {
+  ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
   ATTR_DB_QUERY_TEXT,
   ATTR_DB_SYSTEM_NAME,
@@ -94,6 +95,22 @@ describe('OpenSearchInstrumentation', () => {
       expect(exporter.getFinishedSpans()[0].name).toBe('/')
       await teardown()
     })
+
+    it('names the span "indices.create my_index" for PUT /my_index', async () => {
+      const { transport, exporter, teardown } = setup()
+      await transport.request({ method: 'PUT', path: '/my_index' })
+      expect(exporter.getFinishedSpans()[0].name).toBe(
+        'indices.create my_index'
+      )
+      await teardown()
+    })
+
+    it('names the span "index my_index" for POST /my_index/_doc', async () => {
+      const { transport, exporter, teardown } = setup()
+      await transport.request({ method: 'POST', path: '/my_index/_doc' })
+      expect(exporter.getFinishedSpans()[0].name).toBe('index my_index')
+      await teardown()
+    })
   })
 
   describe('span attributes', () => {
@@ -115,11 +132,11 @@ describe('OpenSearchInstrumentation', () => {
       await teardown()
     })
 
-    it('sets db.opensearch.index from the path', async () => {
+    it('sets db.collection.name from the path', async () => {
       const { transport, exporter, teardown } = setup()
       await transport.request({ method: 'POST', path: '/my_index/_search' })
       expect(
-        exporter.getFinishedSpans()[0].attributes['db.opensearch.index']
+        exporter.getFinishedSpans()[0].attributes[ATTR_DB_COLLECTION_NAME]
       ).toBe('my_index')
       await teardown()
     })

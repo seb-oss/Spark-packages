@@ -16,6 +16,7 @@ import {
 } from '@opentelemetry/api'
 import { suppressTracing } from '@opentelemetry/core'
 import {
+  ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
   ATTR_DB_QUERY_TEXT,
   ATTR_DB_SYSTEM_NAME,
@@ -62,7 +63,7 @@ export const createPatchedRequest = (
     options?: TransportRequestOptions,
     callback?: (err: ApiError, result: ApiResponse) => void
   ): TransportRequestPromise<ApiResponse> | TransportRequestCallback {
-    const { index, operation } = parsePath(params.path)
+    const { index, operation } = parsePath(params.path, params.method)
     const queryText = serializeBody(params, config)
 
     const span = getTracer().startSpan(
@@ -72,7 +73,7 @@ export const createPatchedRequest = (
         attributes: {
           [ATTR_DB_SYSTEM_NAME]: 'opensearch',
           ...(operation && { [ATTR_DB_OPERATION_NAME]: operation }),
-          ...(index && { 'db.opensearch.index': index }),
+          ...(index && { [ATTR_DB_COLLECTION_NAME]: index }),
           ...(queryText && { [ATTR_DB_QUERY_TEXT]: queryText }),
         },
       }

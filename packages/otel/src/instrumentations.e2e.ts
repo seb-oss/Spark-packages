@@ -1,5 +1,13 @@
 import type { Server } from 'node:http'
 import { Client as OpensearchClient } from '@opensearch-project/opensearch'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import {
+  ATTR_DB_COLLECTION_NAME,
+  ATTR_DB_OPERATION_NAME,
+  ATTR_DB_QUERY_TEXT,
+  ATTR_DB_SYSTEM_NAME,
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
+} from '@opentelemetry/semantic-conventions'
 import {
   OpenSearchContainer,
   StartedOpenSearchContainer,
@@ -20,7 +28,6 @@ import {
   type Mock,
   vi,
 } from 'vitest'
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
 
 const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   const { instrumentations } = await import('./index')
@@ -190,12 +197,16 @@ describe('instrumentations', () => {
       })
 
       expect(httpSpans).toHaveLength(2)
-      expect(httpSpans[0]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
-        name: 'GET localhost/'
-      }))
-      expect(httpSpans[1]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
-        name: 'POST localhost/'
-      }))
+      expect(httpSpans[0]).toEqual(
+        expect.objectContaining<Partial<ReadableSpan>>({
+          name: 'GET localhost/',
+        })
+      )
+      expect(httpSpans[1]).toEqual(
+        expect.objectContaining<Partial<ReadableSpan>>({
+          name: 'POST localhost/',
+        })
+      )
     })
   })
   describe('undici/express', () => {
@@ -226,12 +237,16 @@ describe('instrumentations', () => {
       )
 
       expect(undiciSpans).toHaveLength(2)
-      expect(undiciSpans[0]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
-        name: 'GET localhost/'
-      }))
-      expect(undiciSpans[1]).toEqual(expect.objectContaining<Partial<ReadableSpan>>({
-        name: 'POST localhost/'
-      }))
+      expect(undiciSpans[0]).toEqual(
+        expect.objectContaining<Partial<ReadableSpan>>({
+          name: 'GET localhost/',
+        })
+      )
+      expect(undiciSpans[1]).toEqual(
+        expect.objectContaining<Partial<ReadableSpan>>({
+          name: 'POST localhost/',
+        })
+      )
     })
   })
   describe('redis', () => {
@@ -273,6 +288,87 @@ describe('instrumentations', () => {
 
       expect(doc.body.hits.hits).toHaveLength(1)
       expect(doc.body.hits.hits[0]._source).toEqual({ name: 'Name' })
+    })
+    it('traces opensearch calls', async () => {
+      const index = 'test-index'
+      await opensearchClient.indices.create({
+        index,
+        body: {
+          mappings: {
+            properties: {
+              name: { type: 'keyword' },
+            },
+          },
+        },
+      })
+      await opensearchClient.index({
+        index,
+        body: {
+          name: 'Name',
+        },
+        refresh: true,
+      })
+      await opensearchClient.search({
+        index,
+        body: {
+          query: { match_all: {} },
+        },
+      })
+      await opensearchClient.indices.delete({ index })
+      await spanExporter.forceFlush()
+
+      const spans = spanExporter.getFinishedSpans()
+      const opensearchSpans = spans.filter(
+        (span) =>
+          span.instrumentationScope.name ===
+          '@sebspark/opentelemetry-instrumentation-opensearch'
+      )
+
+      expect(opensearchSpans).toHaveLength(5)
+
+      expect(opensearchSpans[0].name).toEqual('indices.delete *,-.*')
+      expect(opensearchSpans[0].attributes).toMatchObject({
+        [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+        [ATTR_DB_OPERATION_NAME]: 'indices.delete',
+        [ATTR_DB_COLLECTION_NAME]: '*,-.*',
+        [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
+      })
+
+      expect(opensearchSpans[1].name).toEqual('indices.create test-index')
+      expect(opensearchSpans[1].attributes).toMatchObject({
+        [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+        [ATTR_DB_OPERATION_NAME]: 'indices.create',
+        [ATTR_DB_COLLECTION_NAME]: 'test-index',
+        [ATTR_DB_QUERY_TEXT]:
+          '{"mappings":{"properties":{"name":{"type":"keyword"}}}}',
+        [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
+      })
+
+      expect(opensearchSpans[2].name).toEqual('index test-index')
+      expect(opensearchSpans[2].attributes).toMatchObject({
+        [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+        [ATTR_DB_OPERATION_NAME]: 'index',
+        [ATTR_DB_COLLECTION_NAME]: 'test-index',
+        [ATTR_DB_QUERY_TEXT]: '{"name":"Name"}',
+        [ATTR_HTTP_RESPONSE_STATUS_CODE]: 201,
+      })
+
+      expect(opensearchSpans[3].name).toEqual('search test-index')
+      expect(opensearchSpans[3].attributes).toMatchObject({
+        [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+        [ATTR_DB_OPERATION_NAME]: 'search',
+        [ATTR_DB_COLLECTION_NAME]: 'test-index',
+        [ATTR_DB_QUERY_TEXT]: '{"query":{"match_all":{}}}',
+        [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
+      })
+
+      expect(opensearchSpans[4].name).toEqual('indices.delete test-index')
+      expect(opensearchSpans[4].attributes).toMatchObject({
+        [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+        [ATTR_DB_OPERATION_NAME]: 'indices.delete',
+        [ATTR_DB_COLLECTION_NAME]: 'test-index',
+        [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
+      })
     })
   })
 })

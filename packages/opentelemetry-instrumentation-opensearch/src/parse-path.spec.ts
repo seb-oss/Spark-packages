@@ -21,8 +21,29 @@ describe('parsePath', () => {
     expect(parsePath('/')).toEqual({})
   })
 
-  it('returns empty object for a plain index path with no operation', () => {
+  it('returns empty object for a plain index path with no method', () => {
     expect(parsePath('/my_index')).toEqual({})
+  })
+
+  it('returns indices.create for PUT on a plain index path', () => {
+    expect(parsePath('/my_index', 'PUT')).toEqual({
+      operation: 'indices.create',
+      index: 'my_index',
+    })
+  })
+
+  it('returns indices.delete for DELETE on a plain index path', () => {
+    expect(parsePath('/my_index', 'DELETE')).toEqual({
+      operation: 'indices.delete',
+      index: 'my_index',
+    })
+  })
+
+  it('returns indices.delete for DELETE on a wildcard path', () => {
+    expect(parsePath('/*,-.*', 'DELETE')).toEqual({
+      operation: 'indices.delete',
+      index: '*,-.*',
+    })
   })
 
   it('does not treat paths starting with _ as index names', () => {
@@ -35,6 +56,13 @@ describe('parsePath', () => {
     expect(parsePath('/news_v0.1.1/_search')).toEqual({
       index: 'news_v0.1.1',
       operation: 'search',
+    })
+  })
+
+  it('maps _doc to operation "index"', () => {
+    expect(parsePath('/my_index/_doc')).toEqual({
+      index: 'my_index',
+      operation: 'index',
     })
   })
 })

@@ -8,9 +8,11 @@ import {
 } from '@opentelemetry/sdk-trace-base'
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
 import {
+  ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
   ATTR_DB_QUERY_TEXT,
   ATTR_DB_SYSTEM_NAME,
+  ATTR_HTTP_RESPONSE_STATUS_CODE,
   ATTR_SERVER_ADDRESS,
   ATTR_SERVER_PORT,
 } from '@opentelemetry/semantic-conventions'
@@ -54,16 +56,19 @@ afterAll(async () => {
 describe('OpenSearchInstrumentation e2e', () => {
   const index = 'test_index'
 
-  it('creates a CLIENT span for index creation (path has no _operation, falls back to raw path)', async () => {
+  it('creates a CLIENT span for index creation', async () => {
     exporter.reset()
     await client.indices.create({ index })
-    // PUT /test_index has no _operation segment, so the span name is the raw path
-    const span = exporter.getFinishedSpans().find((s) => s.name === `/${index}`)
+    const span = exporter
+      .getFinishedSpans()
+      .find((s) => s.name === `indices.create ${index}`)
     expect(span).toBeDefined()
     expect(span!.kind).toBe(SpanKind.CLIENT)
-    expect(span!.attributes[ATTR_DB_SYSTEM_NAME]).toBe('opensearch')
-    expect(span!.attributes[ATTR_DB_OPERATION_NAME]).toBeUndefined()
-    expect(span!.attributes['db.opensearch.index']).toBeUndefined()
+    expect(span!.attributes).toMatchObject({
+      [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+      [ATTR_DB_OPERATION_NAME]: 'indices.create',
+      [ATTR_DB_COLLECTION_NAME]: index,
+    })
   })
 
   it('creates a CLIENT span for document indexing', async () => {
@@ -72,12 +77,14 @@ describe('OpenSearchInstrumentation e2e', () => {
     await client.index({ index, body, refresh: true })
     const span = exporter
       .getFinishedSpans()
-      .find((s) => s.name === `doc ${index}`)
+      .find((s) => s.name === `index ${index}`)
     expect(span).toBeDefined()
-    expect(span!.attributes[ATTR_DB_SYSTEM_NAME]).toBe('opensearch')
-    expect(span!.attributes[ATTR_DB_OPERATION_NAME]).toBe('doc')
-    expect(span!.attributes['db.opensearch.index']).toBe(index)
-    expect(span!.attributes[ATTR_DB_QUERY_TEXT]).toBe(JSON.stringify(body))
+    expect(span!.attributes).toMatchObject({
+      [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+      [ATTR_DB_OPERATION_NAME]: 'index',
+      [ATTR_DB_COLLECTION_NAME]: index,
+      [ATTR_DB_QUERY_TEXT]: JSON.stringify(body),
+    })
   })
 
   it('creates a CLIENT span for search with correct span name and attributes', async () => {
@@ -89,10 +96,12 @@ describe('OpenSearchInstrumentation e2e', () => {
       .find((s) => s.name === `search ${index}`)
     expect(span).toBeDefined()
     expect(span!.kind).toBe(SpanKind.CLIENT)
-    expect(span!.attributes[ATTR_DB_SYSTEM_NAME]).toBe('opensearch')
-    expect(span!.attributes[ATTR_DB_OPERATION_NAME]).toBe('search')
-    expect(span!.attributes['db.opensearch.index']).toBe(index)
-    expect(span!.attributes[ATTR_DB_QUERY_TEXT]).toBe(JSON.stringify(body))
+    expect(span!.attributes).toMatchObject({
+      [ATTR_DB_SYSTEM_NAME]: 'opensearch',
+      [ATTR_DB_OPERATION_NAME]: 'search',
+      [ATTR_DB_COLLECTION_NAME]: index,
+      [ATTR_DB_QUERY_TEXT]: JSON.stringify(body),
+    })
   })
 
   it('omits db.query.text for a bodyless search', async () => {
@@ -112,15 +121,17 @@ describe('OpenSearchInstrumentation e2e', () => {
     const span = exporter
       .getFinishedSpans()
       .find((s) => s.name === `search ${index}`)
+    expect(span!.attributes).toMatchObject({
+      [ATTR_HTTP_RESPONSE_STATUS_CODE]: 200,
+      'db.opensearch.timed_out': false,
+      'db.opensearch.shards.failed': 0,
+    })
     expect(span!.attributes['db.opensearch.took']).toBeGreaterThanOrEqual(0)
-    expect(span!.attributes['db.opensearch.timed_out']).toBe(false)
     expect(span!.attributes['db.opensearch.shards.total']).toBeGreaterThan(0)
     expect(span!.attributes['db.opensearch.shards.successful']).toBeGreaterThan(
       0
     )
-    expect(span!.attributes['db.opensearch.shards.failed']).toBe(0)
     expect(span!.attributes['db.opensearch.hits.total']).toBeGreaterThan(0)
-    expect(span!.attributes['http.response.status_code']).toBe(200)
   })
 
   it('sets server.address and server.port on the span', async () => {
@@ -129,10 +140,10 @@ describe('OpenSearchInstrumentation e2e', () => {
     const span = exporter
       .getFinishedSpans()
       .find((s) => s.name === `search ${index}`)
-    expect(span!.attributes[ATTR_SERVER_ADDRESS]).toBe(container.getHost())
-    expect(span!.attributes[ATTR_SERVER_PORT]).toBe(
-      container.getMappedPort(9200)
-    )
+    expect(span!.attributes).toMatchObject({
+      [ATTR_SERVER_ADDRESS]: container.getHost(),
+      [ATTR_SERVER_PORT]: container.getMappedPort(9200),
+    })
   })
 
   it('creates a CLIENT span for bulk with no index attribute', async () => {
@@ -142,8 +153,8 @@ describe('OpenSearchInstrumentation e2e', () => {
     })
     const span = exporter.getFinishedSpans().find((s) => s.name === 'bulk')
     expect(span).toBeDefined()
-    expect(span!.attributes[ATTR_DB_OPERATION_NAME]).toBe('bulk')
-    expect(span!.attributes['db.opensearch.index']).toBeUndefined()
+    expect(span!.attributes).toMatchObject({ [ATTR_DB_OPERATION_NAME]: 'bulk' })
+    expect(span!.attributes[ATTR_DB_COLLECTION_NAME]).toBeUndefined()
   })
 
   it('sets ERROR status and records exception on a failed request', async () => {
