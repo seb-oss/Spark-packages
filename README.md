@@ -133,6 +133,10 @@ Helpers for generating Hyper Media Entities and Links
 
 OTEL auto instrumentation for OpenSearch
 
+### [@sebspark/@sebspark/emulator](./packages/@sebspark/emulator)
+
+Helper for building emulators or test fakes
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
