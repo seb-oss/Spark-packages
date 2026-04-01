@@ -82,9 +82,10 @@ type RequestHandler = Mock<(req: Request, res: Response) => unknown>
 describe('instrumentations', () => {
   let opensearchContainer: StartedOpenSearchContainer
   let redisContainer: StartedRedisContainer
-  let expressHost: string
+
   let expressServer: Express
   let httpServer: Server
+  let expressHost: string
   let getHandler: RequestHandler
   let postHandler: RequestHandler
 
