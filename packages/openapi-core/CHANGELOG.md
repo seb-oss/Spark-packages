@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.6
+
+### Patch Changes
+
+- 50aa72a: Fixed RouteHandler definition
+
 ## 4.1.5
 
 ### Patch Changes

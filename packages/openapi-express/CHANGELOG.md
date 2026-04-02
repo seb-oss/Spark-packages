@@ -1,5 +1,12 @@
 # @sebspark/openapi-express
 
+## 5.3.5
+
+### Patch Changes
+
+- Updated dependencies [50aa72a]
+  - @sebspark/openapi-core@4.1.6
+
 ## 5.3.4
 
 ### Patch Changes
