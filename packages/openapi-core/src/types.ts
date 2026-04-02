@@ -38,9 +38,10 @@ export type RouteHandler = {
       APIResponse<unknown | undefined, Record<string, string> | undefined>,
     ],
   >(
-    args?: RequestArgs
+    args: RequestArgs
   ) => Promise<Response>
 }
+
 export type Route<Handler extends RouteHandler = RouteHandler> = Record<
   Verb,
   Handler
