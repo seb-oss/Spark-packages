@@ -31,15 +31,14 @@ export type GenericRouteHandler = RequestHandler
 
 export type RouteHandler = {
   pre?: RequestHandler | RequestHandler[]
-  handler: <
-    RequestArgs,
-    Response extends [
+  handler: (
+    args: any
+  ) => Promise<
+    [
       number,
       APIResponse<unknown | undefined, Record<string, string> | undefined>,
-    ],
-  >(
-    args: RequestArgs
-  ) => Promise<Response>
+    ]
+  >
 }
 
 export type Route<Handler extends RouteHandler = RouteHandler> = Record<
