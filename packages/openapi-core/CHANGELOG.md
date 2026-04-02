@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.7
+
+### Patch Changes
+
+- e734e5a: Relaxing args definition even more
+
 ## 4.1.6
 
 ### Patch Changes
