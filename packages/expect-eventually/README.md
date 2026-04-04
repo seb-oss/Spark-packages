@@ -34,7 +34,7 @@ export default defineConfig({
 import '@sebspark/expect-eventually'
 ```
 
-Add it to `compilerOptions.types` in your `tsconfig.json` so TypeScript picks up the `.eventually()` augmentation on `expect` across all test files without per-file imports:
+To make TypeScript aware of the `.eventually()` augmentation across all test files, either add it to `compilerOptions.types` in your `tsconfig.json`:
 
 ```json
 {
@@ -42,6 +42,12 @@ Add it to `compilerOptions.types` in your `tsconfig.json` so TypeScript picks up
     "types": ["@sebspark/expect-eventually"]
   }
 }
+```
+
+Or import it in any `.d.ts` file already included in your project (e.g. `vitest.d.ts`):
+
+```ts
+import '@sebspark/expect-eventually'
 ```
 
 ## Usage
