@@ -1,5 +1,12 @@
 # @sebspark/promise-cache
 
+## 6.4.20
+
+### Patch Changes
+
+- Updated dependencies [aff5f58]
+  - @sebspark/otel@3.0.4
+
 ## 6.4.19
 
 ### Patch Changes
