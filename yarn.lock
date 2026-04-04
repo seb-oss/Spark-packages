@@ -3729,6 +3729,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/expect-eventually@workspace:packages/expect-eventually":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/expect-eventually@workspace:packages/expect-eventually"
+  dependencies:
+    "@vitest/expect": "npm:4.1.2"
+    vitest: "npm:4.1.2"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/gcp-iam@npm:3.0.35, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
@@ -3775,7 +3784,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-4217@workspace:packages/iso-4217"
   dependencies:
-    fast-xml-parser: "npm:5.5.9"
+    fast-xml-parser: "npm:5.5.10"
   languageName: unknown
   linkType: soft
 
@@ -3944,7 +3953,7 @@ __metadata:
     find-free-ports: "npm:3.1.1"
     kleur: "npm:4.1.5"
     redis: "npm:5.11.0"
-    undici: "npm:7.24.6"
+    undici: "npm:8.0.2"
   languageName: unknown
   linkType: soft
 
@@ -4462,12 +4471,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:24.12.0":
-  version: 24.12.0
-  resolution: "@types/node@npm:24.12.0"
+"@types/node@npm:24.12.2":
+  version: 24.12.2
+  resolution: "@types/node@npm:24.12.2"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10c0/8b31c0af5b5474f13048a4e77c57f22cd4f8fe6e58c4b6fde9456b0c13f46a5bfaf5744ff88fd089581de9f0d6e99c584e022681de7acb26a58d258c654c4843
+  checksum: 10c0/710050c42f89075c4479e4e1e4c2532486b0c41b1e2a8a13ad88641c88b88cdaea87414e19224f30028719737bd70e327edcaa184d50e86b9418941edd7eb02b
   languageName: node
   linkType: hard
 
@@ -7351,16 +7360,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:5.5.9":
-  version: 5.5.9
-  resolution: "fast-xml-parser@npm:5.5.9"
+"fast-xml-parser@npm:5.5.10":
+  version: 5.5.10
+  resolution: "fast-xml-parser@npm:5.5.10"
   dependencies:
     fast-xml-builder: "npm:^1.1.4"
-    path-expression-matcher: "npm:^1.2.0"
+    path-expression-matcher: "npm:^1.2.1"
     strnum: "npm:^2.2.2"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10c0/b7f40f586c01a916a75be15b11ec0e83a38483885395bdeca51da8992a75e3d4d9b6c2690f362b975bfcb5118909ee4b0393e18ec9c9151345d5e13152370969
+  checksum: 10c0/7525e670e75d4a3da1c8fa25024879e3ddd06190ca7c390c18c2443e7aea6b9921c311207feb2901dc1728ac64220ddd838ca201e0fb564de158d9d18b9d170f
   languageName: node
   linkType: hard
 
@@ -8744,9 +8753,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.1.1":
-  version: 6.1.1
-  resolution: "knip@npm:6.1.1"
+"knip@npm:6.3.0":
+  version: 6.3.0
+  resolution: "knip@npm:6.3.0"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -8766,7 +8775,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/dcc488ea47813cb1df53bba11567731eedea815c59c1431ea993efa4654b361766e730c3d00fbc62e1ed0e3520b5165cd01d9d082f5553c91bc0a7f0db36c0d4
+  checksum: 10c0/213ea157b9728895f173e05cac1bda736e142ffe185816302d81bf050bc78d9c49c35229ba48f279453b08381ff8212baf0539601914ffbeb4735170aa5f342b
   languageName: node
   linkType: hard
 
@@ -9936,10 +9945,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-expression-matcher@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "path-expression-matcher@npm:1.2.0"
-  checksum: 10c0/86c661dfb265ed5dd1ddd9188f0dfbecf4ec4dc3ea6cabab081d3a2ba285054d9767a641a233bd6fd694fd89f7d0ef94913032feddf5365252700b02db4bf4e1
+"path-expression-matcher@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "path-expression-matcher@npm:1.2.1"
+  checksum: 10c0/71fb20dc80995931cbbecfa6a425113521eb213afd63b91ec2aca4e6cd75f1838617e4cbf42e66722b72ec32e01eccecddbec85cec3e2b2cf2cf938ce8fc8680
   languageName: node
   linkType: hard
 
@@ -10934,10 +10943,10 @@ __metadata:
     "@changesets/cli": "npm:2.30.0"
     "@sebspark/tsconfig": "npm:*"
     "@turbo/gen": "npm:2.9.3"
-    "@types/node": "npm:24.12.0"
+    "@types/node": "npm:24.12.2"
     "@vitest/coverage-v8": "npm:4.1.2"
     depcheck: "npm:1.4.7"
-    knip: "npm:6.1.1"
+    knip: "npm:6.3.0"
     syncpack: "npm:14.3.0"
     tsup: "npm:8.5.1"
     turbo: "npm:2.9.3"
@@ -12328,7 +12337,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:7.24.6, undici@npm:^7.24.3":
+"undici@npm:8.0.2":
+  version: 8.0.2
+  resolution: "undici@npm:8.0.2"
+  checksum: 10c0/4f833ab3a154ea11e2c53b272592f62269ecc7040a8bae5147c56ec1ccf67ccdf50d93abb84a48f0ba29947cca78d99d8ca873cacf53924c4b884c7d9bf783f9
+  languageName: node
+  linkType: hard
+
+"undici@npm:^7.24.3":
   version: 7.24.6
   resolution: "undici@npm:7.24.6"
   checksum: 10c0/0f5413ccb20bafe27637a3a02cada731c53ee75f1df79029099db3af1eaaed410488489d9f430c09bd30bf0b925cb75fc30c39dff0689f656fd6fb7d75ded95f

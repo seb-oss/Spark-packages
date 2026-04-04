@@ -137,6 +137,10 @@ OTEL auto instrumentation for OpenSearch
 
 Helper for building emulators or test fakes
 
+### [@sebspark/expect-eventually](./packages/expect-eventually)
+
+Adds a chainable .eventually() to expect
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

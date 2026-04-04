@@ -32,6 +32,7 @@ export type GenericRouteHandler = RequestHandler
 export type RouteHandler = {
   pre?: RequestHandler | RequestHandler[]
   handler: (
+    // biome-ignore lint/suspicious/noExplicitAny: will be overridden
     args: any
   ) => Promise<
     [
