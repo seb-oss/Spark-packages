@@ -1,5 +1,12 @@
 # @sebspark/openapi-express
 
+## 5.3.8
+
+### Patch Changes
+
+- Updated dependencies [f07a679]
+  - @sebspark/otel@4.0.0
+
 ## 5.3.7
 
 ### Patch Changes
