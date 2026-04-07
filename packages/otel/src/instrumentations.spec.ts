@@ -8,8 +8,9 @@ vi.mock('@opentelemetry/instrumentation-http', () => ({
 }))
 
 vi.mock('@opentelemetry/instrumentation-express', () => ({
-  ExpressInstrumentation: vi.fn(function (this: any) {
+  ExpressInstrumentation: vi.fn(function (this: any, config?: any) {
     this.instrumentationName = '@opentelemetry/instrumentation-express'
+    this._config = config
   }),
 }))
 
@@ -68,18 +69,88 @@ describe('instrumentations', () => {
     vi.resetModules()
   })
 
-  it('http resolves to an HttpInstrumentation with enrichment hooks', async () => {
-    const { instrumentations } = await import('./instrumentations')
-    const { HttpInstrumentation } = await import(
-      '@opentelemetry/instrumentation-http'
-    )
+  describe('http', () => {
+    it('resolves to an HttpInstrumentation with enrichment hooks', async () => {
+      const { instrumentations } = await import('./instrumentations')
+      const { HttpInstrumentation } = await import(
+        '@opentelemetry/instrumentation-http'
+      )
 
-    const inst = await instrumentations.http
+      const inst = await instrumentations.http()
 
-    expect(inst).toBeInstanceOf(HttpInstrumentation)
-    expect((inst as any)._config).toMatchObject({
-      requestHook: expect.any(Function),
-      responseHook: expect.any(Function),
+      expect(inst).toBeInstanceOf(HttpInstrumentation)
+      expect((inst as any)._config).toMatchObject({
+        requestHook: expect.any(Function),
+        responseHook: expect.any(Function),
+      })
+    })
+
+    it('passes config to HttpInstrumentation', async () => {
+      const { instrumentations } = await import('./instrumentations')
+
+      const inst = await instrumentations.http({ enabled: false })
+
+      expect((inst as any)._config).toMatchObject({ enabled: false })
+    })
+
+    it('returns the same instance for the same config', async () => {
+      const { instrumentations } = await import('./instrumentations')
+
+      const inst1 = await instrumentations.http()
+      const inst2 = await instrumentations.http()
+
+      expect(inst1).toBe(inst2)
+    })
+
+    it('returns different instances for different configs', async () => {
+      const { instrumentations } = await import('./instrumentations')
+
+      const inst1 = await instrumentations.http()
+      const inst2 = await instrumentations.http({ enabled: false })
+
+      expect(inst1).not.toBe(inst2)
+    })
+  })
+
+  describe('express', () => {
+    it('resolves to an ExpressInstrumentation', async () => {
+      const { instrumentations } = await import('./instrumentations')
+      const { ExpressInstrumentation } = await import(
+        '@opentelemetry/instrumentation-express'
+      )
+
+      const inst = await instrumentations.express()
+
+      expect(inst).toBeInstanceOf(ExpressInstrumentation)
+    })
+
+    it('passes config to ExpressInstrumentation', async () => {
+      const { instrumentations } = await import('./instrumentations')
+      const config = { ignoreLayers: ['/health'] }
+
+      const inst = await instrumentations.express(config as any)
+
+      expect((inst as any)._config).toMatchObject(config)
+    })
+
+    it('returns the same instance for the same config', async () => {
+      const { instrumentations } = await import('./instrumentations')
+
+      const inst1 = await instrumentations.express()
+      const inst2 = await instrumentations.express()
+
+      expect(inst1).toBe(inst2)
+    })
+
+    it('returns different instances for different configs', async () => {
+      const { instrumentations } = await import('./instrumentations')
+
+      const inst1 = await instrumentations.express()
+      const inst2 = await instrumentations.express({
+        ignoreLayers: ['/health'],
+      } as any)
+
+      expect(inst1).not.toBe(inst2)
     })
   })
 
@@ -89,7 +160,7 @@ describe('instrumentations', () => {
       '@opentelemetry/instrumentation-undici'
     )
 
-    const inst = await instrumentations.undici
+    const inst = await instrumentations.undici()
 
     expect(inst).toBeInstanceOf(UndiciInstrumentation)
     expect((inst as any)._config).toMatchObject({
@@ -99,7 +170,6 @@ describe('instrumentations', () => {
   })
 
   it.each([
-    ['express', '@opentelemetry/instrumentation-express'],
     ['grpc', '@opentelemetry/instrumentation-grpc'],
     ['redis', '@opentelemetry/instrumentation-redis'],
     ['dns', '@opentelemetry/instrumentation-dns'],
@@ -109,7 +179,7 @@ describe('instrumentations', () => {
     ['opensearch', '@sebspark/opentelemetry-instrumentation-opensearch'],
   ] as const)('%s resolves to the correct instrumentation', async (key, name) => {
     const { instrumentations } = await import('./instrumentations')
-    const inst = await instrumentations[key]
+    const inst = await instrumentations[key]()
     expect((inst as any).instrumentationName).toBe(name)
   })
 })

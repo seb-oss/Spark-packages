@@ -31,6 +31,7 @@ export const buildHttpConfig = (
   const cfg = resolve(opts)
 
   const config: HttpInstrumentationConfig = {
+    enabled: opts.enabled,
     ignoreOutgoingRequestHook(req) {
       if (!cfg.ignoreOutgoingPaths.length) return false
       const path = req.path ?? ''

@@ -18,6 +18,7 @@ export function buildUndiciConfig(
   const cfg = resolve(opts)
 
   const config: UndiciInstrumentationConfig = {
+    enabled: opts.enabled,
     ignoreRequestHook(req) {
       if (!cfg.ignoreOutgoingPaths.length) return false
       const path = req.path ?? ''

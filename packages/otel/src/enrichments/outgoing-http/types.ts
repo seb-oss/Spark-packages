@@ -1,4 +1,5 @@
 import type { Span } from '@opentelemetry/api'
+import type { InstrumentationConfig } from '@opentelemetry/instrumentation'
 import type { PROTOCOLS } from './consts'
 
 export type Protocol = (typeof PROTOCOLS)[number]
@@ -33,7 +34,7 @@ export interface NormalisedResponse {
 
 // ─── Public config ────────────────────────────────────────────────────────────
 
-export interface OutgoingHttpEnrichmentConfig {
+export interface OutgoingHttpEnrichmentConfig extends InstrumentationConfig {
   /**
    * Request headers to capture as span attributes.
    * Defaults to a conservative safe set — Authorization is never included.

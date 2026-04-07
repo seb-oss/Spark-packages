@@ -58,11 +58,11 @@ const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
       exporter: new InMemoryMetricExporter(0),
     }),
     instrumentations: await Promise.all([
-      instrumentations.express,
-      instrumentations.http,
-      instrumentations.opensearch,
-      instrumentations.redis,
-      instrumentations.undici,
+      instrumentations.express(),
+      instrumentations.http(),
+      instrumentations.opensearch(),
+      instrumentations.redis(),
+      instrumentations.undici(),
     ]),
   })
   sdk.start()

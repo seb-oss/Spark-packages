@@ -1,111 +1,164 @@
-import type { Instrumentation } from '@opentelemetry/instrumentation'
-import { buildHttpConfig, buildUndiciConfig } from './enrichments/outgoing-http'
+import type {
+  Instrumentation,
+  InstrumentationConfig,
+} from '@opentelemetry/instrumentation'
+import type { DnsInstrumentationConfig } from '@opentelemetry/instrumentation-dns'
+import type { ExpressInstrumentationConfig } from '@opentelemetry/instrumentation-express'
+import type { FsInstrumentationConfig } from '@opentelemetry/instrumentation-fs'
+import type { GrpcInstrumentationConfig } from '@opentelemetry/instrumentation-grpc'
+import type { RedisInstrumentationConfig } from '@opentelemetry/instrumentation-redis'
+import type { SocketIoInstrumentationConfig } from '@opentelemetry/instrumentation-socket.io'
+import type { OpenSearchInstrumentationConfig } from '@sebspark/opentelemetry-instrumentation-opensearch'
+import {
+  buildHttpConfig,
+  buildUndiciConfig,
+  type OutgoingHttpEnrichmentConfig,
+} from './enrichments/outgoing-http'
 
-let _http: Promise<Instrumentation> | undefined
-let _express: Promise<Instrumentation> | undefined
-let _grpc: Promise<Instrumentation> | undefined
-let _redis: Promise<Instrumentation> | undefined
-let _dns: Promise<Instrumentation> | undefined
-let _net: Promise<Instrumentation> | undefined
-let _fs: Promise<Instrumentation> | undefined
-let _undici: Promise<Instrumentation> | undefined
-let _socketIo: Promise<Instrumentation> | undefined
-let _opensearch: Promise<Instrumentation> | undefined
+const cache = new Map<string, Promise<Instrumentation>>()
+const cacheKey = (
+  instrumentationName: string,
+  config?: InstrumentationConfig
+) => {
+  return config
+    ? `${instrumentationName}:${JSON.stringify(config)}`
+    : instrumentationName
+}
 
 export const instrumentations = {
-  get http() {
-    if (!_http) {
-      _http = import('@opentelemetry/instrumentation-http').then(
-        ({ HttpInstrumentation }) => new HttpInstrumentation(buildHttpConfig())
+  http(config?: OutgoingHttpEnrichmentConfig) {
+    const key = cacheKey('http', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-http').then(
+          ({ HttpInstrumentation }) =>
+            new HttpInstrumentation(buildHttpConfig(config))
+        )
       )
     }
-    return _http
+    return cache.get(key)!
   },
 
-  get express() {
-    if (!_express) {
-      _express = import('@opentelemetry/instrumentation-express').then(
-        ({ ExpressInstrumentation }) => new ExpressInstrumentation()
+  express(config?: ExpressInstrumentationConfig) {
+    const key = cacheKey('express', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-express').then(
+          ({ ExpressInstrumentation }) => new ExpressInstrumentation(config)
+        )
       )
     }
-    return _express
+    return cache.get(key)!
   },
 
-  get grpc() {
-    if (!_grpc) {
-      _grpc = import('@opentelemetry/instrumentation-grpc').then(
-        ({ GrpcInstrumentation }) => new GrpcInstrumentation()
+  grpc(config?: GrpcInstrumentationConfig) {
+    const key = cacheKey('grpc', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-grpc').then(
+          ({ GrpcInstrumentation }) => new GrpcInstrumentation(config)
+        )
       )
     }
-    return _grpc
+    return cache.get(key)!
   },
 
-  get redis() {
-    if (!_redis) {
-      _redis = import('@opentelemetry/instrumentation-redis').then(
-        ({ RedisInstrumentation }) => new RedisInstrumentation()
+  redis(config?: RedisInstrumentationConfig) {
+    const key = cacheKey('redis', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-redis').then(
+          ({ RedisInstrumentation }) => new RedisInstrumentation(config)
+        )
       )
     }
-    return _redis
+    return cache.get(key)!
   },
 
-  get dns() {
-    if (!_dns) {
-      _dns = import('@opentelemetry/instrumentation-dns').then(
-        ({ DnsInstrumentation }) => new DnsInstrumentation()
+  dns(config?: DnsInstrumentationConfig) {
+    const key = cacheKey('dns', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-dns').then(
+          ({ DnsInstrumentation }) => new DnsInstrumentation(config)
+        )
       )
     }
-    return _dns
+    return cache.get(key)!
   },
 
-  get net() {
-    if (!_net) {
-      _net = import('@opentelemetry/instrumentation-net').then(
-        ({ NetInstrumentation }) => new NetInstrumentation()
+  net(config?: InstrumentationConfig) {
+    const key = cacheKey('dns', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-net').then(
+          ({ NetInstrumentation }) => new NetInstrumentation(config)
+        )
       )
     }
-    return _net
+    return cache.get(key)!
   },
 
-  get fs() {
-    if (!_fs) {
-      _fs = import('@opentelemetry/instrumentation-fs').then(
-        ({ FsInstrumentation }) => new FsInstrumentation()
+  fs(config?: FsInstrumentationConfig) {
+    const key = cacheKey('fs', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-fs').then(
+          ({ FsInstrumentation }) => new FsInstrumentation(config)
+        )
       )
     }
-    return _fs
+    return cache.get(key)!
   },
 
-  get undici() {
-    if (!_undici) {
-      _undici = import('@opentelemetry/instrumentation-undici').then(
-        ({ UndiciInstrumentation }) =>
-          new UndiciInstrumentation(buildUndiciConfig())
+  undici(config?: OutgoingHttpEnrichmentConfig) {
+    const key = cacheKey('undici', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-undici').then(
+          ({ UndiciInstrumentation }) =>
+            new UndiciInstrumentation(buildUndiciConfig(config))
+        )
       )
     }
-    return _undici
+    return cache.get(key)!
   },
 
-  get socketIo() {
-    if (!_socketIo) {
-      _socketIo = import('@opentelemetry/instrumentation-socket.io').then(
-        ({ SocketIoInstrumentation }) => new SocketIoInstrumentation()
+  socketIo(config?: SocketIoInstrumentationConfig) {
+    const key = cacheKey('socket-io', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@opentelemetry/instrumentation-socket.io').then(
+          ({ SocketIoInstrumentation }) => new SocketIoInstrumentation(config)
+        )
       )
     }
-    return _socketIo
+    return cache.get(key)!
   },
 
-  get opensearch() {
-    if (!_opensearch) {
-      _opensearch = import(
-        '@sebspark/opentelemetry-instrumentation-opensearch'
-      ).then(
-        ({ OpenSearchInstrumentation }) =>
-          new OpenSearchInstrumentation({
-            suppressInternalInstrumentation: true,
-          })
+  opensearch(config?: OpenSearchInstrumentationConfig) {
+    const key = cacheKey('opensearch', config)
+    if (!cache.has(key)) {
+      cache.set(
+        key,
+        import('@sebspark/opentelemetry-instrumentation-opensearch').then(
+          ({ OpenSearchInstrumentation }) =>
+            new OpenSearchInstrumentation({
+              suppressInternalInstrumentation: true,
+              ...(config || {}),
+            })
+        )
       )
     }
-    return _opensearch
+    return cache.get(key)!
   },
 } as const

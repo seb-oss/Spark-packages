@@ -80,7 +80,7 @@ describe('cli-tester', () => {
       await cli.prompt('input')
 
       await expect(() => cli.input()).rejects.toThrow(
-        new Error('You must provide a value')
+        new Error('You must provide a value? type something required')
       )
     })
   })
