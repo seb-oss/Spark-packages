@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 4.0.0
+
+### Major Changes
+
+- f07a679: Instrumentations are now methods and accept config
+
 ## 3.0.4
 
 ### Patch Changes
