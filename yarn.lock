@@ -3953,7 +3953,7 @@ __metadata:
     find-free-ports: "npm:3.1.1"
     kleur: "npm:4.1.5"
     redis: "npm:5.11.0"
-    undici: "npm:8.0.2"
+    undici: "npm:8.1.0"
   languageName: unknown
   linkType: soft
 
@@ -12337,10 +12337,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:8.0.2":
-  version: 8.0.2
-  resolution: "undici@npm:8.0.2"
-  checksum: 10c0/4f833ab3a154ea11e2c53b272592f62269ecc7040a8bae5147c56ec1ccf67ccdf50d93abb84a48f0ba29947cca78d99d8ca873cacf53924c4b884c7d9bf783f9
+"undici@npm:8.1.0":
+  version: 8.1.0
+  resolution: "undici@npm:8.1.0"
+  checksum: 10c0/c55ad57f10efb9b55ab683104dde1c6f620496b9facde640ba26cffdc53a53694c12a8c3f7196069017c5c1b5031ef0843e232d9c04dcc834b3baa046d3ea678
   languageName: node
   linkType: hard
 
