@@ -80,7 +80,7 @@ describe('cli-tester', () => {
       await cli.prompt('input')
 
       await expect(() => cli.input()).rejects.toThrow(
-        new Error('You must provide a value? type something required')
+        new Error('You must provide a value')
       )
     })
   })
@@ -96,7 +96,6 @@ describe('cli-tester', () => {
       const cli = run(cliPath)
 
       const prompt = (await cli.prompt()) as SelectPrompt
-      // expect(prompt.type).toEqual<PromptType>('select') - type changed to 'checkbox'
       expect(prompt.message).toEqual('select something')
       expect(prompt.options).toEqual([
         '❯ option 1',
@@ -109,7 +108,6 @@ describe('cli-tester', () => {
       const cli = run(cliPath)
 
       const prompt = await cli.prompt('select')
-      // expect(prompt.type).toEqual<PromptType>('select') - type changed to 'checkbox'
       expect(prompt.message).toEqual('select something')
       expect(prompt.options).toEqual([
         '❯ option 1',
