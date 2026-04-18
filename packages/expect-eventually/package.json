@@ -27,6 +27,6 @@
   },
   "dependencies": {
     "@vitest/expect": "4.1.2",
-    "vitest": "4.1.2"
+    "vitest": "4.1.4"
   }
 }
