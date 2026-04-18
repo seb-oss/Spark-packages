@@ -1,28 +1,21 @@
 export type Empty = Record<never, never>
 
-// For each property P in T
-export type Serialized<T> = {
-  // Convert Date to string
-  [P in keyof T]: T[P] extends Date
+export type Serialized<T> = T extends Date
+  ? string
+  : T extends bigint
     ? string
-    : // Convert Date | undefined to string | undefined
-      T[P] extends Date | undefined
-      ? string | undefined
-      : // Recursively serialize array elements
-        T[P] extends Array<infer U>
-        ? Array<Serialized<U>>
-        : // Functions are not serialized, so keep them as is
-          // biome-ignore lint/suspicious/noExplicitAny: Function type
-          T[P] extends (...args: any) => any
-          ? T[P]
-          : // Recursively serialize nested objects
-            T[P] extends object
-            ? Serialized<T[P]>
-            : // Recursively serialize nested objects | undefined
-              T[P] extends object | undefined
-              ? Serialized<NonNullable<T[P]>> | undefined
-              : // Leave primitives and serializable types as is
-                T[P]
+    : T extends Map<infer K, infer V>
+      ? Array<[Serialized<K>, Serialized<V>]>
+      : T extends Set<infer V>
+        ? Array<Serialized<V>>
+        : T extends (infer U)[]
+          ? Array<Serialized<U>>
+          : T extends object
+            ? { [K in keyof T]: Serialized<T[K]> }
+            : T
+
+export type PartiallySerialized<T> = {
+  [K in keyof T]: T[K] | Serialized<T[K]>
 }
 
 // Type helper that converts specific types to strings while preserving string unions
@@ -52,8 +45,6 @@ type ConvertToQueryParam<T> =
 export type QueryParams<T> = {
   [K in keyof T]: ConvertToQueryParam<T[K]>
 }
-
-export type PartiallySerialized<T> = T | Serialized<T>
 
 export type LowerCaseHeaders<T> = {
   [P in keyof T as Lowercase<P & string>]: T[P]

@@ -37,6 +37,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -50,6 +51,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -63,6 +65,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -76,6 +79,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -89,6 +93,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -102,6 +107,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -115,6 +121,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -129,6 +136,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -142,6 +150,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 
@@ -159,6 +168,7 @@ export const instrumentations = {
         )
       )
     }
+    // biome-ignore lint/style/noNonNullAssertion: it will always exist
     return cache.get(key)!
   },
 } as const

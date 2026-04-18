@@ -6,7 +6,7 @@ import {
   UnauthorizedError,
 } from '@sebspark/openapi-core'
 import { TypedRouter } from '@sebspark/openapi-express'
-import express from 'express'
+import express, { type Express } from 'express'
 import type {
   InstrumentEntityResponse,
   MarketdataServer,
@@ -95,7 +95,7 @@ const api: MarketdataServer = {
 
 const router = TypedRouter(api)
 
-const app = express()
+const app: Express = express()
 app.use(router)
 
 export { app }
