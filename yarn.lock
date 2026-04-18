@@ -10949,7 +10949,7 @@ __metadata:
     knip: "npm:6.3.0"
     syncpack: "npm:14.3.0"
     tsup: "npm:8.5.1"
-    turbo: "npm:^2.9.6"
+    turbo: "npm:2.9.6"
     typescript: "npm:6.0.2"
     vitest: "npm:4.1.2"
   languageName: unknown
@@ -12169,7 +12169,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo@npm:^2.9.6":
+"turbo@npm:2.9.6":
   version: 2.9.6
   resolution: "turbo@npm:2.9.6"
   dependencies:
