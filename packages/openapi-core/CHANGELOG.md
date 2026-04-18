@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.9
+
+### Patch Changes
+
+- 4468501: Fixed Serialized
+
 ## 4.1.8
 
 ### Patch Changes
