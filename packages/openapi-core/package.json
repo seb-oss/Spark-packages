@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@sebspark/retry": "1.0.9",
-    "axios": "1.15.0",
+    "axios": "1.15.1",
     "express": "5.2.1"
   },
   "repository": {

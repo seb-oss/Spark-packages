@@ -28,7 +28,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "axios": "1.15.0"
+    "axios": "1.15.1"
   },
   "repository": {
     "type": "git",

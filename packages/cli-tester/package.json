@@ -25,7 +25,7 @@
     "@inquirer/figures": "2.0.5"
   },
   "devDependencies": {
-    "@inquirer/prompts": "8.4.1"
+    "@inquirer/prompts": "8.4.2"
   },
   "repository": {
     "type": "git",
