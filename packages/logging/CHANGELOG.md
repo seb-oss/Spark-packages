@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.11
+
+### Patch Changes
+
+- 4e12590: Updated dependencies
+
 ## 2.0.10
 
 ### Patch Changes
