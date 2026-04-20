@@ -1,5 +1,16 @@
 # @sebspark/health-check
 
+## 2.3.0
+
+### Minor Changes
+
+- 6399280: Health check now has ddos protection. Type fix in promise-cache.
+
+### Patch Changes
+
+- Updated dependencies [6399280]
+  - @sebspark/promise-cache@6.4.23
+
 ## 2.2.4
 
 ### Patch Changes
