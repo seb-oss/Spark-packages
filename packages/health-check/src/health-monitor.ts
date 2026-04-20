@@ -1,5 +1,6 @@
 import { toEntity } from '@sebspark/hyper-media'
-import { type ErrorRequestHandler, Router } from 'express'
+import { createCache, InMemoryPersistor } from '@sebspark/promise-cache'
+import { type ErrorRequestHandler, type RequestHandler, Router } from 'express'
 import type {
   DependencyMonitor,
   DependencyMonitorConfig,
@@ -54,7 +55,7 @@ export interface HealthMonitorConfig {
 export class HealthMonitor {
   private readonly _router: Router
   private readonly dependencies: Map<string, DependencyMonitor>
-  // private isDisposed = false
+  private isDisposed = false
 
   /**
    * Create a new HealthMonitor instance with its own router and dependency map.
@@ -95,11 +96,21 @@ export class HealthMonitor {
    */
   private createRouter() {
     const router = Router()
+    const persistor = new InMemoryPersistor()
+    const cache = createCache(persistor)
 
     // Health
-    router.get('/health', async (req, res, next) => {
+    const cachedHealth = cache.wrap(() => this.health(), {
+      key: '/health',
+      expiry: 1000,
+    })
+    const healthHandler: RequestHandler = async (
+      req,
+      res,
+      next
+    ): Promise<void> => {
       try {
-        const health = await this.health()
+        const health = await cachedHealth()
         res.status(200).json(
           toEntity(req, health, {
             ping: '/health/ping',
@@ -110,10 +121,11 @@ export class HealthMonitor {
       } catch (err) {
         next?.(err)
       }
-    })
+    }
+    router.get('/health', healthHandler)
 
-    // Ping
-    router.get('/health/ping', (req, res, next) => {
+    // Ping (no cache handler for ping since that woul actually increase the cost of the call)
+    const pingHandler: RequestHandler = (req, res, next) => {
       try {
         res.status(200).json(
           toEntity(req, this.ping(), {
@@ -123,25 +135,36 @@ export class HealthMonitor {
       } catch (err) {
         next?.(err)
       }
-    })
+    }
+    router.get('/health/ping', pingHandler)
 
     // Liveness
-    router.get('/health/live', (req, res, next) => {
+    const cachedLiveness = cache.wrap(() => this.live(), {
+      key: 'health/live',
+      expiry: 1000,
+    })
+    const livenessHandler: RequestHandler = async (req, res, next) => {
       try {
+        const liveness = await cachedLiveness()
         res.status(200).json(
-          toEntity(req, this.live(), {
+          toEntity(req, liveness, {
             health: '/health',
           })
         )
       } catch (err) {
         next?.(err)
       }
-    })
+    }
+    router.get('/health/live', livenessHandler)
 
     // Readiness
-    router.get('/health/ready', async (req, res, next) => {
+    const cachedReadiness = cache.wrap(() => this.ready(), {
+      key: '/health/ready',
+      expiry: 1000,
+    })
+    const readinessHandler: RequestHandler = async (req, res, next) => {
       try {
-        const readiness = await this.ready()
+        const readiness = await cachedReadiness()
         const status = readiness.summary.critical.failing > 0 ? 503 : 200
         res.status(status).json(
           toEntity(req, readiness, {
@@ -151,7 +174,8 @@ export class HealthMonitor {
       } catch (err) {
         next?.(err)
       }
-    })
+    }
+    router.get('/health/ready', readinessHandler)
 
     // Error handler
     const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
@@ -352,7 +376,7 @@ export class HealthMonitor {
    * - (future: could also stop all dependency monitors)
    */
   public dispose() {
-    // this.isDisposed = true
+    this.isDisposed = true
     for (const dependency of this.dependencies.values()) {
       dependency.dispose()
     }

@@ -159,7 +159,8 @@ export class InMemoryPersistor implements IPersistor {
    * @returns {Promise<string | null>} Resolves to the string value, or `null` if the key does not exist.
    */
   async get(key: string): Promise<string | null> {
-    return this.store.get(key) ?? null
+    const result = this.store.get(key) ?? null
+    return result
   }
 
   /**

@@ -60,7 +60,7 @@ export type Cache = {
    * @returns {Delegate<A, R>} A new function that caches results.
    */
   wrap<A extends unknown[], R>(
-    delegate: (...args: A) => Promise<R>,
+    delegate: (...args: A) => R | Promise<R>,
     options: CachingOptions<A, R>
   ): (...args: A) => Promise<R>
 }

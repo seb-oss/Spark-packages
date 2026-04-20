@@ -19,7 +19,6 @@ describe('HealthMonitor', () => {
     afterEach(() => {
       vi.useRealTimers()
     })
-
     it('returns ok, a fresh timestamp, and system/process info', () => {
       using monitor = new HealthMonitor()
       const res = monitor.live()
@@ -63,7 +62,6 @@ describe('HealthMonitor', () => {
     afterEach(() => {
       vi.useRealTimers()
     })
-
     it('returns ok and empty checks when no dependencies', async () => {
       const monitor = new HealthMonitor()
       const res = await monitor.ready()
@@ -74,7 +72,6 @@ describe('HealthMonitor', () => {
         timestamp: expect.any(String),
       })
     })
-
     it('includes inline dependency result and overall ok', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(
@@ -98,7 +95,6 @@ describe('HealthMonitor', () => {
         },
       })
     })
-
     it('includes polled dependency result (initial tick) and overall ok', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(
@@ -123,7 +119,6 @@ describe('HealthMonitor', () => {
         freshness: { lastChecked: expect.any(String) },
       })
     })
-
     it('overall degraded when a non-critical dependency is degraded', async () => {
       using monitor = new HealthMonitor()
       using dependency = new DependencyMonitor({
@@ -145,7 +140,6 @@ describe('HealthMonitor', () => {
       expect(res.status).toBe('degraded')
       expect(res.checks.paymentsApi.status).toBe('degraded')
     })
-
     it('does not count a critical unknown dependency as failing', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(
@@ -166,7 +160,6 @@ describe('HealthMonitor', () => {
       expect(res.status).not.toBe('error')
       expect(res.summary.critical.failing).toBe(0)
     })
-
     it('overall error when a critical dependency errors', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(
@@ -185,7 +178,6 @@ describe('HealthMonitor', () => {
       expect(res.status).toBe('error')
       expect(res.checks.postgres.status).toBe('error')
     })
-
     it('uses cached async result and can degrade overall', async () => {
       using monitor = new HealthMonitor()
       monitor.addDependency(
@@ -209,7 +201,6 @@ describe('HealthMonitor', () => {
       expect(res.checks.quotesApi.status).toBe('degraded')
       expect(res.checks.quotesApi.mode).toBe('async')
     })
-
     it('synthesizes an error snapshot when a dependency check rejects', async () => {
       const monitor = new HealthMonitor()
       monitor.addDependency(
@@ -256,16 +247,13 @@ describe('HealthMonitor', () => {
       monitor = new HealthMonitor()
       app = express().use(monitor.router)
     })
-
     afterEach(() => {
       vi.restoreAllMocks()
       monitor.dispose()
     })
-
     it('exposes an Express Router', () => {
       expect(monitor.router).toBeInstanceOf(Router)
     })
-
     it('GET /health/ping calls .ping and returns its value', async () => {
       const stub = vi.spyOn(monitor, 'ping').mockReturnValue({ status: 'ok' })
       const res = await agent(app)
@@ -281,7 +269,6 @@ describe('HealthMonitor', () => {
         },
       })
     })
-
     it('GET /health/live calls .live and returns its value', async () => {
       const payload = {
         status: 'ok',
@@ -302,7 +289,40 @@ describe('HealthMonitor', () => {
         },
       })
     })
+    it('GET /health/live caches for 1 second', async () => {
+      const payload = {
+        status: 'ok',
+        uptime: 123,
+        timestamp: '2025-08-19T12:00:00Z',
+      }
+      const stub = vi.spyOn(monitor, 'live').mockReturnValue(payload as any)
+      const res1 = await agent(app)
+        .get('/health/live')
+        .set('Host', 'mysystem.com')
+      const res2 = await agent(app)
+        .get('/health/live')
+        .set('Host', 'mysystem.com')
 
+      expect(stub).toHaveBeenCalledTimes(1)
+
+      expect(res1.status).toBe(200)
+      expect(res1.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/live' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+
+      expect(res2.status).toBe(200)
+      expect(res2.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/live' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+    })
     it('GET /health/ready calls .ready and returns its value without failing critical dependencies', async () => {
       const payload = {
         status: 'ok',
@@ -323,7 +343,40 @@ describe('HealthMonitor', () => {
         },
       })
     })
+    it('GET /health/ready caches for 1 second', async () => {
+      const payload = {
+        status: 'ok',
+        checks: { db: { status: 'ok' } },
+        summary: { critical: { failing: 0 } },
+      }
+      const stub = vi.spyOn(monitor, 'ready').mockResolvedValue(payload as any)
 
+      const res1 = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
+      const res2 = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
+
+      expect(stub).toHaveBeenCalledTimes(1)
+      expect(res1.status).toBe(200)
+      expect(res1.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ready' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+
+      expect(res2.status).toBe(200)
+      expect(res2.body).toEqual({
+        data: payload,
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health/ready' },
+          health: { method: 'GET', href: '//mysystem.com/health' },
+        },
+      })
+    })
     it('GET /health/ready calls .ready and returns its value with failing critical dependencies', async () => {
       const payload = {
         status: 'ok',
@@ -344,7 +397,6 @@ describe('HealthMonitor', () => {
         },
       })
     })
-
     it('GET /health/ready calls .ready and sets 200 for degraded status', async () => {
       const payload: ReadinessPayload = {
         status: 'degraded',
@@ -361,6 +413,7 @@ describe('HealthMonitor', () => {
         },
         summary: {
           critical: {
+            degraded: 0,
             failing: 0,
             ok: 1,
           },
@@ -387,7 +440,6 @@ describe('HealthMonitor', () => {
         },
       })
     })
-
     it('GET /health returns a composed value', async () => {
       const ping = { status: 'ok' }
       const live = {
@@ -404,6 +456,60 @@ describe('HealthMonitor', () => {
       const res = await agent(app).get('/health').set('Host', 'mysystem.com')
       expect(res.status).toBe(200)
       expect(res.body).toEqual({
+        data: {
+          checks: {
+            db: { status: 'ok' },
+          },
+          status: 'ok',
+          timestamp: expect.any(String),
+        },
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health' },
+          ping: { method: 'GET', href: '//mysystem.com/health/ping' },
+          live: { method: 'GET', href: '//mysystem.com/health/live' },
+          ready: { method: 'GET', href: '//mysystem.com/health/ready' },
+        },
+      })
+    })
+    it('GET /health caches for 1 second', async () => {
+      const ping = { status: 'ok' }
+      const live = {
+        status: 'ok',
+        uptime: 123,
+        timestamp: '2025-08-19T12:00:00Z',
+      }
+      const ready = { status: 'ok', checks: { db: { status: 'ok' } } }
+
+      const liveStub = vi.spyOn(monitor, 'live').mockReturnValue(live as any)
+      const readyStub = vi
+        .spyOn(monitor, 'ready')
+        .mockResolvedValue(ready as any)
+
+      const res1 = await agent(app).get('/health').set('Host', 'mysystem.com')
+      const res2 = await agent(app).get('/health').set('Host', 'mysystem.com')
+
+      expect(liveStub).toHaveBeenCalledTimes(1)
+      expect(readyStub).toHaveBeenCalledTimes(1)
+
+      expect(res1.status).toBe(200)
+      expect(res1.body).toEqual({
+        data: {
+          checks: {
+            db: { status: 'ok' },
+          },
+          status: 'ok',
+          timestamp: expect.any(String),
+        },
+        links: {
+          self: { method: 'GET', href: '//mysystem.com/health' },
+          ping: { method: 'GET', href: '//mysystem.com/health/ping' },
+          live: { method: 'GET', href: '//mysystem.com/health/live' },
+          ready: { method: 'GET', href: '//mysystem.com/health/ready' },
+        },
+      })
+
+      expect(res2.status).toBe(200)
+      expect(res2.body).toEqual({
         data: {
           checks: {
             db: { status: 'ok' },
