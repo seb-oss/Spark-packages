@@ -67,7 +67,9 @@ export const getSpanProcessor = (
   }
 
   if (process.env.OTEL_SIMPLE_SPAN_PROCESSOR === 'true') {
-    console.log('[otel] Using SimpleSpanProcessor (OTEL_SIMPLE_SPAN_PROCESSOR=true)')
+    console.log(
+      '[otel] Using SimpleSpanProcessor (OTEL_SIMPLE_SPAN_PROCESSOR=true)'
+    )
     return new SimpleSpanProcessor(exporter)
   }
 

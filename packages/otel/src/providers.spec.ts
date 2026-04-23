@@ -1,7 +1,10 @@
 import { resourceFromAttributes } from '@opentelemetry/resources'
 import { LoggerProvider } from '@opentelemetry/sdk-logs'
 import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
-import { BatchSpanProcessor, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-node'
+import {
+  BatchSpanProcessor,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-node'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { TreeSpanProcessor } from './loggers/tree-span-processor'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
