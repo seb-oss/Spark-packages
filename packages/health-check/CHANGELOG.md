@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 2.3.1
+
+### Patch Changes
+
+- @sebspark/promise-cache@6.4.24
+
 ## 2.3.0
 
 ### Minor Changes
