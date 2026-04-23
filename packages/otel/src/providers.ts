@@ -11,6 +11,7 @@ import {
 import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
 import {
   BatchSpanProcessor,
+  SimpleSpanProcessor,
   type SpanProcessor,
 } from '@opentelemetry/sdk-trace-node'
 import { ConsoleMetricPrettyExporter } from './loggers/console-metric-pretty-exporter'
@@ -60,11 +61,17 @@ export const getSpanProcessor = (
         url: `${otlpEndpoint}/v1/traces`,
       })
     : new ConsoleSpanPrettyExporter()
-  const processor = otlpEndpoint
-    ? new BatchSpanProcessor(exporter)
-    : new TreeSpanProcessor(exporter)
 
-  return processor
+  if (!otlpEndpoint) {
+    return new TreeSpanProcessor(exporter)
+  }
+
+  if (process.env.OTEL_SIMPLE_SPAN_PROCESSOR === 'true') {
+    console.log('[otel] Using SimpleSpanProcessor (OTEL_SIMPLE_SPAN_PROCESSOR=true)')
+    return new SimpleSpanProcessor(exporter)
+  }
+
+  return new BatchSpanProcessor(exporter)
 }
 
 export const getMetricReader = (otlpEndpoint: string | undefined) => {

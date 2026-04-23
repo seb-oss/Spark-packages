@@ -199,11 +199,12 @@ When deployed to **Cloud Run**, **GKE**, or other cloud environments, telemetry 
 
 Set these environment variables:
 
-| Variable                      | Description                     | Example                       |
-|-------------------------------|---------------------------------|-------------------------------|
-| `OTEL_EXPORTER_OTLP_ENDPOINT` | Collector endpoint              | `http://otel-collector:4318`  |
-| `OTEL_SERVICE_NAME`           | Override detected service name  | `trade-api`                   |
-| `OTEL_SERVICE_VERSION`        | Version of this instance        | `1.2.3`                       |
+| Variable                        | Description                                                                                           | Example                       |
+|---------------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------|
+| `OTEL_EXPORTER_OTLP_ENDPOINT`   | Collector endpoint                                                                                    | `http://otel-collector:4318`  |
+| `OTEL_SERVICE_NAME`             | Override detected service name                                                                        | `trade-api`                   |
+| `OTEL_SERVICE_VERSION`          | Version of this instance                                                                              | `1.2.3`                       |
+| `OTEL_SIMPLE_SPAN_PROCESSOR`    | Makes OTel use the `SimpleSpanProcessor` instead of `BatchSpanProcessor`. Recommended for batch jobs that may produce oversized batches. | `true` |
 
 Additional GCP/Kubernetes context is auto-detected:
 

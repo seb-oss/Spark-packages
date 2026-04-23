@@ -1,7 +1,7 @@
 import { resourceFromAttributes } from '@opentelemetry/resources'
 import { LoggerProvider } from '@opentelemetry/sdk-logs'
 import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-node'
+import { BatchSpanProcessor, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-node'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { TreeSpanProcessor } from './loggers/tree-span-processor'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
@@ -37,6 +37,16 @@ describe('getLogProvider', () => {
 })
 
 describe('getSpanProcessor', () => {
+  const OLD_ENV = process.env
+
+  beforeEach(() => {
+    process.env = { ...OLD_ENV }
+  })
+
+  afterEach(() => {
+    process.env = OLD_ENV
+  })
+
   it('returns a TreeSpanProcessor without OTLP endpoint', () => {
     const processor = getSpanProcessor(undefined)
     expect(processor).toBeInstanceOf(TreeSpanProcessor)
@@ -45,6 +55,24 @@ describe('getSpanProcessor', () => {
   it('returns a BatchSpanProcessor with OTLP endpoint', () => {
     const processor = getSpanProcessor('http://collector:4317')
     expect(processor).toBeInstanceOf(BatchSpanProcessor)
+  })
+
+  it('returns a SimpleSpanProcessor with OTLP endpoint when OTEL_SIMPLE_SPAN_PROCESSOR=true', () => {
+    process.env.OTEL_SIMPLE_SPAN_PROCESSOR = 'true'
+    const processor = getSpanProcessor('http://collector:4317')
+    expect(processor).toBeInstanceOf(SimpleSpanProcessor)
+  })
+
+  it('returns a BatchSpanProcessor when OTEL_SIMPLE_SPAN_PROCESSOR is not true', () => {
+    process.env.OTEL_SIMPLE_SPAN_PROCESSOR = 'false'
+    const processor = getSpanProcessor('http://collector:4317')
+    expect(processor).toBeInstanceOf(BatchSpanProcessor)
+  })
+
+  it('ignores OTEL_SIMPLE_SPAN_PROCESSOR without OTLP endpoint', () => {
+    process.env.OTEL_SIMPLE_SPAN_PROCESSOR = 'true'
+    const processor = getSpanProcessor(undefined)
+    expect(processor).toBeInstanceOf(TreeSpanProcessor)
   })
 })
 
