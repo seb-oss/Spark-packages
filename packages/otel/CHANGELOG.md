@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 4.1.0
+
+### Minor Changes
+
+- 7494311: Allow consumers to use the SimpleSpanProcessor when needed.
+
 ## 4.0.1
 
 ### Patch Changes
