@@ -1,5 +1,11 @@
 # @sebspark/openapi-core
 
+## 4.1.12
+
+### Patch Changes
+
+- e732b02: Fixed prototype of HttpErrors to enable instanceof checks
+
 ## 4.1.11
 
 ### Patch Changes
