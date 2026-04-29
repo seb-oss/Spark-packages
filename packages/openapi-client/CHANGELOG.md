@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.2.0
+
+### Minor Changes
+
+- 35d5f20: Express Request properties are now reachable
+
 ## 4.1.35
 
 ### Patch Changes

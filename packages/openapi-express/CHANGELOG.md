@@ -1,5 +1,11 @@
 # @sebspark/openapi-express
 
+## 5.4.0
+
+### Minor Changes
+
+- 35d5f20: Express Request properties are now reachable
+
 ## 5.3.12
 
 ### Patch Changes
