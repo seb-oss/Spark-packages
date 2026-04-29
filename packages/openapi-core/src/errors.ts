@@ -62,7 +62,7 @@ export class HttpError extends Error {
       this.cause = cause
     }
     this.statusCode = statusCode
-    Object.setPrototypeOf(this, HttpError.prototype)
+    Object.setPrototypeOf(this, new.target.prototype)
   }
 
   toJSON(showStack = false) {

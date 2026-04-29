@@ -1,6 +1,12 @@
 import { AxiosError, AxiosHeaders } from 'axios'
 import { describe, expect, test } from 'vitest'
-import { fromAxiosError } from './errors'
+import {
+  ForbiddenError,
+  fromAxiosError,
+  HttpError,
+  NotFoundError,
+  UnauthorizedError,
+} from './errors'
 
 const commonHeaders = new AxiosHeaders()
 const commonResponseProperties = {
@@ -75,5 +81,24 @@ describe('fromAxiosError: ', async () => {
     expect((returnedError.cause as AxiosError).cause).toStrictEqual(
       response.data
     )
+  })
+})
+
+describe('HttpError subclass prototype chain', () => {
+  test('instanceof works correctly for subclass', () => {
+    const err = new ForbiddenError()
+    expect(err instanceof ForbiddenError).toBe(true)
+  })
+  test('instanceof HttpError works for subclass instance', () => {
+    const err = new ForbiddenError()
+    expect(err instanceof HttpError).toBe(true)
+  })
+  test('instanceof works for UnauthorizedError', () => {
+    const err = new UnauthorizedError()
+    expect(err instanceof UnauthorizedError).toBe(true)
+  })
+  test('instanceof works for NotFoundError', () => {
+    const err = new NotFoundError()
+    expect(err instanceof NotFoundError).toBe(true)
   })
 })
