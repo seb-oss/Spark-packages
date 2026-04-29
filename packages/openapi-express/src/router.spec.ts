@@ -17,6 +17,7 @@ import {
   type APIResponse,
   type APIServerDefinition,
   type APIServerOptions,
+  type ExpressRequest,
   type GenericRouteHandler,
   type PartiallySerialized,
   UnauthorizedError,
@@ -61,30 +62,40 @@ type User = {
   id: string
 }
 
+type Req = ExpressRequest
+
 type Server = APIServerDefinition & {
   '/users': {
     get: {
-      handler: () => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
+      handler: (
+        args: Req
+      ) => Promise<[200, APIResponse<PartiallySerialized<User>[]>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/users/:id': {
     get: {
-      handler: (args: {
-        params: { id: string }
-      }) => Promise<[200, APIResponse<PartiallySerialized<User>>]>
+      handler: (
+        args: Req & {
+          params: { id: string }
+        }
+      ) => Promise<[200, APIResponse<PartiallySerialized<User>>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/headeronly': {
     get: {
-      handler: () => Promise<[204, APIResponse<undefined, { 'x-foo': 'bar' }>]>
+      handler: (
+        args: Req
+      ) => Promise<[204, APIResponse<undefined, { 'x-foo': 'bar' }>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }
   '/headerandbody': {
     get: {
-      handler: () => Promise<
+      handler: (
+        args: Req
+      ) => Promise<
         [204, APIResponse<PartiallySerialized<User>, { 'x-foo': 'bar' }>]
       >
       pre?: GenericRouteHandler | GenericRouteHandler[]
@@ -92,7 +103,7 @@ type Server = APIServerDefinition & {
   }
   '/nocontent': {
     get: {
-      handler: () => Promise<[204, APIResponse<undefined>]>
+      handler: (args: Req) => Promise<[204, APIResponse<undefined>]>
       pre?: GenericRouteHandler | GenericRouteHandler[]
     }
   }

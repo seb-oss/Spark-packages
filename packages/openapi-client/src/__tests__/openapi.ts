@@ -15,7 +15,7 @@ import type {
 } from '@sebspark/openapi-core'
 import type { Request as ExpressRequest } from 'express'
 
-type Req = Pick<ExpressRequest, 'url' | 'baseUrl' | 'cookies' | 'hostname'>
+type Req = ExpressRequest
 
 /* tslint:disable */
 /* eslint-disable */
