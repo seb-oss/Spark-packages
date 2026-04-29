@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.1.0
+
+### Minor Changes
+
+- 35d5f20: Express Request properties are now reachable
+
 ## 5.0.27
 
 ### Patch Changes

@@ -3876,12 +3876,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.1.35, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.2.0, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.11"
-    "@sebspark/openapi-typegen": "npm:5.0.27"
+    "@sebspark/openapi-typegen": "npm:5.1.0"
     "@sebspark/otel": "npm:4.1.1"
     "@sebspark/retry": "npm:1.0.11"
     axios: "npm:1.15.2"
@@ -3905,17 +3905,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
-    "@sebspark/openapi-client": "npm:4.1.35"
+    "@sebspark/openapi-client": "npm:4.2.0"
     "@sebspark/openapi-core": "npm:4.1.11"
-    "@sebspark/openapi-express": "npm:5.3.12"
-    "@sebspark/openapi-typegen": "npm:5.0.27"
+    "@sebspark/openapi-express": "npm:5.4.0"
+    "@sebspark/openapi-typegen": "npm:5.1.0"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
     find-free-ports: "npm:3.1.1"
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@npm:5.3.12, @sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.4.0, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
@@ -3930,7 +3930,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.0.27, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.1.0, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
