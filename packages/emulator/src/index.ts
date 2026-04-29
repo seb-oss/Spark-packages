@@ -88,6 +88,29 @@ interface StoredResponder<A, R> {
 }
 
 /**
+ * A handle returned by `.stream()` that lets a test drive a stateful,
+ * externally-controlled streaming responder.
+ *
+ * - `waitForCall()` — resolves when the next request has arrived and the
+ *   initializer has been called. Each invocation dequeues the next pending
+ *   request in arrival order.
+ * - `send(modifier)` — derives a new response from `latestResponse` and
+ *   delivers it via the transport callback. Throws if called before
+ *   `waitForCall()` resolves.
+ * - `latestResponse` — the most recent response emitted for the active stream,
+ *   or `undefined` before `waitForCall()` resolves.
+ *
+ * @template R Response type
+ */
+export interface StreamHandle<R> {
+  waitForCall(): Promise<void>
+  send(modifier: (prev: R) => R): Promise<void>
+  readonly latestResponse: R | undefined
+  /** `true` once the first `waitForCall()` has resolved. */
+  readonly hasBeenCalled: boolean
+}
+
+/**
  * Builder API returned by `.times(n)` or `.persist()`.
  *
  * These builders let you specify how many times a responder should be used:
@@ -97,8 +120,12 @@ interface StoredResponder<A, R> {
  * They expose the same responder registration methods as normal:
  * - `.reply(response | fn)` → single-response style
  * - `.callback(fn)` → streaming style
+ * - `.stream(initializer)` → externally-driven streaming style
  *
  * Each returns an `execute(...)` helper for direct invocation.
+ *
+ * Note: `.pending()` and `.reset()` are on {@link MethodCall} (before lifetime
+ * configuration), not on this builder — they operate on the method as a whole.
  */
 interface MethodCallBuilder<A, R> {
   reply(response: R): { execute(arg: A): Promise<R> }
@@ -107,16 +134,19 @@ interface MethodCallBuilder<A, R> {
   callback(fn: (args: A, cb: (resp: R) => unknown) => unknown): {
     execute(arg: A, cb: (resp: R) => unknown): Promise<void>
   }
+
+  stream(initializer: (args: A) => R): StreamHandle<R>
 }
 
 /**
  * The full API available for each method in the emulator.
  *
- * By default, `.reply` and `.callback` register **single-use** responders.
+ * By default, `.reply`, `.callback`, and `.stream` register **single-use** responders.
  * For repeated use, chain `.times(n)` or `.persist()`.
  *
  * - `.reply(...)` — one-time single-response responder
  * - `.callback(...)` — one-time streaming responder
+ * - `.stream(initializer)` — externally-driven streaming responder
  * - `.times(n)` — limit responder to `n` uses
  * - `.persist()` — make responder permanent (infinite uses)
  * - `.once()` / `.twice()` / `.thrice()` — convenience aliases for `.times(1/2/3)`
@@ -133,6 +163,9 @@ interface MethodCall<A, R> {
     execute(arg: A, cb: (resp: R) => unknown): Promise<void>
   }
 
+  // Externally-driven streaming
+  stream(initializer: (args: A) => R): StreamHandle<R>
+
   // Lifetime configuration
   times(n: number): MethodCallBuilder<A, R>
   persist(): MethodCallBuilder<A, R>
@@ -141,6 +174,12 @@ interface MethodCall<A, R> {
   once(): MethodCallBuilder<A, R>
   twice(): MethodCallBuilder<A, R>
   thrice(): MethodCallBuilder<A, R>
+
+  /** The number of responders registered for this method that have not yet been fully consumed. */
+  readonly pending: number
+
+  /** Removes all registered responders for this method. */
+  reset(): void
 }
 
 /**
@@ -260,7 +299,73 @@ const makeRequest = <A, R>(responders: Set<StoredResponder<A, R>>) => {
         }
       }
 
-      return { reply, callback }
+      function stream(initializer: (args: A) => R): StreamHandle<R> {
+        // Queue of { resolve, transportCb } entries — one per accepted request.
+        const queue: Array<{
+          resolve: () => void
+          transportCb: ResponseCb<R>
+        }> = []
+        let queueResolve: (() => void) | null = null
+
+        let activeTransportCb: ResponseCb<R> | null = null
+        let latestResponse: R | undefined
+        let hasBeenCalled = false
+
+        // Register the underlying streaming responder.
+        const responder: StreamResponder<A, R> = async (args, cb) => {
+          const initial = initializer(args)
+          latestResponse = initial
+          activeTransportCb = cb
+          await cb(initial)
+
+          // Park until waitForCall() dequeues this entry.
+          await new Promise<void>((resolve) => {
+            queue.push({ resolve, transportCb: cb })
+            if (queueResolve) {
+              const wake = queueResolve
+              queueResolve = null
+              wake()
+            }
+          })
+        }
+        addResponder(filter, responder, remaining)
+
+        const handle: StreamHandle<R> = {
+          get latestResponse() {
+            return latestResponse
+          },
+          get hasBeenCalled() {
+            return hasBeenCalled
+          },
+
+          async waitForCall(): Promise<void> {
+            // Wait if no request has arrived yet.
+            if (queue.length === 0) {
+              await new Promise<void>((resolve) => {
+                queueResolve = resolve
+              })
+            }
+            const entry = queue.shift()
+            if (!entry) throw new Error('Stream queue is empty')
+            activeTransportCb = entry.transportCb
+            hasBeenCalled = true
+            entry.resolve()
+          },
+
+          async send(modifier: (prev: R) => R): Promise<void> {
+            if (activeTransportCb === null) {
+              throw new Error('No active stream — call waitForCall() first')
+            }
+            const next = modifier(latestResponse as R)
+            latestResponse = next
+            await activeTransportCb(next)
+          },
+        }
+
+        return handle
+      }
+
+      return { reply, callback, stream }
     }
 
     return {
@@ -279,6 +384,12 @@ const makeRequest = <A, R>(responders: Set<StoredResponder<A, R>>) => {
       },
       thrice() {
         return builder(3)
+      },
+      get pending() {
+        return responders.size
+      },
+      reset() {
+        responders.clear()
       },
     } as MethodCall<A, R>
   }
@@ -313,28 +424,27 @@ const callResponder = async <T extends MethodMap, M extends keyof T>(
   cb: ResponseCb<T[M]['resp']>
 ): Promise<void> => {
   // Collect responders in insertion order, then reverse for LIFO
-  const candidates = [...responders]
+  const [chosen] = [...responders]
     .reverse()
     .filter((r) => !r.filter || r.filter(args))
 
-  if (candidates.length === 0) {
+  if (!chosen) {
     throw new Error(
       `No responder found for .${methodName}(${args && JSON.stringify(args)})`
     )
   }
 
-  const chosen = candidates[0]
-  if (!chosen) {
-    throw new Error('Chosen is not defined')
-  }
-  await chosen.cb(args, cb)
-
+  // Decrement before invoking so that concurrent/subsequent requests see the
+  // updated count immediately — even for long-lived streaming responders whose
+  // body only completes when the test calls waitForCall().
   if (chosen.remaining !== Number.POSITIVE_INFINITY) {
     chosen.remaining -= 1
     if (chosen.remaining <= 0) {
       responders.delete(chosen)
     }
   }
+
+  await chosen.cb(args, cb)
 }
 
 /**
@@ -389,6 +499,14 @@ export const createEmulator = <T extends MethodMap>() => {
   // biome-ignore lint/suspicious/noExplicitAny: emulator code
   const handler: ProxyHandler<any> = {
     get(_target, prop) {
+      if (prop === 'reset') {
+        return () => {
+          for (const set of responders.values()) {
+            set.clear()
+          }
+        }
+      }
+
       if (prop === 'handle') {
         return async <M extends keyof T>(
           method: M,
@@ -432,6 +550,8 @@ export const createEmulator = <T extends MethodMap>() => {
       args: T[M]['args'],
       cb: ResponseCb<T[M]['resp']>
     ): Promise<void>
+    /** Removes all registered responders across every method. */
+    reset(): void
   }
 }
 

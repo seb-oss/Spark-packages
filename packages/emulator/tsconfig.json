@@ -1,4 +1,7 @@
 {
   "extends": "@sebspark/tsconfig/tsconfig.lib.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "esnext.disposable"]
+  },
   "include": ["."]
 }

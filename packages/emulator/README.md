@@ -7,7 +7,7 @@ Helper for building emulators or test fakes.
 This package provides a generic, type-safe emulator engine. The idea is that you wrap it in a concrete emulator that adapts a real transport (HTTP, Pub/Sub, gRPC, etc.) to the emulator's simple request/response model. Tests then configure the emulator to respond in specific ways, without needing a real backend.
 
 ```
-Real transport (Pub/Sub message, HTTP request, …)
+Real transport (Pub/Sub message, HTTP request, WebSocket, …)
         │
         ▼
   Your emulator adapter        ← decodes, calls emulator.handle(...)
@@ -16,17 +16,18 @@ Real transport (Pub/Sub message, HTTP request, …)
    createEmulator()            ← dispatches to registered responders
         │
         ▼
-  Your test                    ← registers responders with .reply() / .callback()
+  Your test                    ← registers responders with .reply() / .callback() / .stream()
 ```
 
-## Building an emulator
+---
 
-Define a `MethodMap` that describes every operation your external system exposes, then wire up the transport to call `emulator.handle(...)`.
+## Example: request/response — payment gateway
+
+The simplest case: one request, one response. A payment gateway is a natural fit.
 
 ```ts
 import { createEmulator, disposable, type Disposable } from '@sebspark/emulator'
 
-// 1. Declare every method with its request and response types
 type PaymentMethodMap = {
   authorise: {
     args: { amount: number; currency: string }
@@ -38,12 +39,10 @@ type PaymentMethodMap = {
   }
 }
 
-// 2. Expose a typed emulator handle
 export type PaymentEmulator = Disposable<
   ReturnType<typeof createEmulator<PaymentMethodMap>>
 >
 
-// 3. Wire up the transport
 export const startPaymentEmulator = (server: HttpServer): PaymentEmulator => {
   const emulator = createEmulator<PaymentMethodMap>()
 
@@ -63,24 +62,134 @@ export const startPaymentEmulator = (server: HttpServer): PaymentEmulator => {
 }
 ```
 
-## Using the emulator in tests
-
-The intended test pattern is **setup → execute → assert**, keeping each step explicit and local to the test. Register exactly one responder, trigger exactly one call, check the result:
+In tests:
 
 ```ts
 it('returns an auth code on approval', async () => {
-  // Setup
   payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
 
-  // Execute
   const result = await client.authorise({ amount: 100, currency: 'SEK' })
 
-  // Assert
   expect(result.authCode).toBe('ABC123')
 })
 ```
 
-The responder is consumed after the call, so a missing setup will throw immediately rather than silently reusing state from another test.
+---
+
+## Example: streaming — chatbot over WebSocket
+
+When a single request triggers a series of responses, use a streaming responder. A WebSocket chatbot that emits tokens one at a time is a natural fit.
+
+```ts
+import { createEmulator, disposable, type Disposable } from '@sebspark/emulator'
+import { WebSocketServer, type WebSocket } from 'ws'
+
+type ChatMethodMap = {
+  chat: {
+    args: { sessionId: string; message: string }
+    resp: { token: string; done: boolean }
+  }
+}
+
+export type ChatEmulator = Disposable<
+  ReturnType<typeof createEmulator<ChatMethodMap>>
+>
+
+export const createChatEmulator = (port: number): ChatEmulator => {
+  const emulator = createEmulator<ChatMethodMap>()
+  const wss = new WebSocketServer({ port })
+
+  wss.on('connection', (ws: WebSocket) => {
+    ws.on('message', async (data) => {
+      const args = JSON.parse(data.toString()) as ChatMethodMap['chat']['args']
+      await emulator.handle('chat', args, async (resp) => {
+        ws.send(JSON.stringify(resp))
+      })
+    })
+  })
+
+  return disposable(emulator, () => wss.close())
+}
+```
+
+### Fixed reply with `.callback()`
+
+Use `.callback()` when the full sequence of tokens is known upfront:
+
+```ts
+bot.chat().callback((_args, cb) => {
+  cb({ token: 'Sure', done: false })
+  cb({ token: ', here', done: false })
+  cb({ token: ' you go.', done: true })
+})
+```
+
+### Test-driven streaming with `.stream()`
+
+Use `.stream(initializer)` when the test needs to **drive responses at its own pace** — for example to assert state between tokens, or simulate a correction mid-stream.
+
+`.stream()` returns a `StreamHandle`:
+
+| Member | Type | Description |
+|---|---|---|
+| `waitForCall()` | `() => Promise<void>` | Resolves when the next request has arrived and the initializer has fired |
+| `send(modifier)` | `(fn: (prev) => Resp) => Promise<void>` | Derives and sends the next response from the last one |
+| `latestResponse` | `Resp \| undefined` | The most recent response sent, or `undefined` before the first `waitForCall()` |
+| `hasBeenCalled` | `boolean` | `true` once the first request has arrived and `waitForCall()` has resolved |
+
+```ts
+it('streams a correction mid-reply', async () => {
+  const stream = bot
+    .chat()
+    .stream(() => ({ token: 'Paris is in Germany.', done: false }))
+
+  const received: string[] = []
+  client.chat({ sessionId: 's1', message: 'Where is Paris?' }, (r) => {
+    received.push(r.token)
+  })
+
+  await stream.waitForCall()
+  expect(stream.latestResponse).toEqual({ token: 'Paris is in Germany.', done: false })
+
+  await stream.send(() => ({ token: 'Sorry — Paris is in France.', done: true }))
+
+  expect(received).toEqual([
+    'Paris is in Germany.',
+    'Sorry — Paris is in France.',
+  ])
+})
+```
+
+#### Sequential streams with `.times(n)`
+
+The lifetime modifier caps how many **requests** the responder accepts. Each `waitForCall()` picks up the next one. `send()` and `latestResponse` are always scoped to the stream resolved by the most recent `waitForCall()`.
+
+```ts
+const stream = bot.chat().twice().stream(() => ({ token: 'Hello!', done: false }))
+
+// First connection
+client.chat({ sessionId: 's1', message: 'hi' }, onToken)
+await stream.waitForCall()
+await stream.send(() => ({ token: 'How can I help?', done: true }))
+
+// Second connection
+client.chat({ sessionId: 's2', message: 'hello' }, onToken)
+await stream.waitForCall()
+await stream.send(() => ({ token: 'Welcome back.', done: true }))
+
+// Third connection → throws, responder exhausted
+```
+
+Calling `send()` before `waitForCall()` resolves throws immediately:
+
+```ts
+const stream = bot.chat().stream(() => ({ token: 'init', done: false }))
+await stream.send(...) // throws: No active stream — call waitForCall() first
+```
+
+---
+
+## API reference
 
 ### Single response — `.reply()`
 
@@ -99,24 +208,31 @@ payments.authorise().reply((args) => ({
 
 ### Streaming responses — `.callback()`
 
-Use `.callback()` when a single trigger produces multiple responses (e.g. order status updates).
-
 ```ts
-payments.authorise().callback((args, cb) => {
-  cb({ authCode: 'PENDING', status: 'approved' })
-  cb({ authCode: 'SETTLED', status: 'approved' })
+bot.chat().callback((_args, cb) => {
+  cb({ token: 'Sure', done: false })
+  cb({ token: ', here', done: false })
+  cb({ token: ' you go.', done: true })
 })
 ```
 
-### Lifetime control
+### Externally-driven streaming — `.stream()`
 
-In most tests the one-shot default is exactly what you want. Lifetime modifiers are intended for more complex scenarios such as integration-style tests or helpers that need to serve many calls. Prefer explicit per-test setup over persistent responders wherever possible.
+See the [chatbot example](#example-streaming--chatbot-over-websocket) above. `StreamHandle<R>` is a named export if you need to type a helper:
+
+```ts
+import { type StreamHandle } from '@sebspark/emulator'
+
+function driveStream(handle: StreamHandle<ChatResp>) { ... }
+```
+
+### Lifetime control
 
 By default, a responder is consumed after **one use**. Control this with:
 
 | Method | Behaviour |
 |---|---|
-| `.reply(...)` / `.callback(...)` | One-time (default) |
+| `.reply(...)` / `.callback(...)` / `.stream(...)` | One-time (default) |
 | `.once().reply(...)` | One-time (explicit) |
 | `.twice().reply(...)` | Two uses |
 | `.thrice().reply(...)` | Three uses |
@@ -129,7 +245,7 @@ payments.authorise().persist().reply({ authCode: '', status: 'declined' })
 payments.authorise().twice().reply({ authCode: 'ABC', status: 'approved' })
 ```
 
-Responders are matched in **LIFO order** — the most recently registered matching responder wins. This makes it easy to stack overrides.
+Responders are matched in **LIFO order** — the most recently registered matching responder wins.
 
 ### Filters
 
@@ -147,8 +263,6 @@ payments
 
 ### Stacking overrides
 
-The most common pattern is a persistent default with one-time overrides layered on top. Because responders resolve in LIFO order, the override is consumed first, then every subsequent request falls through to the default:
-
 ```ts
 // Always decline...
 payments.authorise().persist().reply({ authCode: '', status: 'declined' })
@@ -163,17 +277,16 @@ payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
 
 ### Unhandled requests
 
-If a request arrives with no matching responder registered, the emulator throws. This is intentional — it surfaces missing setup immediately rather than returning a silent default:
+If a request arrives with no matching responder registered, the emulator throws immediately rather than returning a silent default:
 
 ```ts
-// No responder registered
 await payments.authorise(...)
 // throws: No responder found for .authorise(...)
 ```
 
 ### Direct invocation — `.execute()`
 
-Each registration returns an `.execute()` helper for triggering the responder directly in a test without going through the transport:
+Each registration returns an `.execute()` helper for triggering the responder directly without going through the transport:
 
 ```ts
 const { execute } = payments
@@ -183,6 +296,47 @@ const { execute } = payments
 const result = await execute({ amount: 100, currency: 'SEK' })
 // result → { authCode: 'TEST', status: 'approved' }
 ```
+
+### Inspecting and resetting
+
+#### `pending` — count unspent responders
+
+`payments.authorise().pending` returns the number of responders currently registered for that method that have not yet been fully consumed.
+
+This is most useful in `afterEach` to catch leftover setup — a responder registered in a test but never triggered indicates a test that didn't exercise what it intended:
+
+```ts
+afterEach(() => {
+  expect(payments.authorise().pending).toBe(0)
+  expect(payments.refund().pending).toBe(0)
+})
+```
+
+A `.persist()` responder counts as 1 pending regardless of how many times it has fired.
+
+#### `.reset()` — clear registered responders
+
+`payments.authorise().reset()` removes all responders for that method. `payments.reset()` removes all responders across every method.
+
+The per-method form is useful when you want to swap out a responder mid-test:
+
+```ts
+payments.authorise().persist().reply({ authCode: 'DEFAULT', status: 'approved' })
+
+// Later in the test, replace it entirely
+payments.authorise().reset()
+payments.authorise().reply({ authCode: 'OVERRIDE', status: 'declined' })
+```
+
+Use the emulator-level reset for blanket teardown in `afterEach`:
+
+```ts
+afterEach(() => {
+  payments.reset()
+})
+```
+
+---
 
 ## Cleanup
 
@@ -196,3 +350,4 @@ await payments.dispose()
 await using payments = startPaymentEmulator(server)
 // automatically disposed when the block exits
 ```
+
