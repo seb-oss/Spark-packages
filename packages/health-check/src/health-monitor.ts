@@ -376,6 +376,9 @@ export class HealthMonitor {
    * - (future: could also stop all dependency monitors)
    */
   public dispose() {
+    if (this.isDisposed) {
+      return
+    }
     this.isDisposed = true
     for (const dependency of this.dependencies.values()) {
       dependency.dispose()
