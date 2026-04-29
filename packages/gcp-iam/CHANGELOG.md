@@ -1,5 +1,12 @@
 # @sebspark/gcp-iam
 
+## 3.0.40
+
+### Patch Changes
+
+- Updated dependencies [e9a7a28]
+  - @sebspark/otel@4.1.1
+
 ## 3.0.39
 
 ### Patch Changes
