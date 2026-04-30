@@ -1,0 +1,10 @@
+engine biome(1.0)
+language js(typescript)
+
+// Match TypeScript 'as' type assertions using Biome's CST node TsAsExpression.
+// This naturally excludes import/export aliases since those are JsNamedImportSpecifier nodes.
+// Only 'as const' is additionally excluded — that is value narrowing, not a type assertion.
+TsAsExpression($expression, $type) as $assertion where {
+    ! $type <: "const",
+    register_diagnostic(span=$expression, message="Avoid type assertions. Use type guards or proper typing instead.", severity="warn")
+}

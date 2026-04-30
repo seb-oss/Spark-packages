@@ -520,6 +520,15 @@ describe('.stream()', () => {
     ).rejects.toThrow()
   })
 
+  it('waitForCall() rejects after timeoutMs when no request arrives', async () => {
+    const emu = createEmulator<TestMethodMap>()
+    const handle = emu.greet().stream(() => ({ message: 'initial' }))
+
+    await expect(handle.waitForCall(50)).rejects.toThrow(
+      'waitForCall() timed out after 50ms — no request arrived'
+    )
+  })
+
   it('send() after second waitForCall() targets the second stream', async () => {
     const emu = createEmulator<TestMethodMap>()
     const handle = emu

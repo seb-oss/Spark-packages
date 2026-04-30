@@ -132,7 +132,7 @@ Use `.stream(initializer)` when the test needs to **drive responses at its own p
 
 | Member | Type | Description |
 |---|---|---|
-| `waitForCall()` | `() => Promise<void>` | Resolves when the next request has arrived and the initializer has fired |
+| `waitForCall(timeoutMs?)` | `(timeoutMs?: number) => Promise<void>` | Resolves when the next request has arrived and the initializer has fired. Rejects with `Error: waitForCall() timed out after {n}ms — no request arrived` if no request arrives within `timeoutMs` ms (default: `5000`) |
 | `send(modifier)` | `(fn: (prev) => Resp) => Promise<void>` | Derives and sends the next response from the last one |
 | `latestResponse` | `Resp \| undefined` | The most recent response sent, or `undefined` before the first `waitForCall()` |
 | `hasBeenCalled` | `boolean` | `true` once the first request has arrived and `waitForCall()` has resolved |
