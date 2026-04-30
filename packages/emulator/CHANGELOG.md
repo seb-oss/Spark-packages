@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.3.0
+
+### Minor Changes
+
+- 896fda9: stream.waitForCall now has a timeout to prevent tests freezing
+
 ## 0.2.0
 
 ### Minor Changes
