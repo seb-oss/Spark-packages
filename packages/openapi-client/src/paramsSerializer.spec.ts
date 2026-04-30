@@ -41,4 +41,9 @@ describe('paramsSerializer', () => {
       'foo=bar&woop=1&herp=hello,worl%2Cd&derp=foo,bar&meow=true&purr=false&woof=2025-01-01T00%3A01%3A02.003Z'
     )
   })
+  it('handles array with undefined element', () => {
+    expect(paramsSerializer()({ arr: [1, undefined, 'x'] })).toEqual(
+      'arr[]=1&arr[]=&arr[]=x'
+    )
+  })
 })

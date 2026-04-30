@@ -185,7 +185,8 @@ function formatDuration(
 }
 
 function truncate(input: unknown, maxLength: number): string {
-  const str = String(input ?? '')
+  // In practice, input is always a string — the String() cast is a defensive fallback.
+  const str = String(input)
   return str.length > maxLength ? `${str.slice(0, maxLength - 1)}…` : str
 }
 

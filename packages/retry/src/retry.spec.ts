@@ -32,6 +32,33 @@ describe('retry', () => {
     const result = await retry(func, settings)
     expect(result).toBe(true)
   })
+
+  it('uses default retryCondition when none is provided', async () => {
+    const func = vi.fn().mockResolvedValue('ok')
+    func.mockRejectedValueOnce(new Error('fail'))
+
+    const settings: RetrySettings = {
+      interval: () => 0,
+      maxRetries: 1,
+    }
+
+    const result = await retry(func, settings)
+    expect(result).toBe('ok')
+  })
+
+  it('throws when max retries are exceeded', async () => {
+    const error = new Error('always fails')
+    const func = vi.fn().mockRejectedValue(error)
+
+    const settings: RetrySettings = {
+      interval: () => 0,
+      maxRetries: 2,
+      retryCondition: () => true,
+    }
+
+    await expect(retry(func, settings)).rejects.toThrow('always fails')
+    expect(func).toHaveBeenCalledTimes(3)
+  })
 })
 
 describe('interval', () => {
@@ -114,6 +141,40 @@ describe('retryCondition', () => {
           createAxiosError('Internal Server Error', 500)
         )
       ).toBe(true)
+    })
+  })
+
+  describe('httpErrors', () => {
+    it('matches server error codes via "server" shorthand', () => {
+      expect(retryCondition.httpErrors('server')({ status: 500 })).toBe(true)
+    })
+
+    it('matches a numeric error code', () => {
+      expect(retryCondition.httpErrors(500)({ status: 500 })).toBe(true)
+    })
+
+    it('returns false when error code does not match', () => {
+      expect(retryCondition.httpErrors(500)({ status: 200 })).toBe(false)
+    })
+
+    it('matches client error codes via "client" shorthand', () => {
+      expect(retryCondition.httpErrors('client')({ status: 400 })).toBe(true)
+    })
+
+    it('uses error.statusCode when error.status is absent', () => {
+      expect(retryCondition.httpErrors(503)({ statusCode: 503 })).toBe(true)
+    })
+
+    it('uses error.response.statusCode when other fields are absent', () => {
+      expect(
+        retryCondition.httpErrors(503)({
+          response: { statusCode: 503 },
+        })
+      ).toBe(true)
+    })
+
+    it('returns false when no status fields present', () => {
+      expect(retryCondition.httpErrors(500)({})).toBe(false)
     })
   })
 })

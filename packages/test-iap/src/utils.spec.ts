@@ -71,6 +71,11 @@ describe('utils', () => {
     expect(lines).toEqual(['a: 1', 'b: x', 'b: y', 'c: 42'])
   })
 
+  it('flattenHeaders skips null values', () => {
+    const headers = { a: '1', b: null } as any
+    expect(flattenHeaders(headers)).toEqual(['a: 1'])
+  })
+
   it('parseAuthorizationHeader returns claims for valid Bearer base64url(JSON)', () => {
     const claims: JsonObject = { sub: 'u-1', sid: 's-2' }
     const header = `Bearer ${b64u(claims)}`

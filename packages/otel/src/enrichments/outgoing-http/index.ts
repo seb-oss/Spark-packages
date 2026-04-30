@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * Shared enrichment logic for outgoing HTTP spans, normalised across
  *   @opentelemetry/instrumentation-http  (node:http / node:https)

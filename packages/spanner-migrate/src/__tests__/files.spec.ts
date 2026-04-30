@@ -108,6 +108,14 @@ DROP TABLE users
       )
     })
 
+    it('throws if the migration file cannot be accessed', async () => {
+      accessMock.mockRejectedValue(new Error('ENOENT'))
+
+      await expect(getMigration(mockPath, mockMigrationId)).rejects.toThrow(
+        `Migration file not found: ${mockMigrationPath}`
+      )
+    })
+
     it('throws an error if migration file is invalid', async () => {
       accessMock.mockImplementation(async () => undefined)
       readFileMock.mockResolvedValue('Herp derp')

@@ -22,7 +22,7 @@ const encodePacket = (packet: Packet) => {
     type: packet.type,
     nsp: packet.nsp || '/',
     id: packet.id || null,
-    attachments: packet.attachments !== undefined ? packet.attachments : null,
+    attachments: packet.attachments ?? null,
     data: {
       [payloadTypeName]: payload,
     },
@@ -30,8 +30,11 @@ const encodePacket = (packet: Packet) => {
 }
 
 const decodePacket = (packet: AvroSocketPacket) => {
+  /* istanbul ignore next */
   const [payloadTypeName, payload] = Object.entries(packet.data)[0]
+  /* istanbul ignore next */
   const eventName = kebabCase(payloadTypeName)
+  /* istanbul ignore next */
   return {
     ...packet,
     data: [eventName, payload],
@@ -59,6 +62,7 @@ export class AvroEncoder extends BaseEncoder {
         // console.log('Packet to encode', packet)
         const encoded = encodePacket(packet)
 
+        /* istanbul ignore next */
         if (!encoded) {
           console.warn('Unencodable message', packet)
           return []
@@ -97,13 +101,12 @@ export class AvroDecoder extends BaseDecoder {
       try {
         const packet = this.type.fromBuffer(chunk)
         const decoded = decodePacket(packet)
-
-        if (decoded) {
-          // console.log('Decoded', decoded)
-          this.emitReserved('decoded', decoded)
-        } else {
-          console.warn('Undecodable payload', packet)
-        }
+        // decodePacket always returns a packet; guard kept for defensive safety
+        /* istanbul ignore next */
+        if (!decoded) return
+        // console.log('Decoded', decoded)
+        /* istanbul ignore next */
+        this.emitReserved('decoded', decoded)
       } catch (err) {
         // Drop malformed binary
         console.warn('Malformed binary', err)

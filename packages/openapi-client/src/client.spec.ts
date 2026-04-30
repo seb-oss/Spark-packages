@@ -1,4 +1,5 @@
 import type { Server } from 'node:http'
+import type { BaseClient } from '@sebspark/openapi-core'
 import express from 'express'
 import {
   afterAll,
@@ -97,6 +98,18 @@ describe('TypedClient', () => {
         })
       ).resolves.toEqual({ data: user1, headers })
 
+      // Patch user age
+      const patched = { ...user1, age: 99 }
+      const patchClient = client as unknown as TypedAxiosClient<
+        Pick<BaseClient, 'patch'>
+      >
+      await expect(
+        patchClient.patch(`/users/${user1.id}`, {
+          body: patched,
+          headers: { Authorization: accessToken },
+        })
+      ).resolves.toMatchObject({ data: patched })
+
       // Delete a user
       await expect(
         client.delete('/users/:userId', {
@@ -147,6 +160,18 @@ describe('TypedClient', () => {
             headers: { Authorization: accessToken },
           })
         } catch (error) {}
+      })
+
+      test('it skips setting headers when generator returns undefined', async () => {
+        authorizationTokenGeneratorMock.mockResolvedValue(undefined)
+
+        const client = TypedClient<OpenapiClient>(`http://localhost:${PORT}`, {
+          authorizationTokenGenerator: authorizationTokenGeneratorMock,
+        })
+
+        await expect(
+          client.get('/users', { headers: { Authorization: accessToken } })
+        ).resolves.toBeDefined()
       })
     })
   })

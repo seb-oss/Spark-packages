@@ -72,6 +72,24 @@ describe('openapi e2e tests', () => {
     expect(result.data).toEqual('ok')
   })
 
+  it('returns 401 when x-client-key header is missing', async () => {
+    await expect(
+      client.get('/secured', { headers: { 'X-Api-Key': 'yo!' } })
+    ).rejects.toMatchObject({ statusCode: 401 })
+  })
+
+  it('returns 403 when x-api-key header is missing', async () => {
+    const res = await fetch(`http://localhost:${PORT}/secured`, {
+      headers: { 'x-client-key': 'Hello' },
+    })
+    expect(res.status).toBe(403)
+  })
+
+  it('returns 500 when x-test-value header is missing from /header/extract', async () => {
+    const res = await fetch(`http://localhost:${PORT}/header/extract`)
+    expect(res.status).toBe(500)
+  })
+
   describe('authorizationTokenGenerators are unique per instance', () => {
     let clientOne: MarketdataClient
     let clientTwo: MarketdataClient

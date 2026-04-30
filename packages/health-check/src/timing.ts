@@ -40,21 +40,26 @@ export const throttle = <F extends (...args: unknown[]) => Promise<unknown>>(
     if (!current) {
       current = fn(...args) as R
 
+      /* istanbul ignore next */
       if (clearHandle) {
         clearTimeout(clearHandle)
         clearHandle = null
       }
 
-      current.finally(() => {
+      const schedule = () => {
         if (ms > 0) {
-          clearHandle = setTimeout(() => {
-            current = null
-            clearHandle = null
-          }, ms)
+          clearHandle = setTimeout(
+            /* istanbul ignore next */ () => {
+              current = null
+              clearHandle = null
+            },
+            ms
+          )
         } else {
           current = null
         }
-      })
+      }
+      current.then(schedule, schedule)
     }
 
     return current

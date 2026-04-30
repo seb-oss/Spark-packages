@@ -159,6 +159,17 @@ describe('flattenEnums', () => {
         oneOf: [{ $ref: '#/components/schemas/ComplexSchema' }],
       })
     })
+    it('leaves oneOf with inline (non-$ref) schema unchanged', () => {
+      baseDocument.components!.parameters!.Inline = {
+        name: 'inline',
+        in: 'query',
+        schema: { oneOf: [{ type: 'string', enum: ['a', 'b'] }] },
+      }
+      const result = flattenEnums(baseDocument)
+      expect(result.components?.parameters?.Inline.schema).toEqual({
+        oneOf: [{ type: 'string', enum: ['a', 'b'] }],
+      })
+    })
     it('handles missing parameters gracefully', () => {
       baseDocument.components!.parameters = undefined
       const result = flattenEnums(baseDocument)
@@ -190,6 +201,11 @@ describe('flattenEnums', () => {
         type: 'object',
         properties: {},
       })
+    })
+    it('handles missing schemas gracefully', () => {
+      baseDocument.components!.schemas = undefined
+      const result = flattenEnums(baseDocument)
+      expect(result.components?.schemas).toBeUndefined()
     })
   })
 
@@ -236,6 +252,21 @@ describe('flattenEnums', () => {
       const resultPathItem = result.paths['/instruments'] as PathItemObject
       const params = resultPathItem.get?.parameters as { schema: unknown }[]
       expect(params[0].schema).toEqual({ type: 'string' })
+    })
+    it('skips operations without parameters', () => {
+      const pathItem = baseDocument.paths['/instruments'] as PathItemObject
+      pathItem.get!.parameters = undefined
+      const result = flattenEnums(baseDocument)
+      const resultPathItem = result.paths['/instruments'] as PathItemObject
+      expect(resultPathItem.get?.parameters).toBeUndefined()
+    })
+    it('skips inline parameters without schema property', () => {
+      const pathItem = baseDocument.paths['/instruments'] as PathItemObject
+      pathItem.get!.parameters = [{ $ref: '#/components/parameters/SortBy' }]
+      const result = flattenEnums(baseDocument)
+      const resultPathItem = result.paths['/instruments'] as PathItemObject
+      const params = resultPathItem.get?.parameters as { $ref: string }[]
+      expect(params[0]).toEqual({ $ref: '#/components/parameters/SortBy' })
     })
   })
 

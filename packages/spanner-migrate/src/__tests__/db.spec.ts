@@ -61,6 +61,54 @@ describe('prepare', () => {
         SQL_CREATE_TABLE_MIGRATIONS
       )
     })
+    it('throws if updateSchema fails during table creation', async () => {
+      database.run.mockImplementation(() => [[]])
+      database.updateSchema.mockRejectedValueOnce(new Error('Schema error'))
+
+      await expect(ensureMigrationTable(database)).rejects.toThrow(
+        'Schema error'
+      )
+    })
+
+    it('throws if updateSchema fails when updating up column', async () => {
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+        ],
+      ])
+      database.updateSchema.mockRejectedValueOnce(new Error('Alter error'))
+
+      await expect(ensureMigrationTable(database)).rejects.toThrow(
+        'Alter error'
+      )
+    })
+
+    it('throws if updateSchema fails when updating down column', async () => {
+      database.run.mockImplementation(() => [
+        [
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'up',
+            SPANNER_TYPE: 'STRING(MAX)',
+          },
+          {
+            TABLE_NAME: 'migrations',
+            COLUMN_NAME: 'down',
+            SPANNER_TYPE: 'STRING(1024)',
+          },
+        ],
+      ])
+      database.updateSchema.mockRejectedValueOnce(new Error('Down alter error'))
+
+      await expect(ensureMigrationTable(database)).rejects.toThrow(
+        'Down alter error'
+      )
+    })
+
     it('creates does not create table if it does exist', async () => {
       // return table row
       database.run.mockImplementation(() => [

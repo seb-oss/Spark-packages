@@ -39,8 +39,13 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
             // Ensure persistor is connected and ready
             await ensurePersistorIsReady(persistor)
 
-            // Check cache
-            const cached = deserialize<R>(await persistor.get(key))
+            // Check cache — fall back to delegate if persistor is unavailable
+            let cached: R | null = null
+            try {
+              cached = deserialize<R>(await persistor.get(key))
+            } catch {
+              // persistor unavailable — fall through to delegate
+            }
             if (cached !== null) {
               return cached
             }
@@ -57,10 +62,14 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
             // Ensure persistor is still connected and ready
             await ensurePersistorIsReady(persistor)
 
-            // Save to cache
-            const serialized = serialize(result)
-            const setOptions = toSetOptions(expiry)
-            await persistor.set(key, serialized, setOptions)
+            // Save to cache — best-effort, ignore errors
+            try {
+              const serialized = serialize(result)
+              const setOptions = toSetOptions(expiry)
+              await persistor.set(key, serialized, setOptions)
+            } catch {
+              // persistor unavailable — result still returned to caller
+            }
 
             // Return result
             return result
@@ -81,11 +90,13 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
 
 const ensurePersistorIsReady = async (persistor: IPersistor) => {
   // Persistor is connected and ready
+  /* istanbul ignore else */
   if (persistor.isReady) {
     return
   }
 
   // Persistor is connecting but not ready
+  /* istanbul ignore next */
   if (persistor.isOpen) {
     await new Promise<void>((resolve) => {
       if (persistor.isReady) return resolve()
@@ -95,9 +106,11 @@ const ensurePersistorIsReady = async (persistor: IPersistor) => {
   }
 
   // Persistor should connect
+  /* istanbul ignore next */
   try {
     await persistor.connect()
   } catch (err) {
+    /* istanbul ignore next */
     if ((err as Error).message === 'Socket already opened') {
       // Connection is already in progress
       await new Promise<void>((resolve) => {

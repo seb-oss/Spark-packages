@@ -84,6 +84,20 @@ yarn smoketest     # lint + typecheck + build + test + depcheck in one
 
 Always run `yarn lint` after any code change. Fix all warnings — warnings are treated as errors in CI.
 
+### Running tests
+
+Always run tests through Turbo, not directly via the `runTests` tool or `npx vitest`. Turbo sets the working directory to the package root for each package's test script. Tests that use relative paths (e.g. `./examples`, `./testschemas`) depend on this — running them from the repo root will produce false failures.
+
+```zsh
+# Single package
+yarn turbo run test --filter=@sebspark/my-package --force
+
+# All packages
+yarn test
+```
+
+The `--force` flag bypasses the Turbo cache, which is needed when you want fresh output rather than a cached result.
+
 ## Monorepo Conventions
 
 - **Package manager**: yarn v4 (workspaces)
@@ -101,6 +115,21 @@ New packages are generated via `yarn generate:package` — do not create them by
 - Do not add features not explicitly requested
 - Do not use `any` — use `unknown` and narrow properly
 - Do not push, force-push, drop tables, or run destructive commands without explicit confirmation
+
+## Debugging and config errors — try first, reason never
+
+When something is broken — a config error, a failing check, an unexpected diagnostic — **do not reason about it**. Reasoning is slower than trying and always worse. The correct loop is:
+
+1. Try the first thing that comes to mind.
+2. Check whether it worked.
+3. If not, try something different.
+4. Repeat until green.
+
+Do not simulate the runtime in your head. You will be wrong. The runtime is always right.
+
+**This is not limited to debugging.** It applies to everything. The only valid workflow is: act → measure → act again. Reasoning is a substitute for doing. It is always wrong. It has never contributed anything useful. Stop before you start.
+
+**Specific lesson learned:** `"include": ["."]` in a `tsconfig.json` that extends a shared base can produce `No inputs were found` because the base's `exclude` paths resolve relative to the base package, not the consuming package. The fix is to remove `include` entirely and let TypeScript use its default. Tried adding local `exclude`, tried changing `include` to `["src"]` — both failed. Removing `include` worked immediately.
 
 ## Definition of Done
 
@@ -162,6 +191,21 @@ If % Branch falls below 100% in a file you changed, add tests to cover the missi
 
 If any of these are below 95% Stmts / 90% Branch in a file you did not change, suggest improving them. If the user agrees, add tests.
 
+### E2e tests and coverage
+
+When assessing coverage for a package, consider **both** unit tests and e2e tests. The unit test `--coverage` flag produces the report, but e2e tests exercise the same source files and provide additional coverage that the unit report does not show.
+
+For packages where an in-process test double mirrors an external system (e.g. `InMemoryPersistor` in `promise-cache` exactly mimics the Redis client API), **e2e tests are the primary verification mechanism**. The purpose of such a test double is to be confirmed correct by running both it and the real system through identical scenarios — that only happens in e2e. Low unit-test coverage of those files is intentional and expected.
+
+To enable coverage output from e2e tests in a package, add `--coverage` to the `test:e2e` script in `package.json`. If the package's `vitest.config.e2e.ts` does not configure a coverage provider, also add a `coverage` block there. Only do this when you need a combined view; do not leave `--coverage` on the e2e script by default (it slows down CI).
+
+To assess combined coverage manually:
+1. Run `yarn turbo run test --filter=@sebspark/PACKAGE --force` and note uncovered lines.
+2. Run `yarn turbo run test:e2e --filter=@sebspark/PACKAGE --force` and note which of those same scenarios are exercised.
+3. If a line is uncovered in unit tests but exercised by e2e, it counts as covered for assessment purposes.
+
+**Deprecated code** — if a file or class is marked deprecated (e.g. with a `@deprecated` JSDoc or a `logger.warn('... is deprecated ...')` call in the constructor), apply `/* istanbul ignore next */` suppressions to unreachable or infrastructure-heavy code paths rather than adding tests for a class that should not be used.
+
 ### Excluding unreachable code
 
 Some lines and branches are structurally unreachable through the public API — defensive guards in `Proxy` handlers, exhaustiveness fallbacks after a complete discriminated union, etc. Do not write contorted tests to hit them. Exclude them with an inline Istanbul hint:
@@ -182,6 +226,38 @@ if (typeof prop === 'string') {
   return doSomething()
 }
 // the implicit else / fall-through is now excluded from branch coverage
+```
+
+**Ternary false branches cannot be suppressed inline.** If the false side of a ternary is unreachable, rewrite as `if/else` and use `/* istanbul ignore else */`:
+
+```ts
+// BAD — inline ignore in ternary does not work with vitest's v8 provider
+const msg = match ? match[1] : /* istanbul ignore next */ fallback
+
+// GOOD — rewrite as if/else
+/* istanbul ignore else */
+if (match) {
+  return new Error(match[1])
+} else {
+  return new Error(fallback)
+}
+```
+
+**Proxy get traps: v8 cannot track symbol-access branches.** If a guard inside a Proxy `get` trap is unreachable because an earlier branch already handles all special symbols, merge the guard into that earlier branch rather than trying to suppress it:
+
+```ts
+// BAD — v8 coverage cannot track the symbol branch independently
+if (prop === 'then' || prop === Symbol.toPrimitive) return undefined
+if (typeof prop !== 'string') return undefined  // line never registers as covered
+
+// GOOD — merge into one combined guard; the existing tests cover return undefined
+if (
+  prop === 'then' ||
+  prop === Symbol.toPrimitive ||
+  typeof prop !== 'string'
+) {
+  return undefined
+}
 ```
 
 Re-export barrel files (`index.ts` files containing only `export … from` declarations) have no executable statements. Exclude them entirely with a file-level comment at the top:

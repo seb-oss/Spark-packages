@@ -6,8 +6,8 @@ import { parseSchema } from './schema'
 export const parseParameters = (
   schemas: Record<string, ParameterObject> = {}
 ): Parameter[] =>
-  Object.entries(schemas || {}).map(([name, schema]) =>
-    parseParameter(name, schema)
+  Object.entries(/* istanbul ignore next */ schemas || {}).map(
+    ([name, schema]) => parseParameter(name, schema)
   )
 
 export const parseParameter = (

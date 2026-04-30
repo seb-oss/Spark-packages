@@ -54,6 +54,14 @@ describe('formatSpans', () => {
     expect(result).not.toContain(longUrl)
   })
 
+  it('does not truncate short attribute values in description', () => {
+    const span = makeSpan('root', {
+      attributes: { 'http.url': 'http://x.com' },
+    })
+    const result = formatSpans([span])
+    expect(result).toContain('root')
+  })
+
   it('handles span with parentSpanContext not found in spans array (break path)', () => {
     const child = makeSpan('child', {
       parentSpanContext: {
@@ -92,6 +100,14 @@ describe('formatSpans', () => {
   it('formats spans with UNSET status', () => {
     const span = makeSpan('root', {
       status: { code: SpanStatusCode.UNSET },
+    })
+    const result = formatSpans([span])
+    expect(result).toContain('root')
+  })
+
+  it('falls back to UNSET label and gray color for unknown status codes', () => {
+    const span = makeSpan('root', {
+      status: { code: 99 as any },
     })
     const result = formatSpans([span])
     expect(result).toContain('root')

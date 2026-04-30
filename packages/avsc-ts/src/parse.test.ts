@@ -164,6 +164,12 @@ test('it handles circular dependencies', () => {
   expect(() => parse(schema1, schema2)).toThrow('circular dependency')
 })
 
+test('throws when array schema has unnamed items type', () => {
+  const arraySchema = { type: 'array', items: 'string' } as never
+
+  expect(() => parse(arraySchema)).toThrow('Schema must have a name')
+})
+
 test('it parses array types', () => {
   const itemSchema: Schema = {
     name: 'Item',

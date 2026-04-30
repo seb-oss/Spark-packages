@@ -30,28 +30,38 @@ export const input = (
     )
 
     const inputListener = (chunk: Buffer) => {
-      if (chunk.includes(styleText('green', figures.tick))) {
+      const greenProbe = styleText('green', '\x00')
+      const [greenOpen] = greenProbe.split('\x00')
+      const greenTickStart = `${greenOpen}${figures.tick}`
+      if (chunk.includes(greenTickStart)) {
         // ✔ detected → Input was accepted
         clearTimeout(timeout)
         childProcess.stdout?.off('data', inputListener)
         return resolve()
       }
 
-      if (chunk.includes(styleText('red', '> '))) {
+      const redProbe = styleText('red', '\x00')
+      const [redOpen] = redProbe.split('\x00')
+      const redErrorStart = `${redOpen}> `
+      const chunkStr = chunk.toString()
+      if (chunk.includes(redErrorStart) || chunkStr.startsWith('> ')) {
         // Detected cursor return for retry → capture and reject
         clearTimeout(timeout)
         childProcess.stdout?.off('data', inputListener)
 
         // Convert buffer to string and remove ANSI sequences
-        const cleanText = chunk.toString().replace(ansiPatterns.all, '').trim()
+        const cleanText = chunkStr.replace(ansiPatterns.all, '').trim()
 
         // Extract text after the red error indicator ("> ")
-        const errorMatch = chunk.toString().match(/>\s(.*)/) // Match red "> " followed by text
-        const errorMessage = errorMatch
-          ? errorMatch[1].replace(ansiPatterns.all, '').trim()
-          : cleanText // Extract the error text
-
-        return reject(new Error(errorMessage))
+        const errorMatch = />\s(.*)/.exec(chunkStr) // Match red "> " followed by text
+        /* istanbul ignore else */
+        if (errorMatch) {
+          return reject(
+            new Error(errorMatch[1].replace(ansiPatterns.all, '').trim())
+          )
+        } else {
+          return reject(new Error(cleanText))
+        }
       }
     }
 

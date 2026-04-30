@@ -22,7 +22,7 @@ describe('DependencyMonitor', () => {
       const status = await monitor.check()
       expect(status.impact).toEqual('critical')
     })
-    it.skip('throws if called after dispose', async () => {
+    it('throws if called after dispose', async () => {
       const monitor = new DependencyMonitor({
         impact: 'critical',
         healthyLimitMs: 50,
@@ -30,13 +30,8 @@ describe('DependencyMonitor', () => {
         syncCall: async () => 'ok',
       })
       monitor.dispose()
-      const success = vi.fn()
-      const fail = vi.fn()
-      await monitor.check().then(success).catch(fail)
-
-      expect(success).not.toHaveBeenCalled()
-      expect(fail).toHaveBeenCalledWith(
-        new Error('DependencyMonitor has been disposed')
+      await expect(monitor.check()).rejects.toThrow(
+        'DependencyMonitor has been disposed'
       )
     })
     describe('mode: inline', () => {
@@ -88,6 +83,16 @@ describe('DependencyMonitor', () => {
             healthyLimitMs: 500,
             timeoutLimitMs: 2_000,
             syncCall: async () => ({ status: 'error' }),
+          })
+          const result = await monitor.check()
+          expect(result.status).toEqual('error')
+        })
+        it('maps a resolved Error object to error status', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => new Error('resolved-error') as never,
           })
           const result = await monitor.check()
           expect(result.status).toEqual('error')
@@ -523,6 +528,46 @@ describe('DependencyMonitor', () => {
           await vi.runAllTicks()
           const result = await monitor.check()
           expect(result.details).toEqual({ ping: 'pong' })
+        })
+
+        it('escalates to error when async callback never fires within timeoutLimitMs', async () => {
+          using monitor = new DependencyMonitor({
+            impact: 'critical',
+            asyncCall: (_report) => {
+              // never calls report — times out
+            },
+            pollRate: 60_000,
+            healthyLimitMs: 200,
+            timeoutLimitMs: 500,
+          })
+
+          await vi.advanceTimersByTimeAsync(500)
+
+          const result = await monitor.check()
+          expect(result.status).toBe('error')
+        })
+
+        it('ignores async callback that fires after timeout (callActive=false)', async () => {
+          let lateReport: ((s: 'ok') => void) | undefined
+          using monitor = new DependencyMonitor({
+            impact: 'critical',
+            asyncCall: (report) => {
+              lateReport = report as (s: 'ok') => void
+            },
+            pollRate: 60_000,
+            healthyLimitMs: 200,
+            timeoutLimitMs: 500,
+          })
+
+          // Let it time out
+          await vi.advanceTimersByTimeAsync(500)
+          const afterTimeout = await monitor.check()
+          expect(afterTimeout.status).toBe('error')
+
+          // Now fire the callback — should be ignored
+          lateReport?.('ok')
+          const afterLate = await monitor.check()
+          expect(afterLate.status).toBe('error') // status unchanged
         })
       })
     })

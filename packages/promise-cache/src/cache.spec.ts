@@ -266,4 +266,30 @@ describe('cache', () => {
     await expect(wrapped(5)).rejects.toThrow('Delegate Error')
     expect(delegate).toHaveBeenCalledTimes(2)
   })
+
+  it('falls back to the delegate when persistor.get throws', async () => {
+    vi.spyOn(persistor, 'get').mockRejectedValue(
+      new Error("ERR Can't execute 'get': only (P|S)SUBSCRIBE")
+    )
+    const delegate = vi.fn(async () => 'result')
+    const wrapped = cache.wrap(delegate, { key: 'get-error-key' })
+
+    const result = await wrapped()
+
+    expect(result).toBe('result')
+    expect(delegate).toHaveBeenCalledOnce()
+  })
+
+  it('falls back to the delegate and returns the result when persistor.set throws', async () => {
+    vi.spyOn(persistor, 'set').mockRejectedValue(
+      new Error("ERR Can't execute 'set': only (P|S)SUBSCRIBE")
+    )
+    const delegate = vi.fn(async () => 'result')
+    const wrapped = cache.wrap(delegate, { key: 'set-error-key' })
+
+    const result = await wrapped()
+
+    expect(result).toBe('result')
+    expect(delegate).toHaveBeenCalledOnce()
+  })
 })

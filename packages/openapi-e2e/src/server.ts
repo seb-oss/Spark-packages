@@ -46,7 +46,7 @@ const api: MarketdataServer = {
   '/instruments/:isin': {
     get: {
       handler: async (args) => {
-        throw new NotImplementedError()
+        /* istanbul ignore next */ throw new NotImplementedError()
       },
     },
   },
@@ -60,14 +60,14 @@ const api: MarketdataServer = {
   '/markets/:mic': {
     get: {
       handler: async (args) => {
-        throw new NotImplementedError()
+        /* istanbul ignore next */ throw new NotImplementedError()
       },
     },
   },
   '/markets/:mic/instruments': {
     get: {
       handler: async () => {
-        throw new NotImplementedError()
+        /* istanbul ignore next */ throw new NotImplementedError()
       },
     },
   },

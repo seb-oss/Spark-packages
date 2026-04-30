@@ -176,6 +176,19 @@ describe('buildHttpConfig', () => {
       expect(result[ATTR_URL_SCHEME]).toBe('https')
       expect(result[ATTR_URL_FULL]).toBe('https://example.com/secure')
     })
+
+    it('skips falsy header values and joins array header values', () => {
+      const { startOutgoingSpanHook } = buildHttpConfig({})
+      const result = startOutgoingSpanHook!({
+        host: 'example.com',
+        port: 80,
+        path: '/',
+        method: 'GET',
+        headers: { 'x-null': null, 'x-multi': ['a', 'b'] },
+      })
+      expect(result['http.request.header.x_null']).toBeUndefined()
+      expect(result['http.request.header.x_multi']).toBe('a,b')
+    })
   })
   describe('ignoreOutgoingRequestHook', () => {
     it('returns false when no paths configured', () => {
@@ -204,6 +217,13 @@ describe('buildHttpConfig', () => {
       })
       expect(ignoreOutgoingRequestHook!({ path: '/health' })).toBe(true)
     })
+
+    it('treats missing path as empty string', () => {
+      const { ignoreOutgoingRequestHook } = buildHttpConfig({
+        ignoreOutgoingPaths: ['/health'],
+      })
+      expect(ignoreOutgoingRequestHook!({ path: undefined })).toBe(false)
+    })
   })
   describe('requestHook', () => {
     it('skips IncomingMessage (server-side) requests', () => {
@@ -220,6 +240,34 @@ describe('buildHttpConfig', () => {
         makeClientRequest({ host: 'example.com', path: '/api', method: 'GET' })
       )
       expect(attrs[ATTR_SERVER_ADDRESS]).toBe('example.com')
+    })
+    it('omits port suffix for default http port and updates span name', () => {
+      const { requestHook } = buildHttpConfig({ useDescriptiveSpanNames: true })
+      const { span, attrs } = makeSpan()
+      requestHook!(
+        span,
+        makeClientRequest({
+          host: 'example.com',
+          port: 80,
+          path: '/page',
+          method: 'GET',
+        })
+      )
+      expect(attrs[ATTR_URL_FULL]).toBe('http://example.com/page')
+      expect(
+        (span.updateName as ReturnType<typeof vi.fn>).mock.calls.length
+      ).toBeGreaterThan(0)
+    })
+    it('does not update span name when useDescriptiveSpanNames is false', () => {
+      const { requestHook } = buildHttpConfig({
+        useDescriptiveSpanNames: false,
+      })
+      const { span, name } = makeSpan()
+      requestHook!(
+        span,
+        makeClientRequest({ host: 'example.com', path: '/api', method: 'GET' })
+      )
+      expect(name).toBe('')
     })
     it('sets network protocol version when agent.protocol is available', () => {
       const { requestHook } = buildHttpConfig({})
@@ -381,6 +429,15 @@ describe('buildUndiciConfig', () => {
       expect(
         ignoreRequestHook!(makeUndiciRequest({ path: '/api/users' }))
       ).toBe(false)
+    })
+
+    it('treats missing path as empty string', () => {
+      const { ignoreRequestHook } = buildUndiciConfig({
+        ignoreOutgoingPaths: ['/health'],
+      })
+      expect(ignoreRequestHook!(makeUndiciRequest({ path: undefined }))).toBe(
+        false
+      )
     })
   })
 

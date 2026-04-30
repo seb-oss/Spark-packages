@@ -90,4 +90,15 @@ describe('introspect', () => {
 
     await expect(introspect(cfg, headers)).rejects.toBeInstanceOf(Error)
   })
+
+  it('infers local mode when neither mode nor downstream is set', async () => {
+    const claims = { sub: 'u-1' } satisfies JsonObject
+    const headers = { authorization: `Bearer ${b64u(claims)}` }
+    const cfg = { target: 'http://core:3000' } as unknown as ProxyConfig
+
+    const out = await introspect(cfg, headers)
+
+    expect(createJwt).toHaveBeenCalledWith(claims)
+    expect(getHeader(out, 'authorization')).toBe('Bearer signed-local-jwt')
+  })
 })

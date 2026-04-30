@@ -48,6 +48,18 @@ router.put('/users/:userId', authorize, (req, res) => {
     res.status(404).send({ message: 'Not found' })
   }
 })
+router.patch('/users/:userId', authorize, (req, res) => {
+  const oldUser = users.get(req.params.userId)
+  const patch = req.body as Partial<User>
+
+  if (oldUser) {
+    const updated = { ...oldUser, ...patch }
+    users.set(req.params.userId, updated)
+    res.status(200).send(updated as User)
+  } else {
+    res.status(404).send({ message: 'Not found' })
+  }
+})
 router.delete('/users/:userId', authorize, (req, res) => {
   const user = users.get(req.params.userId)
 

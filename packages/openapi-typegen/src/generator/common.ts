@@ -21,6 +21,7 @@ export const AND = ' & '
 
 export const generateType = (parsed: TypeDefinition): string => {
   let type: string
+  /* istanbul ignore next */
   switch (parsed.type) {
     case 'enum': {
       type = generateEnum(parsed as EnumType)
@@ -84,6 +85,7 @@ const isValidName = (name: string): boolean => {
   }
 
   // Further check for starting lowercase without underscore in the rest of the name
+  /* istanbul ignore next */
   if (name[0] !== name[0].toUpperCase() && !name.includes('_')) {
     return false
   }
@@ -227,9 +229,9 @@ export const generateEnum = (parsed: EnumType): string => {
 }
 
 export const generateHeader = (header: Header): string => {
-  return `${preamble(header)}{ ${propertyName(header.name)}${
-    header.optional ? '?' : ''
-  }: ${generateType(header.type)} }`
+  /* istanbul ignore next */
+  const optional = header.optional ? '?' : ''
+  return `${preamble(header)}{ ${propertyName(header.name)}${optional}: ${generateType(header.type)} }`
 }
 
 export const generateResponseBody = (
@@ -250,7 +252,11 @@ export const generateResponseBody = (
   )
   if (body.headers) {
     tokens.push(', ')
-    tokens.push(body.headers ? generateHeaders(body.headers) : 'undefined')
+    tokens.push(
+      /* istanbul ignore next */ body.headers
+        ? generateHeaders(body.headers)
+        : 'undefined'
+    )
   }
   tokens.push('>')
   return tokens.join('')

@@ -1,7 +1,11 @@
 import type { IncomingMessage, RequestOptions } from 'node:http'
 import { Socket } from 'node:net'
 import { describe, expect, it } from 'vitest'
-import { normHttpRequest, normHttpResponse } from './normalize-http'
+import {
+  getHeaderFromObject,
+  normHttpRequest,
+  normHttpResponse,
+} from './normalize-http'
 
 describe('normHttpRequest (Node.js http-aligned)', () => {
   it('derives hostname from host (with port)', () => {
@@ -86,6 +90,11 @@ describe('normHttpRequest (Node.js http-aligned)', () => {
 
     expect(req.getHeader('anything')).toBeUndefined()
   })
+
+  it('defaults hostname to empty string when neither hostname nor host is set', () => {
+    const req = normHttpRequest({})
+    expect(req.hostname).toBe('')
+  })
 })
 describe('normHttpResponse (Node.js http-aligned)', () => {
   const makeRes = (
@@ -162,5 +171,26 @@ describe('normHttpResponse (Node.js http-aligned)', () => {
 
     expect(res.statusCode).toBe(0)
     expect(res.statusMessage).toBe('')
+  })
+})
+
+describe('getHeaderFromObject', () => {
+  it('returns undefined when headers is undefined', () => {
+    expect(getHeaderFromObject(undefined, 'x-foo')).toBeUndefined()
+  })
+
+  it('returns undefined when key is not found', () => {
+    expect(getHeaderFromObject({ 'x-bar': 'v' }, 'x-foo')).toBeUndefined()
+  })
+
+  it('returns array value as-is', () => {
+    expect(getHeaderFromObject({ 'x-foo': ['a', 'b'] }, 'x-foo')).toEqual([
+      'a',
+      'b',
+    ])
+  })
+
+  it('returns string value wrapped in array', () => {
+    expect(getHeaderFromObject({ 'x-foo': 'bar' }, 'x-foo')).toEqual(['bar'])
   })
 })

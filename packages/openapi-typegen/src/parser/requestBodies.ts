@@ -7,6 +7,7 @@ export const parseRequestBodies = (
 ): TypeDefinition[] => {
   const definitions: TypeDefinition[] = []
   for (const [name, requestBody] of Object.entries(requestBodies)) {
+    /* istanbul ignore else */
     if (requestBody.content['application/json'].schema) {
       definitions.push(
         parseSchema(name, requestBody.content['application/json'].schema)

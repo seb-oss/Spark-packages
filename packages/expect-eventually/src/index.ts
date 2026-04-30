@@ -109,15 +109,16 @@ function createRetryProxy(
     {},
     {
       get(_target, prop) {
-        // Prevent the proxy from being treated as a thenable or primitive
+        // Prevent the proxy from being treated as a thenable, primitive, or
+        // accessed via an unexpected symbol property.
         if (
           prop === 'then' ||
           prop === Symbol.toPrimitive ||
-          prop === Symbol.iterator
+          prop === Symbol.iterator ||
+          typeof prop !== 'string'
         ) {
           return undefined
         }
-        if (typeof prop !== 'string') return undefined
 
         // Speculatively resolve to check whether `prop` is a callable matcher
         // or a chainable property (e.g. `.not`).

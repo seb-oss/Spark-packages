@@ -12,8 +12,8 @@ import { parseDocumentation } from './common'
 import { parseResponseBody } from './responseBodies'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>
-  Object.entries(doc.paths || {}).flatMap(([name, path]) =>
-    parsePath(name, path as PathItemObject, doc.components)
+  Object.entries(/* istanbul ignore next */ doc.paths || {}).flatMap(
+    ([name, path]) => parsePath(name, path as PathItemObject, doc.components)
   )
 
 export const parsePath = (

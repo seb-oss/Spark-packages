@@ -47,7 +47,9 @@ export const getHeaderFromObject = (
     if (key.toLowerCase() === target) {
       const value = headers[key]
       if (Array.isArray(value)) return value
+      /* istanbul ignore next */
       if (typeof value === 'string') return [value]
+      /* istanbul ignore next */
       return undefined
     }
   }

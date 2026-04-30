@@ -52,6 +52,7 @@ export const parse = (...schemas: Schema[]): string => {
   while (schemas.length > 0) {
     const currentSchema = schemas.shift()
 
+    /* istanbul ignore next */
     if (!currentSchema) {
       throw new Error('Undefined schema')
     }

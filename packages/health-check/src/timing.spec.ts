@@ -159,3 +159,43 @@ describe('singleFlight', () => {
     await expect(p3).resolves.toBe('ok')
   })
 })
+
+describe('throttle clearHandle reset', () => {
+  beforeEach(() => vi.useFakeTimers())
+  afterEach(() => vi.useRealTimers())
+
+  it('clears pending timeout handle when called again during retention window', async () => {
+    const fn = vi.fn().mockResolvedValue('v')
+    const throttled = throttle(fn, 2000)
+
+    // First call — settles and sets clearHandle
+    const p1 = throttled()
+    await expect(p1).resolves.toBe('v')
+
+    // Call again within retention window — hits clearTimeout(clearHandle) path
+    const p2 = throttled()
+    expect(p2).toBe(p1) // still cached
+
+    await vi.advanceTimersByTimeAsync(2000)
+    const p3 = throttled()
+    expect(fn).toHaveBeenCalledTimes(2)
+    await expect(p3).resolves.toBe('v')
+  })
+})
+
+describe('throttle with ms=0', () => {
+  it('clears immediately on settle (no retention window)', async () => {
+    const fn = vi.fn().mockResolvedValue('zero')
+    const throttled = throttle(fn, 0)
+
+    const p1 = throttled()
+    await expect(p1).resolves.toBe('zero')
+    expect(fn).toHaveBeenCalledTimes(1)
+
+    // ms=0 → current is cleared immediately; next call should invoke fn again
+    const p2 = throttled()
+    await expect(p2).resolves.toBe('zero')
+    expect(fn).toHaveBeenCalledTimes(2)
+    expect(p2).not.toBe(p1)
+  })
+})

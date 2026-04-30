@@ -196,6 +196,7 @@ const isSpan = (value: unknown): value is Span =>
   value !== undefined &&
   isFunction((value as Span).spanContext) &&
   isFunction((value as Span).end)
+/* istanbul ignore next */
 const isSpanOptions = (value: unknown): value is SpanOptions =>
   value !== null &&
   value !== undefined &&

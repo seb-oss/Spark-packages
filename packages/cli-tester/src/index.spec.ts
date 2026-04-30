@@ -195,4 +195,35 @@ describe('cli-tester', () => {
       )
     })
   })
+
+  describe('run with args array', () => {
+    const inputPath = resolve(__dirname, './__scaffold__/input.mjs')
+    it('spawns process when args are passed as an array', async () => {
+      const cli = run('node', [inputPath])
+      const result = await cli.output()
+      expect(result).toMatch(/type something/)
+    })
+
+    it('rejects exit promise when process exits with non-zero code', async () => {
+      const cli = run('node', ['-e', 'process.exit(1)'])
+      await expect(cli.exit()).rejects.toBe(1)
+    })
+  })
+
+  describe('check backward navigation', () => {
+    const cliPath = resolve(__dirname, './__scaffold__/checkbox.mjs')
+    it('navigates backward when a later option is checked before an earlier one', async () => {
+      const cli = run(cliPath)
+
+      await cli.prompt('checkbox')
+      // check index 2 first, then go back up to index 0
+      await cli.check(2, 0)
+
+      await cli.prompt('checkbox')
+      await cli.check(1)
+
+      const result = await cli.output()
+      expect(result).toEqual("[ 'option 1', 'option 3' ] [ 'option 5' ]")
+    })
+  })
 })

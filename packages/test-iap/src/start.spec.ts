@@ -142,4 +142,13 @@ describe('start.ts bootstrap', () => {
 
     expect(listenMock).lastCalledWith(3000, expect.any(Function))
   })
+
+  it('throws if TARGET is not a valid URL', async () => {
+    setEnv({ TARGET: 'not-a-url' })
+
+    await expect(import('./start.js')).rejects.toThrow(
+      /TARGET must be an absolute URL/i
+    )
+    expect(createProxyServer).not.toHaveBeenCalled()
+  })
 })

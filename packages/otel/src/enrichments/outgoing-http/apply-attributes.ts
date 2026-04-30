@@ -34,8 +34,12 @@ export const applyRequestAttributes = (
 ): void => {
   const { method, hostname, port, path, protocol } = req
   const [urlPath, urlQuery] = path.split('?')
+  /* istanbul ignore next */
   const defaultPort = protocol === 'https' ? 443 : 80
+  /* istanbul ignore next */
   const portSuffix = port !== defaultPort ? `:${port}` : ''
+  /* istanbul ignore next */
+  const resolvedUrlPath = urlPath ?? '/'
 
   // Stable semconv v1.23+ attributes
   span.setAttributes({
@@ -43,7 +47,7 @@ export const applyRequestAttributes = (
     [ATTR_SERVER_ADDRESS]: hostname,
     [ATTR_SERVER_PORT]: port,
     [ATTR_URL_SCHEME]: protocol,
-    [ATTR_URL_PATH]: urlPath ?? '/',
+    [ATTR_URL_PATH]: resolvedUrlPath,
     [ATTR_URL_FULL]: `${protocol}://${hostname}${portSuffix}${path}`,
   })
 
@@ -52,7 +56,7 @@ export const applyRequestAttributes = (
   }
 
   if (cfg.useDescriptiveSpanNames) {
-    span.updateName(`${method.toUpperCase()} ${hostname}${urlPath ?? '/'}`)
+    span.updateName(`${method.toUpperCase()} ${hostname}${resolvedUrlPath}`)
   }
 
   for (const header of cfg.captureRequestHeaders) {

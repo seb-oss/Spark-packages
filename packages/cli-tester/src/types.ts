@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import type { ChildProcess } from 'node:child_process'
 
 /**

@@ -19,7 +19,7 @@ afterEach(() => {
 })
 
 describe('#holidays', () => {
-  test.each(['XSTO', 'SSME', 'XNGM'] as const)('%s', (mic) => {
+  test.each(['XSTO', 'SSME', 'XNGM', 'XSAT', 'NSME'] as const)('%s', (mic) => {
     expect(holidays(mic, 2024)).toEqual([
       '2024-01-01',
       '2024-01-06',
@@ -34,6 +34,14 @@ describe('#holidays', () => {
       '2024-12-26',
       '2024-12-31',
     ])
+  })
+
+  test('FSME', () => {
+    expect(holidays('FSME', 2024)).toEqual(holidays('XHEL', 2024))
+  })
+
+  test('XBER', () => {
+    expect(holidays('XBER', 2024)).toEqual(holidays('EQTB', 2024))
   })
 
   test.each(['XAMS', 'XLIS', 'XPAR', 'XMAD', 'XBRU'] as const)('%s', (mic) => {
@@ -243,6 +251,10 @@ describe('#halfdays', () => {
     ])
   })
 
+  test('XBER', () => {
+    expect(halfdays('XBER', 2024)).toEqual(halfdays('EQTB', 2024))
+  })
+
   test('works with lowercase market codes', () => {
     expect(halfdays('xsto', 2024)).toEqual([
       '2024-01-05',
@@ -328,6 +340,12 @@ describe('#isOpen', () => {
     vi.setSystemTime(new Date('2024-12-30 14:00:00'))
 
     expect(isOpen('EQTB')).toBe(false)
+  })
+
+  test('handles EQTB halfday that is not day before New Year Eve', () => {
+    vi.setSystemTime(new Date('2024-05-09 09:00:00'))
+
+    expect(isOpen('EQTB')).toBe(true)
   })
 
   test('works with lowercase market codes', () => {

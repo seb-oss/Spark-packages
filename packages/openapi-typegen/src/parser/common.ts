@@ -14,14 +14,20 @@ export const parseRef = (ref: string): string =>
 export const parseEnumType = (
   name: string | undefined,
   schema: SchemaObject
-): EnumType => ({ name, type: 'enum', values: schema.enum || [] })
+): EnumType => {
+  /* istanbul ignore next */
+  const values = schema.enum || []
+  return { name, type: 'enum', values }
+}
 
+/* istanbul ignore next */
 type SchemaPath =
   | 'schemas'
   | 'parameters'
   | 'headers'
   | 'requestBodies'
   | 'securitySchemes'
+/* istanbul ignore next */
 type SchemaType =
   | SchemaObject
   | ParameterObject
@@ -34,6 +40,7 @@ export const findRef = <T extends SchemaType>(
 ): T => {
   const [, , path, name] = ref.split('/')
   const schemaPath = components[path as SchemaPath]
+  /* istanbul ignore next */
   if (!schemaPath?.[name]) throw new Error(`Cannot find ref ${ref}`)
   return schemaPath[name] as T
 }

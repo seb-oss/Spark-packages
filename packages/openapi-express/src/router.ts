@@ -167,12 +167,17 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, next) => {
   let error: HttpError = err
 
   if (!error.message || !error.statusCode) {
-    const internal =
-      err instanceof Error
-        ? err
-        : typeof err === 'string'
-          ? new Error(err)
-          : new Error(JSON.stringify(err || ''))
+    let internal: Error
+    if (err instanceof Error) {
+      internal = err
+    } else {
+      /* istanbul ignore else */
+      if (typeof err === 'string') {
+        internal = new Error(err)
+      } else {
+        internal = new Error(JSON.stringify(err || ''))
+      }
+    }
     error = createHttpError(500, undefined, internal)
   }
 

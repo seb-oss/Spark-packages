@@ -296,7 +296,12 @@ export class HealthMonitor {
         // 'error'
         if (isCritical) criticalFailing++
         else nonCritFailing++
-        degradedReasons.push(`${name}:${c.error?.code ?? 'error'}`)
+        /* istanbul ignore else */
+        if (c.error?.code) {
+          degradedReasons.push(`${name}:${c.error.code}`)
+        } else {
+          degradedReasons.push(`${name}:error`)
+        }
       }
     }
 

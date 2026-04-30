@@ -50,6 +50,11 @@ describe('otel initialize', () => {
     expect(consoleLog).toHaveBeenCalledWith('[otel] Shutting down...')
     expect(consoleLog).toHaveBeenCalledWith('[otel] Shutdown complete.')
   })
+  it('dispose() does nothing when not initialized', async () => {
+    const { dispose } = await import('./otel')
+    await expect(dispose()).resolves.toBeUndefined()
+    expect(consoleLog).not.toHaveBeenCalledWith('[otel] Shutting down...')
+  })
   it('rejects if sdk.start() fails', async () => {
     const { NodeSDK } = await import('@opentelemetry/sdk-node')
     vi.spyOn(NodeSDK.prototype, 'start').mockImplementationOnce(() => {

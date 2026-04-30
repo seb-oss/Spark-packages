@@ -151,4 +151,10 @@ describe('parseUndiciResponseHeaders', () => {
     const output = parseUndiciResponseHeaders(input)
     expect(output).toEqual({})
   })
+
+  it('should skip pairs where valBuf is missing (odd-length array)', () => {
+    const input = [Buffer.from('X-Header')] as Buffer<ArrayBufferLike>[]
+    const output = parseUndiciResponseHeaders(input)
+    expect(output).toEqual({})
+  })
 })

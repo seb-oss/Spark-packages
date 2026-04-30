@@ -11,6 +11,13 @@ describe('HealthMonitor', () => {
       const monitor = new HealthMonitor()
       expect(monitor.ping()).toEqual({ status: 'ok' })
     })
+    it('does not throttle ready() when throttle is 0', async () => {
+      const monitor = new HealthMonitor({ throttle: 0 })
+      const r1 = await monitor.ready()
+      const r2 = await monitor.ready()
+      expect(r1.status).toBe('ok')
+      expect(r2.status).toBe('ok')
+    })
   })
   describe('.live', () => {
     beforeEach(() => {
@@ -71,6 +78,20 @@ describe('HealthMonitor', () => {
         summary: expect.anything(),
         timestamp: expect.any(String),
       })
+    })
+    it('counts non-critical ok dependency in summary', async () => {
+      using monitor = new HealthMonitor()
+      monitor.addDependency(
+        'sidecar',
+        new DependencyMonitor({
+          impact: 'non_critical',
+          healthyLimitMs: 100,
+          timeoutLimitMs: 500,
+          syncCall: async () => 'ok',
+        })
+      )
+      const res = await monitor.ready()
+      expect(res.summary.nonCritical.ok).toBeGreaterThan(0)
     })
     it('includes inline dependency result and overall ok', async () => {
       using monitor = new HealthMonitor()
@@ -238,6 +259,76 @@ describe('HealthMonitor', () => {
         },
       })
     })
+    it('uses unknown error reason when rejection value is undefined', async () => {
+      const monitor = new HealthMonitor()
+      monitor.addDependency(
+        'flaky',
+        new DependencyMonitor({
+          impact: 'non_critical',
+          pollRate: 10_000,
+          healthyLimitMs: 500,
+          timeoutLimitMs: 3_000,
+          syncCall: async () => 'ok',
+        })
+      )
+      const dep = (monitor as any).dependencies.get('flaky')
+      vi.spyOn(dep, 'check').mockRejectedValue(undefined)
+
+      const res = await monitor.ready()
+      expect(res.checks.flaky.error?.message).toBe('unknown error')
+    })
+    it('counts non-critical degraded dependency in summary', async () => {
+      using monitor = new HealthMonitor()
+      using dependency = new DependencyMonitor({
+        impact: 'non_critical',
+        healthyLimitMs: 1,
+        timeoutLimitMs: 500,
+        syncCall: async () => 'degraded',
+      })
+      monitor.addDependency('sidecar', dependency)
+      const res = await monitor.ready()
+      expect(res.summary.nonCritical.degraded).toBe(1)
+    })
+    it('counts critical degraded dependency in summary', async () => {
+      using monitor = new HealthMonitor()
+      using dependency = new DependencyMonitor({
+        impact: 'critical',
+        healthyLimitMs: 1,
+        timeoutLimitMs: 500,
+        syncCall: async () => 'degraded',
+      })
+      monitor.addDependency('db', dependency)
+      const res = await monitor.ready()
+      expect(res.summary.critical.degraded).toBe(1)
+    })
+    it('counts non-critical failing dependency in summary', async () => {
+      using monitor = new HealthMonitor()
+      using dependency = new DependencyMonitor({
+        impact: 'non_critical',
+        healthyLimitMs: 1,
+        timeoutLimitMs: 500,
+        syncCall: async () => {
+          throw new Error('sidecar down')
+        },
+      })
+      monitor.addDependency('sidecar', dependency)
+      const res = await monitor.ready()
+      expect(res.summary.nonCritical.failing).toBe(1)
+    })
+    it('counts critical failing dependency in summary', async () => {
+      using monitor = new HealthMonitor()
+      using dependency = new DependencyMonitor({
+        impact: 'critical',
+        healthyLimitMs: 1,
+        timeoutLimitMs: 500,
+        syncCall: async () => {
+          throw new Error('db down')
+        },
+      })
+      monitor.addDependency('db', dependency)
+      const res = await monitor.ready()
+      expect(res.summary.critical.failing).toBe(1)
+    })
   })
   describe('.router', () => {
     let app: Express
@@ -396,6 +487,58 @@ describe('HealthMonitor', () => {
           health: { method: 'GET', href: '//mysystem.com/health' },
         },
       })
+    })
+    it('error handler formats non-Error throwables as strings', async () => {
+      vi.spyOn(monitor, 'live').mockImplementation(() => {
+        throw 'plain string error'
+      })
+      const res = await agent(app)
+        .get('/health/live')
+        .set('Host', 'mysystem.com')
+      expect(res.status).toBe(500)
+      expect(res.body).toMatchObject({
+        status: 'error',
+        error: { message: 'plain string error' },
+      })
+    })
+
+    it('GET /health forwards errors via next when health() throws', async () => {
+      vi.spyOn(monitor, 'ready').mockRejectedValue(new Error('health boom'))
+      vi.spyOn(monitor, 'live').mockReturnValue({ status: 'ok' } as any)
+      const res = await agent(app).get('/health').set('Host', 'mysystem.com')
+      expect(res.status).toBe(500)
+      expect(res.body).toMatchObject({ status: 'error' })
+    })
+
+    it('GET /health/ping forwards errors via next when ping() throws', async () => {
+      vi.spyOn(monitor, 'ping').mockImplementation(() => {
+        throw new Error('ping boom')
+      })
+      const res = await agent(app)
+        .get('/health/ping')
+        .set('Host', 'mysystem.com')
+      expect(res.status).toBe(500)
+      expect(res.body).toMatchObject({ status: 'error' })
+    })
+
+    it('GET /health/live forwards errors via next when live() throws', async () => {
+      vi.spyOn(monitor, 'live').mockImplementation(() => {
+        throw new Error('live boom')
+      })
+      const res = await agent(app)
+        .get('/health/live')
+        .set('Host', 'mysystem.com')
+      expect(res.status).toBe(500)
+      expect(res.body).toMatchObject({ status: 'error' })
+    })
+
+    it('GET /health/ready forwards errors via next when ready() throws', async () => {
+      vi.spyOn(monitor, 'ready').mockRejectedValue(new Error('ready boom'))
+      const res = await agent(app)
+        .get('/health/ready')
+        .set('Host', 'mysystem.com')
+      expect(res.status).toBe(500)
+      expect(res.body).toMatchObject({ status: 'error' })
     })
     it('GET /health/ready calls .ready and sets 200 for degraded status', async () => {
       const payload: ReadinessPayload = {
@@ -565,6 +708,13 @@ describe('HealthMonitor', () => {
       expect(dbDispose).toHaveBeenCalledTimes(1)
       expect(redisDispose).toHaveBeenCalledTimes(1)
       expect(quotesDispose).toHaveBeenCalledTimes(1)
+    })
+
+    it('second dispose() call is a no-op', () => {
+      const monitor = new HealthMonitor()
+      monitor.dispose()
+      // Should not throw and should not affect already-disposed state
+      expect(() => monitor.dispose()).not.toThrow()
     })
   })
 })

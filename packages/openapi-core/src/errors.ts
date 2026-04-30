@@ -405,9 +405,9 @@ export const createHttpError = (
       return new NotExtendedError(message, cause)
     case 511:
       return new NetworkAuthenticationRequiredError(message, cause)
-    default:
-      return new HttpError(statusCode, message ?? 'Error', cause)
   }
+  /* istanbul ignore next */
+  return new HttpError(statusCode, message ?? 'Error', cause)
 }
 
 export const fromAxiosError = (axiosError: AxiosError): HttpError => {

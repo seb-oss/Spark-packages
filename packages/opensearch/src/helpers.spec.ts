@@ -147,6 +147,12 @@ describe('bulkUpdate helper', () => {
     expect(action).toEqual({ update: { _id: 'foo' } })
     expect(payload).toEqual(updates[0])
   })
+  it('uses upsert document for id when doc is undefined', () => {
+    const updates = [{ upsert: { age: 30, name: 'Alice' } }]
+    const idFn = (doc: DocumentFor<typeof personIndex>) => `${doc.name}`
+    const bulkPayload = bulkUpdate(personIndex.index, updates, idFn)
+    expect(bulkPayload.body[0]).toEqual({ update: { _id: 'Alice' } })
+  })
 })
 
 describe('bulkDelete helper', () => {

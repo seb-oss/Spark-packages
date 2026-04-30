@@ -146,4 +146,23 @@ describe('TreeSpanProcessor', () => {
     const processor = new TreeSpanProcessor(exporter)
     expect(() => processor.onStart()).not.toThrow()
   })
+
+  it('sorts spans by seconds component when seconds differ', () => {
+    const { exporter, exported } = makeExporter()
+    const processor = new TreeSpanProcessor(exporter)
+
+    const root: ReadableSpan = {
+      ...makeSpan('a'),
+      startTime: [1, 0] as any,
+    } as unknown as ReadableSpan
+    const child: ReadableSpan = {
+      ...makeSpan('b', 'a'),
+      startTime: [2, 0] as any,
+    } as unknown as ReadableSpan
+
+    processor.onEnd(child)
+    processor.onEnd(root)
+
+    expect(exported[0].map((s) => s.name)).toEqual(['a', 'b'])
+  })
 })

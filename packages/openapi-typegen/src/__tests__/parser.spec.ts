@@ -1,6 +1,7 @@
 import type {
   ComponentsObject,
   HeaderObject,
+  OperationObject,
   ParameterObject,
   PathItemObject,
   RequestBodyObject,
@@ -9,6 +10,7 @@ import type {
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
 import { describe, expect, it } from 'vitest'
+import { parseArgs } from '../parser/args'
 import { findRef } from '../parser/common'
 import { parseHeader } from '../parser/headers'
 import { parseParameter } from '../parser/parameters'
@@ -348,6 +350,38 @@ describe('openapi parser', () => {
       ]
       const parsed = parsePath('/users/{userId}', path)
       expect(parsed).toEqual(expected)
+    })
+    it('parses a path with requestBody that has no application/json content', () => {
+      const path: PathItemObject = {
+        post: {
+          requestBody: {
+            content: {
+              'text/plain': { schema: { type: 'string' } },
+            },
+          },
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+      const parsed = parsePath('/upload', path)
+      // body.content has no application/json — body args not populated
+      expect(parsed[0].args).not.toHaveProperty('body')
+    })
+    it('parses a path with inline non-object requestBody', () => {
+      const path: PathItemObject = {
+        post: {
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: { type: 'string' },
+              },
+            },
+          },
+          responses: { '200': { description: 'OK' } },
+        },
+      }
+      const parsed = parsePath('/submit', path)
+      expect(parsed[0].args?.body?.allOf).toBeDefined()
     })
     it('parses a path with all parameters as refs', () => {
       const path: PathItemObject = {
@@ -1251,6 +1285,35 @@ describe('openapi parser', () => {
 
       expect(parsed).toEqual(expected)
     })
+    it('parses anyOf schema', () => {
+      const schema: SchemaObject = {
+        anyOf: [{ type: 'string' }, { type: 'number' }],
+      }
+      const parsed = parseSchema('MyType', schema)
+      expect(parsed).toMatchObject({
+        oneOf: [{ type: 'string' }, { type: 'number' }],
+      })
+    })
+    it('merges additionalProperties into existing allOf', () => {
+      const schema: SchemaObject = {
+        allOf: [{ $ref: '#/components/schemas/Base' }],
+        additionalProperties: { $ref: '#/components/schemas/Extra' },
+      }
+      const parsed = parseSchema('Mixed', schema) as ObjectType
+      expect(parsed.allOf).toHaveLength(2)
+    })
+    it('parses schema with array of types on a property', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          value: {
+            type: ['string', 'number'] as unknown as SchemaObject['type'],
+          },
+        },
+      }
+      const parsed = parseSchema('MultiType', schema) as ObjectType
+      expect(parsed.properties).toHaveLength(1)
+    })
   })
   describe('parseParameters', () => {
     it('parses a simple schema', () => {
@@ -1462,6 +1525,14 @@ describe('openapi parser', () => {
 
       expect(parsed).toEqual(expected)
     })
+    it('parses an apiKey scheme without in (defaults to header)', () => {
+      const scheme = {
+        type: 'apiKey',
+        name: 'X-Api-Key',
+      } as unknown as SecuritySchemeObject
+      const parsed = parseSecurityScheme('X-Api-Key', scheme)
+      expect(parsed).toMatchObject({ in: 'header' })
+    })
     it('parses an http scheme', () => {
       const scheme: SecuritySchemeObject = {
         type: 'http',
@@ -1492,6 +1563,86 @@ describe('openapi parser', () => {
       }
 
       expect(parsed).toEqual(expected)
+    })
+    it('parses an openIdConnect scheme', () => {
+      const scheme: SecuritySchemeObject = {
+        type: 'openIdConnect',
+        openIdConnectUrl:
+          'https://example.com/.well-known/openid-configuration',
+      }
+      const parsed = parseSecurityScheme('OpenIdAuth', scheme)
+      const expected: Parameter = {
+        name: 'OpenIdAuth',
+        in: 'header',
+        parameterName: 'Authorization',
+        optional: false,
+        type: { type: 'string' },
+      }
+
+      expect(parsed).toEqual(expected)
+    })
+    it('throws for unknown scheme type', () => {
+      const scheme = { type: 'unknown' } as unknown as SecuritySchemeObject
+      expect(() => parseSecurityScheme('Bad', scheme)).toThrow(
+        "Unknown security scheme 'unknown'"
+      )
+    })
+  })
+  describe('parseArgs', () => {
+    it('merges security and parameter header args via joinArg', () => {
+      const operation: OperationObject = {
+        parameters: [{ $ref: '#/components/parameters/ApiHeader' }],
+        security: [{ Bearer: [] }],
+        responses: { '200': { description: 'OK' } },
+      }
+      const components: ComponentsObject = {
+        parameters: {
+          ApiHeader: {
+            in: 'header',
+            name: 'X-Api',
+            schema: { type: 'string' },
+            required: true,
+          },
+        },
+        securitySchemes: {
+          Bearer: {
+            type: 'http',
+            scheme: 'bearer',
+          },
+        },
+      }
+      const args = parseArgs(operation, components)
+      expect(args?.header?.allOf).toBeDefined()
+    })
+    it('merges two security schemes via joinArg', () => {
+      const operation: OperationObject = {
+        security: [{ Key1: [] }, { Key2: [] }],
+        responses: { '200': { description: 'OK' } },
+      }
+      const components: ComponentsObject = {
+        securitySchemes: {
+          Key1: { type: 'apiKey', in: 'header', name: 'X-Key1' },
+          Key2: { type: 'apiKey', in: 'header', name: 'X-Key2' },
+        },
+      }
+      const args = parseArgs(operation, components)
+      expect(args?.header?.allOf).toHaveLength(2)
+    })
+    it('parses a header ref parameter', () => {
+      const operation: OperationObject = {
+        parameters: [{ $ref: '#/components/headers/X-Trace' }],
+        responses: { '200': { description: 'OK' } },
+      }
+      const components: ComponentsObject = {
+        headers: {
+          'X-Trace': {
+            schema: { type: 'string' },
+            required: false,
+          },
+        },
+      }
+      const args = parseArgs(operation, components)
+      expect(args?.header?.properties).toHaveLength(1)
     })
   })
 })

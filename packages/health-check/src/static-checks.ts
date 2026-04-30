@@ -6,6 +6,13 @@ export const liveness = (): Liveness => {
   const cpus = os.cpus()
   const total = os.totalmem()
   const free = os.freemem()
+  let memUsedRatio: number
+  /* istanbul ignore else */
+  if (total > 0) {
+    memUsedRatio = (total - free) / total
+  } else {
+    memUsedRatio = 0
+  }
 
   return {
     status: 'ok',
@@ -19,7 +26,7 @@ export const liveness = (): Liveness => {
       loadavg: os.loadavg() as [number, number, number],
       totalmem: total,
       freemem: free,
-      memUsedRatio: total > 0 ? (total - free) / total : 0,
+      memUsedRatio,
       cpus: {
         count: cpus.length,
         model: cpus[0]?.model,

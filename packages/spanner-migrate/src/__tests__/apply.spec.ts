@@ -198,4 +198,35 @@ describe('apply', () => {
       )
     })
   })
+
+  describe('runScript (via applyUp)', () => {
+    it('throws when script has no valid statements', async () => {
+      const migration: Migration = {
+        id: '20250119T143000_empty_script',
+        description: 'Empty script',
+        up: ';;  ;',
+        down: 'DROP TABLE users',
+      }
+
+      await expect(applyUp(db, migration)).rejects.toThrow(
+        `Failed to apply migration ${migration.id}: No valid SQL statements found in the script.`
+      )
+    })
+
+    it('runs non-schema DML inside a transaction', async () => {
+      const migration: Migration = {
+        id: '20250119T143000_insert_data',
+        description: 'Insert data',
+        up: 'INSERT INTO users (id) VALUES (@id)',
+        down: 'DELETE FROM users WHERE id = @id',
+      }
+
+      await applyUp(db, migration)
+
+      const [transaction] = await db.getTransaction()
+      expect(transaction.runUpdate).toHaveBeenCalledWith(
+        'INSERT INTO users (id) VALUES (@id)'
+      )
+    })
+  })
 })

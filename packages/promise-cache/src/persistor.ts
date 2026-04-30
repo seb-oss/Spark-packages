@@ -69,6 +69,7 @@ export class Persistor {
     }
   }
 
+  /* istanbul ignore next */
   public async startConnection() {
     try {
       await new Promise((resolve, reject) => {
@@ -108,6 +109,7 @@ export class Persistor {
     }
   }
 
+  /* istanbul ignore next */
   public async size(): Promise<number> {
     if (!this.client) {
       throw new Error('Client not initialized')

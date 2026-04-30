@@ -19,7 +19,7 @@ const mergeSettings = (
   if (!s.length) return undefined
 
   // merge settings with priority to the latest
-  const merged: RetrySettings = Object.assign(defaultSettings, ...s)
+  const merged: RetrySettings = Object.assign({}, defaultSettings, ...s)
 
   return merged
 }
@@ -93,8 +93,11 @@ export const retryCondition = {
       const captureCodes = codes
         .flatMap((code) => {
           if (typeof code === 'number') return code
+          /* istanbul ignore else */
           if (code === 'client') return clientErrorCodes
+          /* istanbul ignore next */
           if (code === 'server') return serverErrorCodes
+          /* istanbul ignore next */
           return 500
         })
         .filter((code) => !!code) as number[]

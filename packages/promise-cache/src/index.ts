@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 export { createCache } from './cache'
 export { InMemoryPersistor } from './inMemoryPersistor'
 export * from './persistor'

@@ -1,6 +1,18 @@
 import { IAMCredentialsClient } from '@google-cloud/iam-credentials'
 import { beforeAll, describe, expect, it, type Mock, vi } from 'vitest'
-import { getApiGatewayTokenByUrl } from './apiGatewayToken'
+import {
+  clearCache,
+  getApiGatewayTokenByClientId,
+  getApiGatewayTokenByUrl,
+} from './apiGatewayToken'
+
+const fetchIdToken = vi.hoisted(() =>
+  vi.fn().mockResolvedValue('mock-id-token')
+)
+
+const getCredentials = vi.hoisted(() =>
+  vi.fn().mockResolvedValue({ client_email: 'some@place.eu' })
+)
 
 vi.mock('@google-cloud/iam-credentials', () => {
   const signBlob = vi.fn().mockResolvedValue(['test-signed-jwt'])
@@ -13,11 +25,11 @@ vi.mock('@google-cloud/iam-credentials', () => {
 })
 
 vi.mock('google-auth-library', () => {
-  const getCredentials = vi
-    .fn()
-    .mockResolvedValue({ client_email: 'some@place.eu' })
   class GoogleAuth {
     getCredentials = getCredentials
+    getIdTokenClient = vi.fn().mockResolvedValue({
+      idTokenProvider: { fetchIdToken },
+    })
   }
 
   return { GoogleAuth }
@@ -93,6 +105,61 @@ describe('Google IAM', () => {
       })
 
       expect(JWT).toBe('')
+
+      // biome-ignore lint/performance/noDelete: This is a test :o)
+      delete process.env.GCP_IAM_SOFT_FAIL
+    })
+
+    it('throws when service account email is missing', async () => {
+      getCredentials.mockResolvedValueOnce({ client_email: undefined })
+
+      await expect(
+        getApiGatewayTokenByUrl({ apiURL: 'test-audience-no-email' })
+      ).rejects.toThrow('Error generating system JWT')
+    })
+
+    it('throws when signBlob returns empty signedBlob', async () => {
+      signBlobMock.mockResolvedValueOnce([{ signedBlob: null }])
+
+      await expect(
+        getApiGatewayTokenByUrl({ apiURL: 'test-audience-empty-blob' })
+      ).rejects.toThrow('Error generating system JWT')
+    })
+
+    it('clears a cached entry so next call re-generates', async () => {
+      signBlobMock.mockResolvedValueOnce([{ signedBlob: Buffer.from('jwt') }])
+
+      const url = 'test-audience-clear'
+      await getApiGatewayTokenByUrl({ apiURL: url })
+      await clearCache(url)
+
+      signBlobMock.mockClear()
+      signBlobMock.mockResolvedValueOnce([{ signedBlob: Buffer.from('jwt2') }])
+      await getApiGatewayTokenByUrl({ apiURL: url })
+      expect(signBlobMock).toHaveBeenCalledOnce()
+    })
+  })
+
+  describe('getApiGatewayTokenByClientId', () => {
+    it('returns an id token', async () => {
+      const token = await getApiGatewayTokenByClientId('test-client-id')
+      expect(token).toBe('mock-id-token')
+    })
+
+    it('throws on error when GCP_IAM_SOFT_FAIL is not set', async () => {
+      vi.mocked(fetchIdToken).mockRejectedValueOnce(new Error('fetch failed'))
+
+      await expect(
+        getApiGatewayTokenByClientId('error-client-id')
+      ).rejects.toThrow('Error generating system JWT')
+    })
+
+    it('returns empty string on error when GCP_IAM_SOFT_FAIL is true', async () => {
+      vi.mocked(fetchIdToken).mockRejectedValueOnce(new Error('fetch failed'))
+      process.env.GCP_IAM_SOFT_FAIL = 'true'
+
+      const token = await getApiGatewayTokenByClientId('soft-fail-client-id')
+      expect(token).toBe('')
 
       // biome-ignore lint/performance/noDelete: This is a test :o)
       delete process.env.GCP_IAM_SOFT_FAIL

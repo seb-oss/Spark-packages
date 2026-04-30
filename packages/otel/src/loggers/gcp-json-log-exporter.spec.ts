@@ -279,4 +279,87 @@ describe('GcpJsonLogExporter', () => {
       'projects/fallback-project/traces/trace123'
     )
   })
+
+  it('should fall back to INFO threshold when LOG_LEVEL is unrecognised', () => {
+    process.env.LOG_LEVEL = 'NOTAVALIDLEVEL'
+    const exporter = new GcpJsonLogExporter()
+
+    const logs = [createLogRecord('DEBUG'), createLogRecord('INFO')]
+    exporter.export(logs, () => {})
+
+    expect(stdoutWrite).toHaveBeenCalledOnce()
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.message).toBe('Log at INFO')
+  })
+
+  it('should skip records below the log threshold', () => {
+    const exporter = new GcpJsonLogExporter()
+    exporter.export([createLogRecord('DEBUG')], () => {})
+    expect(stdoutWrite).not.toHaveBeenCalled()
+  })
+
+  it('should JSON-stringify non-string body', () => {
+    const exporter = new GcpJsonLogExporter()
+    exporter.export(
+      [createLogRecord('INFO', { body: { foo: 'bar' } })],
+      () => {}
+    )
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.message).toBe('{"foo":"bar"}')
+  })
+
+  it('should default serviceVersion to 1.0.0 when not set', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', {
+      resource: {
+        attributes: { [ATTR_SERVICE_NAME]: 'svc' },
+      } as any,
+    })
+    exporter.export([record], () => {})
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.serviceContext.version).toBe('1.0.0')
+  })
+
+  it('should default severity to DEFAULT for unknown severityText', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', { severityText: 'CUSTOM_LEVEL' })
+    exporter.export([record], () => {})
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.severity).toBe('DEFAULT')
+  })
+
+  it('should fall back to INFO severityText when severityText is missing', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', { severityText: undefined })
+    exporter.export([record], () => {})
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.severity).toBe('INFO')
+  })
+
+  it('should JSON-stringify object attribute values in labels', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', {
+      attributes: { meta: { key: 'val' } } as any,
+    })
+    exporter.export([record], () => {})
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed['logging.googleapis.com/labels'].meta).toBe('{"key":"val"}')
+  })
+
+  it('should treat missing severityNumber as 0 (passes INFO threshold)', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', { severityNumber: undefined })
+    exporter.export([record], () => {})
+    expect(stdoutWrite).not.toHaveBeenCalled()
+  })
+
+  it('should use unknown-service when serviceName is absent', () => {
+    const exporter = new GcpJsonLogExporter()
+    const record = createLogRecord('INFO', {
+      resource: { attributes: {} } as any,
+    })
+    exporter.export([record], () => {})
+    const parsed = JSON.parse((stdoutWrite.mock.calls[0][0] as string).trim())
+    expect(parsed.serviceContext.service).toBe('unknown-service')
+  })
 })

@@ -41,6 +41,22 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates a boolean type', () => {
+      const type: PrimitiveType = { type: 'boolean', name: 'Flag' }
+      expect(generateType(type)).toEqual('export type Flag = boolean')
+    })
+    it('generates a null type', () => {
+      const type: PrimitiveType = { type: 'null', name: 'Nothing' }
+      expect(generateType(type)).toEqual('export type Nothing = null')
+    })
+    it('generates a symbol type', () => {
+      const type: PrimitiveType = { type: 'symbol', name: 'Sym' }
+      expect(generateType(type)).toEqual('export type Sym = symbol')
+    })
+    it('generates an undefined type', () => {
+      const type: PrimitiveType = { type: 'undefined', name: 'Void' }
+      expect(generateType(type)).toEqual('export type Void = undefined')
+    })
     it('generates a string enum type', async () => {
       const type: EnumType = {
         type: 'enum',
@@ -543,6 +559,16 @@ describe('typescript generator', () => {
 
       expect(generated).toEqual(expected)
     })
+    it('generates a response body with an optional header', async () => {
+      const response: ResponseBody = {
+        headers: [{ name: 'x-opt', optional: true, type: { type: 'string' } }],
+      }
+      const generated = await format(generateResponseBody(response))
+      const expected = await format(
+        `APIResponse<undefined, { 'x-opt'?: string }>`
+      )
+      expect(generated).toEqual(expected)
+    })
     it('generates a funky response ref', async () => {
       const response: CustomType = {
         description: 'Weird header',
@@ -552,6 +578,36 @@ describe('typescript generator', () => {
       const expected = 'XFooBar'
 
       expect(generated).toEqual(expected)
+    })
+    it('generates a response body with Date data', async () => {
+      const response: ResponseBody = {
+        data: { type: 'Date' },
+      }
+      const generated = generateResponseBody(response)
+      expect(generated).toContain('string')
+    })
+    it('generates a response body with bigint data', async () => {
+      const response: ResponseBody = {
+        data: { type: 'bigint' },
+      }
+      const generated = generateResponseBody(response)
+      expect(generated).toContain('bigint')
+    })
+    it('generates a response body with object data (not serialized)', async () => {
+      const response: ResponseBody = {
+        data: { type: 'object', properties: [] },
+      }
+      const generated = generateResponseBody(response)
+      expect(generated).toContain('APIResponse')
+    })
+    it('generates a response body with only headers and no data', async () => {
+      const response: ResponseBody = {
+        headers: [
+          { name: 'x-token', optional: false, type: { type: 'string' } },
+        ],
+      }
+      const generated = await format(generateResponseBody(response))
+      expect(generated).toContain("'x-token': string")
     })
   })
   describe('generateClientPaths', () => {
@@ -982,6 +1038,12 @@ describe('typescript generator', () => {
     })
     it('leaves a working name untouched', () => {
       expect(typeName('CFDDetails')).toEqual('CFDDetails')
+    })
+    it('capitalizes name that starts with underscore but has no capital letter', () => {
+      expect(typeName('_foo')).toEqual('Foo')
+    })
+    it('returns trailing-underscore domain-style name unchanged', () => {
+      expect(typeName('foo._')).toEqual('foo_')
     })
   })
   describe('classname', () => {

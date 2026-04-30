@@ -334,4 +334,73 @@ describe('PromiseCache', () => {
     expect(localCache11.persistor).toBe(localCache12.persistor)
     expect(localCache11.persistor).toBe(localCache13.persistor)
   })
+
+  it('falls back to delegate when persistor.get throws and fallbackToFunction is true', async () => {
+    const cache = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      fallbackToFunction: true,
+    })
+    vi.spyOn(cache.persistor, 'get').mockRejectedValueOnce(
+      new Error('redis error')
+    )
+    const delegate = vi.fn().mockResolvedValue(99)
+
+    const result = await cache.wrap('fallback-key', delegate)
+
+    expect(result).toBe(99)
+    expect(delegate).toHaveBeenCalledOnce()
+  })
+
+  it('throws when persistor.get throws and fallbackToFunction is false', async () => {
+    const cache = new PromiseCache<number>({ ttlInSeconds: ttl })
+    vi.spyOn(cache.persistor, 'get').mockRejectedValueOnce(
+      new Error('redis unavailable')
+    )
+
+    await expect(
+      cache.wrap('throw-key', vi.fn().mockResolvedValue(1))
+    ).rejects.toThrow('redis unavailable')
+  })
+
+  it('override() respects caseSensitive=true', async () => {
+    const cache = new PromiseCache<number>({
+      ttlInSeconds: ttl,
+      caseSensitive: true,
+    })
+    await cache.override('MyKey', 42, ttl)
+    const result = await cache.find<number>('MyKey')
+    expect(result).toBe(42)
+  })
+
+  it('override() uses instance ttl when no ttl is passed', async () => {
+    const cache = new PromiseCache<number>({ ttlInSeconds: ttl })
+    await cache.override('override-no-ttl', 7)
+    const result = await cache.find<number>('override-no-ttl')
+    expect(result).toBe(7)
+  })
+
+  it('override() with no ttl and no instance ttl stores value without expiry', async () => {
+    const cache = new PromiseCache<number>({})
+    await cache.override('override-no-ttl-2', 5)
+    const result = await cache.find<number>('override-no-ttl-2')
+    expect(result).toBe(5)
+  })
+
+  it('find() returns null when key is not present', async () => {
+    const cache = new PromiseCache<number>({ ttlInSeconds: ttl })
+    const result = await cache.find<number>('nonexistent-key')
+    expect(result).toBeNull()
+  })
+
+  it('swallows error when persistor.set throws after delegate executes', async () => {
+    const cache = new PromiseCache<number>({ ttlInSeconds: ttl })
+    vi.spyOn(cache.persistor, 'set').mockRejectedValueOnce(
+      new Error('set failed')
+    )
+    const delegate = vi.fn().mockResolvedValue(42)
+
+    const result = await cache.wrap('set-error-key', delegate)
+
+    expect(result).toBe(42)
+  })
 })

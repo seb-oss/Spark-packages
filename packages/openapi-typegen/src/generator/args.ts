@@ -36,6 +36,7 @@ const generateArgs = (
       }
     }
 
+    /* istanbul ignore next */
     if (!tokens.length) return ''
 
     const optional = argsOptional(args)

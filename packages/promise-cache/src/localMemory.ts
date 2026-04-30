@@ -9,6 +9,7 @@ export class LocalStorage {
   set(key: string, value: string, options?: { PX: number }) {
     this.client.set(key, value)
 
+    /* istanbul ignore else */
     if (options?.PX) {
       setTimeout(() => {
         this.client.delete(key)
@@ -20,6 +21,7 @@ export class LocalStorage {
     this.client.delete(key)
   }
 
+  /* istanbul ignore next */
   clear() {
     this.client.clear()
   }

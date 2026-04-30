@@ -38,6 +38,7 @@ export class ConsoleLogPrettyExporter implements LogRecordExporter {
     for (const record of logRecords) {
       if ((record.severityNumber ?? 0) >= this.logThreshold) {
         const formatted = formatLogRecord(record)
+        /* istanbul ignore next */
         const severity = record.severityNumber || SeverityNumber.UNSPECIFIED
 
         if (severity >= SeverityNumber.ERROR) {

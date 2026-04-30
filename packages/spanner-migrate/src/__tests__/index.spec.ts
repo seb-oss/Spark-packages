@@ -65,6 +65,12 @@ describe('index', () => {
   })
 
   describe('up', () => {
+    it('throws when max is specified without a database', async () => {
+      await expect(up(mockConfig, undefined, 1)).rejects.toThrow(
+        'Max number of migrations requires specifying a database'
+      )
+    })
+
     it('applies new migrations up to the maximum specified', async () => {
       const newMigrations = ['20250102T123456_add_roles']
       const migrationFiles = [
@@ -164,6 +170,68 @@ describe('index', () => {
       expect(result).toContain('20250101T123456_add_users')
       expect(result).toContain('New')
       expect(result).toContain('20250102T123456_add_roles')
+    })
+
+    it('uses config databases when none specified', async () => {
+      mockDb.ensureMigrationTable.mockResolvedValue(undefined)
+      mockDb.getAppliedMigrations.mockResolvedValue([])
+      mockFiles.getMigrationFiles.mockResolvedValue([])
+      mockFiles.getNewMigrations.mockReturnValue([])
+
+      const result = await status(mockConfig)
+
+      expect(result).toContain('Migrations [mock-database]')
+    })
+  })
+
+  describe('up without max (all migrations)', () => {
+    it('applies all new migrations when no max is specified', async () => {
+      const newMigrations = ['20250102T123456_add_roles']
+
+      mockDb.ensureMigrationTable.mockResolvedValue(undefined)
+      mockDb.getAppliedMigrations.mockResolvedValue([])
+      mockFiles.getMigrationFiles.mockResolvedValue(newMigrations)
+      mockFiles.getNewMigrations.mockReturnValue(newMigrations)
+      mockFiles.getMigration.mockResolvedValue({
+        id: '20250102T123456_add_roles',
+        description: 'Add Roles',
+        up: 'CREATE TABLE roles',
+        down: 'DROP TABLE roles',
+      })
+      mockApply.applyUp.mockResolvedValue(undefined)
+
+      await up(mockConfig, mockConfig.instance.databases[0])
+
+      expect(mockApply.applyUp).toHaveBeenCalledOnce()
+    })
+
+    it('uses config databases when no database is specified', async () => {
+      mockDb.ensureMigrationTable.mockResolvedValue(undefined)
+      mockDb.getAppliedMigrations.mockResolvedValue([])
+      mockFiles.getMigrationFiles.mockResolvedValue([])
+      mockFiles.getNewMigrations.mockReturnValue([])
+
+      await up(mockConfig)
+
+      expect(mockDb.ensureMigrationTable).toHaveBeenCalledOnce()
+    })
+  })
+
+  describe('getDb without projectId', () => {
+    it('creates Spanner without projectId when config has none', async () => {
+      const configWithoutProject: Config = {
+        instance: mockConfig.instance,
+      }
+
+      mockDb.ensureMigrationTable.mockResolvedValue(undefined)
+      mockApply.applyDown.mockResolvedValue(undefined)
+
+      await down(
+        configWithoutProject,
+        configWithoutProject.instance.databases[0]
+      )
+
+      expect(mockApply.applyDown).toHaveBeenCalledOnce()
     })
   })
 })

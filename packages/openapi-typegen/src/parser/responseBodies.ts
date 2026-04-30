@@ -31,6 +31,7 @@ export const parseResponseBody = (
   const responseObject = response as ResponseObject
   const body: ResponseBody = {}
   if (name) body.name = name
+  /* istanbul ignore else */
   if (responseObject.description) body.description = responseObject.description
 
   if (responseObject.content?.['application/json']?.schema) {

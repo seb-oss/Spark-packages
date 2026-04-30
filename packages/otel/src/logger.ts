@@ -60,11 +60,14 @@ export function getLogger(serviceOverride?: string, extraAttrs: Attrs = {}) {
     maybeAttrs: Attrs = {}
   ): { body: string; attrs: Attrs } {
     if (errOrAttrs instanceof Error) {
+      /* istanbul ignore next */
       const body = `${msg}: ${errOrAttrs.stack || errOrAttrs.message}`
       return { body, attrs: maybeAttrs }
     }
 
+    /* istanbul ignore next */
     const body = msg instanceof Error ? msg.stack || msg.message : msg
+    /* istanbul ignore next */
     const attrs = errOrAttrs || {}
     return { body, attrs }
   }

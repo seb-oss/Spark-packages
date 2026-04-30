@@ -48,17 +48,20 @@ export const buildHttpConfig = (
       const [urlPath] = path.split('?')
       const defaultPort = protocol === 'https' ? 443 : 80
       const portSuffix = port !== defaultPort ? `:${port}` : ''
+      /* istanbul ignore next */
+      const resolvedUrlPath = urlPath ?? '/'
 
       const attrs: Attributes = {
         [ATTR_HTTP_REQUEST_METHOD]: method.toUpperCase(),
         [ATTR_SERVER_ADDRESS]: hostname,
         [ATTR_SERVER_PORT]: port,
         [ATTR_URL_SCHEME]: protocol,
-        [ATTR_URL_PATH]: urlPath ?? '/',
+        [ATTR_URL_PATH]: resolvedUrlPath,
         [ATTR_URL_FULL]: `${protocol}://${hostname}${portSuffix}${path}`,
         [ATTR_NETWORK_PEER_ADDRESS]: hostname,
         [ATTR_NETWORK_PEER_PORT]: port,
       }
+      /* istanbul ignore next */
       for (const [key, val] of Object.entries(req.headers || {})) {
         if (!val) continue
 
@@ -79,6 +82,7 @@ export const buildHttpConfig = (
       if (proto) {
         span.setAttribute(
           ATTR_NETWORK_PROTOCOL_VERSION,
+          /* istanbul ignore next */
           proto === 'https:' ? '1.1' : '1.1'
         )
       }

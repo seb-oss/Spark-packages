@@ -182,4 +182,20 @@ describe('instrumentations', () => {
     const inst = await instrumentations[key]()
     expect((inst as any).instrumentationName).toBe(name)
   })
+
+  it.each([
+    'grpc',
+    'redis',
+    'dns',
+    'net',
+    'fs',
+    'undici',
+    'socketIo',
+    'opensearch',
+  ] as const)('%s returns the same instance for repeated calls', async (key) => {
+    const { instrumentations } = await import('./instrumentations')
+    const inst1 = await instrumentations[key]()
+    const inst2 = await instrumentations[key]()
+    expect(inst1).toBe(inst2)
+  })
 })

@@ -24,6 +24,18 @@ const listen = (srv: http.Server) =>
 const close = (srv: http.Server) =>
   new Promise<void>((res) => srv.close(() => res()))
 
+it('createProxyServer throws when config.target is missing', () => {
+  expect(() => createProxyServer({} as any)).toThrow(
+    'config.target must be set'
+  )
+})
+
+it('createProxyServer creates server with https target without throwing', () => {
+  expect(() =>
+    createProxyServer({ target: 'https://example.com', mode: 'local' })
+  ).not.toThrow()
+})
+
 describe('createProxyServer (HTTP)', () => {
   let upstream: http.Server
   let proxy: http.Server
@@ -92,6 +104,26 @@ describe('createProxyServer (HTTP)', () => {
     expect(text).toBe('proxy error')
 
     await close(deadProxy)
+  })
+
+  it('returns 500 when introspect throws during HTTP request', async () => {
+    vi.mocked(introspect).mockRejectedValueOnce(new Error('auth failure'))
+
+    const res = await fetch(`http://127.0.0.1:${proxyPort}/test`)
+    const body = await res.json()
+
+    expect(res.status).toBe(500)
+    expect(body).toMatchObject({ name: 'Error', message: 'auth failure' })
+  })
+
+  it('sets host header when not present in introspected headers', async () => {
+    vi.mocked(introspect).mockImplementationOnce(async (_cfg, headers) => {
+      const { host: _host, ...rest } = headers as Record<string, unknown>
+      return rest as any
+    })
+
+    const res = await fetch(`http://127.0.0.1:${proxyPort}/test`)
+    expect(res.status).toBe(200)
   })
 })
 
@@ -164,5 +196,20 @@ describe('createProxyServer (WebSocket)', () => {
     expect(lastUpgradeHeaders['host']).toBe(`127.0.0.1:${upstreamPort}`)
 
     ws.close()
+  })
+
+  it('returns HTTP 500 on upgrade when introspect throws', async () => {
+    vi.mocked(introspect).mockRejectedValueOnce(new Error('introspect failed'))
+
+    const ws = new WebSocket(`ws://127.0.0.1:${proxyPort}/socket`)
+
+    const statusCode = await new Promise<number>((resolve) => {
+      ws.once('unexpected-response', (_req, res) => {
+        resolve(res.statusCode ?? 0)
+      })
+      ws.once('error', () => resolve(500))
+    })
+
+    expect(statusCode).toBe(500)
   })
 })

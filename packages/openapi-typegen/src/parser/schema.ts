@@ -19,8 +19,8 @@ import { parseDocumentation, parseEnumType, parseRef } from './common'
 export const parseSchemas = (
   schemas: Record<string, SchemaObject> = {}
 ): TypeDefinition[] =>
-  Object.entries(schemas || {}).map(([name, schema]) =>
-    parseSchema(name, schema)
+  Object.entries(/* istanbul ignore next */ schemas || {}).map(
+    ([name, schema]) => parseSchema(name, schema)
   )
 
 const marshall = (
@@ -127,6 +127,7 @@ const parseArraySchema = (
   name: string | undefined,
   schema: SchemaObject
 ): ArrayType => {
+  /* istanbul ignore next */
   if (schema.type !== 'array') throw new Error('Not an array')
   return {
     name,

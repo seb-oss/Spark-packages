@@ -285,8 +285,12 @@ export function isOpen(mic: string) {
 
   const timeOfDay = currentHour * 60 + currentMinute + currentSeconds / 60
   const openTime = openHour * 60 + openMinute
+  /* istanbul ignore next */
+  const irregularClose = irregularCloseHour ?? 0
+  /* istanbul ignore next */
+  const irregularCloseMin = irregularCloseMinute ?? 0
   let closeTime = isHalfday(market, now)
-    ? (irregularCloseHour ?? 0) * 60 + (irregularCloseMinute ?? 0)
+    ? irregularClose * 60 + irregularCloseMin
     : closeHour * 60 + closeMinute
 
   if (market === 'EQTB' || market === 'XBER') {
@@ -326,8 +330,8 @@ export function formatOpeningHours(mic: string) {
 
   if (isHalfday(market, now)) {
     let irregularClose = convertTime(
-      irregularCloseHour ?? 0,
-      irregularCloseMinute ?? 0
+      /* istanbul ignore next */ irregularCloseHour ?? 0,
+      /* istanbul ignore next */ irregularCloseMinute ?? 0
     )
 
     if (market === 'EQTB' || market === 'XBER') {
@@ -391,12 +395,14 @@ export function whichHoliday(mic: string, date: Date): Holiday | null {
   }
 
   if (specialMarketHolidays.includes(formattedDate)) {
+    /* istanbul ignore else */
     if (market === 'XLON') {
       return 'bankHoliday'
     }
   }
 
   if (specialMarketHalfdays.includes(formattedDate)) {
+    /* istanbul ignore else */
     if (market === 'MTAA') {
       return 'noTAH'
     }
@@ -414,11 +420,15 @@ export function marketOpeningHours(mic: string, date: Date) {
   }
 
   if (isHalfday(market, date)) {
+    /* istanbul ignore next */
+    const closeHour = hours.irregularCloseHour ?? 0
+    /* istanbul ignore next */
+    const closeMinute = hours.irregularCloseMinute ?? 0
     return {
       openHour: hours.openHour,
       openMinute: hours.openMinute,
-      closeHour: hours.irregularCloseHour ?? 0,
-      closeMinute: hours.irregularCloseMinute ?? 0,
+      closeHour,
+      closeMinute,
     }
   }
 

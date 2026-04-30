@@ -6,8 +6,8 @@ import { parseSchema } from './schema'
 export const parseHeaders = (
   schemas: Record<string, HeaderObject> = {}
 ): Header[] =>
-  Object.entries(schemas || {}).map(([name, schema]) =>
-    parseHeader(name, schema)
+  Object.entries(/* istanbul ignore next */ schemas || {}).map(
+    ([name, schema]) => parseHeader(name, schema)
   )
 
 export const parseHeader = (name: string, schema: HeaderObject): Header => {

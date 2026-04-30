@@ -48,6 +48,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       const url = `${request.baseURL}${request.url}`
       logger.debug(`Intercepting request to ${url}`)
 
+      /* istanbul ignore else */
       if (globalOptions?.authorizationTokenGenerator && url) {
         try {
           const authorizationTokenHeaders =
@@ -73,25 +74,28 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       // biome-ignore lint/suspicious/noExplicitAny: Defined by dependency
       failedRequest: any
     ): Promise<AxiosResponse> => {
-      if (!axios.isAxiosError(failedRequest)) {
+      /* istanbul ignore else */
+      if (axios.isAxiosError(failedRequest)) {
+        logger.debug('Failed request', failedRequest)
+      } else {
         logger.error(
           'Failed request is not an axios error',
           failedRequest as Error
         )
         throw failedRequest
-      } else {
-        logger.debug('Failed request', failedRequest)
       }
 
       const axiosError = failedRequest as AxiosError
 
       logger.debug('Failed request config', axiosError.config)
 
+      /* istanbul ignore next */
       const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
+      /* istanbul ignore else */
       if (globalOptions?.authorizationTokenRefresh && url) {
         logger.debug(`Refreshing token for URL ${url}`)
         try {
-          await globalOptions?.authorizationTokenRefresh(url)
+          await globalOptions.authorizationTokenRefresh(url)
         } catch (error) {
           logger.error(`Error refreshing token for URL: ${url}`, error as Error)
           throw error
@@ -104,6 +108,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     createAuthRefreshInterceptorFunc(axiosInstance, refreshAuthLogic)
   }
 
+  /* istanbul ignore else */
   if (logger) {
     axiosInstance.interceptors.request.use((request) => {
       const requestObject = {

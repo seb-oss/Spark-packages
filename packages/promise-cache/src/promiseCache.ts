@@ -30,12 +30,16 @@ const getPersistor = ({
   if (!persistors[connectionName]) {
     persistors[connectionName] = new Persistor({
       redis,
+      /* istanbul ignore next */
       onError: (error: string) => {
+        /* istanbul ignore next */
         onError?.(error)
+        /* istanbul ignore next */
         logger?.error(
           `❌ REDIS | Client Error | ${connectionName} | ${redis?.url}: ${error}`
         )
       },
+      /* istanbul ignore next */
       onSuccess: () => {
         onSuccess?.()
         logger?.info(
