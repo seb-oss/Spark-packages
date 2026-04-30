@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/promise-cache",
-  "version": "6.4.25",
+  "version": "6.4.26",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
