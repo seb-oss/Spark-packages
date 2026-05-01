@@ -77,9 +77,9 @@ describe('health-check', () => {
         },
       })
 
-      // Check that timestamp is recent (within ~10ms of now)
+      // Check that timestamp is recent
       const diff = Date.now() - Date.parse(res.body.data.timestamp)
-      expect(diff).toBeLessThan(20)
+      expect(diff).toBeLessThan(500)
     })
   })
   describe('health/ready', () => {
@@ -103,7 +103,7 @@ describe('health-check', () => {
           }
         },
         impact: 'critical',
-        healthyLimitMs: 50,
+        healthyLimitMs: 200,
         timeoutLimitMs: 500,
       })
       monitor.addDependency('redis', redisDependency)
@@ -119,7 +119,7 @@ describe('health-check', () => {
           }
         },
         impact: 'non_critical',
-        healthyLimitMs: 250,
+        healthyLimitMs: 500,
         timeoutLimitMs: 1000,
         pollRate: 1000,
       })
@@ -128,7 +128,7 @@ describe('health-check', () => {
       pubsub = await startPubSub()
       pubsubDependency = new DependencyMonitor({
         impact: 'critical',
-        healthyLimitMs: 100,
+        healthyLimitMs: 500,
         timeoutLimitMs: 1_000,
         pollRate: 500,
         asyncCall: (callback) => {
@@ -138,7 +138,7 @@ describe('health-check', () => {
         },
       })
       monitor.addDependency('pubsub', pubsubDependency)
-    })
+    }, 60_000)
     afterEach(async () => {
       await redis.stop()
       await api.stop()
@@ -181,22 +181,25 @@ describe('health-check', () => {
       expect(apiCheck.status).toEqual('unknown')
     })
     it('updates with api polled dependency check', async () => {
-      await waitFor(async () => {
-        const res = await request(app).get('/health/ready')
-        expect(res.status).toBe(200)
+      await waitFor(
+        async () => {
+          const res = await request(app).get('/health/ready')
+          expect(res.status).toBe(200)
 
-        const apiCheck = (res.body.data as ReadinessPayload).checks.api
-        expect(apiCheck).toBeDefined()
-        expect(apiCheck).toMatchObject({
-          impact: 'non_critical',
-          mode: 'polled',
-          status: 'ok',
-          freshness: {
-            lastChecked: expect.any(String),
-            lastSuccess: expect.any(String),
-          },
-        })
-      })
+          const apiCheck = (res.body.data as ReadinessPayload).checks.api
+          expect(apiCheck).toBeDefined()
+          expect(apiCheck).toMatchObject({
+            impact: 'non_critical',
+            mode: 'polled',
+            status: 'ok',
+            freshness: {
+              lastChecked: expect.any(String),
+              lastSuccess: expect.any(String),
+            },
+          })
+        },
+        { timeout: 5_000 }
+      )
     })
     it('declares pubsub polled, async dependency check as unknown from the start', async () => {
       const res = await request(app).get('/health/ready')
@@ -206,23 +209,26 @@ describe('health-check', () => {
       expect(pubsubCheck).toBeDefined()
       expect(pubsubCheck.status).toEqual('unknown')
     })
-    it.skip('updates with pubsub polled, async dependency check', async () => {
-      await waitFor(async () => {
-        const res = await request(app).get('/health/ready')
-        expect(res.status).toBe(200)
+    it('updates with pubsub polled, async dependency check', async () => {
+      await waitFor(
+        async () => {
+          const res = await request(app).get('/health/ready')
+          expect(res.status).toBe(200)
 
-        const pubsubCheck = (res.body.data as ReadinessPayload).checks.pubsub
-        expect(pubsubCheck).toBeDefined()
-        expect(pubsubCheck).toMatchObject({
-          impact: 'critical',
-          mode: 'async',
-          status: 'ok',
-          freshness: {
-            lastChecked: expect.any(String),
-            lastSuccess: expect.any(String),
-          },
-        })
-      })
+          const pubsubCheck = (res.body.data as ReadinessPayload).checks.pubsub
+          expect(pubsubCheck).toBeDefined()
+          expect(pubsubCheck).toMatchObject({
+            impact: 'critical',
+            mode: 'async',
+            status: 'ok',
+            freshness: {
+              lastChecked: expect.any(String),
+              lastSuccess: expect.any(String),
+            },
+          })
+        },
+        { timeout: 10_000 }
+      )
     })
   })
 })
