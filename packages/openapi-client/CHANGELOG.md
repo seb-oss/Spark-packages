@@ -1,5 +1,15 @@
 # @sebspark/openapi-client
 
+## 4.2.3
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+- Updated dependencies [8a120f6]
+  - @sebspark/openapi-core@4.1.14
+  - @sebspark/retry@1.0.12
+  - @sebspark/otel@4.1.2
+
 ## 4.2.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.3.1
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+
 ## 0.3.0
 
 ### Minor Changes

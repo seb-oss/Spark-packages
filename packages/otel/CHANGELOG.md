@@ -1,5 +1,13 @@
 # @sebspark/otel
 
+## 4.1.2
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+- Updated dependencies [8a120f6]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.3.3
+
 ## 4.1.1
 
 ### Patch Changes

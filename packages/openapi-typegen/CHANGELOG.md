@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.1.3
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+- Updated dependencies [8a120f6]
+  - @sebspark/openapi-core@4.1.14
+
 ## 5.1.2
 
 ### Patch Changes
