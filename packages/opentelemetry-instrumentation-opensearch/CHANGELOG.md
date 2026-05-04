@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.3.3
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+
 ## 0.3.2
 
 ### Patch Changes

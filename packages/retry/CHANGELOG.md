@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.12
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+
 ## 1.0.11
 
 ### Patch Changes

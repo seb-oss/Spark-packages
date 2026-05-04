@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.1.14
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+- Updated dependencies [8a120f6]
+  - @sebspark/retry@1.0.12
+
 ## 4.1.13
 
 ### Patch Changes

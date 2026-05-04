@@ -1,5 +1,13 @@
 # @sebspark/gcp-iam
 
+## 3.0.41
+
+### Patch Changes
+
+- 8a120f6: Updated dependencies for all and docs for emulator
+- Updated dependencies [8a120f6]
+  - @sebspark/otel@4.1.2
+
 ## 3.0.40
 
 ### Patch Changes
