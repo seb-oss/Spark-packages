@@ -38,7 +38,7 @@
     "@opentelemetry/instrumentation-net": "0.59.0",
     "@opentelemetry/instrumentation-redis": "0.63.0",
     "@opentelemetry/instrumentation-socket.io": "0.62.0",
-    "@opentelemetry/instrumentation-undici": "0.25.0",
+    "@opentelemetry/instrumentation-undici": "0.26.0",
     "@opentelemetry/resource-detector-container": "0.8.6",
     "@opentelemetry/resource-detector-gcp": "0.50.0",
     "@opentelemetry/resources": "2.7.0",
