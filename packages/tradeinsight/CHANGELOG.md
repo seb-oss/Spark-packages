@@ -1,5 +1,11 @@
 # @sebspark/tradeinsight
 
+## 6.0.2
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 6.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.17
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 3.0.16
 
 ### Patch Changes

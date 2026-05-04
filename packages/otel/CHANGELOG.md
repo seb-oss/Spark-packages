@@ -1,5 +1,13 @@
 # @sebspark/otel
 
+## 4.1.3
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.3.4
+
 ## 4.1.2
 
 ### Patch Changes

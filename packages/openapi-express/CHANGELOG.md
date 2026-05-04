@@ -1,5 +1,14 @@
 # @sebspark/openapi-express
 
+## 5.4.4
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/openapi-core@4.1.15
+  - @sebspark/otel@4.1.3
+
 ## 5.4.3
 
 ### Patch Changes

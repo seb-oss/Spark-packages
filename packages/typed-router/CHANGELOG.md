@@ -1,5 +1,11 @@
 # @sebspark/typed-router
 
+## 2.0.7
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 2.0.6
 
 ### Patch Changes

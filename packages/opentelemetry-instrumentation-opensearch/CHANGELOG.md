@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.3.4
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 0.3.3
 
 ### Patch Changes

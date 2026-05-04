@@ -1,5 +1,11 @@
 # @sebspark/environment
 
+## 0.0.4
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 0.0.3
 
 ### Patch Changes

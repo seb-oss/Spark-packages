@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.4
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 0.1.3
 
 ### Patch Changes

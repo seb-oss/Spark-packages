@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.3.2
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 0.3.1
 
 ### Patch Changes
