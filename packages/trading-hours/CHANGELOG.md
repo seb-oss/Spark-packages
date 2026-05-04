@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 1.0.7
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 1.0.6
 
 ### Patch Changes

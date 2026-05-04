@@ -1,5 +1,14 @@
 # @sebspark/health-check
 
+## 2.3.5
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/hyper-media@0.1.4
+  - @sebspark/promise-cache@6.4.28
+
 ## 2.3.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.0.20
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 1.0.19
 
 ### Patch Changes

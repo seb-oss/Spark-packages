@@ -1,5 +1,13 @@
 # @sebspark/openapi-auth-iam
 
+## 3.0.40
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/gcp-iam@3.0.42
+
 ## 3.0.39
 
 ### Patch Changes

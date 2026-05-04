@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.1.4
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/openapi-core@4.1.15
+
 ## 5.1.3
 
 ### Patch Changes

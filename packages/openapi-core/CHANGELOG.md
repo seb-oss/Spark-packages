@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.1.15
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/retry@1.0.13
+
 ## 4.1.14
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @sebspark/openapi-e2e
 
+## 4.0.48
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/openapi-client@4.2.4
+  - @sebspark/openapi-core@4.1.15
+  - @sebspark/openapi-express@5.4.4
+
 ## 4.0.47
 
 ### Patch Changes

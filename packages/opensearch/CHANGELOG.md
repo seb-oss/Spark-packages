@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.1.3
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 3.1.2
 
 ### Patch Changes

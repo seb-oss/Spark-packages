@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.0.21
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 2.0.20
 
 ### Patch Changes

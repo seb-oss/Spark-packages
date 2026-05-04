@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-auth-iam",
-  "version": "3.0.39",
+  "version": "3.0.40",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@sebspark/gcp-iam": "3.0.41"
+    "@sebspark/gcp-iam": "3.0.42"
   },
   "repository": {
     "type": "git",

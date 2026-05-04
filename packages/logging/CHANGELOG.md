@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.12
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 2.0.11
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 6.4.28
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/otel@4.1.3
+
 ## 6.4.27
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @sebspark/gcp-iam
 
+## 3.0.42
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/otel@4.1.3
+
 ## 3.0.41
 
 ### Patch Changes

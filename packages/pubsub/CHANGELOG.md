@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.15
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 1.8.14
 
 ### Patch Changes

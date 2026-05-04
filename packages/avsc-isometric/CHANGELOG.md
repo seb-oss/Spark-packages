@@ -1,5 +1,11 @@
 # @sebspark/avsc-isometric
 
+## 0.4.11
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+
 ## 0.4.10
 
 ### Patch Changes

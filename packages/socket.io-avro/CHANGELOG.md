@@ -1,5 +1,13 @@
 # @sebspark/socket.io-avro
 
+## 0.1.15
+
+### Patch Changes
+
+- 7d8cc98: Dependabot dependency updates
+- Updated dependencies [7d8cc98]
+  - @sebspark/avsc-isometric@0.4.11
+
 ## 0.1.14
 
 ### Patch Changes
