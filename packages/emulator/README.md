@@ -19,6 +19,87 @@ Real transport (Pub/Sub message, HTTP request, WebSocket, …)
   Your test                    ← registers responders with .reply() / .callback() / .stream()
 ```
 
+### The two-layer design
+
+`createEmulator()` is just an in-memory responder registry — it has no server, no network, no lifecycle. Your emulator adapter owns the transport (HTTP server, WebSocket server, Pub/Sub subscriber, etc.) and calls `emulator.handle(...)` when a real request arrives.
+
+This separation is intentional and important:
+
+- **The transport is expensive.** Starting and stopping an HTTP server or connecting a Pub/Sub subscriber takes time. You create it once and keep it running for the lifetime of the test suite (or the fake service).
+- **The responder registry is cheap.** Registering and consuming handlers is pure in-memory. You do this per test, not per server start.
+
+**The rule: transport lifecycle in `beforeAll`/`afterAll`, responder setup in `beforeEach` or in the test itself.**
+
+```ts
+let payments: PaymentEmulator
+
+beforeAll(() => { payments = startPaymentEmulator(server) })
+afterAll(() => payments.dispose())
+
+beforeEach(() => {
+  // Register the responses this specific test needs.
+  // No response registered = emulator throws = test fails clearly.
+  payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
+})
+afterEach(() => {
+  payments.reset() // clear all responders for next test
+})
+```
+
+Never call `startPaymentEmulator` (or `createEmulator`) inside `beforeEach`. That restarts the transport on every test, defeating the purpose.
+
+**The emulator throwing on an unregistered handler is a feature, not a bug.** If your test triggers a call you didn't set up, the throw tells you immediately. Avoid silent `.persist()` fallbacks for normal request/response flows — they mask missing test setup.
+
+The exception is when the system under test makes background calls that are not the subject of the test — health check pollers, heartbeats, and similar. Those calls fire continuously regardless of what the test is doing. For those, register a `.persist()` baseline in `beforeAll` so they are always answered, then use LIFO one-shot overrides in specific tests that *are* testing the degraded behaviour:
+
+```ts
+beforeAll(() => {
+  payments = startPaymentEmulator(server)
+  // Health poller fires every 10s — always answer it so tests don't fail spuriously
+  payments.ping().persist().reply({ ok: true })
+})
+
+afterAll(() => payments.dispose())
+
+// Normal test — one-shot, explicit, throws if missing
+it('approves a payment', async () => {
+  payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
+  // ...
+})
+
+// Health test — LIFO override sits on top of the persist baseline
+it('reports degraded when ping fails', async () => {
+  payments.ping().reply(() => { throw new Error('connection refused') })
+  // override fires once, then persist baseline resumes for subsequent polls
+})
+```
+
+---
+
+## Use cases
+
+### 1. Automated tests
+
+The primary use case. The emulator runs as a fake upstream during your test suite. The transport starts once; each test registers the responses it needs.
+
+See the examples below.
+
+### 2. Persistent fake service for local development or manual QA
+
+The emulator can run as a standing replacement for a real upstream — a deployable fake that your application code talks to using production-ready client code. No test framework involved.
+
+Register `.persist()` responders at startup and the service handles requests indefinitely without restarting:
+
+```ts
+const payments = startPaymentEmulator(server)
+
+// Always approve — no test framework, just a running fake
+payments.authorise().persist().reply({ authCode: 'FAKE-123', status: 'approved' })
+payments.refund().persist().reply({ success: true })
+```
+
+Because the transport and the responder registry are separate, you can also expose an admin endpoint that lets you change responses at runtime — swap the responders without restarting the server.
+
 ---
 
 ## Example: request/response — payment gateway
@@ -128,12 +209,20 @@ bot.chat().callback((_args, cb) => {
 
 Use `.stream(initializer)` when the test needs to **drive responses at its own pace** — for example to assert state between tokens, or simulate a correction mid-stream.
 
-`.stream()` returns a `StreamHandle`:
+`.stream()` returns a `StreamHandle` **immediately**, before any request has arrived. You capture it, trigger the SUT, then synchronise with `waitForCall()`.
+
+**Correct sequence:**
+1. Register `.stream(initializer)` — capture the handle
+2. Trigger the SUT action that sends the request
+3. `await handle.waitForCall()` — blocks until the request arrives and the initializer fires
+4. `await handle.send(prev => ...)` — push responses one at a time
+
+Calling `send()` before `waitForCall()` resolves throws immediately — there is no open channel yet.
 
 | Member | Type | Description |
 |---|---|---|
 | `waitForCall(timeoutMs?)` | `(timeoutMs?: number) => Promise<void>` | Resolves when the next request has arrived and the initializer has fired. Rejects with `Error: waitForCall() timed out after {n}ms — no request arrived` if no request arrives within `timeoutMs` ms (default: `5000`) |
-| `send(modifier)` | `(fn: (prev) => Resp) => Promise<void>` | Derives and sends the next response from the last one |
+| `send(modifier)` | `(fn: (prev) => Resp) => Promise<void>` | Derives and sends the next response from the last one. Throws if called before `waitForCall()` resolves. |
 | `latestResponse` | `Resp \| undefined` | The most recent response sent, or `undefined` before the first `waitForCall()` |
 | `hasBeenCalled` | `boolean` | `true` once the first request has arrived and `waitForCall()` has resolved |
 
@@ -237,13 +326,42 @@ By default, a responder is consumed after **one use**. Control this with:
 | `.twice().reply(...)` | Two uses |
 | `.thrice().reply(...)` | Three uses |
 | `.times(n).reply(...)` | `n` uses |
-| `.persist().reply(...)` | Unlimited uses |
+| `.persist().reply(...)` | Unlimited uses — never consumed |
+
+`.persist()` has three distinct uses:
+
+**1. LIFO fallback in tests** — register a permanent default, then push one-shot overrides on top for specific tests:
 
 ```ts
-// Approve the first two, then always decline
+// Always decline...
 payments.authorise().persist().reply({ authCode: '', status: 'declined' })
-payments.authorise().twice().reply({ authCode: 'ABC', status: 'approved' })
+
+// ...except the very next call
+payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
+
+// First call  → approved (override consumed)
+// Second call → declined (fallback)
+// Third call  → declined (fallback)
 ```
+
+**2. Always-on background calls** — health checks, heartbeats, or any call the running system makes continuously. Register once in `beforeAll` so every poll always gets a valid response. Override with a one-shot for degraded-state tests:
+
+```ts
+beforeAll(() => {
+  // Health poller fires immediately and every N seconds — always give it a 200
+  healthBackend.ping().persist().reply({ ok: true })
+})
+
+it('reports degraded when backend is down', async () => {
+  // LIFO: this fires once, then the persist fallback resumes
+  healthBackend.ping().reply(() => { throw new Error('connection refused') })
+
+  const res = await fetch('/health/ready')
+  expect(res.status).toBe(503)
+})
+```
+
+**3. Persistent fake service** — when the emulator runs as a standing fake for local development or manual QA (not inside a test suite at all), `.persist()` is the only sensible mode. See [Use cases](#use-cases).
 
 Responders are matched in **LIFO order** — the most recently registered matching responder wins.
 
@@ -259,20 +377,6 @@ payments
 payments
   .authorise()
   .reply({ authCode: 'OTHER', status: 'declined' })
-```
-
-### Stacking overrides
-
-```ts
-// Always decline...
-payments.authorise().persist().reply({ authCode: '', status: 'declined' })
-
-// ...except the very next call, which is approved
-payments.authorise().reply({ authCode: 'ABC123', status: 'approved' })
-
-// First call  → approved (override consumed)
-// Second call → declined (fallback)
-// Third call  → declined (fallback)
 ```
 
 ### Unhandled requests
@@ -303,16 +407,18 @@ const result = await execute({ amount: 100, currency: 'SEK' })
 
 `payments.authorise().pending` returns the number of responders currently registered for that method that have not yet been fully consumed.
 
-This is most useful in `afterEach` to catch leftover setup — a responder registered in a test but never triggered indicates a test that didn't exercise what it intended:
+A `.persist()` responder counts as **1 pending** regardless of how many times it has fired. If you register one persistent default in `beforeAll` and one one-shot override per test, `pending` will be `2` before the override fires and `1` after — the persistent baseline is always present.
+
+This is most useful in `afterEach` to catch leftover one-shot setup — a one-time responder registered in a test but never triggered indicates a test that didn't exercise what it intended:
 
 ```ts
 afterEach(() => {
+  // Checks that no one-shot responders were left unexercised.
+  // If you have a .persist() baseline, pending will be 1 here, not 0.
   expect(payments.authorise().pending).toBe(0)
   expect(payments.refund().pending).toBe(0)
 })
 ```
-
-A `.persist()` responder counts as 1 pending regardless of how many times it has fired.
 
 #### `.reset()` — clear registered responders
 
@@ -350,4 +456,3 @@ await payments.dispose()
 await using payments = startPaymentEmulator(server)
 // automatically disposed when the block exits
 ```
-

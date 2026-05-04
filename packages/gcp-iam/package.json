@@ -17,7 +17,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@google-cloud/iam-credentials": "4.2.1",
+    "@google-cloud/iam-credentials": "4.2.2",
     "@sebspark/otel": "4.1.1",
     "google-auth-library": "10.6.2"
   },
