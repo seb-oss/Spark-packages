@@ -1,5 +1,12 @@
 # @sebspark/openapi-e2e
 
+## 4.0.49
+
+### Patch Changes
+
+- @sebspark/openapi-client@4.2.5
+- @sebspark/openapi-express@5.4.5
+
 ## 4.0.48
 
 ### Patch Changes
