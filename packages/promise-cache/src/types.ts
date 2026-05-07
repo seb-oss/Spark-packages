@@ -402,6 +402,14 @@ export interface IPersistor {
     max: number
   ): Promise<ZMember[]>
 
+  /**
+   * Returns all keys matching a glob-style pattern (mirrors Redis KEYS).
+   * Supports `*` (any sequence of characters) and `?` (any single character).
+   * @param pattern - The glob pattern to match against.
+   * @returns Resolves to an array of matching keys.
+   */
+  keys(pattern: string): Promise<string[]>
+
   isReady: boolean
   isOpen: boolean
 
@@ -714,6 +722,13 @@ export interface IPersistorMulti {
     min: number,
     max: number
   ): IPersistorMulti
+
+  /**
+   * Queues a `keys` command to return all keys matching a glob-style pattern.
+   * @param pattern - The glob pattern to match against.
+   * @returns The multi-instance for chaining.
+   */
+  keys(pattern: string): IPersistorMulti
 
   /**
    * Executes all queued commands and returns their results.

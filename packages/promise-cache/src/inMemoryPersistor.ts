@@ -651,6 +651,16 @@ export class InMemoryPersistor implements IPersistor {
    *
    * @returns {Promise<'OK'>} Resolves to `'OK'` after all data is cleared.
    */
+  async keys(pattern: string): Promise<string[]> {
+    const regex = new RegExp(
+      `^${pattern
+        .replace(/[.+^${}()|[\]\\]/g, '\\$&')
+        .replace(/\*/g, '.*')
+        .replace(/\?/g, '.')}$`
+    )
+    return [...this.store.keys()].filter((key) => regex.test(key))
+  }
+
   async flushAll(): Promise<'OK'> {
     this.store.clear()
     for (const timeout of this.expirations.values()) {
@@ -1173,6 +1183,11 @@ class InMemoryMulti implements IPersistorMulti {
    */
   zRem(key: string, members: string | string[]): IPersistorMulti {
     this.commands.add(() => this.persistor.zRem(key, members))
+    return this
+  }
+
+  keys(pattern: string): IPersistorMulti {
+    this.commands.add(() => this.persistor.keys(pattern))
     return this
   }
 

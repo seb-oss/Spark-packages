@@ -375,6 +375,50 @@ describe('zRangeByScoreWithScores', () => {
   })
 })
 
+describe('keys', () => {
+  test('returns all keys when pattern is *', async () => {
+    await redisClient.set('a', '1')
+    await redisClient.set('b', '2')
+    await memoryClient.set('a', '1')
+    await memoryClient.set('b', '2')
+    expect((await redisClient.keys('*')).sort()).toEqual(
+      (await memoryClient.keys('*')).sort()
+    )
+  })
+  test('returns matching keys for prefix pattern', async () => {
+    await redisClient.set('security:order:1', 'x')
+    await redisClient.set('security:order:2', 'y')
+    await redisClient.set('other:key', 'z')
+    await memoryClient.set('security:order:1', 'x')
+    await memoryClient.set('security:order:2', 'y')
+    await memoryClient.set('other:key', 'z')
+    expect((await redisClient.keys('security:order:*')).sort()).toEqual(
+      (await memoryClient.keys('security:order:*')).sort()
+    )
+  })
+  test('returns empty array when no keys match', async () => {
+    await redisClient.set('other:key', 'z')
+    await memoryClient.set('other:key', 'z')
+    expect(await redisClient.keys('security:order:*')).toEqual(
+      await memoryClient.keys('security:order:*')
+    )
+  })
+  test('returns empty array when store is empty', async () => {
+    expect(await redisClient.keys('*')).toEqual(await memoryClient.keys('*'))
+  })
+  test('single character wildcard ?', async () => {
+    await redisClient.set('ha', '1')
+    await redisClient.set('hb', '2')
+    await redisClient.set('hab', '3')
+    await memoryClient.set('ha', '1')
+    await memoryClient.set('hb', '2')
+    await memoryClient.set('hab', '3')
+    expect((await redisClient.keys('h?')).sort()).toEqual(
+      (await memoryClient.keys('h?')).sort()
+    )
+  })
+})
+
 describe('multi', () => {
   test('mix', async () => {
     const rMulti = redisClient.multi()
