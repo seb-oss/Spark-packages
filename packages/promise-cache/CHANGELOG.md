@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 6.5.0
+
+### Minor Changes
+
+- 2cff3d4: IPersistor and InMemoryPersistor now support keys()
+
 ## 6.4.29
 
 ### Patch Changes
