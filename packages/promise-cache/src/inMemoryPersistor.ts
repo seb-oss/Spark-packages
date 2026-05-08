@@ -170,13 +170,17 @@ export class InMemoryPersistor implements IPersistor {
    * @param {string} key - The key to delete.
    * @returns {Promise<number>} Resolves to `1` if the key was deleted, or `0` if the key did not exist.
    */
-  async del(key: string): Promise<number> {
-    const existed = this.store.has(key)
-    if (existed) {
-      this.store.delete(key)
-      this.clearExpiration(key)
+  async del(key: string | string[]): Promise<number> {
+    const keys = Array.isArray(key) ? key : [key]
+    let deleted = 0
+    for (const k of keys) {
+      if (this.store.has(k)) {
+        this.store.delete(k)
+        this.clearExpiration(k)
+        deleted++
+      }
     }
-    return existed ? 1 : 0
+    return deleted
   }
 
   /**
@@ -808,7 +812,7 @@ class InMemoryMulti implements IPersistorMulti {
    * @param key - The storage key to delete.
    * @returns The `IPersistorMulti` instance to allow method chaining.
    */
-  del(key: string): IPersistorMulti {
+  del(key: string | string[]): IPersistorMulti {
     this.commands.add(() => this.persistor.del(key))
     return this
   }

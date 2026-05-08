@@ -3,23 +3,38 @@ import {
   type StartedRedisContainer,
 } from '@testcontainers/redis'
 import { createClient } from 'redis'
-import { afterEach, beforeEach, describe, expect, test } from 'vitest'
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  test,
+} from 'vitest'
 import { InMemoryPersistor } from './inMemoryPersistor'
 
 let redis: StartedRedisContainer
 let redisClient: ReturnType<typeof createClient>
 let memoryClient: InMemoryPersistor
 
-beforeEach(async () => {
-  redis = await new RedisContainer('redis:8-alpine').withReuse().start()
+beforeAll(async () => {
+  redis = await new RedisContainer('redis:8-alpine').start()
   redisClient = createClient({ url: redis.getConnectionUrl() })
   await redisClient.connect()
-  memoryClient = new InMemoryPersistor()
 }, 60_000)
+
+afterAll(async () => {
+  await redisClient.disconnect()
+  await redis.stop()
+})
+
+beforeEach(() => {
+  memoryClient = new InMemoryPersistor()
+})
+
 afterEach(async () => {
   await redis.executeCliCmd('FLUSHALL')
-  await redisClient.close()
-  await redis.stop()
 })
 
 describe('set, get', () => {
@@ -372,6 +387,59 @@ describe('zRangeByScoreWithScores', () => {
     expect(await redisClient.zRangeByScoreWithScores(key, 0, 9999)).toEqual(
       await memoryClient.zRangeByScoreWithScores(key, 0, 9999)
     )
+  })
+})
+
+describe('del', () => {
+  test('deletes a single key', async () => {
+    await redisClient.set('a', '1')
+    await memoryClient.set('a', '1')
+    expect(await redisClient.del('a')).toEqual(await memoryClient.del('a'))
+    expect(await redisClient.get('a')).toEqual(await memoryClient.get('a'))
+  })
+  test('deletes multiple keys', async () => {
+    await redisClient.set('a', '1')
+    await redisClient.set('b', '2')
+    await redisClient.set('c', '3')
+    await memoryClient.set('a', '1')
+    await memoryClient.set('b', '2')
+    await memoryClient.set('c', '3')
+    expect(await redisClient.del(['a', 'b'])).toEqual(
+      await memoryClient.del(['a', 'b'])
+    )
+    expect(await redisClient.get('a')).toEqual(await memoryClient.get('a'))
+    expect(await redisClient.get('b')).toEqual(await memoryClient.get('b'))
+    expect(await redisClient.get('c')).toEqual(await memoryClient.get('c'))
+  })
+  test('returns 0 for missing key', async () => {
+    expect(await redisClient.del('missing')).toEqual(
+      await memoryClient.del('missing')
+    )
+  })
+  test('returns count of deleted keys', async () => {
+    await redisClient.set('a', '1')
+    await redisClient.set('b', '2')
+    await memoryClient.set('a', '1')
+    await memoryClient.set('b', '2')
+    expect(await redisClient.del(['a', 'b', 'missing'])).toEqual(
+      await memoryClient.del(['a', 'b', 'missing'])
+    )
+  })
+})
+
+describe('del multi', () => {
+  test('deletes multiple keys in a batch', async () => {
+    await redisClient.set('a', '1')
+    await redisClient.set('b', '2')
+    await memoryClient.set('a', '1')
+    await memoryClient.set('b', '2')
+    const rMulti = redisClient.multi()
+    const mMulti = memoryClient.multi()
+    rMulti.del(['a', 'b'])
+    mMulti.del(['a', 'b'])
+    expect(await rMulti.exec()).toEqual(await mMulti.exec())
+    expect(await redisClient.get('a')).toEqual(await memoryClient.get('a'))
+    expect(await redisClient.get('b')).toEqual(await memoryClient.get('b'))
   })
 })
 

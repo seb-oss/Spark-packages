@@ -104,11 +104,11 @@ export interface IPersistor {
   get(key: string): Promise<string | null>
 
   /**
-   * Deletes a key from Redis or Memory.
-   * @param key - The storage key.
-   * @returns Resolves to the number of keys removed (`1` if deleted, `0` if the key was not found).
+   * Deletes one or more keys from Redis or Memory.
+   * @param key - The storage key or an array of keys.
+   * @returns Resolves to the number of keys removed.
    */
-  del(key: string): Promise<number>
+  del(key: string | string[]): Promise<number>
 
   /**
    * Sets a time-to-live (TTL) in seconds for a key.
@@ -469,11 +469,11 @@ export interface IPersistorMulti {
   get(key: string): IPersistorMulti
 
   /**
-   * Deletes a key from Redis or Memory.
-   * @param key - The storage key.
+   * Deletes one or more keys from Redis or Memory.
+   * @param key - The storage key or an array of keys.
    * @returns The same `IPersistorMulti` instance, enabling method chaining.
    */
-  del(key: string): IPersistorMulti
+  del(key: string | string[]): IPersistorMulti
 
   /**
    * Sets a time-to-live (TTL) in seconds for a key.
