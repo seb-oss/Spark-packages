@@ -11,10 +11,10 @@
   ],
   "dependencies": {
     "@google-cloud/pubsub": "5.3.0",
-    "avsc": "5.7.9"
+    "avsc": "5.7.9",
+    "uuid": "11.1.1"
   },
   "keywords": [
-    "google apis",
     "google api",
     "google",
     "google cloud platform",

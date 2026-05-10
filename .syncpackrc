@@ -12,6 +12,12 @@
       "isIgnored": true
     },
     {
+      "label": "Security pins - explicit transitive dep overrides",
+      "dependencies": ["uuid", "yaml"],
+      "packages": ["@sebspark/pubsub", "@sebspark/socket.io-gcp-pubsub-emitter", "@sebspark/otel"],
+      "isIgnored": true
+    },
+    {
       "label": "Ignore peer dependencies",
       "dependencyTypes": ["peer"],
       "dependencies": ["**"],
