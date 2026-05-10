@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.16
+
+### Patch Changes
+
+- a62ddaa: Updated vulnerable dependencies
+
 ## 1.8.15
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.18
+
+### Patch Changes
+
+- a62ddaa: Updated vulnerable dependencies
+
 ## 1.0.17
 
 ### Patch Changes
