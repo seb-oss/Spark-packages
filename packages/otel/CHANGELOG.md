@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 4.1.5
+
+### Patch Changes
+
+- a62ddaa: Updated vulnerable dependencies
+
 ## 4.1.4
 
 ### Patch Changes

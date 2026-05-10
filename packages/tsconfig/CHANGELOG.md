@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.18
+
+### Patch Changes
+
+- a62ddaa: Updated vulnerable dependencies
+
 ## 3.0.17
 
 ### Patch Changes
