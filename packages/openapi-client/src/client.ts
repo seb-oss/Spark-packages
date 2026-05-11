@@ -37,10 +37,6 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
   const logger = getLogger('TypedClient')
 
-  logger.debug(
-    `client initialized with arrayFormat '${globalOptions?.arrayFormat}'`
-  )
-
   if (globalOptions?.authorizationTokenGenerator) {
     logger.debug('authorizationTokenGenerator is set')
 
@@ -108,30 +104,6 @@ export const TypedClient = <C extends Partial<BaseClient>>(
     createAuthRefreshInterceptorFunc(axiosInstance, refreshAuthLogic)
   }
 
-  /* istanbul ignore else */
-  if (logger) {
-    axiosInstance.interceptors.request.use((request) => {
-      const requestObject = {
-        url: request.url,
-        params: request.params,
-        headers: request.headers,
-      }
-      logger.debug('request', requestObject)
-      return request
-    })
-
-    axiosInstance.interceptors.response.use((response) => {
-      const responseObject = {
-        data: response.data,
-        config: response.config,
-        headers: response.headers,
-      }
-
-      logger.debug('response', responseObject)
-      return response
-    })
-  }
-
   const client: BaseClient = {
     get: (url, args, opts) =>
       callServer(
@@ -176,12 +148,10 @@ const callServer = async <
 >(
   axiosInstance: AxiosInstance,
   args: Partial<ClientOptions & RequestArgs>,
-  logger: ReturnType<typeof getLogger>
+  _logger: ReturnType<typeof getLogger>
 ): Promise<R> => {
   try {
     const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
-
-    logger.debug(`[callServer] typeof serializer: ${typeof serializer}`)
 
     const body =
       args.method?.toLowerCase() === 'get' ||
