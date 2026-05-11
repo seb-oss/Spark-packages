@@ -1,5 +1,11 @@
 # @sebspark/openapi-client
 
+## 4.2.7
+
+### Patch Changes
+
+- b617c77: Remove debug logs
+
 ## 4.2.6
 
 ### Patch Changes
