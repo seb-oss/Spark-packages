@@ -3883,7 +3883,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.2.6, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.2.7, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
@@ -3912,7 +3912,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
-    "@sebspark/openapi-client": "npm:4.2.6"
+    "@sebspark/openapi-client": "npm:4.2.7"
     "@sebspark/openapi-core": "npm:4.1.15"
     "@sebspark/openapi-express": "npm:5.4.6"
     "@sebspark/openapi-typegen": "npm:5.1.4"
