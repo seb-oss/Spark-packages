@@ -1,7 +1,7 @@
 import express, { type Express, Router } from 'express'
 import { agent } from 'supertest'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { ReadinessPayload } from '../dist/index.mjs'
+import type { ReadinessPayload } from './types'
 import { DependencyMonitor } from './dependency-monitor'
 import { HealthMonitor } from './health-monitor'
 

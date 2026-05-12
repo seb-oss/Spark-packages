@@ -15,7 +15,7 @@
     "lint:watch": "turbo watch lint",
     "lint:write": "biome check --write",
     "knip": "knip",
-    "lint": "turbo lint",
+    "lint": "node ./tools/check-no-dist-imports.mjs && turbo lint",
     "release": "turbo build && npx changeset publish",
     "smoketest": "yarn syncpack && yarn depcheck && yarn format && yarn lint && yarn build && yarn depcheck && yarn test",
     "start": "turbo watch lint test typecheck",
