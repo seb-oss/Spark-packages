@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { OpenApiDocument, PathItemObject } from './openapi'
+import type { OpenApiDocument, PathItemObject } from './openapi'
 import {
   appendVersionToServers,
   disableUnimplementedPaths,

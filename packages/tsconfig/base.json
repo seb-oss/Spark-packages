@@ -15,7 +15,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2023",
-    "types": ["node"]
+    "types": ["node"],
+    "verbatimModuleSyntax": true
   },
   "exclude": ["dist", "build", "node_modules", "**/*.spec.ts"]
 }

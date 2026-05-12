@@ -1,6 +1,22 @@
-import type { AxiosError } from 'axios'
 // biome-ignore lint/style/useNodejsImportProtocol: use 'util' for RN Metro + polyfill support
 import { inspect } from 'util'
+
+interface AxiosLikeResponse {
+  status?: number
+  statusText?: string
+  data?: unknown
+}
+
+interface AxiosLikeError {
+  response?: AxiosLikeResponse
+  message?: string
+  name?: string
+  stack?: string
+}
+
+function isAxiosLikeError(err: unknown): err is AxiosLikeError {
+  return typeof err === 'object' && err !== null
+}
 
 export type ClientErrorCode =
   | 400
@@ -410,20 +426,18 @@ export const createHttpError = (
   return new HttpError(statusCode, message ?? 'Error', cause)
 }
 
-export const fromAxiosError = (axiosError: AxiosError): HttpError => {
+export const fromAxiosError = (error: unknown): HttpError => {
+  const e: AxiosLikeError = isAxiosLikeError(error) ? error : {}
   // Default to 500 Internal Server Error if the status code is not available
-  const statusCode = (axiosError.response?.status || 500) as ErrorCode
-  const message =
-    axiosError.response?.statusText ||
-    axiosError.message ||
-    'Internal Server Error'
+  const statusCode = (e.response?.status || 500) as ErrorCode
+  const message = e.response?.statusText || e.message || 'Internal Server Error'
 
   // The internal error can contain more specific details about the Axios error
-  const cause = new Error(axiosError.message)
-  cause.name = axiosError.name
-  cause.stack = axiosError.stack
+  const cause = new Error(e.message)
+  cause.name = e.name ?? 'Error'
+  cause.stack = e.stack
   // If the error response has a data property pass it along
-  cause.cause = axiosError?.response?.data
+  cause.cause = e.response?.data
 
   return createHttpError(statusCode, message, cause)
 }

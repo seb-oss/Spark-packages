@@ -175,7 +175,7 @@ const callServer = async <
     )
     return { headers, data } as R
   } catch (error) {
-    throw fromAxiosError(error as AxiosError)
+    throw fromAxiosError(error)
   }
 }
 

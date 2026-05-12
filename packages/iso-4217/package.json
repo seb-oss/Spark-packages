@@ -23,7 +23,7 @@
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {
-    "fast-xml-parser": "5.7.3"
+    "fast-xml-parser": "5.8.0"
   },
   "keywords": [
     "Financial",
