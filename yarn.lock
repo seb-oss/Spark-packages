@@ -3766,7 +3766,7 @@ __metadata:
   dependencies:
     "@ovotech/avro-ts": "npm:6.2.0"
     "@sebspark/avsc-isometric": "npm:0.4.11"
-    "@sebspark/tsconfig": "npm:3.0.18"
+    "@sebspark/tsconfig": "npm:3.0.19"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:5.6.2"
@@ -3776,7 +3776,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/cli-tester@npm:1.0.16, @sebspark/cli-tester@workspace:packages/cli-tester":
+"@sebspark/cli-tester@npm:1.0.17, @sebspark/cli-tester@workspace:packages/cli-tester":
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
@@ -3806,12 +3806,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.44, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.45, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.2"
-    "@sebspark/otel": "npm:4.1.5"
+    "@sebspark/otel": "npm:4.1.6"
     google-auth-library: "npm:10.6.2"
   languageName: unknown
   linkType: soft
@@ -3822,7 +3822,7 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.3.0"
     "@sebspark/hyper-media": "npm:0.1.4"
-    "@sebspark/promise-cache": "npm:7.0.1"
+    "@sebspark/promise-cache": "npm:7.0.2"
     "@testcontainers/gcloud": "npm:11.14.0"
     "@testcontainers/mockserver": "npm:11.14.0"
     "@testcontainers/redis": "npm:11.14.0"
@@ -3879,17 +3879,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
-    "@sebspark/gcp-iam": "npm:3.0.44"
+    "@sebspark/gcp-iam": "npm:3.0.45"
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.2.7, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.2.8, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
-    "@sebspark/openapi-core": "npm:4.1.15"
-    "@sebspark/openapi-typegen": "npm:5.1.4"
-    "@sebspark/otel": "npm:4.1.5"
+    "@sebspark/openapi-core": "npm:4.1.16"
+    "@sebspark/openapi-typegen": "npm:5.1.5"
+    "@sebspark/otel": "npm:4.1.6"
     "@sebspark/retry": "npm:1.0.13"
     axios: "npm:1.16.0"
     axios-auth-refresh: "npm:5.0.2"
@@ -3898,7 +3898,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-core@npm:4.1.15, @sebspark/openapi-core@workspace:packages/openapi-core":
+"@sebspark/openapi-core@npm:4.1.16, @sebspark/openapi-core@workspace:packages/openapi-core":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
@@ -3912,23 +3912,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
-    "@sebspark/openapi-client": "npm:4.2.7"
-    "@sebspark/openapi-core": "npm:4.1.15"
-    "@sebspark/openapi-express": "npm:5.4.6"
-    "@sebspark/openapi-typegen": "npm:5.1.4"
+    "@sebspark/openapi-client": "npm:4.2.8"
+    "@sebspark/openapi-core": "npm:4.1.16"
+    "@sebspark/openapi-express": "npm:5.4.7"
+    "@sebspark/openapi-typegen": "npm:5.1.5"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
     find-free-ports: "npm:3.1.1"
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@npm:5.4.6, @sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.4.7, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@opentelemetry/semantic-conventions": "npm:1.40.0"
-    "@sebspark/openapi-core": "npm:4.1.15"
-    "@sebspark/otel": "npm:4.1.5"
+    "@sebspark/openapi-core": "npm:4.1.16"
+    "@sebspark/otel": "npm:4.1.6"
     "@types/supertest": "npm:7.2.0"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"
@@ -3937,11 +3937,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.1.4, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.1.5, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
-    "@sebspark/openapi-core": "npm:4.1.15"
+    "@sebspark/openapi-core": "npm:4.1.16"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:5.6.2"
@@ -3983,7 +3983,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@npm:4.1.5, @sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:4.1.6, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
@@ -4027,11 +4027,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/promise-cache@npm:7.0.1, @sebspark/promise-cache@workspace:packages/promise-cache":
+"@sebspark/promise-cache@npm:7.0.2, @sebspark/promise-cache@workspace:packages/promise-cache":
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
-    "@sebspark/otel": "npm:4.1.5"
+    "@sebspark/otel": "npm:4.1.6"
     "@testcontainers/redis": "npm:11.14.0"
     date-fns: "npm:4.1.0"
     redis: "npm:5.12.1"
@@ -4094,7 +4094,7 @@ __metadata:
   dependencies:
     "@google-cloud/spanner": "npm:8.7.1"
     "@inquirer/prompts": "npm:8.4.3"
-    "@sebspark/cli-tester": "npm:1.0.16"
+    "@sebspark/cli-tester": "npm:1.0.17"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:11.14.0"
     typescript: "npm:6.0.3"
@@ -4133,7 +4133,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.18, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.19, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:

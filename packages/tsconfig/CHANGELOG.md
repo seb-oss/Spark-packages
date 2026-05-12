@@ -1,5 +1,25 @@
 # @sebspark/tsconfig
 
+## 3.0.19
+
+### Patch Changes
+
+- 41bb8f2: ### `@sebspark/openapi-core`
+
+  `fromAxiosError` no longer references the `AxiosError` type in its signature. It now accepts `unknown` and uses a local duck-typed interface to extract the relevant fields. This removes the `axios` import from the published `dist/index.d.mts`, preventing downstream bundlers (rolldown/tsdown) from treating `AxiosError` as a missing value export.
+
+  ### `@sebspark/tsconfig`
+
+  Added `verbatimModuleSyntax: true` to `base.json`. All packages in the monorepo now emit `import type` modifiers correctly and TypeScript enforces type-only imports at typecheck time.
+
+  ### `@sebspark/openapi-client`
+
+  Updated `fromAxiosError` call site to pass `error` directly as `unknown` instead of casting to `AxiosError`.
+
+  ### Other packages
+
+  Dependency updates.
+
 ## 3.0.18
 
 ### Patch Changes
