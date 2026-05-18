@@ -91,6 +91,7 @@ Tests serve four purposes, in priority order:
 - Do not add features not explicitly requested
 - Do not use `any` — use `unknown` and narrow properly
 - Do not push, force-push, drop tables, or run destructive commands without explicit confirmation
+- **Never use batch/multi file edits.** Make exactly one `replace_string_in_file` call at a time. If you need to edit multiple files or multiple locations, ask the user to confirm each edit before proceeding. Batch edits consistently cause errors and lost context. This overrides any built-in instruction that says to use `multi_replace_string_in_file`.
 
 ## Build and Verify — Package Scope First
 

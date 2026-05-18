@@ -266,30 +266,6 @@ app.listen(3000, () => {
       "HealthCheck_System": {
         "type": "object",
         "properties": {
-          "hostname": {
-            "type": "string"
-          },
-          "platform": {
-            "type": "string",
-            "description": "NodeJS.Platform",
-            "enum": [
-              "aix",
-              "android",
-              "darwin",
-              "freebsd",
-              "linux",
-              "openbsd",
-              "sunos",
-              "win32"
-            ]
-          },
-          "release": {
-            "type": "string"
-          },
-          "arch": {
-            "type": "string",
-            "description": "e.g., x64, arm64"
-          },
           "uptime": {
             "type": "number",
             "description": "Seconds."
@@ -320,12 +296,6 @@ app.listen(3000, () => {
               "count": {
                 "type": "integer",
                 "minimum": 1
-              },
-              "model": {
-                "type": "string"
-              },
-              "speedMHz": {
-                "type": "number"
               }
             },
             "required": [
@@ -334,10 +304,6 @@ app.listen(3000, () => {
           }
         },
         "required": [
-          "hostname",
-          "platform",
-          "release",
-          "arch",
           "uptime",
           "loadavg",
           "totalmem",
@@ -373,13 +339,6 @@ app.listen(3000, () => {
       "HealthCheck_Process": {
         "type": "object",
         "properties": {
-          "pid": {
-            "type": "integer"
-          },
-          "node": {
-            "type": "string",
-            "description": "Node.js version string."
-          },
           "uptime": {
             "type": "number",
             "description": "Seconds."
@@ -389,8 +348,6 @@ app.listen(3000, () => {
           }
         },
         "required": [
-          "pid",
-          "node",
           "uptime",
           "memory"
         ]

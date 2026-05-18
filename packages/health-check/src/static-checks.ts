@@ -18,10 +18,6 @@ export const liveness = (): Liveness => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     system: {
-      hostname: os.hostname(),
-      platform: os.platform(),
-      release: os.release(),
-      arch: os.arch(),
       uptime: os.uptime(),
       loadavg: os.loadavg() as [number, number, number],
       totalmem: total,
@@ -29,15 +25,11 @@ export const liveness = (): Liveness => {
       memUsedRatio,
       cpus: {
         count: cpus.length,
-        model: cpus[0]?.model,
-        speedMHz: cpus[0]?.speed,
       },
     },
     process: {
-      pid: process.pid,
-      node: process.versions.node,
       uptime: process.uptime(),
-      memory: process.memoryUsage(), // rss, heapTotal, heapUsed, external, arrayBuffers
+      memory: process.memoryUsage(),
     },
   }
 }

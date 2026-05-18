@@ -35,31 +35,37 @@ describe('HealthMonitor', () => {
       expect(typeof res.timestamp).toBe('string')
       expect(Date.now() - Date.parse(res.timestamp)).toBeLessThan(50)
 
-      // system summary
+      // system load metrics
       expect(res.system).toMatchObject({
-        hostname: expect.any(String),
-        platform: expect.any(String),
-        release: expect.any(String),
-        arch: expect.any(String),
         uptime: expect.any(Number),
         totalmem: expect.any(Number),
         freemem: expect.any(Number),
         memUsedRatio: expect.any(Number),
         cpus: {
           count: expect.any(Number),
-          // model/speedMHz are optional; don’t assert them strictly
         },
       })
       expect(Array.isArray(res.system.loadavg)).toBe(true)
       expect(res.system.loadavg).toHaveLength(3)
 
-      // process summary
+      // process load metrics
       expect(res.process).toMatchObject({
-        pid: expect.any(Number),
-        node: expect.any(String),
         uptime: expect.any(Number),
         memory: expect.any(Object),
       })
+    })
+    it('does not expose fingerprinting fields', () => {
+      using monitor = new HealthMonitor()
+      const res = monitor.live()
+
+      expect(res.system).not.toHaveProperty('hostname')
+      expect(res.system).not.toHaveProperty('platform')
+      expect(res.system).not.toHaveProperty('release')
+      expect(res.system).not.toHaveProperty('arch')
+      expect(res.system.cpus).not.toHaveProperty('model')
+      expect(res.system.cpus).not.toHaveProperty('speedMHz')
+      expect(res.process).not.toHaveProperty('pid')
+      expect(res.process).not.toHaveProperty('node')
     })
   })
   describe('.ready', () => {
