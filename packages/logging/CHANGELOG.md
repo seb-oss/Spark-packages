@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.13
+
+### Patch Changes
+
+- c5e9c99: Resolve protobufjs CVE by pinning to `8.3.0` across all affected packages via root resolutions. Upgraded OpenTelemetry packages to `0.218.0` (which also eliminates the previous hardpin on `protobufjs@8.0.1`), `axios` to `1.16.1`, `ws` to `8.20.1`, `qs` to `6.15.2`, and `@opentelemetry/semantic-conventions` to `1.41.1`.
+
 ## 2.0.12
 
 ### Patch Changes
