@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/ws": "8.18.1",
     "nock": "15.0.0",
-    "ws": "8.20.0"
+    "ws": "8.20.1"
   },
   "repository": {
     "type": "git",
