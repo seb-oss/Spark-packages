@@ -44,7 +44,7 @@
     "@opentelemetry/resources": "2.7.1",
     "@opentelemetry/sdk-logs": "0.217.0",
     "@opentelemetry/sdk-metrics": "2.7.1",
-    "@opentelemetry/sdk-node": "0.217.0",
+    "@opentelemetry/sdk-node": "0.218.0",
     "@opentelemetry/sdk-trace-node": "2.7.1",
     "@opentelemetry/semantic-conventions": "1.40.0",
     "@sebspark/opentelemetry-instrumentation-opensearch": "0.3.5",
