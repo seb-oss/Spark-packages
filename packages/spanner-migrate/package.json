@@ -35,6 +35,9 @@
     "typescript": "6.0.3",
     "yargs": "18.0.0"
   },
+  "resolutions": {
+    "protobufjs": "8.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"

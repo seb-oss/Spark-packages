@@ -23,6 +23,9 @@
     "google pubsub",
     "pubsub"
   ],
+  "resolutions": {
+    "protobufjs": "8.3.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"

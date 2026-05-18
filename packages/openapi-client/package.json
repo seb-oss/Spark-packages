@@ -33,7 +33,7 @@
     "@sebspark/openapi-core": "4.1.16",
     "@sebspark/otel": "4.1.6",
     "@sebspark/retry": "1.0.13",
-    "axios": "1.16.0",
+    "axios": "1.16.1",
     "axios-auth-refresh": "5.0.2"
   },
   "repository": {
