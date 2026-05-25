@@ -3987,7 +3987,7 @@ __metadata:
     "@testcontainers/gcloud": "npm:11.14.0"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.3"
-    socket.io-adapter: "npm:2.5.6"
+    socket.io-adapter: "npm:2.5.7"
     socket.io-client: "npm:4.8.3"
     uuid: "npm:14.0.0"
   languageName: unknown
@@ -11140,13 +11140,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socket.io-adapter@npm:2.5.6":
-  version: 2.5.6
-  resolution: "socket.io-adapter@npm:2.5.6"
+"socket.io-adapter@npm:2.5.7":
+  version: 2.5.7
+  resolution: "socket.io-adapter@npm:2.5.7"
   dependencies:
     debug: "npm:~4.4.1"
-    ws: "npm:~8.18.3"
-  checksum: 10c0/2af9827c3e8e2a445d7d1523f7ad4fcc37009da44f72042e8a9af27e4caf29fe0a34de6771a6e9971a0ff8d527631fe25b80230ff6c42c045e2913f0ac308059
+    ws: "npm:~8.20.1"
+  checksum: 10c0/c911e18e2a8a1cf30117d3df7f6309a6d1c802cc3cc1115606d75e0928ea270978800725d4557526bfb1853ccaa2bc33b0d221a361cd2653bdd00b7e313ffab0
   languageName: node
   linkType: hard
 
@@ -12916,7 +12916,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.20.1":
+"ws@npm:8.20.1, ws@npm:~8.20.1":
   version: 8.20.1
   resolution: "ws@npm:8.20.1"
   peerDependencies:
@@ -12943,21 +12943,6 @@ __metadata:
     utf-8-validate:
       optional: true
   checksum: 10c0/f4a49064afae4500be772abdc2211c8518f39e1c959640457dcee15d4488628620625c783902a52af2dd02f68558da2868fd06e6fd0e67ebcd09e6881b1b5bfe
-  languageName: node
-  linkType: hard
-
-"ws@npm:~8.18.3":
-  version: 8.18.3
-  resolution: "ws@npm:8.18.3"
-  peerDependencies:
-    bufferutil: ^4.0.1
-    utf-8-validate: ">=5.0.2"
-  peerDependenciesMeta:
-    bufferutil:
-      optional: true
-    utf-8-validate:
-      optional: true
-  checksum: 10c0/eac918213de265ef7cb3d4ca348b891a51a520d839aa51cdb8ca93d4fa7ff9f6ccb339ccee89e4075324097f0a55157c89fa3f7147bde9d8d7e90335dc087b53
   languageName: node
   linkType: hard
 
