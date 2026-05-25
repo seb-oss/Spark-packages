@@ -3706,7 +3706,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/expect-eventually@workspace:packages/expect-eventually"
   dependencies:
-    "@vitest/expect": "npm:4.1.6"
+    "@vitest/expect": "npm:4.1.7"
     vitest: "npm:4.1.6"
   languageName: unknown
   linkType: soft
@@ -4706,6 +4706,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/expect@npm:4.1.7":
+  version: 4.1.7
+  resolution: "@vitest/expect@npm:4.1.7"
+  dependencies:
+    "@standard-schema/spec": "npm:^1.1.0"
+    "@types/chai": "npm:^5.2.2"
+    "@vitest/spy": "npm:4.1.7"
+    "@vitest/utils": "npm:4.1.7"
+    chai: "npm:^6.2.2"
+    tinyrainbow: "npm:^3.1.0"
+  checksum: 10c0/1a72387c6d3cac1e12cd4df382e666d96560b38001ea0133f1e0a22825f71ccf1640ccce13244296b0054c15cf04442f3adbd67dfc57fe542bd35a46cd805487
+  languageName: node
+  linkType: hard
+
 "@vitest/mocker@npm:4.1.6":
   version: 4.1.6
   resolution: "@vitest/mocker@npm:4.1.6"
@@ -4731,6 +4745,15 @@ __metadata:
   dependencies:
     tinyrainbow: "npm:^3.1.0"
   checksum: 10c0/f818a6abff9b7cf642edc2d0fe84d4f124911696bc7591f2af9ab6d88685b72133a1e9f87499e9b4dc2314dff85403ea66c64f7b408b2eb39f9880c6d3517ca0
+  languageName: node
+  linkType: hard
+
+"@vitest/pretty-format@npm:4.1.7":
+  version: 4.1.7
+  resolution: "@vitest/pretty-format@npm:4.1.7"
+  dependencies:
+    tinyrainbow: "npm:^3.1.0"
+  checksum: 10c0/49ef801171708e3a92214e8720efbedbd6e0e6baf17971aaf4feb7422e5c9eba82262c24a9e6dd4d41a31fae77bd31d5b37cf140d13e0ac4ce29a7457bdc692f
   languageName: node
   linkType: hard
 
@@ -4763,6 +4786,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/spy@npm:4.1.7":
+  version: 4.1.7
+  resolution: "@vitest/spy@npm:4.1.7"
+  checksum: 10c0/be2a95d5c5c438b57c9b33cef1289fb02659214754b5e946cb4b8183e2b5089e49e3fda6ca05981f3ea9872b207595db109e25072668c0a671203f69fddbbe99
+  languageName: node
+  linkType: hard
+
 "@vitest/utils@npm:4.1.6":
   version: 4.1.6
   resolution: "@vitest/utils@npm:4.1.6"
@@ -4771,6 +4801,17 @@ __metadata:
     convert-source-map: "npm:^2.0.0"
     tinyrainbow: "npm:^3.1.0"
   checksum: 10c0/36437888088a1aae8565e62b9f145de9fb1599725574924477c655c7617ad677b575ac0eb3f2b3288854ed1aafff914a0417dffbb7f5244c821f157119701227
+  languageName: node
+  linkType: hard
+
+"@vitest/utils@npm:4.1.7":
+  version: 4.1.7
+  resolution: "@vitest/utils@npm:4.1.7"
+  dependencies:
+    "@vitest/pretty-format": "npm:4.1.7"
+    convert-source-map: "npm:^2.0.0"
+    tinyrainbow: "npm:^3.1.0"
+  checksum: 10c0/aa0079d8923506300527dc23ff68cf090ffcb2c6a9549e598ae22ba0eb8a6bb4448b10724b38bc6b077f9957333302a857d791ad2f7abd807bb6263c9a218833
   languageName: node
   linkType: hard
 
