@@ -3732,7 +3732,7 @@ __metadata:
     "@testcontainers/mockserver": "npm:11.14.0"
     "@testcontainers/redis": "npm:11.14.0"
     express: "npm:5.2.1"
-    mockserver-client: "npm:5.15.0"
+    mockserver-client: "npm:6.0.0"
     supertest: "npm:7.2.2"
   languageName: unknown
   linkType: soft
@@ -5673,10 +5673,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browser-or-node@npm:~2.1.1":
-  version: 2.1.1
-  resolution: "browser-or-node@npm:2.1.1"
-  checksum: 10c0/f727639581182f831b5bf4686b401dcad5cc29b5a6b70059c0aa90990844b8f15f3a1d328cc8e83dd3b4bfa69175f9bdf2f4383faec14d47205bfea532b9964d
+"browser-or-node@npm:~3.0.0":
+  version: 3.0.0
+  resolution: "browser-or-node@npm:3.0.0"
+  checksum: 10c0/05db930e0a21bfffef74dbc4a27eaa12113e7f43a95f3b80a925f624212d701b86034cdfb5c422bdee061c4ae8442d294feee8996e6ae2555a8e46ea0b830b52
   languageName: node
   linkType: hard
 
@@ -9360,14 +9360,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mockserver-client@npm:5.15.0":
-  version: 5.15.0
-  resolution: "mockserver-client@npm:5.15.0"
+"mockserver-client@npm:6.0.0":
+  version: 6.0.0
+  resolution: "mockserver-client@npm:6.0.0"
   dependencies:
-    browser-or-node: "npm:~2.1.1"
+    browser-or-node: "npm:~3.0.0"
     q: "npm:~2.0.3"
     websocket: "npm:~1.0.34"
-  checksum: 10c0/2a135c7980d90bd8c90443079221e631b688fb6f6488d0636bd0a75ebccafe69b6e2ee33799fedbfd1371dcdfeb40d32a8f38fde0e1ca176980c4a55fbeb3288
+  checksum: 10c0/7d7f70625b84f64a9297efb64fc0dc55e9ceb9403dc231fda01059b285a6da057d19fb05ebb3186441df080a1933ee28b5abdcad833f4b3b893a85be7c8a3ea9
   languageName: node
   linkType: hard
 
