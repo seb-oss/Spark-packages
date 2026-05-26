@@ -1,5 +1,11 @@
 # @sebspark/environment
 
+## 0.1.0
+
+### Minor Changes
+
+- 626c170: add initSecretStore function and tests
+
 ## 0.0.4
 
 ### Patch Changes
