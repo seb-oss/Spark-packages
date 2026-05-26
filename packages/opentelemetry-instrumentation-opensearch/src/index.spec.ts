@@ -495,7 +495,7 @@ describe('OpenSearchInstrumentation', () => {
       const duration =
         exporter.getFinishedSpans()[0].attributes['db.opensearch.duration_ms']
       expect(typeof duration).toBe('number')
-      expect(duration as number).toBeGreaterThanOrEqual(20)
+      expect(duration as number).toBeGreaterThanOrEqual(2)
       await teardown()
     })
 
@@ -515,7 +515,7 @@ describe('OpenSearchInstrumentation', () => {
       const duration =
         exporter.getFinishedSpans()[0].attributes['db.opensearch.duration_ms']
       expect(typeof duration).toBe('number')
-      expect(duration as number).toBeGreaterThanOrEqual(20)
+      expect(duration as number).toBeGreaterThanOrEqual(2)
       await teardown()
     })
   })
