@@ -22,7 +22,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "date-fns": "4.1.0"
+    "date-fns": "4.3.0"
   },
   "repository": {
     "type": "git",

@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@sebspark/otel": "4.1.7",
-    "date-fns": "4.1.0",
+    "date-fns": "4.3.0",
     "redis": "5.12.1",
     "superjson": "2.2.6"
   },
