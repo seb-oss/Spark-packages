@@ -1,5 +1,6 @@
+import * as fs from 'node:fs'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { initEnvironment } from './index'
+import { initEnvironment, initSecretStore } from './index'
 
 describe('initEnvironment', () => {
   const originalEnv = process.env
@@ -50,5 +51,49 @@ describe('initEnvironment', () => {
     expect(env.optional.OPT_CACHED).toBe('first')
     process.env.OPT_CACHED = 'changed'
     expect(env.optional.OPT_CACHED).toBe('first')
+  })
+})
+
+describe('initEnvironment with additional properties', () => {
+  const originalEnv = process.env
+
+  beforeEach(() => {
+    fs.writeFileSync('GATEWAY_API_KEY', 'secret')
+    fs.writeFileSync('REDIS_PASSWORD', 'secret2')
+    fs.writeFileSync('CACHED_SECRET', 'first')
+  })
+
+  afterEach(() => {
+    try {
+      fs.unlinkSync('GATEWAY_API_KEY')
+      fs.unlinkSync('REDIS_PASSWORD')
+      fs.unlinkSync('CACHED_SECRET')
+    } catch (err) {
+      // Ignore errors if files do not exist
+    }
+  })
+
+  it('returns the value for a present secret', () => {
+    const secretStore = initSecretStore<{
+      GATEWAY_API_KEY: string
+      REDIS_PASSWORD: string
+    }>()
+    expect(secretStore.GATEWAY_API_KEY).toBe('secret')
+    expect(secretStore.REDIS_PASSWORD).toBe('secret2')
+  })
+
+  it('throws when a required secret is missing', () => {
+    fs.unlinkSync('GATEWAY_API_KEY')
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>()
+    expect(() => secretStore.GATEWAY_API_KEY).toThrow(
+      'Secret GATEWAY_API_KEY is required'
+    )
+  })
+
+  it('caches the secret value after first access', () => {
+    const secretStore = initSecretStore<{ CACHED_SECRET: string }>()
+    expect(secretStore.CACHED_SECRET).toBe('first')
+    fs.writeFileSync('CACHED_SECRET', 'changed')
+    expect(secretStore.CACHED_SECRET).toBe('first')
   })
 })
