@@ -1,5 +1,11 @@
 # @sebspark/environment
 
+## 0.1.2
+
+### Patch Changes
+
+- b5f1b3f: add mergeEnvironment helper function
+
 ## 0.1.1
 
 ### Patch Changes
