@@ -38,6 +38,24 @@ export const initEnvironment = <T extends Record<string, string>>() => {
   ) as T & { optional: Partial<T> } & { [key: string]: string }
 }
 
+export const mergeEnvironments = <
+  T extends Record<string, string>,
+  U extends Record<string, string>,
+>(
+  env: T,
+  secrets: U
+): T & U =>
+  new Proxy({} as T & U, {
+    get(_, key) {
+      if (typeof key !== 'string') return undefined
+      try {
+        return (secrets as Record<string, string>)[key]
+      } catch {
+        return (env as Record<string, string>)[key]
+      }
+    },
+  })
+
 type SecretStoreOptions<T> = {
   dir?: string
   fallback?: boolean | Partial<T>

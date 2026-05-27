@@ -1,6 +1,6 @@
 import * as fs from 'node:fs'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { initEnvironment, initSecretStore } from './index'
+import { initEnvironment, initSecretStore, mergeEnvironments } from './index'
 
 describe('initEnvironment', () => {
   const originalEnv = process.env
@@ -51,6 +51,47 @@ describe('initEnvironment', () => {
     expect(env.optional.OPT_CACHED).toBe('first')
     process.env.OPT_CACHED = 'changed'
     expect(env.optional.OPT_CACHED).toBe('first')
+  })
+})
+
+describe('mergeEnvironments', () => {
+  const secretsDir = fs.mkdtempSync('/tmp/secrets-merge-')
+  const originalEnv = process.env
+
+  beforeEach(() => {
+    process.env = { ...originalEnv }
+  })
+
+  afterEach(() => {
+    process.env = originalEnv
+    for (const file of fs.readdirSync(secretsDir)) {
+      fs.unlinkSync(`${secretsDir}/${file}`)
+    }
+  })
+
+  it('reads from env when key is not in secrets', () => {
+    process.env.MY_VAR = 'from-env'
+    const env = initEnvironment<{ MY_VAR: string }>()
+    const secrets = initSecretStore<Record<never, string>>({ dir: secretsDir })
+    const merged = mergeEnvironments(env, secrets)
+    expect(merged.MY_VAR).toBe('from-env')
+  })
+
+  it('prefers secrets over env for overlapping keys', () => {
+    process.env.API_KEY = 'from-env'
+    fs.writeFileSync(`${secretsDir}/API_KEY`, 'from-secret')
+    const env = initEnvironment<{ API_KEY: string }>()
+    const secrets = initSecretStore<{ API_KEY: string }>({ dir: secretsDir })
+    const merged = mergeEnvironments(env, secrets)
+    expect(merged.API_KEY).toBe('from-secret')
+  })
+
+  it('falls back to env when secret file is missing', () => {
+    process.env.API_KEY = 'from-env'
+    const env = initEnvironment<{ API_KEY: string }>()
+    const secrets = initSecretStore<{ API_KEY: string }>({ dir: secretsDir })
+    const merged = mergeEnvironments(env, secrets)
+    expect(merged.API_KEY).toBe('from-env')
   })
 })
 
