@@ -1,4 +1,4 @@
-import type { API } from '@opensearch-project/opensearch'
+import type { API, Types } from '@opensearch-project/opensearch'
 import type { IndexDefinition, MapQueryProperties, Sort } from './common'
 import type {
   FieldCollapse,
@@ -20,11 +20,14 @@ export type SearchRequestBody<T extends IndexDefinition> = Omit<
   API.Search_RequestBody,
   'query' | 'collapse' | 'highlight' | 'sort' | '_source'
 > & {
-  query?: QueryContainer<MapQueryProperties<T>>
-  collapse?: FieldCollapse<MapQueryProperties<T>>
-  highlight?: Highlight<MapQueryProperties<T>>
-  sort?: Sort<T>
-  _source?: SourceConfig<MapQueryProperties<T>>
+  query?: QueryContainer<MapQueryProperties<T>> &
+    Types.Common_QueryDsl.QueryContainer
+  collapse?: FieldCollapse<MapQueryProperties<T>> &
+    Types.Core_Search.FieldCollapse
+  highlight?: Highlight<MapQueryProperties<T>> & Types.Core_Search.Highlight
+  sort?: Sort<T> & API.Search_RequestBody['sort']
+  _source?: SourceConfig<MapQueryProperties<T>> &
+    API.Search_RequestBody['_source']
 }
 
 export type SearchResponse<T extends IndexDefinition> = Prettify<

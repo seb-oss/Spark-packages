@@ -6,10 +6,10 @@ export type BoolQuery<T> = Omit<
   Types.Common_QueryDsl.BoolQuery,
   'must' | 'should' | 'filter' | 'must_not'
 > & {
-  must?: QueryContainer<T>[]
-  should?: QueryContainer<T>[]
-  filter?: QueryContainer<T>[]
-  must_not?: QueryContainer<T>[]
+  must?: QueryContainer<T> | QueryContainer<T>[]
+  should?: QueryContainer<T> | QueryContainer<T>[]
+  filter?: QueryContainer<T> | QueryContainer<T>[]
+  must_not?: QueryContainer<T> | QueryContainer<T>[]
 }
 
 export type BoostingQuery<T> = Omit<

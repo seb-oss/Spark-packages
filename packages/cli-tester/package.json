@@ -22,10 +22,10 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@inquirer/figures": "2.0.5"
+    "@inquirer/figures": "2.0.6"
   },
   "devDependencies": {
-    "@inquirer/prompts": "8.4.3"
+    "@inquirer/prompts": "8.5.0"
   },
   "repository": {
     "type": "git",

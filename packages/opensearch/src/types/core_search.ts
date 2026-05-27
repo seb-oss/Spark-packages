@@ -12,7 +12,8 @@ export type FieldCollapse<T> = Omit<
 }
 
 export type Highlight<T> = Omit<Types.Core_Search.Highlight, 'fields'> & {
-  fields: FieldQuery<T, Types.Core_Search.HighlightField>
+  fields: Record<string, Types.Core_Search.HighlightField> &
+    FieldQuery<T, Types.Core_Search.HighlightField>
 }
 
 export type Hit<T extends IndexDefinition> = Omit<

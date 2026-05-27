@@ -55,8 +55,8 @@
   "devDependencies": {
     "@opensearch-project/opensearch": "3.6.0",
     "@opentelemetry/context-async-hooks": "2.7.1",
-    "@testcontainers/opensearch": "11.14.0",
-    "@testcontainers/redis": "11.14.0",
+    "@testcontainers/opensearch": "12.0.0",
+    "@testcontainers/redis": "12.0.0",
     "axios": "1.16.1",
     "express": "5.2.1",
     "find-free-ports": "3.1.1",

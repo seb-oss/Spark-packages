@@ -1,3 +1,4 @@
+import type { API } from '@opensearch-project/opensearch'
 import { describe, expect, expectTypeOf, it } from 'vitest'
 import {
   bulkCreate,
@@ -208,5 +209,32 @@ describe('TermsQuery type', () => {
       'foo.bar': ['baz', 'qux'],
     }
     expectTypeOf(query).toMatchTypeOf<TermsQuery<PersonQuery>>()
+  })
+})
+
+describe('OpenSearch API compatibility', () => {
+  it('SearchRequest should be assignable to API.Search_Request', () => {
+    const strictReq: SearchRequest<PersonIndex> = {
+      index: personIndex.index,
+      body: {
+        query: {
+          bool: {
+            filter: [
+              {
+                exists: {
+                  field: 'age',
+                },
+              },
+            ],
+          },
+        },
+      },
+    }
+
+    const body: API.Search_RequestBody = strictReq.body
+    const request: API.Search_Request = strictReq
+
+    expect(body.query).toBeDefined()
+    expect(request.body?.query).toBeDefined()
   })
 })

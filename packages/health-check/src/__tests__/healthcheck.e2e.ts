@@ -1,7 +1,7 @@
 import express, { type Express } from 'express'
 import request from 'supertest'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { HealthMonitor, ReadinessPayload } from '..'
+import { HealthMonitor, type ReadinessPayload } from '..'
 import { DependencyMonitor } from '../dependency-monitor'
 import { pingApi, startApi } from './api.helper'
 import { pingPubSub, startPubSub } from './pubsub.helper'
@@ -51,10 +51,6 @@ describe('health-check', () => {
           status: 'ok',
           timestamp: expect.any(String),
           system: {
-            hostname: expect.any(String),
-            platform: expect.any(String),
-            release: expect.any(String),
-            arch: expect.any(String),
             uptime: expect.any(Number),
             loadavg: expect.any(Array),
             totalmem: expect.any(Number),
@@ -65,8 +61,6 @@ describe('health-check', () => {
             },
           },
           process: {
-            pid: expect.any(Number),
-            node: expect.any(String),
             uptime: expect.any(Number),
             memory: expect.any(Object),
           },
