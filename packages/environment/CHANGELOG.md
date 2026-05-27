@@ -1,5 +1,11 @@
 # @sebspark/environment
 
+## 0.1.1
+
+### Patch Changes
+
+- 061b497: adjust filepath and add support for local env
+
 ## 0.1.0
 
 ### Minor Changes
