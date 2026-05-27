@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/health-check",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@sebspark/hyper-media": "0.1.4",
-    "@sebspark/promise-cache": "7.0.3",
+    "@sebspark/promise-cache": "7.0.4",
     "express": "5.2.1"
   },
   "devDependencies": {
