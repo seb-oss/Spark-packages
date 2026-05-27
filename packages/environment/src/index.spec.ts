@@ -54,46 +54,127 @@ describe('initEnvironment', () => {
   })
 })
 
-describe('initEnvironment with additional properties', () => {
-  const originalEnv = process.env
+describe('initSecretStore', () => {
+  const secretsDir = fs.mkdtempSync('/tmp/secrets-')
 
   beforeEach(() => {
-    fs.writeFileSync('GATEWAY_API_KEY', 'secret')
-    fs.writeFileSync('REDIS_PASSWORD', 'secret2')
-    fs.writeFileSync('CACHED_SECRET', 'first')
+    fs.writeFileSync(`${secretsDir}/GATEWAY_API_KEY`, 'secret')
+    fs.writeFileSync(`${secretsDir}/REDIS_PASSWORD`, 'secret2')
+    fs.writeFileSync(`${secretsDir}/CACHED_SECRET`, 'first')
   })
 
   afterEach(() => {
-    try {
-      fs.unlinkSync('GATEWAY_API_KEY')
-      fs.unlinkSync('REDIS_PASSWORD')
-      fs.unlinkSync('CACHED_SECRET')
-    } catch (err) {
-      // Ignore errors if files do not exist
+    for (const file of fs.readdirSync(secretsDir)) {
+      fs.unlinkSync(`${secretsDir}/${file}`)
     }
   })
 
-  it('returns the value for a present secret', () => {
+  it('reads secrets from the given dir', () => {
     const secretStore = initSecretStore<{
       GATEWAY_API_KEY: string
       REDIS_PASSWORD: string
-    }>()
+    }>({ dir: secretsDir })
     expect(secretStore.GATEWAY_API_KEY).toBe('secret')
     expect(secretStore.REDIS_PASSWORD).toBe('secret2')
   })
 
-  it('throws when a required secret is missing', () => {
-    fs.unlinkSync('GATEWAY_API_KEY')
-    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>()
+  it('throws when a required secret is missing and there is no fallback', () => {
+    fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+    })
+    expect(() => secretStore.GATEWAY_API_KEY).toThrow(
+      'Secret GATEWAY_API_KEY is required'
+    )
+  })
+
+  it('falls back to the fallback object when the file is missing', () => {
+    fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+      fallback: { GATEWAY_API_KEY: 'from-env' },
+    })
+    expect(secretStore.GATEWAY_API_KEY).toBe('from-env')
+  })
+
+  it('prefers the file over the fallback when both are present', () => {
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+      fallback: { GATEWAY_API_KEY: 'from-env' },
+    })
+    expect(secretStore.GATEWAY_API_KEY).toBe('secret')
+  })
+
+  it('throws when both the file and fallback are missing', () => {
+    fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+      fallback: {},
+    })
     expect(() => secretStore.GATEWAY_API_KEY).toThrow(
       'Secret GATEWAY_API_KEY is required'
     )
   })
 
   it('caches the secret value after first access', () => {
-    const secretStore = initSecretStore<{ CACHED_SECRET: string }>()
+    const secretStore = initSecretStore<{ CACHED_SECRET: string }>({
+      dir: secretsDir,
+    })
     expect(secretStore.CACHED_SECRET).toBe('first')
-    fs.writeFileSync('CACHED_SECRET', 'changed')
+    fs.writeFileSync(`${secretsDir}/CACHED_SECRET`, 'changed')
     expect(secretStore.CACHED_SECRET).toBe('first')
+  })
+
+  it('works without any options (reads from CWD by key name)', () => {
+    fs.writeFileSync('BARE_SECRET', 'bare')
+    try {
+      const secretStore = initSecretStore<{ BARE_SECRET: string }>()
+      expect(secretStore.BARE_SECRET).toBe('bare')
+    } finally {
+      fs.unlinkSync('BARE_SECRET')
+    }
+  })
+
+  describe('fallback: true', () => {
+    const originalEnv = process.env
+
+    beforeEach(() => {
+      process.env = { ...originalEnv }
+    })
+
+    afterEach(() => {
+      process.env = originalEnv
+    })
+
+    it('falls back to process.env when the file is missing', () => {
+      fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+      process.env.GATEWAY_API_KEY = 'from-process-env'
+      const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+        dir: secretsDir,
+        fallback: true,
+      })
+      expect(secretStore.GATEWAY_API_KEY).toBe('from-process-env')
+    })
+
+    it('prefers the file over process.env when both are present', () => {
+      process.env.GATEWAY_API_KEY = 'from-process-env'
+      const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+        dir: secretsDir,
+        fallback: true,
+      })
+      expect(secretStore.GATEWAY_API_KEY).toBe('secret')
+    })
+
+    it('throws when both the file and process.env are missing', () => {
+      fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+      delete process.env.GATEWAY_API_KEY
+      const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+        dir: secretsDir,
+        fallback: true,
+      })
+      expect(() => secretStore.GATEWAY_API_KEY).toThrow(
+        'Secret GATEWAY_API_KEY is required'
+      )
+    })
   })
 })
