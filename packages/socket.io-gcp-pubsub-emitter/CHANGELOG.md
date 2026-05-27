@@ -1,5 +1,18 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.21
+
+### Patch Changes
+
+- 242eb33: This release primarily updates dependencies across the listed packages, including:
+  - Testcontainers v12 upgrades in packages that run integration/e2e tests.
+  - Vitest/Biome/Turbo and related tooling updates.
+  - Runtime dependency updates such as `date-fns`, `@inquirer/*`, `socket.io-adapter`, and `ws`.
+
+  It also includes two targeted fixes:
+  - `@sebspark/opensearch`: fixed TypeScript compatibility so strict `SearchRequest<T>` / `SearchRequestBody<T>` can be assigned to OpenSearch API request types, and added a compile-time compatibility test.
+  - `@sebspark/health-check`: updated the e2e readiness payload assertions and type-only import usage to match current runtime output and TypeScript expectations.
+
 ## 1.0.20
 
 ### Patch Changes
