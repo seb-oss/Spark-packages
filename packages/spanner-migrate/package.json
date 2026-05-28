@@ -27,7 +27,7 @@
     "@google-cloud/spanner": "8.7.1",
     "@sebspark/cli-tester": "1.0.18",
     "@types/yargs": "17.0.35",
-    "testcontainers": "12.0.0"
+    "testcontainers": "12.0.1"
   },
   "dependencies": {
     "@google-cloud/spanner": "8.7.1",

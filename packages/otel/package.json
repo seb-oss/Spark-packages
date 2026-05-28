@@ -55,12 +55,12 @@
   "devDependencies": {
     "@opensearch-project/opensearch": "3.6.0",
     "@opentelemetry/context-async-hooks": "2.7.1",
-    "@testcontainers/opensearch": "12.0.0",
-    "@testcontainers/redis": "12.0.0",
+    "@testcontainers/opensearch": "12.0.1",
+    "@testcontainers/redis": "12.0.1",
     "axios": "1.16.1",
     "express": "5.2.1",
     "find-free-ports": "3.1.1",
-    "redis": "5.12.1",
+    "redis": "6.0.0",
     "undici": "8.3.0"
   },
   "resolutions": {
