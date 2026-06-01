@@ -1,5 +1,11 @@
 # @sebspark/trading-hours
 
+## 1.0.9
+
+### Patch Changes
+
+- 494f9b3: Updated dependencies
+
 ## 1.0.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 8.0.1
+
+### Patch Changes
+
+- 494f9b3: Updated dependencies
+
 ## 8.0.0
 
 ### Major Changes

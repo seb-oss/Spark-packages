@@ -1,5 +1,11 @@
 # @sebspark/cli-tester
 
+## 1.0.19
+
+### Patch Changes
+
+- 494f9b3: Updated dependencies
+
 ## 1.0.18
 
 ### Patch Changes
