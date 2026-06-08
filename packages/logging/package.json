@@ -21,7 +21,7 @@
     "supertest": "7.2.2"
   },
   "dependencies": {
-    "@google-cloud/logging-winston": "6.0.1",
+    "@google-cloud/logging-winston": "6.0.2",
     "@types/express-serve-static-core": "5.1.1",
     "express": "5.2.1",
     "logform": "2.7.0",
