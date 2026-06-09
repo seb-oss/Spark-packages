@@ -3762,7 +3762,7 @@ __metadata:
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@sebspark/openapi-core": "npm:4.1.18"
-    "@sebspark/openapi-typegen": "npm:5.1.7"
+    "@sebspark/openapi-typegen": "npm:5.1.8"
     "@sebspark/otel": "npm:4.1.10"
     "@sebspark/retry": "npm:1.0.15"
     axios: "npm:1.17.0"
@@ -3789,7 +3789,7 @@ __metadata:
     "@sebspark/openapi-client": "npm:4.2.12"
     "@sebspark/openapi-core": "npm:4.1.18"
     "@sebspark/openapi-express": "npm:5.4.11"
-    "@sebspark/openapi-typegen": "npm:5.1.7"
+    "@sebspark/openapi-typegen": "npm:5.1.8"
     "@types/express": "npm:5.0.6"
     express: "npm:5.2.1"
     find-free-ports: "npm:3.1.1"
@@ -3811,7 +3811,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.1.7, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.1.8, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:

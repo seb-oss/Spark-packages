@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.1.8
+
+### Patch Changes
+
+- 939778a: Request is never undefined
+
 ## 5.1.7
 
 ### Patch Changes
