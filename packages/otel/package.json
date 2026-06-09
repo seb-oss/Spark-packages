@@ -57,11 +57,11 @@
     "@opentelemetry/context-async-hooks": "2.7.1",
     "@testcontainers/opensearch": "12.0.1",
     "@testcontainers/redis": "12.0.1",
-    "axios": "1.16.1",
+    "axios": "1.17.0",
     "express": "5.2.1",
     "find-free-ports": "3.1.1",
     "redis": "6.0.0",
-    "undici": "8.3.0"
+    "undici": "8.4.1"
   },
   "resolutions": {
     "protobufjs": "8.3.0"
