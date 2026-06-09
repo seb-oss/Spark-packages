@@ -3696,7 +3696,7 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.3.1"
     "@sebspark/hyper-media": "npm:0.1.4"
-    "@sebspark/promise-cache": "npm:8.0.2"
+    "@sebspark/promise-cache": "npm:8.1.0"
     "@testcontainers/gcloud": "npm:12.0.1"
     "@testcontainers/mockserver": "npm:12.0.1"
     "@testcontainers/redis": "npm:12.0.1"
@@ -3718,7 +3718,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/idempotency@workspace:packages/idempotency"
   dependencies:
-    "@sebspark/memredis": "npm:0.0.0"
+    "@sebspark/memredis": "npm:1.0.0"
   languageName: unknown
   linkType: soft
 
@@ -3757,16 +3757,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/memredis@npm:0.0.0":
-  version: 0.0.0
-  resolution: "@sebspark/memredis@npm:0.0.0"
-  dependencies:
-    redis: "npm:6.0.0"
-  checksum: 10c0/68c140da6f7ad9197bb3b897e70bae23f867e2073645624f2ebd4ac98597f559547e252d055c378d46b4b69ce5ca3f7d89c3642f6c60c3b5c43593a6070f0f0b
-  languageName: node
-  linkType: hard
-
-"@sebspark/memredis@workspace:packages/memredis":
+"@sebspark/memredis@npm:1.0.0, @sebspark/memredis@workspace:packages/memredis":
   version: 0.0.0-use.local
   resolution: "@sebspark/memredis@workspace:packages/memredis"
   dependencies:
@@ -3927,11 +3918,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/promise-cache@npm:8.0.2, @sebspark/promise-cache@workspace:packages/promise-cache":
+"@sebspark/promise-cache@npm:8.1.0, @sebspark/promise-cache@workspace:packages/promise-cache":
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
-    "@sebspark/memredis": "npm:0.0.0"
+    "@sebspark/memredis": "npm:1.0.0"
     "@sebspark/otel": "npm:4.1.10"
     "@testcontainers/redis": "npm:12.0.1"
     date-fns: "npm:4.4.0"
