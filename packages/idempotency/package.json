@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/idempotency",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -26,6 +26,6 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "devDependencies": {
-    "@sebspark/memredis": "0.0.0"
+    "@sebspark/memredis": "1.0.0"
   }
 }
