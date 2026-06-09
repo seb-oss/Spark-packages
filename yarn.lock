@@ -3718,7 +3718,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/idempotency@workspace:packages/idempotency"
   dependencies:
-    "@sebspark/memredis": "workspace:^"
+    "@sebspark/memredis": "npm:0.0.0"
   languageName: unknown
   linkType: soft
 
@@ -3757,7 +3757,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/memredis@npm:0.0.0, @sebspark/memredis@workspace:^, @sebspark/memredis@workspace:packages/memredis":
+"@sebspark/memredis@npm:0.0.0":
+  version: 0.0.0
+  resolution: "@sebspark/memredis@npm:0.0.0"
+  dependencies:
+    redis: "npm:6.0.0"
+  checksum: 10c0/68c140da6f7ad9197bb3b897e70bae23f867e2073645624f2ebd4ac98597f559547e252d055c378d46b4b69ce5ca3f7d89c3642f6c60c3b5c43593a6070f0f0b
+  languageName: node
+  linkType: hard
+
+"@sebspark/memredis@workspace:packages/memredis":
   version: 0.0.0-use.local
   resolution: "@sebspark/memredis@workspace:packages/memredis"
   dependencies:
