@@ -39,7 +39,7 @@ const generateArgs = (
     /* istanbul ignore next */
     if (!tokens.length) return ''
 
-    const optional = argsOptional(args)
+    const optional = !isServer && argsOptional(args)
     return `args${optional ? '?' : ''}: ${
       isServer ? 'Req & ' : ''
     }{ ${tokens.join(', ')} }, `

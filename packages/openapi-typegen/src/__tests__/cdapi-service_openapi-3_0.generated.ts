@@ -6398,7 +6398,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListBenchmarksResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -6685,7 +6685,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListBondSenioritiesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -6972,7 +6972,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListBusinessDayConventionsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -7259,7 +7259,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListClassificationBondCategoriesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -7546,7 +7546,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListClassificationBondTypesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -7833,7 +7833,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListCouponTypesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -8120,7 +8120,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListDevelopmentGoalsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -8283,7 +8283,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -8432,7 +8432,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInstrumentsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -8720,7 +8720,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInterestRateCalculationMethodsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -9007,7 +9007,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInterestRateMonthsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -9294,7 +9294,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInterestRatePAsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -9581,7 +9581,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInterestRatePeriodsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -9868,7 +9868,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListInterestRateTypesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -10155,7 +10155,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListListingsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -10457,7 +10457,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListRedemptionTypesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -10745,7 +10745,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListReferenceInterestRateMaturitiesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -11033,7 +11033,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListReferenceInterestRatePeriodsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -11320,7 +11320,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListReferenceInterestRatesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -11608,7 +11608,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListSpecialDebitorRedemptionsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -11895,7 +11895,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_bond_ListSpecialRedemptionsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -12068,7 +12068,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListAttributeConfigsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             fields?: string
@@ -12119,7 +12119,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListAttributeConfigsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             fields?: string
@@ -12190,7 +12190,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListAttributeConfigsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             fields?: string
@@ -12325,7 +12325,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListClassificationsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -12470,7 +12470,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListCorporateActionSubTypesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             code?: string[]
             fields?: string
@@ -12501,7 +12501,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListCorporateActionTypesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             code?: string[]
             fields?: string
@@ -12542,7 +12542,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListCorporateActionsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
@@ -12675,7 +12675,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListCountriesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -12821,7 +12821,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListCurrenciesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: number[]
@@ -12851,7 +12851,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -12970,7 +12970,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListInstrumentsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -13207,7 +13207,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerCountriesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -13444,7 +13444,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerRegionsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -13681,7 +13681,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerSectorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -13918,7 +13918,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerSubSectorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -14155,7 +14155,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuersResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -14392,7 +14392,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListListingsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -14537,7 +14537,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_VerifyListingsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             orbit_id?: number
             vwd_key?: string[]
@@ -14585,7 +14585,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListTechnicalAnalysisResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             fields?: string
@@ -14627,7 +14627,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListTradingCalendarsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: number[]
@@ -14761,7 +14761,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListTradingVenuesResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -15000,7 +15000,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_derivative_ListListingsFutureResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -15153,7 +15153,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -15291,7 +15291,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_derivative_ListListingsOptionResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -15469,7 +15469,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_entitlement_ListEntitlementsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             fields?: string
@@ -15497,7 +15497,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -15545,7 +15545,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListAdvisorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: number[]
             isin?: string[]
@@ -15585,7 +15585,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListCompaniesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             id?: string[]
             isin?: string[]
@@ -15622,7 +15622,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListCompanyEstimatesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             isin?: string
             fields?: string
@@ -15670,7 +15670,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListCompanyFundamentalsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             isin?: string[]
             instrument_id?: string[]
@@ -15807,7 +15807,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListCountriesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -15939,7 +15939,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -16056,7 +16056,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListInstrumentsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -16280,7 +16280,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerCountriesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -16504,7 +16504,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerRegionsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -16728,7 +16728,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerSectorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -16952,7 +16952,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_common_ListIssuerSubSectorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -17176,7 +17176,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListIssuersResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -17400,7 +17400,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_equity_ListListingsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -17659,7 +17659,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListAdministratorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -17923,7 +17923,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListAssetAllocationsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -18187,7 +18187,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListClassificationEfcsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -18451,7 +18451,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListClassificationFundTypesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -18715,7 +18715,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListCompartmentsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -18871,7 +18871,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListCompositionsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             compartment_id?: number
@@ -19014,7 +19014,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListDividendFrequenciesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -19172,7 +19172,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListDividendsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: number[]
@@ -19205,7 +19205,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -19342,7 +19342,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListInstrumentsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -19606,7 +19606,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListInvestmentHorizonsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -19870,7 +19870,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListLegalTypesEuropeResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -20134,7 +20134,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListLegalTypesNationalResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -20398,7 +20398,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListListingsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -20677,7 +20677,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListRegionsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -20941,7 +20941,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListSectorsResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -21205,7 +21205,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fund_ListUmbrellasResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -21361,7 +21361,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fxrate_ListCrossrateResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             from_currency_code?: string
@@ -21391,7 +21391,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -21434,7 +21434,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_fxrate_ListListingsResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -21493,7 +21493,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -21547,7 +21547,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_quote_ListHistoryQuotesResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             listing_id?: string
             fields?: string
@@ -21600,7 +21600,7 @@ export type CdapiServiceOpenapiServerPaths = {
  * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_quote_ListTickQuotesAggregatedResponse>>]>}
  */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             listing_id?: string
             fields?: string
@@ -21645,7 +21645,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -21685,7 +21685,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -21789,7 +21789,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_referential_ListListingsIndexResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -21925,7 +21925,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -22010,7 +22010,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_structured_product_ListListingsCertificateResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]
@@ -22077,7 +22077,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_basedef_Hbres>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             ping?: number
           }>
@@ -22121,7 +22121,7 @@ export type CdapiServiceOpenapiServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<dev_infrontfinance_cdapi_structured_product_ListListingsLeverageProductResponse>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             fields?: string
             id?: string[]

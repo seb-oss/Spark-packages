@@ -83,7 +83,7 @@ export type CardsAPIServerPaths = {
        * @returns {Promise<[200, APIResponse<PartiallySerialized<CardList>>] | [401, APIResponse<PartiallySerialized<HttpError>>]>}
        */
       handler: (
-        args?: Req & {
+        args: Req & {
           query?: QueryParams<{
             page?: number
             limit?: number
