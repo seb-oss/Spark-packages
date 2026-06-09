@@ -1,6 +1,7 @@
+import type { IPersistor } from '@sebspark/memredis'
 import { deserialize, serialize } from './serializer'
 import { toSetOptions } from './setOptions'
-import type { Cache, CachingOptions, IPersistor } from './types'
+import type { Cache, CachingOptions } from './types'
 
 /**
  * Creates a cache instance using a given persistor.

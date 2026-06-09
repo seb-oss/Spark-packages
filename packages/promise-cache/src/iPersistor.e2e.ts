@@ -1,3 +1,4 @@
+import { MemRedis } from '@sebspark/memredis'
 import {
   RedisContainer,
   type StartedRedisContainer,
@@ -12,11 +13,10 @@ import {
   expect,
   test,
 } from 'vitest'
-import { InMemoryPersistor } from './inMemoryPersistor'
 
 let redis: StartedRedisContainer
 let redisClient: ReturnType<typeof createClient>
-let memoryClient: InMemoryPersistor
+let memoryClient: MemRedis
 
 beforeAll(async () => {
   redis = await new RedisContainer('redis:8-alpine').start()
@@ -30,7 +30,7 @@ afterAll(async () => {
 })
 
 beforeEach(() => {
-  memoryClient = new InMemoryPersistor()
+  memoryClient = new MemRedis()
 })
 
 afterEach(async () => {

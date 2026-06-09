@@ -1,12 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { InMemoryPersistor } from './inMemoryPersistor'
+import { MemRedis } from './memredis'
 import type { IPersistor } from './types'
 
-describe('InMemoryPersistor', () => {
+describe('MemRedis', () => {
   let persistor: IPersistor
   beforeEach(() => {
     vi.useFakeTimers()
-    persistor = new InMemoryPersistor()
+    persistor = new MemRedis()
   })
   afterEach(() => {
     vi.useRealTimers()
@@ -764,6 +764,110 @@ describe('InMemoryPersistor', () => {
 
         'OK', // flushAll (everything cleared)
       ])
+    })
+  })
+
+  describe('WRONGTYPE enforcement', () => {
+    const wrongTypeMessage =
+      'WRONGTYPE Operation against a key holding the wrong kind of value'
+
+    it('throws when hGet is called on a string key', async () => {
+      await persistor.set('strkey', 'hello')
+      await expect(persistor.hGet('strkey', 'field')).rejects.toThrow(
+        wrongTypeMessage
+      )
+    })
+
+    it('throws when hSet is called on a string key', async () => {
+      await persistor.set('strkey', 'hello')
+      await expect(persistor.hSet('strkey', 'field', 'val')).rejects.toThrow(
+        wrongTypeMessage
+      )
+    })
+
+    it('throws when lPush is called on a string key', async () => {
+      await persistor.set('strkey', 'hello')
+      await expect(persistor.lPush('strkey', 'item')).rejects.toThrow(
+        wrongTypeMessage
+      )
+    })
+
+    it('throws when sAdd is called on a string key', async () => {
+      await persistor.set('strkey', 'hello')
+      await expect(persistor.sAdd('strkey', 'member')).rejects.toThrow(
+        wrongTypeMessage
+      )
+    })
+
+    it('throws when zAdd is called on a string key', async () => {
+      await persistor.set('strkey', 'hello')
+      await expect(
+        persistor.zAdd('strkey', { score: 1, value: 'member' })
+      ).rejects.toThrow(wrongTypeMessage)
+    })
+
+    it('throws when get is called on a hash key', async () => {
+      await persistor.hSet('hashkey', 'field', 'val')
+      await expect(persistor.get('hashkey')).rejects.toThrow(wrongTypeMessage)
+    })
+
+    it('throws when get is called on a list key', async () => {
+      await persistor.lPush('listkey', 'item')
+      await expect(persistor.get('listkey')).rejects.toThrow(wrongTypeMessage)
+    })
+
+    it('clears type when key is deleted and allows reuse as different type', async () => {
+      await persistor.set('key', 'hello')
+      await persistor.del('key')
+      await expect(persistor.hSet('key', 'field', 'val')).resolves.not.toThrow()
+    })
+
+    it('clears type on flushAll', async () => {
+      await persistor.set('key', 'hello')
+      await persistor.flushAll()
+      await expect(persistor.hSet('key', 'field', 'val')).resolves.not.toThrow()
+    })
+  })
+
+  describe('Pub/Sub', () => {
+    it('delivers a published message to a subscriber', async () => {
+      const received: string[] = []
+      await persistor.subscribe('ch', (msg) => received.push(msg))
+      await persistor.publish('ch', 'hello')
+      expect(received).toEqual(['hello'])
+    })
+
+    it('delivers a message to multiple subscribers on the same channel', async () => {
+      const receivedA: string[] = []
+      const receivedB: string[] = []
+      const listenerA = (msg: string) => receivedA.push(msg)
+      const listenerB = (msg: string) => receivedB.push(msg)
+      await persistor.subscribe('ch', listenerA)
+      await persistor.subscribe('ch', listenerB)
+      await persistor.publish('ch', 'hi')
+      expect(receivedA).toEqual(['hi'])
+      expect(receivedB).toEqual(['hi'])
+    })
+
+    it('unsubscribes a specific listener without removing others', async () => {
+      const receivedA: string[] = []
+      const receivedB: string[] = []
+      const listenerA = (msg: string) => receivedA.push(msg)
+      const listenerB = (msg: string) => receivedB.push(msg)
+      await persistor.subscribe('ch', listenerA)
+      await persistor.subscribe('ch', listenerB)
+      await persistor.unsubscribe('ch', listenerA)
+      await persistor.publish('ch', 'after')
+      expect(receivedA).toEqual([])
+      expect(receivedB).toEqual(['after'])
+    })
+
+    it('unsubscribes all listeners for a channel when no listener is specified', async () => {
+      const received: string[] = []
+      await persistor.subscribe('ch', (msg) => received.push(msg))
+      await persistor.unsubscribe('ch')
+      await persistor.publish('ch', 'x')
+      expect(received).toEqual([])
     })
   })
 })

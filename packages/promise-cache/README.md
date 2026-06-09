@@ -5,17 +5,19 @@ Simple caching wrapper for promises, backed by Redis or in-memory storage.
 ## **Installation**
 
 ```bash
-yarn add @sebspark/promise-cache
+yarn add @sebspark/promise-cache @sebspark/memredis
 ```
 
 ## **Usage**
 
-1. Create a persistor — use the built-in `InMemoryPersistor` or a Redis client
+1. Create a persistor — a Redis client or [`MemRedis`](https://github.com/sebspark/Spark-packages/tree/main/packages/memredis) for in-memory/testing
 2. Create a cache with `createCache(persistor, 'optional-prefix')`
 3. Wrap your async function with `cache.wrap(fn, options)`
 4. Call the wrapped function instead of the original
 
 ## How to use it
+
+### With Redis (production)
 
 ```typescript
 import { createClient } from 'redis'
@@ -23,25 +25,47 @@ import { createCache } from '@sebspark/promise-cache'
 import { myFunction } from './some_function'
 
 const run = async () => {
-  // Create your persistor
-  const persistor = createClient({ url: 'redis' })
-  await persistor.connect() // This is not handled by the cache
+  const persistor = createClient({ url: 'redis://localhost:6379' })
+  await persistor.connect() // connection is not managed by the cache
 
-  // Create your cache and give it a prefix
   const cache = createCache(persistor, 'my-prefix')
-  
-  // wrap your function
+
   const myCachedFunction = cache.wrap(myFunction, {
-    key: 'my-function', // cached data will be stored with the key 'my-prefix:my-function'
-    expiry: 100, // ttl will be 100 ms
+    key: 'my-function', // stored as 'my-prefix:my-function'
+    expiry: 100,        // ttl in ms
   })
 
-  // call the wrapped function
-  const response = await myCachedFunction() // the wrapped function will have the same signature as the original
+  const response = await myCachedFunction()
 }
 
 run()
 ```
+
+### With MemRedis (in-memory / testing)
+
+```typescript
+import { MemRedis } from '@sebspark/memredis'
+import { createCache } from '@sebspark/promise-cache'
+import { myFunction } from './some_function'
+
+const run = async () => {
+  const persistor = new MemRedis()
+  await persistor.connect()
+
+  const cache = createCache(persistor, 'my-prefix')
+
+  const myCachedFunction = cache.wrap(myFunction, {
+    key: 'my-function',
+    expiry: 100,
+  })
+
+  const response = await myCachedFunction()
+}
+
+run()
+```
+
+> **Note:** `InMemoryPersistor` is re-exported from this package as an alias for `MemRedis` for backwards compatibility, but prefer importing `MemRedis` directly from `@sebspark/memredis`.
 
 ### Keys
 

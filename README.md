@@ -141,6 +141,14 @@ Helper for building emulators or test fakes
 
 Adds a chainable .eventually() to expect
 
+### [@sebspark/idempotency](./packages/idempotency)
+
+Idempotency guard for multi-step async processes, backed by Redis. Prevents duplicate execution when the same operation is triggered more than once concurrently.
+
+### [@sebspark/memredis](./packages/memredis)
+
+An in memory implementation of redis
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

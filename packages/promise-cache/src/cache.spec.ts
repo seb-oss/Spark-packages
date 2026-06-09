@@ -1,7 +1,7 @@
+import { type IPersistor, MemRedis } from '@sebspark/memredis'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { createCache } from './cache'
-import { InMemoryPersistor } from './inMemoryPersistor'
-import type { Cache, IPersistor } from './types'
+import type { Cache } from './types'
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -11,7 +11,7 @@ describe('cache', () => {
 
   beforeEach(() => {
     vi.useFakeTimers()
-    persistor = new InMemoryPersistor()
+    persistor = new MemRedis()
     cache = createCache(persistor)
   })
   afterEach(() => {

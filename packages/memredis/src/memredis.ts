@@ -1,3 +1,5 @@
+import { EventEmitter } from 'node:events'
+import type { GetExOptions } from '@redis/client/dist/lib/commands/GETEX'
 import type { SetOptions } from 'redis'
 import type {
   HashTypes,
@@ -11,12 +13,17 @@ import type {
 const sortMembers = (members: ZMember[]): ZMember[] =>
   [...members].sort((a, b) => a.score - b.score)
 
+type KeyType = 'string' | 'hash' | 'list' | 'set' | 'zset'
+
+const WRONGTYPE =
+  'WRONGTYPE Operation against a key holding the wrong kind of value'
+
 /**
  * An in-memory key-value store with Redis-like behavior.
  * Supports basic operations like `set`, `get`, `del`, `expire`, `ttl`, and `flushAll`.
  * Implements expiration using `setTimeout` for automatic key deletion.
  */
-export class InMemoryPersistor implements IPersistor {
+export class MemRedis implements IPersistor {
   /**
    * Internal key-value store for caching string values.
    * @private
@@ -37,18 +44,34 @@ export class InMemoryPersistor implements IPersistor {
    */
   private readonly expiryTimestamps: Map<string, number>
 
-  /**
-   * Creates a new instance of `InMemoryPersistor`.
-   * Initializes an empty store, expiration map, and TTL tracker.
-   */
+  private readonly keyTypes: Map<string, KeyType>
+
+  private readonly pubsub: EventEmitter
+
+  private readonly subscriptions: Map<
+    string,
+    Map<
+      (message: string, channel: string) => unknown,
+      (message: string) => void
+    >
+  > = new Map()
+
+  private static readonly sharedPubSub = new EventEmitter()
+
   constructor() {
     this.store = new Map()
     this.expirations = new Map()
     this.expiryTimestamps = new Map()
+    this.keyTypes = new Map()
+    this.pubsub = MemRedis.sharedPubSub
   }
 
   async connect() {
     return this
+  }
+
+  async ping(): Promise<string> {
+    return 'PONG'
   }
 
   get isReady(): boolean {
@@ -84,7 +107,9 @@ export class InMemoryPersistor implements IPersistor {
       return null // XX means "only set if key exists"
     }
 
+    this.assertType(key, 'string')
     this.store.set(key, String(value))
+    this.keyTypes.set(key, 'string')
 
     // Handle TTL (Expiration)
     if (options?.EX !== undefined) {
@@ -116,7 +141,9 @@ export class InMemoryPersistor implements IPersistor {
     seconds: number,
     value: string
   ): Promise<string | null> {
+    this.assertType(key, 'string')
     this.store.set(key, value)
+    this.keyTypes.set(key, 'string')
     await this.expire(key, seconds)
     return 'OK'
   }
@@ -149,6 +176,7 @@ export class InMemoryPersistor implements IPersistor {
   async setNX(key: string, value: string): Promise<number> {
     if (this.store.has(key)) return 0
     this.store.set(key, value)
+    this.keyTypes.set(key, 'string')
     return 1
   }
 
@@ -159,8 +187,75 @@ export class InMemoryPersistor implements IPersistor {
    * @returns {Promise<string | null>} Resolves to the string value, or `null` if the key does not exist.
    */
   async get(key: string): Promise<string | null> {
+    this.assertType(key, 'string')
     const result = this.store.get(key) ?? null
     return result
+  }
+
+  /**
+   * Retrieves a value and optionally sets expiration.
+   *
+   * @param key - The key to retrieve.
+   * @param options - Expiration options (EX, PX, EXAT, PXAT, PERSIST).
+   * @returns Resolves to the string value, or null if the key does not exist.
+   */
+  async getEx(key: string, options?: GetExOptions): Promise<string | null> {
+    const value = await this.get(key)
+    if (value === null) return null
+
+    if (options && 'type' in options && options.type === 'EX') {
+      this.setExpiration(key, options.value * 1000)
+    } else if (options && 'type' in options && options.type === 'PX') {
+      this.setExpiration(key, options.value)
+    } else if (options && 'type' in options && options.type === 'EXAT') {
+      const exat =
+        options.value instanceof Date
+          ? options.value.getTime()
+          : options.value * 1000
+      const timeToExpire = exat - Date.now()
+      this.setExpiration(key, Math.max(0, timeToExpire))
+    } else if (options && 'type' in options && options.type === 'PXAT') {
+      const pxat =
+        options.value instanceof Date ? options.value.getTime() : options.value
+      const timeToExpire = pxat - Date.now()
+      this.setExpiration(key, Math.max(0, timeToExpire))
+    } else if (options && 'type' in options && options.type === 'PERSIST') {
+      this.clearExpiration(key)
+    } else if (options && 'EX' in options && options.EX !== undefined) {
+      this.setExpiration(key, options.EX * 1000)
+    } else if (options && 'PX' in options && options.PX !== undefined) {
+      this.setExpiration(key, options.PX)
+    } else if (options && 'EXAT' in options && options.EXAT !== undefined) {
+      const exat =
+        options.EXAT instanceof Date
+          ? options.EXAT.getTime()
+          : options.EXAT * 1000
+      const timeToExpire = exat - Date.now()
+      this.setExpiration(key, Math.max(0, timeToExpire))
+    } else if (options && 'PXAT' in options && options.PXAT !== undefined) {
+      const pxat =
+        options.PXAT instanceof Date ? options.PXAT.getTime() : options.PXAT
+      const timeToExpire = pxat - Date.now()
+      this.setExpiration(key, Math.max(0, timeToExpire))
+    } else if (options && 'PERSIST' in options && options.PERSIST) {
+      this.clearExpiration(key)
+    }
+
+    return value
+  }
+
+  /**
+   * Appends a value to the end of a string.
+   *
+   * @param key - The storage key.
+   * @param value - The string to append.
+   * @returns Resolves to the length of the string after append.
+   */
+  async append(key: string, value: string): Promise<number> {
+    const current = this.store.get(key) ?? ''
+    const newValue = current + value
+    this.store.set(key, newValue)
+    return newValue.length
   }
 
   /**
@@ -177,6 +272,7 @@ export class InMemoryPersistor implements IPersistor {
       if (this.store.has(k)) {
         this.store.delete(k)
         this.clearExpiration(k)
+        this.keyTypes.delete(k)
         deleted++
       }
     }
@@ -300,6 +396,7 @@ export class InMemoryPersistor implements IPersistor {
     fieldOrValue: string | HashValue,
     value?: HashTypes
   ): Promise<number> {
+    this.assertType(key, 'hash')
     const existingHash = JSON.parse(this.store.get(key) ?? '{}')
     let newFields = 0
     const hashValue =
@@ -314,17 +411,12 @@ export class InMemoryPersistor implements IPersistor {
       existingHash[key] = String(val)
     }
     this.store.set(key, JSON.stringify(existingHash))
+    this.keyTypes.set(key, 'hash')
     return newFields
   }
 
-  /**
-   * Retrieves a field from a hash.
-   *
-   * @param key - The hash key.
-   * @param field - The field name to retrieve.
-   * @returns Resolves to the field value, or `null` if the field does not exist.
-   */
   async hGet(key: string, field: string): Promise<string | null> {
+    this.assertType(key, 'hash')
     const hash = JSON.parse(this.store.get(key) ?? '{}')
     return hash[field] ?? null
   }
@@ -335,7 +427,33 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the value, or null if the hash does not exist.
    */
   async hGetAll(key: string): Promise<{ [x: string]: string }> {
+    this.assertType(key, 'hash')
     return JSON.parse(this.store.get(key) ?? '{}')
+  }
+
+  /**
+   * Retrieves all field names from a hash.
+   *
+   * @param key - The hash key.
+   * @returns Resolves to an array of field names.
+   */
+  async hKeys(key: string): Promise<string[]> {
+    this.assertType(key, 'hash')
+    const hash = JSON.parse(this.store.get(key) ?? '{}')
+    return Object.keys(hash)
+  }
+
+  /**
+   * Checks if a field exists in a hash.
+   *
+   * @param key - The hash key.
+   * @param field - The field name.
+   * @returns Resolves to 1 if field exists, 0 otherwise.
+   */
+  async hExists(key: string, field: string): Promise<number> {
+    this.assertType(key, 'hash')
+    const hash = JSON.parse(this.store.get(key) ?? '{}')
+    return Object.hasOwn(hash, field) ? 1 : 0
   }
 
   /**
@@ -346,6 +464,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of fields removed.
    */
   async hDel(key: string, fields: string | string[]): Promise<number> {
+    this.assertType(key, 'hash')
     const hash = JSON.parse(this.store.get(key) ?? '{}')
     const fieldsToDelete = Array.isArray(fields) ? fields : [fields]
     let removed = 0
@@ -369,10 +488,12 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the length of the list after the operation.
    */
   async lPush(key: string, values: string | string[]): Promise<number> {
+    this.assertType(key, 'list')
     const list = JSON.parse(this.store.get(key) ?? '[]')
     const newValues = Array.isArray(values) ? values : [values]
     const updatedList = [...newValues.reverse(), ...list] // Prepend new values
     this.store.set(key, JSON.stringify(updatedList))
+    this.keyTypes.set(key, 'list')
     return updatedList.length
   }
 
@@ -384,10 +505,12 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the length of the list after the operation.
    */
   async rPush(key: string, values: string | string[]): Promise<number> {
+    this.assertType(key, 'list')
     const list = JSON.parse(this.store.get(key) ?? '[]')
     const newValues = Array.isArray(values) ? values : [values]
     const updatedList = [...list, ...newValues] // Append new values
     this.store.set(key, JSON.stringify(updatedList))
+    this.keyTypes.set(key, 'list')
     return updatedList.length
   }
 
@@ -398,13 +521,15 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the removed element, or `null` if the list is empty.
    */
   async lPop(key: string): Promise<string | null> {
+    this.assertType(key, 'list')
     const list = JSON.parse(this.store.get(key) ?? '[]')
     if (list.length === 0) return null
     const value = list.shift()
     if (list.length > 0) {
       this.store.set(key, JSON.stringify(list))
     } else {
-      this.store.delete(key) // Remove key if empty
+      this.store.delete(key)
+      this.keyTypes.delete(key)
     }
     return value
   }
@@ -416,13 +541,15 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the removed element, or `null` if the list is empty.
    */
   async rPop(key: string): Promise<string | null> {
+    this.assertType(key, 'list')
     const list = JSON.parse(this.store.get(key) ?? '[]')
     if (list.length === 0) return null
     const value = list.pop()
     if (list.length > 0) {
       this.store.set(key, JSON.stringify(list))
     } else {
-      this.store.delete(key) // Remove key if empty
+      this.store.delete(key)
+      this.keyTypes.delete(key)
     }
     return value
   }
@@ -436,9 +563,36 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to an array containing the requested range.
    */
   async lRange(key: string, start: number, stop: number): Promise<string[]> {
+    this.assertType(key, 'list')
     const list = JSON.parse(this.store.get(key) ?? '[]')
     const normalizedStop = stop === -1 ? list.length : stop + 1
-    return list.slice(start, normalizedStop) // Extract range
+    return list.slice(start, normalizedStop)
+  }
+
+  /**
+   * Gets the length of a list.
+   *
+   * @param key - The list key.
+   * @returns Resolves to the list length.
+   */
+  async lLen(key: string): Promise<number> {
+    this.assertType(key, 'list')
+    const list = JSON.parse(this.store.get(key) ?? '[]')
+    return list.length
+  }
+
+  /**
+   * Gets an element from a list by index.
+   *
+   * @param key - The list key.
+   * @param index - The index.
+   * @returns Resolves to the element or null if index is out of range.
+   */
+  async lIndex(key: string, index: number): Promise<string | null> {
+    this.assertType(key, 'list')
+    const list = JSON.parse(this.store.get(key) ?? '[]')
+    const normalizedIndex = index < 0 ? list.length + index : index
+    return list[normalizedIndex] ?? null
   }
 
   /**
@@ -449,6 +603,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of new elements added.
    */
   async sAdd(key: string, values: string | string[]): Promise<number> {
+    this.assertType(key, 'set')
     const set = new Set(JSON.parse(this.store.get(key) ?? '[]'))
     const newValues = Array.isArray(values) ? values : [values]
     const initialSize = set.size
@@ -456,6 +611,7 @@ export class InMemoryPersistor implements IPersistor {
       set.add(value)
     }
     this.store.set(key, JSON.stringify([...set]))
+    this.keyTypes.set(key, 'set')
     return set.size - initialSize
   }
 
@@ -467,6 +623,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of elements removed.
    */
   async sRem(key: string, values: string | string[]): Promise<number> {
+    this.assertType(key, 'set')
     const set = new Set(JSON.parse(this.store.get(key) ?? '[]'))
     const valuesToRemove = Array.isArray(values) ? values : [values]
     const initialSize = set.size
@@ -484,7 +641,33 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to an array of all set members.
    */
   async sMembers(key: string): Promise<string[]> {
+    this.assertType(key, 'set')
     return JSON.parse(this.store.get(key) ?? '[]')
+  }
+
+  /**
+   * Gets the cardinality (size) of a set.
+   *
+   * @param key - The set key.
+   * @returns Resolves to the number of elements in the set.
+   */
+  async sCard(key: string): Promise<number> {
+    this.assertType(key, 'set')
+    const set = JSON.parse(this.store.get(key) ?? '[]')
+    return set.length
+  }
+
+  /**
+   * Checks if a member exists in a set.
+   *
+   * @param key - The set key.
+   * @param member - The member to check.
+   * @returns Resolves to 1 if member exists, 0 otherwise.
+   */
+  async sIsMember(key: string, member: string): Promise<number> {
+    this.assertType(key, 'set')
+    const set = JSON.parse(this.store.get(key) ?? '[]')
+    return set.includes(member) ? 1 : 0
   }
 
   /**
@@ -494,6 +677,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of elements successfully added.
    */
   async zAdd(key: string, members: ZMember | ZMember[]): Promise<number> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const initialSize = sortedSet.length
     for (const { score, value } of Array.isArray(members)
@@ -509,6 +693,7 @@ export class InMemoryPersistor implements IPersistor {
       }
     }
     this.store.set(key, JSON.stringify(sortMembers(sortedSet)))
+    this.keyTypes.set(key, 'zset')
     return sortedSet.length - initialSize
   }
   /**
@@ -523,6 +708,7 @@ export class InMemoryPersistor implements IPersistor {
     increment: number,
     member: string
   ): Promise<number> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const existingIndex = sortedSet.findIndex((entry) => entry.value === member)
     const newScore =
@@ -536,6 +722,7 @@ export class InMemoryPersistor implements IPersistor {
       sortedSet.push(updated)
     }
     this.store.set(key, JSON.stringify(sortMembers(sortedSet)))
+    this.keyTypes.set(key, 'zset')
     return newScore
   }
   /**
@@ -546,6 +733,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to an array of member values in the range.
    */
   async zRange(key: string, start: number, stop: number): Promise<string[]> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const normalizedStop = stop === -1 ? sortedSet.length : stop + 1
     return sortedSet.slice(start, normalizedStop).map((entry) => entry.value)
@@ -564,6 +752,7 @@ export class InMemoryPersistor implements IPersistor {
     stop: number,
     options?: { REV: boolean }
   ): Promise<ZMember[]> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const ordered = options?.REV ? [...sortedSet].reverse() : sortedSet
     const normalizedStop = stop === -1 ? ordered.length : stop + 1
@@ -576,6 +765,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the score or null if the member does not exist.
    */
   async zScore(key: string, member: string): Promise<number | null> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     return sortedSet.find((entry) => entry.value === member)?.score ?? null
   }
@@ -586,6 +776,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the rank or null if the member does not exist.
    */
   async zRank(key: string, member: string): Promise<number | null> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const index = sortedSet.findIndex((entry) => entry.value === member)
     return index === -1 ? null : index
@@ -598,6 +789,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of members in the score range.
    */
   async zCount(key: string, min: number, max: number): Promise<number> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     return sortedSet.filter((entry) => entry.score >= min && entry.score <= max)
       .length
@@ -614,6 +806,7 @@ export class InMemoryPersistor implements IPersistor {
     min: number,
     max: number
   ): Promise<string[]> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     return sortedSet
       .filter((entry) => entry.score >= min && entry.score <= max)
@@ -631,9 +824,23 @@ export class InMemoryPersistor implements IPersistor {
     min: number,
     max: number
   ): Promise<ZMember[]> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     return sortedSet.filter((entry) => entry.score >= min && entry.score <= max)
   }
+
+  /**
+   * Gets the cardinality (size) of a sorted set.
+   *
+   * @param key - The sorted set key.
+   * @returns Resolves to the number of elements in the sorted set.
+   */
+  async zCard(key: string): Promise<number> {
+    this.assertType(key, 'zset')
+    const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
+    return sortedSet.length
+  }
+
   /**
    * Removes members from a sorted set.
    * @param key - The sorted set key.
@@ -641,6 +848,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns Resolves to the number of elements removed.
    */
   async zRem(key: string, members: string | string[]): Promise<number> {
+    this.assertType(key, 'zset')
     const sortedSet: ZMember[] = JSON.parse(this.store.get(key) ?? '[]')
     const valuesToRemove = Array.isArray(members) ? members : [members]
     const filtered = sortedSet.filter(
@@ -665,6 +873,38 @@ export class InMemoryPersistor implements IPersistor {
     return [...this.store.keys()].filter((key) => regex.test(key))
   }
 
+  /**
+   * Gets the type of a key.
+   *
+   * @param key - The key to check.
+   * @returns Resolves to the type: 'string', 'hash', 'list', 'set', 'zset', or 'none'.
+   */
+  async type(key: string): Promise<string> {
+    if (!this.store.has(key)) return 'none'
+
+    const value = this.store.get(key)
+    if (!value) return 'none'
+
+    try {
+      const parsed = JSON.parse(value)
+
+      if (Array.isArray(parsed)) {
+        // Could be list, set, or zset
+        if (parsed.length === 0) return 'none'
+        if (parsed[0]?.score !== undefined) return 'zset'
+        return 'list' // Simple heuristic; could be set too
+      }
+
+      if (typeof parsed === 'object' && parsed !== null) {
+        return 'hash'
+      }
+    } catch {
+      // Not JSON, treat as string
+    }
+
+    return 'string'
+  }
+
   async flushAll(): Promise<'OK'> {
     this.store.clear()
     for (const timeout of this.expirations.values()) {
@@ -672,7 +912,85 @@ export class InMemoryPersistor implements IPersistor {
     }
     this.expirations.clear()
     this.expiryTimestamps.clear()
+    this.keyTypes.clear()
     return 'OK'
+  }
+
+  /**
+   * Subscribes to a channel and listens for published messages.
+   *
+   * @param channels - Channel name(s) to subscribe to.
+   * @param listener - Callback function for received messages.
+   * @returns Resolves to the number of channels subscribed.
+   */
+  async subscribe(
+    channels: string | string[],
+    listener: (message: string, channel: string) => unknown
+  ): Promise<number> {
+    const channelList = Array.isArray(channels) ? channels : [channels]
+    for (const channel of channelList) {
+      const wrapped = (message: string) => listener(message, channel)
+      if (!this.subscriptions.has(channel)) {
+        this.subscriptions.set(channel, new Map())
+      }
+      // biome-ignore lint/style/noNonNullAssertion: just set above
+      this.subscriptions.get(channel)!.set(listener, wrapped)
+      this.pubsub.on(channel, wrapped)
+    }
+    return channelList.length
+  }
+
+  async unsubscribe(
+    channels?: string | string[],
+    listener?: (message: string, channel: string) => unknown
+  ): Promise<number> {
+    const channelList = this.resolveChannelList(channels)
+    for (const channel of channelList) {
+      listener
+        ? this.unsubscribeOne(channel, listener)
+        : this.unsubscribeAll(channel)
+    }
+    return this.subscriptions.size
+  }
+
+  private resolveChannelList(channels?: string | string[]): string[] {
+    if (channels === undefined) return [...this.subscriptions.keys()]
+    return Array.isArray(channels) ? channels : [channels]
+  }
+
+  private unsubscribeOne(
+    channel: string,
+    listener: (message: string, channel: string) => unknown
+  ): void {
+    const listeners = this.subscriptions.get(channel)
+    if (!listeners) return
+    const wrapped = listeners.get(listener)
+    if (!wrapped) return
+    this.pubsub.removeListener(channel, wrapped)
+    listeners.delete(listener)
+    if (listeners.size === 0) this.subscriptions.delete(channel)
+  }
+
+  private unsubscribeAll(channel: string): void {
+    const listeners = this.subscriptions.get(channel)
+    if (!listeners) return
+    for (const wrapped of listeners.values()) {
+      this.pubsub.removeListener(channel, wrapped)
+    }
+    this.subscriptions.delete(channel)
+  }
+
+  /**
+   * Publishes a message to a channel.
+   *
+   * @param channel - The channel to publish to.
+   * @param message - The message to publish.
+   * @returns Resolves to the number of subscribers that received the message.
+   */
+  async publish(channel: string, message: string): Promise<number> {
+    const listeners = this.pubsub.listeners(channel).length
+    this.pubsub.emit(channel, message)
+    return listeners
   }
 
   /**
@@ -682,7 +1000,7 @@ export class InMemoryPersistor implements IPersistor {
    * @returns A new `IPersistorMulti` instance for batching commands.
    */
   multi(): IPersistorMulti {
-    return new InMemoryMulti(this)
+    return new MemRedisMulti(this)
   }
 
   /**
@@ -693,6 +1011,13 @@ export class InMemoryPersistor implements IPersistor {
    * @param {string} key - The key to expire.
    * @param {number} ttlMs - Time-to-live in milliseconds.
    */
+  private assertType(key: string, expected: KeyType): void {
+    const actual = this.keyTypes.get(key)
+    if (actual !== undefined && actual !== expected) {
+      throw new Error(WRONGTYPE)
+    }
+  }
+
   private setExpiration(key: string, ttlMs: number) {
     // Clear existing timeout if any
     this.clearExpiration(key)
@@ -706,6 +1031,7 @@ export class InMemoryPersistor implements IPersistor {
       this.store.delete(key)
       this.expirations.delete(key)
       this.expiryTimestamps.delete(key)
+      this.keyTypes.delete(key)
     }, ttlMs)
 
     this.expirations.set(key, timeout)
@@ -727,9 +1053,9 @@ export class InMemoryPersistor implements IPersistor {
 }
 
 /**
- * Implements `IPersistorMulti` for `InMemoryPersistor`.
+ * Implements `IPersistorMulti` for `MemRedis`.
  */
-class InMemoryMulti implements IPersistorMulti {
+class MemRedisMulti implements IPersistorMulti {
   private readonly persistor: IPersistor
   private readonly commands: Set<() => Promise<MultiExecReturnTypes>> =
     new Set()
@@ -1203,5 +1529,15 @@ class InMemoryMulti implements IPersistorMulti {
    */
   async exec(): Promise<MultiExecReturnTypes[]> {
     return Promise.all([...this.commands].map((cmd) => cmd()))
+  }
+
+  /**
+   * Discards all queued commands without executing them.
+   *
+   * @returns Resolves to 'OK'.
+   */
+  async discard(): Promise<'OK'> {
+    this.commands.clear()
+    return 'OK'
   }
 }
