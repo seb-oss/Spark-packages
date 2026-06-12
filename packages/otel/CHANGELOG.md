@@ -1,5 +1,13 @@
 # @sebspark/otel
 
+## 4.1.11
+
+### Patch Changes
+
+- a6c27f3: Updated dependencies
+- Updated dependencies [a6c27f3]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.3.9
+
 ## 4.1.10
 
 ### Patch Changes
