@@ -33,7 +33,7 @@
     "superjson": "2.2.6"
   },
   "resolutions": {
-    "protobufjs": "8.3.0"
+    "protobufjs": "8.6.3"
   },
   "repository": {
     "type": "git",

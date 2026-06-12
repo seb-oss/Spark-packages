@@ -29,7 +29,7 @@
     "@opensearch-project/opensearch": "3.6.0"
   },
   "resolutions": {
-    "protobufjs": "8.3.0"
+    "protobufjs": "8.6.3"
   },
   "repository": {
     "type": "git",
