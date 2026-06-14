@@ -1,5 +1,13 @@
 # @sebspark/memredis
 
+## 1.0.1
+
+### Patch Changes
+
+- 26d55f0: Fix `@sebspark/memredis` so Redis clients are assignable to `IPersistor` by widening the pub/sub subscription return types to accept both MemRedis and node-redis implementations.
+
+  Also update supporting dependencies across the affected packages.
+
 ## 1.0.0
 
 ### Major Changes

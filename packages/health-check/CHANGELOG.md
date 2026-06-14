@@ -1,5 +1,16 @@
 # @sebspark/health-check
 
+## 3.0.7
+
+### Patch Changes
+
+- 26d55f0: Fix `@sebspark/memredis` so Redis clients are assignable to `IPersistor` by widening the pub/sub subscription return types to accept both MemRedis and node-redis implementations.
+
+  Also update supporting dependencies across the affected packages.
+
+- Updated dependencies [26d55f0]
+  - @sebspark/promise-cache@8.1.2
+
 ## 3.0.6
 
 ### Patch Changes

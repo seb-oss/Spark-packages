@@ -1,5 +1,13 @@
 # @sebspark/opensearch
 
+## 3.1.8
+
+### Patch Changes
+
+- 26d55f0: Fix `@sebspark/memredis` so Redis clients are assignable to `IPersistor` by widening the pub/sub subscription return types to accept both MemRedis and node-redis implementations.
+
+  Also update supporting dependencies across the affected packages.
+
 ## 3.1.7
 
 ### Patch Changes
