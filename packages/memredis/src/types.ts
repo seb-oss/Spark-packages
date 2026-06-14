@@ -365,12 +365,12 @@ export interface IPersistor {
   subscribe(
     channels: string | string[],
     listener: (message: string, channel: string) => unknown
-  ): Promise<number>
+  ): Promise<number> | Promise<void>
 
   unsubscribe(
     channels?: string | string[],
     listener?: (message: string, channel: string) => unknown
-  ): Promise<number>
+  ): Promise<number> | Promise<void>
 
   publish(channel: string, message: string): Promise<number>
 }

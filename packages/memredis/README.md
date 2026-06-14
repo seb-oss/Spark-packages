@@ -68,6 +68,8 @@ const top = await client.zRangeWithScores('leaderboard', 0, 0, { REV: true })
 
 All `MemRedis` instances share the same pub/sub bus, matching real Redis behaviour where all clients connect to the same server.
 
+If you type against `IPersistor`, pub/sub subscription methods use transport-specific return values. `MemRedis` returns subscription counts, while `redis` clients resolve those methods without a value.
+
 ```typescript
 import { MemRedis } from '@sebspark/memredis'
 
