@@ -72,13 +72,8 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
         
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: 2.3.11
-
       - name: Check linting, formatting, and imports
-        run: biome ci
+        run: yarn biome ci
 
   typecheck:
     name: Type Check
