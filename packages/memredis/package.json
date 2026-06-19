@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@testcontainers/redis": "12.0.2"
+    "@testcontainers/redis": "12.0.3"
   },
   "dependencies": {
     "redis": "6.0.0"
