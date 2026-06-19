@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.22
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+
 ## 3.0.21
 
 ### Patch Changes

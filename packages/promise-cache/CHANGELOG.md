@@ -1,5 +1,14 @@
 # @sebspark/promise-cache
 
+## 8.1.3
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+- Updated dependencies [e0eda57]
+  - @sebspark/memredis@1.0.2
+  - @sebspark/otel@4.1.13
+
 ## 8.1.2
 
 ### Patch Changes

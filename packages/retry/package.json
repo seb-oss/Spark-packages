@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/retry",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "license": "Apache-2.0",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",

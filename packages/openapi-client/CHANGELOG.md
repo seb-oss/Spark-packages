@@ -1,5 +1,15 @@
 # @sebspark/openapi-client
 
+## 4.2.15
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+- Updated dependencies [e0eda57]
+  - @sebspark/openapi-core@4.1.19
+  - @sebspark/retry@1.0.16
+  - @sebspark/otel@4.1.13
+
 ## 4.2.14
 
 ### Patch Changes
