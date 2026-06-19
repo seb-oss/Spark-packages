@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.2.6
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+
 ## 1.2.5
 
 ### Patch Changes

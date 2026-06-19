@@ -26,6 +26,6 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "devDependencies": {
-    "@sebspark/memredis": "1.0.1"
+    "@sebspark/memredis": "1.0.2"
   }
 }

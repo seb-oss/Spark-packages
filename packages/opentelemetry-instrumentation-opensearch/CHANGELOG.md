@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.3.11
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+
 ## 0.3.10
 
 ### Patch Changes

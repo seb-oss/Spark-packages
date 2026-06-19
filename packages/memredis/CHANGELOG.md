@@ -1,5 +1,11 @@
 # @sebspark/memredis
 
+## 1.0.2
+
+### Patch Changes
+
+- e0eda57: Updated dependencies
+
 ## 1.0.1
 
 ### Patch Changes
