@@ -32,7 +32,7 @@
     "@testcontainers/gcloud": "12.0.2",
     "@testcontainers/mockserver": "12.0.2",
     "@testcontainers/redis": "12.0.2",
-    "mockserver-client": "7.0.0",
+    "mockserver-client": "7.1.0",
     "supertest": "7.2.2"
   },
   "resolutions": {
