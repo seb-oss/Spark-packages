@@ -1,5 +1,13 @@
 # @sebspark/openapi-typegen
 
+## 5.2.0
+
+### Minor Changes
+
+- 3111112: Openapi client args are now PartiallySerialized
+
+  Also: dependency updates
+
 ## 5.1.10
 
 ### Patch Changes

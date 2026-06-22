@@ -1,5 +1,13 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.27
+
+### Patch Changes
+
+- 3111112: Openapi client args are now PartiallySerialized
+
+  Also: dependency updates
+
 ## 1.0.26
 
 ### Patch Changes
