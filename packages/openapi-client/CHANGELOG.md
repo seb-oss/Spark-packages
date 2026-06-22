@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 4.2.16
+
+### Patch Changes
+
+- 3111112: Openapi client args are now PartiallySerialized
+
+  Also: dependency updates
+
 ## 4.2.15
 
 ### Patch Changes

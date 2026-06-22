@@ -1,5 +1,13 @@
 # @sebspark/test-iap
 
+## 1.0.24
+
+### Patch Changes
+
+- 3111112: Openapi client args are now PartiallySerialized
+
+  Also: dependency updates
+
 ## 1.0.23
 
 ### Patch Changes
