@@ -22320,7 +22320,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/benchmarks',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -22460,7 +22460,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -22603,7 +22603,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/bond-seniorities',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -22743,7 +22743,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -22886,7 +22886,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/business-day-conventions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -23026,7 +23026,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -23169,7 +23169,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/classification/bond-categories',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -23309,7 +23309,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -23452,7 +23452,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/classification/bond-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -23592,7 +23592,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -23735,7 +23735,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/coupon-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -23875,7 +23875,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -24018,7 +24018,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/development-goals',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -24158,7 +24158,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -24177,11 +24177,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/bond/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -24320,7 +24320,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/instruments',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -24460,7 +24460,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -24604,7 +24604,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/interest-rate-calculation-methods',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -24744,7 +24744,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -24887,7 +24887,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/interest-rate-months',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -25027,7 +25027,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -25170,7 +25170,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/interest-rate-pas',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -25310,7 +25310,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -25453,7 +25453,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/interest-rate-periods',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -25593,7 +25593,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -25736,7 +25736,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/interest-rate-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -25876,7 +25876,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -26019,7 +26019,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -26159,7 +26159,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -26302,7 +26302,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/redemption-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -26442,7 +26442,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -26586,7 +26586,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/reference-interest-rate-maturities',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -26726,7 +26726,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -26870,7 +26870,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/reference-interest-rate-periods',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -27010,7 +27010,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27153,7 +27153,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/reference-interest-rates',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -27293,7 +27293,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27437,7 +27437,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/special-debitor-redemptions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -27577,7 +27577,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27720,7 +27720,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/bond/special-redemptions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -27860,7 +27860,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27889,7 +27889,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/attribute-config-entities',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           fields?: string
@@ -27907,7 +27907,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           limit?: number
           search_string?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27936,7 +27936,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/attribute-config-services',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           fields?: string
@@ -27954,7 +27954,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           limit?: number
           search_string?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -27998,7 +27998,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/attribute-configs',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           fields?: string
@@ -28016,7 +28016,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           limit?: number
           search_string?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28129,7 +28129,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/classifications',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -28249,7 +28249,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28270,13 +28270,13 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/corporate-action/sub-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           code?: string[]
           fields?: string
           source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28297,13 +28297,13 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/corporate-action/types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           code?: string[]
           fields?: string
           source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28334,7 +28334,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/corporate-actions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           source?: 'INFRONT_HISTORY' | 'WM' | 'EDI' | 'INFRONT'
@@ -28350,7 +28350,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           segment_mic_code?: string
           operating_mic_code?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28463,7 +28463,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/countries',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -28583,7 +28583,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28605,14 +28605,14 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/currencies',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: number[]
           offset?: number
           limit?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28631,11 +28631,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -28744,7 +28744,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/instruments',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -28864,7 +28864,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -28977,7 +28977,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/issuer/countries',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -29097,7 +29097,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -29210,7 +29210,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/issuer/regions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -29330,7 +29330,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -29443,7 +29443,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/issuer/sectors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -29563,7 +29563,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -29676,7 +29676,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/issuer/sub-sectors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -29796,7 +29796,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -29909,7 +29909,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/issuers',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -30029,7 +30029,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30142,7 +30142,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -30262,7 +30262,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30283,13 +30283,13 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/listings/verify',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           orbit_id?: number
           vwd_key?: string[]
           check_snapquote?: boolean
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30312,7 +30312,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/technical-analysis',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           fields?: string
@@ -30320,7 +30320,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           signal_type_code?: 'SIGNAL_TYPE_UNSPECIFIED' | 'BUY' | 'SELL' | 'HOLD'
           isin?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30346,7 +30346,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/trading-calendars',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: number[]
@@ -30357,7 +30357,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           offset?: number
           limit?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30476,7 +30476,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/common/trading-venues',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -30596,7 +30596,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           issuer_country_code?: string[]
           issuer_region_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30711,7 +30711,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/derivative/future/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -30824,7 +30824,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -30843,11 +30843,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/derivative/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -30975,7 +30975,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/derivative/option/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -31112,7 +31112,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31132,12 +31132,12 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/entitlement/entitlements',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           fields?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31156,11 +31156,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/entitlement/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -31181,7 +31181,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/advisors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: number[]
           isin?: string[]
@@ -31191,7 +31191,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           currency_id?: number[]
           fields?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31217,7 +31217,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/companies',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           id?: string[]
           isin?: string[]
@@ -31228,7 +31228,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           fields?: string
           company_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT' | 'EURONEXT_VPS'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31250,14 +31250,14 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/company/estimates',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           isin?: string
           fields?: string
           report_type?: ('REPORT_TYPE_UNSPECIFIED' | 'ANNUAL' | 'INTERIM')[]
           estimate_source?: 'SOURCE_UNSPECIFIED' | 'INFRONT'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31294,7 +31294,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/company/fundamentals',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           isin?: string[]
           instrument_id?: string[]
@@ -31316,7 +31316,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           period_kpi_figures_code?: string[]
           snapshot_kpi_figures_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31427,7 +31427,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/countries',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -31536,7 +31536,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31555,11 +31555,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -31666,7 +31666,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/instruments',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -31775,7 +31775,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -31886,7 +31886,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/issuer/countries',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -31995,7 +31995,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -32106,7 +32106,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/issuer/regions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -32215,7 +32215,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -32326,7 +32326,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/issuer/sectors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -32435,7 +32435,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -32546,7 +32546,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/issuer/sub-sectors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -32655,7 +32655,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -32766,7 +32766,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/issuers',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -32875,7 +32875,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -32986,7 +32986,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -33095,7 +33095,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           country_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -33226,7 +33226,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/administrators',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -33355,7 +33355,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -33486,7 +33486,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/asset-allocations',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -33615,7 +33615,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -33746,7 +33746,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/classification/efcs',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -33875,7 +33875,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34006,7 +34006,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/classification/fund-types',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -34135,7 +34135,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34266,7 +34266,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/compartments',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -34395,7 +34395,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34418,7 +34418,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/compositions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           compartment_id?: number
@@ -34426,7 +34426,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           isin?: string
           type_code?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34557,7 +34557,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/dividend-frequencies',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -34686,7 +34686,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34711,7 +34711,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/dividends',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: number[]
@@ -34721,7 +34721,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           offset?: number
           limit?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -34740,11 +34740,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -34871,7 +34871,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/instruments',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -35000,7 +35000,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -35131,7 +35131,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/investment-horizons',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -35260,7 +35260,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -35391,7 +35391,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/legal-types-europe',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -35520,7 +35520,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -35651,7 +35651,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/legal-types-national',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -35780,7 +35780,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -35911,7 +35911,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -36040,7 +36040,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -36171,7 +36171,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/regions',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -36300,7 +36300,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<Serialized<dev_infrontfinance_cdapi_fund_ListRegionsResponse>>
@@ -36429,7 +36429,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/sectors',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -36558,7 +36558,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<Serialized<dev_infrontfinance_cdapi_fund_ListSectorsResponse>>
@@ -36687,7 +36687,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/umbrellas',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -36816,7 +36816,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -36839,14 +36839,14 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/fxrate/crossrates',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           from_currency_code?: string
           to_currency_code?: string[]
           date?: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -36865,11 +36865,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fxrate/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -36902,7 +36902,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/fxrate/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -36923,7 +36923,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           offset?: number
           limit?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -36942,11 +36942,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/quote/history/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -36975,7 +36975,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/quote/history/quotes',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           listing_id?: string
           fields?: string
@@ -36993,7 +36993,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           do_multiplicative_adjustment?: boolean
           adjustment_schema?: 'SIMPLE' | 'ADVANCED'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37024,7 +37024,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
  */
     (
       url: '/quote/tick/aggregated-quotes',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           listing_id?: string
           fields?: string
@@ -37046,7 +37046,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
             | 'PERIOD_60_MINUTES'
             | 'PERIOD_1_HOUR'
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37065,11 +37065,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/quote/tick/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -37084,11 +37084,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/referential/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -37182,7 +37182,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/referential/index/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -37278,7 +37278,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           operating_mic_code?: string[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37297,11 +37297,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/snapquote/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -37335,7 +37335,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/structured-product/certificate/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -37362,7 +37362,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37381,11 +37381,11 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/structured-product/heartbeat',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           ping?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<dev_infrontfinance_basedef_Hbres>>>
     /**
@@ -37419,7 +37419,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/structured-product/leverage-product/listings',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           fields?: string
           id?: string[]
@@ -37446,7 +37446,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
           sub_sector_id?: number[]
           issuer_id?: string[]
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37466,7 +37466,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/bond/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_bond_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_bond_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37480,7 +37480,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/common/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_common_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_common_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37494,7 +37494,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/derivative/future/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_derivative_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_derivative_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37508,7 +37508,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/derivative/option/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_derivative_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_derivative_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37522,7 +37522,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/entitlement/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_entitlement_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_entitlement_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37536,7 +37536,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/equity/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_equity_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_equity_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37550,7 +37550,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fund/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_fund_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_fund_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37564,7 +37564,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/fxrate/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_fxrate_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_fxrate_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37578,7 +37578,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/quote/history/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_quote_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_quote_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37592,7 +37592,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/quote/tick/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_quote_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_quote_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37606,7 +37606,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/referential/index/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_referential_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_referential_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37620,7 +37620,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/snapquote/purge-cache',
-      args: { body: dev_infrontfinance_cdapi_snapquote_PurgeCacheRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_snapquote_PurgeCacheRequest }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37634,7 +37634,7 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/snapquote/snapquotes',
-      args: { body: dev_infrontfinance_cdapi_snapquote_ListSnapquotesRequest },
+      args: PartiallySerialized<{ body: dev_infrontfinance_cdapi_snapquote_ListSnapquotesRequest }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -37652,9 +37652,9 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/structured-product/certificate/purge-cache',
-      args: {
+      args: PartiallySerialized<{
         body: dev_infrontfinance_cdapi_structured_product_PurgeCacheRequest
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<undefined>
     /**
@@ -37668,9 +37668,9 @@ export type CdapiServiceOpenapiClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/structured-product/leverage-product/purge-cache',
-      args: {
+      args: PartiallySerialized<{
         body: dev_infrontfinance_cdapi_structured_product_PurgeCacheRequest
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<undefined>
   }

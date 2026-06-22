@@ -196,12 +196,12 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      */
     (
       url: '/',
-      args?: {
+      args?: PartiallySerialized<{
         query?: {
           page?: number
           limit?: number
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<CardList>>>
     /**
@@ -220,7 +220,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      */
     (
       url: '/:cardId',
-      args: {
+      args: PartiallySerialized<{
         headers: {
           'X-User-Id': string
           'X-Distributor-Id'?: string
@@ -231,7 +231,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         query: {
           cardNickname: boolean
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
   }
@@ -249,14 +249,14 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      */
     (
       url: '/:cardId',
-      args: {
+      args: PartiallySerialized<{
         params: {
           cardId: string
         }
         query: {
           cardNickname: boolean
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<Card>>>
   }
@@ -275,7 +275,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
      */
     (
       url: '/:cardId/settings',
-      args: {
+      args: PartiallySerialized<{
         body?: CardSettings
         headers: {
           'x-forwarded-authorization': string
@@ -283,7 +283,7 @@ export type CardsAPIClient = Pick<BaseClient, 'get' | 'delete' | 'put'> & {
         params: {
           cardId: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<undefined>
   }

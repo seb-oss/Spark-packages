@@ -2027,9 +2027,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mswjs/interceptors@npm:^0.39.5":
-  version: 0.39.8
-  resolution: "@mswjs/interceptors@npm:0.39.8"
+"@mswjs/interceptors@npm:^0.41.0":
+  version: 0.41.9
+  resolution: "@mswjs/interceptors@npm:0.41.9"
   dependencies:
     "@open-draft/deferred-promise": "npm:^2.2.0"
     "@open-draft/logger": "npm:^0.3.0"
@@ -2037,7 +2037,7 @@ __metadata:
     is-node-process: "npm:^1.2.0"
     outvariant: "npm:^1.4.3"
     strict-event-emitter: "npm:^0.5.1"
-  checksum: 10c0/0d07625ff1bbbf4b5ea702e164914490e26cc3754323f544429f843f5ad8b157194f6a650259cfd1bbdeb6003e1354f63be1d9bf483816aaa17d93ef4b321aaf
+  checksum: 10c0/2efff40877e07ce29846be76c2683177308a72a3ccfe4c096b496412a279acd92b5b9cdad40ad71c36b149a4a7d9e9b4e7d295893a8ba9661b43334f5784ecd8
   languageName: node
   linkType: hard
 
@@ -3741,7 +3741,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-4217@workspace:packages/iso-4217"
   dependencies:
-    fast-xml-parser: "npm:5.9.2"
+    fast-xml-parser: "npm:5.9.3"
   languageName: unknown
   linkType: soft
 
@@ -3791,7 +3791,7 @@ __metadata:
     axios: "npm:1.18.0"
     axios-auth-refresh: "npm:5.0.2"
     express: "npm:5.2.1"
-    nock: "npm:15.0.0"
+    nock: "npm:14.0.15"
   languageName: unknown
   linkType: soft
 
@@ -3943,7 +3943,7 @@ __metadata:
   dependencies:
     "@google-cloud/pubsub": "npm:5.3.1"
     avsc: "npm:5.7.9"
-    uuid: "npm:14.0.0"
+    uuid: "npm:14.0.1"
   languageName: unknown
   linkType: soft
 
@@ -3982,7 +3982,7 @@ __metadata:
     socket.io: "npm:4.8.3"
     socket.io-adapter: "npm:2.5.8"
     socket.io-client: "npm:4.8.3"
-    uuid: "npm:14.0.0"
+    uuid: "npm:14.0.1"
   languageName: unknown
   linkType: soft
 
@@ -4008,7 +4008,7 @@ __metadata:
   dependencies:
     "@types/ws": "npm:8.18.1"
     jose: "npm:6.2.3"
-    nock: "npm:15.0.0"
+    nock: "npm:14.0.15"
     testcontainers: "npm:12.0.3"
     ws: "npm:8.21.0"
   languageName: unknown
@@ -7366,19 +7366,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-xml-parser@npm:5.9.2":
-  version: 5.9.2
-  resolution: "fast-xml-parser@npm:5.9.2"
+"fast-xml-parser@npm:5.9.3":
+  version: 5.9.3
+  resolution: "fast-xml-parser@npm:5.9.3"
   dependencies:
     "@nodable/entities": "npm:^2.2.0"
     fast-xml-builder: "npm:^1.2.0"
     is-unsafe: "npm:^1.0.1"
     path-expression-matcher: "npm:^1.5.0"
-    strnum: "npm:^2.4.0"
+    strnum: "npm:^2.4.1"
     xml-naming: "npm:^0.1.0"
   bin:
     fxparser: src/cli/cli.js
-  checksum: 10c0/dc646e73223aaa1a267b96b130cd9add3c64f50aac1b990fda15f712288cb2a619dde4014d8df0f43030ff2609a187ef657d6b058ce348deb9a251818a4cc964
+  checksum: 10c0/0f4f4b98aec027334be1d4462c6e09649bda8dd8bd1c75f6e985f4000ce4a40ea4540745fa7ac081cd65bf462b0c22fce87da9abc5ede51c9727398c91cacd5f
   languageName: node
   linkType: hard
 
@@ -9501,13 +9501,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nock@npm:15.0.0":
-  version: 15.0.0
-  resolution: "nock@npm:15.0.0"
+"nock@npm:14.0.15":
+  version: 14.0.15
+  resolution: "nock@npm:14.0.15"
   dependencies:
-    "@mswjs/interceptors": "npm:^0.39.5"
+    "@mswjs/interceptors": "npm:^0.41.0"
     json-stringify-safe: "npm:^5.0.1"
-  checksum: 10c0/e11294749dbbdbe74f21808950ab7051bf9fb5bea67732845c1d16d8f16273f02898d9b607fe6affe7ceb3b3b20d0c045eb9bb9f3d2c4bb78a7b4dbda82fa727
+    propagate: "npm:^2.0.0"
+  checksum: 10c0/f3bac19b3173d37e2f730ffac1ec2bd5c0bff153cae2f81e68504310a7830d765749908e3fe40eeab70de4adcb82fcb514a4fcef1ffdc8e7710ab070e92d879d
   languageName: node
   linkType: hard
 
@@ -10194,6 +10195,13 @@ __metadata:
     err-code: "npm:^2.0.2"
     retry: "npm:^0.12.0"
   checksum: 10c0/9c7045a1a2928094b5b9b15336dcd2a7b1c052f674550df63cc3f36cd44028e5080448175b6f6ca32b642de81150f5e7b1a98b728f15cb069f2dd60ac2616b96
+  languageName: node
+  linkType: hard
+
+"propagate@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "propagate@npm:2.0.1"
+  checksum: 10c0/01e1023b60ae4050d1a2783f976d7db702022dbdb70dba797cceedad8cfc01b3939c41e77032f8c32aa9d93192fe937ebba1345e8604e5ce61fd3b62ee3003b8
   languageName: node
   linkType: hard
 
@@ -11523,7 +11531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strnum@npm:^2.4.0":
+"strnum@npm:^2.4.1":
   version: 2.4.1
   resolution: "strnum@npm:2.4.1"
   dependencies:
@@ -12498,12 +12506,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:14.0.0":
-  version: 14.0.0
-  resolution: "uuid@npm:14.0.0"
+"uuid@npm:14.0.1":
+  version: 14.0.1
+  resolution: "uuid@npm:14.0.1"
   bin:
     uuid: dist-node/bin/uuid
-  checksum: 10c0/a57ae7794c45005c1a9208989196c5baf79a7679c30f43c1bee9033a2c4d113a2cea216fa6fcc9663b08b0d55635df1a7c6eb7e7f3d21c3e50688c698fa39a50
+  checksum: 10c0/2d961289097cb68c37d93d1da0b5c3aafc1eb9948a455cca8d0ae53a099b2fe583b8933254a84097f700e6bac2e23033364904df0467c22551d5d9611febcaf6
   languageName: node
   linkType: hard
 

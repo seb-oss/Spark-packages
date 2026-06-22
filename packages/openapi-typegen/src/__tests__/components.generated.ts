@@ -174,7 +174,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/users',
-      args: { headers: ApiKeyAuth; query?: PageParam & LimitParam },
+      args: PartiallySerialized<{ headers: ApiKeyAuth; query?: PageParam & LimitParam }>,
       opts?: RequestOptions,
     ): Promise<
       APIResponse<
@@ -194,12 +194,12 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/users/:userId',
-      args: {
+      args: PartiallySerialized<{
         headers: ApiKeyAuth
         params: {
           userId: string
         }
-      },
+      }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<User>, { 'x-api-key': string }>>
   }
@@ -215,7 +215,7 @@ export type ExampleAPIClient = Pick<BaseClient, 'get' | 'post'> & {
      */
     (
       url: '/users',
-      args: { body: UserCreate; headers: ApiKeyAuth },
+      args: PartiallySerialized<{ body: UserCreate; headers: ApiKeyAuth }>,
       opts?: RequestOptions,
     ): Promise<APIResponse<Serialized<User>>>
   }

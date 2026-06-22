@@ -33,7 +33,7 @@
     "@google-cloud/pubsub": "5.3.1",
     "@msgpack/msgpack": "3.1.3",
     "socket.io-adapter": "2.5.8",
-    "uuid": "14.0.0"
+    "uuid": "14.0.1"
   },
   "resolutions": {
     "protobufjs": "8.6.3",

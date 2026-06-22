@@ -41,8 +41,8 @@ const generateArgs = (
 
     const optional = !isServer && argsOptional(args)
     return `args${optional ? '?' : ''}: ${
-      isServer ? 'Req & ' : ''
-    }{ ${tokens.join(', ')} }, `
+      isServer ? 'Req & ' : 'PartiallySerialized<'
+    }{ ${tokens.join(', ')} }${isServer ? '' : '>'}, `
   }
   // No params - no args
   return ''

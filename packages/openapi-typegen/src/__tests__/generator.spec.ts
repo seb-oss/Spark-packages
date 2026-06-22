@@ -712,7 +712,7 @@ describe('typescript generator', () => {
            */
           (
             url: '/users/:userId/:intent',
-            args: {
+            args: PartiallySerialized<{
               params: {
                 /**
                  * The user ID.
@@ -733,7 +733,7 @@ describe('typescript generator', () => {
                  */
                 size?: number
               }
-            },
+            }>,
             opts?: RequestOptions
           ): Promise<APIResponse<Serialized<User>>>
         }
@@ -783,11 +783,11 @@ describe('typescript generator', () => {
            */
           (
             url: '/users/',
-            args: {
+            args: PartiallySerialized<{
               headers: {
                 'X-Api-Key': string
               }
-            },
+            }>,
             opts?: RequestOptions
           ): Promise<APIResponse<Serialized<User>>>
         }
@@ -857,7 +857,7 @@ describe('typescript generator', () => {
            */
           (
             url: '/users',
-            args: { body: User },
+            args: PartiallySerialized<{ body: User }>,
             opts?: RequestOptions
           ): Promise<APIResponse<Serialized<User>[]>>
         }
