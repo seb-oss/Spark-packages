@@ -3692,7 +3692,7 @@ __metadata:
   dependencies:
     "@google-cloud/iam-credentials": "npm:4.2.2"
     "@sebspark/otel": "npm:4.1.13"
-    google-auth-library: "npm:10.7.0"
+    google-auth-library: "npm:10.9.0"
   languageName: unknown
   linkType: soft
 
@@ -7910,9 +7910,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-auth-library@npm:10.7.0":
-  version: 10.7.0
-  resolution: "google-auth-library@npm:10.7.0"
+"google-auth-library@npm:10.9.0":
+  version: 10.9.0
+  resolution: "google-auth-library@npm:10.9.0"
   dependencies:
     base64-js: "npm:^1.3.0"
     ecdsa-sig-formatter: "npm:^1.0.11"
@@ -7920,7 +7920,7 @@ __metadata:
     gcp-metadata: "npm:8.1.2"
     google-logging-utils: "npm:1.1.3"
     jws: "npm:^4.0.0"
-  checksum: 10c0/e8827ff84a69bbd6573229d8245d8fbb8870304e255c213571541d039c33764a6f4a8d773c002a16d6d75e35b9a596310b5c6f8e25b189a02eb4cebd6f022321
+  checksum: 10c0/d731d0bff429c63e995a954f4a08ccbcdb159bff322c529c467e89a98de215fff6630ddf94c9a29a1737ab8d820ff5943b7131c51faabae04497f146d62636dc
   languageName: node
   linkType: hard
 
