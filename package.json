@@ -33,7 +33,7 @@
     "@changesets/cli": "2.31.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.1",
     "@sebspark/tsconfig": "*",
     "@turbo/gen": "2.9.18",
     "@types/node": "26.0.0",
