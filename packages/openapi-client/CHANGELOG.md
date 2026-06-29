@@ -1,5 +1,14 @@
 # @sebspark/openapi-client
 
+## 4.2.17
+
+### Patch Changes
+
+- 1326198: Timeout is now forwarded to axios, making it usable.
+- Updated dependencies [612a407]
+  - @sebspark/retry@1.0.17
+  - @sebspark/openapi-core@4.1.20
+
 ## 4.2.16
 
 ### Patch Changes

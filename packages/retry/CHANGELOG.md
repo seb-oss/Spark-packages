@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.17
+
+### Patch Changes
+
+- 612a407: Implement maxDelay option
+
 ## 1.0.16
 
 ### Patch Changes
