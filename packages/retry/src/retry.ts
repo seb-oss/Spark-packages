@@ -44,7 +44,12 @@ export const retry = async <T>(
         mergedSettings.retryCondition!(error) &&
         retries < mergedSettings.maxRetries
       ) {
-        await wait(mergedSettings.interval(retries + 1))
+        const computedDelay = mergedSettings.interval(retries + 1)
+        const delay =
+          mergedSettings.maxDelay !== undefined
+            ? Math.min(computedDelay, mergedSettings.maxDelay)
+            : computedDelay
+        await wait(delay)
         return makeCall(retries + 1)
       }
 

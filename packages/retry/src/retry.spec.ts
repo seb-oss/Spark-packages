@@ -59,6 +59,80 @@ describe('retry', () => {
     await expect(retry(func, settings)).rejects.toThrow('always fails')
     expect(func).toHaveBeenCalledTimes(3)
   })
+
+  it('caps retry delay using maxDelay when interval is larger', async () => {
+    const setTimeoutSpy = vi
+      .spyOn(globalThis, 'setTimeout')
+      .mockImplementation(((callback: TimerHandler) => {
+        if (typeof callback === 'function') callback()
+        return 0 as unknown as ReturnType<typeof setTimeout>
+      }) as typeof setTimeout)
+
+    const func = vi.fn().mockResolvedValue(true)
+    func.mockRejectedValueOnce(new Error('fail once'))
+
+    const settings: RetrySettings = {
+      interval: interval.fixed(2000),
+      maxRetries: 1,
+      maxDelay: 500,
+      retryCondition: () => true,
+    }
+
+    await retry(func, settings)
+
+    expect(setTimeoutSpy).toHaveBeenCalledWith(expect.any(Function), 500)
+    setTimeoutSpy.mockRestore()
+  })
+
+  it('does not change delay when interval is below maxDelay', async () => {
+    const setTimeoutSpy = vi
+      .spyOn(globalThis, 'setTimeout')
+      .mockImplementation(((callback: TimerHandler) => {
+        if (typeof callback === 'function') callback()
+        return 0 as unknown as ReturnType<typeof setTimeout>
+      }) as typeof setTimeout)
+
+    const func = vi.fn().mockResolvedValue(true)
+    func.mockRejectedValueOnce(new Error('fail once'))
+
+    const settings: RetrySettings = {
+      interval: interval.fixed(200),
+      maxRetries: 1,
+      maxDelay: 500,
+      retryCondition: () => true,
+    }
+
+    await retry(func, settings)
+
+    expect(setTimeoutSpy).toHaveBeenCalledWith(expect.any(Function), 200)
+    setTimeoutSpy.mockRestore()
+  })
+
+  it('caps exponential interval on later retries', async () => {
+    const setTimeoutSpy = vi
+      .spyOn(globalThis, 'setTimeout')
+      .mockImplementation(((callback: TimerHandler) => {
+        if (typeof callback === 'function') callback()
+        return 0 as unknown as ReturnType<typeof setTimeout>
+      }) as typeof setTimeout)
+
+    const error = new Error('always fails')
+    const func = vi.fn().mockRejectedValue(error)
+
+    const settings: RetrySettings = {
+      interval: interval.exponential(300),
+      maxRetries: 3,
+      maxDelay: 500,
+      retryCondition: () => true,
+    }
+
+    await expect(retry(func, settings)).rejects.toThrow('always fails')
+
+    expect(setTimeoutSpy).toHaveBeenNthCalledWith(1, expect.any(Function), 300)
+    expect(setTimeoutSpy).toHaveBeenNthCalledWith(2, expect.any(Function), 500)
+    expect(setTimeoutSpy).toHaveBeenNthCalledWith(3, expect.any(Function), 500)
+    setTimeoutSpy.mockRestore()
+  })
 })
 
 describe('interval', () => {
