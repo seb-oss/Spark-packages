@@ -207,4 +207,60 @@ describe('TypedClient', () => {
       expect(result.data.received).toEqual(['x', 'y'])
     })
   })
+
+  describe('timeout propagation', () => {
+    test('forwards global timeout to axios request', async () => {
+      const timeoutClient = TypedClient<OpenapiClient>(
+        `http://localhost:${PORT}`,
+        {
+          timeout: 1234,
+        }
+      )
+      const requestSpy = vi
+        .spyOn(timeoutClient.axiosInstance, 'request')
+        .mockResolvedValue({
+          data: [],
+          headers: {},
+          status: 200,
+          statusText: 'OK',
+          config: {},
+        })
+
+      await timeoutClient.get('/users', {
+        headers: { Authorization: accessToken },
+      })
+
+      expect(requestSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ timeout: 1234 })
+      )
+    })
+
+    test('per-request timeout overrides global timeout', async () => {
+      const timeoutClient = TypedClient<OpenapiClient>(
+        `http://localhost:${PORT}`,
+        {
+          timeout: 1000,
+        }
+      )
+      const requestSpy = vi
+        .spyOn(timeoutClient.axiosInstance, 'request')
+        .mockResolvedValue({
+          data: [],
+          headers: {},
+          status: 200,
+          statusText: 'OK',
+          config: {},
+        })
+
+      await timeoutClient.get(
+        '/users',
+        { headers: { Authorization: accessToken } },
+        { timeout: 2500 }
+      )
+
+      expect(requestSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ timeout: 2500 })
+      )
+    })
+  })
 })

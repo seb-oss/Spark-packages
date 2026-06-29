@@ -164,6 +164,7 @@ const callServer = async <
           baseURL: args.baseUrl,
           url: args.url,
           method: args.method,
+          timeout: args.timeout,
           headers: args.headers as AxiosRequestConfig['headers'],
           params: args.params,
           paramsSerializer: serializer,
@@ -192,6 +193,7 @@ const mergeArgs = (
   const headers = merge('headers', global, requestArgs, extras)
   const body = merge('body', global, requestArgs, extras)
   const retry = merge('retry', global, requestArgs, extras)
+  const timeout = extras?.timeout ?? global?.timeout
   const merged: Partial<ClientOptions & RequestArgs> = {
     url: setParams(url, params),
     baseUrl,
@@ -200,6 +202,7 @@ const mergeArgs = (
     headers,
     body,
     retry,
+    timeout,
     arrayFormat: global?.arrayFormat,
     httpsAgent: extras?.httpsAgent,
     httpAgent: extras?.httpAgent,
