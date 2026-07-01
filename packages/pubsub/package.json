@@ -24,7 +24,7 @@
     "pubsub"
   ],
   "resolutions": {
-    "protobufjs": "8.6.3"
+    "protobufjs": "8.6.5"
   },
   "repository": {
     "type": "git",

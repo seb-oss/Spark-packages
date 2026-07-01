@@ -38,10 +38,10 @@
     "@opentelemetry/instrumentation-undici": "0.29.0",
     "@opentelemetry/sdk-trace-base": "2.8.0",
     "@opentelemetry/sdk-trace-node": "2.8.0",
-    "@testcontainers/opensearch": "12.0.3"
+    "@testcontainers/opensearch": "12.0.4"
   },
   "resolutions": {
-    "protobufjs": "8.6.3"
+    "protobufjs": "8.6.5"
   },
   "repository": {
     "type": "git",

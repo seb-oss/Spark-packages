@@ -55,16 +55,16 @@
   "devDependencies": {
     "@opensearch-project/opensearch": "3.6.0",
     "@opentelemetry/context-async-hooks": "2.8.0",
-    "@testcontainers/opensearch": "12.0.3",
-    "@testcontainers/redis": "12.0.3",
+    "@testcontainers/opensearch": "12.0.4",
+    "@testcontainers/redis": "12.0.4",
     "axios": "1.18.1",
     "express": "5.2.1",
     "find-free-ports": "3.1.1",
-    "redis": "6.0.0",
+    "redis": "6.1.0",
     "undici": "8.5.0"
   },
   "resolutions": {
-    "protobufjs": "8.6.3"
+    "protobufjs": "8.6.5"
   },
   "repository": {
     "type": "git",
