@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/otel",
-  "version": "4.1.13",
+  "version": "4.1.14",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -47,7 +47,7 @@
     "@opentelemetry/sdk-node": "0.219.0",
     "@opentelemetry/sdk-trace-node": "2.8.0",
     "@opentelemetry/semantic-conventions": "1.41.1",
-    "@sebspark/opentelemetry-instrumentation-opensearch": "0.3.11",
+    "@sebspark/opentelemetry-instrumentation-opensearch": "0.3.12",
     "fast-safe-stringify": "2.1.1",
     "kleur": "4.1.5",
     "yaml": "2.9.0"

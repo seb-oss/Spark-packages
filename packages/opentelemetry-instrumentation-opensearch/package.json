@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/opentelemetry-instrumentation-opensearch",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
