@@ -2271,6 +2271,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/context-async-hooks@npm:2.9.0":
+  version: 2.9.0
+  resolution: "@opentelemetry/context-async-hooks@npm:2.9.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.0.0 <1.10.0"
+  checksum: 10c0/be32a8241333e910ba12fe59ca70a37596f3b55b7a2e0ffa27e05ab9e555e4e94eb3a5c9a5476e8d22fd7bd1fea1bd585338684586f8f638a88f9c091050b5e3
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/context-async-hooks@npm:^2.0.0":
   version: 2.2.0
   resolution: "@opentelemetry/context-async-hooks@npm:2.2.0"
@@ -3916,7 +3925,7 @@ __metadata:
     "@opensearch-project/opensearch": "npm:3.6.0"
     "@opentelemetry/api": "npm:1.9.1"
     "@opentelemetry/api-logs": "npm:0.219.0"
-    "@opentelemetry/context-async-hooks": "npm:2.8.0"
+    "@opentelemetry/context-async-hooks": "npm:2.9.0"
     "@opentelemetry/core": "npm:2.8.0"
     "@opentelemetry/exporter-logs-otlp-http": "npm:0.219.0"
     "@opentelemetry/exporter-metrics-otlp-http": "npm:0.219.0"
