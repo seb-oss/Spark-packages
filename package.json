@@ -37,7 +37,7 @@
     "@sebspark/tsconfig": "*",
     "@turbo/gen": "2.10.2",
     "@types/node": "26.1.0",
-    "@vitest/coverage-v8": "4.1.9",
+    "@vitest/coverage-v8": "4.1.10",
     "depcheck": "1.4.7",
     "husky": "9.1.7",
     "knip": "6.23.0",
