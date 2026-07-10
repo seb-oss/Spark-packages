@@ -45,7 +45,7 @@
     "tsup": "8.5.1",
     "turbo": "2.10.2",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   },
   "resolutions": {
     "@babel/core": "7.29.7",
