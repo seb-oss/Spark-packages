@@ -2837,10 +2837,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/semantic-conventions@npm:1.41.1":
-  version: 1.41.1
-  resolution: "@opentelemetry/semantic-conventions@npm:1.41.1"
-  checksum: 10c0/c54b1edf845766e93026d30fd95e15da9dba8d7a5b58f8c320c5d36ab542c77b37868f3e8e3d78ec162da8ee2afd24781f0a65934c9bdbc1aea86b47b12f074c
+"@opentelemetry/semantic-conventions@npm:1.43.0":
+  version: 1.43.0
+  resolution: "@opentelemetry/semantic-conventions@npm:1.43.0"
+  checksum: 10c0/ea4b4b07c9414b0c5e7ce7349f608cb2572d16922d96077fb0882b59f173ec9b94aada74896bd5dd4aeb1759924503bd5a34b6dc2847a84c36f71626a0578ec4
   languageName: node
   linkType: hard
 
@@ -3852,7 +3852,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
-    "@opentelemetry/semantic-conventions": "npm:1.41.1"
+    "@opentelemetry/semantic-conventions": "npm:1.43.0"
     "@sebspark/openapi-core": "npm:4.1.20"
     "@sebspark/otel": "npm:4.1.14"
     "@types/supertest": "npm:7.2.0"
@@ -3901,7 +3901,7 @@ __metadata:
     "@opentelemetry/instrumentation-undici": "npm:0.29.0"
     "@opentelemetry/sdk-trace-base": "npm:2.8.0"
     "@opentelemetry/sdk-trace-node": "npm:2.8.0"
-    "@opentelemetry/semantic-conventions": "npm:1.41.1"
+    "@opentelemetry/semantic-conventions": "npm:1.43.0"
     "@testcontainers/opensearch": "npm:12.0.4"
   peerDependencies:
     "@opensearch-project/opensearch": ">=2"
@@ -3938,7 +3938,7 @@ __metadata:
     "@opentelemetry/sdk-metrics": "npm:2.8.0"
     "@opentelemetry/sdk-node": "npm:0.219.0"
     "@opentelemetry/sdk-trace-node": "npm:2.8.0"
-    "@opentelemetry/semantic-conventions": "npm:1.41.1"
+    "@opentelemetry/semantic-conventions": "npm:1.43.0"
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.3.12"
     "@testcontainers/opensearch": "npm:12.0.4"
     "@testcontainers/redis": "npm:12.0.4"
