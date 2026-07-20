@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/ws": "8.18.1",
     "nock": "14.0.16",
-    "ws": "8.21.0"
+    "ws": "8.21.1"
   },
   "resolutions": {
     "protobufjs": "8.6.5"
