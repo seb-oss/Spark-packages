@@ -2236,6 +2236,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/api-logs@npm:0.221.0":
+  version: 0.221.0
+  resolution: "@opentelemetry/api-logs@npm:0.221.0"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.3.0"
+  checksum: 10c0/fdbd3e761a59b58faa9b3204b85ddbdab1e436e44535a7dfa2f8e539b94fc8e6e43a483d2178b5fdd316a4ffcb48dc852f8d6de4c3e860821a8d82552dd0322d
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/api@npm:1.9.1":
   version: 1.9.1
   resolution: "@opentelemetry/api@npm:1.9.1"
@@ -2595,6 +2604,19 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ^1.3.0
   checksum: 10c0/5d0bd6c3d87f4eb4057f84c8e87ba4e895f6154b411201ecec42c165b6de8a8f8ab591d87ef2c879b37ab4aecee7582cb5a909666dd9654f3e9f0d69126ff864
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/instrumentation@npm:0.221.0":
+  version: 0.221.0
+  resolution: "@opentelemetry/instrumentation@npm:0.221.0"
+  dependencies:
+    "@opentelemetry/api-logs": "npm:0.221.0"
+    import-in-the-middle: "npm:^3.0.0"
+    require-in-the-middle: "npm:^8.0.0"
+  peerDependencies:
+    "@opentelemetry/api": ^1.3.0
+  checksum: 10c0/0a5ecc7a96b4155223b77f21716d12231f15a5a505b1a7304e4d555c6cc256a4f351db0e76e2b741e23b713445ffc5adb08694d3695f78b3b7b1f00ce7da4f3d
   languageName: node
   linkType: hard
 
@@ -3896,7 +3918,7 @@ __metadata:
     "@opensearch-project/opensearch": "npm:3.6.0"
     "@opentelemetry/api": "npm:1.9.1"
     "@opentelemetry/core": "npm:2.8.0"
-    "@opentelemetry/instrumentation": "npm:0.219.0"
+    "@opentelemetry/instrumentation": "npm:0.221.0"
     "@opentelemetry/instrumentation-http": "npm:0.219.0"
     "@opentelemetry/instrumentation-undici": "npm:0.29.0"
     "@opentelemetry/sdk-trace-base": "npm:2.8.0"
@@ -3921,7 +3943,7 @@ __metadata:
     "@opentelemetry/exporter-logs-otlp-http": "npm:0.219.0"
     "@opentelemetry/exporter-metrics-otlp-http": "npm:0.219.0"
     "@opentelemetry/exporter-trace-otlp-http": "npm:0.219.0"
-    "@opentelemetry/instrumentation": "npm:0.219.0"
+    "@opentelemetry/instrumentation": "npm:0.221.0"
     "@opentelemetry/instrumentation-dns": "npm:0.62.0"
     "@opentelemetry/instrumentation-express": "npm:0.67.0"
     "@opentelemetry/instrumentation-fs": "npm:0.38.0"
