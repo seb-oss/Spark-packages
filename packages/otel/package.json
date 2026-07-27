@@ -31,7 +31,7 @@
     "@opentelemetry/exporter-trace-otlp-http": "0.219.0",
     "@opentelemetry/instrumentation": "0.219.0",
     "@opentelemetry/instrumentation-dns": "0.62.0",
-    "@opentelemetry/instrumentation-express": "0.67.0",
+    "@opentelemetry/instrumentation-express": "0.69.0",
     "@opentelemetry/instrumentation-fs": "0.38.0",
     "@opentelemetry/instrumentation-grpc": "0.219.0",
     "@opentelemetry/instrumentation-http": "0.219.0",
