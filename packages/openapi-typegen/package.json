@@ -33,7 +33,7 @@
     "change-case": "5.4.4",
     "prettier": "3.9.4",
     "yaml": "2.9.0",
-    "yargs": "18.0.0"
+    "yargs": "18.1.0"
   },
   "repository": {
     "type": "git",

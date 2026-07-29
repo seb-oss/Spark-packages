@@ -33,7 +33,7 @@
     "@google-cloud/spanner": "8.8.0",
     "@inquirer/prompts": "8.5.2",
     "typescript": "6.0.3",
-    "yargs": "18.0.0"
+    "yargs": "18.1.0"
   },
   "resolutions": {
     "protobufjs": "8.6.5"
