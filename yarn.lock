@@ -3678,7 +3678,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.22"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
-    chalk: "npm:5.6.2"
+    chalk: "npm:6.0.0"
     yargs: "npm:18.0.0"
   bin:
     avsc-ts: dist/cli.js
@@ -3870,7 +3870,7 @@ __metadata:
     "@sebspark/openapi-core": "npm:4.1.20"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
-    chalk: "npm:5.6.2"
+    chalk: "npm:6.0.0"
     change-case: "npm:5.4.4"
     prettier: "npm:3.9.4"
     yaml: "npm:2.9.0"
@@ -5950,7 +5950,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:5.6.2, chalk@npm:^5.3.0":
+"chalk@npm:6.0.0":
+  version: 6.0.0
+  resolution: "chalk@npm:6.0.0"
+  checksum: 10c0/47fd9028aa66fa532295525fe3ac5aec5e467e0d86847d4b5f6e01f9c9bb70b6fd1edca79cddc78a0f31a357baa65cc752d30c6557d025904207d113c82d8962
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^5.3.0":
   version: 5.6.2
   resolution: "chalk@npm:5.6.2"
   checksum: 10c0/99a4b0f0e7991796b1e7e3f52dceb9137cae2a9dfc8fc0784a550dc4c558e15ab32ed70b14b21b52beb2679b4892b41a0aa44249bcb996f01e125d58477c6976
