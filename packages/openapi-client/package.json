@@ -27,7 +27,7 @@
   "devDependencies": {
     "@sebspark/openapi-typegen": "5.2.2",
     "express": "5.2.1",
-    "nock": "14.0.16"
+    "nock": "14.0.17"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.20",
