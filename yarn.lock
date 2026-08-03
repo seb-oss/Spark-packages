@@ -4036,7 +4036,7 @@ __metadata:
   resolution: "@sebspark/test-iap@workspace:packages/test-iap"
   dependencies:
     "@types/ws": "npm:8.18.1"
-    jose: "npm:6.2.3"
+    jose: "npm:6.2.5"
     nock: "npm:14.0.16"
     testcontainers: "npm:12.0.4"
     ws: "npm:8.21.0"
@@ -8652,10 +8652,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:6.2.3":
-  version: 6.2.3
-  resolution: "jose@npm:6.2.3"
-  checksum: 10c0/aa91bccba22cc84d86308f833749bcb0b00441e35c24e0ac79abeac5f76dc62d47bdef9c1da6a0c609f5da6478595f52b252085888b89dbdb163861e40ea4188
+"jose@npm:6.2.5":
+  version: 6.2.5
+  resolution: "jose@npm:6.2.5"
+  checksum: 10c0/9bbb70f5d23052473e3629d3d11e07472f54c2f06318be5b6e9b016b1071589bdea18fd6e7559eea010081379a0f2d990599e1e5acaf7f37639833dfdd1d31ae
   languageName: node
   linkType: hard
 
