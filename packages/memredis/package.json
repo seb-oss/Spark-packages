@@ -26,7 +26,7 @@
     "@testcontainers/redis": "12.0.4"
   },
   "dependencies": {
-    "redis": "6.1.0"
+    "redis": "6.2.0"
   },
   "repository": {
     "type": "git",
