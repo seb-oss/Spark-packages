@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@google-cloud/logging-winston": "6.0.2",
-    "@types/express-serve-static-core": "5.1.1",
+    "@types/express-serve-static-core": "5.1.3",
     "express": "5.2.1",
     "logform": "2.7.0",
     "socket.io": "4.8.3",

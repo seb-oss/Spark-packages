@@ -3779,7 +3779,7 @@ __metadata:
   resolution: "@sebspark/logging@workspace:packages/logging"
   dependencies:
     "@google-cloud/logging-winston": "npm:6.0.2"
-    "@types/express-serve-static-core": "npm:5.1.1"
+    "@types/express-serve-static-core": "npm:5.1.3"
     "@types/socketio-wildcard": "npm:2.0.7"
     express: "npm:5.2.1"
     logform: "npm:2.7.0"
@@ -4380,15 +4380,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express-serve-static-core@npm:5.1.1":
-  version: 5.1.1
-  resolution: "@types/express-serve-static-core@npm:5.1.1"
+"@types/express-serve-static-core@npm:5.1.3":
+  version: 5.1.3
+  resolution: "@types/express-serve-static-core@npm:5.1.3"
   dependencies:
     "@types/node": "npm:*"
     "@types/qs": "npm:*"
     "@types/range-parser": "npm:*"
     "@types/send": "npm:*"
-  checksum: 10c0/ee88216e114368ef06bcafeceb74a7e8671b90900fb0ab1d49ff41542c3a344231ef0d922bf63daa79f0585f3eebe2ce5ec7f83facc581eff8bcdb136a225ef3
+  checksum: 10c0/2312bf52f2c299fdaf3b0c60c6058dd102f7bb6ed721b6de94e334feead4a4e4b606717058400436aa841cd9499e6960a4e3d92dd2b00220a6c1435ea5fdb5e1
   languageName: node
   linkType: hard
 
