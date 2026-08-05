@@ -1,5 +1,13 @@
 # @sebspark/openapi-core
 
+## 4.1.21
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+- Updated dependencies [eefb531]
+  - @sebspark/retry@1.0.18
+
 ## 4.1.20
 
 ### Patch Changes

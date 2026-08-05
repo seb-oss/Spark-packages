@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.1.11
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+
 ## 3.1.10
 
 ### Patch Changes

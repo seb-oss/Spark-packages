@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.18
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+
 ## 1.0.17
 
 ### Patch Changes
