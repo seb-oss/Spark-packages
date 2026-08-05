@@ -177,11 +177,14 @@ describe('instrumentations', () => {
     ['fs', '@opentelemetry/instrumentation-fs'],
     ['socketIo', '@opentelemetry/instrumentation-socket.io'],
     ['opensearch', '@sebspark/opentelemetry-instrumentation-opensearch'],
-  ] as const)('%s resolves to the correct instrumentation', async (key, name) => {
-    const { instrumentations } = await import('./instrumentations')
-    const inst = await instrumentations[key]()
-    expect((inst as any).instrumentationName).toBe(name)
-  })
+  ] as const)(
+    '%s resolves to the correct instrumentation',
+    async (key, name) => {
+      const { instrumentations } = await import('./instrumentations')
+      const inst = await instrumentations[key]()
+      expect((inst as any).instrumentationName).toBe(name)
+    }
+  )
 
   it.each([
     'grpc',
@@ -192,10 +195,13 @@ describe('instrumentations', () => {
     'undici',
     'socketIo',
     'opensearch',
-  ] as const)('%s returns the same instance for repeated calls', async (key) => {
-    const { instrumentations } = await import('./instrumentations')
-    const inst1 = await instrumentations[key]()
-    const inst2 = await instrumentations[key]()
-    expect(inst1).toBe(inst2)
-  })
+  ] as const)(
+    '%s returns the same instance for repeated calls',
+    async (key) => {
+      const { instrumentations } = await import('./instrumentations')
+      const inst1 = await instrumentations[key]()
+      const inst2 = await instrumentations[key]()
+      expect(inst1).toBe(inst2)
+    }
+  )
 })

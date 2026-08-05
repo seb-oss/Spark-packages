@@ -48,7 +48,7 @@ const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   const logExporter = new InMemoryLogRecordExporter()
 
   const logProvider = new LoggerProvider({
-    processors: [new SimpleLogRecordProcessor(logExporter)],
+    processors: [new SimpleLogRecordProcessor({ exporter: logExporter })],
   })
   logs.setGlobalLoggerProvider(logProvider)
 
@@ -193,19 +193,19 @@ describe('instrumentations', () => {
         return (
           span.instrumentationScope.name ===
             '@opentelemetry/instrumentation-http' &&
-          span.attributes['http.user_agent'] === undefined
+          span.attributes['http.request.header.user_agent'] === undefined
         )
       })
 
       expect(httpSpans).toHaveLength(2)
       expect(httpSpans[0]).toEqual(
         expect.objectContaining<Partial<ReadableSpan>>({
-          name: 'GET localhost/',
+          name: 'GET',
         })
       )
       expect(httpSpans[1]).toEqual(
         expect.objectContaining<Partial<ReadableSpan>>({
-          name: 'POST localhost/',
+          name: 'POST',
         })
       )
     })

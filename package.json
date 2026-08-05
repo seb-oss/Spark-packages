@@ -30,22 +30,22 @@
   },
   "private": true,
   "dependencies": {
-    "@changesets/cli": "2.31.0"
+    "@changesets/cli": "2.31.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.2",
+    "@biomejs/biome": "2.5.7",
     "@sebspark/tsconfig": "*",
-    "@turbo/gen": "2.10.2",
-    "@types/node": "26.1.0",
-    "@vitest/coverage-v8": "4.1.9",
+    "@turbo/gen": "2.10.8",
+    "@types/node": "26.1.2",
+    "@vitest/coverage-v8": "4.1.10",
     "depcheck": "1.4.7",
     "husky": "9.1.7",
-    "knip": "6.23.0",
+    "knip": "6.31.0",
     "syncpack": "15.3.2",
     "tsup": "8.5.1",
-    "turbo": "2.10.2",
+    "turbo": "2.10.8",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   },
   "resolutions": {
     "@babel/core": "7.29.7",
@@ -65,7 +65,7 @@
     "rollup": "4.62.2",
     "tar": "7.5.19",
     "vite": "8.1.2",
-    "ws": "8.21.0",
+    "ws": "8.21.2",
     "yaml@^2.0.0": "2.9.0",
     "yaml@^2.2.2": "2.9.0"
   },

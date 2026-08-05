@@ -73,7 +73,7 @@ describe('getLogger', () => {
         resource: resourceFromAttributes({
           [ATTR_SERVICE_NAME]: 'test-service',
         }),
-        processors: [new SimpleLogRecordProcessor(exporter)],
+        processors: [new SimpleLogRecordProcessor({ exporter })],
       })
 
       // Overwrite logger provider

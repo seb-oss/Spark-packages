@@ -27,15 +27,17 @@ export const getLogProvider = (
 ) => {
   // With collector
   if (otlpEndpoint) {
-    const exporter = new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
+    const otlpExporter = new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
     const processors: LogRecordProcessor[] = [
-      new BatchLogRecordProcessor(exporter),
+      new BatchLogRecordProcessor({ exporter: otlpExporter }),
     ]
 
     // Console logging for cluster
     if (process.env.LOG_LEVEL) {
       const consoleExporter = new ConsoleLogPrettyExporter()
-      processors.push(new SimpleLogRecordProcessor(consoleExporter))
+      processors.push(
+        new SimpleLogRecordProcessor({ exporter: consoleExporter })
+      )
     }
 
     return new LoggerProvider({
@@ -45,8 +47,8 @@ export const getLogProvider = (
   }
 
   // Local dev
-  const exporter = new ConsoleLogPrettyExporter()
-  const processor = new SimpleLogRecordProcessor(exporter)
+  const consoleExporter = new ConsoleLogPrettyExporter()
+  const processor = new SimpleLogRecordProcessor({ exporter: consoleExporter })
   return new LoggerProvider({
     resource,
     processors: [processor],

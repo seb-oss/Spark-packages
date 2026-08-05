@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@sebspark/avsc-isometric": "0.4.14",
-    "socket.io-parser": "4.2.6"
+    "socket.io-parser": "4.2.7"
   },
   "peerDependencies": {
     "socket.io": "4.8.3",
