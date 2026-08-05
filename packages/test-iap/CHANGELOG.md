@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.26
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+
 ## 1.0.25
 
 ### Patch Changes

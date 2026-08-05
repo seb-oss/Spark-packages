@@ -1,5 +1,11 @@
 # @sebspark/pubsub
 
+## 1.8.22
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+
 ## 1.8.21
 
 ### Patch Changes

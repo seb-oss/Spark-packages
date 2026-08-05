@@ -1,5 +1,11 @@
 # @sebspark/logging
 
+## 2.0.17
+
+### Patch Changes
+
+- eefb531: Updated dependencies
+
 ## 2.0.16
 
 ### Patch Changes
