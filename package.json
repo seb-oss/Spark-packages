@@ -35,7 +35,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.7",
     "@sebspark/tsconfig": "*",
-    "@turbo/gen": "2.10.8",
+    "@turbo/gen": "2.10.9",
     "@types/node": "26.1.2",
     "@vitest/coverage-v8": "4.1.10",
     "depcheck": "1.4.7",
