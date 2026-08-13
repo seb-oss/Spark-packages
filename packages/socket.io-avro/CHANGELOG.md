@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.20
+
+### Patch Changes
+
+- 035b0f5: Add exports for React Native
+
 ## 0.1.19
 
 ### Patch Changes
