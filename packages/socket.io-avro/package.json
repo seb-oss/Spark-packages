@@ -6,6 +6,7 @@
   "exports": {
     "./parser": {
       "types": "./dist/parser.d.mts",
+      "react-native": "./dist/parser.mjs",
       "import": "./dist/parser.mjs"
     },
     "./server": {
@@ -14,6 +15,7 @@
     },
     "./client": {
       "types": "./dist/client.d.mts",
+      "react-native": "./dist/client.mjs",
       "import": "./dist/client.mjs"
     }
   },
