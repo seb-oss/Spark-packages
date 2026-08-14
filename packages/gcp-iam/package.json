@@ -19,7 +19,7 @@
   "dependencies": {
     "@google-cloud/iam-credentials": "4.2.2",
     "@sebspark/otel": "4.1.15",
-    "google-auth-library": "11.0.0"
+    "google-auth-library": "11.0.1"
   },
   "resolutions": {
     "protobufjs": "8.6.5"
