@@ -97,7 +97,14 @@ export class AvroDecoder extends BaseDecoder {
    */
   // biome-ignore lint/suspicious/noExplicitAny: Defined in outside package
   override add(chunk: any) {
-    if (Buffer.isBuffer(chunk)) {
+    // biome-ignore lint/suspicious/noExplicitAny: Defined in outside package
+    let input: any = chunk
+
+    if (chunk instanceof ArrayBuffer) {
+      input = Buffer.from(chunk)
+    }
+
+    if (Buffer.isBuffer(input)) {
       try {
         const packet = this.type.fromBuffer(chunk)
         const decoded = decodePacket(packet)

@@ -160,6 +160,16 @@ describe('AvroDecoder', () => {
     expect(decoded).toHaveLength(1)
   })
 
+  it('handles ArrayBuffer', () => {
+    const type = makeType()
+    const decoder = new AvroDecoder(type)
+    const decoded: unknown[] = []
+    decoder.on('decoded', (packet) => decoded.push(packet))
+
+    decoder.add(new ArrayBuffer(8))
+    // super.add should handle it without throwing
+  })
+
   it('falls back to super.add for non-buffer chunks', () => {
     const type = makeType()
     const decoder = new AvroDecoder(type)
