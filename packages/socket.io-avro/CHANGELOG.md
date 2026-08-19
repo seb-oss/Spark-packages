@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.21
+
+### Patch Changes
+
+- e5db7d5: Handle ArrayBuffer in Avro decoding
+
 ## 0.1.20
 
 ### Patch Changes
