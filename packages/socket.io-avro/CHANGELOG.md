@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.22
+
+### Patch Changes
+
+- 2789b14: Use converted ArrayBuffer when processing
+
 ## 0.1.21
 
 ### Patch Changes
