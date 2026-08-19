@@ -106,7 +106,7 @@ export class AvroDecoder extends BaseDecoder {
 
     if (Buffer.isBuffer(input)) {
       try {
-        const packet = this.type.fromBuffer(chunk)
+        const packet = this.type.fromBuffer(input)
         const decoded = decodePacket(packet)
         // decodePacket always returns a packet; guard kept for defensive safety
         /* istanbul ignore next */
@@ -119,7 +119,7 @@ export class AvroDecoder extends BaseDecoder {
         console.warn('Malformed binary', err)
       }
     } else {
-      super.add(chunk)
+      super.add(input)
     }
   }
 }
