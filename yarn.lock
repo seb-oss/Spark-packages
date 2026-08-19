@@ -1142,12 +1142,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/iam-credentials@npm:4.2.2":
-  version: 4.2.2
-  resolution: "@google-cloud/iam-credentials@npm:4.2.2"
+"@google-cloud/iam-credentials@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@google-cloud/iam-credentials@npm:5.0.0"
   dependencies:
-    google-gax: "npm:^5.0.0"
-  checksum: 10c0/1fac1b3148c41e61fd2c757c26ae7722aea5e06b207c7ec7294020e247d51a34bad7236b67955971ce2ba38241622502423854ac2b4f824354a4725ca415d687
+    google-gax: "npm:^6.0.0"
+  checksum: 10c0/2489e08631df67dc61742e9b1d8d452d823a07ebbb5d84cf8dd0ea38da1d39b1e648cea60607c1fb3df3cd2ffa567e9d2f5280c79e685f6ba37586512ff6a72c
   languageName: node
   linkType: hard
 
@@ -3674,7 +3674,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
-    "@google-cloud/iam-credentials": "npm:4.2.2"
+    "@google-cloud/iam-credentials": "npm:5.0.0"
     "@sebspark/otel": "npm:4.1.15"
     google-auth-library: "npm:11.0.0"
   languageName: unknown
@@ -7819,6 +7819,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gaxios@npm:^7.1.3":
+  version: 7.3.1
+  resolution: "gaxios@npm:7.3.1"
+  dependencies:
+    extend: "npm:^3.0.2"
+    https-proxy-agent: "npm:^7.0.1"
+    node-fetch: "npm:^3.3.2"
+  checksum: 10c0/64719a771c5ffa631b33d18b144253596f69d98fa3123c3864f7b66947bb1406fb98a4690bd7e11c651d2ee3f57b60b23814cc4a7dbd62d043eab9fa3df60f96
+  languageName: node
+  linkType: hard
+
 "gaxios@npm:^7.1.4":
   version: 7.1.4
   resolution: "gaxios@npm:7.1.4"
@@ -7849,6 +7860,17 @@ __metadata:
     google-logging-utils: "npm:^0.0.2"
     json-bigint: "npm:^1.0.0"
   checksum: 10c0/71f6ad4800aa622c246ceec3955014c0c78cdcfe025971f9558b9379f4019f5e65772763428ee8c3244fa81b8631977316eaa71a823493f82e5c44d7259ffac8
+  languageName: node
+  linkType: hard
+
+"gcp-metadata@npm:^9.0.0":
+  version: 9.0.3
+  resolution: "gcp-metadata@npm:9.0.3"
+  dependencies:
+    gaxios: "npm:^7.1.3"
+    google-logging-utils: "npm:^2.0.0"
+    json-bigint: "npm:^1.0.0"
+  checksum: 10c0/c13a9189ec809f76917f5fd5996f6e88cee23a2bbc0a2120fafc9a0917f60d0929bedc6875d84c2e31d71e765e638800229c59f437afefb3335fb7eb2fd4d331
   languageName: node
   linkType: hard
 
@@ -8053,6 +8075,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"google-auth-library@npm:^11.0.0":
+  version: 11.0.2
+  resolution: "google-auth-library@npm:11.0.2"
+  dependencies:
+    base64-js: "npm:^1.3.0"
+    ecdsa-sig-formatter: "npm:^1.0.11"
+    gaxios: "npm:^7.1.4"
+    gcp-metadata: "npm:^9.0.0"
+    google-logging-utils: "npm:^2.0.0"
+    jws: "npm:^4.0.0"
+  checksum: 10c0/2da32dc52c4148d6cdea0ddf9ee00da8b7d5903054d36b45cc2023bf4a4e0ea7ec057521499bf189a605d225a2ca9c513d5cf9e5e76f6478dddcbc4d93833f8c
+  languageName: node
+  linkType: hard
+
 "google-auth-library@npm:^9.0.0, google-auth-library@npm:^9.3.0":
   version: 9.15.1
   resolution: "google-auth-library@npm:9.15.1"
@@ -8125,6 +8161,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"google-gax@npm:^6.0.0":
+  version: 6.0.2
+  resolution: "google-gax@npm:6.0.2"
+  dependencies:
+    "@grpc/grpc-js": "npm:^1.12.6"
+    "@grpc/proto-loader": "npm:^0.8.0"
+    duplexify: "npm:^4.1.3"
+    google-auth-library: "npm:^11.0.0"
+    google-logging-utils: "npm:^2.0.0"
+    node-fetch: "npm:^3.3.2"
+    object-hash: "npm:^3.0.0"
+    proto3-json-serializer: "npm:^4.0.0"
+    protobufjs: "npm:^7.5.4"
+    retry-request: "npm:^9.0.0"
+  checksum: 10c0/fca5d925a5b360f141e2cff3ad964e7f02df48523e35217ec1b15b3cc1317c4711f52192e7960ccd7ac157e34b23c048f8cf584cf8219ff8431d08e95e620f35
+  languageName: node
+  linkType: hard
+
 "google-logging-utils@npm:1.1.3, google-logging-utils@npm:^1.0.0, google-logging-utils@npm:^1.1.1":
   version: 1.1.3
   resolution: "google-logging-utils@npm:1.1.3"
@@ -8143,6 +8197,13 @@ __metadata:
   version: 1.1.4
   resolution: "google-logging-utils@npm:1.1.4"
   checksum: 10c0/860873974dd31678553f1074eb8fcf49c6417807086f4645ee8d4eaa81e8dce39f8f7a4b6856be4fda6e5d812b2df10e7abeb6dfe28353d28724cf81357c5a53
+  languageName: node
+  linkType: hard
+
+"google-logging-utils@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "google-logging-utils@npm:2.0.1"
+  checksum: 10c0/f8926ef09ad94e2c9f0bca4c455e300f610a7b13da6fb055aecaab79975fc0fe0d308241063da9bdbfc19cf450088258a3c4c7ce5ffdf79c77d74c71a9427881
   languageName: node
   linkType: hard
 
@@ -10452,6 +10513,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proto3-json-serializer@npm:^4.0.0":
+  version: 4.0.2
+  resolution: "proto3-json-serializer@npm:4.0.2"
+  dependencies:
+    protobufjs: "npm:^7.5.4"
+  checksum: 10c0/56e4ec8cefddc9758bb4f26cfda22e4639b24616761b15033ce8ff95c12d9343c3b576e0c9dccd3f1f5f6ec7ef2a7276a2d393f129aa944cb2b93c466f5d3a08
+  languageName: node
+  linkType: hard
+
 "protobufjs@npm:8.6.5":
   version: 8.6.5
   resolution: "protobufjs@npm:8.6.5"
@@ -10804,6 +10874,16 @@ __metadata:
     extend: "npm:^3.0.2"
     teeny-request: "npm:^10.0.0"
   checksum: 10c0/b215cb986c30e12fccd163f819cd8c185344387ef6c5e55ef1d20e23b72f619dde6506c1cfd89d94b0bbba56658ea621ad6be769acedb43ef11710eeccf7758f
+  languageName: node
+  linkType: hard
+
+"retry-request@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "retry-request@npm:9.0.1"
+  dependencies:
+    extend: "npm:^3.0.2"
+    teeny-request: "npm:^11.0.0"
+  checksum: 10c0/aa18fe6c7785036ab1a9049ebe6b848f90c6b97b2f45ceacd28115ee6d1b252c5961a1864d429f7e0d9a455a66f0aa00d4e1ad3d7356a057b68bd83292ff58ee
   languageName: node
   linkType: hard
 
@@ -12023,6 +12103,18 @@ __metadata:
     node-fetch: "npm:^3.3.2"
     stream-events: "npm:^1.0.5"
   checksum: 10c0/bbb95683c0a4ac5b0da5128f1d731f7b59d74910368b1ec12a435f39e37b37726e87d4a658f090308bb6adea935aec6e2dfc557a8510e89f2833b64d3adcfdfc
+  languageName: node
+  linkType: hard
+
+"teeny-request@npm:^11.0.0":
+  version: 11.0.1
+  resolution: "teeny-request@npm:11.0.1"
+  dependencies:
+    http-proxy-agent: "npm:^7.0.0"
+    https-proxy-agent: "npm:^7.0.1"
+    node-fetch: "npm:^3.3.2"
+    stream-events: "npm:^1.0.5"
+  checksum: 10c0/a8458265dc773ec2aaa704056ecaddef04c45f0f74914f4cab017e51a02fea7274144a2f089432874d203ff8b94808f91036f3668ad94094271138b49e9c2dee
   languageName: node
   linkType: hard
 
