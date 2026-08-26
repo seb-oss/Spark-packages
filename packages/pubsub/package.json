@@ -10,7 +10,7 @@
     "dist"
   ],
   "dependencies": {
-    "@google-cloud/pubsub": "6.0.0",
+    "@google-cloud/pubsub": "6.0.1",
     "avsc": "5.7.9",
     "uuid": "14.0.1"
   },
