@@ -1359,9 +1359,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/spanner@npm:8.10.0":
-  version: 8.10.0
-  resolution: "@google-cloud/spanner@npm:8.10.0"
+"@google-cloud/spanner-api@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@google-cloud/spanner-api@npm:0.2.0"
+  dependencies:
+    google-gax: "npm:^5.0.0"
+  checksum: 10c0/4b3afb8188ab54aff4d60840a7dec03200f0e8b61489453aafa0fa0a263a994367b6844cb431edb6dd93b89f14dab1d4388443666afec6e8e7ef628ae8985efe
+  languageName: node
+  linkType: hard
+
+"@google-cloud/spanner@npm:8.11.0":
+  version: 8.11.0
+  resolution: "@google-cloud/spanner@npm:8.11.0"
   dependencies:
     "@babel/core": "npm:7.27.7"
     "@babel/helpers": "npm:7.27.6"
@@ -1371,6 +1380,7 @@ __metadata:
     "@google-cloud/opentelemetry-resource-util": "npm:^2.4.0"
     "@google-cloud/precise-date": "npm:^5.0.0"
     "@google-cloud/promisify": "npm:^5.0.0"
+    "@google-cloud/spanner-api": "npm:^0.2.0"
     "@grpc/grpc-js": "npm:^1.13.2"
     "@grpc/proto-loader": "npm:^0.8.0"
     "@opentelemetry/api": "npm:^1.9.0"
@@ -1399,7 +1409,7 @@ __metadata:
     stream-events: "npm:^1.0.5"
     teeny-request: "npm:^10.0.0"
     through2: "npm:^4.0.2"
-  checksum: 10c0/28e9e5f59a38af1124d093a7c145def41d4a73afd4ac0b617be76b54dbb64acfed9c5463c8c14ca21c5490fe80cfe592d6ab7f52015dbf8a9f77ba843ac28e08
+  checksum: 10c0/ec06b93e6948d7d4bf92fccd0c4fa02482b2660738c1e33cf214b5c9ca474691d293f0bce42eb4597be5beb5551cad85e45ab59c52ea15af4cdc0ab723598e5e
   languageName: node
   linkType: hard
 
@@ -3986,7 +3996,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/spanner-migrate@workspace:packages/spanner-migrate"
   dependencies:
-    "@google-cloud/spanner": "npm:8.10.0"
+    "@google-cloud/spanner": "npm:8.11.0"
     "@inquirer/prompts": "npm:8.6.0"
     "@sebspark/cli-tester": "npm:1.0.19"
     "@types/yargs": "npm:17.0.35"
