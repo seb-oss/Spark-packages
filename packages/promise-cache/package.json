@@ -29,7 +29,7 @@
     "@sebspark/memredis": "1.0.4",
     "@sebspark/otel": "4.1.15",
     "date-fns": "4.4.0",
-    "redis": "6.2.0",
+    "redis": "6.2.1",
     "superjson": "2.2.6"
   },
   "resolutions": {
