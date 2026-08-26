@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@google-cloud/spanner": "8.10.0",
-    "@inquirer/prompts": "8.5.2",
+    "@inquirer/prompts": "8.6.0",
     "typescript": "6.0.3",
     "yargs": "18.1.0"
   },
