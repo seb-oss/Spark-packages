@@ -57,7 +57,7 @@
     "@opentelemetry/context-async-hooks": "2.10.0",
     "@testcontainers/opensearch": "12.1.0",
     "@testcontainers/redis": "12.1.0",
-    "axios": "1.19.0",
+    "axios": "1.20.0",
     "express": "5.2.1",
     "find-free-ports": "3.1.1",
     "redis": "6.2.1",
