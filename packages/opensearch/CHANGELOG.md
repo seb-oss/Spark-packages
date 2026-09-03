@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.2.1
+
+### Patch Changes
+
+- 693ea7d: chore: add type utility for inner paths
+
 ## 3.2.0
 
 ### Minor Changes
