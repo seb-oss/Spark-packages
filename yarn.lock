@@ -1142,12 +1142,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/iam-credentials@npm:4.2.2":
-  version: 4.2.2
-  resolution: "@google-cloud/iam-credentials@npm:4.2.2"
+"@google-cloud/iam-credentials@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@google-cloud/iam-credentials@npm:5.0.0"
   dependencies:
-    google-gax: "npm:^5.0.0"
-  checksum: 10c0/1fac1b3148c41e61fd2c757c26ae7722aea5e06b207c7ec7294020e247d51a34bad7236b67955971ce2ba38241622502423854ac2b4f824354a4725ca415d687
+    google-gax: "npm:^6.0.0"
+  checksum: 10c0/2489e08631df67dc61742e9b1d8d452d823a07ebbb5d84cf8dd0ea38da1d39b1e648cea60607c1fb3df3cd2ffa567e9d2f5280c79e685f6ba37586512ff6a72c
   languageName: node
   linkType: hard
 
@@ -3689,7 +3689,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
-    "@google-cloud/iam-credentials": "npm:4.2.2"
+    "@google-cloud/iam-credentials": "npm:5.0.0"
     "@sebspark/otel": "npm:4.1.15"
     google-auth-library: "npm:11.0.2"
   languageName: unknown
