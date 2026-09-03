@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.2.0
+
+### Minor Changes
+
+- faed195: fix: support multi-field paths in MultiMatchQuery type
+
 ## 3.1.11
 
 ### Patch Changes
