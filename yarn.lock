@@ -4173,15 +4173,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@turbo/gen@npm:2.10.11":
-  version: 2.10.11
-  resolution: "@turbo/gen@npm:2.10.11"
+"@turbo/gen@npm:2.10.12":
+  version: 2.10.12
+  resolution: "@turbo/gen@npm:2.10.12"
   dependencies:
     "@inquirer/prompts": "npm:^7.10.1"
     esbuild: "npm:^0.28.1"
   bin:
     gen: dist/cli.js
-  checksum: 10c0/84803c795e4104350f99e5b579998ea48d8a0b24889680151174d1092b83a5c73f3f8f7bc9bae58d40c23970f92f9d7d32389f477de817b5cdbb3c84ccee6b1f
+  checksum: 10c0/fc44eab922ebe06bb8fa6a561445311e4da335f3bdbd25e5e0f97b50a17a30f2ead4542a1588c81dcaf9199ee03947dde463b73b9558c7eab8567b34fb1e74de
   languageName: node
   linkType: hard
 
@@ -11165,7 +11165,7 @@ __metadata:
     "@biomejs/biome": "npm:2.5.7"
     "@changesets/cli": "npm:2.31.1"
     "@sebspark/tsconfig": "npm:*"
-    "@turbo/gen": "npm:2.10.11"
+    "@turbo/gen": "npm:2.10.12"
     "@types/node": "npm:26.2.0"
     "@vitest/coverage-v8": "npm:4.1.11"
     depcheck: "npm:1.4.7"
