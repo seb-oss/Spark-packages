@@ -1,5 +1,10 @@
 import type { Types } from '@opensearch-project/opensearch'
-import type { BuiltinKeys, FieldValue, FieldPaths, MapOpenSearchTypes } from './common'
+import type {
+  BuiltinKeys,
+  FieldValue,
+  FieldPaths,
+  MapOpenSearchTypes,
+} from './common'
 import type { NestedLeafPaths, NestedPaths } from './utilityTypes'
 
 export type BoolQuery<T> = Omit<
