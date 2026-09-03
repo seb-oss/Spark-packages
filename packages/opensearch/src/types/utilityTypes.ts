@@ -10,13 +10,18 @@ export type NestedPaths<T, Prefix extends string = ''> = T extends object
     }[keyof T & string]
   : never
 
-// NestedLeafPaths: Returns only leaf nodes
+// NestedLeafPaths: Returns only leaf nodes, including multi-field sub-fields
 export type NestedLeafPaths<T, Prefix extends string = ''> = T extends object
   ? {
-      [K in keyof T & string]: NestedLeafPaths<
-        T[K],
-        `${Prefix}${Prefix extends '' ? '' : '.'}${K}`
-      >
+      [K in keyof T & string]: T[K] extends { fields: infer F }
+        ? // If this field has sub-fields (multi-field), include them
+            | NestedLeafPaths<
+                T[K],
+                `${Prefix}${Prefix extends '' ? '' : '.'}${K}`
+              >
+            | NestedLeafPaths<F, `${Prefix}${Prefix extends '' ? '' : '.'}${K}`>
+        : // Otherwise traverse normally
+          NestedLeafPaths<T[K], `${Prefix}${Prefix extends '' ? '' : '.'}${K}`>
     }[keyof T & string]
   : Prefix
 
