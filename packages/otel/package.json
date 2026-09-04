@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@opensearch-project/opensearch": "3.6.0",
-    "@opentelemetry/context-async-hooks": "2.10.0",
+    "@opentelemetry/context-async-hooks": "2.11.0",
     "@testcontainers/opensearch": "12.1.0",
     "@testcontainers/redis": "12.1.0",
     "axios": "1.19.0",
