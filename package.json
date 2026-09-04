@@ -40,7 +40,7 @@
     "@vitest/coverage-v8": "4.1.11",
     "depcheck": "1.4.7",
     "husky": "9.1.7",
-    "knip": "6.32.2",
+    "knip": "6.34.0",
     "syncpack": "15.3.3",
     "tsup": "8.5.1",
     "turbo": "2.10.8",
