@@ -61,7 +61,7 @@
     "express": "5.2.1",
     "find-free-ports": "3.1.1",
     "redis": "6.2.1",
-    "undici": "8.10.0"
+    "undici": "8.10.1"
   },
   "resolutions": {
     "protobufjs": "8.6.5"
