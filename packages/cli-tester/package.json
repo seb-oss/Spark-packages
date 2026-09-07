@@ -22,7 +22,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@inquirer/figures": "2.0.8"
+    "@inquirer/figures": "2.0.9"
   },
   "devDependencies": {
     "@inquirer/prompts": "8.6.0"
