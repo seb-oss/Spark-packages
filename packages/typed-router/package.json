@@ -25,7 +25,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "express": "5.2.1"

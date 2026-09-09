@@ -20,7 +20,7 @@
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
     "test:e2e": "vitest run --config ../../vitest.e2e.config.mts",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@sebspark/hyper-media": "0.1.4",

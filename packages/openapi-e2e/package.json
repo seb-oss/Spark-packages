@@ -10,7 +10,7 @@
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
     "pretest": "yarn generate",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@sebspark/openapi-client": "4.2.19",

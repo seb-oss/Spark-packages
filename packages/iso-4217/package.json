@@ -19,7 +19,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests",
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run",
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {

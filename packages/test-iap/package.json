@@ -21,7 +21,7 @@
     "test": "vitest run --passWithNoTests --coverage",
     "pretest:e2e": "yarn build",
     "test:e2e": "vitest --config vitest.config.e2e.ts --run",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "jose": "6.2.12",

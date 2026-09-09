@@ -19,7 +19,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test:e2e": "vitest --config vitest.config.e2e.ts --run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@inquirer/figures": "2.0.9"

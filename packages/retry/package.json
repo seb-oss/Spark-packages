@@ -25,7 +25,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.12",

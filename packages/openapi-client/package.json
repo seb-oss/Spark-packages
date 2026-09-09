@@ -22,7 +22,7 @@
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
     "pretest": "yarn generate",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.12",

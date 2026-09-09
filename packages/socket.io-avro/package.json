@@ -28,7 +28,7 @@
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
     "test:e2e": "vitest --config vitest.config.e2e.ts --run",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@sebspark/avsc-isometric": "0.4.15",

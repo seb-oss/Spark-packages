@@ -20,7 +20,7 @@
     "generate:avro": "ts-node ./scripts/avro-to-ts.ts",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.12",
