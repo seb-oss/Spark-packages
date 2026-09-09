@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.24
+
+### Patch Changes
+
+- d57b386: Release the tsdown update for TypeScript 7 declaration builds.
+
 ## 3.0.23
 
 ### Patch Changes
