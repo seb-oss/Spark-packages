@@ -3061,7 +3061,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sebspark/avsc-isometric@npm:0.4.15, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
+"@sebspark/avsc-isometric@npm:0.4.16, @sebspark/avsc-isometric@workspace:packages/avsc-isometric":
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-isometric@workspace:packages/avsc-isometric"
   dependencies:
@@ -3087,8 +3087,8 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
     "@ovotech/avro-ts": "npm:6.2.0"
-    "@sebspark/avsc-isometric": "npm:0.4.15"
-    "@sebspark/tsconfig": "npm:3.0.24"
+    "@sebspark/avsc-isometric": "npm:0.4.16"
+    "@sebspark/tsconfig": "npm:3.0.25"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
     chalk: "npm:6.0.0"
@@ -3101,7 +3101,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/cli-tester@npm:1.0.19, @sebspark/cli-tester@workspace:packages/cli-tester":
+"@sebspark/cli-tester@npm:1.0.20, @sebspark/cli-tester@workspace:packages/cli-tester":
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
@@ -3153,13 +3153,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.54, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.55, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
     "@google-cloud/iam-credentials": "npm:5.0.0"
-    "@sebspark/otel": "npm:4.1.15"
+    "@sebspark/otel": "npm:4.1.16"
     "@sebspark/tsconfig": "npm:*"
     depcheck: "npm:1.4.7"
     google-auth-library: "npm:11.0.2"
@@ -3175,8 +3175,8 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
     "@google-cloud/pubsub": "npm:6.0.1"
-    "@sebspark/hyper-media": "npm:0.1.4"
-    "@sebspark/promise-cache": "npm:8.1.5"
+    "@sebspark/hyper-media": "npm:0.1.5"
+    "@sebspark/promise-cache": "npm:8.1.6"
     "@sebspark/tsconfig": "npm:*"
     "@testcontainers/gcloud": "npm:12.1.0"
     "@testcontainers/mockserver": "npm:12.1.0"
@@ -3190,7 +3190,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/hyper-media@npm:0.1.4, @sebspark/hyper-media@workspace:packages/hyper-media":
+"@sebspark/hyper-media@npm:0.1.5, @sebspark/hyper-media@workspace:packages/hyper-media":
   version: 0.0.0-use.local
   resolution: "@sebspark/hyper-media@workspace:packages/hyper-media"
   dependencies:
@@ -3208,7 +3208,7 @@ __metadata:
   resolution: "@sebspark/idempotency@workspace:packages/idempotency"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/memredis": "npm:1.0.4"
+    "@sebspark/memredis": "npm:1.0.5"
     "@sebspark/tsconfig": "npm:*"
     typescript: "npm:7.0.2"
     vite: "npm:8.2.2"
@@ -3266,7 +3266,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/memredis@npm:1.0.4, @sebspark/memredis@workspace:packages/memredis":
+"@sebspark/memredis@npm:1.0.5, @sebspark/memredis@workspace:packages/memredis":
   version: 0.0.0-use.local
   resolution: "@sebspark/memredis@workspace:packages/memredis"
   dependencies:
@@ -3285,7 +3285,7 @@ __metadata:
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/gcp-iam": "npm:3.0.54"
+    "@sebspark/gcp-iam": "npm:3.0.55"
     "@sebspark/tsconfig": "npm:*"
     depcheck: "npm:1.4.7"
     typescript: "npm:7.0.2"
@@ -3294,15 +3294,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.2.19, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.2.20, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/openapi-core": "npm:4.1.21"
-    "@sebspark/openapi-typegen": "npm:5.2.3"
-    "@sebspark/otel": "npm:4.1.15"
-    "@sebspark/retry": "npm:1.0.18"
+    "@sebspark/openapi-core": "npm:4.1.22"
+    "@sebspark/openapi-typegen": "npm:5.2.4"
+    "@sebspark/otel": "npm:4.1.16"
+    "@sebspark/retry": "npm:1.0.19"
     "@sebspark/tsconfig": "npm:*"
     axios: "npm:1.20.0"
     axios-auth-refresh: "npm:5.0.2"
@@ -3315,12 +3315,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-core@npm:4.1.21, @sebspark/openapi-core@workspace:packages/openapi-core":
+"@sebspark/openapi-core@npm:4.1.22, @sebspark/openapi-core@workspace:packages/openapi-core":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/retry": "npm:1.0.18"
+    "@sebspark/retry": "npm:1.0.19"
     "@sebspark/tsconfig": "npm:*"
     axios: "npm:1.20.0"
     depcheck: "npm:1.4.7"
@@ -3336,10 +3336,10 @@ __metadata:
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/openapi-client": "npm:4.2.19"
-    "@sebspark/openapi-core": "npm:4.1.21"
-    "@sebspark/openapi-express": "npm:5.4.17"
-    "@sebspark/openapi-typegen": "npm:5.2.3"
+    "@sebspark/openapi-client": "npm:4.2.20"
+    "@sebspark/openapi-core": "npm:4.1.22"
+    "@sebspark/openapi-express": "npm:5.4.18"
+    "@sebspark/openapi-typegen": "npm:5.2.4"
     "@types/express": "npm:5.0.6"
     depcheck: "npm:1.4.7"
     express: "npm:5.2.1"
@@ -3349,13 +3349,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@npm:5.4.17, @sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.4.18, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@opentelemetry/semantic-conventions": "npm:1.43.0"
-    "@sebspark/openapi-core": "npm:4.1.21"
-    "@sebspark/otel": "npm:4.1.15"
+    "@sebspark/openapi-core": "npm:4.1.22"
+    "@sebspark/otel": "npm:4.1.16"
     "@types/supertest": "npm:7.2.1"
     express: "npm:5.2.1"
     supertest: "npm:7.2.2"
@@ -3364,12 +3364,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.2.3, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.2.4, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/openapi-core": "npm:4.1.21"
+    "@sebspark/openapi-core": "npm:4.1.22"
     "@sebspark/tsconfig": "npm:*"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:8.0.1"
@@ -3400,7 +3400,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/opentelemetry-instrumentation-opensearch@npm:0.3.13, @sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch":
+"@sebspark/opentelemetry-instrumentation-opensearch@npm:0.3.14, @sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch":
   version: 0.0.0-use.local
   resolution: "@sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch"
   dependencies:
@@ -3425,7 +3425,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@npm:4.1.15, @sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:4.1.16, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
@@ -3456,7 +3456,7 @@ __metadata:
     "@opentelemetry/sdk-node": "npm:0.222.0"
     "@opentelemetry/sdk-trace-node": "npm:2.11.0"
     "@opentelemetry/semantic-conventions": "npm:1.43.0"
-    "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.3.13"
+    "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.3.14"
     "@sebspark/tsconfig": "npm:*"
     "@testcontainers/opensearch": "npm:12.1.0"
     "@testcontainers/redis": "npm:12.1.0"
@@ -3474,13 +3474,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/promise-cache@npm:8.1.5, @sebspark/promise-cache@workspace:packages/promise-cache":
+"@sebspark/promise-cache@npm:8.1.6, @sebspark/promise-cache@workspace:packages/promise-cache":
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/memredis": "npm:1.0.4"
-    "@sebspark/otel": "npm:4.1.15"
+    "@sebspark/memredis": "npm:1.0.5"
+    "@sebspark/otel": "npm:4.1.16"
     "@sebspark/tsconfig": "npm:*"
     "@testcontainers/redis": "npm:12.1.0"
     date-fns: "npm:4.4.0"
@@ -3502,7 +3502,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/retry@npm:1.0.18, @sebspark/retry@workspace:packages/retry":
+"@sebspark/retry@npm:1.0.19, @sebspark/retry@workspace:packages/retry":
   version: 0.0.0-use.local
   resolution: "@sebspark/retry@workspace:packages/retry"
   dependencies:
@@ -3520,7 +3520,7 @@ __metadata:
   resolution: "@sebspark/socket.io-avro@workspace:packages/socket.io-avro"
   dependencies:
     "@biomejs/biome": "npm:2.5.12"
-    "@sebspark/avsc-isometric": "npm:0.4.15"
+    "@sebspark/avsc-isometric": "npm:0.4.16"
     "@sebspark/tsconfig": "npm:*"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.3"
@@ -3563,7 +3563,7 @@ __metadata:
     "@biomejs/biome": "npm:2.5.12"
     "@google-cloud/spanner": "npm:8.11.0"
     "@inquirer/prompts": "npm:8.7.2"
-    "@sebspark/cli-tester": "npm:1.0.19"
+    "@sebspark/cli-tester": "npm:1.0.20"
     "@sebspark/tsconfig": "npm:*"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:12.1.0"
@@ -3621,7 +3621,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.24, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:*, @sebspark/tsconfig@npm:3.0.25, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:

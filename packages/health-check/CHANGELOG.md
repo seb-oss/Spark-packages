@@ -1,5 +1,17 @@
 # @sebspark/health-check
 
+## 3.0.11
+
+### Patch Changes
+
+- 66ac832: * Upgraded to TypeScript 7
+  - Replaced tsup with tsdown for package builds
+  - Fixed cli-tester stdout parsing, resolving flaky e2e tests across the repo
+  - Patched vulnerable transitive dependencies (uuid, socket.io-parser, and others)
+- Updated dependencies [66ac832]
+  - @sebspark/hyper-media@0.1.5
+  - @sebspark/promise-cache@8.1.6
+
 ## 3.0.10
 
 ### Patch Changes

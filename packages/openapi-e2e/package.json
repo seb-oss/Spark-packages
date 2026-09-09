@@ -13,14 +13,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.2.19",
-    "@sebspark/openapi-core": "4.1.21",
-    "@sebspark/openapi-express": "5.4.17",
+    "@sebspark/openapi-client": "4.2.20",
+    "@sebspark/openapi-core": "4.1.22",
+    "@sebspark/openapi-express": "5.4.18",
     "express": "5.2.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.12",
-    "@sebspark/openapi-typegen": "5.2.3",
+    "@sebspark/openapi-typegen": "5.2.4",
     "@types/express": "5.0.6",
     "depcheck": "1.4.7",
     "find-free-ports": "3.1.1",
