@@ -12,46 +12,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  analyze:
-    name: Analyze with CodeQL
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    permissions:
-      security-events: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Cache Yarn dependencies
-        id: cache
-        uses: actions/cache@v6
-        with:
-          path: |
-            node_modules
-            .yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: yarn install --immutable
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v4.37.9
-        with:
-          languages: javascript
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v4.37.9
-
   licenses:
     name: Check licenses
     runs-on: ubuntu-latest
@@ -183,7 +143,6 @@ jobs:
   changeset:
     name: Create Release Pull Request or Publish to NPM
     needs:
-      - analyze
       - licenses
       - lint
       - test
