@@ -24,7 +24,7 @@
       "dependsOn": ["^build"]
     },
     "depcheck": {},
-    "security-scan:raw": {
+    "//#security-scan:raw": {
       "inputs": [
         "packages/**/src/**",
         "tools/**",

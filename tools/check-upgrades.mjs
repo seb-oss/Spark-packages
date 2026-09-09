@@ -46,7 +46,7 @@ const getReleaseDate = (pkg, version) => {
   let json = {}
   try {
     const output = execSync(
-      // nosemgrep: javascript.lang.security.detect-child-process.detect-child-process
+      // nosemgrep
       `npm view ${pkg} time repository version --json`,
       {
         stdio: 'pipe',

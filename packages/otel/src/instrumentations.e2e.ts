@@ -131,7 +131,7 @@ describe('instrumentations', () => {
         username: opensearchContainer.getUsername(),
         password: opensearchContainer.getPassword(),
       },
-      // nosemgrep: problem-based-packs.insecure-transport.js-node.bypass-tls-verification.bypass-tls-verification
+      // nosemgrep
       ssl: { rejectUnauthorized: false },
     })
     redisClient = createRedisClient({ url: redisContainer.getConnectionUrl() })
