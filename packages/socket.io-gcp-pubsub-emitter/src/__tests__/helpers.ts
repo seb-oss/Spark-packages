@@ -8,7 +8,39 @@ type AdapterTopic = Parameters<typeof createAdapter>[0]
 export const wait = (ms: number) =>
   new Promise<void>((res) => setTimeout(res, ms))
 
-export const startServer = (port: number, topic: Topic) => {
+/**
+ * Repeatedly executes `fn` until it stops throwing or the timeout elapses.
+ * Rethrows the last error if time runs out.
+ *
+ * Prefer this over a fixed `wait(ms)` when asserting on events that
+ * propagate asynchronously (e.g. through the Pub/Sub emulator and
+ * socket.io) — a fixed delay is either too short under CPU contention
+ * or wastefully long otherwise.
+ *
+ * Usage:
+ *   await waitFor(() => expect(spy).toHaveBeenCalled())
+ */
+export const waitFor = async (
+  fn: () => void | Promise<void>,
+  { pollingInterval = 50, timeout = 5000 } = {}
+): Promise<void> => {
+  const start = Date.now()
+  let lastErr: unknown
+
+  while (Date.now() - start < timeout) {
+    try {
+      await fn()
+      return
+    } catch (err) {
+      lastErr = err
+      await wait(pollingInterval)
+    }
+  }
+
+  throw lastErr instanceof Error ? lastErr : new Error(String(lastErr))
+}
+
+export const startServer = (port: number, topic: Topic): Server => {
   const adapter = createAdapter(topic as unknown as AdapterTopic)
   const server = new Server().adapter(adapter)
   server.listen(port)

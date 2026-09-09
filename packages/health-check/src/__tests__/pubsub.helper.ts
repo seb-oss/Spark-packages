@@ -7,7 +7,7 @@ import {
 
 export const startPubSub = async () => {
   const emulator = await new PubSubEmulatorContainer(
-    'gcr.io/google.com/cloudsdktool/google-cloud-cli:532.0.0-emulators'
+    'gcr.io/google.com/cloudsdktool/google-cloud-cli:583.0.0-emulators'
   ).start()
 
   // Ensure topics and subscriptions

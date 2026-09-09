@@ -6,6 +6,7 @@ import { input } from './input'
 import { output } from './output'
 import { parse } from './prompt'
 import { select } from './select'
+import { StdoutReader } from './stdout-reader'
 import type { CliTester, PromptType } from './types'
 
 /**
@@ -71,6 +72,7 @@ export function run(
   }
 
   const childProcess = spawn(command, args, options)
+  const reader = new StdoutReader(childProcess)
 
   // Log all buffers
   // childProcess.stdout?.on('data', (chunk) => { console.log(Array.from(chunk).join(',')) })
@@ -83,7 +85,7 @@ export function run(
      * @returns A promise that resolves when input is processed.
      */
     input: async (text = '') => {
-      await input(childProcess, `${text}${keys.enter}`)
+      await input(childProcess, reader, `${text}${keys.enter}`)
     },
 
     /**
@@ -96,7 +98,7 @@ export function run(
      * @returns A promise that resolves when the selection is made.
      */
     select: async (optionNumber: number) => {
-      await select(childProcess, optionNumber)
+      await select(childProcess, reader, optionNumber)
     },
 
     /**
@@ -110,7 +112,7 @@ export function run(
      * @returns A promise that resolves once the selection is confirmed.
      */
     check: async (...options: number[]) => {
-      await check(childProcess, options)
+      await check(childProcess, reader, options)
     },
 
     /**
@@ -121,7 +123,7 @@ export function run(
      *
      * @returns A promise resolving to the cleaned CLI output as a string.
      */
-    output: async () => output(childProcess),
+    output: async () => output(reader),
 
     /**
      * Captures and parses the next CLI prompt.
@@ -138,7 +140,7 @@ export function run(
     prompt: async <T extends PromptType | undefined = undefined>(
       expectedType?: T
     ) => {
-      const message = await output(childProcess)
+      const message = await output(reader)
       return parse(message, expectedType)
     },
 

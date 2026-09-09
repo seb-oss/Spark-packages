@@ -23,7 +23,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "@testcontainers/redis": "12.1.0"
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/tsconfig": "*",
+    "@testcontainers/redis": "12.1.0",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   },
   "dependencies": {
     "@sebspark/memredis": "1.0.4",
@@ -33,7 +38,7 @@
     "superjson": "2.2.6"
   },
   "resolutions": {
-    "protobufjs": "8.6.5"
+    "protobufjs": "8.8.0"
   },
   "repository": {
     "type": "git",

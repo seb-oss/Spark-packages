@@ -16,7 +16,7 @@ import {
   vi,
 } from 'vitest'
 import { Emitter } from '../emitter'
-import { connectClient, startServer, wait } from './helpers'
+import { connectClient, startServer, wait, waitFor } from './helpers'
 
 const PROJECT_ID = 'test-project'
 process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID
@@ -97,18 +97,16 @@ describe('emitter', () => {
   it('broadcasts to everyone', async () => {
     emitter.emit('message', 'Hello!')
 
-    await wait(100)
+    await waitFor(() => {
+      expect(listeners[0]).toHaveBeenCalledTimes(1)
+      expect(listeners[1]).toHaveBeenCalledTimes(1)
+      expect(listeners[2]).toHaveBeenCalledTimes(1)
+      expect(listeners[3]).toHaveBeenCalledTimes(1)
+    })
 
-    expect(listeners[0]).toHaveBeenCalledTimes(1)
     expect(listeners[0]).toHaveBeenCalledWith('Hello!')
-
-    expect(listeners[1]).toHaveBeenCalledTimes(1)
     expect(listeners[1]).toHaveBeenCalledWith('Hello!')
-
-    expect(listeners[2]).toHaveBeenCalledTimes(1)
     expect(listeners[2]).toHaveBeenCalledWith('Hello!')
-
-    expect(listeners[3]).toHaveBeenCalledTimes(1)
     expect(listeners[3]).toHaveBeenCalledWith('Hello!')
   })
   it('sends to a room', async () => {
@@ -116,7 +114,13 @@ describe('emitter', () => {
     emitter.to('r2').emit('message', 'Room2')
     emitter.to('r3').emit('message', 'Room3')
 
-    await wait(200)
+    await waitFor(() => {
+      expect(listeners[0]).toHaveBeenCalledWith('Room1')
+      expect(listeners[1]).toHaveBeenCalledWith('Room2')
+      expect(listeners[2]).toHaveBeenCalledWith('Room3')
+      expect(listeners[3]).toHaveBeenCalledWith('Room3')
+    })
+
     expect(listeners[0]).toHaveBeenCalledWith('Room1')
     expect(listeners[0]).toHaveBeenCalledWith('Room2')
     expect(listeners[0]).not.toHaveBeenCalledWith('Room3')

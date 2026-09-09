@@ -2,14 +2,26 @@
   "name": "@sebspark/typed-router",
   "version": "2.0.7",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --target node22 --dts",
+    "build": "spark-build src/index.ts --format=esm --format=cjs",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --coverage",
@@ -27,5 +39,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/tsconfig": "*",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   }
 }

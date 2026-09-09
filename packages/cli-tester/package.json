@@ -18,14 +18,19 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test:e2e": "vitest run --passWithNoTests --coverage",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --passWithNoTests --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@inquirer/figures": "2.0.8"
+    "@inquirer/figures": "2.0.9"
   },
   "devDependencies": {
-    "@inquirer/prompts": "8.6.0"
+    "@biomejs/biome": "2.5.12",
+    "@inquirer/prompts": "8.7.2",
+    "@sebspark/tsconfig": "*",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   },
   "repository": {
     "type": "git",

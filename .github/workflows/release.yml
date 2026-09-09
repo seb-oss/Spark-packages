@@ -208,12 +208,25 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      # IMPORTANT: this action's major version is tied to a specific @changesets/cli
+      # major version (v1.x -> cli v2.x, v2.x -> cli v3.x). It self-validates the
+      # installed CLI version and will fail fast on a mismatch, but always bump the
+      # action tag and root package.json's "@changesets/cli" together, never separately.
       - name: Create Changeset PR
-        uses: changesets/action@v1
+        id: changesets
+        uses: changesets/action@v2.1.2
         with:
-          version: yarn version-packages
-          publish: yarn release
-          commit: "chore(release): update versions"
-          title: "chore(release): update versions"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          version-script: yarn version-packages
+          publish-script: yarn release
+          commit-message: "chore(release): update versions"
+          pr-title: "chore(release): update versions"
+
+      - name: Report release outcome
+        run: |
+          echo "### Release outcome" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Changesets found: ${{ steps.changesets.outputs.has-changesets }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Published: ${{ steps.changesets.outputs.published }}" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.changesets.outputs.published }}" = "true" ]; then
+            echo "- Packages: ${{ steps.changesets.outputs.published-packages }}" >> "$GITHUB_STEP_SUMMARY"
+          fi

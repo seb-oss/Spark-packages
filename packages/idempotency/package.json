@@ -26,6 +26,11 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "devDependencies": {
-    "@sebspark/memredis": "1.0.4"
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/memredis": "1.0.4",
+    "@sebspark/tsconfig": "*",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   }
 }

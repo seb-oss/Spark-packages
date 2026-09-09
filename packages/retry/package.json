@@ -28,7 +28,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
-    "axios": "1.19.0"
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/tsconfig": "*",
+    "axios": "1.20.0",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   },
   "repository": {
     "type": "git",

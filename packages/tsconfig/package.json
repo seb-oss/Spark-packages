@@ -7,16 +7,10 @@
     "base.json",
     "tsconfig.app.json",
     "tsconfig.lib.json",
-    "tsup.js",
-    "tsup.d.ts",
     "tsdown.js",
     "tsdown.d.ts"
   ],
   "exports": {
-    "./tsup": {
-      "types": "./tsup.d.ts",
-      "import": "./tsup.js"
-    },
     "./tsdown": {
       "types": "./tsdown.d.ts",
       "import": "./tsdown.js"
@@ -30,8 +24,7 @@
     "spark-build": "./run.js"
   },
   "dependencies": {
-    "tsdown": "0.23.0",
-    "tsup": "8.5.1"
+    "tsdown": "0.23.0"
   },
   "repository": {
     "type": "git",

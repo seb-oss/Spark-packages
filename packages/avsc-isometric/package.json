@@ -22,10 +22,11 @@
     "assert-browserify": "2.0.0",
     "browserify-zlib": "0.2.0",
     "string-replace-loader": "3.3.0",
+    "typescript": "7.0.2",
     "uglify-loader": "3.0.0",
     "util": "0.12.5",
-    "webpack": "5.109.2",
-    "webpack-cli": "7.2.2"
+    "webpack": "5.110.3",
+    "webpack-cli": "7.2.3"
   },
   "dependencies": {
     "avsc": "5.7.9",

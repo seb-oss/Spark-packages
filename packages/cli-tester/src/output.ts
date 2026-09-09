@@ -1,25 +1,25 @@
-import type { ChildProcess } from 'node:child_process'
 import { ansiPatterns } from './characters'
+import type { StdoutReader } from './stdout-reader'
 import { COMMAND_TIMEOUT } from './utils'
 
-export const output = (
-  childProcess: ChildProcess,
+export const output = async (
+  reader: StdoutReader,
   timeoutMs = COMMAND_TIMEOUT
-) =>
-  new Promise<string>((resolve, reject) => {
-    // Reject on timeout
-    const timeout = setTimeout(
-      () => reject(new Error('Timeout waiting for output')),
-      timeoutMs
-    )
+): Promise<string> => {
+  while (true) {
+    const chunk = await Promise.race([
+      reader.next(),
+      new Promise<never>((_, reject) => {
+        setTimeout(
+          () => reject(new Error('Timeout waiting for output')),
+          timeoutMs
+        )
+      }),
+    ])
 
-    const listener = (chunk: Buffer) => {
-      const text = chunk.toString().replace(ansiPatterns.all, '').trim()
-      if (text) {
-        childProcess.stdout?.off('data', listener)
-        clearTimeout(timeout)
-        resolve(text)
-      }
-    }
-    childProcess.stdout?.on('data', listener)
-  })
+    const text = chunk.toString().replace(ansiPatterns.all, '').trim()
+    if (text) return text
+    // Empty after stripping ANSI (e.g. a bare cursor-movement chunk) —
+    // keep reading the next chunk instead of resolving with nothing.
+  }
+}

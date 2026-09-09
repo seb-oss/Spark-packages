@@ -30,7 +30,7 @@ let provider: NodeTracerProvider
 
 beforeAll(async () => {
   container = await new OpenSearchContainer(
-    'opensearchproject/opensearch:2.18.0'
+    'opensearchproject/opensearch:2.19.6'
   )
     .withSecurityEnabled(false)
     .start()

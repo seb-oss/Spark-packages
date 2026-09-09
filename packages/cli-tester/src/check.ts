@@ -1,6 +1,7 @@
 import type { ChildProcess } from 'node:child_process'
 import { keys } from './characters'
 import { input } from './input'
+import type { StdoutReader } from './stdout-reader'
 import { COMMAND_DELAY, wait } from './utils'
 import { write } from './write'
 
@@ -13,12 +14,17 @@ import { write } from './write'
  * - If no options are specified, only Enter is pressed.
  *
  * @param childProcess - The running CLI process.
+ * @param reader - The process's shared stdout reader (see {@link StdoutReader}).
  * @param options - An array of option indices to toggle (0-based).
  * @returns A promise that resolves once the selection is confirmed.
  */
-export const check = async (childProcess: ChildProcess, options: number[]) => {
+export const check = async (
+  childProcess: ChildProcess,
+  reader: StdoutReader,
+  options: number[]
+) => {
   if (options.length === 0) {
-    await input(childProcess, keys.enter)
+    await input(childProcess, reader, keys.enter)
     return
   }
 
@@ -45,5 +51,5 @@ export const check = async (childProcess: ChildProcess, options: number[]) => {
     currentPosition = option // Update current position
   }
 
-  await input(childProcess, keys.enter)
+  await input(childProcess, reader, keys.enter)
 }

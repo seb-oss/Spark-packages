@@ -17,15 +17,23 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "dependencies": {
-    "@google-cloud/iam-credentials": "4.2.2",
+    "@google-cloud/iam-credentials": "5.0.0",
     "@sebspark/otel": "4.1.15",
     "google-auth-library": "11.0.2"
   },
   "resolutions": {
-    "protobufjs": "8.6.5"
+    "protobufjs": "8.8.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/tsconfig": "*",
+    "depcheck": "1.4.7",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   }
 }

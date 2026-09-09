@@ -2,23 +2,40 @@
   "name": "@sebspark/logging",
   "version": "2.0.17",
   "license": "Apache-2.0",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup-node src/index.ts --format esm,cjs --target node22 --dts",
+    "build": "spark-build src/index.ts --format=esm --format=cjs",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --coverage",
     "typecheck": "vitest --typecheck.only --passWithNoTests"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@sebspark/tsconfig": "*",
     "@types/socketio-wildcard": "2.0.7",
-    "qs": "6.15.3",
-    "supertest": "7.2.2"
+    "qs": "6.16.0",
+    "supertest": "7.2.2",
+    "typescript": "7.0.2",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   },
   "dependencies": {
     "@google-cloud/logging-winston": "7.0.1",
@@ -31,7 +48,7 @@
     "winston-transport": "4.9.0"
   },
   "resolutions": {
-    "protobufjs": "8.6.5"
+    "protobufjs": "8.8.0"
   },
   "repository": {
     "type": "git",

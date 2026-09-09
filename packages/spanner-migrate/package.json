@@ -24,19 +24,23 @@
     "typecheck": "tsc --noEmit "
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.12",
     "@google-cloud/spanner": "8.11.0",
     "@sebspark/cli-tester": "1.0.19",
+    "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.35",
-    "testcontainers": "12.1.0"
+    "testcontainers": "12.1.0",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
   },
   "dependencies": {
     "@google-cloud/spanner": "8.11.0",
-    "@inquirer/prompts": "8.6.0",
-    "typescript": "6.0.3",
+    "@inquirer/prompts": "8.7.2",
+    "typescript": "7.0.2",
     "yargs": "18.1.0"
   },
   "resolutions": {
-    "protobufjs": "8.6.5"
+    "protobufjs": "8.8.0"
   },
   "repository": {
     "type": "git",
