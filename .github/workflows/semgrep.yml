@@ -1,8 +1,6 @@
 name: Semgrep
 
 on:
-  push:
-    branches: ['main']
   schedule:
     # At 09:00 every weekday
     - cron: '0 9 * * 1-5'

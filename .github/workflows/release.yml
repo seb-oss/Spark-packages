@@ -12,6 +12,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  semgrep:
+    name: Semgrep
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Run Semgrep
+        run: semgrep ci --sarif --output=semgrep.sarif
+        env:
+          SEMGREP_RULES: p/security-audit p/javascript p/typescript
+
+      - name: Upload SARIF results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v4.37.9
+        with:
+          sarif_file: semgrep.sarif
+
   licenses:
     name: Check licenses
     runs-on: ubuntu-latest
@@ -145,6 +167,7 @@ jobs:
     needs:
       - licenses
       - lint
+      - semgrep
       - test
       - typecheck
     runs-on: ubuntu-latest
