@@ -4,6 +4,7 @@ on:
   schedule:
     # At 09:00 every weekday
     - cron: '0 9 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   semgrep:
