@@ -22,7 +22,6 @@
 "@sebspark/opentelemetry-instrumentation-opensearch": patch
 "@sebspark/otel": patch
 "@sebspark/promise-cache": patch
-"@sebspark/pubsub": patch
 "@sebspark/retry": patch
 "@sebspark/socket.io-avro": patch
 "@sebspark/socket.io-gcp-pubsub-emitter": patch
