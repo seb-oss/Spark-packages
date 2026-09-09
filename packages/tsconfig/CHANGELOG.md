@@ -1,5 +1,14 @@
 # @sebspark/tsconfig
 
+## 3.0.25
+
+### Patch Changes
+
+- 66ac832: * Upgraded to TypeScript 7
+  - Replaced tsup with tsdown for package builds
+  - Fixed cli-tester stdout parsing, resolving flaky e2e tests across the repo
+  - Patched vulnerable transitive dependencies (uuid, socket.io-parser, and others)
+
 ## 3.0.24
 
 ### Patch Changes

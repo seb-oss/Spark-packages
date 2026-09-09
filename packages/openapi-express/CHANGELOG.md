@@ -1,5 +1,17 @@
 # @sebspark/openapi-express
 
+## 5.4.18
+
+### Patch Changes
+
+- 66ac832: * Upgraded to TypeScript 7
+  - Replaced tsup with tsdown for package builds
+  - Fixed cli-tester stdout parsing, resolving flaky e2e tests across the repo
+  - Patched vulnerable transitive dependencies (uuid, socket.io-parser, and others)
+- Updated dependencies [66ac832]
+  - @sebspark/openapi-core@4.1.22
+  - @sebspark/otel@4.1.16
+
 ## 5.4.17
 
 ### Patch Changes

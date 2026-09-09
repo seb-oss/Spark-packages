@@ -1,5 +1,16 @@
 # @sebspark/openapi-typegen
 
+## 5.2.4
+
+### Patch Changes
+
+- 66ac832: * Upgraded to TypeScript 7
+  - Replaced tsup with tsdown for package builds
+  - Fixed cli-tester stdout parsing, resolving flaky e2e tests across the repo
+  - Patched vulnerable transitive dependencies (uuid, socket.io-parser, and others)
+- Updated dependencies [66ac832]
+  - @sebspark/openapi-core@4.1.22
+
 ## 5.2.3
 
 ### Patch Changes
