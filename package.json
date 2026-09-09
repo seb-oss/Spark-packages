@@ -47,6 +47,17 @@
     "vite": "8.2.2",
     "vitest": "5.0.0"
   },
+  "dependenciesMeta": {
+    "bufferutil@4.0.9": {
+      "built": false
+    },
+    "cpu-features@0.0.10": {
+      "built": false
+    },
+    "utf-8-validate@5.0.10": {
+      "built": false
+    }
+  },
   "resolutions": {
     "@babel/core": "7.29.7",
     "@opentelemetry/core@2.2.0": "2.11.0",
