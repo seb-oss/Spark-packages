@@ -100,6 +100,7 @@ describe('instrumentations', () => {
     opensearchContainer = await new OpenSearchContainer(
       'opensearchproject/opensearch:3'
     )
+      .withSecurityEnabled(false)
       .withLabels({ package: '@sebspark/otel' })
       .withReuse()
       .start()
@@ -131,8 +132,6 @@ describe('instrumentations', () => {
         username: opensearchContainer.getUsername(),
         password: opensearchContainer.getPassword(),
       },
-      // nosemgrep
-      ssl: { rejectUnauthorized: false },
     })
     redisClient = createRedisClient({ url: redisContainer.getConnectionUrl() })
     await redisClient.connect()

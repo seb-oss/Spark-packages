@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { execFileSync } from 'child_process'
 import pkg from '../package.json' with {type: "json"}
 
 const getResolutions = () => {
@@ -6,11 +6,16 @@ const getResolutions = () => {
   const ret = {};
   for (let i = 0; i < resolutions.length; i++) {
     const oldVersion = pkg.resolutions[resolutions[i]]
-    const name = resolutions[i]
+    const key = resolutions[i]
+    // resolutions keys can carry a range qualifier, e.g. "@scope/name@range"
+    // or "name@npm:range". Strip everything from the last "@" that isn't
+    // the leading scope "@" to get the real package name.
+    const lastAt = key.lastIndexOf('@')
+    const name = lastAt > 0 ? key.slice(0, lastAt) : key
     console.log(name, oldVersion)
     const {version} = getReleaseDate(name, oldVersion)
     if (version !== oldVersion) {
-      ret[name] = {latest: version}
+      ret[key] = {latest: version}
     }
   }
   return ret
@@ -19,7 +24,9 @@ const getResolutions = () => {
 const getOutdated = () => {
   let json = {}
   try {
-    const output = execSync('npm outdated --json', { stdio: 'pipe' }).toString()
+    const output = execFileSync('npm', ['outdated', '--json'], {
+      stdio: 'pipe',
+    }).toString()
     json = JSON.parse(output)
   } catch (err) {
     if (err.stdout) {
@@ -45,14 +52,17 @@ const getOutdated = () => {
 const getReleaseDate = (pkg, version) => {
   let json = {}
   try {
-    const output = execSync(
-      // nosemgrep
-      `npm view ${pkg} time repository version --json`,
+    const output = execFileSync(
+      'npm',
+      ['view', pkg, 'time', 'repository', 'version', '--json'],
       {
         stdio: 'pipe',
       }
     ).toString()
     json = JSON.parse(output)
+    if (Array.isArray(json)) {
+      json = json[json.length - 1]
+    }
   } catch (err) {
     if (err.stdout) {
       json = JSON.parse(err.stdout.toString())
