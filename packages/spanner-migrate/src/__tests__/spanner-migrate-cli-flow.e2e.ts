@@ -3,11 +3,13 @@ import { resolve } from 'node:path'
 import { stderr, stdout } from 'node:process'
 import { run } from '@sebspark/cli-tester'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import type { StartedTestContainer } from 'testcontainers'
 import {
   createDatabase,
   createInstance,
   parseStatus,
   startSpanner,
+  stopSpanner,
 } from './e2e/helpers'
 
 const cwd = resolve(__dirname, 'cli')
@@ -20,16 +22,19 @@ const projectId = 'test-project'
 
 // const print = (txt: string) => stdout.write(`${txt}\n`)
 
+let container: StartedTestContainer
+
 const setup = async () => {
   await mkdir(cwd, { recursive: true })
 
-  await startSpanner(projectId)
+  container = await startSpanner(projectId)
   await createInstance(instance)
   await createDatabase(instance, database1)
   await createDatabase(instance, database2)
 }
 const teardown = async () => {
   await rm(cwd, { recursive: true })
+  await stopSpanner(container)
 }
 
 const injectSql = async (createResult: string, up: string, down: string) => {

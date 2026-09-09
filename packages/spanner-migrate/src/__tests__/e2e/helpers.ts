@@ -12,6 +12,12 @@ export const startSpanner = async (projectId: string) => {
   return container
 }
 
+export const stopSpanner = async (container: StartedTestContainer) => {
+  await container.stop()
+  await execAsync('gcloud config configurations activate default')
+  await execAsync('gcloud config configurations delete spanner-emulator -q')
+}
+
 const startContainer = async () => {
   const spannerContainer = await new GenericContainer(
     'gcr.io/cloud-spanner-emulator/emulator:latest'
