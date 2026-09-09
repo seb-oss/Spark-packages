@@ -2,8 +2,8 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { stderr, stdout } from 'node:process'
 import { run } from '@sebspark/cli-tester'
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import type { StartedTestContainer } from 'testcontainers'
+import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import {
   createDatabase,
   createInstance,

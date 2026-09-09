@@ -33,7 +33,10 @@ let clients: (typeof Socket)[]
 let listeners: Mock[]
 
 beforeEach(async () => {
-  emulator = await new PubSubEmulatorContainer(IMAGE_GCLOUD).withReuse().start()
+  emulator = await new PubSubEmulatorContainer(IMAGE_GCLOUD)
+    .withLabels({ package: '@sebspark/socket.io-gcp-pubsub-emitter' })
+    .withReuse()
+    .start()
   process.env.PUBSUB_EMULATOR_HOST = emulator.getEmulatorEndpoint()
 
   pubsub = new PubSub({ projectId: PROJECT_ID })

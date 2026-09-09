@@ -33,6 +33,7 @@ beforeAll(async () => {
     'opensearchproject/opensearch:2.19.6'
   )
     .withSecurityEnabled(false)
+    .withLabels({ package: '@sebspark/opentelemetry-instrumentation-opensearch' })
     .start()
 
   exporter = new InMemorySpanExporter()

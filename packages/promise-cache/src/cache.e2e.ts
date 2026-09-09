@@ -23,7 +23,9 @@ describe('cache e2e', () => {
   let persistor: ReturnType<typeof createClient>
 
   beforeAll(async () => {
-    container = await new RedisContainer('redis:8-alpine').start()
+    container = await new RedisContainer('redis:8-alpine')
+      .withLabels({ package: '@sebspark/promise-cache' })
+      .start()
     persistor = createClient({ url: container.getConnectionUrl() })
     persistor.connect()
 

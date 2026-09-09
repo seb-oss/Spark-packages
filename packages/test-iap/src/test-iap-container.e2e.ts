@@ -35,6 +35,7 @@ describe('TestIapContainer', () => {
       .withNetwork(network)
       .withNetworkAliases('upstream')
       .withExposedPorts(3000)
+      .withLabels({ package: '@sebspark/test-iap' })
       .withCommand([
         'node',
         '-e',
@@ -56,6 +57,7 @@ describe('TestIapContainer', () => {
         .withPort(3100)
         .withTarget('http://upstream:3000')
         .withMode('local')
+        .withLabels({ package: '@sebspark/test-iap' })
         .start()
 
       try {
@@ -104,6 +106,7 @@ describe('TestIapContainer', () => {
       .withNetwork(network)
       .withNetworkAliases('downstream')
       .withExposedPorts(4000)
+      .withLabels({ package: '@sebspark/test-iap' })
       .withCommand([
         'node',
         '-e',
@@ -120,6 +123,7 @@ describe('TestIapContainer', () => {
       .withNetwork(network)
       .withNetworkAliases('upstream2')
       .withExposedPorts(3000)
+      .withLabels({ package: '@sebspark/test-iap' })
       .withCommand([
         'node',
         '-e',
@@ -138,6 +142,7 @@ describe('TestIapContainer', () => {
         .withTarget('http://upstream2:3000')
         .withMode('downstream')
         .withDownstream('http://downstream:4000/api/token')
+        .withLabels({ package: '@sebspark/test-iap' })
         .start()
 
       try {

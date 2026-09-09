@@ -100,9 +100,11 @@ describe('instrumentations', () => {
     opensearchContainer = await new OpenSearchContainer(
       'opensearchproject/opensearch:3'
     )
+      .withLabels({ package: '@sebspark/otel' })
       .withReuse()
       .start()
     redisContainer = await new RedisContainer('redis:8-alpine')
+      .withLabels({ package: '@sebspark/otel' })
       .withReuse()
       .start()
 

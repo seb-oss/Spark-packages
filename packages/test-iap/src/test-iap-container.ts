@@ -18,6 +18,7 @@ export class TestIapContainer {
   private mode?: Mode
   private downstream?: string
   private network?: StartedNetwork
+  private labels: Record<string, string> = {}
 
   public withBaseImage(image: string) {
     this.baseImage = image
@@ -55,6 +56,11 @@ export class TestIapContainer {
 
   public withNetwork(network: StartedNetwork) {
     this.network = network
+    return this
+  }
+
+  public withLabels(labels: Record<string, string>) {
+    this.labels = labels
     return this
   }
 
@@ -116,6 +122,7 @@ export class TestIapContainer {
       .withBindMounts(binds)
       .withExposedPorts(this.port)
       .withEnvironment(env)
+      .withLabels(this.labels)
       .withCommand(['node', entry])
 
     if (this.network) gc.withNetwork(this.network)

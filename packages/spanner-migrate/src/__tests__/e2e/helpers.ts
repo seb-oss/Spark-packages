@@ -22,6 +22,7 @@ const startContainer = async () => {
   const spannerContainer = await new GenericContainer(
     'gcr.io/cloud-spanner-emulator/emulator:latest'
   )
+    .withLabels({ package: '@sebspark/spanner-migrate' })
     .withExposedPorts(9010, 9020)
     .withStartupTimeout(120000)
     // .withLogConsumer(logConsumer)

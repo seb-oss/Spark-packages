@@ -8,7 +8,9 @@ import {
 export const startPubSub = async () => {
   const emulator = await new PubSubEmulatorContainer(
     'gcr.io/google.com/cloudsdktool/google-cloud-cli:583.0.0-emulators'
-  ).start()
+  )
+    .withLabels({ package: '@sebspark/health-check' })
+    .start()
 
   // Ensure topics and subscriptions
   const { sendSubscription, receiveTopic } =

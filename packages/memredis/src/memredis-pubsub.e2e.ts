@@ -1,7 +1,4 @@
-import {
-  RedisContainer,
-  type StartedRedisContainer,
-} from '@testcontainers/redis'
+import type { StartedRedisContainer } from '@testcontainers/redis'
 import { createClient } from 'redis'
 import {
   afterAll,
@@ -13,13 +10,14 @@ import {
   test,
 } from 'vitest'
 import { MemRedis } from './memredis'
+import { startRedisContainer } from './start-redis-container'
 
 let redis: StartedRedisContainer
 let redisClient: ReturnType<typeof createClient>
 let memRedisClient: MemRedis
 
 beforeAll(async () => {
-  redis = await new RedisContainer('redis:8-alpine').start()
+  redis = await startRedisContainer()
   redisClient = createClient({ url: redis.getConnectionUrl() })
   await redisClient.connect()
 }, 60_000)

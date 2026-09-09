@@ -21,6 +21,7 @@ beforeAll(async () => {
     'opensearchproject/opensearch:2.19.6'
   )
     .withSecurityEnabled(false)
+    .withLabels({ package: '@sebspark/opensearch' })
     .start()
 
   opensearchClient = new OpenSearchClient({ node: container.getHttpUrl() })
