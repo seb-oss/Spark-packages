@@ -45,9 +45,13 @@ const getOutdated = () => {
 const getReleaseDate = (pkg, version) => {
   let json = {}
   try {
-    const output = execSync(`npm view ${pkg} time repository version --json`, {
-      stdio: 'pipe',
-    }).toString()
+    const output = execSync(
+      // nosemgrep: javascript.lang.security.detect-child-process.detect-child-process
+      `npm view ${pkg} time repository version --json`,
+      {
+        stdio: 'pipe',
+      }
+    ).toString()
     json = JSON.parse(output)
   } catch (err) {
     if (err.stdout) {

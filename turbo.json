@@ -23,6 +23,16 @@
     "typecheck": {
       "dependsOn": ["^build"]
     },
-    "depcheck": {}
+    "depcheck": {},
+    "security-scan:raw": {
+      "inputs": [
+        "packages/**/src/**",
+        "tools/**",
+        "package.json",
+        "!**/dist/**",
+        "!**/node_modules/**"
+      ],
+      "outputs": []
+    }
   }
 }
