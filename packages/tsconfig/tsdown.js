@@ -5,7 +5,9 @@ const userConfig = {
   format: ['esm'],
   platform: 'node',
   target: 'node24',
-  dts: true,
+  // tsgo (auto-selected under TypeScript 7) writes .d.ts next to source for
+  // any cross-package import: https://github.com/rolldown/tsdown/issues/1048
+  dts: { generator: 'tsc' },
   sourcemap: true,
   clean: true,
   inputOptions: {
