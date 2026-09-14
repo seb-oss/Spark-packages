@@ -38,7 +38,7 @@
     "@biomejs/biome": "2.5.12",
     "@sebspark/tsconfig": "*",
     "@turbo/gen": "2.10.12",
-    "@types/node": "26.5.0",
+    "@types/node": "26.5.1",
     "@vitest/coverage-v8": "5.0.0",
     "depcheck": "1.4.7",
     "husky": "9.1.7",
