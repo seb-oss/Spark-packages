@@ -19,7 +19,7 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@sebspark/openapi-typegen": "5.2.4",
     "@types/express": "5.0.6",
     "depcheck": "1.4.7",

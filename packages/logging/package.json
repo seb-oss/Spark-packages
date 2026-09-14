@@ -28,7 +28,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@sebspark/tsconfig": "*",
     "@types/socketio-wildcard": "2.0.7",
     "qs": "6.16.0",

@@ -28,7 +28,7 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@google-cloud/pubsub": "6.0.1",
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "12.1.0",

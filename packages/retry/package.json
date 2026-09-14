@@ -28,7 +28,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@sebspark/tsconfig": "*",
     "axios": "1.20.0",
     "typescript": "7.0.2",

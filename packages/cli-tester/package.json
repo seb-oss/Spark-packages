@@ -25,7 +25,7 @@
     "@inquirer/figures": "2.0.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@inquirer/prompts": "8.7.2",
     "@sebspark/tsconfig": "*",
     "typescript": "7.0.2",

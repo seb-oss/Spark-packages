@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.13",
     "@sebspark/tsconfig": "*",
     "@socket.io/gcp-pubsub-adapter": "0.1.0",
     "@testcontainers/gcloud": "12.1.0",
