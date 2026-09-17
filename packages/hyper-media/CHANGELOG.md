@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.6
+
+### Patch Changes
+
+- 9f44fbd: Updated dependencies
+
 ## 0.1.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/idempotency
 
+## 1.0.2
+
+### Patch Changes
+
+- 9f44fbd: Updated dependencies
+
 ## 1.0.1
 
 ### Patch Changes

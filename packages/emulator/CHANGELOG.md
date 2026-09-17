@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.4.2
+
+### Patch Changes
+
+- 9f44fbd: Updated dependencies
+
 ## 0.4.1
 
 ### Patch Changes

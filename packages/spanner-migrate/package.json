@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/spanner-migrate",
-  "version": "2.0.33",
+  "version": "2.0.34",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
     "@google-cloud/spanner": "8.13.0",
-    "@sebspark/cli-tester": "1.0.20",
+    "@sebspark/cli-tester": "1.0.21",
     "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.35",
     "testcontainers": "12.1.0",

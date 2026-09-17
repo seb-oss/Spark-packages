@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.20
+
+### Patch Changes
+
+- 9f44fbd: Updated dependencies
+
 ## 1.0.19
 
 ### Patch Changes
