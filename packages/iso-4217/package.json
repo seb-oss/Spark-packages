@@ -23,12 +23,12 @@
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.14",
     "@sebspark/tsconfig": "*",
     "fast-xml-parser": "5.11.1",
     "typescript": "7.0.2",
-    "vite": "8.2.2",
-    "vitest": "5.0.0"
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
   },
   "keywords": [
     "Financial",

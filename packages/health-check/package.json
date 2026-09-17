@@ -28,17 +28,17 @@
     "express": "5.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
-    "@google-cloud/pubsub": "6.0.1",
+    "@biomejs/biome": "2.5.14",
+    "@google-cloud/pubsub": "6.1.0",
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "12.1.0",
     "@testcontainers/mockserver": "12.1.0",
     "@testcontainers/redis": "12.1.0",
-    "mockserver-client": "7.6.0",
+    "mockserver-client": "8.0.0",
     "supertest": "7.2.2",
     "typescript": "7.0.2",
-    "vite": "8.2.2",
-    "vitest": "5.0.0"
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
   },
   "resolutions": {
     "protobufjs": "8.8.0"

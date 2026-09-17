@@ -25,12 +25,12 @@
     "@inquirer/figures": "2.0.9"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.14",
     "@inquirer/prompts": "8.7.2",
     "@sebspark/tsconfig": "*",
     "typescript": "7.0.2",
-    "vite": "8.2.2",
-    "vitest": "5.0.0"
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
   },
   "repository": {
     "type": "git",

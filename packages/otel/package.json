@@ -50,10 +50,10 @@
     "@sebspark/opentelemetry-instrumentation-opensearch": "0.3.14",
     "fast-safe-stringify": "2.1.1",
     "kleur": "4.1.5",
-    "yaml": "2.9.0"
+    "yaml": "2.9.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.14",
     "@opensearch-project/opensearch": "3.6.0",
     "@opentelemetry/context-async-hooks": "2.11.0",
     "@sebspark/tsconfig": "*",
@@ -65,8 +65,8 @@
     "redis": "6.2.1",
     "typescript": "7.0.2",
     "undici": "8.10.2",
-    "vite": "8.2.2",
-    "vitest": "5.0.0"
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
   },
   "resolutions": {
     "protobufjs": "8.8.0"
