@@ -269,7 +269,7 @@ describe('OpenSearchClient', () => {
         expect(createResponse.body.items[1].create.status).toBe(201)
 
         // Verify that the created documents exist.
-        const searchResponse = await opensearchClient.search({
+        const searchResponse = await opensearchClient.search<PersonIndex>({
           index: 'person',
           body: { query: { match_all: {} } },
         })

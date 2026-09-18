@@ -1,5 +1,5 @@
 import type { Types } from '@opensearch-project/opensearch'
-import type { BuiltinKeys, FieldPaths, FieldValue } from './common'
+import type { BuiltinKeys, FieldValue } from './common'
 import type { NestedLeafPaths, NestedPaths } from './utilityTypes'
 
 export type BoolQuery<T> = Omit<
@@ -176,7 +176,7 @@ export type MultiMatchQuery<T> = Omit<
   Types.Common_QueryDsl.MultiMatchQuery,
   'fields'
 > & {
-  fields?: FieldPaths<T>[]
+  fields?: NestedPaths<T>[]
 }
 
 export type NestedQuery<T> = Omit<
