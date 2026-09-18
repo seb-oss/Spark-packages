@@ -82,6 +82,20 @@ async function run () {
     }
   }
   const result = await client.search(searchQuery)
+
+  // For an exact match against a single field (no analysis), use `term` instead of `match`.
+  // As with `match`, the field name is the key and the value is used directly - no
+  // nested `field`/`value` object is needed.
+  const exactSearchQuery: PersonSearch = {
+    index: personIndexName,
+    body: {
+      query: {
+        term: {
+          age: 52
+        }
+      }
+    }
+  }
   
   // result.body.hits.hits <- This has type PersonDocument[]
 }

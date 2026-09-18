@@ -1,10 +1,5 @@
 import type { Types } from '@opensearch-project/opensearch'
-import type {
-  BuiltinKeys,
-  FieldPaths,
-  FieldValue,
-  MapOpenSearchTypes,
-} from './common'
+import type { BuiltinKeys, FieldPaths, FieldValue } from './common'
 import type { NestedLeafPaths, NestedPaths } from './utilityTypes'
 
 export type BoolQuery<T> = Omit<
@@ -206,13 +201,7 @@ export type PercolateQuery<T> = Omit<
   field: NestedPaths<T>
 }
 
-export type PrefixQuery<T> = Omit<
-  Types.Common_QueryDsl.PrefixQuery,
-  'value' | 'field'
-> & {
-  field: NestedPaths<T>
-  value: MapOpenSearchTypes<T>
-}
+export type PrefixQuery = Types.Common_QueryDsl.PrefixQuery
 
 export type QueryContainer<T> = Omit<
   Types.Common_QueryDsl.QueryContainer,
@@ -288,10 +277,10 @@ export type QueryContainer<T> = Omit<
   nested?: NestedQuery<T>
   neural?: FieldQuery<T, NeuralQuery<T>>
   percolate?: PercolateQuery<T>
-  prefix?: FieldQuery<T, PrefixQuery<T>>
+  prefix?: FieldQuery<T, PrefixQuery>
   range?: FieldQuery<T, Types.Common_QueryDsl.RangeQuery>
   rank_feature?: RankFeatureQuery
-  regexp?: FieldQuery<T, RegexpQuery<T>>
+  regexp?: FieldQuery<T, RegexpQuery>
   script_score?: ScriptScoreQuery<T>
   simple_query_string?: SimpleQueryStringQuery<T>
   span_containing?: SpanContainingQuery<T>
@@ -300,24 +289,18 @@ export type QueryContainer<T> = Omit<
   span_near?: SpanNearQuery<T>
   span_not?: SpanNotQuery<T>
   span_or?: SpanOrQuery<T>
-  span_term?: FieldQuery<T, SpanTermQuery<T>>
+  span_term?: FieldQuery<T, SpanTermQuery>
   span_within?: SpanWithinQuery<T>
-  term?: FieldQuery<T, TermQuery<T>>
+  term?: FieldQuery<T, TermQuery>
   terms?: TermsQuery<T>
-  terms_set?: FieldQuery<T, TermsSetQuery<T>>
-  wildcard?: FieldQuery<T, WildcardQuery<T>>
+  terms_set?: FieldQuery<T, TermsSetQuery>
+  wildcard?: FieldQuery<T, WildcardQuery>
   xy_shape?: XyShapeQuery<T>
 }
 
 export type RankFeatureQuery = Types.Common_QueryDsl.RankFeatureQuery
 
-export type RegexpQuery<T> = Omit<
-  Types.Common_QueryDsl.RegexpQuery,
-  'value' | 'field'
-> & {
-  field: NestedPaths<T>
-  value: MapOpenSearchTypes<T>
-}
+export type RegexpQuery = Types.Common_QueryDsl.RegexpQuery
 
 export type ScriptScoreQuery<T> = Omit<
   Types.Common_QueryDsl.ScriptScoreQuery,
@@ -352,7 +335,7 @@ export type SpanQuery<T> = Omit<
   span_near?: SpanNearQuery<T>
   span_not?: SpanNotQuery<T>
   span_or?: SpanOrQuery<T>
-  span_term?: Record<NestedPaths<T>, SpanTermQuery<T>>
+  span_term?: Record<NestedPaths<T>, SpanTermQuery>
   span_within?: SpanWithinQuery<T>
 }
 
@@ -408,13 +391,7 @@ export type SpanOrQuery<T> = Omit<
   clauses: SpanQuery<T>[]
 }
 
-export type SpanTermQuery<T> = Omit<
-  Types.Common_QueryDsl.SpanTermQuery,
-  'value' | 'field'
-> & {
-  field: NestedPaths<T>
-  value: MapOpenSearchTypes<T>
-}
+export type SpanTermQuery = Types.Common_QueryDsl.SpanTermQuery
 
 export type SpanWithinQuery<T> = Omit<
   Types.Common_QueryDsl.SpanWithinQuery,
@@ -424,31 +401,18 @@ export type SpanWithinQuery<T> = Omit<
   little: SpanQuery<T>
 }
 
-export type TermQuery<T> = Omit<
-  Types.Common_QueryDsl.TermQuery,
-  'value' | 'field'
-> & {
-  field: NestedPaths<T>
-  value: MapOpenSearchTypes<T>
-}
+export type TermQuery = Types.Common_QueryDsl.TermQuery
 
 export type TermsQuery<T> = FieldQuery<T, FieldValue[]>
 
-export type TermsSetQuery<T> = Omit<
+export type TermsSetQuery = Omit<
   Types.Common_QueryDsl.TermsSetQuery,
-  'terms' | 'field'
+  'terms'
 > & {
-  field: NestedPaths<T>
   terms: FieldValue[]
 }
 
-export type WildcardQuery<T> = Omit<
-  Types.Common_QueryDsl.WildcardQuery,
-  'value' | 'field'
-> & {
-  field: NestedPaths<T>
-  value: MapOpenSearchTypes<T>
-}
+export type WildcardQuery = Types.Common_QueryDsl.WildcardQuery
 
 export type XyShapeQuery<T> = Omit<
   Types.Common_QueryDsl.XyShapeQuery,

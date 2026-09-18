@@ -42,7 +42,7 @@
     "@vitest/coverage-v8": "5.0.1",
     "depcheck": "1.4.7",
     "husky": "9.1.7",
-    "knip": "6.36.0",
+    "knip": "6.37.0",
     "syncpack": "15.3.3",
     "turbo": "2.10.13",
     "typescript": "7.0.2",
