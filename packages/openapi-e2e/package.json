@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
-    "@sebspark/openapi-typegen": "5.2.5",
+    "@sebspark/openapi-typegen": "5.2.6",
     "@types/express": "5.0.6",
     "depcheck": "1.4.7",
     "find-free-ports": "3.1.1",
