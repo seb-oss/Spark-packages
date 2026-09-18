@@ -3408,7 +3408,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.5.14"
     "@sebspark/openapi-core": "npm:4.1.23"
-    "@sebspark/openapi-typegen": "npm:5.2.5"
+    "@sebspark/openapi-typegen": "npm:5.2.6"
     "@sebspark/otel": "npm:4.1.17"
     "@sebspark/retry": "npm:1.0.20"
     "@sebspark/tsconfig": "npm:*"
@@ -3447,7 +3447,7 @@ __metadata:
     "@sebspark/openapi-client": "npm:4.2.21"
     "@sebspark/openapi-core": "npm:4.1.23"
     "@sebspark/openapi-express": "npm:5.4.19"
-    "@sebspark/openapi-typegen": "npm:5.2.5"
+    "@sebspark/openapi-typegen": "npm:5.2.6"
     "@types/express": "npm:5.0.6"
     depcheck: "npm:1.4.7"
     express: "npm:5.2.1"
@@ -3472,7 +3472,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-typegen@npm:5.2.5, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
+"@sebspark/openapi-typegen@npm:5.2.6, @sebspark/openapi-typegen@workspace:packages/openapi-typegen":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
