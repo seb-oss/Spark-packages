@@ -33,6 +33,6 @@
     "@biomejs/biome": "2.5.14",
     "@sebspark/tsconfig": "*",
     "typescript": "7.0.2",
-    "vite": "8.3.0"
+    "vite": "8.3.1"
   }
 }
