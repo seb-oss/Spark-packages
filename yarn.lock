@@ -3254,7 +3254,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.5.14"
     "@sebspark/tsconfig": "npm:*"
-    "@vitest/expect": "npm:5.0.1"
+    "@vitest/expect": "npm:5.0.2"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.0"
     vitest: "npm:5.0.1"
@@ -4472,17 +4472,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/expect@npm:5.0.1":
-  version: 5.0.1
-  resolution: "@vitest/expect@npm:5.0.1"
+"@vitest/expect@npm:5.0.2":
+  version: 5.0.2
+  resolution: "@vitest/expect@npm:5.0.2"
   dependencies:
     "@standard-schema/spec": "npm:^1.1.0"
     "@types/chai": "npm:^5.2.2"
-    "@vitest/spy": "npm:5.0.1"
-    "@vitest/utils": "npm:5.0.1"
+    "@vitest/spy": "npm:5.0.2"
+    "@vitest/utils": "npm:5.0.2"
     chai: "npm:^6.2.2"
     tinyrainbow: "npm:^3.1.1"
-  checksum: 10c0/06206152d33d49c1890cf81103fd957e08ec71621cce3d4d83df8b8a602c7f820315e5084d790879db4b23223e39bed3c424acff6c02d9f7b6ba65f4cce65134
+  checksum: 10c0/fa11bed926c79495b3942bd8f0e46bcefa13ae2f9bd5d148d9e9608e3cf3f068af1b73bded695ebf8a05d04ff2fdbcf312d89a96bc100ccda8e0d77316ec9b92
   languageName: node
   linkType: hard
 
@@ -4522,12 +4522,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/pretty-format@npm:5.0.1":
-  version: 5.0.1
-  resolution: "@vitest/pretty-format@npm:5.0.1"
+"@vitest/pretty-format@npm:5.0.2":
+  version: 5.0.2
+  resolution: "@vitest/pretty-format@npm:5.0.2"
   dependencies:
     tinyrainbow: "npm:^3.1.1"
-  checksum: 10c0/1fb025ae15b02b683b8ef8bd00babb585c6462bf9bc19985f39a8124f9d46489da943484a4c058b49123165489be5cb9bedac4ea41bf7c525380fff5e2182a0e
+  checksum: 10c0/fd3a6c7ab541ca1cf9b21cc8f44e141f50e5d07eb456edb85f1f9eacfd3a276a9ab5a442cbc35c023c3fc0f05cf2bfa022a7960d33538a2872db2043bf207616
   languageName: node
   linkType: hard
 
@@ -4538,14 +4538,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/utils@npm:5.0.1":
-  version: 5.0.1
-  resolution: "@vitest/utils@npm:5.0.1"
+"@vitest/spy@npm:5.0.2":
+  version: 5.0.2
+  resolution: "@vitest/spy@npm:5.0.2"
+  checksum: 10c0/4a52231cc7b5b8959bb15a700a761464051a6d0cc35a231fc92fd4f58d10a01012671a20ea37ebc79e98bdd5dc257a3c52db10d6a592944560fb69651f6f1296
+  languageName: node
+  linkType: hard
+
+"@vitest/utils@npm:5.0.2":
+  version: 5.0.2
+  resolution: "@vitest/utils@npm:5.0.2"
   dependencies:
-    "@vitest/pretty-format": "npm:5.0.1"
+    "@vitest/pretty-format": "npm:5.0.2"
     convert-source-map: "npm:^2.0.0"
     tinyrainbow: "npm:^3.1.1"
-  checksum: 10c0/c16c5d0cf3795e5c3bc46212bc03a4192fb2e515cf51e1465188578d591a1feeacb911c0d554ebbb6e1dcf115e96a528b6175dedf0b2a4f8b4ce4a5ce61ab5bd
+  checksum: 10c0/5711e43595ce7afe83d0989f301ad6bc00605786fc39242953d2885fbdee2956e51d4ee32ad005234b4d81887538c385d480fe635d609a1646eb530d5b0802b6
   languageName: node
   linkType: hard
 
