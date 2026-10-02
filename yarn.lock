@@ -3501,7 +3501,7 @@ __metadata:
     "@biomejs/biome": "npm:2.5.14"
     "@opensearch-project/opensearch": "npm:3.6.0"
     "@sebspark/tsconfig": "npm:*"
-    "@testcontainers/opensearch": "npm:12.1.0"
+    "@testcontainers/opensearch": "npm:12.2.0"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.0"
     vitest: "npm:5.0.1"
@@ -3523,7 +3523,7 @@ __metadata:
     "@opentelemetry/sdk-trace-node": "npm:2.11.0"
     "@opentelemetry/semantic-conventions": "npm:1.43.0"
     "@sebspark/tsconfig": "npm:*"
-    "@testcontainers/opensearch": "npm:12.1.0"
+    "@testcontainers/opensearch": "npm:12.2.0"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.0"
     vitest: "npm:5.0.1"
@@ -3566,7 +3566,7 @@ __metadata:
     "@opentelemetry/semantic-conventions": "npm:1.43.0"
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.3.15"
     "@sebspark/tsconfig": "npm:*"
-    "@testcontainers/opensearch": "npm:12.1.0"
+    "@testcontainers/opensearch": "npm:12.2.0"
     "@testcontainers/redis": "npm:12.1.0"
     axios: "npm:1.20.0"
     express: "npm:5.2.1"
@@ -3808,13 +3808,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/opensearch@npm:12.1.0":
-  version: 12.1.0
-  resolution: "@testcontainers/opensearch@npm:12.1.0"
+"@testcontainers/opensearch@npm:12.2.0":
+  version: 12.2.0
+  resolution: "@testcontainers/opensearch@npm:12.2.0"
   dependencies:
-    testcontainers: "npm:^12.1.0"
+    testcontainers: "npm:^12.2.0"
     zxcvbn: "npm:^4.4.2"
-  checksum: 10c0/c5d07b09f7d65d09003d29859fe2f3a0ad37e77e51761d25eab569cfb74861dfe6dd12ae30ea22682219947d8aad7ada5e871c19ce7ab4de52c01b29130f4814
+  checksum: 10c0/2de1aa0e3b1486a74ecb55b2063c1f70acb91900bace7452237bb96288e9f15dc7dd3be2d167af10b7aa2c5a59894f04af727d00a1d36aba94a2ba0fa64030bd
   languageName: node
   linkType: hard
 
@@ -6310,6 +6310,15 @@ __metadata:
   dependencies:
     yaml: "npm:^2.2.2"
   checksum: 10c0/2cd9182dafeac8ac3fed57e5aac85be5dec18eaa0241026d202e418577bfe185ab97ae2e066be01ade4ae55ffdcab04f4b40c754f3b2d11c314d6ca0117b51fa
+  languageName: node
+  linkType: hard
+
+"docker-compose@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "docker-compose@npm:1.5.0"
+  dependencies:
+    yaml: "npm:^2.2.2"
+  checksum: 10c0/b814480957c6e32c375f3ccb07d86a93c1b52f49fb8f170ef998d22248d2f2f25bdb4921dc200bccec779fcb34f34347d1e0b781cebba59bc2f6c190dd35058c
   languageName: node
   linkType: hard
 
@@ -11167,6 +11176,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"testcontainers@npm:^12.2.0":
+  version: 12.2.0
+  resolution: "testcontainers@npm:12.2.0"
+  dependencies:
+    "@balena/dockerignore": "npm:^1.0.2"
+    "@types/dockerode": "npm:^4.0.1"
+    archiver: "npm:^7.0.1"
+    async-lock: "npm:^1.4.1"
+    byline: "npm:^5.0.0"
+    debug: "npm:^4.4.3"
+    docker-compose: "npm:^1.5.0"
+    dockerode: "npm:^5.0.1"
+    get-port: "npm:^5.1.1"
+    proper-lockfile: "npm:^4.1.2"
+    properties-reader: "npm:^3.0.1"
+    ssh-remote-port-forward: "npm:^1.0.4"
+    tar-fs: "npm:^3.1.3"
+    tmp: "npm:^0.2.7"
+    undici: "npm:^8.10.2"
+  checksum: 10c0/07747d0597c899a838fa8440a194dec46b318d56cbdc5b799a5b6e06dac2f57e769183ccb238caeb9cb2766b1e187d6f4dfcfdce3bac33dd07af246622d6a5b9
+  languageName: node
+  linkType: hard
+
 "text-decoder@npm:^1.1.0":
   version: 1.2.3
   resolution: "text-decoder@npm:1.2.3"
@@ -11689,6 +11721,13 @@ __metadata:
   version: 8.10.2
   resolution: "undici@npm:8.10.2"
   checksum: 10c0/66d7fc69149207cab570d6abbc9e965b6afe1ae889a7d46945b431165c973d6a56f3dd8b70a856e7ae1e550b6366a1cde6f06e68640587f0dadca38de72995ee
+  languageName: node
+  linkType: hard
+
+"undici@npm:^8.10.2":
+  version: 8.11.2
+  resolution: "undici@npm:8.11.2"
+  checksum: 10c0/106f6991178fb7562fd90cdec7993c5f807a9428682306091f0c4b27fc474ec291f868e29972c6252988bf061ad193df943b3b99e775be157a28d92bbb95699d
   languageName: node
   linkType: hard
 
