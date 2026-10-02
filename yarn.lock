@@ -883,12 +883,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/iam-credentials@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@google-cloud/iam-credentials@npm:5.0.0"
+"@google-cloud/iam-credentials@npm:5.0.1":
+  version: 5.0.1
+  resolution: "@google-cloud/iam-credentials@npm:5.0.1"
   dependencies:
     google-gax: "npm:^6.0.0"
-  checksum: 10c0/2489e08631df67dc61742e9b1d8d452d823a07ebbb5d84cf8dd0ea38da1d39b1e648cea60607c1fb3df3cd2ffa567e9d2f5280c79e685f6ba37586512ff6a72c
+  checksum: 10c0/a3e0807e15d6542242e09165640a0192397d6169d5fc2034a803dd0f157861723b57fc8db494bbf278412d7bea1128baa13e45c73b0485ffcaaf4980ea54fdad
   languageName: node
   linkType: hard
 
@@ -3266,7 +3266,7 @@ __metadata:
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@biomejs/biome": "npm:2.5.14"
-    "@google-cloud/iam-credentials": "npm:5.0.0"
+    "@google-cloud/iam-credentials": "npm:5.0.1"
     "@sebspark/otel": "npm:4.1.17"
     "@sebspark/tsconfig": "npm:*"
     depcheck: "npm:1.4.7"
