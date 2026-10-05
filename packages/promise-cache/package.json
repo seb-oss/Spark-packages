@@ -34,7 +34,7 @@
     "@sebspark/memredis": "1.0.6",
     "@sebspark/otel": "4.1.17",
     "date-fns": "4.4.0",
-    "redis": "6.2.1",
+    "redis": "6.3.0",
     "superjson": "2.2.6"
   },
   "resolutions": {
