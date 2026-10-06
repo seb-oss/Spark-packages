@@ -106,7 +106,9 @@ export class AvroDecoder extends BaseDecoder {
 
     if (Buffer.isBuffer(input)) {
       try {
+        console.log('[AVRO] Input', input.toString('utf-8'))
         const packet = this.type.fromBuffer(input)
+
         const decoded = decodePacket(packet)
         // decodePacket always returns a packet; guard kept for defensive safety
         /* istanbul ignore next */
