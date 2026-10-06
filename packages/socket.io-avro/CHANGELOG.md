@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.25
+
+### Patch Changes
+
+- 1af26ed: Debug input
+
 ## 0.1.24
 
 ### Patch Changes
