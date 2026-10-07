@@ -43,7 +43,7 @@
     "@testcontainers/opensearch": "12.1.0",
     "typescript": "7.0.2",
     "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vitest": "5.0.3"
   },
   "resolutions": {
     "protobufjs": "8.8.0"
