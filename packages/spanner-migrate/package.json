@@ -24,7 +24,7 @@
     "typecheck": "tsc --noEmit "
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.5.15",
     "@google-cloud/spanner": "8.13.0",
     "@sebspark/cli-tester": "1.0.21",
     "@sebspark/tsconfig": "*",
