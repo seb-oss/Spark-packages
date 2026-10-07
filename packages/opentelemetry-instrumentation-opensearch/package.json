@@ -40,7 +40,7 @@
     "@opentelemetry/sdk-trace-base": "2.11.0",
     "@opentelemetry/sdk-trace-node": "2.11.0",
     "@sebspark/tsconfig": "*",
-    "@testcontainers/opensearch": "12.1.0",
+    "@testcontainers/opensearch": "12.2.0",
     "typescript": "7.0.2",
     "vite": "8.3.0",
     "vitest": "5.0.1"
