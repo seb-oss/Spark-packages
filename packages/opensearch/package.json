@@ -31,7 +31,7 @@
     "vitest": "5.0.1"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "3.6.0"
+    "@opensearch-project/opensearch": "3.9.0"
   },
   "resolutions": {
     "protobufjs": "8.8.0"
