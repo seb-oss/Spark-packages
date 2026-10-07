@@ -33,7 +33,7 @@
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "12.1.0",
     "@testcontainers/mockserver": "12.1.0",
-    "@testcontainers/redis": "12.1.0",
+    "@testcontainers/redis": "12.2.0",
     "mockserver-client": "8.0.0",
     "supertest": "7.2.2",
     "typescript": "7.0.2",
