@@ -28,7 +28,7 @@
     "@socket.io/gcp-pubsub-adapter": "0.1.1",
     "@testcontainers/gcloud": "12.1.0",
     "find-free-ports": "3.1.1",
-    "socket.io": "4.8.3",
+    "socket.io": "4.8.4",
     "socket.io-client": "4.8.3",
     "typescript": "7.0.2",
     "vite": "8.3.0",
