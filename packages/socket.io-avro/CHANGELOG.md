@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.26
+
+### Patch Changes
+
+- c41d39d: Remove debug log
+
 ## 0.1.25
 
 ### Patch Changes
