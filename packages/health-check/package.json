@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
-    "@google-cloud/pubsub": "6.1.0",
+    "@google-cloud/pubsub": "6.2.0",
     "@sebspark/tsconfig": "*",
     "@testcontainers/gcloud": "12.1.0",
     "@testcontainers/mockserver": "12.1.0",
