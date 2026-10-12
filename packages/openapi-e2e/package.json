@@ -16,7 +16,7 @@
     "@sebspark/openapi-client": "4.2.21",
     "@sebspark/openapi-core": "4.1.23",
     "@sebspark/openapi-express": "5.4.19",
-    "express": "5.2.1"
+    "express": "5.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",
