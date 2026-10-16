@@ -901,9 +901,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/logging-winston@npm:7.1.0":
-  version: 7.1.0
-  resolution: "@google-cloud/logging-winston@npm:7.1.0"
+"@google-cloud/logging-winston@npm:7.3.0":
+  version: 7.3.0
+  resolution: "@google-cloud/logging-winston@npm:7.3.0"
   dependencies:
     "@google-cloud/logging": "npm:^12.0.0"
     google-auth-library: "npm:^11.0.0"
@@ -911,7 +911,7 @@ __metadata:
     winston-transport: "npm:^4.9.0"
   peerDependencies:
     winston: ">=3.2.1"
-  checksum: 10c0/e5fa43ebd4519e01965c30fb8f87c4038a8214d1a2f3717594d6054eae76b4348de31b8d9782b7258fe2223db4aae758cace9c70f36ca80ff4657020c172d800
+  checksum: 10c0/39f22121a0cab38d292d7f14f849854b16ef5aa61f84dc3b119fa8d5aba89d3005ea180ac4f96ad471988c53da6ce7921f25cd6f42887d835213657987303251
   languageName: node
   linkType: hard
 
@@ -3356,7 +3356,7 @@ __metadata:
   resolution: "@sebspark/logging@workspace:packages/logging"
   dependencies:
     "@biomejs/biome": "npm:2.5.14"
-    "@google-cloud/logging-winston": "npm:7.1.0"
+    "@google-cloud/logging-winston": "npm:7.3.0"
     "@sebspark/tsconfig": "npm:*"
     "@types/express-serve-static-core": "npm:5.1.3"
     "@types/socketio-wildcard": "npm:2.0.7"
