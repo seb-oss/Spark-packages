@@ -28,7 +28,7 @@
     "@sebspark/tsconfig": "*",
     "@types/yargs": "17.0.35",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
+    "vite": "8.3.3",
     "vitest": "5.0.1"
   },
   "dependencies": {
