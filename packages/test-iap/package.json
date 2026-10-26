@@ -24,7 +24,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "jose": "6.2.12",
+    "jose": "6.2.13",
     "testcontainers": "12.1.0"
   },
   "devDependencies": {
