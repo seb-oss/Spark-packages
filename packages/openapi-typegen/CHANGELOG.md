@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.3.0
+
+### Minor Changes
+
+- a20a069: Apply path-level `parameters` to every operation under the path.
+
 ## 5.2.6
 
 ### Patch Changes
