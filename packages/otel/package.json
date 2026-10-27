@@ -60,7 +60,7 @@
     "@testcontainers/opensearch": "12.1.0",
     "@testcontainers/redis": "12.1.0",
     "axios": "1.20.0",
-    "express": "5.2.1",
+    "express": "5.3.0",
     "find-free-ports": "3.1.1",
     "redis": "6.2.1",
     "typescript": "7.0.2",
