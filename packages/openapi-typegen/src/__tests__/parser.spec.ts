@@ -525,6 +525,245 @@ describe('openapi parser', () => {
 
       expect(parsePath('/users/{userId}', path, components)).toEqual(expected)
     })
+    it('applies path-level $ref parameters to every operation', () => {
+      const path: PathItemObject = {
+        parameters: [{ $ref: '#/components/parameters/UserIdParam' }],
+        get: {
+          parameters: [{ $ref: '#/components/parameters/PageParam' }],
+          responses: { '204': { description: 'No Content' } },
+        },
+        delete: {
+          parameters: [{ $ref: '#/components/parameters/PageParam' }],
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+      const components: ComponentsObject = {
+        parameters: {
+          UserIdParam: {
+            in: 'path',
+            name: 'userId',
+            schema: { type: 'string' },
+            required: true,
+          },
+          PageParam: {
+            in: 'query',
+            name: 'page',
+            schema: { type: 'integer' },
+            required: false,
+          },
+        },
+      }
+
+      const expected: Path[] = [
+        {
+          url: '/users/:userId',
+          method: 'delete',
+          args: {
+            path: {
+              type: 'object',
+              allOf: [{ type: 'UserIdParam' }],
+              optional: false,
+              properties: [],
+            },
+            query: {
+              type: 'object',
+              allOf: [{ type: 'PageParam' }],
+              optional: true,
+              properties: [],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+        {
+          url: '/users/:userId',
+          method: 'get',
+          args: {
+            path: {
+              type: 'object',
+              allOf: [{ type: 'UserIdParam' }],
+              optional: false,
+              properties: [],
+            },
+            query: {
+              type: 'object',
+              allOf: [{ type: 'PageParam' }],
+              optional: true,
+              properties: [],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+      ]
+
+      expect(parsePath('/users/{userId}', path, components)).toEqual(expected)
+    })
+    it('applies path-level inline parameters to every operation', () => {
+      const path: PathItemObject = {
+        parameters: [
+          {
+            in: 'path',
+            name: 'userId',
+            schema: { type: 'string' },
+            required: true,
+          },
+        ],
+        get: {
+          responses: { '204': { description: 'No Content' } },
+        },
+        put: {
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+
+      const expected: Path[] = [
+        {
+          url: '/users/:userId',
+          method: 'get',
+          args: {
+            path: {
+              type: 'object',
+              optional: false,
+              properties: [
+                { name: 'userId', optional: false, type: [{ type: 'string' }] },
+              ],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+        {
+          url: '/users/:userId',
+          method: 'put',
+          args: {
+            path: {
+              type: 'object',
+              optional: false,
+              properties: [
+                { name: 'userId', optional: false, type: [{ type: 'string' }] },
+              ],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+      ]
+
+      expect(parsePath('/users/{userId}', path)).toEqual(expected)
+    })
+    it('lets operation parameters override path-level ones with the same name and in', () => {
+      const path: PathItemObject = {
+        parameters: [
+          { $ref: '#/components/parameters/UserIdParam' },
+          {
+            in: 'query',
+            name: 'page',
+            schema: { type: 'string' },
+            required: false,
+          },
+        ],
+        get: {
+          parameters: [
+            {
+              in: 'path',
+              name: 'userId',
+              schema: { type: 'integer' },
+              required: true,
+            },
+            { $ref: '#/components/parameters/PageParam' },
+          ],
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+      const components: ComponentsObject = {
+        parameters: {
+          UserIdParam: {
+            in: 'path',
+            name: 'userId',
+            schema: { type: 'string' },
+            required: true,
+          },
+          PageParam: {
+            in: 'query',
+            name: 'page',
+            schema: { type: 'integer' },
+            required: false,
+          },
+        },
+      }
+
+      const expected: Path[] = [
+        {
+          url: '/users/:userId',
+          method: 'get',
+          args: {
+            path: {
+              type: 'object',
+              optional: false,
+              properties: [
+                { name: 'userId', optional: false, type: [{ type: 'number' }] },
+              ],
+            },
+            query: {
+              type: 'object',
+              allOf: [{ type: 'PageParam' }],
+              optional: true,
+              properties: [],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+      ]
+
+      expect(parsePath('/users/{userId}', path, components)).toEqual(expected)
+    })
+    it('gives args to an operation without its own parameters when the path has some', () => {
+      const path: PathItemObject = {
+        parameters: [
+          { $ref: '#/components/parameters/InstrumentAssessmentId' },
+        ],
+        get: {
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+      const components: ComponentsObject = {
+        parameters: {
+          InstrumentAssessmentId: {
+            in: 'path',
+            name: 'id',
+            schema: { type: 'string' },
+            required: true,
+          },
+        },
+      }
+
+      const expected: Path[] = [
+        {
+          url: '/:id',
+          method: 'get',
+          args: {
+            path: {
+              type: 'object',
+              allOf: [{ type: 'InstrumentAssessmentId' }],
+              optional: false,
+              properties: [],
+            },
+          },
+          responses: {
+            204: { description: 'No Content' },
+          },
+        },
+      ]
+
+      expect(parsePath('/{id}', path, components)).toEqual(expected)
+    })
   })
   describe('parseSchema', () => {
     it('parses a primitive schema', () => {
