@@ -23,18 +23,18 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.6.3",
     "@sebspark/tsconfig": "*",
-    "@testcontainers/redis": "12.1.0",
+    "@testcontainers/redis": "12.2.1",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
     "@sebspark/memredis": "1.0.6",
     "@sebspark/otel": "4.1.17",
     "date-fns": "4.4.0",
-    "redis": "6.2.1",
+    "redis": "6.3.0",
     "superjson": "2.2.6"
   },
   "resolutions": {

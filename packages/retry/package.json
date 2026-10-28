@@ -28,12 +28,12 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.6.3",
     "@sebspark/tsconfig": "*",
-    "axios": "1.20.0",
+    "axios": "1.21.0",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "repository": {
     "type": "git",

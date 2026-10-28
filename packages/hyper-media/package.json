@@ -26,13 +26,13 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "dependencies": {
-    "express": "5.2.1"
+    "express": "5.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.6.3",
     "@sebspark/tsconfig": "*",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   }
 }
