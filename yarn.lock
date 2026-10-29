@@ -3219,16 +3219,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/pubsub@workspace:packages/pubsub":
-  version: 0.0.0-use.local
-  resolution: "@sebspark/pubsub@workspace:packages/pubsub"
-  dependencies:
-    "@google-cloud/pubsub": "npm:6.3.1"
-    avsc: "npm:5.7.9"
-    uuid: "npm:14.0.3"
-  languageName: unknown
-  linkType: soft
-
 "@sebspark/retry@npm:1.0.20, @sebspark/retry@workspace:packages/retry":
   version: 0.0.0-use.local
   resolution: "@sebspark/retry@workspace:packages/retry"

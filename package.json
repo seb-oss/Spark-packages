@@ -69,6 +69,7 @@
   "workspaces": [
     "packages/*",
     "!packages/logging",
+    "!packages/pubsub",
     "!packages/typed-router"
   ],
   "packageManager": "yarn@4.18.0"

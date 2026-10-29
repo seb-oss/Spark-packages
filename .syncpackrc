@@ -3,6 +3,7 @@
     "package.json",
     "packages/*/package.json",
     "!packages/logging/package.json",
+    "!packages/pubsub/package.json",
     "!packages/typed-router/package.json",
     "apps/*/package.json"
   ],
@@ -16,7 +17,7 @@
     {
       "label": "Security pins - explicit transitive dep overrides",
       "dependencies": ["uuid", "yaml"],
-      "packages": ["@sebspark/pubsub", "@sebspark/socket.io-gcp-pubsub-emitter", "@sebspark/otel"],
+      "packages": ["@sebspark/socket.io-gcp-pubsub-emitter", "@sebspark/otel"],
       "isIgnored": true
     },
     {

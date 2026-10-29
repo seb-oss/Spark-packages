@@ -17,6 +17,7 @@ updates:
     # Deprecated packages that are no longer maintained
     exclude-paths:
       - "packages/logging/**"
+      - "packages/pubsub/**"
       - "packages/typed-router/**"
     # effectively remove limit
     open-pull-requests-limit: 100
