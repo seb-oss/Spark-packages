@@ -6,10 +6,11 @@ on:
       - main
   workflow_dispatch:
 
-# Cancel previously running workflows
+# Queue runs instead of cancelling: a run that merges the release PR dispatches the
+# publishing run, and a cancelled publish can leave a release half done
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
