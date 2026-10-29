@@ -9,7 +9,7 @@ on:
 jobs:
   semgrep:
     name: Scan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: semgrep/semgrep
     permissions:
