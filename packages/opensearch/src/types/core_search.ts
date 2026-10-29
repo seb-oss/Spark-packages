@@ -31,7 +31,7 @@ export type HitsMetadata<T extends IndexDefinition> = Omit<
 }
 
 export type ResponseBody<T extends IndexDefinition> = Omit<
-  Types.Core_Search.ResponseBody,
+  Types.Core_Search.SearchResponse,
   'hits'
 > & {
   hits: HitsMetadata<T>
