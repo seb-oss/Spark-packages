@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.26",
+    "@sebspark/tsconfig": "3.0.27",
     "find-free-ports": "3.1.1",
     "socket.io": "4.8.4",
     "socket.io-client": "4.8.4",

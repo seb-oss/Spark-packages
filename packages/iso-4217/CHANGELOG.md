@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.1.0
+
+### Minor Changes
+
+- b15820b: Update ISO specifications
+
 ## 1.0.27
 
 ### Patch Changes

@@ -30,7 +30,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
     "@google-cloud/pubsub": "6.3.1",
-    "@sebspark/tsconfig": "3.0.26",
+    "@sebspark/tsconfig": "3.0.27",
     "@testcontainers/gcloud": "12.2.1",
     "@testcontainers/mockserver": "12.2.1",
     "@testcontainers/redis": "12.2.1",
