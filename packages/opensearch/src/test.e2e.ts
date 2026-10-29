@@ -159,10 +159,11 @@ describe('OpenSearchClient', () => {
       // Prepare bulk operations
       const bulkRequest: BulkRequest<PersonIndex> = {
         index: 'person',
+        refresh: 'wait_for',
         body: [
-          // Index operation: auto-generated _id for "John Wick"
+          // Index operation: auto-generated _id for "Winston Scott"
           { index: {} },
-          { name: 'John Wick', age: 52 },
+          { name: 'Winston Scott', age: 70 },
 
           // Create operation: explicitly creates "Jason Bourne" with id "foo"
           { create: { _id: 'foo' } },
@@ -195,18 +196,19 @@ describe('OpenSearchClient', () => {
       // Verify the delete operation response (fourth item)
       expect(bulkResponse.body.items[3].delete.status).toBe(200) // 200 OK
 
-      // Verify that the "John Wick" document (from the index operation) still exists.
-      const johnWickSearch: PersonSearch = {
+      // Verify that the "Winston Scott" document (from the index operation) still exists.
+      const winstonScottSearch: PersonSearch = {
         index: 'person',
         body: {
           query: {
-            match: { name: 'John Wick' },
+            match: { name: 'Winston Scott' },
           },
         },
       }
-      const johnWickResult = await opensearchClient.search(johnWickSearch)
-      expect(johnWickResult.body.hits.hits).toHaveLength(1)
-      expect(johnWickResult.body.hits.hits[0]._source.age).toBe(52)
+      const winstonScottResult =
+        await opensearchClient.search(winstonScottSearch)
+      expect(winstonScottResult.body.hits.hits).toHaveLength(1)
+      expect(winstonScottResult.body.hits.hits[0]._source.age).toBe(70)
 
       // Verify that the document with id "foo" (created, updated, then deleted) no longer exists.
       const fooSearch: PersonSearch = {
