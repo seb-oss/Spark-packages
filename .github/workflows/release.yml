@@ -267,7 +267,8 @@ jobs:
           commit-message: "chore(release): update versions"
           pr-title: "chore(release): update versions"
         env:
-          NPM_CONFIG_PROVENANCE: "true"
+          # changesets publishes with `yarn npm publish`, which ignores NPM_CONFIG_*
+          YARN_NPM_PUBLISH_PROVENANCE: "true"
 
       # The release PR is created from main after every check has passed, and only bumps
       # versions and changelogs. Merges made with GITHUB_TOKEN don't trigger workflows,
