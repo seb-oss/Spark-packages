@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.35
+
+### Patch Changes
+
+- 9608866: Remove stray characters from `--help` output
+
 ## 0.4.34
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.27
+
+### Patch Changes
+
+- 612cebb: Add shebang to `spark-build` so it runs outside of yarn
+
 ## 3.0.26
 
 ### Patch Changes

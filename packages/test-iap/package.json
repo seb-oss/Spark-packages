@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.26",
+    "@sebspark/tsconfig": "3.0.27",
     "@types/ws": "8.18.2",
     "nock": "15.0.5",
     "typescript": "7.0.2",
