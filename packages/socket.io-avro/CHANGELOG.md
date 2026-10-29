@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.27
+
+### Patch Changes
+
+- e677416: Relaxed peer `socket.io` and `socket.io-client` to `^4.8.0`.
+
 ## 0.1.26
 
 ### Patch Changes
