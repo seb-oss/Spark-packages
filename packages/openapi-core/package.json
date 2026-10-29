@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-core",
-  "version": "4.1.23",
+  "version": "4.1.24",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "depcheck": "1.4.7",
     "typescript": "7.0.2",
     "vite": "8.3.5",

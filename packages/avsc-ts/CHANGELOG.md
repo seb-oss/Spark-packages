@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.34
+
+### Patch Changes
+
+- ad1e80f: Updated dependencies
+
 ## 0.4.33
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @sebspark/health-check
 
+## 3.0.13
+
+### Patch Changes
+
+- ad1e80f: Updated dependencies
+- Updated dependencies [ad1e80f]
+  - @sebspark/hyper-media@0.1.7
+  - @sebspark/promise-cache@8.1.8
+
 ## 3.0.12
 
 ### Patch Changes

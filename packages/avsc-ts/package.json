@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/avsc-ts",
-  "version": "0.4.33",
+  "version": "0.4.34",
   "license": "Apache-2.0",
   "main": "dist/index.cjs",
   "types": "dist/index.d.cts",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "@types/yargs": "17.0.35",
     "typescript": "7.0.2",
     "vite": "8.3.5",

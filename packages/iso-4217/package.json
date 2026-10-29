@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "fast-xml-parser": "5.11.2",
     "typescript": "7.0.2",
     "vite": "8.3.5",

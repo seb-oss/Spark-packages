@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.4.0
+
+### Minor Changes
+
+- ad1e80f: Upgraded to OpenTelemetry 3.0. Peer `@opentelemetry/api` is now `>=1.10.0 <1.11.0`.
+
 ## 0.3.15
 
 ### Patch Changes

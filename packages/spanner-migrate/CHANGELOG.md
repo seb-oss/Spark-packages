@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.1.0
+
+### Minor Changes
+
+- ad1e80f: Upgraded `@google-cloud/spanner` to 9 (requires Node 22+).
+
 ## 2.0.34
 
 ### Patch Changes

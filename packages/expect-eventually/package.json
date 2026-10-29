@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/expect-eventually",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "typescript": "7.0.2",
     "vite": "8.3.5"
   }
