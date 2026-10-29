@@ -4,4 +4,4 @@ ISO-10383 Market Identification Codes (MIC) made available through an NPM packag
 
 ## More information
 
-The MICs are fetched directly from [iso20022.org](https://www.iso20022.org/market-identifier-codes).
+The MICs are fetched directly from [iso20022.org](https://www.iso20022.org/market-identifier-codes). The `ISO` workflow checks for updates weekly and releases a new minor version when they change.

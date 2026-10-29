@@ -109,6 +109,9 @@ Always run lint after any code change. Fix all warnings — warnings are typical
 
 - **Exact versions everywhere** — `dependencies`, `devDependencies` and internal `@sebspark/*` references use exact versions (no `^`, `~` or `*`). Only `peerDependencies` use ranges. `.yarnrc.yml` sets `defaultSemverRangePrefix: ""` and `tsEnableAutoTypes: false` so `yarn add` writes exact versions; add `@types/*` explicitly.
 - **Update as soon as allowed** — Dependabot opens PRs daily. New versions are blocked for 3 days (`npmMinimalAgeGate` / Dependabot `cooldown`).
+- **Dependabot PRs merge themselves** — once build, lint, typecheck, test and e2e pass, the `automerge` job in `pr_check.yml` adds a patch changeset for every public package whose `dependencies`, `peerDependencies` or `optionalDependencies` changed (`tools/dependabot-changeset.mjs`), squash-merges and dispatches the release. devDependency-only, GitHub Actions and Docker updates merge without a changeset. All update types, majors included, are merged; e2e is the safety net.
+- **ISO packages update themselves** — `iso.yml` runs weekly, regenerates `iso-10383` and `iso-4217` from their published sources and, if anything changed, opens a PR with a minor changeset, runs `pr_check.yml` on it, merges and dispatches the release.
+- **Workflows started by GITHUB_TOKEN** — pushes, PRs and merges made with `GITHUB_TOKEN` don't trigger other workflows. Automation that merges must dispatch `release.yml` explicitly.
 
 ## Definition of Done
 

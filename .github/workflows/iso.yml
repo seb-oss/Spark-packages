@@ -1,0 +1,119 @@
+name: ISO
+
+# Regenerates the ISO packages from their published sources. If anything changed,
+# a PR is opened, checked with the PR workflow, merged and released.
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: iso
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    name: Update specifications
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      branch: ${{ steps.pr.outputs.branch }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Download ISO 10383 (MIC)
+        run: curl -fsSL -o packages/iso-10383/src/lib/specifications/iso10383.csv https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+
+      - name: Download ISO 4217 (currencies)
+        run: curl -fsSL -o packages/iso-4217/src/lib/specifications/iso4217.xml https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml
+
+      - name: Generate code
+        run: |
+          yarn workspace @sebspark/iso-10383 generate
+          yarn workspace @sebspark/iso-4217 generate
+          yarn format
+
+      - name: Create PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          changed=()
+          for pkg in iso-10383 iso-4217; do
+            if [ -n "$(git status --porcelain "packages/$pkg")" ]; then
+              changed+=("$pkg")
+            fi
+          done
+          if [ ${#changed[@]} -eq 0 ]; then
+            echo "No changes"
+            exit 0
+          fi
+
+          branch="iso/update-$(date +%F)"
+          {
+            echo "---"
+            for pkg in "${changed[@]}"; do echo "\"@sebspark/$pkg\": minor"; done
+            echo "---"
+            echo
+            echo "Update ISO specifications"
+          } > .changeset/iso-update.md
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add .changeset packages/iso-10383 packages/iso-4217
+          git commit -m "feat: update ISO specifications"
+          git push --force -u origin "$branch"
+          gh pr view "$branch" > /dev/null 2>&1 || gh pr create --head "$branch" --title "feat: update ISO specifications" --body "Automated update of ${changed[*]}. Merged automatically once checks pass."
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+  checks:
+    name: Checks
+    needs: update
+    if: needs.update.outputs.branch != ''
+    uses: ./.github/workflows/pr_check.yml
+    with:
+      ref: ${{ needs.update.outputs.branch }}
+    # Nested jobs may not request more than the caller grants, including PR's automerge job
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+
+  merge:
+    name: Merge and release
+    needs: [update, checks]
+    runs-on: ubuntu-26.04
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ needs.update.outputs.branch }}
+        run: gh pr merge "$BRANCH" --squash --repo "$GITHUB_REPOSITORY"
+
+      # Merges made with GITHUB_TOKEN don't trigger workflows
+      - name: Trigger release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run release.yml --ref "${{ github.event.repository.default_branch }}" --repo "$GITHUB_REPOSITORY"
