@@ -112,6 +112,7 @@ Always run lint after any code change. Fix all warnings — warnings are typical
 - **Dependabot PRs merge themselves** — once build, lint, typecheck, test and e2e pass, the `automerge` job in `pr_check.yml` adds a patch changeset for every public package whose `dependencies`, `peerDependencies` or `optionalDependencies` changed (`tools/dependabot-changeset.mjs`), squash-merges and dispatches the release. devDependency-only, GitHub Actions and Docker updates merge without a changeset. All update types, majors included, are merged; e2e is the safety net.
 - **ISO packages update themselves** — `iso.yml` runs weekly, regenerates `iso-10383` and `iso-4217` from their published sources and, if anything changed, opens a PR with a minor changeset, runs `pr_check.yml` on it, merges and dispatches the release.
 - **Workflows started by GITHUB_TOKEN** — pushes, PRs and merges made with `GITHUB_TOKEN` don't trigger other workflows. Automation that merges must dispatch `release.yml` explicitly.
+- **Releases are fully automatic** — `release.yml` merges its own release PR (`changeset-release/main`) right after creating it, then dispatches itself to publish. The PR is created from main after every check has passed and only bumps versions and changelogs, so no PR checks run on it.
 
 ## Definition of Done
 

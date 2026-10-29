@@ -233,6 +233,7 @@ jobs:
       - typecheck
     runs-on: ubuntu-26.04
     permissions:
+      actions: write
       contents: write
       pull-requests: write
       id-token: write
@@ -266,6 +267,18 @@ jobs:
           pr-title: "chore(release): update versions"
         env:
           NPM_CONFIG_PROVENANCE: "true"
+
+      # The release PR is created from main after every check has passed, and only bumps
+      # versions and changelogs. Merges made with GITHUB_TOKEN don't trigger workflows,
+      # so the publish run is dispatched.
+      - name: Merge release PR
+        if: steps.changesets.outputs.pr-number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.changesets.outputs.pr-number }}
+        run: |
+          gh pr merge "$PR_NUMBER" --squash
+          gh workflow run release.yml --ref "$GITHUB_REF_NAME"
 
       - name: Report release outcome
         run: |
