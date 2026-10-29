@@ -23,7 +23,7 @@ import type { OutgoingHttpEnrichmentConfig } from './types'
  * Build an HttpInstrumentationConfig that applies shared enrichment logic.
  *
  * The returned config can be spread with your own additional options:
- *   new HttpInstrumentation({ ...buildHttpConfig(opts), serverName: 'gateway' })
+ *   new HttpInstrumentation({ ...buildHttpConfig(opts), requireParentforOutgoingSpans: true })
  */
 export const buildHttpConfig = (
   opts: OutgoingHttpEnrichmentConfig = {}

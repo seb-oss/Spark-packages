@@ -1,5 +1,4 @@
-import { context, trace } from '@opentelemetry/api'
-import { logs } from '@opentelemetry/api-logs'
+import { context, logs, trace } from '@opentelemetry/api'
 import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from './consts'
 import { isInitialized } from './otel'
 import { detectTelemetryContext } from './otel-context'

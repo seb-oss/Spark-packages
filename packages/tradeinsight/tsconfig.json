@@ -1,4 +1,0 @@
-{
-  "extends": "@sebspark/tsconfig/tsconfig.lib.json",
-  "include": ["."]
-}

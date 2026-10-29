@@ -10,9 +10,9 @@
     "dist"
   ],
   "dependencies": {
-    "@google-cloud/pubsub": "6.1.0",
+    "@google-cloud/pubsub": "6.3.1",
     "avsc": "5.7.9",
-    "uuid": "14.0.2"
+    "uuid": "14.0.3"
   },
   "keywords": [
     "google api",
@@ -23,9 +23,6 @@
     "google pubsub",
     "pubsub"
   ],
-  "resolutions": {
-    "protobufjs": "8.8.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"

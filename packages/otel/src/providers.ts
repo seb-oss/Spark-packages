@@ -13,7 +13,7 @@ import {
   BatchSpanProcessor,
   SimpleSpanProcessor,
   type SpanProcessor,
-} from '@opentelemetry/sdk-trace-node'
+} from '@opentelemetry/sdk-trace'
 import { ConsoleMetricPrettyExporter } from './loggers/console-metric-pretty-exporter'
 import {
   ConsoleLogPrettyExporter,
@@ -72,10 +72,10 @@ export const getSpanProcessor = (
     console.log(
       '[otel] Using SimpleSpanProcessor (OTEL_SIMPLE_SPAN_PROCESSOR=true)'
     )
-    return new SimpleSpanProcessor(exporter)
+    return new SimpleSpanProcessor({ exporter })
   }
 
-  return new BatchSpanProcessor(exporter)
+  return new BatchSpanProcessor({ exporter })
 }
 
 export const getMetricReader = (otlpEndpoint: string | undefined) => {

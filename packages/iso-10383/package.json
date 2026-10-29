@@ -18,18 +18,18 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run",
     "generate": "node scripts/parseMicCsv.mjs src/lib/specifications/iso10383.csv src/lib/generated/iso10383.ts"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@sebspark/tsconfig": "*",
+    "@biomejs/biome": "2.6.3",
+    "@sebspark/tsconfig": "3.0.25",
     "change-case": "5.4.4",
-    "csv-parse": "7.0.2",
+    "csv-parse": "7.0.3",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "keywords": [
     "Financial",

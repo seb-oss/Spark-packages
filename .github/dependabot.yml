@@ -14,6 +14,10 @@ updates:
       interval: "daily"
     cooldown:
       default-days: 3
+    # Deprecated packages that are no longer maintained
+    exclude-paths:
+      - "packages/logging/**"
+      - "packages/typed-router/**"
     # effectively remove limit
     open-pull-requests-limit: 100
     ignore:

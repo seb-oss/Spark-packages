@@ -18,31 +18,27 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
-    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@sebspark/tsconfig": "*",
+    "@biomejs/biome": "2.6.3",
+    "@sebspark/tsconfig": "3.0.25",
     "@socket.io/gcp-pubsub-adapter": "0.1.1",
-    "@testcontainers/gcloud": "12.1.0",
+    "@testcontainers/gcloud": "12.2.1",
     "find-free-ports": "3.1.1",
-    "socket.io": "4.8.3",
-    "socket.io-client": "4.8.3",
+    "socket.io": "4.8.4",
+    "socket.io-client": "4.8.4",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
-    "@google-cloud/pubsub": "6.1.0",
+    "@google-cloud/pubsub": "6.3.1",
     "@msgpack/msgpack": "3.1.3",
     "socket.io-adapter": "2.5.8",
-    "uuid": "14.0.2"
-  },
-  "resolutions": {
-    "protobufjs": "8.8.0",
-    "socket.io-parser": "4.2.7"
+    "uuid": "14.0.3"
   },
   "repository": {
     "type": "git",

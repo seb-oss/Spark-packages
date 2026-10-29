@@ -105,6 +105,11 @@ If a check doesn't exist for a package (e.g. no e2e tests), skip it — but veri
 
 Always run lint after any code change. Fix all warnings — warnings are typically treated as errors in CI.
 
+## Dependencies
+
+- **Exact versions everywhere** — `dependencies`, `devDependencies` and internal `@sebspark/*` references use exact versions (no `^`, `~` or `*`). Only `peerDependencies` use ranges. `.yarnrc.yml` sets `defaultSemverRangePrefix: ""` and `tsEnableAutoTypes: false` so `yarn add` writes exact versions; add `@types/*` explicitly.
+- **Update as soon as allowed** — Dependabot opens PRs daily. New versions are blocked for 3 days (`npmMinimalAgeGate` / Dependabot `cooldown`).
+
 ## Definition of Done
 
 No task is complete until all of the following are true:

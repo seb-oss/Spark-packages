@@ -1,5 +1,4 @@
-import { context, trace } from '@opentelemetry/api'
-import { logs } from '@opentelemetry/api-logs'
+import { context, logs, trace } from '@opentelemetry/api'
 import { resourceFromAttributes } from '@opentelemetry/resources'
 import {
   InMemoryLogRecordExporter,

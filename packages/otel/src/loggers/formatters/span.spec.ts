@@ -1,6 +1,6 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { Resource } from '@opentelemetry/resources'
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import { describe, expect, it } from 'vitest'
 import { formatSpans } from './index'
 

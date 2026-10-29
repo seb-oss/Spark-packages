@@ -3,10 +3,10 @@ import {
   DiagConsoleLogger,
   DiagLogLevel,
   diag,
+  logs,
   metrics,
   trace,
 } from '@opentelemetry/api'
-import { logs } from '@opentelemetry/api-logs'
 import type { Instrumentation } from '@opentelemetry/instrumentation'
 import type { LoggerProvider } from '@opentelemetry/sdk-logs'
 import { NodeSDK } from '@opentelemetry/sdk-node'
@@ -71,8 +71,8 @@ async function _initialize(instrumentations: Instrumentation[]) {
   const spanProcessor = getSpanProcessor(otlpEndpoint)
   const metricReader = getMetricReader(otlpEndpoint)
   sdk = new NodeSDK({
-    spanProcessor,
-    metricReader,
+    spanProcessors: [spanProcessor],
+    metricReaders: [metricReader],
     instrumentations,
     resource,
   })

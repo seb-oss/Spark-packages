@@ -18,23 +18,20 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
-    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@sebspark/tsconfig": "*",
-    "@testcontainers/opensearch": "12.1.0",
+    "@biomejs/biome": "2.6.3",
+    "@sebspark/tsconfig": "3.0.25",
+    "@testcontainers/opensearch": "12.2.1",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
-    "@opensearch-project/opensearch": "3.6.0"
-  },
-  "resolutions": {
-    "protobufjs": "8.8.0"
+    "@opensearch-project/opensearch": "3.9.0"
   },
   "repository": {
     "type": "git",

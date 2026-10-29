@@ -1,12 +1,13 @@
 import { Client } from '@opensearch-project/opensearch'
-import { SpanKind, SpanStatusCode } from '@opentelemetry/api'
+import { context, SpanKind, SpanStatusCode } from '@opentelemetry/api'
+import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http'
 import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici'
 import {
   InMemorySpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-base'
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
+  TracerProvider,
+} from '@opentelemetry/sdk-trace'
 import {
   ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
@@ -26,7 +27,9 @@ import { OpenSearchInstrumentation } from './index'
 let container: StartedOpenSearchContainer
 let client: Client
 let exporter: InMemorySpanExporter
-let provider: NodeTracerProvider
+let provider: TracerProvider
+
+context.setGlobalContextManager(new AsyncLocalStorageContextManager().enable())
 
 beforeAll(async () => {
   container = await new OpenSearchContainer(
@@ -39,10 +42,9 @@ beforeAll(async () => {
     .start()
 
   exporter = new InMemorySpanExporter()
-  provider = new NodeTracerProvider({
-    spanProcessors: [new SimpleSpanProcessor(exporter)],
+  provider = new TracerProvider({
+    spanProcessors: [new SimpleSpanProcessor({ exporter })],
   })
-  provider.register()
 
   const instrumentation = new OpenSearchInstrumentation()
   instrumentation.setTracerProvider(provider)
@@ -178,10 +180,9 @@ describe('OpenSearchInstrumentation e2e', () => {
 
   it('omits db.query.text when dbStatementSerializer is false', async () => {
     const localExporter = new InMemorySpanExporter()
-    const localProvider = new NodeTracerProvider({
-      spanProcessors: [new SimpleSpanProcessor(localExporter)],
+    const localProvider = new TracerProvider({
+      spanProcessors: [new SimpleSpanProcessor({ exporter: localExporter })],
     })
-    localProvider.register()
     const instrumentation = new OpenSearchInstrumentation({
       dbStatementSerializer: false,
     })
@@ -202,10 +203,9 @@ describe('OpenSearchInstrumentation e2e', () => {
 
   it('calls requestHook and attaches custom attributes', async () => {
     const localExporter = new InMemorySpanExporter()
-    const localProvider = new NodeTracerProvider({
-      spanProcessors: [new SimpleSpanProcessor(localExporter)],
+    const localProvider = new TracerProvider({
+      spanProcessors: [new SimpleSpanProcessor({ exporter: localExporter })],
     })
-    localProvider.register()
     const instrumentation = new OpenSearchInstrumentation({
       requestHook: (span, params) => {
         span.setAttribute('custom.method', params.method)
@@ -228,10 +228,9 @@ describe('OpenSearchInstrumentation e2e', () => {
 
   it('calls responseHook with the real response and allows setting custom attributes', async () => {
     const localExporter = new InMemorySpanExporter()
-    const localProvider = new NodeTracerProvider({
-      spanProcessors: [new SimpleSpanProcessor(localExporter)],
+    const localProvider = new TracerProvider({
+      spanProcessors: [new SimpleSpanProcessor({ exporter: localExporter })],
     })
-    localProvider.register()
     const instrumentation = new OpenSearchInstrumentation({
       responseHook: (span, response) => {
         if (response.statusCode != null)
@@ -264,10 +263,9 @@ describe('OpenSearchInstrumentation e2e', () => {
 
   it('captures db.query.text when http instrumentation is registered alongside opensearch instrumentation', async () => {
     const localExporter = new InMemorySpanExporter()
-    const localProvider = new NodeTracerProvider({
-      spanProcessors: [new SimpleSpanProcessor(localExporter)],
+    const localProvider = new TracerProvider({
+      spanProcessors: [new SimpleSpanProcessor({ exporter: localExporter })],
     })
-    localProvider.register()
 
     const httpInstrumentation = new HttpInstrumentation()
     httpInstrumentation.setTracerProvider(localProvider)

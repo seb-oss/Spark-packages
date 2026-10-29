@@ -40,7 +40,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -256,7 +257,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -372,7 +374,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -690,7 +693,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -796,7 +800,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -1012,7 +1017,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -1128,7 +1134,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -1446,7 +1453,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -1552,7 +1560,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -1768,7 +1777,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -1884,7 +1894,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -2202,7 +2213,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -2309,7 +2321,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -2525,7 +2538,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -2641,7 +2655,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -2959,7 +2974,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -3066,7 +3082,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -3282,7 +3299,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -3398,7 +3416,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -3716,7 +3735,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -3822,7 +3842,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -4038,7 +4059,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -4154,7 +4176,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -4472,7 +4495,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -4578,7 +4602,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -4794,7 +4819,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -4910,7 +4936,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -5228,7 +5255,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -5359,7 +5387,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -5575,7 +5604,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -5691,7 +5721,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -6009,7 +6040,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -6116,7 +6148,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -6332,7 +6365,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -6448,7 +6482,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -6766,7 +6801,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -6873,7 +6909,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -7089,7 +7126,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -7205,7 +7243,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -7523,7 +7562,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -7629,7 +7669,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -7845,7 +7886,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -7961,7 +8003,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -8279,7 +8322,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -8386,7 +8430,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -8602,7 +8647,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -8718,7 +8764,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -9036,7 +9083,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -9143,7 +9191,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -9359,7 +9408,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -9475,7 +9525,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -9793,7 +9844,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -9899,7 +9951,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -10115,7 +10168,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -10231,7 +10285,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -10549,7 +10604,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -10678,7 +10734,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -10894,7 +10951,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -11010,7 +11068,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -11328,7 +11387,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -11435,7 +11495,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -11651,7 +11712,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -11767,7 +11829,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -12085,7 +12148,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -12193,7 +12257,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -12409,7 +12474,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -12525,7 +12591,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -12843,7 +12910,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -12950,7 +13018,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -13166,7 +13235,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -13282,7 +13352,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -13600,7 +13671,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -13707,7 +13779,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -13923,7 +13996,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -14039,7 +14113,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -14357,7 +14432,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -14464,7 +14540,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -14680,7 +14757,8 @@ paths:
             format: int32
         - name: interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -14796,7 +14874,8 @@ paths:
               type: string
         - name: reference_interest_rate_period_count
           in: query
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -15114,7 +15193,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -15492,7 +15572,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -15894,7 +15975,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -15938,7 +16020,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -16252,7 +16335,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -16654,7 +16738,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -16698,7 +16783,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -16916,7 +17002,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -17318,7 +17405,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -17362,7 +17450,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -17513,7 +17602,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -17915,7 +18005,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -17959,7 +18050,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -18110,7 +18202,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -18512,7 +18605,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -18556,7 +18650,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -18707,7 +18802,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -19109,7 +19205,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -19153,7 +19250,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -19304,7 +19402,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -19706,7 +19805,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -19750,7 +19850,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -19901,7 +20002,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -20303,7 +20405,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -20347,7 +20450,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -20498,7 +20602,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -20900,7 +21005,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -20944,7 +21050,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -21064,7 +21171,8 @@ paths:
     get:
       tags:
         - CommonService
-      description: VerifyListings retrievs basic fields for listings including status
+      description:
+        VerifyListings retrievs basic fields for listings including status
         information
       operationId: CommonService_VerifyListings
       parameters:
@@ -21075,7 +21183,8 @@ paths:
             format: int32
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -21281,7 +21390,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -21683,7 +21793,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -21727,7 +21838,8 @@ paths:
               type: string
         - name: sort
           in: query
-          description: use repeated field to apply sorting. '+' at the beginning of the
+          description:
+            use repeated field to apply sorting. '+' at the beginning of the
             string sorts ASC '-' at the beginning of the string sorts DESC
           schema:
             type: array
@@ -21878,7 +21990,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -22344,7 +22457,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -22495,7 +22609,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -23050,7 +23165,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -23419,7 +23535,8 @@ paths:
     get:
       tags:
         - EquityService
-      description: ListCompanyFundamentals retrieves company-data (basic, position,
+      description:
+        ListCompanyFundamentals retrieves company-data (basic, position,
         shareholder)
       operationId: EquityService_ListCompanyFundamentals
       parameters:
@@ -23588,7 +23705,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -23980,7 +24098,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -24187,7 +24306,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -24579,7 +24699,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -24761,7 +24882,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -25153,7 +25275,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -25335,7 +25458,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -25727,7 +25851,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -25909,7 +26034,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -26301,7 +26427,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -26483,7 +26610,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -26875,7 +27003,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -27057,7 +27186,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -27449,7 +27579,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -27631,7 +27762,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -28023,7 +28155,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -28227,7 +28360,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -28795,7 +28929,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -28899,7 +29034,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -29467,7 +29603,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -29571,7 +29708,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -30139,7 +30277,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -30243,7 +30382,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -30811,7 +30951,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -30915,7 +31056,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -31483,7 +31625,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -31631,7 +31774,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -32199,7 +32343,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -32382,7 +32527,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -32950,7 +33096,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -33054,7 +33201,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -33622,7 +33770,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -33726,7 +33875,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -34294,7 +34444,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -34398,7 +34549,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -34966,7 +35118,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -35070,7 +35223,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -35638,7 +35792,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -35764,7 +35919,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -36332,7 +36488,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -36436,7 +36593,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -37004,7 +37162,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -37108,7 +37267,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -37676,7 +37836,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -37851,7 +38012,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -38027,7 +38189,8 @@ paths:
     get:
       tags:
         - HistoryQuoteService
-      description: search for history quotes. Identifier can be listing_id, vwd_key or
+      description:
+        search for history quotes. Identifier can be listing_id, vwd_key or
         ids_identifier
       operationId: HistoryQuoteService_ListHistoryQuotes
       parameters:
@@ -38101,7 +38264,8 @@ paths:
             type: boolean
         - name: adjustment_schema
           in: query
-          description: adjustment schema (SIMPLE is default, e.g. for charts, ADVANCED
+          description:
+            adjustment schema (SIMPLE is default, e.g. for charts, ADVANCED
             e.g. for portfolio-valuation)
           schema:
             enum:
@@ -38169,7 +38333,8 @@ paths:
             type: string
         - name: vwd_key
           in: query
-          description: internal identifier combining instrument information with trading
+          description:
+            internal identifier combining instrument information with trading
             venue
           schema:
             type: string
@@ -38287,7 +38452,8 @@ paths:
     get:
       tags:
         - IndexService
-      description: ListListings retrieves Listings for indices that could be filtered
+      description:
+        ListListings retrieves Listings for indices that could be filtered
         by various attributes.
       operationId: IndexService_ListListings
       parameters:
@@ -38319,7 +38485,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -38716,7 +38883,8 @@ paths:
             format: enum
         - name: preferred_trading_venue_strategy_code
           in: query
-          description: only show one preferred listing per instrument according a
+          description:
+            only show one preferred listing per instrument according a
             choosable strategy
           schema:
             enum:
@@ -38898,7 +39066,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -39109,7 +39278,8 @@ paths:
               type: string
         - name: vwd_key
           in: query
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
           schema:
             type: array
@@ -39289,7 +39459,8 @@ components:
           description: cached flag
         elapsed_time:
           type: integer
-          description: the elapsed time indicates how long it took in milliseconds to
+          description:
+            the elapsed time indicates how long it took in milliseconds to
             generate the entity
           format: int32
         expire:
@@ -39339,7 +39510,8 @@ components:
       properties:
         elapsed_time:
           type: integer
-          description: the elapsed time indicates how long it took in milliseconds to
+          description:
+            the elapsed time indicates how long it took in milliseconds to
             generate the entity
           format: int32
         expire:
@@ -39603,11 +39775,13 @@ components:
           description: "EDI,XID: Issuer’s faculty to exercise the early redemption option"
         is_put_option:
           type: boolean
-          description: "EDI.XID: Subscriber’s faculty to exercise the early redemption
+          description:
+            "EDI.XID: Subscriber’s faculty to exercise the early redemption
             option"
         nominal_value:
           type: number
-          description: "EDI,WM, XID: On fixed-interest bonds the interest-bearing
+          description:
+            "EDI,WM, XID: On fixed-interest bonds the interest-bearing
             outstanding sum"
           format: double
         coupon:
@@ -39619,7 +39793,8 @@ components:
           description: "WM ,XID: Date when coupon is paid"
         first_interest_rate_period_start_date:
           type: string
-          description: "WM: In the case of fixed income securities, this field contains
+          description:
+            "WM: In the case of fixed income securities, this field contains
             the date of the commencement of the interest payment period"
         first_coupon_date:
           type: string
@@ -39636,18 +39811,21 @@ components:
           description: EDI Date when latest interest coupon rate was applied
         first_interest_rate_date:
           type: string
-          description: "WM: Date for which the current intereste rate (field ID 56) is
+          description:
+            "WM: Date for which the current intereste rate (field ID 56) is
             valid (for field ID 1689)"
         last_interest_rate_date:
           type: string
-          description: "WM: Date until wich the current interest rate (in field ID 56) is
+          description:
+            "WM: Date until wich the current interest rate (in field ID 56) is
             valid (for field ID 1690)"
         interest_rate_day:
           type: string
           description: WM
         interest_rate_period_count:
           type: integer
-          description: "XID-only:  indicates the maximum number of coupons in a year. The
+          description:
+            "XID-only:  indicates the maximum number of coupons in a year. The
             date is obtained by counting the number of records present during
             the same year. The maximum Thisvalue is 4. Securities with monthly
             frequency are not present in the database."
@@ -39658,7 +39836,8 @@ components:
           format: int32
         interest_rate_spread:
           type: number
-          description: "EDI,XID: Spread to be added or deducted with respect to the value
+          description:
+            "EDI,XID: Spread to be added or deducted with respect to the value
             provided in the indexation parameter"
           format: double
         reference_interest_rate_wkn:
@@ -39685,7 +39864,8 @@ components:
           description: "EDI,WM,XID: subordinate debt"
         reference_interest_rate_period_count:
           type: integer
-          description: "WM-only: The field reference_interest_rate_period_count represents
+          description:
+            "WM-only: The field reference_interest_rate_period_count represents
             the number of days/weeks/months/years
             (=reference_interest_rate_period) of the maturity for the instrument
             from which the value for interest_rate depends on."
@@ -39716,7 +39896,8 @@ components:
           format: enum
         outstanding_amount:
           type: number
-          description: "EDI, XID: The overall amount of full bonds total currency amount
+          description:
+            "EDI, XID: The overall amount of full bonds total currency amount
             outstanding based on denomination"
           format: double
         _meta:
@@ -40561,7 +40742,8 @@ components:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.CorporateActionSubType"
         record_date:
           type: string
-          description: date when shareholders are informed they have the right to vote &
+          description:
+            date when shareholders are informed they have the right to vote &
             attend AGMs, as per eligibility to receive dividends (source=EDI).
         numerator:
           type: number
@@ -40641,7 +40823,8 @@ components:
           description: long form of the name where applicable
         code:
           type: string
-          description: ISO 3166 ALPHA-2 code. Country can be used as a descriptor if it is
+          description:
+            ISO 3166 ALPHA-2 code. Country can be used as a descriptor if it is
             the only field that is set
         code_isoalpha_3:
           type: string
@@ -40655,14 +40838,16 @@ components:
           description: ISO 4217 code for currency used in the country
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: Country is a geopolitic region. It is useable as a descriptor if
+      description:
+        Country is a geopolitic region. It is useable as a descriptor if
         only either id or iso_code is set.
     dev.infrontfinance.cdapi.common.CurrenciesData:
       type: object
       properties:
         currency:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Currency"
-      description: message ListCurrenciesStreamResponse {   int32 id = 1;   string
+      description:
+        message ListCurrenciesStreamResponse {   int32 id = 1;   string
         name = 2; }
     dev.infrontfinance.cdapi.common.Currency:
       type: object
@@ -40673,7 +40858,8 @@ components:
           format: int32
         code:
           type: string
-          description: ISO 4217 code. Currency can be used as a descriptor if it is the
+          description:
+            ISO 4217 code. Currency can be used as a descriptor if it is the
             only field that is set
         code_isonumeric:
           type: integer
@@ -40713,7 +40899,8 @@ components:
           description: symbol of the subunit, e.g. EUX for Cent of EUR
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: Currency is government supported unit of exchange. It is useable as
+      description:
+        Currency is government supported unit of exchange. It is useable as
         a descriptor if only either id or iso_code is set.
     dev.infrontfinance.cdapi.common.Dictionary:
       type: object
@@ -40811,7 +40998,8 @@ components:
           description: 90000_Financial_Instrument_Investing_In_EU_Taxonomy_Aligned_Fossil_Gas_Activities
         minimum_percentage_investments_aligned_eu_taxonomy_fossil_gas_including_sovereign_bonds:
           type: number
-          description: 90010_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
+          description:
+            90010_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
             Incl_Sovereign_Bonds
           format: double
         minimum_percentage_investments_aligned_eu_taxonomy_fossil_gas_excluding_sovereign_bonds:
@@ -40823,7 +41011,8 @@ components:
           description: 90030_Financial_Instrument_Investing_In_EU_Taxonomy_Aligned_Nuclear_Activities
         minimum_percentage_investments_aligned_eu_taxonomy_nuclear_including_sovereign_bonds:
           type: number
-          description: 90040_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
+          description:
+            90040_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
             Incl_Sovereign_Bonds
           format: double
         minimum_percentage_investments_aligned_eu_taxonomy_nuclear_excluding_sovereign_bonds:
@@ -40832,7 +41021,8 @@ components:
           format: double
         minimum_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_including_sovereign_bonds:
           type: number
-          description: 90060_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
+          description:
+            90060_Financial_Instrument_Minimum_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
             Incl_Sovereign_Bonds
           format: double
         minimum_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_excluding_sovereign_bonds:
@@ -40841,7 +41031,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_including_sovereign_bonds_turnover:
           type: number
-          description: 90080_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
+          description:
+            90080_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
             Incl_Sovereign_Bonds_Turnover
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_excluding_sovereign_bonds_turnover:
@@ -40850,7 +41041,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_including_sovereign_bonds_turnover:
           type: number
-          description: 90100_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
+          description:
+            90100_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
             Incl_Sovereign_Bonds_Turnover
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_excluding_sovereign_bonds_turnover:
@@ -40859,7 +41051,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_including_sovereign_bonds_turnover:
           type: number
-          description: 90120_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
+          description:
+            90120_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
             Incl_Sovereign_Bonds_Turnover
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_excluding_sovereign_bonds_turnover:
@@ -40868,7 +41061,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_and_nuclear_including_sovereign_bonds_capex:
           type: number
-          description: 90140_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
+          description:
+            90140_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
             Incl_Sovereign_Bonds_Capex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_and_nuclear_excluding_sovereign_bonds_capex:
@@ -40877,7 +41071,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_including_sovereign_bonds_capex:
           type: number
-          description: 90160_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
+          description:
+            90160_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
             Incl_Sovereign_Bonds_Capex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_excluding_sovereign_bonds_capex:
@@ -40886,7 +41081,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_including_sovereign_bonds_capex:
           type: number
-          description: 90180_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
+          description:
+            90180_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
             Incl_Sovereign_Bonds_Capex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_excluding_sovereign_bonds_capex:
@@ -40895,7 +41091,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_including_sovereign_bonds_opex:
           type: number
-          description: 90200_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
+          description:
+            90200_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Fossil_Gas_
             Incl_Sovereign_Bonds_Opex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_fossil_gas_excluding_sovereign_bonds_opex:
@@ -40904,7 +41101,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_including_sovereign_bonds_opex:
           type: number
-          description: 90220_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
+          description:
+            90220_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_Nuclear_
             Incl_Sovereign_Bonds_Opex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_nuclear_excluding_sovereign_bonds_opex:
@@ -40913,7 +41111,8 @@ components:
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_including_sovereign_bonds_opex:
           type: number
-          description: 90240_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
+          description:
+            90240_Financial_Instrument_Current_Percentage_Investments_Aligned_EU_Taxonomy_No_Fossil_Gas_and_Nuclear_
             Incl_Sovereign_Bonds_Opex
           format: double
         current_percentage_investments_aligned_eu_taxonomy_no_fossil_gas_and_nuclear_excluding_sovereign_bonds_opex:
@@ -40978,7 +41177,8 @@ components:
           description: "EET 10040_General_Reference_Date (source: INFRONT)"
         is_pri_or_prb_signatory:
           type: boolean
-          description: "pri means Principle for Responsible Investment, prb means
+          description:
+            "pri means Principle for Responsible Investment, prb means
             Principles for Responsible Banking EET 11000_PRI_Or_PRB_Signatory
             (source: INFRONT)"
         pri_notation:
@@ -40997,7 +41197,8 @@ components:
           description: "EET 11040_Other_Commitments (source: INFRONT)"
         website_information_stewardship_and_engagement:
           type: string
-          description: "EET 13000_Website_Information_Stewardship_And_Engagement (source:
+          description:
+            "EET 13000_Website_Information_Stewardship_And_Engagement (source:
             INFRONT)"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
@@ -41541,7 +41742,8 @@ components:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EetSfdrPai_Data"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: eet_sfdr_pai from source WM, fields 01-18 can also be requested
+      description:
+        eet_sfdr_pai from source WM, fields 01-18 can also be requested
         with fields-parameter 'mandatory', the others with field 'optioal'
     dev.infrontfinance.cdapi.common.EetSfdrPai_Data:
       type: object
@@ -41586,7 +41788,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Dictionary"
-          description: "20060_Financial_Instrument_ESG_Label_Or_Standard (source:
+          description:
+            "20060_Financial_Instrument_ESG_Label_Or_Standard (source:
             WM=GV9W9A, INFRONT)"
         reported_asset_allocation_date:
           type: string
@@ -41813,7 +42016,8 @@ components:
           description: 00045_Financial_Instrument_Performance_Fee missing in infront_emt
         has_distribution_of_cash:
           type: boolean
-          description: 00047_Financial_Instrument_Distribution_Of_Cash missing in
+          description:
+            00047_Financial_Instrument_Distribution_Of_Cash missing in
             infront_emt
         general_reference_date:
           type: string
@@ -42813,7 +43017,8 @@ components:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.EsgRiskClarity_Data"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: esg_risk-data from source Clarity. total can be requested with
+      description:
+        esg_risk-data from source Clarity. total can be requested with
         field 'level1', too. fields for environmental, social and governance
         with field 'level2'. all other fields with field 'level3'.
     dev.infrontfinance.cdapi.common.EsgRiskClarity_Data:
@@ -42882,13 +43087,15 @@ components:
           description: Countries in which the instrument may be sold according to ISO 3166
         home_trading_venue_code:
           type: string
-          description: Identifier for the home trading venue(s) of the instrument The IDs
+          description:
+            Identifier for the home trading venue(s) of the instrument The IDs
             are mapped to product identifiers.
         nsin:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.Instrument_NSIN"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: Instrument is something that can be traded. It is useable as a
+      description:
+        Instrument is something that can be traded. It is useable as a
         descriptor if only id is set.
     dev.infrontfinance.cdapi.common.InstrumentAdditional:
       type: object
@@ -43081,7 +43288,8 @@ components:
         region_code:
           type: string
           description: region code, e.g. EU for Europe
-      description: Issuer is a legal entity issuing instruments, e.g. a company. It is
+      description:
+        Issuer is a legal entity issuing instruments, e.g. a company. It is
         useable as a descriptor if only id is set.
     dev.infrontfinance.cdapi.common.IssuerCommonResponse:
       type: object
@@ -43116,7 +43324,8 @@ components:
           $ref: "#/components/schemas/dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data"
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
-      description: IssuerEsgRiskClarity is a subset of EsgRiskClarity only covering
+      description:
+        IssuerEsgRiskClarity is a subset of EsgRiskClarity only covering
         level 1 and 2 data with the score
     dev.infrontfinance.cdapi.common.IssuerEsgRiskClarity_Data:
       type: object
@@ -43546,7 +43755,8 @@ components:
           format: int32
         vwd_key:
           type: string
-          description: Our internal identifier combining instrument information with
+          description:
+            Our internal identifier combining instrument information with
             trading venue
         name:
           type: string
@@ -43573,7 +43783,8 @@ components:
         last_exchange_trading_date:
           type: string
           description: last exchange trading date
-      description: Listing is an instrument listed at an exchange that can be traded.
+      description:
+        Listing is an instrument listed at an exchange that can be traded.
         It is useable as a descriptor if only id is set.
     dev.infrontfinance.cdapi.common.ListingAdditional:
       type: object
@@ -43599,7 +43810,8 @@ components:
           type: number
           description: lot_size of the listing from source edi
           format: float
-      description: ListingAdditional delivers additional attributes from a dedicated
+      description:
+        ListingAdditional delivers additional attributes from a dedicated
         source on listing level
     dev.infrontfinance.cdapi.common.ListingCommonResponse:
       type: object
@@ -43869,7 +44081,8 @@ components:
           format: enum
         short_term_rating:
           type: string
-          description: "Foreign Currency Short term rating: current evaluation of
+          description:
+            "Foreign Currency Short term rating: current evaluation of
             creditworthiness by rating agency"
         short_term_rating_date:
           type: string
@@ -43900,27 +44113,33 @@ components:
           description: date of the previous Foreign Currency longterm rating
         long_term_previous_rating:
           type: string
-          description: "Foreign Currency Long term rating: previous evaluation of
+          description:
+            "Foreign Currency Long term rating: previous evaluation of
             creditworthiness by rating agency"
         long_term_rating_action:
           type: string
-          description: description in which direction the Foreign Currency long term
+          description:
+            description in which direction the Foreign Currency long term
             rating has changed
         long_term_outlook_date:
           type: string
-          description: Date of the outlook for a Foreign Currency LT-rating of a company
+          description:
+            Date of the outlook for a Foreign Currency LT-rating of a company
             or instrument by the rating agency
         long_term_outlook:
           type: string
-          description: Outlook by the rating agency, how the Foreign Currency LT-Rating of
+          description:
+            Outlook by the rating agency, how the Foreign Currency LT-Rating of
             an issuer or issue could develope
         long_term_observation_reason:
           type: string
-          description: Reason, why the Foreign Currency LT-Rating of an issuer or issue is
+          description:
+            Reason, why the Foreign Currency LT-Rating of an issuer or issue is
             set under observation by the rating agency
         long_term_observation_date:
           type: string
-          description: Date, when a Foreign Currency LT-rating of a company or instrument
+          description:
+            Date, when a Foreign Currency LT-rating of a company or instrument
             is set under observation by the rating agency
         short_term_previous_rating_date:
           type: string
@@ -43930,51 +44149,63 @@ components:
           description: previous Foreign Currency short term rating
         short_term_rating_action:
           type: string
-          description: description in which direction the Foreign Currency short term
+          description:
+            description in which direction the Foreign Currency short term
             rating has changed
         short_term_outlook_date:
           type: string
-          description: Date, when a Foreign Currency ST-Rating of a company or instrument
+          description:
+            Date, when a Foreign Currency ST-Rating of a company or instrument
             is set under observation by the rating agency
         short_term_outlook:
           type: string
-          description: Outlook by the rating agency, how the Foreign Currency ST-Rating of
+          description:
+            Outlook by the rating agency, how the Foreign Currency ST-Rating of
             an issuer or issue could develope
         short_term_observation_reason:
           type: string
-          description: Reason, why the Foreign Currency ST-Rating of an issuer or issue is
+          description:
+            Reason, why the Foreign Currency ST-Rating of an issuer or issue is
             set under observation by the rating agency
         short_term_observation_date:
           type: string
-          description: Date, when a Foreign Currency ST-Rating of a company or instrument
+          description:
+            Date, when a Foreign Currency ST-Rating of a company or instrument
             is set under observation by the rating agency
         local_long_term_rating_action:
           type: string
-          description: description in which direction the S&P Local Currency long term
+          description:
+            description in which direction the S&P Local Currency long term
             rating has changed
         local_long_term_observation_reason:
           type: string
-          description: Reason, why the Local Currency LT-Rating of an issuer or issue is
+          description:
+            Reason, why the Local Currency LT-Rating of an issuer or issue is
             set under observation by the rating agency
         local_long_term_outlook:
           type: string
-          description: Outlook by the rating agency, how the Local Currency LT-Rating of
+          description:
+            Outlook by the rating agency, how the Local Currency LT-Rating of
             an issuer or issue could develope
         local_short_term_rating_action:
           type: string
-          description: description in which direction the Local Currency short term rating
+          description:
+            description in which direction the Local Currency short term rating
             has changed
         local_short_term_outlook:
           type: string
-          description: Outlook by the rating agency, how the Local Currency ST-Rating of
+          description:
+            Outlook by the rating agency, how the Local Currency ST-Rating of
             an issuer or issue could develope
         local_short_term_observation_reason:
           type: string
-          description: Reason, why the Local Currency ST-Rating of an issuer or issue is
+          description:
+            Reason, why the Local Currency ST-Rating of an issuer or issue is
             set under observation by the rating agency
         endorsement_indicator:
           type: string
-          description: Value that indicates that the Foreign Currency rating to which it
+          description:
+            Value that indicates that the Foreign Currency rating to which it
             is attached is eligible for use for regulatory purposes in the EU
         _meta:
           $ref: "#/components/schemas/dev.infrontfinance.basedef.EntityMeta"
@@ -44124,12 +44355,14 @@ components:
           description: date of data creation by the source
         target_price:
           type: number
-          description: The "Target Price" identifies the short-term target of the trade,
+          description:
+            The "Target Price" identifies the short-term target of the trade,
             not necessarily the ultimate target towards which the market tends.
           format: double
         stop_loss:
           type: number
-          description: The "Stop Loss" indicates the level at whic the Technical Analysis
+          description:
+            The "Stop Loss" indicates the level at whic the Technical Analysis
             methodology suggests liquidating the operation undertaken even with
             a small loss in order to avoid greater damage and to allow re-entry
             at better price when possibile. The analysis system is based on
@@ -44143,7 +44376,8 @@ components:
           format: double
         beta_3_month:
           type: number
-          description: The "Beta 3 months" indicates the value of the Beta, calculated at
+          description:
+            The "Beta 3 months" indicates the value of the Beta, calculated at
             69 days on daily closings. Values ​​higher than 1 indicate that the
             stock amplifies the movements of the index, "aggressive", values
             ​​below 1 indicate that the stock attenuates the movements of the
@@ -44151,7 +44385,8 @@ components:
           format: double
         correlation_3_month:
           type: number
-          description: The "3-month correlation" shows the correlation index between stock
+          description:
+            The "3-month correlation" shows the correlation index between stock
             and the related index in the last 3 months. Correlation shows the
             ability of the stock to follow market behavior. High positive values
             ​​are typical of stocks that tend to replicate the performance of
@@ -44159,7 +44394,8 @@ components:
           format: double
         alpha_1_month:
           type: number
-          description: The "Monthly Alpha" indicates the value of the Alpha coefficient.
+          description:
+            The "Monthly Alpha" indicates the value of the Alpha coefficient.
             Unlike the Beta coefficient, which measures the propensity of a
             stock to vary according to the market (systematic risk), the "Alpha
             coefficient" shows the propensity of a stock to vary independently
@@ -44167,7 +44403,8 @@ components:
           format: double
         vola_21_day:
           type: number
-          description: The "Volatility" indicates the historical volatility calculated on
+          description:
+            The "Volatility" indicates the historical volatility calculated on
             the closing prices of the last 3 weeks. Volatility is calculated as
             the standard deviation of daily changes and indicates the risk (but
             also the potential profit) associated with the instrument for which
@@ -44178,7 +44415,8 @@ components:
           format: double
         dina_risk:
           type: number
-          description: The "Dina Risk" shows a risk measure. It indicates the potential
+          description:
+            The "Dina Risk" shows a risk measure. It indicates the potential
             maximum daily loss that the investor could face in case of purchase
             of the security at the opening price of the trading day.
           format: double
@@ -44189,7 +44427,8 @@ components:
             - DOWN
             - NEUTRAL
           type: string
-          description: The "Short term Trend" columns describe the state of the stock's
+          description:
+            The "Short term Trend" columns describe the state of the stock's
             trend over the past few weeks. Usually short term is till 3/5 days.
           format: enum
         short_term_trend_since_days:
@@ -44203,7 +44442,8 @@ components:
             - DOWN
             - NEUTRAL
           type: string
-          description: The "Medium term Trend" columns describe the state of the stock's
+          description:
+            The "Medium term Trend" columns describe the state of the stock's
             trend over the past few weeks. Usually medium term from 3/5 day to
             3/4 weeks.
           format: enum
@@ -44218,7 +44458,8 @@ components:
             - DOWN
             - NEUTRAL
           type: string
-          description: The "Long term Trend" columns describe the state of the stock's
+          description:
+            The "Long term Trend" columns describe the state of the stock's
             trend over the past few weeks. Usually long term from 3/4 weeks to
             about 3 months.
           format: enum
@@ -44231,7 +44472,8 @@ components:
           description: a technical comment
         resistance_level_1:
           type: number
-          description: 'In the "Resistance" you will find an indication of the level that
+          description:
+            'In the "Resistance" you will find an indication of the level that
             opposes to a rise price in the short term: the breakout of this
             level is a sign of continuity of the trend in the direction of the
             break (strenght signal for stocks)'
@@ -44253,7 +44495,8 @@ components:
           format: double
         low_price_3_month_percent:
           type: number
-          description: The "% Distance from min of the last 3 months" shows the distance
+          description:
+            The "% Distance from min of the last 3 months" shows the distance
             expressed as a percentage between the closing price of the last
             session and the minimum value reached in the last 69 sessions. The
             lower the value indicated (limit value = 0, ie the closing price of
@@ -44262,7 +44505,8 @@ components:
           format: double
         high_price_3_month_percent:
           type: number
-          description: The "% Distance from Max of the last 3 months" column, shows the
+          description:
+            The "% Distance from Max of the last 3 months" column, shows the
             distance expressed as a percentage between the closing price of the
             last session and the maximum value reached in the last 69 sessions.
             The lower the value indicated (limit value = 0, that is, the closing
@@ -44354,7 +44598,8 @@ components:
         closing_time:
           type: string
           description: closing time of the trading venue
-      description: TradingVenue is a virtual or physical market. It is useable as a
+      description:
+        TradingVenue is a virtual or physical market. It is useable as a
         descriptor if only id is set.
     dev.infrontfinance.cdapi.common.TradingVenuesData:
       type: object
@@ -44523,7 +44768,8 @@ components:
           format: double
         contract_value:
           type: number
-          description: Used for futures and options traded at Deutsche Börse. EUR value
+          description:
+            Used for futures and options traded at Deutsche Börse. EUR value
             corresponding to a one point change of the underlying instrument.
             e.g. DAX option = EUR 5,  TecDax option = EUR 10
           format: double
@@ -44860,7 +45106,8 @@ components:
           description: links to country
         description:
           type: string
-          description: description of the country (filled with default-language EN or via
+          description:
+            description of the country (filled with default-language EN or via
             specified language-header)
         description_en:
           type: string
@@ -45149,7 +45396,8 @@ components:
           format: uint32
         capital:
           type: number
-          description: "amount of money the owners of a company have invested in percent
+          description:
+            "amount of money the owners of a company have invested in percent
             (source: INFRONT, EURONEXT_VPS)"
           format: double
         votes:
@@ -45165,7 +45413,8 @@ components:
           description: flag, if it is an private investor (source EURONEXT_VPS, only)
         investor_country_code_isoalpha_3:
           type: string
-          description: the country where the investor is located as isoalpha3 code (source
+          description:
+            the country where the investor is located as isoalpha3 code (source
             EURONEXT_VPS, only)
         investor_type:
           type: string
@@ -45354,7 +45603,8 @@ components:
           format: int64
         outstanding_shares:
           type: integer
-          description: "outstanding shares for the company over all share classes (source:
+          description:
+            "outstanding shares for the company over all share classes (source:
             EDI, INNFRONT)"
           format: int64
         share_class_capitalization:
@@ -45363,7 +45613,8 @@ components:
           format: int64
         market_capitalization:
           type: integer
-          description: "market_capitalization for the company over all share classes
+          description:
+            "market_capitalization for the company over all share classes
             (source: EDI, INNFRONT)"
           format: int64
         earnings_per_share:
@@ -45978,7 +46229,8 @@ components:
           format: double
         ongoing_charges_date:
           type: string
-          description: Date of the KIID document where the latest ongoing charges have
+          description:
+            Date of the KIID document where the latest ongoing charges have
             been published if taken from the KIID. Otherwise date delivered by
             the management company of their technical facilitator
         has_savings_plan:
@@ -46026,12 +46278,14 @@ components:
           format: double
         actual_management_costs:
           type: number
-          description: The actual fee that is to be paid for the portfolio management,
+          description:
+            The actual fee that is to be paid for the portfolio management,
             expressed in percentage per period
           format: double
         maximum_management_costs:
           type: number
-          description: The maximum fee that is to be paid for the portfolio management,
+          description:
+            The maximum fee that is to be paid for the portfolio management,
             expressed in percentage per period
           format: double
         custodian_fee:
@@ -46936,7 +47190,8 @@ components:
           format: double
         last_timestamp:
           type: string
-          description: IDS_REALTIME_DATE + IDS_REALTIME_TIME + IDS_REALTIME_MSTIME =>
+          description:
+            IDS_REALTIME_DATE + IDS_REALTIME_TIME + IDS_REALTIME_MSTIME =>
             ADF_Bezahlt_Zeit + ADF_Boersenzeit + ADF_Zeit
         ask_price:
           type: number
@@ -47339,7 +47594,8 @@ components:
           type: string
           description: The type of the serialized message.
       additionalProperties: true
-      description: Contains an arbitrary serialized message along with a @type that
+      description:
+        Contains an arbitrary serialized message along with a @type that
         describes the type of the serialized message.
     google.rpc.Status:
       type: object
@@ -47351,7 +47607,8 @@ components:
           format: int32
         message:
           type: string
-          description: A developer-facing error message, which should be in English. Any
+          description:
+            A developer-facing error message, which should be in English. Any
             user-facing error message should be localized and sent in the
             [google.rpc.Status.details][google.rpc.Status.details] field, or
             localized by the client.
@@ -47359,9 +47616,11 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/google.protobuf.Any"
-          description: A list of messages that carry the error details.  There is a common
+          description:
+            A list of messages that carry the error details.  There is a common
             set of message types for APIs to use.
-      description: "The `Status` type defines a logical error model that is suitable
+      description:
+        "The `Status` type defines a logical error model that is suitable
         for different programming environments, including REST APIs and RPC
         APIs. It is used by [gRPC](https://github.com/grpc). Each `Status`
         message contains three pieces of data: error code, error message, and

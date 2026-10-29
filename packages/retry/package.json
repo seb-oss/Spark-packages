@@ -24,16 +24,16 @@
     "build": "spark-build src/index.ts --format=esm --format=cjs",
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
-    "test": "vitest run --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@sebspark/tsconfig": "*",
+    "@biomejs/biome": "2.6.3",
+    "@sebspark/tsconfig": "3.0.25",
     "axios": "1.20.0",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "repository": {
     "type": "git",

@@ -8,7 +8,7 @@
     "depcheck": "depcheck",
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "pretest": "yarn generate",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
@@ -16,16 +16,16 @@
     "@sebspark/openapi-client": "4.2.21",
     "@sebspark/openapi-core": "4.1.23",
     "@sebspark/openapi-express": "5.4.19",
-    "express": "5.2.1"
+    "express": "5.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@biomejs/biome": "2.6.3",
     "@sebspark/openapi-typegen": "5.3.0",
     "@types/express": "5.0.6",
     "depcheck": "1.4.7",
     "find-free-ports": "3.1.1",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "repository": {
     "type": "git",

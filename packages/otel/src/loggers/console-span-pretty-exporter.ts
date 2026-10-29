@@ -1,6 +1,6 @@
 import { SpanStatusCode } from '@opentelemetry/api'
 import { type ExportResult, ExportResultCode } from '@opentelemetry/core'
-import type { ReadableSpan, SpanExporter } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan, SpanExporter } from '@opentelemetry/sdk-trace'
 import { formatSpans } from './formatters/index'
 
 export class ConsoleSpanPrettyExporter implements SpanExporter {

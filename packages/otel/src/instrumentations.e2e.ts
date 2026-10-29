@@ -1,6 +1,6 @@
 import type { Server } from 'node:http'
 import { Client as OpensearchClient } from '@opensearch-project/opensearch'
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import {
   ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
@@ -32,7 +32,7 @@ import {
 const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   const { instrumentations } = await import('./index')
   const { InMemorySpanExporter, SimpleSpanProcessor } = await import(
-    '@opentelemetry/sdk-trace-node'
+    '@opentelemetry/sdk-trace'
   )
   const {
     InMemoryLogRecordExporter,
@@ -42,7 +42,7 @@ const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   const { NodeSDK } = await import('@opentelemetry/sdk-node')
   const { InMemoryMetricExporter, PeriodicExportingMetricReader } =
     await import('@opentelemetry/sdk-metrics')
-  const { logs } = await import('@opentelemetry/api-logs')
+  const { logs } = await import('@opentelemetry/api')
 
   const spanExporter = new InMemorySpanExporter()
   const logExporter = new InMemoryLogRecordExporter()
@@ -53,10 +53,12 @@ const { spanExporter, logExporter, dispose } = await vi.hoisted(async () => {
   logs.setGlobalLoggerProvider(logProvider)
 
   const sdk = new NodeSDK({
-    spanProcessor: new SimpleSpanProcessor(spanExporter),
-    metricReader: new PeriodicExportingMetricReader({
-      exporter: new InMemoryMetricExporter(0),
-    }),
+    spanProcessors: [new SimpleSpanProcessor({ exporter: spanExporter })],
+    metricReaders: [
+      new PeriodicExportingMetricReader({
+        exporter: new InMemoryMetricExporter(0),
+      }),
+    ],
     instrumentations: await Promise.all([
       instrumentations.express(),
       instrumentations.http(),

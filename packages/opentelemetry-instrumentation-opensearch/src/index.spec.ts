@@ -8,12 +8,13 @@ import {
   SpanStatusCode,
   trace,
 } from '@opentelemetry/api'
+import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { isTracingSuppressed } from '@opentelemetry/core'
 import {
   InMemorySpanExporter,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-base'
-import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node'
+  TracerProvider,
+} from '@opentelemetry/sdk-trace'
 import {
   ATTR_DB_COLLECTION_NAME,
   ATTR_DB_OPERATION_NAME,
@@ -28,6 +29,8 @@ import { OpenSearchInstrumentation } from './index'
 
 // ---------- Test helpers ----------
 
+context.setGlobalContextManager(new AsyncLocalStorageContextManager().enable())
+
 const mockResponse = {
   body: { hits: { hits: [] } },
   statusCode: 200,
@@ -40,10 +43,9 @@ const mockResponse = {
 
 function setup(config?: OpenSearchInstrumentationConfig) {
   const exporter = new InMemorySpanExporter()
-  const provider = new NodeTracerProvider({
-    spanProcessors: [new SimpleSpanProcessor(exporter)],
+  const provider = new TracerProvider({
+    spanProcessors: [new SimpleSpanProcessor({ exporter })],
   })
-  provider.register()
 
   // Install mock as the "original" BEFORE instrumentation wraps it,
   // so the wrapper calls our mock as the real implementation.

@@ -4,7 +4,7 @@ import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics'
 import {
   BatchSpanProcessor,
   SimpleSpanProcessor,
-} from '@opentelemetry/sdk-trace-node'
+} from '@opentelemetry/sdk-trace'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { TreeSpanProcessor } from './loggers/tree-span-processor'
 import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'

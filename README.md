@@ -6,7 +6,9 @@ Public packages published under the [@sebspark](https://www.npmjs.com/org/sebspa
 
 ### [@sebspark/logging](./packages/logging/)
 
-A pubsub subscriber helper.
+## ⚠️ **Deprecated**
+
+Deprecated. Use [`@sebspark/otel`](./packages/otel/) instead.
 
 ### [@sebspark/pubsub](./packages/pubsub/)
 
@@ -23,7 +25,9 @@ Use vanilla [@google-cloud/pubsub](https://www.npmjs.com/package/@google-cloud/p
 
 ### [@sebspark/typed-router](./packages/typed-router/)
 
-An Express router wrapped with additional TypeScript typings and defintions for our purposes.
+## ⚠️ **Deprecated**
+
+Deprecated. Use the `@sebspark/openapi-*` packages instead.
 
 ### [@sebspark/tsconfig](./packages/tsconfig)
 
@@ -97,10 +101,6 @@ A wrapper for child_process spawn to simplify interactive cli tests
 
 Token generator and refresh functions for OpenApi Client and Google IAM.
 
-### [@sebspark/tradeinsight](./packages/tradeinsight)
-
-Trade Insight client library with helps
-
 ### [@sebspark/socket.io-gcp-pubsub-emitter](./packages/socket.io-gcp-pubsub-emitter)
 
 A Socket.IO PubSub emitter, allowing to communicate with a group of Socket.IO servers from another Node.js process
@@ -161,7 +161,7 @@ Install dependencies with `yarn`.
 yarn
 ```
 
-Run TypeScript for all packages in watch mode using `yarn dev` or a specific package using the [filter flag](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), e.g., `yarn dev --filter logging`. Additional scripts for testing, linting, and building can be found in `package.json`.
+Run TypeScript for all packages in watch mode using `yarn dev` or a specific package using the [filter flag](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), e.g., `yarn dev --filter @sebspark/otel`. Additional scripts for testing, linting, and building can be found in `package.json`.
 
 ### Adding a new package
 
@@ -173,4 +173,4 @@ yarn generate:package
 
 ### Install dependencies to package
 
-We use Yarn [workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). To install a dependency to a specific workspace (package) use, for instance, `yarn workspace @sebspark/logging add @types/jest`. Note that the workspace name is the `name` defined in `package.json`, not the folder name.
+We use Yarn [workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/). To install a dependency to a specific workspace (package) use, for instance, `yarn workspace @sebspark/otel add @types/jest`. Note that the workspace name is the `name` defined in `package.json`, not the folder name.

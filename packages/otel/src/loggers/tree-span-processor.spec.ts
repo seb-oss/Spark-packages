@@ -1,4 +1,4 @@
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import { describe, expect, it, vi } from 'vitest'
 import { TreeSpanProcessor } from './tree-span-processor'
 

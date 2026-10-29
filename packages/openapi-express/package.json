@@ -19,13 +19,13 @@
     "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@types/supertest": "7.2.1",
-    "express": "5.2.1",
-    "supertest": "7.2.2"
+    "express": "5.3.0",
+    "supertest": "7.3.1"
   },
   "dependencies": {
     "@opentelemetry/semantic-conventions": "1.43.0",

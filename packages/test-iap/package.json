@@ -18,27 +18,24 @@
     "build": "spark-build src/index.ts src/start.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "pretest:e2e": "yarn build",
-    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "jose": "6.2.12",
-    "testcontainers": "12.1.0"
+    "jose": "6.2.13",
+    "testcontainers": "12.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@sebspark/tsconfig": "*",
-    "@types/ws": "8.18.1",
-    "nock": "14.0.17",
+    "@biomejs/biome": "2.6.3",
+    "@sebspark/tsconfig": "3.0.25",
+    "@types/ws": "8.18.2",
+    "nock": "15.0.5",
     "typescript": "7.0.2",
-    "vite": "8.3.0",
-    "vitest": "5.0.1",
-    "ws": "8.21.3"
-  },
-  "resolutions": {
-    "protobufjs": "8.8.0"
+    "vite": "8.3.5",
+    "vitest": "5.0.5",
+    "ws": "8.22.0"
   },
   "repository": {
     "type": "git",

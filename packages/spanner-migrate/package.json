@@ -19,28 +19,25 @@
     "build": "spark-build src/index.ts src/cli.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage",
-    "test:e2e": "vitest --config vitest.config.e2e.ts --run",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "tsc --noEmit "
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
-    "@google-cloud/spanner": "8.13.0",
+    "@biomejs/biome": "2.6.3",
+    "@google-cloud/spanner": "9.1.0",
     "@sebspark/cli-tester": "1.0.21",
-    "@sebspark/tsconfig": "*",
+    "@sebspark/tsconfig": "3.0.25",
     "@types/yargs": "17.0.35",
-    "testcontainers": "12.1.0",
-    "vite": "8.3.0",
-    "vitest": "5.0.1"
+    "testcontainers": "12.2.1",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
   },
   "dependencies": {
-    "@google-cloud/spanner": "8.13.0",
-    "@inquirer/prompts": "8.7.2",
+    "@google-cloud/spanner": "9.1.0",
+    "@inquirer/prompts": "8.7.4",
     "typescript": "7.0.2",
-    "yargs": "18.1.0"
-  },
-  "resolutions": {
-    "protobufjs": "8.8.0"
+    "yargs": "18.2.0"
   },
   "repository": {
     "type": "git",

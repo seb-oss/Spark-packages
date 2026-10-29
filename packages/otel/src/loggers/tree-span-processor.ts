@@ -2,7 +2,7 @@ import type {
   ReadableSpan,
   SpanExporter,
   SpanProcessor,
-} from '@opentelemetry/sdk-trace-node'
+} from '@opentelemetry/sdk-trace'
 
 export class TreeSpanProcessor implements SpanProcessor {
   private exporter: SpanExporter

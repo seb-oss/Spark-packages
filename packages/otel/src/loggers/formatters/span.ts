@@ -1,5 +1,5 @@
 import { SpanStatusCode } from '@opentelemetry/api'
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import {
   calculateDuration,
   formatService,

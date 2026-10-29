@@ -1,8 +1,7 @@
-import type { HrTime } from '@opentelemetry/api'
-import type { LogAttributes } from '@opentelemetry/api-logs'
+import type { Attributes, HrTime } from '@opentelemetry/api'
 import type { Resource } from '@opentelemetry/resources'
 import type { ReadableLogRecord } from '@opentelemetry/sdk-logs'
-import type { ReadableSpan } from '@opentelemetry/sdk-trace-node'
+import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
@@ -51,7 +50,7 @@ export function formatMessage(record: ReadableLogRecord): string {
   return typeof record.body === 'string' ? record.body : stringify(record.body)
 }
 
-export function formatAttributes(attrs: LogAttributes): string {
+export function formatAttributes(attrs: Attributes): string {
   const keys = Object.keys(attrs).filter(
     (k) =>
       !k.startsWith('service.') &&

@@ -9,6 +9,7 @@ const personIndex = {
       properties: {
         name: { type: 'keyword' },
         age: { type: 'integer' },
+        active: { type: 'boolean' },
       },
     },
   },
@@ -23,6 +24,21 @@ test('term query accepts { [fieldName]: value } format (OpenSearch wire format)'
       query: {
         term: {
           age: 30,
+        },
+      },
+    },
+  }
+
+  void search
+})
+
+test('term query accepts a boolean value (OpenSearch wire format)', () => {
+  const search: SearchRequest<PersonIndex> = {
+    index: 'person',
+    body: {
+      query: {
+        term: {
+          active: true,
         },
       },
     },
