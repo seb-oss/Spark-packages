@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/health-check",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -23,14 +23,14 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@sebspark/hyper-media": "0.1.6",
-    "@sebspark/promise-cache": "8.1.7",
+    "@sebspark/hyper-media": "0.1.7",
+    "@sebspark/promise-cache": "8.1.8",
     "express": "5.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
     "@google-cloud/pubsub": "6.3.1",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "@testcontainers/gcloud": "12.2.1",
     "@testcontainers/mockserver": "12.2.1",
     "@testcontainers/redis": "12.2.1",

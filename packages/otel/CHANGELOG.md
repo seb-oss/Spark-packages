@@ -1,5 +1,16 @@
 # @sebspark/otel
 
+## 4.2.0
+
+### Minor Changes
+
+- ad1e80f: Upgraded to OpenTelemetry 3.0 (`@opentelemetry/api` 1.10).
+
+### Patch Changes
+
+- Updated dependencies [ad1e80f]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.4.0
+
 ## 4.1.17
 
 ### Patch Changes

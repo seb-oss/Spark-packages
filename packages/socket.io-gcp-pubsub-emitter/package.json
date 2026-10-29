@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/socket.io-gcp-pubsub-emitter",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
-    "@sebspark/tsconfig": "3.0.25",
+    "@sebspark/tsconfig": "3.0.26",
     "@socket.io/gcp-pubsub-adapter": "0.1.1",
     "@testcontainers/gcloud": "12.2.1",
     "find-free-ports": "3.1.1",
