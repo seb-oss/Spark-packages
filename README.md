@@ -153,6 +153,8 @@ An in memory implementation of redis
 
 ## Contributing
 
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for releases, automated updates and CI.
+
 ### Get started
 
 Install dependencies with `yarn`.
@@ -162,6 +164,11 @@ yarn
 ```
 
 Run TypeScript for all packages in watch mode using `yarn dev` or a specific package using the [filter flag](https://turbo.build/repo/docs/core-concepts/monorepos/filtering), e.g., `yarn dev --filter @sebspark/otel`. Additional scripts for testing, linting, and building can be found in `package.json`.
+
+### Testing
+
+- `yarn smoketest` runs everything CI runs except e2e. The pre-push hook runs it on pushes to `main`.
+- `yarn test:e2e` runs the e2e tests. They use [Testcontainers](https://testcontainers.com/) and need Docker. CI runs them on every PR and push.
 
 ### Adding a new package
 
