@@ -7,6 +7,7 @@ on:
     - cron: "0 10 14 OCT *" # 2025-10-14
     - cron: "0 10 11 NOV *" # 2025-11-11
     - cron: "0 10 09 DEC *" # 2025-12-09
+  workflow_dispatch:
 
 concurrency:
   group: iso10383
@@ -20,6 +21,7 @@ jobs:
     name: Update CSV
     runs-on: ubuntu-26.04
     permissions:
+      actions: write
       contents: write
     steps:
       - name: Checkout code
@@ -68,34 +70,9 @@ jobs:
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
-  changeset:
-    name: Create Release Pull Request or Publish to NPM
-    runs-on: ubuntu-26.04
-    needs: [update-csv]
-    permissions:
-      contents: write
-      pull-requests: write
-      id-token: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-        with:
-          node-version-file: ".nvmrc"
-
-      - name: Enable Corepack
-        run: corepack enable
-
-      - name: Download dependencies
-        run: yarn install --immutable
-
-      - name: Create Changeset PR
-        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
-        with:
-          publish: npm run release
-          commit: "chore(release): update versions"
-          title: "chore(release): update versions"
+      # Pushes made with GITHUB_TOKEN do not trigger workflows, but workflow_dispatch does
+      - name: Trigger release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run release.yml --ref ${{ github.event.repository.default_branch }}
+
