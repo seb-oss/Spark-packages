@@ -22,7 +22,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@inquirer/figures": "2.0.9"
+    "@inquirer/figures": "2.0.10"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.3",
