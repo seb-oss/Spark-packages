@@ -2933,7 +2933,7 @@ __metadata:
     "@testcontainers/mockserver": "npm:12.2.1"
     "@testcontainers/redis": "npm:12.2.1"
     express: "npm:5.3.0"
-    mockserver-client: "npm:9.1.0"
+    mockserver-client: "npm:9.2.0"
     supertest: "npm:7.3.1"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -8013,14 +8013,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mockserver-client@npm:9.1.0":
-  version: 9.1.0
-  resolution: "mockserver-client@npm:9.1.0"
+"mockserver-client@npm:9.2.0":
+  version: 9.2.0
+  resolution: "mockserver-client@npm:9.2.0"
   dependencies:
     browser-or-node: "npm:~3.0.0"
     q: "npm:~2.0.3"
     websocket: "npm:~1.0.34"
-  checksum: 10c0/749530bdc9ca780a3a661c18f4fdf8b21f0cdc4956885f97930bbb71327fe5c355d6a905c24a79e780972ba49e9388ef1a91d7b02d7ef951a1c5c01222daf355
+  checksum: 10c0/de44fdfd2eb8de592795f6a5af757ea4ff4c9dfbc7a926f5fce626b9041e8d8e300d56a41a28dbf86ea338640f1f275a9db6afc35c8d8f6ce0eeaa354667966f
   languageName: node
   linkType: hard
 
