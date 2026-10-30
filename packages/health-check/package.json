@@ -34,7 +34,7 @@
     "@testcontainers/gcloud": "12.2.1",
     "@testcontainers/mockserver": "12.2.1",
     "@testcontainers/redis": "12.2.1",
-    "mockserver-client": "9.1.0",
+    "mockserver-client": "9.2.0",
     "supertest": "7.3.1",
     "typescript": "7.0.2",
     "vite": "8.3.5",
