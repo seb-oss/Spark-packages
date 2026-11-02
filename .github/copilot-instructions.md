@@ -49,6 +49,9 @@ Do not batch-fix multiple files or issues in one move. Fix one thing, verify it 
 ### Stop and ask when unsure
 If the correct approach is unclear — about intent, architecture, or scope — stop and ask. Do not forge ahead with a guess. Wrong assumptions compound.
 
+### Waiting is timed, never guessed
+An agent has no sense of elapsed time. When you give something a set time (e.g. "wait a few minutes for Dependabot"), enforce it with a real timer: a bounded loop or `sleep` that ends on its own, with the deadline taken from `date`. When it expires, act on what you have; never keep waiting open-ended.
+
 ### Docs → Red → Green → Refactor
 This is the development loop for building anything new:
 
