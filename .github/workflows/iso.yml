@@ -1,7 +1,8 @@
 name: ISO
 
-# Regenerates the ISO packages from their published sources. If anything changed,
-# a PR is opened, checked with the PR workflow, merged and released.
+# Regenerates the ISO packages from their published sources. If anything changed, the
+# update is pushed to a branch, checked with the PR workflow, fast-forwarded onto main
+# and released. No PR: one opened with GITHUB_TOKEN gets runs that wait for approval.
 on:
   schedule:
     - cron: "0 6 * * 1"
@@ -20,9 +21,9 @@ jobs:
     runs-on: ubuntu-26.04
     permissions:
       contents: write
-      pull-requests: write
     outputs:
-      branch: ${{ steps.pr.outputs.branch }}
+      branch: ${{ steps.push.outputs.branch }}
+      sha: ${{ steps.push.outputs.sha }}
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -50,10 +51,8 @@ jobs:
           yarn workspace @sebspark/iso-4217 generate
           yarn format
 
-      - name: Create PR
-        id: pr
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Push update branch
+        id: push
         run: |
           changed=()
           for pkg in iso-10383 iso-4217; do
@@ -81,8 +80,8 @@ jobs:
           git add .changeset packages/iso-10383 packages/iso-4217
           git commit -m "feat: update ISO specifications"
           git push --force -u origin "$branch"
-          gh pr view "$branch" > /dev/null 2>&1 || gh pr create --head "$branch" --title "feat: update ISO specifications" --body "Automated update of ${changed[*]}. Merged automatically once checks pass."
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   checks:
     name: Checks
@@ -104,15 +103,24 @@ jobs:
     permissions:
       actions: write
       contents: write
-      pull-requests: write
     steps:
-      - name: Merge
-        env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ needs.update.outputs.branch }}
-        run: gh pr merge "$BRANCH" --squash --repo "$GITHUB_REPOSITORY"
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.update.outputs.sha }}
 
-      # Merges made with GITHUB_TOKEN don't trigger workflows
+      # Fast-forward only, so main gets exactly the checked commit. If main moved
+      # meanwhile, this fails and next week's run starts over from the new main.
+      - name: Fast-forward main
+        env:
+          SHA: ${{ needs.update.outputs.sha }}
+          BRANCH: ${{ needs.update.outputs.branch }}
+          MAIN: ${{ github.event.repository.default_branch }}
+        run: |
+          git push origin "$SHA:refs/heads/$MAIN"
+          git push origin --delete "$BRANCH"
+
+      # Pushes made with GITHUB_TOKEN don't trigger workflows
       - name: Trigger release
         env:
           GH_TOKEN: ${{ github.token }}

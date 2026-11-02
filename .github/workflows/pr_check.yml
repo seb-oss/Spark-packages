@@ -226,7 +226,9 @@ jobs:
         run: yarn test:e2e
 
   # Dependabot is trusted with every update type since e2e runs on every PR.
-  # Merges and pushes made with GITHUB_TOKEN don't trigger workflows, so the release is dispatched.
+  # The PR is merged unchanged and its changeset is committed straight to main: a push to
+  # the PR branch with GITHUB_TOKEN would create PR runs that wait for approval and expire.
+  # Pushes and merges made with GITHUB_TOKEN don't trigger workflows, so the release is dispatched.
   automerge:
     name: Auto-merge Dependabot
     needs: [build, lint, typecheck, test, e2e]
@@ -240,7 +242,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -248,27 +250,45 @@ jobs:
         with:
           node-version-file: ".nvmrc"
 
-      - name: Add changeset
+      # Written now, from the PR's diff, and committed after the merge
+      - name: Write changeset
         env:
           BASE_REF: ${{ github.base_ref }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           base=$(git merge-base "origin/$BASE_REF" HEAD)
-          packages=$(node tools/dependabot-changeset.mjs "$base" "dependabot-$PR_NUMBER" "$PR_TITLE")
-          if [ -n "$packages" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add .changeset
-            git commit -m "chore: add changeset"
-            git push
-          fi
+          node tools/dependabot-changeset.mjs "$base" "dependabot-$PR_NUMBER" "$PR_TITLE"
 
       - name: Merge
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: gh pr merge "$PR_NUMBER" --squash --match-head-commit "$(git rev-parse HEAD)"
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: gh pr merge "$PR_NUMBER" --squash --match-head-commit "$HEAD_SHA"
+
+      # The untracked changeset survives the switch to main. Retries if main moves meanwhile.
+      - name: Commit changeset to main
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          changeset=".changeset/dependabot-$PR_NUMBER.md"
+          if [ ! -f "$changeset" ]; then
+            echo "No released package changed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$GITHUB_BASE_REF"
+          git switch --detach "origin/$GITHUB_BASE_REF"
+          git add "$changeset"
+          git commit -m "chore: add changeset for #$PR_NUMBER"
+          for attempt in 1 2 3; do
+            git push origin "HEAD:$GITHUB_BASE_REF" && exit 0
+            git fetch origin "$GITHUB_BASE_REF"
+            git rebase "origin/$GITHUB_BASE_REF"
+          done
+          exit 1
 
       - name: Trigger release
         env:

@@ -2,18 +2,20 @@
 
 ## Releasing packages
 
-This repo uses [Changesets](https://github.com/changesets/changesets) for versioning and changelogs. Releases are fully automatic: every push to `main` runs all checks (including e2e), then `release.yml` creates the release PR, merges it and publishes to npm with [provenance](https://docs.npmjs.com/generating-provenance-statements) via trusted publishing.
+This repo uses [Changesets](https://github.com/changesets/changesets) for versioning and changelogs. Releases are fully automatic and need no release PR: every push to `main` runs all checks (including e2e) once, then `release.yml` versions the packages, pushes the version commit to `main` and publishes to npm with [provenance](https://docs.npmjs.com/generating-provenance-statements) via trusted publishing.
 
 ### Existing packages
 
 1. Add a changeset: `yarn changeset`
 2. Commit and push to `main` (or merge a PR). The pre-push hook runs `yarn smoketest`.
-3. CI versions, merges the release PR and publishes. No manual step.
+3. CI checks, versions and publishes. No manual step.
+
+If publishing fails after the version commit was pushed, fix the cause and run `gh workflow run release.yml`. It publishes every version missing from npm. Re-running the failed run does not, because its commit is no longer the tip of `main`.
 
 ### Automated updates
 
-- **Dependabot** PRs merge themselves once every check, including e2e, passes. Public packages whose `dependencies`, `peerDependencies` or `optionalDependencies` changed get a patch changeset; devDependency, GitHub Actions and Docker updates merge without a release.
-- **ISO packages** (`iso-10383`, `iso-4217`) are regenerated weekly from their published sources by `iso.yml`. Changes are opened as a PR with a minor changeset, checked, merged and released.
+- **Dependabot** PRs merge themselves once every check, including e2e, passes. Public packages whose `dependencies`, `peerDependencies` or `optionalDependencies` changed get a patch changeset, committed to `main` right after the merge; devDependency, GitHub Actions and Docker updates merge without a release.
+- **ISO packages** (`iso-10383`, `iso-4217`) are regenerated weekly from their published sources by `iso.yml`. Changes are committed with a minor changeset to a branch, checked, fast-forwarded onto `main` and released.
 
 ### Dependencies
 
@@ -22,9 +24,15 @@ This repo uses [Changesets](https://github.com/changesets/changesets) for versio
 
 ### CI
 
-- Actions are pinned by commit SHA (Dependabot keeps them current) and workflows default to a read-only `GITHUB_TOKEN`.
-- Pushes, PRs and merges made with `GITHUB_TOKEN` don't trigger workflows, so automation that merges dispatches `release.yml` itself.
+- Actions are pinned by commit SHA (Dependabot keeps them current). Every workflow declares its `GITHUB_TOKEN` permissions, read-only by default, and each job asks only for what it needs.
+- Automation never opens or updates PRs with `GITHUB_TOKEN`: GitHub holds the checks of such PRs for approval, and nobody approves them. It pushes branches and runs checks with `workflow_call` instead.
+- Pushes and merges made with `GITHUB_TOKEN` don't trigger workflows, so automation dispatches `release.yml` itself.
 - Turbo's cache is kept between runs with `actions/cache`.
+
+### Repository protection
+
+- Everyone with write access is trusted and may push straight to `main`. The `main` ruleset only blocks deleting it and force-pushing to it.
+- Workflow runs from outside contributors always need approval by a maintainer.
 
 ### New packages
 

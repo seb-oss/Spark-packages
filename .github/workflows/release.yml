@@ -6,8 +6,8 @@ on:
       - main
   workflow_dispatch:
 
-# Queue runs instead of cancelling: a run that merges the release PR dispatches the
-# publishing run, and a cancelled publish can leave a release half done
+# Queue runs instead of cancelling: a cancelled run can leave a release half done
+# (version commit pushed, packages not yet published)
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: false
@@ -237,9 +237,7 @@ jobs:
       - typecheck
     runs-on: ubuntu-26.04
     permissions:
-      actions: write
       contents: write
-      pull-requests: write
       id-token: write
     steps:
       - name: Checkout code
@@ -256,39 +254,55 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      # The checked commit is versioned and pushed straight to main; no release PR.
+      # A push with GITHUB_TOKEN starts no workflow, so this cannot recurse. If main
+      # moved past the checked commit, the queued run for the newer commit releases.
+      - name: Version packages
+        id: version
+        run: |
+          if [ -z "$(find .changeset -name '*.md' ! -name README.md)" ]; then
+            echo "No changesets"
+            exit 0
+          fi
+          yarn version-packages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(release): update versions"
+          if git push origin "HEAD:$GITHUB_REF_NAME"; then
+            echo "versioned=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git fetch origin "$GITHUB_REF_NAME"
+          if git merge-base --is-ancestor "$GITHUB_SHA" "origin/$GITHUB_REF_NAME"; then
+            echo "::notice::$GITHUB_REF_NAME moved past $GITHUB_SHA, so this run doesn't publish. A run on the newer $GITHUB_REF_NAME does (gh workflow run release.yml)"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          exit 1
+
       # IMPORTANT: this action's major version is tied to a specific @changesets/cli
       # major version (v1.x -> cli v2.x, v2.x -> cli v3.x). It self-validates the
       # installed CLI version and will fail fast on a mismatch, but always bump the
       # action tag and root package.json's "@changesets/cli" together, never separately.
-      - name: Create Changeset PR
+      # With no changesets left, the action only publishes: every version missing from
+      # npm, then tags and GitHub releases. A publish that failed earlier is retried.
+      - name: Publish
         id: changesets
+        if: steps.version.outputs.skip != 'true'
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          version-script: yarn version-packages
           publish-script: yarn release
-          commit-message: "chore(release): update versions"
-          pr-title: "chore(release): update versions"
         env:
           # changesets publishes with `yarn npm publish`, which ignores NPM_CONFIG_*
           YARN_NPM_PUBLISH_PROVENANCE: "true"
 
-      # The release PR is created from main after every check has passed, and only bumps
-      # versions and changelogs. Merges made with GITHUB_TOKEN don't trigger workflows,
-      # so the publish run is dispatched.
-      - name: Merge release PR
-        if: steps.changesets.outputs.pr-number != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ steps.changesets.outputs.pr-number }}
-        run: |
-          gh pr merge "$PR_NUMBER" --squash
-          gh workflow run release.yml --ref "$GITHUB_REF_NAME"
-
       - name: Report release outcome
         run: |
           echo "### Release outcome" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Changesets found: ${{ steps.changesets.outputs.has-changesets }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Versioned: ${{ steps.version.outputs.versioned == 'true' }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Skipped for a newer commit: ${{ steps.version.outputs.skip == 'true' }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Published: ${{ steps.changesets.outputs.published }}" >> "$GITHUB_STEP_SUMMARY"
           if [ "${{ steps.changesets.outputs.published }}" = "true" ]; then
             echo "- Packages: ${{ steps.changesets.outputs.published-packages }}" >> "$GITHUB_STEP_SUMMARY"
