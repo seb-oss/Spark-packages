@@ -155,6 +155,8 @@ An in memory implementation of redis
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for releases, automated updates and CI.
 
+See [MAINTENANCE.md](./MAINTENANCE.md) for the weekly dependency and security maintenance routine.
+
 ### Get started
 
 Install dependencies with `yarn`.
