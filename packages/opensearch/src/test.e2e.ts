@@ -443,4 +443,508 @@ describe('OpenSearchClient', () => {
       expect(result.body.hits.hits[0]._source).toEqual(doc)
     })
   })
+
+  describe('tradesIndex aggregations', () => {
+    const tradesIndex = {
+      index: 'trades',
+      body: {
+        mappings: {
+          properties: {
+            assetId: { type: 'keyword' },
+            assetName: {
+              type: 'text',
+              fields: { keyword: { type: 'keyword' } },
+            },
+            date: { type: 'date' },
+            last: { type: 'double' },
+            bid: { type: 'double' },
+            ask: { type: 'double' },
+            nav: { type: 'double' },
+            high: { type: 'double' },
+            low: { type: 'double' },
+            volume: { type: 'long' },
+          },
+        },
+      },
+    } as const satisfies IndexDefinition
+
+    type TradesIndex = typeof tradesIndex
+    type TradeDocument = DocumentFor<TradesIndex>
+    type TradesSearch = SearchRequest<TradesIndex>
+
+    const trades: TradeDocument[] = [
+      {
+        assetId: 'A',
+        assetName: 'Alpha Fund',
+        date: '2025-01-10',
+        last: 10.5,
+        bid: 10.4,
+        ask: 10.6,
+        nav: 10,
+        high: 11,
+        low: 9,
+        volume: 100,
+      },
+      {
+        assetId: 'A',
+        assetName: 'Alpha Fund',
+        date: '2025-01-20',
+        last: 12.5,
+        bid: 12.4,
+        ask: 12.6,
+        nav: 12,
+        high: 13,
+        low: 11,
+        volume: 200,
+      },
+      {
+        assetId: 'A',
+        assetName: 'Alpha Fund',
+        date: '2025-02-15',
+        last: 8.5,
+        bid: 8.4,
+        ask: 8.6,
+        nav: 8,
+        high: 9,
+        low: 7,
+        volume: 50,
+      },
+      {
+        assetId: 'B',
+        assetName: 'Beta Fund',
+        date: '2025-01-05',
+        last: 100.5,
+        bid: 100,
+        ask: 101,
+        nav: 100,
+        high: 101,
+        low: 99,
+        volume: 10,
+      },
+      {
+        assetId: 'B',
+        assetName: 'Beta Fund',
+        date: '2025-12-01',
+        last: 120.5,
+        bid: 120,
+        ask: 122,
+        nav: 120,
+        high: 121,
+        low: 119,
+        volume: 20,
+      },
+    ]
+
+    beforeAll(async () => {
+      const exists = await opensearchClient.indices.exists<TradesIndex>({
+        index: tradesIndex.index,
+      })
+      if (exists.body) {
+        await opensearchClient.indices.delete({ index: tradesIndex.index })
+      }
+      await opensearchClient.indices.create(tradesIndex)
+
+      const payload = bulkIndex(tradesIndex.index, trades)
+      payload.refresh = 'wait_for'
+      await opensearchClient.bulk(payload)
+    })
+
+    it('max and min on a date field return the latest and earliest date', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            latest: { max: { field: 'date' } },
+            earliest: { min: { field: 'date' } },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        latest: { value_as_string: '2025-12-01T00:00:00.000Z' },
+        earliest: { value_as_string: '2025-01-05T00:00:00.000Z' },
+      })
+    })
+
+    it('sum, avg, value_count and cardinality compute over mapped fields', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            volume: { sum: { field: 'volume' } },
+            averageNav: { avg: { field: 'nav' } },
+            count: { value_count: { field: 'assetId' } },
+            assets: { cardinality: { field: 'assetId' } },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        volume: { value: 380 },
+        averageNav: { value: 50 },
+        count: { value: 5 },
+        assets: { value: 2 },
+      })
+    })
+
+    it('max accepts a script instead of a field', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            spread: {
+              max: {
+                script: { source: "doc['ask'].value - doc['bid'].value" },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({ spread: { value: 2 } })
+    })
+
+    it('the aggregations key is accepted like aggs', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggregations: { latest: { max: { field: 'date' } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        latest: { value_as_string: '2025-12-01T00:00:00.000Z' },
+      })
+    })
+
+    it('terms on a multi-field sub-field buckets by keyword', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: { names: { terms: { field: 'assetName.keyword', size: 10 } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        names: {
+          buckets: [
+            { key: 'Alpha Fund', doc_count: 3 },
+            { key: 'Beta Fund', doc_count: 2 },
+          ],
+        },
+      })
+    })
+
+    it('date_histogram with top_hits and metric sub-aggregations', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          query: { term: { assetId: 'A' } },
+          aggs: {
+            buckets: {
+              date_histogram: {
+                field: 'date',
+                calendar_interval: 'month',
+                order: { _key: 'asc' },
+              },
+              aggs: {
+                newest: {
+                  top_hits: {
+                    sort: [{ date: { order: 'desc' } }],
+                    _source: ['last', 'bid', 'ask', 'date', 'nav'],
+                    size: 1,
+                  },
+                },
+                high: { max: { field: 'high' } },
+                low: { min: { field: 'low' } },
+                volume: { sum: { field: 'volume' } },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        buckets: {
+          buckets: [
+            {
+              key_as_string: '2025-01-01T00:00:00.000Z',
+              doc_count: 2,
+              high: { value: 13 },
+              low: { value: 9 },
+              volume: { value: 300 },
+              newest: {
+                hits: {
+                  hits: [
+                    {
+                      _source: {
+                        last: 12.5,
+                        bid: 12.4,
+                        ask: 12.6,
+                        date: '2025-01-20',
+                        nav: 12,
+                      },
+                    },
+                  ],
+                },
+              },
+            },
+            {
+              key_as_string: '2025-02-01T00:00:00.000Z',
+              doc_count: 1,
+              high: { value: 9 },
+              low: { value: 7 },
+              volume: { value: 50 },
+            },
+          ],
+        },
+      })
+    })
+
+    it('top_hits only returns the requested _source fields', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            newest: {
+              top_hits: {
+                sort: [{ date: { order: 'desc' } }],
+                _source: ['date', 'nav'],
+                size: 1,
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toEqual({
+        newest: {
+          hits: expect.objectContaining({
+            hits: [
+              expect.objectContaining({
+                _source: { date: '2025-12-01', nav: 120 },
+              }),
+            ],
+          }),
+        },
+      })
+    })
+
+    it('terms with nested date_range, max and top_hits sub-aggregations', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            perAsset: {
+              terms: { field: 'assetId', size: 100 },
+              aggs: {
+                periods: {
+                  date_range: {
+                    field: 'date',
+                    ranges: [{ key: '1y', from: '2025-06-01' }, { key: 'max' }],
+                  },
+                  aggs: {
+                    high: { max: { field: 'nav' } },
+                    open: {
+                      top_hits: {
+                        sort: [{ date: { order: 'asc' } }],
+                        _source: ['date', 'nav'],
+                        size: 1,
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        perAsset: {
+          buckets: [
+            {
+              key: 'A',
+              periods: {
+                buckets: expect.arrayContaining([
+                  expect.objectContaining({
+                    key: '1y',
+                    doc_count: 0,
+                    high: { value: null },
+                  }),
+                  expect.objectContaining({
+                    key: 'max',
+                    doc_count: 3,
+                    high: { value: 12 },
+                    open: expect.objectContaining({
+                      hits: expect.objectContaining({
+                        hits: [
+                          expect.objectContaining({
+                            _source: { date: '2025-01-10', nav: 10 },
+                          }),
+                        ],
+                      }),
+                    }),
+                  }),
+                ]),
+              },
+            },
+            {
+              key: 'B',
+              periods: {
+                buckets: expect.arrayContaining([
+                  expect.objectContaining({
+                    key: '1y',
+                    doc_count: 1,
+                    high: { value: 120 },
+                  }),
+                  expect.objectContaining({
+                    key: 'max',
+                    doc_count: 2,
+                    high: { value: 120 },
+                    open: expect.objectContaining({
+                      hits: expect.objectContaining({
+                        hits: [
+                          expect.objectContaining({
+                            _source: { date: '2025-01-05', nav: 100 },
+                          }),
+                        ],
+                      }),
+                    }),
+                  }),
+                ]),
+              },
+            },
+          ],
+        },
+      })
+    })
+
+    it('range buckets by a mapped field with sub-aggregations', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            navBands: {
+              range: { field: 'nav', ranges: [{ to: 100 }, { from: 100 }] },
+              aggs: { volume: { sum: { field: 'volume' } } },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        navBands: {
+          buckets: [
+            { doc_count: 3, volume: { value: 350 } },
+            { doc_count: 2, volume: { value: 30 } },
+          ],
+        },
+      })
+    })
+
+    it('filter narrows sub-aggregations with an index-aware query', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            recent: {
+              filter: { range: { date: { gte: '2025-06-01' } } },
+              aggs: { high: { max: { field: 'high' } } },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        recent: { doc_count: 1, high: { value: 121 } },
+      })
+    })
+
+    it('a bucket aggregation that is not overridden accepts index-aware sub-aggregations', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: {
+            byNav: {
+              histogram: { field: 'nav', interval: 100 },
+              aggs: { high: { max: { field: 'high' } } },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        byNav: {
+          buckets: [
+            { key: 0, doc_count: 3, high: { value: 13 } },
+            { key: 100, doc_count: 2, high: { value: 121 } },
+          ],
+        },
+      })
+    })
+
+    it('a pipeline aggregation keeps its upstream type', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          query: { term: { assetId: 'A' } },
+          aggs: {
+            monthly: {
+              date_histogram: { field: 'date', calendar_interval: 'month' },
+              aggs: {
+                high: { max: { field: 'high' } },
+                change: { derivative: { buckets_path: 'high' } },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        monthly: {
+          buckets: [
+            { high: { value: 13 } },
+            { high: { value: 9 }, change: { value: -4 } },
+          ],
+        },
+      })
+    })
+  })
 })
