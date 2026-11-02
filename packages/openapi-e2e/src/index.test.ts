@@ -74,6 +74,7 @@ describe('openapi e2e tests', () => {
 
   it('returns 401 when x-client-key header is missing', async () => {
     await expect(
+      // @ts-expect-error the generated client requires X-Client-Key; this test omits it on purpose
       client.get('/secured', { headers: { 'X-Api-Key': 'yo!' } })
     ).rejects.toMatchObject({ statusCode: 401 })
   })

@@ -1,7 +1,21 @@
-import type { BaseClient } from '@sebspark/openapi-core'
+import type { APIResponse, BaseClient } from '@sebspark/openapi-core'
 import nock from 'nock'
 import { afterEach, describe, expect, it } from 'vitest'
 import { TypedClient } from './client'
+
+type BodyClient = Pick<BaseClient, 'post'> & {
+  post: {
+    (
+      url: '/users',
+      args: { body: { name: string; age: number } }
+    ): Promise<APIResponse<unknown>>
+    (url: '/ping'): Promise<APIResponse<unknown>>
+    (
+      url: '/users/batch',
+      args: { body: { name: string }[] }
+    ): Promise<APIResponse<unknown>>
+  }
+}
 
 describe('TypedClient request body', () => {
   const url = 'https://api.example.com'
@@ -18,7 +32,7 @@ describe('TypedClient request body', () => {
         return true
       })
       .reply(201, {})
-    const client = TypedClient<BaseClient>(url)
+    const client = TypedClient<BodyClient>(url)
 
     await client.post('/users', { body: { name: 'Ada', age: 36 } })
 
@@ -33,7 +47,7 @@ describe('TypedClient request body', () => {
         return true
       })
       .reply(200, {})
-    const client = TypedClient<BaseClient>(url)
+    const client = TypedClient<BodyClient>(url)
 
     await client.post('/ping')
 
@@ -48,7 +62,7 @@ describe('TypedClient request body', () => {
         return true
       })
       .reply(201, {})
-    const client = TypedClient<BaseClient>(url)
+    const client = TypedClient<BodyClient>(url)
 
     await client.post('/users/batch', {
       body: [{ name: 'Ada' }, { name: 'Grace' }],

@@ -51,8 +51,15 @@ export type APIServerOptions = {
   pre?: RequestHandler | RequestHandler[]
 }
 
-/** Arguments a client passes when calling an endpoint. */
-export type RequestArgs = {
+/**
+ * Arguments a client passes when calling an endpoint.
+ *
+ * The `Request` intersection is load-bearing: generated clients are typed as
+ * `Pick<BaseClient, V> & { [V]: <specific overloads> }`, and a plain argument
+ * object must not satisfy the generic `BaseClient` signature, or calls resolve
+ * to it and the response type widens to `unknown`.
+ */
+export type RequestArgs = Request & {
   params?: Record<string, string>
   query?: Record<string, string>
   headers?: Record<string, string>

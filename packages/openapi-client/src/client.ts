@@ -2,7 +2,6 @@ import type {
   APIResponse,
   BaseClient,
   ClientOptions,
-  RequestArgs,
   RequestOptions,
 } from '@sebspark/openapi-core'
 import { fromAxiosError } from '@sebspark/openapi-core'
@@ -14,13 +13,19 @@ import { createAuthRefreshInterceptor } from 'axios-auth-refresh'
 import { paramsSerializer } from './paramsSerializer'
 import { toError } from './toError'
 
+type CallArgs = {
+  params?: Record<string, string>
+  query?: Record<string, string>
+  headers?: Record<string, string>
+  body?: unknown
+}
+
 type MergedArgs = Omit<ClientOptions, 'headers'> &
-  Omit<RequestArgs, 'params'> & {
+  Omit<CallArgs, 'params'> & {
     url: string
     baseUrl: string
     method: string
     params?: Record<string, string>
-    body?: unknown
   }
 
 export type TypedAxiosClient<T> = T & {
@@ -179,7 +184,7 @@ const mergeArgs = (
   baseUrl: string,
   url: string,
   method: string,
-  requestArgs: RequestArgs | RequestOptions | undefined,
+  requestArgs: CallArgs | RequestOptions | undefined,
   extras: RequestOptions | undefined,
   global: ClientOptions | undefined
 ): MergedArgs => {
@@ -208,7 +213,7 @@ const mergeArgs = (
 }
 
 const merge = (
-  prop: keyof (ClientOptions & RequestArgs),
+  prop: keyof (ClientOptions & CallArgs),
   // biome-ignore lint/suspicious/noExplicitAny: it is any
   ...args: (any | undefined)[]
   // biome-ignore lint/suspicious/noExplicitAny: it is any

@@ -1,5 +1,5 @@
 import type { Server } from 'node:http'
-import type { BaseClient } from '@sebspark/openapi-core'
+import type { APIResponse, BaseClient } from '@sebspark/openapi-core'
 import express from 'express'
 import {
   afterAll,
@@ -13,6 +13,13 @@ import {
 import { accessToken, router } from './__tests__/client.helper'
 import type { OpenapiClient, User } from './__tests__/openapi'
 import { type TypedAxiosClient, TypedClient } from './client'
+
+type PatchClient = Pick<BaseClient, 'patch'> & {
+  patch: (
+    url: `/users/${string}`,
+    args: { body: User; headers: { Authorization: string } }
+  ) => Promise<APIResponse<User>>
+}
 
 describe('TypedClient', () => {
   let client: TypedAxiosClient<OpenapiClient>
@@ -100,9 +107,7 @@ describe('TypedClient', () => {
 
       // Patch user age
       const patched = { ...user1, age: 99 }
-      const patchClient = TypedClient<Pick<BaseClient, 'patch'>>(
-        `http://localhost:${PORT}`
-      )
+      const patchClient = TypedClient<PatchClient>(`http://localhost:${PORT}`)
       await expect(
         patchClient.patch(`/users/${user1.id}`, {
           body: patched,
