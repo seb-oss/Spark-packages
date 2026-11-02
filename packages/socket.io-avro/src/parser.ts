@@ -135,17 +135,31 @@ export const createAvroParser = (
   Encoder: new (replacer?: Replacer) => AvroEncoder
   Decoder: new (reviver?: Reviver) => AvroDecoder
 } => {
+  // Payload types are built first with avsc's default union handling, so
+  // nullable payload fields take plain values as before 0.1.28. The packet
+  // refers to them by name through the shared registry, so `wrapUnions` only
+  // applies to the packet's own unions (`data`, `id`, `attachments`) and `data`
+  // is always keyed by schema name, however many schemas there are. The
+  // registry also lets a schema reference named types from an earlier one.
+  const registry = {}
+  const payloadNames = schemas.flatMap((schema) => {
+    const { name } = Type.forSchema(schema, { registry })
+    return name ? [name] : []
+  })
   const packetSchema = {
     ...SOCKET_PACKET_SCHEMA,
     fields: [
       ...SOCKET_PACKET_SCHEMA.fields,
       {
         name: 'data',
-        type: schemas.length ? schemas : ['null'],
+        type: payloadNames.length ? payloadNames : ['null'],
       },
     ],
   } satisfies RecordType
-  const packetType = Type.forSchema(packetSchema, { wrapUnions: true })
+  const packetType = Type.forSchema(packetSchema, {
+    registry,
+    wrapUnions: true,
+  })
 
   return {
     Encoder: class extends AvroEncoder {

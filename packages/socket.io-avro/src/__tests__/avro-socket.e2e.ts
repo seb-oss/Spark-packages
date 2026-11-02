@@ -21,6 +21,15 @@ const WorldSchema = {
   fields: [{ name: 'response', type: 'string' }],
 } as const satisfies RecordType
 
+const NewsSchema = {
+  type: 'record',
+  name: 'News',
+  fields: [
+    { name: 'id', type: 'string' },
+    { name: 'headline', type: ['null', 'string'], default: null },
+  ],
+} as const satisfies RecordType
+
 describe('socket.io Avro', () => {
   let port: number
   let httpServer: HttpServer
@@ -62,6 +71,40 @@ describe('socket.io Avro', () => {
 
     expect(listener).toHaveBeenCalled()
 
+    client.close()
+    server.disconnectSockets()
+  })
+
+  it('sends payloads with nullable fields as Avro, not JSON', async () => {
+    const encodingErrors = vi.spyOn(console, 'error')
+    const server = createServer(
+      [HelloSchema],
+      [WorldSchema, NewsSchema],
+      httpServer
+    )
+    server.on('connect', (socket) => {
+      socket.on('hello', () => {
+        socket.emit('news', { id: '1', headline: 'Headline' })
+        socket.emit('news', { id: '2', headline: null })
+      })
+    })
+
+    const uri = `http://localhost:${port}`
+    const client = createClient([HelloSchema], [WorldSchema, NewsSchema], uri)
+
+    const listener = vi.fn()
+    client.on('news', listener)
+    client.emit('hello', { greeting: 'Hello!' })
+
+    await setTimeout(100)
+
+    expect(listener.mock.calls).toEqual([
+      [{ id: '1', headline: 'Headline' }],
+      [{ id: '2', headline: null }],
+    ])
+    expect(encodingErrors).not.toHaveBeenCalled()
+
+    encodingErrors.mockRestore()
     client.close()
     server.disconnectSockets()
   })

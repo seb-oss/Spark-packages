@@ -240,3 +240,92 @@ describe('AvroDecoder', () => {
     expect(() => decoder.add(Buffer.from([0xff, 0x00]))).not.toThrow()
   })
 })
+
+describe('createAvroParser payload unions', () => {
+  const NewsSchema = {
+    type: 'record',
+    name: 'News',
+    fields: [
+      { name: 'id', type: 'string' },
+      { name: 'headline', type: ['null', 'string'], default: null },
+    ],
+  } as const satisfies RecordType
+
+  const PingSchema = {
+    type: 'record',
+    name: 'Ping',
+    fields: [{ name: 'n', type: 'int' }],
+  } as const satisfies RecordType
+
+  const roundTrip = (schemas: RecordType[], data: unknown[]) => {
+    const { Encoder, Decoder } = createAvroParser(schemas)
+    const encoded = new Encoder().encode({
+      type: PacketType.EVENT,
+      nsp: '/',
+      data,
+    })
+    const decoded: unknown[] = []
+    const decoder = new Decoder()
+    decoder.on('decoded', (packet) => decoded.push(packet.data))
+    for (const chunk of encoded) decoder.add(chunk)
+    return { sentAsAvro: Buffer.isBuffer(encoded[0]), decoded }
+  }
+
+  it('encodes a plain value in a nullable payload field as Avro and decodes it plain', () => {
+    const result = roundTrip(
+      [NewsSchema, PingSchema],
+      ['news', { id: '1', headline: 'Headline' }]
+    )
+
+    expect(result).toEqual({
+      sentAsAvro: true,
+      decoded: [['news', { id: '1', headline: 'Headline' }]],
+    })
+  })
+
+  it('encodes null in a nullable payload field as Avro', () => {
+    const result = roundTrip(
+      [NewsSchema, PingSchema],
+      ['news', { id: '1', headline: null }]
+    )
+
+    expect(result).toEqual({
+      sentAsAvro: true,
+      decoded: [['news', { id: '1', headline: null }]],
+    })
+  })
+
+  it('encodes a nullable payload field as Avro with a single schema', () => {
+    const result = roundTrip([NewsSchema], ['news', { id: '1', headline: 'H' }])
+
+    expect(result).toEqual({
+      sentAsAvro: true,
+      decoded: [['news', { id: '1', headline: 'H' }]],
+    })
+  })
+
+  it('resolves named types defined by an earlier schema', () => {
+    const LevelSchema = {
+      type: 'record',
+      name: 'Level',
+      fields: [{ name: 'price', type: 'double' }],
+    } as const satisfies RecordType
+    const BookSchema = {
+      type: 'record',
+      name: 'Book',
+      fields: [
+        { name: 'levels', type: { type: 'array', items: ['null', 'Level'] } },
+      ],
+    } satisfies RecordType
+
+    const result = roundTrip(
+      [LevelSchema, BookSchema],
+      ['book', { levels: [{ price: 1.5 }, null] }]
+    )
+
+    expect(result).toEqual({
+      sentAsAvro: true,
+      decoded: [['book', { levels: [{ price: 1.5 }, null] }]],
+    })
+  })
+})
