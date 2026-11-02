@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.36
+
+### Patch Changes
+
+- 176ea40: Replace type assertions with type guards or stricter typing, and mark the assertions that remain at trust boundaries. Behaviour is unchanged.
+
 ## 0.4.35
 
 ### Patch Changes

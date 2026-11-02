@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.34
+
+### Patch Changes
+
+- 176ea40: Replace type assertions with type guards or stricter typing, and mark the assertions that remain at trust boundaries. Behaviour is unchanged.
+
 ## 1.0.33
 
 ### Patch Changes

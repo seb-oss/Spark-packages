@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 8.1.10
+
+### Patch Changes
+
+- 176ea40: Replace type assertions with type guards or stricter typing, and mark the assertions that remain at trust boundaries. Behaviour is unchanged.
+- Updated dependencies [176ea40]
+  - @sebspark/memredis@1.0.9
+
 ## 8.1.9
 
 ### Patch Changes

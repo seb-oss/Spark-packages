@@ -1,5 +1,11 @@
 # @sebspark/memredis
 
+## 1.0.9
+
+### Patch Changes
+
+- 176ea40: `hSet(key, map)` now stores every entry of a `Map`, the same way Redis does. Previously it silently stored nothing. `hSet` and `ttl` no longer use type assertions.
+
 ## 1.0.8
 
 ### Patch Changes

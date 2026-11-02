@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.4.3
+
+### Patch Changes
+
+- 176ea40: `disposable()` now always returns a promise from `[Symbol.asyncDispose]`, even when the supplied `dispose` function is synchronous. It also requires an object emulator (`T extends object`), which it always did at runtime. Internal type assertions were replaced with type guards.
+
 ## 0.4.2
 
 ### Patch Changes

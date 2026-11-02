@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.4.2
+
+### Patch Changes
+
+- 176ea40: Response attributes are read with type guards instead of type assertions. Values with an unexpected type, for example a non-numeric `took`, are now omitted instead of being recorded as-is. Non-JSON response bodies are ignored.
+
 ## 0.4.1
 
 ### Patch Changes

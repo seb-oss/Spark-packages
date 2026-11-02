@@ -1,5 +1,11 @@
 # @sebspark/cli-tester
 
+## 1.0.23
+
+### Patch Changes
+
+- 176ea40: `Prompt<'select'>` now resolves to `SelectPrompt | CheckboxPrompt` and `Prompt<undefined>` to the union of all prompt types, so narrowing a parsed prompt works without type assertions. The internal sleep helper was replaced with `node:timers/promises`.
+
 ## 1.0.22
 
 ### Patch Changes

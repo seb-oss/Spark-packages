@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.8
+
+### Patch Changes
+
+- 176ea40: `toCursorListEntity` no longer uses type assertions to build its links. Its behaviour is unchanged.
+
 ## 0.1.7
 
 ### Patch Changes

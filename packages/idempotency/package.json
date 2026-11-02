@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/idempotency",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/memredis": "1.0.8",
+    "@sebspark/memredis": "1.0.9",
     "@sebspark/tsconfig": "3.0.28",
     "typescript": "7.0.2",
     "vite": "8.3.5",

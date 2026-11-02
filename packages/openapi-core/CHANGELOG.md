@@ -1,5 +1,25 @@
 # @sebspark/openapi-core
 
+## 4.1.26
+
+### Patch Changes
+
+- 176ea40: Fixed the client argument types:
+
+  - `RequestArgs` no longer includes Express `Request`. These are the arguments a client passes to `BaseClient` methods, built as plain objects, so calls such as `client.post(url, { body, headers })` now type-check without casts. Server handlers keep their own `Req & { ... }` types.
+  - `PayloadRequestArgs.body` is now `unknown` instead of `Record<string, string>`. The client sends any JSON body, including numbers, nested objects and arrays.
+
+- 176ea40: Fix several bugs in the OpenAPI schema helpers:
+
+  - `disableUnimplementedPaths` only marks operations. Before, it crashed on path items that had a `summary`, a `description` or a `$ref`.
+  - `flattenEnums` also flattens path-level parameters. It skips component parameters that have no `schema` instead of crashing. It only merges refs whose enums are all strings, so numeric enums no longer become `type: 'string'`.
+  - `resolveRef` returns `undefined` when the ref points to a value that is not an object.
+
+  The `content` map on `RequestBodyObject` and `ResponseObject` no longer requires an `application/json` entry. OpenAPI allows any set of media types, so a lookup such as `content['application/json']` is now typed as possibly `undefined`.
+
+- Updated dependencies [176ea40]
+  - @sebspark/retry@1.0.21
+
 ## 4.1.25
 
 ### Patch Changes

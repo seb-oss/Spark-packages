@@ -1,5 +1,21 @@
 # @sebspark/openapi-client
 
+## 4.2.25
+
+### Patch Changes
+
+- 176ea40: - Array request bodies are now sent as JSON arrays. Previously they were merged into an object with index keys (`{ "0": ..., "1": ... }`).
+  - Non-`Error` values thrown by `authorizationTokenGenerator`, `authorizationTokenRefresh` or the GraphQL health check are now logged as `Error`s, so their message is kept.
+  - `axios-auth-refresh` is imported through its named export instead of a default-export interop workaround.
+  - Internal type assertions were removed.
+- Updated dependencies [176ea40]
+- Updated dependencies [176ea40]
+- Updated dependencies [176ea40]
+- Updated dependencies [176ea40]
+  - @sebspark/retry@1.0.21
+  - @sebspark/openapi-core@4.1.26
+  - @sebspark/otel@4.2.2
+
 ## 4.2.24
 
 ### Patch Changes
