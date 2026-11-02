@@ -40,13 +40,13 @@ describe('createAvroParser', () => {
 
   it('Encoder constructor creates an AvroEncoder instance', () => {
     const parser = createAvroParser([HelloSchema])
-    const encoder = new (parser.Encoder as new () => AvroEncoder)()
+    const encoder = new parser.Encoder()
     expect(encoder).toBeInstanceOf(AvroEncoder)
   })
 
   it('Decoder constructor creates an AvroDecoder instance', () => {
     const parser = createAvroParser([HelloSchema])
-    const decoder = new (parser.Decoder as new () => AvroDecoder)()
+    const decoder = new parser.Decoder()
     expect(decoder).toBeInstanceOf(AvroDecoder)
   })
 
@@ -64,7 +64,7 @@ const makeType = () => {
       { name: 'data', type: [HelloSchema] },
     ],
   } satisfies RecordType
-  return Type.forSchema(schema)
+  return Type.forSchema(schema, { wrapUnions: true })
 }
 
 describe('AvroEncoder', () => {
@@ -77,7 +77,7 @@ describe('AvroEncoder', () => {
       nsp: '/',
     })
     expect(result).toHaveLength(1)
-    expect(result[0]).toBeTruthy()
+    expect(Buffer.isBuffer(result[0])).toBe(true)
   })
 
   it('uses default nsp "/" when nsp is absent', () => {
@@ -158,6 +158,58 @@ describe('AvroDecoder', () => {
     decoder.add(buffer)
 
     expect(decoded).toHaveLength(1)
+  })
+
+  it('decodes a packet without id or attachments into a socket.io Packet without them', () => {
+    const parser = createAvroParser([HelloSchema])
+    const encoder = new parser.Encoder()
+    const decoder = new parser.Decoder()
+    const decoded: unknown[] = []
+    decoder.on('decoded', (packet) => decoded.push(packet))
+
+    const [buffer] = encoder.encode({
+      type: PacketType.EVENT,
+      data: ['hello', { greeting: 'hi' }],
+      nsp: '/',
+    })
+    expect(Buffer.isBuffer(buffer)).toBe(true)
+    decoder.add(buffer)
+
+    expect(decoded).toEqual([
+      {
+        type: PacketType.EVENT,
+        nsp: '/',
+        data: ['hello', { greeting: 'hi' }],
+      },
+    ])
+  })
+
+  it('round-trips id and attachments, including ack id 0', () => {
+    const parser = createAvroParser([HelloSchema])
+    const encoder = new parser.Encoder()
+    const decoder = new parser.Decoder()
+    const decoded: unknown[] = []
+    decoder.on('decoded', (packet) => decoded.push(packet))
+
+    const [buffer] = encoder.encode({
+      type: PacketType.EVENT,
+      data: ['hello', { greeting: 'hi' }],
+      nsp: '/',
+      id: 0,
+      attachments: 0,
+    })
+    expect(Buffer.isBuffer(buffer)).toBe(true)
+    decoder.add(buffer)
+
+    expect(decoded).toEqual([
+      {
+        type: PacketType.EVENT,
+        nsp: '/',
+        id: 0,
+        attachments: 0,
+        data: ['hello', { greeting: 'hi' }],
+      },
+    ])
   })
 
   it('handles ArrayBuffer', () => {

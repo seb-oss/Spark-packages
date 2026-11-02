@@ -64,4 +64,6 @@ export interface OutgoingHttpEnrichmentConfig extends InstrumentationConfig {
   ignoreOutgoingPaths?: string[]
 }
 
-export type ResolvedConfig = Required<OutgoingHttpEnrichmentConfig>
+export type ResolvedConfig = Required<
+  Omit<OutgoingHttpEnrichmentConfig, 'enabled'>
+>

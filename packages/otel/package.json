@@ -20,7 +20,7 @@
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@opentelemetry/api": "1.10.0",

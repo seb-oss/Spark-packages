@@ -46,7 +46,9 @@ export type Liveness = Status & {
 }
 
 export type Freshness = {
-  lastChecked: string
+  /** `null` until the first check has completed. */
+  lastChecked: string | null
+  /** `null` until a check has succeeded. */
   lastSuccess: string | null
 }
 

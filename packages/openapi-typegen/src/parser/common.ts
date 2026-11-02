@@ -20,13 +20,16 @@ export const parseEnumType = (
   return { name, type: 'enum', values }
 }
 
-/* istanbul ignore next */
-type SchemaPath =
-  | 'schemas'
-  | 'parameters'
-  | 'headers'
-  | 'requestBodies'
-  | 'securitySchemes'
+const SCHEMA_PATHS = [
+  'schemas',
+  'parameters',
+  'headers',
+  'requestBodies',
+  'securitySchemes',
+] as const
+type SchemaPath = (typeof SCHEMA_PATHS)[number]
+const isSchemaPath = (path: string): path is SchemaPath =>
+  SCHEMA_PATHS.some((p) => p === path)
 /* istanbul ignore next */
 type SchemaType =
   | SchemaObject
@@ -39,9 +42,10 @@ export const findRef = <T extends SchemaType>(
   ref: string
 ): T => {
   const [, , path, name] = ref.split('/')
-  const schemaPath = components[path as SchemaPath]
+  const schemaPath = isSchemaPath(path) ? components[path] : undefined
   /* istanbul ignore next */
   if (!schemaPath?.[name]) throw new Error(`Cannot find ref ${ref}`)
+  // biome-ignore lint/plugin/no-type-assertion: the caller states which component kind the ref points to
   return schemaPath[name] as T
 }
 
@@ -49,11 +53,15 @@ type Documented = {
   title?: string
   description?: string
 }
-export const parseDocumentation = (
-  source: Partial<Documented>
-): Partial<Documented> => {
+export const parseDocumentation = (source: object): Partial<Documented> => {
   const documented: Documented = {}
-  if (source.title) documented.title = source.title
-  if (source.description) documented.description = source.description
+  if ('title' in source && typeof source.title === 'string' && source.title)
+    documented.title = source.title
+  if (
+    'description' in source &&
+    typeof source.description === 'string' &&
+    source.description
+  )
+    documented.description = source.description
   return documented
 }

@@ -10,7 +10,6 @@ import { throttle } from './timing'
 import type {
   DependencyCheck,
   HealthSummary,
-  Impact,
   ReadinessPayload,
   ReadinessSummary,
   StatusValue,
@@ -247,7 +246,7 @@ export class HealthMonitor {
 
     for (let i = 0; i < settled.length; i++) {
       const s = settled[i]
-      const [name] = entries[i]
+      const [name, monitor] = entries[i]
 
       if (s.status === 'fulfilled') {
         const [, check] = s.value
@@ -255,7 +254,7 @@ export class HealthMonitor {
       } else {
         checks[name] = {
           status: 'error',
-          impact: this.dependencies.get(name)?.impact as Impact,
+          impact: monitor.impact,
           mode: 'polled',
           freshness: {
             lastChecked: new Date().toISOString(),
@@ -347,7 +346,7 @@ export class HealthMonitor {
     return payload
   }
 
-  public async health() {
+  public async health(): Promise<HealthSummary> {
     const { status, checks, summary } = await this.ready()
     const { timestamp, system, process } = this.live()
 
@@ -358,7 +357,7 @@ export class HealthMonitor {
       process,
       checks,
       summary,
-    } as HealthSummary
+    }
   }
 
   /**

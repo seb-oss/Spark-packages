@@ -7,7 +7,7 @@ const SELECT_TEXT =
 
 describe('parse', () => {
   it('parses a select prompt when text matches parseSelect format', () => {
-    const result = parse(SELECT_TEXT)
+    const result = parse(SELECT_TEXT, 'select')
     expect(result.type).toBe('select')
     expect(result.message).toBe('choose one')
     expect(result.options).toContain('first option')

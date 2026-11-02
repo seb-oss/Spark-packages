@@ -19,9 +19,8 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "pretest": "yarn generate",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "test": "yarn generate && vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",

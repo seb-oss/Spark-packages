@@ -38,13 +38,13 @@ export const createStreamHandle = <A, R>(
   const queue: Array<{ resolve: () => void; transportCb: ResponseCb<R> }> = []
   let queueResolve: (() => void) | null = null
   let activeTransportCb: ResponseCb<R> | null = null
-  let latestResponse: R | undefined
+  let latest: { response: R } | undefined
   let hasBeenCalled = false
 
   const responder: StreamResponder<A, R> = async (args, cb) => {
-    latestResponse = initializer(args)
+    latest = { response: initializer(args) }
     activeTransportCb = cb
-    await cb(latestResponse)
+    await cb(latest.response)
 
     // Park here, keeping the streaming connection open, until waitForCall()
     // dequeues this entry and calls entry.resolve().
@@ -61,7 +61,7 @@ export const createStreamHandle = <A, R>(
 
   return {
     get latestResponse() {
-      return latestResponse
+      return latest?.response
     },
     get hasBeenCalled() {
       return hasBeenCalled
@@ -83,12 +83,11 @@ export const createStreamHandle = <A, R>(
     },
 
     async send(modifier: (prev: R) => R): Promise<void> {
-      if (activeTransportCb === null) {
+      if (activeTransportCb === null || latest === undefined) {
         throw new Error('No active stream — call waitForCall() first')
       }
-      const next = modifier(latestResponse as R)
-      latestResponse = next
-      await activeTransportCb(next)
+      latest = { response: modifier(latest.response) }
+      await activeTransportCb(latest.response)
     },
   }
 }

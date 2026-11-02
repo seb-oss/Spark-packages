@@ -19,13 +19,14 @@ export type { Disposable }
  *
  * @template T The base emulator type.
  */
-export const disposable = <T>(
+export const disposable = <T extends object>(
   emulator: T,
   dispose: () => void | Promise<void>
-): Disposable<T> => {
-  const d = emulator as Disposable<T>
-  d.dispose = dispose
-  d[Symbol.dispose] = dispose
-  d[Symbol.asyncDispose] = dispose as () => Promise<void>
-  return d
-}
+): Disposable<T> =>
+  Object.assign(emulator, {
+    dispose,
+    [Symbol.dispose]: dispose,
+    [Symbol.asyncDispose]: async () => {
+      await dispose()
+    },
+  })

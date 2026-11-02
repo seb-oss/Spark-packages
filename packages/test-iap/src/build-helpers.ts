@@ -13,7 +13,7 @@ export const getThisFileUrl = (): string => {
   }
   // biome-ignore lint/security/noGlobalEval: needed for cjs/esm compatibility
   // biome-ignore lint/complexity/noCommaOperator: needed for cjs/esm compatibility
-  return (0, eval)('import.meta.url') as string
+  return (0, eval)('import.meta.url')
 }
 
 /** Directory of the current compiled file (e.g., your package's dist dir) */

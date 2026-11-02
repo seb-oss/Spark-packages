@@ -24,10 +24,10 @@ pnpm add @sebspark/otel
 import { initialize, instrumentations, dispose } from '@sebspark/otel'
 
 await initialize(
-  instrumentations.undici,
-  instrumentations.http,
-  instrumentations.express,
-  instrumentations.redis,
+  instrumentations.undici(),
+  instrumentations.http(),
+  instrumentations.express(),
+  instrumentations.redis(),
 )
 
 // start your application
@@ -78,11 +78,11 @@ process.env.OTEL_SERVICE_NAME ??= pkg.name
 process.env.OTEL_SERVICE_VERSION ??= pkg.version
 
 await initialize(
-  instrumentations.http,
-  instrumentations.express,
-  instrumentations.grpc,
-  instrumentations.redis,
-  instrumentations.undici,
+  instrumentations.http(),
+  instrumentations.express(),
+  instrumentations.grpc(),
+  instrumentations.redis(),
+  instrumentations.undici(),
 )
 ```
 

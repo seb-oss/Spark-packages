@@ -10,7 +10,7 @@ const port = PORT && !Number.isNaN(Number(PORT)) ? Number(PORT) : 3000
 assert(TARGET, 'TARGET must be set')
 let targetUrl: URL
 try {
-  targetUrl = new URL(TARGET as string)
+  targetUrl = new URL(TARGET)
 } catch {
   throw new Error(
     'TARGET must be an absolute URL, e.g. http://core:3000 or ws://gateway:4000'
@@ -40,7 +40,7 @@ if (resolvedMode === 'downstream') {
     'DOWNSTREAM must be set when MODE=downstream (or when inferred)'
   )
   try {
-    const u = new URL(DOWNSTREAM as string)
+    const u = new URL(DOWNSTREAM)
     const allowedDownstreamProtocols = new Set(['http:', 'https:'])
     assert(
       allowedDownstreamProtocols.has(u.protocol),

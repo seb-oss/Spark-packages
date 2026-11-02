@@ -16,7 +16,11 @@ import {
   applyResponseAttributes,
 } from './apply-attributes'
 import { isClientRequest, isIncomingMessage, resolve } from './helpers'
-import { normHttpRequest, normHttpResponse } from './normalize-http'
+import {
+  normClientRequest,
+  normHttpRequest,
+  normHttpResponse,
+} from './normalize-http'
 import type { OutgoingHttpEnrichmentConfig } from './types'
 
 /**
@@ -87,7 +91,7 @@ export const buildHttpConfig = (
         )
       }
 
-      applyRequestAttributes(span, normHttpRequest(request), cfg)
+      applyRequestAttributes(span, normClientRequest(request), cfg)
     },
 
     responseHook(span, response) {

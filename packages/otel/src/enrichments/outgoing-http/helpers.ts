@@ -16,7 +16,7 @@ export const resolve = (
 export const isClientRequest = (
   req: ClientRequest | IncomingMessage
 ): req is ClientRequest =>
-  typeof (req as ClientRequest).getHeader === 'function'
+  'getHeader' in req && typeof req.getHeader === 'function'
 
 export const isIncomingMessage = (res: unknown): res is IncomingMessage =>
   res != null &&

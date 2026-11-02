@@ -1,5 +1,5 @@
 import { SpanStatusCode } from '@opentelemetry/api'
-import { Resource } from '@opentelemetry/resources'
+import type { Resource } from '@opentelemetry/resources'
 import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import {
   afterEach,

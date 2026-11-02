@@ -1,5 +1,4 @@
 import type { RecordType } from '@sebspark/avsc-isometric'
-import type { Packet } from 'socket.io-parser'
 
 export const kebabCase = (str: string) =>
   str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
@@ -20,9 +19,17 @@ export const SOCKET_PACKET_SCHEMA = {
 
 export type SocketPacketSchema = typeof SOCKET_PACKET_SCHEMA
 
-export interface AvroSocketPacket extends Omit<Packet, 'data'> {
-  // biome-ignore lint/suspicious/noExplicitAny: Defined in outside package
-  data: { [key: string]: any }
+/**
+ * A socket.io packet as represented by avsc with `wrapUnions: true`:
+ * nullable ints are `{ int: n } | null` and `data` is keyed by the
+ * PascalCase schema name of the event.
+ */
+export interface AvroSocketPacket {
+  type: number
+  nsp: string
+  id: { int: number } | null
+  attachments: { int: number } | null
+  data: Record<string, unknown>
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: Defined in outside package

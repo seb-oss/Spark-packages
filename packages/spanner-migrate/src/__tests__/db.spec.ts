@@ -276,7 +276,7 @@ describe('prepare', () => {
           description: 'Add Users Table',
           up: 'CREATE TABLE users (id STRING(36))',
           down: 'DROP TABLE users',
-          appliedAt: '2025-01-19T14:30:00Z',
+          appliedAt: new Date('2025-01-19T14:30:00Z'),
         },
       ]
       database.run.mockImplementation(async () => [mockMigrations])
@@ -291,6 +291,14 @@ describe('prepare', () => {
         })
       )
       expect(migrations).toEqual(mockMigrations)
+    })
+
+    it('rejects a row that is not a migration', async () => {
+      database.run.mockImplementation(async () => [[{ id: 42 }]])
+
+      await expect(getAppliedMigrations(database)).rejects.toThrow(
+        'Failed to get applied migrations: Invalid migration row'
+      )
     })
 
     it('throws an error if the query fails', async () => {

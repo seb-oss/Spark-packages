@@ -1,5 +1,7 @@
 import { TimeoutError } from './types'
 
+// Global setTimeout on purpose: node:timers/promises is not controlled by
+// vi.useFakeTimers(), so switching would change timing for consumers' tests.
 export const wait = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms))
 
@@ -12,8 +14,8 @@ export const runAgainstTimeout = <T>(
   promise: Promise<T>,
   ms?: number | undefined
 ): Promise<T> => {
-  if ((ms as number) > 0) {
-    return Promise.race([promise, runTimeoutTimer(ms as number)])
+  if (ms !== undefined && ms > 0) {
+    return Promise.race([promise, runTimeoutTimer(ms)])
   }
 
   return promise
@@ -27,18 +29,16 @@ export const runAgainstTimeout = <T>(
  *
  * Fully preserves the original function signature.
  */
-export const throttle = <F extends (...args: unknown[]) => Promise<unknown>>(
-  fn: F,
+export const throttle = <A extends unknown[], T>(
+  fn: (...args: A) => Promise<T>,
   ms: number
-) => {
-  type R = ReturnType<F> // a Promise<T>
-
-  let current: R | null = null
+): ((...args: A) => Promise<T>) => {
+  let current: Promise<T> | null = null
   let clearHandle: NodeJS.Timeout | null = null
 
-  const wrapped = (...args: Parameters<F>): R => {
+  return (...args: A): Promise<T> => {
     if (!current) {
-      current = fn(...args) as R
+      current = fn(...args)
 
       /* istanbul ignore next */
       if (clearHandle) {
@@ -64,9 +64,6 @@ export const throttle = <F extends (...args: unknown[]) => Promise<unknown>>(
 
     return current
   }
-
-  // Cast to F so the returned function has the *identical* callable type
-  return wrapped as unknown as F
 }
 
 /**
@@ -74,8 +71,6 @@ export const throttle = <F extends (...args: unknown[]) => Promise<unknown>>(
  * After the Promise settles (resolve or reject), the next call will invoke the function again.
  * Essentially just throttled with timeout 0
  */
-export const singleFlight = <
-  F extends (...args: unknown[]) => Promise<unknown>,
->(
-  fn: F
-) => throttle<F>(fn, 0)
+export const singleFlight = <A extends unknown[], T>(
+  fn: (...args: A) => Promise<T>
+) => throttle(fn, 0)

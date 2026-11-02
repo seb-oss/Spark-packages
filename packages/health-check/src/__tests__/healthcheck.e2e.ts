@@ -202,6 +202,10 @@ describe('health-check', () => {
       const pubsubCheck = (res.body.data as ReadinessPayload).checks.pubsub
       expect(pubsubCheck).toBeDefined()
       expect(pubsubCheck.status).toEqual('unknown')
+      expect(pubsubCheck.freshness).toEqual({
+        lastChecked: null,
+        lastSuccess: null,
+      })
     })
     it('updates with pubsub polled, async dependency check', async () => {
       await waitFor(

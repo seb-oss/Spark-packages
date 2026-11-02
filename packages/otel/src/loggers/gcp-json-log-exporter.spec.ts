@@ -161,6 +161,23 @@ describe('GcpJsonLogExporter', () => {
     expect(parsed['logging.googleapis.com/trace']).toBe('abc123')
   })
 
+  it('ignores trace_id and span_id that are not strings', () => {
+    delete process.env.GCP_PROJECT
+    delete process.env.GOOGLE_CLOUD_PROJECT
+    const exporter = new GcpJsonLogExporter()
+
+    const record = createLogRecord('INFO', {
+      attributes: { trace_id: 123, span_id: true },
+    })
+
+    exporter.export([record], () => {})
+
+    const output = (stdoutWrite.mock.calls[0][0] as string).trim()
+    const parsed = JSON.parse(output)
+
+    expect(parsed['logging.googleapis.com/trace']).toBeUndefined()
+    expect(parsed['logging.googleapis.com/spanId']).toBeUndefined()
+  })
   it('should put custom attributes in logging.googleapis.com/labels', () => {
     const exporter = new GcpJsonLogExporter()
 

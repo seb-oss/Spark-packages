@@ -140,7 +140,7 @@ export class DependencyMonitor {
   /** Last observed metrics (e.g., latency). */
   private observed?: Observed
   /** Freshness timestamps for last check/success. */
-  private freshness?: Freshness
+  private freshness: Freshness = { lastChecked: null, lastSuccess: null }
   /** Optional details returned by the helth check call. */
   private details?: Record<string, unknown>
 
@@ -193,10 +193,11 @@ export class DependencyMonitor {
       return
     }
 
-    if (this.config.syncCall) {
-      await this.doSyncCheck()
+    const { config } = this
+    if (config.syncCall) {
+      await this.doSyncCheck(config)
     } else {
-      this.doAsyncCheck()
+      this.doAsyncCheck(config)
     }
   }
 
@@ -207,10 +208,11 @@ export class DependencyMonitor {
    * - Degraded if `"degraded"` or latency between `(healthyLimitMs, timeoutLimitMs]`
    * - Error if `"error"`, `Error`, or timeout exceeded
    */
-  private async doSyncCheck() {
+  private async doSyncCheck({
+    syncCall,
+    timeoutLimitMs,
+  }: SyncInlineConfig | SyncPolledConfig) {
     const start = performance.now()
-
-    const { syncCall, timeoutLimitMs } = this.config as SyncInlineConfig
 
     try {
       const response = await runAgainstTimeout(syncCall(), timeoutLimitMs)
@@ -218,7 +220,9 @@ export class DependencyMonitor {
 
       this.handleDependencyResponse(response, duration)
     } catch (err) {
-      this.handleDependencyError(err as Error)
+      this.handleDependencyError(
+        err instanceof Error ? err : new Error(String(err))
+      )
     }
   }
 
@@ -228,10 +232,11 @@ export class DependencyMonitor {
    *   if no callback result arrives within the thresholds.
    * - On callback, clears timers and classifies the result with latency.
    */
-  private async doAsyncCheck() {
-    const { asyncCall, healthyLimitMs, timeoutLimitMs } = this
-      .config as AsyncConfig
-
+  private async doAsyncCheck({
+    asyncCall,
+    healthyLimitMs,
+    timeoutLimitMs,
+  }: AsyncConfig) {
     const start = performance.now()
     let callActive = true
     let healthTimeout: NodeJS.Timeout | undefined
@@ -315,11 +320,9 @@ export class DependencyMonitor {
       message: error.message,
     }
 
-    const end = new Date()
-    if (this.freshness) {
-      this.freshness.lastChecked = end.toISOString()
-    } else {
-      this.freshness = { lastChecked: end.toISOString(), lastSuccess: null }
+    this.freshness = {
+      ...this.freshness,
+      lastChecked: new Date().toISOString(),
     }
 
     // Schedule retry/poll if configured.
@@ -345,10 +348,10 @@ export class DependencyMonitor {
     }
 
     const result: DependencyCheck = {
-      status: this.status as StatusValue,
+      status: this.status,
       impact: this.config.impact,
       mode: this.mode,
-      freshness: this.freshness as Freshness,
+      freshness: this.freshness,
       details: this.details,
       observed: this.observed,
       error: this.error,

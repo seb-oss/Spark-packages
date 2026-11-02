@@ -16,13 +16,15 @@ const parseSchema = (schema: Schema): string => {
   let itemName: string | undefined
   if (!name) {
     // handle array root type
-    // biome-ignore lint/suspicious/noExplicitAny: any is required for dynamic type
-    const dynamic = type as any
+    const itemsName =
+      'itemsType' in type && type.itemsType instanceof Type
+        ? type.itemsType.name
+        : undefined
 
-    if (!dynamic.itemsType?.name) throw new Error('Schema must have a name')
+    if (!itemsName) throw new Error('Schema must have a name')
 
-    name = `${dynamic.itemsType?.name}sArray`
-    itemName = `${dynamic.itemsType?.name}[]`
+    name = `${itemsName}sArray`
+    itemName = `${itemsName}[]`
   }
 
   record[name] = type
@@ -61,6 +63,7 @@ export const parse = (...schemas: Schema[]): string => {
       const parsedSchema = parseSchema(currentSchema)
       parsed.push(parsedSchema)
     } catch (err) {
+      // biome-ignore lint/plugin/no-type-assertion: Type.forSchema throws Error
       const error = err as Error
       if (error.message.startsWith('undefined type name')) {
         schemas.push(currentSchema)

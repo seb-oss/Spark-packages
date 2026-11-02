@@ -19,7 +19,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@sebspark/gcp-iam": "3.0.59"

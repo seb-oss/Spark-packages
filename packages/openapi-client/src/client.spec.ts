@@ -100,9 +100,9 @@ describe('TypedClient', () => {
 
       // Patch user age
       const patched = { ...user1, age: 99 }
-      const patchClient = client as unknown as TypedAxiosClient<
-        Pick<BaseClient, 'patch'>
-      >
+      const patchClient = TypedClient<Pick<BaseClient, 'patch'>>(
+        `http://localhost:${PORT}`
+      )
       await expect(
         patchClient.patch(`/users/${user1.id}`, {
           body: patched,

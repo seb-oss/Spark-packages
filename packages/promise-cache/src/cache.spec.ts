@@ -1,9 +1,8 @@
+import { setTimeout } from 'node:timers/promises'
 import { type IPersistor, MemRedis } from '@sebspark/memredis'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { createCache } from './cache'
 import type { Cache } from './types'
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 describe('cache', () => {
   let persistor: IPersistor
@@ -224,7 +223,7 @@ describe('cache', () => {
     vi.useRealTimers()
 
     const delegate = vi.fn(async (x: number) => {
-      await wait(100) // Simulate delay
+      await setTimeout(100) // Simulate delay
       return x * 2
     })
 

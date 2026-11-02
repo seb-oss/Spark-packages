@@ -9,7 +9,7 @@ import {
 import fss from 'fast-safe-stringify'
 import { colors, levelColorMap, levelIconMap } from './style'
 
-const stringify = fss.default.stableStringify
+const stringify = fss.stableStringify
 
 type IResource = Pick<Resource, 'attributes'>
 type IInstrumentation = ReadableLogRecord['instrumentationScope']

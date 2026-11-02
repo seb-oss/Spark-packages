@@ -55,6 +55,7 @@ const readDocs = async (input: string): Promise<Doc[]> => {
       case '.json': {
         console.log(`Reading ${p}`)
         const txt = await readFile(p, 'utf8')
+        // biome-ignore lint/plugin/no-type-assertion: input files are declared to be OpenAPI documents (trust boundary)
         doc = JSON.parse(txt) as OpenApiDocument
         break
       }
@@ -62,6 +63,7 @@ const readDocs = async (input: string): Promise<Doc[]> => {
       case '.yaml': {
         console.log(`Reading ${p}`)
         const txt = await readFile(p, 'utf8')
+        // biome-ignore lint/plugin/no-type-assertion: input files are declared to be OpenAPI documents (trust boundary)
         doc = YAML.parse(txt) as OpenApiDocument
         break
       }

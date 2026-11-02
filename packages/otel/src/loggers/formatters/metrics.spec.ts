@@ -1,4 +1,4 @@
-import { Resource } from '@opentelemetry/resources'
+import type { Resource } from '@opentelemetry/resources'
 import {
   DataPointType,
   type MetricData,

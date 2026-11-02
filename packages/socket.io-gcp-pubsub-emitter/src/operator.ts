@@ -39,7 +39,7 @@ export class BroadcastOperator<EmitEvents extends EventsMap>
     ...args: EventParams<EmitEvents, Ev>
   ): true {
     if (RESERVED_EVENTS.has(ev)) {
-      throw new Error(`"${ev as string}" is a reserved event name`)
+      throw new Error(`"${String(ev)}" is a reserved event name`)
     }
     const uid = randomBytes(8).toString('hex')
     const nsp = this.broadcastOptions.nsp

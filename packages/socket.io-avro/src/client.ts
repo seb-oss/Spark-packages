@@ -20,5 +20,6 @@ export const createClient = <C extends RecordType, S extends RecordType>(
   const options = opts || {}
   options.parser = createAvroParser([...serverSchemas, ...clientSchemas])
 
-  return io(uri, options) as Socket<ServerEvents, ClientEvents>
+  const socket: Socket<ServerEvents, ClientEvents> = io(uri, options)
+  return socket
 }

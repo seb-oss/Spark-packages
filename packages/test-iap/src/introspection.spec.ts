@@ -12,7 +12,11 @@ vi.mock('./jwt', () => ({
 import { introspect } from './introspection'
 // Use the real utils + introspect after mocks are set up
 import { createJwt, getRemoteJwt } from './jwt'
-import { getHeader, parseAuthorizationHeader } from './utils'
+import {
+  getHeader,
+  IntrospectionError,
+  parseAuthorizationHeader,
+} from './utils'
 
 const b64u = (o: unknown) =>
   Buffer.from(JSON.stringify(o)).toString('base64url')
@@ -89,6 +93,25 @@ describe('introspect', () => {
     const cfg: ProxyConfig = { target: 'http://core:3000', mode: 'local' }
 
     await expect(introspect(cfg, headers)).rejects.toBeInstanceOf(Error)
+  })
+
+  it('throws IntrospectionError when Authorization header is not a string', async () => {
+    const headers = { authorization: ['Bearer a', 'Bearer b'] }
+    const cfg: ProxyConfig = { target: 'http://core:3000', mode: 'local' }
+
+    await expect(introspect(cfg, headers)).rejects.toBeInstanceOf(
+      IntrospectionError
+    )
+  })
+
+  it('rejects when mode is downstream but no downstream URL is configured', async () => {
+    const headers = { authorization: `Bearer ${b64u({ sub: 'u-1' })}` }
+    const cfg: ProxyConfig = { target: 'http://core:3000', mode: 'downstream' }
+
+    await expect(introspect(cfg, headers)).rejects.toThrow(
+      'downstream URL is required when mode is downstream'
+    )
+    expect(getRemoteJwt).not.toHaveBeenCalled()
   })
 
   it('infers local mode when neither mode nor downstream is set', async () => {

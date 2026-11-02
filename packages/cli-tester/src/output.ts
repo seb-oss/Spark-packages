@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import { ansiPatterns } from './characters'
 import type { StdoutReader } from './stdout-reader'
 import { COMMAND_TIMEOUT } from './utils'
@@ -9,11 +10,8 @@ export const output = async (
   while (true) {
     const chunk = await Promise.race([
       reader.next(),
-      new Promise<never>((_, reject) => {
-        setTimeout(
-          () => reject(new Error('Timeout waiting for output')),
-          timeoutMs
-        )
+      setTimeout(timeoutMs).then((): never => {
+        throw new Error('Timeout waiting for output')
       }),
     ])
 

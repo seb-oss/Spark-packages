@@ -21,7 +21,7 @@
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "pretest:e2e": "yarn build",
     "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "jose": "6.2.14",

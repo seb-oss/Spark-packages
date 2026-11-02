@@ -25,7 +25,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome lint .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",

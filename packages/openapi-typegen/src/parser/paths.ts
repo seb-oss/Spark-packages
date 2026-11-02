@@ -8,14 +8,16 @@ import type {
   ResponsesObject,
   Verb,
 } from '@sebspark/openapi-core'
-import type { Path, TypeDefinition } from '../types'
+import { isReference } from '../typeGuards'
+import type { CustomType, Path, ResponseBody } from '../types'
 import { parseArgs } from './args'
 import { findRef, parseDocumentation } from './common'
 import { parseResponseBody } from './responseBodies'
 
 export const parsePaths = (doc: OpenApiDocument): Path[] =>
   Object.entries(/* istanbul ignore next */ doc.paths || {}).flatMap(
-    ([name, path]) => parsePath(name, path as PathItemObject, doc.components)
+    ([name, path]) =>
+      isReference(path) ? [] : parsePath(name, path, doc.components)
   )
 
 export const parsePath = (
@@ -101,13 +103,11 @@ const parseUrl = (url: string): string => url.replace(/{([^}]+)}/g, ':$1')
 
 const parseResponses = (
   responses: ResponsesObject
-): Record<number, TypeDefinition> => {
-  return Object.assign(
-    {},
-    ...Object.entries(responses).map(([code, response]) => {
-      return {
-        [Number.parseInt(code, 10)]: parseResponseBody(undefined, response),
-      } as Record<number, TypeDefinition>
-    })
+): Record<number, ResponseBody | CustomType> => {
+  return Object.fromEntries(
+    Object.entries(responses).map(([code, response]) => [
+      Number.parseInt(code, 10),
+      parseResponseBody(undefined, response),
+    ])
   )
 }

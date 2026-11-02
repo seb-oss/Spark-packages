@@ -46,6 +46,19 @@ describe('Hashes: hSet, hGet, hGetAll', () => {
       await memoryClient.hGetAll(key)
     )
   })
+  test('set Map / get all', async () => {
+    const key = 'key'
+    const value = new Map<string, string | number>([
+      ['foo', 'bar'],
+      ['num', 1],
+    ])
+    expect(await redisClient.hSet(key, value)).toEqual(
+      await memoryClient.hSet(key, value)
+    )
+    expect(await redisClient.hGetAll(key)).toEqual(
+      await memoryClient.hGetAll(key)
+    )
+  })
   test('set / get field', async () => {
     const key = 'key'
     const field = 'foo'

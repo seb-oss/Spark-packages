@@ -3,6 +3,7 @@ import type { OpenSearchClient } from '../client'
 import { bulkCreate, bulkIndex, bulkUpdate } from '../helpers'
 import type { IndexDefinition } from './common'
 import type { DocumentFor, WritableDocument } from './documents'
+import type { DeepPartial } from './utilityTypes'
 
 const vectorIndex = {
   index: 'vectors',
@@ -128,6 +129,15 @@ describe('writes', () => {
   test('bulk helpers reject unmapped fields when dynamic is strict', () => {
     // @ts-expect-error extra is not in the strict mapping
     bulkIndex<StrictIndex>('strict_v1', [{ id: 'a', extra: 1 }])
+  })
+
+  test('the bulkUpdate id function receives a partial document', () => {
+    bulkUpdate<StrictIndex>('strict_v1', [{ doc: {} }], (doc) => {
+      expectTypeOf(doc).toEqualTypeOf<
+        DeepPartial<WritableDocument<StrictIndex>>
+      >()
+      return 'a'
+    })
   })
 
   test('an unmapped field is unknown in a writable document', () => {

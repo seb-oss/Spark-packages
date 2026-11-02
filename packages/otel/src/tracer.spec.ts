@@ -1,4 +1,4 @@
-import { context, trace } from '@opentelemetry/api'
+import { context, SpanStatusCode, trace } from '@opentelemetry/api'
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { initialize } from './otel'
@@ -100,6 +100,28 @@ describe('getTracer', () => {
         }
       )
       expect(result).toEqual({ foo: 'bar' })
+    })
+    it('accepts span options without attributes, kind or startTime', async () => {
+      const tracer = getTracer('root-opts')
+      const result = await tracer.withTrace(
+        'root-span',
+        { root: true },
+        async () => 'ok'
+      )
+      expect(result).toBe('ok')
+    })
+    it('records the message of a non-Error throw on the span', async () => {
+      const tracer = getTracer('non-error-throw')
+      let traced: unknown
+      await expect(
+        tracer.withTrace('failing', async (span) => {
+          traced = span
+          throw 'boom'
+        })
+      ).rejects.toBe('boom')
+      expect(traced).toMatchObject({
+        status: { code: SpanStatusCode.ERROR, message: 'boom' },
+      })
     })
     it('accepts parent span only', async () => {
       const tracer = getTracer('parent-only')

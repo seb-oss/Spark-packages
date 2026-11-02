@@ -6,15 +6,6 @@ type EventuallyConfig = {
   interval?: number
 }
 
-/** A vitest assertion chain node — the object returned by `expect()`. */
-type VitestAssertion = ReturnType<typeof expect>
-
-/**
- * A member of a vitest assertion node: either another assertion (chain
- * property like `.not`) or a callable matcher (terminal method).
- */
-type AssertionMember = VitestAssertion | ((...args: unknown[]) => void)
-
 const DEFAULT_TIMEOUT = 1000
 const DEFAULT_INTERVAL = 50
 
@@ -24,27 +15,25 @@ const DEFAULT_INTERVAL = 50
  * `() => someVar` to observe a value that changes over time.
  */
 function getValue(received: unknown): unknown {
-  const isPlainFunction =
-    typeof received === 'function' && !('mock' in (received as object))
-  return isPlainFunction ? (received as () => unknown)() : received
+  return typeof received === 'function' && !('mock' in received)
+    ? received()
+    : received
 }
 
 /**
- * Walks an assertion chain by traversing `props` on the root object one step
- * at a time, returning the final object. Used to replay `.not`, `.resolves`,
- * etc. before invoking the terminal matcher.
+ * Reads `prop` from an assertion chain node. Chain nodes are objects or, for
+ * chai's chainable methods like `.a`, functions; anything else has no members.
  */
-function walkChain(root: VitestAssertion, props: string[]): VitestAssertion {
-  let node: unknown = root
-  for (const prop of props) {
-    node = (node as Record<string, unknown>)[prop]
-  }
-  return node as VitestAssertion
+function readMember(node: unknown, prop: string): unknown {
+  return (typeof node === 'object' && node !== null) ||
+    typeof node === 'function'
+    ? Reflect.get(node, prop)
+    : undefined
 }
 
 /**
- * Builds a fresh vitest assertion for `received` and walks to the node
- * described by `propChain`, returning both the node and the named member.
+ * Builds a fresh vitest assertion for `received` and walks `propChain` (e.g.
+ * `.not`, `.resolves`), returning the final node and its member `prop`.
  * Used to check whether a member is a method (terminal matcher) or a
  * chainable property like `.not`.
  */
@@ -52,11 +41,12 @@ function resolveAssertion(
   received: unknown,
   propChain: string[],
   prop: string
-): { target: VitestAssertion; member: AssertionMember } {
-  const root = expect(getValue(received))
-  const target = walkChain(root, propChain)
-  const member = (target as unknown as Record<string, AssertionMember>)[prop]
-  return { target, member }
+): { target: unknown; member: unknown } {
+  const target = propChain.reduce<unknown>(
+    readMember,
+    expect(getValue(received))
+  )
+  return { target, member: readMember(target, prop) }
 }
 
 /**
@@ -122,7 +112,7 @@ function createRetryProxy(
 
         // Speculatively resolve to check whether `prop` is a callable matcher
         // or a chainable property (e.g. `.not`).
-        const { target, member } = resolveAssertion(received, propChain, prop)
+        const { member } = resolveAssertion(received, propChain, prop)
 
         if (typeof member === 'function') {
           return (...args: unknown[]) =>
@@ -133,8 +123,10 @@ function createRetryProxy(
                   propChain,
                   prop
                 )
-                const matcher = m as (...a: unknown[]) => void
-                matcher.call(t, ...args)
+                if (typeof m !== 'function') {
+                  throw new TypeError(`${prop} is not a function`)
+                }
+                Reflect.apply(m, t, args)
               },
               timeout,
               interval
@@ -142,7 +134,6 @@ function createRetryProxy(
         }
 
         // Chainable property — record it and return a deeper proxy
-        void target // resolveAssertion called only for the type check above
         return createRetryProxy(received, config, [...propChain, prop])
       },
     }
@@ -152,15 +143,16 @@ function createRetryProxy(
 // Patch the Assertion prototype directly so eventually() can return our proxy.
 // expect.extend cannot be used here because vitest always returns `this` from
 // extended matchers, ignoring any return value.
-// biome-ignore lint/suspicious/noExplicitAny: needed for prototype access
-const assertionProto = Object.getPrototypeOf((expect as any)(undefined))
+const assertionProto = Object.getPrototypeOf(expect(undefined))
 assertionProto.eventually = function (config: EventuallyConfig = {}) {
   return createRetryProxy(this._obj, config)
 }
 
 declare module 'vitest' {
-  // biome-ignore lint/suspicious/noExplicitAny: must match vitest's Assertion signature exactly
-  interface Assertion<T = any> {
+  interface Matchers<
+    R extends void | Promise<void> = void | Promise<void>,
+    T = unknown,
+  > {
     eventually(config?: EventuallyConfig): PromisifyAssertion<T>
   }
 }

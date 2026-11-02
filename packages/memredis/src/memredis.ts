@@ -305,9 +305,10 @@ export class MemRedis implements IPersistor {
    */
   async ttl(key: string): Promise<number> {
     if (!this.store.has(key)) return -2 // Key does not exist
-    if (!this.expiryTimestamps.has(key)) return -1 // No TTL set
+    const expiry = this.expiryTimestamps.get(key)
+    if (expiry === undefined) return -1 // No TTL set
 
-    const timeLeft = (this.expiryTimestamps.get(key) as number) - Date.now()
+    const timeLeft = expiry - Date.now()
     return timeLeft > 0 ? Math.ceil(timeLeft / 1000) : -2 // Return in seconds
   }
 
@@ -394,18 +395,19 @@ export class MemRedis implements IPersistor {
    */
   async hSet(
     key: string,
-    fieldOrValue: string | HashValue,
-    value?: HashTypes
+    ...args: [field: string, value: HashTypes] | [value: HashValue]
   ): Promise<number> {
     this.assertType(key, 'hash')
     const existingHash = JSON.parse(this.store.get(key) ?? '{}')
     let newFields = 0
-    const hashValue =
-      value !== undefined
-        ? { [fieldOrValue as string]: value }
-        : (fieldOrValue as HashValue)
+    const entries =
+      args.length === 2
+        ? [args]
+        : args[0] instanceof Map
+          ? [...args[0]]
+          : Object.entries(args[0])
 
-    for (const [key, val] of Object.entries(hashValue)) {
+    for (const [key, val] of entries) {
       if (!Object.hasOwn(existingHash, key)) {
         newFields++
       }
@@ -1241,17 +1243,14 @@ class MemRedisMulti implements IPersistorMulti {
    */
   hSet(
     key: string,
-    fieldOrValue: string | HashValue,
-    value?: HashTypes
+    ...args: [field: string, value: HashTypes] | [value: HashValue]
   ): IPersistorMulti {
-    if (value !== undefined) {
-      this.commands.add(() =>
-        this.persistor.hSet(key, fieldOrValue as string, value)
-      )
+    if (args.length === 2) {
+      const [field, value] = args
+      this.commands.add(() => this.persistor.hSet(key, field, value))
     } else {
-      this.commands.add(() =>
-        this.persistor.hSet(key, fieldOrValue as HashValue)
-      )
+      const [value] = args
+      this.commands.add(() => this.persistor.hSet(key, value))
     }
 
     return this

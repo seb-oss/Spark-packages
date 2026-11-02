@@ -118,6 +118,23 @@ describe('apply', () => {
         `Failed to apply migration ${migration.id}: Database error`
       )
     })
+
+    it('includes a non-Error rejection in the error message', async () => {
+      const migration: Migration = {
+        id: '20250119T143000_add_users_table',
+        description: 'Add users table',
+        up: 'CREATE TABLE users (id STRING NOT NULL) PRIMARY KEY (id)',
+        down: 'DROP TABLE users',
+      }
+
+      db.updateSchema.mockImplementation(async () => {
+        throw 'permission denied'
+      })
+
+      await expect(applyUp(db, migration)).rejects.toThrow(
+        `Failed to apply migration ${migration.id}: permission denied`
+      )
+    })
   })
 
   describe('applyDown', () => {
@@ -171,6 +188,13 @@ describe('apply', () => {
       await expect(applyDown(db)).rejects.toThrow(
         'No migrations found to roll back.'
       )
+    })
+
+    it('rejects a last migration row that is not a migration', async () => {
+      db.run.mockImplementation(async () => [[{ id: 42 }]])
+
+      await expect(applyDown(db)).rejects.toThrow('Invalid migration row')
+      expect(db.updateSchema).not.toHaveBeenCalled()
     })
 
     it('should throw an error if the down script fails', async () => {

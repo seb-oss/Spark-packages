@@ -68,12 +68,14 @@ export class IdempotencyGuard<R, V = R> {
 
     const existing = await client.get(key)
     if (existing !== null) {
+      // biome-ignore lint/plugin/no-type-assertion: the value was stored by end(), which accepts V
       guard.conflict = { value: JSON.parse(existing) as V }
       guard.controller.abort()
       return guard
     }
 
     const listener = (message: string) => {
+      // biome-ignore lint/plugin/no-type-assertion: the message was published by end(), which accepts V
       guard.conflict = { value: JSON.parse(message) as V }
       guard.controller.abort()
     }
@@ -123,9 +125,9 @@ export class IdempotencyGuard<R, V = R> {
         const serialized = JSON.stringify(value)
         this.client
           .set(this.key, serialized)
-          .then(() =>
-            this.client.unsubscribe(this.key, this.subscriptionListener)
-          )
+          .then(async () => {
+            await this.client.unsubscribe(this.key, this.subscriptionListener)
+          })
           .then(() => this.client.publish(this.key, serialized))
           .catch(reject)
       }

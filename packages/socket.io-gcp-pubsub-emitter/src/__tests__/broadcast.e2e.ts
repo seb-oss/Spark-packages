@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import { PubSub, type Subscription, type Topic } from '@google-cloud/pubsub'
 import {
   PubSubEmulatorContainer,
@@ -16,7 +17,7 @@ import {
   vi,
 } from 'vitest'
 import { Emitter } from '../emitter'
-import { connectClient, startServer, wait, waitFor } from './helpers'
+import { connectClient, startServer, waitFor } from './helpers'
 
 const PROJECT_ID = 'test-project'
 process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID
@@ -30,7 +31,7 @@ let topic: Topic
 let logger: Subscription
 let servers: Server[]
 let emitter: Emitter
-let clients: (typeof Socket)[]
+let clients: Socket[]
 let listeners: Mock[]
 
 beforeEach(async () => {
@@ -85,7 +86,7 @@ beforeEach(async () => {
     clients[i].on('message', listeners[i])
   }
 
-  await wait(100)
+  await setTimeout(100)
 })
 afterEach(async () => {
   for (const client of clients) {

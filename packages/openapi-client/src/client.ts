@@ -8,22 +8,20 @@ import type {
 import { fromAxiosError } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
 import { retry } from '@sebspark/retry'
-import type {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from 'axios'
+import type { AxiosInstance, AxiosResponse } from 'axios'
 import axios from 'axios'
-import createAuthRefreshInterceptor from 'axios-auth-refresh'
+import { createAuthRefreshInterceptor } from 'axios-auth-refresh'
 import { paramsSerializer } from './paramsSerializer'
+import { toError } from './toError'
 
-const createAuthRefreshInterceptorFunc =
-  (
-    createAuthRefreshInterceptor as unknown as {
-      default: typeof createAuthRefreshInterceptor
-    }
-  )?.default ?? createAuthRefreshInterceptor
+type MergedArgs = Omit<ClientOptions, 'headers'> &
+  Omit<RequestArgs, 'params'> & {
+    url: string
+    baseUrl: string
+    method: string
+    params?: Record<string, string>
+    body?: unknown
+  }
 
 export type TypedAxiosClient<T> = T & {
   axiosInstance: AxiosInstance
@@ -57,7 +55,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
             }
           }
         } catch (error) {
-          logger.error(`Error generating token for URL: ${url}`, error as Error)
+          logger.error(`Error generating token for URL: ${url}`, toError(error))
           throw error
         }
       }
@@ -67,41 +65,36 @@ export const TypedClient = <C extends Partial<BaseClient>>(
 
   if (globalOptions?.authorizationTokenRefresh) {
     const refreshAuthLogic = async (
-      // biome-ignore lint/suspicious/noExplicitAny: Defined by dependency
-      failedRequest: any
-    ): Promise<AxiosResponse> => {
-      /* istanbul ignore else */
-      if (axios.isAxiosError(failedRequest)) {
-        logger.debug('Failed request', failedRequest)
-      } else {
+      failedRequest: unknown
+    ): Promise<AxiosResponse | undefined> => {
+      /* istanbul ignore if */
+      if (!axios.isAxiosError(failedRequest)) {
         logger.error(
           'Failed request is not an axios error',
-          failedRequest as Error
+          toError(failedRequest)
         )
         throw failedRequest
       }
-
-      const axiosError = failedRequest as AxiosError
-
-      logger.debug('Failed request config', axiosError.config)
+      logger.debug('Failed request', failedRequest)
+      logger.debug('Failed request config', failedRequest.config)
 
       /* istanbul ignore next */
-      const url = `${axiosError.config?.baseURL}${axiosError.config?.url}`
+      const url = `${failedRequest.config?.baseURL}${failedRequest.config?.url}`
       /* istanbul ignore else */
       if (globalOptions?.authorizationTokenRefresh && url) {
         logger.debug(`Refreshing token for URL ${url}`)
         try {
           await globalOptions.authorizationTokenRefresh(url)
         } catch (error) {
-          logger.error(`Error refreshing token for URL: ${url}`, error as Error)
+          logger.error(`Error refreshing token for URL: ${url}`, toError(error))
           throw error
         }
       }
 
-      return axiosError.response as AxiosResponse
+      return failedRequest.response
     }
 
-    createAuthRefreshInterceptorFunc(axiosInstance, refreshAuthLogic)
+    createAuthRefreshInterceptor(axiosInstance, refreshAuthLogic)
   }
 
   const client: BaseClient = {
@@ -137,6 +130,7 @@ export const TypedClient = <C extends Partial<BaseClient>>(
       ),
   }
 
+  // biome-ignore lint/plugin/no-type-assertion: C is the generated typed facade over the untyped BaseClient routes
   return { ...client, axiosInstance } as TypedAxiosClient<C>
 }
 
@@ -147,11 +141,11 @@ const callServer = async <
   >,
 >(
   axiosInstance: AxiosInstance,
-  args: Partial<ClientOptions & RequestArgs>,
+  args: MergedArgs,
   _logger: ReturnType<typeof getLogger>
 ): Promise<R> => {
   try {
-    const serializer = paramsSerializer((args as ClientOptions).arrayFormat)
+    const serializer = paramsSerializer(args.arrayFormat)
 
     const body =
       args.method?.toLowerCase() === 'get' ||
@@ -165,7 +159,7 @@ const callServer = async <
           url: args.url,
           method: args.method,
           timeout: args.timeout,
-          headers: args.headers as AxiosRequestConfig['headers'],
+          headers: args.headers,
           params: args.params,
           paramsSerializer: serializer,
           data: body,
@@ -174,6 +168,7 @@ const callServer = async <
         }),
       args.retry
     )
+    // biome-ignore lint/plugin/no-type-assertion: response bodies are trusted to match the OpenAPI spec; they are not validated at runtime
     return { headers, data } as R
   } catch (error) {
     throw fromAxiosError(error)
@@ -187,14 +182,15 @@ const mergeArgs = (
   requestArgs: RequestArgs | RequestOptions | undefined,
   extras: RequestOptions | undefined,
   global: ClientOptions | undefined
-): Partial<ClientOptions & RequestArgs> => {
+): MergedArgs => {
   const params = merge('params', global, requestArgs, extras)
   const query = merge('query', global, requestArgs, extras)
   const headers = merge('headers', global, requestArgs, extras)
-  const body = merge('body', global, requestArgs, extras)
+  const body =
+    (requestArgs && 'body' in requestArgs ? requestArgs.body : undefined) ?? {}
   const retry = merge('retry', global, requestArgs, extras)
   const timeout = extras?.timeout ?? global?.timeout
-  const merged: Partial<ClientOptions & RequestArgs> = {
+  const merged: MergedArgs = {
     url: setParams(url, params),
     baseUrl,
     method,

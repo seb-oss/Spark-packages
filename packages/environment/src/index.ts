@@ -5,17 +5,19 @@ import { join } from 'node:path'
 export const initEnvironment = <T extends Record<string, string>>() => {
   const environmentCache: Record<string, string | undefined> = {}
 
+  // biome-ignore lint/plugin/no-type-assertion: the Proxy resolves keys from process.env at runtime; this is the typed surface it implements
   return new Proxy(
     {},
     {
-      get(_, k: keyof T | 'optional' | string | symbol) {
-        const key = k as string
+      get(_, key) {
+        if (typeof key !== 'string') return undefined
         if (key === 'optional') {
+          // biome-ignore lint/plugin/no-type-assertion: the Proxy resolves keys from process.env at runtime; this is the typed surface it implements
           return new Proxy(
             {},
             {
-              get(_, k: keyof T | string | symbol) {
-                const key = k as string
+              get(_, key) {
+                if (typeof key !== 'string') return undefined
                 if (key in environmentCache) {
                   return environmentCache[key]
                 }
@@ -45,13 +47,14 @@ export const mergeEnvironments = <
   env: T,
   secrets: U
 ): T & U =>
+  // biome-ignore lint/plugin/no-type-assertion: the Proxy delegates every key to secrets or env at runtime; this is the typed surface it implements
   new Proxy({} as T & U, {
     get(_, key) {
       if (typeof key !== 'string') return undefined
       try {
-        return (secrets as Record<string, string>)[key]
+        return secrets[key]
       } catch {
-        return (env as Record<string, string>)[key]
+        return env[key]
       }
     },
   })
@@ -67,11 +70,12 @@ export const initSecretStore = <T extends Record<string, string>>(
   const secretCache: Record<string, string | undefined> = {}
   const { dir, fallback } = opts ?? {}
 
+  // biome-ignore lint/plugin/no-type-assertion: the Proxy resolves keys from files or fallbacks at runtime; this is the typed surface it implements
   return new Proxy(
     {},
     {
-      get(_, k: keyof T | string | symbol) {
-        const key = k as string
+      get(_, key) {
+        if (typeof key !== 'string') return undefined
         if (key in secretCache) {
           return secretCache[key]
         }
@@ -94,9 +98,12 @@ export const initSecretStore = <T extends Record<string, string>>(
             secretCache[key] = value
             return secretCache[key]
           }
-        } else if (fallback && key in fallback) {
-          secretCache[key] = fallback[key as keyof T] as string
-          return secretCache[key]
+        } else if (fallback) {
+          const value = fallback[key]
+          if (value !== undefined) {
+            secretCache[key] = value
+            return secretCache[key]
+          }
         }
 
         throw new Error(`Secret ${key} is required`)

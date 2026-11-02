@@ -34,9 +34,8 @@ yargs(hideBin(process.argv))
       })
 
       // Ask for database name
-      const databases: DatabaseConfig[] = [
-        (await getDatabaseConfig(true)) as DatabaseConfig,
-      ]
+      const first = await getDatabaseConfig(true)
+      const databases: DatabaseConfig[] = first ? [first] : []
 
       // Loop to allow adding multiple databases
       while (true) {
@@ -313,7 +312,9 @@ async function loadConfig(): Promise<Config> {
  * @param {boolean} required - Whether the database entry is required.
  * @returns {Promise<DatabaseConfig | undefined>} The database configuration or undefined if skipped.
  */
-const getDatabaseConfig = async (required: boolean) => {
+const getDatabaseConfig = async (
+  required: boolean
+): Promise<DatabaseConfig | undefined> => {
   const message = required
     ? 'Enter Spanner database name'
     : 'Enter another Spanner database name [Enter to continue]'
@@ -328,10 +329,7 @@ const getDatabaseConfig = async (required: boolean) => {
     required: true,
     default: `./migrations/${name}`,
   })
-  return {
-    name,
-    migrationsPath,
-  } as DatabaseConfig
+  return { name, migrationsPath }
 }
 
 //#endregion

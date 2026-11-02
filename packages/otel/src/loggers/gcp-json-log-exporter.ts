@@ -7,7 +7,7 @@ import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
 } from '@opentelemetry/semantic-conventions'
-import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from '../consts'
+import { logThresholdFromEnv } from '../consts'
 import { hrTimeToMillis } from './formatters/shared'
 
 /**
@@ -57,11 +57,7 @@ export class GcpJsonLogExporter implements LogRecordExporter {
   private readonly gcpProject: string | undefined
 
   constructor() {
-    const defaultLogLevel = 'INFO'
-    const env = (process.env.LOG_LEVEL?.toUpperCase() ??
-      defaultLogLevel) as LOG_SEVERITY_NAME
-    this.logThreshold =
-      LOG_SEVERITY_MAP[env] ?? LOG_SEVERITY_MAP[defaultLogLevel]
+    this.logThreshold = logThresholdFromEnv()
     this.gcpProject =
       process.env.GCP_PROJECT || process.env.GOOGLE_CLOUD_PROJECT
   }
@@ -102,8 +98,7 @@ export class GcpJsonLogExporter implements LogRecordExporter {
     const serviceVersion =
       record.resource.attributes[ATTR_SERVICE_VERSION] ?? '1.0.0'
 
-    const traceId = record.attributes.trace_id as string | undefined
-    const spanId = record.attributes.span_id as string | undefined
+    const { trace_id: traceId, span_id: spanId } = record.attributes
 
     // Build the structured log entry
     const entry: Record<string, unknown> = {
@@ -117,13 +112,13 @@ export class GcpJsonLogExporter implements LogRecordExporter {
     }
 
     // GCP trace correlation
-    if (traceId) {
+    if (typeof traceId === 'string' && traceId) {
       entry['logging.googleapis.com/trace'] = this.gcpProject
         ? `projects/${this.gcpProject}/traces/${traceId}`
         : traceId
     }
 
-    if (spanId) {
+    if (typeof spanId === 'string' && spanId) {
       entry['logging.googleapis.com/spanId'] = spanId
     }
 

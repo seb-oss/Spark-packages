@@ -29,7 +29,7 @@ export class OpenSearchInstrumentation extends InstrumentationBase {
 
   override enable() {
     if (this._original) return
-    this._original = Transport.prototype.request as OriginalRequest
+    this._original = Transport.prototype.request
     Transport.prototype.request = createPatchedRequest(
       () => this.tracer,
       this.osConfig,

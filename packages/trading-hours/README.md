@@ -89,17 +89,30 @@ export type SebMarket =
 
 export type Holiday =
   | "ascensionDay"
+  | "assumptionDay"
+  | "bankHoliday"
+  | "beforeAllSaintsDay"
+  | "beforeAscensionDay"
+  | "beforeEpiphany"
+  | "beforeGoodFriday"
   | "boxingDay"
   | "christmasDay"
   | "christmasEve"
   | "easterMonday"
   | "epiphany"
   | "goodFriday"
+  | "independenceDayDenmark"
   | "independenceDayFinland"
+  | "independenceDayGermany"
   | "independenceDaySweden"
   | "laborDay"
   | "midsummerDay"
   | "midsummerEve"
   | "newYearsDay"
-  | "newYearsEve";
+  | "newYearsEve"
+  | "noTAH"
+  | "pentecost"
+  | "pentecostMonday";
 ```
+
+The `before…` values are half trading days, for example `beforeGoodFriday` on Maundy Thursday in Stockholm.

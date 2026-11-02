@@ -49,10 +49,7 @@ export function getTracer(componentNameOverride?: string): Tracer {
   const { componentName, systemName, systemVersion } = detectTelemetryContext(
     componentNameOverride
   )
-  const tracer = trace.getTracer(
-    componentName ?? systemName,
-    systemVersion
-  ) as Tracer
+  const tracer = trace.getTracer(componentName ?? systemName, systemVersion)
 
   /**
    * Runs a function inside a new span (async variant).
@@ -91,9 +88,7 @@ export function getTracer(componentNameOverride?: string): Tracer {
         span.setStatus({ code: SpanStatusCode.OK })
         return result
       } catch (err) {
-        const error = err as Error
-        span.setStatus({ code: SpanStatusCode.ERROR, message: error.message })
-        span.recordException?.(error)
+        recordError(span, err)
         throw err
       } finally {
         endOnce()
@@ -138,9 +133,7 @@ export function getTracer(componentNameOverride?: string): Tracer {
         span.setStatus({ code: SpanStatusCode.OK })
         return result
       } catch (err) {
-        const error = err as Error
-        span.setStatus({ code: SpanStatusCode.ERROR, message: error.message })
-        span.recordException?.(error)
+        recordError(span, err)
         throw err
       } finally {
         endOnce()
@@ -148,10 +141,13 @@ export function getTracer(componentNameOverride?: string): Tracer {
     })
   }
 
-  tracer.withTrace = withTrace
-  tracer.withTraceSync = withTraceSync
+  return Object.assign(tracer, { withTrace, withTraceSync })
+}
 
-  return tracer
+const recordError = (span: Span, err: unknown) => {
+  const message = err instanceof Error ? err.message : String(err)
+  span.setStatus({ code: SpanStatusCode.ERROR, message })
+  span.recordException?.(err instanceof Error ? err : message)
 }
 
 type TraceArgs<T> = {
@@ -165,42 +161,29 @@ function extractArgs<T>(
   spanOrFunc?: Span | ((span: Span) => T),
   func?: (span: Span) => T
 ): TraceArgs<T> {
-  let options: SpanOptions = {}
-  let parent: Span | undefined
-  let fn: (span: Span) => T
-
   if (isFunction(spanOptionsSpanOrFunc)) {
-    fn = spanOptionsSpanOrFunc
-  } else if (isFunction(spanOrFunc)) {
-    const spanOrSpanOptions = spanOptionsSpanOrFunc as Span | SpanOptions
-    if (isSpanOptions(spanOrSpanOptions)) {
-      options = spanOrSpanOptions as SpanOptions
-    } else {
-      parent = spanOrSpanOptions as Span
-    }
-    fn = spanOrFunc
-  } else {
-    options = spanOptionsSpanOrFunc as SpanOptions
-    parent = spanOrFunc as Span
-    // biome-ignore lint/style/noNonNullAssertion: it IS defined here
-    fn = func!
+    return { options: {}, fn: spanOptionsSpanOrFunc }
   }
-
-  return { options, parent, fn }
+  const options =
+    spanOptionsSpanOrFunc && !isSpan(spanOptionsSpanOrFunc)
+      ? spanOptionsSpanOrFunc
+      : {}
+  if (isFunction(spanOrFunc)) {
+    const parent = isSpan(spanOptionsSpanOrFunc)
+      ? spanOptionsSpanOrFunc
+      : undefined
+    return { options, parent, fn: spanOrFunc }
+  }
+  // biome-ignore lint/style/noNonNullAssertion: the overloads require fn last
+  return { options, parent: spanOrFunc, fn: func! }
 }
 
 const isFunction = (value: unknown): value is (span: Span) => unknown =>
   typeof value === 'function'
 const isSpan = (value: unknown): value is Span =>
+  typeof value === 'object' &&
   value !== null &&
-  value !== undefined &&
-  isFunction((value as Span).spanContext) &&
-  isFunction((value as Span).end)
-/* istanbul ignore next */
-const isSpanOptions = (value: unknown): value is SpanOptions =>
-  value !== null &&
-  value !== undefined &&
-  (!!(value as SpanOptions).startTime ||
-    !!(value as SpanOptions).attributes ||
-    !!(value as SpanOptions).kind) &&
-  !isSpan(value)
+  'spanContext' in value &&
+  isFunction(value.spanContext) &&
+  'end' in value &&
+  isFunction(value.end)

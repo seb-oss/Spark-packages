@@ -226,6 +226,16 @@ describe('createHttpError', () => {
 })
 
 describe('fromAxiosError: message fallback', () => {
+  test('keeps a status code outside the known error codes', () => {
+    const returnedError = fromAxiosError({
+      message: 'Client Closed Request',
+      response: { status: 499 },
+    })
+
+    expect(returnedError).toBeInstanceOf(HttpError)
+    expect(returnedError.statusCode).toBe(499)
+    expect(returnedError.message).toBe('Client Closed Request')
+  })
   test('falls back to axiosError.message when no statusText', () => {
     const headers = new AxiosHeaders()
     const response = {

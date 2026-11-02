@@ -97,6 +97,21 @@ describe('DependencyMonitor', () => {
           const result = await monitor.check()
           expect(result.status).toEqual('error')
         })
+        it('reports a message when syncCall throws a non-Error value', async () => {
+          const monitor = new DependencyMonitor({
+            impact: 'critical',
+            healthyLimitMs: 500,
+            timeoutLimitMs: 2_000,
+            syncCall: async () => {
+              throw 'connection refused'
+            },
+          })
+          const result = await monitor.check()
+          expect(result.error).toEqual({
+            code: 'UNKNOWN',
+            message: 'connection refused',
+          })
+        })
         it('stores details from DependencyStatus on the check result', async () => {
           const monitor = new DependencyMonitor({
             impact: 'critical',
@@ -211,7 +226,28 @@ describe('DependencyMonitor', () => {
           mode: 'polled',
           status: 'unknown',
           observed: undefined,
-          freshness: undefined,
+          freshness: { lastChecked: null, lastSuccess: null },
+        })
+      })
+      it('does not mutate a previously returned check when a later check fails', async () => {
+        using monitor = new DependencyMonitor({
+          impact: 'critical',
+          syncCall: async () => {
+            throw new Error('down')
+          },
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
+          pollRate: 10_000,
+        })
+        const before = await monitor.check()
+
+        await vi.advanceTimersByTimeAsync(0)
+        const after = await monitor.check()
+
+        expect(after.freshness.lastChecked).not.toBeNull()
+        expect(before.freshness).toEqual({
+          lastChecked: null,
+          lastSuccess: null,
         })
       })
       it('calls dependency immediately', async () => {

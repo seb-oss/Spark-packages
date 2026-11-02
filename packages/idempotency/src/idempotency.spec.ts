@@ -1,4 +1,4 @@
-import { setTimeout as sleep } from 'node:timers/promises'
+import { setTimeout } from 'node:timers/promises'
 import { MemRedis } from '@sebspark/memredis'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import {
@@ -34,7 +34,7 @@ describe('IdempotencyGuard', () => {
       return 'stored-value'
     })
     // give the fire-and-forget write time to complete
-    await sleep(10)
+    await setTimeout(10)
     const stored = await client.get('key:2')
     expect(stored).not.toBeNull()
   })
@@ -45,7 +45,7 @@ describe('IdempotencyGuard', () => {
       end('first-result')
       return 'first-result'
     })
-    await sleep(10)
+    await setTimeout(10)
 
     const second = await IdempotencyGuard.create<string>('key:3', client)
     await expect(
@@ -62,7 +62,7 @@ describe('IdempotencyGuard', () => {
       end('winning-value')
       return 'winning-value'
     })
-    await sleep(10)
+    await setTimeout(10)
 
     const second = await IdempotencyGuard.create<string>('key:4', client)
     const error = await second
@@ -81,14 +81,14 @@ describe('IdempotencyGuard', () => {
     const guardB = await IdempotencyGuard.create<string>('key:5', client)
 
     const resultA = guardA.run(async (end) => {
-      await sleep(10)
+      await setTimeout(10)
       end('from-a')
       return 'from-a'
     })
 
     const resultB = guardB
       .run(async (end) => {
-        await sleep(50)
+        await setTimeout(50)
         end('from-b')
         return 'from-b'
       })
@@ -108,7 +108,7 @@ describe('IdempotencyGuard', () => {
       end('from-a')
       return 'from-a'
     })
-    await sleep(0)
+    await setTimeout(0)
 
     expect(guardB.signal.aborted).toBe(true)
   })
@@ -126,7 +126,7 @@ describe('IdempotencyGuard', () => {
       end('from-a')
       return 'from-a'
     })
-    await sleep(0)
+    await setTimeout(0)
 
     expect(abortFired).toBe(true)
   })
@@ -156,7 +156,7 @@ describe('IdempotencyGuard', () => {
     const steps: number[] = []
 
     guardA.run(async (end) => {
-      await sleep(10)
+      await setTimeout(10)
       end('from-a')
       return 'from-a'
     })
@@ -164,9 +164,9 @@ describe('IdempotencyGuard', () => {
     const errorB = await guardB
       .run(async (end) => {
         steps.push(1)
-        await sleep(5) // step 2 starts before A wins
+        await setTimeout(5) // step 2 starts before A wins
         steps.push(2)
-        await sleep(20) // A wins during this sleep
+        await setTimeout(20) // A wins during this sleep
         steps.push(3) // never reached
         end('from-b')
         return 'from-b'
@@ -207,7 +207,7 @@ describe('IdempotencyGuard', () => {
       end('from-a')
       return 'from-a'
     })
-    await sleep(0) // let end()'s async write complete and signal fire
+    await setTimeout(0) // let end()'s async write complete and signal fire
 
     // B's fn completes after the signal is already aborted
     const errorB = await guardB

@@ -29,7 +29,9 @@ import {
 import { serializeBody } from './serialize-body'
 import type { OpenSearchInstrumentationConfig } from './types'
 
-export type OriginalRequest = (
+export type OriginalRequest = Transport['request']
+
+type OriginalRequestWithPromise = (
   this: Transport,
   params: TransportRequestParams,
   options?: TransportRequestOptions
@@ -48,6 +50,9 @@ export const createPatchedRequest = (
   original: OriginalRequest,
   clientVersion: string
 ) => {
+  const originalWithPromise: OriginalRequestWithPromise = original
+  const originalWithCallback: OriginalRequestWithCallback = original
+
   function patchedRequest(
     params: TransportRequestParams,
     options?: TransportRequestOptions
@@ -108,11 +113,9 @@ export const createPatchedRequest = (
       : trace.setSpan(context.active(), span)
 
     if (typeof callback === 'function') {
-      const originalWithCallback = (
-        original as OriginalRequestWithCallback
-      ).bind(this)
+      const request = originalWithCallback.bind(this)
       return context.with(callCtx, () =>
-        originalWithCallback(params, options, (err, res) => {
+        request(params, options, (err, res) => {
           err ? onError(err) : onSuccess(res)
           callback(err, res)
         })
@@ -120,7 +123,7 @@ export const createPatchedRequest = (
     }
 
     const result = context.with(callCtx, () =>
-      original.call(this, params, options)
+      originalWithPromise.call(this, params, options)
     )
     const settled = result.then(
       (res: ApiResponse) => {

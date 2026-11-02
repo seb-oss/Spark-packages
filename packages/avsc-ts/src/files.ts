@@ -8,7 +8,11 @@ export const readSchemas = (path: string) => {
     .filter((file) => file.endsWith('.avsc'))
     .map((filename) => resolve(absolutePath, filename))
     .map((filepath) => readFileSync(filepath, 'utf8'))
-    .map((txt) => JSON.parse(txt) as Schema)
+    .map(
+      (txt) =>
+        // biome-ignore lint/plugin/no-type-assertion: Type.forSchema validates the schema when it is parsed
+        JSON.parse(txt) as Schema
+    )
 }
 
 export const saveTypescript = (

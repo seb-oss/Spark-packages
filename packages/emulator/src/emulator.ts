@@ -56,9 +56,9 @@ import type {
  */
 export const createEmulator = <T extends MethodMap>() => {
   // biome-ignore lint/suspicious/noExplicitAny: MethodMap keys are resolved at call sites
-  const responders = new Map<keyof T, Set<StoredResponder<any, any>>>()
+  const responders = new Map<PropertyKey, Set<StoredResponder<any, any>>>()
 
-  const getOrCreateSet = (method: keyof T) => {
+  const getOrCreateSet = (method: PropertyKey) => {
     let set = responders.get(method)
     if (!set) {
       set = new Set()
@@ -82,7 +82,7 @@ export const createEmulator = <T extends MethodMap>() => {
           args: T[M]['args'],
           cb: ResponseCb<T[M]['resp']>
         ): Promise<void> =>
-          callResponder(method as string, getOrCreateSet(method), args, cb)
+          callResponder(String(method), getOrCreateSet(method), args, cb)
       }
 
       if (prop === 'dispose' || typeof prop === 'symbol') {
@@ -93,7 +93,7 @@ export const createEmulator = <T extends MethodMap>() => {
       if (typeof prop === 'string') {
         // biome-ignore lint/suspicious/noExplicitAny: filter type is resolved at call site
         return (filter?: Filter<any>) =>
-          makeRequest(getOrCreateSet(prop as keyof T))(filter)
+          makeRequest(getOrCreateSet(prop))(filter)
       }
 
       /* istanbul ignore next */
@@ -101,6 +101,7 @@ export const createEmulator = <T extends MethodMap>() => {
     },
   }
 
+  // biome-ignore lint/plugin/no-type-assertion: the Proxy resolves every method key at runtime; this is the typed surface it implements
   return new Proxy({}, handler) as {
     [M in keyof T]: (
       filter?: Filter<T[M]['args']>

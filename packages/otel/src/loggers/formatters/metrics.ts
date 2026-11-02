@@ -74,6 +74,6 @@ function isHistogramLike(val: unknown): val is { sum: number } {
     typeof val === 'object' &&
     val !== null &&
     'sum' in val &&
-    typeof (val as { sum: number }).sum === 'number'
+    typeof val.sum === 'number'
   )
 }

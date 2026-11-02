@@ -302,6 +302,22 @@ describe('MemRedis', () => {
       await persistor.hSet('hash-key', 'field1', 'value1')
       expect(await persistor.hGet('hash-key', 'non-existent-field')).toBe(null)
     })
+
+    it('stores every entry of a Map', async () => {
+      const result = await persistor.hSet(
+        'hash-key',
+        new Map<string, string | number>([
+          ['field1', 'value1'],
+          ['field2', 2],
+        ])
+      )
+
+      expect(result).toBe(2)
+      expect(await persistor.hGetAll('hash-key')).toEqual({
+        field1: 'value1',
+        field2: '2',
+      })
+    })
   })
 
   describe('.lPush and .rPush', () => {

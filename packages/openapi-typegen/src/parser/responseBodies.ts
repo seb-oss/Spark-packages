@@ -1,8 +1,5 @@
-import type {
-  HeaderObject,
-  ReferenceObject,
-  ResponseObject,
-} from '@sebspark/openapi-core'
+import type { ReferenceObject, ResponseObject } from '@sebspark/openapi-core'
+import { isReference } from '../typeGuards'
 import type { CustomType, ResponseBody } from '../types'
 import { parseDocumentation, parseRef } from './common'
 import { parseHeader } from './headers'
@@ -25,10 +22,9 @@ export const parseResponseBody = (
   name: string | undefined,
   response: ResponseObject | ReferenceObject
 ): ResponseBody | CustomType => {
-  const ref = (response as ReferenceObject).$ref
-  if (ref) return { type: parseRef(ref) }
+  if (isReference(response)) return { type: parseRef(response.$ref) }
 
-  const responseObject = response as ResponseObject
+  const responseObject = response
   const body: ResponseBody = {}
   if (name) body.name = name
   /* istanbul ignore else */
@@ -41,15 +37,14 @@ export const parseResponseBody = (
   if (responseObject.headers) {
     body.headers = []
     for (const [headerName, header] of Object.entries(responseObject.headers)) {
-      const ref = (header as ReferenceObject).$ref
-      if (ref)
+      if (isReference(header))
         body.headers.push({
           name: headerName,
           optional: false,
-          type: { type: parseRef(ref) },
-          ...parseDocumentation(header as HeaderObject),
+          type: { type: parseRef(header.$ref) },
+          ...parseDocumentation(header),
         })
-      else body.headers.push(parseHeader(headerName, header as HeaderObject))
+      else body.headers.push(parseHeader(headerName, header))
     }
   }
   return body

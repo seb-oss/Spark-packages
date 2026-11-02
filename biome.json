@@ -1,5 +1,11 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.6.4/schema.json",
+  "plugins": ["./biome/no-type-assertion.grit"],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
   "assist": {
     "actions": {
       "source": {
@@ -8,7 +14,12 @@
     }
   },
   "files": {
-    "includes": ["packages/*/src/**/*"],
+    "includes": [
+      "packages/*/src/**/*",
+      "!packages/logging",
+      "!packages/pubsub",
+      "!packages/typed-router"
+    ],
     "maxSize": 2000000
   },
   "formatter": {

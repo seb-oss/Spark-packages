@@ -1,9 +1,11 @@
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { stderr, stdout } from 'node:process'
+import { Spanner } from '@google-cloud/spanner'
 import { run } from '@sebspark/cli-tester'
 import type { StartedTestContainer } from 'testcontainers'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { getAppliedMigrations } from '../db'
 import {
   createDatabase,
   createInstance,
@@ -188,6 +190,23 @@ describe('Spanner Migrate CLI - entire flow', () => {
     expect(migrationStatus[1].applied).toHaveLength(1)
     expect(migrationStatus[1].applied[0]).toMatch(/create_addresses_table/)
     expect(migrationStatus[1].new).toHaveLength(0)
+  })
+  it('reads applied migrations as Migration objects', async () => {
+    const db = new Spanner({ projectId }).instance(instance).database(database1)
+    try {
+      const migrations = await getAppliedMigrations(db)
+
+      expect(migrations).toHaveLength(2)
+      expect(migrations[0]).toEqual({
+        id: expect.stringMatching(/create_users_table/),
+        description: expect.any(String),
+        up: expect.any(String),
+        down: expect.any(String),
+        appliedAt: expect.any(Date),
+      })
+    } finally {
+      await db.close()
+    }
   })
   it('runs migrate down', async () => {
     // Down in db1

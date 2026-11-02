@@ -1,21 +1,32 @@
-export type Holiday =
-  | 'ascensionDay'
-  | 'assumptionDay'
-  | 'bankHoliday'
-  | 'boxingDay'
-  | 'christmasDay'
-  | 'christmasEve'
-  | 'easterMonday'
-  | 'epiphany'
-  | 'goodFriday'
-  | 'independenceDayFinland'
-  | 'independenceDaySweden'
-  | 'laborDay'
-  | 'midsummerDay'
-  | 'midsummerEve'
-  | 'newYearsDay'
-  | 'newYearsEve'
-  | 'noTAH'
+export const HOLIDAYS = [
+  'ascensionDay',
+  'assumptionDay',
+  'bankHoliday',
+  'beforeAllSaintsDay',
+  'beforeAscensionDay',
+  'beforeEpiphany',
+  'beforeGoodFriday',
+  'boxingDay',
+  'christmasDay',
+  'christmasEve',
+  'easterMonday',
+  'epiphany',
+  'goodFriday',
+  'independenceDayDenmark',
+  'independenceDayFinland',
+  'independenceDayGermany',
+  'independenceDaySweden',
+  'laborDay',
+  'midsummerDay',
+  'midsummerEve',
+  'newYearsDay',
+  'newYearsEve',
+  'noTAH',
+  'pentecost',
+  'pentecostMonday',
+] as const
+
+export type Holiday = (typeof HOLIDAYS)[number]
 
 type Hours = {
   openHour: number

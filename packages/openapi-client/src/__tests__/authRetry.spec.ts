@@ -3,7 +3,7 @@ import { AxiosError } from 'axios'
 import nock from 'nock'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { TypedClient } from '../client'
-import { ApiClient } from './api'
+import type { ApiClient } from './api'
 
 describe('Auth Retry Tests', () => {
   const url = 'https://api.example.com'

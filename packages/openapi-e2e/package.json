@@ -7,9 +7,8 @@
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check .",
-    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "pretest": "yarn generate",
-    "typecheck": "vitest --typecheck.only --passWithNoTests --run"
+    "test": "yarn generate && vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
     "@sebspark/openapi-client": "4.2.24",
@@ -22,6 +21,7 @@
     "@sebspark/openapi-typegen": "5.3.2",
     "@types/express": "5.0.6",
     "find-free-ports": "3.1.1",
+    "typescript": "7.0.2",
     "vite": "8.3.5",
     "vitest": "5.0.5"
   },

@@ -55,7 +55,5 @@ test('returns undefined for non-string, non-special symbol access', async () => 
   const fn = vi.fn()
   const proxy = expect(fn).eventually()
   // Accessing via an arbitrary symbol reaches the typeof prop !== 'string' guard
-  expect(
-    (proxy as Record<symbol, unknown>)[Symbol.for('custom')]
-  ).toBeUndefined()
+  expect(Reflect.get(proxy, Symbol.for('custom'))).toBeUndefined()
 })

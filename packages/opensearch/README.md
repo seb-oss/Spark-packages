@@ -114,7 +114,7 @@ async function run () {
 This package is a helper. Its types suggest fields and values from the mapping, but they accept every request OpenSearch accepts:
 
 - `query`, `sort`, `_source`, `collapse`, `highlight`, aggregation `field`/`filter` and `top_hits` `sort`/`_source` autocomplete fields from the mapping, including top-level multi-field sub-fields such as `title.keyword`, but also accept fields that are not in it, such as fields added by dynamic mapping.
-- `DocumentFor<T>` is the document as the mapping describes it: only mapped fields, so `keyof`, `Omit` and `Pick` work on it. Writes (`index`, `bulk`, `bulkIndex`, `bulkCreate`, `bulkUpdate` and `IdFunction`) take `WritableDocument<T>`, which also accepts unmapped fields as `unknown`, unless the mapping sets `dynamic: 'strict'` and OpenSearch would reject them.
+- `DocumentFor<T>` is the document as the mapping describes it: only mapped fields, so `keyof`, `Omit` and `Pick` work on it. Writes (`index`, `bulk`, `bulkIndex`, `bulkCreate`, `bulkUpdate` and `IdFunction`) take `WritableDocument<T>`, which also accepts unmapped fields as `unknown`, unless the mapping sets `dynamic: 'strict'` and OpenSearch would reject them. The id function of `bulkUpdate` (`UpdateIdFunction<T>`) receives `doc` when it is set, otherwise `upsert`, so it takes a `DeepPartial<WritableDocument<T>>`.
 - Values are not narrowed beyond what OpenSearch coerces, e.g. `term: { age: '30' }` on an `integer` field compiles. The one exception follows `@opensearch-project/opensearch`: `terms_set.terms` is `string[]`, so pass numbers as strings (`ages.map(String)`).
 - A `SearchRequest<T>`, for a concrete index or a generic `T`, can be passed to the `Client` of `@opensearch-project/opensearch`.
 

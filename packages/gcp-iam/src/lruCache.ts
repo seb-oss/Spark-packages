@@ -10,30 +10,24 @@ export class LruCache<T> {
   }
 
   public get(key: string): T | undefined {
-    const hasKey = this.values.has(key)
+    const entry = this.values.get(key)
+    if (!entry) return undefined
 
-    if (hasKey) {
-      // peek the entry, re-insert for LRU strategy
-      const entry = this.values.get(key) as {
-        timestamp: number
-        data: T
-        ttl: number
-      }
-      if (Date.now() - entry.timestamp > entry.ttl) {
-        this.values.delete(key)
-        return undefined
-      }
+    if (Date.now() - entry.timestamp > entry.ttl) {
       this.values.delete(key)
-      this.values.set(key, entry)
-      return entry.data
+      return undefined
     }
+    // re-insert for LRU strategy
+    this.values.delete(key)
+    this.values.set(key, entry)
+    return entry.data
   }
 
   public put(key: string, value: T, ttl?: number) {
     if (this.values.size >= this.maxEntries) {
       // least-recently used cache eviction strategy
-      const keyToDelete = this.values.keys().next().value as string
-      this.values.delete(keyToDelete)
+      const keyToDelete = this.values.keys().next().value
+      if (keyToDelete !== undefined) this.values.delete(keyToDelete)
     }
 
     this.values.set(key, {

@@ -3192,6 +3192,7 @@ __metadata:
     "@types/express": "npm:5.0.6"
     express: "npm:5.3.0"
     find-free-ports: "npm:3.1.1"
+    typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
     vitest: "npm:5.0.5"
   languageName: unknown
@@ -3207,6 +3208,8 @@ __metadata:
     "@types/supertest": "npm:7.2.1"
     express: "npm:5.3.0"
     supertest: "npm:7.3.1"
+    typescript: "npm:7.0.2"
+    vitest: "npm:5.0.5"
   peerDependencies:
     express: ">=5"
   languageName: unknown

@@ -366,6 +366,24 @@ describe('openapi parser', () => {
       // body.content has no application/json — body args not populated
       expect(parsed[0].args).not.toHaveProperty('body')
     })
+    it('types an inline parameter without schema as unknown', () => {
+      const path: PathItemObject = {
+        get: {
+          parameters: [
+            {
+              name: 'filter',
+              in: 'query',
+              content: { 'application/json': { schema: { type: 'string' } } },
+            },
+          ],
+          responses: { '204': { description: 'No Content' } },
+        },
+      }
+      const parsed = parsePath('/items', path)
+      expect(parsed[0].args?.query?.properties).toEqual([
+        { name: 'filter', optional: true, type: [{ type: 'unknown' }] },
+      ])
+    })
     it('parses a path with inline non-object requestBody', () => {
       const path: PathItemObject = {
         post: {
@@ -1553,6 +1571,37 @@ describe('openapi parser', () => {
       const parsed = parseSchema('MultiType', schema) as ObjectType
       expect(parsed.properties).toHaveLength(1)
     })
+    it('parses an inline oneOf property as a union', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          value: {
+            oneOf: [
+              { type: 'string' },
+              { type: 'array', items: { type: 'string' } },
+            ],
+          },
+        },
+      }
+      const parsed = parseSchema('OneOfProp', schema) as ObjectType
+      expect(parsed.properties[0].type).toEqual([
+        { type: 'string' },
+        { type: 'array', items: { type: 'string' } },
+      ])
+    })
+    it('parses an inline anyOf property as a union', () => {
+      const schema: SchemaObject = {
+        type: 'object',
+        properties: {
+          value: { anyOf: [{ type: 'string' }, { type: 'number' }] },
+        },
+      }
+      const parsed = parseSchema('AnyOfProp', schema) as ObjectType
+      expect(parsed.properties[0].type).toEqual([
+        { type: 'string' },
+        { type: 'number' },
+      ])
+    })
   })
   describe('parseParameters', () => {
     it('parses a simple schema', () => {
@@ -1625,6 +1674,13 @@ describe('openapi parser', () => {
     })
   })
   describe('parseRequestBodies', () => {
+    it('skips a requestBody without application/json content', () => {
+      const body: RequestBodyObject = {
+        content: { 'text/plain': { schema: { type: 'string' } } },
+      }
+
+      expect(parseRequestBodies({ PlainBody: body })).toEqual([])
+    })
     it('parses a requestBody with inline definition', () => {
       const body: RequestBodyObject = {
         content: {
@@ -1771,6 +1827,12 @@ describe('openapi parser', () => {
       } as unknown as SecuritySchemeObject
       const parsed = parseSecurityScheme('X-Api-Key', scheme)
       expect(parsed).toMatchObject({ in: 'header' })
+    })
+    it('throws for an apiKey scheme without name', () => {
+      const scheme: SecuritySchemeObject = { type: 'apiKey', in: 'header' }
+      expect(() => parseSecurityScheme('ApiKey', scheme)).toThrow(
+        "apiKey security scheme 'ApiKey' has no name"
+      )
     })
     it('parses an http scheme', () => {
       const scheme: SecuritySchemeObject = {

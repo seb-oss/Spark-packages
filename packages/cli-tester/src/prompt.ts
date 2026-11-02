@@ -13,18 +13,20 @@ export const parse = <T extends PromptType = undefined>(
   const prompt = parseInput(text) || parseSelect(text) || parseCheckbox(text)
   if (!prompt) throw new Error(`Unknown prompt format "${text}"`)
 
-  if (
-    expectedType &&
-    prompt.type !== expectedType &&
-    !(expectedType === 'select' && prompt.type === 'checkbox')
-  ) {
+  if (!isExpected(prompt, expectedType)) {
     throw new Error(`Expected a ${expectedType} prompt but got ${prompt.type}`)
   }
 
-  // Ensure TypeScript correctly infers the return type
-  // biome-ignore lint/suspicious/noExplicitAny: generic inference
-  return prompt as any
+  return prompt
 }
+
+const isExpected = <T extends PromptType>(
+  prompt: Prompt,
+  expectedType?: T
+): prompt is Prompt<T> =>
+  !expectedType ||
+  prompt.type === expectedType ||
+  (expectedType === 'select' && prompt.type === 'checkbox')
 
 const parseInput = (prompt: string): InputPrompt | undefined => {
   const match = prompt.match(/^\?\s+(.+?)(?:\s+\((.*?)\))?$/)

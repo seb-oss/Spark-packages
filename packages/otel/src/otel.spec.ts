@@ -85,7 +85,7 @@ describe('otel initialize', () => {
     })
     it('sets up telemetry with ConsoleLogPrettyExporter and logs to console', async () => {
       process.env.LOG_LEVEL = 'INFO'
-      await initialize(instrumentations.express, instrumentations.http)
+      await initialize(instrumentations.express(), instrumentations.http())
 
       const logger = getLogger()
       logger.info('e2e-log')

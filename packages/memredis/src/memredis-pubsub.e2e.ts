@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import type { StartedRedisContainer } from '@testcontainers/redis'
 import { createClient } from 'redis'
 import {
@@ -48,7 +49,7 @@ describe('Pub/Sub: subscribe and publish', () => {
     await publisher.publish('channel', 'hello')
     await publisher.publish('channel', 'world')
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await setTimeout(100)
 
     await subscriber.unsubscribe('channel')
     expect(messages).toEqual(['hello', 'world'])
@@ -69,7 +70,7 @@ describe('Pub/Sub: unsubscribe', () => {
     await subscriber.unsubscribe('channel')
     await publisher.publish('channel', 'after')
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await setTimeout(100)
 
     expect(messages).toEqual(['before'])
   })

@@ -1,4 +1,5 @@
 import type { ChildProcess } from 'node:child_process'
+import { setTimeout } from 'node:timers/promises'
 import { styleText } from 'node:util'
 import figures from '@inquirer/figures'
 import { ansiPatterns } from './characters'
@@ -39,11 +40,8 @@ export const input = async (
   while (true) {
     const chunk = await Promise.race([
       reader.next(),
-      new Promise<never>((_, reject) => {
-        setTimeout(
-          () => reject(new Error('Timeout waiting for input')),
-          timeoutMs
-        )
+      setTimeout(timeoutMs).then((): never => {
+        throw new Error('Timeout waiting for input')
       }),
     ])
 

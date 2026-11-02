@@ -52,6 +52,12 @@ describe('initEnvironment', () => {
     process.env.OPT_CACHED = 'changed'
     expect(env.optional.OPT_CACHED).toBe('first')
   })
+
+  it('returns undefined for symbol keys instead of throwing', () => {
+    const env = initEnvironment<{ ANY: string }>()
+    expect(Reflect.get(env, Symbol('inspect'))).toBeUndefined()
+    expect(Reflect.get(env.optional, Symbol('inspect'))).toBeUndefined()
+  })
 })
 
 describe('mergeEnvironments', () => {
@@ -155,6 +161,24 @@ describe('initSecretStore', () => {
     expect(() => secretStore.GATEWAY_API_KEY).toThrow(
       'Secret GATEWAY_API_KEY is required'
     )
+  })
+
+  it('throws when the fallback entry is explicitly undefined', () => {
+    fs.unlinkSync(`${secretsDir}/GATEWAY_API_KEY`)
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+      fallback: { GATEWAY_API_KEY: undefined },
+    })
+    expect(() => secretStore.GATEWAY_API_KEY).toThrow(
+      'Secret GATEWAY_API_KEY is required'
+    )
+  })
+
+  it('returns undefined for symbol keys instead of throwing', () => {
+    const secretStore = initSecretStore<{ GATEWAY_API_KEY: string }>({
+      dir: secretsDir,
+    })
+    expect(Reflect.get(secretStore, Symbol('inspect'))).toBeUndefined()
   })
 
   it('caches the secret value after first access', () => {

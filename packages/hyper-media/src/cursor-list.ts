@@ -77,26 +77,26 @@ export const toCursorListEntity = <T, E extends Entity<T>>(
     ...(prevCursor && { prevCursor }),
   }
 
+  const toLink = (href: string): Link => ({ method: 'GET', href })
+
   const links = {
-    self: { method: 'GET', href: resolveUrl(req) } as Link,
-    first: { method: 'GET', href: resolveUrl(req, buildFirstUrl(req)) } as Link,
+    self: toLink(resolveUrl(req)),
+    first: toLink(resolveUrl(req, buildFirstUrl(req))),
     ...(nextCursor && {
-      next: {
-        method: 'GET',
-        href: resolveUrl(
+      next: toLink(
+        resolveUrl(
           req,
           buildCursorUrl(req, nextCursor, 'next_cursor', pageSize)
-        ),
-      } as Link,
+        )
+      ),
     }),
     ...(prevCursor && {
-      prev: {
-        method: 'GET',
-        href: resolveUrl(
+      prev: toLink(
+        resolveUrl(
           req,
           buildCursorUrl(req, prevCursor, 'prev_cursor', pageSize)
-        ),
-      } as Link,
+        )
+      ),
     }),
   }
 

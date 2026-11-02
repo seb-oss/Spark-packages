@@ -60,11 +60,13 @@ type OpenSearchClientConstructor = new (
  * - Casts the instance to `OpenSearchClient` so TypeScript recognizes the new `search<T>()` signature.
  * - The `as unknown as` trick ensures `new OpenSearchClient()` is valid.
  */
+// biome-ignore lint/plugin/no-type-assertion: the wrapper re-types the runtime Client; the typed signatures are not assignable from Client's
 export const OpenSearchClient: OpenSearchClientConstructor = function (
   this: Client,
   ...args: ConstructorParameters<typeof Client>
 ) {
   const clientInstance = new Client(...args)
+  // biome-ignore lint/plugin/no-type-assertion: same instance, exposed with the typed OpenSearchClient signatures
   return clientInstance as unknown as OpenSearchClient
 } as unknown as {
   new (...args: ConstructorParameters<typeof Client>): OpenSearchClient

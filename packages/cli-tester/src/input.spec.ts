@@ -1,5 +1,6 @@
 import type { ChildProcess } from 'node:child_process'
 import { EventEmitter } from 'node:events'
+import { setTimeout } from 'node:timers/promises'
 import { styleText } from 'node:util'
 import { describe, expect, it } from 'vitest'
 import { input } from './input'
@@ -75,7 +76,7 @@ describe('input', () => {
     nextPromise.then(() => {
       resolved = true
     })
-    await new Promise((resolve) => setTimeout(resolve, 10))
+    await setTimeout(10)
     expect(resolved).toBe(false)
   })
 

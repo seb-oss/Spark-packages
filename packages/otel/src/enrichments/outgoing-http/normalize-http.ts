@@ -1,5 +1,8 @@
-import type { IncomingMessage, RequestOptions } from 'node:http'
+import type { ClientRequest, IncomingMessage, RequestOptions } from 'node:http'
 import type { NormalisedRequest, NormalisedResponse, Protocol } from './types'
+
+const isHeaderList = (headers: unknown): headers is readonly string[] =>
+  Array.isArray(headers)
 
 export const normHttpRequest = (req: RequestOptions): NormalisedRequest => {
   const hostname = String(req.hostname ?? req.host ?? '').split(':')[0]
@@ -15,8 +18,32 @@ export const normHttpRequest = (req: RequestOptions): NormalisedRequest => {
     protocol,
     getHeader(name) {
       const headers = req.headers
-      if (!headers || Array.isArray(headers)) return undefined
-      return getHeaderFromObject(headers as Record<string, unknown>, name)
+      if (!headers || isHeaderList(headers)) return undefined
+      return getHeaderFromObject(headers, name)
+    },
+  }
+}
+
+/**
+ * Normalises an outgoing `ClientRequest`. Unlike `RequestOptions` it has no
+ * `port` or `headers`, so the port comes from the `host` header and the
+ * scheme from `protocol`.
+ */
+export const normClientRequest = (req: ClientRequest): NormalisedRequest => {
+  const protocol: Protocol = req.protocol === 'https:' ? 'https' : 'http'
+  const hostPort = String(req.getHeader('host') ?? '').split(':')[1]
+  const port = hostPort ? Number(hostPort) : protocol === 'https' ? 443 : 80
+
+  return {
+    method: req.method,
+    hostname: req.host,
+    port,
+    path: req.path,
+    protocol,
+    getHeader(name) {
+      const value = req.getHeader(name)
+      if (value === undefined) return undefined
+      return Array.isArray(value) ? value : [String(value)]
     },
   }
 }

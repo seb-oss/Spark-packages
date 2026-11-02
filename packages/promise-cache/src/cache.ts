@@ -31,7 +31,8 @@ export const createCache = (persistor: IPersistor, prefix?: string): Cache => {
 
         // Return the pending request if one exists
         if (pendingPromises.has(key)) {
-          return pendingPromises.get(key) as R
+          // biome-ignore lint/plugin/no-type-assertion: one map serves every wrapped delegate; the key identifies this delegate's call
+          return pendingPromises.get(key) as Promise<R>
         }
 
         // Create a new promise to prevent duplicate processing
@@ -112,6 +113,7 @@ const ensurePersistorIsReady = async (persistor: IPersistor) => {
     await persistor.connect()
   } catch (err) {
     /* istanbul ignore next */
+    // biome-ignore lint/plugin/no-type-assertion: connect() rejects with Error
     if ((err as Error).message === 'Socket already opened') {
       // Connection is already in progress
       await new Promise<void>((resolve) => {

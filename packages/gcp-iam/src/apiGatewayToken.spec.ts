@@ -24,6 +24,12 @@ vi.mock('@google-cloud/iam-credentials', () => {
   return { IAMCredentialsClient }
 })
 
+const logError = vi.hoisted(() => vi.fn())
+
+vi.mock('@sebspark/otel', () => ({
+  getLogger: () => ({ debug: vi.fn(), info: vi.fn(), error: logError }),
+}))
+
 vi.mock('google-auth-library', () => {
   class GoogleAuth {
     getCredentials = getCredentials
@@ -96,6 +102,20 @@ describe('Google IAM', () => {
       ).rejects.toThrow()
     })
 
+    it('logs a non-Error rejection as an Error', async () => {
+      signBlobMock.mockRejectedValueOnce('permission denied')
+      logError.mockClear()
+
+      await expect(
+        getApiGatewayTokenByUrl({ apiURL: 'test-audience-string-error' })
+      ).rejects.toThrow('Error generating system JWT')
+
+      expect(logError).toHaveBeenCalledWith(
+        'Error generating system JWT',
+        new Error('permission denied')
+      )
+    })
+
     it('should return an empty string if GCP_IAM_SOFT_FAIL is true', async () => {
       signBlobMock.mockRejectedValueOnce(new Error('test-error'))
       process.env.GCP_IAM_SOFT_FAIL = 'true'
@@ -152,6 +172,20 @@ describe('Google IAM', () => {
       await expect(
         getApiGatewayTokenByClientId('error-client-id')
       ).rejects.toThrow('Error generating system JWT')
+    })
+
+    it('logs a non-Error rejection as an Error', async () => {
+      vi.mocked(fetchIdToken).mockRejectedValueOnce('fetch refused')
+      logError.mockClear()
+
+      await expect(
+        getApiGatewayTokenByClientId('string-error-client-id')
+      ).rejects.toThrow('Error generating system JWT')
+
+      expect(logError).toHaveBeenCalledWith(
+        'Error generating system JWT',
+        new Error('fetch refused')
+      )
     })
 
     it('returns empty string on error when GCP_IAM_SOFT_FAIL is true', async () => {

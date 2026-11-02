@@ -14,31 +14,35 @@ import {
 
 export type { AvroToTs, Prettify, SchemasToEvents } from './common'
 
-const encodePacket = (packet: Packet) => {
+const encodePacket = (packet: Packet): AvroSocketPacket => {
   const payloadTypeName = pascalCase(packet.data[0])
   const payload = packet.data[1]
 
   return {
     type: packet.type,
     nsp: packet.nsp || '/',
-    id: packet.id || null,
-    attachments: packet.attachments ?? null,
+    id: packet.id === undefined ? null : { int: packet.id },
+    attachments:
+      packet.attachments === undefined ? null : { int: packet.attachments },
     data: {
       [payloadTypeName]: payload,
     },
-  } as AvroSocketPacket
+  }
 }
 
-const decodePacket = (packet: AvroSocketPacket) => {
+const decodePacket = (packet: AvroSocketPacket): Packet => {
   /* istanbul ignore next */
   const [payloadTypeName, payload] = Object.entries(packet.data)[0]
   /* istanbul ignore next */
   const eventName = kebabCase(payloadTypeName)
   /* istanbul ignore next */
   return {
-    ...packet,
+    type: packet.type,
+    nsp: packet.nsp,
+    ...(packet.id && { id: packet.id.int }),
+    ...(packet.attachments && { attachments: packet.attachments.int }),
     data: [eventName, payload],
-  } as Packet
+  }
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: Defined in outside package
@@ -125,7 +129,12 @@ export class AvroDecoder extends BaseDecoder {
   }
 }
 
-export const createAvroParser = (schemas: RecordType[]) => {
+export const createAvroParser = (
+  schemas: RecordType[]
+): {
+  Encoder: new (replacer?: Replacer) => AvroEncoder
+  Decoder: new (reviver?: Reviver) => AvroDecoder
+} => {
   const packetSchema = {
     ...SOCKET_PACKET_SCHEMA,
     fields: [
@@ -136,16 +145,18 @@ export const createAvroParser = (schemas: RecordType[]) => {
       },
     ],
   } satisfies RecordType
-  const packetType = Type.forSchema(packetSchema)
+  const packetType = Type.forSchema(packetSchema, { wrapUnions: true })
 
   return {
-    // biome-ignore lint/complexity/useArrowFunction: Must be a function expression to satisfy constructor requirements
-    Encoder: function (replacer?: Replacer) {
-      return new AvroEncoder(packetType, replacer)
+    Encoder: class extends AvroEncoder {
+      constructor(replacer?: Replacer) {
+        super(packetType, replacer)
+      }
     },
-    // biome-ignore lint/complexity/useArrowFunction: Must be a function expression to satisfy constructor requirements
-    Decoder: function (reviver?: Reviver) {
-      return new AvroDecoder(packetType, reviver)
+    Decoder: class extends AvroDecoder {
+      constructor(reviver?: Reviver) {
+        super(packetType, reviver)
+      }
     },
   }
 }

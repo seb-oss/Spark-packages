@@ -13,6 +13,8 @@ The rules below are expanded in the sections that follow. If you remember nothin
 - **Test, don't deduce** — if you're reasoning about a runtime value, write a test asserting your guess and run it
 - **One step at a time** — fix one thing, verify, move on
 - **Stop and ask when unsure** — wrong assumptions compound
+- **Answer before acting** — when asked for a proposal or recommendation, answer and wait
+- **No type assertions** — narrow with type guards; `as` is a lint error
 - **Never go dark** — one line of chat before every tool batch
 - **Don't narrate *how*** — say *what* you're doing, then do it
 - **Docs → Red → Green → Refactor** for new behaviour
@@ -48,6 +50,9 @@ Do not batch-fix multiple files or issues in one move. Fix one thing, verify it 
 
 ### Stop and ask when unsure
 If the correct approach is unclear — about intent, architecture, or scope — stop and ask. Do not forge ahead with a guess. Wrong assumptions compound.
+
+### Answer before acting
+When the user asks a question or asks for a proposal or recommendation, answer it and wait for their decision. Implementing before answering breaks this rule, even when the answer seems obvious.
 
 ### Waiting is timed, never guessed
 An agent has no sense of elapsed time. When you give something a set time (e.g. "wait a few minutes for Dependabot"), enforce it with a real timer: a bounded loop or `sleep` that ends on its own, with the deadline taken from `date`. When it expires, act on what you have; never keep waiting open-ended.
@@ -90,6 +95,10 @@ Tests serve four purposes, in priority order:
 
 **Wrapper types help; they never block.** A package that wraps a library or service (e.g. `@sebspark/opensearch`) adds autocomplete and typing on top of it, but must accept everything the wrapped library or service accepts. Never reject a request the service would accept, including fields that are not in a declared mapping and values the service coerces. Rejecting a request that the service itself rejects is fine. One exception: where the wrapped library's own types are narrower than the service (e.g. `terms_set.terms` is `string[]` in `@opensearch-project/opensearch`), follow the library, so typed requests can still be passed to it.
 
+**No type assertions.** `x as T` is a lint error (`biome/no-type-assertion.grit`, wired in via `plugins` in `biome.json`); only `as const` is allowed. Narrow with type guards (`'key' in x`, `typeof`, `instanceof`, user-defined `x is T` guards) or make the types stricter. Where an assertion is inherent — a trust boundary such as parsing a file the caller declares to be a given format, or a value whose type the caller declares through a generic — keep it with `// biome-ignore lint/plugin/no-type-assertion: <why this is safe>`. Removing an assertion often exposes a type that lied; treat that as a bug: write a failing test first, and when the value comes from an external system, prove with an e2e test what it really returns. Test files are not linted.
+
+**Delays use `node:timers/promises`.** Write `import { setTimeout } from 'node:timers/promises'` and `await setTimeout(ms)`, without an alias, instead of wrapping the global `setTimeout` in a `new Promise`. The exception is published code that callers may test with `vi.useFakeTimers()`, which does not control `node:timers/promises` (verified with vitest 5): `retry` and `health-check/timing.ts` keep the global `setTimeout` for that reason, with a comment saying so.
+
 ## What Not To Do
 
 - Do not add comments, docstrings, or type annotations to code you did not change unless asked to
@@ -113,6 +122,8 @@ Work on one package at a time. While iterating on a package, run only that packa
 If a check doesn't exist for a package (e.g. no e2e tests), skip it — but verify by reading the package's `package.json` or README, not by assumption.
 
 Always run lint after any code change. Fix all warnings — warnings are typically treated as errors in CI.
+
+Every package's `typecheck` runs `tsc --noEmit -p .` followed by `vitest --typecheck.only`, so production code and tests are type-checked, not just type tests. Packages that check generated code (`openapi-client`, `openapi-e2e`) run `yarn generate &&` first in `test` and `typecheck`; the generated files are gitignored and Biome skips them (`vcs.useIgnoreFile`). Yarn 4 does not run `pre`/`post` scripts, so never rely on them.
 
 ## Dependencies
 

@@ -1,4 +1,7 @@
 import type { Database } from '@google-cloud/spanner'
+import { errorMessage } from './errorMessage'
+import { isRecord } from './isRecord'
+import { toMigration } from './toMigration'
 import type { ExecuteSqlRequest, Migration } from './types'
 
 export const SQL_SELECT_TABLE_MIGRATIONS = `
@@ -39,13 +42,9 @@ export const ensureMigrationTable = async (db: Database) => {
       throw err
     }
   } else {
-    const typedRows = rows as {
-      TABLE_NAME: string
-      COLUMN_NAME: string
-      SPANNER_TYPE: string
-    }[]
-    const upType = typedRows.find((r) => r.COLUMN_NAME === 'up')
-    const downType = typedRows.find((r) => r.COLUMN_NAME === 'down')
+    const columns = rows.filter(isRecord)
+    const upType = columns.find((r) => r.COLUMN_NAME === 'up')
+    const downType = columns.find((r) => r.COLUMN_NAME === 'down')
     const expectedType = 'STRING(MAX)'
 
     if (upType?.SPANNER_TYPE !== expectedType) {
@@ -93,10 +92,8 @@ export const getAppliedMigrations = async (
     }
     const [rows] = await db.run(req)
 
-    return rows as Migration[]
+    return rows.map(toMigration)
   } catch (error) {
-    throw new Error(
-      `Failed to get applied migrations: ${(error as Error).message}`
-    )
+    throw new Error(`Failed to get applied migrations: ${errorMessage(error)}`)
   }
 }

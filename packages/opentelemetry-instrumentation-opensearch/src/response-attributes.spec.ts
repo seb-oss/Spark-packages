@@ -168,4 +168,29 @@ describe('extractResponseAttributes', () => {
     const attrs = extractResponseAttributes(makeResponse())
     expect(attrs['db.opensearch.phase_took.query']).toBeUndefined()
   })
+
+  it('omits body-derived attributes when the body is text, as from the cat APIs', () => {
+    const attrs = extractResponseAttributes(
+      makeResponse({ body: 'green open my-index' })
+    )
+    expect(attrs['db.opensearch.took']).toBeUndefined()
+    expect(attrs['db.opensearch.hits.total']).toBeUndefined()
+  })
+
+  it('omits attributes whose values have unexpected types', () => {
+    const res = makeResponse({
+      body: {
+        took: '5',
+        timed_out: 'no',
+        _shards: { total: '3', successful: 3, failed: 0 },
+        hits: { total: { value: '42' } },
+      },
+    })
+    const attrs = extractResponseAttributes(res)
+    expect(attrs['db.opensearch.took']).toBeUndefined()
+    expect(attrs['db.opensearch.timed_out']).toBeUndefined()
+    expect(attrs['db.opensearch.shards.total']).toBeUndefined()
+    expect(attrs['db.opensearch.shards.successful']).toBe(3)
+    expect(attrs['db.opensearch.hits.total']).toBeUndefined()
+  })
 })

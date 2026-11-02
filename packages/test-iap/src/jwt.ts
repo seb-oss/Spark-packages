@@ -30,7 +30,7 @@ export const createJwt = async (claims: JsonObject) => {
     payload.preferred_username = payload.user
   }
   if (hasUser) {
-    delete (payload as { user?: string }).user
+    delete payload.user
   }
 
   const key = await getKey()
@@ -47,7 +47,7 @@ export const getRemoteJwt = async (remoteUrl: string, claims: JsonObject) => {
   const url = new URL(remoteUrl)
 
   for (const [name, val] of Object.entries(claims)) {
-    url.searchParams.set(name, val as string)
+    url.searchParams.set(name, String(val))
   }
 
   const res = await fetch(url)

@@ -51,13 +51,14 @@ export type APIServerOptions = {
   pre?: RequestHandler | RequestHandler[]
 }
 
-export type RequestArgs = Request & {
+/** Arguments a client passes when calling an endpoint. */
+export type RequestArgs = {
   params?: Record<string, string>
   query?: Record<string, string>
   headers?: Record<string, string>
 }
 export type PayloadRequestArgs = RequestArgs & {
-  body?: Record<string, string>
+  body?: unknown
 }
 
 export type RequestOptions = {

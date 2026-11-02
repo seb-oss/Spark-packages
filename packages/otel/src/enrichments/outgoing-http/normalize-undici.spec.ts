@@ -1,4 +1,4 @@
-import {
+import type {
   UndiciRequest,
   UndiciResponse,
 } from '@opentelemetry/instrumentation-undici'

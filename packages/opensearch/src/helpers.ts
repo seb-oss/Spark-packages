@@ -9,9 +9,18 @@ import type {
 } from './types/bulk'
 import type { IndexDefinition } from './types/common'
 import type { WritableDocument } from './types/documents'
+import type { DeepPartial } from './types/utilityTypes'
 
 export type IdFunction<T extends IndexDefinition> = (
   doc: WritableDocument<T>
+) => Types.Common.Id
+
+/**
+ * Derives the `_id` for an update action. It receives `doc` when it is set,
+ * otherwise `upsert`, so fields may be missing.
+ */
+export type UpdateIdFunction<T extends IndexDefinition> = (
+  doc: DeepPartial<WritableDocument<T>>
 ) => Types.Common.Id
 
 /**
@@ -62,6 +71,11 @@ export function bulkCreate<T extends IndexDefinition>(
   return { index, body }
 }
 
+const hasDoc = <T extends IndexDefinition>(
+  update: UpdateAction<T>
+): update is Extract<UpdateAction<T>, { doc: unknown }> =>
+  update.doc !== undefined
+
 /**
  * Constructs a bulk request payload for update operations.
  *
@@ -71,17 +85,17 @@ export function bulkCreate<T extends IndexDefinition>(
  *
  * @param index - The name of the index.
  * @param updates - An array of update actions.
- * @param idFn  - A function that returns a unique _id for each document.
+ * @param idFn  - Derives the `_id` from `doc`, or from `upsert` when `doc` is not set.
  * @returns A BulkRequest payload for update operations.
  */
 export function bulkUpdate<T extends IndexDefinition>(
   index: T['index'],
   updates: UpdateAction<T>[],
-  idFn: IdFunction<T>
+  idFn: UpdateIdFunction<T>
 ): BulkRequest<T> {
   const body = updates.flatMap((update) => {
     const op: UpdateOperation<T> = {
-      _id: idFn((update.doc as WritableDocument<T>) || update.upsert),
+      _id: idFn(hasDoc(update) ? update.doc : update.upsert),
     }
     return [{ update: op }, update]
   })

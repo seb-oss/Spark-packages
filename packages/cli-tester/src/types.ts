@@ -61,18 +61,19 @@ export type CheckboxPrompt = BasePrompt & {
  * A utility type that returns the appropriate prompt type based on `T`.
  *
  * - If `T` is `'input'`, returns `InputPrompt`.
- * - If `T` is `'select'`, returns `SelectPrompt`.
+ * - If `T` is `'select'`, returns `SelectPrompt | CheckboxPrompt`, since a
+ *   checkbox prompt satisfies an expected select.
  * - If `T` is `'checkbox'`, returns `CheckboxPrompt`.
- * - If `T` is `undefined`, returns `BasePrompt`.
+ * - If `T` is `undefined`, returns any of the prompts.
  */
 export type Prompt<T extends PromptType | undefined = undefined> =
   T extends 'input'
     ? InputPrompt
     : T extends 'select'
-      ? SelectPrompt
+      ? SelectPrompt | CheckboxPrompt
       : T extends 'checkbox'
         ? CheckboxPrompt
-        : BasePrompt
+        : InputPrompt | SelectPrompt | CheckboxPrompt
 
 /**
  * CLI Tester interface for interacting with a command-line interface in tests.

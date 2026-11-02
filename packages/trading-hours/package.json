@@ -19,7 +19,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit -p ."
   },
   "dependencies": {
     "date-fns": "4.4.0"

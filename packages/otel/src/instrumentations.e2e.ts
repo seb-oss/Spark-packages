@@ -1,5 +1,6 @@
 import type { Server } from 'node:http'
 import { Client as OpensearchClient } from '@opensearch-project/opensearch'
+import { SpanKind } from '@opentelemetry/api'
 import type { ReadableSpan } from '@opentelemetry/sdk-trace'
 import {
   ATTR_DB_COLLECTION_NAME,
@@ -214,6 +215,26 @@ describe('instrumentations', () => {
           name: 'POST',
         })
       )
+    })
+    it('records the real url of outgoing http calls', async () => {
+      await axiosClient.get('/')
+      await spanExporter.forceFlush()
+
+      const outgoing = spanExporter
+        .getFinishedSpans()
+        .filter(
+          (span) =>
+            span.instrumentationScope.name ===
+              '@opentelemetry/instrumentation-http' &&
+            span.kind === SpanKind.CLIENT
+        )
+
+      expect(outgoing).toHaveLength(1)
+      expect(outgoing[0].attributes).toMatchObject({
+        'url.scheme': 'http',
+        'server.port': Number(new URL(expressHost).port),
+        'url.full': `${expressHost}/`,
+      })
     })
   })
   describe('undici/express', () => {

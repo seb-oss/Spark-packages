@@ -23,9 +23,9 @@ describe('callResponder', () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     const cb = vi.fn()
     responders.add(
-      makeResponder(async (args, respond) =>
-        respond({ result: args.value * 2 })
-      )
+      makeResponder(async (args, respond) => {
+        await respond({ result: args.value * 2 })
+      })
     )
 
     await callResponder('test', responders, { value: 3 }, cb)
@@ -35,7 +35,11 @@ describe('callResponder', () => {
 
   it('removes a one-shot responder after use', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
-    responders.add(makeResponder(async (_args, cb) => cb({ result: 1 }), 1))
+    responders.add(
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 1 })
+      }, 1)
+    )
 
     await callResponder('test', responders, { value: 0 }, vi.fn())
 
@@ -45,10 +49,9 @@ describe('callResponder', () => {
   it('does not remove a persist responder after use', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 1 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 1 })
+      }, Number.POSITIVE_INFINITY)
     )
 
     await callResponder('test', responders, { value: 0 }, vi.fn())
@@ -58,7 +61,11 @@ describe('callResponder', () => {
 
   it('decrements remaining on each use and removes at zero', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
-    responders.add(makeResponder(async (_args, cb) => cb({ result: 1 }), 2))
+    responders.add(
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 1 })
+      }, 2)
+    )
 
     await callResponder('test', responders, { value: 0 }, vi.fn())
     expect(responders.size).toBe(1)
@@ -70,16 +77,14 @@ describe('callResponder', () => {
   it('picks the most recently added responder (LIFO)', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 1 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 1 })
+      }, Number.POSITIVE_INFINITY)
     )
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 2 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 2 })
+      }, Number.POSITIVE_INFINITY)
     )
 
     const cb = vi.fn()
@@ -91,12 +96,15 @@ describe('callResponder', () => {
   it('falls back to an earlier responder once the later one is consumed', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 1 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 1 })
+      }, Number.POSITIVE_INFINITY)
     )
-    responders.add(makeResponder(async (_args, cb) => cb({ result: 2 }), 1))
+    responders.add(
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 2 })
+      }, 1)
+    )
 
     const first = vi.fn()
     const second = vi.fn()
@@ -110,14 +118,15 @@ describe('callResponder', () => {
   it('skips a responder whose filter does not match', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 0 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 0 })
+      }, Number.POSITIVE_INFINITY)
     )
     responders.add(
       makeResponder(
-        async (_args, cb) => cb({ result: 99 }),
+        async (_args, cb) => {
+          await cb({ result: 99 })
+        },
         Number.POSITIVE_INFINITY,
         ({ value }) => value > 10
       )
@@ -132,14 +141,15 @@ describe('callResponder', () => {
   it('uses a filtered responder when the filter matches', async () => {
     const responders = new Set<StoredResponder<Args, Resp>>()
     responders.add(
-      makeResponder(
-        async (_args, cb) => cb({ result: 0 }),
-        Number.POSITIVE_INFINITY
-      )
+      makeResponder(async (_args, cb) => {
+        await cb({ result: 0 })
+      }, Number.POSITIVE_INFINITY)
     )
     responders.add(
       makeResponder(
-        async (_args, cb) => cb({ result: 99 }),
+        async (_args, cb) => {
+          await cb({ result: 99 })
+        },
         Number.POSITIVE_INFINITY,
         ({ value }) => value > 10
       )

@@ -1,11 +1,11 @@
+import { setTimeout } from 'node:timers/promises'
+
 export type WaitForConfig = {
   /** How often to retry (ms). Default: 50 */
   pollingInterval?: number
   /** Give up after this long (ms). Default: 2000 */
   timeout?: number
 }
-
-const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms))
 
 /**
  * Repeatedly executes `fn` until it stops throwing or the timeout elapses.
@@ -34,6 +34,6 @@ export async function waitFor(
       if (lastErr instanceof Error) throw lastErr
       throw new Error(String(lastErr))
     }
-    await sleep(pollingInterval)
+    await setTimeout(pollingInterval)
   }
 }

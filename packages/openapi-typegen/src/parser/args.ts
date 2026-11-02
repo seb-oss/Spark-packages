@@ -9,7 +9,8 @@ import type {
   SecurityRequirementObject,
   SecuritySchemeObject,
 } from '@sebspark/openapi-core'
-import type { Args, ObjectType, RequestArgs } from '../types'
+import { isObjectType, isReference } from '../typeGuards'
+import type { Args, RequestArgs } from '../types'
 import { findRef, parseDocumentation, parseRef } from './common'
 import { parseSchema } from './schema'
 
@@ -37,16 +38,16 @@ const createArgs = (initializer: Partial<Args> = {}): Args => ({
   ...initializer,
 })
 
+const REQUEST_ARG_KEYS = ['query', 'header', 'path', 'cookie', 'body'] as const
+
 const joinArgs = (args: RequestArgs[]): RequestArgs => {
   const reqArg: RequestArgs = {}
   for (const arg of args) {
-    for (const [prop, val] of Object.entries(arg)) {
-      const key = prop as keyof RequestArgs
-      if (reqArg[key]) {
-        reqArg[key] = joinArg(reqArg[key] as Args, val)
-      } else {
-        reqArg[key] = val
-      }
+    for (const key of REQUEST_ARG_KEYS) {
+      const val = arg[key]
+      if (!val) continue
+      const existing = reqArg[key]
+      reqArg[key] = existing ? joinArg(existing, val) : val
     }
   }
   return reqArg
@@ -108,10 +109,9 @@ const parseParameters = (
   const args: RequestArgs = {}
 
   for (const p of parameters) {
-    const ref = (p as ReferenceObject).$ref
-    if (ref) {
-      const part = ref.split('/')[2] as keyof ComponentsObject
-      switch (part) {
+    if (isReference(p)) {
+      const ref = p.$ref
+      switch (ref.split('/')[2]) {
         case 'parameters': {
           const param = findRef<ParameterObject>(components, ref)
           const arg =
@@ -129,26 +129,31 @@ const parseParameters = (
           const arg = /* istanbul ignore next */ args.header || createArgs()
           const name = parseRef(ref)
           /* istanbul ignore next */
-          const headerSchema = header.schema || {}
+          const headerSchema: SchemaObject | ReferenceObject =
+            header.schema || {}
           arg.properties.push({
             name,
             optional: !header.required,
             // biome-ignore lint/style/noNonNullAssertion: schema is never null here
             type: [{ type: parseSchema(undefined, header.schema!).type }],
-            ...parseDocumentation(headerSchema as SchemaObject),
+            ...parseDocumentation(headerSchema),
           })
           args.header = arg
           break
         }
       }
     } else {
-      const param = p as ParameterObject
+      const param = p
       const arg = args[param.in] || createArgs({ ...parseDocumentation(param) })
 
       arg.properties.push({
         name: param.name,
         optional: !param.required,
-        type: [parseSchema(undefined, param.schema as SchemaObject)],
+        type: [
+          param.schema
+            ? parseSchema(undefined, param.schema)
+            : { type: 'unknown' },
+        ],
       })
 
       arg.optional = arg.optional && !param.required
@@ -167,8 +172,8 @@ const parseRequestBody = (
   const args: RequestArgs = {}
   if (!requestBody) return args
 
-  const ref = (requestBody as ReferenceObject).$ref
-  if (ref) {
+  if (isReference(requestBody)) {
+    const ref = requestBody.$ref
     const refBody = findRef<RequestBodyObject>(components, ref)
     args.body = createArgs({
       optional: !refBody.required,
@@ -176,7 +181,7 @@ const parseRequestBody = (
     })
   } else {
     // Inline request body properties
-    const body = requestBody as RequestBodyObject
+    const body = requestBody
     const bodyArgs: Args =
       args.body ||
       createArgs({ optional: !body.required, ...parseDocumentation(body) })
@@ -187,9 +192,9 @@ const parseRequestBody = (
       if (schema) {
         const parsed = parseSchema(undefined, schema)
         /* istanbul ignore else */
-        if (parsed.type === 'object') {
+        if (isObjectType(parsed)) {
           args.body = {
-            ...(parsed as ObjectType),
+            ...parsed,
             optional: !body.required,
           }
         } else if (parsed.type) {

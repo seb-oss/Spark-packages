@@ -14,7 +14,6 @@ import {
   METRIC_HTTP_SERVER_REQUEST_DURATION,
 } from '@opentelemetry/semantic-conventions'
 import {
-  type APIResponse,
   type APIServerDefinition,
   type APIServerOptions,
   createHttpError,
@@ -27,11 +26,18 @@ import {
   json,
   type NextFunction,
   type Request,
-  type RequestHandler,
   type Response,
   Router,
 } from 'express'
 import pkg from '../package.json' with { type: 'json' }
+
+const verbs = [
+  'get',
+  'post',
+  'put',
+  'patch',
+  'delete',
+] as const satisfies readonly Verb[]
 
 export const TypedRouter = (
   api: APIServerDefinition,
@@ -41,7 +47,7 @@ export const TypedRouter = (
   const tracer = getTracer(pkg.name)
   const router = Router()
 
-  router.use(json() as unknown as RequestHandler)
+  router.use(json())
 
   // Add global pre to router
   const preUsings = Array.isArray(options.pre)
@@ -56,7 +62,10 @@ export const TypedRouter = (
   // loop through urls on server definition
   for (const [url, methods] of Object.entries(api)) {
     // loop through methods on url
-    for (const [method, route] of Object.entries(methods)) {
+    for (const method of verbs) {
+      const route = methods[method]
+      if (!route) continue
+
       // Build handler for url/method
       const handler = async (
         req: Request,
@@ -95,10 +104,8 @@ export const TypedRouter = (
             return
           }
 
-          const { headers, data } = response as APIResponse<
-            unknown,
-            Record<string, string>
-          >
+          const { data } = response
+          const headers = 'headers' in response ? response.headers : undefined
 
           if (headers) {
             for (const [name, value] of Object.entries(headers)) {
@@ -118,16 +125,18 @@ export const TypedRouter = (
               (performance.now() - startTime) / 1000,
           })
         } catch (error) {
-          const err = (
-            error instanceof Error ? error : new Error(String(error))
-          ) as HttpError
+          const err = error instanceof Error ? error : new Error(String(error))
+          const statusCode =
+            'statusCode' in err && typeof err.statusCode === 'number'
+              ? err.statusCode
+              : undefined
           span.recordException(err)
           span.setStatus({ code: SpanStatusCode.ERROR, message: err.message })
           span.setAttribute(ATTR_ERROR_TYPE, err.constructor.name)
 
-          if (err.statusCode) {
+          if (statusCode) {
             span.setAttributes({
-              [ATTR_HTTP_RESPONSE_STATUS_CODE]: err.statusCode,
+              [ATTR_HTTP_RESPONSE_STATUS_CODE]: statusCode,
             })
           }
 
@@ -152,9 +161,9 @@ export const TypedRouter = (
         : route.pre
           ? [route.pre]
           : []
-      const handlers = pre.concat(handler as RequestHandler)
+      const handlers = pre.concat(handler)
 
-      router[method as Verb](url, ...handlers)
+      router[method](url, ...handlers)
     }
   }
 

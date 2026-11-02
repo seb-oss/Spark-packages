@@ -25,23 +25,25 @@ const OTEL_INIT_PROMISE_KEY = Symbol.for('@sebspark/otel:initPromise')
 function getGlobal(): {
   [key: symbol]: unknown
 } {
+  // biome-ignore lint/plugin/no-type-assertion: globalThis has no symbol index signature
   return globalThis as Record<symbol, unknown>
 }
 
 export async function initialize(
   ...instrumentations: Promise<Instrumentation>[]
-) {
+): Promise<void> {
   const g = getGlobal()
-  if (!g[OTEL_INIT_PROMISE_KEY]) {
-    const resolvedInstrumentations = await Promise.all(instrumentations)
-    const promise = _initialize(resolvedInstrumentations).catch((err) => {
-      // Allow re-initialization if the first attempt fails
-      g[OTEL_INIT_PROMISE_KEY] = undefined
-      throw err
-    })
-    g[OTEL_INIT_PROMISE_KEY] = promise
-  }
-  return g[OTEL_INIT_PROMISE_KEY] as Promise<void>
+  const existing = g[OTEL_INIT_PROMISE_KEY]
+  if (existing instanceof Promise) return existing
+
+  const resolvedInstrumentations = await Promise.all(instrumentations)
+  const promise = _initialize(resolvedInstrumentations).catch((err) => {
+    // Allow re-initialization if the first attempt fails
+    g[OTEL_INIT_PROMISE_KEY] = undefined
+    throw err
+  })
+  g[OTEL_INIT_PROMISE_KEY] = promise
+  return promise
 }
 
 export function isInitialized() {

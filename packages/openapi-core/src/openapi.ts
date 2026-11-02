@@ -58,7 +58,7 @@ export type OperationObject = {
 
 export type RequestBodyObject = {
   description?: string
-  content: Record<'application/json' | (string & {}), MediaTypeObject>
+  content: Partial<Record<'application/json' | (string & {}), MediaTypeObject>>
   required?: boolean
 }
 
@@ -67,7 +67,7 @@ export type ResponsesObject = Record<string, ResponseObject | ReferenceObject>
 export type ResponseObject = {
   description: string
   headers?: Record<string, HeaderObject | ReferenceObject>
-  content?: Record<'application/json' | (string & {}), MediaTypeObject>
+  content?: Partial<Record<'application/json' | (string & {}), MediaTypeObject>>
   links?: Record<string, LinkObject | ReferenceObject>
 }
 

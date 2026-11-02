@@ -1,8 +1,5 @@
-import type {
-  ArrayType,
-  ParsedComponents,
-  ParsedOpenApiDocument,
-} from '../types'
+import { isArrayType } from '../typeGuards'
+import type { ParsedComponents, ParsedOpenApiDocument } from '../types'
 import { generateClient } from './client'
 import { generateHeader, generateResponseBody, generateType } from './common'
 import { generateServer } from './server'
@@ -56,8 +53,8 @@ const generateComponents = (components: ParsedComponents): string => {
 
   for (const param of components.parameters) {
     const type = [param.type]
-    if (param.type.type === 'array') {
-      type.push((param.type as ArrayType).items)
+    if (isArrayType(param.type)) {
+      type.push(param.type.items)
     }
     tokens.push(
       generateType({

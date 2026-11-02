@@ -13,7 +13,7 @@ describe('normalizeResponder', () => {
   })
 
   it('calls a single-response function with the args and passes the result to cb', async () => {
-    const responder = normalizeResponder<Args, Resp>(({ name }) => ({
+    const responder = normalizeResponder<Args, Resp>(({ name }: Args) => ({
       message: `hi ${name}`,
     }))
     const cb = vi.fn()
@@ -22,9 +22,11 @@ describe('normalizeResponder', () => {
   })
 
   it('supports an async single-response function', async () => {
-    const responder = normalizeResponder<Args, Resp>(async ({ name }) => ({
-      message: `async ${name}`,
-    }))
+    const responder = normalizeResponder<Args, Resp>(
+      async ({ name }: Args) => ({
+        message: `async ${name}`,
+      })
+    )
     const cb = vi.fn()
     await responder({ name: 'Carol' }, cb)
     expect(cb).toHaveBeenCalledExactlyOnceWith({ message: 'async Carol' })

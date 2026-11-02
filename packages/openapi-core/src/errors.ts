@@ -18,49 +18,24 @@ function isAxiosLikeError(err: unknown): err is AxiosLikeError {
   return typeof err === 'object' && err !== null
 }
 
-export type ClientErrorCode =
-  | 400
-  | 401
-  | 402
-  | 403
-  | 404
-  | 405
-  | 406
-  | 407
-  | 408
-  | 409
-  | 410
-  | 411
-  | 412
-  | 413
-  | 414
-  | 415
-  | 416
-  | 417
-  | 418
-  | 421
-  | 422
-  | 423
-  | 424
-  | 425
-  | 426
-  | 428
-  | 429
-  | 431
-  | 451
-export type ServerErrorCode =
-  | 500
-  | 501
-  | 502
-  | 503
-  | 504
-  | 505
-  | 506
-  | 507
-  | 508
-  | 510
-  | 511
+const CLIENT_ERROR_CODES = [
+  400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414,
+  415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431, 451,
+] as const
+export type ClientErrorCode = (typeof CLIENT_ERROR_CODES)[number]
+const SERVER_ERROR_CODES = [
+  500, 501, 502, 503, 504, 505, 506, 507, 508, 510, 511,
+] as const
+export type ServerErrorCode = (typeof SERVER_ERROR_CODES)[number]
 export type ErrorCode = ClientErrorCode | ServerErrorCode
+
+const ERROR_CODES = new Set<number>([
+  ...CLIENT_ERROR_CODES,
+  ...SERVER_ERROR_CODES,
+])
+
+const isErrorCode = (statusCode: number): statusCode is ErrorCode =>
+  ERROR_CODES.has(statusCode)
 
 type SerializedError = {
   message: string
@@ -429,7 +404,7 @@ export const createHttpError = (
 export const fromAxiosError = (error: unknown): HttpError => {
   const e: AxiosLikeError = isAxiosLikeError(error) ? error : {}
   // Default to 500 Internal Server Error if the status code is not available
-  const statusCode = (e.response?.status || 500) as ErrorCode
+  const statusCode = e.response?.status || 500
   const message = e.response?.statusText || e.message || 'Internal Server Error'
 
   // The internal error can contain more specific details about the Axios error
@@ -439,5 +414,7 @@ export const fromAxiosError = (error: unknown): HttpError => {
   // If the error response has a data property pass it along
   cause.cause = e.response?.data
 
-  return createHttpError(statusCode, message, cause)
+  return isErrorCode(statusCode)
+    ? createHttpError(statusCode, message, cause)
+    : new HttpError(statusCode, message, cause)
 }

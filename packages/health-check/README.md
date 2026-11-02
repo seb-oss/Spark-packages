@@ -383,7 +383,10 @@ app.listen(3000, () => {
         "type": "object",
         "properties": {
           "lastChecked": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "date-time"
           },
           "lastSuccess": {
@@ -969,7 +972,7 @@ components:
       type: object
       properties:
         lastChecked:
-          type: string
+          type: [string, "null"]
           format: date-time
         lastSuccess:
           type: [string, "null"]

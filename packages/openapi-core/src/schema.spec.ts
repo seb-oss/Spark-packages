@@ -59,6 +59,32 @@ describe('disableUnimplementedPaths', () => {
     const pathItem = baseDocument.paths['/instruments'] as PathItemObject
     expect(pathItem.get?.deprecated).toBeUndefined()
   })
+  it('only marks operations, not path item metadata', () => {
+    baseDocument.paths['/instruments/{id}'] = {
+      summary: 'One instrument',
+      parameters: [{ name: 'id', in: 'path', required: true }],
+      get: { responses: {} },
+    }
+    const result = disableUnimplementedPaths(baseDocument, {
+      '/instruments': {},
+    })
+    expect(result.paths['/instruments/{id}']).toEqual({
+      summary: 'One instrument',
+      parameters: [{ name: 'id', in: 'path', required: true }],
+      get: { responses: {}, deprecated: true, tags: ['not-implemented'] },
+    })
+  })
+  it('leaves referenced path items unchanged', () => {
+    baseDocument.paths['/instruments/{id}'] = {
+      $ref: '#/components/pathItems/Instrument',
+    }
+    const result = disableUnimplementedPaths(baseDocument, {
+      '/instruments': {},
+    })
+    expect(result.paths['/instruments/{id}']).toEqual({
+      $ref: '#/components/pathItems/Instrument',
+    })
+  })
   it('does not mark health paths as unimplemented', () => {
     baseDocument.paths['/health'] = { get: { responses: {} } }
     const result = disableUnimplementedPaths(baseDocument, {})
@@ -91,6 +117,9 @@ describe('resolveRef', () => {
   it('returns undefined for an unknown $ref', () => {
     const result = resolveRef('#/components/schemas/Unknown', baseDocument)
     expect(result).toBeUndefined()
+  })
+  it('returns undefined when the ref points to a non-object', () => {
+    expect(resolveRef('#/openapi', baseDocument)).toBeUndefined()
   })
   it('returns undefined for an invalid path', () => {
     const result = resolveRef('#/foo/bar/baz', baseDocument)
@@ -170,6 +199,34 @@ describe('flattenEnums', () => {
         oneOf: [{ type: 'string', enum: ['a', 'b'] }],
       })
     })
+    it('leaves oneOf with non-string enum refs unchanged', () => {
+      baseDocument.components!.schemas!.LevelEnum = {
+        type: 'integer',
+        enum: [1, 2],
+      }
+      baseDocument.components!.parameters!.Level = {
+        name: 'level',
+        in: 'query',
+        schema: { oneOf: [{ $ref: '#/components/schemas/LevelEnum' }] },
+      }
+      const result = flattenEnums(baseDocument)
+      expect(result.components?.parameters?.Level.schema).toEqual({
+        oneOf: [{ $ref: '#/components/schemas/LevelEnum' }],
+      })
+    })
+    it('skips component parameters without schema', () => {
+      baseDocument.components!.parameters!.Body = {
+        name: 'body',
+        in: 'query',
+        content: {},
+      }
+      const result = flattenEnums(baseDocument)
+      expect(result.components?.parameters?.Body).toEqual({
+        name: 'body',
+        in: 'query',
+        content: {},
+      })
+    })
     it('handles missing parameters gracefully', () => {
       baseDocument.components!.parameters = undefined
       const result = flattenEnums(baseDocument)
@@ -241,6 +298,35 @@ describe('flattenEnums', () => {
       expect(params[0].schema).toEqual({
         type: 'string',
         enum: ['active', 'inactive', 'stock', 'fund'],
+      })
+    })
+    it('flattens oneOf enum refs in path-level parameters', () => {
+      baseDocument.paths['/instruments'] = {
+        parameters: [
+          {
+            name: 'sort',
+            in: 'query',
+            schema: {
+              oneOf: [
+                { $ref: '#/components/schemas/StatusEnum' },
+                { $ref: '#/components/schemas/TypeEnum' },
+              ],
+            },
+          },
+        ],
+      }
+      const result = flattenEnums(baseDocument)
+      expect(result.paths['/instruments']).toEqual({
+        parameters: [
+          {
+            name: 'sort',
+            in: 'query',
+            schema: {
+              type: 'string',
+              enum: ['active', 'inactive', 'stock', 'fund'],
+            },
+          },
+        ],
       })
     })
     it('leaves inline parameters without oneOf unchanged', () => {

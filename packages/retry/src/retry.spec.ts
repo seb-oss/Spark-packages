@@ -63,10 +63,10 @@ describe('retry', () => {
   it('caps retry delay using maxDelay when interval is larger', async () => {
     const setTimeoutSpy = vi
       .spyOn(globalThis, 'setTimeout')
-      .mockImplementation(((callback: TimerHandler) => {
+      .mockImplementation((callback) => {
         if (typeof callback === 'function') callback()
         return 0 as unknown as ReturnType<typeof setTimeout>
-      }) as typeof setTimeout)
+      })
 
     const func = vi.fn().mockResolvedValue(true)
     func.mockRejectedValueOnce(new Error('fail once'))
@@ -87,10 +87,10 @@ describe('retry', () => {
   it('does not change delay when interval is below maxDelay', async () => {
     const setTimeoutSpy = vi
       .spyOn(globalThis, 'setTimeout')
-      .mockImplementation(((callback: TimerHandler) => {
+      .mockImplementation((callback) => {
         if (typeof callback === 'function') callback()
         return 0 as unknown as ReturnType<typeof setTimeout>
-      }) as typeof setTimeout)
+      })
 
     const func = vi.fn().mockResolvedValue(true)
     func.mockRejectedValueOnce(new Error('fail once'))
@@ -111,10 +111,10 @@ describe('retry', () => {
   it('caps exponential interval on later retries', async () => {
     const setTimeoutSpy = vi
       .spyOn(globalThis, 'setTimeout')
-      .mockImplementation(((callback: TimerHandler) => {
+      .mockImplementation((callback) => {
         if (typeof callback === 'function') callback()
         return 0 as unknown as ReturnType<typeof setTimeout>
-      }) as typeof setTimeout)
+      })
 
     const error = new Error('always fails')
     const func = vi.fn().mockRejectedValue(error)

@@ -1,5 +1,6 @@
 import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
+import { errorMessage } from './errorMessage'
 import type { Config, Migration } from './types'
 
 export const getMigrationFiles = async (path: string): Promise<string[]> => {
@@ -14,9 +15,7 @@ export const getMigrationFiles = async (path: string): Promise<string[]> => {
 
     return migrationFileIds
   } catch (error) {
-    throw new Error(
-      `Failed to get migration files: ${(error as Error).message}`
-    )
+    throw new Error(`Failed to get migration files: ${errorMessage(error)}`)
   }
 }
 
@@ -52,9 +51,7 @@ export const getMigration = async (
     // Return the migration as a `Migration` object
     return { id, description, up, down }
   } catch (error) {
-    throw new Error(
-      `Failed to get migration ${id}: ${(error as Error).message}`
-    )
+    throw new Error(`Failed to get migration ${id}: ${errorMessage(error)}`)
   }
 }
 
@@ -126,7 +123,7 @@ export const createMigration = async (
 
     console.log(`Migration created: ${filePath}`)
   } catch (error) {
-    throw new Error(`Error creating migration: ${(error as Error).message}`)
+    throw new Error(`Error creating migration: ${errorMessage(error)}`)
   }
 }
 
@@ -144,7 +141,7 @@ export const writeConfig = async (
     console.log(`Configuration written to ${path}`)
   } catch (error) {
     throw new Error(
-      `Error writing configuration to ${path}: ${(error as Error).message}`
+      `Error writing configuration to ${path}: ${errorMessage(error)}`
     )
   }
 }

@@ -6,6 +6,7 @@ export const liveness = (): Liveness => {
   const cpus = os.cpus()
   const total = os.totalmem()
   const free = os.freemem()
+  const [load1 = 0, load5 = 0, load15 = 0] = os.loadavg()
   let memUsedRatio: number
   /* istanbul ignore else */
   if (total > 0) {
@@ -19,7 +20,7 @@ export const liveness = (): Liveness => {
     timestamp: new Date().toISOString(),
     system: {
       uptime: os.uptime(),
-      loadavg: os.loadavg() as [number, number, number],
+      loadavg: [load1, load5, load15],
       totalmem: total,
       freemem: free,
       memUsedRatio,

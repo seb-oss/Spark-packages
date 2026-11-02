@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import {
   RedisContainer,
   type StartedRedisContainer,
@@ -14,8 +15,6 @@ import {
   vi,
 } from 'vitest'
 import { createCache } from './cache'
-
-const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 describe('cache e2e', () => {
   let container: StartedRedisContainer
@@ -79,11 +78,11 @@ describe('cache e2e', () => {
     const wrapped = cache.wrap(delegate, { key: 'fixed-ttl', expiry: 500 }) // 500ms TTL
 
     await wrapped(5)
-    await wait(300) // Wait less than TTL
+    await setTimeout(300) // Wait less than TTL
     const resultBeforeExpiry = await wrapped(5)
     expect(resultBeforeExpiry).toBe(10)
 
-    await wait(300) // Wait past TTL
+    await setTimeout(300) // Wait past TTL
     const resultAfterExpiry = await wrapped(5)
     expect(resultAfterExpiry).toBe(10)
   })
@@ -97,11 +96,11 @@ describe('cache e2e', () => {
     })
 
     await wrapped(5)
-    await wait(800) // Before expiry
+    await setTimeout(800) // Before expiry
     const resultBeforeExpiry = await wrapped(5)
     expect(resultBeforeExpiry).toBe(10)
 
-    await wait(500) // After expiry
+    await setTimeout(500) // After expiry
     const resultAfterExpiry = await wrapped(5)
     expect(resultAfterExpiry).toBe(10)
   })
@@ -115,11 +114,11 @@ describe('cache e2e', () => {
 
     await wrapped(5) // TTL = 5 * 100 + 10 * 10 = 600ms
 
-    await wait(500) // Before expiry
+    await setTimeout(500) // Before expiry
     const resultBeforeExpiry = await wrapped(5)
     expect(resultBeforeExpiry).toBe(10)
 
-    await wait(200) // After expiry
+    await setTimeout(200) // After expiry
     const resultAfterExpiry = await wrapped(5)
     expect(resultAfterExpiry).toBe(10)
   })
@@ -134,11 +133,11 @@ describe('cache e2e', () => {
 
     await wrapped(5) // TTL = 5 * 100 + 10 * 10 = 600ms
 
-    await wait(500) // Before expiry
+    await setTimeout(500) // Before expiry
     const resultBeforeExpiry = await wrapped(5)
     expect(resultBeforeExpiry).toBe(10)
 
-    await wait(200) // After expiry
+    await setTimeout(200) // After expiry
     const resultAfterExpiry = await wrapped(5)
     expect(resultAfterExpiry).toBe(10)
   })
@@ -168,7 +167,7 @@ describe('cache e2e', () => {
 
   it('deduplicates multiple concurrent requests', async () => {
     const delegate = vi.fn(async (x: number) => {
-      await wait(100) // Simulate delay
+      await setTimeout(100) // Simulate delay
       return x * 2
     })
 
@@ -260,7 +259,7 @@ describe('cache e2e', () => {
 
         expect(await cache.persistor.get('expiring-key')).toBe('value')
 
-        await wait(1100)
+        await setTimeout(1100)
         expect(await cache.persistor.get('expiring-key')).toBeNull()
       })
 
@@ -273,7 +272,7 @@ describe('cache e2e', () => {
       it('returns correct TTL for an expiring key', async () => {
         await cache.persistor.setEx('ttl-key', 2, 'value')
 
-        await wait(1000)
+        await setTimeout(1000)
         const ttl = await cache.persistor.ttl('ttl-key')
 
         expect(ttl).toBeGreaterThan(0)
@@ -308,7 +307,7 @@ describe('cache e2e', () => {
         expect(result).toBe('OK')
         expect(await cache.persistor.get('key-ex')).toBe('value')
 
-        await wait(1100)
+        await setTimeout(1100)
         expect(await cache.persistor.get('key-ex')).toBeNull()
       })
     })
@@ -319,7 +318,7 @@ describe('cache e2e', () => {
         expect(result).toBe('OK')
         expect(await cache.persistor.get('key-px')).toBe('value')
 
-        await wait(600)
+        await setTimeout(600)
         expect(await cache.persistor.get('key-px')).toBeNull()
       })
     })
@@ -493,7 +492,7 @@ describe('cache e2e', () => {
 
         expect(await cache.persistor.get('expiring-key')).toBe('value')
 
-        await wait(1100)
+        await setTimeout(1100)
         expect(await cache.persistor.get('expiring-key')).toBeNull()
       })
 
@@ -508,11 +507,11 @@ describe('cache e2e', () => {
         expect(await cache.persistor.get('p-expiring-key1')).toBe('value1')
         expect(await cache.persistor.get('p-expiring-key2')).toBe('value2')
 
-        await wait(600)
+        await setTimeout(600)
         expect(await cache.persistor.get('p-expiring-key1')).toBeNull()
         expect(await cache.persistor.get('p-expiring-key2')).toBe('value2')
 
-        await wait(500)
+        await setTimeout(500)
         expect(await cache.persistor.get('p-expiring-key2')).toBeNull()
       })
 
@@ -676,7 +675,7 @@ describe('cache e2e', () => {
 
         expect(results).toEqual([1, 0]) // true (set), false (key does not exist)
 
-        await wait(1100)
+        await setTimeout(1100)
         expect(await cache.persistor.get('expiring-key1')).toBeNull()
         expect(await cache.persistor.get('expiring-key2')).toBe('value') // Should not expire
       })
@@ -690,7 +689,7 @@ describe('cache e2e', () => {
         multi.ttl('ttl-key2') // No expiration
         multi.ttl('nonexistent-key') // Does not exist
 
-        await wait(1000)
+        await setTimeout(1000)
         const results = (await multi.exec()) as number[]
 
         expect(results[0]).toBeGreaterThan(0) // TTL should be > 0

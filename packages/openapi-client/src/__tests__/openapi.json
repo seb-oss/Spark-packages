@@ -220,6 +220,44 @@
           }
         }
       }
+    },
+    "/search": {
+      "get": {
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Echoes the received query value",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "received": {
+                      "oneOf": [
+                        { "type": "string" },
+                        { "type": "array", "items": { "type": "string" } }
+                      ]
+                    }
+                  },
+                  "required": ["received"]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

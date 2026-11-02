@@ -1,4 +1,3 @@
-import type { Types } from '@opensearch-project/opensearch'
 import type { ApiResponse } from '@opensearch-project/opensearch/lib/Transport.js'
 import {
   ATTR_HTTP_RESPONSE_STATUS_CODE,
@@ -8,10 +7,27 @@ import {
 
 export const ATTR_DB_OPENSEARCH_DURATION_MS = 'db.opensearch.duration_ms'
 
-export const extractResponseAttributes = (
-  res: ApiResponse
-): Record<string, string | number | boolean> => {
-  const attrs: Record<string, string | number | boolean> = {}
+type Attributes = Record<string, string | number | boolean>
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null
+
+const setNumber = (attrs: Attributes, key: string, value: unknown) => {
+  if (typeof value === 'number') attrs[key] = value
+}
+
+const setBoolean = (attrs: Attributes, key: string, value: unknown) => {
+  if (typeof value === 'boolean') attrs[key] = value
+}
+
+/**
+ * Extracts span attributes from an OpenSearch response.
+ *
+ * The body is that of any API, so search fields are read only when present
+ * with the expected type.
+ */
+export const extractResponseAttributes = (res: ApiResponse): Attributes => {
+  const attrs: Attributes = {}
 
   const { hostname, port } = res.meta.connection.url
   attrs[ATTR_SERVER_ADDRESS] = hostname
@@ -19,36 +35,38 @@ export const extractResponseAttributes = (
   if (res.statusCode != null)
     attrs[ATTR_HTTP_RESPONSE_STATUS_CODE] = res.statusCode
 
-  const body = res.body as Types.Core_Search.ResponseBody | null | undefined
-  if (body == null) return attrs
+  const body: unknown = res.body
+  if (!isRecord(body)) return attrs
 
-  if (body.took != null) attrs['db.opensearch.took'] = body.took
-  if (body.timed_out != null) attrs['db.opensearch.timed_out'] = body.timed_out
-  if (body.terminated_early != null)
-    attrs['db.opensearch.terminated_early'] = body.terminated_early
+  setNumber(attrs, 'db.opensearch.took', body.took)
+  setBoolean(attrs, 'db.opensearch.timed_out', body.timed_out)
+  setBoolean(attrs, 'db.opensearch.terminated_early', body.terminated_early)
 
   const shards = body._shards
-  if (shards != null) {
-    attrs['db.opensearch.shards.total'] = shards.total
-    attrs['db.opensearch.shards.successful'] = shards.successful
-    attrs['db.opensearch.shards.failed'] = shards.failed
-    if (shards.skipped != null)
-      attrs['db.opensearch.shards.skipped'] = shards.skipped
+  if (isRecord(shards)) {
+    setNumber(attrs, 'db.opensearch.shards.total', shards.total)
+    setNumber(attrs, 'db.opensearch.shards.successful', shards.successful)
+    setNumber(attrs, 'db.opensearch.shards.failed', shards.failed)
+    setNumber(attrs, 'db.opensearch.shards.skipped', shards.skipped)
   }
 
   const phaseTook = body.phase_took
-  if (phaseTook != null) {
-    attrs['db.opensearch.phase_took.can_match'] = phaseTook.can_match
-    attrs['db.opensearch.phase_took.dfs_pre_query'] = phaseTook.dfs_pre_query
-    attrs['db.opensearch.phase_took.dfs_query'] = phaseTook.dfs_query
-    attrs['db.opensearch.phase_took.expand'] = phaseTook.expand
-    attrs['db.opensearch.phase_took.fetch'] = phaseTook.fetch
-    attrs['db.opensearch.phase_took.query'] = phaseTook.query
+  if (isRecord(phaseTook)) {
+    for (const phase of [
+      'can_match',
+      'dfs_pre_query',
+      'dfs_query',
+      'expand',
+      'fetch',
+      'query',
+    ]) {
+      setNumber(attrs, `db.opensearch.phase_took.${phase}`, phaseTook[phase])
+    }
   }
 
-  const total = body.hits?.total
-  if (total != null && typeof total === 'object') {
-    attrs['db.opensearch.hits.total'] = total.value
+  const hits = body.hits
+  if (isRecord(hits) && isRecord(hits.total)) {
+    setNumber(attrs, 'db.opensearch.hits.total', hits.total.value)
   }
 
   return attrs

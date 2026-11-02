@@ -1,8 +1,9 @@
 import type { ChildProcess } from 'node:child_process'
+import { setTimeout } from 'node:timers/promises'
 import { keys } from './characters'
 import { input } from './input'
 import type { StdoutReader } from './stdout-reader'
-import { COMMAND_DELAY, wait } from './utils'
+import { COMMAND_DELAY } from './utils'
 import { write } from './write'
 
 /**
@@ -36,17 +37,17 @@ export const check = async (
     if (moveBy > 0) {
       for (let i = 0; i < moveBy; i++) {
         await write(childProcess, keys.down)
-        await wait(COMMAND_DELAY)
+        await setTimeout(COMMAND_DELAY)
       }
     } else if (moveBy < 0) {
       for (let i = 0; i < Math.abs(moveBy); i++) {
         await write(childProcess, keys.up)
-        await wait(COMMAND_DELAY)
+        await setTimeout(COMMAND_DELAY)
       }
     }
 
     await write(childProcess, keys.space)
-    await wait(COMMAND_DELAY)
+    await setTimeout(COMMAND_DELAY)
 
     currentPosition = option // Update current position
   }

@@ -1,10 +1,10 @@
 import { performance } from 'node:perf_hooks'
+import { setTimeout } from 'node:timers/promises'
 import {
   MockserverContainer,
   type StartedMockserverContainer,
 } from '@testcontainers/mockserver'
 import { mockServerClient } from 'mockserver-client'
-import { wait } from '../timing'
 
 export const startApi = async () => {
   const container = await new MockserverContainer(
@@ -43,6 +43,6 @@ export const pingApi = async (
   }
 
   // introduce lag
-  // await wait(200)
+  // await setTimeout(200)
   return await res.json()
 }

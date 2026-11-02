@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import Transport, {
   type ApiError,
 } from '@opensearch-project/opensearch/lib/Transport.js'
@@ -487,10 +488,7 @@ describe('OpenSearchInstrumentation', () => {
   describe('duration', () => {
     it('sets db.opensearch.duration_ms on a successful request', async () => {
       const { transport, exporter, original, teardown } = setup()
-      original.mockImplementation(
-        () =>
-          new Promise((resolve) => setTimeout(() => resolve(mockResponse), 20))
-      )
+      original.mockImplementation(() => setTimeout(20, mockResponse))
 
       await transport.request({ method: 'POST', path: '/my_index/_search' })
 
@@ -503,11 +501,10 @@ describe('OpenSearchInstrumentation', () => {
 
     it('sets db.opensearch.duration_ms on a failed request', async () => {
       const { transport, exporter, original, teardown } = setup()
-      original.mockImplementation(
-        () =>
-          new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('timeout')), 20)
-          )
+      original.mockImplementation(() =>
+        setTimeout(20).then(() => {
+          throw new Error('timeout')
+        })
       )
 
       await expect(

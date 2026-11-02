@@ -6,10 +6,11 @@ export const runQuery = async <T = Json>(
   query: string | ExecuteSqlRequest
 ): Promise<T[]> => {
   const request: ExecuteSqlRequest =
-    typeof query === 'string' ? { sql: query } : (query as ExecuteSqlRequest)
+    typeof query === 'string' ? { sql: query } : query
 
   request.json = true
   const [rows] = await database.run(request)
 
+  // biome-ignore lint/plugin/no-type-assertion: row shape is declared by the caller (trust boundary)
   return rows as T[]
 }

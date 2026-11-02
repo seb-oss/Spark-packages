@@ -6,5 +6,5 @@ language js(typescript)
 // Only 'as const' is additionally excluded — that is value narrowing, not a type assertion.
 TsAsExpression($expression, $type) as $assertion where {
     ! $type <: "const",
-    register_diagnostic(span=$expression, message="Avoid type assertions. Use type guards or proper typing instead.", severity="warn")
+    register_diagnostic(span=$expression, message="Avoid type assertions. Use type guards or proper typing instead.", severity="error")
 }

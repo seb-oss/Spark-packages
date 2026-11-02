@@ -207,6 +207,17 @@ describe('disposable', () => {
 
     expect(typeof wrapped[Symbol.dispose]).toBe('function')
   })
+  it('returns a promise from Symbol.asyncDispose even when dispose is sync', async () => {
+    const emu = createEmulator<TestMethodMap>()
+    const dispose = vi.fn()
+    const wrapped = disposable(emu, dispose)
+
+    const result = wrapped[Symbol.asyncDispose]?.()
+
+    expect(result).toBeInstanceOf(Promise)
+    await result
+    expect(dispose).toHaveBeenCalledOnce()
+  })
   it('preserves the emulator API after wrapping', async () => {
     const emu = createEmulator<TestMethodMap>()
     const wrapped = disposable(emu, vi.fn())

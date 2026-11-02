@@ -2,11 +2,11 @@ import type {
   UndiciRequest,
   UndiciResponse,
 } from '@opentelemetry/instrumentation-undici'
-import type { NormalisedRequest, NormalisedResponse } from './types'
+import type { NormalisedRequest, NormalisedResponse, Protocol } from './types'
 
 export const normUndiciRequest = (req: UndiciRequest): NormalisedRequest => {
   const origin = new URL(req.origin)
-  const protocol = origin.protocol.replace(':', '') as 'http' | 'https'
+  const protocol: Protocol = origin.protocol === 'https:' ? 'https' : 'http'
   const port = Number(origin.port) || (protocol === 'https' ? 443 : 80)
 
   // Parse "Key: Value\r\nKey2: Value2\r\n" → Map
@@ -43,21 +43,9 @@ export const parseUndiciResponseHeaders = (
 
     if (!keyBuf || !valBuf) continue
 
-    /* istanbul ignore next */
-    const key = (
-      Buffer.isBuffer(keyBuf)
-        ? keyBuf.toString('utf8').trim()
-        : Buffer.from(keyBuf as ArrayBuffer)
-            .toString('utf8')
-            .trim()
-    ).toLowerCase()
-
-    /* istanbul ignore next */
-    const val = Buffer.isBuffer(valBuf)
-      ? valBuf.toString('utf8').trim()
-      : Buffer.from(valBuf as ArrayBuffer)
-          .toString('utf8')
-          .trim()
+    // Buffer.from also decodes plain Uint8Arrays correctly
+    const key = Buffer.from(keyBuf).toString('utf8').trim().toLowerCase()
+    const val = Buffer.from(valBuf).toString('utf8').trim()
 
     if (!key || !val) continue
 

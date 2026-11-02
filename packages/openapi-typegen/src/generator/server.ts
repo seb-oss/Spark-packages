@@ -22,14 +22,11 @@ export const generateServer = (name: string, paths: Path[]): string => {
 }
 
 const groupPathsByUrl = (paths: Path[]): Record<string, Path[]> =>
-  paths.reduce(
-    (group, path) => {
-      if (!group[path.url]) group[path.url] = []
-      group[path.url].push(path)
-      return group
-    },
-    {} as Record<string, Path[]>
-  )
+  paths.reduce<Record<string, Path[]>>((group, path) => {
+    if (!group[path.url]) group[path.url] = []
+    group[path.url].push(path)
+    return group
+  }, {})
 
 const generatePath = (url: string, methods: Path[]): string => `'${url}': {
     ${methods.map(generateMethod).join('\n')}

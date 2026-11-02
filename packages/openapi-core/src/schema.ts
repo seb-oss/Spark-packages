@@ -1,8 +1,31 @@
-import type { SchemaObject } from './common'
-import type { OpenApiDocument, OperationObject } from './openapi'
+import type { ParameterObject, ReferenceObject, SchemaObject } from './common'
+import type {
+  OpenApiDocument,
+  OperationObject,
+  PathItemObject,
+} from './openapi'
 import type { APIServerDefinition } from './types'
 
 const clone = <T>(orig: T): T => JSON.parse(JSON.stringify(orig))
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === 'object' && value !== null
+
+const METHODS = [
+  'get',
+  'put',
+  'post',
+  'delete',
+  'options',
+  'head',
+  'patch',
+  'trace',
+] as const
+
+const operationsOf = (
+  item: PathItemObject | ReferenceObject
+): OperationObject[] =>
+  '$ref' in item ? [] : METHODS.flatMap((method) => item[method] ?? [])
 
 /**
  * Marks unimplemented paths as deprecated and tags them with 'not-implemented'.
@@ -20,12 +43,10 @@ export const disableUnimplementedPaths = <
   server: S
 ): T => {
   const doc = clone(document)
-  for (const path of Object.keys(doc.paths)) {
-    const pathObj = doc.paths[path as keyof typeof doc.paths]
+  for (const [path, pathItem] of Object.entries(doc.paths)) {
     const fixedPath = path.replace(/{(.+)}/, ':$1')
     if (!server[fixedPath] && !fixedPath.startsWith('/health')) {
-      for (const method of Object.values(pathObj)) {
-        const operation = method as OperationObject
+      for (const operation of operationsOf(pathItem)) {
         operation.deprecated = true
         operation.tags = [...(operation.tags ?? []), 'not-implemented']
       }
@@ -66,9 +87,11 @@ export const resolveRef = (
   const parts = ref.replace('#/', '').split('/')
   let current: unknown = doc
   for (const part of parts) {
-    if (typeof current !== 'object' || current === null) return undefined
-    current = (current as Record<string, unknown>)[part]
+    if (!isRecord(current)) return undefined
+    current = current[part]
   }
+  if (!isRecord(current)) return undefined
+  // biome-ignore lint/plugin/no-type-assertion: the document declares what its $ref targets are (trust boundary)
   return current as SchemaObject
 }
 
@@ -82,58 +105,49 @@ export const resolveRef = (
 export const flattenEnums = <T extends OpenApiDocument>(document: T): T => {
   const doc = clone(document)
 
-  const flatten = (schema: SchemaObject): SchemaObject => {
-    if (!('oneOf' in schema) || !schema.oneOf) return schema
+  const flattenedEnum = (
+    schema: SchemaObject | ReferenceObject
+  ): SchemaObject | undefined => {
+    if (!('oneOf' in schema) || !schema.oneOf) return undefined
 
-    let allEnums = true
-    const enumValues: unknown[] = []
-
+    const values: string[] = []
     for (const s of schema.oneOf) {
-      if (!('$ref' in s)) {
-        allEnums = false
-        break
-      }
+      if (!('$ref' in s)) return undefined
       const resolved = resolveRef(s.$ref, doc)
-      if (!resolved || !('enum' in resolved) || !Array.isArray(resolved.enum)) {
-        allEnums = false
-        break
+      if (!resolved?.enum) return undefined
+      for (const value of resolved.enum) {
+        if (typeof value !== 'string') return undefined
+        values.push(value)
       }
-      for (const v of resolved.enum) enumValues.push(v)
     }
-
-    if (allEnums && enumValues.length > 0) {
-      return { type: 'string', enum: [...new Set(enumValues)] as string[] }
-    }
-    return schema
+    return values.length > 0
+      ? { type: 'string', enum: [...new Set(values)] }
+      : undefined
   }
 
-  if (doc.components?.parameters) {
-    for (const parameter of Object.values(doc.components.parameters)) {
-      parameter.schema = flatten(
-        parameter.schema as SchemaObject
-      ) as unknown as typeof parameter.schema
+  const flattenParameters = (
+    parameters: (ParameterObject | ReferenceObject)[] = []
+  ) => {
+    for (const parameter of parameters) {
+      if ('schema' in parameter && parameter.schema) {
+        parameter.schema = flattenedEnum(parameter.schema) ?? parameter.schema
+      }
     }
   }
+
+  flattenParameters(Object.values(doc.components?.parameters ?? {}))
 
   if (doc.components?.schemas) {
     for (const [key, schema] of Object.entries(doc.components.schemas)) {
-      doc.components.schemas[key] = flatten(
-        schema as SchemaObject
-      ) as unknown as typeof schema
+      doc.components.schemas[key] = flattenedEnum(schema) ?? schema
     }
   }
 
   for (const pathItem of Object.values(doc.paths)) {
-    for (const operation of Object.values(pathItem)) {
-      const op = operation as OperationObject
-      if (!op.parameters) continue
-      for (const parameter of op.parameters) {
-        if ('schema' in parameter) {
-          parameter.schema = flatten(
-            parameter.schema as SchemaObject
-          ) as unknown as typeof parameter.schema
-        }
-      }
+    if ('$ref' in pathItem) continue
+    flattenParameters(pathItem.parameters)
+    for (const operation of operationsOf(pathItem)) {
+      flattenParameters(operation.parameters)
     }
   }
 

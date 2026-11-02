@@ -128,5 +128,17 @@ describe('GatewayGraphqlClient', () => {
       expect(healthy).toBe(false)
       expect(typedClient.get).toHaveBeenCalledWith('/health')
     })
+
+    it('logs a non-Error rejection as an Error', async () => {
+      typedClient.get.mockRejectedValue('gateway down')
+      const client = new GatewayGraphqlClient(args)
+      const logError = vi.spyOn(client.logger, 'error')
+
+      await client.isHealthy()
+
+      const [error] = logError.mock.calls[0]
+      expect(error).toBeInstanceOf(Error)
+      expect(error).toHaveProperty('message', 'gateway down')
+    })
   })
 })

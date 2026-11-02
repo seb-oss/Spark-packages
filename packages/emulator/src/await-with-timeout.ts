@@ -1,4 +1,4 @@
-import { setTimeout as setTimeoutPromise } from 'node:timers/promises'
+import { setTimeout } from 'node:timers/promises'
 
 /**
  * Races `signal` against a deadline of `ms` milliseconds.
@@ -18,7 +18,7 @@ export const awaitWithTimeout = (
 ): Promise<void> =>
   Promise.race([
     signal,
-    setTimeoutPromise(ms).then(() => {
+    setTimeout(ms).then(() => {
       throw new Error(
         `waitForCall() timed out after ${ms}ms — no request arrived`
       )

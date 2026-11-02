@@ -1,6 +1,7 @@
 import type { ClientOptions } from '@sebspark/openapi-core'
 import { getLogger } from '@sebspark/otel'
 import { TypedClient } from '../client'
+import { toError } from '../toError'
 import type {
   GatewayGraphqlClientArgs,
   GatewayGraphqlClient as GatewayGraphqlClientType,
@@ -36,6 +37,7 @@ export class GatewayGraphqlClient<
         throw new Error(response.data.errors.map((e) => e.message).join('\n'))
       }
 
+      // biome-ignore lint/plugin/no-type-assertion: the caller declares the query result type; it is not validated at runtime
       return response.data.data as K
     } catch (error) {
       this.logger.error(`Error posting graphql: ${this.uri}`)
@@ -48,7 +50,7 @@ export class GatewayGraphqlClient<
       await this.client.get('/health')
       return true
     } catch (error) {
-      this.logger.error(error as Error)
+      this.logger.error(toError(error))
     }
     return false
   }

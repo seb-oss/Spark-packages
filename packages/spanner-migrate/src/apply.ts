@@ -1,4 +1,6 @@
 import type { Database } from '@google-cloud/spanner'
+import { errorMessage } from './errorMessage'
+import { toMigration } from './toMigration'
 import type { ExecuteSqlRequest, Migration } from './types'
 
 export const applyUp = async (db: Database, migration: Migration) => {
@@ -26,7 +28,7 @@ export const applyUp = async (db: Database, migration: Migration) => {
     console.log(`Migration recorded in the database: ${migration.id}`)
   } catch (error) {
     throw new Error(
-      `Failed to apply migration ${migration.id}: ${(error as Error).message}`
+      `Failed to apply migration ${migration.id}: ${errorMessage(error)}`
     )
   }
 }
@@ -43,18 +45,19 @@ export const applyDown = async (db: Database) => {
     json: true,
   }
   const [rows] = await db.run(req)
-  const lastMigration = rows?.[0] as Migration
+  const [lastRow] = rows
 
-  if (!lastMigration) {
+  if (!lastRow) {
     throw new Error('No migrations found to roll back.')
   }
+  const lastMigration = toMigration(lastRow)
 
   // Step 2: Apply the down script
   try {
     await runScript(db, lastMigration.down)
   } catch (error) {
     throw new Error(
-      `Failed to apply down script for migration ${lastMigration.id}: ${(error as Error).message}`
+      `Failed to apply down script for migration ${lastMigration.id}: ${errorMessage(error)}`
     )
   }
 

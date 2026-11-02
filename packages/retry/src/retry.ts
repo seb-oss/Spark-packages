@@ -15,7 +15,7 @@ const mergeSettings = (
   ...settings: Array<RetrySettings | undefined>
 ): RetrySettings | undefined => {
   // remove undefineds, return if no settings passed
-  const s = settings.filter((s) => s) as RetrySettings[]
+  const s = settings.filter((s) => s !== undefined)
   if (!s.length) return undefined
 
   // merge settings with priority to the latest
@@ -24,6 +24,8 @@ const mergeSettings = (
   return merged
 }
 
+// Global setTimeout on purpose: node:timers/promises is not controlled by
+// vi.useFakeTimers(), so switching would change timing for consumers' tests.
 const wait = (ms: number) =>
   new Promise<void>((resolve) => setTimeout(() => resolve(), ms))
 
@@ -33,10 +35,9 @@ export const retry = async <T>(
 ): Promise<T> => {
   const mergedSettings = mergeSettings(...settings)
 
-  const makeCall = async <T>(retries = 0): Promise<T> => {
+  const makeCall = async (retries = 0): Promise<T> => {
     try {
-      const response = await func()
-      return response as T
+      return await func()
     } catch (error) {
       if (
         mergedSettings &&
@@ -95,17 +96,15 @@ export const retryCondition = {
   httpErrors:
     (...codes: ErrorType[]) =>
     (error: HttpError) => {
-      const captureCodes = codes
-        .flatMap((code) => {
-          if (typeof code === 'number') return code
-          /* istanbul ignore else */
-          if (code === 'client') return clientErrorCodes
-          /* istanbul ignore next */
-          if (code === 'server') return serverErrorCodes
-          /* istanbul ignore next */
-          return 500
-        })
-        .filter((code) => !!code) as number[]
+      const captureCodes = codes.flatMap<number>((code) => {
+        if (typeof code === 'number') return code
+        /* istanbul ignore else */
+        if (code === 'client') return clientErrorCodes
+        /* istanbul ignore next */
+        if (code === 'server') return serverErrorCodes
+        /* istanbul ignore next */
+        return 500
+      })
       const status =
         error.status ||
         error.statusCode ||

@@ -1,11 +1,11 @@
 import {
   type ClientRequest,
+  request as httpRequest,
   IncomingMessage,
-  OutgoingHttpHeader,
-  RequestOptions,
+  type RequestOptions,
   ServerResponse,
 } from 'node:http'
-import { OutgoingHttpHeaders } from 'node:http2'
+import { request as httpsRequest } from 'node:https'
 import { Socket } from 'node:net'
 import { type Span, SpanStatusCode } from '@opentelemetry/api'
 import type {
@@ -26,7 +26,7 @@ import {
   ATTR_URL_QUERY,
   ATTR_URL_SCHEME,
 } from '@opentelemetry/semantic-conventions'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   ATTR_HTTP_REQUEST_BODY_SIZE,
   ATTR_HTTP_RESPONSE_BODY_SIZE,
@@ -75,32 +75,24 @@ const makeIncomingMessage = (
   return msg as IncomingMessage
 }
 
-const makeClientRequest = (
-  overrides: Partial<ClientRequest> = {}
-): ClientRequest => {
-  const headers: OutgoingHttpHeaders = {}
-  const req: Partial<ClientRequest | RequestOptions> = {
+const openRequests: ClientRequest[] = []
+afterEach(() => {
+  for (const request of openRequests.splice(0)) request.destroy()
+})
+
+/** A real, never-connecting ClientRequest (`lookup` never resolves). */
+const makeClientRequest = (options: RequestOptions = {}): ClientRequest => {
+  const create = options.protocol === 'https:' ? httpsRequest : httpRequest
+  const request = create({
     host: 'example.com',
     path: '/',
     method: 'GET',
-    ...overrides,
-
-    headers,
-    getHeader: (name) => headers[name],
-    getHeaderNames: () => Object.keys(headers),
-    getHeaders: () => headers,
-    setHeader: (name, value) => {
-      headers[name] = value as OutgoingHttpHeader
-      return req as ClientRequest
-    },
-    setHeaders: (newHeaders) => {
-      for (const [key, value] of newHeaders) {
-        headers[key] = value as OutgoingHttpHeader
-      }
-      return req as ClientRequest
-    },
-  }
-  return req as ClientRequest
+    lookup: () => {},
+    ...options,
+  })
+  request.on('error', () => {})
+  openRequests.push(request)
+  return request
 }
 
 const makeUndiciRequest = (
@@ -184,7 +176,7 @@ describe('buildHttpConfig', () => {
         port: 80,
         path: '/',
         method: 'GET',
-        headers: { 'x-null': null, 'x-multi': ['a', 'b'] },
+        headers: { 'x-null': undefined, 'x-multi': ['a', 'b'] },
       })
       expect(result['http.request.header.x_null']).toBeUndefined()
       expect(result['http.request.header.x_multi']).toBe('a,b')
@@ -226,6 +218,41 @@ describe('buildHttpConfig', () => {
     })
   })
   describe('requestHook', () => {
+    it('reads scheme, port and headers from a real https ClientRequest', () => {
+      const { requestHook } = buildHttpConfig({})
+      const { span, attrs } = makeSpan()
+      const request = httpsRequest({
+        host: 'example.com',
+        port: 8443,
+        path: '/data?q=1',
+        headers: { 'x-request-id': 'abc' },
+      })
+      request.on('error', () => {})
+      try {
+        requestHook!(span, request)
+      } finally {
+        request.destroy()
+      }
+
+      expect(attrs[ATTR_URL_SCHEME]).toBe('https')
+      expect(attrs[ATTR_SERVER_PORT]).toBe(8443)
+      expect(attrs[ATTR_URL_FULL]).toBe('https://example.com:8443/data?q=1')
+      expect(attrs['http.request.header.x_request_id']).toEqual(['abc'])
+    })
+    it('uses the default https port of a real ClientRequest', () => {
+      const { requestHook } = buildHttpConfig({})
+      const { span, attrs } = makeSpan()
+      const request = httpsRequest({ host: 'example.com', path: '/' })
+      request.on('error', () => {})
+      try {
+        requestHook!(span, request)
+      } finally {
+        request.destroy()
+      }
+
+      expect(attrs[ATTR_SERVER_PORT]).toBe(443)
+      expect(attrs[ATTR_URL_FULL]).toBe('https://example.com/')
+    })
     it('skips IncomingMessage (server-side) requests', () => {
       const { requestHook } = buildHttpConfig({})
       const { span, attrs } = makeSpan()
@@ -248,7 +275,6 @@ describe('buildHttpConfig', () => {
         span,
         makeClientRequest({
           host: 'example.com',
-          port: 80,
           path: '/page',
           method: 'GET',
         })

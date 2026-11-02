@@ -9,6 +9,9 @@ const apiGatewayJwtCache = new LruCache<Promise<string>>()
 
 const logger = getLogger('gcp-iam')
 
+const toError = (value: unknown): Error =>
+  value instanceof Error ? value : new Error(String(value))
+
 const generateTokenByUrl = async ({
   apiURL,
   key,
@@ -91,7 +94,7 @@ const generateTokenByUrl = async ({
       return ''
     }
 
-    logger.error('Error generating system JWT', error as Error)
+    logger.error('Error generating system JWT', toError(error))
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }
@@ -165,7 +168,7 @@ const generateTokenByClientId = async (clientId: string) => {
       return ''
     }
 
-    logger.error('Error generating system JWT', error as Error)
+    logger.error('Error generating system JWT', toError(error))
 
     throw new Error(`Error generating system JWT: ${JSON.stringify(error)}`)
   }

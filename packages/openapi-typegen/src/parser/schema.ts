@@ -3,13 +3,13 @@ import type {
   SchemaObject,
   SchemaType,
 } from '@sebspark/openapi-core'
+import { isReference } from '../typeGuards'
 import type {
   ArrayType,
   CustomType,
   EnumType,
   ObjectType,
   Primitive,
-  PrimitiveType,
   Property,
   RecordType,
   TypeDefinition,
@@ -24,7 +24,7 @@ export const parseSchemas = (
   )
 
 const marshall = (
-  type: Omit<SchemaType, 'object' | 'array'>,
+  type: Exclude<SchemaType, 'object' | 'array'>,
   format: string | undefined
 ): Primitive => {
   if (type === 'integer') {
@@ -33,7 +33,7 @@ const marshall = (
   if (type === 'string' && (format === 'date' || format === 'date-time')) {
     return 'Date'
   }
-  return type as Primitive
+  return type
 }
 
 export const parseSchema = (
@@ -41,12 +41,11 @@ export const parseSchema = (
   schemaOrRef: SchemaObject | ReferenceObject,
   generateDocs = true
 ): TypeDefinition => {
-  const ref = (schemaOrRef as ReferenceObject).$ref
-  if (ref) {
-    return { name, type: parseRef(ref) }
+  if (isReference(schemaOrRef)) {
+    return { name, type: parseRef(schemaOrRef.$ref) }
   }
 
-  const schema = schemaOrRef as SchemaObject
+  const schema = schemaOrRef
   switch (schema.type) {
     case 'array':
       return parseArraySchema(name, schema)
@@ -111,16 +110,9 @@ const parseObjectSchema = (
 const parseAdditionalProperties = (
   schema: true | SchemaObject | ReferenceObject
 ): RecordType => {
-  let items: TypeDefinition
-  if (schema === true) {
-    items = { type: 'undefined' } as PrimitiveType
-  } else {
-    items = parseSchema(undefined, schema)
-  }
-  return {
-    type: 'record',
-    items,
-  } as RecordType
+  const items: TypeDefinition =
+    schema === true ? { type: 'undefined' } : parseSchema(undefined, schema)
+  return { type: 'record', items }
 }
 
 const parseArraySchema = (
@@ -148,7 +140,7 @@ export const parseProperty = (
     name,
     optional: !required.includes(name),
     type: parsePropertyType(schema),
-    ...parseDocumentation(schema as SchemaObject),
+    ...parseDocumentation(schema),
   }
 
   return property
@@ -158,12 +150,10 @@ const parsePropertyType = (
   property: SchemaObject | ReferenceObject,
   generateDocs = true
 ): TypeDefinition[] => {
-  const ref = (property as ReferenceObject).$ref
-
-  if (ref) {
-    return [{ type: parseRef(ref) }]
+  if (isReference(property)) {
+    return [{ type: parseRef(property.$ref) }]
   }
-  const schemaObject = property as SchemaObject
+  const schemaObject = property
   const docs = generateDocs ? parseDocumentation(schemaObject) : {}
   if (schemaObject.enum) {
     const enumType: EnumType = {
@@ -192,6 +182,10 @@ const parsePropertyType = (
         }
       }
     })
+  }
+  const alternatives = schemaObject.oneOf ?? schemaObject.anyOf
+  if (alternatives) {
+    return alternatives.flatMap((s) => parsePropertyType(s, generateDocs))
   }
   if (schemaObject.allOf) {
     const types: TypeDefinition[] = []

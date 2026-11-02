@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises'
 import { context, logs, trace } from '@opentelemetry/api'
 import { resourceFromAttributes } from '@opentelemetry/resources'
 import {
@@ -8,8 +9,6 @@ import {
 import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getLogger, initialize } from './index'
-
-const wait = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 describe('getLogger', () => {
   it('does not throw if OTEL is not yet initialized at initialization', () => {
@@ -178,7 +177,7 @@ describe('getLogger', () => {
 
       span.end()
       await provider.forceFlush()
-      await wait(50)
+      await setTimeout(50)
 
       const record = exporter
         .getFinishedLogRecords()

@@ -4,17 +4,13 @@ import type {
   LogRecordExporter,
   ReadableLogRecord,
 } from '@opentelemetry/sdk-logs'
-import { LOG_SEVERITY_MAP, type LOG_SEVERITY_NAME } from '../consts'
+import { logThresholdFromEnv } from '../consts'
 import { formatLogRecord } from './formatters/index'
 
 export class ConsoleLogPrettyExporter implements LogRecordExporter {
   private readonly logThreshold: number
   constructor() {
-    const defaultLogLevel = 'INFO'
-    const env = (process.env.LOG_LEVEL?.toUpperCase() ??
-      defaultLogLevel) as LOG_SEVERITY_NAME
-    this.logThreshold =
-      LOG_SEVERITY_MAP[env] ?? LOG_SEVERITY_MAP[defaultLogLevel]
+    this.logThreshold = logThresholdFromEnv()
   }
   export(
     logs: ReadableLogRecord[],

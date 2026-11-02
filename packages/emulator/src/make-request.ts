@@ -91,6 +91,6 @@ export const makeRequest = <A, R>(responders: Set<StoredResponder<A, R>>) => {
       reset() {
         responders.clear()
       },
-    } as MethodCall<A, R>
+    }
   }
 }

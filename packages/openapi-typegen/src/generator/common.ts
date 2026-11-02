@@ -1,4 +1,12 @@
 import { constantCase, pascalCase } from 'change-case'
+import {
+  isArrayType,
+  isCustomType,
+  isEnumType,
+  isObjectType,
+  isPrimitiveType,
+  isRecordType,
+} from '../typeGuards'
 import type {
   ArrayType,
   CustomType,
@@ -12,53 +20,24 @@ import type {
   RecordType,
   ResponseBody,
   TypeDefinition,
-  UnknownType,
 } from '../types'
 import { document } from './document'
 
 export const OR = ' | '
 export const AND = ' & '
 
-export const generateType = (parsed: TypeDefinition): string => {
-  let type: string
-  /* istanbul ignore next */
-  switch (parsed.type) {
-    case 'enum': {
-      type = generateEnum(parsed as EnumType)
-      break
-    }
-    case 'array': {
-      type = generateArray(parsed as ArrayType)
-      break
-    }
-    case 'object': {
-      type = generateObject(parsed as ObjectType)
-      break
-    }
-    case 'record': {
-      type = generateRecord(parsed as RecordType)
-      break
-    }
-    case 'unknown': {
-      type = generateUnknown(parsed as UnknownType)
-      break
-    }
-    case 'Date':
-    case 'bigint':
-    case 'boolean':
-    case 'null':
-    case 'number':
-    case 'string':
-    case 'symbol':
-    case 'undefined':
-      type = generatePrimitive(parsed as PrimitiveType)
-      break
-    default: {
-      type = generateCustom(parsed as CustomType)
-    }
-  }
-  return type.replace(/ [&|] \{\s*\}/g, '')
+const generateAny = (parsed: TypeDefinition): string => {
+  if (isEnumType(parsed)) return generateEnum(parsed)
+  if (isArrayType(parsed)) return generateArray(parsed)
+  if (isObjectType(parsed)) return generateObject(parsed)
+  if (isRecordType(parsed)) return generateRecord(parsed)
+  if (parsed.type === 'unknown') return generateUnknown(parsed)
+  if (isPrimitiveType(parsed)) return generatePrimitive(parsed)
+  return generateCustom(parsed)
 }
+
+export const generateType = (parsed: TypeDefinition): string =>
+  generateAny(parsed).replace(/ [&|] \{\s*\}/g, '')
 
 export const generateProperty = (property: Property): string => {
   const types = property.type.map(generateType)
@@ -166,7 +145,7 @@ export const generatePrimitive = (parsed: PrimitiveType): string =>
 export const generateCustom = (parsed: CustomType): string =>
   `${preamble(parsed)}${typeName(parsed.type)}`
 
-export const generateUnknown = (parsed: UnknownType): string =>
+export const generateUnknown = (parsed: DocumentableType): string =>
   `${preamble(parsed)}unknown`
 
 export const generateObject = (parsed: ObjectType): string => {
@@ -238,10 +217,9 @@ export const generateResponseBody = (
   type: ResponseBody | CustomType,
   optional = true
 ): string => {
-  const customType = (type as CustomType).type
-  if (customType) return typeName(customType)
+  if (isCustomType(type)) return typeName(type.type)
 
-  const body = type as ResponseBody
+  const body = type
   if (!body.data && !body.headers) return 'undefined'
 
   const tokens: string[] = []
@@ -278,10 +256,9 @@ const serialized = (orig: TypeDefinition, optional = true): TypeDefinition => {
       return { ...orig, type: 'string' }
     }
     case 'array': {
-      return {
-        ...orig,
-        items: serialized((orig as ArrayType).items, optional),
-      } as ArrayType
+      return isArrayType(orig)
+        ? { ...orig, items: serialized(orig.items, optional) }
+        : orig
     }
     case 'object': {
       return orig

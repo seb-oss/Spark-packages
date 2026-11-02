@@ -30,7 +30,9 @@ export const parseSecurityScheme = (
 
 const parseApiKey = (name: string, scheme: SecuritySchemeObject): Parameter => {
   const _in = scheme.in || 'header'
-  const parameterName = scheme.name as string
+  const parameterName = scheme.name
+  if (!parameterName)
+    throw new Error(`apiKey security scheme '${name}' has no name`)
   return {
     name,
     parameterName,

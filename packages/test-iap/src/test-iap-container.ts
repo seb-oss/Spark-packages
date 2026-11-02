@@ -66,7 +66,8 @@ export class TestIapContainer {
   }
 
   public async start(): Promise<StartedTestIapContainer> {
-    assert(this.target, 'withTarget(...) is required')
+    const { target } = this
+    assert(target, 'withTarget(...) is required')
 
     const resolvedMode: Mode =
       this.mode ?? (this.downstream ? 'downstream' : 'local')
@@ -110,7 +111,7 @@ export class TestIapContainer {
     ]
 
     const env: Record<string, string> = {
-      TARGET: this.target as string,
+      TARGET: target,
       MODE: resolvedMode,
       PORT: String(this.port),
     }

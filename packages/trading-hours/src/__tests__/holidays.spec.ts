@@ -445,6 +445,19 @@ describe('#whichHoliday', () => {
     )
   })
 
+  test.each([
+    ['XCSE', '2024-06-05', 'independenceDayDenmark'],
+    ['XBER', '2024-10-03', 'independenceDayGermany'],
+    ['XCSE', '2024-05-19', 'pentecost'],
+    ['XCSE', '2024-05-20', 'pentecostMonday'],
+    ['XSTO', '2024-03-28', 'beforeGoodFriday'],
+    ['XSTO', '2025-01-05', 'beforeEpiphany'],
+    ['XSTO', '2024-05-08', 'beforeAscensionDay'],
+    ['XSTO', '2024-11-01', 'beforeAllSaintsDay'],
+  ] as const)('returns %s %s as %s', (mic, date, expected) => {
+    expect(whichHoliday(mic, new Date(date))).toBe(expected)
+  })
+
   test('works with lowercase market codes', () => {
     expect(whichHoliday('xsto', new Date('2021-04-02'))).toBe('goodFriday')
   })

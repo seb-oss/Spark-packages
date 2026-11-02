@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns'
 import { openingHours } from './static'
-import type { Holiday } from './types'
+import { HOLIDAYS, type Holiday } from './types'
 import {
   calculateMidsummerDay,
   christianHolidays,
@@ -352,6 +352,9 @@ export function formatOpeningHours(mic: string) {
   return `${open} – ${close}`
 }
 
+const isHolidayName = (value: string): value is Holiday =>
+  HOLIDAYS.some((holiday) => holiday === value)
+
 /**
  * Get the holiday for a specific date.
  * Returns a TypeScript union value which is useful if you need to support
@@ -380,18 +383,19 @@ export function whichHoliday(mic: string, date: Date): Holiday | null {
   }
 
   for (const [holiday, date] of Object.entries(staticDates)) {
-    holidays[date] = holiday as Holiday
+    if (isHolidayName(holiday)) holidays[date] = holiday
   }
 
   for (const [holiday, date] of Object.entries(christian)) {
-    holidays[date] = holiday as Holiday
+    if (isHolidayName(holiday)) holidays[date] = holiday
   }
 
   for (const [country, date] of Object.entries(independenceDay)) {
     const capitalizedCountry =
       country.charAt(0).toUpperCase() + country.slice(1)
+    const holiday = `independenceDay${capitalizedCountry}`
 
-    holidays[date] = `independenceDay${capitalizedCountry}` as Holiday
+    if (isHolidayName(holiday)) holidays[date] = holiday
   }
 
   if (specialMarketHolidays.includes(formattedDate)) {
