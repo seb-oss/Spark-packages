@@ -15,6 +15,8 @@ The rules below are expanded in the sections that follow. If you remember nothin
 - **Stop and ask when unsure** — wrong assumptions compound
 - **Answer before acting** — when asked for a proposal or recommendation, answer and wait
 - **No type assertions** — narrow with type guards; `as` is a lint error
+- **Test the way consumers use it** — type tests in the caller's shape, realistic input; never widen a public type to make a test compile
+- **Assert fallbacks didn't happen** — a silent catch-and-degrade passes tests that only check the result
 - **Never go dark** — one line of chat before every tool batch
 - **Don't narrate *how*** — say *what* you're doing, then do it
 - **Docs → Red → Green → Refactor** for new behaviour
@@ -96,6 +98,16 @@ Tests serve four purposes, in priority order:
 **Wrapper types help; they never block.** A package that wraps a library or service (e.g. `@sebspark/opensearch`) adds autocomplete and typing on top of it, but must accept everything the wrapped library or service accepts. Never reject a request the service would accept, including fields that are not in a declared mapping and values the service coerces. Rejecting a request that the service itself rejects is fine. One exception: where the wrapped library's own types are narrower than the service (e.g. `terms_set.terms` is `string[]` in `@opensearch-project/opensearch`), follow the library, so typed requests can still be passed to it.
 
 **No type assertions.** `x as T` is a lint error (`biome/no-type-assertion.grit`, wired in via `plugins` in `biome.json`); only `as const` is allowed. Narrow with type guards (`'key' in x`, `typeof`, `instanceof`, user-defined `x is T` guards) or make the types stricter. Where an assertion is inherent — a trust boundary such as parsing a file the caller declares to be a given format, or a value whose type the caller declares through a generic — keep it with `// biome-ignore lint/plugin/no-type-assertion: <why this is safe>`. Removing an assertion often exposes a type that lied; treat that as a bug: write a failing test first, and when the value comes from an external system, prove with an e2e test what it really returns. Test files are not linted.
+
+**Test the way consumers use the package.** A green suite only proves what the tests exercise. Two releases shipped regressions that every test missed, because the tests used the package differently from its consumers:
+- `openapi-core` 4.1.26 widened `RequestArgs` so that `openapi-client`'s tests, which called the generic `BaseClient` signature directly, would compile. Generated clients are typed `Pick<BaseClient, V> & { [V]: <overloads> }`; with the wider type, calls resolved to the generic signature and `response.data` became `unknown`.
+- `socket.io-avro` 0.1.28 set `wrapUnions: true` on the packet type. Every test schema had only plain fields, so nobody noticed that it also wrapped unions inside user payloads (nullable fields), which then failed to encode.
+
+So:
+- When a test does not compile against a public type, suspect the test before widening the type. Type the test the way real callers are typed (for clients: the generated `Pick<BaseClient, V> & { ... }` shape), and add a type test pinning the result type consumers rely on.
+- When code processes user-supplied input (schemas, configs, payloads), test it with realistic input: unions and nullable fields, arrays, nested records, references between named types — not only the simplest shape.
+
+**Assert that fallbacks did not happen.** Code that catches an error and degrades silently (logs and falls back, e.g. Avro to JSON) passes every test that only checks the end result. Tests of the happy path must also assert that the fallback was not taken: spy on the logger (`expect(console.error).not.toHaveBeenCalled()`) or assert the output format (e.g. `Buffer.isBuffer(encoded[0])`).
 
 **Delays use `node:timers/promises`.** Write `import { setTimeout } from 'node:timers/promises'` and `await setTimeout(ms)`, without an alias, instead of wrapping the global `setTimeout` in a `new Promise`. The exception is published code that callers may test with `vi.useFakeTimers()`, which does not control `node:timers/promises` (verified with vitest 5): `retry` and `health-check/timing.ts` keep the global `setTimeout` for that reason, with a comment saying so.
 
