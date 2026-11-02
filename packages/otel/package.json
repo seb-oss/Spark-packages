@@ -58,7 +58,7 @@
     "@sebspark/tsconfig": "3.0.27",
     "@testcontainers/opensearch": "12.2.1",
     "@testcontainers/redis": "12.2.1",
-    "axios": "1.20.0",
+    "axios": "1.21.0",
     "express": "5.3.0",
     "find-free-ports": "3.1.1",
     "redis": "6.3.0",
