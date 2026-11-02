@@ -3209,6 +3209,7 @@ __metadata:
     express: "npm:5.3.0"
     supertest: "npm:7.3.1"
     typescript: "npm:7.0.2"
+    vite: "npm:8.3.5"
     vitest: "npm:5.0.5"
   peerDependencies:
     express: ">=5"
