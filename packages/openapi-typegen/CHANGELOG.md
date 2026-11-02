@@ -1,5 +1,12 @@
 # @sebspark/openapi-typegen
 
+## 5.3.2
+
+### Patch Changes
+
+- Updated dependencies [10aba82]
+  - @sebspark/openapi-core@4.1.25
+
 ## 5.3.1
 
 ### Patch Changes
