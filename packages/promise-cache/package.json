@@ -34,7 +34,7 @@
     "@sebspark/memredis": "1.0.7",
     "@sebspark/otel": "4.2.0",
     "date-fns": "4.4.0",
-    "redis": "6.3.0",
+    "redis": "6.3.1",
     "superjson": "2.2.6"
   },
   "repository": {
