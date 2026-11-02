@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/gcp-iam",
-  "version": "3.0.58",
+  "version": "3.0.59",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@google-cloud/iam-credentials": "5.1.0",
-    "@sebspark/otel": "4.2.0",
+    "@sebspark/otel": "4.2.1",
     "google-auth-library": "11.3.2"
   },
   "repository": {
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/tsconfig": "3.0.27",
+    "@sebspark/tsconfig": "3.0.28",
     "depcheck": "1.4.7",
     "typescript": "7.0.2",
     "vite": "8.3.5",
