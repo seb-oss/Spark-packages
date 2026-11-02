@@ -17,7 +17,6 @@
   "scripts": {
     "generate": "yarn openapi-typegen -i ./src/__tests__/ -o ./src/__tests__/",
     "build": "spark-build src/index.ts",
-    "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
@@ -28,7 +27,6 @@
     "@biomejs/biome": "2.6.4",
     "@sebspark/openapi-typegen": "5.3.2",
     "@sebspark/tsconfig": "3.0.28",
-    "depcheck": "1.4.7",
     "express": "5.3.0",
     "nock": "15.0.5",
     "typescript": "7.0.2",

@@ -24,7 +24,6 @@
     "typecheck": {
       "dependsOn": ["^build"]
     },
-    "depcheck": {},
     "//#security-scan:raw": {
       "inputs": [
         "packages/**/src/**",

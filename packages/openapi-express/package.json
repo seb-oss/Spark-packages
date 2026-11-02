@@ -16,7 +16,6 @@
   ],
   "scripts": {
     "build": "spark-build src/index.ts",
-    "depcheck": "depcheck",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",

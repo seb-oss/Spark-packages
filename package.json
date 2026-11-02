@@ -7,7 +7,6 @@
     "changeset": "changeset",
     "check-upgrades": "node ./tools/check-upgrades.mjs && yarn upgrade-interactive",
     "clean": "rm -rf ./packages/**/dist",
-    "depcheck": "turbo depcheck",
     "dev": "turbo dev",
     "format": "biome format --write",
     "generate:avro": "turbo generate:avro",
@@ -19,7 +18,7 @@
     "release": "turbo build && npx changeset publish",
     "security-scan": "turbo run security-scan:raw --filter=//",
     "security-scan:raw": "docker run --rm -v \"$PWD:/src\" semgrep/semgrep:1.182.1@sha256:451b3d875c00dac7ed5db5293e584a07de11449a409c10b3c2d2652f429630b6 semgrep scan --error --config p/security-audit --config p/javascript --config p/typescript",
-    "smoketest": "yarn syncpack && yarn depcheck && yarn knip && yarn format && yarn lint && yarn build && yarn typecheck && node tools/check-licenses.mjs && yarn depcheck && yarn test && yarn test:tools && yarn security-scan",
+    "smoketest": "yarn syncpack && yarn knip && yarn format && yarn lint && yarn build && yarn typecheck && node tools/check-licenses.mjs && yarn test && yarn test:tools && yarn security-scan",
     "start": "turbo watch lint test typecheck",
     "syncpack": "syncpack lint",
     "test:watch": "turbo watch test",
@@ -41,7 +40,6 @@
     "@turbo/gen": "2.11.10",
     "@types/node": "26.6.6",
     "@vitest/coverage-v8": "5.0.5",
-    "depcheck": "1.4.7",
     "husky": "9.1.7",
     "knip": "6.44.0",
     "syncpack": "15.3.3",
@@ -63,6 +61,8 @@
   },
   "resolutions": {
     "@babel/core": "7.29.7",
+    "glob": "14.0.3",
+    "minimatch": "11.0.3",
     "uuid@^9.0.0": "14.0.3",
     "uuid@^9.0.1": "14.0.3",
     "ws": "8.22.0"
