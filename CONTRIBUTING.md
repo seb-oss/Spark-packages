@@ -2,7 +2,7 @@
 
 ## Releasing packages
 
-This repo uses [Changesets](https://github.com/changesets/changesets) for versioning and changelogs. Releases are fully automatic and need no release PR: every push to `main` runs all checks (including e2e) once, then `release.yml` versions the packages, pushes the version commit to `main` and publishes to npm with [provenance](https://docs.npmjs.com/generating-provenance-statements) via trusted publishing.
+This repo uses [Changesets](https://github.com/changesets/changesets) for versioning and changelogs. Releases are fully automatic and need no release PR: every push to `main` runs all checks (including e2e) once, then `release.yml` versions the packages, pushes the version commit to `main` and publishes to npm via trusted publishing.
 
 ### Existing packages
 

@@ -287,8 +287,6 @@ jobs:
       # action tag and root package.json's "@changesets/cli" together, never separately.
       # With no changesets left, the action only publishes: every version missing from
       # npm, then tags and GitHub releases. A publish that failed earlier is retried.
-      # `yarn release` (tools/publish.mjs) retries a failed publish up to 3 times and
-      # fails unless npm has every public workspace version afterwards.
       - name: Publish
         id: changesets
         if: steps.version.outputs.skip != 'true'
@@ -296,9 +294,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           publish-script: yarn release
-        env:
-          # changesets publishes with `yarn npm publish`, which ignores NPM_CONFIG_*
-          YARN_NPM_PUBLISH_PROVENANCE: "true"
 
       - name: Report release outcome
         run: |
