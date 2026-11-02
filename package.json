@@ -15,7 +15,7 @@
     "knip": "knip",
     "lint": "node ./tools/check-no-dist-imports.mjs && turbo lint",
     "lint:ci": "node ./tools/check-no-dist-imports.mjs && biome ci --error-on-warnings",
-    "release": "turbo build && npx changeset publish",
+    "release": "turbo build && node tools/publish.mjs",
     "security-scan": "turbo run security-scan:raw --filter=//",
     "security-scan:raw": "docker run --rm -v \"$PWD:/src\" semgrep/semgrep:1.182.1@sha256:451b3d875c00dac7ed5db5293e584a07de11449a409c10b3c2d2652f429630b6 semgrep scan --error --config p/security-audit --config p/javascript --config p/typescript",
     "smoketest": "yarn syncpack && yarn knip && yarn format && yarn lint:ci && yarn build && yarn typecheck && node tools/check-licenses.mjs && yarn test && yarn test:tools && yarn security-scan",
