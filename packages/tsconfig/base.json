@@ -19,5 +19,9 @@
     "types": ["node"],
     "verbatimModuleSyntax": true
   },
-  "exclude": ["dist", "build", "node_modules", "**/*.spec.ts"]
+  "exclude": [
+    "${configDir}/dist",
+    "${configDir}/build",
+    "${configDir}/node_modules"
+  ]
 }
