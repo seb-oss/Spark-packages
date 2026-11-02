@@ -12,6 +12,8 @@ yarn add @sebspark/socket.io-avro @sebspark/avsc-isometric socket.io
 yarn add @sebspark/socket.io-avro @sebspark/avsc-isometric socket.io-client
 ```
 
+`socket.io` and `socket.io-client` are both optional peer dependencies. Install the one that matches the entry point you import: `socket.io` for `/server`, `socket.io-client` for `/client`. `/parser` needs neither.
+
 ## Usage
 
 ### 1. Define your schemas
