@@ -2979,7 +2979,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.4"
     "@ovotech/avro-ts": "npm:6.2.0"
     "@sebspark/avsc-isometric": "npm:0.4.17"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:9.0.0"
     chalk: "npm:6.0.1"
@@ -2992,14 +2992,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/cli-tester@npm:1.0.21, @sebspark/cli-tester@workspace:packages/cli-tester":
+"@sebspark/cli-tester@npm:1.0.22, @sebspark/cli-tester@workspace:packages/cli-tester":
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@inquirer/figures": "npm:2.0.10"
     "@inquirer/prompts": "npm:8.7.5"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
     vitest: "npm:5.0.5"
@@ -3011,7 +3011,7 @@ __metadata:
   resolution: "@sebspark/emulator@workspace:packages/emulator"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
     vitest: "npm:5.0.5"
@@ -3023,7 +3023,7 @@ __metadata:
   resolution: "@sebspark/environment@workspace:packages/environment"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     depcheck: "npm:1.4.7"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3036,7 +3036,7 @@ __metadata:
   resolution: "@sebspark/expect-eventually@workspace:packages/expect-eventually"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@vitest/expect": "npm:5.0.5"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3044,14 +3044,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.58, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.59, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/iam-credentials": "npm:5.1.0"
-    "@sebspark/otel": "npm:4.2.0"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/otel": "npm:4.2.1"
+    "@sebspark/tsconfig": "npm:3.0.28"
     depcheck: "npm:1.4.7"
     google-auth-library: "npm:11.3.2"
     typescript: "npm:7.0.2"
@@ -3067,8 +3067,8 @@ __metadata:
     "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/pubsub": "npm:6.3.2"
     "@sebspark/hyper-media": "npm:0.1.7"
-    "@sebspark/promise-cache": "npm:8.1.8"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/promise-cache": "npm:8.1.9"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/gcloud": "npm:12.2.1"
     "@testcontainers/mockserver": "npm:12.2.1"
     "@testcontainers/redis": "npm:12.2.1"
@@ -3086,7 +3086,7 @@ __metadata:
   resolution: "@sebspark/hyper-media@workspace:packages/hyper-media"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     express: "npm:5.3.0"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3099,8 +3099,8 @@ __metadata:
   resolution: "@sebspark/idempotency@workspace:packages/idempotency"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/memredis": "npm:1.0.7"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/memredis": "npm:1.0.8"
+    "@sebspark/tsconfig": "npm:3.0.28"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
     vitest: "npm:5.0.5"
@@ -3112,7 +3112,7 @@ __metadata:
   resolution: "@sebspark/iso-10383@workspace:packages/iso-10383"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     change-case: "npm:5.4.4"
     csv-parse: "npm:7.0.3"
     typescript: "npm:7.0.2"
@@ -3126,7 +3126,7 @@ __metadata:
   resolution: "@sebspark/iso-4217@workspace:packages/iso-4217"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     fast-xml-parser: "npm:5.11.2"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3134,12 +3134,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/memredis@npm:1.0.7, @sebspark/memredis@workspace:packages/memredis":
+"@sebspark/memredis@npm:1.0.8, @sebspark/memredis@workspace:packages/memredis":
   version: 0.0.0-use.local
   resolution: "@sebspark/memredis@workspace:packages/memredis"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/redis": "npm:12.2.1"
     redis: "npm:6.3.1"
     typescript: "npm:7.0.2"
@@ -3153,8 +3153,8 @@ __metadata:
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/gcp-iam": "npm:3.0.58"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/gcp-iam": "npm:3.0.59"
+    "@sebspark/tsconfig": "npm:3.0.28"
     depcheck: "npm:1.4.7"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3162,16 +3162,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-client@npm:4.2.23, @sebspark/openapi-client@workspace:packages/openapi-client":
+"@sebspark/openapi-client@npm:4.2.24, @sebspark/openapi-client@workspace:packages/openapi-client":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@sebspark/openapi-core": "npm:4.1.25"
     "@sebspark/openapi-typegen": "npm:5.3.2"
-    "@sebspark/otel": "npm:4.2.0"
+    "@sebspark/otel": "npm:4.2.1"
     "@sebspark/retry": "npm:1.0.20"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     axios: "npm:1.21.0"
     axios-auth-refresh: "npm:5.0.2"
     depcheck: "npm:1.4.7"
@@ -3189,7 +3189,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@sebspark/retry": "npm:1.0.20"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     axios: "npm:1.21.0"
     depcheck: "npm:1.4.7"
     express: "npm:5.3.0"
@@ -3204,9 +3204,9 @@ __metadata:
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/openapi-client": "npm:4.2.23"
+    "@sebspark/openapi-client": "npm:4.2.24"
     "@sebspark/openapi-core": "npm:4.1.25"
-    "@sebspark/openapi-express": "npm:5.4.21"
+    "@sebspark/openapi-express": "npm:5.4.22"
     "@sebspark/openapi-typegen": "npm:5.3.2"
     "@types/express": "npm:5.0.6"
     depcheck: "npm:1.4.7"
@@ -3217,13 +3217,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/openapi-express@npm:5.4.21, @sebspark/openapi-express@workspace:packages/openapi-express":
+"@sebspark/openapi-express@npm:5.4.22, @sebspark/openapi-express@workspace:packages/openapi-express":
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-express@workspace:packages/openapi-express"
   dependencies:
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
     "@sebspark/openapi-core": "npm:4.1.25"
-    "@sebspark/otel": "npm:4.2.0"
+    "@sebspark/otel": "npm:4.2.1"
     "@types/supertest": "npm:7.2.1"
     express: "npm:5.3.0"
     supertest: "npm:7.3.1"
@@ -3238,7 +3238,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@sebspark/openapi-core": "npm:4.1.25"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@types/yargs": "npm:17.0.35"
     boxen: "npm:9.0.0"
     chalk: "npm:6.0.1"
@@ -3260,7 +3260,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@opensearch-project/opensearch": "npm:3.9.0"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/opensearch": "npm:12.2.1"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3268,7 +3268,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/opentelemetry-instrumentation-opensearch@npm:0.4.0, @sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch":
+"@sebspark/opentelemetry-instrumentation-opensearch@npm:0.4.1, @sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch":
   version: 0.0.0-use.local
   resolution: "@sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch"
   dependencies:
@@ -3282,7 +3282,7 @@ __metadata:
     "@opentelemetry/instrumentation-undici": "npm:0.34.0"
     "@opentelemetry/sdk-trace": "npm:3.0.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/opensearch": "npm:12.2.1"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3293,7 +3293,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/otel@npm:4.2.0, @sebspark/otel@workspace:packages/otel":
+"@sebspark/otel@npm:4.2.1, @sebspark/otel@workspace:packages/otel":
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
@@ -3323,8 +3323,8 @@ __metadata:
     "@opentelemetry/sdk-node": "npm:0.300.0"
     "@opentelemetry/sdk-trace": "npm:3.0.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
-    "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.4.0"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.4.1"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/opensearch": "npm:12.2.1"
     "@testcontainers/redis": "npm:12.2.1"
     axios: "npm:1.21.0"
@@ -3341,13 +3341,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/promise-cache@npm:8.1.8, @sebspark/promise-cache@workspace:packages/promise-cache":
+"@sebspark/promise-cache@npm:8.1.9, @sebspark/promise-cache@workspace:packages/promise-cache":
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/memredis": "npm:1.0.7"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/memredis": "npm:1.0.8"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@testcontainers/redis": "npm:12.2.1"
     date-fns: "npm:4.4.0"
     redis: "npm:6.3.1"
@@ -3363,7 +3363,7 @@ __metadata:
   resolution: "@sebspark/retry@workspace:packages/retry"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     axios: "npm:1.21.0"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3377,7 +3377,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@sebspark/avsc-isometric": "npm:0.4.17"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.4"
     socket.io-client: "npm:4.8.4"
@@ -3398,7 +3398,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/pubsub": "npm:6.3.2"
     "@msgpack/msgpack": "npm:3.1.3"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@socket.io/gcp-pubsub-adapter": "npm:0.1.1"
     "@testcontainers/gcloud": "npm:12.2.1"
     find-free-ports: "npm:3.1.1"
@@ -3418,8 +3418,8 @@ __metadata:
     "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/spanner": "npm:9.1.0"
     "@inquirer/prompts": "npm:8.7.5"
-    "@sebspark/cli-tester": "npm:1.0.21"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/cli-tester": "npm:1.0.22"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:12.2.1"
     typescript: "npm:7.0.2"
@@ -3436,7 +3436,7 @@ __metadata:
   resolution: "@sebspark/test-iap@workspace:packages/test-iap"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@types/ws": "npm:8.18.2"
     jose: "npm:6.2.14"
     nock: "npm:15.0.5"
@@ -3453,7 +3453,7 @@ __metadata:
   resolution: "@sebspark/trading-hours@workspace:packages/trading-hours"
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     date-fns: "npm:4.4.0"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -3461,7 +3461,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/tsconfig@npm:3.0.27, @sebspark/tsconfig@workspace:packages/tsconfig":
+"@sebspark/tsconfig@npm:3.0.28, @sebspark/tsconfig@workspace:packages/tsconfig":
   version: 0.0.0-use.local
   resolution: "@sebspark/tsconfig@workspace:packages/tsconfig"
   dependencies:
@@ -9449,7 +9449,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@changesets/cli": "npm:3.0.3"
-    "@sebspark/tsconfig": "npm:3.0.27"
+    "@sebspark/tsconfig": "npm:3.0.28"
     "@turbo/gen": "npm:2.11.10"
     "@types/node": "npm:26.6.6"
     "@vitest/coverage-v8": "npm:5.0.5"

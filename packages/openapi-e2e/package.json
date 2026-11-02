@@ -13,9 +13,9 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.2.23",
+    "@sebspark/openapi-client": "4.2.24",
     "@sebspark/openapi-core": "4.1.25",
-    "@sebspark/openapi-express": "5.4.21",
+    "@sebspark/openapi-express": "5.4.22",
     "express": "5.3.0"
   },
   "devDependencies": {

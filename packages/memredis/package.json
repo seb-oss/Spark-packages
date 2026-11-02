@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/memredis",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/tsconfig": "3.0.27",
+    "@sebspark/tsconfig": "3.0.28",
     "@testcontainers/redis": "12.2.1",
     "typescript": "7.0.2",
     "vite": "8.3.5",
