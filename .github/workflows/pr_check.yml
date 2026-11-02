@@ -94,7 +94,7 @@ jobs:
         run: yarn install --immutable
         
       - name: Check linting, formatting, and imports
-        run: yarn lint:check
+        run: yarn lint:ci
 
       - name: Check unused files and dependencies
         run: yarn knip

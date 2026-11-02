@@ -121,7 +121,7 @@ Work on one package at a time. While iterating on a package, run only that packa
 
 If a check doesn't exist for a package (e.g. no e2e tests), skip it — but verify by reading the package's `package.json` or README, not by assumption.
 
-Always run lint after any code change. `yarn lint` applies safe fixes; `yarn lint:check` (run by `yarn smoketest` and CI) only checks and fails on warnings, so fix every warning.
+Always run lint after any code change. `yarn lint` applies safe fixes; `yarn lint:ci` (run by `yarn smoketest` and CI) only checks and fails on warnings, so fix every warning.
 
 Every package's `typecheck` runs `tsc --noEmit -p .` followed by `vitest --typecheck.only`, so production code and tests are type-checked, not just type tests. Packages that check generated code (`openapi-client`, `openapi-e2e`) run `yarn generate &&` first in `test` and `typecheck`; the generated files are gitignored and Biome skips them (`vcs.useIgnoreFile`). Yarn 4 does not run `pre`/`post` scripts, so never rely on them.
 
