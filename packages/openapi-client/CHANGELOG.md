@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 4.2.23
+
+### Patch Changes
+
+- 10aba82: chore(deps): bump axios from 1.20.0 to 1.21.0
+- Updated dependencies [10aba82]
+  - @sebspark/openapi-core@4.1.25
+
 ## 4.2.22
 
 ### Patch Changes
