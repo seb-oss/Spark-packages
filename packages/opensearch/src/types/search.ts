@@ -1,4 +1,5 @@
 import type { API, Types } from '@opensearch-project/opensearch'
+import type { AggregationContainer } from './aggregations'
 import type { IndexDefinition, MapQueryProperties, Sort } from './common'
 import type {
   FieldCollapse,
@@ -18,8 +19,16 @@ export type SearchRequest<T extends IndexDefinition> = Prettify<
 
 export type SearchRequestBody<T extends IndexDefinition> = Omit<
   API.Search_RequestBody,
-  'query' | 'collapse' | 'highlight' | 'sort' | '_source'
+  | 'query'
+  | 'collapse'
+  | 'highlight'
+  | 'sort'
+  | '_source'
+  | 'aggs'
+  | 'aggregations'
 > & {
+  aggs?: Record<string, AggregationContainer<T>>
+  aggregations?: Record<string, AggregationContainer<T>>
   query?: QueryContainer<MapQueryProperties<T>> &
     Types.Common_QueryDsl.QueryContainer
   collapse?: FieldCollapse<MapQueryProperties<T>> &

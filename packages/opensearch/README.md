@@ -101,6 +101,32 @@ async function run () {
 }
 ```
 
+### Aggregations
+
+`aggs` (and `aggregations`) are typed against the index as well. `field` on metric aggregations (`max`, `min`, `sum`, `avg`, `value_count`, `cardinality`) and bucket aggregations (`terms`, `date_histogram`, `date_range`, `range`) only accepts paths from the mapping, including multi-field sub-fields such as `name.keyword`. `filter` takes an index-aware query, and `top_hits` gets index-aware `sort` and `_source`. Sub-aggregations under any bucket aggregation are typed the same way.
+
+```typescript
+const stats: PersonSearch = {
+  index: 'person',
+  body: {
+    size: 0,
+    aggs: {
+      byName: {
+        terms: { field: 'name', size: 10 },
+        aggs: {
+          oldest: { max: { field: 'age' } },
+          youngest: { top_hits: { sort: [{ age: { order: 'asc' } }], _source: ['name'], size: 1 } },
+        },
+      },
+    },
+  },
+}
+```
+
+Other aggregations keep the types from `@opensearch-project/opensearch`.
+
+> `@opensearch-project/opensearch` 3.9.0 dropped `field` and `script` from several aggregation types ([opensearch-js#1154](https://github.com/opensearch-project/opensearch-js/issues/1154)). This package restores them for the aggregations listed above.
+
 ## Helpers
 
 ### Bulk operations
