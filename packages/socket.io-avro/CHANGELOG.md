@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.30
+
+### Patch Changes
+
+- d1b84ad: `socket.io` and `socket.io-client` are now optional peer dependencies. `/server` only needs `socket.io` and `/client` only needs `socket.io-client`, so client apps no longer get an unmet-peer warning for `socket.io`, and servers no longer get one for `socket.io-client`.
+
 ## 0.1.29
 
 ### Patch Changes

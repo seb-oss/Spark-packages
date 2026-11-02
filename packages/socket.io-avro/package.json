@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/socket.io-avro",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "license": "Apache-2.0",
   "type": "module",
   "exports": {
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/tsconfig": "3.0.28",
+    "@sebspark/tsconfig": "3.0.29",
     "find-free-ports": "3.1.1",
     "socket.io": "4.8.4",
     "socket.io-client": "4.8.4",

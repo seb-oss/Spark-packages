@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-client",
-  "version": "4.2.26",
+  "version": "4.2.27",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
     "@sebspark/openapi-typegen": "5.3.4",
-    "@sebspark/tsconfig": "3.0.28",
+    "@sebspark/tsconfig": "3.0.29",
     "express": "5.3.0",
     "nock": "15.0.5",
     "typescript": "7.0.2",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.27",
-    "@sebspark/otel": "4.2.2",
+    "@sebspark/otel": "4.3.0",
     "@sebspark/retry": "1.0.21",
     "axios": "1.21.0",
     "axios-auth-refresh": "5.0.2"

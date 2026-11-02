@@ -11,9 +11,9 @@
     "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.2.26",
+    "@sebspark/openapi-client": "4.2.27",
     "@sebspark/openapi-core": "4.1.27",
-    "@sebspark/openapi-express": "5.4.24",
+    "@sebspark/openapi-express": "5.4.25",
     "express": "5.3.0"
   },
   "devDependencies": {

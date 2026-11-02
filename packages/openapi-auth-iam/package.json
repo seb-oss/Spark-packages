@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-auth-iam",
-  "version": "3.0.58",
+  "version": "3.0.59",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -22,7 +22,7 @@
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
   "dependencies": {
-    "@sebspark/gcp-iam": "3.0.60"
+    "@sebspark/gcp-iam": "3.0.61"
   },
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/tsconfig": "3.0.28",
+    "@sebspark/tsconfig": "3.0.29",
     "typescript": "7.0.2",
     "vite": "8.3.5",
     "vitest": "5.0.5"

@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.4",
-    "@sebspark/tsconfig": "3.0.28",
+    "@sebspark/tsconfig": "3.0.29",
     "@types/yargs": "17.0.35",
     "typescript": "7.0.2",
     "vite": "8.3.5",

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/otel",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -63,7 +63,7 @@
     "@opensearch-project/opensearch": "3.9.0",
     "@opentelemetry/context-async-hooks": "3.0.0",
     "@sebspark/opentelemetry-instrumentation-opensearch": "0.4.2",
-    "@sebspark/tsconfig": "3.0.28",
+    "@sebspark/tsconfig": "3.0.29",
     "@testcontainers/opensearch": "12.2.1",
     "@testcontainers/redis": "12.2.1",
     "axios": "1.21.0",
