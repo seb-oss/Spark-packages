@@ -36,6 +36,14 @@ export type PersonDocument = DocumentFor<PersonIndex>
 export type PersonSearch = SearchRequest<PersonIndex>
 ```
 
+`DocumentFor<T>` holds only mapped fields, so the usual type utilities work on it. For example, a mapping cannot say that a `keyword` field holds an array, but `Omit` can:
+
+```typescript
+export type TaggedPersonDocument = Omit<PersonDocument, 'name'> & {
+  name?: string[]
+}
+```
+
 Using the index definition and your types, you can now start interacting with OpenSearch with typeahead:
 
 ```typescript
@@ -106,7 +114,7 @@ async function run () {
 This package is a helper. Its types suggest fields and values from the mapping, but they accept every request OpenSearch accepts:
 
 - `query`, `sort`, `_source`, `collapse`, `highlight`, aggregation `field`/`filter` and `top_hits` `sort`/`_source` autocomplete fields from the mapping, including top-level multi-field sub-fields such as `title.keyword`, but also accept fields that are not in it, such as fields added by dynamic mapping.
-- `DocumentFor<T>` types mapped fields from the mapping and accepts other fields as `unknown`, so documents with extra fields can be indexed.
+- `DocumentFor<T>` is the document as the mapping describes it: only mapped fields, so `keyof`, `Omit` and `Pick` work on it. Writes (`index`, `bulk`, `bulkIndex`, `bulkCreate`, `bulkUpdate` and `IdFunction`) take `WritableDocument<T>`, which also accepts unmapped fields as `unknown`, unless the mapping sets `dynamic: 'strict'` and OpenSearch would reject them.
 - Values are not narrowed beyond what OpenSearch coerces, e.g. `term: { age: '30' }` on an `integer` field compiles. The one exception follows `@opensearch-project/opensearch`: `terms_set.terms` is `string[]`, so pass numbers as strings (`ages.map(String)`).
 - A `SearchRequest<T>`, for a concrete index or a generic `T`, can be passed to the `Client` of `@opensearch-project/opensearch`.
 

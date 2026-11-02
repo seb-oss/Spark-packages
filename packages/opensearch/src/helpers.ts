@@ -8,10 +8,10 @@ import type {
   UpdateOperation,
 } from './types/bulk'
 import type { IndexDefinition } from './types/common'
-import type { DocumentFor } from './types/documents'
+import type { WritableDocument } from './types/documents'
 
 export type IdFunction<T extends IndexDefinition> = (
-  doc: DocumentFor<T>
+  doc: WritableDocument<T>
 ) => Types.Common.Id
 
 /**
@@ -28,7 +28,7 @@ export type IdFunction<T extends IndexDefinition> = (
  */
 export function bulkIndex<T extends IndexDefinition>(
   index: T['index'],
-  docs: DocumentFor<T>[],
+  docs: WritableDocument<T>[],
   idFn?: IdFunction<T>
 ): BulkRequest<T> {
   const body = docs.flatMap((doc) => {
@@ -52,7 +52,7 @@ export function bulkIndex<T extends IndexDefinition>(
  */
 export function bulkCreate<T extends IndexDefinition>(
   index: T['index'],
-  docs: DocumentFor<T>[],
+  docs: WritableDocument<T>[],
   idFn: IdFunction<T>
 ): BulkRequest<T> {
   const body = docs.flatMap((doc) => {
@@ -81,7 +81,7 @@ export function bulkUpdate<T extends IndexDefinition>(
 ): BulkRequest<T> {
   const body = updates.flatMap((update) => {
     const op: UpdateOperation<T> = {
-      _id: idFn((update.doc as DocumentFor<T>) || update.upsert),
+      _id: idFn((update.doc as WritableDocument<T>) || update.upsert),
     }
     return [{ update: op }, update]
   })

@@ -1264,4 +1264,56 @@ describe('OpenSearchClient', () => {
       })
     })
   })
+
+  describe('mapping dynamic setting', () => {
+    const properties = {
+      id: { type: 'keyword' },
+    } as const
+    const falseIndex = {
+      index: 'dynamic_false',
+      body: { mappings: { dynamic: 'false', properties } },
+    } as const satisfies IndexDefinition
+    const strictIndex = {
+      index: 'dynamic_strict',
+      body: { mappings: { dynamic: 'strict', properties } },
+    } as const satisfies IndexDefinition
+
+    beforeAll(async () => {
+      for (const definition of [falseIndex, strictIndex]) {
+        const exists = await opensearchClient.indices.exists({
+          index: definition.index,
+        })
+        if (exists.body) {
+          await opensearchClient.indices.delete({ index: definition.index })
+        }
+        await opensearchClient.indices.create(definition)
+      }
+    })
+
+    it('dynamic false stores an unmapped field in _source', async () => {
+      await opensearchClient.index<typeof falseIndex>({
+        index: 'dynamic_false',
+        id: 'a',
+        body: { id: 'a', extra: 1 },
+        refresh: true,
+      })
+
+      const result = await opensearchClient.search({
+        index: 'dynamic_false',
+        body: { query: { match_all: {} } },
+      })
+
+      expect(result.body.hits.hits[0]?._source).toEqual({ id: 'a', extra: 1 })
+    })
+
+    it('dynamic strict rejects an unmapped field, as the type does', async () => {
+      await expect(
+        opensearchClient.index<typeof strictIndex>({
+          index: 'dynamic_strict',
+          // @ts-expect-error extra is not in the strict mapping
+          body: { id: 'a', extra: 1 },
+        })
+      ).rejects.toThrow(/strict_dynamic_mapping_exception/)
+    })
+  })
 })

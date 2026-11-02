@@ -1,12 +1,12 @@
 import type { API } from '@opensearch-project/opensearch'
 import type { IndexDefinition, MapOpenSearchTypes } from './common'
-import type { DocumentFor } from './documents'
+import type { WritableDocument } from './documents'
 import type { SearchRequest } from './search'
 
 export interface IndexRequest<T extends IndexDefinition>
   extends Omit<API.Index_Request, 'body' | 'index'> {
   index: T extends { index: infer I } ? I : never
-  body: DocumentFor<T>
+  body: WritableDocument<T>
 }
 
 export type IndexRequestBody<T> = T extends {

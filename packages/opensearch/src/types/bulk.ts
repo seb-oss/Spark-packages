@@ -1,6 +1,6 @@
 import type { API, Types } from '@opensearch-project/opensearch'
 import type { IndexDefinition } from './common'
-import type { DocumentFor } from './documents'
+import type { WritableDocument } from './documents'
 import type { DeepPartial, NestedLeafPaths } from './utilityTypes'
 
 export type CreateOperation<T extends IndexDefinition> = Omit<
@@ -41,8 +41,8 @@ export type UpdateAction<T extends IndexDefinition> = Omit<
   'doc' | 'upsert'
 > &
   (
-    | { doc: DeepPartial<DocumentFor<T>>; upsert?: DocumentFor<T> }
-    | { doc?: DeepPartial<DocumentFor<T>>; upsert: DocumentFor<T> }
+    | { doc: DeepPartial<WritableDocument<T>>; upsert?: WritableDocument<T> }
+    | { doc?: DeepPartial<WritableDocument<T>>; upsert: WritableDocument<T> }
   )
 
 export type BulkRequest<T extends IndexDefinition> = Omit<
@@ -58,7 +58,7 @@ export type BulkRequest<T extends IndexDefinition> = Omit<
 export type BulkRequestBody<T extends IndexDefinition> = (
   | OperationContainer<T>
   | UpdateAction<T>
-  | DocumentFor<T>
+  | WritableDocument<T>
 )[]
 
 type ResponseItem<T extends IndexDefinition> = Omit<

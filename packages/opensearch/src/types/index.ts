@@ -6,7 +6,7 @@ export type {
   Property,
   TypeMapping,
 } from './common'
-export type { DocumentFor } from './documents'
+export type { DocumentFor, WritableDocument } from './documents'
 export type { IndexRequest, IndexResponse } from './indx'
 export * from './queries'
 export type { SearchRequest, SearchResponse } from './search'
