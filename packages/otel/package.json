@@ -52,7 +52,7 @@
     "yaml": "2.9.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
+    "@biomejs/biome": "2.6.4",
     "@opensearch-project/opensearch": "3.9.0",
     "@opentelemetry/context-async-hooks": "3.0.0",
     "@sebspark/tsconfig": "3.0.27",

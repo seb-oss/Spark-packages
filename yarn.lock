@@ -219,20 +219,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/biome@npm:2.6.3"
+"@biomejs/biome@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/biome@npm:2.6.4"
   dependencies:
-    "@biomejs/cli-android-arm64": "npm:2.6.3"
-    "@biomejs/cli-android-x64": "npm:2.6.3"
-    "@biomejs/cli-darwin-arm64": "npm:2.6.3"
-    "@biomejs/cli-darwin-x64": "npm:2.6.3"
-    "@biomejs/cli-linux-arm64": "npm:2.6.3"
-    "@biomejs/cli-linux-arm64-musl": "npm:2.6.3"
-    "@biomejs/cli-linux-x64": "npm:2.6.3"
-    "@biomejs/cli-linux-x64-musl": "npm:2.6.3"
-    "@biomejs/cli-win32-arm64": "npm:2.6.3"
-    "@biomejs/cli-win32-x64": "npm:2.6.3"
+    "@biomejs/cli-android-arm64": "npm:2.6.4"
+    "@biomejs/cli-android-x64": "npm:2.6.4"
+    "@biomejs/cli-darwin-arm64": "npm:2.6.4"
+    "@biomejs/cli-darwin-x64": "npm:2.6.4"
+    "@biomejs/cli-linux-arm64": "npm:2.6.4"
+    "@biomejs/cli-linux-arm64-musl": "npm:2.6.4"
+    "@biomejs/cli-linux-x64": "npm:2.6.4"
+    "@biomejs/cli-linux-x64-musl": "npm:2.6.4"
+    "@biomejs/cli-win32-arm64": "npm:2.6.4"
+    "@biomejs/cli-win32-x64": "npm:2.6.4"
   dependenciesMeta:
     "@biomejs/cli-android-arm64":
       optional: true
@@ -256,76 +256,76 @@ __metadata:
       optional: true
   bin:
     biome: bin/biome
-  checksum: 10c0/cbe3c3b5d4119dfd886e302d1c3d35eaac43f4a79b0cb81bea5ae450685e3c0480cd061c3af9ed374382c2e64bf7274b10179f3e13300c0d8f07802ca616fd7d
+  checksum: 10c0/72f6d58859628b06db4f53930dde1f443f8c3752f9dc597b32da61f1f467f3df128eb51f5272e46b5113e12b3390902e116d5e536afbe8a9fcb24dc86782fe63
   languageName: node
   linkType: hard
 
-"@biomejs/cli-android-arm64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-android-arm64@npm:2.6.3"
+"@biomejs/cli-android-arm64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-android-arm64@npm:2.6.4"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-android-x64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-android-x64@npm:2.6.3"
+"@biomejs/cli-android-x64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-android-x64@npm:2.6.4"
   conditions: os=android & cpu=x64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-arm64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-darwin-arm64@npm:2.6.3"
+"@biomejs/cli-darwin-arm64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-darwin-arm64@npm:2.6.4"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-darwin-x64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-darwin-x64@npm:2.6.3"
+"@biomejs/cli-darwin-x64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-darwin-x64@npm:2.6.4"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64-musl@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.6.3"
+"@biomejs/cli-linux-arm64-musl@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-linux-arm64-musl@npm:2.6.4"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-arm64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-linux-arm64@npm:2.6.3"
+"@biomejs/cli-linux-arm64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-linux-arm64@npm:2.6.4"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64-musl@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-linux-x64-musl@npm:2.6.3"
+"@biomejs/cli-linux-x64-musl@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-linux-x64-musl@npm:2.6.4"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@biomejs/cli-linux-x64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-linux-x64@npm:2.6.3"
+"@biomejs/cli-linux-x64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-linux-x64@npm:2.6.4"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-arm64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-win32-arm64@npm:2.6.3"
+"@biomejs/cli-win32-arm64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-win32-arm64@npm:2.6.4"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@biomejs/cli-win32-x64@npm:2.6.3":
-  version: 2.6.3
-  resolution: "@biomejs/cli-win32-x64@npm:2.6.3"
+"@biomejs/cli-win32-x64@npm:2.6.4":
+  version: 2.6.4
+  resolution: "@biomejs/cli-win32-x64@npm:2.6.4"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2836,7 +2836,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/avsc-ts@workspace:packages/avsc-ts"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@ovotech/avro-ts": "npm:6.2.0"
     "@sebspark/avsc-isometric": "npm:0.4.17"
     "@sebspark/tsconfig": "npm:3.0.27"
@@ -2856,7 +2856,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@inquirer/figures": "npm:2.0.9"
     "@inquirer/prompts": "npm:8.7.4"
     "@sebspark/tsconfig": "npm:3.0.27"
@@ -2870,7 +2870,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/emulator@workspace:packages/emulator"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"
@@ -2882,7 +2882,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/environment@workspace:packages/environment"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     depcheck: "npm:1.4.7"
     typescript: "npm:7.0.2"
@@ -2895,7 +2895,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/expect-eventually@workspace:packages/expect-eventually"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@vitest/expect": "npm:5.0.5"
     typescript: "npm:7.0.2"
@@ -2908,7 +2908,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/iam-credentials": "npm:5.1.0"
     "@sebspark/otel": "npm:4.2.0"
     "@sebspark/tsconfig": "npm:3.0.27"
@@ -2924,7 +2924,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/health-check@workspace:packages/health-check"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/pubsub": "npm:6.3.1"
     "@sebspark/hyper-media": "npm:0.1.7"
     "@sebspark/promise-cache": "npm:8.1.8"
@@ -2945,7 +2945,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/hyper-media@workspace:packages/hyper-media"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     express: "npm:5.3.0"
     typescript: "npm:7.0.2"
@@ -2958,7 +2958,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/idempotency@workspace:packages/idempotency"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/memredis": "npm:1.0.7"
     "@sebspark/tsconfig": "npm:3.0.27"
     typescript: "npm:7.0.2"
@@ -2971,7 +2971,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-10383@workspace:packages/iso-10383"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     change-case: "npm:5.4.4"
     csv-parse: "npm:7.0.3"
@@ -2985,7 +2985,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/iso-4217@workspace:packages/iso-4217"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     fast-xml-parser: "npm:5.11.2"
     typescript: "npm:7.0.2"
@@ -2998,7 +2998,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/memredis@workspace:packages/memredis"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@testcontainers/redis": "npm:12.2.1"
     redis: "npm:6.3.0"
@@ -3012,7 +3012,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/gcp-iam": "npm:3.0.58"
     "@sebspark/tsconfig": "npm:3.0.27"
     depcheck: "npm:1.4.7"
@@ -3026,7 +3026,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-client@workspace:packages/openapi-client"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/openapi-core": "npm:4.1.25"
     "@sebspark/openapi-typegen": "npm:5.3.2"
     "@sebspark/otel": "npm:4.2.0"
@@ -3047,7 +3047,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-core@workspace:packages/openapi-core"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/retry": "npm:1.0.20"
     "@sebspark/tsconfig": "npm:3.0.27"
     axios: "npm:1.21.0"
@@ -3063,7 +3063,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-e2e@workspace:packages/openapi-e2e"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/openapi-client": "npm:4.2.23"
     "@sebspark/openapi-core": "npm:4.1.25"
     "@sebspark/openapi-express": "npm:5.4.21"
@@ -3096,7 +3096,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/openapi-typegen@workspace:packages/openapi-typegen"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/openapi-core": "npm:4.1.25"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@types/yargs": "npm:17.0.35"
@@ -3118,7 +3118,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/opensearch@workspace:packages/opensearch"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@opensearch-project/opensearch": "npm:3.9.0"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@testcontainers/opensearch": "npm:12.2.1"
@@ -3132,7 +3132,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/opentelemetry-instrumentation-opensearch@workspace:packages/opentelemetry-instrumentation-opensearch"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@opensearch-project/opensearch": "npm:3.9.0"
     "@opentelemetry/api": "npm:1.10.0"
     "@opentelemetry/context-async-hooks": "npm:3.0.0"
@@ -3157,7 +3157,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/otel@workspace:packages/otel"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@opensearch-project/opensearch": "npm:3.9.0"
     "@opentelemetry/api": "npm:1.10.0"
     "@opentelemetry/context-async-hooks": "npm:3.0.0"
@@ -3205,7 +3205,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/memredis": "npm:1.0.7"
     "@sebspark/otel": "npm:4.2.0"
     "@sebspark/tsconfig": "npm:3.0.27"
@@ -3223,7 +3223,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/retry@workspace:packages/retry"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     axios: "npm:1.21.0"
     typescript: "npm:7.0.2"
@@ -3236,7 +3236,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/socket.io-avro@workspace:packages/socket.io-avro"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/avsc-isometric": "npm:0.4.17"
     "@sebspark/tsconfig": "npm:3.0.27"
     find-free-ports: "npm:3.1.1"
@@ -3256,7 +3256,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/socket.io-gcp-pubsub-emitter@workspace:packages/socket.io-gcp-pubsub-emitter"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/pubsub": "npm:6.3.1"
     "@msgpack/msgpack": "npm:3.1.3"
     "@sebspark/tsconfig": "npm:3.0.27"
@@ -3277,7 +3277,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/spanner-migrate@workspace:packages/spanner-migrate"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@google-cloud/spanner": "npm:9.1.0"
     "@inquirer/prompts": "npm:8.7.4"
     "@sebspark/cli-tester": "npm:1.0.21"
@@ -3297,7 +3297,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/test-iap@workspace:packages/test-iap"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@types/ws": "npm:8.18.2"
     jose: "npm:6.2.14"
@@ -3314,7 +3314,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sebspark/trading-hours@workspace:packages/trading-hours"
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@sebspark/tsconfig": "npm:3.0.27"
     date-fns: "npm:4.4.0"
     typescript: "npm:7.0.2"
@@ -9205,7 +9205,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sebspark@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:2.6.3"
+    "@biomejs/biome": "npm:2.6.4"
     "@changesets/cli": "npm:3.0.3"
     "@sebspark/tsconfig": "npm:3.0.27"
     "@turbo/gen": "npm:2.11.10"
