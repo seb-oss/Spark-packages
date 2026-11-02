@@ -38,7 +38,9 @@ const teardown = async () => {
 }
 
 const injectSql = async (createResult: string, up: string, down: string) => {
-  const [, path] = createResult.split(': ')
+  // The output can hold more lines than the path, depending on stdout chunking
+  const path = createResult.match(/Migration created: (\S+\.sql)/)?.[1]
+  if (!path) throw new Error(`No migration path in output: ${createResult}`)
 
   let sql = await readFile(resolve(cwd, path), 'utf-8')
 
