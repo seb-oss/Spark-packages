@@ -23,7 +23,7 @@
   "scripts": {
     "build": "spark-build src/index.ts --format=esm --format=cjs",
     "dev": "tsc --watch --noEmit",
-    "lint": "biome lint .",
+    "lint": "biome lint --write .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },

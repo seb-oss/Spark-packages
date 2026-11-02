@@ -11,7 +11,7 @@
   "scripts": {
     "build": "spark-build src/index.ts src/cli.ts --format=cjs",
     "dev": "tsc --watch --noEmit",
-    "lint": "biome check .",
+    "lint": "biome check --write .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
   },
