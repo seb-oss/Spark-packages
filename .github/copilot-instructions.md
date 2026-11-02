@@ -111,6 +111,8 @@ So:
 
 **Delays use `node:timers/promises`.** Write `import { setTimeout } from 'node:timers/promises'` and `await setTimeout(ms)`, without an alias, instead of wrapping the global `setTimeout` in a `new Promise`. The exception is published code that callers may test with `vi.useFakeTimers()`, which does not control `node:timers/promises` (verified with vitest 5): `retry` and `health-check/timing.ts` keep the global `setTimeout` for that reason, with a comment saying so.
 
+**Tests wait for conditions, never for a fixed time.** A test that waits for an asynchronous result (a socket message, a published event, a database write) polls for it with `@sebspark/expect-eventually`: `await expect(listener).eventually({ timeout: 5000, interval: 10 }).toHaveBeenCalled()`. Poll tightly and allow a generous timeout, so the test is fast when things work and fails only when the result never arrives. `await setTimeout(100)` followed by an assertion is a flaky test: `socket.io-avro`'s e2e failed a release run that way. A fixed delay is only right when the delay itself is what is tested, e.g. waiting past a TTL.
+
 ## What Not To Do
 
 - Do not add comments, docstrings, or type annotations to code you did not change unless asked to

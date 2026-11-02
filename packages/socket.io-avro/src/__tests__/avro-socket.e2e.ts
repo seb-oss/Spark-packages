@@ -2,8 +2,8 @@ import {
   createServer as createHttpServer,
   type Server as HttpServer,
 } from 'node:http'
-import { setTimeout } from 'node:timers/promises'
 import type { RecordType } from '@sebspark/avsc-isometric'
+import '@sebspark/expect-eventually'
 import { findFreePorts } from 'find-free-ports'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { createClient } from '../client'
@@ -67,9 +67,9 @@ describe('socket.io Avro', () => {
     client.on('world', listener)
     client.emit('hello', { greeting: 'Hello!' })
 
-    await setTimeout(100)
-
-    expect(listener).toHaveBeenCalled()
+    await expect(listener)
+      .eventually({ timeout: 5000, interval: 10 })
+      .toHaveBeenCalled()
 
     client.close()
     server.disconnectSockets()
@@ -96,12 +96,12 @@ describe('socket.io Avro', () => {
     client.on('news', listener)
     client.emit('hello', { greeting: 'Hello!' })
 
-    await setTimeout(100)
-
-    expect(listener.mock.calls).toEqual([
-      [{ id: '1', headline: 'Headline' }],
-      [{ id: '2', headline: null }],
-    ])
+    await expect(() => listener.mock.calls)
+      .eventually({ timeout: 5000, interval: 10 })
+      .toEqual([
+        [{ id: '1', headline: 'Headline' }],
+        [{ id: '2', headline: null }],
+      ])
     expect(encodingErrors).not.toHaveBeenCalled()
 
     encodingErrors.mockRestore()
