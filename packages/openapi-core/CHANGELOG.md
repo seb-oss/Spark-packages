@@ -1,5 +1,15 @@
 # @sebspark/openapi-core
 
+## 4.1.27
+
+### Patch Changes
+
+- 907ebc8: Restore `RequestArgs` as `Request & { params?, query?, headers? }`, as it was before 4.1.26.
+
+  In 4.1.26, `RequestArgs` became a plain object. Plain argument objects then satisfied the generic `BaseClient` methods. For generated clients typed as `Pick<BaseClient, V> & { [V]: <overloads> }`, calls whose `url` is a union of literals resolved to the generic signature, and `response.data` became `unknown`. The calls now resolve to the generated overload again.
+
+  `PayloadRequestArgs.body` stays `unknown`.
+
 ## 4.1.26
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @sebspark/openapi-client
 
+## 4.2.26
+
+### Patch Changes
+
+- 907ebc8: Use an internal argument type instead of `RequestArgs` from `@sebspark/openapi-core`, which includes Express `Request` again. No behaviour change.
+- Updated dependencies [907ebc8]
+  - @sebspark/openapi-core@4.1.27
+
 ## 4.2.25
 
 ### Patch Changes
