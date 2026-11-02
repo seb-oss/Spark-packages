@@ -164,7 +164,13 @@ export const instrumentations = {
             new OpenSearchInstrumentation({
               suppressInternalInstrumentation: true,
               ...(config || {}),
-            })
+            }),
+          (cause) => {
+            throw new Error(
+              'OpenSearch instrumentation requires @sebspark/opentelemetry-instrumentation-opensearch and @opensearch-project/opensearch to be installed',
+              { cause }
+            )
+          }
         )
       )
     }
