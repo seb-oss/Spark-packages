@@ -1,5 +1,11 @@
 # @sebspark/gcp-iam
 
+## 3.0.58
+
+### Patch Changes
+
+- 62d5aa5: chore(deps): bump google-auth-library from 11.3.1 to 11.3.2
+
 ## 3.0.57
 
 ### Patch Changes

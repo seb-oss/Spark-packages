@@ -2904,7 +2904,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/gcp-iam@npm:3.0.57, @sebspark/gcp-iam@workspace:packages/gcp-iam":
+"@sebspark/gcp-iam@npm:3.0.58, @sebspark/gcp-iam@workspace:packages/gcp-iam":
   version: 0.0.0-use.local
   resolution: "@sebspark/gcp-iam@workspace:packages/gcp-iam"
   dependencies:
@@ -3013,7 +3013,7 @@ __metadata:
   resolution: "@sebspark/openapi-auth-iam@workspace:packages/openapi-auth-iam"
   dependencies:
     "@biomejs/biome": "npm:2.6.3"
-    "@sebspark/gcp-iam": "npm:3.0.57"
+    "@sebspark/gcp-iam": "npm:3.0.58"
     "@sebspark/tsconfig": "npm:3.0.27"
     depcheck: "npm:1.4.7"
     typescript: "npm:7.0.2"
