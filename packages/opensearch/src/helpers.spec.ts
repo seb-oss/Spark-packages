@@ -237,4 +237,24 @@ describe('OpenSearch API compatibility', () => {
     expect(body.query).toBeDefined()
     expect(request.body?.query).toBeDefined()
   })
+
+  it('SearchRequest with aggs should be assignable to API.Search_Request', () => {
+    const strictReq: SearchRequest<PersonIndex> = {
+      index: personIndex.index,
+      body: {
+        aggs: {
+          byName: {
+            terms: { field: 'name' },
+            aggs: { oldest: { max: { field: 'age' } } },
+          },
+        },
+      },
+    }
+
+    const body: API.Search_RequestBody = strictReq.body
+    const request: API.Search_Request = strictReq
+
+    expect(body.aggs).toBeDefined()
+    expect(request.body?.aggs).toBeDefined()
+  })
 })

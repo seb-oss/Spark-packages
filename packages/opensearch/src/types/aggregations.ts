@@ -3,10 +3,12 @@ import type {
   FieldPaths,
   IndexDefinition,
   MapQueryProperties,
+  QueryProperties,
   Sort,
 } from './common'
 import type { SourceConfig } from './core_search'
 import type { QueryContainer } from './queries'
+import type { Suggest } from './utilityTypes'
 
 type Upstream = Types.Common_Aggregations.AggregationContainer
 type BucketAggregationBase = Types.Common_Aggregations.BucketAggregationBase
@@ -14,12 +16,13 @@ type FormatMetricAggregationBase =
   Types.Common_Aggregations.FormatMetricAggregationBase
 
 /**
- * `field`/`script` for a value source, with `field` restricted to paths in
- * the index mapping. Restores what `@opensearch-project/opensearch` 3.9.0
- * dropped from its generated types (opensearch-js#1154).
+ * `field`/`script` for a value source. `field` autocompletes paths in the
+ * index mapping but accepts any field name, e.g. one added by dynamic
+ * mapping. Restores what `@opensearch-project/opensearch` 3.9.0 dropped from
+ * its generated types (opensearch-js#1154).
  */
 export type ValueSource<T extends IndexDefinition> = {
-  field?: FieldPaths<T>
+  field?: Suggest<FieldPaths<T>>
   script?: Types.Common.Script
 }
 
@@ -55,13 +58,13 @@ export type IndexAwareAggregations<T extends IndexDefinition> = {
     Pick<ValueSource<T>, 'field'>
   range: Omit<Types.Common_Aggregations.RangeAggregationFields, 'field'> &
     ValueSource<T>
-  filter: QueryContainer<MapQueryProperties<T>> &
+  filter: QueryContainer<QueryProperties<T>> &
     Types.Common_QueryDsl.QueryContainer
   top_hits: Omit<
     Types.Common_Aggregations.TopHitsAggregation,
     'sort' | '_source'
   > & {
-    sort?: Sort<T> & Types.Common.Sort
+    sort?: Sort<T> & Types.Common_Aggregations.TopHitsAggregation['sort']
     _source?: SourceConfig<MapQueryProperties<T>> &
       Types.Core_Search.SourceConfig
   }

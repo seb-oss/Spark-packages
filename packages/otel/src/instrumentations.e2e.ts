@@ -100,13 +100,15 @@ describe('instrumentations', () => {
     logExporter.reset()
 
     opensearchContainer = await new OpenSearchContainer(
-      'opensearchproject/opensearch:3'
+      'opensearchproject/opensearch:3.9.0@sha256:3b55f6b6249cfdb92b52ee59adc8a266203ba9ef9f5d82544fad6f1af2f3609e'
     )
       .withSecurityEnabled(false)
       .withLabels({ package: '@sebspark/otel' })
       .withReuse()
       .start()
-    redisContainer = await new RedisContainer('redis:8-alpine')
+    redisContainer = await new RedisContainer(
+      'redis:8.8.4-alpine@sha256:ab669f1420eaa05360a417b24f3bd210c9272e2c79a4bb35d3e50b4bfd50dbee'
+    )
       .withLabels({ package: '@sebspark/otel' })
       .withReuse()
       .start()

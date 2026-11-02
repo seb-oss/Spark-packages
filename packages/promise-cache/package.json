@@ -23,7 +23,7 @@
     "typecheck": "vitest --typecheck.only --passWithNoTests --run"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
+    "@biomejs/biome": "2.6.4",
     "@sebspark/tsconfig": "3.0.27",
     "@testcontainers/redis": "12.2.1",
     "typescript": "7.0.2",
@@ -32,9 +32,8 @@
   },
   "dependencies": {
     "@sebspark/memredis": "1.0.7",
-    "@sebspark/otel": "4.2.0",
     "date-fns": "4.4.0",
-    "redis": "6.3.0",
+    "redis": "6.3.1",
     "superjson": "2.2.6"
   },
   "repository": {

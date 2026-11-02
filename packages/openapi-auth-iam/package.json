@@ -30,7 +30,7 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
+    "@biomejs/biome": "2.6.4",
     "@sebspark/tsconfig": "3.0.27",
     "depcheck": "1.4.7",
     "typescript": "7.0.2",

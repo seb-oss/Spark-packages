@@ -1,6 +1,5 @@
 import { EventEmitter } from 'node:events'
-import type { GetExOptions } from '@redis/client/dist/lib/commands/GETEX'
-import type { SetOptions } from 'redis'
+import type { RedisClientType, SetOptions } from 'redis'
 import type {
   HashTypes,
   HashValue,
@@ -9,6 +8,8 @@ import type {
   MultiExecReturnTypes,
   ZMember,
 } from './types'
+
+type GetExOptions = Parameters<RedisClientType['getEx']>[1]
 
 const sortMembers = (members: ZMember[]): ZMember[] =>
   [...members].sort((a, b) => a.score - b.score)

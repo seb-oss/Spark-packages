@@ -1,5 +1,5 @@
 import type { API, Client, Types } from '@opensearch-project/opensearch'
-import type { NestedPaths } from './utilityTypes'
+import type { FieldMap, NestedPaths } from './utilityTypes'
 
 /**
  * Defines all possible field types in OpenSearch.
@@ -61,27 +61,29 @@ export type MapOpenSearchTypes<T> = T extends Property
       ? number
       : T['type'] extends 'boolean'
         ? boolean
-        : T['type'] extends 'date' | 'date_nanos'
-          ? string
-          : T['type'] extends 'object'
-            ? T extends { properties?: Record<string, Property> }
-              ? {
-                  -readonly [K in keyof NonNullable<
-                    T['properties']
-                  >]?: MapOpenSearchTypes<NonNullable<T['properties']>[K]>
-                }
-              : T extends { dynamic: 'true' }
-                ? Record<string, unknown>
-                : never
-            : T['type'] extends 'nested'
+        : T['type'] extends 'knn_vector'
+          ? number[]
+          : T['type'] extends 'date' | 'date_nanos'
+            ? string
+            : T['type'] extends 'object'
               ? T extends { properties?: Record<string, Property> }
-                ? Array<{
+                ? {
                     -readonly [K in keyof NonNullable<
                       T['properties']
                     >]?: MapOpenSearchTypes<NonNullable<T['properties']>[K]>
-                  }>
+                  }
+                : T extends { dynamic: 'true' }
+                  ? Record<string, unknown>
+                  : never
+              : T['type'] extends 'nested'
+                ? T extends { properties?: Record<string, Property> }
+                  ? Array<{
+                      -readonly [K in keyof NonNullable<
+                        T['properties']
+                      >]?: MapOpenSearchTypes<NonNullable<T['properties']>[K]>
+                    }>
+                  : never
                 : never
-              : never
   : T extends Record<string, Property>
     ? { -readonly [K in keyof T]: MapOpenSearchTypes<T[K]> }
     : never
@@ -121,6 +123,22 @@ type SubFieldPaths<P extends Record<string, Property>> = {
     : never
 }[keyof P & string]
 
+/**
+ * The mapping as seen by queries: `MapQueryProperties<T>` plus top-level
+ * multi-field sub-fields as dotted keys, e.g. `title.keyword`.
+ */
+export type QueryProperties<T extends IndexDefinition> = T extends {
+  body: { mappings: { properties: infer P extends Record<string, Property> } }
+}
+  ? MapQueryProperties<T> & {
+      [Path in SubFieldPaths<P>]: Path extends `${infer K}.${infer F}`
+        ? P[K] extends { fields: infer Fields extends Record<string, Property> }
+          ? MapOpenSearchTypes<Fields[F]>
+          : never
+        : never
+    }
+  : never
+
 export type Sort<T extends IndexDefinition> = SortOptions<T> | SortOptions<T>[]
 
 export type SortOptions<T extends IndexDefinition> =
@@ -133,6 +151,7 @@ export type SortOptions<T extends IndexDefinition> =
       _score?: Types.Common.ScoreSort
       _script?: Types.Common.ScriptSort
     }
-  | Partial<Record<FieldPaths<T>, Types.Common.FieldSort>>
+  | FieldMap<FieldPaths<T>, Types.Common.FieldSort>
+  | FieldMap<FieldPaths<T>, Types.Common.SortOrder>
 
 export type BuiltinKeys = '_id' | '_index'

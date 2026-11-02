@@ -28,8 +28,8 @@
     "express": "5.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
-    "@google-cloud/pubsub": "6.3.1",
+    "@biomejs/biome": "2.6.4",
+    "@google-cloud/pubsub": "6.3.2",
     "@sebspark/tsconfig": "3.0.27",
     "@testcontainers/gcloud": "12.2.1",
     "@testcontainers/mockserver": "12.2.1",

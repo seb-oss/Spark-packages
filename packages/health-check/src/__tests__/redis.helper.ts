@@ -6,7 +6,9 @@ import {
 } from '@testcontainers/redis'
 
 export const startRedis = async () =>
-  new RedisContainer('redis:8-alpine').start()
+  new RedisContainer(
+    'redis:8.8.4-alpine@sha256:ab669f1420eaa05360a417b24f3bd210c9272e2c79a4bb35d3e50b4bfd50dbee'
+  ).start()
 
 export const pingRedis = (redis: StartedRedisContainer, timeoutMs = 1500) =>
   new Promise<number>((resolve, reject) => {

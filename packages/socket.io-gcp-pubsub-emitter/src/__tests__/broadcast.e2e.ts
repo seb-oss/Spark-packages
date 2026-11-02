@@ -21,7 +21,8 @@ import { connectClient, startServer, wait, waitFor } from './helpers'
 const PROJECT_ID = 'test-project'
 process.env.GOOGLE_CLOUD_PROJECT = PROJECT_ID
 
-const IMAGE_GCLOUD = 'gcr.io/google.com/cloudsdktool/google-cloud-cli:emulators'
+const IMAGE_GCLOUD =
+  'gcr.io/google.com/cloudsdktool/google-cloud-cli:591.0.0-emulators@sha256:112c21f8f6e04b03b393b3c34fb943a1f443e839f18c6492c364ac2e6c3ff935'
 
 let emulator: StartedPubSubEmulatorContainer
 let pubsub: PubSub

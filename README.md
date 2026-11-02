@@ -168,6 +168,7 @@ Run TypeScript for all packages in watch mode using `yarn dev` or a specific pac
 ### Testing
 
 - `yarn smoketest` runs everything CI runs except e2e. The pre-push hook runs it on pushes to `main`.
+- `yarn knip` finds unused files and dependencies. Packages are covered by default; only entry points other than `src/index.ts`, `src/cli.ts` and test files need a workspace in [knip.config.ts](./knip.config.ts).
 - `yarn test:e2e` runs the e2e tests. They use [Testcontainers](https://testcontainers.com/) and need Docker. CI runs them on every PR and push.
 
 ### Adding a new package

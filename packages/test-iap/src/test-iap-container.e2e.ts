@@ -3,6 +3,9 @@ import { GenericContainer, Network, type StartedNetwork } from 'testcontainers'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { TestIapContainer } from './test-iap-container'
 
+const NODE_IMAGE =
+  'node:26.13.0-alpine@sha256:c6ad9e9c1d80f6eb607c26b4b0a132ff7a2344fad1c78ea3baa2a7d4c8de6d94'
+
 // --- helpers ---
 const waitHttpOk = (url: string, timeoutMs = 10000) =>
   new Promise<void>((resolve, reject) => {
@@ -31,7 +34,7 @@ describe('TestIapContainer', () => {
 
   it('starts and proxies HTTP in local mode (minted JWT replaces base64url token)', async () => {
     // 1) Upstream container that echos request headers as JSON
-    const upstream = await new GenericContainer('node:22-alpine')
+    const upstream = await new GenericContainer(NODE_IMAGE)
       .withNetwork(network)
       .withNetworkAliases('upstream')
       .withExposedPorts(3000)
@@ -102,7 +105,7 @@ describe('TestIapContainer', () => {
 
   it('proxies HTTP in downstream mode (uses remote token)', async () => {
     // 1) Downstream token service container
-    const downstream = await new GenericContainer('node:22-alpine')
+    const downstream = await new GenericContainer(NODE_IMAGE)
       .withNetwork(network)
       .withNetworkAliases('downstream')
       .withExposedPorts(4000)
@@ -119,7 +122,7 @@ describe('TestIapContainer', () => {
       .start()
 
     // 2) Upstream app (echo headers)
-    const upstream = await new GenericContainer('node:22-alpine')
+    const upstream = await new GenericContainer(NODE_IMAGE)
       .withNetwork(network)
       .withNetworkAliases('upstream2')
       .withExposedPorts(3000)

@@ -2,13 +2,13 @@ import type { Types } from '@opensearch-project/opensearch'
 import type { IndexDefinition } from './common'
 import type { DocumentFor } from './documents'
 import type { FieldQuery, QueryContainer } from './queries'
-import type { NestedPaths } from './utilityTypes'
+import type { NestedPaths, Suggest } from './utilityTypes'
 
 export type FieldCollapse<T> = Omit<
   Types.Core_Search.FieldCollapse,
   'field'
 > & {
-  field: NestedPaths<T>
+  field: Suggest<NestedPaths<T>>
 }
 
 export type Highlight<T> = Omit<Types.Core_Search.Highlight, 'fields'> & {
@@ -46,11 +46,11 @@ export type RescoreQuery<T> = Omit<
 
 export type SourceConfig<T> = boolean | SourceFilter<T>
 
-export type SourceConfigParam<T> = boolean | NestedPaths<T>[]
+export type SourceConfigParam<T> = boolean | Suggest<NestedPaths<T>>[]
 
 export type SourceFilter<T> =
-  | NestedPaths<T>[]
+  | Suggest<NestedPaths<T>>[]
   | {
-      excludes?: NestedPaths<T>[]
-      includes?: NestedPaths<T>[]
+      excludes?: Suggest<NestedPaths<T>>[]
+      includes?: Suggest<NestedPaths<T>>[]
     }

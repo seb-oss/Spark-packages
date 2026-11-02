@@ -1,77 +1,55 @@
 import type { KnipConfig } from 'knip'
 
-const baseEntry = [
-  'src/index.{ts,js,mjs}!',
-  'src/**/*.{spec,test}.ts!',
-  'tsdown.config.ts!',
-]
-
-const baseProject = [
+const project = [
   'src/**/*.{ts,tsx,js,mjs,cjs}!',
   '!**/__tests__/**!',
   '!**/__scaffold__/**!',
 ]
 
+/**
+ * Knip's default entries (`src/index.ts`, `src/cli.ts`, package.json) apply
+ * unless `entry` is given, so overrides must list `src/index.ts` themselves.
+ * The vitest plugin does not know `*.spec-d.ts` type tests.
+ */
+const workspace = (entry?: string[]) => ({
+  ...(entry && { entry }),
+  project,
+  vitest: { entry: ['src/**/*.{spec,test,spec-d}.ts'] },
+})
+
 const config: KnipConfig = {
+  ignore: ['**/dist/**'],
   workspaces: {
-    // Default for all packages
-    'packages/*': {
-      entry: baseEntry,
-      project: baseProject,
-    },
-
-    // Packages with CLI entry points
-    'packages/avsc-ts': {
-      entry: [...baseEntry, 'src/cli.ts!'],
-    },
-    'packages/spanner-migrate': {
-      entry: [
-        ...baseEntry,
-        'src/cli.ts!',
-        'src/__tests__/**/*.{ts,js}!',
-        'migrations/**/*.ts!',
-      ],
-    },
-
-    // Package with scaffold fixtures
-    'packages/cli-tester': {
-      entry: [...baseEntry, 'src/__scaffold__/**/*.{ts,js,mjs}!'],
-    },
-
-    // Packages with __tests__ generated fixtures
-    'packages/openapi-typegen': {
-      entry: [...baseEntry, 'src/__tests__/**/*.{ts,js}!'],
-    },
-
-    // Packages with e2e tests
-    'packages/promise-cache': {
-      entry: [...baseEntry, 'src/**/*.e2e.ts!'],
-    },
-    'packages/test-iap': {
-      entry: [...baseEntry, 'src/**/*.e2e.ts!'],
-    },
-
+    'packages/*': workspace(),
+    'packages/spanner-migrate': workspace([
+      'src/{index,cli}.ts!',
+      'src/__tests__/**/*.{ts,js}',
+      'migrations/**/*.ts',
+    ]),
+    'packages/cli-tester': workspace([
+      'src/index.ts!',
+      'src/__scaffold__/**/*.{ts,js,mjs}',
+    ]),
+    'packages/openapi-typegen': workspace([
+      'src/index.ts!',
+      'src/__tests__/**/*.{ts,js}',
+    ]),
     // No index.ts — multiple top-level exports
-    'packages/socket.io-avro': {
-      entry: [
-        ...baseEntry,
-        'src/client.ts!',
-        'src/server.ts!',
-        'src/common.ts!',
-        'src/parser.ts!',
-        'src/__tests__/**/*.{ts,js}!',
-      ],
-    },
-
+    'packages/socket.io-avro': workspace([
+      'src/{client,server,common,parser}.ts!',
+      'src/__tests__/**/*.{ts,js}',
+    ]),
     // No index.ts — e2e service package
-    'packages/openapi-e2e': {
-      entry: [...baseEntry, 'src/server.ts!'],
-    },
+    'packages/openapi-e2e': workspace(['src/server.ts!']),
   },
 
-  ignoreWorkspaces: ['packages/avsc-isometric', 'packages/avsc-ts', 'packages/tsconfig', 'turbo'],
+  ignoreWorkspaces: [
+    'packages/avsc-isometric',
+    'packages/avsc-ts',
+    'packages/tsconfig',
+    'turbo',
+  ],
   ignoreDependencies: ['@turbo/gen', '@google-cloud/spanner', 'avsc'],
-  ignoreBinaries: ['generate'],
 
   // All packages are public libraries — exported symbols are intentional public API
   exclude: ['exports', 'types', 'enumMembers'],

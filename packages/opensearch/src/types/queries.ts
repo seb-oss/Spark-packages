@@ -1,6 +1,6 @@
 import type { Types } from '@opensearch-project/opensearch'
 import type { BuiltinKeys, FieldValue } from './common'
-import type { NestedLeafPaths, NestedPaths } from './utilityTypes'
+import type { FieldMap, NestedLeafPaths, NestedPaths } from './utilityTypes'
 
 export type BoolQuery<T> = Omit<
   Types.Common_QueryDsl.BoolQuery,
@@ -68,9 +68,7 @@ export type FieldAndFormat<T> = Omit<
   field: NestedPaths<T>
 }
 
-export type FieldQuery<T, K> = Partial<
-  Record<NestedLeafPaths<T> | BuiltinKeys, K>
->
+export type FieldQuery<T, K> = FieldMap<NestedLeafPaths<T> | BuiltinKeys, K>
 
 export type FieldValueFactorScoreFunction<T> = Omit<
   Types.Common_QueryDsl.FieldValueFactorScoreFunction,
@@ -132,7 +130,7 @@ export type HybridQuery<T> = Omit<
 export type IntervalsQuery = Types.Common_QueryDsl.IntervalsQuery
 
 export type KnnQuery<T> = Omit<Types.Common_QueryDsl.KnnQuery, 'filter'> & {
-  filter?: QueryContainer<T>[]
+  filter?: QueryContainer<T>
 }
 
 export type Like = Types.Common_QueryDsl.Like
@@ -306,7 +304,7 @@ export type ScriptScoreQuery<T> = Omit<
   Types.Common_QueryDsl.ScriptScoreQuery,
   'query'
 > & {
-  query?: QueryContainer<T>
+  query: QueryContainer<T>
 }
 
 export type SimpleQueryStringQuery<T> = Omit<
@@ -405,12 +403,7 @@ export type TermQuery = Types.Common_QueryDsl.TermQuery
 
 export type TermsQuery<T> = FieldQuery<T, FieldValue[]>
 
-export type TermsSetQuery = Omit<
-  Types.Common_QueryDsl.TermsSetQuery,
-  'terms'
-> & {
-  terms: FieldValue[]
-}
+export type TermsSetQuery = Types.Common_QueryDsl.TermsSetQuery
 
 export type WildcardQuery = Types.Common_QueryDsl.WildcardQuery
 

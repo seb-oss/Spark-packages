@@ -96,6 +96,9 @@ jobs:
       - name: Check linting, formatting, and imports
         run: yarn biome ci
 
+      - name: Check unused files and dependencies
+        run: yarn knip
+
   typecheck:
     name: Type Check
     runs-on: ubuntu-26.04

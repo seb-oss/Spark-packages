@@ -8,7 +8,7 @@ import { wait } from '../timing'
 
 export const startApi = async () => {
   const container = await new MockserverContainer(
-    'mockserver/mockserver:latest'
+    'mockserver/mockserver:9.2.0@sha256:016f7d16bc88d2e1aa52d5a177f1aafee758cf70bea5e0624b0ab2c32f394df1'
   ).start()
 
   const client = mockServerClient(

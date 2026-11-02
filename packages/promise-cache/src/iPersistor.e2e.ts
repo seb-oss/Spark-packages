@@ -19,7 +19,9 @@ let redisClient: ReturnType<typeof createClient>
 let memoryClient: MemRedis
 
 beforeAll(async () => {
-  redis = await new RedisContainer('redis:8-alpine')
+  redis = await new RedisContainer(
+    'redis:8.8.4-alpine@sha256:ab669f1420eaa05360a417b24f3bd210c9272e2c79a4bb35d3e50b4bfd50dbee'
+  )
     .withLabels({ package: '@sebspark/promise-cache' })
     .start()
   redisClient = createClient({ url: redis.getConnectionUrl() })

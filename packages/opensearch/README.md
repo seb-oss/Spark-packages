@@ -101,9 +101,47 @@ async function run () {
 }
 ```
 
+### Typing never blocks OpenSearch
+
+This package is a helper. Its types suggest fields and values from the mapping, but they accept every request OpenSearch accepts:
+
+- `query`, `sort`, `_source`, `collapse`, `highlight`, aggregation `field`/`filter` and `top_hits` `sort`/`_source` autocomplete fields from the mapping, including top-level multi-field sub-fields such as `title.keyword`, but also accept fields that are not in it, such as fields added by dynamic mapping.
+- `DocumentFor<T>` types mapped fields from the mapping and accepts other fields as `unknown`, so documents with extra fields can be indexed.
+- Values are not narrowed beyond what OpenSearch coerces, e.g. `term: { age: '30' }` on an `integer` field compiles. The one exception follows `@opensearch-project/opensearch`: `terms_set.terms` is `string[]`, so pass numbers as strings (`ages.map(String)`).
+- A `SearchRequest<T>`, for a concrete index or a generic `T`, can be passed to the `Client` of `@opensearch-project/opensearch`.
+
+```typescript
+const articleIndex = {
+  index: 'article',
+  body: {
+    mappings: {
+      properties: {
+        title: { type: 'text', fields: { keyword: { type: 'keyword' } } },
+        published: { type: 'date' },
+      },
+    },
+  },
+} as const satisfies IndexDefinition
+
+const byExactTitle: SearchRequest<typeof articleIndex> = {
+  index: 'article',
+  body: {
+    query: { term: { 'title.keyword': 'John Wick' } },
+    sort: [{ published: { order: 'desc' } }],
+  },
+}
+```
+
+`sort` also takes the direction shorthand, e.g. `sort: [{ published: 'desc' }]`, and `knn_vector` fields are `number[]` in `DocumentFor`.
+
+Only shapes that OpenSearch itself rejects are rejected. If you upgrade from an earlier version:
+
+- `script_score` requires `query`. Add `query: { match_all: {} }` to score every document, as OpenSearch did not accept it without one.
+- `knn.filter` is a single query, not an array. Combine several filters in one `bool` query: `filter: { bool: { filter: [a, b] } }`.
+
 ### Aggregations
 
-`aggs` (and `aggregations`) are typed against the index as well. `field` on metric aggregations (`max`, `min`, `sum`, `avg`, `value_count`, `cardinality`) and bucket aggregations (`terms`, `date_histogram`, `date_range`, `range`) only accepts paths from the mapping, including multi-field sub-fields such as `name.keyword`. `filter` takes an index-aware query, and `top_hits` gets index-aware `sort` and `_source`. Sub-aggregations under any bucket aggregation are typed the same way.
+`aggs` (and `aggregations`) are typed against the index as well. `field` on metric aggregations (`max`, `min`, `sum`, `avg`, `value_count`, `cardinality`) and bucket aggregations (`terms`, `date_histogram`, `date_range`, `range`) autocompletes paths from the mapping, including multi-field sub-fields such as `name.keyword`, and accepts any other field name. `filter` takes an index-aware query, and `top_hits` gets index-aware `sort` and `_source`. Sub-aggregations under any bucket aggregation are typed the same way.
 
 ```typescript
 const stats: PersonSearch = {
@@ -124,6 +162,14 @@ const stats: PersonSearch = {
 ```
 
 Other aggregations keep the types from `@opensearch-project/opensearch`.
+
+To type a single aggregation outside a request, use `AggregationContainer<T>`:
+
+```typescript
+import type { AggregationContainer } from '@sebspark/opensearch'
+
+const oldest: AggregationContainer<PersonIndex> = { max: { field: 'age' } }
+```
 
 > `@opensearch-project/opensearch` 3.9.0 dropped `field` and `script` from several aggregation types ([opensearch-js#1154](https://github.com/opensearch-project/opensearch-js/issues/1154)). This package restores them for the aggregations listed above.
 

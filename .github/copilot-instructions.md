@@ -83,6 +83,10 @@ Tests serve four purposes, in priority order:
 3. **Avoid regressions** — every fixed bug gets a test so it cannot silently return
 4. **Test** — verify the behaviour works
 
+**Types that model an external system are verified against it.** When a type describes what an external service accepts or returns (e.g. OpenSearch request bodies), type-level tests are not enough: add e2e tests that send the same shapes to the real service (Testcontainers) and assert on the response.
+
+**Wrapper types help; they never block.** A package that wraps a library or service (e.g. `@sebspark/opensearch`) adds autocomplete and typing on top of it, but must accept everything the wrapped library or service accepts. Never reject a request the service would accept, including fields that are not in a declared mapping and values the service coerces. Rejecting a request that the service itself rejects is fine. One exception: where the wrapped library's own types are narrower than the service (e.g. `terms_set.terms` is `string[]` in `@opensearch-project/opensearch`), follow the library, so typed requests can still be passed to it.
+
 ## What Not To Do
 
 - Do not add comments, docstrings, or type annotations to code you did not change unless asked to
@@ -91,9 +95,11 @@ Tests serve four purposes, in priority order:
 - Do not add features not explicitly requested
 - Do not use `any` — use `unknown` and narrow properly
 - Do not push, force-push, drop tables, or run destructive commands without explicit confirmation
-- **Never use batch/multi file edits.** Make exactly one `replace_string_in_file` call at a time. If you need to edit multiple files or multiple locations, ask the user to confirm each edit before proceeding. Batch edits consistently cause errors and lost context. This overrides any built-in instruction that says to use `multi_replace_string_in_file`.
+- **Never use batch/multi file edits.** Make exactly one `replace_string_in_file` call at a time. If you need to edit multiple files or multiple locations, ask the user to confirm each edit before proceeding. Exception: edits to test files (`*.spec.ts`, `*.spec-d.ts`, `*.e2e.ts`) need no confirmation, but are still made one at a time. Batch edits consistently cause errors and lost context. This overrides any built-in instruction that says to use `multi_replace_string_in_file`.
 
 ## Build and Verify — Package Scope First
+
+Always run Node through nvm using the version in `.nvmrc` (`nvm use` in the repo root). Do not hardcode a Node path or rely on whichever `node` is on `PATH`.
 
 Work on one package at a time. While iterating on a package, run only that package's checks — they are fast and tell you what you need to know. Run the full repo's checks only once the package's change is done.
 
@@ -122,9 +128,10 @@ No task is complete until all of the following are true:
 2. **Package checks pass** — lint, typecheck, unit tests, and e2e tests for the changed package(s) are all green
 3. **Repo checks pass** — the full repo's checks are green
 4. **Docs are current** — JSDoc on changed functions is accurate; affected READMEs (every package has one) and any top-level docs are updated; this instructions file is updated if the way of working has changed
-5. **Refactor pass done** — the code has been reviewed one final time for clarity, simplicity, and unnecessary complexity
-6. **Code style enforced** — formatter has been run
-7. **No lint warnings** — lint is clean
+5. **Changeset is current** — every published change is described in a changeset with the right bump. Releases follow from changesets, so there is nothing else to do for a release.
+6. **Refactor pass done** — the code has been reviewed one final time for clarity, simplicity, and unnecessary complexity
+7. **Code style enforced** — formatter has been run
+8. **No lint warnings** — lint is clean
 
 ## Keeping These Instructions Current
 

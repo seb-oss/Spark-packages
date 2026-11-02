@@ -1,3 +1,4 @@
+import { Client } from '@opensearch-project/opensearch'
 import {
   OpenSearchContainer,
   type StartedOpenSearchContainer,
@@ -18,7 +19,7 @@ let opensearchClient: OpenSearchClient
 
 beforeAll(async () => {
   container = await new OpenSearchContainer(
-    'opensearchproject/opensearch:2.19.6'
+    'opensearchproject/opensearch:3.9.0@sha256:3b55f6b6249cfdb92b52ee59adc8a266203ba9ef9f5d82544fad6f1af2f3609e'
   )
     .withSecurityEnabled(false)
     .withLabels({ package: '@sebspark/opensearch' })
@@ -154,6 +155,57 @@ describe('OpenSearchClient', () => {
 
       expect(result.body.hits.hits).toHaveLength(1)
       expect(result.body.hits.hits[0]._source).toEqual(doc)
+    })
+    it('finds a document by term on a multi-field sub-field', async () => {
+      const search: PersonSearch = {
+        index: 'person',
+        body: {
+          query: { term: { 'text.keyword': 'Sortable' } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+      expect(result.body.hits.hits[0]._source).toEqual(doc)
+    })
+    it('finds a document by terms_set with numbers passed as strings', async () => {
+      const search: PersonSearch = {
+        index: 'person',
+        body: {
+          query: {
+            terms_set: {
+              age: {
+                terms: ['52', '99'],
+                minimum_should_match_script: { source: '1' },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+      expect(result.body.hits.hits[0]._source).toEqual(doc)
+    })
+    it('scores a document with script_score and its required query', async () => {
+      const search: PersonSearch = {
+        index: 'person',
+        body: {
+          query: {
+            script_score: {
+              query: { match: { name: doc.name } },
+              script: { source: "doc['age'].value" },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+      expect(result.body.hits.hits[0]._score).toBe(52)
     })
     it('manages bulk operations', async () => {
       // Prepare bulk operations
@@ -569,28 +621,58 @@ describe('OpenSearchClient', () => {
       })
     })
 
-    it('sum, avg, value_count and cardinality compute over mapped fields', async () => {
+    it('sum computes over a mapped field', async () => {
       const search: TradesSearch = {
         index: 'trades',
-        body: {
-          size: 0,
-          aggs: {
-            volume: { sum: { field: 'volume' } },
-            averageNav: { avg: { field: 'nav' } },
-            count: { value_count: { field: 'assetId' } },
-            assets: { cardinality: { field: 'assetId' } },
-          },
-        },
+        body: { size: 0, aggs: { volume: { sum: { field: 'volume' } } } },
       }
 
       const result = await opensearchClient.search(search)
 
       expect(result.body.aggregations).toMatchObject({
         volume: { value: 380 },
-        averageNav: { value: 50 },
-        count: { value: 5 },
-        assets: { value: 2 },
       })
+    })
+
+    it('avg computes over a mapped field', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: { size: 0, aggs: { averageNav: { avg: { field: 'nav' } } } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({
+        averageNav: { value: 50 },
+      })
+    })
+
+    it('value_count counts a mapped field', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: { count: { value_count: { field: 'assetId' } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({ count: { value: 5 } })
+    })
+
+    it('cardinality counts distinct values of a mapped field', async () => {
+      const search: TradesSearch = {
+        index: 'trades',
+        body: {
+          size: 0,
+          aggs: { assets: { cardinality: { field: 'assetId' } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations).toMatchObject({ assets: { value: 2 } })
     })
 
     it('max accepts a script instead of a field', async () => {
@@ -944,6 +1026,241 @@ describe('OpenSearchClient', () => {
             { high: { value: 9 }, change: { value: -4 } },
           ],
         },
+      })
+    })
+  })
+
+  describe('vectorIndex', () => {
+    const vectorIndex = {
+      index: 'vectors',
+      body: {
+        settings: { index: { knn: true } },
+        mappings: {
+          properties: {
+            tag: { type: 'keyword' },
+            embedding: { type: 'knn_vector', dimension: 2 },
+          },
+        },
+      },
+    } as const satisfies IndexDefinition
+
+    type VectorIndex = typeof vectorIndex
+    type VectorDocument = DocumentFor<VectorIndex>
+    type VectorSearch = SearchRequest<VectorIndex>
+
+    const vectors: VectorDocument[] = [
+      { tag: 'a', embedding: [1, 1] },
+      { tag: 'b', embedding: [1, 1.1] },
+    ]
+
+    beforeAll(async () => {
+      const exists = await opensearchClient.indices.exists<VectorIndex>({
+        index: vectorIndex.index,
+      })
+      if (exists.body) {
+        await opensearchClient.indices.delete({ index: vectorIndex.index })
+      }
+      await opensearchClient.indices.create(vectorIndex)
+      await opensearchClient.bulk({
+        ...bulkIndex<VectorIndex>(vectorIndex.index, vectors),
+        refresh: true,
+      })
+    })
+
+    it('knn query applies a single filter query', async () => {
+      const search: VectorSearch = {
+        index: vectorIndex.index,
+        body: {
+          query: {
+            knn: {
+              embedding: {
+                vector: [1, 1.1],
+                k: 2,
+                filter: { term: { tag: 'a' } },
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+      expect(result.body.hits.hits[0]._source).toEqual(vectors[0])
+    })
+  })
+
+  describe('vanilla requests', () => {
+    const dynamicIndex = {
+      index: 'dynamic',
+      body: {
+        mappings: {
+          properties: {
+            name: { type: 'keyword' },
+            age: { type: 'integer' },
+          },
+        },
+      },
+    } as const satisfies IndexDefinition
+
+    type DynamicIndex = typeof dynamicIndex
+    type DynamicSearch = SearchRequest<DynamicIndex>
+
+    beforeAll(async () => {
+      const exists = await opensearchClient.indices.exists<DynamicIndex>({
+        index: dynamicIndex.index,
+      })
+      if (exists.body) {
+        await opensearchClient.indices.delete({ index: dynamicIndex.index })
+      }
+      await opensearchClient.indices.create(dynamicIndex)
+    })
+
+    it('indexes a document with a field that is not in the mapping', async () => {
+      const response = await opensearchClient.index<DynamicIndex>({
+        index: 'dynamic',
+        body: { name: 'John Wick', age: 52, nickname: 'Johnny', score: 7 },
+        refresh: true,
+      })
+
+      expect(response.statusCode).toEqual(201)
+    })
+
+    it('a generic SearchRequest<T> is accepted by the upstream Client', async () => {
+      const upstream = new Client({ node: container.getHttpUrl() })
+      function search<T extends IndexDefinition>(request: SearchRequest<T>) {
+        return upstream.search(request)
+      }
+
+      const result = await search<DynamicIndex>({
+        index: 'dynamic',
+        body: { query: { match_all: {} } },
+      })
+
+      expect(result.body.hits.hits).toHaveLength(1)
+    })
+
+    it('queries a field that is not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: { query: { term: { nickname: 'johnny' } } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+    })
+
+    it('queries a numeric field with a string', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: { query: { term: { age: '52' } } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+    })
+
+    it('sorts by a field that is not in the mapping with unmapped_type', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: {
+          sort: [{ unknown: { order: 'asc', unmapped_type: 'keyword' } }],
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+    })
+
+    it('aggregates a field that is not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: { size: 0, aggs: { top: { max: { field: 'score' } } } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations?.top).toEqual({ value: 7 })
+    })
+
+    it('filters an aggregation by a field that is not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: {
+          size: 0,
+          aggs: { johnnies: { filter: { term: { nickname: 'johnny' } } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations?.johnnies).toEqual({ doc_count: 1 })
+    })
+
+    it('sorts top_hits by a field that is not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: {
+          size: 0,
+          aggs: {
+            first: {
+              top_hits: {
+                sort: [{ unknown: { order: 'asc', unmapped_type: 'keyword' } }],
+                size: 1,
+              },
+            },
+          },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations?.first).toMatchObject({
+        hits: { total: { value: 1 } },
+      })
+    })
+
+    it('returns _source fields that are not in the mapping, by wildcard', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: { _source: { includes: ['name', 'nick*'] } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits[0]._source).toEqual({
+        name: 'John Wick',
+        nickname: 'Johnny',
+      })
+    })
+
+    it('collapses on a field that is not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: { collapse: { field: 'nickname.keyword' } },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.hits.hits).toHaveLength(1)
+    })
+
+    it('returns top_hits _source fields that are not in the mapping', async () => {
+      const search: DynamicSearch = {
+        index: 'dynamic',
+        body: {
+          size: 0,
+          aggs: { first: { top_hits: { _source: ['nickname'], size: 1 } } },
+        },
+      }
+
+      const result = await opensearchClient.search(search)
+
+      expect(result.body.aggregations?.first).toMatchObject({
+        hits: { hits: [{ _source: { nickname: 'Johnny' } }] },
       })
     })
   })

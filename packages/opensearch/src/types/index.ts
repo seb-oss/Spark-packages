@@ -1,3 +1,4 @@
+export type { AggregationContainer } from './aggregations'
 export type { BulkRequest, BulkResponse, UpdateAction } from './bulk'
 export type {
   IndexDefinition,
