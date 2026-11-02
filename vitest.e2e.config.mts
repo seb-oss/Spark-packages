@@ -11,7 +11,8 @@ export default defineConfig({
     ],
     // E2E tests often need more time for containers, HTTP calls, etc.
     testTimeout: 30000,
-    hookTimeout: 30000,
+    // Hooks start containers, which pull the image first after it is updated
+    hookTimeout: 300_000,
     // If you want a separate environment (e.g. Node instead of jsdom):
     environment: 'node',
     // Optional: run E2E tests sequentially to avoid port conflicts

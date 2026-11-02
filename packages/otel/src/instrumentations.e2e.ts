@@ -142,7 +142,7 @@ describe('instrumentations', () => {
 
     expressHost = `http://localhost:${port}`
     axiosClient = axios.create({ baseURL: expressHost })
-  }, 120_000)
+  })
   beforeEach(async () => {
     spanExporter.reset()
     logExporter.reset()

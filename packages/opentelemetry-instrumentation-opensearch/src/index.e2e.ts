@@ -51,7 +51,7 @@ beforeAll(async () => {
   instrumentation.enable()
 
   client = new Client({ node: container.getHttpUrl() })
-}, 120_000)
+})
 
 afterAll(async () => {
   await provider.shutdown()

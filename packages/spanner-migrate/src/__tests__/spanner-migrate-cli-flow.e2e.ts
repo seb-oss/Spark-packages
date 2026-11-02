@@ -49,7 +49,7 @@ const injectSql = async (createResult: string, up: string, down: string) => {
 }
 
 describe('Spanner Migrate CLI - entire flow', () => {
-  beforeAll(() => setup(), 120_000)
+  beforeAll(() => setup())
   afterAll(() => teardown())
 
   it('creates a config', async () => {

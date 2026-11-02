@@ -26,7 +26,7 @@ beforeAll(async () => {
     .start()
 
   opensearchClient = new OpenSearchClient({ node: container.getHttpUrl() })
-}, 120_000)
+})
 
 it('can connect to OpenSearch', async () => {
   const info = await opensearchClient.info()

@@ -26,7 +26,7 @@ beforeAll(async () => {
     .start()
   redisClient = createClient({ url: redis.getConnectionUrl() })
   await redisClient.connect()
-}, 60_000)
+})
 
 afterAll(async () => {
   await redisClient.disconnect()

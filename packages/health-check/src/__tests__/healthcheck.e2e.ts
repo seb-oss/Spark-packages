@@ -16,7 +16,7 @@ describe('health-check', () => {
     app = express()
     monitor = new HealthMonitor()
     app.use(monitor.router)
-  }, 60_000)
+  })
   afterEach(() => {
     monitor.dispose()
   })
@@ -132,7 +132,7 @@ describe('health-check', () => {
         },
       })
       monitor.addDependency('pubsub', pubsubDependency)
-    }, 60_000)
+    })
     afterEach(async () => {
       await redis.stop()
       await api.stop()

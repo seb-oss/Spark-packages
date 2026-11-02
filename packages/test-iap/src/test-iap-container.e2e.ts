@@ -26,7 +26,7 @@ describe('TestIapContainer', () => {
 
   beforeAll(async () => {
     network = await new Network().start()
-  }, 60_000)
+  })
 
   afterAll(async () => {
     await network.stop()
@@ -101,7 +101,7 @@ describe('TestIapContainer', () => {
     } finally {
       await upstream.stop()
     }
-  }, 120_000)
+  })
 
   it('proxies HTTP in downstream mode (uses remote token)', async () => {
     // 1) Downstream token service container
@@ -169,5 +169,5 @@ describe('TestIapContainer', () => {
       await downstream.stop()
       await upstream.stop()
     }
-  }, 120_000)
+  })
 })

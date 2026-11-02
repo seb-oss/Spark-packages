@@ -86,7 +86,7 @@ beforeEach(async () => {
   }
 
   await wait(100)
-}, 60_000)
+})
 afterEach(async () => {
   for (const client of clients) {
     client.close()
