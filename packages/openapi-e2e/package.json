@@ -11,9 +11,9 @@
     "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.2.29",
+    "@sebspark/openapi-client": "4.2.30",
     "@sebspark/openapi-core": "4.1.27",
-    "@sebspark/openapi-express": "5.4.27",
+    "@sebspark/openapi-express": "5.4.28",
     "express": "5.3.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/openapi-client",
-  "version": "4.2.29",
+  "version": "4.2.30",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.27",
-    "@sebspark/otel": "4.3.2",
+    "@sebspark/otel": "5.0.0",
     "@sebspark/retry": "1.0.21",
     "axios": "1.21.0",
     "axios-auth-refresh": "5.0.2"
