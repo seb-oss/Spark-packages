@@ -4,8 +4,23 @@ Routine maintenance for a Yarn 4 monorepo built with Turborepo, Biome, changeset
 
 **Run it at least once a week.** The goal is that the repository is always secure and up to date. The only exception is the minimum package age configured in `.yarnrc.yml` (`npmMinimalAgeGate`). That delay protects against supply-chain attacks. Never bypass it, and never pin a version younger than the gate. If a fix is only available in a version younger than the gate, use the newest version past the gate and pick up the fix next week.
 
+## Before you start
+
+- **Put the Node version from `.nvmrc` on `PATH` in every command.** Agent shells don't load the shell profile, and each command may start in a fresh shell. Without this, `node`, `yarn` and the git hooks fail with `command not found` (the husky pre-push hook runs `yarn smoketest`). Prefix every command, including `git push`:
+
+  ```shell
+  export PATH="$HOME/.nvm/versions/node/v$(cat .nvmrc)/bin:$PATH"
+  ```
+
+  Check `node -v` against `.nvmrc` before the first step.
+- **`command not found` or a wrong Node version is a setup error.** Fix `PATH` and run the command again. Never bypass a hook with `--no-verify`.
+
 ## Ground rules
 
+- **Every failure is yours.** A failing check stops the session until you know its root cause. It does not matter whether the update caused it, whether it fails on the baseline too, or whether it only fails sometimes. The question is never "is this mine?" but "why does it fail?".
+  - **Green means green on the first run.** A rerun that passes proves only that the failure is intermittent, and an intermittent failure is a bug. Never rerun to get green.
+  - **Banned explanations.** "Unrelated", "pre-existing", "flaky", "a race condition", "environmental", "not caused by this change": if you are about to write one of these, stop. They describe where the bug is not, not what it is. Reproduce it, find the root cause, write a failing test, fix it, and commit the fix on its own before continuing.
+  - **If you cannot fix it in the session, stop and ask.** Report the error, how you reproduce it and what you have ruled out. Do not continue past it, and do not park it as a TODO on your own.
 - **Run the steps in order.** Each step builds on the previous one.
 - **Verify each step:** finish it, verify it, then commit and push it before starting the next one.
   - Verify with these commands (e2e needs Docker):
@@ -18,13 +33,13 @@ Routine maintenance for a Yarn 4 monorepo built with Turborepo, Biome, changeset
 
   - `yarn lint` applies safe auto-fixes. `smoketest` runs the non-fixing lint check and fails on remaining errors and warnings.
   - `TURBO_FORCE=true` bypasses the Turborepo cache for every turbo task in the chain; `--force` on `smoketest` would only reach its last command. Without it, a step can pass on outputs built before the update.
-  - All three must be green before you commit.
+  - All three must be green on the first run before you commit.
 - **Rebase before you push.** Rebase on the remote default branch. If anything came in, verify again before pushing.
-- **Compare against a baseline when a failure is unclear.** Check out the last pushed commit in a separate `git worktree` and run the same command there. A failure that also happens on the baseline was not caused by the update. Fix it separately or record it as a TODO.
-- **If a step breaks:** push everything that was green before it. Then fix the failure or revert the offending update.
-  - If you can't fix it within the session, record it as a TODO (see [Open TODOs](#open-todos)).
-  - Then continue with the next step.
+- **Use a baseline to locate a failure, never to dismiss it.** Check out the last pushed commit in a separate `git worktree` and run the same command there. If it fails there too, the bug already existed: fix it in its own commit before you continue.
+- **If an update breaks a check:** revert that update, or fix the code it broke. Push everything that was green before it.
+  - If you revert it, record the update as a TODO (see [Open TODOs](#open-todos)) and continue with the next step.
   - A broken update must never block the updates that work.
+  - This applies only to failures the update causes. Any other failure falls under "Every failure is yours".
 - **Pin exact versions.** Dependencies are pinned exactly (no `^`/`~`), except `peerDependencies`. Run `yarn syncpack` (or the repo's equivalent) so versions stay consistent across workspaces.
 - **Add changesets for everything that ships.**
   - Every workspace whose **build output or runtime** changes gets a changeset that lists what was updated. This depends on what ships, not on which `package.json` field changed. It includes:
@@ -113,6 +128,7 @@ Resolutions (or overrides) force a version that the dependency tree does not ask
 
 ## Checklist
 
+- [ ] 0. Node from `.nvmrc` on `PATH` in every command, `node -v` checked
 - [ ] 1. Patch updates — green, pushed
 - [ ] 2. Minor updates — green, pushed
 - [ ] 3. Safe major updates — green, pushed
@@ -120,6 +136,7 @@ Resolutions (or overrides) force a version that the dependency tree does not ask
 - [ ] 5. Resolutions — removed or updated, real usage exercised, green, pushed
 - [ ] 6. Security alerts — fixed or recorded as TODO, green, pushed
 - [ ] 7. READMEs updated, improvement proposals written, pushed
+- [ ] Every failure seen during the session root-caused and fixed, or escalated to the user. Nothing rerun to green, no hook bypassed.
 
 ## Open TODOs
 
