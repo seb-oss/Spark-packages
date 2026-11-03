@@ -20,7 +20,7 @@
     "lint": "biome check --write .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "test:e2e": "vitest run --config ../../vitest.e2e.config.mts --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "dependencies": {
     "@sebspark/hyper-media": "0.1.8",

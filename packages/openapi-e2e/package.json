@@ -8,7 +8,7 @@
     "generate": "yarn openapi-typegen -i ./src/schemas/ -o ./src/schemas/",
     "lint": "biome check --write .",
     "test": "yarn generate && vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "dependencies": {
     "@sebspark/openapi-client": "4.2.27",

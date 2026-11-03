@@ -139,6 +139,8 @@ Always run lint after any code change. `yarn lint` applies safe fixes; `yarn lin
 
 Every package's `typecheck` runs `tsc --noEmit -p .` followed by `vitest --typecheck.only`, so production code and tests are type-checked, not just type tests. Packages that check generated code (`openapi-client`, `openapi-e2e`) run `yarn generate &&` first in `test` and `typecheck`; the generated files are gitignored and Biome skips them (`vcs.useIgnoreFile`). Yarn 4 does not run `pre`/`post` scripts, so never rely on them.
 
+Every `vitest` call in a package script passes `--fsModuleCachePath node_modules/.vitest-cache` so each package has its own module cache. Without it, packages share the workspace root's cache, and parallel runs clear it simultaneously after a lockfile change, failing with `ENOTEMPTY`. `tools/vitest-cache-per-package.test.mjs` enforces this. Never dismiss an intermittent failure as "just a race" — find the root cause and fix it.
+
 ## Dependencies
 
 - **Exact versions everywhere** — `dependencies`, `devDependencies` and internal `@sebspark/*` references use exact versions (no `^`, `~` or `*`). Only `peerDependencies` use ranges. `.yarnrc.yml` sets `defaultSemverRangePrefix: ""` and `tsEnableAutoTypes: false` so `yarn add` writes exact versions; add `@types/*` explicitly.

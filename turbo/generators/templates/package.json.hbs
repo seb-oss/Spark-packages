@@ -18,8 +18,8 @@
     "build": "spark-build src/index.ts",
     "dev": "tsc --watch --noEmit",
     "lint": "biome check --write .",
-    "test": "vitest run --passWithNoTests --coverage",
-    "typecheck": "vitest --typecheck.only --passWithNoTests"
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "repository": {
     "type": "git",

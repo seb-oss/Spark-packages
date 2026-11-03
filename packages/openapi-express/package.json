@@ -19,7 +19,7 @@
     "dev": "tsc --watch --noEmit",
     "lint": "biome check --write .",
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
-    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run"
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "devDependencies": {
     "@types/supertest": "7.2.1",
