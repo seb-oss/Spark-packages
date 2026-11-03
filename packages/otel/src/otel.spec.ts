@@ -30,6 +30,7 @@ describe('otel initialize', () => {
   })
   afterEach(() => {
     process.env = originalEnv
+    vi.restoreAllMocks()
     consoleLog.mockRestore()
     consoleInfo.mockRestore()
     consoleError.mockRestore()
@@ -49,6 +50,19 @@ describe('otel initialize', () => {
 
     expect(consoleLog).toHaveBeenCalledWith('[otel] Shutting down...')
     expect(consoleLog).toHaveBeenCalledWith('[otel] Shutdown complete.')
+  })
+  it('does not register the logs API twice', async () => {
+    process.env.OTEL_EXPORTER_OTLP_ENDPOINT = 'http://localhost:4318'
+
+    const { logs } = await import('@opentelemetry/api')
+    const setGlobalLoggerProvider = vi.spyOn(logs, 'setGlobalLoggerProvider')
+
+    const { initialize, dispose } = await import('./otel')
+    await initialize()
+    await dispose()
+
+    expect(setGlobalLoggerProvider).toHaveBeenCalledTimes(1)
+    expect(setGlobalLoggerProvider).toHaveReturnedWith(true)
   })
   it('dispose() does nothing when not initialized', async () => {
     const { dispose } = await import('./otel')

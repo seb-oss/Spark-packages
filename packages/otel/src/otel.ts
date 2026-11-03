@@ -8,9 +8,12 @@ import {
   trace,
 } from '@opentelemetry/api'
 import type { Instrumentation } from '@opentelemetry/instrumentation'
-import type { LoggerProvider } from '@opentelemetry/sdk-logs'
 import { NodeSDK } from '@opentelemetry/sdk-node'
-import { getLogProvider, getMetricReader, getSpanProcessor } from './providers'
+import {
+  getLogRecordProcessors,
+  getMetricReader,
+  getSpanProcessor,
+} from './providers'
 import { getResource } from './resource'
 
 diag.disable()
@@ -51,7 +54,6 @@ export function isInitialized() {
 }
 
 let sdk: NodeSDK | undefined
-let logProvider: LoggerProvider | undefined
 
 async function _initialize(instrumentations: Instrumentation[]) {
   const serviceName = process.env.OTEL_SERVICE_NAME ?? 'unknown-service'
@@ -65,16 +67,12 @@ async function _initialize(instrumentations: Instrumentation[]) {
   trace.disable()
   metrics.disable()
 
-  // Manual setup for logs
-  logProvider = getLogProvider(resource, otlpEndpoint)
-  logs.setGlobalLoggerProvider(logProvider)
-
-  // NodeSDK setup
-  const spanProcessor = getSpanProcessor(otlpEndpoint)
-  const metricReader = getMetricReader(otlpEndpoint)
+  // NodeSDK owns all providers. Without logRecordProcessors it would build a
+  // second, env-based LoggerProvider and fail to register it globally.
   sdk = new NodeSDK({
-    spanProcessors: [spanProcessor],
-    metricReaders: [metricReader],
+    spanProcessors: [getSpanProcessor(otlpEndpoint)],
+    metricReaders: [getMetricReader(otlpEndpoint)],
+    logRecordProcessors: getLogRecordProcessors(otlpEndpoint),
     instrumentations,
     resource,
   })
@@ -85,17 +83,13 @@ async function _initialize(instrumentations: Instrumentation[]) {
 }
 
 export const dispose = async () => {
-  const processes: Promise<void>[] = []
-  if (sdk) processes.push(sdk.shutdown())
-  if (logProvider) processes.push(logProvider.shutdown())
-
-  // Only initiate shotdown once
+  // Only initiate shutdown once
+  const current = sdk
   sdk = undefined
-  logProvider = undefined
 
-  if (processes.length) {
+  if (current) {
     console.log('[otel] Shutting down...')
-    await Promise.all(processes)
+    await current.shutdown()
     console.log('[otel] Shutdown complete.')
   }
 }

@@ -1,10 +1,8 @@
 import { OTLPLogExporter } from '@opentelemetry/exporter-logs-otlp-http'
 import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-http'
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
-import type { Resource } from '@opentelemetry/resources'
 import {
   BatchLogRecordProcessor,
-  LoggerProvider,
   type LogRecordProcessor,
   SimpleLogRecordProcessor,
 } from '@opentelemetry/sdk-logs'
@@ -21,10 +19,9 @@ import {
 } from './loggers/index'
 import { TreeSpanProcessor } from './loggers/tree-span-processor'
 
-export const getLogProvider = (
-  resource: Resource,
+export const getLogRecordProcessors = (
   otlpEndpoint: string | undefined
-) => {
+): LogRecordProcessor[] => {
   // With collector
   if (otlpEndpoint) {
     const otlpExporter = new OTLPLogExporter({ url: `${otlpEndpoint}/v1/logs` })
@@ -40,19 +37,12 @@ export const getLogProvider = (
       )
     }
 
-    return new LoggerProvider({
-      resource,
-      processors,
-    })
+    return processors
   }
 
   // Local dev
   const consoleExporter = new ConsoleLogPrettyExporter()
-  const processor = new SimpleLogRecordProcessor({ exporter: consoleExporter })
-  return new LoggerProvider({
-    resource,
-    processors: [processor],
-  })
+  return [new SimpleLogRecordProcessor({ exporter: consoleExporter })]
 }
 
 export const getSpanProcessor = (
