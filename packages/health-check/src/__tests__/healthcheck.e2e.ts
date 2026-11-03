@@ -166,13 +166,45 @@ describe('health-check', () => {
         },
       })
     })
-    it.skip('declares api polled dependency check as unknown from the start', async () => {
+    it('declares api polled dependency check as unknown from the start', async () => {
+      // The beforeEach dependency has already answered while the later
+      // containers started, so replace it with one whose first call is held.
+      let releaseFirstCall = () => {}
+      const firstCall = new Promise<void>((resolve) => {
+        releaseFirstCall = resolve
+      })
+      apiDependency.dispose()
+      apiDependency = new DependencyMonitor({
+        syncCall: async () => {
+          await firstCall
+          try {
+            await pingApi(api)
+            return 'ok'
+          } catch (err) {
+            return err as Error
+          }
+        },
+        impact: 'non_critical',
+        healthyLimitMs: 500,
+        timeoutLimitMs: 1000,
+        pollRate: 1000,
+      })
+      monitor.addDependency('api', apiDependency)
+
       const res = await request(app).get('/health/ready')
       expect(res.status).toBe(200)
 
       const apiCheck = (res.body.data as ReadinessPayload).checks.api
       expect(apiCheck).toBeDefined()
       expect(apiCheck.status).toEqual('unknown')
+
+      releaseFirstCall()
+      await waitFor(async () => {
+        const res = await request(app).get('/health/ready')
+        expect((res.body.data as ReadinessPayload).checks.api.status).toEqual(
+          'ok'
+        )
+      })
     })
     it('updates with api polled dependency check', async () => {
       await waitFor(
