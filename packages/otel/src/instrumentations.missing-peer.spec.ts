@@ -6,7 +6,7 @@ vi.mock('@sebspark/opentelemetry-instrumentation-opensearch', () => {
   )
 })
 
-describe('instrumentations.opensearch without the optional peer installed', () => {
+describe('instrumentations.opensearch when the OpenSearch packages cannot be loaded', () => {
   it('rejects with an error naming the packages to install, keeping the import failure as cause', async () => {
     const { instrumentations } = await import('./instrumentations')
 

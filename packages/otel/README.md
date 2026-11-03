@@ -65,13 +65,7 @@ Automatically:
 
 All instrumentations are lazy-loaded — only the ones passed to `initialize` are imported.
 
-`@sebspark/opentelemetry-instrumentation-opensearch` is an optional peer dependency. To use `instrumentations.opensearch`, install it together with the OpenSearch client:
-
-```zsh
-yarn add @sebspark/opentelemetry-instrumentation-opensearch @opensearch-project/opensearch
-```
-
-Without them, `instrumentations.opensearch()` rejects with an error naming the packages to install.
+`instrumentations.opensearch` needs `@opensearch-project/opensearch` in your application, which you already have if you use OpenSearch. If it cannot be loaded, `instrumentations.opensearch()` rejects with an error naming the packages to install.
 
 ### Production setup with `--import`
 
