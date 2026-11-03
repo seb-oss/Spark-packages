@@ -65,7 +65,38 @@ Automatically:
 
 All instrumentations are lazy-loaded — only the ones passed to `initialize` are imported.
 
-`instrumentations.opensearch` needs `@opensearch-project/opensearch` in your application, which you already have if you use OpenSearch. If it cannot be loaded, `instrumentations.opensearch()` rejects with an error naming the packages to install.
+#### OpenSearch: optional peer dependencies
+
+`instrumentations.opensearch` depends on two packages that `@sebspark/otel` does not install for you. They are optional peer dependencies, so applications that don't use OpenSearch get neither the packages nor an unmet-peer warning.
+
+If you call `instrumentations.opensearch()`, install both in your application:
+
+| Package | Supported versions |
+|---|---|
+| `@sebspark/opentelemetry-instrumentation-opensearch` | `^0.4.2` |
+| `@opensearch-project/opensearch` | `>=2` |
+
+```sh
+yarn add @sebspark/opentelemetry-instrumentation-opensearch @opensearch-project/opensearch
+# or
+npm install @sebspark/opentelemetry-instrumentation-opensearch @opensearch-project/opensearch
+# or
+pnpm add @sebspark/opentelemetry-instrumentation-opensearch @opensearch-project/opensearch
+```
+
+**Yarn:** also install `@opentelemetry/api@1.10.0`. The instrumentation has it as a peer dependency, and Yarn expects your application to provide it. With Plug'n'Play (`nodeLinker: pnp`, the Yarn default) the instrumentation fails to load without it; with `nodeLinker: node-modules` it removes a peer warning:
+
+```sh
+yarn add @opentelemetry/api@1.10.0
+```
+
+If a package is missing, `initialize()` rejects with:
+
+```
+Error: OpenSearch instrumentation could not be loaded. Install @sebspark/opentelemetry-instrumentation-opensearch and @opensearch-project/opensearch (with Yarn PnP also @opentelemetry/api@1.10.0). See https://github.com/seb-oss/Spark-packages/tree/main/packages/otel#opensearch-optional-peer-dependencies
+```
+
+The `cause` of the error names the module that could not be found. This happens at runtime, not at install time or in typecheck. With the `--import` setup below, the service does not start.
 
 ### Production setup with `--import`
 

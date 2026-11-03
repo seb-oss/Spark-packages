@@ -167,7 +167,7 @@ export const instrumentations = {
             }),
           (cause) => {
             throw new Error(
-              'OpenSearch instrumentation requires @sebspark/opentelemetry-instrumentation-opensearch and @opensearch-project/opensearch to be installed',
+              'OpenSearch instrumentation could not be loaded. Install @sebspark/opentelemetry-instrumentation-opensearch and @opensearch-project/opensearch (with Yarn PnP also @opentelemetry/api@1.10.0). See https://github.com/seb-oss/Spark-packages/tree/main/packages/otel#opensearch-optional-peer-dependencies',
               { cause }
             )
           }
