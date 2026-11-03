@@ -3157,6 +3157,7 @@ __metadata:
     axios: "npm:1.21.0"
     axios-auth-refresh: "npm:5.0.2"
     express: "npm:5.3.0"
+    find-free-ports: "npm:3.1.1"
     nock: "npm:15.0.5"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.5"

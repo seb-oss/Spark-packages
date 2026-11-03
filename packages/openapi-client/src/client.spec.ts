@@ -1,6 +1,7 @@
 import type { Server } from 'node:http'
 import type { APIResponse, BaseClient } from '@sebspark/openapi-core'
 import express from 'express'
+import { findFreePorts } from 'find-free-ports'
 import {
   afterAll,
   beforeAll,
@@ -26,7 +27,7 @@ describe('TypedClient', () => {
   let server: Server
 
   const headers = expect.any(Object)
-  const PORT = 12345
+  let PORT: number
 
   afterAll(() => {
     return new Promise<void>((resolve) => {
@@ -34,7 +35,8 @@ describe('TypedClient', () => {
     })
   })
 
-  beforeAll(() => {
+  beforeAll(async () => {
+    PORT = (await findFreePorts())[0]
     const app = express()
     app.use(router)
     return new Promise<void>((resolve) => {
