@@ -79,10 +79,11 @@ If either is false, the full loop applies. The discipline is about where to star
 ### Fixing bugs
 The order is always:
 
-1. **Red** — Write a failing test that reproduces the bug. The test must fail before the fix exists. This proves the test is valid and ensures the bug can never silently regress.
+1. **Red** — Write a test that reproduces the bug *exactly*, through the package's public API: the same calls, in the same order, with the same inputs, built the same way as the consumer that hit it. The test must fail before the fix exists, with the same error. This proves the test is valid and ensures the bug can never silently regress.
 2. **Green** — Fix the bug so the test passes.
+3. **Widen** — Find every other place where the same bug can occur (other functions, other options, other packages that share the code) and add a test for each, so the fix is proven everywhere and not just where it was reported.
 
-Never fix the bug first. Fixing before writing the test wastes the opportunity to add a permanent safety net.
+Never fix the bug first. Fixing before writing the test wastes the opportunity to add a permanent safety net. A test that approximates the failing usage is not enough: if it does not replay what actually failed, it does not prove the fix.
 
 ### Test philosophy
 Tests are optimised for readability. Do not get clever or DRY. A test should be immediately understandable to someone who has never seen the codebase.
