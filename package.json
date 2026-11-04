@@ -5,7 +5,6 @@
   "scripts": {
     "build": "turbo build",
     "changeset": "changeset",
-    "check-upgrades": "node ./tools/check-upgrades.mjs && yarn upgrade-interactive",
     "clean": "rm -rf ./packages/**/dist",
     "dev": "turbo dev",
     "format": "biome format --write",

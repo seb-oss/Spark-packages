@@ -54,23 +54,25 @@ Routine maintenance for a Yarn 4 monorepo built with Turborepo, Biome, changeset
 
 ## Steps
 
+Each step below filters `npm outdated --json`'s `current`/`latest` pair by comparing their `major.minor.patch` components directly: same major and minor → patch; same major, higher minor → minor; higher major → major. Apply any of them with `yarn up <package>` (see step 1); it silently enforces the age gate regardless of bump size.
+
 ### 1. Patch updates
 
-1. List the outdated dependencies with `yarn upgrade-interactive` or `yarn outdated` (via plugin).
-2. Update every dependency that has a newer **patch** version past the age gate.
+1. List the outdated dependencies with `npm outdated --json` (run from the repo root; it covers every workspace and names the workspace(s) that depend on each package). This lists what's outdated; it says nothing about the age gate.
+2. For each dependency with a newer **patch** version, run `yarn up <package>`. `yarn up` silently enforces `npmMinimalAgeGate`: it resolves to the newest version past the gate, or leaves the dependency unchanged if none exists yet. Don't assume `npm outdated`'s `latest` was applied — diff `package.json`/`yarn.lock` (or re-run `npm outdated`) afterward to see what actually changed.
 3. Run `yarn install`, then `yarn syncpack`.
 4. Verify, add changesets, then commit and push.
 
 ### 2. Minor updates
 
-1. Update every dependency that has a newer **minor** version past the age gate.
+1. For each dependency with a newer **minor** version, run `yarn up <package>`.
 2. Read the release notes of anything that is part of a package's public surface: types, peer dependencies, runtime behaviour.
 3. Verify, add changesets, then commit and push.
 
 ### 3. Major updates that should just work
 
 1. List every dependency with a newer **major** version.
-2. Read the changelog or migration guide for every major version between the current and the target version. A jump from v3 to v6 must also cover what broke in v4 and v5. Update the ones where none of the breaking changes affect this repository. Typical cases:
+2. Read the changelog or migration guide for every major version between the current and the target version. A jump from v3 to v6 must also cover what broke in v4 and v5. Run `yarn up <package>` for the ones where none of the breaking changes affect this repository. Typical cases:
    - dropped Node versions you don't use;
    - removed APIs you don't call.
 3. Verify, add changesets, then commit and push.
