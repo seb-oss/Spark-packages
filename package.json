@@ -60,7 +60,7 @@
   },
   "resolutions": {
     "@babel/core": "7.29.7",
-    "engine.io-client/ws": "8.22.0",
+    "engine.io-client/ws": "8.22.1",
     "glob": "14.0.3",
     "readdir-glob/minimatch": "11.0.3",
     "uuid@^9.0.0": "14.0.3",
