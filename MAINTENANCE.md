@@ -14,6 +14,7 @@ Routine maintenance for a Yarn 4 monorepo built with Turborepo, Biome, changeset
 
   Check `node -v` against `.nvmrc` before the first step.
 - **`command not found` or a wrong Node version is a setup error.** Fix `PATH` and run the command again. Never bypass a hook with `--no-verify`.
+- **Write commit messages to a file and commit with `git commit -F <file>`.** An inline heredoc such as `git commit -m "$(cat <<'EOF' ... EOF)"` is fragile: an unbalanced `)` anywhere in the message text (e.g. a parenthetical aside) can confuse the shell's parsing of the surrounding `$(...)`, truncating the message and leaking the heredoc's own `EOF`/`)` lines into the commit. `main`'s ruleset blocks force-pushes, so a corrupted message on an already-pushed commit can't be cleaned up afterward.
 
 ## Ground rules
 
