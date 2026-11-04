@@ -24,12 +24,32 @@ export type Status = {
 }
 
 export type System = {
-  uptime: number
-  loadavg: [number, number, number] // 1, 5, 15 min
+  /**
+   * Whether memory/CPU figures come from the container's cgroup limits or
+   * the host node (`os.*`). `'host'` only when no cgroup limits are found.
+   */
+  resourceSource: 'cgroup' | 'host'
+  /**
+   * Host node uptime in seconds. Only present when `resourceSource` is
+   * `'host'`; has no meaningful cgroup equivalent. See `process.uptime` for
+   * the process's own uptime.
+   */
+  uptime?: number
+  /**
+   * Host node load averages for 1, 5, 15 minutes, across all containers on
+   * the node. Only present when `resourceSource` is `'host'`.
+   */
+  loadavg?: [number, number, number]
+  /** Container memory limit in bytes when `resourceSource` is `'cgroup'`; host total memory otherwise. */
   totalmem: number
+  /** Container memory headroom (limit - usage) in bytes when `resourceSource` is `'cgroup'`; host free memory otherwise. */
   freemem: number
   memUsedRatio: number // 0..1
   cpus: {
+    /**
+     * Container's allotted vCPU share (can be fractional, e.g. `0.5`) when
+     * `resourceSource` is `'cgroup'`; host physical core count otherwise.
+     */
     count: number
   }
 }

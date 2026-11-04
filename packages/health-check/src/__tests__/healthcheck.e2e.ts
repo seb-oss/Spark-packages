@@ -51,8 +51,7 @@ describe('health-check', () => {
           status: 'ok',
           timestamp: expect.any(String),
           system: {
-            uptime: expect.any(Number),
-            loadavg: expect.any(Array),
+            resourceSource: expect.stringMatching(/^(cgroup|host)$/),
             totalmem: expect.any(Number),
             freemem: expect.any(Number),
             memUsedRatio: expect.any(Number),
@@ -70,6 +69,15 @@ describe('health-check', () => {
           self: {},
         },
       })
+
+      const { system } = res.body.data
+      if (system.resourceSource === 'host') {
+        expect(system.uptime).toEqual(expect.any(Number))
+        expect(Array.isArray(system.loadavg)).toBe(true)
+      } else {
+        expect(system.uptime).toBeUndefined()
+        expect(system.loadavg).toBeUndefined()
+      }
 
       // Check that timestamp is recent
       const diff = Date.now() - Date.parse(res.body.data.timestamp)

@@ -11,6 +11,7 @@ An easy way to add health check routes to your API.
   - `/health` – combined view
 - Supports critical and non-critical dependencies
 - Throttled dependency checks to avoid overload
+- `system` metrics are container-aware: when running under a cgroup (e.g. Kubernetes), memory and CPU figures reflect the container's own limit/usage rather than the host node's, so `system.resourceSource` tells you which one you're looking at (`"cgroup"` or `"host"`)
 
 ## Usage
 
@@ -266,9 +267,17 @@ app.listen(3000, () => {
       "HealthCheck_System": {
         "type": "object",
         "properties": {
+          "resourceSource": {
+            "type": "string",
+            "enum": [
+              "cgroup",
+              "host"
+            ],
+            "description": "Whether memory/CPU figures come from the container's cgroup limits or the host node (os.*). 'host' only when no cgroup limits are found."
+          },
           "uptime": {
             "type": "number",
-            "description": "Seconds."
+            "description": "Host node uptime in seconds. Only present when resourceSource is 'host'; has no meaningful cgroup equivalent. See process.uptime for the process's own uptime."
           },
           "loadavg": {
             "type": "array",
@@ -277,13 +286,15 @@ app.listen(3000, () => {
             },
             "minItems": 3,
             "maxItems": 3,
-            "description": "Load averages for 1, 5, 15 minutes."
+            "description": "Host node load averages for 1, 5, 15 minutes, across all containers on the node. Only present when resourceSource is 'host'."
           },
           "totalmem": {
-            "type": "number"
+            "type": "number",
+            "description": "Container memory limit in bytes when resourceSource is 'cgroup'; host total memory otherwise."
           },
           "freemem": {
-            "type": "number"
+            "type": "number",
+            "description": "Container memory headroom (limit - usage) in bytes when resourceSource is 'cgroup'; host free memory otherwise."
           },
           "memUsedRatio": {
             "type": "number",
@@ -294,8 +305,10 @@ app.listen(3000, () => {
             "type": "object",
             "properties": {
               "count": {
-                "type": "integer",
-                "minimum": 1
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true,
+                "description": "Container's allotted vCPU share (can be fractional, e.g. 0.5) when resourceSource is 'cgroup'; host physical core count otherwise."
               }
             },
             "required": [
@@ -304,8 +317,7 @@ app.listen(3000, () => {
           }
         },
         "required": [
-          "uptime",
-          "loadavg",
+          "resourceSource",
           "totalmem",
           "freemem",
           "memUsedRatio",
@@ -881,20 +893,26 @@ components:
         arch:
           type: string
           description: e.g., x64, arm64
+        resourceSource:
+          type: string
+          enum: [cgroup, host]
+          description: Whether memory/CPU figures come from the container's cgroup limits or the host node (os.*). 'host' only when no cgroup limits are found.
         uptime:
           type: number
-          description: Seconds.
+          description: Host node uptime in seconds. Only present when resourceSource is 'host'; has no meaningful cgroup equivalent. See process.uptime for the process's own uptime.
         loadavg:
           type: array
           items:
             type: number
           minItems: 3
           maxItems: 3
-          description: Load averages for 1, 5, 15 minutes.
+          description: Host node load averages for 1, 5, 15 minutes, across all containers on the node. Only present when resourceSource is 'host'.
         totalmem:
           type: number
+          description: Container memory limit in bytes when resourceSource is 'cgroup'; host total memory otherwise.
         freemem:
           type: number
+          description: Container memory headroom (limit - usage) in bytes when resourceSource is 'cgroup'; host free memory otherwise.
         memUsedRatio:
           type: number
           minimum: 0
@@ -903,8 +921,10 @@ components:
           type: object
           properties:
             count:
-              type: integer
-              minimum: 1
+              type: number
+              minimum: 0
+              exclusiveMinimum: true
+              description: Container's allotted vCPU share (can be fractional, e.g. 0.5) when resourceSource is 'cgroup'; host physical core count otherwise.
             model:
               type: string
             speedMHz:
@@ -915,8 +935,7 @@ components:
         - platform
         - release
         - arch
-        - uptime
-        - loadavg
+        - resourceSource
         - totalmem
         - freemem
         - memUsedRatio

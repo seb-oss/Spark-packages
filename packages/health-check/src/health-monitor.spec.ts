@@ -37,7 +37,7 @@ describe('HealthMonitor', () => {
 
       // system load metrics
       expect(res.system).toMatchObject({
-        uptime: expect.any(Number),
+        resourceSource: expect.stringMatching(/^(cgroup|host)$/),
         totalmem: expect.any(Number),
         freemem: expect.any(Number),
         memUsedRatio: expect.any(Number),
@@ -45,8 +45,14 @@ describe('HealthMonitor', () => {
           count: expect.any(Number),
         },
       })
-      expect(Array.isArray(res.system.loadavg)).toBe(true)
-      expect(res.system.loadavg).toHaveLength(3)
+      if (res.system.resourceSource === 'host') {
+        expect(res.system.uptime).toEqual(expect.any(Number))
+        expect(Array.isArray(res.system.loadavg)).toBe(true)
+        expect(res.system.loadavg).toHaveLength(3)
+      } else {
+        expect(res.system.uptime).toBeUndefined()
+        expect(res.system.loadavg).toBeUndefined()
+      }
 
       // process load metrics
       expect(res.process).toMatchObject({
