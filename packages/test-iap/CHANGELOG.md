@@ -1,5 +1,11 @@
 # @sebspark/test-iap
 
+## 1.0.33
+
+### Patch Changes
+
+- ebb88d9: chore(deps): bump jose from 6.2.14 to 6.2.15
+
 ## 1.0.32
 
 ### Patch Changes
