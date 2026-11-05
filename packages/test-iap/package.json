@@ -24,7 +24,7 @@
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "dependencies": {
-    "jose": "6.2.14",
+    "jose": "6.2.15",
     "testcontainers": "12.2.1"
   },
   "devDependencies": {
