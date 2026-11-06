@@ -3016,7 +3016,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/expect-eventually@npm:0.1.12, @sebspark/expect-eventually@workspace:packages/expect-eventually":
+"@sebspark/expect-eventually@npm:0.1.13, @sebspark/expect-eventually@workspace:packages/expect-eventually":
   version: 0.0.0-use.local
   resolution: "@sebspark/expect-eventually@workspace:packages/expect-eventually"
   dependencies:
@@ -3369,7 +3369,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.4"
     "@sebspark/avsc-isometric": "npm:0.4.17"
-    "@sebspark/expect-eventually": "npm:0.1.12"
+    "@sebspark/expect-eventually": "npm:0.1.13"
     "@sebspark/tsconfig": "npm:3.0.29"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.4"
