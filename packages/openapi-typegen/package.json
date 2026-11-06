@@ -29,7 +29,7 @@
     "@types/yargs": "17.0.35",
     "typescript": "7.0.2",
     "vite": "8.3.5",
-    "vitest": "5.0.5"
+    "vitest": "5.1.0"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.27",
