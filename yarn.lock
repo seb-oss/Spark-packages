@@ -3414,7 +3414,7 @@ __metadata:
     "@opentelemetry/instrumentation-undici": "npm:0.34.0"
     "@opentelemetry/resource-detector-container": "npm:0.9.0"
     "@opentelemetry/resource-detector-gcp": "npm:0.60.0"
-    "@opentelemetry/resources": "npm:3.0.0"
+    "@opentelemetry/resources": "npm:3.1.0"
     "@opentelemetry/sdk-logs": "npm:3.1.0"
     "@opentelemetry/sdk-metrics": "npm:3.0.0"
     "@opentelemetry/sdk-node": "npm:0.300.0"
