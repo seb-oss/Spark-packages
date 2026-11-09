@@ -2297,6 +2297,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/sdk-trace@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@opentelemetry/sdk-trace@npm:3.1.0"
+  dependencies:
+    "@opentelemetry/core": "npm:3.1.0"
+    "@opentelemetry/resources": "npm:3.1.0"
+    "@opentelemetry/semantic-conventions": "npm:^1.29.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.10.0 <1.11.0"
+  checksum: 10c0/e0d8a9a44b38c554ffd503ee7e05c5768b98f259d45e475da53394346a960021156621819f0b7d0b24c027d0bc58a993fa99bc321447d36635d6d8e16309efef
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/semantic-conventions@npm:1.44.0":
   version: 1.44.0
   resolution: "@opentelemetry/semantic-conventions@npm:1.44.0"
@@ -3312,7 +3325,7 @@ __metadata:
     "@opentelemetry/instrumentation": "npm:0.300.0"
     "@opentelemetry/instrumentation-http": "npm:0.300.0"
     "@opentelemetry/instrumentation-undici": "npm:0.34.0"
-    "@opentelemetry/sdk-trace": "npm:3.0.0"
+    "@opentelemetry/sdk-trace": "npm:3.1.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
     "@sebspark/tsconfig": "npm:3.0.29"
     "@testcontainers/opensearch": "npm:12.2.1"
@@ -3353,7 +3366,7 @@ __metadata:
     "@opentelemetry/sdk-logs": "npm:3.1.0"
     "@opentelemetry/sdk-metrics": "npm:3.0.0"
     "@opentelemetry/sdk-node": "npm:0.300.0"
-    "@opentelemetry/sdk-trace": "npm:3.0.0"
+    "@opentelemetry/sdk-trace": "npm:3.1.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.4.2"
     "@sebspark/tsconfig": "npm:3.0.29"
