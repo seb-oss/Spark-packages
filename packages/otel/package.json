@@ -65,7 +65,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.5",
     "@opensearch-project/opensearch": "3.9.0",
-    "@opentelemetry/context-async-hooks": "3.0.0",
+    "@opentelemetry/context-async-hooks": "3.1.0",
     "@sebspark/opentelemetry-instrumentation-opensearch": "0.4.2",
     "@sebspark/tsconfig": "3.0.29",
     "@testcontainers/opensearch": "12.2.1",
