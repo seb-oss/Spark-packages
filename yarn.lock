@@ -2044,16 +2044,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-undici@npm:0.34.0":
-  version: 0.34.0
-  resolution: "@opentelemetry/instrumentation-undici@npm:0.34.0"
+"@opentelemetry/instrumentation-undici@npm:0.35.0":
+  version: 0.35.0
+  resolution: "@opentelemetry/instrumentation-undici@npm:0.35.0"
   dependencies:
     "@opentelemetry/core": "npm:^3.0.0"
-    "@opentelemetry/instrumentation": "npm:^0.300.0"
+    "@opentelemetry/instrumentation": "npm:^0.301.0"
     "@opentelemetry/semantic-conventions": "npm:^1.24.0"
   peerDependencies:
-    "@opentelemetry/api": ^1.7.0
-  checksum: 10c0/d9db49646406d295fb6807bcd506da5d174931f21bf35e0273a463e15ad7935195db523f3430ef8c5322f583e7e98eb68d555937834f21e7f7bafc89a36621f1
+    "@opentelemetry/api": ^1.10.0
+  checksum: 10c0/ddbd69ffe1dd3773d5e099541ad00b8044cdfc447c182d5db3d198b9ad2dca176509a6ac56443710eaff4d1a5d007ba798568f3b8052ffcf2d030fe3548f96d7
   languageName: node
   linkType: hard
 
@@ -3376,7 +3376,7 @@ __metadata:
     "@opentelemetry/core": "npm:3.1.0"
     "@opentelemetry/instrumentation": "npm:0.300.0"
     "@opentelemetry/instrumentation-http": "npm:0.300.0"
-    "@opentelemetry/instrumentation-undici": "npm:0.34.0"
+    "@opentelemetry/instrumentation-undici": "npm:0.35.0"
     "@opentelemetry/sdk-trace": "npm:3.1.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
     "@sebspark/tsconfig": "npm:3.0.29"
@@ -3411,7 +3411,7 @@ __metadata:
     "@opentelemetry/instrumentation-net": "npm:0.68.0"
     "@opentelemetry/instrumentation-redis": "npm:0.73.0"
     "@opentelemetry/instrumentation-socket.io": "npm:0.71.0"
-    "@opentelemetry/instrumentation-undici": "npm:0.34.0"
+    "@opentelemetry/instrumentation-undici": "npm:0.35.0"
     "@opentelemetry/resource-detector-container": "npm:0.9.0"
     "@opentelemetry/resource-detector-gcp": "npm:0.60.0"
     "@opentelemetry/resources": "npm:3.0.0"
