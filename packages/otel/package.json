@@ -43,7 +43,7 @@
     "@opentelemetry/resources": "3.1.0",
     "@opentelemetry/sdk-logs": "3.1.0",
     "@opentelemetry/sdk-metrics": "3.0.0",
-    "@opentelemetry/sdk-node": "0.300.0",
+    "@opentelemetry/sdk-node": "0.301.0",
     "@opentelemetry/sdk-trace": "3.1.0",
     "@opentelemetry/semantic-conventions": "1.44.0",
     "fast-safe-stringify": "2.1.1",
