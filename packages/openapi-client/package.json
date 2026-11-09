@@ -28,7 +28,7 @@
     "@sebspark/tsconfig": "3.0.29",
     "express": "5.3.0",
     "find-free-ports": "3.1.1",
-    "nock": "15.0.5",
+    "nock": "15.0.6",
     "typescript": "7.0.2",
     "vite": "8.3.5",
     "vitest": "5.1.0"
