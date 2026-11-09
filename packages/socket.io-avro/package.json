@@ -47,7 +47,7 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.4",
+    "@biomejs/biome": "2.6.5",
     "@sebspark/expect-eventually": "0.1.14",
     "@sebspark/tsconfig": "3.0.29",
     "find-free-ports": "3.1.1",
