@@ -1995,17 +1995,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-http@npm:0.300.0":
-  version: 0.300.0
-  resolution: "@opentelemetry/instrumentation-http@npm:0.300.0"
+"@opentelemetry/instrumentation-http@npm:0.301.0":
+  version: 0.301.0
+  resolution: "@opentelemetry/instrumentation-http@npm:0.301.0"
   dependencies:
-    "@opentelemetry/core": "npm:3.0.0"
-    "@opentelemetry/instrumentation": "npm:0.300.0"
+    "@opentelemetry/core": "npm:3.1.0"
+    "@opentelemetry/instrumentation": "npm:0.301.0"
     "@opentelemetry/semantic-conventions": "npm:^1.29.0"
-    forwarded-parse: "npm:2.1.2"
+    forwarded-parse: "npm:2.2.0"
   peerDependencies:
-    "@opentelemetry/api": ^1.3.0
-  checksum: 10c0/282e8349f9499e2313c4a89a3903f009b9456d27f0c09411902d87d290749154d70990f60fb2883dd29f47cdec609243017ad9aa4ac28d6382b36bc15e146d4d
+    "@opentelemetry/api": ^1.10.0
+  checksum: 10c0/77afbc429a1d47f7f90745ab2b73e7b0046dd1a882a71c1cdc5976517eb36d5cc95ad195a666271d7ac4d012b65a27cb966dcc30c8f2c5adc08649a526eaf384
   languageName: node
   linkType: hard
 
@@ -3271,7 +3271,7 @@ __metadata:
     "@opentelemetry/context-async-hooks": "npm:3.1.0"
     "@opentelemetry/core": "npm:3.1.0"
     "@opentelemetry/instrumentation": "npm:0.301.0"
-    "@opentelemetry/instrumentation-http": "npm:0.300.0"
+    "@opentelemetry/instrumentation-http": "npm:0.301.0"
     "@opentelemetry/instrumentation-undici": "npm:0.35.0"
     "@opentelemetry/sdk-trace": "npm:3.1.0"
     "@opentelemetry/semantic-conventions": "npm:1.44.0"
@@ -3303,7 +3303,7 @@ __metadata:
     "@opentelemetry/instrumentation-express": "npm:0.73.0"
     "@opentelemetry/instrumentation-fs": "npm:0.43.0"
     "@opentelemetry/instrumentation-grpc": "npm:0.300.0"
-    "@opentelemetry/instrumentation-http": "npm:0.300.0"
+    "@opentelemetry/instrumentation-http": "npm:0.301.0"
     "@opentelemetry/instrumentation-net": "npm:0.69.0"
     "@opentelemetry/instrumentation-redis": "npm:0.73.0"
     "@opentelemetry/instrumentation-socket.io": "npm:0.72.0"
@@ -6067,10 +6067,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"forwarded-parse@npm:2.1.2":
-  version: 2.1.2
-  resolution: "forwarded-parse@npm:2.1.2"
-  checksum: 10c0/0c6b4c631775f272b4475e935108635495e8a5b261d1b4a5caef31c47c5a0b04134adc564e655aadfef366a02647fa3ae90a1d3ac19929f3ade47f9bed53036a
+"forwarded-parse@npm:2.2.0":
+  version: 2.2.0
+  resolution: "forwarded-parse@npm:2.2.0"
+  checksum: 10c0/91222de3ee7ee27116acd2206eabd985b9a4b20bfca802cefbbf8f2bdbca762811ce1ac68a09948cc9ec5c82b0221c469276cc7223c46583ffd19c670d74ed8a
   languageName: node
   linkType: hard
 
