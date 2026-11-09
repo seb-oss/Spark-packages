@@ -18,7 +18,7 @@
   "dependencies": {
     "@google-cloud/iam-credentials": "5.1.0",
     "@sebspark/otel": "5.0.0",
-    "google-auth-library": "11.3.2"
+    "google-auth-library": "11.3.3"
   },
   "repository": {
     "type": "git",
