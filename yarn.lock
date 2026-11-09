@@ -1957,15 +1957,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-fs@npm:0.43.0":
-  version: 0.43.0
-  resolution: "@opentelemetry/instrumentation-fs@npm:0.43.0"
+"@opentelemetry/instrumentation-fs@npm:0.44.0":
+  version: 0.44.0
+  resolution: "@opentelemetry/instrumentation-fs@npm:0.44.0"
   dependencies:
     "@opentelemetry/core": "npm:^3.0.0"
-    "@opentelemetry/instrumentation": "npm:^0.300.0"
+    "@opentelemetry/instrumentation": "npm:^0.301.0"
   peerDependencies:
-    "@opentelemetry/api": ^1.3.0
-  checksum: 10c0/2c63c6fbcdd201ca595d6df2d226a47f817cb93620cc2a26f6dffd7a44db1a229809b4fdd10e3c07c01eed636f8e28e90bcdb45cfcf2358f40c9092b97f7fb63
+    "@opentelemetry/api": ^1.10.0
+  checksum: 10c0/f78153ede511a6b301e72b3f30bf67b4cca160eb4c15dd440deaf3d4ce5cd6a07504d74b2e2e831db573bcef5970fcbc97177cb8c9d7beb211f028bd95aa1456
   languageName: node
   linkType: hard
 
@@ -2044,7 +2044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation@npm:0.300.0, @opentelemetry/instrumentation@npm:^0.300.0":
+"@opentelemetry/instrumentation@npm:0.300.0":
   version: 0.300.0
   resolution: "@opentelemetry/instrumentation@npm:0.300.0"
   dependencies:
@@ -3222,7 +3222,7 @@ __metadata:
     "@opentelemetry/instrumentation": "npm:0.301.0"
     "@opentelemetry/instrumentation-dns": "npm:0.68.0"
     "@opentelemetry/instrumentation-express": "npm:0.73.0"
-    "@opentelemetry/instrumentation-fs": "npm:0.43.0"
+    "@opentelemetry/instrumentation-fs": "npm:0.44.0"
     "@opentelemetry/instrumentation-grpc": "npm:0.300.0"
     "@opentelemetry/instrumentation-http": "npm:0.300.0"
     "@opentelemetry/instrumentation-net": "npm:0.69.0"
