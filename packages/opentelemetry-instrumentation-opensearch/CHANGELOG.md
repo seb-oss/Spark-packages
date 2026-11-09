@@ -1,5 +1,12 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.4.3
+
+### Patch Changes
+
+- 3aaefe6: chore(deps): bump @opentelemetry/core from 3.0.0 to 3.1.0
+- e305140: chore(deps): bump @opentelemetry/instrumentation from 0.300.0 to 0.301.0
+
 ## 0.4.2
 
 ### Patch Changes

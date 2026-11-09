@@ -27,7 +27,7 @@
     "@biomejs/biome": "2.6.5",
     "@google-cloud/spanner": "9.1.0",
     "@sebspark/cli-tester": "1.0.23",
-    "@sebspark/tsconfig": "3.0.29",
+    "@sebspark/tsconfig": "3.0.30",
     "@types/yargs": "17.0.35",
     "testcontainers": "12.2.1",
     "vite": "8.3.6",

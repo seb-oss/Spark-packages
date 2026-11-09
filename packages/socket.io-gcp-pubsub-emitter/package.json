@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.5",
-    "@sebspark/tsconfig": "3.0.29",
+    "@sebspark/tsconfig": "3.0.30",
     "@socket.io/gcp-pubsub-adapter": "0.1.1",
     "@testcontainers/gcloud": "12.2.1",
     "find-free-ports": "3.1.1",

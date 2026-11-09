@@ -1,5 +1,11 @@
 # @sebspark/tsconfig
 
+## 3.0.30
+
+### Patch Changes
+
+- 1804ff2: chore(deps): bump tsdown from 0.23.4 to 0.23.5
+
 ## 3.0.29
 
 ### Patch Changes

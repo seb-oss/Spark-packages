@@ -1,5 +1,33 @@
 # @sebspark/otel
 
+## 5.0.1
+
+### Patch Changes
+
+- b7c7a3b: chore(deps): bump @opentelemetry/instrumentation-redis from 0.72.0 to 0.73.0
+- 27390d7: chore(deps): bump @opentelemetry/sdk-logs from 3.0.0 to 3.1.0
+- 3aaefe6: chore(deps): bump @opentelemetry/core from 3.0.0 to 3.1.0
+- b6d33b6: chore(deps): bump @opentelemetry/instrumentation-express from 0.72.0 to 0.73.0
+- e305140: chore(deps): bump @opentelemetry/instrumentation from 0.300.0 to 0.301.0
+- 3627902: chore(deps): bump @opentelemetry/sdk-trace from 3.0.0 to 3.1.0
+- 37ded25: chore(deps): bump @opentelemetry/instrumentation-net from 0.68.0 to 0.69.0
+- e614460: chore(deps): bump @opentelemetry/instrumentation-undici from 0.34.0 to 0.35.0
+- f85cac1: chore(deps): bump @opentelemetry/exporter-trace-otlp-http from 0.300.0 to 0.301.0
+- 987f983: chore(deps): bump @opentelemetry/instrumentation-socket.io from 0.71.0 to 0.72.0
+- 99a7cb1: chore(deps): bump @opentelemetry/resource-detector-gcp from 0.59.0 to 0.60.0
+- 74e1c58: chore(deps): bump @opentelemetry/resource-detector-container from 0.9.0 to 0.9.1
+- ce46993: chore(deps): bump @opentelemetry/resources from 3.0.0 to 3.1.0
+- 7fc0fdc: chore(deps): bump @opentelemetry/sdk-node from 0.300.0 to 0.301.0
+- d69f0f5: chore(deps): bump @opentelemetry/exporter-metrics-otlp-http from 0.300.0 to 0.301.0
+- fd87c82: chore(deps): bump @opentelemetry/exporter-logs-otlp-http from 0.300.0 to 0.301.0
+- 96c206a: chore(deps): bump @opentelemetry/instrumentation-http from 0.300.0 to 0.301.0
+- 5b5280c: chore(deps): bump @opentelemetry/sdk-metrics from 3.0.0 to 3.1.0
+- b48c10c: chore(deps): bump @opentelemetry/instrumentation-dns from 0.67.0 to 0.68.0
+- ca332cb: chore(deps): bump @opentelemetry/instrumentation-fs from 0.43.0 to 0.44.0
+- Updated dependencies [3aaefe6]
+- Updated dependencies [e305140]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.4.3
+
 ## 5.0.0
 
 ### Major Changes
