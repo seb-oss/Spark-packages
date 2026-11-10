@@ -23,7 +23,7 @@
     "generate": "node scripts/parseCurrenciesXml.mjs src/lib/specifications/iso4217.xml src/lib/generated/iso4217.ts"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "fast-xml-parser": "5.12.0",
     "typescript": "7.0.2",

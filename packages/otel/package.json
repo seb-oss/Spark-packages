@@ -63,7 +63,7 @@
     }
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@opensearch-project/opensearch": "3.9.0",
     "@opentelemetry/context-async-hooks": "3.1.0",
     "@sebspark/opentelemetry-instrumentation-opensearch": "0.4.3",

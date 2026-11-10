@@ -23,7 +23,7 @@
     "generate": "node scripts/parseMicCsv.mjs src/lib/specifications/iso10383.csv src/lib/generated/iso10383.ts"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "change-case": "5.4.4",
     "csv-parse": "7.0.3",

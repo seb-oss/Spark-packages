@@ -28,7 +28,7 @@
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "axios": "1.21.0",
     "typescript": "7.0.2",

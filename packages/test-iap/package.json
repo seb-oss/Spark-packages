@@ -28,7 +28,7 @@
     "testcontainers": "12.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "@types/ws": "8.18.2",
     "nock": "15.0.6",
