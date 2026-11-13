@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 8.1.11
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+- Updated dependencies [1cd213e]
+  - @sebspark/memredis@1.0.10
+
 ## 8.1.10
 
 ### Patch Changes

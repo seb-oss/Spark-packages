@@ -1,5 +1,11 @@
 # @sebspark/retry
 
+## 1.0.22
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 1.0.21
 
 ### Patch Changes

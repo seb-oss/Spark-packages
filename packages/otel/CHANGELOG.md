@@ -1,5 +1,14 @@
 # @sebspark/otel
 
+## 5.0.2
+
+### Patch Changes
+
+- 28f750c: chore(deps): bump @opentelemetry/instrumentation-grpc from 0.300.0 to 0.301.0
+- 1cd213e: Updated dependencies
+- Updated dependencies [1cd213e]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.4.4
+
 ## 5.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sebspark/emulator
 
+## 0.4.4
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 0.4.3
 
 ### Patch Changes

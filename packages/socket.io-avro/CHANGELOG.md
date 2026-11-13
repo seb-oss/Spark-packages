@@ -1,5 +1,11 @@
 # @sebspark/socket.io-avro
 
+## 0.1.31
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 0.1.30
 
 ### Patch Changes

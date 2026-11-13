@@ -1,5 +1,11 @@
 # @sebspark/hyper-media
 
+## 0.1.9
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 0.1.8
 
 ### Patch Changes

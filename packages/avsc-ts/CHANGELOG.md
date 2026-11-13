@@ -1,5 +1,11 @@
 # @sebspark/avsc-ts
 
+## 0.4.37
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 0.4.36
 
 ### Patch Changes

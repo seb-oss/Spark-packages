@@ -11,14 +11,14 @@
     "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "dependencies": {
-    "@sebspark/openapi-client": "4.2.31",
-    "@sebspark/openapi-core": "4.1.27",
-    "@sebspark/openapi-express": "5.4.29",
+    "@sebspark/openapi-client": "4.2.32",
+    "@sebspark/openapi-core": "4.1.28",
+    "@sebspark/openapi-express": "5.4.30",
     "express": "5.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
-    "@sebspark/openapi-typegen": "5.3.4",
+    "@sebspark/openapi-typegen": "5.3.5",
     "@types/express": "5.0.6",
     "find-free-ports": "3.1.1",
     "typescript": "7.0.2",

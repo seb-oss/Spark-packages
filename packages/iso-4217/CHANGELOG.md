@@ -1,5 +1,11 @@
 # @sebspark/iso-4217
 
+## 1.1.1
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 1.1.0
 
 ### Minor Changes

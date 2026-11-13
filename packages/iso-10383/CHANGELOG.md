@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.3.1
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 1.3.0
 
 ### Minor Changes

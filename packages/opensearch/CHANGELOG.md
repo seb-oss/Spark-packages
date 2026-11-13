@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.5.1
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 3.5.0
 
 ### Minor Changes

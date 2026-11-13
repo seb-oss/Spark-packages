@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/otel",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "@opensearch-project/opensearch": ">=2",
-    "@sebspark/opentelemetry-instrumentation-opensearch": "^0.4.3"
+    "@sebspark/opentelemetry-instrumentation-opensearch": "^0.4.4"
   },
   "peerDependenciesMeta": {
     "@opensearch-project/opensearch": {
@@ -66,8 +66,8 @@
     "@biomejs/biome": "2.6.6",
     "@opensearch-project/opensearch": "3.9.0",
     "@opentelemetry/context-async-hooks": "3.1.1",
-    "@sebspark/opentelemetry-instrumentation-opensearch": "0.4.3",
-    "@sebspark/tsconfig": "3.0.30",
+    "@sebspark/opentelemetry-instrumentation-opensearch": "0.4.4",
+    "@sebspark/tsconfig": "3.0.31",
     "@testcontainers/opensearch": "12.2.1",
     "@testcontainers/redis": "12.2.1",
     "axios": "1.21.1",

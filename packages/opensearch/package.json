@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/opensearch",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
-    "@sebspark/tsconfig": "3.0.30",
+    "@sebspark/tsconfig": "3.0.31",
     "@testcontainers/opensearch": "12.2.1",
     "typescript": "7.0.2",
     "vite": "8.3.7",

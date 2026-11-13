@@ -1,5 +1,11 @@
 # @sebspark/expect-eventually
 
+## 0.1.15
+
+### Patch Changes
+
+- 1cd213e: Updated dependencies
+
 ## 0.1.14
 
 ### Patch Changes
