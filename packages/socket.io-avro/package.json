@@ -54,7 +54,7 @@
     "socket.io": "4.8.4",
     "socket.io-client": "4.8.4",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.7",
     "vitest": "5.1.0"
   },
   "repository": {

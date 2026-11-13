@@ -42,7 +42,7 @@
     "@sebspark/tsconfig": "3.0.30",
     "@testcontainers/opensearch": "12.2.1",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.7",
     "vitest": "5.1.0"
   },
   "repository": {
