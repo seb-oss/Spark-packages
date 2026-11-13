@@ -23,21 +23,21 @@
     "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/openapi-typegen": "5.3.4",
     "@sebspark/tsconfig": "3.0.30",
     "express": "5.3.0",
     "find-free-ports": "3.1.1",
     "nock": "15.0.6",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.7",
     "vitest": "5.1.0"
   },
   "dependencies": {
     "@sebspark/openapi-core": "4.1.27",
     "@sebspark/otel": "5.0.1",
     "@sebspark/retry": "1.0.21",
-    "axios": "1.21.0",
+    "axios": "1.21.1",
     "axios-auth-refresh": "5.0.2"
   },
   "repository": {

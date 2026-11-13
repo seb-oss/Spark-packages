@@ -30,9 +30,9 @@
     "vitest": "5.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "typescript": "7.0.2",
-    "vite": "8.3.6"
+    "vite": "8.3.7"
   }
 }

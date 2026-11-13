@@ -18,17 +18,17 @@
   "dependencies": {
     "@google-cloud/iam-credentials": "5.1.0",
     "@sebspark/otel": "5.0.1",
-    "google-auth-library": "11.3.3"
+    "google-auth-library": "11.3.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
+    "@biomejs/biome": "2.6.6",
     "@sebspark/tsconfig": "3.0.30",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.7",
     "vitest": "5.1.0"
   }
 }

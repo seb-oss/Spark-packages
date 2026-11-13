@@ -28,15 +28,15 @@
     "express": "5.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.5",
-    "@google-cloud/pubsub": "6.3.2",
+    "@biomejs/biome": "2.6.6",
+    "@google-cloud/pubsub": "6.4.1",
     "@sebspark/tsconfig": "3.0.30",
     "@testcontainers/gcloud": "12.2.1",
     "@testcontainers/mockserver": "12.2.1",
     "@testcontainers/redis": "12.2.1",
-    "supertest": "7.3.1",
+    "supertest": "7.3.2",
     "typescript": "7.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.7",
     "vitest": "5.1.0"
   },
   "repository": {
