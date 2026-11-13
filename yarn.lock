@@ -1969,15 +1969,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/instrumentation-grpc@npm:0.301.0":
-  version: 0.301.0
-  resolution: "@opentelemetry/instrumentation-grpc@npm:0.301.0"
+"@opentelemetry/instrumentation-grpc@npm:0.301.1":
+  version: 0.301.1
+  resolution: "@opentelemetry/instrumentation-grpc@npm:0.301.1"
   dependencies:
-    "@opentelemetry/instrumentation": "npm:0.301.0"
+    "@opentelemetry/instrumentation": "npm:0.301.1"
     "@opentelemetry/semantic-conventions": "npm:^1.29.0"
   peerDependencies:
     "@opentelemetry/api": ^1.10.0
-  checksum: 10c0/7a13d0e73d0ec789e02387ff4261489a37d59fd0c41cbf9062e15b9ee55fb9ffe410d1f5eb76fc7acb80608d43f38c5942c5869aa5e66098bf6f8b4ad23d4034
+  checksum: 10c0/d90538a1807e42ea71d06133b32d40c261e56f41545971a9cf3be641cdcbe55f7698cf1ed634cd1f7cd01f9eb7d863bdfa2de53046f732940456150b0875df70
   languageName: node
   linkType: hard
 
@@ -2053,6 +2053,18 @@ __metadata:
   peerDependencies:
     "@opentelemetry/api": ">=1.10.0 <1.11.0"
   checksum: 10c0/241faa584e4ee421aa209e041510b7bac99d6d85779dcbb83c7664441c9dbf92809ae693f59116c99d6208f00e4f3c556528921b3c614989b8ac43bcd588d3ad
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/instrumentation@npm:0.301.1":
+  version: 0.301.1
+  resolution: "@opentelemetry/instrumentation@npm:0.301.1"
+  dependencies:
+    import-in-the-middle: "npm:^3.0.0"
+    require-in-the-middle: "npm:^8.0.0"
+  peerDependencies:
+    "@opentelemetry/api": ">=1.10.0 <1.11.0"
+  checksum: 10c0/3fa4a7a3fc8b77addcdf7374372175d46219aeba390bcd560f541920d52cbedda63a2d2cc85a909a97e191ced90212c6a10295eb2b921635cff3937bd28d2429
   languageName: node
   linkType: hard
 
@@ -3211,7 +3223,7 @@ __metadata:
     "@opentelemetry/instrumentation-dns": "npm:0.68.0"
     "@opentelemetry/instrumentation-express": "npm:0.73.0"
     "@opentelemetry/instrumentation-fs": "npm:0.44.0"
-    "@opentelemetry/instrumentation-grpc": "npm:0.301.0"
+    "@opentelemetry/instrumentation-grpc": "npm:0.301.1"
     "@opentelemetry/instrumentation-http": "npm:0.301.0"
     "@opentelemetry/instrumentation-net": "npm:0.69.0"
     "@opentelemetry/instrumentation-redis": "npm:0.73.0"
