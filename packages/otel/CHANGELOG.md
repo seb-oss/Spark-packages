@@ -1,5 +1,11 @@
 # @sebspark/otel
 
+## 5.0.4
+
+### Patch Changes
+
+- 0156108: chore(deps): bump @opentelemetry/sdk-node from 0.301.1 to 0.301.2
+
 ## 5.0.3
 
 ### Patch Changes
