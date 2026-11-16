@@ -3128,7 +3128,7 @@ __metadata:
     boxen: "npm:9.0.0"
     chalk: "npm:6.0.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
     yargs: "npm:18.2.0"
   bin:
@@ -3145,7 +3145,7 @@ __metadata:
     "@inquirer/prompts": "npm:8.7.5"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3157,7 +3157,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.6"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3169,7 +3169,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.6"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3182,7 +3182,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     "@vitest/expect": "npm:5.1.0"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3197,7 +3197,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     google-auth-library: "npm:11.3.4"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3217,7 +3217,7 @@ __metadata:
     express: "npm:5.3.0"
     supertest: "npm:7.3.2"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3230,7 +3230,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     express: "npm:5.3.0"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3243,7 +3243,7 @@ __metadata:
     "@sebspark/memredis": "npm:1.0.10"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3257,7 +3257,7 @@ __metadata:
     change-case: "npm:5.4.4"
     csv-parse: "npm:7.0.3"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3270,7 +3270,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     fast-xml-parser: "npm:5.12.0"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3284,7 +3284,7 @@ __metadata:
     "@testcontainers/redis": "npm:12.2.1"
     redis: "npm:6.3.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3297,7 +3297,7 @@ __metadata:
     "@sebspark/gcp-iam": "npm:3.0.66"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3318,7 +3318,7 @@ __metadata:
     find-free-ports: "npm:3.1.1"
     nock: "npm:15.0.6"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3333,7 +3333,7 @@ __metadata:
     axios: "npm:1.21.1"
     express: "npm:5.3.0"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3351,7 +3351,7 @@ __metadata:
     express: "npm:5.3.0"
     find-free-ports: "npm:3.1.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3367,7 +3367,7 @@ __metadata:
     express: "npm:5.3.0"
     supertest: "npm:7.3.2"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   peerDependencies:
     express: ">=5"
@@ -3387,7 +3387,7 @@ __metadata:
     change-case: "npm:5.4.4"
     prettier: "npm:3.10.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
     yaml: "npm:2.9.1"
     yargs: "npm:18.2.0"
@@ -3405,7 +3405,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/opensearch": "npm:12.2.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3427,7 +3427,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/opensearch": "npm:12.2.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   peerDependencies:
     "@opensearch-project/opensearch": ">=2"
@@ -3477,7 +3477,7 @@ __metadata:
     redis: "npm:6.3.1"
     typescript: "npm:7.0.2"
     undici: "npm:8.12.4"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
     yaml: "npm:2.9.1"
   peerDependencies:
@@ -3503,7 +3503,7 @@ __metadata:
     redis: "npm:6.3.1"
     superjson: "npm:2.2.6"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3516,7 +3516,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     axios: "npm:1.21.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3534,7 +3534,7 @@ __metadata:
     socket.io-client: "npm:4.8.4"
     socket.io-parser: "npm:4.2.7"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   peerDependencies:
     socket.io: ^4.8.0
@@ -3562,7 +3562,7 @@ __metadata:
     socket.io-adapter: "npm:2.5.8"
     socket.io-client: "npm:4.8.4"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -3579,7 +3579,7 @@ __metadata:
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:12.2.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
     yargs: "npm:18.2.0"
   bin:
@@ -3598,7 +3598,7 @@ __metadata:
     nock: "npm:15.0.6"
     testcontainers: "npm:12.2.1"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
     ws: "npm:8.22.2"
   languageName: unknown
@@ -3612,7 +3612,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     date-fns: "npm:4.4.0"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   languageName: unknown
   linkType: soft
@@ -8639,7 +8639,7 @@ __metadata:
     syncpack: "npm:15.3.3"
     turbo: "npm:2.11.10"
     typescript: "npm:7.0.2"
-    vite: "npm:8.3.7"
+    vite: "npm:8.3.8"
     vitest: "npm:5.1.0"
   dependenciesMeta:
     bufferutil@4.0.9:
@@ -9912,9 +9912,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:8.3.7":
-  version: 8.3.7
-  resolution: "vite@npm:8.3.7"
+"vite@npm:8.3.8":
+  version: 8.3.8
+  resolution: "vite@npm:8.3.8"
   dependencies:
     fsevents: "npm:~2.3.3"
     lightningcss: "npm:^1.33.0"
@@ -9965,7 +9965,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/5433e9c0120edd79479e02d943bcde19ecd74be4c6e8e220bdb120693229425858620d07665baa4adafbcc3d1096a70c86ef179653fa310d777aaed8f6fe74cf
+  checksum: 10c0/21bf5b04159214fbc9f42e297afd26398a3630704959f85290e8b8eb9cac49be20a6a37a5765bfdb997b606c21ccba99f991671f81c5da5a590ae5cedad3e127
   languageName: node
   linkType: hard
 
