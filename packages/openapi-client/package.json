@@ -23,7 +23,7 @@
     "typecheck": "yarn generate && tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.6",
+    "@biomejs/biome": "2.6.7",
     "@sebspark/openapi-typegen": "5.3.5",
     "@sebspark/tsconfig": "3.0.31",
     "express": "5.3.0",
