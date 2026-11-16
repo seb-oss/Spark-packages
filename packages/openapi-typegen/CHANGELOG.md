@@ -1,5 +1,11 @@
 # @sebspark/openapi-typegen
 
+## 5.3.6
+
+### Patch Changes
+
+- 66987a6: chore(deps): bump prettier from 3.9.10 to 3.10.1
+
 ## 5.3.5
 
 ### Patch Changes

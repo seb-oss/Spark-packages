@@ -1,5 +1,11 @@
 # @sebspark/opentelemetry-instrumentation-opensearch
 
+## 0.4.5
+
+### Patch Changes
+
+- a39499e: chore(deps): bump @opentelemetry/instrumentation from 0.301.1 to 0.301.2
+
 ## 0.4.4
 
 ### Patch Changes

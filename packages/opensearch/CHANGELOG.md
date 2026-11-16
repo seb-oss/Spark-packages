@@ -1,5 +1,11 @@
 # @sebspark/opensearch
 
+## 3.5.2
+
+### Patch Changes
+
+- e18cd37: chore(deps): bump @opensearch-project/opensearch from 3.9.0 to 3.10.0
+
 ## 3.5.1
 
 ### Patch Changes

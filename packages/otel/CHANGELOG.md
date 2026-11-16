@@ -1,5 +1,19 @@
 # @sebspark/otel
 
+## 5.0.3
+
+### Patch Changes
+
+- baf0f8c: chore(deps): bump @opentelemetry/instrumentation-http from 0.301.1 to 0.301.2
+- 36416fb: chore(deps): bump @opentelemetry/exporter-trace-otlp-http from 0.301.1 to 0.301.2
+- 8b708cf: chore(deps): bump @opentelemetry/exporter-logs-otlp-http from 0.301.1 to 0.301.2
+- ecf15eb: chore(deps): bump @opentelemetry/instrumentation-undici from 0.35.0 to 0.35.1
+- 6ce81aa: chore(deps): bump @opentelemetry/exporter-metrics-otlp-http from 0.301.1 to 0.301.2
+- 0a1a925: chore(deps): bump @opentelemetry/instrumentation-grpc from 0.301.1 to 0.301.2
+- a39499e: chore(deps): bump @opentelemetry/instrumentation from 0.301.1 to 0.301.2
+- Updated dependencies [a39499e]
+  - @sebspark/opentelemetry-instrumentation-opensearch@0.4.5
+
 ## 5.0.2
 
 ### Patch Changes
