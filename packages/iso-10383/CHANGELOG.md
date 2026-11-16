@@ -1,5 +1,11 @@
 # @sebspark/iso-10383
 
+## 1.4.0
+
+### Minor Changes
+
+- a3ddd28: Update ISO specifications
+
 ## 1.3.1
 
 ### Patch Changes
