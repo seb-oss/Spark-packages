@@ -3141,7 +3141,7 @@ __metadata:
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/gcloud": "npm:12.2.1"
     "@testcontainers/mockserver": "npm:12.2.1"
-    "@testcontainers/redis": "npm:12.2.1"
+    "@testcontainers/redis": "npm:12.2.2"
     express: "npm:5.3.0"
     supertest: "npm:7.3.2"
     typescript: "npm:7.0.2"
@@ -3209,7 +3209,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.8"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/redis": "npm:12.2.1"
+    "@testcontainers/redis": "npm:12.2.2"
     redis: "npm:6.3.1"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.8"
@@ -3396,7 +3396,7 @@ __metadata:
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.4.5"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/opensearch": "npm:12.2.2"
-    "@testcontainers/redis": "npm:12.2.1"
+    "@testcontainers/redis": "npm:12.2.2"
     axios: "npm:1.21.1"
     express: "npm:5.3.0"
     fast-safe-stringify: "npm:2.1.1"
@@ -3426,7 +3426,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.8"
     "@sebspark/memredis": "npm:1.0.10"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/redis": "npm:12.2.1"
+    "@testcontainers/redis": "npm:12.2.2"
     date-fns: "npm:4.4.0"
     redis: "npm:6.3.1"
     superjson: "npm:2.2.6"
@@ -3611,12 +3611,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/redis@npm:12.2.1":
-  version: 12.2.1
-  resolution: "@testcontainers/redis@npm:12.2.1"
+"@testcontainers/redis@npm:12.2.2":
+  version: 12.2.2
+  resolution: "@testcontainers/redis@npm:12.2.2"
   dependencies:
-    testcontainers: "npm:^12.2.1"
-  checksum: 10c0/76a6d42a2ceaa1c709cbbe0e06d84fae7812c70046357ed6a27efd36cbfe6d2ff5f48e789f1d1a37ed377219b65486aa220b23e4d1c0d30113f1a24c9000287d
+    testcontainers: "npm:^12.2.2"
+  checksum: 10c0/71ba371ab22b4f46f192ef5cef2497f68c98a8de17301d9f4c74b8be683bc3eb1f0ffc4902a9d957f88be9d15b7e7bb7c9c6aae1600d4f57eab40712fd1119c7
   languageName: node
   linkType: hard
 
