@@ -1009,6 +1009,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@grpc/grpc-js@npm:^1.14.7":
+  version: 1.14.7
+  resolution: "@grpc/grpc-js@npm:1.14.7"
+  dependencies:
+    "@grpc/proto-loader": "npm:^0.8.0"
+    "@js-sdsl/ordered-map": "npm:^4.4.2"
+  checksum: 10c0/9f6dd28237edbd868f4aeb775f2c9f51a57b1b5ed35cc8dad36cd7b1c7d40010abe3bcba525035fea99dbbffa800a2ead88f57f08af2f623c0962861b68a059a
+  languageName: node
+  linkType: hard
+
 "@grpc/proto-loader@npm:^0.7.13":
   version: 0.7.15
   resolution: "@grpc/proto-loader@npm:0.7.15"
@@ -3139,7 +3149,7 @@ __metadata:
     "@sebspark/hyper-media": "npm:0.1.9"
     "@sebspark/promise-cache": "npm:8.1.11"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/gcloud": "npm:12.2.1"
+    "@testcontainers/gcloud": "npm:12.2.2"
     "@testcontainers/mockserver": "npm:12.2.2"
     "@testcontainers/redis": "npm:12.2.2"
     express: "npm:5.3.0"
@@ -3484,7 +3494,7 @@ __metadata:
     "@msgpack/msgpack": "npm:3.1.3"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@socket.io/gcp-pubsub-adapter": "npm:0.1.1"
-    "@testcontainers/gcloud": "npm:12.2.1"
+    "@testcontainers/gcloud": "npm:12.2.2"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.4"
     socket.io-adapter: "npm:2.5.8"
@@ -3582,13 +3592,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/gcloud@npm:12.2.1":
-  version: 12.2.1
-  resolution: "@testcontainers/gcloud@npm:12.2.1"
+"@testcontainers/gcloud@npm:12.2.2":
+  version: 12.2.2
+  resolution: "@testcontainers/gcloud@npm:12.2.2"
   dependencies:
-    "@grpc/grpc-js": "npm:^1.14.5"
-    testcontainers: "npm:^12.2.1"
-  checksum: 10c0/f0517de67c4f10352177f41d1d198afe591fc41dfbcf04213e01c45cd0b9c1db16bf89fe357c05cc0988534e9dedd468b1670ea76d41ec0b1fc2904387d9c202
+    "@grpc/grpc-js": "npm:^1.14.7"
+    testcontainers: "npm:^12.2.2"
+  checksum: 10c0/116b9e9796b680456440d58fc83475b989f31f3fb4a9a1a48d184dcc2bf8be93f18ef55f05c5b3ebf85b9f5d156f3629c33b52d4df204fe3026cbd9dded58bb1
   languageName: node
   linkType: hard
 
@@ -3775,17 +3785,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/dockerode@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@types/dockerode@npm:4.0.1"
-  dependencies:
-    "@types/docker-modem": "npm:*"
-    "@types/node": "npm:*"
-    "@types/ssh2": "npm:*"
-  checksum: 10c0/d504d5568624e629663633da9df4a88757d55548e399f2001c478bcdc55ee2e2a4c2fc8a903c4616ebe820a411e256ad5a5caa9c0fb244dca0a5dbc0eb333e45
-  languageName: node
-  linkType: hard
-
 "@types/dockerode@npm:^4.0.2":
   version: 4.0.2
   resolution: "@types/dockerode@npm:4.0.2"
@@ -3934,31 +3933,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ssh2-streams@npm:*":
-  version: 0.1.13
-  resolution: "@types/ssh2-streams@npm:0.1.13"
-  dependencies:
-    "@types/node": "npm:*"
-  checksum: 10c0/c0734417ae1d964bcc0681e4cd45f6d25d49e87c1eba54a934dc9a78c40bf76ba4935a414561b6dec5fe0c9c42fe7ad94ef79a4e1592940d934f9c75a704ebb0
-  languageName: node
-  linkType: hard
-
 "@types/ssh2@npm:*":
   version: 1.15.5
   resolution: "@types/ssh2@npm:1.15.5"
   dependencies:
     "@types/node": "npm:^18.11.18"
   checksum: 10c0/750e402ce60d6dd67011bf1a811dcbbe638da14baca30c0952b50bad646c4ef8d6fc400894e20f5d2f8882e38b4c35eb6d4f5fe2ecd1d1b1a2f9efef9cf6e773
-  languageName: node
-  linkType: hard
-
-"@types/ssh2@npm:^0.5.48":
-  version: 0.5.52
-  resolution: "@types/ssh2@npm:0.5.52"
-  dependencies:
-    "@types/node": "npm:*"
-    "@types/ssh2-streams": "npm:*"
-  checksum: 10c0/95c52fd3438dedae6a59ca87b6558cb36568db6b9144c6c8a28c168739e04c51e27c02908aae14950b7b5020e1c40fea039b1203ae2734c356a40a050fd51c84
   languageName: node
   linkType: hard
 
@@ -4700,13 +4680,6 @@ __metadata:
   version: 1.0.0
   resolution: "async-generator-function@npm:1.0.0"
   checksum: 10c0/2c50ef856c543ad500d8d8777d347e3c1ba623b93e99c9263ecc5f965c1b12d2a140e2ab6e43c3d0b85366110696f28114649411cbcd10b452a92a2318394186
-  languageName: node
-  linkType: hard
-
-"async-lock@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "async-lock@npm:1.4.1"
-  checksum: 10c0/f696991c7d894af1dc91abc81cc4f14b3785190a35afb1646d8ab91138238d55cabd83bfdd56c42663a008d72b3dc39493ff83797e550effc577d1ccbde254af
   languageName: node
   linkType: hard
 
@@ -8906,17 +8879,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ssh-remote-port-forward@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "ssh-remote-port-forward@npm:1.0.4"
-  dependencies:
-    "@types/ssh2": "npm:^0.5.48"
-    ssh2: "npm:^1.4.0"
-  checksum: 10c0/33a441af12817577ea30d089b03c19f980d2fb2370933123a35026dc6be40f2dfce067e4dfc173e23d745464537ff647aa1bb7469be5571cc21f7cdb25181c09
-  languageName: node
-  linkType: hard
-
-"ssh2@npm:^1.15.0, ssh2@npm:^1.17.0, ssh2@npm:^1.4.0":
+"ssh2@npm:^1.15.0, ssh2@npm:^1.17.0":
   version: 1.17.0
   resolution: "ssh2@npm:1.17.0"
   dependencies:
@@ -9381,29 +9344,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:^12.2.1":
-  version: 12.2.1
-  resolution: "testcontainers@npm:12.2.1"
-  dependencies:
-    "@balena/dockerignore": "npm:^1.0.2"
-    "@types/dockerode": "npm:^4.0.1"
-    archiver: "npm:^7.0.1"
-    async-lock: "npm:^1.4.1"
-    byline: "npm:^5.0.0"
-    debug: "npm:^4.4.3"
-    docker-compose: "npm:^1.5.0"
-    dockerode: "npm:^5.0.1"
-    get-port: "npm:^5.1.1"
-    proper-lockfile: "npm:^4.1.2"
-    properties-reader: "npm:^3.0.1"
-    ssh-remote-port-forward: "npm:^1.0.4"
-    tar-fs: "npm:^3.1.3"
-    tmp: "npm:^0.2.7"
-    undici: "npm:^8.11.2"
-  checksum: 10c0/74c19272a19c18c163867fb9cf7fd8b4b3df043bbdd0d6039bd2aec44ab1b9951e792891998406679db9dc242b8b056f495e68dfa1fca47a7ba532088bca9e31
-  languageName: node
-  linkType: hard
-
 "text-decoder@npm:^1.1.0":
   version: 1.2.3
   resolution: "text-decoder@npm:1.2.3"
@@ -9814,13 +9754,6 @@ __metadata:
   version: 8.12.4
   resolution: "undici@npm:8.12.4"
   checksum: 10c0/2a83590ce3347ca4e8fb83917bd7ad1d0bcb72ecb6d1a5066f01a89b4941becac569412aa27d7318119ea1a20d217018cce535f8eeed3c1b307d87426f96cfe3
-  languageName: node
-  linkType: hard
-
-"undici@npm:^8.11.2":
-  version: 8.12.3
-  resolution: "undici@npm:8.12.3"
-  checksum: 10c0/714919e62b4160eea195fb35c7f5c4907235741e47bfde8a014ac58f6d24df13434e23400d7f48e2c455fd2b259d27f07fce514f04a5b4e99936ba62cbc4bb71
   languageName: node
   linkType: hard
 
