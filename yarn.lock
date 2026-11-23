@@ -3522,7 +3522,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.8"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@types/ws": "npm:8.18.2"
-    jose: "npm:6.2.17"
+    jose: "npm:6.2.18"
     nock: "npm:15.0.6"
     testcontainers: "npm:12.2.2"
     typescript: "npm:7.0.2"
@@ -6990,10 +6990,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:6.2.17":
-  version: 6.2.17
-  resolution: "jose@npm:6.2.17"
-  checksum: 10c0/1a00d44656e38664c54a8b2d903b6c947b3fc4275f7ede2462f74e50ce320359ea324deba15652dcc158c14ed99135a2382a4c5718be350923a9e583bea727db
+"jose@npm:6.2.18":
+  version: 6.2.18
+  resolution: "jose@npm:6.2.18"
+  checksum: 10c0/95144c43dfa0c8206f13f8133ed74ba9106785df81c864d6399af06616ad8fdbdc18937109aac099f560f6159aaf2fe2fca3984a6629c899af396a1e9986008d
   languageName: node
   linkType: hard
 
