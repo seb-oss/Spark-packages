@@ -3140,7 +3140,7 @@ __metadata:
     "@sebspark/promise-cache": "npm:8.1.11"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/gcloud": "npm:12.2.1"
-    "@testcontainers/mockserver": "npm:12.2.1"
+    "@testcontainers/mockserver": "npm:12.2.2"
     "@testcontainers/redis": "npm:12.2.2"
     express: "npm:5.3.0"
     supertest: "npm:7.3.2"
@@ -3592,12 +3592,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/mockserver@npm:12.2.1":
-  version: 12.2.1
-  resolution: "@testcontainers/mockserver@npm:12.2.1"
+"@testcontainers/mockserver@npm:12.2.2":
+  version: 12.2.2
+  resolution: "@testcontainers/mockserver@npm:12.2.2"
   dependencies:
-    testcontainers: "npm:^12.2.1"
-  checksum: 10c0/e1e76b6e3f49d8c4da6b7e62fb4252b277be90de65dfdf00acfc689a5863474156ddfd5ee9993cf004a99ff59d0f97096dfb256abccbf03a79c606571df6b123
+    testcontainers: "npm:^12.2.2"
+  checksum: 10c0/4d45aeb83012537ac577ee0dd14c874a6df7320775b81e415b20fca7211573928bf7598f23d5fca1dbf59ff1d3abdc16f23fe86423d94a34d62efc70b5ac913d
   languageName: node
   linkType: hard
 
