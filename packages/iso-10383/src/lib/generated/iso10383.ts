@@ -23032,7 +23032,7 @@ export const mics: Mics = {
     creationDate: '20170522',
     lastUpdateDate: '20260928',
     lastValidationDate: '20260928',
-    expiryDate: '20260928',
+    expiryDate: '',
     comments: 'ELECTRONIC TRADING PLATFORM FOR OTC EQUITY SECURITIES.'
   },
   MFXC: {
@@ -54686,7 +54686,7 @@ export const mics: Mics = {
     creationDate: '20260928',
     lastUpdateDate: '20260928',
     lastValidationDate: '20260928',
-    expiryDate: '20260928',
+    expiryDate: '',
     comments: 'ELECTRONIC TRADING PLATFORM FOR OTC EQUITY SECURITIES.'
   },
   RMEX: {
