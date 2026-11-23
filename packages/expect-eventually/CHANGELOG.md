@@ -1,5 +1,11 @@
 # @sebspark/expect-eventually
 
+## 0.1.16
+
+### Patch Changes
+
+- 80aa73d: chore(deps): bump @vitest/expect from 5.1.0 to 5.1.1
+
 ## 0.1.15
 
 ### Patch Changes

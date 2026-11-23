@@ -1,5 +1,12 @@
 # @sebspark/test-iap
 
+## 1.0.35
+
+### Patch Changes
+
+- c7b5926: chore(deps): bump testcontainers from 12.2.1 to 12.2.2
+- cb48c8f: chore(deps): bump jose from 6.2.17 to 6.2.18
+
 ## 1.0.34
 
 ### Patch Changes
