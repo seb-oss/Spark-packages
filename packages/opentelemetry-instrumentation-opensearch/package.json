@@ -40,7 +40,7 @@
     "@opentelemetry/instrumentation-undici": "0.35.1",
     "@opentelemetry/sdk-trace": "3.1.1",
     "@sebspark/tsconfig": "3.0.31",
-    "@testcontainers/opensearch": "12.2.1",
+    "@testcontainers/opensearch": "12.2.2",
     "typescript": "7.0.2",
     "vite": "8.3.8",
     "vitest": "5.1.1"

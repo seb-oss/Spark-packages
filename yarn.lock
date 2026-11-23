@@ -3331,7 +3331,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.8"
     "@opensearch-project/opensearch": "npm:3.10.0"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/opensearch": "npm:12.2.1"
+    "@testcontainers/opensearch": "npm:12.2.2"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.8"
     vitest: "npm:5.1.1"
@@ -3353,7 +3353,7 @@ __metadata:
     "@opentelemetry/sdk-trace": "npm:3.1.1"
     "@opentelemetry/semantic-conventions": "npm:1.45.0"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/opensearch": "npm:12.2.1"
+    "@testcontainers/opensearch": "npm:12.2.2"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.8"
     vitest: "npm:5.1.1"
@@ -3395,7 +3395,7 @@ __metadata:
     "@opentelemetry/semantic-conventions": "npm:1.45.0"
     "@sebspark/opentelemetry-instrumentation-opensearch": "npm:0.4.5"
     "@sebspark/tsconfig": "npm:3.0.31"
-    "@testcontainers/opensearch": "npm:12.2.1"
+    "@testcontainers/opensearch": "npm:12.2.2"
     "@testcontainers/redis": "npm:12.2.1"
     axios: "npm:1.21.1"
     express: "npm:5.3.0"
@@ -3601,13 +3601,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testcontainers/opensearch@npm:12.2.1":
-  version: 12.2.1
-  resolution: "@testcontainers/opensearch@npm:12.2.1"
+"@testcontainers/opensearch@npm:12.2.2":
+  version: 12.2.2
+  resolution: "@testcontainers/opensearch@npm:12.2.2"
   dependencies:
-    testcontainers: "npm:^12.2.1"
+    testcontainers: "npm:^12.2.2"
     zxcvbn: "npm:^4.4.2"
-  checksum: 10c0/03a6f216a8f5f514cedbc281255eeea5670d0e4ecc99335a3a0ca6a577713c31fb06f3cdcf137f56535fa1a5a9b158cd9f5f1d73f608a0ea0568a32b38f0afff
+  checksum: 10c0/6b192d44cd0efc2231a55f3ac473375ae7fbbd498f51fb03e9904f701f022b6e4ba64b5a6ba613c9498a3771450d57e76322b44a671c7431ffef6be52015be70
   languageName: node
   linkType: hard
 
@@ -9358,7 +9358,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"testcontainers@npm:12.2.2":
+"testcontainers@npm:12.2.2, testcontainers@npm:^12.2.2":
   version: 12.2.2
   resolution: "testcontainers@npm:12.2.2"
   dependencies:
