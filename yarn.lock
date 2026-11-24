@@ -7073,9 +7073,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.46.1":
-  version: 6.46.1
-  resolution: "knip@npm:6.46.1"
+"knip@npm:6.47.0":
+  version: 6.47.0
+  resolution: "knip@npm:6.47.0"
   dependencies:
     formatly: "npm:^0.11.4"
     get-tsconfig: "npm:4.14.3"
@@ -7091,7 +7091,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10c0/a3ec310f5d3a3c912a4e06549cdb2b201d73041c6b2d8673ec45f6e9b23003629fd0fe29e8b30000597fa054a1937a0d8a991f150a9080d210283a042a4f05d8
+  checksum: 10c0/5abb7feba98eac44f89047f819ec1e2ffae376e49807d5f9815493fb33314255f0b4b81e441c590c2f9e7407017537544816e3f07983ce6347b720009eadc3d6
   languageName: node
   linkType: hard
 
@@ -8572,7 +8572,7 @@ __metadata:
     "@types/node": "npm:26.6.6"
     "@vitest/coverage-v8": "npm:5.1.1"
     husky: "npm:9.1.7"
-    knip: "npm:6.46.1"
+    knip: "npm:6.47.0"
     syncpack: "npm:15.3.3"
     turbo: "npm:2.11.10"
     typescript: "npm:7.0.2"
