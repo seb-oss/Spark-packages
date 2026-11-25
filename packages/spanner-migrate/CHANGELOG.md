@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.1.5
+
+### Patch Changes
+
+- a614c01: chore(deps): bump @inquirer/prompts from 8.8.0 to 8.8.1
+
 ## 2.1.4
 
 ### Patch Changes
