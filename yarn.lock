@@ -1260,10 +1260,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@inquirer/figures@npm:2.1.0, @inquirer/figures@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "@inquirer/figures@npm:2.1.0"
-  checksum: 10c0/56c069a6e1dfa713befddc1c174b097181d5573ac165ef0c959fb344de9e07da8d320a2bba5401db1791392dfdbc3a09cff7220095aefa4f0ee7b48857dbf0e0
+"@inquirer/figures@npm:2.1.1":
+  version: 2.1.1
+  resolution: "@inquirer/figures@npm:2.1.1"
+  checksum: 10c0/44a4de8f981499bdb5df3064c9ae12185ae7a0619afecbb130c195a7b3f02b9e433350b25122c990e9b9a1a8e2ce47bd9ca1dd070b7a545a88f53388a30fdcb0
   languageName: node
   linkType: hard
 
@@ -1271,6 +1271,13 @@ __metadata:
   version: 1.0.15
   resolution: "@inquirer/figures@npm:1.0.15"
   checksum: 10c0/6e39a040d260ae234ae220180b7994ff852673e20be925f8aa95e78c7934d732b018cbb4d0ec39e600a410461bcb93dca771e7de23caa10630d255692e440f69
+  languageName: node
+  linkType: hard
+
+"@inquirer/figures@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@inquirer/figures@npm:2.1.0"
+  checksum: 10c0/56c069a6e1dfa713befddc1c174b097181d5573ac165ef0c959fb344de9e07da8d320a2bba5401db1791392dfdbc3a09cff7220095aefa4f0ee7b48857dbf0e0
   languageName: node
   linkType: hard
 
@@ -3079,7 +3086,7 @@ __metadata:
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
     "@biomejs/biome": "npm:2.6.8"
-    "@inquirer/figures": "npm:2.1.0"
+    "@inquirer/figures": "npm:2.1.1"
     "@inquirer/prompts": "npm:8.8.0"
     "@sebspark/tsconfig": "npm:3.0.31"
     typescript: "npm:7.0.2"
