@@ -3439,7 +3439,7 @@ __metadata:
     "@testcontainers/redis": "npm:12.2.2"
     date-fns: "npm:4.4.0"
     redis: "npm:6.3.1"
-    superjson: "npm:2.2.6"
+    superjson: "npm:2.2.7"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.8"
     vitest: "npm:5.1.1"
@@ -9075,12 +9075,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superjson@npm:2.2.6":
-  version: 2.2.6
-  resolution: "superjson@npm:2.2.6"
+"superjson@npm:2.2.7":
+  version: 2.2.7
+  resolution: "superjson@npm:2.2.7"
   dependencies:
     copy-anything: "npm:^4"
-  checksum: 10c0/b63587656cc27effd12c9e13a66da673a7a1b3e1af41f17820fd37f07a4f29503e1f58eae6bd229039331b475e1be6990336fa887654e6adc80684ae4eed7965
+  checksum: 10c0/5db7dff70b8ee0ce5deccdf568a3822586832f0aedaeb9e92a79989c454a572dc1d8208b0dda52426e847dde1d3ada83f2957162f1d5231c7d3910fae6ed2746
   languageName: node
   linkType: hard
 
