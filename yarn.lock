@@ -3081,7 +3081,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/cli-tester@npm:1.0.25, @sebspark/cli-tester@workspace:packages/cli-tester":
+"@sebspark/cli-tester@npm:1.0.26, @sebspark/cli-tester@workspace:packages/cli-tester":
   version: 0.0.0-use.local
   resolution: "@sebspark/cli-tester@workspace:packages/cli-tester"
   dependencies:
@@ -3154,7 +3154,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.8"
     "@google-cloud/pubsub": "npm:6.4.1"
     "@sebspark/hyper-media": "npm:0.1.9"
-    "@sebspark/promise-cache": "npm:8.1.11"
+    "@sebspark/promise-cache": "npm:8.1.12"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/gcloud": "npm:12.2.2"
     "@testcontainers/mockserver": "npm:12.2.2"
@@ -3436,7 +3436,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/promise-cache@npm:8.1.11, @sebspark/promise-cache@workspace:packages/promise-cache":
+"@sebspark/promise-cache@npm:8.1.12, @sebspark/promise-cache@workspace:packages/promise-cache":
   version: 0.0.0-use.local
   resolution: "@sebspark/promise-cache@workspace:packages/promise-cache"
   dependencies:
@@ -3519,7 +3519,7 @@ __metadata:
     "@biomejs/biome": "npm:2.6.8"
     "@google-cloud/spanner": "npm:9.1.0"
     "@inquirer/prompts": "npm:8.8.0"
-    "@sebspark/cli-tester": "npm:1.0.25"
+    "@sebspark/cli-tester": "npm:1.0.26"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@types/yargs": "npm:17.0.35"
     testcontainers: "npm:12.2.2"

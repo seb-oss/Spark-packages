@@ -26,7 +26,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.6.8",
     "@google-cloud/spanner": "9.1.0",
-    "@sebspark/cli-tester": "1.0.25",
+    "@sebspark/cli-tester": "1.0.26",
     "@sebspark/tsconfig": "3.0.31",
     "@types/yargs": "17.0.35",
     "testcontainers": "12.2.2",

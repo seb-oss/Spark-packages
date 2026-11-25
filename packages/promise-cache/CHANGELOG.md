@@ -1,5 +1,11 @@
 # @sebspark/promise-cache
 
+## 8.1.12
+
+### Patch Changes
+
+- 7efaf0d: chore(deps): bump superjson from 2.2.6 to 2.2.7
+
 ## 8.1.11
 
 ### Patch Changes

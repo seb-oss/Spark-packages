@@ -1,5 +1,11 @@
 # @sebspark/cli-tester
 
+## 1.0.26
+
+### Patch Changes
+
+- 0ca695a: chore(deps): bump @inquirer/figures from 2.1.0 to 2.1.1
+
 ## 1.0.25
 
 ### Patch Changes
