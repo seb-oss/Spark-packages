@@ -41,7 +41,7 @@
     "@vitest/coverage-v8": "5.1.1",
     "husky": "9.1.7",
     "knip": "6.48.0",
-    "syncpack": "15.3.3",
+    "syncpack": "15.3.4",
     "turbo": "2.11.10",
     "typescript": "7.0.2",
     "vite": "8.3.8",
