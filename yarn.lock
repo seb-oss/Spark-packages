@@ -3095,7 +3095,7 @@ __metadata:
   dependencies:
     "@biomejs/biome": "npm:2.6.8"
     "@sebspark/expect-eventually": "npm:0.1.17"
-    "@sebspark/pg-live": "npm:0.0.0"
+    "@sebspark/pg-live": "npm:0.1.0"
     "@sebspark/tsconfig": "npm:3.0.31"
     "@testcontainers/postgresql": "npm:12.2.2"
     "@types/pg": "npm:8.23.1"
@@ -3451,7 +3451,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sebspark/pg-live@npm:0.0.0, @sebspark/pg-live@workspace:packages/pg-live":
+"@sebspark/pg-live@npm:0.1.0, @sebspark/pg-live@workspace:packages/pg-live":
   version: 0.0.0-use.local
   resolution: "@sebspark/pg-live@workspace:packages/pg-live"
   dependencies:

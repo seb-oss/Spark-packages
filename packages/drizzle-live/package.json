@@ -1,6 +1,6 @@
 {
   "name": "@sebspark/drizzle-live",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.mjs",
@@ -40,7 +40,7 @@
     "url": "https://github.com/seb-oss/Spark-packages.git"
   },
   "dependencies": {
-    "@sebspark/pg-live": "0.0.0"
+    "@sebspark/pg-live": "0.1.0"
   },
   "peerDependencies": {
     "drizzle-orm": ">=0.45",
