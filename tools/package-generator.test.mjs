@@ -12,6 +12,7 @@ import {
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { after, before, describe, test } from 'node:test'
+import { stripVTControlCharacters } from 'node:util'
 
 const root = resolve(import.meta.dirname, '..')
 const bin = (name) => join(root, 'node_modules', '.bin', name)
@@ -53,11 +54,14 @@ describe('a package created with yarn generate:package', () => {
   // tsdown silently falls back to package.json when it finds no config file
   // it reads, which skips the shared @sebspark/tsconfig/tsdown config.
   test('builds with its own tsdown config', () => {
-    const output = execFileSync(bin('spark-build'), ['src/index.ts'], {
-      cwd: generated,
-      encoding: 'utf8',
-      stdio: 'pipe',
-    })
+    // In a terminal, tsdown colours its output
+    const output = stripVTControlCharacters(
+      execFileSync(bin('spark-build'), ['src/index.ts'], {
+        cwd: generated,
+        encoding: 'utf8',
+        stdio: 'pipe',
+      })
+    )
 
     const configFile = output.match(/config file: (\S+)/)?.[1]
     assert.ok(configFile, `tsdown reported no config file:\n${output}`)
