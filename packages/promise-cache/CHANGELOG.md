@@ -1,5 +1,13 @@
 # @sebspark/promise-cache
 
+## 8.1.13
+
+### Patch Changes
+
+- b18e171: chore(deps): bump redis from 6.3.1 to 6.4.0
+- Updated dependencies [b18e171]
+  - @sebspark/memredis@1.0.11
+
 ## 8.1.12
 
 ### Patch Changes

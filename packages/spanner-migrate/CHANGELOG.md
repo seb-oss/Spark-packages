@@ -1,5 +1,11 @@
 # @sebspark/spanner-migrate
 
+## 2.1.6
+
+### Patch Changes
+
+- 6a90649: chore(deps): bump @google-cloud/spanner from 9.1.0 to 9.1.1
+
 ## 2.1.5
 
 ### Patch Changes

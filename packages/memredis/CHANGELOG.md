@@ -1,5 +1,11 @@
 # @sebspark/memredis
 
+## 1.0.11
+
+### Patch Changes
+
+- b18e171: chore(deps): bump redis from 6.3.1 to 6.4.0
+
 ## 1.0.10
 
 ### Patch Changes

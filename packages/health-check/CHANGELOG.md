@@ -1,5 +1,12 @@
 # @sebspark/health-check
 
+## 3.1.3
+
+### Patch Changes
+
+- Updated dependencies [b18e171]
+  - @sebspark/promise-cache@8.1.13
+
 ## 3.1.2
 
 ### Patch Changes
