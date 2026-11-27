@@ -21,6 +21,13 @@
     "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
     "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
   },
+  "devDependencies": {
+    "@biomejs/biome": "{{rootVersion '@biomejs/biome'}}",
+    "@sebspark/tsconfig": "{{rootVersion '@sebspark/tsconfig'}}",
+    "typescript": "{{rootVersion 'typescript'}}",
+    "vite": "{{rootVersion 'vite'}}",
+    "vitest": "{{rootVersion 'vitest'}}"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/seb-oss/Spark-packages.git"

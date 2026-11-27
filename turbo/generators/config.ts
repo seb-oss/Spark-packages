@@ -1,7 +1,20 @@
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import type { PlopTypes } from '@turbo/gen'
+
+type HelperOptions = { data: { root: { turbo: { paths: { root: string } } } } }
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setHelper('year', () => new Date().getFullYear().toString())
+
+  // New packages pin the same tool versions as the root, so syncpack stays green
+  plop.setHelper('rootVersion', (name: string, options: HelperOptions) => {
+    const rootDir = options.data.root.turbo.paths.root
+    const root = JSON.parse(readFileSync(join(rootDir, 'package.json'), 'utf8'))
+    const version = root.devDependencies?.[name]
+    if (!version) throw new Error(`${name} is not a root devDependency`)
+    return version
+  })
   
   plop.setPartial(
     'new-package-folder',
@@ -52,7 +65,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: 'add',
-        path: '{{> new-package-folder}}/tsup.config.ts',
+        path: '{{> new-package-folder}}/tsdown.config.ts',
         templateFile: 'templates/tsdown.config.ts.hbs',
       },
       {
