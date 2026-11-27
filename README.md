@@ -153,6 +153,10 @@ An in memory implementation of redis
 
 Share live Postgres rows between the processes that change them and the processes that read them, kept in memory through LISTEN/NOTIFY.
 
+### [@sebspark/drizzle-live](./packages/drizzle-live)
+
+Drizzle-typed live tables on top of @sebspark/pg-live: in-memory rows that stay current, typed from your Drizzle schema with its casing.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
