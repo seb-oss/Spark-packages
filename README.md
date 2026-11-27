@@ -181,7 +181,7 @@ Run TypeScript for all packages in watch mode using `yarn dev` or a specific pac
 
 ### Testing
 
-- `yarn smoketest` runs everything CI runs except e2e. The pre-push hook runs it on pushes to `main`.
+- `yarn smoketest` runs everything CI runs except e2e. The pre-push hook runs it on pushes to `main` and blocks the push if it fails. Husky only installs the hook when `yarn install` changes something, so `smoketest` switches it on too.
 - `yarn lint` fixes what Biome can fix; `yarn lint:ci` only checks, fails on warnings, and is what `smoketest` and CI run.
 - `yarn knip` finds unused files and dependencies. Packages are covered by default; only entry points other than `src/index.ts`, `src/cli.ts` and test files need a workspace in [knip.config.ts](./knip.config.ts).
 - `yarn test:e2e` runs the e2e tests. They use [Testcontainers](https://testcontainers.com/) and need Docker. CI runs them on every PR and push.

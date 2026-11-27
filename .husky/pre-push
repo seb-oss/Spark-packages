@@ -3,6 +3,6 @@
 while read local_ref local_sha remote_ref remote_sha; do
   if [ "$remote_ref" = "refs/heads/main" ]; then
     echo "Pushing to main — running smoketest..."
-    yarn smoketest
+    yarn smoketest || exit 1
   fi
 done
