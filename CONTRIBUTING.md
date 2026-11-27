@@ -45,7 +45,7 @@ If publishing fails after the version commit was pushed, fix the cause and run `
 
 npm requires a manual first publish to register a scoped package under the `@sebspark` organisation. The automated pipeline cannot do this — it only works for packages that already exist on the registry.
 
-Before merging a PR that adds a new package:
+Before pushing a new package's first real release to `main`:
 
 1. Build all packages: `yarn build`
 2. Publish manually from the package directory:

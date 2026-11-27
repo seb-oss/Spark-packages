@@ -12,6 +12,7 @@ The rules below are expanded in the sections that follow. If you remember nothin
 
 - **Test, don't deduce** — if you're reasoning about a runtime value, write a test asserting your guess and run it
 - **One step at a time** — fix one thing, verify, move on
+- **Trunk-based: push complete increments only** — never put scaffolding, stubs, or placeholders on `main`
 - **Stop and ask when unsure** — wrong assumptions compound
 - **Answer before acting** — when asked for a proposal or recommendation, answer and wait
 - **No type assertions** — narrow with type guards; `as` is a lint error
@@ -49,6 +50,13 @@ Tripwire: if you have written more than one sentence reasoning about what someth
 
 ### One step at a time
 Do not batch-fix multiple files or issues in one move. Fix one thing, verify it works, then move on. This applies to lint fixes, type errors, and refactors.
+
+### Trunk-based development
+This repo has no long-lived branches and no PR gate: everyone with write access pushes verified work straight to `main` (see [CONTRIBUTING.md](../CONTRIBUTING.md)). That only works if every push is a complete, working increment — small is encouraged, broken or inert is not.
+
+- Never push scaffolding, a stub, or a placeholder "to finish later." If a change needs more than one session, keep it uncommitted or in a local-only commit until it does something real and passes its checks — don't put it on `main` just because the step so far was mechanical (e.g. a generated package with an empty `src/index.ts`).
+- A new package follows the same rule: scaffold it, then build real functionality behind tests, and only push once there's a working increment worth sharing. Don't push the bare generator output on its own.
+- "Small" describes the size of a change, not whether it does anything. A one-line fix that's fully working is a good small increment; an empty file is not, no matter how small.
 
 ### Stop and ask when unsure
 If the correct approach is unclear — about intent, architecture, or scope — stop and ask. Do not forge ahead with a guess. Wrong assumptions compound.
