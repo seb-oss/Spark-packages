@@ -6,6 +6,7 @@
     "rootDir": "./src",
     "declaration": true,
     "declarationDir": "./dist/",
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "customConditions": ["@sebspark/source"]
   }
 }

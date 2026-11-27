@@ -1,3 +1,6 @@
 {
-  "extends": "@sebspark/tsconfig/tsconfig.lib.json"
+  "extends": "@sebspark/tsconfig/tsconfig.lib.json",
+  "compilerOptions": {
+    "customConditions": ["@sebspark/source"]
+  }
 }

@@ -76,4 +76,16 @@ describe('a package created with yarn generate:package', () => {
       vite: rootVersion('vite'), // required by vitest
     })
   })
+
+  // See tools/source-types.test.mjs
+  test('lets other packages in the repo read its types from source', () => {
+    const { exports } = readJson(join(generated, 'package.json'))
+    const { compilerOptions } = readJson(join(generated, 'tsconfig.json'))
+
+    assert.deepEqual(Object.entries(exports['.'])[0], [
+      '@sebspark/source',
+      './src/index.ts',
+    ])
+    assert.deepEqual(compilerOptions.customConditions, ['@sebspark/source'])
+  })
 })

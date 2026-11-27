@@ -5,15 +5,18 @@
   "type": "module",
   "exports": {
     "./parser": {
+      "@sebspark/source": "./src/parser.ts",
       "types": "./dist/parser.d.mts",
       "react-native": "./dist/parser.mjs",
       "import": "./dist/parser.mjs"
     },
     "./server": {
+      "@sebspark/source": "./src/server.ts",
       "types": "./dist/server.d.mts",
       "import": "./dist/server.mjs"
     },
     "./client": {
+      "@sebspark/source": "./src/client.ts",
       "types": "./dist/client.d.mts",
       "react-native": "./dist/client.mjs",
       "import": "./dist/client.mjs"
