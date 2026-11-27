@@ -73,7 +73,10 @@ export class BroadcastOperator<EmitEvents extends EventsMap>
       data: encode(clusterMessage),
     }
 
-    this.topic.publishMessage(message)
+    // emit returns at once, like socket.io's emitters, so nobody can await this
+    this.topic.publishMessage(message).catch((error: unknown) => {
+      console.error('socket.io-gcp-pubsub-emitter: publish failed', error)
+    })
 
     return true
   }

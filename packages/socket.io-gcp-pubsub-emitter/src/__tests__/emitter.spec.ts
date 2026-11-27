@@ -7,6 +7,8 @@ const mockTopic = { publishMessage: mockPublishMessage } as never
 
 beforeEach(() => {
   mockPublishMessage.mockReset()
+  // Like Topic.publishMessage, which resolves to the message id
+  mockPublishMessage.mockResolvedValue('message-id')
 })
 
 describe('Emitter', () => {
@@ -25,6 +27,27 @@ describe('Emitter', () => {
     const result = emitter.emit('hello', 'world')
     expect(result).toBe(true)
     expect(mockPublishMessage).toHaveBeenCalledOnce()
+  })
+
+  it('logs a failed publish instead of leaving an unhandled rejection', async () => {
+    // A plain function: vi.fn() handles the promises it returns, which would hide the bug
+    const failure = new Error('PERMISSION_DENIED')
+    const topic = { publishMessage: () => Promise.reject(failure) } as never
+    const unhandled = vi.fn()
+    process.on('unhandledRejection', unhandled)
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+    const emitter = new Emitter(topic)
+    emitter.emit('hello', 'world')
+    await new Promise((resolve) => setImmediate(resolve))
+
+    process.off('unhandledRejection', unhandled)
+    expect(unhandled).not.toHaveBeenCalled()
+    expect(consoleError).toHaveBeenCalledWith(
+      'socket.io-gcp-pubsub-emitter: publish failed',
+      failure
+    )
+    consoleError.mockRestore()
   })
 
   it('of returns a new Emitter with prefixed nsp', () => {
