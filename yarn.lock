@@ -3498,7 +3498,7 @@ __metadata:
     "@testcontainers/gcloud": "npm:12.2.2"
     find-free-ports: "npm:3.1.1"
     socket.io: "npm:4.8.4"
-    socket.io-adapter: "npm:2.5.8"
+    socket.io-adapter: "npm:2.5.9"
     socket.io-client: "npm:4.8.4"
     typescript: "npm:7.0.2"
     vite: "npm:8.3.8"
@@ -8775,7 +8775,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"socket.io-adapter@npm:2.5.8, socket.io-adapter@npm:~2.5.2":
+"socket.io-adapter@npm:2.5.9":
+  version: 2.5.9
+  resolution: "socket.io-adapter@npm:2.5.9"
+  dependencies:
+    debug: "npm:~4.4.1"
+    ws: "npm:^8.23.0"
+  checksum: 10c0/6fdb9ee37c14838742e71cf17dd550132de989e8a4516dcdd2f531975de8d778701f473daff22d34222b7e0d312bc90c06499afa88b49efa85518e22d9993e0a
+  languageName: node
+  linkType: hard
+
+"socket.io-adapter@npm:~2.5.2":
   version: 2.5.8
   resolution: "socket.io-adapter@npm:2.5.8"
   dependencies:
@@ -10205,7 +10215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:8.23.0":
+"ws@npm:8.23.0, ws@npm:^8.23.0":
   version: 8.23.0
   resolution: "ws@npm:8.23.0"
   peerDependencies:
