@@ -10,6 +10,7 @@ If the repo has top-level documentation (root README, `docs/`), read it first to
 
 The rules below are expanded in the sections that follow. If you remember nothing else, remember these:
 
+- **Understanding comes before finishing** — explain the cause, chase every surprise, and report proven and unproven separately; "done" needs evidence
 - **Test, don't deduce** — if you're reasoning about a runtime value, write a test asserting your guess and run it
 - **One step at a time** — fix one thing, verify, move on
 - **Trunk-based: push complete increments only** — never put scaffolding, stubs, or placeholders on `main`
@@ -45,6 +46,17 @@ If you cannot list the steps without reasoning out loud, the plan is not clear e
 **After gathering context, summarise before acting.** One or two sentences naming what you found that's relevant to the task. This is the checkpoint that confirms you understood before you start changing things.
 
 ## Core Discipline
+
+### Understanding comes before finishing
+The goal is to understand the problem and make a change that is proven to work, not to produce an answer that looks finished. Finishing follows from understanding; it never replaces it. The pull to wrap up is the most dangerous habit an agent has: it turns every test and check into an obstacle to get past instead of a source of truth.
+
+- **Say what the problem is before changing anything**, in your own words, and what would prove it solved. If you can't, you don't understand it yet: read, test or ask.
+- **Find the mechanism.** A change that makes a symptom go away without explaining why it happened is not a fix. Name the cause concretely, e.g. "in a terminal, tsdown underlines paths, so the parsed path began with `\x1B[4m`".
+- **Surprises come first.** When a result differs from what you expected (a control passes, a lookup is empty, a check passes for you but fails for the user), stop and explain it before doing anything else. Never route around a surprise.
+- **Before reporting, ask what would prove you wrong**, and check it.
+- **Reports separate proven from believed:** what was verified, with the command and its exit code; what was not; what is still open. "Done" needs evidence; without it, the item is open, and the report says so.
+- **"I don't know yet" is a good answer.** A confident, wrong "done" is the worst outcome there is.
+- **Get a second opinion before asking to push:** run the code-review agent on the diff and report what it found, including what you decided not to act on and why.
 
 ### Test, don't deduce
 If you find yourself reasoning about what a value, state, or type must be at runtime — stop. Write a test or assertion with your best guess and run it. The failure tells you the answer directly. You get the answer for free, and the codebase gains a test.
@@ -192,6 +204,8 @@ No task is complete until all of the following are true:
 6. **Refactor pass done** — the code has been reviewed one final time for clarity, simplicity, and unnecessary complexity
 7. **Code style enforced** — formatter has been run
 8. **No lint warnings** — lint is clean
+9. **Reviewed** — the code-review agent has reviewed the diff, and its findings are dealt with or explained
+10. **Evidence reported** — the report to the user names the commands that prove each point and their exit codes, and lists anything not verified as open
 
 ## Keeping These Instructions Current
 
