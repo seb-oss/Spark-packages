@@ -961,9 +961,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@google-cloud/spanner@npm:9.1.0":
-  version: 9.1.0
-  resolution: "@google-cloud/spanner@npm:9.1.0"
+"@google-cloud/spanner@npm:9.1.1":
+  version: 9.1.1
+  resolution: "@google-cloud/spanner@npm:9.1.1"
   dependencies:
     "@babel/core": "npm:7.27.7"
     "@babel/helpers": "npm:7.27.6"
@@ -995,7 +995,7 @@ __metadata:
     stream-events: "npm:^1.0.5"
     teeny-request: "npm:^11.0.0"
     through2: "npm:^4.0.2"
-  checksum: 10c0/b048bb0bb9ce8840e12ec31d56cb0072bc38b0803b958a06f7a55d2a19c02f05e4ed56eb16cfb33d36fb2d78700a859f91020925fd2a4506a2a4707570bbb3f9
+  checksum: 10c0/340947dd387bf150f0f9aa97934ac8ef5364fdadae06258de99588b11deccebec8c70e09dbbf70ca9b0dde984cbc13b4901a5a9c862a7bfecc42cf95fc41996f
   languageName: node
   linkType: hard
 
@@ -3511,7 +3511,7 @@ __metadata:
   resolution: "@sebspark/spanner-migrate@workspace:packages/spanner-migrate"
   dependencies:
     "@biomejs/biome": "npm:2.6.8"
-    "@google-cloud/spanner": "npm:9.1.0"
+    "@google-cloud/spanner": "npm:9.1.1"
     "@inquirer/prompts": "npm:8.8.1"
     "@sebspark/cli-tester": "npm:1.0.26"
     "@sebspark/tsconfig": "npm:3.0.31"
