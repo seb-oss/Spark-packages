@@ -44,17 +44,26 @@ If publishing fails after the version commit was pushed, fix the cause and run `
 
 ### New packages
 
-npm requires a manual first publish to register a scoped package under the `@sebspark` organisation. The automated pipeline cannot do this — it only works for packages that already exist on the registry.
+The release pipeline publishes with npm trusted publishing (OIDC), which only works for a package that already exists on npm and trusts `release.yml`. So a new package is published once by hand, and then trusts the pipeline, before its first release is pushed to `main`.
 
-Before pushing a new package's first real release to `main`:
+You need npm CLI 11.15 or later (the repo's Node version has it), 2FA on your npm account, and write access to the `@sebspark` organisation. Run everything from the repo root, with the new package committed but not yet pushed:
 
-1. Build all packages: `yarn build`
-2. Publish manually from the package directory:
+1. **Log in:** `npm login`. Check it with `npm whoami`.
+2. **Build:** `yarn build`.
+3. **Publish each new package by hand**, at its current version (`0.0.0`). If one new package depends on another, publish the dependency first.
    ```bash
-   cd packages/<package-name>
-   npm publish --access public
+   (cd packages/<package-name> && npm publish --access public)
    ```
-3. Verify it appears at `https://www.npmjs.com/package/<package-name>`
-4. Subsequent releases are handled automatically by the pipeline.
+   npm asks for 2FA, either a one-time code or a link to open in the browser. Run these steps in an interactive terminal: without one (e.g. from a script or an agent's shell), npm exits with `EOTP` instead of waiting for you.
 
-The two-step requirement is a security measure enforced by npm to prevent name squatting under org scopes.
+   A new package takes a few minutes to appear: npm accepts the publish (HTTP 202 in the debug log) and processes it first, so `npm view` answers 404 for a while. npm also lists a `<version>-stage` version, which it creates during that processing. The warning that npm "auto-corrected some errors in your package.json" only means it normalised `repository.url` to `git+https://`; it is harmless.
+4. **Let the package trust the pipeline.** `--allow-publish` is required: without it, npm only allows `npm stage publish`, and the pipeline's publish fails.
+   ```bash
+   npm trust github @sebspark/<package-name> --file release.yml --repo seb-oss/Spark-packages --allow-publish --yes
+   npm trust list @sebspark/<package-name>
+   ```
+   When setting up several packages, choose "skip two-factor authentication for the next 5 minutes" on the first 2FA prompt, and wait 2 seconds between packages to avoid rate limiting. `npm trust list` asks for 2FA too. The same can be done on npmjs.com, under the package's Settings, then Trusted publishing.
+5. **Push `main` within 2 days.** A trusted publisher that has not published within 2 days of being created expires; delete it with `npm trust revoke --id <id> @sebspark/<package-name>` and create it again.
+6. **Check the release:** the `release.yml` run publishes the version from the changeset (e.g. `0.1.0`). Confirm with `npm view @sebspark/<package-name> versions`.
+
+npm requires the manual first publish to prevent name squatting under organisation scopes.
