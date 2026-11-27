@@ -149,6 +149,10 @@ Idempotency guard for multi-step async processes, backed by Redis. Prevents dupl
 
 An in memory implementation of redis
 
+### [@sebspark/pg-live](./packages/pg-live)
+
+Share live Postgres rows between the processes that change them and the processes that read them, kept in memory through LISTEN/NOTIFY.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing

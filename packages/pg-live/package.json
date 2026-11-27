@@ -1,0 +1,43 @@
+{
+  "name": "@sebspark/pg-live",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "spark-build src/index.ts",
+    "dev": "tsc --watch --noEmit",
+    "lint": "biome check --write .",
+    "test": "vitest run --passWithNoTests --coverage --fsModuleCachePath node_modules/.vitest-cache",
+    "test:e2e": "vitest --config vitest.config.e2e.ts --run --fsModuleCachePath node_modules/.vitest-cache",
+    "typecheck": "tsc --noEmit -p . && vitest --typecheck.only --passWithNoTests --run --fsModuleCachePath node_modules/.vitest-cache"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.8",
+    "@sebspark/expect-eventually": "0.1.17",
+    "@sebspark/tsconfig": "3.0.31",
+    "@testcontainers/postgresql": "12.2.2",
+    "@types/pg": "8.23.1",
+    "pg": "8.23.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seb-oss/Spark-packages.git"
+  },
+  "peerDependencies": {
+    "pg": ">=8"
+  }
+}
