@@ -45,7 +45,7 @@ If publishing fails after the version commit was pushed, fix the cause and run `
 
 ### New packages
 
-The release pipeline publishes with npm trusted publishing (OIDC), which only works for a package that already exists on npm and trusts `release.yml`. So a new package is published once by hand, and then trusts the pipeline, before its first release is pushed to `main`.
+The release pipeline publishes with npm trusted publishing (OIDC), which only works for a package that already exists on npm and trusts `release.yml`. So a new package is published once by hand, and then trusts the pipeline, before its first release is pushed to `main`. `tools/check-first-publish.mjs` enforces the first part: it runs in `yarn smoketest` (so also before every push to `main`) and before versioning in `release.yml`, and fails when a public package is not on npm yet. `changeset publish` would try to publish every such package, changeset or not.
 
 You need npm CLI 11.15 or later (the repo's Node version has it), 2FA on your npm account, and write access to the `@sebspark` organisation. Run everything from the repo root, with the new package committed but not yet pushed:
 

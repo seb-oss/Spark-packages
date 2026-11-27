@@ -254,6 +254,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      # Trusted publishing cannot create a package, so stop before versioning
+      # rather than fail at publish with the version commit already pushed
+      - name: Check that every public package is on npm
+        run: node tools/check-first-publish.mjs
+
       # The checked commit is versioned and pushed straight to main; no release PR.
       # A push with GITHUB_TOKEN starts no workflow, so this cannot recurse. If main
       # moved past the checked commit, the queued run for the newer commit releases.
