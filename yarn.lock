@@ -3486,6 +3486,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@sebspark/redis-live@workspace:packages/redis-live":
+  version: 0.0.0-use.local
+  resolution: "@sebspark/redis-live@workspace:packages/redis-live"
+  dependencies:
+    "@biomejs/biome": "npm:2.6.8"
+    "@sebspark/expect-eventually": "npm:0.1.17"
+    "@sebspark/tsconfig": "npm:3.0.31"
+    "@testcontainers/redis": "npm:12.2.2"
+    redis: "npm:6.4.0"
+    typescript: "npm:7.0.2"
+    vite: "npm:8.3.8"
+    vitest: "npm:5.1.1"
+  peerDependencies:
+    redis: ">=6"
+  languageName: unknown
+  linkType: soft
+
 "@sebspark/retry@npm:1.0.22, @sebspark/retry@workspace:packages/retry":
   version: 0.0.0-use.local
   resolution: "@sebspark/retry@workspace:packages/retry"

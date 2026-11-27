@@ -157,6 +157,10 @@ Share live Postgres rows between the processes that change them and the processe
 
 Drizzle-typed live tables on top of @sebspark/pg-live: in-memory rows that stay current, typed from your Drizzle schema with its casing.
 
+### [@sebspark/redis-live](./packages/redis-live)
+
+A local, in-memory map in every process, backed by Redis and eventually consistent through publish/subscribe. Synchronous reads, writes that change memory at once, and entries that expire.
+
 <!--NEW_PACKAGE-->
 
 ## Contributing
