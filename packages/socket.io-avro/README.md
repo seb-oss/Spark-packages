@@ -91,3 +91,8 @@ The package is optimized for tree-shaking and separate environments:
 - `@sebspark/socket.io-avro/server`: Server-side logic (depends on `socket.io`).
 - `@sebspark/socket.io-avro/client`: Client-side logic (depends on `socket.io-client`).
 - `@sebspark/socket.io-avro/parser`: The underlying Avro parser and classes.
+
+### Testing notes
+
+- The packet type is built with `wrapUnions: true`. This wraps unions inside user payloads too (e.g. nullable fields), not just the outer packet structure — version 0.1.28 once shipped a schema whose only test cases had plain fields, so nobody noticed nullable fields failed to encode. Test schemas with realistic shapes: unions, nullable fields, arrays, nested records.
+- Tests must poll for asynchronous results (e.g. with `@sebspark/expect-eventually`) instead of waiting a fixed delay. A fixed `await setTimeout(100)` before an assertion flaked in CI because the real propagation time varied.

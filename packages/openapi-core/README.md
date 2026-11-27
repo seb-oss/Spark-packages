@@ -47,3 +47,7 @@ catch (e) {
 ```
 
 All errors extend `HttpError` which exposes a `statusCode` property and a `toJSON(showStack?)` method.
+
+## Client typing
+
+`BaseClient` and `RequestArgs` define the shape generated clients (see [@sebspark/openapi-client](../openapi-client)) are typed against: `Pick<BaseClient, V> & { [V]: <specific overloads> }`. Tests that call the generic `BaseClient` signature directly instead of a generated client's narrowed shape can pass while hiding a real regression — `openapi-core` 4.1.26 once widened `RequestArgs` so a too-generic test still compiled, and calls silently resolved to the generic overload with `response.data` typed as `unknown`. Type tests against generated clients, not `BaseClient` directly.
