@@ -24,6 +24,46 @@
     "typecheck": {
       "dependsOn": ["^build"]
     },
+    "//#test:tools:plain": {
+      "inputs": [
+        "tools/**",
+        ".husky/**",
+        "turbo/generators/**",
+        "packages/**",
+        "!packages/*/node_modules/**",
+        "!packages/*/.turbo/**",
+        "!packages/*/coverage/**",
+        "!packages/*/dist/**",
+        "!packages/*/build/**",
+        "!**/.DS_Store",
+        "package.json",
+        "turbo.json",
+        "README.md",
+        "yarn.lock",
+        ".nvmrc"
+      ],
+      "outputs": []
+    },
+    "//#test:tools:color": {
+      "inputs": [
+        "tools/**",
+        ".husky/**",
+        "turbo/generators/**",
+        "packages/**",
+        "!packages/*/node_modules/**",
+        "!packages/*/.turbo/**",
+        "!packages/*/coverage/**",
+        "!packages/*/dist/**",
+        "!packages/*/build/**",
+        "!**/.DS_Store",
+        "package.json",
+        "turbo.json",
+        "README.md",
+        "yarn.lock",
+        ".nvmrc"
+      ],
+      "outputs": []
+    },
     "//#security-scan:raw": {
       "inputs": [
         "packages/**/src/**",

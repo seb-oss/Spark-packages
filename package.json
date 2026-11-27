@@ -24,7 +24,9 @@
     "test": "turbo test",
     "test:e2e": "turbo test:e2e",
     "test:e2e:watch": "turbo watch test:e2e",
-    "test:tools": "node --test tools/ && FORCE_COLOR=1 node --test tools/",
+    "test:tools": "turbo run test:tools:plain test:tools:color --filter=//",
+    "test:tools:plain": "NO_COLOR=1 node --test tools/",
+    "test:tools:color": "FORCE_COLOR=1 node --test tools/",
     "typecheck": "turbo typecheck",
     "version-packages": "changeset version && yarn install --no-immutable",
     "prepare": "husky"

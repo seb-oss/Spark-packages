@@ -182,6 +182,8 @@ Every package's `typecheck` runs `tsc --noEmit -p .` followed by `vitest --typec
 
 Every `vitest` call in a package script passes `--fsModuleCachePath node_modules/.vitest-cache` so each package has its own module cache. Without it, packages share the workspace root's cache, and parallel runs clear it simultaneously after a lockfile change, failing with `ENOTEMPTY`. `tools/vitest-cache-per-package.test.mjs` enforces this. Never dismiss an intermittent failure as "just a race" — find the root cause and fix it.
 
+**A cache is only as good as its declared inputs.** A Turbo task with an input missing gives a cached pass for a change that should fail it, which is a false success. When a task or a test reads a new file, add it to that task's `inputs` in `turbo.json`. When you set `inputs`, prove them: change one file from each input group and confirm a cache miss (`turbo run <task> --dry=json`), and change a file outside them and confirm a hit. Explicit `inputs` include git-ignored files, so exclude output folders (`dist`, `coverage`, `node_modules`, `.turbo`). Restore probed files from a copy, never with `git checkout`, which also discards uncommitted work.
+
 **An agent's shell is not the user's terminal.** It has no TTY, so tools print no colours and cannot prompt. Something that passes there can fail in a terminal, and the other way round:
 
 - Code and tests that parse a tool's output strip colour codes first (`stripVTControlCharacters` from `node:util`): in a terminal, tsdown underlines paths. Before declaring a check green, run tests that parse output once more with `FORCE_COLOR=1`.
