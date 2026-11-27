@@ -38,15 +38,22 @@ before(() => {
 
 after(() => rmSync(workspace, { recursive: true, force: true }))
 
+// The test runs the installed @turbo/gen, so it must be the one turbo gen uses
+test('@turbo/gen is installed at the same version as turbo', () => {
+  assert.equal(rootVersion('@turbo/gen'), rootVersion('turbo'))
+})
+
 describe('a package created with yarn generate:package', () => {
   let generated
 
   before(() => {
-    // What `yarn generate:package` runs, answering name and description
+    // What `yarn generate:package` (turbo gen) runs, answering name and
+    // description. turbo gen downloads @turbo/gen into a throwaway project on
+    // every run; the installed @turbo/gen is the same version, offline.
     execFileSync(
-      bin('turbo'),
-      ['gen', 'package', '--root', workspace, '--args', 'generated', 'Generated'],
-      { stdio: 'pipe' }
+      bin('gen'),
+      ['run', 'package', '--root', workspace, '--args', 'generated', 'Generated'],
+      { encoding: 'utf8', stdio: 'pipe' }
     )
     generated = join(workspace, 'packages', 'generated')
   })
