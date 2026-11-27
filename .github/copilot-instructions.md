@@ -22,6 +22,9 @@ The rules below are expanded in the sections that follow. If you remember nothin
 - **Don't narrate *how*** — say *what* you're doing, then do it
 - **Docs → Red → Green → Refactor** for new behaviour
 - **Package scope first** — run package checks while iterating, repo checks only when the package change is done
+- **Read every result** — exit codes, not grep; no claim about a command you haven't read the output of
+- **Scripts check each step** — an empty ID or a failed command stops the script; it never loops on it
+- **Your shell is not a terminal** — no colours, no prompts; test output parsing with `FORCE_COLOR=1`
 
 ## Execution Style
 
@@ -68,6 +71,15 @@ When the user asks a question or asks for a proposal or recommendation, answer i
 
 ### Waiting is timed, never guessed
 An agent has no sense of elapsed time. When you give something a set time (e.g. "wait a few minutes for Dependabot"), enforce it with a real timer: a bounded loop or `sleep` that ends on its own, with the deadline taken from `date`. When it expires, act on what you have; never keep waiting open-ended.
+
+A wait loop checks every step before relying on it. A loop whose command fails keeps repeating the failure until it times out, which proves nothing. So:
+
+- A value used later (a run ID, a path, a version) is checked right after it is set; if it is empty, stop with an error saying which lookup failed.
+- A command that fails inside the loop ends the loop with its error, instead of counting as "not done yet".
+- Look up by values that are certain to match: `gh run list --commit` only matches a full SHA (`git rev-parse <sha>`); a short SHA returns nothing, without an error.
+
+### Read every result
+Read the output and exit code of every command before saying anything about it. Never claim that something passed, finished or exists without having seen it. Judge by exit codes, not by grepping for "passed": a grep finds nothing in a crash, too. If a command is moved to the background, read its output when it completes, before moving on.
 
 ### Docs → Red → Green → Refactor
 This is the development loop for building anything new:
@@ -155,6 +167,12 @@ Always run lint after any code change. `yarn lint` applies safe fixes; `yarn lin
 Every package's `typecheck` runs `tsc --noEmit -p .` followed by `vitest --typecheck.only`, so production code and tests are type-checked, not just type tests. Packages that check generated code (`openapi-client`, `openapi-e2e`) run `yarn generate &&` first in `test` and `typecheck`; the generated files are gitignored and Biome skips them (`vcs.useIgnoreFile`). Yarn 4 does not run `pre`/`post` scripts, so never rely on them.
 
 Every `vitest` call in a package script passes `--fsModuleCachePath node_modules/.vitest-cache` so each package has its own module cache. Without it, packages share the workspace root's cache, and parallel runs clear it simultaneously after a lockfile change, failing with `ENOTEMPTY`. `tools/vitest-cache-per-package.test.mjs` enforces this. Never dismiss an intermittent failure as "just a race" — find the root cause and fix it.
+
+**An agent's shell is not the user's terminal.** It has no TTY, so tools print no colours and cannot prompt. Something that passes there can fail in a terminal, and the other way round:
+
+- Code and tests that parse a tool's output strip colour codes first (`stripVTControlCharacters` from `node:util`): in a terminal, tsdown underlines paths. Before declaring a check green, run tests that parse output once more with `FORCE_COLOR=1`.
+- Commands that ask for input fail instead of waiting. npm's 2FA exits with `EOTP`, and the URL it prints is masked. Hand such steps (publishing, `npm trust`) to the user with the exact commands; see "New packages" in [CONTRIBUTING.md](../CONTRIBUTING.md).
+- When the user reports a failure you cannot reproduce, ask for their output and Node version rather than guessing.
 
 ## Dependencies
 
