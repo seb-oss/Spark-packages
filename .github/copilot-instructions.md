@@ -170,7 +170,7 @@ Work on one package at a time. While iterating on a package, run only that packa
 
 **Inner loop (while changing a package):** run that package's lint, typecheck, unit tests, and e2e tests, in whichever combination the package has. Some packages have unit tests, some have e2e tests, some have both — the rule applies universally: run what the package has, and run only that package, until the change is done.
 
-**Outer loop (once the package is done):** run the full repo's checks before declaring the task complete.
+**Outer loop (once the package is done):** run `yarn smoketest` (everything except e2e) and `yarn test:e2e` before declaring the task complete. Report both exit codes. When one fails, find the failing task in its output; don't grep for "passed".
 
 If a check doesn't exist for a package (e.g. no e2e tests), skip it — but verify by reading the package's `package.json` or README, not by assumption.
 
