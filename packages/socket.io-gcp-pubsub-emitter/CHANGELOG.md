@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.37
+
+### Patch Changes
+
+- b7947a9: A failed publish is now logged with `console.error`, instead of leaving an unhandled rejection that could end the process.
+
 ## 1.0.36
 
 ### Patch Changes

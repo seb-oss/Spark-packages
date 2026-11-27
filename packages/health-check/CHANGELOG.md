@@ -1,5 +1,11 @@
 # @sebspark/health-check
 
+## 3.1.4
+
+### Patch Changes
+
+- 5f67b93: A rejecting or throwing `asyncCall` now fails the check with its error, instead of leaving an unhandled rejection that could end the process.
+
 ## 3.1.3
 
 ### Patch Changes
