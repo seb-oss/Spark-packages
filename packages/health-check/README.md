@@ -94,6 +94,8 @@ app.listen(3000, () => {
 })
 ```
 
+If `asyncCall` throws or its promise rejects (here, if `publishMessage` fails), the check reports `error` with that error's message.
+
 ## OpenAPI specification
 
 ### JSON

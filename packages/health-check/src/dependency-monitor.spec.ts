@@ -520,6 +520,42 @@ describe('DependencyMonitor', () => {
         expect(dependency).toHaveBeenCalledTimes(before) // no more polls after dispose
       })
 
+      it('reports error when an async asyncCall rejects, instead of leaving the rejection unhandled', async () => {
+        using monitor = new DependencyMonitor({
+          impact: 'critical',
+          asyncCall: async () => {
+            throw new Error('connection refused')
+          },
+          pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
+        })
+
+        await vi.advanceTimersByTimeAsync(0)
+
+        const status = await monitor.check()
+        expect(status.status).toBe('error')
+        expect(status.error?.message).toBe('connection refused')
+      })
+
+      it('reports error when asyncCall throws synchronously', async () => {
+        using monitor = new DependencyMonitor({
+          impact: 'critical',
+          asyncCall: () => {
+            throw new Error('not configured')
+          },
+          pollRate: 10_000,
+          healthyLimitMs: 800,
+          timeoutLimitMs: 2_000,
+        })
+
+        await vi.advanceTimersByTimeAsync(0)
+
+        const status = await monitor.check()
+        expect(status.status).toBe('error')
+        expect(status.error?.message).toBe('not configured')
+      })
+
       describe('DependencyStatus object report', () => {
         it('maps reported { status: "ok" } to ok', async () => {
           using monitor = new DependencyMonitor({

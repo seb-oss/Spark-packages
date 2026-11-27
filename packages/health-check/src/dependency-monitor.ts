@@ -87,6 +87,7 @@ export type AsyncConfig = BaseConfig & {
   /**
    * Starts an asynchronous check. Must call `reportResponse` once a result is available.
    * The callback may be invoked with a `DependencyStatus | DependencyStatusValue` or an `Error`.
+   * If `asyncCall` throws or returns a promise that rejects, the check fails with that error.
    */
   asyncCall: (
     reportResponse: (
@@ -171,7 +172,8 @@ export class DependencyMonitor {
 
     // Kick off the first cycle for polled/async.
     if (this.mode !== 'inline') {
-      this.doCheck()
+      // Never rejects: failures become the check's status
+      void this.doCheck()
     }
   }
 
@@ -232,7 +234,7 @@ export class DependencyMonitor {
    *   if no callback result arrives within the thresholds.
    * - On callback, clears timers and classifies the result with latency.
    */
-  private async doAsyncCheck({
+  private doAsyncCheck({
     asyncCall,
     healthyLimitMs,
     timeoutLimitMs,
@@ -242,7 +244,9 @@ export class DependencyMonitor {
     let healthTimeout: NodeJS.Timeout | undefined
     let serviceTimeout: NodeJS.Timeout | undefined
 
-    asyncCall((response) => {
+    const report = (
+      response: DependencyStatus | DependencyStatusValue | Error
+    ) => {
       if (!callActive) return
       callActive = false
       clearTimeout(healthTimeout)
@@ -250,7 +254,12 @@ export class DependencyMonitor {
 
       const duration = performance.now() - start
       this.handleDependencyResponse(response, duration)
-    })
+    }
+
+    // A rejecting (or throwing) asyncCall counts as a failed check
+    new Promise<void>((resolve) => resolve(asyncCall(report))).catch((err) =>
+      report(err instanceof Error ? err : new Error(String(err)))
+    )
 
     // Escalate to degraded after healthy limit if still waiting.
     healthTimeout = setTimeout(() => {
