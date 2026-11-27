@@ -29,6 +29,9 @@
     "enabled": true,
     "rules": {
       "preset": "recommended",
+      "nursery": {
+        "noFloatingPromises": "error"
+      },
       "style": {
         "useNodejsImportProtocol": "warn",
         "useShorthandFunctionType": "off"
@@ -56,6 +59,7 @@
     {
       "includes": [
         "**/*.spec.*",
+        "**/*.spec-d.*",
         "**/*.test.*",
         "**/*.e2e.*",
         "**/__tests__/**",
