@@ -1,5 +1,11 @@
 # @sebspark/socket.io-gcp-pubsub-emitter
 
+## 1.0.36
+
+### Patch Changes
+
+- e35342f: chore(deps): bump socket.io-adapter from 2.5.8 to 2.5.9
+
 ## 1.0.35
 
 ### Patch Changes
