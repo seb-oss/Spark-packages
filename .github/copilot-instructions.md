@@ -54,6 +54,8 @@ Do not batch-fix multiple files or issues in one move. Fix one thing, verify it 
 ### Trunk-based development
 This repo has no long-lived branches and no PR gate: everyone with write access pushes verified work straight to `main` (see [CONTRIBUTING.md](../CONTRIBUTING.md)). That only works if every push is a complete, working increment — small is encouraged, broken or inert is not.
 
+- Work locally on `main`. Don't create branches, not even to park unfinished work.
+- Committing and pushing are separate decisions. Commit locally as often as useful; push only when there is a reason to share the work (a complete increment), and never without the user's explicit go-ahead.
 - Never push scaffolding, a stub, or a placeholder "to finish later." If a change needs more than one session, keep it uncommitted or in a local-only commit until it does something real and passes its checks — don't put it on `main` just because the step so far was mechanical (e.g. a generated package with an empty `src/index.ts`).
 - A new package follows the same rule: scaffold it, then build real functionality behind tests, and only push once there's a working increment worth sharing. Don't push the bare generator output on its own.
 - "Small" describes the size of a change, not whether it does anything. A one-line fix that's fully working is a good small increment; an empty file is not, no matter how small.
@@ -95,6 +97,12 @@ Never fix the bug first. Fixing before writing the test wastes the opportunity t
 
 ### Test philosophy
 Tests are optimised for readability. Do not get clever or DRY. A test should be immediately understandable to someone who has never seen the codebase.
+
+**A package's own API is always written out in its tests.** Tests document the package, so every call to its code — creating, configuring, calling, subscribing, closing — appears inline in the test that relies on it, even when that repeats across tests. Helpers and `beforeEach` are only for setup that is not the package's: containers, third-party clients such as a `pg` pool, seed data. A helper that wraps the package's own calls (e.g. `startWorker()` around `live()`) hides exactly what the test is meant to show.
+
+Clean up without cluttering the test: declare what must be closed with `let` at the top of the file, assign it in the test, and close it in `afterEach` if it exists. Do not register cleanup inside the test (e.g. `onTestFinished`).
+
+Test data follows the same rule. A test of a behaviour shows its own input: a test of loading data inserts that data itself. Tests of other behaviours that need the same data share it through a `describe` named after the data (e.g. `describe('with anna and bob in the table')`), whose `beforeEach` creates it, with any expected rows declared right next to it.
 
 Tests serve four purposes, in priority order:
 1. **Drive code design** — writing the test first forces a clean API
