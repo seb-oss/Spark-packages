@@ -33,7 +33,7 @@
   "dependencies": {
     "@sebspark/memredis": "1.0.10",
     "date-fns": "4.4.0",
-    "redis": "6.3.1",
+    "redis": "6.4.0",
     "superjson": "2.2.7"
   },
   "repository": {
